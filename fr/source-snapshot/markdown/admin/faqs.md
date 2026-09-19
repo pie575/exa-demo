@@ -1,0 +1,67 @@
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
+>
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
+
+<div id="faqs">
+  # FAQ
+</div>
+
+> Réponses aux questions fréquentes sur les produits Exa, l&#39;index de recherche, la fraîcheur des contenus, le grounding, la sécurité et la tarification.
+
+<AccordionGroup>
+  <Accordion title="Qu'est-ce qu'Exa ?">
+    Exa fournit une infrastructure de web search et de recherche documentaire pour les applications d&#39;IA. La plateforme associe un index de recherche indépendant à des API d&#39;extraction de contenu et d&#39;agentic research, afin que les applications puissent trouver des sources, récupérer leurs contents et produire des résultats grounded.
+  </Accordion>
+
+  <Accordion title="Quel produit Exa choisir ?">
+    * Utilisez la [Search API](/fr/docs/search/quickstart) pour obtenir des résultats web classés et, si besoin, renvoyer des highlights, le full text ou des summaries.
+    * Utilisez la [Contents API](/fr/docs/contents/quickstart) lorsque vous disposez déjà des URL et que vous avez besoin des contents extraits.
+    * Utilisez l&#39;[Agent API](/fr/docs/agent/quickstart) pour la recherche asynchrone en plusieurs étapes, le list building et l&#39;enrichment structuré.
+    * Utilisez les [Monitors](/fr/docs/monitors/quickstart) pour exécuter des searches récurrentes et recevoir les nouveaux résultats découverts.
+  </Accordion>
+
+  <Accordion title="Qu'est-ce qu'Exa Connect ?">
+    [Exa Connect](/fr/docs/agent/connect/overview) donne à Exa Agent l&#39;accès à des data providers premium en parallèle du web search, au sein d&#39;un même run. Ajoutez des providers via `dataSources` : Exa Agent détermine à quel moment interroger chaque source, puis combine les données partenaires et la recherche web en un unique résultat structuré et grounded.
+
+    Pour les providers en libre-service, Exa prend en charge l&#39;authentification auprès du provider et la facturation de l&#39;usage : vous n&#39;avez donc pas besoin de développer une integration distincte ni d&#39;ouvrir un compte séparé chez le provider.
+  </Accordion>
+
+  <Accordion title="Qu'est-ce qui distingue Exa Search ?">
+    Exa Search est conçu pour la retrieval programmatique plutôt que pour la navigation financée par la publicité. Il peut rechercher par sens, accepter des queries en langage naturel et renvoyer les page contents dans la même requête. Les search modes vont de la retrieval à faible latence à la recherche en plusieurs étapes avec structured output.
+
+    Consultez le [Quickstart Search](/fr/docs/search/quickstart) pour connaître les search types et les formats de réponse disponibles.
+  </Accordion>
+
+  <Accordion title="Quelle est la taille de l'index d'Exa ?">
+    En août 2026, l&#39;index d&#39;Exa suit 1 400 milliards d&#39;URL et sert 100 milliards de pages issues du web public. L&#39;index évolue en permanence, au fil des pages découvertes, actualisées ou supprimées.
+  </Accordion>
+
+  <Accordion title="Quelle est la fraîcheur des résultats d'Exa ?">
+    Exa découvre et actualise les pages en continu, selon un rythme qui varie en fonction de la source et de la fréquence de modification de la page. Lorsque vous avez besoin d&#39;un contenu plus récent que la copie indexée, utilisez l&#39;option [`maxAgeHours`](/fr/docs/contents/quickstart#content-freshness) de la Contents API pour contrôler l&#39;ancienneté du cache et la retrieval en direct.
+  </Accordion>
+
+  <Accordion title="Exa exploite-t-il un crawler ?">
+    Oui. Exa exploite `ExaSearchBot` pour découvrir et actualiser les pages du web public à des fins de search et de retrieval. Il respecte le protocole d&#39;exclusion des robots, limite le request rate par site et ne cherche pas à contourner les connexions, les paywalls ou les CAPTCHA.
+
+    Le fichier `robots.txt` contrôle le crawl. Pour retirer une page déjà indexée, utilisez une balise meta robots `noindex` ou un header de réponse `X-Robots-Tag: noindex` ; Exa supprime la page lors de sa prochaine récupération. Consultez [Exa Search Crawler](https://crawler.exa.ai/) pour connaître l&#39;agent utilisateur, les instructions de verification cryptographique et les contrôles du crawler.
+  </Accordion>
+
+  <Accordion title="Comment Exa aide-t-il à grounder les réponses des LLM ?">
+    Exa renvoie les source URL ainsi que le contenu web utilisé pour la retrieval, ce qui permet à une application de générer des réponses avec citations et d&#39;examiner les evidence associées. La qualité de la search et le grounding des sources peuvent réduire les affirmations non étayées, mais l&#39;application et son modèle de langage restent responsables de la manière dont les informations récupérées sont interprétées et présentées.
+  </Accordion>
+
+  <Accordion title="Puis-je restreindre les sources interrogées par Exa ?">
+    Oui. Utilisez `includeDomains` pour limiter la Search à des domaines sélectionnés, ou `excludeDomains` pour écarter les sources indésirables. Exa propose également des catégories de données pour une retrieval ciblée par source : entreprises, personnes, actualité ou code. Consultez les [bonnes pratiques de Search](/fr/docs/search/best-practices) et [Data](/fr/docs/search/data/overview).
+  </Accordion>
+
+  <Accordion title="Quelles options de sécurité et de conservation des données sont disponibles ?">
+    Exa propose des contrôles de sécurité et de conformité pour les cas d&#39;usage en production et en entreprise, dont le [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) et la [HIPAA compliance](/fr/docs/admin/security/hipaa) pour les clients Enterprise éligibles. Consultez [Sécurité et conformité](/fr/docs/admin/security/overview) pour en savoir plus.
+  </Accordion>
+
+  <Accordion title="Comment fonctionne la tarification d'Exa ?">
+    L&#39;usage des API est facturé sur les credits du compte, selon l&#39;endpoint et les options utilisés. Les nouveaux comptes reçoivent des credits gratuits, et l&#39;usage payant se fait à la consommation, sauf si votre organization dispose d&#39;un contrat entreprise. Consultez [Pricing](/fr/docs/admin/pricing) et [Facturation](/fr/docs/admin/billing).
+  </Accordion>
+</AccordionGroup>

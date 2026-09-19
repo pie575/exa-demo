@@ -1,0 +1,148 @@
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
+>
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
+
+<div id="cybersecurity">
+  # Cybersécurité
+</div>
+
+> Trouvez des vulnérabilités, des advisories, des rapports sur les menaces et de la documentation de confiance avec Exa Search.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans le playground de l’API" aria-label={`Ouvrir "${query}" dans le playground de l’API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Utilisez Exa Search pour accéder aux records de vulnérabilités, aux advisories de vendors et à la recherche sur les menaces, à partir des sources que les équipes de sécurité consultent déjà.
+
+<div id="included">
+  ## Inclus
+</div>
+
+* Fiches de vulnérabilités CVE et GHSA
+* Advisory de sécurité des vendors et notes de correctifs
+* Rapports de renseignement sur les menaces et comptes rendus d&#39;incidents
+* Pages de confiance, listes de sous-traitants et documentation de conformité
+* Blogs de sécurité, conférences et travaux de recherche
+
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
+
+* Le tri des vulnérabilités et l&#39;évaluation de l&#39;exposition
+* La threat intelligence et le suivi des adversaires
+* Le risque vendor et les revues de sécurité des tiers
+* La surveillance de la sécurité et les alertes
+
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
+
+<div id="triage-a-vulnerability-class">
+  ### Trier une classe de vulnérabilités
+</div>
+
+Indiquez le produit, la plage de versions et le niveau de criticité.
+
+<PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
+
+<div id="find-vendor-advisories">
+  ### Trouver des advisories vendor
+</div>
+
+Décrivez le status d&#39;exploitation et la classe de produits plutôt qu&#39;un identifiant CVE précis.
+
+<PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
+
+<div id="review-a-vendors-security-posture">
+  ### Évaluer la posture de sécurité d&#39;un vendor
+</div>
+
+Indiquez le type de document et la catégorie de vendor.
+
+<PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
+
+<div id="research-an-adversary">
+  ### Enquêter sur un adversaire
+</div>
+
+Indiquez le groupe ou la campagne, ainsi que la technique ou le secteur qui vous intéresse.
+
+<PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
+
+<div id="make-a-request">
+  ## Effectuer une requête
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "critical CVEs affecting Apache Struts 6.x",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "critical CVEs affecting Apache Struts 6.x",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "critical CVEs affecting Apache Struts 6.x",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
+
+Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez une [tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les produits, les critères de menace et les champs de sortie dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de citations.
+
+<Card title="Lancer une tâche Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
+  Évaluez un fournisseur à partir des avis de sécurité, des signalements de violations et des pages de confiance, ou constituez des données de vulnérabilité normalisées.
+</Card>

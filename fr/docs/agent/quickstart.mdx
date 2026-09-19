@@ -1,0 +1,933 @@
+---
+title: "Exa Agent"
+sidebarTitle: "Quickstart"
+description: "Exécutez des workflows de deep research, de list-building et d'enrichissement qui renvoient des structured outputs."
+boost: 6
+---
+
+Exa Agent est un endpoint asynchrone, facturé à l&#39;usage, conçu pour les tâches gourmandes en calcul comme le list building, l&#39;enrichissement et la deep research. Il gère les raisonnements complexes et peut renvoyer de nombreux champs de structured output.
+
+Voyez-le comme un agent de context : vous décrivez les données souhaitées et la forme sous laquelle elles doivent vous être renvoyées, et Exa Agent orchestre les tool calls nécessaires pour y parvenir. Un seul run peut lancer de nombreuses searches sous différents angles, lire et condenser les pages correspondantes, découper le list building en sous-tâches exécutées en parallèle, vérifier chaque candidat au regard de vos critères, enrichir les contacts et interroger les data partners [Exa Connect](/fr/docs/agent/connect/overview) que vous attachez. Vous récupérez le context assemblé sous la forme d&#39;un unique résultat structured et grounded, sans avoir à orchestrer vous-même chaque appel `/search` et `/contents`.
+
+Chaque run peut renvoyer une réponse en langage naturel, du JSON validé par schéma, du grounding au niveau des champs, des metadata et un détail du cost. Vous pouvez récupérer ultérieurement les runs terminés, lister les runs passés, replayer les événements ou reprendre à partir d&#39;un run précédent.
+
+<Tip>
+  Vous préférez MCP ? Exa Agent et [Exa Connect](/fr/docs/agent/connect/overview) sont disponibles dans [Exa MCP](/fr/docs/get-started/exa-mcp#exa-agent). Activez `tools=agent_run` pour exécuter des tâches de recherche multi-étapes, de list-building, d&#39;enrichissement et de structured output depuis Claude, Cursor et d&#39;autres clients MCP.
+</Tip>
+
+<div id="when-to-use-exa-agent">
+  ## Quand utiliser Exa Agent
+</div>
+
+Utilisez Exa Agent lorsqu&#39;un workflow nécessite plus qu&#39;un simple appel de recherche ou d&#39;extraction, ou lorsque vous devriez autrement écrire votre propre boucle de recherches, de lectures de pages et d&#39;étapes de vérification pour rassembler les données :
+
+* Constituer des listes à partir de critères ouverts, puis enrichir chaque résultat
+* Rechercher des entités sur de nombreux champs, avec citations à l&#39;appui
+* Exécuter des tâches multi-étapes du type « trouver des entreprises, puis identifier leurs décideurs »
+* Produire du JSON structuré à partir d&#39;une tâche de recherche web de longue durée
+* Combiner recherche web et données de partenaires premium dans une seule réponse sourcée
+* Reprendre un run précédent avec une requête de suivi comme « trouver 10 résultats supplémentaires »
+
+Exa Agent est asynchrone et présente, par conception, une latence plus élevée. Pour une simple recherche à faible latence dont vous orchestrez vous-même les appels, commencez par la [Search API](/fr/docs/search/quickstart).
+
+<div id="quickstart">
+  ## Quickstart
+</div>
+
+Cet exemple lance un run qui génère une liste structurée de personnes correspondant à vos critères. Il renvoie du JSON dans `output.structured`.
+
+<div id="1-install-the-exa-sdk">
+  ### 1. Installez le SDK Exa
+</div>
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install exa-py
+  ```
+
+  ```bash JavaScript theme={null}
+  npm install exa-js
+  ```
+</CodeGroup>
+
+<div id="2-set-your-api-key">
+  ### 2. Définissez votre API key
+</div>
+
+<Tabs>
+  <Tab title="macOS/Linux">
+    ```bash theme={null}
+    export EXA_API_KEY="your-api-key"
+    ```
+  </Tab>
+
+  <Tab title="Windows">
+    ```powershell theme={null}
+    setx EXA_API_KEY "your-api-key"
+    ```
+  </Tab>
+</Tabs>
+
+<div id="3-create-a-run">
+  ### 3. Créer un run
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      output_schema={
+          "type": "object",
+          "properties": {
+              "people": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "name": {"type": "string"},
+                          "job_title": {"type": "string"},
+                          "linkedin_url": {"type": "string", "format": "uri"},
+                      },
+                      "required": ["name", "job_title", "linkedin_url"],
+                  },
+              }
+          },
+          "required": ["people"],
+      },
+      effort="auto",
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Find engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months.",
+    outputSchema: {
+      type: "object",
+      properties: {
+        people: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              job_title: { type: "string" },
+              linkedin_url: { type: "string", format: "uri" }
+            },
+            required: ["name", "job_title", "linkedin_url"]
+          }
+        }
+      },
+      required: ["people"]
+    },
+    effort: "auto"
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      "effort": "auto",
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "people": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "job_title": { "type": "string" },
+                "linkedin_url": { "type": "string", "format": "uri" }
+              },
+              "required": ["name", "job_title", "linkedin_url"]
+            }
+          }
+        },
+        "required": ["people"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+Ajoutez `Accept: text/event-stream` lors de la création d&#39;un run pour recevoir des server-sent events à mesure que le run est mis en file d&#39;attente, démarré puis terminé. Voir [Stream events](#stream-events) pour plus de détails.
+
+<div id="4-poll-for-completion">
+  ### 4. Interroger l&#39;API jusqu&#39;à la fin de l&#39;exécution
+</div>
+
+Si vous n&#39;utilisez pas le streaming d&#39;événements, conservez l&#39;`id` renvoyé et interrogez le run jusqu&#39;à ce qu&#39;il atteigne un statut terminal.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run_id = "agent_run_01j..."
+  run = exa.agent.runs.poll_until_finished(
+      run_id,
+      poll_interval=4000,
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const runId = "agent_run_01j...";
+  const run = await exa.agent.runs.pollUntilFinished(runId, {
+    pollInterval: 4000
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  RUN_ID="agent_run_01j..."
+
+  while true; do
+    RUN_JSON="$(curl -s "https://api.exa.ai/agent/runs/$RUN_ID" \
+      -H "Authorization: Bearer $EXA_API_KEY")"
+
+    STATUS="$(echo "$RUN_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["status"])')"
+    echo "status=$STATUS"
+
+    if [ "$STATUS" = "completed" ] || [ "$STATUS" = "failed" ] || [ "$STATUS" = "cancelled" ]; then
+      echo "$RUN_JSON"
+      break
+    fi
+
+    sleep 4
+  done
+  ```
+</CodeGroup>
+
+Les runs terminés contiennent :
+
+* `output.text` : une réponse en langage naturel
+* `output.structured` : du JSON validé lorsque vous fournissez `outputSchema`
+* `output.grounding` : les citations associées au texte ou aux champs structurés, lorsqu&#39;elles sont émises
+* `costDollars` : le détail du coût du run
+
+<Note>
+  Exa Agent est également disponible via l&#39;API Responses compatible OpenAI.
+  Pointez l&#39;OpenAI SDK vers `https://api.exa.ai`, utilisez `model: "exa-agent"`, puis choisissez
+  une exécution synchrone, en streaming ou en arrière-plan. Voir [Compatibilité avec l&#39;OpenAI
+  SDK](/fr/docs/integrations/openai-sdk#agent-via-responses-api).
+</Note>
+
+<div id="verify-and-enrich-a-specific-entity">
+  ## Vérifier et enrichir une entité spécifique
+</div>
+
+Au-delà du list building, utilisez Exa Agent pour examiner une entité connue précise, vérifier une affirmation auprès de sources faisant autorité et renvoyer une enrichissement structurée. Cet exemple vérifie si le site officiel d&#39;une entreprise dispose d&#39;une page de tarifs accessible publiquement, et enrichit le résultat avec les détails tarifaires lorsqu&#39;ils sont disponibles. Le schéma n&#39;exige que `domain` et `verdict` ; tout le reste relève d&#39;une enrichissement facultative.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Inspect the official website redbarnrobotics.com and determine whether it has a publicly accessible pricing or plans page. A dedicated pricing page counts as present even if it only says 'Contact sales'.",
+      system_prompt="Judge only the company specified in the query. Use present only when a public pricing or plans page is found. Use absent only after successfully inspecting the website and finding no such page. If the website is unreachable, blocked, fails to render, or cannot be inspected reliably, use cannot_verify. Never use absent when inspection failed. Use only the company's official website as evidence.",
+      effort="low",
+      output_schema={
+          "type": "object",
+          "additionalProperties": False,
+          "required": ["domain", "verdict"],
+          "properties": {
+              "domain": {"type": "string", "const": "redbarnrobotics.com"},
+              "verdict": {
+                  "type": "string",
+                  "enum": ["present", "absent", "cannot_verify"],
+              },
+              "pricing_page_url": {"type": ["string", "null"], "format": "uri"},
+              "displays_numeric_prices": {"type": ["boolean", "null"]},
+              "pricing_model": {
+                  "type": ["string", "null"],
+                  "enum": [
+                      "free",
+                      "subscription",
+                      "usage_based",
+                      "one_time",
+                      "custom_quote",
+                      "mixed",
+                      "other",
+                      None,
+                  ],
+              },
+              "starting_price": {"type": ["number", "null"], "minimum": 0},
+              "currency": {
+                  "type": ["string", "null"],
+                  "description": "ISO 4217 code such as USD or EUR.",
+              },
+              "billing_period": {
+                  "type": ["string", "null"],
+                  "enum": [
+                      "monthly",
+                      "annual",
+                      "one_time",
+                      "usage_based",
+                      "variable",
+                      "other",
+                      None,
+                  ],
+              },
+              "has_free_plan": {"type": ["boolean", "null"]},
+              "has_free_trial": {"type": ["boolean", "null"]},
+              "reasoning": {"type": ["string", "null"], "maxLength": 300},
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+
+  print(json.dumps(run.output.structured if run.output else None, indent=2))
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Inspect the official website redbarnrobotics.com and determine whether it has a publicly accessible pricing or plans page. A dedicated pricing page counts as present even if it only says 'Contact sales'.",
+    systemPrompt:
+      "Judge only the company specified in the query. Use present only when a public pricing or plans page is found. Use absent only after successfully inspecting the website and finding no such page. If the website is unreachable, blocked, fails to render, or cannot be inspected reliably, use cannot_verify. Never use absent when inspection failed. Use only the company's official website as evidence.",
+    effort: "low",
+    outputSchema: {
+      type: "object",
+      additionalProperties: false,
+      required: ["domain", "verdict"],
+      properties: {
+        domain: { type: "string", const: "redbarnrobotics.com" },
+        verdict: {
+          type: "string",
+          enum: ["present", "absent", "cannot_verify"]
+        },
+        pricing_page_url: { type: ["string", "null"], format: "uri" },
+        displays_numeric_prices: { type: ["boolean", "null"] },
+        pricing_model: {
+          type: ["string", "null"],
+          enum: [
+            "free",
+            "subscription",
+            "usage_based",
+            "one_time",
+            "custom_quote",
+            "mixed",
+            "other",
+            null
+          ]
+        },
+        starting_price: { type: ["number", "null"], minimum: 0 },
+        currency: {
+          type: ["string", "null"],
+          description: "ISO 4217 code such as USD or EUR."
+        },
+        billing_period: {
+          type: ["string", "null"],
+          enum: [
+            "monthly",
+            "annual",
+            "one_time",
+            "usage_based",
+            "variable",
+            "other",
+            null
+          ]
+        },
+        has_free_plan: { type: ["boolean", "null"] },
+        has_free_trial: { type: ["boolean", "null"] },
+        reasoning: { type: ["string", "null"], maxLength: 300 }
+      }
+    }
+  });
+  const completedRun = await exa.agent.runs.pollUntilFinished(run.id);
+
+  console.log(JSON.stringify(completedRun.output?.structured, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Inspect the official website redbarnrobotics.com and determine whether it has a publicly accessible pricing or plans page. A dedicated pricing page counts as present even if it only says '"'"'Contact sales'"'"'.",
+      "systemPrompt": "Judge only the company specified in the query. Use present only when a public pricing or plans page is found. Use absent only after successfully inspecting the website and finding no such page. If the website is unreachable, blocked, fails to render, or cannot be inspected reliably, use cannot_verify. Never use absent when inspection failed. Use only the company'"'"'s official website as evidence.",
+      "effort": "low",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "verdict"],
+        "properties": {
+          "domain": { "type": "string", "const": "redbarnrobotics.com" },
+          "verdict": {
+            "type": "string",
+            "enum": ["present", "absent", "cannot_verify"]
+          },
+          "pricing_page_url": { "type": ["string", "null"], "format": "uri" },
+          "displays_numeric_prices": { "type": ["boolean", "null"] },
+          "pricing_model": {
+            "type": ["string", "null"],
+            "enum": ["free", "subscription", "usage_based", "one_time", "custom_quote", "mixed", "other", null]
+          },
+          "starting_price": { "type": ["number", "null"], "minimum": 0 },
+          "currency": {
+            "type": ["string", "null"],
+            "description": "ISO 4217 code such as USD or EUR."
+          },
+          "billing_period": {
+            "type": ["string", "null"],
+            "enum": ["monthly", "annual", "one_time", "usage_based", "variable", "other", null]
+          },
+          "has_free_plan": { "type": ["boolean", "null"] },
+          "has_free_trial": { "type": ["boolean", "null"] },
+          "reasoning": { "type": ["string", "null"], "maxLength": 300 }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Note>
+  Les schémas destinés aux workflows de verification doivent tenir compte de
+  l&#39;incertitude. Rendez nullables les champs susceptibles de ne pas être
+  vérifiables et excluez-les de `required`, afin que l&#39;agent puisse renvoyer
+  `null` plutôt que d&#39;inventer une valeur. L&#39;énumération `verdict` distingue un
+  échec d&#39;inspection (`cannot_verify`) d&#39;une véritable evidence négative
+  (`absent`) : un site inaccessible ne prouve pas que la page
+  n&#39;existe pas.
+</Note>
+
+<div id="stream-events">
+  ## Stream events
+</div>
+
+Le streaming maintient la requête de création ouverte et envoie des Server-Sent Events (SSE) jusqu&#39;à la fin du run. Consultez [Format des événements](#event-format) pour connaître les types d&#39;événements et les payloads.
+
+Définissez `stream=True` en Python, `stream: true` en JavaScript, ou envoyez `Accept: text/event-stream` via HTTP :
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  events = exa.agent.runs.create(
+      query="Find five recently launched developer tools for evaluating AI agents.",
+      stream=True,
+  )
+
+  for event in events:
+      print(event.event, event.data)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const events = await exa.agent.runs.create({
+    query: "Find five recently launched developer tools for evaluating AI agents.",
+    stream: true
+  });
+
+  for await (const event of events) {
+    console.log(event.event, event.data);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -N -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Accept: text/event-stream" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find five recently launched developer tools for evaluating AI agents."
+    }'
+  ```
+</CodeGroup>
+
+<div id="event-format">
+  ### Format des événements
+</div>
+
+Chaque trame SSE contient un identifiant d&#39;événement, un nom d&#39;événement et un payload JSON :
+
+```text theme={null}
+id: 1
+event: agent_run.created
+data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:52.051Z"}
+```
+
+Le flux peut également contenir des lignes de commentaire comme `: keep-alive`. Les clients SSE ignorent automatiquement les commentaires ; vos analyseurs personnalisés doivent faire de même.
+
+<div id="event-types">
+  ### Types d&#39;événements
+</div>
+
+| Événement             | payload `data`                        | Utilisation                                                                                                                 |
+| --------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `agent_run.created`   | `{ id, status: "queued", createdAt }` | Enregistrez l&#39;ID du run dès que la requête est acceptée.                                                                |
+| `agent_run.started`   | `{ id, status: "running" }`           | Marquez le run comme étant en cours de traitement.                                                                          |
+| `agent_run.completed` | L&#39;objet Agent run terminé         | Lisez la réponse finale dans `data.output.text` ou `data.output.structured`, et les citations dans `data.output.grounding`. |
+| `agent_run.failed`    | `{ id, status: "failed", error }`     | Affichez `error.code` et `error.message` ; aucune sortie finale n&#39;est disponible.                                       |
+| `agent_run.cancelled` | `{ id, status: "cancelled", ... }`    | Cessez de consommer le flux et traitez le run comme annulé.                                                                 |
+
+Les événements associés à une même étape de recherche comportent un `callId`, qui correspond à `item.call_id` dans les événements de progression des tools. Utilisez-le pour regrouper les traces de search, les sources et la progression des tools. Certaines descriptions de traces de search sont générées de manière asynchrone et peuvent arriver après la source ou l&#39;événement de tool qu&#39;elles décrivent : ne vous fiez donc pas uniquement à l&#39;ordre d&#39;arrivée pour les corréler.
+
+Considérez `agent_run.source.added` comme un aperçu en direct, et non comme une liste complète de citations. Le champ `output.grounding` du run terminal constitue la sortie de grounding faisant autorité.
+
+<div id="replay-stored-events">
+  ### Rejouer les événements stockés
+</div>
+
+Pour les runs non-ZDR, [`GET /agent/runs/{id}/events`](/fr/docs/reference/agent-api/list-run-events) renvoie les événements stockés sous forme de JSON paginé. Envoyez `Accept: text/event-stream` pour rejouer les événements stockés en SSE, et `Last-Event-ID` pour ignorer les événements que votre client a déjà traités :
+
+```bash cURL theme={null}
+curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
+  -H "Accept: text/event-stream" \
+  -H "Last-Event-ID: 12" \
+  -H "Authorization: Bearer $EXA_API_KEY"
+```
+
+L&#39;endpoint de replay envoie les événements stockés au moment de la requête, puis se ferme ; il ne continue pas à suivre un run en cours. Les runs ZDR ne conservent pas les événements et ne peuvent donc pas être rejoués.
+
+Pour assurer la compatibilité ascendante, ignorez les noms d&#39;événements que votre application ne reconnaît pas et poursuivez jusqu&#39;à réception d&#39;un événement terminal.
+
+<div id="return-structured-json">
+  ## Renvoyer du JSON structuré
+</div>
+
+Utilisez `outputSchema` pour renvoyer, dans `output.structured`, du JSON validé par un schéma.
+
+`outputSchema` prend en charge la [spécification JSON Schema](https://json-schema.org/).
+
+Pour obtenir des coordonnées, décrivez les champs de contact souhaités dans `outputSchema`. Utilisez les structures JSON Schema standard, par exemple `{ "type": "string", "format": "email" }` pour les adresses e-mail, `{ "type": "string", "format": "phone" }` pour les numéros de téléphone et `{ "type": "string", "format": "uri" }` pour les URL. Dans la mesure du possible, limitez la taille des listes avec `maxItems` afin de rendre prévisible le coût maximal de l&#39;enrichissement des contacts.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      effort="auto",
+      output_schema={
+          "type": "object",
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "name": {"type": "string"},
+                          "round": {"type": "string"},
+                          "website": {"type": "string"},
+                      },
+                      "required": ["name", "round"],
+                  },
+              }
+          },
+          "required": ["companies"],
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(
+      run.id,
+  )
+
+  print(json.dumps(run.output.structured if run.output else None, indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Find AI infrastructure companies that raised a Series A or B in the last 6 months.",
+    effort: "auto",
+    outputSchema: {
+      type: "object",
+      properties: {
+        companies: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              round: { type: "string" },
+              website: { type: "string" }
+            },
+            required: ["name", "round"]
+          }
+        }
+      },
+      required: ["companies"]
+    }
+  });
+  const completedRun = await exa.agent.runs.pollUntilFinished(run.id);
+
+  console.log(JSON.stringify(completedRun.output?.structured, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      "effort": "auto",
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "companies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "round": { "type": "string" },
+                "website": { "type": "string" }
+              },
+              "required": ["name", "round"]
+            }
+          }
+        },
+        "required": ["companies"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="process-input-rows">
+  ## Traiter les lignes d&#39;entrée
+</div>
+
+Utilisez `input.data` lorsque vous disposez déjà d&#39;un ensemble de données à enrichir. Vous pouvez ajouter des champs supplémentaires à chaque entité de données, faire ressortir de nouvelles entités à partir des données fournies, ou les deux.
+
+Pour des exemples complets d&#39;enrichissement de lignes, consultez les [exemples d&#39;Agent](/fr/docs/agent/examples#enrich-input-rows-code).
+
+<div id="process-exclusions">
+  ## Traiter les exclusions
+</div>
+
+Utilisez `input.exclusion` pour empêcher certaines entrées d&#39;apparaître dans le run. Dans l&#39;exemple ci-dessous, nous recherchons les 10 animaux les plus mignons, mais nous excluons du run les chèvres et les pandas, car nous savons déjà à quel point ils sont mignons.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find the top 10 cutest animals. Return each animal's common name and a source URL.",
+      input={
+          "exclusion": [
+              {"animal": "goat"},
+              {"animal": "panda"},
+          ]
+      },
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find the top 10 cutest animals. Return each animal's common name and a source URL.",
+    input: {
+      exclusion: [
+        { animal: "goat" },
+        { animal: "panda" }
+      ]
+    }
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find the top 10 cutest animals. Return each animal'"'"'s common name and a source URL.",
+      "input": {
+        "exclusion": [
+          { "animal": "goat" },
+          { "animal": "panda" }
+        ]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="connect-data-sources">
+  ## Connecter des sources de données
+</div>
+
+L&#39;index est déjà disponible sur chaque run. Utilisez `dataSources` uniquement pour attacher des partenaires [Exa Connect](/fr/docs/agent/connect/overview). Chaque entrée sélectionne un `provider`. Lorsqu&#39;une propriété de votre `outputSchema` fait référence à une source précise (par exemple, &quot;from Similarweb&quot;), Exa Agent appelle le tool du provider correspondant au lieu de deviner à partir d&#39;une page web.
+
+```json theme={null}
+{
+  "dataSources": [
+    { "provider": "similarweb" },
+    { "provider": "fiber" }
+  ]
+}
+```
+
+Consultez [Exa Connect](/fr/docs/agent/connect/overview) pour la liste complète des data partners, avec des exemples pour chacun.
+
+<div id="continue-from-a-previous-run">
+  ## Continuer à partir d&#39;un run précédent
+</div>
+
+Utilisez `previousRunId` pour poser des follow-ups à une réponse précédente. Chaque follow-up démarre un nouveau run doté de son propre ID. `previousRunId` transmet le context au nouveau run ; il n&#39;est pas réutilisé comme ID de ce nouveau run.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Narrow that list to companies hiring in San Francisco.",
+      previous_run_id="agent_run_01j...",
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Narrow that list to companies hiring in San Francisco.",
+    previousRunId: "agent_run_01j..."
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Narrow that list to companies hiring in San Francisco.",
+      "previousRunId": "agent_run_01j..."
+    }'
+  ```
+</CodeGroup>
+
+<div id="find-a-run-id">
+  ## Trouver l&#39;ID d&#39;un run
+</div>
+
+Listez les runs récents et examinez leurs statuts :
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  runs = exa.agent.runs.list(
+      limit=10,
+  )
+
+  for run in runs.data:
+      query = (run.request or {}).get("query", "")
+      print(f"{run.id}\t{run.status}\t{run.created_at}\t{query}")
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const list = await exa.agent.runs.list({
+    limit: 10
+  });
+
+  for (const run of list.data) {
+    const query = run.request?.query ?? "";
+    console.log(`${run.id}\t${run.status}\t${run.createdAt}\t${query}`);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -s "https://api.exa.ai/agent/runs?limit=10" \
+    -H "Authorization: Bearer $EXA_API_KEY"
+  ```
+</CodeGroup>
+
+<div id="pricing">
+  ## Tarification
+</div>
+
+Les coûts sont basés sur l&#39;usage et facturés par composant :
+
+| Composant                          | Prix                 |
+| ---------------------------------- | -------------------- |
+| Agent Compute Units                | `1 ACU = $0.10`      |
+| Appels du tool de recherche | `$0.005 / recherche` |
+
+<Note>
+  L&#39;enrichissement de contacts est distinct des composants de tarification ci-dessus : l&#39;enrichissement de contacts par e-mail coûte `$0.02 / e-mail` et l&#39;enrichissement de contacts par numéro de téléphone `$0.07 / numéro de téléphone`.
+</Note>
+
+`usage.agentComputeUnits` mesure le calcul du modèle sur l&#39;ensemble du run. Les requêtes complexes, en particulier celles comportant un champ `input.data` volumineux, nécessitent davantage d&#39;étapes de raisonnement et d&#39;appels de tools, et consomment donc plus d&#39;ACU.
+
+Consultez [Limites de l&#39;Agent](/fr/docs/admin/billing#agent-limits) pour les limites de concurrence et de débit.
+
+<div id="effort">
+  ### Effort
+</div>
+
+Utilisez `effort` pour choisir un niveau de coût et de raisonnement pour chaque run. Les valeurs prises en charge sont `minimal`, `low`, `medium`, `high`, `xhigh`, `auto` et `max` ; la valeur par défaut est `auto`. Les efforts fixes ont un prix par requête prévisible, tandis que `auto` et `max` (bêta) sont facturés à l&#39;usage :
+
+| Effort    | Prix                                                                |
+| --------- | ------------------------------------------------------------------- |
+| `minimal` | `0,012 $ / requête`                                                 |
+| `low`     | `0,025 $ / requête`                                                 |
+| `medium`  | `0,10 $ / requête`                                                  |
+| `high`    | `0,50 $ / requête`                                                  |
+| `xhigh`   | `1,00 $ / requête`                                                  |
+| `auto`    | À l&#39;usage ; jusqu&#39;au plafond par défaut de `5 $`            |
+| `max`     | **Bêta**, à l&#39;usage ; jusqu&#39;au plafond par défaut de `20 $` |
+
+<Info>
+  Agent Max est le niveau d&#39;effort le plus élevé, destiné aux tâches où l&#39;exhaustivité
+  et la rigueur priment sur la latence ou le coût : list building à grande échelle,
+  recherche approfondie multi-sources et critères difficiles à vérifier. Cette fonctionnalité
+  est en bêta publique : les requêtes avec `effort: "max"` doivent inclure `Exa-Beta: agent-max-effort-2026-07-27`.
+  Le header accepte une liste de jetons bêta séparés par des virgules.
+</Info>
+
+`budget.maxCostDollars` est un plafond facultatif par run pour `auto` et `max`. Il accepte des valeurs de `1 $` à `100 $` ; le maximum prévu est de `100 $`, mais le serveur peut être configuré avec un maximum inférieur. Le plafond par défaut est de `5 $` pour `auto` et de `20 $` pour `max`. Il s&#39;agit d&#39;un plafond et non d&#39;un prix fixe : les runs qui se terminent plus tôt coûtent moins cher. Le budget n&#39;est pas accepté pour les efforts fixes.
+
+<div id="choosing-an-effort-mode">
+  ### Choisir un mode d&#39;effort
+</div>
+
+Les modes d&#39;effort fixes conviennent bien lorsque vous souhaitez une tarification prévisible par requête pour de la recherche standard. Utilisez `auto` pour les travaux à portée variable comme le list building, où le nombre d&#39;entités peut varier d&#39;une requête à l&#39;autre.
+
+| Effort    | Idéal pour                                                                                   | Complexité de schéma suggérée                                                   | Durée d&#39;exécution attendue       |
+| --------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------ |
+| `minimal` | Recherches ponctuelles au coût le plus bas, tâches factuelles très ciblées, réponses courtes | Un ou deux champs, schéma peu profond                                           | Le moins cher, le moins exhaustif    |
+| `low`     | Recherches ponctuelles simples, tâches factuelles ciblées, réponses courtes                  | Quelques champs, schéma peu profond                                             | Rapide, recherche légère             |
+| `medium`  | Point de départ par défaut pour la plupart des tâches de recherche standard                  | Nombre de champs modéré, objets imbriqués simples                               | Équilibre qualité/durée              |
+| `high`    | Recherches plus difficiles, davantage de citations, exigence d&#39;exhaustivité plus forte   | Schémas plus vastes ou champs plus nuancés                                      | Plus lent, plus approfondi           |
+| `xhigh`   | Tâches à forte valeur où l&#39;exhaustivité prime sur le coût ou la latence                  | Schémas complexes, nombreux champs, vérification difficile                      | Le plus lent des efforts fixes       |
+| `auto`    | Travaux à portée variable, list building, difficulté de la tâche inconnue                    | Flexible ; utile quand le nombre d&#39;entités ou le travail requis est inconnu | Variable                             |
+| `max`     | Recherche à l&#39;effort maximal (bêta)                                                      | Schémas complexes, nombreux champs, vérification difficile                      | Durée d&#39;exécution la plus longue |
+
+Commencez par `medium` pour de la recherche standard sur une seule entité. Descendez à `low` ou `minimal` lorsque le coût et la latence priment sur l&#39;exhaustivité. Passez à `high` ou `xhigh` lorsque le schéma de sortie est plus vaste, que les champs nécessitent une vérification ou que la tâche exige un raisonnement plus approfondi. Utilisez `auto` lorsque vous ne connaissez pas la portée à l&#39;avance, par exemple pour du list building ou des workflows susceptibles de renvoyer de nombreuses entités.
+
+La durée d&#39;exécution varie selon la difficulté de la requête, la complexité du schéma et la disponibilité des sources externes. Considérez les modes d&#39;effort comme des compromis qualité/coût/durée plutôt que comme des garanties strictes de latence.
+
+<div id="run-with-max-effort">
+  ### Exécuter un run avec un effort maximal
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.beta.agent.runs.create(
+      query="Find all companies building browser automation tools in the United States.",
+      effort="max",
+      budget={"maxCostDollars": 10},
+      betas=["agent-max-effort-2026-07-27"],
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.beta.agent.runs.create({
+    query: "Find all companies building browser automation tools in the United States.",
+    effort: "max",
+    budget: { maxCostDollars: 10 },
+    betas: ["agent-max-effort-2026-07-27"]
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: agent-max-effort-2026-07-27" \
+    -d '{
+      "query": "Find all companies building browser automation tools in the United States.",
+      "effort": "max",
+      "budget": { "maxCostDollars": 10 }
+    }'
+  ```
+</CodeGroup>
+
+Les exemples SDK requièrent une version d&#39;`exa-py` ou d&#39;`exa-js` compatible avec Agent Max.
+
+<div id="zero-data-retention">
+  ## Zero Data Retention
+</div>
+
+Exa Agent prend en charge le [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) (ZDR). Le ZDR s&#39;active par team. [Contactez-nous](mailto:sales@exa.ai) pour l&#39;activer sur votre compte.
+
+Lorsque le ZDR est activé pour votre team :
+
+* Créez des runs en streaming (`Accept: text/event-stream`) pour consommer la sortie en direct, ou interrogez les runs asynchrones pendant la fenêtre de conservation.
+* Les données d&#39;un run sont disponibles pendant son exécution et jusqu&#39;à 10 minutes après qu&#39;il a atteint un état terminal. Passé ce délai, le run ne peut plus être récupéré.
+* `previousRunId` n&#39;est pas disponible.
+* Les `dataSources` d&#39;Exa Connect ne sont pas disponibles ; les requêtes qui en contiennent renvoient une erreur `400`.
+
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
+
+<Columns cols={2}>
+  <Card title="Ce que contient l'index" icon="search" href="/fr/docs/search/data/overview" cta="Ouvrir le guide" arrow="true">
+    Explorez les sources d&#39;actualités, de code, d&#39;entreprises et de personnes sur l&#39;ensemble du web public.
+  </Card>
+
+  <Card title="Exa Connect" icon="database" href="/fr/docs/agent/connect/overview" cta="Ouvrir le guide" arrow="true">
+    Attachez des bases de données partenaires premium à un run.
+  </Card>
+
+  <Card title="Bonnes pratiques Agent" icon="lightbulb" href="/fr/docs/agent/best-practices" cta="Ouvrir le guide" arrow="true">
+    Bonnes pratiques d&#39;utilisation d&#39;Exa Agent.
+  </Card>
+
+  <Card title="Exemples Agent" icon="code" href="/fr/docs/agent/examples" cta="Ouvrir le guide" arrow="true">
+    Exemples d&#39;utilisation d&#39;Exa Agent.
+  </Card>
+</Columns>

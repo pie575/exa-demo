@@ -1,0 +1,289 @@
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
+>
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
+
+<div id="exa-for-google-sheets">
+  # Exa pour Google Sheets
+</div>
+
+> Utilisez Exa Agent et les formules Exa directement dans Google Sheets.
+
+<Warning>
+  **Plusieurs comptes Google :** l&#39;add-on doit s&#39;exécuter sous le premier compte Google (celui par défaut) de votre profil de navigateur. Si vous êtes connecté à plusieurs comptes, il se peut que vous ne puissiez pas enregistrer ni charger votre API key. Pour y remédier, ouvrez Sheets dans une fenêtre de navigation privée avec un seul compte, ou déconnectez-vous des comptes supplémentaires afin que le compte souhaité devienne le compte par défaut. [En savoir plus](https://developers.google.com/apps-script/guides/projects#fix_issues_with_multiple_google_accounts).
+</Warning>
+
+Utilisez Exa dans Google Sheets pour faire des recherches sur le web, générer des tableaux et compléter les données manquantes.
+
+L&#39;add-on vous propose deux façons de travailler :
+
+* **Exa Agent** pour les tableaux complets et les tâches multi-cellules
+* **`=EXA(...)`** pour obtenir une réponse dans une seule cellule
+
+<div id="install">
+  ## Installation
+</div>
+
+<Steps>
+  <Step title="Installer l'add-on">
+    Rendez-vous sur l&#39;[add-on Exa AI](https://workspace.google.com/marketplace/app/exa_ai/465545439521) du Google Workspace Marketplace et cliquez sur **Install**.
+  </Step>
+
+  <Step title="Ouvrir un Google Sheet">
+    Ouvrez une feuille de calcul, nouvelle ou existante.
+  </Step>
+
+  <Step title="Ouvrir la sidebar">
+    Allez dans **Extensions → Exa AI → Open Sidebar**.
+  </Step>
+
+  <Step title="Ajouter votre API key">
+    <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+    </Card>
+
+    Collez la key dans la sidebar.
+  </Step>
+
+  <Step title="Commencer à utiliser Exa">
+    Ouvrez **Exa Agent** et commencez à utiliser Exa dans votre feuille.
+  </Step>
+</Steps>
+
+<div id="exa-agent">
+  ## Exa Agent
+</div>
+
+Exa Agent vous permet d&#39;utiliser Exa sur plusieurs cellules à la fois dans Google Sheets.
+
+Utilisez-le lorsque vous souhaitez :
+
+* générer un tableau complet à partir d&#39;un seul prompt
+* compléter les cellules vides d&#39;un tableau existant
+* prolonger un tableau en ajoutant de nouvelles lignes
+* enrichir une liste avec des données issues du web
+
+<div id="generate-a-table">
+  ### Générer un tableau
+</div>
+
+Utilisez **Generate table** lorsque vous souhaitez qu&#39;Exa crée un nouveau tableau.
+
+1. Ouvrez la sidebar.
+2. Accédez à **Exa Agent**.
+3. Choisissez **Generate table**.
+4. Décrivez ce que vous souhaitez obtenir.
+5. Cliquez sur **Generate table**.
+
+Exemple de prompt :
+
+```text theme={null}
+Trouve les 40 meilleures entreprises d'IA et renvoie le nom de l'entreprise, l'URL du site web, le PDG, la date de création, le siège social et une brève description.
+```
+
+Exa effectue des recherches sur le web et écrit le tableau dans votre feuille.
+
+Par défaut, le tableau démarre à la cellule sélectionnée. Vous pouvez choisir une autre cellule de départ dans **Plus d&#39;options**.
+
+<div id="fill-cells">
+  ### Fill cells
+</div>
+
+Utilisez **Fill cells** lorsque vous disposez déjà d&#39;un tableau et souhaitez qu&#39;Exa complète les données manquantes.
+
+1. Sélectionnez les cellules vides de votre feuille.
+2. Ouvrez **Exa Agent**.
+3. Choisissez **Fill cells**.
+4. Cliquez sur **Fill selected cells**.
+
+Exa analyse le tableau entourant votre sélection et remplit les cellules vides.
+
+Avant d&#39;utiliser **Fill cells**, sélectionnez les cellules vides d&#39;un tableau dont les en-têtes sont déjà explicites.
+
+Exemple :
+
+| Entreprise | Site web                                 | PDG           | Siège social  |
+| ---------- | ---------------------------------------- | ------------- | ------------- |
+| Apple      | [https://apple.com](https://apple.com)   |               |               |
+| Google     | [https://google.com](https://google.com) | Sundar Pichai | Mountain View |
+
+Sélectionnez les cellules vides de la ligne Apple, puis cliquez sur **Fill selected cells**. Exa s&#39;appuie sur le nom de l&#39;entreprise et les lignes voisines comme contexte.
+
+<div id="continue-rows">
+  ### Poursuivre les lignes
+</div>
+
+Vous pouvez également sélectionner des lignes vides sous un tableau.
+
+Si votre tableau s&#39;arrête au rang 55 et que vous sélectionnez les deux lignes vides suivantes, Exa peut la poursuivre avec les rangs 56 et 57.
+
+Exa s&#39;appuie sur les lignes existantes comme exemples, conserve les mêmes columns et évite de répéter les items déjà présents dans le tableau.
+
+<div id="exa">
+  ## `=EXA(...)`
+</div>
+
+Utilisez `=EXA(...)` lorsque vous souhaitez obtenir une seule réponse dans une seule cellule. La fonction effectue une recherche sur le web, lit les premiers résultats et renvoie une réponse concise.
+
+```text theme={null}
+=EXA("what you want", cell)
+```
+
+| Paramètre | Requis | Description                                                                           |
+| --------- | ------ | ------------------------------------------------------------------------------------- |
+| `prompt`  | Oui    | L&#39;information souhaitée (par ex. `"Return only the CEO name"`).                   |
+| `context` | Non    | Référence de cellule ou texte à enrichir (par ex. un nom d&#39;entreprise dans `A2`). |
+
+Exemples :
+
+```text theme={null}
+=EXA("Return only the company website URL", A2)
+=EXA("Return only the CEO name", A2)
+=EXA("Return only the headquarters", A2)
+=EXA("Return the Amazon rating of this product", A2)
+```
+
+Le second argument est le contexte. Vous pouvez étirer la formule vers le bas d&#39;une colonne pour l&#39;exécuter sur de nombreuses lignes.
+
+Utilisez `=EXA(...)` pour des réponses simples tenant dans une seule cellule. Utilisez **Exa Agent** lorsque vous souhaitez créer ou remplir un tableau entier.
+
+<div id="exa_answer">
+  ## `=EXA_ANSWER(...)`
+</div>
+
+Réponses IA avancées avec un contrôle total sur le format de sortie. À utiliser lorsque vous avez besoin de system prompts, d&#39;une sortie JSON structurée, de citations ou d&#39;un search type spécifique.
+
+```text theme={null}
+=EXA_ANSWER(prompt, [prefix], [suffix], [includeCitations], [systemPrompt], [outputSchema], [returnRawJson], [type])
+```
+
+| Paramètre          | Requis | Valeur par défaut | Description                                                                                                    |
+| ------------------ | ------ | ----------------- | -------------------------------------------------------------------------------------------------------------- |
+| `prompt`           | Oui    | —                 | La question ou le prompt principal.                                                                            |
+| `prefix`           | Non    | `""`              | Texte ajouté avant le prompt.                                                                                  |
+| `suffix`           | Non    | `""`              | Texte ajouté après le prompt.                                                                                  |
+| `includeCitations` | Non    | `FALSE`           | Si `TRUE`, ajoute des citations numérotées des sources.                                                        |
+| `systemPrompt`     | Non    | `""`              | Instructions système pour contrôler le format de sortie (par exemple, `"only return a number"`).               |
+| `outputSchema`     | Non    | `""`              | Schéma JSON pour une sortie structurée. [Générez vos schémas ici](https://dashboard.exa.ai/playground/answer). |
+| `returnRawJson`    | Non    | `FALSE`           | Si `TRUE` et que `outputSchema` est défini, renvoie le JSON complet au lieu d&#39;extraire la valeur.          |
+| `type`             | Non    | `"deep"`          | Type de recherche : `"auto"`, `"neural"`, `"fast"` ou `"deep"`.                                                |
+
+Exemples :
+
+```text theme={null}
+=EXA_ANSWER("OpenAI CEO", "", "", FALSE, "only return a name")
+=EXA_ANSWER("Modal AI headcount", "", "", FALSE, "only return a number")
+=EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
+```
+
+<div id="exa_search">
+  ## `=EXA_SEARCH(...)`
+</div>
+
+Effectue une recherche sur le web et renvoie une liste verticale d&#39;URL. Prend en charge le filtrage par domaine, le filtrage par catégorie, les highlights de contenu et l&#39;output synthétisé via `outputSchema`.
+
+```text theme={null}
+=EXA_SEARCH(query, [numResults], [searchType], [prefix], [suffix], [includeDomainsStr], [excludeDomainsStr], [category], [highlightsMaxChars], [outputSchemaJson])
+```
+
+| Paramètre            | Requis | Défaut   | Description                                                                                                                                                                         |
+| -------------------- | ------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `query`              | Oui    | —        | La requête de recherche.                                                                                                                                                            |
+| `numResults`         | Non    | `1`      | Nombre de résultats (1–10).                                                                                                                                                         |
+| `searchType`         | Non    | `"auto"` | `"auto"`, `"neural"` ou `"keyword"`.                                                                                                                                                |
+| `prefix`             | Non    | `""`     | Texte ajouté avant la requête.                                                                                                                                                      |
+| `suffix`             | Non    | `""`     | Texte ajouté après la requête.                                                                                                                                                      |
+| `includeDomainsStr`  | Non    | `""`     | Domaines à inclure, séparés par des virgules (par ex. `"linkedin.com,crunchbase.com"`).                                                                                             |
+| `excludeDomainsStr`  | Non    | `""`     | Domaines à exclure, séparés par des virgules.                                                                                                                                       |
+| `category`           | Non    | `""`     | Filtrer par type : `"company"`, `"publication"`, `"news"`, `"personal site"`, `"financial report"`, `"people"`.                                                                     |
+| `highlightsMaxChars` | Non    | `0`      | Si &gt; 0, demande des highlights de contenu limités à ce nombre de caractères par résultat.                                                                                        |
+| `outputSchemaJson`   | Non    | `""`     | Chaîne JSON pour `outputSchema` (par ex. `"{""type"":""text"",""description"":""summarize""}"`). Si ce paramètre est défini, renvoie un texte de sortie synthétisé au lieu des URL. |
+
+Exemples :
+
+```text theme={null}
+=EXA_SEARCH("AI startups", 5, "auto", "", "", "linkedin.com,crunchbase.com")
+=EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
+```
+
+<div id="exa_contents">
+  ## `=EXA_CONTENTS(...)`
+</div>
+
+Extrait le contenu textuel d&#39;une URL.
+
+```text theme={null}
+=EXA_CONTENTS(url)
+```
+
+| Paramètre | Requis | Description                                                |
+| --------- | ------ | ---------------------------------------------------------- |
+| `url`     | Oui    | L&#39;URL complète (doit commencer par `http` ou `https`). |
+
+<div id="exa_findsimilar">
+  ## `=EXA_FINDSIMILAR(...)`
+</div>
+
+Trouve des URL similaires à une URL de référence, avec des filtres facultatifs sur les domaines et le texte.
+
+```text theme={null}
+=EXA_FINDSIMILAR(url, [numResults], [includeDomainsStr], [excludeDomainsStr], [includeTextStr], [excludeTextStr])
+```
+
+| Paramètre           | Requis | Valeur par défaut | Description                                          |
+| ------------------- | ------ | ----------------- | ---------------------------------------------------- |
+| `url`               | Oui    | —                 | L&#39;URL de référence.                              |
+| `numResults`        | Non    | `1`               | Nombre de résultats (1–10).                          |
+| `includeDomainsStr` | Non    | `""`              | Domaines à inclure, séparés par des virgules.        |
+| `excludeDomainsStr` | Non    | `""`              | Domaines à exclure, séparés par des virgules.        |
+| `includeTextStr`    | Non    | `""`              | Expression devant figurer dans les résultats.        |
+| `excludeTextStr`    | Non    | `""`              | Expression ne devant pas figurer dans les résultats. |
+
+<div id="batch">
+  ## Batch
+</div>
+
+Utilisez **Batch** lorsque vous souhaitez traiter en une seule fois un grand nombre de cellules contenant des formules Exa.
+
+Batch permet de :
+
+* actualiser les cellules sélectionnées contenant des formules Exa
+* convertir les formules Exa sélectionnées en valeurs normales
+
+Convertissez les formules en valeurs lorsque vous souhaitez conserver les résultats actuels et empêcher les formules de s&#39;exécuter à nouveau.
+
+<div id="when-to-use-what">
+  ## Quand utiliser quoi
+</div>
+
+| Tâche                                                              | Utiliser                   |
+| ------------------------------------------------------------------ | -------------------------- |
+| Créer un tableau complet à partir d&#39;un prompt                  | Exa Agent → Generate table |
+| Remplir les cellules vides d&#39;un tableau                        | Exa Agent → Fill cells     |
+| Prolonger un tableau avec de nouvelles lignes                      | Exa Agent → Fill cells     |
+| Obtenir une seule valeur dans une cellule                          | `=EXA(...)`                |
+| Obtenir une réponse avec un system prompt ou une sortie structurée | `=EXA_ANSWER(...)`         |
+| Effectuer une recherche et obtenir une liste d&#39;URL             | `=EXA_SEARCH(...)`         |
+| Extraire le texte d&#39;une URL                                    | `=EXA_CONTENTS(...)`       |
+| Trouver des pages similaires à une URL                             | `=EXA_FINDSIMILAR(...)`    |
+| Actualiser de nombreuses formules Exa                              | Batch                      |
+| Enregistrer les résultats des formules en texte brut               | Batch → Convert to values  |
+
+<div id="notes">
+  ## Notes
+</div>
+
+* Les requêtes à l&#39;API Exa sont décomptées de votre quota d&#39;usage. Utilisez **Batch → Convert to values** pour figer les résultats et empêcher le recalcul des formules.
+* L&#39;add-on effectue automatiquement jusqu&#39;à 3 nouvelles tentatives avec un délai exponentiel en cas de dépassement du rate limit (HTTP 429).
+* Commencez par de petits batchs (10 à 20 lignes) avant de passer à plusieurs centaines.
+
+<div id="links">
+  ## Liens
+</div>
+
+* [Installer Exa AI pour Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
+* [Obtenir une API key Exa](https://dashboard.exa.ai/api-keys)
+* [Repository GitHub](https://github.com/exa-labs/exa-for-sheets)
+* [Politique de confidentialité](https://exa.ai/exa-for-sheets/privacy-policy)

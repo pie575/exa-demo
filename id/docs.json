@@ -8,13 +8,13 @@
         "id/docs",
         {
           "boost": 3,
-          "group": "Mulai",
+          "group": "Get Started",
           "pages": [
             "id/docs/get-started/quickstart",
             "id/docs/get-started/exa-mcp",
             {
               "boost": 0.5,
-              "group": "Keterampilan Agent",
+              "group": "Agent Skills",
               "pages": [
                 "id/docs/get-started/agent-skills/overview",
                 "id/docs/get-started/agent-skills/build-with-exa",
@@ -63,7 +63,7 @@
                 "id/docs/agent/connect/overview",
                 {
                   "boost": 2,
-                  "group": "Penyedia Mandiri",
+                  "group": "Self-Serve Providers",
                   "pages": [
                     "id/docs/agent/connect/fiber",
                     "id/docs/agent/connect/similarweb",
@@ -83,7 +83,7 @@
         },
         {
           "boost": 3,
-          "group": "API Lainnya",
+          "group": "Other APIs",
           "pages": [
             "id/docs/contents/quickstart",
             "id/docs/monitors/quickstart",
@@ -92,20 +92,20 @@
         },
         {
           "boost": 2,
-          "group": "SDK",
+          "group": "SDKs",
           "pages": [
             "id/docs/sdks/quickstart"
           ]
         },
         {
           "boost": 2,
-          "group": "Integrasi",
+          "group": "Integrations",
           "pages": [
             "id/docs/integrations/chatgpt-codex",
             "id/docs/integrations/claude-web-desktop",
             "id/docs/integrations/openai-sdk",
             {
-              "group": "Pemanggilan Alat",
+              "group": "Tool Calling",
               "pages": [
                 "id/docs/integrations/tool-calling/openai",
                 "id/docs/integrations/tool-calling/anthropic"
@@ -120,13 +120,13 @@
               ]
             },
             {
-              "group": "Marketplace",
+              "group": "Marketplaces",
               "pages": [
                 "id/docs/integrations/marketplaces/stripe-projects"
               ]
             },
             {
-              "group": "Pembayaran Agentik",
+              "group": "Agentic Payments",
               "pages": [
                 {
                   "group": "x402",
@@ -147,7 +147,7 @@
             },
             {
               "boost": 0.6,
-              "group": "Integrasi Lainnya",
+              "group": "More Integrations",
               "pages": [
                 "id/docs/integrations/exa-slack",
                 "id/docs/integrations/hermes-agent",
@@ -179,7 +179,7 @@
             "id/docs/admin/billing",
             "id/docs/admin/team-management",
             {
-              "group": "Keamanan & Kepatuhan",
+              "group": "Security & Compliance",
               "pages": [
                 "id/docs/admin/security/overview",
                 "id/docs/admin/security/zero-data-retention",
@@ -188,7 +188,7 @@
             },
             "id/docs/admin/mcp-enterprise-managed-auth",
             {
-              "group": "Referensi",
+              "group": "Reference",
               "pages": [
                 "id/docs/admin/status",
                 "id/docs/admin/error-codes",
@@ -215,7 +215,7 @@
           ]
         }
       ],
-      "tab": "Dokumentasi"
+      "tab": "Documentation"
     },
     {
       "groups": [
@@ -248,7 +248,7 @@
         },
         {
           "boost": 2,
-          "group": "Monitor",
+          "group": "Monitors",
           "pages": [
             "id/docs/reference/monitors/create-a-monitor",
             "id/docs/reference/monitors/list-monitors",
@@ -258,7 +258,7 @@
             "id/docs/reference/monitors/trigger-a-monitor",
             "id/docs/reference/monitors/batch-monitors",
             {
-              "group": "Eksekusi",
+              "group": "Runs",
               "pages": [
                 "id/docs/reference/monitors/runs/list-runs",
                 "id/docs/reference/monitors/runs/get-a-run"
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "Manajemen Team",
+          "group": "Team Management",
           "pages": [
             "id/docs/reference/team-management/create-api-key",
             "id/docs/reference/team-management/list-api-keys",
@@ -314,7 +314,7 @@
               ]
             },
             {
-              "group": "Item",
+              "group": "Items",
               "icon": "list",
               "pages": [
                 "id/docs/websets/api/websets/items/get-an-item",
@@ -323,7 +323,7 @@
               ]
             },
             {
-              "group": "Search",
+              "group": "Searches",
               "icon": "search",
               "pages": [
                 "id/docs/websets/api/websets/searches/create-a-search",
@@ -332,7 +332,7 @@
               ]
             },
             {
-              "group": "Enrichment",
+              "group": "Enrichments",
               "icon": "sparkles",
               "pages": [
                 "id/docs/websets/api/websets/enrichments/create-an-enrichment",
@@ -343,7 +343,7 @@
               ]
             },
             {
-              "group": "Import",
+              "group": "Imports",
               "icon": "cloud-download",
               "pages": [
                 "id/docs/websets/api/imports/create-an-import",
@@ -354,7 +354,7 @@
               ]
             },
             {
-              "group": "Monitor",
+              "group": "Monitors",
               "icon": "satellite",
               "pages": [
                 "id/docs/websets/api/monitors/create-a-monitor",
@@ -363,7 +363,7 @@
                 "id/docs/websets/api/monitors/delete-monitor",
                 "id/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "Run monitor",
+                  "group": "Monitor Runs",
                   "icon": "play",
                   "pages": [
                     "id/docs/websets/api/monitors/runs/list-monitor-runs",
@@ -386,7 +386,7 @@
               ]
             },
             {
-              "group": "Peristiwa",
+              "group": "Events",
               "icon": "bell",
               "pages": [
                 "id/docs/websets/api/events/types",
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "group": "Team",
+              "group": "Teams",
               "icon": "users",
               "pages": [
                 "id/docs/websets/api/teams/get-team-info"
@@ -404,13 +404,13 @@
           ]
         }
       ],
-      "tab": "Referensi API"
+      "tab": "API Reference"
     },
     {
       "groups": [
         {
           "boost": 0.5,
-          "group": "Pembaruan",
+          "group": "Updates",
           "pages": [
             "id/docs/changelog"
           ],

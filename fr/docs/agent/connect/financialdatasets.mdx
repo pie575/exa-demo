@@ -1,0 +1,315 @@
+---
+title: "Financial Datasets"
+description: "Données financières et de marché structurées pour plus de 27 000 tickers américains : cours, fondamentaux, résultats, SEC filings, actionnariat et filtrage d'actions."
+icon: "/docs/images/sidebar-icons/financialdatasets.svg"
+---
+
+[Financial Datasets](https://financialdatasets.ai) fournit des données
+d&#39;entreprise et de marché directement exploitables par les agents IA. Via
+[Exa Connect](/fr/docs/agent/connect/overview), les agents peuvent récupérer
+les cours en temps réel et historiques, les informations sur les entreprises, les états financiers et
+les indicateurs de valorisation, les résultats, l&#39;actionnariat des initiés et l&#39;institutional ownership, les SEC filings
+et leurs sections, l&#39;actualité des entreprises, et filtrer le marché américain selon des
+critères fondamentaux.
+
+Attachez `financial_datasets` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) :
+l&#39;agent interrogera alors Financial Datasets en parallèle d&#39;Exa web search.
+
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
+
+* Créer des synthèses de recherche structurées sur les entreprises.
+* Analyser la performance financière, la valorisation et les tendances historiques.
+* Lire les SEC filings et en extraire des sections telles que les facteurs de risque et le MD&amp;A.
+* Examiner les transactions d&#39;insiders et l&#39;institutional ownership.
+* Filtrer le marché américain selon des critères fondamentaux.
+* Suivre l&#39;actualité des entreprises et les évolutions pertinentes.
+
+<div id="data-available">
+  ## Données disponibles
+</div>
+
+Chacun des jeux de données suivants est disponible auprès du provider `financial_datasets` ; l&#39;agent sélectionne celui qui convient à la tâche :
+
+| Jeu de données                    | Ce qu&#39;il renvoie                                                                                                                    |
+| --------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Propriété effective               | Détenteurs effectifs de 5 % et plus issus des Schedules 13D/13G, y compris les participations activistes et passives.                   |
+| Informations sur l&#39;entreprise | Nom, secteur, industrie, place de cotation, localisation, CIK SEC, classification SIC.                                                  |
+| Actualités de l&#39;entreprise    | Articles de presse récents pour un ticker.                                                                                              |
+| Résultats                         | Chiffre d&#39;affaires et BPA trimestriels, avec variation sur un an et surprises positives/négatives.                                  |
+| Indicateurs financiers            | Capitalisation boursière, VE, PER, P/B, P/S, VE/EBITDA, PEG, marges, ROE/ROA/ROIC, croissance, BPA.                                     |
+| États financiers                  | Compte de résultat, bilan et flux de trésorerie issus des SEC filings.                                                                  |
+| Historique des cours de bourse    | Barres OHLCV sur une plage de dates, avec une granularité jour/semaine/mois/année.                                                      |
+| Composition des fonds indiciels   | Composants d&#39;un ETF ou d&#39;un fonds indiciel par pondération, ou fonds détenant un titre donné.                                   |
+| Détention par les insiders        | Détentions d&#39;insiders issues des formulaires SEC 3 et 5 (actions détenues par les officers, administrateurs et détenteurs de 10 %). |
+| Transactions d&#39;insiders       | Transactions d&#39;insiders déclarées au formulaire SEC 4 (nom, role, type, nombre d&#39;actions, valeur).                              |
+| Institutional ownership           | Détenteurs institutionnels 13F, nombre d&#39;actions et valeur déclarée.                                                                |
+| Taux d&#39;intérêt                | Taux directeurs actuels et historiques des banques centrales (Fed, BCE, BOJ, etc.).                                                     |
+| Éléments de SEC filings           | Texte extrait d&#39;éléments spécifiques des 10-K/10-Q/8-K (par ex. facteurs de risque, MD&amp;A).                                      |
+| SEC filings                       | Metadata des filings et liens EDGAR directs, éventuellement filtrés par type de formulaire.                                             |
+| Données financières segmentées    | Chiffre d&#39;affaires, résultat opérationnel et autres postes ventilés par produit, segment d&#39;activité et zone géographique.       |
+| Instantané du cours de bourse     | Cours en temps réel, variation du jour et heure du quote.                                                                               |
+| Screener d&#39;actions            | Entreprises correspondant à des criteria de filtrage fondamentaux.                                                                      |
+
+<div id="provider-id">
+  ## ID du provider
+</div>
+
+Utilisez cette valeur dans `dataSources` :
+
+```text theme={null}
+financial_datasets
+```
+
+<div id="example">
+  ## Exemple
+</div>
+
+Créez un aperçu structuré de recherche d&#39;entreprise pour NVIDIA.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query=(
+          "Analyze NVIDIA using its latest price, valuation metrics, most recent "
+          "quarterly financial statements and earnings, institutional and insider "
+          "activity, and material SEC filing sections. Return a structured "
+          "company-research snapshot with reporting dates."
+      ),
+      data_sources=[{"provider": "financial_datasets"}],
+      output_schema={
+          "type": "object",
+          "required": ["ticker", "price", "valuation", "financials", "earnings", "ownership", "filings"],
+          "properties": {
+              "ticker": {"type": "string"},
+              "price": {
+                  "type": "object",
+                  "required": ["latest", "asOf"],
+                  "properties": {
+                      "latest": {"type": "number"},
+                      "asOf": {"type": "string"},
+                  },
+              },
+              "valuation": {
+                  "type": "object",
+                  "properties": {
+                      "marketCap": {"type": "number"},
+                      "peRatio": {"type": "number"},
+                      "evToEbitda": {"type": "number"},
+                  },
+              },
+              "financials": {
+                  "type": "object",
+                  "required": ["reportPeriod", "summary"],
+                  "properties": {
+                      "reportPeriod": {"type": "string"},
+                      "summary": {"type": "string"},
+                  },
+              },
+              "earnings": {
+                  "type": "object",
+                  "required": ["reportPeriod", "summary"],
+                  "properties": {
+                      "reportPeriod": {"type": "string"},
+                      "summary": {"type": "string"},
+                  },
+              },
+              "ownership": {
+                  "type": "object",
+                  "properties": {
+                      "institutionalHighlights": {"type": "string"},
+                      "insiderActivity": {"type": "string"},
+                  },
+              },
+              "filings": {
+                  "type": "array",
+                  "maxItems": 5,
+                  "items": {
+                      "type": "object",
+                      "required": ["formType", "filedAt", "keySection"],
+                      "properties": {
+                          "formType": {"type": "string"},
+                          "filedAt": {"type": "string"},
+                          "keySection": {"type": "string"},
+                      },
+                  },
+              },
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Analyze NVIDIA using its latest price, valuation metrics, most recent quarterly financial statements and earnings, institutional and insider activity, and material SEC filing sections. Return a structured company-research snapshot with reporting dates.",
+    dataSources: [{ provider: "financial_datasets" }],
+    outputSchema: {
+      type: "object",
+      required: ["ticker", "price", "valuation", "financials", "earnings", "ownership", "filings"],
+      properties: {
+        ticker: { type: "string" },
+        price: {
+          type: "object",
+          required: ["latest", "asOf"],
+          properties: {
+            latest: { type: "number" },
+            asOf: { type: "string" },
+          },
+        },
+        valuation: {
+          type: "object",
+          properties: {
+            marketCap: { type: "number" },
+            peRatio: { type: "number" },
+            evToEbitda: { type: "number" },
+          },
+        },
+        financials: {
+          type: "object",
+          required: ["reportPeriod", "summary"],
+          properties: {
+            reportPeriod: { type: "string" },
+            summary: { type: "string" },
+          },
+        },
+        earnings: {
+          type: "object",
+          required: ["reportPeriod", "summary"],
+          properties: {
+            reportPeriod: { type: "string" },
+            summary: { type: "string" },
+          },
+        },
+        ownership: {
+          type: "object",
+          properties: {
+            institutionalHighlights: { type: "string" },
+            insiderActivity: { type: "string" },
+          },
+        },
+        filings: {
+          type: "array",
+          maxItems: 5,
+          items: {
+            type: "object",
+            required: ["formType", "filedAt", "keySection"],
+            properties: {
+              formType: { type: "string" },
+              filedAt: { type: "string" },
+              keySection: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Analyze NVIDIA using its latest price, valuation metrics, most recent quarterly financial statements and earnings, institutional and insider activity, and material SEC filing sections. Return a structured company-research snapshot with reporting dates.",
+      "dataSources": [{ "provider": "financial_datasets" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["ticker", "price", "valuation", "financials", "earnings", "ownership", "filings"],
+        "properties": {
+          "ticker": { "type": "string" },
+          "price": {
+            "type": "object",
+            "required": ["latest", "asOf"],
+            "properties": {
+              "latest": { "type": "number" },
+              "asOf": { "type": "string" }
+            }
+          },
+          "valuation": {
+            "type": "object",
+            "properties": {
+              "marketCap": { "type": "number" },
+              "peRatio": { "type": "number" },
+              "evToEbitda": { "type": "number" }
+            }
+          },
+          "financials": {
+            "type": "object",
+            "required": ["reportPeriod", "summary"],
+            "properties": {
+              "reportPeriod": { "type": "string" },
+              "summary": { "type": "string" }
+            }
+          },
+          "earnings": {
+            "type": "object",
+            "required": ["reportPeriod", "summary"],
+            "properties": {
+              "reportPeriod": { "type": "string" },
+              "summary": { "type": "string" }
+            }
+          },
+          "ownership": {
+            "type": "object",
+            "properties": {
+              "institutionalHighlights": { "type": "string" },
+              "insiderActivity": { "type": "string" }
+            }
+          },
+          "filings": {
+            "type": "array",
+            "maxItems": 5,
+            "items": {
+              "type": "object",
+              "required": ["formType", "filedAt", "keySection"],
+              "properties": {
+                "formType": { "type": "string" },
+                "filedAt": { "type": "string" },
+                "keySection": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## À combiner avec
+</div>
+
+* [Particle](/fr/docs/agent/connect/particle) : comparez la couverture médiatique publiée avec les commentaires issus de podcasts.
+* [Baselayer](/fr/docs/agent/connect/baselayer) : identifiez l&#39;entité qui se cache derrière un ticker.
+* [Fiber.ai](/fr/docs/agent/connect/fiber) : enrichissez une entreprise cotée avec ses homologues du marché privé et les contacts de sa direction.
+
+<div id="next-steps">
+  ## Prochaines étapes
+</div>
+
+<Columns cols={2}>
+  <Card title="Attachez-le à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
+    Le quickstart Exa Connect couvre `dataSources`, la tarification et le catalogue complet des partners.
+  </Card>
+
+  <Card title="Combiner des providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
+    Attachez jusqu&#39;à cinq partners à un même run et formulez la query de façon à ce que chacun soit sollicité.
+  </Card>
+
+  <Card title="Découvrir Exa Agent" icon="book-open" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
+    Créez des runs, suivez la progression en streaming, concevez des schemas de sortie et maîtrisez l&#39;effort et le coût.
+  </Card>
+
+  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une key" arrow="true">
+    Créez une key dans le dashboard et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes bénéficient de credits gratuits.
+  </Card>
+</Columns>

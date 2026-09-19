@@ -1,0 +1,423 @@
+{
+  "global": {
+    "anchors": []
+  },
+  "tabs": [
+    {
+      "pages": [
+        "fr/docs",
+        {
+          "boost": 3,
+          "group": "Premiers pas",
+          "pages": [
+            "fr/docs/get-started/quickstart",
+            "fr/docs/get-started/exa-mcp",
+            {
+              "boost": 0.5,
+              "group": "Compétences d’agent",
+              "pages": [
+                "fr/docs/get-started/agent-skills/overview",
+                "fr/docs/get-started/agent-skills/build-with-exa",
+                "fr/docs/get-started/agent-skills/exa-search",
+                "fr/docs/get-started/agent-skills/exa-contents"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Search",
+          "pages": [
+            "fr/docs/search/quickstart",
+            "fr/docs/search/deep-search",
+            "fr/docs/search/highlights",
+            "fr/docs/search/snapshot",
+            "fr/docs/search/best-practices",
+            {
+              "group": "Données",
+              "pages": [
+                "fr/docs/search/data/overview",
+                "fr/docs/search/data/news",
+                "fr/docs/search/data/code",
+                "fr/docs/search/data/companies-people",
+                "fr/docs/search/data/financial",
+                "fr/docs/search/data/research",
+                "fr/docs/search/data/legal",
+                "fr/docs/search/data/sports-weather-places",
+                "fr/docs/search/data/security"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Agent",
+          "pages": [
+            "fr/docs/agent/quickstart",
+            "fr/docs/agent/best-practices",
+            "fr/docs/agent/examples",
+            {
+              "boost": 4,
+              "group": "Exa Connect",
+              "pages": [
+                "fr/docs/agent/connect/overview",
+                {
+                  "boost": 2,
+                  "group": "Fournisseurs en libre-service",
+                  "pages": [
+                    "fr/docs/agent/connect/fiber",
+                    "fr/docs/agent/connect/similarweb",
+                    "fr/docs/agent/connect/baselayer",
+                    "fr/docs/agent/connect/polymarket",
+                    "fr/docs/agent/connect/affiliatecom",
+                    "fr/docs/agent/connect/particle",
+                    "fr/docs/agent/connect/financialdatasets",
+                    "fr/docs/agent/connect/jinko"
+                  ]
+                },
+                "fr/docs/agent/connect/combining-providers",
+                "fr/docs/agent/connect/additional-partners"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 3,
+          "group": "Autres API",
+          "pages": [
+            "fr/docs/contents/quickstart",
+            "fr/docs/monitors/quickstart",
+            "fr/docs/batch/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "SDK",
+          "pages": [
+            "fr/docs/sdks/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Intégrations",
+          "pages": [
+            "fr/docs/integrations/chatgpt-codex",
+            "fr/docs/integrations/claude-web-desktop",
+            "fr/docs/integrations/openai-sdk",
+            {
+              "group": "Appel d’outils",
+              "pages": [
+                "fr/docs/integrations/tool-calling/openai",
+                "fr/docs/integrations/tool-calling/anthropic"
+              ]
+            },
+            {
+              "group": "Vercel",
+              "pages": [
+                "fr/docs/integrations/vercel/ai-sdk",
+                "fr/docs/integrations/vercel/ai-gateway",
+                "fr/docs/integrations/vercel/fx"
+              ]
+            },
+            {
+              "group": "Places de marché",
+              "pages": [
+                "fr/docs/integrations/marketplaces/stripe-projects"
+              ]
+            },
+            {
+              "group": "Paiements agentiques",
+              "pages": [
+                {
+                  "group": "x402",
+                  "pages": [
+                    "fr/docs/integrations/payments/x402/quickstart",
+                    "fr/docs/integrations/payments/x402/agentkit"
+                  ]
+                },
+                {
+                  "group": "MPP",
+                  "pages": [
+                    "fr/docs/integrations/payments/mpp/quickstart",
+                    "fr/docs/integrations/payments/mpp/gtm-enrichment"
+                  ]
+                },
+                "fr/docs/integrations/payments/nevermined"
+              ]
+            },
+            {
+              "boost": 0.6,
+              "group": "Autres intégrations",
+              "pages": [
+                "fr/docs/integrations/exa-slack",
+                "fr/docs/integrations/hermes-agent",
+                "fr/docs/integrations/n8n",
+                "fr/docs/integrations/openclaw",
+                "fr/docs/integrations/openrouter",
+                "fr/docs/integrations/baseten",
+                "fr/docs/integrations/gumloop",
+                "fr/docs/integrations/exa-for-sheets",
+                "fr/docs/integrations/crewai",
+                "fr/docs/integrations/elevenlabs",
+                "fr/docs/integrations/openhuman",
+                "fr/docs/integrations/truefoundry",
+                "fr/docs/integrations/snowflake",
+                "fr/docs/integrations/grok-build",
+                "fr/docs/integrations/llamaindex",
+                "fr/docs/integrations/pydantic-ai",
+                "fr/docs/integrations/langchain",
+                "fr/docs/integrations/browserbase"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 0.8,
+          "group": "Administration",
+          "pages": [
+            "fr/docs/admin/pricing",
+            "fr/docs/admin/billing",
+            "fr/docs/admin/team-management",
+            {
+              "group": "Sécurité et conformité",
+              "pages": [
+                "fr/docs/admin/security/overview",
+                "fr/docs/admin/security/zero-data-retention",
+                "fr/docs/admin/security/hipaa"
+              ]
+            },
+            "fr/docs/admin/mcp-enterprise-managed-auth",
+            {
+              "group": "Référence",
+              "pages": [
+                "fr/docs/admin/status",
+                "fr/docs/admin/error-codes",
+                "fr/docs/admin/openapi-spec"
+              ]
+            },
+            "fr/docs/admin/faqs"
+          ]
+        },
+        {
+          "boost": 0.4,
+          "group": "Websets",
+          "pages": [
+            "fr/docs/websets/quickstart",
+            "fr/docs/websets/imports-and-search",
+            {
+              "group": "Dashboard",
+              "pages": [
+                "fr/docs/websets/dashboard/get-started",
+                "fr/docs/websets/dashboard/import-from-csv",
+                "fr/docs/websets/dashboard/exclude-results"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "Documentation"
+    },
+    {
+      "groups": [
+        {
+          "boost": 4,
+          "group": "Search",
+          "pages": [
+            "fr/docs/reference/search"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Contents",
+          "pages": [
+            "fr/docs/reference/get-contents"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Agent",
+          "pages": [
+            "fr/docs/reference/agent-api/create-a-run",
+            "fr/docs/reference/agent-api/get-a-run",
+            "fr/docs/reference/agent-api/list-runs",
+            "fr/docs/reference/agent-api/cancel-a-run",
+            "fr/docs/reference/agent-api/stop-a-run",
+            "fr/docs/reference/agent-api/delete-a-run",
+            "fr/docs/reference/agent-api/list-run-events"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Monitors",
+          "pages": [
+            "fr/docs/reference/monitors/create-a-monitor",
+            "fr/docs/reference/monitors/list-monitors",
+            "fr/docs/reference/monitors/get-a-monitor",
+            "fr/docs/reference/monitors/update-a-monitor",
+            "fr/docs/reference/monitors/delete-a-monitor",
+            "fr/docs/reference/monitors/trigger-a-monitor",
+            "fr/docs/reference/monitors/batch-monitors",
+            {
+              "group": "Exécutions",
+              "pages": [
+                "fr/docs/reference/monitors/runs/list-runs",
+                "fr/docs/reference/monitors/runs/get-a-run"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Answer",
+          "pages": [
+            "fr/docs/reference/answer"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Lot",
+          "pages": [
+            "fr/docs/reference/batches/create-a-batch",
+            "fr/docs/reference/batches/list-batches",
+            "fr/docs/reference/batches/get-a-batch",
+            "fr/docs/reference/batches/cancel-a-batch",
+            "fr/docs/reference/batches/delete-a-batch"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Gestion des équipes",
+          "pages": [
+            "fr/docs/reference/team-management/create-api-key",
+            "fr/docs/reference/team-management/list-api-keys",
+            "fr/docs/reference/team-management/get-api-key",
+            "fr/docs/reference/team-management/get-api-key-usage",
+            "fr/docs/reference/team-management/update-api-key",
+            "fr/docs/reference/team-management/delete-api-key"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Websets",
+          "pages": [
+            {
+              "group": "Websets",
+              "icon": "folder",
+              "pages": [
+                "fr/docs/websets/api/websets/create-a-webset",
+                "fr/docs/websets/api/websets/get-a-webset",
+                "fr/docs/websets/api/websets/update-a-webset",
+                "fr/docs/websets/api/websets/delete-a-webset",
+                "fr/docs/websets/api/websets/preview-a-webset",
+                "fr/docs/websets/api/websets/cancel-a-running-webset",
+                "fr/docs/websets/api/websets/list-all-websets"
+              ]
+            },
+            {
+              "group": "Éléments",
+              "icon": "list",
+              "pages": [
+                "fr/docs/websets/api/websets/items/get-an-item",
+                "fr/docs/websets/api/websets/items/delete-an-item",
+                "fr/docs/websets/api/websets/items/list-all-items-for-a-webset"
+              ]
+            },
+            {
+              "group": "Recherches",
+              "icon": "search",
+              "pages": [
+                "fr/docs/websets/api/websets/searches/create-a-search",
+                "fr/docs/websets/api/websets/searches/get-a-search",
+                "fr/docs/websets/api/websets/searches/cancel-a-running-search"
+              ]
+            },
+            {
+              "group": "Enrichissements",
+              "icon": "sparkles",
+              "pages": [
+                "fr/docs/websets/api/websets/enrichments/create-an-enrichment",
+                "fr/docs/websets/api/websets/enrichments/get-an-enrichment",
+                "fr/docs/websets/api/websets/enrichments/update-an-enrichment",
+                "fr/docs/websets/api/websets/enrichments/delete-an-enrichment",
+                "fr/docs/websets/api/websets/enrichments/cancel-a-running-enrichment"
+              ]
+            },
+            {
+              "group": "Imports",
+              "icon": "cloud-download",
+              "pages": [
+                "fr/docs/websets/api/imports/create-an-import",
+                "fr/docs/websets/api/imports/get-import",
+                "fr/docs/websets/api/imports/update-import",
+                "fr/docs/websets/api/imports/delete-import",
+                "fr/docs/websets/api/imports/list-imports"
+              ]
+            },
+            {
+              "group": "Monitors",
+              "icon": "satellite",
+              "pages": [
+                "fr/docs/websets/api/monitors/create-a-monitor",
+                "fr/docs/websets/api/monitors/get-monitor",
+                "fr/docs/websets/api/monitors/update-monitor",
+                "fr/docs/websets/api/monitors/delete-monitor",
+                "fr/docs/websets/api/monitors/list-monitors",
+                {
+                  "group": "Exécutions de moniteurs",
+                  "icon": "play",
+                  "pages": [
+                    "fr/docs/websets/api/monitors/runs/list-monitor-runs",
+                    "fr/docs/websets/api/monitors/runs/get-monitor-run"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "Webhooks",
+              "icon": "webhook",
+              "pages": [
+                "fr/docs/websets/api/webhooks/create-a-webhook",
+                "fr/docs/websets/api/webhooks/get-a-webhook",
+                "fr/docs/websets/api/webhooks/update-a-webhook",
+                "fr/docs/websets/api/webhooks/delete-a-webhook",
+                "fr/docs/websets/api/webhooks/list-webhooks",
+                "fr/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+                "fr/docs/websets/api/webhooks/verifying-signatures"
+              ]
+            },
+            {
+              "group": "Événements",
+              "icon": "bell",
+              "pages": [
+                "fr/docs/websets/api/events/types",
+                "fr/docs/websets/api/events/list-all-events",
+                "fr/docs/websets/api/events/get-an-event"
+              ]
+            },
+            {
+              "group": "Équipes",
+              "icon": "users",
+              "pages": [
+                "fr/docs/websets/api/teams/get-team-info"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "Référence de l’API"
+    },
+    {
+      "groups": [
+        {
+          "boost": 0.5,
+          "group": "Mises à jour",
+          "pages": [
+            "fr/docs/changelog"
+          ],
+          "root": "fr/docs/changelog"
+        }
+      ],
+      "tab": "Journal des modifications"
+    }
+  ]
+}
