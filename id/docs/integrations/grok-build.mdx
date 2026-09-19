@@ -1,0 +1,61 @@
+---
+title: "Grok Build"
+description: "Gunakan Exa web search di Grok Build. Instal plugin Exa dari marketplace Grok Build dan masuk menggunakan akun Exa Anda."
+icon: "/docs/images/sidebar-icons/grok-build.svg"
+---
+
+Exa tersedia sebagai plugin di marketplace [Grok Build](https://docs.x.ai/build/overview). Plugin ini memberi Grok kemampuan web search real-time, pembacaan halaman, serta deep research skill.
+
+<div id="installation">
+  ## Instalasi
+</div>
+
+<Steps>
+  <Step title="Instal Grok Build">
+    Instal Grok CLI (lihat [dokumentasi Grok Build](https://docs.x.ai/build/overview) untuk detailnya):
+
+    ```bash theme={null}
+    curl -fsSL https://x.ai/cli/install.sh | bash
+    ```
+
+    Lalu masuk ke akun xAI Anda:
+
+    ```bash theme={null}
+    grok login
+    ```
+  </Step>
+
+  <Step title="Buka marketplace">
+    Jalankan `grok` untuk memulai Grok Build, lalu buka marketplace:
+
+    ```text theme={null}
+    /marketplace
+    ```
+  </Step>
+
+  <Step title="Instal plugin Exa">
+    Temukan **exa** pada daftar, lalu tekan `i` untuk menginstalnya.
+  </Step>
+
+  <Step title="Masuk ke Exa">
+    Buka tab MCP server dengan `/mcp`, pilih **exa**, lalu tekan `i` untuk masuk. Peramban Anda akan membuka halaman masuk Exa. Akun baru mendapatkan credit gratis saat mendaftar.
+  </Step>
+</Steps>
+
+Setelah exa berstatus **ready**, tanyakan apa pun kepada Grok yang membutuhkan akses web.
+
+<div id="what-you-get">
+  ## Apa yang Anda dapatkan
+</div>
+
+* **web&#95;search&#95;exa**: web search real-time. Mendukung kueri bahasa alami dan filter kategori seperti berita, perusahaan, tokoh, research papers, dan GitHub.
+* **web&#95;fetch&#95;exa**: membaca URL apa pun dan mengembalikan page content dalam bentuk markdown yang bersih.
+* **exa-search skill**: sebuah deep research skill. Minta Grok mendalami suatu topik, lalu ia akan menjalankan beberapa searches, membaca sumber-sumber terbaik, dan menjawab dengan citations.
+
+<div id="example-prompts">
+  ## Contoh prompt
+</div>
+
+* &quot;Cari berita terbaru tentang xAI&quot;
+* &quot;Baca [https://exa.ai](https://exa.ai) dan buat ringkasannya&quot;
+* &quot;Lakukan pendalaman tentang mesin inferensi open source&quot;

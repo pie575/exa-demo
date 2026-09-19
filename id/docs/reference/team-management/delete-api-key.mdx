@@ -1,0 +1,26 @@
+---
+title: "Hapus API key"
+description: "Hapus API key secara permanen dari Team Anda."
+openapi: "/id/docs/team-management-spec.yaml DELETE /api-keys/{id}"
+timestamp: false
+---
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>
+
+<Info>
+  Team Management API diaktifkan per Team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk Team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+</Info>
+
+<div id="overview">
+  ## Overview
+</div>
+
+Endpoint Delete API Key menghapus API key dari Team Anda secara permanen.
+
+<div id="path-parameters">
+  ## Path Parameters
+</div>
+
+* **id**: Pengenal unik API key yang akan dihapus.

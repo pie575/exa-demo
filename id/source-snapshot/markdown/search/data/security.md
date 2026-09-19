@@ -1,0 +1,148 @@
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
+>
+> Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+
+<div id="cybersecurity">
+  # Keamanan Siber
+</div>
+
+> Temukan kerentanan, advisory keamanan, laporan ancaman, dan dokumentasi kepercayaan dengan Exa Search.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Buka di playground API" aria-label={`Buka "${query}" di playground API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Gunakan Exa Search untuk menelusuri catatan kerentanan, advisory vendor, dan riset ancaman dari sumber-sumber yang memang sudah dibaca tim keamanan.
+
+<div id="included">
+  ## Yang Termasuk
+</div>
+
+* Catatan kerentanan CVE dan GHSA
+* Security advisory dari vendor dan catatan patch
+* Laporan threat intelligence dan ulasan incident
+* Trust pages, daftar subprosesor, dan dokumentasi kepatuhan
+* Blog keamanan, presentasi konferensi, dan riset
+
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
+
+* Triase kerentanan dan penilaian eksposur
+* Threat intelligence dan pelacakan pelaku ancaman
+* Risiko vendor dan tinjauan keamanan pihak ketiga
+* Pemantauan dan peringatan keamanan
+
+<div id="example-queries">
+  ## Contoh kueri
+</div>
+
+<div id="triage-a-vulnerability-class">
+  ### Melakukan triase pada satu kelas kerentanan
+</div>
+
+Sebutkan produk, rentang versi, dan tingkat keparahannya.
+
+<PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
+
+<div id="find-vendor-advisories">
+  ### Menemukan advisory vendor
+</div>
+
+Jelaskan status eksploitasi dan kelas produknya, bukan satu ID CVE tertentu.
+
+<PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
+
+<div id="review-a-vendors-security-posture">
+  ### Tinjau postur keamanan vendor
+</div>
+
+Sebutkan jenis dokumen dan kategori vendor.
+
+<PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
+
+<div id="research-an-adversary">
+  ### Meneliti pihak penyerang
+</div>
+
+Sebutkan nama kelompok atau kampanyenya serta teknik atau sektor yang Anda minati.
+
+<PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
+
+<div id="make-a-request">
+  ## Buat permintaan
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "critical CVEs affecting Apache Struts 6.x",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "critical CVEs affecting Apache Struts 6.x",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "critical CVEs affecting Apache Struts 6.x",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
+
+Untuk data terstruktur yang membutuhkan riset lintas berbagai sumber, gunakan [task run Exa Agent](/id/docs/agent/quickstart). Jelaskan produk, criteria ancaman, dan field output yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi schema beserta citations.
+
+<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Periksa vendor melalui advisory, laporan pelanggaran data, dan trust pages, atau susun data kerentanan yang sudah dinormalisasi.
+</Card>

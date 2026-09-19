@@ -1,0 +1,19 @@
+---
+openapi: "/ko/docs/exa-spec.yaml POST /monitors/batch"
+timestamp: false
+title: "모니터 일괄 작업"
+description: "제공된 필터와 일치하는 모니터에 대해 일괄 작업을 수행합니다.
+
+
+  지원되는 작업:
+
+  - **delete**: 일치하는 모니터를 영구적으로 삭제
+
+  - **pause**: 일치하는 모니터를 일시 중지
+
+  - **unpause**: 일치하는 모니터의 일시 중지를 해제
+
+
+  작업을 실행하기 전에 영향을 받을 모니터를 미리 확인하려면 `dry_run: true`(기본값)를 사용하세요. 결과는 `limit`
+  매개변수로 페이지네이션되며, 일치하는 모든 모니터를 처리하려면 `has_more`가 `false`가 될 때까지 반복하세요."
+---

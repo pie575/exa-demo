@@ -8,13 +8,13 @@
         "ru/docs",
         {
           "boost": 3,
-          "group": "Начало работы",
+          "group": "Get Started",
           "pages": [
             "ru/docs/get-started/quickstart",
             "ru/docs/get-started/exa-mcp",
             {
               "boost": 0.5,
-              "group": "Навыки Agent",
+              "group": "Agent Skills",
               "pages": [
                 "ru/docs/get-started/agent-skills/overview",
                 "ru/docs/get-started/agent-skills/build-with-exa",
@@ -34,7 +34,7 @@
             "ru/docs/search/snapshot",
             "ru/docs/search/best-practices",
             {
-              "group": "Данные",
+              "group": "Data",
               "pages": [
                 "ru/docs/search/data/overview",
                 "ru/docs/search/data/news",
@@ -63,7 +63,7 @@
                 "ru/docs/agent/connect/overview",
                 {
                   "boost": 2,
-                  "group": "Поставщики с самостоятельным подключением",
+                  "group": "Self-Serve Providers",
                   "pages": [
                     "ru/docs/agent/connect/fiber",
                     "ru/docs/agent/connect/similarweb",
@@ -83,7 +83,7 @@
         },
         {
           "boost": 3,
-          "group": "Другие API",
+          "group": "Other APIs",
           "pages": [
             "ru/docs/contents/quickstart",
             "ru/docs/monitors/quickstart",
@@ -92,20 +92,20 @@
         },
         {
           "boost": 2,
-          "group": "SDK",
+          "group": "SDKs",
           "pages": [
             "ru/docs/sdks/quickstart"
           ]
         },
         {
           "boost": 2,
-          "group": "Интеграции",
+          "group": "Integrations",
           "pages": [
             "ru/docs/integrations/chatgpt-codex",
             "ru/docs/integrations/claude-web-desktop",
             "ru/docs/integrations/openai-sdk",
             {
-              "group": "Вызов инструментов",
+              "group": "Tool Calling",
               "pages": [
                 "ru/docs/integrations/tool-calling/openai",
                 "ru/docs/integrations/tool-calling/anthropic"
@@ -120,13 +120,13 @@
               ]
             },
             {
-              "group": "Маркетплейсы",
+              "group": "Marketplaces",
               "pages": [
                 "ru/docs/integrations/marketplaces/stripe-projects"
               ]
             },
             {
-              "group": "Агентные платежи",
+              "group": "Agentic Payments",
               "pages": [
                 {
                   "group": "x402",
@@ -147,7 +147,7 @@
             },
             {
               "boost": 0.6,
-              "group": "Другие интеграции",
+              "group": "More Integrations",
               "pages": [
                 "ru/docs/integrations/exa-slack",
                 "ru/docs/integrations/hermes-agent",
@@ -173,13 +173,13 @@
         },
         {
           "boost": 0.8,
-          "group": "Администрирование",
+          "group": "Admin",
           "pages": [
             "ru/docs/admin/pricing",
             "ru/docs/admin/billing",
             "ru/docs/admin/team-management",
             {
-              "group": "Безопасность и соответствие требованиям",
+              "group": "Security & Compliance",
               "pages": [
                 "ru/docs/admin/security/overview",
                 "ru/docs/admin/security/zero-data-retention",
@@ -188,7 +188,7 @@
             },
             "ru/docs/admin/mcp-enterprise-managed-auth",
             {
-              "group": "Справочник",
+              "group": "Reference",
               "pages": [
                 "ru/docs/admin/status",
                 "ru/docs/admin/error-codes",
@@ -205,7 +205,7 @@
             "ru/docs/websets/quickstart",
             "ru/docs/websets/imports-and-search",
             {
-              "group": "Панель управления",
+              "group": "Dashboard",
               "pages": [
                 "ru/docs/websets/dashboard/get-started",
                 "ru/docs/websets/dashboard/import-from-csv",
@@ -215,7 +215,7 @@
           ]
         }
       ],
-      "tab": "Документация"
+      "tab": "Documentation"
     },
     {
       "groups": [
@@ -248,7 +248,7 @@
         },
         {
           "boost": 2,
-          "group": "Мониторы",
+          "group": "Monitors",
           "pages": [
             "ru/docs/reference/monitors/create-a-monitor",
             "ru/docs/reference/monitors/list-monitors",
@@ -258,7 +258,7 @@
             "ru/docs/reference/monitors/trigger-a-monitor",
             "ru/docs/reference/monitors/batch-monitors",
             {
-              "group": "Запуски",
+              "group": "Runs",
               "pages": [
                 "ru/docs/reference/monitors/runs/list-runs",
                 "ru/docs/reference/monitors/runs/get-a-run"
@@ -268,14 +268,14 @@
         },
         {
           "boost": 2,
-          "group": "Ответ",
+          "group": "Answer",
           "pages": [
             "ru/docs/reference/answer"
           ]
         },
         {
           "boost": 2,
-          "group": "Пакетная обработка",
+          "group": "Batch",
           "pages": [
             "ru/docs/reference/batches/create-a-batch",
             "ru/docs/reference/batches/list-batches",
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "Управление командой",
+          "group": "Team Management",
           "pages": [
             "ru/docs/reference/team-management/create-api-key",
             "ru/docs/reference/team-management/list-api-keys",
@@ -314,7 +314,7 @@
               ]
             },
             {
-              "group": "Элементы",
+              "group": "Items",
               "icon": "list",
               "pages": [
                 "ru/docs/websets/api/websets/items/get-an-item",
@@ -332,7 +332,7 @@
               ]
             },
             {
-              "group": "Обогащения",
+              "group": "Enrichments",
               "icon": "sparkles",
               "pages": [
                 "ru/docs/websets/api/websets/enrichments/create-an-enrichment",
@@ -343,7 +343,7 @@
               ]
             },
             {
-              "group": "Импорты",
+              "group": "Imports",
               "icon": "cloud-download",
               "pages": [
                 "ru/docs/websets/api/imports/create-an-import",
@@ -354,7 +354,7 @@
               ]
             },
             {
-              "group": "Мониторы",
+              "group": "Monitors",
               "icon": "satellite",
               "pages": [
                 "ru/docs/websets/api/monitors/create-a-monitor",
@@ -363,7 +363,7 @@
                 "ru/docs/websets/api/monitors/delete-monitor",
                 "ru/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "Запуски мониторов",
+                  "group": "Monitor Runs",
                   "icon": "play",
                   "pages": [
                     "ru/docs/websets/api/monitors/runs/list-monitor-runs",
@@ -373,7 +373,7 @@
               ]
             },
             {
-              "group": "Вебхуки",
+              "group": "Webhooks",
               "icon": "webhook",
               "pages": [
                 "ru/docs/websets/api/webhooks/create-a-webhook",
@@ -386,7 +386,7 @@
               ]
             },
             {
-              "group": "События",
+              "group": "Events",
               "icon": "bell",
               "pages": [
                 "ru/docs/websets/api/events/types",
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "group": "Команды",
+              "group": "Teams",
               "icon": "users",
               "pages": [
                 "ru/docs/websets/api/teams/get-team-info"
@@ -404,20 +404,20 @@
           ]
         }
       ],
-      "tab": "Справочник API"
+      "tab": "API Reference"
     },
     {
       "groups": [
         {
           "boost": 0.5,
-          "group": "Обновления",
+          "group": "Updates",
           "pages": [
             "ru/docs/changelog"
           ],
           "root": "ru/docs/changelog"
         }
       ],
-      "tab": "Журнал изменений"
+      "tab": "Changelog"
     }
   ]
 }

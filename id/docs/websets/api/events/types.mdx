@@ -1,0 +1,74 @@
+---
+title: "Tipe event"
+sidebarTitle: "Tipe"
+description: "Pelajari event yang terjadi di dalam Webset API"
+timestamp: false
+searchable: false
+---
+
+Websets API menggunakan event untuk memberi tahu Anda tentang perubahan pada Websets Anda. Anda dapat memantau event ini melalui [endpoint events](/id/docs/websets/api/events/list-all-events) kami atau dengan menyiapkan [webhook](/id/docs/websets/api/webhooks/create-a-webhook).
+
+Event disimpan selama 60 hari sebelum dihapus secara otomatis.
+
+<div id="webset">
+  ## Webset
+</div>
+
+* `webset.created` - Dikirim saat Webset baru dibuat.
+* `webset.deleted` - Dikirim saat sebuah Webset dihapus.
+* `webset.paused` - Dikirim saat operasi pada sebuah Webset dijeda.
+* `webset.idle` - Dikirim saat sebuah Webset tidak memiliki operasi yang sedang berjalan.
+
+<div id="search">
+  ## Search
+</div>
+
+* `webset.search.created` - Dikirim saat Search baru dimulai.
+* `webset.search.updated` - Dikirim saat progres Search diperbarui.
+* `webset.search.completed` - Dikirim saat Search selesai menemukan semua item.
+* `webset.search.canceled` - Dikirim saat Search dibatalkan secara manual.
+
+<div id="item">
+  ## Item
+</div>
+
+* `webset.item.created` - Dikirim saat item baru ditambahkan ke Webset.
+* `webset.item.enriched` - Dikirim saat enrichment sebuah item selesai.
+
+<div id="import">
+  ## Import
+</div>
+
+* `import.created` - Dikirim saat import baru dimulai.
+* `import.completed` - Dikirim saat import telah selesai.
+
+<div id="export">
+  ## Ekspor
+</div>
+
+* `webset.export.created` - Dikirim saat ekspor baru dimulai.
+* `webset.export.completed` - Dikirim saat ekspor selesai.
+
+<div id="monitor">
+  ## Monitor
+</div>
+
+* `monitor.created` - Dikirim saat monitor baru dibuat.
+* `monitor.updated` - Dikirim saat konfigurasi monitor diperbarui.
+* `monitor.deleted` - Dikirim saat monitor dihapus.
+* `monitor.run.created` - Dikirim saat run monitor dimulai.
+* `monitor.run.completed` - Dikirim saat run monitor selesai.
+
+Setiap event mencakup:
+
+* `id` yang unik
+* `type` event
+* Objek `data` yang berisi resource lengkap pemicu event tersebut
+* Timestamp `createdAt`
+
+Anda dapat menggunakan event ini untuk:
+
+* Melacak progres search dan Enrichment
+* Membangun dashboard real-time
+* Memicu workflow saat item baru ditemukan
+* Memantau status ekspor Anda

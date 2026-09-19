@@ -1,0 +1,12 @@
+---
+title: "Mendapatkan batch"
+description: "Ambil batch berdasarkan ID."
+openapi: "/id/docs/exa-spec.yaml GET /batches/{id}"
+timestamp: false
+---
+
+Gunakan endpoint ini untuk melakukan poll pada batch hingga statusnya menjadi `completed`, `cancelled`, atau `expired`. Saat batch selesai, `resultsUrl` berisi URL presigned berumur pendek untuk file hasil JSONL; ambil ulang batch tersebut untuk mendapatkan URL yang baru.
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>

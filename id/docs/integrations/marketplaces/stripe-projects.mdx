@@ -1,0 +1,70 @@
+---
+title: "Stripe Projects"
+sidebarTitle: "Stripe Projects"
+description: "Integrasikan Exa dari terminal Anda menggunakan CLI Stripe Projects."
+icon: "/docs/images/sidebar-icons/stripe.svg"
+---
+
+[Stripe Projects](https://projects.dev) memungkinkan Anda dan coding agent Anda menyiapkan layanan pihak ketiga langsung dari terminal, tanpa dashboard dan tanpa perlu menyalin-tempel key. Cukup satu perintah untuk membuat akun Exa dan menyinkronkan API key ke proyek Anda.
+
+<div id="prerequisites">
+  ## Prasyarat
+</div>
+
+Instal Stripe CLI dan plugin Projects:
+
+```bash theme={null}
+brew install stripe/stripe-cli/stripe && stripe plugin install projects
+```
+
+Untuk platform lain dan penyiapan CLI selengkapnya, lihat [Stripe Projects](https://projects.dev).
+
+<div id="get-started">
+  ## Mulai
+</div>
+
+Dari direktori proyek Anda, inisialisasi proyek, tambahkan Exa, lalu tarik credential:
+
+```bash theme={null}
+stripe projects init
+stripe projects add exa/api
+stripe projects env --pull
+```
+
+File `.env` Anda kini berisi `EXA_API_KEY`. [SDK Exa](/id/docs/sdks/quickstart) dan [Quickstart](/id/docs/search/quickstart) membaca variabel ini secara otomatis, sehingga kode Anda langsung berjalan tanpa perlu diubah.
+
+<Info>
+  Key ini disediakan di akun Exa milik Anda sendiri. Kelola usage, key, dan billing kapan saja melalui [Exa Dashboard](https://dashboard.exa.ai).
+</Info>
+
+<div id="link-an-existing-exa-team">
+  ## Menautkan team Exa yang sudah ada
+</div>
+
+Sudah punya akun Exa? Tautkan terlebih dahulu agar API key dibuat di bawah team Anda yang sudah ada:
+
+```bash theme={null}
+stripe projects link exa
+stripe projects add exa/api
+```
+
+`stripe projects link` akan membuka Exa agar Anda dapat melakukan autentikasi dan menautkan team Anda ke akun Stripe Anda. Buka Exa Dashboard yang tertaut kapan saja dengan `stripe projects open exa`.
+
+<div id="provision-from-your-coding-agent">
+  ## Provisioning dari coding agent Anda
+</div>
+
+`stripe projects init` akan menulis [Agent Skill](https://projects.dev) Stripe Projects ke dalam proyek Anda, sehingga agent Anda (Claude Code, Cursor, Codex, dan lainnya) bisa menjalankan alur tersebut untuk Anda:
+
+```text theme={null}
+Gunakan Stripe Projects untuk menambahkan Exa dan menyambungkan API key-nya.
+```
+
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
+
+* [Quickstart](/id/docs/search/quickstart): lakukan Exa search pertama Anda dengan SDK kami.
+* [Dokumentasi Stripe Projects](https://docs.stripe.com/projects): referensi CLI lengkap, environment, dan billing.
+* [Exa Dashboard](https://dashboard.exa.ai): kelola API key, usage, dan billing.
+* [Katalog provider](https://projects.dev): jelajahi semua provider Stripe Projects.

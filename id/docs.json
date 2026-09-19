@@ -1,0 +1,423 @@
+{
+  "global": {
+    "anchors": []
+  },
+  "tabs": [
+    {
+      "pages": [
+        "id/docs",
+        {
+          "boost": 3,
+          "group": "Mulai",
+          "pages": [
+            "id/docs/get-started/quickstart",
+            "id/docs/get-started/exa-mcp",
+            {
+              "boost": 0.5,
+              "group": "Keterampilan Agent",
+              "pages": [
+                "id/docs/get-started/agent-skills/overview",
+                "id/docs/get-started/agent-skills/build-with-exa",
+                "id/docs/get-started/agent-skills/exa-search",
+                "id/docs/get-started/agent-skills/exa-contents"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Search",
+          "pages": [
+            "id/docs/search/quickstart",
+            "id/docs/search/deep-search",
+            "id/docs/search/highlights",
+            "id/docs/search/snapshot",
+            "id/docs/search/best-practices",
+            {
+              "group": "Data",
+              "pages": [
+                "id/docs/search/data/overview",
+                "id/docs/search/data/news",
+                "id/docs/search/data/code",
+                "id/docs/search/data/companies-people",
+                "id/docs/search/data/financial",
+                "id/docs/search/data/research",
+                "id/docs/search/data/legal",
+                "id/docs/search/data/sports-weather-places",
+                "id/docs/search/data/security"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Agent",
+          "pages": [
+            "id/docs/agent/quickstart",
+            "id/docs/agent/best-practices",
+            "id/docs/agent/examples",
+            {
+              "boost": 4,
+              "group": "Exa Connect",
+              "pages": [
+                "id/docs/agent/connect/overview",
+                {
+                  "boost": 2,
+                  "group": "Penyedia Mandiri",
+                  "pages": [
+                    "id/docs/agent/connect/fiber",
+                    "id/docs/agent/connect/similarweb",
+                    "id/docs/agent/connect/baselayer",
+                    "id/docs/agent/connect/polymarket",
+                    "id/docs/agent/connect/affiliatecom",
+                    "id/docs/agent/connect/particle",
+                    "id/docs/agent/connect/financialdatasets",
+                    "id/docs/agent/connect/jinko"
+                  ]
+                },
+                "id/docs/agent/connect/combining-providers",
+                "id/docs/agent/connect/additional-partners"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 3,
+          "group": "API Lainnya",
+          "pages": [
+            "id/docs/contents/quickstart",
+            "id/docs/monitors/quickstart",
+            "id/docs/batch/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "SDK",
+          "pages": [
+            "id/docs/sdks/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Integrasi",
+          "pages": [
+            "id/docs/integrations/chatgpt-codex",
+            "id/docs/integrations/claude-web-desktop",
+            "id/docs/integrations/openai-sdk",
+            {
+              "group": "Pemanggilan Alat",
+              "pages": [
+                "id/docs/integrations/tool-calling/openai",
+                "id/docs/integrations/tool-calling/anthropic"
+              ]
+            },
+            {
+              "group": "Vercel",
+              "pages": [
+                "id/docs/integrations/vercel/ai-sdk",
+                "id/docs/integrations/vercel/ai-gateway",
+                "id/docs/integrations/vercel/fx"
+              ]
+            },
+            {
+              "group": "Marketplace",
+              "pages": [
+                "id/docs/integrations/marketplaces/stripe-projects"
+              ]
+            },
+            {
+              "group": "Pembayaran Agentik",
+              "pages": [
+                {
+                  "group": "x402",
+                  "pages": [
+                    "id/docs/integrations/payments/x402/quickstart",
+                    "id/docs/integrations/payments/x402/agentkit"
+                  ]
+                },
+                {
+                  "group": "MPP",
+                  "pages": [
+                    "id/docs/integrations/payments/mpp/quickstart",
+                    "id/docs/integrations/payments/mpp/gtm-enrichment"
+                  ]
+                },
+                "id/docs/integrations/payments/nevermined"
+              ]
+            },
+            {
+              "boost": 0.6,
+              "group": "Integrasi Lainnya",
+              "pages": [
+                "id/docs/integrations/exa-slack",
+                "id/docs/integrations/hermes-agent",
+                "id/docs/integrations/n8n",
+                "id/docs/integrations/openclaw",
+                "id/docs/integrations/openrouter",
+                "id/docs/integrations/baseten",
+                "id/docs/integrations/gumloop",
+                "id/docs/integrations/exa-for-sheets",
+                "id/docs/integrations/crewai",
+                "id/docs/integrations/elevenlabs",
+                "id/docs/integrations/openhuman",
+                "id/docs/integrations/truefoundry",
+                "id/docs/integrations/snowflake",
+                "id/docs/integrations/grok-build",
+                "id/docs/integrations/llamaindex",
+                "id/docs/integrations/pydantic-ai",
+                "id/docs/integrations/langchain",
+                "id/docs/integrations/browserbase"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 0.8,
+          "group": "Admin",
+          "pages": [
+            "id/docs/admin/pricing",
+            "id/docs/admin/billing",
+            "id/docs/admin/team-management",
+            {
+              "group": "Keamanan & Kepatuhan",
+              "pages": [
+                "id/docs/admin/security/overview",
+                "id/docs/admin/security/zero-data-retention",
+                "id/docs/admin/security/hipaa"
+              ]
+            },
+            "id/docs/admin/mcp-enterprise-managed-auth",
+            {
+              "group": "Referensi",
+              "pages": [
+                "id/docs/admin/status",
+                "id/docs/admin/error-codes",
+                "id/docs/admin/openapi-spec"
+              ]
+            },
+            "id/docs/admin/faqs"
+          ]
+        },
+        {
+          "boost": 0.4,
+          "group": "Websets",
+          "pages": [
+            "id/docs/websets/quickstart",
+            "id/docs/websets/imports-and-search",
+            {
+              "group": "Dashboard",
+              "pages": [
+                "id/docs/websets/dashboard/get-started",
+                "id/docs/websets/dashboard/import-from-csv",
+                "id/docs/websets/dashboard/exclude-results"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "Dokumentasi"
+    },
+    {
+      "groups": [
+        {
+          "boost": 4,
+          "group": "Search",
+          "pages": [
+            "id/docs/reference/search"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Contents",
+          "pages": [
+            "id/docs/reference/get-contents"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Agent",
+          "pages": [
+            "id/docs/reference/agent-api/create-a-run",
+            "id/docs/reference/agent-api/get-a-run",
+            "id/docs/reference/agent-api/list-runs",
+            "id/docs/reference/agent-api/cancel-a-run",
+            "id/docs/reference/agent-api/stop-a-run",
+            "id/docs/reference/agent-api/delete-a-run",
+            "id/docs/reference/agent-api/list-run-events"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Monitor",
+          "pages": [
+            "id/docs/reference/monitors/create-a-monitor",
+            "id/docs/reference/monitors/list-monitors",
+            "id/docs/reference/monitors/get-a-monitor",
+            "id/docs/reference/monitors/update-a-monitor",
+            "id/docs/reference/monitors/delete-a-monitor",
+            "id/docs/reference/monitors/trigger-a-monitor",
+            "id/docs/reference/monitors/batch-monitors",
+            {
+              "group": "Eksekusi",
+              "pages": [
+                "id/docs/reference/monitors/runs/list-runs",
+                "id/docs/reference/monitors/runs/get-a-run"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Answer",
+          "pages": [
+            "id/docs/reference/answer"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Batch",
+          "pages": [
+            "id/docs/reference/batches/create-a-batch",
+            "id/docs/reference/batches/list-batches",
+            "id/docs/reference/batches/get-a-batch",
+            "id/docs/reference/batches/cancel-a-batch",
+            "id/docs/reference/batches/delete-a-batch"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Manajemen Team",
+          "pages": [
+            "id/docs/reference/team-management/create-api-key",
+            "id/docs/reference/team-management/list-api-keys",
+            "id/docs/reference/team-management/get-api-key",
+            "id/docs/reference/team-management/get-api-key-usage",
+            "id/docs/reference/team-management/update-api-key",
+            "id/docs/reference/team-management/delete-api-key"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Websets",
+          "pages": [
+            {
+              "group": "Websets",
+              "icon": "folder",
+              "pages": [
+                "id/docs/websets/api/websets/create-a-webset",
+                "id/docs/websets/api/websets/get-a-webset",
+                "id/docs/websets/api/websets/update-a-webset",
+                "id/docs/websets/api/websets/delete-a-webset",
+                "id/docs/websets/api/websets/preview-a-webset",
+                "id/docs/websets/api/websets/cancel-a-running-webset",
+                "id/docs/websets/api/websets/list-all-websets"
+              ]
+            },
+            {
+              "group": "Item",
+              "icon": "list",
+              "pages": [
+                "id/docs/websets/api/websets/items/get-an-item",
+                "id/docs/websets/api/websets/items/delete-an-item",
+                "id/docs/websets/api/websets/items/list-all-items-for-a-webset"
+              ]
+            },
+            {
+              "group": "Search",
+              "icon": "search",
+              "pages": [
+                "id/docs/websets/api/websets/searches/create-a-search",
+                "id/docs/websets/api/websets/searches/get-a-search",
+                "id/docs/websets/api/websets/searches/cancel-a-running-search"
+              ]
+            },
+            {
+              "group": "Enrichment",
+              "icon": "sparkles",
+              "pages": [
+                "id/docs/websets/api/websets/enrichments/create-an-enrichment",
+                "id/docs/websets/api/websets/enrichments/get-an-enrichment",
+                "id/docs/websets/api/websets/enrichments/update-an-enrichment",
+                "id/docs/websets/api/websets/enrichments/delete-an-enrichment",
+                "id/docs/websets/api/websets/enrichments/cancel-a-running-enrichment"
+              ]
+            },
+            {
+              "group": "Import",
+              "icon": "cloud-download",
+              "pages": [
+                "id/docs/websets/api/imports/create-an-import",
+                "id/docs/websets/api/imports/get-import",
+                "id/docs/websets/api/imports/update-import",
+                "id/docs/websets/api/imports/delete-import",
+                "id/docs/websets/api/imports/list-imports"
+              ]
+            },
+            {
+              "group": "Monitor",
+              "icon": "satellite",
+              "pages": [
+                "id/docs/websets/api/monitors/create-a-monitor",
+                "id/docs/websets/api/monitors/get-monitor",
+                "id/docs/websets/api/monitors/update-monitor",
+                "id/docs/websets/api/monitors/delete-monitor",
+                "id/docs/websets/api/monitors/list-monitors",
+                {
+                  "group": "Run monitor",
+                  "icon": "play",
+                  "pages": [
+                    "id/docs/websets/api/monitors/runs/list-monitor-runs",
+                    "id/docs/websets/api/monitors/runs/get-monitor-run"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "Webhooks",
+              "icon": "webhook",
+              "pages": [
+                "id/docs/websets/api/webhooks/create-a-webhook",
+                "id/docs/websets/api/webhooks/get-a-webhook",
+                "id/docs/websets/api/webhooks/update-a-webhook",
+                "id/docs/websets/api/webhooks/delete-a-webhook",
+                "id/docs/websets/api/webhooks/list-webhooks",
+                "id/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+                "id/docs/websets/api/webhooks/verifying-signatures"
+              ]
+            },
+            {
+              "group": "Peristiwa",
+              "icon": "bell",
+              "pages": [
+                "id/docs/websets/api/events/types",
+                "id/docs/websets/api/events/list-all-events",
+                "id/docs/websets/api/events/get-an-event"
+              ]
+            },
+            {
+              "group": "Team",
+              "icon": "users",
+              "pages": [
+                "id/docs/websets/api/teams/get-team-info"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "Referensi API"
+    },
+    {
+      "groups": [
+        {
+          "boost": 0.5,
+          "group": "Pembaruan",
+          "pages": [
+            "id/docs/changelog"
+          ],
+          "root": "id/docs/changelog"
+        }
+      ],
+      "tab": "Changelog"
+    }
+  ]
+}

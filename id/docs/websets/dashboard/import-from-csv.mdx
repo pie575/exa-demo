@@ -1,0 +1,69 @@
+---
+title: "Import from CSV"
+description: "Ubah data CSV yang sudah Anda miliki menjadi Webset"
+---
+
+<br />
+
+<div id="overview">
+  ## Ringkasan
+</div>
+
+Fitur Import from CSV memungkinkan Anda mengubah file CSV berisi URL yang sudah Anda miliki menjadi Websets yang berfungsi penuh. Fitur ini sangat cocok jika Anda sudah punya daftar situs web, perusahaan, atau sumber daya yang ingin di-enrich dengan data tambahan atau disaring menggunakan search criteria.
+
+<br />
+
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
+
+<img src="/docs/images/websets/import-flow.png" alt="CSV import flow for creating a Webset" width="1512" height="857" data-path="images/websets/import-flow.png" />
+
+1. Klik &quot;Start from CSV&quot; untuk memilih file CSV Anda
+2. Pilih kolom yang berisi URL yang ingin Anda analisis
+3. Tinjau bagaimana data Anda akan diimpor sebelum melanjutkan
+4. URL Anda diubah menjadi Webset lengkap dengan enrichment dan metadata
+
+<br />
+
+<div id="csv-preparation">
+  ## Persiapan CSV
+</div>
+
+Pastikan file CSV Anda memiliki kolom URL
+
+* Untuk search People: URL harus berupa URL profil LinkedIn (misalnya, [https://linkedin.com/in/username](https://linkedin.com/in/username))
+* Untuk search Company: URL harus berupa URL halaman utama perusahaan (misalnya, [https://example.com](https://example.com))
+* Untuk search lainnya: gunakan jenis URL apa pun
+
+Jika Anda tidak memiliki URL, Websets akan mencoba menyimpulkan URL berdasarkan informasi di setiap baris CSV serta informasi tambahan yang Anda berikan.
+
+Jumlah hasil maksimum yang dapat Anda import ditentukan oleh paket Anda.
+
+<div id="what-happens-next">
+  ## Apa yang terjadi selanjutnya?
+</div>
+
+Setelah diimpor, CSV Anda akan menjadi Webset utuh yang memungkinkan Anda untuk:
+
+<div id="enrich-with-custom-columns">
+  ### Enrich dengan kolom kustom
+</div>
+
+Tambahkan informasi apa pun yang Anda perlukan untuk setiap URL:
+
+* Informasi kontak (email, nomor telepon)
+* Metrik perusahaan (pendapatan, jumlah karyawan)
+* Analisis konten (sentimen, topik, ringkasan)
+* Data kustom sesuai kebutuhan kasus penggunaan Anda
+
+<div id="apply-search-criteria">
+  ### Terapkan search criteria
+</div>
+
+Filter URL yang Anda import berdasarkan criteria tertentu:
+
+* Tahap atau ukuran perusahaan
+* Industri atau sektor
+* Lokasi geografis
+* Jenis atau topik konten

@@ -1,0 +1,12 @@
+---
+title: "List batches"
+description: "Ambil daftar batch untuk team Anda dengan paginasi."
+openapi: "/id/docs/exa-spec.yaml GET /batches"
+timestamp: false
+---
+
+Batch dikembalikan dari yang terbaru ke yang terlama. Gunakan `limit` untuk mengatur ukuran halaman dan `cursor` berisi nilai `nextCursor` dari respons sebelumnya untuk mengambil halaman berikutnya. Kirim `status=completed` untuk menampilkan hanya batch yang sudah selesai; daftar tersebut menggunakan cursor tersendiri, jadi teruslah mengirim `status=completed` di setiap halaman.
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>

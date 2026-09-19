@@ -1,0 +1,316 @@
+---
+title: "Quickstart SDK"
+sidebarTitle: "Quickstart"
+description: "Instal dan gunakan SDK Exa untuk Python dan JavaScript"
+---
+
+SDK resmi dari Exa. Lakukan search di web, ambil page contents, dan dapatkan jawaban lengkap dengan citations.
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
+</Card>
+
+<div id="install">
+  ## Instalasi
+</div>
+
+<CodeGroup>
+  ```bash pip theme={null}
+  pip install exa-py
+  ```
+
+  ```bash uv theme={null}
+  uv add exa-py
+  ```
+
+  ```bash npm theme={null}
+  npm install exa-js
+  ```
+
+  ```bash pnpm theme={null}
+  pnpm add exa-js
+  ```
+</CodeGroup>
+
+SDK Python membutuhkan Python 3.9+.
+
+<div id="authentication">
+  ## Autentikasi
+</div>
+
+Setel API key Anda sebagai variabel lingkungan:
+
+<Tabs>
+  <Tab title="macOS/Linux">
+    ```bash theme={null}
+    export EXA_API_KEY="your-api-key"
+    ```
+  </Tab>
+
+  <Tab title="Windows">
+    ```powershell theme={null}
+    setx EXA_API_KEY "your-api-key"
+    ```
+  </Tab>
+</Tabs>
+
+<div id="getting-started">
+  ## Memulai
+</div>
+
+Inisialisasi klien dan jalankan search pertama Anda:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "latest developments in fusion energy",
+      type="auto",
+      contents={"highlights": True},
+  )
+
+  for source in results.results:
+      print(source.url, source.highlights)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search("latest developments in fusion energy", {
+    type: "auto",
+    contents: {
+      highlights: true,
+    },
+  });
+
+  for (const source of results.results) {
+    console.log(source.url, source.highlights);
+  }
+  ```
+</CodeGroup>
+
+<Note>
+  Kedua klien membaca key Anda dari variabel lingkungan `EXA_API_KEY`. Jika ingin menetapkannya secara eksplisit,
+  berikan langsung secara inline: `Exa(api_key="your-api-key")` atau `new Exa("your-api-key")`.
+</Note>
+
+<div id="recommended-defaults">
+  ## Nilai default yang disarankan
+</div>
+
+| Keputusan          | Nilai default yang disarankan                                                     |
+| ------------------ | --------------------------------------------------------------------------------- |
+| Titik awal         | Gunakan `search`                                                                  |
+| Search type        | Pertahankan `auto` kecuali kebutuhan latensi atau synthesis menuntut tipe lain    |
+| Page content       | Mulai dengan `highlights: true`                                                   |
+| URL yang diketahui | Gunakan `get_contents` / `getContents`                                            |
+| Freshness          | Setel `max_age_hours` / `maxAgeHours` hanya jika konten usang tidak dapat dipakai |
+
+<Warning>
+  Kedua tipe permintaan menerima content options di tempat yang berbeda:
+
+  | Metode                         | Penempatan content option                                                       |
+  | ------------------------------ | ------------------------------------------------------------------------------- |
+  | `search`                       | Di dalam `contents`, seperti `exa.search(query, contents={"highlights": True})` |
+  | `get_contents` / `getContents` | Langsung pada permintaan, seperti `exa.get_contents(urls, highlights=True)`     |
+</Warning>
+
+<div id="search">
+  ## Search
+</div>
+
+Search menemukan halaman yang relevan dan mengembalikan contents-nya dalam satu call.
+
+<Tip>
+  Gunakan `highlights: true` untuk jawaban AI, RAG, dan pratinjau search. Exa menyesuaikan panjang
+  excerpt setiap hasil dengan tingkat relevansinya; atur `max_characters` / `maxCharacters` hanya jika aplikasi Anda
+  memang membutuhkan limit tetap.
+</Tip>
+
+Filter, rentang tanggal, dan jumlah hasil:
+
+<CodeGroup>
+  ```python Python theme={null}
+  results = exa.search(
+      "climate tech news",
+      num_results=20,
+      start_published_date="2024-01-01",
+      include_domains=["techcrunch.com", "wired.com"],
+      contents={"highlights": True}
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("interesting articles about space", {
+    numResults: 10,
+    includeDomains: ["nasa.gov", "space.com"],
+    startPublishedDate: "2024-01-01",
+    contents: {
+      highlights: true,
+    },
+  });
+  ```
+</CodeGroup>
+
+<div id="output-schema">
+  ### Output schema
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  structured_results = exa.search(
+      "Who is the CEO of OpenAI?",
+      type="deep",
+      system_prompt="Prefer official sources and avoid duplicate results",
+      output_schema={
+          "type": "object",
+          "properties": {
+              "leader": {"type": "string"},
+              "title": {"type": "string"},
+              "source_count": {"type": "number"}
+          },
+          "required": ["leader", "title"]
+      },
+      contents={"highlights": True}
+  )
+
+  print(structured_results.output.content if structured_results.output else None)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const structuredResult = await exa.search("Who is the CEO of OpenAI?", {
+    type: "deep",
+    systemPrompt: "Prefer official sources and avoid duplicate results",
+    outputSchema: {
+      type: "object",
+      properties: {
+        leader: { type: "string" },
+        title: { type: "string" },
+        sourceCount: { type: "number" },
+      },
+      required: ["leader", "title"],
+    },
+    contents: {
+      highlights: true,
+    },
+  });
+
+  console.log(structuredResult.output?.content);
+  ```
+</CodeGroup>
+
+<Note>
+  `output_schema` / `outputSchema` dapat digunakan pada semua search type dan mengembalikan nilai hasil synthesis
+  di `output.content`. Gunakan `system_prompt` / `systemPrompt` untuk menentukan preferensi sumber atau penekanan.
+  Grounding dikembalikan secara otomatis di `output.grounding`, jadi jangan menduplikasi citations atau
+  tingkat keyakinan di dalam schema Anda.
+</Note>
+
+Mode deep disarankan bila output membutuhkan riset lintas beberapa searches. Gunakan `deep-lite` untuk riset ringan atau `deep` untuk search multi-langkah dengan synthesis yang lebih kuat. Lihat [panduan Search](/id/docs/search/quickstart) untuk opsi permintaan selengkapnya.
+
+<div id="contents">
+  ## Contents
+</div>
+
+Ekstrak highlights, teks lengkap, atau summaries dari URL yang sudah Anda ketahui. Mulailah dengan highlights, lalu
+tambahkan query untuk mengarahkannya ke informasi yang Anda butuhkan.
+
+<CodeGroup>
+  ```python Python theme={null}
+  results = exa.get_contents(
+      ["https://exa.ai/blog/dynamic-highlights"],
+      highlights={"query": "token efficiency and result quality"},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const results = await exa.getContents(["https://exa.ai/blog/dynamic-highlights"], {
+    highlights: {
+      query: "token efficiency and result quality",
+    },
+  });
+  ```
+</CodeGroup>
+
+Gunakan teks lengkap jika Anda memerlukan konteks yang lebih luas atau struktur dokumen. Lihat [panduan Contents](/id/docs/contents/quickstart) untuk bentuk output, kontrol freshness, dan perayapan subhalaman.
+
+<div id="answer">
+  ## Answer
+</div>
+
+Dapatkan jawaban atas pertanyaan lengkap dengan citations.
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = exa.answer("What caused the 2008 financial crisis?")
+  print(response.answer)
+
+  for chunk in exa.stream_answer("Explain quantum computing"):
+      print(chunk, end="", flush=True)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await exa.answer("What caused the 2008 financial crisis?");
+  console.log(response.answer);
+
+  for await (const chunk of exa.streamAnswer("Explain quantum computing")) {
+    if (chunk.content) {
+      process.stdout.write(chunk.content);
+    }
+  }
+  ```
+</CodeGroup>
+
+<div id="async-and-types">
+  ## Async dan tipe
+</div>
+
+Python menyediakan `AsyncExa` untuk operasi async, dan SDK JavaScript menyertakan tipe TypeScript untuk
+setiap metode.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import AsyncExa
+
+  exa = AsyncExa()
+
+  results = await exa.search(
+      "machine learning startups",
+      contents={"highlights": True}
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Exa from "exa-js";
+  import type { SearchResponse, RegularSearchOptions } from "exa-js";
+  ```
+</CodeGroup>
+
+<div id="resources">
+  ## Sumber Daya
+</div>
+
+Python: [kode sumber exa-py](https://github.com/exa-labs/exa-py) dan [package PyPI](https://pypi.org/project/exa-py/). JavaScript: [kode sumber exa-js](https://github.com/exa-labs/exa-js) dan [package npm](https://www.npmjs.com/package/exa-js).
+
+<div id="continue">
+  ## Selanjutnya
+</div>
+
+<Columns cols={3}>
+  <Card title="Panduan Search" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">
+    Kembali ke panduan utama Search untuk pola permintaan, filter, dan mode deep.
+  </Card>
+
+  <Card title="Referensi Search" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
+    Langsung ke schema lengkap permintaan dan respons `/search`.
+  </Card>
+
+  <Card title="Panduan Contents" icon="file-text" href="/id/docs/contents/quickstart" cta="Buka panduan" arrow="true">
+    Gunakan Contents jika Anda sudah mengetahui URL-nya dan ingin melakukan extraction secara langsung.
+  </Card>
+</Columns>

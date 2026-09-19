@@ -1,0 +1,138 @@
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
+>
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+
+<div id="news">
+  # 뉴스
+</div>
+
+> Exa Search로 최신 보도, 업계 소식, 떠오르는 이슈를 찾아보세요.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="API 플레이그라운드에서 열기" aria-label={`API 플레이그라운드에서 "${query}" 열기`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+주요 언론사, 업계 전문지, 틈새 매체의 보도를 찾으려면 Exa Search를 사용하세요. 새 기사는 발행 후 몇 분 이내에 검색됩니다. 발행 기간이 반드시 충족해야 하는 조건이라면 자연어 질의와 날짜 필터를 함께 사용하세요.
+
+<div id="use-it-for">
+  ## 활용 사례
+</div>
+
+* 시장 및 투자 리서치
+* 사이버 보안 및 위협 인텔리전스
+* 기업, 제품, 경쟁사 모니터링
+* 산업 브리핑 및 시사 리서치
+
+<div id="example-queries">
+  ## 질의 예시
+</div>
+
+<div id="follow-a-developing-policy-story">
+  ### 전개 중인 정책 이슈 추적하기
+</div>
+
+주제, 출처 유형, 발행 기간을 함께 지정하면 해당 이슈의 현재 국면에 초점을 맞춘 결과를 얻을 수 있습니다.
+
+<PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
+
+<div id="find-practitioner-analysis">
+  ### 실무자 분석 찾기
+</div>
+
+일반 뉴스 기사가 아닌 실무자의 분석을 원한다면 출처 유형을 명시하세요.
+
+<PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
+
+<div id="discover-discussions-in-a-specific-format">
+  ### 특정 형식의 논의 찾기
+</div>
+
+질의에 형식과 주제를 함께 포함하세요. 이렇게 하면 웹 전반의 에피소드 페이지와 transcript까지 폭넓게 search할 수 있습니다.
+
+<PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
+
+<div id="research-adverse-media">
+  ### 부정적 언론 보도 조사
+</div>
+
+부정적 신호와 조사 대상 엔티티 유형을 함께 기술하세요. 회사명에 &quot;news&quot;라는 단어만 붙인 형태로 질의를 단순화하지 마세요.
+
+<PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
+
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "news articles about AI regulation updates in the European Union",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "news articles about AI regulation updates in the European Union",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "news articles about AI regulation updates in the European Union",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent로 구조화된 데이터 가져오기
+</div>
+
+여러 출처를 조사해야 하는 구조화된 데이터가 필요하다면 [Exa Agent 작업 실행](/ko/docs/agent/quickstart)을 사용하세요. 필요한 기사, 필드, 기간을 설명하면 Agent가 schema로 검증된 결과와 citations를 반환합니다.
+
+<Card title="Agent 작업 시작하기" icon="bot" href="/ko/docs/agent/quickstart" cta="Agent 가이드 열기" arrow="true">
+  출처가 명시된 뉴스 브리핑을 만들고, 보도 내용을 비교하거나, 진행 중인 사건에서 정규화된 사실을 추출해 보세요.
+</Card>

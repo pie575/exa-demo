@@ -1,0 +1,12 @@
+---
+title: "배치 조회"
+description: "ID로 배치를 조회합니다."
+openapi: "/ko/docs/exa-spec.yaml GET /batches/{id}"
+timestamp: false
+---
+
+이 endpoint로 배치가 `completed`, `cancelled`, `expired` 상태에 도달할 때까지 poll하세요. 배치가 완료되면 `resultsUrl`에 JSONL 결과 파일용 단기 유효 presigned URL이 담깁니다. 새 URL이 필요하면 배치를 다시 조회하세요.
+
+<Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+</Card>

@@ -1,0 +1,24 @@
+---
+title: "Membuat API key"
+description: "Buat API key baru untuk team Anda dengan konfigurasi nama dan rate
+  limit opsional."
+openapi: "/id/docs/team-management-spec.yaml POST /api-keys"
+timestamp: false
+---
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>
+
+<Info>
+  Team Management API diaktifkan per team. API ini diautentikasi menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur tersebut diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+</Info>
+
+Endpoint Create API Key memungkinkan Anda membuat API key baru untuk team Anda secara terprogram dengan menggunakan service API key Anda.
+
+<div id="optional-parameters">
+  ## Parameter Opsional
+</div>
+
+* **name**: Nama deskriptif untuk API key guna membantu mengidentifikasi kegunaannya
+* **rateLimit**: Jumlah maksimum permintaan per menit yang diizinkan untuk API key ini

@@ -1,0 +1,430 @@
+---
+title: "Monitors API"
+sidebarTitle: "Monitors"
+description: "Jalankan pencarian berkala dan terima hasil temuan baru melalui webhook."
+boost: 4
+---
+
+Monitor menjalankan Exa search sesuai jadwal berkala dan mengirimkan hasilnya ke endpoint webhook.
+
+Gunakan Monitors untuk memantau berita, pengumuman kompetitor, putaran pendanaan, perubahan regulasi, publikasi
+riset, atau topik apa pun lainnya yang berubah seiring waktu.
+
+<div id="how-monitors-work">
+  ## Cara kerja Monitors
+</div>
+
+Pada setiap run, Exa menjalankan search yang telah dikonfigurasi, memfilter berdasarkan waktu, menyingkirkan hasil atau temuan yang sudah pernah dikembalikan
+monitor, lalu mengirimkan output baru ke webhook Anda.
+
+Setiap monitor menyimpan riwayat run-nya sendiri, jadi susunlah query berdasarkan sinyal berkelanjutan yang ingin Anda
+pantau, alih-alih menambahkan sendiri rentang tanggal yang terus bergeser.
+
+<div id="create-your-first-monitor">
+  ## Buat monitor pertama Anda
+</div>
+
+Buat monitor dengan query search, interval, dan endpoint HTTPS yang akan menerima
+pembaruan:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  monitor = exa.monitors.create({
+      "name": "Battery recycling expansion",
+      "search": {
+          "query": "new battery recycling facilities announced in North America"
+      },
+      "trigger": {
+          "type": "interval",
+          "period": "1d",
+      },
+      "webhook": {
+          "url": "https://example.com/webhooks/exa",
+          "events": ["monitor.run.completed"],
+      },
+  })
+
+  print(monitor.id)
+  print(monitor.webhook_secret)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const monitor = await exa.monitors.create({
+    name: "Battery recycling expansion",
+    search: {
+      query: "new battery recycling facilities announced in North America"
+    },
+    trigger: {
+      type: "interval",
+      period: "1d"
+    },
+    webhook: {
+      url: "https://example.com/webhooks/exa",
+      events: ["monitor.run.completed"]
+    }
+  });
+
+  console.log(monitor.id);
+  console.log(monitor.webhookSecret);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/monitors" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "name": "Battery recycling expansion",
+      "search": {
+        "query": "new battery recycling facilities announced in North America"
+      },
+      "trigger": {
+        "type": "interval",
+        "period": "1d"
+      },
+      "webhook": {
+        "url": "https://example.com/webhooks/exa",
+        "events": ["monitor.run.completed"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Accordion title="Contoh respons">
+  ```json theme={null}
+  {
+    "id": "01k4d9w6y3h7p2m8n5q1r0s4tv",
+    "name": "Battery recycling expansion",
+    "status": "active",
+    "search": {
+      "query": "new battery recycling facilities announced in North America"
+    },
+    "trigger": {
+      "type": "interval",
+      "period": "1d"
+    },
+    "outputSchema": null,
+    "metadata": null,
+    "webhook": {
+      "url": "https://example.com/webhooks/exa",
+      "events": ["monitor.run.completed"]
+    },
+    "nextRunAt": null,
+    "createdAt": "2026-09-05T20:00:00.000Z",
+    "updatedAt": "2026-09-05T20:00:00.000Z",
+    "webhookSecret": "<one-time-webhook-signing-secret>"
+  }
+  ```
+</Accordion>
+
+Simpan `webhookSecret` saat membuat monitor. Nilai ini hanya dikembalikan satu kali dan dibutuhkan untuk
+memverifikasi tanda tangan webhook.
+
+<div id="configure-the-output">
+  ## Mengonfigurasi output
+</div>
+
+Setiap run yang selesai mengembalikan halaman yang baru ditemukan di `output.results`.
+
+Exa juga mensintesis temuan dari setiap halaman ke dalam `output.content`:
+
+| Bentuk output    | Cara penggunaan                | Nilai yang dikembalikan                            |
+| ---------------- | ------------------------------ | -------------------------------------------------- |
+| Text summary     | Default                        | String di `output.content`                         |
+| JSON terstruktur | Tambahkan objek `outputSchema` | JSON yang sesuai dengan schema di `output.content` |
+
+Sumber untuk field hasil sintesis dikembalikan secara otomatis di `output.grounding`.
+
+Tambahkan `outputSchema` jika kode selanjutnya membutuhkan
+field yang konsisten:
+
+```json theme={null}
+{
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "announcements": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "company": { "type": "string" },
+            "location": { "type": "string" },
+            "announcement": { "type": "string" }
+          },
+          "required": ["company", "location", "announcement"]
+        }
+      }
+    },
+    "required": ["announcements"]
+  }
+}
+```
+
+Jangan sertakan citations dan confidence di dalam schema. Keduanya dikembalikan secara terpisah di
+`output.grounding`.
+
+<div id="add-page-content">
+  ## Menambahkan page content
+</div>
+
+`search` menerima opsi yang sama seperti [Exa Search](/id/docs/search/quickstart): gunakan `contents` untuk menyertakan
+highlights, teks lengkap, atau summaries pada setiap hasil, serta `includeDomains` atau `excludeDomains` untuk
+membatasi sumber.
+
+<CodeGroup>
+  ```python Python theme={null}
+  monitor = exa.monitors.create({
+      "name": "LLM Research Tracker",
+      "search": {
+          "query": "new large language model training techniques and architectures",
+          "numResults": 10,
+          "contents": {
+              "highlights": True
+          }
+      },
+      "trigger": {
+          "type": "interval",
+          "period": "7d"
+      },
+      "webhook": {
+          "url": "https://example.com/webhooks/exa",
+          "events": ["monitor.run.completed"]
+      }
+  })
+  ```
+
+  ```javascript JavaScript theme={null}
+  const monitor = await exa.monitors.create({
+    name: "LLM Research Tracker",
+    search: {
+      query: "new large language model training techniques and architectures",
+      numResults: 10,
+      contents: {
+        highlights: true
+      }
+    },
+    trigger: {
+      type: "interval",
+      period: "7d"
+    },
+    webhook: {
+      url: "https://example.com/webhooks/exa",
+      events: ["monitor.run.completed"]
+    }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/monitors" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "name": "LLM Research Tracker",
+      "search": {
+        "query": "new large language model training techniques and architectures",
+        "numResults": 10,
+        "contents": {
+          "highlights": true
+        }
+      },
+      "trigger": {
+        "type": "interval",
+        "period": "7d"
+      },
+      "webhook": {
+        "url": "https://example.com/webhooks/exa",
+        "events": ["monitor.run.completed"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="test-your-monitor">
+  ## Uji monitor Anda
+</div>
+
+Picu run secara langsung tanpa menunggu jadwal berikutnya, lalu tampilkan daftar runs-nya:
+
+<CodeGroup>
+  ```python Python theme={null}
+  exa.monitors.trigger(monitor.id)
+
+  runs = exa.monitors.runs.list(monitor.id, limit=1)
+  latest = runs.data[0]
+  print(latest.id, latest.status)
+  ```
+
+  ```javascript JavaScript theme={null}
+  await exa.monitors.trigger(monitor.id);
+
+  const runs = await exa.monitors.runs.list(monitor.id, { limit: 1 });
+  const latest = runs.data[0];
+  console.log(latest.id, latest.status);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/monitors/$MONITOR_ID/trigger" \
+    -H "Authorization: Bearer $EXA_API_KEY"
+
+  curl -s "https://api.exa.ai/monitors/$MONITOR_ID/runs?limit=1" \
+    -H "Authorization: Bearer $EXA_API_KEY"
+  ```
+</CodeGroup>
+
+Status run yang tersedia:
+
+| Status      | Arti                                                              |
+| ----------- | ----------------------------------------------------------------- |
+| `pending`   | Run berada dalam antrean                                          |
+| `running`   | Run sedang berjalan                                               |
+| `completed` | Run selesai; ambil berdasarkan ID untuk membaca output lengkapnya |
+| `failed`    | Run gagal; `failReason` menjelaskan penyebabnya                   |
+| `cancelled` | Run dibatalkan                                                    |
+
+`output` bernilai null sampai run selesai.
+
+<div id="schedule-runs">
+  ## Menjadwalkan run
+</div>
+
+Interval minimum adalah satu jam. Gunakan satu nilai durasi seperti `1h`, `6h`, `1d`, atau `7d`. Jadwal
+mengacu pada waktu pembuatan monitor — monitor harian yang dibuat pukul 14.30 akan berjalan
+setiap hari sekitar pukul 14.30 — tetapi setiap run bisa tertunda hingga 30 menit, jadi jangan mengandalkan
+waktu eksekusi yang persis sesuai jam.
+
+Hilangkan `trigger` untuk membuat monitor yang hanya dijalankan secara manual. Menjeda monitor terjadwal juga menghentikan
+run otomatis, sementara pemicu manual tetap dipertahankan.
+
+<Note>
+  Run monitor tidak saling tumpang tindih. Jika run terjadwal berikutnya dimulai saat run sebelumnya masih
+  berjalan, Exa akan membatalkan run sebelumnya.
+</Note>
+
+<div id="receive-webhook-updates">
+  ## Menerima pembaruan webhook
+</div>
+
+Berlangganan ke `monitor.run.completed` jika Anda hanya memerlukan run yang sudah selesai. Jika `events` tidak disertakan, Exa
+juga akan mengirimkan event siklus hidup monitor serta event run-created.
+
+Payload run yang selesai berisi status dan output run tersebut. `metadata` monitor yang bersifat opsional akan
+ikut dikirim kembali dalam pengiriman webhook, sehingga Anda dapat meneruskan pembaruan ke pelanggan,
+workspace, channel, atau job internal yang tepat.
+
+<Accordion title="Payload webhook untuk run yang selesai">
+  Output dan timestamp di bawah ini dipersingkat.
+
+  ```json theme={null}
+  {
+    "id": "event_...",
+    "object": "event",
+    "type": "monitor.run.completed",
+    "data": {
+      "id": "01k...",
+      "monitorId": "01k...",
+      "status": "completed",
+      "output": {
+        "results": [
+          {
+            "title": "New battery recycling facility announced",
+            "url": "https://example.com/announcement"
+          }
+        ],
+        "content": "...",
+        "grounding": [
+          {
+            "field": "content",
+            "citations": [
+              {
+                "title": "New battery recycling facility announced",
+                "url": "https://example.com/announcement"
+              }
+            ],
+            "confidence": "high"
+          }
+        ]
+      },
+      "failReason": null,
+      "metadata": {
+        "workspace_id": "workspace_123"
+      }
+    },
+    "createdAt": "2026-09-05T20:00:00.000Z"
+  }
+  ```
+</Accordion>
+
+<Warning>
+  Webhook Anda harus menggunakan HTTPS dan menjadi tujuan akhir, karena redirect tidak diikuti.
+  Verifikasi `Exa-Signature` sebelum memproses event.
+</Warning>
+
+Setiap pengiriman menyertakan header `Exa-Signature` dengan format `t=<timestamp>,v1=<signature>`.
+Susun `<timestamp>.<raw-request-body>`, hitung digest HMAC-SHA256-nya menggunakan
+`webhookSecret` sekali pakai, lalu bandingkan hasilnya dengan `v1` memakai perbandingan waktu konstan.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import hashlib
+  import hmac
+
+
+  def verify_webhook(payload: bytes, signature_header: str, secret: str) -> bool:
+      parts = dict(part.split("=", 1) for part in signature_header.split(","))
+      signed_payload = parts["t"].encode() + b"." + payload
+      expected = hmac.new(secret.encode(), signed_payload, hashlib.sha256).hexdigest()
+      return hmac.compare_digest(expected, parts["v1"])
+  ```
+
+  ```javascript JavaScript theme={null}
+  import crypto from "crypto";
+
+  function verifyWebhook(payload, signatureHeader, secret) {
+    const parts = Object.fromEntries(
+      signatureHeader.split(",").map((part) => part.split("=", 2))
+    );
+    const expected = crypto
+      .createHmac("sha256", secret)
+      .update(`${parts.t}.`)
+      .update(payload)
+      .digest("hex");
+    const actualBuffer = Buffer.from(parts.v1 ?? "", "hex");
+    const expectedBuffer = Buffer.from(expected, "hex");
+
+    return (
+      actualBuffer.length === expectedBuffer.length &&
+      crypto.timingSafeEqual(actualBuffer, expectedBuffer)
+    );
+  }
+  ```
+</CodeGroup>
+
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
+
+<Columns cols={2}>
+  <Card title="Membuat monitor" icon="bell" href="/id/docs/reference/monitors/create-a-monitor" cta="Buka referensi" arrow="true">
+    Lihat semua field search, jadwal, output, metadata, dan webhook.
+  </Card>
+
+  <Card title="run monitor" icon="clock" href="/id/docs/reference/monitors/runs/get-a-run" cta="Buka referensi" arrow="true">
+    Periksa status, output, grounding, dan penyebab kegagalan sebuah run.
+  </Card>
+
+  <Card title="Panduan search" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">
+    Atur query, filter, highlights, teks lengkap, dan freshness.
+  </Card>
+
+  <Card title="Praktik terbaik search" icon="sparkles" href="/id/docs/search/best-practices" cta="Baca panduan" arrow="true">
+    Tingkatkan kualitas retrieval sekaligus menjaga output tetap terfokus.
+  </Card>
+</Columns>

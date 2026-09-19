@@ -1,0 +1,17 @@
+---
+title: "Membuat webhook"
+openapi: "/id/docs/exa-spec.yaml POST /v0/webhooks"
+timestamp: false
+description: "Membuat Webhook yang mengirimkan event yang Anda pilih ke URL Anda
+  begitu event tersebut terjadi.
+
+
+  Respons menyertakan `secret` penandatanganan yang digunakan untuk
+  memverifikasi pengiriman; nilai ini hanya dikembalikan saat pembuatan."
+---
+
+<Warning>
+  **Redirect tidak diikuti.** Pengiriman webhook dikirim langsung ke URL yang
+  terdaftar. Jika endpoint Anda merespons dengan redirect 3xx, pengiriman
+  tersebut akan dianggap gagal. Selalu daftarkan URL tujuan akhir.
+</Warning>

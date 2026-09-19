@@ -1,0 +1,160 @@
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
+>
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+
+<div id="openclaw">
+  # OpenClaw
+</div>
+
+> Exa로 OpenClaw에 실시간 웹 검색과 page contents를 제공하세요.
+
+[OpenClaw](https://openclaw.ai/)는 Exa를 네이티브 `web_search` provider로 지원합니다. Exa를 선택하기만 하면 모든 OpenClaw 에이전트가 내장 웹 도구를 통해 Exa의 search mode, 날짜 필터, 콘텐츠 추출 기능을 사용할 수 있습니다.
+
+<div id="set-up-exa">
+  ## Exa 설정
+</div>
+
+<Steps>
+  <Step title="Exa 플러그인 설치">
+    ```bash theme={null}
+    openclaw plugins install @openclaw/exa-plugin
+    openclaw gateway restart
+    ```
+  </Step>
+
+  <Step title="Exa API 키 발급">
+    <Card title="Exa API 키 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      대시보드에서 키를 생성하세요. 신규 계정에는 무료 크레딧이 제공됩니다.
+    </Card>
+  </Step>
+
+  <Step title="키 저장">
+    gateway로 설치한 경우 `~/.openclaw/.env`에 키를 추가하세요:
+
+    ```bash ~/.openclaw/.env theme={null}
+    EXA_API_KEY=your-exa-api-key
+    ```
+
+    환경 변수를 변경한 후에는 gateway를 재시작하세요.
+  </Step>
+
+  <Step title="웹 검색 provider로 Exa 선택">
+    다음 명령을 실행하세요:
+
+    ```bash theme={null}
+    openclaw configure --section web
+    ```
+
+    웹 검색 provider로 **Exa**를 선택하세요. OpenClaw는 선택한 provider를 구성에 저장하고, 자격 증명은 `EXA_API_KEY`에서 읽어옵니다.
+  </Step>
+</Steps>
+
+<div id="configure-manually">
+  ## 수동으로 설정하기
+</div>
+
+OpenClaw의 JSON5 설정 파일에서 Exa를 직접 선택할 수 있습니다:
+
+```json5 theme={null}
+{
+  tools: {
+    web: {
+      search: {
+        provider: "exa",
+      },
+    },
+  },
+}
+```
+
+key를 gateway 환경이 아닌 configuration에 저장하려면:
+
+```json5 theme={null}
+{
+  plugins: {
+    entries: {
+      exa: {
+        config: {
+          webSearch: {
+            apiKey: "exa-...",
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+<Note>
+  API 키를 설정 파일에 커밋하지 말고 `EXA_API_KEY` 또는 OpenClaw SecretRef를 사용하는 것을 권장합니다.
+</Note>
+
+<div id="what-agents-can-request">
+  ## 에이전트가 요청할 수 있는 항목
+</div>
+
+OpenClaw는 `web_search`를 통해 Exa를 제공합니다.
+
+| 매개변수                         | 용도                                                                                   |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| `query`                      | 웹 검색 질의입니다.                                                                    |
+| `count`                      | 결과 개수로, 최대 100개이며 선택한 search type의 limit을 따릅니다.                                      |
+| `type`                       | `auto`, `neural`, `fast`, `instant`, `deep`, `deep-reasoning` 등의 Exa search mode입니다. |
+| `freshness`                  | 최근 하루, 주, 월, 연 이내로 결과를 제한합니다.                                                        |
+| `date_after` / `date_before` | `YYYY-MM-DD` 형식의 기준일로 결과를 제한합니다.                                                     |
+| `contents`                   | 각 결과와 함께 전체 텍스트, highlights 또는 summaries를 반환합니다.                                     |
+
+`contents`를 생략하면 OpenClaw는 기본적으로 highlights를 요청합니다. 에이전트는 전체 페이지나 summaries가 필요한 경우 다른 형태의 콘텐츠를 요청할 수 있습니다:
+
+```javascript theme={null}
+await web_search({
+  query: "transformer architecture explained",
+  type: "neural",
+  contents: {
+    text: { maxCharacters: 5000 },
+    highlights: { numSentences: 3 },
+    summary: true,
+  },
+});
+```
+
+OpenClaw는 기본적으로 웹 검색 결과를 15분 동안 캐시합니다. 모든 요청이 항상 최신이어야 한다면 `tools.web.search.cacheTtlMinutes` 값을 변경하거나 `0`으로 설정하세요.
+
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
+
+<AccordionGroup>
+  <Accordion title="OpenClaw에 Exa가 provider로 표시되지 않는 경우">
+    `@openclaw/exa-plugin`을 설치하고 gateway를 재시작한 뒤, `openclaw configure --section web`을 다시 실행하세요.
+  </Accordion>
+
+  <Accordion title="OpenClaw에서 Exa key가 없다는 오류가 발생하는 경우">
+    `EXA_API_KEY`가 대화형 셸뿐 아니라 gateway 프로세스에서도 사용 가능한지 확인하세요. gateway로 설치한 경우 `~/.openclaw/.env`에 추가한 뒤 gateway를 재시작하세요.
+  </Accordion>
+
+  <Accordion title="search 결과가 오래된 것처럼 보이는 경우">
+    OpenClaw는 Exa와 별개로 결과를 캐시합니다. `tools.web.search.cacheTtlMinutes` 값을 낮추거나 `0`으로 설정한 다음, page contents를 요청할 때 Exa의 content freshness 옵션을 사용하세요.
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## 리소스
+</div>
+
+<Columns cols={3}>
+  <Card title="OpenClaw Exa provider" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="가이드 읽기" arrow="true">
+    현재 플러그인 configuration과 도구 매개변수를 확인하세요.
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/ko/docs/search/quickstart" cta="가이드 읽기" arrow="true">
+    Exa의 search mode와 응답 형식을 비교해 보세요.
+  </Card>
+
+  <Card title="Content freshness" icon="clock" href="/ko/docs/contents/quickstart#content-freshness" cta="가이드 읽기" arrow="true">
+    색인된 page contents와 실시간으로 가져온 page contents를 제어하세요.
+  </Card>
+</Columns>

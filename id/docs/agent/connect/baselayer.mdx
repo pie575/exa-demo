@@ -1,0 +1,203 @@
+---
+title: "Baselayer"
+description: "Verifikasi bisnis AS dan ambil data KYB: pejabat, registrasi, skor risiko."
+icon: "/docs/images/sidebar-icons/baselayer.svg"
+---
+
+[Baselayer](https://baselayer.com) adalah platform Know Your Business (KYB) yang
+memverifikasi entitas AS terhadap data registrasi dan risiko yang otoritatif.
+Platform ini mengenali sebuah bisnis berdasarkan nama dan alamat, lalu mengembalikan profil lengkapnya: pejabat,
+registrasi negara bagian, struktur entitas, dan status verifikasi.
+
+Attach `baselayer` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
+[Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
+Baselayer bersamaan dengan Exa web search.
+
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
+
+* Onboarding KYB dan verifikasi vendor/pelanggan.
+* Uji tuntas terhadap pejabat perusahaan, registrasi, dan struktur entitas.
+* Penyaringan risiko bisnis dan kecocokan dengan watchlist.
+
+<div id="provider-id">
+  ## ID Provider
+</div>
+
+Gunakan nilai ini pada `dataSources`:
+
+```text theme={null}
+baselayer
+```
+
+<div id="pricing">
+  ## Harga
+</div>
+
+Baselayer menagih per order, dan tarifnya bergantung pada operasi serta
+parameternya:
+
+| Operasi                                                             | Harga                                       |
+| ------------------------------------------------------------------- | ------------------------------------------- |
+| Business search                                                     | `$1.00 / search`                            |
+| Business lookup / officers / registrations / officer reverse lookup | Gratis (pembacaan dari search sebelumnya)   |
+| Lien search                                                         | `$2.00 / state searched`                    |
+| Litigation search                                                   | `$1.00 / category (litigation, bankruptcy)` |
+| Watchlist screen                                                    | `$0.10 – $0.25 / list requested`            |
+| Industry classification                                             | `$0.35 / call`                              |
+| Website analysis                                                    | `$0.35 / call`                              |
+| Web presence                                                        | `$0.15 – $0.35 / selected analysis`         |
+| International business search                                       | `$4.00 / search`                            |
+
+Pilihan parameter memengaruhi harga: lien search di dua state dikenakan biaya
+$4.00, watchlist screen untuk keenam list yang didukung dikenakan biaya $1.35, dan
+biaya web presence call merupakan jumlah dari analisis yang Anda pilih (atau dari set
+default Baselayer — prediksi NAICS dan website analysis — jika Anda tidak memilih satu pun).
+
+<div id="example">
+  ## Contoh
+</div>
+
+Verifikasi sebuah bisnis dan ambil detail pejabat serta status registrasinya.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.",
+      data_sources=[{"provider": "baselayer"}],
+      output_schema={
+          "type": "object",
+          "required": ["business"],
+          "properties": {
+              "business": {
+                  "type": "object",
+                  "required": ["name", "verified", "incorporationState", "officers"],
+                  "properties": {
+                      "name": {"type": "string"},
+                      "verified": {"type": "boolean"},
+                      "incorporationState": {"type": "string"},
+                      "officers": {
+                          "type": "array",
+                          "items": {
+                              "type": "object",
+                              "required": ["name", "title"],
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "title": {"type": "string"},
+                              },
+                          },
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.",
+    dataSources: [{ provider: "baselayer" }],
+    outputSchema: {
+      type: "object",
+      required: ["business"],
+      properties: {
+        business: {
+          type: "object",
+          required: ["name", "verified", "incorporationState", "officers"],
+          properties: {
+            name: { type: "string" },
+            verified: { type: "boolean" },
+            incorporationState: { type: "string" },
+            officers: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["name", "title"],
+                properties: {
+                  name: { type: "string" },
+                  title: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Verify the business Stripe, Inc. in San Francisco, CA and return its officers and registration status.",
+      "dataSources": [{ "provider": "baselayer" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["business"],
+        "properties": {
+          "business": {
+            "type": "object",
+            "required": ["name", "verified", "incorporationState", "officers"],
+            "properties": {
+              "name": { "type": "string" },
+              "verified": { "type": "boolean" },
+              "incorporationState": { "type": "string" },
+              "officers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "title"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "title": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
+
+* [Fiber.ai](/id/docs/agent/connect/fiber): perkaya data bisnis terverifikasi dengan firmografi, jumlah karyawan, dan kontak.
+* [Financial Datasets](/id/docs/agent/connect/financialdatasets): tambahkan liputan berita terbaru untuk entitas publik.
+* [Similarweb](/id/docs/agent/connect/similarweb): bandingkan trafik web dan kompetitor perusahaan terverifikasi.
+
+<div id="next-steps">
+  ## Langkah berikutnya
+</div>
+
+<Columns cols={2}>
+  <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
+    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+  </Card>
+
+  <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partner ke satu run dan rancang query agar setiap partner terpicu.
+  </Card>
+
+  <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
+    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+  </Card>
+
+  <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
+    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
+  </Card>
+</Columns>

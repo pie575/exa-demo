@@ -1,0 +1,23 @@
+---
+title: "보안 개요"
+sidebarTitle: "개요"
+description: "Exa의 보안, 규정 준수 및 지역별 접근 정보."
+---
+
+***
+
+Exa는 데이터 보안과 개인정보 보호를 중요하게 생각합니다. Exa는 SOC 2 Type II 인증을 획득하여 엄격한 정보 보안 관행과 통제를 유지하고 있음을 입증했습니다.
+
+[Zero Data Retention](/ko/docs/admin/security/zero-data-retention), [HIPAA 준수](/ko/docs/admin/security/hipaa) 또는 기타 맞춤형 데이터 보안 솔루션에 관심이 있으시면 [sales@exa.ai](mailto:sales@exa.ai)로 문의해 Enterprise 플랜을 상담해 보세요.
+
+[Trust Center](https://trust.exa.ai)에서 SOC 2 보고서, 데이터 처리 계약서 및 기타 보안 문서를 확인할 수 있습니다.
+
+<div id="regional-access-restrictions">
+  ## 지역별 접근 제한
+</div>
+
+Exa는 제재 및 무역 규제를 준수하기 위해 크림반도, 쿠바, 이란, 북한, 러시아, 시리아, 우크라이나, 베네수엘라 등 제재 대상 국가 및 기타 제한 지역에서의 API 접근을 차단합니다.
+
+해당 지역에서 발생한 요청은 Exa에 도달하기 전에 Cloudflare에서 차단될 수 있습니다. 이 경우 응답으로 표준 Exa API 오류 JSON 대신 Ray ID가 포함된 Cloudflare WAF 차단 페이지가 반환될 수 있습니다.
+
+트래픽의 위치가 잘못 식별되고 있다고 판단되면 소스 IP 주소, 국가 또는 지역, 요청 timestamp, Cloudflare Ray ID를 함께 기재하여 [hello@exa.ai](mailto:hello@exa.ai)로 문의해 주세요.

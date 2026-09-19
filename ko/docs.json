@@ -1,0 +1,423 @@
+{
+  "global": {
+    "anchors": []
+  },
+  "tabs": [
+    {
+      "pages": [
+        "ko/docs",
+        {
+          "boost": 3,
+          "group": "시작하기",
+          "pages": [
+            "ko/docs/get-started/quickstart",
+            "ko/docs/get-started/exa-mcp",
+            {
+              "boost": 0.5,
+              "group": "Agent 스킬",
+              "pages": [
+                "ko/docs/get-started/agent-skills/overview",
+                "ko/docs/get-started/agent-skills/build-with-exa",
+                "ko/docs/get-started/agent-skills/exa-search",
+                "ko/docs/get-started/agent-skills/exa-contents"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "search",
+          "pages": [
+            "ko/docs/search/quickstart",
+            "ko/docs/search/deep-search",
+            "ko/docs/search/highlights",
+            "ko/docs/search/snapshot",
+            "ko/docs/search/best-practices",
+            {
+              "group": "데이터",
+              "pages": [
+                "ko/docs/search/data/overview",
+                "ko/docs/search/data/news",
+                "ko/docs/search/data/code",
+                "ko/docs/search/data/companies-people",
+                "ko/docs/search/data/financial",
+                "ko/docs/search/data/research",
+                "ko/docs/search/data/legal",
+                "ko/docs/search/data/sports-weather-places",
+                "ko/docs/search/data/security"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Agent",
+          "pages": [
+            "ko/docs/agent/quickstart",
+            "ko/docs/agent/best-practices",
+            "ko/docs/agent/examples",
+            {
+              "boost": 4,
+              "group": "Exa Connect",
+              "pages": [
+                "ko/docs/agent/connect/overview",
+                {
+                  "boost": 2,
+                  "group": "셀프 서비스 provider",
+                  "pages": [
+                    "ko/docs/agent/connect/fiber",
+                    "ko/docs/agent/connect/similarweb",
+                    "ko/docs/agent/connect/baselayer",
+                    "ko/docs/agent/connect/polymarket",
+                    "ko/docs/agent/connect/affiliatecom",
+                    "ko/docs/agent/connect/particle",
+                    "ko/docs/agent/connect/financialdatasets",
+                    "ko/docs/agent/connect/jinko"
+                  ]
+                },
+                "ko/docs/agent/connect/combining-providers",
+                "ko/docs/agent/connect/additional-partners"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 3,
+          "group": "기타 API",
+          "pages": [
+            "ko/docs/contents/quickstart",
+            "ko/docs/monitors/quickstart",
+            "ko/docs/batch/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "SDK",
+          "pages": [
+            "ko/docs/sdks/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "통합",
+          "pages": [
+            "ko/docs/integrations/chatgpt-codex",
+            "ko/docs/integrations/claude-web-desktop",
+            "ko/docs/integrations/openai-sdk",
+            {
+              "group": "도구 call",
+              "pages": [
+                "ko/docs/integrations/tool-calling/openai",
+                "ko/docs/integrations/tool-calling/anthropic"
+              ]
+            },
+            {
+              "group": "Vercel",
+              "pages": [
+                "ko/docs/integrations/vercel/ai-sdk",
+                "ko/docs/integrations/vercel/ai-gateway",
+                "ko/docs/integrations/vercel/fx"
+              ]
+            },
+            {
+              "group": "마켓플레이스",
+              "pages": [
+                "ko/docs/integrations/marketplaces/stripe-projects"
+              ]
+            },
+            {
+              "group": "Agent 결제",
+              "pages": [
+                {
+                  "group": "x402",
+                  "pages": [
+                    "ko/docs/integrations/payments/x402/quickstart",
+                    "ko/docs/integrations/payments/x402/agentkit"
+                  ]
+                },
+                {
+                  "group": "MPP",
+                  "pages": [
+                    "ko/docs/integrations/payments/mpp/quickstart",
+                    "ko/docs/integrations/payments/mpp/gtm-enrichment"
+                  ]
+                },
+                "ko/docs/integrations/payments/nevermined"
+              ]
+            },
+            {
+              "boost": 0.6,
+              "group": "추가 통합",
+              "pages": [
+                "ko/docs/integrations/exa-slack",
+                "ko/docs/integrations/hermes-agent",
+                "ko/docs/integrations/n8n",
+                "ko/docs/integrations/openclaw",
+                "ko/docs/integrations/openrouter",
+                "ko/docs/integrations/baseten",
+                "ko/docs/integrations/gumloop",
+                "ko/docs/integrations/exa-for-sheets",
+                "ko/docs/integrations/crewai",
+                "ko/docs/integrations/elevenlabs",
+                "ko/docs/integrations/openhuman",
+                "ko/docs/integrations/truefoundry",
+                "ko/docs/integrations/snowflake",
+                "ko/docs/integrations/grok-build",
+                "ko/docs/integrations/llamaindex",
+                "ko/docs/integrations/pydantic-ai",
+                "ko/docs/integrations/langchain",
+                "ko/docs/integrations/browserbase"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 0.8,
+          "group": "관리",
+          "pages": [
+            "ko/docs/admin/pricing",
+            "ko/docs/admin/billing",
+            "ko/docs/admin/team-management",
+            {
+              "group": "보안 및 규정 준수",
+              "pages": [
+                "ko/docs/admin/security/overview",
+                "ko/docs/admin/security/zero-data-retention",
+                "ko/docs/admin/security/hipaa"
+              ]
+            },
+            "ko/docs/admin/mcp-enterprise-managed-auth",
+            {
+              "group": "참조",
+              "pages": [
+                "ko/docs/admin/status",
+                "ko/docs/admin/error-codes",
+                "ko/docs/admin/openapi-spec"
+              ]
+            },
+            "ko/docs/admin/faqs"
+          ]
+        },
+        {
+          "boost": 0.4,
+          "group": "Websets",
+          "pages": [
+            "ko/docs/websets/quickstart",
+            "ko/docs/websets/imports-and-search",
+            {
+              "group": "대시보드",
+              "pages": [
+                "ko/docs/websets/dashboard/get-started",
+                "ko/docs/websets/dashboard/import-from-csv",
+                "ko/docs/websets/dashboard/exclude-results"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "문서"
+    },
+    {
+      "groups": [
+        {
+          "boost": 4,
+          "group": "search",
+          "pages": [
+            "ko/docs/reference/search"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Contents",
+          "pages": [
+            "ko/docs/reference/get-contents"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Agent",
+          "pages": [
+            "ko/docs/reference/agent-api/create-a-run",
+            "ko/docs/reference/agent-api/get-a-run",
+            "ko/docs/reference/agent-api/list-runs",
+            "ko/docs/reference/agent-api/cancel-a-run",
+            "ko/docs/reference/agent-api/stop-a-run",
+            "ko/docs/reference/agent-api/delete-a-run",
+            "ko/docs/reference/agent-api/list-run-events"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "모니터",
+          "pages": [
+            "ko/docs/reference/monitors/create-a-monitor",
+            "ko/docs/reference/monitors/list-monitors",
+            "ko/docs/reference/monitors/get-a-monitor",
+            "ko/docs/reference/monitors/update-a-monitor",
+            "ko/docs/reference/monitors/delete-a-monitor",
+            "ko/docs/reference/monitors/trigger-a-monitor",
+            "ko/docs/reference/monitors/batch-monitors",
+            {
+              "group": "실행",
+              "pages": [
+                "ko/docs/reference/monitors/runs/list-runs",
+                "ko/docs/reference/monitors/runs/get-a-run"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Answer",
+          "pages": [
+            "ko/docs/reference/answer"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "배치",
+          "pages": [
+            "ko/docs/reference/batches/create-a-batch",
+            "ko/docs/reference/batches/list-batches",
+            "ko/docs/reference/batches/get-a-batch",
+            "ko/docs/reference/batches/cancel-a-batch",
+            "ko/docs/reference/batches/delete-a-batch"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "team 관리",
+          "pages": [
+            "ko/docs/reference/team-management/create-api-key",
+            "ko/docs/reference/team-management/list-api-keys",
+            "ko/docs/reference/team-management/get-api-key",
+            "ko/docs/reference/team-management/get-api-key-usage",
+            "ko/docs/reference/team-management/update-api-key",
+            "ko/docs/reference/team-management/delete-api-key"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Websets",
+          "pages": [
+            {
+              "group": "Websets",
+              "icon": "folder",
+              "pages": [
+                "ko/docs/websets/api/websets/create-a-webset",
+                "ko/docs/websets/api/websets/get-a-webset",
+                "ko/docs/websets/api/websets/update-a-webset",
+                "ko/docs/websets/api/websets/delete-a-webset",
+                "ko/docs/websets/api/websets/preview-a-webset",
+                "ko/docs/websets/api/websets/cancel-a-running-webset",
+                "ko/docs/websets/api/websets/list-all-websets"
+              ]
+            },
+            {
+              "group": "항목",
+              "icon": "list",
+              "pages": [
+                "ko/docs/websets/api/websets/items/get-an-item",
+                "ko/docs/websets/api/websets/items/delete-an-item",
+                "ko/docs/websets/api/websets/items/list-all-items-for-a-webset"
+              ]
+            },
+            {
+              "group": "searches",
+              "icon": "search",
+              "pages": [
+                "ko/docs/websets/api/websets/searches/create-a-search",
+                "ko/docs/websets/api/websets/searches/get-a-search",
+                "ko/docs/websets/api/websets/searches/cancel-a-running-search"
+              ]
+            },
+            {
+              "group": "Enrichment",
+              "icon": "sparkles",
+              "pages": [
+                "ko/docs/websets/api/websets/enrichments/create-an-enrichment",
+                "ko/docs/websets/api/websets/enrichments/get-an-enrichment",
+                "ko/docs/websets/api/websets/enrichments/update-an-enrichment",
+                "ko/docs/websets/api/websets/enrichments/delete-an-enrichment",
+                "ko/docs/websets/api/websets/enrichments/cancel-a-running-enrichment"
+              ]
+            },
+            {
+              "group": "가져오기",
+              "icon": "cloud-download",
+              "pages": [
+                "ko/docs/websets/api/imports/create-an-import",
+                "ko/docs/websets/api/imports/get-import",
+                "ko/docs/websets/api/imports/update-import",
+                "ko/docs/websets/api/imports/delete-import",
+                "ko/docs/websets/api/imports/list-imports"
+              ]
+            },
+            {
+              "group": "모니터",
+              "icon": "satellite",
+              "pages": [
+                "ko/docs/websets/api/monitors/create-a-monitor",
+                "ko/docs/websets/api/monitors/get-monitor",
+                "ko/docs/websets/api/monitors/update-monitor",
+                "ko/docs/websets/api/monitors/delete-monitor",
+                "ko/docs/websets/api/monitors/list-monitors",
+                {
+                  "group": "모니터 실행",
+                  "icon": "play",
+                  "pages": [
+                    "ko/docs/websets/api/monitors/runs/list-monitor-runs",
+                    "ko/docs/websets/api/monitors/runs/get-monitor-run"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "웹훅",
+              "icon": "webhook",
+              "pages": [
+                "ko/docs/websets/api/webhooks/create-a-webhook",
+                "ko/docs/websets/api/webhooks/get-a-webhook",
+                "ko/docs/websets/api/webhooks/update-a-webhook",
+                "ko/docs/websets/api/webhooks/delete-a-webhook",
+                "ko/docs/websets/api/webhooks/list-webhooks",
+                "ko/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+                "ko/docs/websets/api/webhooks/verifying-signatures"
+              ]
+            },
+            {
+              "group": "이벤트",
+              "icon": "bell",
+              "pages": [
+                "ko/docs/websets/api/events/types",
+                "ko/docs/websets/api/events/list-all-events",
+                "ko/docs/websets/api/events/get-an-event"
+              ]
+            },
+            {
+              "group": "team",
+              "icon": "users",
+              "pages": [
+                "ko/docs/websets/api/teams/get-team-info"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "API 참조"
+    },
+    {
+      "groups": [
+        {
+          "boost": 0.5,
+          "group": "업데이트",
+          "pages": [
+            "ko/docs/changelog"
+          ],
+          "root": "ko/docs/changelog"
+        }
+      ],
+      "tab": "변경 로그"
+    }
+  ]
+}

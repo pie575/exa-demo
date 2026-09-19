@@ -1,0 +1,155 @@
+---
+title: "Slack에서 Exa 사용하기"
+description: "Slack에 Exa를 설치하고 원하는 채널이나 스레드에서 @Exa를 태그하면 출처가 포함된 리서치, 리스트 빌딩, Enrichment 답변을 받을 수 있습니다."
+icon: "/docs/images/sidebar-icons/exa-slack.svg"
+---
+
+team의 Slack으로 Exa를 불러오세요. 원하는 채널이나 스레드에서 **@Exa**를 태그한 뒤 리서치 질문, 리스트 빌딩 작업, Enrichment 요청을 보내면 됩니다. Exa가 웹을 search하고 출처를 확인한 다음, 인용이 포함된 답변을 해당 스레드에 남깁니다.
+
+<div id="get-started">
+  ## 시작하기
+</div>
+
+<div id="installation">
+  ### 설치
+</div>
+
+1. [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack)로 이동한 다음 **Install**을 클릭합니다.
+
+<img src="/docs/images/integrations/exa-slack/dashboard-install.png" alt="Install 버튼이 있는 Exa 대시보드의 Exa in Slack 페이지" width="3414" height="900" data-path="images/integrations/exa-slack/dashboard-install.png" />
+
+2. Slack의 OAuth 인증 화면이 열립니다. Exa를 추가할 워크스페이스를 선택한 다음 **Allow**를 클릭합니다.
+
+<img src="/docs/images/integrations/exa-slack/oauth-approval.png" alt="Exa app에 대한 Slack OAuth 승인 화면으로, &#x22;App is not approved by Slack&#x22; 안내, 워크스페이스 선택기, 요청 권한, Allow 버튼이 표시됨" width="1820" height="1180" data-path="images/integrations/exa-slack/oauth-approval.png" />
+
+<Note>
+  빨간색 **&quot;App is not approved by Slack&quot;** 안내는 정상이므로 무시해도 됩니다. Exa가 공개
+  Slack Marketplace에 등록되어 있지 않다는 뜻일 뿐, 문제가 있는 것은 아닙니다.
+</Note>
+
+3. 설치가 끝나면 채널에 @Exa를 초대하거나 DM으로 직접 메시지를 보내 질문을 시작하세요.
+
+<div id="how-to-use-exa-from-slack">
+  ## Slack에서 Exa 사용하기
+</div>
+
+Exa가 추가된 채널이라면 어디서든 @Exa를 멘션하고 질문하세요:
+
+```text theme={null}
+@Exa find all Series A fintech startups in SF
+```
+
+Exa가 스레드 안에서 질문에 답변합니다.
+
+<div id="follow-ups">
+  ### follow-ups
+</div>
+
+Exa가 스레드에서 답변한 뒤에는 해당 스레드에 답글을 달아 대화를 이어가면 됩니다. @Exa를 다시 멘션할 필요가 없습니다. Exa가 대화 내용을 기억하기 때문에 follow-ups는 이전 답변을 바탕으로 이어집니다. 스레드에 있는 누구나 후속 질문을 할 수 있습니다.
+
+<div id="direct-messages">
+  ### 다이렉트 메시지
+</div>
+
+DM으로 Exa에 직접 메시지를 보낼 수도 있습니다. 이때는 멘션이 전혀 필요 없습니다. 메시지를 보낼 때마다 새 요청이 시작되고, 해당 메시지 아래 스레드에 답변이 달립니다. 대화를 이어가려면 그 스레드에 답글을 남기세요.
+
+<div id="cancelling-a-run">
+  ### 실행 취소하기
+</div>
+
+실행이 진행 중일 때 스레드에 답글을 달아 Exa에 실행을 중단해 달라고 요청하세요. 멘션은 필요하지 않습니다.
+
+```text theme={null}
+현재 실행을 중지합니다
+```
+
+<div id="exa-connect-providers">
+  ### Exa Connect provider
+</div>
+
+Exa는 질문과 관련이 있을 경우 [Exa Connect](/ko/docs/agent/connect/overview) data provider를 자동으로 포함합니다. 특정 provider를 사용하려면 메시지에 해당 provider를 언급하세요:
+
+```text theme={null}
+@Exa find me all AI infrastructure startups that raised funding this quarter using Fiber.ai
+```
+
+사용 가능한 모든 data provider 목록은 Exa에 물어보기만 하면 됩니다.
+
+<div id="examples">
+  ## 예시
+</div>
+
+<div id="news-and-current-events">
+  ### 뉴스와 시사
+</div>
+
+무엇에 대해서든 최신 정보를 알아보세요.
+
+<img src="/docs/images/integrations/exa-slack/thread-answer.png" alt="Exa가 Slack 스레드에서 특정 주제의 최신 뉴스에 대한 질문에 답변하며, 날짜가 표시된 결과를 표로 보여주는 모습" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
+
+<div id="large-list-building">
+  ### 대규모 리스트 빌딩
+</div>
+
+요청 앞에 `!max`를 붙이면 빠짐없이 리스트 빌딩을 수행합니다.
+
+<img src="/docs/images/integrations/exa-slack/max-list-building.png" alt="Slack 스레드에서 !max 리스트 빌딩 요청을 실행하고 결과 표를 반환하는 Exa" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
+
+<div id="keywords">
+  ## 키워드
+</div>
+
+Exa가 참여 중인 스레드에서 사용하세요. 명령어는 `@Exa` 멘션 뒤에 이어 쓰거나 메시지 맨 앞에 바로 쓸 수 있습니다:
+
+| 키워드               | 기능                                                              |
+| ----------------- | --------------------------------------------------------------- |
+| `!max <message>`  | 해당 요청을 최대 effort로 실행합니다. 매우 큰 목록을 만들 때 적합합니다.                   |
+| `mute`            | 스레드에서 멘션 없는 답글에는 Exa가 응답하지 않도록 합니다. 명시적인 @Exa 멘션은 그대로 동작합니다. |
+| `unmute`          | `mute` 이후 스레드 follow-ups를 다시 시작합니다.                          |
+| `sleep`           | Exa가 해당 스레드에서 작업을 완전히 중단합니다. 다시 깨우려면 @Exa를 멘션하세요.            |
+| `aside <message>` | Exa가 무시하는 별도 코멘트를 남깁니다. Exa가 지켜보고 있는 스레드에서 동료와 대화할 때 유용합니다.  |
+| `help`            | 사용 방법을 보여줍니다.                                                   |
+
+<div id="permissions">
+  ## Permissions
+</div>
+
+Exa app for Slack는 다음 scope를 요청합니다:
+
+| 권한                     | Slack 접근 범위                    | Exa에 필요한 이유                                            |
+| ---------------------- | ------------------------------ | ------------------------------------------------------ |
+| `app_mentions:read`    | @Exa를 직접 멘션한 메시지 보기            | 채널이나 스레드에서 누군가 Exa를 멘션하면 요청 시작                      |
+| `assistant:write`      | Slack에서 App Agent로 동작          | Slack의 agent 환경을 사용하고 DM과 채널 스레드로 답변을 스트리밍          |
+| `channels:history`     | Exa가 추가된 공개 채널의 메시지 보기         | 공개 채널의 스레드 답글을 수신해 다시 멘션하지 않아도 follow-ups가 동작하도록 함  |
+| `channels:read`        | 공개 채널의 기본 정보 보기                | 웹 세션을 동기화할 위치를 고를 때 이미 Exa가 추가된 공개 채널 찾기               |
+| `chat:write`           | Exa app으로 메시지 보내기              | 스레드 루트, 답변, 진행 상황 업데이트, 확인 메시지, 웹 동기화 메시지 게시        |
+| `chat:write.customize` | app이 작성한 메시지의 이름과 아바타 커스터마이즈   | 웹 앱에서 동기화된 메시지에 웹 참여자의 이름과 프로필 이미지 표시                  |
+| `files:read`           | Exa가 추가된 대화에서 공유된 파일 보기        | 질문에 첨부된 파일 읽기                                          |
+| `files:write`          | Exa app으로 파일 업로드, 수정, 삭제       | 내보낸 표와 같은 결과 파일을 답변에 첨부                                |
+| `groups:history`       | Exa가 추가된 비공개 채널의 메시지 보기        | 비공개 채널의 스레드 답글을 수신해 다시 멘션하지 않아도 follow-ups가 동작하도록 함 |
+| `groups:read`          | Exa가 추가된 비공개 채널의 기본 정보 보기      | 웹 세션 동기화 대상을 고를 때 사용 가능한 비공개 채널을 찾고 멤버십 확인             |
+| `im:history`           | Exa와의 direct messages에서 메시지 보기 | DM 요청과 후속 답글 수신                                        |
+| `im:write`             | direct messages 시작             | 인증된 사용자가 웹 세션 동기화 대상으로 선택했을 때 해당 사용자의 Exa DM 열기        |
+| `users:read`           | 사용자와 기본 Slack 프로필 보기           | 멘션을 이름으로 변환하고, 동기화된 메시지에 웹 참여자의 Slack 프로필 이미지 사용       |
+| `users:read.email`     | 워크스페이스 멤버의 이메일 주소 보기           | team 귀속 및 맞춤형 웹 메시지 프로필 이미지를 위해 Slack과 Exa 계정 매칭       |
+
+<Note>
+  `channels:read`, `groups:read`, `im:write`는 웹에서 Slack으로 동기화할 때 대상 탐색을 가능하게 합니다.
+  기존에 설치된 환경은 이러한 scope 없이도 현재 Slack 스레드를 계속 사용할 수 있지만,
+  해당 대상을 사용하려면 먼저 다시 연결해야 합니다. `chat:write.customize`는 런타임에서 선택 사항입니다.
+  이 scope가 없으면 웹 동기화 메시지는 기본 Exa app 아이덴티티를 그대로 유지하고 메시지 본문에 참여자의 이름을 포함합니다.
+</Note>
+
+Exa는 명시적으로 초대된 채널과 자체 DM에서만 메시지를 수신합니다.
+
+<div id="pricing">
+  ## 요금
+</div>
+
+Slack에서 시작한 실행은 사용자의 Exa team에 청구됩니다. 자세한 내용은 [요금](https://exa.ai/pricing)을 참조하세요.
+
+<div id="privacy">
+  ## 개인정보 보호
+</div>
+
+Exa가 사용자의 데이터를 처리하는 방식에 대한 자세한 내용은 [Exa 개인정보 처리방침](https://exa.ai/privacy-policy)을 참조하세요.

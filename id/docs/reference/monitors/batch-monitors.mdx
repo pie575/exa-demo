@@ -1,0 +1,22 @@
+---
+openapi: "/id/docs/exa-spec.yaml POST /monitors/batch"
+timestamp: false
+title: "Aksi batch pada monitor"
+description: "Lakukan aksi batch pada monitor yang sesuai dengan filter yang
+  diberikan.
+
+
+  Aksi yang didukung:
+
+  - **delete**: Menghapus monitor yang sesuai secara permanen
+
+  - **pause**: Menjeda monitor yang sesuai
+
+  - **unpause**: Melanjutkan kembali monitor yang sesuai
+
+
+  Gunakan `dry_run: true` (nilai default) untuk melihat pratinjau monitor mana
+  saja yang akan terpengaruh sebelum menjalankan aksi. Hasil dipaginasi melalui
+  parameter `limit`; lakukan perulangan hingga `has_more` bernilai `false` untuk
+  memproses seluruh monitor yang sesuai."
+---

@@ -1,0 +1,22 @@
+---
+openapi: "/id/docs/exa-spec.yaml POST /monitors"
+timestamp: false
+title: "Membuat monitor"
+description: "Membuat Monitor baru untuk menjalankan Exa search secara berulang
+  sesuai jadwal.
+
+
+  Monitor otomatis menjalankan query search Anda pada jadwal berulang dan
+  mengirimkan hasilnya ke endpoint webhook Anda dengan deduplikasi otomatis:
+
+
+  - **Pemfilteran berbasis tanggal** hanya mengambil konten sejak run terakhir
+
+
+  - **Deduplikasi semantik** melacak output sebelumnya agar hanya perkembangan
+  baru yang ditampilkan
+
+
+  Respons menyertakan `webhookSecret` yang hanya dikembalikan satu kali saat
+  pembuatan. Simpan secara aman untuk signature verification webhook."
+---
