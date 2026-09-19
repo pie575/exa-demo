@@ -502,6 +502,10 @@
         "$ref": "./es/docs.json"
       },
       {
+        "language": "fr",
+        "$ref": "./fr/docs.json"
+      },
+      {
         "language": "id",
         "$ref": "./id/docs.json"
       },

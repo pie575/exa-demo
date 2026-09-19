@@ -1,0 +1,12 @@
+---
+title: "Annuler un batch"
+description: "Annulez un batch en cours."
+openapi: "/fr/docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+Le batch cesse de planifier de nouvelles requêtes et achève les traitements en cours avant de passer à l&#39;état `cancelled`. L&#39;annulation d&#39;un batch déjà en état `cancelling` ou `cancelled` le renvoie inchangé ; un batch `completed` ou `expired` ne peut pas être annulé.
+
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+</Card>

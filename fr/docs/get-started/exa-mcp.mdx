@@ -1,0 +1,396 @@
+---
+title: "Exa MCP"
+description: "Connectez ChatGPT, Codex, Claude, Grok, Cursor et tout autre client MCP aux tools Exa de recherche web, de récupération de pages, Exa Agent et Exa Connect."
+sidebarTitle: "MCP"
+keywords: ["Exa MCP", "MCP server", "web search", "ChatGPT", "Codex", "Claude Code", "Cursor"]
+---
+
+Utilisez Exa MCP pour enrichir la recherche web intégrée de ChatGPT, Claude et des outils compatibles MCP avec les capacités de recherche d&#39;Exa : recherche web, recherche de code, [Exa Agent](/fr/docs/agent/quickstart) et [Exa Connect](/fr/docs/agent/connect/overview).
+
+Exa propose un serveur hébergé qui fonctionne avec n&#39;importe quel client MCP :
+
+```text theme={null}
+https://mcp.exa.ai/mcp
+```
+
+Aucune API key n&#39;est nécessaire pour commencer. Exa MCP est open source et disponible sur [GitHub](https://github.com/exa-labs/exa-mcp-server).
+
+<div id="install">
+  ## Installation
+</div>
+
+<div className="docs-tabs">
+  <Tabs>
+    <Tab title="ChatGPT & Codex" icon="/docs/images/mcp-clients/chatgpt.svg" width="24" height="24" data-path="images/mcp-clients/chatgpt.svg">
+      Exa est un plugin officiel du répertoire de plugins d&#39;OpenAI, qui comprend le MCP server hébergé ainsi que les skills `search` et `exa-agent` d&#39;Exa.
+
+      <Steps>
+        <Step title="Ouvrez le plugin">
+          Rendez-vous sur [chatgpt.com/plugins/exa](https://chatgpt.com/plugins/exa?open_in_app). La page ouvre **Exa** dans le répertoire de plugins d&#39;OpenAI, qui est commun à ChatGPT et à Codex.
+        </Step>
+
+        <Step title="Installez-le">
+          Cliquez sur le bouton plus pour lancer l&#39;installation. Connectez-vous à Exa lorsque vous y êtes invité, soit pendant l&#39;installation, soit la première fois que Codex ou ChatGPT l&#39;utilise.
+
+          <Frame caption="Ouverture des Plugins dans Codex, ajout d'Exa et autorisation d'accès">
+            <img src="/docs/images/integrations/chatgpt-codex/install-codex.gif" alt="Ouverture des Plugins dans Codex, affichage du plugin Exa et autorisation d'accès" style={{width: "100%", height: "auto"}} width="1100" height="825" data-path="images/integrations/chatgpt-codex/install-codex.gif" />
+          </Frame>
+        </Step>
+
+        <Step title="Démarrez une nouvelle session">
+          Les skills se chargent dans les conversations et les sessions CLI démarrées après l&#39;installation : ouvrez-en donc une nouvelle et posez une question qui nécessite le web.
+        </Step>
+      </Steps>
+
+      C&#39;est tout. Le plugin comprend à la fois l&#39;intégration MCP et les skills d&#39;Exa : aucune configuration MCP ou de skill distincte n&#39;est donc nécessaire.
+
+      Consultez [Exa dans Codex et ChatGPT](/fr/docs/integrations/chatgpt-codex) pour le guide complet d&#39;installation et de workflow.
+    </Tab>
+
+    <Tab title="Claude" icon="/docs/images/mcp-clients/claude.svg" width="24" height="24" data-path="images/mcp-clients/claude.svg">
+      <div id="claude-code-cli">
+        ### CLI Claude Code
+      </div>
+
+      <Steps>
+        <Step title="Installer le plugin">
+          Installez Exa depuis le terminal :
+
+          ```bash theme={null}
+          claude plugin install exa@claude-plugins-official
+          ```
+
+          Vous pouvez également saisir `/plugin` dans Claude Code, rechercher **Exa** et l&#39;installer.
+        </Step>
+
+        <Step title="Utiliser Exa">
+          Démarrez une nouvelle session Claude Code et posez une question nécessitant le web.
+        </Step>
+      </Steps>
+
+      <div id="desktop-web-cowork">
+        ### Desktop, Web &amp; Cowork
+      </div>
+
+      Claude Desktop, Web et Cowork utilisent tous le connecteur officiel d&#39;Exa.
+
+      <Steps>
+        <Step title="Ouvrir l'annuaire des connecteurs">
+          Cliquez sur le bouton plus dans un nouveau chat, choisissez **Add connector**, puis recherchez **Exa**.
+        </Step>
+
+        <Step title="Connecter Exa">
+          Ouvrez Exa, sélectionnez **Connect to Claude**, puis autorisez l&#39;accès lorsque cela vous est demandé.
+
+          <Frame caption="Ouverture de l'annuaire des connecteurs dans Claude, recherche d'Exa, connexion et autorisation d'accès">
+            <img src="/docs/images/integrations/claude-web-desktop/install-claude.gif" alt="Ouverture de l'annuaire des connecteurs dans Claude, recherche d'Exa, connexion et autorisation d'accès" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
+          </Frame>
+        </Step>
+
+        <Step title="Utiliser Exa">
+          Démarrez un nouveau chat et posez une question nécessitant des informations à jour issues du web.
+        </Step>
+      </Steps>
+
+      Consultez [Exa dans Claude Code, Web et Desktop](/fr/docs/integrations/claude-web-desktop) pour le guide complet de configuration et de workflow.
+
+      Les administrateurs Claude Team et Enterprise peuvent aussi provisionner le connecteur pour l&#39;ensemble des utilisateurs via leur identity provider : voir [Enterprise Managed Auth](/fr/docs/admin/mcp-enterprise-managed-auth).
+    </Tab>
+
+    <Tab title="Grok Build" icon="/docs/images/mcp-clients/grok.svg" width="400" height="400" data-path="images/mcp-clients/grok.svg">
+      Exa est disponible sur la marketplace [Grok Build](https://docs.x.ai/build/overview).
+
+      <Steps>
+        <Step title="Ouvrir la marketplace">
+          Dans Grok Build, exécutez `/marketplace`.
+        </Step>
+
+        <Step title="Installer Exa">
+          Repérez **exa** dans la liste et appuyez sur `i`.
+        </Step>
+
+        <Step title="Se connecter">
+          Exécutez `/mcp`, sélectionnez **exa**, puis appuyez sur `i` pour vous connecter à votre compte Exa dans le navigateur.
+        </Step>
+      </Steps>
+
+      Les nouveaux comptes bénéficient de credits gratuits à l&#39;inscription.
+    </Tab>
+
+    <Tab title="cursor" icon="/docs/images/mcp-clients/cursor.svg" width="24" height="24" data-path="images/mcp-clients/cursor.svg">
+      Installez Exa MCP depuis la [marketplace Cursor](https://cursor.com/marketplace/exa), ou ajoutez-le à `~/.cursor/mcp.json` :
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="VS Code" icon="/docs/images/mcp-clients/vscode.svg" width="24" height="24" data-path="images/mcp-clients/vscode.svg">
+      Utilisez l&#39;[installation en un clic](https://vscode.dev/redirect/mcp/install?name=exa\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.exa.ai%2Fmcp%22%7D), ou ajoutez-le à `.vscode/mcp.json` dans votre projet :
+
+      ```json theme={null}
+      {
+        "servers": {
+          "exa": {
+            "type": "http",
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="Autres clients" icon="/docs/images/mcp-clients/other-clients.svg" width="24" height="24" data-path="images/mcp-clients/other-clients.svg">
+      La plupart des clients utilisent la structure standard `mcpServers` :
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        }
+      }
+      ```
+
+      L&#39;emplacement de la configuration et le nom de la clé d&#39;URL varient selon le client :
+
+      | Client                                       | Où l&#39;ajouter                                                                                           | Clé d&#39;URL                |
+      | -------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------- |
+      | [fx by Vercel](/fr/docs/integrations/vercel/fx) | `/mcp add --transport http exa https://mcp.exa.ai/mcp` dans le shell fx (enregistré dans `~/.fx/mcp.json`) | `url`                        |
+      | OpenCode                                     | `opencode.json` (sous `mcp`, avec `"type": "remote"`)                                                      | `url`                        |
+      | Kiro                                         | `~/.kiro/settings/mcp.json` (sous `mcpServers`)                                                            | `url`                        |
+      | Windsurf                                     | `~/.codeium/windsurf/mcp_config.json` (sous `mcpServers`)                                                  | `serverUrl`                  |
+      | Google Antigravity                           | Panneau Agent → Manage MCP Servers → View Raw config (sous `mcpServers`)                                   | `serverUrl`                  |
+      | Zed                                          | `settings.json` de Zed (sous `context_servers`)                                                            | `url`                        |
+      | Gemini CLI                                   | `~/.gemini/settings.json` (sous `mcpServers`)                                                              | `httpUrl`                    |
+      | Warp                                         | Settings → MCP Servers → Add MCP Server (`exa` au niveau racine)                                           | `url`                        |
+      | v0 by Vercel                                 | Prompt Tools → Add MCP                                                                                     | collez directement l&#39;URL |
+
+      Si votre client ne prend pas en charge les remote MCP servers, utilisez le pont `mcp-remote` :
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "command": "npx",
+            "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+          }
+        }
+      }
+      ```
+
+      Ou exécutez le [package npm](https://www.npmjs.com/package/exa-mcp-server) en local avec votre [Exa API key](https://dashboard.exa.ai/api-keys) :
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "command": "npx",
+            "args": ["-y", "exa-mcp-server"],
+            "env": {
+              "EXA_API_KEY": "your_api_key"
+            }
+          }
+        }
+      }
+      ```
+    </Tab>
+  </Tabs>
+</div>
+
+<div id="authentication">
+  ## Authentification
+</div>
+
+Exa MCP prend en charge trois modes d&#39;authentification :
+
+| Mode     | À utiliser pour                                                                     | Configuration                                                                                                                                        |
+| -------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sans clé | Utilisation gratuite avec limitation de débit, sans connexion ni API key            | Connectez-vous à `https://mcp.exa.ai/mcp`                                                                                                            |
+| OAuth    | Clients interactifs, installations depuis le marketplace, utilisation en production | Connectez-vous à `https://mcp.exa.ai/mcp?login` pour vous authentifier auprès d&#39;Exa dans le navigateur. L&#39;usage est imputé à votre team Exa. |
+| API key  | Clients sans MCP OAuth                                                              | Connectez-vous à `https://mcp.exa.ai/mcp` avec le header `x-api-key` défini sur votre API key                                                        |
+
+<div id="sign-in-with-oauth">
+  ### Se connecter avec OAuth
+</div>
+
+ChatGPT, Claude et les autres installations depuis un marketplace vous invitent à vous connecter le cas échéant. Dans tout client prenant en charge MCP OAuth, vous pouvez déclencher le même flux en vous connectant à :
+
+```text theme={null}
+https://mcp.exa.ai/mcp?login
+```
+
+Votre client détecte le serveur d&#39;autorisation d&#39;Exa, ouvre la page de connexion dans le navigateur et gère l&#39;accès.
+
+<div id="use-an-api-key">
+  ### Utiliser une API key
+</div>
+
+<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une key depuis le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+</Card>
+
+Ajoutez le header `x-api-key` à la configuration du MCP server :
+
+```text theme={null}
+x-api-key: YOUR_EXA_API_KEY
+```
+
+<div id="available-tools">
+  ## Outils disponibles
+</div>
+
+| Outil                     | Disponibilité                        | À utiliser pour                                                                                    |
+| ------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `web_search_exa`          | Activé par défaut                    | Rechercher sur le web et renvoyer du contenu pertinent, prêt à l&#39;emploi                        |
+| `web_fetch_exa`           | Activé par défaut                    | Lire le contenu épuré d&#39;une ou plusieurs URL connues                                           |
+| `web_search_advanced_exa` | Disponible sur activation            | Configurer la recherche web avec des filtres et des contrôles avancés                              |
+| `agent_run`               | Disponible avec OAuth ou une API key | Mener des recherches multi-étapes, du list-building, de l&#39;enrichment et des structured outputs |
+
+Utilisez le paramètre d&#39;URL `tools` pour choisir les outils visibles par votre client. Par exemple, pour tous les activer :
+
+```text theme={null}
+https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+```
+
+<Tip>
+  Une liste `tools` explicite remplace les valeurs par défaut : incluez donc tous les tools que vous souhaitez activer, y compris la web search et le fetch.
+</Tip>
+
+<div id="exa-agent">
+  ## Exa Agent
+</div>
+
+Utilisez [Exa Agent](/fr/docs/agent/quickstart) pour les recherches qui nécessitent plus d&#39;une search — par exemple, constituer une liste, évaluer chaque item selon des criteria ou renvoyer des résultats structurés.
+
+Les Agent runs sont facturés à l&#39;usage : `agent_run` nécessite donc OAuth ou une API key. Cette URL lance OAuth et ajoute Agent aux tools par défaut :
+
+```text theme={null}
+https://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run
+```
+
+Si vous utilisez une API key, omettez `login` et ajoutez la clé comme décrit dans [Authentification](#authentication).
+
+<Steps>
+  <Step title="Décrivez votre besoin">
+    Formulez votre demande de recherche en langage naturel. Votre assistant transmet la requête à `agent_run` via un `query`, et Exa Agent détermine quoi rechercher, lit les sources et confronte ce qu&#39;il trouve à votre requête.
+
+    Demandez à votre Agent de fournir un `outputSchema` uniquement si votre application a besoin des résultats dans un format JSON cohérent. Vous pouvez en transmettre un à votre assistant dans le system prompt, ou lui en faire générer un.
+  </Step>
+
+  <Step title="Récupérez le résultat">
+    Une fois la recherche terminée, le tool call remet à votre assistant l&#39;ensemble des éléments de recherche :
+
+    * Les conclusions rédigées
+    * Les sources qui les appuient
+    * Du JSON validé si vous avez fourni un `outputSchema`
+    * L&#39;usage et le cost
+
+    Votre assistant rédige sa réponse à partir de ces éléments : indiquez-lui donc ce que vous attendez de l&#39;output. Vous pouvez lui demander de résumer les conclusions, de les comparer, de les enregistrer dans un fichier, ou tout autre traitement.
+  </Step>
+
+  <Step title="Poursuivez si davantage de temps est nécessaire">
+    Une recherche qui dépasse la durée d&#39;un seul appel MCP n&#39;échoue pas : le tool renvoie `status: "running"` accompagné d&#39;un `id` pendant que le run se poursuit sur Exa. Votre assistant rappelle `agent_run` avec cet `id` comme `runId` pour reprendre le même run.
+  </Step>
+</Steps>
+
+<Accordion title="Contrôles facultatifs" icon="sliders-horizontal">
+  | Field             | À utiliser pour                                                                       |
+  | ----------------- | ------------------------------------------------------------------------------------- |
+  | `systemPrompt`    | Donner à Agent des consignes supplémentaires pour rechercher ou évaluer les résultats |
+  | `outputSchema`    | Renvoyer la réponse dans un format JSON précis                                        |
+  | `input.data`      | Enrichir des lignes ou des entités dont vous disposez déjà                            |
+  | `input.exclusion` | Ignorer les résultats que vous connaissez déjà                                        |
+  | `dataSources`     | Ajouter jusqu&#39;à cinq providers [Exa Connect](/fr/docs/agent/connect/overview)        |
+  | `previousRunId`   | Bâtir une nouvelle requête sur une recherche déjà terminée                            |
+  | `effort`          | Choisir l&#39;ampleur de la recherche menée par Agent                                 |
+</Accordion>
+
+<Tip>
+  Utilisez `runId` pour continuer à attendre un travail en cours. Utilisez `previousRunId` pour poser un nouveau follow-up à partir d&#39;un travail terminé.
+</Tip>
+
+Consultez le [guide Exa Agent](/fr/docs/agent/quickstart) pour découvrir les modèles de schema de sortie, les modes d&#39;effort, les sources de données et la tarification.
+
+<div id="advanced-search">
+  ## Advanced search
+</div>
+
+Utilisez `web_search_advanced_exa` lorsque la requête nécessite des filtres explicites par catégorie ou par domaine, des plages de dates, des contraintes textuelles, un ciblage géographique, l&#39;expansion de query, des summaries, des highlights, un contrôle de la freshness ou l&#39;exploration de sous-pages. Pour les searches ordinaires, restez sur `web_search_exa` : la surface de tools exposée au modèle est plus réduite et la configuration moins lourde.
+
+Advanced Search ne nécessite pas d&#39;authentification, même si les connexions authentifiées s&#39;appuient sur votre propre forfait et vos propres rate limits. Activez-la en complément des tools par défaut avec :
+
+```text theme={null}
+https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa
+```
+
+Le tool MCP expose les principaux paramètres de la [Search API](/fr/docs/reference/search) sous forme de fields adaptés aux tools, comme `includeDomains`, `startPublishedDate`, `enableHighlights` et `maxAgeHours`. Consultez le tool schema dans votre client pour connaître les noms exacts des fields.
+
+<div id="troubleshooting">
+  ## Dépannage
+</div>
+
+<AccordionGroup>
+  <Accordion title="Erreur de rate limit (429)">
+    La connexion utilise les rate limits gratuits d&#39;Exa. Connectez-vous avec OAuth ou ajoutez votre propre API key, puis reconnectez-vous afin que les requêtes utilisent le forfait et les limits de votre team.
+
+    <Card title="Obtenir votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+    </Card>
+  </Accordion>
+
+  <Accordion title="Agent absent ou demandant une authentification">
+    `agent_run` n&#39;est pas activé par défaut et ne peut pas utiliser les rate limits gratuits. Ajoutez-le au paramètre d&#39;URL `tools`, puis connectez-vous avec `?login` ou configurez une API key. Consultez [Exa Agent](#exa-agent) pour l&#39;URL complète.
+  </Accordion>
+
+  <Accordion title="La connexion OAuth ne s'ouvre pas">
+    Vérifiez que votre client prend en charge MCP OAuth et connectez-vous à `https://mcp.exa.ai/mcp?login`. Redémarrez le client après avoir modifié l&#39;URL. Si le client ne parvient pas à effectuer MCP OAuth, utilisez plutôt une API key.
+  </Accordion>
+
+  <Accordion title="Les tools n'apparaissent pas">
+    Un paramètre `tools` explicite remplace la liste de tools par défaut. Vérifiez que chaque tool souhaité figure bien dans l&#39;URL, puis redémarrez votre client MCP pour qu&#39;il récupère à nouveau la liste des tools.
+  </Accordion>
+
+  <Accordion title="Claude desktop ne se connecte pas">
+    Utilisez le connecteur intégré : sélectionnez **+** (ou **Add connectors**) → onglet **Connectors** → recherchez **Exa** → sélectionnez **+**.
+  </Accordion>
+
+  <Accordion title="Fichier de configuration introuvable">
+    Emplacements de configuration courants :
+
+    * Cursor : `~/.cursor/mcp.json`
+    * fx : `~/.fx/mcp.json`
+    * VS Code : `.vscode/mcp.json` (à la racine du projet)
+    * Claude desktop (macOS) : `~/Library/Application Support/Claude/claude_desktop_config.json`
+    * Claude desktop (Windows) : `%APPDATA%\Claude\claude_desktop_config.json`
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ressources
+</div>
+
+<Columns cols={2}>
+  <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Voir la source" arrow="true">
+    Code source d&#39;Exa MCP.
+  </Card>
+
+  <Card title="npm" icon="package" href="https://www.npmjs.com/package/exa-mcp-server" cta="Ouvrir le package" arrow="true">
+    Exécutez Exa MCP en local avec le package npm.
+  </Card>
+
+  <Card title="Agent skills" icon="wrench" href="/fr/docs/get-started/agent-skills/overview" cta="Parcourir les skills" arrow="true">
+    Des skills portables, conçues pour fonctionner avec Exa MCP.
+  </Card>
+
+  <Card title="Exa dans Codex et ChatGPT" icon="messages-square" href="/fr/docs/integrations/chatgpt-codex" cta="Ouvrir le guide" arrow="true">
+    Guide complet de configuration et de workflow pour le plugin Exa.
+  </Card>
+</Columns>

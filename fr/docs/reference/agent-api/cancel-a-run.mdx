@@ -1,0 +1,12 @@
+---
+title: "Annuler un run"
+description: "Annulez un run Agent en file d'attente ou en cours d'exécution."
+openapi: "/fr/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
+timestamp: false
+---
+
+Si le run est encore actif, il passe immédiatement à l&#39;état `cancelled` et s&#39;arrête sans renvoyer de résultats. Le run se termine avec le status `cancelled` et `stopReason: cancelled`. L&#39;usage accumulé avant l&#39;annulation vous est facturé. Si le run a déjà atteint un status terminal (completed, failed ou cancelled), l&#39;endpoint renvoie le run existant sans modification.
+
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+</Card>

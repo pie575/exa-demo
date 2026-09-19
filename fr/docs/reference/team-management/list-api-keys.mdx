@@ -1,0 +1,31 @@
+---
+title: "Lister les API keys"
+description: "Récupérez toutes les API keys de votre team, avec leurs métadonnées."
+openapi: "/fr/docs/team-management-spec.yaml GET /api-keys"
+timestamp: false
+---
+
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une key depuis le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+</Card>
+
+<Info>
+  L&#39;API Team Management s&#39;active team par team. Elle s&#39;authentifie avec une API key de compte de service, à créer depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre team. Contactez [support@exa.ai](mailto:support@exa.ai) pour demander un accès.
+</Info>
+
+<div id="overview">
+  ## Aperçu
+</div>
+
+L&#39;endpoint List API Keys renvoie toutes les API keys associées à votre team. Pour chaque key, sont inclus l&#39;ID, le nom, la limite de débit et l&#39;horodatage de création.
+
+<div id="response-format">
+  ## Format de réponse
+</div>
+
+La réponse contient un tableau d&#39;objets API key comportant les informations suivantes :
+
+* **id** : identifiant unique de l&#39;API key
+* **name** : nom lisible (s&#39;il a été fourni lors de la création)
+* **rateLimit** : limite de débit en requêtes par minute (si elle est définie)
+* **createdAt** : horodatage ISO 8601 de la création de la clé

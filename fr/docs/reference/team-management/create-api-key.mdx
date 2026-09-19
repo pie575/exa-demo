@@ -1,0 +1,24 @@
+---
+title: "Créer une API key"
+description: "Créez une nouvelle API key pour votre team, avec un nom et une
+  configuration de rate limit facultatifs."
+openapi: "/fr/docs/team-management-spec.yaml POST /api-keys"
+timestamp: false
+---
+
+<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+</Card>
+
+<Info>
+  L&#39;API Team Management s&#39;active team par team. Elle s&#39;authentifie avec une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre team. Contactez [support@exa.ai](mailto:support@exa.ai) pour demander un accès.
+</Info>
+
+L&#39;endpoint Create API Key vous permet de générer par programmation de nouvelles API keys pour votre team à l&#39;aide de votre API key de service.
+
+<div id="optional-parameters">
+  ## Paramètres facultatifs
+</div>
+
+* **name** : un nom descriptif pour l&#39;API key, afin d&#39;identifier facilement son usage
+* **rateLimit** : nombre maximal de requêtes par minute autorisé pour cette API key

@@ -1,0 +1,22 @@
+---
+openapi: "/fr/docs/exa-spec.yaml POST /monitors/batch"
+timestamp: false
+title: "Action batch sur les monitors"
+description: "Effectuez une action batch sur les monitors correspondant aux
+  filtres fournis.
+
+
+  Actions prises en charge :
+
+  - **delete** : supprime définitivement les monitors correspondants
+
+  - **pause** : met en pause les monitors correspondants
+
+  - **unpause** : réactive les monitors correspondants
+
+
+  Utilisez `dry_run: true` (valeur par défaut) pour prévisualiser les monitors
+  qui seraient affectés avant d'exécuter l'action. Les résultats sont paginés
+  via le paramètre `limit` ; bouclez jusqu'à ce que `has_more` vaille `false`
+  pour traiter tous les monitors correspondants."
+---

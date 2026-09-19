@@ -1,0 +1,79 @@
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
+>
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
+
+<div id="event-types">
+  # Types d&#39;événements
+</div>
+
+> Découvrez les événements qui se produisent au sein de l&#39;API Webset
+
+L&#39;API Websets utilise des événements pour vous informer des modifications apportées à vos Websets. Vous pouvez suivre ces événements via notre [endpoint events](/fr/docs/websets/api/events/list-all-events) ou en configurant des [webhooks](/fr/docs/websets/api/webhooks/create-a-webhook).
+
+Les événements sont conservés pendant 60 jours, puis supprimés automatiquement.
+
+<div id="webset">
+  ## Webset
+</div>
+
+* `webset.created` - Émis lors de la création d&#39;un nouveau Webset.
+* `webset.deleted` - Émis lors de la suppression d&#39;un Webset.
+* `webset.paused` - Émis lorsque les opérations d&#39;un Webset sont mises en pause.
+* `webset.idle` - Émis lorsqu&#39;un Webset n&#39;a plus aucune opération en cours.
+
+<div id="search">
+  ## Search
+</div>
+
+* `webset.search.created` - Émis lorsqu&#39;une nouvelle Search est lancée.
+* `webset.search.updated` - Émis lorsque la progression d&#39;une Search est mise à jour.
+* `webset.search.completed` - Émis lorsqu&#39;une Search a terminé de trouver tous les items.
+* `webset.search.canceled` - Émis lorsqu&#39;une Search est annulée manuellement.
+
+<div id="item">
+  ## Item
+</div>
+
+* `webset.item.created` - Émis lorsqu&#39;un nouvel item a été ajouté au Webset.
+* `webset.item.enriched` - Émis lorsque l&#39;enrichment d&#39;un item est terminé.
+
+<div id="import">
+  ## Import
+</div>
+
+* `import.created` - Émis lorsqu&#39;un nouvel import est lancé.
+* `import.completed` - Émis lorsqu&#39;un import est terminé.
+
+<div id="export">
+  ## Export
+</div>
+
+* `webset.export.created` - Émis lorsqu&#39;un nouvel export est lancé.
+* `webset.export.completed` - Émis lorsqu&#39;un export est terminé.
+
+<div id="monitor">
+  ## Monitor
+</div>
+
+* `monitor.created` — Émis lorsqu&#39;un nouveau monitor est créé.
+* `monitor.updated` — Émis lorsque la configuration d&#39;un monitor est mise à jour.
+* `monitor.deleted` — Émis lorsqu&#39;un monitor est supprimé.
+* `monitor.run.created` — Émis lorsqu&#39;un monitor run démarre.
+* `monitor.run.completed` — Émis lorsqu&#39;un monitor run se termine.
+
+Chaque événement comprend :
+
+* Un `id` unique
+* Le `type` de l&#39;événement
+* Un objet `data` contenant la ressource complète à l&#39;origine de l&#39;événement
+* Un timestamp `createdAt`
+
+Vous pouvez utiliser ces événements pour :
+
+* Suivre l&#39;avancement des searches et des enrichments
+* Créer des dashboards en temps réel
+* Déclencher des workflows lorsque de nouveaux items sont trouvés
+* Surveiller le status de vos exports

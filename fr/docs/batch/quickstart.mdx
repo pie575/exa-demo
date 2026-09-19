@@ -1,0 +1,201 @@
+---
+title: "API Batch"
+sidebarTitle: "Batch"
+description: "Exécutez des requêtes de l'API Exa de manière asynchrone, par lots."
+boost: 4
+---
+
+<Info>
+  L&#39;API Batch est accessible aux clients Enterprise une fois qu&#39;Exa l&#39;a activée pour votre team. Contactez [sales@exa.ai](mailto:sales@exa.ai) pour discuter d&#39;un accès Enterprise et de son activation.
+</Info>
+
+L&#39;API Batch vous permet de soumettre de nombreuses requêtes à l&#39;API Exa en une seule fois, puis d&#39;en récupérer les résultats ultérieurement sous forme de fichier JSONL. Plutôt que d&#39;envoyer des milliers de requêtes individuelles et de gérer vous-même les rate limits et les nouvelles tentatives, vous envoyez un seul batch, vous interrogez son statut, puis vous téléchargez l&#39;ensemble des résultats dans un seul fichier.
+
+Utilisez-la pour de l&#39;enrichment hors ligne, des reprises de données historiques ou tout autre traitement ne nécessitant pas de réponse immédiate. Les schemas complets de requête et de réponse figurent dans la [référence de l&#39;API](/fr/docs/reference/batches/create-a-batch).
+
+<Note>
+  L&#39;API Batch est en bêta. Incluez le header `Exa-Beta: batches-2026-06-06` dans chaque requête.
+</Note>
+
+<div id="supported-requests">
+  ## Requêtes prises en charge
+</div>
+
+Chaque élément du batch doit être une requête `POST` vers l&#39;une de ces routes :
+
+| Route         | Cas d&#39;usage                                        |
+| ------------- | ------------------------------------------------------ |
+| `/search`     | Exécuter des requêtes Exa search de manière asynchrone |
+| `/agent/runs` | Exécuter des requêtes Exa Agent de manière asynchrone  |
+
+Chaque élément doit avoir un `customId` unique au sein du batch. Ce même `customId` est renvoyé dans le fichier de résultats, ce qui vous permet de relier les lignes de sortie à vos données d&#39;entrée.
+
+<div id="create-a-batch">
+  ## Créer un batch
+</div>
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/batches" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: batches-2026-06-06" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "requests": [
+        {
+          "customId": "row-1",
+          "method": "POST",
+          "url": "/search",
+          "body": {
+            "query": "Latest AI infrastructure funding rounds"
+          }
+        },
+        {
+          "customId": "row-2",
+          "method": "POST",
+          "url": "/agent/runs",
+          "body": {
+            "query": "Summarize recent vector database launches"
+          }
+        }
+      ],
+      "metadata": {
+        "project": "weekly-digest"
+      }
+    }'
+  ```
+</CodeGroup>
+
+La réponse contient l&#39;identifiant du batch et son statut initial :
+
+<Accordion title="Exemple de réponse">
+  ```json theme={null}
+  {
+    "id": "batch_01j7x9v0m2n4p6q8r0s2t4v6w8",
+    "object": "batch",
+    "status": "in_progress",
+    "requestCounts": {
+      "total": 2,
+      "completed": 0,
+      "failed": 0
+    },
+    "createdAt": "2026-06-06T12:00:00.000Z",
+    "expiresAt": null,
+    "endedAt": null,
+    "resultsUrl": null,
+    "metadata": {
+      "project": "weekly-digest"
+    }
+  }
+  ```
+</Accordion>
+
+<div id="check-status">
+  ## Vérifier le statut
+</div>
+
+Interrogez le batch jusqu&#39;à ce qu&#39;il atteigne un statut terminal :
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl -s "https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: batches-2026-06-06"
+  ```
+</CodeGroup>
+
+Les statuts de batch sont les suivants :
+
+| Statut        | Signification                                                              |
+| ------------- | -------------------------------------------------------------------------- |
+| `in_progress` | Le batch est en cours d&#39;exécution                                      |
+| `completed`   | Toutes les requêtes sont terminées et les résultats sont disponibles       |
+| `cancelling`  | L&#39;annulation a été demandée et les traitements en cours s&#39;achèvent |
+| `cancelled`   | Le batch a été annulé                                                      |
+| `expired`     | Les résultats ne sont plus disponibles                                     |
+
+Une fois le batch terminé, `resultsUrl` contient une URL de téléchargement du fichier de résultats JSONL, et `expiresAt` correspond à la fin de la période de conservation des résultats.
+
+<Warning>
+  `resultsUrl` est une URL présignée à durée de vie courte. Récupérez à nouveau le batch pour obtenir une nouvelle URL chaque fois que vous devez télécharger les résultats.
+</Warning>
+
+<div id="list-batches">
+  ## Lister les batches
+</div>
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl -s "https://api.exa.ai/batches?limit=100" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: batches-2026-06-06"
+  ```
+</CodeGroup>
+
+La réponse est paginée par cursor : `data` contient jusqu&#39;à `limit` batches et, lorsque `hasMore` vaut `true`, passez `nextCursor` dans le paramètre de requête `cursor` pour récupérer la page suivante.
+
+Passez `status=completed` pour ne lister que les batches terminés :
+
+```bash theme={null}
+curl -s "https://api.exa.ai/batches?status=completed" \
+  -H "Authorization: Bearer $EXA_API_KEY" \
+  -H "Exa-Beta: batches-2026-06-06"
+```
+
+`completed` est la seule valeur prise en charge ; toute autre valeur renvoie une erreur. Les entrées terminées sont triées par date d&#39;expiration et utilisent leur propre cursor : veillez donc à envoyer `status=completed` à chaque page — les cursors des entrées terminées et ceux sans filtre ne sont pas interchangeables.
+
+```json theme={null}
+{
+  "object": "list",
+  "data": [],
+  "hasMore": false,
+  "nextCursor": null
+}
+```
+
+<div id="download-results">
+  ## Télécharger les résultats
+</div>
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl "$RESULTS_URL" -o results.jsonl
+  ```
+</CodeGroup>
+
+Chaque ligne JSONL contient le `customId` d&#39;origine, ainsi qu&#39;un champ `response` ou un champ `error` :
+
+```json theme={null}
+{ "customId": "row-1", "response": { "statusCode": 200, "body": { "results": [] } } }
+{ "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
+```
+
+<div id="cancel-a-batch">
+  ## Annuler un batch
+</div>
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl -X POST "https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8/cancel" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: batches-2026-06-06"
+  ```
+</CodeGroup>
+
+<div id="delete-a-batch">
+  ## Supprimer un batch
+</div>
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl -X DELETE "https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: batches-2026-06-06"
+  ```
+</CodeGroup>
+
+<div id="access">
+  ## Accès
+</div>
+
+Pour activer l’API Batch pour une team, contactez [sales@exa.ai](mailto:sales@exa.ai).

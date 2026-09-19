@@ -1,0 +1,71 @@
+---
+title: "HIPAA"
+description: "Utilisez le mode de conformité HIPAA pour les requêtes éligibles de récupération depuis le cache."
+---
+
+<Info>
+  La conformité HIPAA est disponible pour les clients Enterprise une fois qu&#39;Exa l&#39;a activée pour votre team. Contactez [sales@exa.ai](mailto:sales@exa.ai) pour discuter de l&#39;accès Enterprise, des exigences de BAA et de l&#39;activation.
+</Info>
+
+Le mode HIPAA se contrôle requête par requête via un field `compliance` de premier niveau :
+
+```json theme={null}
+{
+  "compliance": "hipaa"
+}
+```
+
+Lorsque ce champ est présent sur une team éligible, Exa traite la requête avec les contrôles de conformité HIPAA. Si votre team n&#39;est pas activée, l&#39;API renvoie `403 FEATURE_DISABLED`.
+
+Le mode HIPAA inclut le [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) pour ces requêtes : Exa ne conserve aucune PHI.
+
+<div id="supported-endpoints">
+  ## Endpoints pris en charge
+</div>
+
+Le field `compliance` est reconnu sur :
+
+* [`/search`](/fr/docs/reference/search)
+* [`/contents`](/fr/docs/reference/get-contents)
+
+Les autres endpoints rejettent ce field.
+
+<div id="requirements">
+  ## Prérequis
+</div>
+
+Le mode HIPAA prend uniquement en charge la récupération depuis le cache. Requêtes compatibles :
+
+* Sur `/search`, définissez `type` sur `instant` ou `fast`
+* Demandez `text` ou `highlights` (et non `summary`)
+* Utilisez uniquement du contenu mis en cache : omettez les champs de fraîcheur, ou définissez `maxAgeHours: -1` sur `/contents`
+
+Les requêtes incompatibles renvoient `400 INVALID_REQUEST_BODY`, notamment :
+
+* `summary` sur `/contents`, ou `contents.summary` sur `/search`
+* Les paramètres de fraîcheur nécessitant une récupération en direct, comme `maxAgeHours: 0` ou une valeur positive de `maxAgeHours`
+* Les requêtes de recherche qui omettent `type`, ou qui utilisent un type autre que `instant` ou `fast`
+
+<div id="example">
+  ## Exemple
+</div>
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/contents" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "urls": ["https://example.com/article"],
+      "compliance": "hipaa",
+      "highlights": true,
+      "maxAgeHours": -1
+    }'
+  ```
+</CodeGroup>
+
+<div id="access">
+  ## Accès
+</div>
+
+Pour activer le mode HIPAA pour votre team, contactez [sales@exa.ai](mailto:sales@exa.ai). Consultez le [Trust Center](https://trust.exa.ai) pour accéder à la documentation de sécurité d&#39;Exa.
