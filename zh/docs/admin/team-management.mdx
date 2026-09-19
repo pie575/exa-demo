@@ -1,0 +1,60 @@
+---
+title: "管理你的团队"
+description: "关于 Exa 平台团队结构与账户管理的详细说明"
+---
+
+***
+
+<Card title="前往 API 控制台" icon="layout-dashboard" horizontal href="https://dashboard.exa.ai">
+  创建团队、邀请成员并管理账单。
+</Card>
+
+Exa 通过“团队 (Teams) ”来管理账户用量和付费功能的访问权限：
+
+账户创建后，你会自动归入一个“个人 (Personal) ”团队。通过下图所示的 Exa 控制台左上角下拉菜单，你可以创建新团队，或在已有的团队之间切换。团队数量不限，你可以按需创建。
+
+<div id="seeing-your-teams">
+  ## 查看你的团队
+</div>
+
+<img src="/docs/images/admin/team-management/dashboard_team_switcher.png" alt="Exa 控制台「团队设置」中的团队下拉菜单（左上角）" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
+
+Exa 控制台「团队设置」中的团队下拉菜单 (左上角)
+
+<div id="topping-up-a-teams-balance">
+  ## 为团队账户充值
+</div>
+
+选定目标团队后，你可以在 Billing 页面为额度余额充值。
+
+<img src="/docs/images/admin/team-management/dashboard_topup.png" alt="Billing 页面额度余额充值" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
+
+<div id="inviting-people-to-your-team">
+  ## 邀请他人加入团队
+</div>
+
+团队管理员可以在团队设置中通过邀请功能添加成员。
+
+<img src="/docs/images/admin/team-management/dashboard_invite.png" alt="在团队设置中邀请成员" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite.png" />
+
+成员被邀请后，其在团队管理菜单中的状态会显示为 Pending (待接受) 。
+
+<img src="/docs/images/admin/team-management/dashboard_invite_pending.png" alt="团队成员列表中显示 Pending 邀请状态" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_pending.png" />
+
+对方会收到一封邀请加入团队的邮件。
+
+<img src="/docs/images/admin/team-management/dashboard_invite_email.png" alt="团队邀请邮件" width="1094" height="1082" data-path="images/admin/team-management/dashboard_invite_email.png" />
+
+邀请被接受后，你会看到两位成员的状态均为 Accepted (已接受) 。所有团队成员共享所属团队套餐的用量限制和功能。
+
+<img src="/docs/images/admin/team-management/dashboard_invite_accepted.png" alt="团队成员列表显示 Accepted 状态" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
+
+<div id="team-management-api">
+  ## 团队管理 API
+</div>
+
+使用[团队管理 API](/zh/docs/reference/team-management/create-api-key) 以编程方式创建和管理 API key。
+
+<Info>
+  团队管理 API 需按团队单独启用，并使用服务账号 API key 进行认证。为你的团队启用该功能后，即可在 [API keys 页面](https://dashboard.exa.ai/api-keys)的 **Service keys** 标签页中创建此 key。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+</Info>

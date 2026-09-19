@@ -1,0 +1,338 @@
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
+>
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件查看所有可用页面。
+
+<div id="contents-api">
+  # Contents API
+</div>
+
+> 从任意 URL 中提取文本、highlights 和摘要。
+
+Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript 渲染页面、PDF 和复杂版式。
+
+所有 contents 功能同样适用于 [Exa Search](/zh/docs/search/quickstart) 返回的 URL，每次搜索前 10 条结果不额外收费 (超出部分为 $1/1000 页) 。对于网页搜索类工具场景，我们建议以这种方式使用 Search，而非 Contents。
+
+<Tip>
+  若要将搜索结果用作 AI 上下文，请在 `/search` 中请求 `contents: { highlights: true }` ——
+  Exa 会根据每条结果的相关性调整其摘录长度。参见 [Highlights](/zh/docs/search/highlights)。
+</Tip>
+
+<div id="make-your-first-request">
+  ## 发起首次请求
+</div>
+
+传入一个或多个 URL 或文档 ID，并针对与任务相关的部分请求 highlights。在 HTTP 请求中，通过 `ids` 传入：
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  result = exa.get_contents(
+      ["https://exa.ai/blog/dynamic-highlights"],
+      highlights={"query": "token efficiency and quality results"},
+  )
+
+  print(result.results[0].highlights)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const result = await exa.getContents(
+    ["https://exa.ai/blog/dynamic-highlights"],
+    {
+      highlights: {
+        query: "token efficiency and quality results"
+      }
+    }
+  );
+
+  console.log(result.results[0].highlights);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/contents" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "ids": ["https://exa.ai/blog/dynamic-highlights"],
+      "highlights": {
+        "query": "token efficiency and quality results"
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Accordion title="示例响应">
+  ```json theme={null}
+  {
+    "requestId": "e492118ccdedcba5088bfc4357a8a125",
+    "results": [
+      {
+        "id": "https://exa.ai/blog/dynamic-highlights",
+        "title": "Dynamic Highlights",
+        "url": "https://exa.ai/blog/dynamic-highlights",
+        "highlights": [
+          "With a 12k character budget, relative to existing highlights, Dynamic Highlights achieves a 40% average token efficiency gain with a notable quality increase..."
+        ]
+      }
+    ],
+    "statuses": [
+      {
+        "id": "https://exa.ai/blog/dynamic-highlights",
+        "status": "success",
+        "source": "cached"
+      }
+    ],
+    "costDollars": {
+      "total": 0.001
+    }
+  }
+  ```
+</Accordion>
+
+`results` 中的每一项都包含页面元数据以及你请求的内容视图。每个 URL 的成功或失败情况可在 `statuses` 中查看。
+
+<h2 id="dynamic-highlights">
+  输出形态
+</h2>
+
+<Tabs>
+  <Tab title="Highlights">
+    Highlights 返回从页面中摘取的相关段落。用于 agent、RAG 和事实查证时建议优先选它，因为 highlights 占用的上下文比全文更少。
+
+    设置 `highlights: true` 即可启用 highlights。使用 Contents 时，建议额外传入 `query` 参数，让内容提取更聚焦：
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.get_contents(
+          ["https://example.com/research-paper"],
+          highlights={"query": "methodology and results"},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.getContents(
+        ["https://example.com/research-paper"],
+        {
+          highlights: {
+            query: "methodology and results"
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/contents" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "ids": ["https://example.com/research-paper"],
+          "highlights": {
+            "query": "methodology and results"
+          }
+        }'
+      ```
+    </CodeGroup>
+
+    动态 highlights 以及如何在多个页面之间分配上下文，请参见 [Highlights](/zh/docs/search/highlights)。
+  </Tab>
+
+  <Tab title="全文">
+    全文以 markdown 形式返回整洁的页面正文。当任务依赖完整上下文、文档结构，或 highlights 可能遗漏的细节时，请使用全文。
+
+    完整页面可能很大，需要限制长度时请使用 `maxCharacters`：
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.get_contents(
+          ["https://example.com/technical-report"],
+          text={"max_characters": 10000},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.getContents(
+        ["https://example.com/technical-report"],
+        {
+          text: {
+            maxCharacters: 10000
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/contents" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "ids": ["https://example.com/technical-report"],
+          "text": {
+            "maxCharacters": 10000
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="摘要">
+    summary 会为每个页面发起一次语言模型调用。当你需要模型生成的概览，或需要按 JSON schema 提取字段时，请使用它。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.get_contents(
+          ["https://example.com/company"],
+          summary={"query": "Summarize the product, customers, and pricing"},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.getContents(
+        ["https://example.com/company"],
+        {
+          summary: {
+            query: "Summarize the product, customers, and pricing"
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/contents" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "ids": ["https://example.com/company"],
+          "summary": {
+            "query": "Summarize the product, customers, and pricing"
+          }
+        }'
+      ```
+    </CodeGroup>
+
+    如果想提取字段而不是成段文字，可在 `summary.schema` 中传入 JSON schema。summary 会以符合该 schema 的 JSON 字符串返回，解析后即可读取各字段：
+
+    ```json theme={null}
+    {
+      "ids": ["https://example.com/company"],
+      "summary": {
+        "schema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "title": "Company Information",
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "description": "The company name" },
+            "industry": { "type": "string", "description": "Primary industry" },
+            "foundedYear": { "type": "number", "description": "Year the company was founded" }
+          },
+          "required": ["name"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+每次请求只选用一种内容视图。若同时请求 highlights、text 和 summary，将分别返回每种视图并分别计费。
+
+<div id="content-freshness">
+  ## 内容新鲜度
+</div>
+
+`maxAgeHours` 用于控制提取的页面内容需要多新。
+
+| 值    | 行为                          |
+| ---- | --------------------------- |
+| 省略   | 有缓存内容时使用缓存，需要时再抓取页面         |
+| 正整数  | 若缓存内容的时间在该小时数以内则使用缓存，否则抓取页面 |
+| `0`  | 始终抓取最新内容                    |
+| `-1` | 仅使用缓存内容                     |
+
+大多数请求都应省略该字段。只有当陈旧的页面内容会导致结果不可用时才设置它，例如价格、库存情况或更新频繁的页面。可将较小的 `maxAgeHours` 与 `livecrawlTimeout` (毫秒) 搭配使用，以限制实时抓取的最长耗时。
+
+<Accordion title="从已弃用的 livecrawl 参数迁移">
+  字符串参数 `livecrawl` (`"always"`、`"preferred"`、`"fallback"`、`"never"`) 已弃用，请改用 `maxAgeHours`：
+
+  | 旧的 `livecrawl` 值 | 等价写法                                |
+  | ---------------- | ----------------------------------- |
+  | `"always"`       | `maxAgeHours: 0`                    |
+  | `"never"`        | `maxAgeHours: -1`                   |
+  | `"fallback"`     | 省略 `maxAgeHours`                    |
+  | `"preferred"`    | 无直接等价写法；请使用较小的值，例如 `maxAgeHours: 1` |
+</Accordion>
+
+<div id="crawl-subpages">
+  ## 抓取子页面
+</div>
+
+设置 `subpages` 可从每个起始 URL 顺着链接继续抓取。若希望 Exa 优先抓取特定的站点板块，可加上 `subpageTarget`：
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.get_contents(
+      ["https://docs.example.com"],
+      subpages=10,
+      subpage_target=["api", "reference", "guides"],
+      highlights=True,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.getContents(
+    ["https://docs.example.com"],
+    {
+      subpages: 10,
+      subpageTarget: ["api", "reference", "guides"],
+      highlights: true
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/contents" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "ids": ["https://docs.example.com"],
+      "subpages": 10,
+      "subpageTarget": ["api", "reference", "guides"],
+      "highlights": true
+    }'
+  ```
+</CodeGroup>
+
+<div id="images-and-favicons">
+  ## 图片与站点图标
+</div>
+
+将 `extras.imageLinks` 设置为你希望从每个页面获取的图片 URL 数量。结果中还会包含站点的 `favicon`，以及一个具有代表性的 `image` URL (如果有) 。在 `/search` 中，该选项位于 `contents.extras.imageLinks`。
+
+<div id="next-steps">
+  ## 后续步骤
+</div>
+
+<Columns cols={2}>
+  <Card title="API 参考" icon="square-terminal" href="/zh/docs/reference/get-contents" cta="打开参考文档" arrow="true">
+    查看全部请求参数与响应字段。
+  </Card>
+
+  <Card title="Highlights" icon="highlighter" href="/zh/docs/search/highlights" cta="阅读指南" arrow="true">
+    对比常规 highlights 与 Dynamic Highlights，为 agent 和 RAG 提供上下文。
+  </Card>
+
+  <Card title="Search API" icon="search" href="/zh/docs/search/quickstart" cta="打开指南" arrow="true">
+    先找到相关页面，再提取其内容。
+  </Card>
+
+  <Card title="SDK" icon="code" href="/zh/docs/sdks/quickstart" cta="查看 SDK" arrow="true">
+    在 Python 或 JavaScript 中使用 Exa。
+  </Card>
+</Columns>

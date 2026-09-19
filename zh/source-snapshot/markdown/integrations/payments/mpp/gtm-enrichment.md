@@ -1,0 +1,549 @@
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
+>
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件查看所有可用页面。
+
+<div id="tempo-mpp-gtm-enrichment-cookbook">
+  # Tempo MPP GTM Enrichment 实践手册
+</div>
+
+> 构建 GTM enrichment 工作流，通过 Tempo MPP 按每次 Exa search 与 contents 请求付费——无需 API key。
+
+参考本手册，基于 Exa 的 `/search` 与 `/contents` 端点构建 GTM enrichment 智能体或流水线，并通过 Machine
+Payments Protocol (MPP) 按请求付费。MPP 支持多种支付方式，本文示例使用 [Tempo](https://tempo.xyz) 上的稳定币。无需按月订阅，无需
+API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客户或公司做 enrichment 时按量付费。
+
+<Info>
+  目前 MPP 仅支持 Exa 的 `/search` 和 `/contents` 端点。
+  Agent API (`/agent/runs`) 和 `/answer` 需要 Exa API key，走标准的 API key 计费流程。
+</Info>
+
+<div id="what-youll-build">
+  ## 你将构建什么
+</div>
+
+一条轻量级的 enrichment 流水线：给定一组公司名称或目标描述后，它会
+
+1. 使用 Exa `/search`，配合 `type: "deep"` 和 `outputSchema`，找到公司官方页面并提取关键元数据。
+2. 对返回结果使用 `contents.highlights`，提取融资、总部、员工规模和产品相关的来源片段。
+3. 为每条输入生成一条 CSV 或 JSON 格式的 enrichment 记录。
+
+该模式适用于线索列表 enrichment、客户调研以及外呼个性化等场景。由于它由独立的 `/search` + `/contents` 调用组成，每一步都可以通过 MPP 付费。
+
+<div id="prerequisites">
+  ## 前置条件
+</div>
+
+* 一个兼容 Tempo 的钱包，并已在 Tempo 主网充值 **USDC.e**。
+* 一种在运行时安全加载钱包私钥的方式 (见下文；切勿提交私钥或将其暴露在源代码中) 。
+* 已安装 `mppx` (TypeScript) 或 `pympp` (Python) 。
+
+<Info>
+  如果希望使用无需原始私钥的命令行方案，请使用 [Tempo Wallet CLI](/zh/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line)。`tempo wallet login` 可创建或连接钱包，新注册用户还可能获得免费的 MPP 积分。
+</Info>
+
+<div id="mpp-setup">
+  ## MPP 设置
+</div>
+
+<div id="install-the-client">
+  ### 安装客户端
+</div>
+
+<CodeGroup>
+  ```bash TypeScript theme={null}
+  npm install mppx viem
+  ```
+
+  ```bash Python theme={null}
+  pip install "pympp[tempo]"
+  ```
+</CodeGroup>
+
+<div id="load-your-private-key-safely">
+  ### 安全地加载私钥
+</div>
+
+切勿硬编码私钥。下面的示例从运行时环境变量中读取 `WALLET_PRIVATE_KEY`，仅适用于本地开发。在生产环境中，请使用密钥管理服务加载，例如 1Password、AWS Secrets Manager 或 HashiCorp Vault。
+
+<CodeGroup>
+  ```bash TypeScript theme={null}
+  # 在你的 shell 或 CI 密钥存储中设置；切勿提交该值
+  export WALLET_PRIVATE_KEY="0x..."
+  ```
+
+  ```bash Python theme={null}
+  # 在你的 shell 或 CI 密钥存储中设置；切勿提交该值
+  export WALLET_PRIVATE_KEY="0x..."
+  ```
+</CodeGroup>
+
+<div id="make-a-paid-search-request">
+  ### 发起一次付费 search 请求
+</div>
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import { Mppx, tempo } from "mppx/client";
+  import { privateKeyToAccount } from "viem/accounts";
+
+  // 在生产环境中，请从密钥管理服务加载该值 —— 切勿将原始值提交到代码仓库。
+  const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);
+  const mppx = Mppx.create({
+    methods: [tempo.charge({ account })],
+  });
+
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "Series A fintech companies with 50-200 employees",
+      numResults: 5,
+      contents: { highlights: true },
+    }),
+  });
+
+  const data = (await response.json()) as { results: { title: string; url: string }[] };
+  console.log(data.results);
+  console.log("Payment receipt:", response.headers.get("Payment-Receipt"));
+  ```
+
+  ```python Python theme={null}
+  import asyncio
+  import os
+
+  from mpp.client import Client
+  from mpp.methods.tempo import ChargeIntent, TempoAccount, tempo
+
+
+  async def main() -> None:
+      # 在生产环境中，请从密钥管理服务加载该值 —— 切勿将原始值提交到代码仓库。
+      account = TempoAccount.from_key(os.environ["WALLET_PRIVATE_KEY"])
+      method = tempo(
+          account=account,
+          chain_id=4217,
+          intents={"charge": ChargeIntent()},
+      )
+
+      async with Client(methods=[method]) as client:
+          response = await client.post(
+              "https://api.exa.ai/search",
+              json={
+                  "query": "Series A fintech companies with 50-200 employees",
+                  "numResults": 5,
+                  "contents": {"highlights": True},
+              },
+          )
+
+      data = response.json()
+      for result in data["results"]:
+          print(result["url"], result["title"])
+      print("Payment receipt:", response.headers.get("Payment-Receipt"))
+
+
+  asyncio.run(main())
+  ```
+</CodeGroup>
+
+请求成功时会返回 Exa 结果，并附带一个 `Payment-Receipt` header，其中包含链上交易哈希。
+
+<div id="make-a-paid-contents-request">
+  ### 发起付费的 contents 请求
+</div>
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  const contentsResponse = await mppx.fetch("https://api.exa.ai/contents", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      urls: ["https://www.example.com"],
+      text: true,
+      summary: true,
+    }),
+  });
+
+  const contentsData = (await contentsResponse.json()) as {
+    results: { url: string; text?: string; summary?: string }[];
+  };
+  console.log(contentsData.results[0]);
+  ```
+
+  ```python Python theme={null}
+  response = await client.post(
+      "https://api.exa.ai/contents",
+      json={
+          "urls": ["https://www.example.com"],
+          "text": True,
+          "summary": True,
+      },
+  )
+  print(response.json()["results"][0])
+  ```
+</CodeGroup>
+
+<div id="gtm-enrichment-recipe">
+  ## GTM enrichment 实践方案
+</div>
+
+<div id="enrich-a-list-of-companies">
+  ### 对公司列表做 enrichment
+</div>
+
+给定一组公司名称，为每家公司搜索其页面并提取结构化信息。
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  interface CompanyEnrichment {
+    name: string;
+    url: string;
+    title: string;
+    industry?: string;
+    headquarters?: string;
+    funding?: string;
+    summary?: string;
+    highlights: string[];
+  }
+
+  async function enrichCompanies(names: string[]): Promise<CompanyEnrichment[]> {
+    const enriched: CompanyEnrichment[] = [];
+
+    for (const name of names) {
+      const response = await mppx.fetch("https://api.exa.ai/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `${name} official company`,
+          type: "deep",
+          numResults: 1,
+          contents: {
+            highlights: { query: "funding, headquarters, employees, product" },
+          },
+          outputSchema: {
+            type: "object",
+            properties: {
+              company: {
+                type: "object",
+                properties: {
+                  name: { type: "string" },
+                  url: { type: "string" },
+                  industry: { type: "string" },
+                  headquarters: { type: "string" },
+                  funding: { type: "string" },
+                  summary: { type: "string" },
+                },
+                required: ["name", "url"],
+              },
+            },
+            required: ["company"],
+          },
+        }),
+      });
+
+      const data = (await response.json()) as {
+        output?: { company?: CompanyEnrichment & { summary?: string } };
+        results?: { highlights?: string[] }[];
+      };
+      const company = data.output?.company;
+      const highlights = data.results?.[0]?.highlights?.slice(0, 3) ?? [];
+      if (!company) continue;
+
+      enriched.push({
+        ...company,
+        title: company.name,
+        highlights,
+      });
+    }
+
+    return enriched;
+  }
+  ```
+
+  ```python Python theme={null}
+  async def enrich_companies(names):
+      enriched = []
+      for name in names:
+          response = await client.post(
+              "https://api.exa.ai/search",
+              json={
+                  "query": f"{name} official company",
+                  "type": "deep",
+                  "numResults": 1,
+                  "contents": {
+                      "highlights": {"query": "funding, headquarters, employees, product"}
+                  },
+                  "outputSchema": {
+                      "type": "object",
+                      "properties": {
+                          "company": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "url": {"type": "string"},
+                                  "industry": {"type": "string"},
+                                  "headquarters": {"type": "string"},
+                                  "funding": {"type": "string"},
+                                  "summary": {"type": "string"},
+                              },
+                              "required": ["name", "url"],
+                          }
+                      },
+                      "required": ["company"],
+                  },
+              },
+          )
+          data = response.json()
+          company = data.get("output", {}).get("company")
+          highlights = []
+          if data.get("results"):
+              highlights = data["results"][0].get("highlights", [])[:3]
+          if not company:
+              continue
+
+          enriched.append({
+              "name": company["name"],
+              "url": company["url"],
+              "title": company["name"],
+              "industry": company.get("industry"),
+              "headquarters": company.get("headquarters"),
+              "funding": company.get("funding"),
+              "summary": company.get("summary"),
+              "highlights": highlights,
+          })
+      return enriched
+  ```
+</CodeGroup>
+
+<div id="enrich-a-person-profile">
+  ### 丰富人物档案
+</div>
+
+本示例使用 `type: "deep"`、`contents.highlights` 和 `outputSchema`
+调研某个人物并返回结构化档案。
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "Exa Labs founders contact and background",
+      type: "deep",
+      numResults: 5,
+      contents: {
+        highlights: { query: "email, title, education, work history, LinkedIn" },
+      },
+      outputSchema: {
+        type: "object",
+        properties: {
+          people: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                title: { type: "string" },
+                company: { type: "string" },
+                email: { type: "string" },
+                linkedInUrl: { type: "string" },
+                summary: { type: "string" },
+              },
+              required: ["name"],
+            },
+          },
+        },
+        required: ["people"],
+      },
+    }),
+  });
+
+  const data = (await response.json()) as {
+    output?: { people: { name: string; title?: string; company?: string }[] };
+  };
+  console.log(data.output?.people);
+  ```
+
+  ```python Python theme={null}
+  response = await client.post(
+      "https://api.exa.ai/search",
+      json={
+          "query": "Exa Labs founders contact and background",
+          "type": "deep",
+          "numResults": 5,
+          "contents": {
+              "highlights": {"query": "email, title, education, work history, LinkedIn"}
+          },
+          "outputSchema": {
+              "type": "object",
+              "properties": {
+                  "people": {
+                      "type": "array",
+                      "items": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "title": {"type": "string"},
+                              "company": {"type": "string"},
+                              "email": {"type": "string"},
+                              "linkedInUrl": {"type": "string"},
+                              "summary": {"type": "string"},
+                          },
+                          "required": ["name"],
+                      },
+                  }
+              },
+              "required": ["people"],
+          },
+      },
+  )
+
+  print(response.json().get("output", {}).get("people"))
+  ```
+</CodeGroup>
+
+<Note>
+  这里用 `type: "deep"` 获得更深入的推理，并用 `outputSchema`
+  约束响应结构。深度搜索按每次请求 $0.012 计费，
+  `contents.highlights` 每条结果额外收取 $0.001。
+</Note>
+
+<div id="structured-output">
+  ### 结构化输出
+</div>
+
+如果你想要的是 JSON 字段而非纯文本，可以在 search 请求中使用 `outputSchema`。Exa 会返回一个与你的 schema 结构一致的 `output` 对象。
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = await client.post(
+      "https://api.exa.ai/search",
+      json={
+          "query": "Series A fintech companies with 50-200 employees",
+          "type": "deep-lite",
+          "numResults": 5,
+          "outputSchema": {
+              "type": "object",
+              "properties": {
+                  "companies": {
+                      "type": "array",
+                      "items": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "headcount": {"type": "string"},
+                              "headquarters": {"type": "string"},
+                              "fundingStage": {"type": "string"},
+                          },
+                          "required": ["name"],
+                      },
+                  }
+              },
+              "required": ["companies"],
+          },
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "Series A fintech companies with 50-200 employees",
+      type: "deep-lite",
+      numResults: 5,
+      outputSchema: {
+        type: "object",
+        properties: {
+          companies: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                headcount: { type: "string" },
+                headquarters: { type: "string" },
+                fundingStage: { type: "string" }
+              },
+              required: ["name"]
+            }
+          }
+        },
+        required: ["companies"]
+      }
+    })
+  });
+  ```
+</CodeGroup>
+
+<Note>
+  `outputSchema` 搭配 `deep-lite` 或 `deep` 搜索类型使用效果最佳。它会在 Exa 侧额外产生一次
+  LLM 调用，因此按 `deep-lite`/`deep` 计费。
+</Note>
+
+<div id="pricing-and-limits">
+  ## 定价与限制
+</div>
+
+MPP 采用与 API key 计费相同的按请求定价。MPP 搜索请求
+最多返回 10 条结果。
+
+| 操作                                             | 价格            |
+| ---------------------------------------------- | ------------- |
+| `type` 为 `instant`、`auto` 或 `fast` 的 `/search` | 每次请求 $0.007   |
+| `type` 为 `deep-lite` 或 `deep` 的 `/search`      | 每次请求 $0.012   |
+| `type` 为 `deep-reasoning` 的 `/search`          | 每次请求 $0.015   |
+| `contents.text`                                | 每个 URL $0.001 |
+| `contents.highlights`                          | 每个 URL $0.001 |
+| `contents.summary`                             | 每条结果 $0.001   |
+
+完整参考请参见 [Pay with MPP (Tempo)](/zh/docs/integrations/payments/mpp/quickstart)，
+其中包含速率限制、网络详情和支付 header。
+
+<div id="production-tips">
+  ## 生产环境建议
+</div>
+
+* **只向钱包充值 USDC.e。** Exa 会代付 Tempo 网络手续费，因此钱包无需另外持有 gas 代币。
+* **处理 `402` 响应。** MPP SDK 会自动重试；若使用自定义客户端，则应在收到 `402` 时根据 `WWW-Authenticate: Payment` 质询发起重试。
+* **缓存 `/contents` 结果。** Contents 按 URL 计费，请按 URL 缓存，避免为同一个公司页面重复付费。
+* **注意 10 条结果上限。** MPP search 会将 `numResults` 限制为 10。
+* **切勿提交私钥。** 请从密钥管理服务加载 `WALLET_PRIVATE_KEY`，不要放入源代码版本库。
+
+<div id="faq">
+  ## FAQ
+</div>
+
+<AccordionGroup>
+  <Accordion title="MPP 可以配合 Exa Agent API 使用吗？">
+    不可以。在 Exa 代码库中，MPP 仅接入了 `/search` 和 `/contents`。
+    `/agent/runs` 和 `/answer` 需要 Exa API key，并采用标准的 API key
+    计费方式。
+  </Accordion>
+
+  <Accordion title="可以在同一个请求中同时使用 MPP 和 Exa API key 吗？">
+    不可以。如果请求中包含 `x-api-key` 或 `Authorization: Bearer`，则
+    API key 流程优先，MPP 会被绕过。
+  </Accordion>
+
+  <Accordion title="MPP 结算失败会怎样？">
+    Exa 会返回 `402`，并附带一个新的 `WWW-Authenticate: Payment` 质询，不返回
+    任何结果。你的客户端可以重新发起付款并重试。在结算成功之前，不会返回任何结果。
+  </Accordion>
+
+  <Accordion title="每个环境都需要单独的 Tempo 钱包吗？">
+    可以复用同一个钱包，但我们建议开发环境和生产环境分别使用独立钱包。
+    单个钱包的 QPS 为 10 请求/秒，该限制涵盖此钱包发出的所有请求。
+  </Accordion>
+</AccordionGroup>
+
+<div id="next-steps">
+  ## 后续步骤
+</div>
+
+* [使用 MPP (Tempo) 付款](/zh/docs/integrations/payments/mpp/quickstart)：完整的 MPP 参考文档
+* [Exa Search API 指南](/zh/docs/search/quickstart)：搜索参数参考
+* [Exa Contents API 指南](/zh/docs/contents/quickstart)：contents 参数参考
+* [Tempo MPP 文档](https://mpp.dev/protocol)：协议与 SDK 详情

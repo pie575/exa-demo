@@ -1,0 +1,146 @@
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="exa-in-claude-code-web-and-desktop">
+  # Exa en Claude Code, Web y Desktop
+</div>
+
+> Busca en la web y lee cualquier página con Exa directamente desde Claude
+
+Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para darle a Claude acceso a información actualizada de la web. Claude puede buscar en lenguaje natural, leer las páginas relevantes y usar esas fuentes mientras trabaja.
+
+<div id="install-exa">
+  ## Instalar Exa
+</div>
+
+<div className="docs-tabs">
+  <Tabs>
+    <Tab title="Claude Web, Desktop y Cowork" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
+      <Steps>
+        <Step title="Abre el directorio de conectores">
+          En un chat nuevo de Claude, pulsa el botón de más, elige **Add connector** y busca **Exa**.
+        </Step>
+
+        <Step title="Conecta Exa">
+          Abre Exa, selecciona **Connect to Claude** y autoriza el acceso cuando se te solicite.
+
+          <Frame caption="Abrir el directorio de conectores en Claude, encontrar Exa, conectarlo y autorizar el acceso">
+            <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/claude-web-desktop/install-claude.gif?s=259e8d897252e7f8435b94dc6ceeae5d" alt="Abrir el directorio de conectores en Claude, encontrar Exa, conectarlo y autorizar el acceso" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
+          </Frame>
+        </Step>
+
+        <Step title="Usa Exa">
+          Inicia un chat nuevo y pide algo que requiera información actualizada de la web.
+        </Step>
+      </Steps>
+    </Tab>
+
+    <Tab title="CLI de Claude Code" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude-code.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=f7f017b187974c56e5822d7baf8272fa" width="16" height="16" data-path="images/mcp-clients/claude-code.svg">
+      <Steps>
+        <Step title="Instala el plugin">
+          Instala Exa desde la terminal:
+
+          ```bash theme={null}
+          claude plugin install exa@claude-plugins-official
+          ```
+
+          También puedes escribir `/plugin` en Claude Code, buscar **Exa** e instalarlo.
+        </Step>
+
+        <Step title="Inicia una sesión nueva">
+          Abre una nueva sesión de Claude Code para que se cargue el plugin y luego pide algo que requiera la web.
+
+          <Frame caption="Abrir una nueva sesión de Claude Code y pedir algo que requiera la web">
+            <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/claude-web-desktop/claude-code.gif?s=1a6d69ab819e600fd2101771380a5711" alt="Abrir una nueva sesión de Claude Code y pedir algo que requiera la web" style={{width: "100%", height: "auto"}} width="800" height="502" data-path="images/integrations/claude-web-desktop/claude-code.gif" />
+          </Frame>
+        </Step>
+      </Steps>
+    </Tab>
+  </Tabs>
+</div>
+
+Ambas opciones ponen Exa a tu disposición sin necesidad de editar un archivo de configuración de MCP.
+
+<div id="work-with-whats-on-the-web-right-now">
+  ## Trabaja con lo que hay en la web ahora mismo
+</div>
+
+En Claude Code, Exa puede buscar documentación actualizada, issues, changelogs y ejemplos reales mientras trabajas en tu repositorio. Esa misma integración aporta a Claude Web, Desktop y Cowork noticias de actualidad, investigaciones, información de empresas, detalles de productos y otras fuentes que quizá no estén todavía en el contexto.
+
+```text theme={null}
+Estamos usando Tailwind v3. Usa Exa para buscar y leer la guía oficial de
+actualización a Tailwind v4 y luego migra este proyecto a v4.
+```
+
+Claude Code puede usar lo que encuentra para aplicar el cambio en tu base de código. En otros clientes de Claude, puede usar esas mismas fuentes en respuestas, artefactos y tareas de Cowork.
+
+El mismo patrón funciona siempre que la respuesta dependa de fuentes web actuales o específicas:
+
+* «Busca las notas de la última versión de esta dependencia y resume los cambios incompatibles».
+* «Busca investigación primaria reciente sobre escalado en tiempo de inferencia y compara los métodos».
+* «Lee la documentación actual de webhooks de Stripe y explica el comportamiento de reintento recomendado».
+* «Busca las páginas de precios oficiales de estos productos y compara sus planes de nivel inicial».
+
+<div id="search-read-and-research">
+  ## Buscar, leer e investigar
+</div>
+
+La integración de Exa ofrece a Claude herramientas para buscar y leer contenido de la web, que puede combinar a lo largo de una tarea de investigación más extensa.
+
+<Columns cols={3}>
+  <Card title="Buscar" icon="search">
+    Busca en lenguaje natural y obtén el contenido relevante de las páginas, no solo una lista de enlaces.
+  </Card>
+
+  <Card title="Leer" icon="file-text">
+    Lee la página que le indiques, ya sea documentación, investigaciones, registros de cambios, issues o artículos.
+  </Card>
+
+  <Card title="Investigar" icon="compass">
+    Ejecuta varias búsquedas, revisa las páginas útiles y combina la evidencia en una respuesta con fuentes.
+  </Card>
+</Columns>
+
+<div id="research-without-leaving-claude">
+  ## Investiga sin salir de Claude
+</div>
+
+Pide el resultado que quieres e indícale a Claude qué tipo de fuentes te interesan:
+
+```text theme={null}
+Compara las ofertas gestionadas, las licencias y los precios de las principales
+bases de datos vectoriales de código abierto. Usa fuentes primarias actuales y cítalas.
+```
+
+Claude puede usar Exa durante toda la conversación para encontrar y leer las fuentes que necesite para la tarea. Úsalo para investigación técnica, análisis competitivo, mapeo de mercado, investigación de empresas o cualquier pregunta cuya respuesta esté dispersa por la web.
+
+<div id="use-exa-in-cowork">
+  ## Usa Exa en Cowork
+</div>
+
+El mismo conector está disponible en Cowork. Dale a Claude una tarea que dependa de información externa y podrá buscar o leer páginas mientras trabaja con tus archivos y otras herramientas conectadas.
+
+```text theme={null}
+Revisa este informe de competencia, contrasta con Exa cada afirmación sobre precios
+con las páginas actuales de los proveedores y actualiza el documento con las citas.
+```
+
+<div id="prefer-mcp-directly">
+  ## ¿Prefieres usar MCP directamente?
+</div>
+
+Si configuras Claude manualmente o usas otro cliente MCP, puedes conectarte directamente al servidor MCP alojado de Exa:
+
+```bash theme={null}
+claude mcp add --transport http exa https://mcp.exa.ai/mcp
+```
+
+Consulta [Exa MCP](/es/docs/get-started/exa-mcp) para conocer otros clientes, opciones de configuración y herramientas disponibles.
+
+<Card title="Abrir el conector de Exa" icon="external-link" horizontal href="https://claude.ai/connectors/exa">
+  Agrega Exa desde el directorio de conectores de Claude.
+</Card>

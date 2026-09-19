@@ -1,0 +1,157 @@
+---
+title: "Websets"
+sidebarTitle: "Быстрый старт"
+description: "Создавайте проверенные и обогащённые наборы данных из интернета."
+boost: 4
+---
+
+<div id="what-are-websets">
+  ## Что такое Websets?
+</div>
+
+Webset начинается с запроса на естественном языке и целевого количества элементов. Задайте criteria, которым должен удовлетворять каждый результат, и поля enrichment, заполняемые для каждого принятого элемента. Результаты приходят асинхронно — через дашборд, API или вебхуки.
+
+Кроме того, websets можно собирать визуально в [дашборде](/ru/docs/websets/dashboard/get-started), без единой строчки кода.
+
+<Info>
+  Начинаете новый сценарий построения списков или enrichment? Используйте [Exa Agent](/ru/docs/agent/quickstart).
+  Это руководство пригодится для поддержки или расширения уже существующей интеграции с Websets.
+  Для Websets API нужен платный тариф Websets; credits для Search API и credits для Websets учитываются отдельно.
+</Info>
+
+<div id="how-it-works">
+  ## Как это работает
+</div>
+
+1. **Определите Search:** Укажите запрос на естественном языке, количество результатов, а также при необходимости criteria для проверки и enrichments.
+2. **Поиск и проверка:** Websets находит кандидатов и сверяет каждого из них с вашими criteria. Только подходящие результаты становятся items.
+3. **Выполнение enrichments:** Для каждого проверенного item Websets находит запрошенные вами дополнительные данные — например, имя CEO, объём финансирования или контактную информацию.
+4. **Получение результатов:** Опрашивайте статус, используйте вебхуки для получения обновлений или отслеживайте появление items в дашборде.
+
+<div id="key-capabilities">
+  ## Ключевые возможности
+</div>
+
+| Возможность              | Что она даёт                                                                                               |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------- |
+| **Проверка по criteria** | Каждый результат проверяется по заданным вами правилам, поэтому вы получаете только релевантные совпадения |
+| **Enrichments**          | Извлечение конкретных данных (текст, числа, даты, логические значения) для каждого результата              |
+| **Monitors**             | Регулярные search-запросы по расписанию, которые автоматически поддерживают webset в актуальном состоянии  |
+| **Вебхуки**              | HTTP-вызовы в реальном времени при добавлении или обогащении items                                         |
+| **Imports**              | Загрузка собственных URL и запуск enrichments по ним                                                       |
+
+<div id="human-quickstart">
+  ## Быстрый старт для людей
+</div>
+
+<Card title="Получите Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте key в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>
+
+Установите SDK:
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install exa-py
+  ```
+
+  ```bash JavaScript theme={null}
+  npm install exa-js
+  ```
+</CodeGroup>
+
+Затем выполните первый запрос:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+  from exa_py.websets.types import CreateWebsetParameters, CreateEnrichmentParameters
+  import os
+
+  exa = Exa(api_key=os.getenv("EXA_API_KEY"))
+
+  webset = exa.websets.create(
+      params=CreateWebsetParameters(
+          search={
+              "query": "Top AI research labs focusing on large language models",
+              "count": 5
+          },
+          enrichments=[
+              CreateEnrichmentParameters(
+                  description="LinkedIn profile of VP of Engineering or related role",
+                  format="text",
+              ),
+          ],
+      )
+  )
+
+  print(f"Webset created with ID: {webset.id}")
+  print(f"View your Webset at: {webset.dashboard_url}")
+
+  # Ждём, пока Webset завершит обработку
+  webset = exa.websets.wait_until_idle(webset.id)
+
+  # Получаем Items из Webset
+  items = exa.websets.items.list(webset_id=webset.id)
+  for item in items.data:
+      print(f"Item: {item.model_dump_json(indent=2)}")
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa(process.env.EXA_API_KEY);
+
+  const webset = await exa.websets.create({
+    search: {
+      query: "Top AI research labs focusing on large language models",
+      count: 10
+    },
+    enrichments: [
+      { description: "Estimate the company's founding year", format: "number" }
+    ],
+  });
+
+  console.log(`Webset created with ID: ${webset.id}`);
+  console.log(`View your Webset at: ${webset.dashboardUrl}`);
+
+  const idleWebset = await exa.websets.waitUntilIdle(webset.id, {
+    timeout: 60000,
+    pollInterval: 2000,
+    onPoll: (status) => console.log(`Current status: ${status}...`)
+  });
+
+  const items = await exa.websets.items.list(webset.id, { limit: 10 });
+  for (const item of items.data) {
+    console.log(`Item: ${JSON.stringify(item, null, 2)}`);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/websets/v0/websets/" \
+    -H "accept: application/json" \
+    -H "content-type: application/json" \
+    -H "Authorization: Bearer ${EXA_API_KEY}" \
+    -d '{
+      "search": {
+        "query": "Top AI research labs focusing on large language models",
+        "count": 5
+      },
+      "enrichments": [
+        {"description": "Find the company'\''s founding year", "format": "number"}
+      ]
+    }'
+  ```
+</CodeGroup>
+
+<Note>
+  Информацию о доступности в продуктах см. в разделе [Zero Data Retention](/ru/docs/admin/security/zero-data-retention).
+</Note>
+
+<div id="next">
+  ## Далее
+</div>
+
+* [**Руководство по дашборду**](./dashboard/get-started) — пошаговое руководство по работе с Websets в дашборде
+* [**Как это работает**](/ru/docs/websets/quickstart) — подробный разбор событийно-ориентированной архитектуры
+* [**Справочник по API Websets**](./api/websets/create-a-webset) — полный справочник по API для всех эндпоинтов

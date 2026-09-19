@@ -1,0 +1,626 @@
+---
+title: "Начните разработку с Exa"
+sidebarTitle: "Обзор"
+description: "Мощный инструмент веб-поиска, созданный для агентов. Всё оптимизировано так, чтобы вы получали точные результаты с экономным расходом токенов."
+mode: "wide"
+timestamp: false
+hideFooterPagination: true
+contextual: {"options": []}
+---
+
+export const DocsImage = props => {
+  const docsBase = () => {
+    if (typeof window === "undefined") return "";
+    const current = (document.documentElement.dataset.currentPath || "/").replace(/\/$/, "");
+    const path = window.location.pathname.replace(/\/$/, "");
+    return current && path.endsWith(current) ? path.slice(0, -current.length) : path;
+  };
+  const base = "";
+  return <img {...props} src={base + props.src} />;
+};
+
+export const ApiCards = ({only}) => {
+  const docsBase = () => {
+    if (typeof window === "undefined") return "";
+    const current = (document.documentElement.dataset.currentPath || "/").replace(/\/$/, "");
+    const path = window.location.pathname.replace(/\/$/, "");
+    return current && path.endsWith(current) ? path.slice(0, -current.length) : path;
+  };
+  const base = "";
+  const cards = [{
+    id: "search",
+    title: "Search",
+    body: "Актуальные данные с привязкой к источникам и экономичным расходом токенов",
+    href: "/docs/search/quickstart",
+    image: "/docs/images/home/api-search.webp",
+    alt: "Окно поиска Exa с ранжированными веб-результатами и доменами их источников"
+  }, {
+    id: "agent",
+    title: "Agent",
+    body: "Асинхронные агенты для глубоких исследований, составления списков и enrichment",
+    href: "/docs/agent/quickstart",
+    image: "/docs/images/home/api-agent.webp",
+    alt: "Таблица компаний с данными о партнёрствах, историях клиентов и использовании облачных сервисов"
+  }, {
+    id: "search-deep",
+    title: "Глубокий поиск",
+    body: "Поиск, который сопоставляет данные из разных источников и возвращает структурированный результат",
+    href: "/docs/search/deep-search",
+    image: "/docs/images/home/api-search-deep.webp",
+    alt: "Запрос глубокого поиска, возвращающий структурированный JSON о биотехнологических компаниях"
+  }, {
+    id: "contents",
+    title: "Contents",
+    body: "Полный текст, highlights и сводки по любому URL",
+    href: "/docs/contents/quickstart",
+    image: "/docs/images/home/api-contents.webp",
+    alt: "Извлечённое содержимое страницы Wikipedia о Boeing"
+  }, {
+    id: "monitors",
+    title: "Мониторы",
+    body: "Запланированные поиски, отслеживающие веб и отправляющие новые результаты",
+    href: "/docs/monitors/quickstart",
+    image: "/docs/images/home/api-monitors.webp",
+    alt: "Монитор Anthropic Releases and News, запускаемый ежедневно",
+    hidden: true
+  }];
+  const visible = only ? only.map(id => cards.find(card => card.id === id)).filter(Boolean) : cards.filter(card => !card.hidden);
+  return <div className="docs-home-cards">
+      {visible.map(card => <a className="docs-home-card" href={card.href} key={card.id}>
+          <img src={base + card.image} alt={card.alt} />
+          <span className="docs-home-card-text">
+            <span className="docs-home-card-title">{card.title}</span>
+            <span className="docs-home-card-body">{card.body}</span>
+          </span>
+        </a>)}
+    </div>;
+};
+
+<div className="docs-home">
+  <a className="docs-home-llms" href="/ru/docs/llms.txt">
+    Если вы LLM, читайте <span className="docs-home-llms-word">LLMs.txt</span>
+  </a>
+
+  <div className="docs-home-quickstart">
+    <DocsImage className="docs-home-quickstart-bg" src="/docs/images/home/quickstart-banner.webp" alt="" aria-hidden="true" />
+
+    <div className="docs-home-quickstart-copy">
+      <span className="docs-home-quickstart-title">Добавьте Exa в своего агента</span>
+      <p>Начните менее чем за минуту</p>
+    </div>
+
+    <div className="docs-home-quickstart-actions">
+      <a className="docs-home-button" href="/ru/docs/get-started/quickstart">
+        Начать
+      </a>
+
+      <a className="docs-home-button" href="https://dashboard.exa.ai/api-keys" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M13.452 4.63093L12.029 3.20792L13.1603 2.07657C13.5022 1.73474 13.5022 1.18105 13.1603 0.839339C12.8185 0.497622 12.2648 0.497506 11.9231 0.839339L6.31643 6.44602C5.9746 6.78785 5.9746 7.34153 6.31643 7.68325C6.48735 7.85416 6.71065 7.9396 6.93512 7.9396C7.15958 7.9396 7.38288 7.85416 7.5538 7.68325L10.7918 4.44529L12.2148 5.86824C12.3857 6.03916 12.609 6.12459 12.8334 6.12459C13.0579 6.12459 13.2812 6.03916 13.4521 5.86824C13.794 5.52641 13.7938 4.97265 13.452 4.63093Z" fill="currentColor" />
+
+          <path d="M4.66671 5.25C2.41539 5.25 0.583374 7.08202 0.583374 9.33333C0.583374 11.5847 2.41539 13.4167 4.66671 13.4167C6.91802 13.4167 8.75004 11.5847 8.75004 9.33333C8.75004 7.08202 6.91802 5.25 4.66671 5.25ZM4.08337 11.0833C3.43902 11.0833 2.91671 10.5609 2.91671 9.91667C2.91671 9.27243 3.43902 8.75 4.08337 8.75C4.72772 8.75 5.25004 9.27232 5.25004 9.91667C5.25004 10.561 4.72772 11.0833 4.08337 11.0833Z" fill="currentColor" />
+        </svg>
+
+        Получить API key
+      </a>
+    </div>
+  </div>
+
+  <div className="docs-home-try">
+    <input className="docs-home-radio" type="radio" name="docs-home-api" id="docs-home-api-search" defaultChecked />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-api" id="docs-home-api-contents" />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-api" id="docs-home-api-deep" />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-api" id="docs-home-api-tools" />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-api" id="docs-home-api-agent" />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-api" id="docs-home-api-agent-research" />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-lang" id="docs-home-lang-python" defaultChecked />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-lang" id="docs-home-lang-javascript" />
+
+    <input className="docs-home-radio" type="radio" name="docs-home-lang" id="docs-home-lang-curl" />
+
+    <div className="docs-home-try-grid">
+      <h2 className="docs-home-try-title">Примеры</h2>
+
+      <div className="docs-home-langs" role="tablist" aria-label="Язык">
+        <label htmlFor="docs-home-lang-python">
+          <svg className="docs-home-lang-icon" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M7.90456 0.000130867C7.24482 0.00316288 6.61479 0.0588139 6.06043 0.155836C4.42735 0.441196 4.13085 1.03848 4.13085 2.13997V3.59471H7.99002V4.07962H4.13085H2.68253C1.56095 4.07962 0.578861 4.74639 0.271676 6.01482C-0.0826578 7.46873 -0.0983745 8.37599 0.271676 9.89411C0.546 11.0241 1.20112 11.8293 2.3227 11.8293H3.64957V10.0854C3.64957 8.82554 4.75168 7.71423 6.06043 7.71423H9.9151C10.9881 7.71423 11.8447 6.84041 11.8447 5.77458V2.13997C11.8447 1.10554 10.9624 0.328479 9.9151 0.155836C9.25216 0.0466859 8.56429 -0.00290115 7.90456 0.000130867ZM5.81755 1.17015C6.21617 1.17015 6.5417 1.49738 6.5417 1.89974C6.5417 2.30067 6.21617 2.62488 5.81755 2.62488C5.41749 2.62488 5.09339 2.30067 5.09339 1.89974C5.09339 1.49738 5.41749 1.17015 5.81755 1.17015Z" />
+
+            <path d="M12.3259 4.08008V5.77504C12.3259 7.08913 11.1995 8.19515 9.91503 8.19515H6.06035C5.00449 8.19515 4.13077 9.08896 4.13077 10.1348V13.7694C4.13077 14.8038 5.04021 15.4123 6.06035 15.7091C7.28195 16.0643 8.4534 16.1285 9.91503 15.7091C10.8866 15.4308 11.8446 14.8709 11.8446 13.7694V12.3147H7.98994V11.8298H11.8446H13.7742C14.8958 11.8298 15.3137 11.056 15.7038 9.89457C16.1067 8.69891 16.0896 7.54909 15.7038 6.01528C15.4266 4.91093 14.8972 4.08008 13.7742 4.08008H12.3259ZM10.1579 13.2845C10.558 13.2845 10.8821 13.6087 10.8821 14.0096C10.8821 14.412 10.558 14.7392 10.1579 14.7392C9.75928 14.7392 9.43375 14.412 9.43375 14.0096C9.43375 13.6087 9.75928 13.2845 10.1579 13.2845Z" />
+          </svg>
+
+          Python
+        </label>
+
+        <label htmlFor="docs-home-lang-javascript">
+          <svg className="docs-home-lang-icon" viewBox="0 0 15 16" fill="currentColor" aria-hidden="true">
+            <path d="M7.09881 16C6.88455 16 6.67175 15.9438 6.4839 15.8356L4.5266 14.6768C4.23426 14.5133 4.37691 14.4555 4.47333 14.4222C4.86311 14.2857 4.94221 14.2549 5.35827 14.0186C5.40201 13.9937 5.45924 14.0025 5.504 14.0289L7.00768 14.9212C7.06198 14.9505 7.13903 14.9505 7.18936 14.9212L13.0523 11.537C13.1066 11.5061 13.1418 11.443 13.1418 11.3785V4.61295C13.1418 4.54544 13.1066 4.48527 13.0511 4.45152L7.19054 1.07023C7.13624 1.03794 7.06433 1.03794 7.01003 1.07023L1.15059 4.45152C1.0938 4.4838 1.05769 4.54691 1.05769 4.61148V11.377C1.05769 11.4416 1.09292 11.5032 1.14868 11.534L2.75421 12.4615C3.62595 12.8974 4.15868 12.3838 4.15868 11.8672V5.18971C4.15868 5.09431 4.23352 5.02094 4.32892 5.02094H5.07151C5.16396 5.02094 5.24028 5.09431 5.24028 5.18971V11.8701C5.24028 13.0324 4.60629 13.7002 3.50414 13.7002C3.16513 13.7002 2.89803 13.7002 2.1525 13.3333L0.614486 12.4469C0.234385 12.2267 -0.000427246 11.8158 -0.000427246 11.377V4.61148C-0.000427246 4.17121 0.234385 3.76029 0.614486 3.54309L6.48331 0.157397C6.85461 -0.0524658 7.34771 -0.0524658 7.71608 0.157397L13.5776 3.54456C13.9562 3.76323 14.1925 4.17268 14.1925 4.61295V11.3785C14.1925 11.8173 13.9562 12.2267 13.5776 12.4469L7.71608 15.8326C7.52823 15.9412 7.31543 15.9969 7.09823 15.9969" />
+
+            <path d="M8.9098 11.3382C6.34448 11.3382 5.80661 10.1606 5.80661 9.17294C5.80661 9.07902 5.88234 9.00417 5.97641 9.00417H6.73368C6.81733 9.00417 6.88777 9.06508 6.90098 9.1477C7.01545 9.91935 7.35593 10.3085 8.90715 10.3085C10.1428 10.3085 10.6682 10.0294 10.6682 9.37415C10.6682 8.99698 10.5185 8.71667 8.59896 8.52882C6.99344 8.37033 6.00136 8.01664 6.00136 6.73251C6.00136 5.54965 6.99931 4.84521 8.67087 4.84521C10.5479 4.84521 11.4783 5.49682 11.5957 6.89688C11.6002 6.94531 11.5825 6.99227 11.5503 7.0275C11.518 7.06125 11.4725 7.0818 11.4255 7.0818H10.6638C10.5846 7.0818 10.5156 7.02603 10.4995 6.94971C10.316 6.13815 9.87282 5.87839 8.66794 5.87839C7.31924 5.87839 7.16221 6.34801 7.16221 6.70023C7.16221 7.12729 7.34712 7.25203 9.16691 7.49272C10.9691 7.73193 11.8247 8.06947 11.8247 9.33599C11.8247 10.6128 10.7592 11.3451 8.90128 11.3451" />
+          </svg>
+
+          JavaScript
+        </label>
+
+        <label htmlFor="docs-home-lang-curl">
+          <svg className="docs-home-lang-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M4 17L10 11L4 5M12 19H20" />
+          </svg>
+
+          cURL
+        </label>
+      </div>
+
+      <div className="docs-home-apis" role="tablist" aria-label="API">
+        <label htmlFor="docs-home-api-search">Поиск в интернете</label>
+        <label htmlFor="docs-home-api-contents">Получение содержимого страницы</label>
+        <label htmlFor="docs-home-api-deep">Получение структурированных данных</label>
+        <label htmlFor="docs-home-api-tools">Веб-поиск для LLM</label>
+        <label htmlFor="docs-home-api-agent">Составление списка на основе исследования</label>
+        <label htmlFor="docs-home-api-agent-research">Анализ сложной темы</label>
+      </div>
+
+      <div className="docs-home-pane">
+        <div className="docs-home-code" data-pane="search-python">
+          ```python theme={null}
+          from exa_py import Exa
+
+          exa = Exa()
+
+          result = exa.search(
+              "companies selling AI voice agents to dental practices",
+              contents={"highlights": True},
+          )
+
+          for hit in result.results:
+              print(hit.title, hit.url)
+              print(hit.highlights)
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="search-javascript">
+          ```javascript theme={null}
+          import Exa from "exa-js";
+
+          const exa = new Exa();
+
+          const result = await exa.search(
+            "companies selling AI voice agents to dental practices",
+            { contents: { highlights: true } },
+          );
+
+          for (const hit of result.results) {
+            console.log(hit.title, hit.url);
+            console.log(hit.highlights);
+          }
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="search-curl">
+          ```bash theme={null}
+          curl -s -X POST "https://api.exa.ai/search" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $EXA_API_KEY" \
+            -d '{
+              "query": "companies selling AI voice agents to dental practices",
+              "contents": { "highlights": true }
+            }'
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="deep-python">
+          ```python theme={null}
+          from exa_py import Exa
+
+          exa = Exa()
+
+          result = exa.search(
+              "Who is Anthropic's CEO, when was the company founded, and where is it headquartered?",
+              type="deep",
+              output_schema={
+                  "type": "object",
+                  "required": ["company", "ceo", "founded_year", "headquarters"],
+                  "properties": {
+                      "company": {"type": "string"},
+                      "ceo": {"type": "string"},
+                      "founded_year": {"type": "number"},
+                      "headquarters": {"type": "string"},
+                  },
+              },
+          )
+
+          print(result.output.content)
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="deep-javascript">
+          ```javascript theme={null}
+          import Exa from "exa-js";
+
+          const exa = new Exa();
+
+          const result = await exa.search(
+            "Who is Anthropic's CEO, when was the company founded, and where is it headquartered?",
+            {
+              type: "deep",
+              outputSchema: {
+                type: "object",
+                required: ["company", "ceo", "founded_year", "headquarters"],
+                properties: {
+                  company: { type: "string" },
+                  ceo: { type: "string" },
+                  founded_year: { type: "number" },
+                  headquarters: { type: "string" },
+                },
+              },
+            },
+          );
+
+          console.log(result.output?.content);
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="deep-curl">
+          ```bash theme={null}
+          curl -s -X POST "https://api.exa.ai/search" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $EXA_API_KEY" \
+            -d '{
+              "query": "Who is Anthropic'\''s CEO, when was the company founded, and where is it headquartered?",
+              "type": "deep",
+              "outputSchema": {
+                "type": "object",
+                "required": ["company", "ceo", "founded_year", "headquarters"],
+                "properties": {
+                  "company": { "type": "string" },
+                  "ceo": { "type": "string" },
+                  "founded_year": { "type": "number" },
+                  "headquarters": { "type": "string" }
+                }
+              }
+            }'
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="tools-python">
+          ```python theme={null}
+          from exa_py import Exa
+          from openai import OpenAI
+
+          exa = Exa()
+          openai = OpenAI()
+
+          messages = [{"role": "user", "content": "What's the latest on AI chips?"}]
+
+          completion = openai.chat.completions.create(
+              model="gpt-5.6",
+              messages=messages,
+              tools=[exa.openai.web_search(), exa.openai.get_contents()],
+          )
+
+          message = completion.choices[0].message
+          messages.append(message)
+          messages += exa.openai.handle_tool_calls(message)
+
+          completion = openai.chat.completions.create(model="gpt-5.6", messages=messages)
+
+          print(completion.choices[0].message.content)
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="tools-javascript">
+          ```javascript theme={null}
+          import Exa from "exa-js";
+          import { OpenAI } from "openai";
+
+          const exa = new Exa();
+          const openai = new OpenAI();
+
+          const messages = [{ role: "user", content: "What's the latest on AI chips?" }];
+
+          let completion = await openai.chat.completions.create({
+            model: "gpt-5.6",
+            messages,
+            tools: [exa.openai.webSearch(), exa.openai.getContents()],
+          });
+
+          const message = completion.choices[0].message;
+          messages.push(message, ...(await exa.openai.handleToolCalls(message)));
+
+          completion = await openai.chat.completions.create({ model: "gpt-5.6", messages });
+
+          console.log(completion.choices[0].message.content);
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="tools-curl">
+          ```bash theme={null}
+          # 1. Предоставьте модели инструмент поиска Exa и дайте ей самой выбрать запрос.
+          USER_MSG='{ "role": "user", "content": "What'\''s the latest on AI chips?" }'
+          TOOLS='[{ "type": "function", "function": {
+            "name": "web_search",
+            "description": "Search the web and return the most relevant pages.",
+            "parameters": { "type": "object", "properties": { "query": { "type": "string" } }, "required": ["query"] }
+          }}]'
+          ASSISTANT="$(curl -s "https://api.openai.com/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d "{ \"model\": \"gpt-5.6\", \"messages\": [$USER_MSG], \"tools\": $TOOLS }" \
+            | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["choices"][0]["message"]))')"
+
+          # 2. Выполните вызов инструмента к Exa.
+          SEARCH_BODY="$(echo "$ASSISTANT" | python3 -c '
+          import json, sys
+          args = json.loads(json.load(sys.stdin)["tool_calls"][0]["function"]["arguments"])
+          print(json.dumps({"query": args["query"], "contents": {"highlights": True}}))')"
+          RESULTS="$(curl -s -X POST "https://api.exa.ai/search" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $EXA_API_KEY" \
+            -d "$SEARCH_BODY")"
+
+          # 3. Передайте результаты обратно модели для получения итогового ответа.
+          TOOL_MSG="$(echo "$ASSISTANT" | python3 -c '
+          import json, sys
+          assistant = json.load(sys.stdin)
+          print(json.dumps({"role": "tool", "tool_call_id": assistant["tool_calls"][0]["id"], "content": sys.argv[1]}))' "$RESULTS")"
+          curl -s "https://api.openai.com/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d "{ \"model\": \"gpt-5.6\", \"messages\": [$USER_MSG, $ASSISTANT, $TOOL_MSG] }" \
+            | python3 -c 'import json,sys; print(json.load(sys.stdin)["choices"][0]["message"]["content"])'
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="contents-python">
+          ```python theme={null}
+          from exa_py import Exa
+
+          exa = Exa()
+
+          result = exa.get_contents(
+              ["https://www.anthropic.com/pricing"],
+              highlights={"query": "enterprise plan features and pricing"},
+          )
+
+          print(result.results[0].highlights)
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="contents-javascript">
+          ```javascript theme={null}
+          import Exa from "exa-js";
+
+          const exa = new Exa();
+
+          const result = await exa.getContents(
+            ["https://www.anthropic.com/pricing"],
+            {
+              highlights: {
+                query: "enterprise plan features and pricing",
+              },
+            },
+          );
+
+          console.log(result.results[0].highlights);
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="contents-curl">
+          ```bash theme={null}
+          curl -s -X POST "https://api.exa.ai/contents" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $EXA_API_KEY" \
+            -d '{
+              "ids": ["https://www.anthropic.com/pricing"],
+              "highlights": {
+                "query": "enterprise plan features and pricing"
+              }
+            }'
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="agent-python">
+          ```python theme={null}
+          import json
+          from exa_py import Exa
+
+          exa = Exa()
+
+          run = exa.agent.runs.create(
+              query="Find 10 seed-stage companies building infrastructure for AI coding agents.",
+              output_schema={
+                  "type": "object",
+                  "required": ["companies"],
+                  "properties": {
+                      "companies": {
+                          "type": "array",
+                          "maxItems": 10,
+                          "items": {
+                              "type": "object",
+                              "required": ["name", "website"],
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "website": {"type": "string", "format": "uri"},
+                              },
+                          },
+                      }
+                  },
+              },
+              effort="auto",
+          )
+
+          run = exa.agent.runs.poll_until_finished(run.id)
+
+          print(json.dumps(run.output.structured if run.output else None, indent=2))
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="agent-javascript">
+          ```javascript theme={null}
+          import Exa from "exa-js";
+
+          const exa = new Exa();
+
+          const run = await exa.agent.runs.create({
+            query:
+              "Find 10 seed-stage companies building infrastructure for AI coding agents.",
+            outputSchema: {
+              type: "object",
+              required: ["companies"],
+              properties: {
+                companies: {
+                  type: "array",
+                  maxItems: 10,
+                  items: {
+                    type: "object",
+                    required: ["name", "website"],
+                    properties: {
+                      name: { type: "string" },
+                      website: { type: "string", format: "uri" },
+                    },
+                  },
+                },
+              },
+            },
+            effort: "auto",
+          });
+
+          const completedRun = await exa.agent.runs.pollUntilFinished(run.id);
+
+          console.log(JSON.stringify(completedRun.output?.structured, null, 2));
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="agent-curl">
+          ```bash theme={null}
+          RUN_ID="$(curl -s -X POST "https://api.exa.ai/agent/runs" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $EXA_API_KEY" \
+            -d '{
+              "query": "Find 10 seed-stage companies building infrastructure for AI coding agents.",
+              "effort": "auto",
+              "outputSchema": {
+                "type": "object",
+                "required": ["companies"],
+                "properties": {
+                  "companies": {
+                    "type": "array",
+                    "maxItems": 10,
+                    "items": {
+                      "type": "object",
+                      "required": ["name", "website"],
+                      "properties": {
+                        "name": { "type": "string" },
+                        "website": { "type": "string", "format": "uri" }
+                      }
+                    }
+                  }
+                }
+              }
+            }' | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+
+          while true; do
+            RUN_JSON="$(curl -s "https://api.exa.ai/agent/runs/$RUN_ID" \
+              -H "Authorization: Bearer $EXA_API_KEY")"
+            STATUS="$(printf '%s' "$RUN_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["status"])')"
+
+            if [ "$STATUS" = "completed" ]; then
+              printf '%s' "$RUN_JSON" | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["output"]["structured"], indent=2))'
+              break
+            elif [ "$STATUS" = "failed" ] || [ "$STATUS" = "cancelled" ]; then
+              printf '%s' "$RUN_JSON"
+              break
+            fi
+
+            sleep 4
+          done
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="agent-research-python">
+          ```python theme={null}
+          from exa_py import Exa
+
+          exa = Exa()
+
+          run = exa.agent.runs.create(
+              query=(
+                  "Analyze how the EU AI Act affects startups selling AI products in Europe. "
+                  "Cover key dates, obligations, and practical risks, citing official sources."
+              ),
+              effort="medium",
+          )
+
+          run = exa.agent.runs.poll_until_finished(run.id)
+
+          print(run.output.text if run.output else None)
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="agent-research-javascript">
+          ```javascript theme={null}
+          import Exa from "exa-js";
+
+          const exa = new Exa();
+
+          const run = await exa.agent.runs.create({
+            query:
+              "Analyze how the EU AI Act affects startups selling AI products in Europe. Cover key dates, obligations, and practical risks, citing official sources.",
+            effort: "medium",
+          });
+
+          const completedRun = await exa.agent.runs.pollUntilFinished(run.id);
+
+          console.log(completedRun.output?.text);
+          ```
+        </div>
+
+        <div className="docs-home-code" data-pane="agent-research-curl">
+          ```bash theme={null}
+          RUN_ID="$(curl -s -X POST "https://api.exa.ai/agent/runs" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $EXA_API_KEY" \
+            -d '{
+              "query": "Analyze how the EU AI Act affects startups selling AI products in Europe. Cover key dates, obligations, and practical risks, citing official sources.",
+              "effort": "medium"
+            }' | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')"
+
+          while true; do
+            RUN_JSON="$(curl -s "https://api.exa.ai/agent/runs/$RUN_ID" \
+              -H "Authorization: Bearer $EXA_API_KEY")"
+            STATUS="$(printf '%s' "$RUN_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["status"])')"
+
+            if [ "$STATUS" = "completed" ]; then
+              printf '%s' "$RUN_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["output"]["text"])'
+              break
+            elif [ "$STATUS" = "failed" ] || [ "$STATUS" = "cancelled" ]; then
+              printf '%s' "$RUN_JSON"
+              break
+            fi
+
+            sleep 4
+          done
+          ```
+        </div>
+
+        <a className="docs-home-pane-link" data-pane-link="search" href="https://dashboard.exa.ai/playground/search?q=companies%20selling%20AI%20voice%20agents%20to%20dental%20practices&filters=%7B%22highlights%22%3Atrue%2C%22numResults%22%3A10%7D">Открыть в playground</a>
+        <a className="docs-home-pane-link" data-pane-link="deep" href="https://dashboard.exa.ai/playground/search?q=Who%20is%20Anthropic%27s%20CEO%2C%20when%20was%20the%20company%20founded%2C%20and%20where%20is%20it%20headquartered%3F&filters=%7B%22type%22%3A%22deep%22%2C%22outputSchema%22%3A%7B%22type%22%3A%22object%22%2C%22required%22%3A%5B%22company%22%2C%22ceo%22%2C%22founded_year%22%2C%22headquarters%22%5D%2C%22properties%22%3A%7B%22company%22%3A%7B%22type%22%3A%22string%22%7D%2C%22ceo%22%3A%7B%22type%22%3A%22string%22%7D%2C%22founded_year%22%3A%7B%22type%22%3A%22number%22%7D%2C%22headquarters%22%3A%7B%22type%22%3A%22string%22%7D%7D%7D%7D">Открыть в playground</a>
+        <a className="docs-home-pane-link" data-pane-link="tools" href="/ru/docs/integrations/tool-calling/openai">Читать руководство</a>
+        <a className="docs-home-pane-link" data-pane-link="agent" href="https://dashboard.exa.ai/playground/agent?q=Find%2010%20seed-stage%20companies%20building%20infrastructure%20for%20AI%20coding%20agents.">Открыть в playground</a>
+        <a className="docs-home-pane-link" data-pane-link="agent-research" href="https://dashboard.exa.ai/playground/agent?q=Analyze%20how%20the%20EU%20AI%20Act%20affects%20startups%20selling%20AI%20products%20in%20Europe.%20Cover%20key%20dates%2C%20obligations%2C%20and%20practical%20risks%2C%20citing%20official%20sources.">Открыть в playground</a>
+        <a className="docs-home-pane-link" data-pane-link="contents" href="https://dashboard.exa.ai/playground/get-contents?filters=%7B%22ids%22%3A%5B%22https%3A%2F%2Fwww.anthropic.com%2Fpricing%22%5D%2C%22highlights%22%3A%7B%22query%22%3A%22enterprise%20plan%20features%20and%20pricing%22%7D%7D">Открыть в playground</a>
+      </div>
+    </div>
+  </div>
+
+  <h2 className="docs-home-section">Доступные API</h2>
+
+  <ApiCards />
+</div>

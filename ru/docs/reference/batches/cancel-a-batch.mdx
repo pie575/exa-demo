@@ -1,0 +1,12 @@
+---
+title: "Отмена пакета"
+description: "Отмените выполняющийся пакет."
+openapi: "/ru/docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+Пакет перестаёт ставить в очередь новые запросы и завершает уже начатую работу, после чего переходит в состояние `cancelled`. Отмена пакета, который уже находится в состоянии `cancelling` или `cancelled`, возвращает его без изменений; пакет в состоянии `completed` или `expired` отменить нельзя.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте key в панели управления. Новым аккаунтам начисляются бесплатные кредиты.
+</Card>

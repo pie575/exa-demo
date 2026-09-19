@@ -1,0 +1,171 @@
+---
+title: "CrewAI"
+description: "Aprende a añadir capacidades de recuperación de Exa a tus agents de CrewAI."
+icon: "/docs/images/sidebar-icons/crewai.svg"
+---
+
+<Card title="Inicio rápido de Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  ¿Es tu primera vez con Exa? Empieza en menos de un minuto.
+</Card>
+
+***
+
+[CrewAI](https://crewai.com/) es un framework para orquestar agents de IA que trabajan juntos para llevar a cabo tareas complejas.
+En esta guía crearemos un crew de dos agents que genera un boletín a partir de los resultados de search de Exa. Veremos cómo:
+
+1. Crear una herramienta personalizada de CrewAI impulsada por Exa
+2. Configurar los agents y asignarles roles específicos que usen la herramienta de search impulsada por Exa
+3. Organizar los agents en un crew que escribirá un boletín
+
+<Note>
+  CrewAI también incluye una herramienta integrada, [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool), que puedes usar tal cual sin escribir un wrapper personalizado. La herramienta personalizada que se muestra a continuación es útil si quieres control total sobre el formato de los resultados; ambos enfoques funcionan.
+</Note>
+
+***
+
+<div id="get-started">
+  ## Comenzar
+</div>
+
+<Steps>
+  <Step title="Requisitos previos e instalación">
+    Instala las bibliotecas crewAI core, crewAI tools y el SDK de Python de Exa.
+
+    ```Python Python theme={null}
+    pip install crewai 'crewai[tools]' exa_py
+    ```
+  </Step>
+
+  <Step title="Definir una herramienta personalizada basada en Exa en crewAI">
+    Configuramos una [herramienta personalizada](https://docs.crewai.com/concepts/tools) con el [decorador @tool](https://docs.crewai.com/concepts/tools#utilizing-the-tool-decorator) de crewAI. Dentro de la herramienta, podemos inicializar la clase Exa del [SDK de Python de Exa](https://github.com/exa-labs/exa-py), realizar una solicitud y devolver un resultado ya procesado.
+
+    ```Python Python theme={null}
+    from crewai_tools import tool
+    from exa_py import Exa
+    import os
+
+    exa_api_key = os.getenv("EXA_API_KEY")
+
+    @tool("Exa search and get contents")
+    def search_and_get_contents_tool(question: str) -> str:
+        """Tool using Exa's Python SDK to run semantic search and return result highlights."""
+
+        exa = Exa(api_key=exa_api_key)
+
+        response = exa.search(
+            question,
+            type="auto",
+            num_results=10,
+            contents={"highlights": True}
+        )
+
+        parsedResult = ''.join([
+          f'<Title id={idx}>{eachResult.title}</Title>'
+          f'<URL id={idx}>{eachResult.url}</URL>'
+          f'<Highlight id={idx}>{"".join(eachResult.highlights)}</Highlight>'
+          for (idx, eachResult) in enumerate(response.results)
+        ])
+
+        return parsedResult
+    ```
+
+    <Note> Asegúrate de que tus API keys estén inicializadas correctamente. En esta demostración, los nombres de las variables de entorno son `OPENAI_API_KEY` y `EXA_API_KEY` para las keys de OpenAI y Exa, respectivamente. </Note>
+
+    <Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+    </Card>
+  </Step>
+
+  <Step title="Configura un agente de crewAI">
+    Importa los módulos correspondientes de crewAI. Luego, define `exa_tools` para que haga referencia al método de búsqueda personalizado que definimos más arriba.
+
+    ```Python Python theme={null}
+    from crewai import Task, Crew, Agent
+
+    exa_tools = search_and_get_contents_tool
+    ```
+
+    Luego configuramos[ dos agentes](https://docs.crewai.com/concepts/Agents/) y los reunimos en un mismo [crew](https://docs.crewai.com/concepts/Crews/):
+
+    * Uno para investigar con Exa (usando la herramienta personalizada definida arriba)
+    * Otro para redactar un boletín como resultado (usando un LLM)
+
+    ```Python Python theme={null}
+    # Creación de un agent investigador senior con memoria y modo detallado
+    researcher = Agent(
+      role='Researcher',
+      goal='Get the latest research on {topic}',
+      verbose=True,
+      memory=True,
+      backstory=(
+        "Driven by curiosity, you're at the forefront of"
+        "innovation, eager to explore and share knowledge that could change"
+        "the world."
+      ),
+      tools=[exa_tools],
+      allow_delegation=False
+    )
+
+    article_writer = Agent(
+      role='Writer',
+      goal='Write a great newsletter article on {topic}',
+      verbose=True,
+      memory=True,
+      backstory=(
+        "Driven by a love of writing and passion for"
+        "innovation, you are eager to share knowledge with"
+        "the world."
+      ),
+      tools=[exa_tools],
+      allow_delegation=False
+    )
+    ```
+  </Step>
+
+  <Step title="Definir tareas para los agentes">
+    A continuación, definiremos las [tareas](https://docs.crewai.com/concepts/Tasks/) de cada agent y crearemos el crew completo con todos los componentes que configuramos más arriba.
+
+    ```Python Python theme={null}
+    research_task = Task(
+      description=(
+        "Identify the latest research in {topic}."
+        "Your final report should clearly articulate the key points,"
+      ),
+      expected_output='A comprehensive 3 paragraphs long report on the {topic}.',
+      tools=[exa_tools],
+      agent=researcher,
+    )
+
+    write_article = Task(
+      description=(
+        "Write a newsletter article on the latest research in {topic}."
+        "Your article should be engaging, informative, and accurate."
+        "The article should address the audience with a greeting to the newsletter audience \"Hi readers!\", plus a similar signoff"
+      ),
+      expected_output='A comprehensive 3 paragraphs long newsletter article on the {topic}.',
+      agent=article_writer,
+    )
+
+    crew = Crew(
+      agents=[researcher, article_writer],
+      tasks=[research_task, write_article],
+      memory=True,
+      cache=True,
+      max_rpm=100,
+      share_crew=True
+    )
+    ```
+  </Step>
+
+  <Step title="Preparar al equipo">
+    Por último, ponemos en marcha la crew proporcionando un tema de investigación como query de entrada.
+
+    ```Python Python theme={null}
+    response = crew.kickoff(inputs={'topic': 'Latest AI research'})
+
+    print(response)
+    ```
+
+    El equipo redacta el boletín a partir del contenido que devolvió la herramienta de search de Exa.
+  </Step>
+</Steps>

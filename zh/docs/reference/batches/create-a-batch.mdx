@@ -1,0 +1,12 @@
+---
+title: "创建批处理"
+description: "提交一批 Exa API 请求以异步运行。"
+openapi: "/zh/docs/exa-spec.yaml POST /batches"
+timestamp: false
+---
+
+`requests` 中的每一项都是发往 `/search` 或 `/agent/runs` 的 `POST` 请求，并带有在该批次内唯一的 `customId`。结果文件中会返回相同的 `customId`，便于你将输出行对应回输入数据。端到端的完整流程请参阅 [Batch API 指南](/zh/docs/batch/quickstart)。
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建 key。新账户可获得免费额度。
+</Card>

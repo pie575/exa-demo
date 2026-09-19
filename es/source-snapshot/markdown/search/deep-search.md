@@ -1,0 +1,425 @@
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="deep-search">
+  # Deep Search
+</div>
+
+> Usa búsqueda iterativa, razonamiento y síntesis fundamentada para tareas de investigación complejas.
+
+Deep Search es el modo de investigación de la Search API. Utiliza el mismo endpoint `/search`, pero el proceso de recuperación puede lanzar varias búsquedas, examinar la evidencia, refinar su enfoque y sintetizar un resultado fundamentado.
+
+Usa la búsqueda estándar cuando necesites páginas ordenadas por relevancia para una query bien formulada. Usa Deep cuando encontrar la respuesta requiera investigación.
+
+<div id="how-deep-search-works">
+  ## Cómo funciona Deep Search
+</div>
+
+Deep Search añade un ciclo de investigación antes de la respuesta final:
+
+<Steps>
+  <Step title="Planificar la búsqueda">
+    Exa parte de tu `query` y puede expandirla en varias búsquedas que cubran distintas partes de la
+    solicitud. Puedes aportar variaciones iniciales con `additionalQueries`.
+  </Step>
+
+  <Step title="Buscar e inspeccionar">
+    Deep busca evidencia, contrasta los hallazgos con la solicitud y determina qué queda
+    respaldado y qué sigue faltando.
+  </Step>
+
+  <Step title="Refinar">
+    Cuando la evidencia es incompleta o contradictoria, Deep puede lanzar una búsqueda más específica en lugar
+    de devolver las primeras páginas plausibles.
+  </Step>
+
+  <Step title="Seleccionar y sintetizar">
+    Deep selecciona los resultados útiles y luego usa la misma ruta de síntesis que los demás tipos de búsqueda.
+    Cuando proporcionas `outputSchema`, la respuesta incluye un `output.content` estructurado y
+    citas a nivel de campo en `output.grounding`.
+  </Step>
+</Steps>
+
+Este proceso resulta especialmente útil para listas y salidas estructuradas. Cada elemento solicitado puede requerir una búsqueda distinta, y Deep puede reunir y verificar esos resultados antes de generar la estructura final.
+
+<div id="choose-a-deep-mode">
+  ## Elige un modo Deep
+</div>
+
+| Tipo             | Úsalo cuando                                                                                   |
+| ---------------- | ---------------------------------------------------------------------------------------------- |
+| `deep-lite`      | Necesitas una expansión de la query y una síntesis ligeras                                     |
+| `deep`           | La tarea requiere search iterativa, recopilación de evidencia o varios elementos estructurados |
+| `deep-reasoning` | La tarea exige un razonamiento más deliberado sobre evidencia difícil o contradictoria         |
+
+Empieza con `deep` para flujos de trabajo de investigación. Pasa a `deep-lite` cuando la tarea sea más sencilla y la latencia sea un factor.
+
+<Tip>
+  En lugar de `deep-reasoning`, usa [Exa Agent](/es/docs/agent/quickstart) para investigaciones de larga duración, creación de
+  listas y Enrichment de múltiples saltos. Agent cuenta con más cómputo por ejecución y devuelve resultados
+  estructurados y fundamentados.
+</Tip>
+
+Consulta [Precios](/es/docs/admin/pricing#deep-search) para conocer las recomendaciones actuales sobre costo y latencia.
+
+<div id="make-a-deep-request">
+  ## Realizar una solicitud Deep
+</div>
+
+Define `type` en una solicitud normal de la Search API:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  result = exa.search(
+      "Compare how major database vendors support vector, keyword, and hybrid retrieval",
+      type="deep",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const result = await exa.search(
+    "Compare how major database vendors support vector, keyword, and hybrid retrieval",
+    {
+      type: "deep",
+      contents: { highlights: true }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Compare how major database vendors support vector, keyword, and hybrid retrieval",
+      "type": "deep",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+Deep devuelve los resultados de search seleccionados en `results`. Añade `outputSchema` si además quieres una respuesta sintetizada o un conjunto de datos estructurado.
+
+<div id="provide-starting-queries">
+  ## Proporciona queries iniciales
+</div>
+
+Normalmente, Deep decide qué búsquedas ejecutar. Usa `additionalQueries` cuando ya conozcas terminología, perspectivas o subproblemas concretos que la investigación deba cubrir:
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Compare current approaches to inference-time scaling",
+      additional_queries=[
+          "inference-time compute scaling benchmark",
+          "test-time reasoning methods survey",
+          "adaptive compute language models",
+      ],
+      type="deep",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "Compare current approaches to inference-time scaling",
+    {
+      additionalQueries: [
+        "inference-time compute scaling benchmark",
+        "test-time reasoning methods survey",
+        "adaptive compute language models"
+      ],
+      type: "deep",
+      contents: { highlights: true }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Compare current approaches to inference-time scaling",
+      "additionalQueries": [
+        "inference-time compute scaling benchmark",
+        "test-time reasoning methods survey",
+        "adaptive compute language models"
+      ],
+      "type": "deep",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+La `query` principal siempre se incluye. Puedes proporcionar hasta 10 queries adicionales, y la lista solo está disponible para los tipos de search Deep.
+
+No añadas reformulaciones menores solo para aumentar el volumen de búsquedas. Agrega queries cuando cada una aporte una dirección de búsqueda realmente distinta.
+
+<div id="guide-behavior-and-output-separately">
+  ## Guía el comportamiento y la salida por separado
+</div>
+
+`systemPrompt` y `outputSchema` afectan a partes distintas de la solicitud:
+
+* `systemPrompt` guía las preferencias de fuentes, la novedad, la deduplicación y el comportamiento de investigación de Deep.
+* `outputSchema` define la forma final del resultado y activa la síntesis.
+
+La query debe describir qué investigar. El system prompt debe describir cómo llevar a cabo y presentar esa investigación.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Find AI infrastructure companies that announced Series A or B funding in the last six months",
+      type="deep",
+      system_prompt="Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.",
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 8,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "round", "amount"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "round": {"type": "string"},
+                          "amount": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "Find AI infrastructure companies that announced Series A or B funding in the last six months",
+    {
+      type: "deep",
+      systemPrompt:
+        "Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.",
+      outputSchema: {
+        type: "object",
+        required: ["companies"],
+        properties: {
+          companies: {
+            type: "array",
+            maxItems: 8,
+            items: {
+              type: "object",
+              required: ["name", "round", "amount"],
+              properties: {
+                name: { type: "string" },
+                round: { type: "string" },
+                amount: { type: "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find AI infrastructure companies that announced Series A or B funding in the last six months",
+      "type": "deep",
+      "systemPrompt": "Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.",
+      "outputSchema": {
+        "type": "object",
+        "required": ["companies"],
+        "properties": {
+          "companies": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "required": ["name", "round", "amount"],
+              "properties": {
+                "name": { "type": "string" },
+                "round": { "type": "string" },
+                "amount": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+Opta por Deep cuando necesites más de dos items estructurados o cuando cada item deba cumplir varios requisitos. Los tipos de search estándar usan la misma ruta de síntesis, pero no realizan la misma investigación iterativa previa.
+
+<div id="read-the-grounded-response">
+  ## Lee la respuesta fundamentada
+</div>
+
+Las respuestas estructuradas separan los valores generados de las evidencias que los respaldan:
+
+```json theme={null}
+{
+  "results": [
+    {
+      "title": "Acme AI raises $30M Series B",
+      "url": "https://acme.example/news/series-b"
+    }
+  ],
+  "output": {
+    "content": {
+      "companies": [
+        {
+          "name": "Acme AI",
+          "round": "Series B",
+          "amount": "$30M"
+        }
+      ]
+    },
+    "grounding": [
+      {
+        "field": "companies[0].amount",
+        "citations": [
+          {
+            "title": "Acme AI raises $30M Series B",
+            "url": "https://acme.example/news/series-b"
+          }
+        ],
+        "confidence": "high"
+      }
+    ]
+  }
+}
+```
+
+Usa `output.content` como el resultado generado y `output.grounding` para mostrar o verificar las fuentes que respaldan cada campo. No agregues campos de cita ni de confianza a tu propio esquema; Exa los devuelve automáticamente.
+
+`numResults` controla cuántas páginas seleccionadas se devuelven en `results`. No define la cantidad de búsquedas que Deep puede llegar a realizar.
+
+<div id="stream-the-synthesis">
+  ## Transmitir la síntesis
+</div>
+
+Establece `stream: true` junto con `outputSchema` para recibir la salida sintetizada mediante server-sent events:
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  import requests
+
+  response = requests.post(
+      "https://api.exa.ai/search",
+      headers={"Authorization": f"Bearer {os.environ['EXA_API_KEY']}"},
+      json={
+          "query": "Explain the competing technical approaches to long-context retrieval",
+          "type": "deep",
+          "stream": True,
+          "outputSchema": {
+              "type": "text",
+              "description": "A grounded comparison organized by approach",
+          },
+      },
+      stream=True,
+  )
+  response.raise_for_status()
+
+  for line in response.iter_lines(decode_unicode=True):
+      if line:
+          print(line)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.EXA_API_KEY}`
+    },
+    body: JSON.stringify({
+      query: "Explain the competing technical approaches to long-context retrieval",
+      type: "deep",
+      stream: true,
+      outputSchema: {
+        type: "text",
+        description: "A grounded comparison organized by approach"
+      }
+    })
+  });
+
+  if (!response.ok || !response.body) {
+    throw new Error(`Search failed: ${response.status}`);
+  }
+
+  const decoder = new TextDecoder();
+  for await (const chunk of response.body) {
+    process.stdout.write(decoder.decode(chunk, { stream: true }));
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -N -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Explain the competing technical approaches to long-context retrieval",
+      "type": "deep",
+      "stream": true,
+      "outputSchema": {
+        "type": "text",
+        "description": "A grounded comparison organized by approach"
+      }
+    }'
+  ```
+</CodeGroup>
+
+Consume los eventos tipados hasta `done`. El evento final contiene la salida completa y el tiempo de búsqueda, junto con la información de costo cuando esté disponible.
+
+<div id="when-to-stay-with-standard-search">
+  ## Cuándo conviene quedarse con Search estándar
+</div>
+
+Deep no hace falta cuando una sola pasada de recuperación basta para resolver la solicitud:
+
+* Necesitas páginas relevantes, no una conclusión investigada.
+* La query ya identifica una fuente concreta o un tema acotado.
+* Tu aplicación razona por su cuenta y solo necesita la recuperación.
+* La solicitud llega por una vía interactiva, de autocompletado o de voz.
+
+Usa `auto` para el equilibrio predeterminado entre calidad y velocidad, o `fast` e `instant` cuando tengas requisitos de latencia estrictos.
+
+<Columns cols={2}>
+  <Card title="Guía de la Search API" icon="search" href="/es/docs/search/quickstart" cta="Repasar Search" arrow="true">
+    Construye solicitudes, elige el contenido de los resultados y aplica filtros.
+  </Card>
+
+  <Card title="Mejores prácticas de Search" icon="sliders-horizontal" href="/es/docs/search/best-practices" cta="Ajustar la recuperación" arrow="true">
+    Mejora la calidad, el contexto, la latencia y las integraciones con agentes.
+  </Card>
+
+  <Card title="Referencia de la Search API" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir referencia" arrow="true">
+    Consulta todos los parámetros de solicitud y campos de respuesta.
+  </Card>
+
+  <Card title="Precios" icon="credit-card" href="/es/docs/admin/pricing#deep-search" cta="Comparar modos" arrow="true">
+    Revisa los costos y la latencia actuales de Deep Search.
+  </Card>
+</Columns>

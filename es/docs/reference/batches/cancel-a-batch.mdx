@@ -1,0 +1,12 @@
+---
+title: "Cancelar un lote"
+description: "Cancela un lote en curso."
+openapi: "/es/docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+El lote deja de programar nuevas solicitudes y termina el trabajo en curso antes de pasar al estado `cancelled`. Cancelar un lote que ya está en `cancelling` o `cancelled` lo devuelve sin cambios; un lote en estado `completed` o `expired` no se puede cancelar.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
+</Card>

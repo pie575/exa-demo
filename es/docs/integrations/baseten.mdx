@@ -1,0 +1,126 @@
+---
+title: "Baseten"
+sidebarTitle: "Baseten"
+description: "Fundamenta modelos de código abierto en las Model APIs de Baseten con la búsqueda web de Exa a través de Baseten Hosted Tools."
+icon: "/docs/images/sidebar-icons/baseten.svg"
+keywords: ["Baseten", "Hosted Tools", "Grounded Inference", "búsqueda web", "herramientas del lado del servidor", "modelos de código abierto"]
+---
+
+Exa es un proveedor de búsqueda web en [Baseten Hosted Tools](https://www.baseten.co/blog/introducing-baseten-hosted-tools/). Las Model APIs de Baseten sirven modelos de código abierto y las Hosted Tools permiten que esos modelos busquen en la web sin que tengas que montar un bucle de herramientas: agregas un selector de herramienta de Exa a una solicitud estándar, Baseten ejecuta el modelo y las búsquedas de Exa juntos en un bucle del lado del servidor, y obtienes una respuesta fundamentada en esa misma respuesta. No hace falta ninguna API key de Exa. Baseten traslada el costo de Exa a tu factura de Baseten sin recargo.
+
+<div id="use-the-exa-web-search-tools">
+  ## Usa las herramientas de búsqueda web de Exa
+</div>
+
+Establece el encabezado `x-baseten-server-tools: true` y agrega uno o más selectores de Exa a tu arreglo `tools`. Solo se necesita el `type`; Baseten expande el esquema de la herramienta automáticamente, y el modelo decide cuándo buscar, qué buscar y qué páginas leer. Las herramientas del lado del servidor funcionan en los endpoints [Chat Completions](https://docs.baseten.co/reference/inference-api/chat-completions), [Messages](https://docs.baseten.co/reference/inference-api/messages) y Responses de Baseten, con o sin streaming.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from openai import OpenAI
+
+  client = OpenAI(
+      api_key="<BASETEN_API_KEY>",
+      base_url="https://inference.baseten.co/v1",
+      default_headers={"x-baseten-server-tools": "true"},
+  )
+
+  response = client.chat.completions.create(
+      model="zai-org/GLM-5.3-Fast",
+      messages=[
+          {"role": "user", "content": "What were the major AI announcements this week?"}
+      ],
+      tools=[
+          {"type": "baseten__exa__web_search_exa"},
+          {"type": "baseten__exa__web_fetch_exa"},
+      ],
+      extra_body={"baseten": {"tool_settings": {"max_react_iterations": 5}}},
+  )
+
+  print(response.choices[0].message.content)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const client = new OpenAI({
+    apiKey: "<BASETEN_API_KEY>",
+    baseURL: "https://inference.baseten.co/v1",
+    defaultHeaders: { "x-baseten-server-tools": "true" },
+  });
+
+  const response = await client.chat.completions.create({
+    model: "zai-org/GLM-5.3-Fast",
+    messages: [
+      { role: "user", content: "What were the major AI announcements this week?" },
+    ],
+    tools: [
+      { type: "baseten__exa__web_search_exa" },
+      { type: "baseten__exa__web_fetch_exa" },
+    ],
+    baseten: { tool_settings: { max_react_iterations: 5 } },
+  });
+
+  console.log(response.choices[0].message.content);
+  ```
+
+  ```bash cURL theme={null}
+  curl https://inference.baseten.co/v1/chat/completions \
+    -H "Authorization: Bearer <BASETEN_API_KEY>" \
+    -H "Content-Type: application/json" \
+    -H "x-baseten-server-tools: true" \
+    -d '{
+      "model": "zai-org/GLM-5.3-Fast",
+      "messages": [
+        { "role": "user", "content": "What were the major AI announcements this week?" }
+      ],
+      "tools": [
+        { "type": "baseten__exa__web_search_exa" },
+        { "type": "baseten__exa__web_fetch_exa" }
+      ],
+      "baseten": { "tool_settings": { "max_react_iterations": 5 } }
+    }'
+  ```
+</CodeGroup>
+
+Hay tres herramientas de Exa disponibles. Dale al modelo search junto con fetch cuando deba descubrir fuentes y luego leer las páginas que elija.
+
+| Selector                                | Lo que obtiene el modelo                                                                                  |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `baseten__exa__web_search_exa`          | [Exa search](/es/docs/search/quickstart): resultados relevantes con el contenido de la página para una query |
+| `baseten__exa__web_search_advanced_exa` | Search con filtros de dominio, rastreo de subpáginas y un summary opcional por resultado                  |
+| `baseten__exa__web_fetch_exa`           | [Contenido completo](/es/docs/contents/quickstart) de una URL que el modelo ya tiene                         |
+
+Los selectores no admiten campos adicionales; el modelo completa los argumentos de la herramienta a partir del esquema de Exa. Usa el prompt de sistema para orientar la política de búsqueda: cuándo buscar, si debe consultar fuentes primarias y cómo citar. Usa `baseten.tool_settings` para acotar el bucle:
+
+| Configuración                  | Úsala para                                                                                                                                                                                                    |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `max_react_iterations`         | Limitar las iteraciones del modelo por solicitud (valor predeterminado 12, rango de 2 a 20). La última iteración se reserva para la respuesta, así que `N` permite `N - 1` rondas de llamadas a herramientas. |
+| `max_tool_calls_per_iteration` | Limitar las llamadas a herramientas del lado del servidor en una misma iteración (valor predeterminado 10, rango de 1 a 10)                                                                                   |
+
+<div id="how-results-come-back">
+  ## Cómo se devuelven los resultados
+</div>
+
+La respuesta final llega a través del campo habitual del endpoint. Las llamadas a Exa completadas se registran según el protocolo: bloques `tool_use` y `tool_result` en Messages, elementos `mcp_call` en Responses y `baseten.iterations[].continuation_messages` en Chat Completions. Las solicitudes en streaming reciben cada llamada de search y su resultado como eventos enviados por el servidor (SSE) mientras se ejecuta el bucle, de modo que puedes mostrar el progreso antes de que llegue la respuesta. El array `baseten.request.server_tool_calls[]` informa del resultado de cada llamada a Exa dentro de la solicitud.
+
+<div id="pricing">
+  ## Precios
+</div>
+
+Las llamadas a Exa se facturan a tu cuenta de Baseten a la tarifa de Exa, sin recargo, además de los costos de tokens del modelo: alrededor de $0,007 por search y $0,001 por URL obtenida. Exa informa el cargo de cada llamada en tiempo de ejecución, por lo que cada llamada puede desviarse de estas cifras. Las llamadas a herramientas facturadas aparecen en la configuración del espacio de trabajo de Baseten, en Billing → Usage, agrupadas por proveedor. Consulta la [tabla de precios de Baseten](https://docs.baseten.co/inference/model-apis/web-search#pricing) para ver las tarifas vigentes.
+
+Las Hosted Tools están en acceso anticipado en Baseten, con un límite de 25 solicitudes por minuto por organización. Prueba Exa Search en el [playground de Baseten](https://app.baseten.co/model-apis/zai-org/GLM-5.3-Fast/playground) o comunícate con Baseten para ampliar el límite en cargas de trabajo de producción.
+
+<div id="resources">
+  ## Recursos
+</div>
+
+<Columns cols={2}>
+  <Card title="Documentación de búsqueda web de Baseten" icon="wrench" href="https://docs.baseten.co/inference/model-apis/web-search" cta="Abrir documentación" arrow="true">
+    Ejemplos ejecutables de Messages, Responses y Chat Completions con herramientas del lado del servidor.
+  </Card>
+
+  <Card title="Referencia de herramientas del lado del servidor" icon="book-open" href="https://docs.baseten.co/reference/inference-api/server-side-tool-execution" cta="Abrir referencia" arrow="true">
+    Catálogo de herramientas, ajustes del bucle, formatos de `tool_choice` y estructuras de respuesta.
+  </Card>
+</Columns>

@@ -1,0 +1,190 @@
+> <div id="documentation-index">
+  > ## Указатель документации
+> </div>
+>
+> Полный указатель документации доступен по адресу: https://exa.ai/docs/llms.txt
+> Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем изучать документацию дальше.
+
+<div id="get-an-enrichment">
+  # Получение enrichment
+</div>
+
+> Возвращает Enrichment, настроенный в Webset, включая его статус, описание, формат и параметры.
+
+<div id="openapi">
+  ## OpenAPI
+</div>
+
+```yaml exa-spec.yaml GET /v0/websets/{webset}/enrichments/{id}
+openapi: 3.1.0
+info:
+  title: Exa Public API
+  version: 2.0.0
+servers:
+  - url: https://api.exa.ai
+security:
+  - apiKey: []
+  - bearer: []
+tags: []
+paths:
+  /v0/websets/{webset}/enrichments/{id}:
+    servers:
+      - url: https://api.exa.ai/websets
+    get:
+      tags:
+        - Enrichments
+      summary: Get an Enrichment
+      description: >-
+        Returns an Enrichment configured on a Webset, including its status,
+        description, format, and options.
+      operationId: websets-enrichments-get
+      parameters:
+        - in: path
+          name: webset
+          schema:
+            type: string
+          description: The id or externalId of the Webset
+          required: true
+        - in: path
+          name: id
+          schema:
+            type: string
+          description: The id of the Enrichment
+          required: true
+      responses:
+        '200':
+          description: Enrichment
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebsetEnrichment'
+      security:
+        - apiKey: []
+        - bearer: []
+components:
+  schemas:
+    WebsetEnrichment:
+      properties:
+        id:
+          description: The unique identifier for the enrichment
+          type: string
+        object:
+          const: webset_enrichment
+          default: webset_enrichment
+          type: string
+        status:
+          enum:
+            - pending
+            - canceled
+            - completed
+          description: The status of the enrichment
+          title: WebsetEnrichmentStatus
+          type: string
+        websetId:
+          description: The unique identifier for the Webset this enrichment belongs to.
+          type: string
+        title:
+          type: string
+          description: >-
+            The title of the enrichment.
+
+
+            This will be automatically generated based on the description and
+            format.
+          nullable: true
+        description:
+          description: >-
+            The description of the enrichment task provided during the creation
+            of the enrichment.
+          type: string
+        format:
+          $ref: '#/components/schemas/WebsetEnrichmentFormat'
+          description: The format of the enrichment response.
+          nullable: true
+        options:
+          items:
+            properties:
+              label:
+                description: The label of the option
+                type: string
+            required:
+              - label
+            type: object
+          type: array
+          description: >-
+            When the format is options, the different options for the enrichment
+            agent to choose from.
+          title: WebsetEnrichmentOptions
+          nullable: true
+        instructions:
+          type: string
+          description: >-
+            The instructions for the enrichment Agent.
+
+
+            This will be automatically generated based on the description and
+            format.
+          nullable: true
+        metadata:
+          default: {}
+          description: The metadata of the enrichment
+          propertyNames:
+            type: string
+          additionalProperties:
+            type: string
+            maxLength: 1000
+          type: object
+        createdAt:
+          format: date-time
+          description: The date and time the enrichment was created
+          type: string
+        updatedAt:
+          format: date-time
+          description: The date and time the enrichment was updated
+          type: string
+      required:
+        - id
+        - object
+        - status
+        - websetId
+        - title
+        - description
+        - format
+        - options
+        - instructions
+        - createdAt
+        - updatedAt
+      type: object
+    WebsetEnrichmentFormat:
+      enum:
+        - text
+        - date
+        - number
+        - options
+        - email
+        - phone
+        - url
+      type: string
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      name: x-api-key
+      in: header
+      description: >-
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
+    bearer:
+      type: http
+      scheme: bearer
+      description: >-
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
+
+```

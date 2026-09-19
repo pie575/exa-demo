@@ -1,0 +1,13 @@
+---
+title: "Listar eventos de una ejecución"
+description: "Lista los eventos almacenados de una ejecución de Agent o
+  reprodúcelos como server-sent events."
+openapi: "/es/docs/exa-spec.yaml GET /agent/runs/{id}/events"
+timestamp: false
+---
+
+De forma predeterminada, este endpoint devuelve una lista JSON paginada de los eventos almacenados. Define `Accept: text/event-stream` para reproducir los eventos almacenados como SSE. Para la paginación JSON, usa `cursor`. Para la reproducción SSE, usa `Last-Event-ID`.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
+</Card>

@@ -1,0 +1,13 @@
+---
+title: "列出 Agent 运行"
+sidebarTitle: "列出运行"
+description: "获取团队的 Agent 运行分页列表。"
+openapi: "/zh/docs/exa-spec.yaml GET /agent/runs"
+timestamp: false
+---
+
+运行记录按从新到旧返回。使用 `limit` 控制每页数量，并将上一次响应中的 `nextCursor` 作为 `cursor` 传入，以获取下一页。
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建一个 key。新账户可获得免费额度。
+</Card>

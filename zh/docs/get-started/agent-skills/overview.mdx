@@ -1,0 +1,64 @@
+---
+title: "Agent Skills"
+sidebarTitle: "概览"
+description: "在 Claude Code、Codex 及其他编码 agent 中安装 Exa skills。"
+keywords: ["agent skills", "claude code", "cursor", "codex", "exa api"]
+---
+
+Exa skills 可以教会编码 agent 如何搜索、获取内容，以及基于 Exa 的 API 进行开发。这些 skills 都在开源仓库 [exa-labs/agent-skills](https://github.com/exa-labs/agent-skills) 中。
+
+每个 skill 都由若干 markdown 文件组成，它们遵循开放的 [Agent Skills](https://agentskills.io) 标准，因此同一套文件可以安装到任何兼容的 agent 中。
+
+<div id="install">
+  ## 安装
+</div>
+
+一次性安装所有 Exa skill：
+
+```bash theme={null}
+npx skills add exa-labs/agent-skills
+```
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台创建一个 key。新账户可获赠免费积分。
+</Card>
+
+<Note>
+  在 agent 运行环境中将 key 设置为 `EXA_API_KEY`。
+</Note>
+
+或者打开下方的 skill 页面，把页面上的设置提示词复制到你的 agent 中。该提示词会安装对应 skill，并在不输出 API key 的前提下完成验证。
+
+<div id="skills">
+  ## Skills
+</div>
+
+每个 skill 页面都包含一句话简介、可复制的设置提示词，以及指向 `SKILL.md` 源文件的链接。
+
+<Columns cols={3}>
+  <Card title="使用 Exa 构建" icon="rocket" href="/zh/docs/get-started/agent-skills/build-with-exa" cta="打开 skill" arrow="true">
+    借助 Exa 完整的 API 平台构建应用与 agent。
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/zh/docs/get-started/agent-skills/exa-search" cta="打开 skill" arrow="true">
+    通过 cURL 或原始 HTTP 直接调用 Exa Search。
+  </Card>
+
+  <Card title="Exa Contents" icon="file-text" href="/zh/docs/get-started/agent-skills/exa-contents" cta="打开 skill" arrow="true">
+    通过 cURL 或原始 HTTP 直接调用 Exa Contents。
+  </Card>
+</Columns>
+
+<div id="related">
+  ## 相关内容
+</div>
+
+<Columns cols={2}>
+  <Card title="Skills 仓库" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="查看源码" arrow="true">
+    所有 skill 的源码，包括原始 `SKILL.md` 文件。
+  </Card>
+
+  <Card title="Exa MCP" icon="plug" href="/zh/docs/get-started/exa-mcp" cta="打开指南" arrow="true">
+    通过 MCP 将 Claude、Cursor、VS Code 等客户端连接到 Exa。
+  </Card>
+</Columns>

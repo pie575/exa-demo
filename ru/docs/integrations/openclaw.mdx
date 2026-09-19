@@ -1,0 +1,154 @@
+---
+title: "OpenClaw"
+sidebarTitle: "OpenClaw"
+description: "Подключите к OpenClaw актуальный веб-поиск и содержимое страниц с помощью Exa."
+icon: "/docs/images/sidebar-icons/openclaw.svg"
+---
+
+[OpenClaw](https://openclaw.ai/) поддерживает Exa как встроенный провайдер `web_search`. После его выбора любой агент OpenClaw сможет использовать режимы поиска Exa, фильтры по дате и извлечение содержимого через встроенный веб-инструмент.
+
+<div id="set-up-exa">
+  ## Настройка Exa
+</div>
+
+<Steps>
+  <Step title="Установите плагин Exa">
+    ```bash theme={null}
+    openclaw plugins install @openclaw/exa-plugin
+    openclaw gateway restart
+    ```
+  </Step>
+
+  <Step title="Получите Exa API key">
+    <Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Создайте key в дашборде. Новым аккаунтам начисляются бесплатные кредиты.
+    </Card>
+  </Step>
+
+  <Step title="Сохраните key">
+    При установке через шлюз добавьте key в `~/.openclaw/.env`:
+
+    ```bash ~/.openclaw/.env theme={null}
+    EXA_API_KEY=your-exa-api-key
+    ```
+
+    После изменения переменных окружения перезапустите шлюз.
+  </Step>
+
+  <Step title="Выберите Exa для веб-поиска">
+    Выполните:
+
+    ```bash theme={null}
+    openclaw configure --section web
+    ```
+
+    Выберите **Exa** в качестве провайдера веб-поиска. OpenClaw сохранит выбранного провайдера в своих настройках и будет считывать учётные данные из `EXA_API_KEY`.
+  </Step>
+</Steps>
+
+<div id="configure-manually">
+  ## Настройка вручную
+</div>
+
+Вы можете выбрать Exa напрямую в настройках OpenClaw в формате JSON5:
+
+```json5 theme={null}
+{
+  tools: {
+    web: {
+      search: {
+        provider: "exa",
+      },
+    },
+  },
+}
+```
+
+Чтобы хранить key в настройках, а не в окружении шлюза:
+
+```json5 theme={null}
+{
+  plugins: {
+    entries: {
+      exa: {
+        config: {
+          webSearch: {
+            apiKey: "exa-...",
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+<Note>
+  Лучше использовать `EXA_API_KEY` или SecretRef из OpenClaw, чем добавлять API key в файл настроек.
+</Note>
+
+<div id="what-agents-can-request">
+  ## Что могут запрашивать агенты
+</div>
+
+OpenClaw предоставляет доступ к Exa через `web_search`.
+
+| Параметр                     | Назначение                                                                             |
+| ---------------------------- | -------------------------------------------------------------------------------------- |
+| `query`                      | Поисковый запрос по вебу.                                                              |
+| `count`                      | Количество результатов — до 100, с учётом ограничения выбранного типа search.          |
+| `type`                       | Режим search в Exa: `auto`, `neural`, `fast`, `instant`, `deep` и `deep-reasoning`.    |
+| `freshness`                  | Ограничить результаты последним днём, неделей, месяцем или годом.                      |
+| `date_after` / `date_before` | Ограничить результаты границами в формате `YYYY-MM-DD`.                                |
+| `contents`                   | Возвращать вместе с каждым результатом полный текст, highlights или краткие изложения. |
+
+Если `contents` не указан, OpenClaw по умолчанию запрашивает highlights. Агент может запросить содержимое в другом виде, если ему нужны полные страницы или краткие изложения:
+
+```javascript theme={null}
+await web_search({
+  query: "transformer architecture explained",
+  type: "neural",
+  contents: {
+    text: { maxCharacters: 5000 },
+    highlights: { numSentences: 3 },
+    summary: true,
+  },
+});
+```
+
+По умолчанию OpenClaw кэширует результаты веб-поиска на 15 минут. Измените `tools.web.search.cacheTtlMinutes` или задайте `0`, если каждый запрос должен возвращать свежие данные.
+
+<div id="troubleshooting">
+  ## Устранение неполадок
+</div>
+
+<AccordionGroup>
+  <Accordion title="OpenClaw не показывает Exa в списке провайдеров">
+    Установите `@openclaw/exa-plugin`, перезапустите шлюз и снова выполните `openclaw configure --section web`.
+  </Accordion>
+
+  <Accordion title="OpenClaw сообщает об отсутствии key Exa">
+    Убедитесь, что `EXA_API_KEY` доступен процессу шлюза, а не только вашей интерактивной оболочке. При установке в виде шлюза поместите его в `~/.openclaw/.env` и перезапустите шлюз.
+  </Accordion>
+
+  <Accordion title="Результаты поиска выглядят устаревшими">
+    OpenClaw кэширует результаты независимо от Exa. Уменьшите значение `tools.web.search.cacheTtlMinutes` или задайте `0`, а затем при запросе содержимого страниц используйте параметры актуальности контента Exa.
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+<Columns cols={3}>
+  <Card title="Провайдер Exa для OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Читать руководство" arrow="true">
+    Ознакомьтесь с текущей настройкой плагина и параметрами инструмента.
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/ru/docs/search/quickstart" cta="Читать руководство" arrow="true">
+    Сравните режимы поиска Exa и форматы ответов.
+  </Card>
+
+  <Card title="Актуальность контента" icon="clock" href="/ru/docs/contents/quickstart#content-freshness" cta="Читать руководство" arrow="true">
+    Управляйте получением содержимого страниц из индекса и в реальном времени.
+  </Card>
+</Columns>

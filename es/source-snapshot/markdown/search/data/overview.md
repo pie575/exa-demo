@@ -1,0 +1,208 @@
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
+>
+> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="data-index">
+  # Índice de datos
+</div>
+
+> Qué indexa Exa en la web pública y en fuentes de datos privadas.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el entorno de pruebas de la API" aria-label={`Abrir "${query}" en el entorno de pruebas de la API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Exa busca en la web pública y en determinadas fuentes de datos privadas, con una cobertura que se actualiza continuamente. Incluye:
+
+<AccordionGroup>
+  <Accordion title="Noticias" icon="newspaper">
+    <Card title="Guía de noticias" icon="newspaper" href="/es/docs/search/data/news" cta="Leer la guía" arrow="true">
+      Explora casos de uso, ejemplos y buenas prácticas para la búsqueda de noticias.
+    </Card>
+
+    Noticias y artículos:
+
+    <PlaygroundQuery query="coverage of the EU AI Act enforcement timeline published this month" />
+
+    Entradas de blog y listas:
+
+    <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
+
+    Transcripciones de pódcast y vídeos:
+
+    <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
+
+    Prensa negativa:
+
+    <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
+  </Accordion>
+
+  <Accordion title="Código y documentación" icon="code">
+    <Card title="Guía de código y documentación" icon="code" href="/es/docs/search/data/code" cta="Leer la guía" arrow="true">
+      Explora casos de uso, ejemplos y prácticas recomendadas de búsqueda de código.
+    </Card>
+
+    Repositorios de GitHub:
+
+    <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
+
+    Documentación de API y para desarrolladores:
+
+    <PlaygroundQuery query="Stripe webhook signature verification documentation" />
+
+    Registros de paquetes, con detalles precisos de versiones y publicaciones:
+
+    <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
+
+    Directorios de habilidades de agentes:
+
+    <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
+  </Accordion>
+
+  <Accordion title="Empresas y personas" icon="users">
+    <Card title="Guía de empresas y personas" icon="users" href="/es/docs/search/data/companies-people" cta="Leer guía" arrow="true">
+      Aprende a encontrar empresas, personas y las relaciones entre ellas.
+    </Card>
+
+    Descubrimiento de empresas y señales operativas:
+
+    <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
+
+    Perfiles profesionales por cargo, habilidad y ubicación:
+
+    <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
+
+    Personas filtradas por las empresas en las que trabajan:
+
+    <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
+
+    Investigación de empresas y de personas clave en una sola query:
+
+    <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
+  </Accordion>
+
+  <Accordion title="Mercados financieros" icon="chart-line">
+    <Card title="Guía de mercados financieros" icon="chart-line" href="/es/docs/search/data/financial" cta="Leer guía" arrow="true">
+      Explora casos de uso de cotizaciones, informes regulatorios, llamadas de resultados e investigación de mercado.
+    </Card>
+
+    Precios, estimaciones de analistas e informes financieros:
+
+    <PlaygroundQuery query="analyst price targets for NVIDIA after its most recent earnings" />
+
+    Informes ante la SEC, llamadas de resultados y presentaciones internacionales:
+
+    <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" />
+
+    Rondas de financiación anunciadas y otros datos de dominio público:
+
+    <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
+
+    Datos económicos publicados y estadísticas oficiales:
+
+    <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
+  </Accordion>
+
+  <Accordion title="Publicaciones de investigación" icon="book-open">
+    <Card title="Guía de publicaciones de investigación" icon="book-open" href="/es/docs/search/data/research" cta="Leer la guía" arrow="true">
+      Explora casos de uso de investigación sobre artículos, patentes, ensayos clínicos y regulación.
+    </Card>
+
+    Artículos de investigación, patentes y subvenciones:
+
+    <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" />
+
+    Ensayos clínicos e interacciones entre medicamentos:
+
+    <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
+
+    Aprobaciones regulatorias y sanitarias:
+
+    <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
+  </Accordion>
+
+  <Accordion title="Registros jurídicos y públicos" icon="scale">
+    <Card title="Guía de registros legales y públicos" icon="scale" href="/es/docs/search/data/legal" cta="Leer guía" arrow="true">
+      Explora jurisprudencia, patentes, sanciones y casos de uso con registros públicos.
+    </Card>
+
+    Registros legales y judiciales:
+
+    <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
+
+    Sanciones y listas de vigilancia:
+
+    <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
+
+    Contratos públicos gubernamentales:
+
+    <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
+
+    Censos y otros registros públicos:
+
+    <PlaygroundQuery query="census tract population change in the Austin metro area" />
+  </Accordion>
+
+  <Accordion title="Deportes, tiempo y lugares" icon="map-pin">
+    <Card title="Guía de deportes, clima y lugares" icon="map-pin" href="/es/docs/search/data/sports-weather-places" cta="Leer la guía" arrow="true">
+      Aprende a consultar datos deportivos en vivo, pronósticos e información local.
+    </Card>
+
+    Marcadores en vivo, tablas de posiciones y calendarios:
+
+    <PlaygroundQuery query="NBA scores last night" />
+
+    Pronósticos para cualquier lugar y fecha:
+
+    <PlaygroundQuery query="weather in San Francisco tomorrow" />
+
+    Negocios locales, locales comerciales y propiedades:
+
+    <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
+  </Accordion>
+
+  <Accordion title="Ciberseguridad" icon="shield">
+    <Card title="Guía de ciberseguridad" icon="shield" href="/es/docs/search/data/security" cta="Leer guía" arrow="true">
+      Explora casos de uso de vulnerabilidades, avisos de seguridad y riesgo de proveedores.
+    </Card>
+
+    Avisos de seguridad:
+
+    <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
+
+    Bases de datos de vulnerabilidades CVE y GHSA:
+
+    <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
+
+    Listas de subencargados del tratamiento de datos y páginas de confianza:
+
+    <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
+  </Accordion>
+</AccordionGroup>
+
+Estas guías abordan patrones de datos habituales, pero Exa también busca en la web pública en general, abarcando numerosos sitios, formatos e idiomas.

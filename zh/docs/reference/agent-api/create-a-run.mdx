@@ -1,0 +1,18 @@
+---
+title: "创建运行"
+description: "创建一个异步 Agent 运行。除非请求服务器发送事件，否则响应会立即返回该运行对象。"
+openapi: "/zh/docs/exa-spec.yaml POST /agent/runs"
+timestamp: false
+---
+
+用自然语言 `query` 创建一个运行。可添加 `outputSchema` 以获得经过校验的结构化 JSON，用 `input.data` 提供待处理的数据行，用 `input.exclusion` 指定要排除的记录或实体，或用 `previousRunId` 从已完成的运行继续。
+
+设置 `Accept: text/event-stream`，即可在运行创建、启动和完成时以流式方式接收运行事件。
+
+<Note>
+  **Connect：** 传入 `dataSources`，让 agent 在运行期间访问第三方数据提供方。详见 [Connect 指南](/zh/docs/agent/quickstart#connect-data-sources)。
+</Note>
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制面板中创建 key。新账户可获得免费额度。
+</Card>

@@ -1,0 +1,12 @@
+---
+title: "取消批次"
+description: "取消进行中的批次。"
+openapi: "/zh/docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+批次会停止调度新请求，并在最终进入 `cancelled` 状态前处理完正在执行的任务。对已处于 `cancelling` 或 `cancelled` 状态的批次执行取消操作，将原样返回该批次；处于 `completed` 或 `expired` 状态的批次则无法取消。
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在仪表板中创建 key。新账户将获得免费额度。
+</Card>

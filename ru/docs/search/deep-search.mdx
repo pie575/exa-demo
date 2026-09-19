@@ -1,0 +1,419 @@
+---
+title: "Deep Search"
+sidebarTitle: "Deep Search"
+description: "Используйте итеративный поиск, рассуждения и обоснованный синтез для сложных исследовательских задач."
+keywords: ["deep search", "deep-lite", "deep-reasoning", "структурированный вывод", "дополнительные запросы"]
+---
+
+Deep Search — это исследовательский режим Search API. Он использует тот же эндпоинт `/search`, но процесс поиска может выполнять несколько запросов, изучать найденные данные, корректировать подход и синтезировать обоснованный результат.
+
+Используйте обычный поиск, когда нужны ранжированные страницы по чётко сформулированному запросу. Используйте Deep, когда для получения ответа требуется целое исследование.
+
+<div id="how-deep-search-works">
+  ## Как работает Deep Search
+</div>
+
+Deep Search добавляет исследовательский цикл перед формированием итогового ответа:
+
+<Steps>
+  <Step title="Планирование поиска">
+    Exa начинает с вашего `query` и может развернуть его в несколько поисковых запросов, охватывающих
+    разные части задачи. Исходные варианты можно задать через `additionalQueries`.
+  </Step>
+
+  <Step title="Поиск и анализ">
+    Deep ищет данные, сопоставляет найденное с запросом и определяет, что уже подтверждено,
+    а чего всё ещё не хватает.
+  </Step>
+
+  <Step title="Уточнение">
+    Если данных недостаточно или они противоречивы, Deep может выполнить более точечный поиск вместо того,
+    чтобы возвращать первые правдоподобные страницы.
+  </Step>
+
+  <Step title="Отбор и синтез">
+    Deep отбирает полезные результаты, а затем использует тот же механизм синтеза, что и другие типы поиска.
+    Если вы передаёте `outputSchema`, ответ включает структурированное поле `output.content` и
+    цитаты на уровне отдельных полей в `output.grounding`.
+  </Step>
+</Steps>
+
+Такой подход особенно полезен для списков и структурированных результатов: для каждого запрошенного элемента может потребоваться отдельный поиск, и Deep способен собрать и проверить эти результаты, прежде чем сформировать итоговую структуру.
+
+<div id="choose-a-deep-mode">
+  ## Выбор режима Deep
+</div>
+
+| Тип              | Когда использовать                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------- |
+| `deep-lite`      | Нужны лёгкое расширение запроса и синтез                                                    |
+| `deep`           | Задача требует итеративного поиска, сбора данных или нескольких структурированных элементов |
+| `deep-reasoning` | Задача требует более вдумчивых рассуждений при сложных или противоречивых данных            |
+
+Для исследовательских сценариев начинайте с `deep`. Переходите на `deep-lite`, если задача проще, а важна скорость отклика.
+
+<Tip>
+  Вместо `deep-reasoning` используйте [Exa Agent](/ru/docs/agent/quickstart) для длительных исследований, построения
+  списков и многошагового обогащения (enrichment). У Agent больше вычислительных ресурсов на один запуск, и он возвращает обоснованные
+  структурированные результаты.
+</Tip>
+
+Актуальные сведения о стоимости и задержках см. в разделе [Цены](/ru/docs/admin/pricing#deep-search).
+
+<div id="make-a-deep-request">
+  ## Выполнение запроса Deep
+</div>
+
+Укажите `type` в обычном запросе к Search API:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  result = exa.search(
+      "Compare how major database vendors support vector, keyword, and hybrid retrieval",
+      type="deep",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const result = await exa.search(
+    "Compare how major database vendors support vector, keyword, and hybrid retrieval",
+    {
+      type: "deep",
+      contents: { highlights: true }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Compare how major database vendors support vector, keyword, and hybrid retrieval",
+      "type": "deep",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+Deep возвращает отобранные результаты поиска в поле `results`. Добавьте `outputSchema`, если вам нужен также синтезированный ответ или структурированный набор данных.
+
+<div id="provide-starting-queries">
+  ## Задайте начальные запросы
+</div>
+
+Обычно Deep сам решает, какие поисковые запросы выполнять. Используйте `additionalQueries`, если вы заранее знаете конкретную терминологию, точки зрения или подзадачи, которые должно охватить исследование:
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Compare current approaches to inference-time scaling",
+      additional_queries=[
+          "inference-time compute scaling benchmark",
+          "test-time reasoning methods survey",
+          "adaptive compute language models",
+      ],
+      type="deep",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "Compare current approaches to inference-time scaling",
+    {
+      additionalQueries: [
+        "inference-time compute scaling benchmark",
+        "test-time reasoning methods survey",
+        "adaptive compute language models"
+      ],
+      type: "deep",
+      contents: { highlights: true }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Compare current approaches to inference-time scaling",
+      "additionalQueries": [
+        "inference-time compute scaling benchmark",
+        "test-time reasoning methods survey",
+        "adaptive compute language models"
+      ],
+      "type": "deep",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+Основной `query` включается всегда. Можно указать до 10 дополнительных запросов; этот список доступен только для типов Deep search.
+
+Не добавляйте незначительные перефразировки просто ради увеличения числа поисковых запросов. Добавляйте запрос, только если он задаёт существенно иное направление поиска.
+
+<div id="guide-behavior-and-output-separately">
+  ## Управляйте поведением и выводом по отдельности
+</div>
+
+`systemPrompt` и `outputSchema` влияют на разные части запроса:
+
+* `systemPrompt` задаёт предпочтения по источникам, новизну, дедупликацию и характер исследования в режиме Deep.
+* `outputSchema` определяет итоговую структуру ответа и запускает синтез.
+
+В запросе описывайте, что именно нужно исследовать, а в системном промпте — как проводить исследование и как представлять его результаты.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Find AI infrastructure companies that announced Series A or B funding in the last six months",
+      type="deep",
+      system_prompt="Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.",
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 8,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "round", "amount"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "round": {"type": "string"},
+                          "amount": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "Find AI infrastructure companies that announced Series A or B funding in the last six months",
+    {
+      type: "deep",
+      systemPrompt:
+        "Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.",
+      outputSchema: {
+        type: "object",
+        required: ["companies"],
+        properties: {
+          companies: {
+            type: "array",
+            maxItems: 8,
+            items: {
+              type: "object",
+              required: ["name", "round", "amount"],
+              properties: {
+                name: { type: "string" },
+                round: { type: "string" },
+                amount: { type: "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find AI infrastructure companies that announced Series A or B funding in the last six months",
+      "type": "deep",
+      "systemPrompt": "Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.",
+      "outputSchema": {
+        "type": "object",
+        "required": ["companies"],
+        "properties": {
+          "companies": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "required": ["name", "round", "amount"],
+              "properties": {
+                "name": { "type": "string" },
+                "round": { "type": "string" },
+                "amount": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+Выбирайте Deep, если нужно получить больше двух структурированных элементов или если каждый элемент должен отвечать сразу нескольким требованиям. Стандартные типы поиска используют тот же механизм синтеза, но не проводят перед ним такого же итеративного исследования.
+
+<div id="read-the-grounded-response">
+  ## Чтение обоснованного ответа
+</div>
+
+В структурированных ответах сгенерированные значения отделены от подтверждающих их данных:
+
+```json theme={null}
+{
+  "results": [
+    {
+      "title": "Acme AI raises $30M Series B",
+      "url": "https://acme.example/news/series-b"
+    }
+  ],
+  "output": {
+    "content": {
+      "companies": [
+        {
+          "name": "Acme AI",
+          "round": "Series B",
+          "amount": "$30M"
+        }
+      ]
+    },
+    "grounding": [
+      {
+        "field": "companies[0].amount",
+        "citations": [
+          {
+            "title": "Acme AI raises $30M Series B",
+            "url": "https://acme.example/news/series-b"
+          }
+        ],
+        "confidence": "high"
+      }
+    ]
+  }
+}
+```
+
+Используйте `output.content` как сгенерированный результат, а `output.grounding` — для отображения или проверки источников, подтверждающих каждое поле. Не добавляйте в собственную схему поля с цитатами или оценкой уверенности — Exa возвращает их автоматически.
+
+`numResults` определяет, сколько отобранных страниц возвращается в `results`. Этот параметр не задаёт количество поисковых запросов, которые может выполнить Deep.
+
+<div id="stream-the-synthesis">
+  ## Потоковая передача синтеза
+</div>
+
+Укажите `stream: true` вместе с `outputSchema`, чтобы получать синтезированный результат через server-sent events:
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  import requests
+
+  response = requests.post(
+      "https://api.exa.ai/search",
+      headers={"Authorization": f"Bearer {os.environ['EXA_API_KEY']}"},
+      json={
+          "query": "Explain the competing technical approaches to long-context retrieval",
+          "type": "deep",
+          "stream": True,
+          "outputSchema": {
+              "type": "text",
+              "description": "A grounded comparison organized by approach",
+          },
+      },
+      stream=True,
+  )
+  response.raise_for_status()
+
+  for line in response.iter_lines(decode_unicode=True):
+      if line:
+          print(line)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.EXA_API_KEY}`
+    },
+    body: JSON.stringify({
+      query: "Explain the competing technical approaches to long-context retrieval",
+      type: "deep",
+      stream: true,
+      outputSchema: {
+        type: "text",
+        description: "A grounded comparison organized by approach"
+      }
+    })
+  });
+
+  if (!response.ok || !response.body) {
+    throw new Error(`Search failed: ${response.status}`);
+  }
+
+  const decoder = new TextDecoder();
+  for await (const chunk of response.body) {
+    process.stdout.write(decoder.decode(chunk, { stream: true }));
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -N -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Explain the competing technical approaches to long-context retrieval",
+      "type": "deep",
+      "stream": true,
+      "outputSchema": {
+        "type": "text",
+        "description": "A grounded comparison organized by approach"
+      }
+    }'
+  ```
+</CodeGroup>
+
+Читайте типизированные события до события `done`. Последнее событие содержит готовый результат и время выполнения поиска, а также информацию о стоимости, если она доступна.
+
+<div id="when-to-stay-with-standard-search">
+  ## Когда достаточно стандартного Search
+</div>
+
+Deep не нужен, если запрос закрывается одним проходом поиска:
+
+* Вам нужны релевантные страницы, а не проработанный вывод.
+* Запрос уже указывает на конкретный источник или узкую тему.
+* Ваше приложение само выполняет рассуждения, и ему требуется только выдача результатов.
+* Запрос выполняется в интерактивном сценарии, автодополнении или голосовом интерфейсе.
+
+Используйте `auto` для баланса качества и скорости по умолчанию либо `fast` и `instant` при жёстких требованиях к задержке.
+
+<Columns cols={2}>
+  <Card title="Руководство по Search API" icon="search" href="/ru/docs/search/quickstart" cta="Изучить Search" arrow="true">
+    Формируйте запросы, выбирайте содержимое результатов и применяйте фильтры.
+  </Card>
+
+  <Card title="Лучшие практики Search" icon="sliders-horizontal" href="/ru/docs/search/best-practices" cta="Настроить поиск" arrow="true">
+    Улучшайте качество, контекст, задержку и интеграции с агентами.
+  </Card>
+
+  <Card title="Справочник Search API" icon="square-terminal" href="/ru/docs/reference/search" cta="Открыть справочник" arrow="true">
+    Все параметры запроса и поля ответа.
+  </Card>
+
+  <Card title="Цены" icon="credit-card" href="/ru/docs/admin/pricing#deep-search" cta="Сравнить режимы" arrow="true">
+    Ознакомьтесь с актуальной стоимостью и задержкой Deep Search.
+  </Card>
+</Columns>

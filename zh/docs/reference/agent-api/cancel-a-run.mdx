@@ -1,0 +1,12 @@
+---
+title: "取消运行"
+description: "取消处于排队中或运行中的 Agent 运行。"
+openapi: "/zh/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
+timestamp: false
+---
+
+如果运行仍在进行中，它会立即转为 `cancelled` 并终止，不返回任何结果。该运行将以状态 `cancelled` 和 `stopReason: cancelled` 结束。取消前已产生的用量仍会计费。如果运行已处于终态 (completed、failed 或 cancelled) ，该端点会原样返回现有运行。
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建一个 key。新账户将获赠免费积分。
+</Card>

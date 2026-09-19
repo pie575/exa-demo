@@ -1,0 +1,387 @@
+---
+title: "Совместимость с OpenAI SDK"
+sidebarTitle: "OpenAI SDK"
+description: "Используйте эндпоинты Exa как прямую замену OpenAI — с поддержкой API chat completions и responses."
+icon: "/docs/images/sidebar-icons/openai.svg"
+---
+
+<Card title="Быстрый старт с кодинг-агентом" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Впервые в Exa? Начните меньше чем за минуту.
+</Card>
+
+***
+
+<div id="overview">
+  ## Обзор
+</div>
+
+Exa предоставляет совместимые с OpenAI эндпоинты, которые работают с OpenAI SDK:
+
+| Эндпоинт            | Интерфейс OpenAI     | Доступные модели | Сценарий использования                                               |
+| ------------------- | -------------------- | ---------------- | -------------------------------------------------------------------- |
+| `/chat/completions` | Chat Completions API | `exa`            | Традиционный чат-интерфейс                                           |
+| `/responses`        | Responses API        | `exa-agent`      | Agent API (асинхронные исследования, enrichment, построение списков) |
+
+<Info>
+  `/chat/completions` направляет запросы в [`/answer`](/ru/docs/reference/answer), а `/responses` — в [Agent API](/ru/docs/agent/quickstart). См. раздел [Agent через Responses API](#agent-via-responses-api) ниже.
+</Info>
+
+<div id="answer">
+  ## Answer
+</div>
+
+Чтобы использовать эндпоинт `/answer` от Exa через интерфейс chat completions:
+
+1. Замените базовый URL на `https://api.exa.ai`
+2. Замените API key на свой Exa API key
+3. Замените имя модели на `exa`.
+
+<Info>
+  См. полный справочник по эндпоинту [`/answer`](/ru/docs/reference/answer). По вопросам настраиваемой маршрутизации пишите на [hello@exa.ai](mailto:hello@exa.ai).
+</Info>
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+    base_url="https://api.exa.ai", # использовать exa в качестве базового URL
+    api_key=os.environ["EXA_API_KEY"],
+  )
+
+  completion = client.chat.completions.create(
+    model="exa",
+    messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What are the latest developments in quantum computing?"}
+  ],
+
+  # используйте extra_body для передачи дополнительных параметров в эндпоинт /answer
+    extra_body={
+      "text": True # включить полный текст из источников
+    }
+  )
+
+  print(completion.choices[0].message.content)  # вывести содержимое ответа
+  print(completion.choices[0].message.citations)  # вывести ссылки на источники
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai", // использовать exa в качестве базового URL
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    const completion = await openai.chat.completions.create({
+      model: "exa",
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        {
+          role: "user",
+          content: "What are the latest developments in quantum computing?",
+        },
+      ],
+      store: true,
+      stream: true,
+      extra_body: {
+        text: true, // включить полный текст из источников
+      },
+    });
+
+    for await (const chunk of completion) {
+      console.log(chunk.choices[0].delta.content);
+    }
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  curl -s https://api.exa.ai/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "model": "exa",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "What are the latest developments in quantum computing?"
+        }
+      ],
+      "text": true
+    }'
+  ```
+</CodeGroup>
+
+<div id="agent-via-responses-api">
+  ## Agent через Responses API
+</div>
+
+Эндпоинт [`/responses`](https://api.exa.ai/responses) в Exa предоставляет [Agent API](/ru/docs/agent/quickstart) через интерфейс OpenAI Responses, поэтому SDK от OpenAI работают с ним без изменений. Укажите `model: "exa-agent"` и выберите режим выполнения:
+
+| Режим      | Запрос                                   | Поведение                                                                                                            |
+| ---------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Синхронный | по умолчанию (без `stream`/`background`) | Запрос блокируется и возвращает завершённый объект `response`.                                                       |
+| Потоковая передача  | `stream: true`                           | Запрос передаёт события OpenAI Responses (SSE) по ходу выполнения, завершаясь событием `response.completed`.         |
+| Фоновый    | `background: true`                       | Запрос сразу возвращает ответ со статусом `in_progress`; опрашивайте `GET /responses/{id}` для получения результата. |
+
+Задайте `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`), чтобы найти баланс между стоимостью и глубиной проработки, а отменить выполнение можно через `POST /responses/{id}/cancel`. Для `max` укажите `Exa-Beta: agent-max-effort-2026-07-27` как header клиента по умолчанию. В [руководстве по Agent](/ru/docs/agent/quickstart) описаны модель выполнения, формат вывода и тарификация по уровням effort, лежащие в основе этого интерфейса.
+
+<Warning>
+  Выполнения с `reasoning.effort` `high`, `xhigh` и `max` выполняются слишком долго для синхронного запроса и возвращают `400`. Используйте для них `stream: true` или `background: true`. В `/responses` нет поля `budget`; max использует свой лимит по умолчанию на одно выполнение.
+</Warning>
+
+Используйте `previous_response_id`, чтобы продолжить завершённое выполнение Responses.
+
+<div id="synchronous">
+  ### Синхронный режим
+</div>
+
+Запрос блокируется до завершения выполнения и возвращает итоговый объект `response`.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="https://api.exa.ai",
+      api_key=os.environ["EXA_API_KEY"],
+  )
+
+  response = client.responses.create(
+      model="exa-agent",
+      input="Find the top 5 AI startups founded in 2025 with their funding amounts",
+      reasoning={"effort": "medium"},
+  )
+
+  print(response.output_text)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai",
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    const response = await openai.responses.create({
+      model: "exa-agent",
+      input: "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      reasoning: { effort: "medium" },
+    });
+
+    console.log(response.output_text);
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST 'https://api.exa.ai/responses' \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "exa-agent",
+      "input": "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      "reasoning": { "effort": "medium" }
+    }'
+  ```
+</CodeGroup>
+
+<div id="streaming">
+  ### Потоковая передача
+</div>
+
+Укажите `stream: true`, чтобы получать события потока Responses через SSE. Каждое событие содержит монотонно возрастающий `sequence_number`, а завершается поток событием `response.completed`; маркер `[DONE]` не отправляется. В потоке могут встречаться строки-комментарии `: keep-alive` — SSE-клиенты их игнорируют.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="https://api.exa.ai",
+      api_key=os.environ["EXA_API_KEY"],
+  )
+
+  with client.responses.stream(
+      model="exa-agent",
+      input="Find the top 5 AI startups founded in 2025 with their funding amounts",
+  ) as stream:
+      for event in stream:
+          if event.type == "response.output_text.delta":
+              print(event.delta, end="", flush=True)
+      final = stream.get_final_response()
+
+  print("\n\n", final.output_text)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai",
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    const stream = await openai.responses.create({
+      model: "exa-agent",
+      input: "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      stream: true,
+    });
+
+    for await (const event of stream) {
+      if (event.type === "response.output_text.delta") {
+        process.stdout.write(event.delta);
+      }
+    }
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  curl -N -X POST 'https://api.exa.ai/responses' \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: text/event-stream' \
+    -d '{
+      "model": "exa-agent",
+      "input": "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      "stream": true
+    }'
+  ```
+</CodeGroup>
+
+<div id="background">
+  ### Фоновый режим
+</div>
+
+Укажите `background: true`, чтобы запустить выполнение, не удерживая соединение открытым, а затем опрашивайте `GET /responses/{id}`, пока не будет достигнут терминальный статус. Чтобы использовать потоковую передачу вместо опроса, см. раздел [Потоковая передача](#streaming).
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  import time
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="https://api.exa.ai",
+      api_key=os.environ["EXA_API_KEY"],
+  )
+
+  response = client.responses.create(
+      model="exa-agent",
+      input="Find the top 5 AI startups founded in 2025 with their funding amounts",
+      background=True,
+  )
+
+  # Опрашиваем до завершения
+  while response.status in ("queued", "in_progress"):
+      time.sleep(5)
+      response = client.responses.retrieve(response.id)
+
+  print(response.output_text)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai",
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    let response = await openai.responses.create({
+      model: "exa-agent",
+      input: "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      background: true,
+    });
+
+    // Опрашиваем до завершения
+    while (response.status === "queued" || response.status === "in_progress") {
+      await new Promise((r) => setTimeout(r, 5000));
+      response = await openai.responses.retrieve(response.id);
+    }
+
+    console.log(response.output_text);
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  # Создаём фоновый запуск
+  curl -s -X POST 'https://api.exa.ai/responses' \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "exa-agent",
+      "input": "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      "background": true
+    }'
+
+  # Опрашиваем по возвращённому идентификатору ответа
+  curl -s 'https://api.exa.ai/responses/resp_agent_run_...' \
+    -H "Authorization: Bearer $EXA_API_KEY"
+  ```
+</CodeGroup>
+
+<div id="chat-wrapper">
+  ## Обёртка для чата
+</div>
+
+Exa предоставляет Python-обёртку, которая автоматически добавляет возможности RAG к любому запросу OpenAI chat completion. Одной строкой кода вы превращаете любой OpenAI chat completion в RAG-систему на базе Exa, которая сама выполняет поиск, разбиение на фрагменты и формирование промптов.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+  from exa_py import Exa
+
+  # Инициализация клиентов
+  openai = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+  exa = Exa(api_key=os.environ["EXA_API_KEY"])
+
+  # Оборачиваем клиент OpenAI
+  exa_openai = exa.wrap(openai)
+
+  # Используем точно так же, как обычный клиент OpenAI
+  completion = exa_openai.chat.completions.create(
+      model="gpt-5.6-sol",
+      messages=[{"role": "user", "content": "What is the latest climate tech news?"}]
+  )
+
+  print(completion.choices[0].message.content)
+  ```
+</CodeGroup>
+
+Обёрнутый клиент работает точно так же, как нативный клиент OpenAI, но при необходимости автоматически дополняет ответы релевантными результатами поиска.
+
+Обёртка поддерживает любые параметры функции `exa.search()`.
+
+```python theme={null}
+completion = exa_openai.chat.completions.create(
+    model="gpt-5.6-sol",
+    messages=messages,
+    use_exa="auto",              # "auto", "required" или "none"
+    num_results=5,               # по умолчанию 3
+    result_max_len=1024,         # по умолчанию 2048 символов
+    include_domains=["arxiv.org"],
+    category="publication",
+    start_published_date="2019-01-01"
+)
+```

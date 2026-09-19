@@ -1,7 +1,24 @@
 ---
 title: "Answer"
-description: "Get an LLM answer to a question informed by Exa search results. `/answer` performs an Exa search and uses an LLM to generate either:\n1. A direct answer for specific queries. (i.e. \"What is the capital of France?\" would return \"Paris\")\n2. A detailed summary with citations for open-ended queries (i.e. \"What is the state of ai in healthcare?\" would return a summary with citations to relevant sources)\n\nThe response includes both the generated answer and the sources used to create it. The endpoint also supports streaming (as `stream=True`), which will return tokens as they are generated.\n\nAlternatively, you can use the OpenAI compatible [chat completions interface](/docs/integrations/openai-sdk#answer).\n"
-openapi: "docs/exa-spec.yaml POST /answer"
+description: "Get an LLM answer to a question informed by Exa search results.
+  `/answer` performs an Exa search and uses an LLM to generate either:
+
+  1. A direct answer for specific queries. (i.e. \"What is the capital of
+  France?\" would return \"Paris\")
+
+  2. A detailed summary with citations for open-ended queries (i.e. \"What is
+  the state of ai in healthcare?\" would return a summary with citations to
+  relevant sources)
+
+
+  The response includes both the generated answer and the sources used to create
+  it. The endpoint also supports streaming (as `stream=True`), which will return
+  tokens as they are generated.
+
+
+  Alternatively, you can use the OpenAI compatible [chat completions
+  interface](/docs/integrations/openai-sdk#answer).\n"
+openapi: "/docs/exa-spec.yaml POST /answer"
 timestamp: false
 ---
 

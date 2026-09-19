@@ -1,0 +1,13 @@
+---
+title: "Список запусков Agent"
+sidebarTitle: "Список запусков"
+description: "Получение постраничного списка запусков Agent для вашей команды."
+openapi: "/ru/docs/exa-spec.yaml GET /agent/runs"
+timestamp: false
+---
+
+Запуски возвращаются в порядке от новых к старым. Используйте `limit`, чтобы задать размер страницы, и `cursor` со значением `nextCursor` из предыдущего ответа, чтобы получить следующую страницу.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в панели управления. Новым аккаунтам начисляются бесплатные кредиты.
+</Card>

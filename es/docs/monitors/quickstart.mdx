@@ -1,0 +1,429 @@
+---
+title: "API de Monitors"
+sidebarTitle: "Monitors"
+description: "Ejecuta búsquedas recurrentes y recibe por webhook los nuevos resultados encontrados."
+boost: 4
+---
+
+Los monitors ejecutan búsquedas de Exa de forma periódica y envían los resultados a un endpoint de webhook.
+
+Usa los monitors para hacer seguimiento de noticias, anuncios de la competencia, rondas de financiación, cambios regulatorios, publicaciones de investigación o cualquier otro tema que evolucione con el tiempo.
+
+<div id="how-monitors-work">
+  ## Cómo funcionan los monitors
+</div>
+
+En cada ejecución, Exa realiza la search configurada, filtra por fecha, descarta los resultados o hallazgos que el
+monitor ya devolvió y envía la nueva salida a tu webhook.
+
+Cada monitor mantiene su propio historial de ejecuciones, así que formula la query en torno a la señal continua que quieres
+seguir, en lugar de añadir tú mismo un rango de fechas móvil.
+
+<div id="create-your-first-monitor">
+  ## Crea tu primer monitor
+</div>
+
+Crea un monitor con una query de búsqueda, un intervalo y el endpoint HTTPS que recibirá las
+actualizaciones:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  monitor = exa.monitors.create({
+      "name": "Battery recycling expansion",
+      "search": {
+          "query": "new battery recycling facilities announced in North America"
+      },
+      "trigger": {
+          "type": "interval",
+          "period": "1d",
+      },
+      "webhook": {
+          "url": "https://example.com/webhooks/exa",
+          "events": ["monitor.run.completed"],
+      },
+  })
+
+  print(monitor.id)
+  print(monitor.webhook_secret)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const monitor = await exa.monitors.create({
+    name: "Battery recycling expansion",
+    search: {
+      query: "new battery recycling facilities announced in North America"
+    },
+    trigger: {
+      type: "interval",
+      period: "1d"
+    },
+    webhook: {
+      url: "https://example.com/webhooks/exa",
+      events: ["monitor.run.completed"]
+    }
+  });
+
+  console.log(monitor.id);
+  console.log(monitor.webhookSecret);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/monitors" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "name": "Battery recycling expansion",
+      "search": {
+        "query": "new battery recycling facilities announced in North America"
+      },
+      "trigger": {
+        "type": "interval",
+        "period": "1d"
+      },
+      "webhook": {
+        "url": "https://example.com/webhooks/exa",
+        "events": ["monitor.run.completed"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Accordion title="Ejemplo de respuesta">
+  ```json theme={null}
+  {
+    "id": "01k4d9w6y3h7p2m8n5q1r0s4tv",
+    "name": "Battery recycling expansion",
+    "status": "active",
+    "search": {
+      "query": "new battery recycling facilities announced in North America"
+    },
+    "trigger": {
+      "type": "interval",
+      "period": "1d"
+    },
+    "outputSchema": null,
+    "metadata": null,
+    "webhook": {
+      "url": "https://example.com/webhooks/exa",
+      "events": ["monitor.run.completed"]
+    },
+    "nextRunAt": null,
+    "createdAt": "2026-09-05T20:00:00.000Z",
+    "updatedAt": "2026-09-05T20:00:00.000Z",
+    "webhookSecret": "<one-time-webhook-signing-secret>"
+  }
+  ```
+</Accordion>
+
+Guarda el `webhookSecret` al crear el monitor. Solo se devuelve una vez y es imprescindible para
+verificar las firmas de los webhooks.
+
+<div id="configure-the-output">
+  ## Configura la salida
+</div>
+
+Cada ejecución completada devuelve las páginas recién descubiertas en `output.results`.
+
+Exa también sintetiza los hallazgos de cada página en `output.content`:
+
+| Formato de salida | Cómo usarlo                    | Valor devuelto                                 |
+| ----------------- | ------------------------------ | ---------------------------------------------- |
+| Resumen de texto  | Predeterminado                 | Una cadena en `output.content`                 |
+| JSON estructurado | Añade un objeto `outputSchema` | JSON que cumple el esquema en `output.content` |
+
+Las fuentes de los campos sintetizados se devuelven automáticamente en `output.grounding`.
+
+Añade `outputSchema` cuando el código posterior necesite campos
+consistentes:
+
+```json theme={null}
+{
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "announcements": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "company": { "type": "string" },
+            "location": { "type": "string" },
+            "announcement": { "type": "string" }
+          },
+          "required": ["company", "location", "announcement"]
+        }
+      }
+    },
+    "required": ["announcements"]
+  }
+}
+```
+
+Mantén las citas y la confianza fuera del esquema. Se devuelven por separado en
+`output.grounding`.
+
+<div id="add-page-content">
+  ## Añadir contenido de página
+</div>
+
+`search` acepta las mismas opciones que [Exa Search](/es/docs/search/quickstart): usa `contents` para incluir
+highlights, texto completo o resúmenes en cada resultado, e `includeDomains` o `excludeDomains` para
+acotar las fuentes.
+
+<CodeGroup>
+  ```python Python theme={null}
+  monitor = exa.monitors.create({
+      "name": "LLM Research Tracker",
+      "search": {
+          "query": "new large language model training techniques and architectures",
+          "numResults": 10,
+          "contents": {
+              "highlights": True
+          }
+      },
+      "trigger": {
+          "type": "interval",
+          "period": "7d"
+      },
+      "webhook": {
+          "url": "https://example.com/webhooks/exa",
+          "events": ["monitor.run.completed"]
+      }
+  })
+  ```
+
+  ```javascript JavaScript theme={null}
+  const monitor = await exa.monitors.create({
+    name: "LLM Research Tracker",
+    search: {
+      query: "new large language model training techniques and architectures",
+      numResults: 10,
+      contents: {
+        highlights: true
+      }
+    },
+    trigger: {
+      type: "interval",
+      period: "7d"
+    },
+    webhook: {
+      url: "https://example.com/webhooks/exa",
+      events: ["monitor.run.completed"]
+    }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/monitors" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "name": "LLM Research Tracker",
+      "search": {
+        "query": "new large language model training techniques and architectures",
+        "numResults": 10,
+        "contents": {
+          "highlights": true
+        }
+      },
+      "trigger": {
+        "type": "interval",
+        "period": "7d"
+      },
+      "webhook": {
+        "url": "https://example.com/webhooks/exa",
+        "events": ["monitor.run.completed"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="test-your-monitor">
+  ## Prueba tu monitor
+</div>
+
+Lanza una ejecución de inmediato en lugar de esperar a la siguiente hora programada y, después, lista sus ejecuciones:
+
+<CodeGroup>
+  ```python Python theme={null}
+  exa.monitors.trigger(monitor.id)
+
+  runs = exa.monitors.runs.list(monitor.id, limit=1)
+  latest = runs.data[0]
+  print(latest.id, latest.status)
+  ```
+
+  ```javascript JavaScript theme={null}
+  await exa.monitors.trigger(monitor.id);
+
+  const runs = await exa.monitors.runs.list(monitor.id, { limit: 1 });
+  const latest = runs.data[0];
+  console.log(latest.id, latest.status);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/monitors/$MONITOR_ID/trigger" \
+    -H "Authorization: Bearer $EXA_API_KEY"
+
+  curl -s "https://api.exa.ai/monitors/$MONITOR_ID/runs?limit=1" \
+    -H "Authorization: Bearer $EXA_API_KEY"
+  ```
+</CodeGroup>
+
+Los estados de una ejecución son:
+
+| Estado      | Significado                                                             |
+| ----------- | ----------------------------------------------------------------------- |
+| `pending`   | La ejecución está en cola                                               |
+| `running`   | La ejecución está en curso                                              |
+| `completed` | La ejecución terminó; recupérala por su ID para leer su salida completa |
+| `failed`    | La ejecución falló; `failReason` indica el motivo                       |
+| `cancelled` | La ejecución se canceló                                                 |
+
+`output` es null hasta que la ejecución se completa.
+
+<div id="schedule-runs">
+  ## Programar ejecuciones
+</div>
+
+El intervalo mínimo es de una hora. Usa una única duración, como `1h`, `6h`, `1d` o `7d`. La
+programación se ancla a la hora de creación del monitor: un monitor diario creado a las 2:30 p. m. se ejecuta
+cada día alrededor de las 2:30 p. m., pero cada ejecución puede retrasarse hasta 30 minutos, así que no dependas de
+una hora de entrega exacta.
+
+Omite `trigger` para crear un monitor de ejecución solo manual. Al pausar un monitor programado también se detienen las ejecuciones
+automáticas, pero se conservan los disparadores manuales.
+
+<Note>
+  Las ejecuciones de un monitor no se solapan. Si la siguiente ejecución programada comienza mientras la anterior aún está
+  en curso, Exa cancela la ejecución anterior.
+</Note>
+
+<div id="receive-webhook-updates">
+  ## Recibir actualizaciones por webhook
+</div>
+
+Suscríbete a `monitor.run.completed` cuando solo necesites las ejecuciones finalizadas. Si omites `events`, Exa
+envía también los eventos del ciclo de vida del monitor y los de creación de ejecuciones.
+
+El payload de la ejecución completada incluye el estado y la salida de la ejecución. Los `metadata` opcionales del monitor se
+replican en las entregas del webhook, lo que te permite encaminar cada actualización al cliente,
+espacio de trabajo, canal o trabajo interno correcto.
+
+<Accordion title="Payload del webhook de ejecución completada">
+  La salida y las marcas de tiempo se muestran abreviadas a continuación.
+
+  ```json theme={null}
+  {
+    "id": "event_...",
+    "object": "event",
+    "type": "monitor.run.completed",
+    "data": {
+      "id": "01k...",
+      "monitorId": "01k...",
+      "status": "completed",
+      "output": {
+        "results": [
+          {
+            "title": "New battery recycling facility announced",
+            "url": "https://example.com/announcement"
+          }
+        ],
+        "content": "...",
+        "grounding": [
+          {
+            "field": "content",
+            "citations": [
+              {
+                "title": "New battery recycling facility announced",
+                "url": "https://example.com/announcement"
+              }
+            ],
+            "confidence": "high"
+          }
+        ]
+      },
+      "failReason": null,
+      "metadata": {
+        "workspace_id": "workspace_123"
+      }
+    },
+    "createdAt": "2026-09-05T20:00:00.000Z"
+  }
+  ```
+</Accordion>
+
+<Warning>
+  Tu webhook debe usar HTTPS y ser el destino final, ya que no se siguen las redirecciones.
+  Verifica `Exa-Signature` antes de procesar el evento.
+</Warning>
+
+Cada entrega incluye un encabezado `Exa-Signature` con el formato `t=<timestamp>,v1=<signature>`.
+Construye `<timestamp>.<raw-request-body>`, calcula su resumen HMAC-SHA256 con el
+`webhookSecret` de un solo uso y compara el resultado con `v1` mediante una comparación de tiempo constante.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import hashlib
+  import hmac
+
+
+  def verify_webhook(payload: bytes, signature_header: str, secret: str) -> bool:
+      parts = dict(part.split("=", 1) for part in signature_header.split(","))
+      signed_payload = parts["t"].encode() + b"." + payload
+      expected = hmac.new(secret.encode(), signed_payload, hashlib.sha256).hexdigest()
+      return hmac.compare_digest(expected, parts["v1"])
+  ```
+
+  ```javascript JavaScript theme={null}
+  import crypto from "crypto";
+
+  function verifyWebhook(payload, signatureHeader, secret) {
+    const parts = Object.fromEntries(
+      signatureHeader.split(",").map((part) => part.split("=", 2))
+    );
+    const expected = crypto
+      .createHmac("sha256", secret)
+      .update(`${parts.t}.`)
+      .update(payload)
+      .digest("hex");
+    const actualBuffer = Buffer.from(parts.v1 ?? "", "hex");
+    const expectedBuffer = Buffer.from(expected, "hex");
+
+    return (
+      actualBuffer.length === expectedBuffer.length &&
+      crypto.timingSafeEqual(actualBuffer, expectedBuffer)
+    );
+  }
+  ```
+</CodeGroup>
+
+<div id="next-steps">
+  ## Próximos pasos
+</div>
+
+<Columns cols={2}>
+  <Card title="Crear un monitor" icon="bell" href="/es/docs/reference/monitors/create-a-monitor" cta="Abrir referencia" arrow="true">
+    Consulta todos los campos de search, programación, salida, metadatos y webhook.
+  </Card>
+
+  <Card title="Ejecuciones del monitor" icon="clock" href="/es/docs/reference/monitors/runs/get-a-run" cta="Abrir referencia" arrow="true">
+    Inspecciona el estado, la salida, el grounding y el motivo del fallo de una ejecución.
+  </Card>
+
+  <Card title="Guía de search" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
+    Configura consultas, filtros, highlights, texto completo y actualidad.
+  </Card>
+
+  <Card title="Buenas prácticas de search" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer guía" arrow="true">
+    Mejora la calidad de la recuperación sin perder el foco en la salida.
+  </Card>
+</Columns>

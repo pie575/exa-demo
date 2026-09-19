@@ -1,0 +1,387 @@
+---
+title: "Compatibilidad con el SDK de OpenAI"
+sidebarTitle: "SDK de OpenAI"
+description: "Usa los endpoints de Exa como reemplazo directo de OpenAI: son compatibles tanto con la API de chat completions como con la de responses."
+icon: "/docs/images/sidebar-icons/openai.svg"
+---
+
+<Card title="Inicio rápido de Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  ¿Es tu primera vez con Exa? Empieza en menos de un minuto.
+</Card>
+
+***
+
+<div id="overview">
+  ## Descripción general
+</div>
+
+Exa ofrece endpoints compatibles con OpenAI que funcionan con el SDK de OpenAI:
+
+| Endpoint            | Interfaz de OpenAI   | Modelos disponibles | Caso de uso                                                         |
+| ------------------- | -------------------- | ------------------- | ------------------------------------------------------------------- |
+| `/chat/completions` | Chat Completions API | `exa`               | Interfaz de chat tradicional                                        |
+| `/responses`        | Responses API        | `exa-agent`         | Agent API (investigación asíncrona, Enrichment, creación de listas) |
+
+<Info>
+  `/chat/completions` se enruta a [`/answer`](/es/docs/reference/answer) y `/responses` se enruta a la [Agent API](/es/docs/agent/quickstart). Consulta [Agent mediante la Responses API](#agent-via-responses-api) más abajo.
+</Info>
+
+<div id="answer">
+  ## Answer
+</div>
+
+Para usar el endpoint `/answer` de Exa a través de la interfaz de chat completions:
+
+1. Reemplaza la URL base por `https://api.exa.ai`
+2. Reemplaza la API key por tu Exa API key
+3. Reemplaza el nombre del modelo por `exa`.
+
+<Info>
+  Consulta la referencia completa del endpoint [`/answer`](/es/docs/reference/answer). Si necesitas un comportamiento de enrutamiento personalizado, escribe a [hello@exa.ai](mailto:hello@exa.ai).
+</Info>
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+    base_url="https://api.exa.ai", # usa exa como url base
+    api_key=os.environ["EXA_API_KEY"],
+  )
+
+  completion = client.chat.completions.create(
+    model="exa",
+    messages = [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "What are the latest developments in quantum computing?"}
+  ],
+
+  # usa extra_body para pasar parámetros adicionales al endpoint /answer
+    extra_body={
+      "text": True # incluye el texto completo de las fuentes
+    }
+  )
+
+  print(completion.choices[0].message.content)  # imprime el contenido de la respuesta
+  print(completion.choices[0].message.citations)  # imprime las citas
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai", // usa exa como url base
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    const completion = await openai.chat.completions.create({
+      model: "exa",
+      messages: [
+        { role: "system", content: "You are a helpful assistant." },
+        {
+          role: "user",
+          content: "What are the latest developments in quantum computing?",
+        },
+      ],
+      store: true,
+      stream: true,
+      extra_body: {
+        text: true, // incluye el texto completo de las fuentes
+      },
+    });
+
+    for await (const chunk of completion) {
+      console.log(chunk.choices[0].delta.content);
+    }
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  curl -s https://api.exa.ai/chat/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "model": "exa",
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful assistant."
+        },
+        {
+          "role": "user",
+          "content": "What are the latest developments in quantum computing?"
+        }
+      ],
+      "text": true
+    }'
+  ```
+</CodeGroup>
+
+<div id="agent-via-responses-api">
+  ## Agent mediante la Responses API
+</div>
+
+El endpoint [`/responses`](https://api.exa.ai/responses) de Exa expone la [Agent API](/es/docs/agent/quickstart) a través de la interfaz Responses de OpenAI, por lo que los SDK de OpenAI funcionan con ella sin cambios. Define `model: "exa-agent"` y elige un modo de ejecución:
+
+| Modo             | Solicitud                                  | Comportamiento                                                                                                                |
+| ---------------- | ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| Síncrono         | predeterminado (sin `stream`/`background`) | La solicitud se bloquea y devuelve el objeto `response` ya completado.                                                        |
+| Streaming        | `stream: true`                             | La solicitud transmite eventos de OpenAI Responses (SSE) a medida que avanza la ejecución y termina con `response.completed`. |
+| En segundo plano | `background: true`                         | La solicitud devuelve de inmediato una respuesta `in_progress`; consulta `GET /responses/{id}` para obtener el resultado.     |
+
+Define `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`) para equilibrar costo y profundidad, y cancela una ejecución con `POST /responses/{id}/cancel`. Para `max`, establece `Exa-Beta: agent-max-effort-2026-07-27` como encabezado predeterminado del cliente. La [guía de Agent](/es/docs/agent/quickstart) explica el modelo de ejecución, la forma de la salida y los precios por esfuerzo en los que se basa esta interfaz.
+
+<Warning>
+  Las ejecuciones con `reasoning.effort` en `high`, `xhigh` y `max` tardan demasiado para una solicitud síncrona y devuelven `400`. Usa `stream: true` o `background: true` para esas ejecuciones. `/responses` no tiene campo `budget`; max aplica su límite predeterminado por ejecución.
+</Warning>
+
+Usa `previous_response_id` para continuar una ejecución de Responses ya completada.
+
+<div id="synchronous">
+  ### Síncrono
+</div>
+
+La solicitud se bloquea hasta que la ejecución termina y devuelve el objeto `response` final.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="https://api.exa.ai",
+      api_key=os.environ["EXA_API_KEY"],
+  )
+
+  response = client.responses.create(
+      model="exa-agent",
+      input="Find the top 5 AI startups founded in 2025 with their funding amounts",
+      reasoning={"effort": "medium"},
+  )
+
+  print(response.output_text)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai",
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    const response = await openai.responses.create({
+      model: "exa-agent",
+      input: "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      reasoning: { effort: "medium" },
+    });
+
+    console.log(response.output_text);
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST 'https://api.exa.ai/responses' \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "exa-agent",
+      "input": "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      "reasoning": { "effort": "medium" }
+    }'
+  ```
+</CodeGroup>
+
+<div id="streaming">
+  ### Streaming
+</div>
+
+Establece `stream: true` para recibir los eventos de streaming de Responses mediante SSE. Cada evento incluye un `sequence_number` monótono y la secuencia finaliza con `response.completed`; no existe un centinela `[DONE]`. El stream puede incluir líneas de comentario `: keep-alive`, que los clientes SSE ignoran.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="https://api.exa.ai",
+      api_key=os.environ["EXA_API_KEY"],
+  )
+
+  with client.responses.stream(
+      model="exa-agent",
+      input="Find the top 5 AI startups founded in 2025 with their funding amounts",
+  ) as stream:
+      for event in stream:
+          if event.type == "response.output_text.delta":
+              print(event.delta, end="", flush=True)
+      final = stream.get_final_response()
+
+  print("\n\n", final.output_text)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai",
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    const stream = await openai.responses.create({
+      model: "exa-agent",
+      input: "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      stream: true,
+    });
+
+    for await (const event of stream) {
+      if (event.type === "response.output_text.delta") {
+        process.stdout.write(event.delta);
+      }
+    }
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  curl -N -X POST 'https://api.exa.ai/responses' \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -H 'Accept: text/event-stream' \
+    -d '{
+      "model": "exa-agent",
+      "input": "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      "stream": true
+    }'
+  ```
+</CodeGroup>
+
+<div id="background">
+  ### en segundo plano
+</div>
+
+Define `background: true` para iniciar una ejecución sin mantener la conexión abierta y luego consulta `GET /responses/{id}` hasta que alcance un estado terminal. Para usar streaming en lugar de sondeo, consulta [Streaming](#streaming).
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  import time
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url="https://api.exa.ai",
+      api_key=os.environ["EXA_API_KEY"],
+  )
+
+  response = client.responses.create(
+      model="exa-agent",
+      input="Find the top 5 AI startups founded in 2025 with their funding amounts",
+      background=True,
+  )
+
+  # Sondear hasta que se complete
+  while response.status in ("queued", "in_progress"):
+      time.sleep(5)
+      response = client.responses.retrieve(response.id)
+
+  print(response.output_text)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "https://api.exa.ai",
+    apiKey: process.env.EXA_API_KEY,
+  });
+
+  async function main() {
+    let response = await openai.responses.create({
+      model: "exa-agent",
+      input: "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      background: true,
+    });
+
+    // Sondear hasta que se complete
+    while (response.status === "queued" || response.status === "in_progress") {
+      await new Promise((r) => setTimeout(r, 5000));
+      response = await openai.responses.retrieve(response.id);
+    }
+
+    console.log(response.output_text);
+  }
+
+  main();
+  ```
+
+  ```bash cURL theme={null}
+  # Crear una ejecución en segundo plano
+  curl -s -X POST 'https://api.exa.ai/responses' \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "model": "exa-agent",
+      "input": "Find the top 5 AI startups founded in 2025 with their funding amounts",
+      "background": true
+    }'
+
+  # Sondear con el ID de respuesta devuelto
+  curl -s 'https://api.exa.ai/responses/resp_agent_run_...' \
+    -H "Authorization: Bearer $EXA_API_KEY"
+  ```
+</CodeGroup>
+
+<div id="chat-wrapper">
+  ## Wrapper de chat
+</div>
+
+Exa ofrece un wrapper de Python que mejora automáticamente cualquier chat completion de OpenAI con capacidades de RAG. Con una sola línea de código, puedes convertir cualquier chat completion de OpenAI en un sistema RAG impulsado por Exa que se encarga automáticamente de la búsqueda, el chunking y los prompts.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from openai import OpenAI
+  from exa_py import Exa
+
+  # Inicializar los clientes
+  openai = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+  exa = Exa(api_key=os.environ["EXA_API_KEY"])
+
+  # Envolver el cliente de OpenAI
+  exa_openai = exa.wrap(openai)
+
+  # Usarlo exactamente igual que el cliente normal de OpenAI
+  completion = exa_openai.chat.completions.create(
+      model="gpt-5.6-sol",
+      messages=[{"role": "user", "content": "What is the latest climate tech news?"}]
+  )
+
+  print(completion.choices[0].message.content)
+  ```
+</CodeGroup>
+
+El cliente envuelto funciona exactamente igual que el cliente nativo de OpenAI, con la diferencia de que mejora automáticamente tus completions con resultados de búsqueda relevantes cuando hace falta.
+
+El wrapper admite cualquier parámetro de la función `exa.search()`.
+
+```python theme={null}
+completion = exa_openai.chat.completions.create(
+    model="gpt-5.6-sol",
+    messages=messages,
+    use_exa="auto",              # "auto", "required" o "none"
+    num_results=5,               # por defecto, 3
+    result_max_len=1024,         # por defecto, 2048 caracteres
+    include_domains=["arxiv.org"],
+    category="publication",
+    start_published_date="2019-01-01"
+)
+```

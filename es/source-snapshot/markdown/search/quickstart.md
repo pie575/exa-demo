@@ -1,0 +1,566 @@
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
+>
+> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="exa-search-api">
+  # Exa Search API
+</div>
+
+> Busca en la web en lenguaje natural y obtén contenido de páginas limpio y relevante en una sola solicitud.
+
+Exa Search recibe una query en lenguaje natural y devuelve resultados web ordenados por relevancia con el contenido de las páginas limpio.
+
+<div id="make-your-first-request">
+  ## Haz tu primera solicitud
+</div>
+
+Empieza con una `query` en lenguaje natural y `contents: { highlights: true }`, que devuelve extractos cuya extensión se ajusta a la relevancia de cada resultado. Otros campos controlan cómo busca Exa y qué incluye cada resultado; el resto de esta página cubre los que realmente vas a usar.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  result = exa.search(
+      "recent techniques for improving retrieval in RAG systems",
+      type="auto",
+      contents={"highlights": True},
+  )
+
+  for item in result.results:
+      print(item.title, item.url)
+      print(item.highlights)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const result = await exa.search(
+    "recent techniques for improving retrieval in RAG systems",
+    {
+      type: "auto",
+      contents: { highlights: true }
+    }
+  );
+
+  for (const item of result.results) {
+    console.log(item.title, item.url);
+    console.log(item.highlights);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "recent techniques for improving retrieval in RAG systems",
+      "type": "auto",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+Search devuelve hasta 10 resultados de forma predeterminada. Define `numResults` para solicitar hasta 100 resultados; puede devolver menos si hay menos páginas relevantes disponibles. Search no admite paginación.
+
+<Accordion title="Ejemplo de respuesta">
+  Los highlights y la lista siguiente están abreviados.
+
+  ```json theme={null}
+  {
+    "requestId": "c3174df2b9cd5afbc64cdf79f3719b19",
+    "resolvedSearchType": "",
+    "results": [
+      {
+        "id": "https://arxiv.org/html/2608.21702",
+        "title": "From Association to Causation: Improving Retrieval Precision ofRetrieval-Augmented Generation via Causal Relations and an Attention Mechanism",
+        "url": "https://arxiv.org/html/2608.21702",
+        "highlights": [
+          "Retrieval-Augmented Generation (RAG) grounds LLM generation on retrieved documents, but the standard terminal retrieval stage—dense-vector similarity, optionally followed by reranking—often returns documents that merely share keywords with the query without containing the needed information...\n..."
+        ],
+        "image": "https://arxiv.org/static/base/1.0.1/images/icons/smileybones-small.svg",
+        "favicon": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+      },
+      {
+        "id": "https://www.thoughtworks.com/en-us/insights/blog/generative-ai/four-retrieval-techniques-improve-rag",
+        "title": "Four retrieval techniques to improve RAG you need to know",
+        "url": "https://www.thoughtworks.com/en-us/insights/blog/generative-ai/four-retrieval-techniques-improve-rag",
+        "publishedDate": "2025-04-14T00:00:00.000Z",
+        "highlights": [
+          "It's not surprising, then, that we've seen a range of different approaches emerge that attempt to address RAG's limitations over the last year or so.\n..."
+        ],
+        "image": "https://www.thoughtworks.com/content/dam/thoughtworks/images/illustration/brand/tw_illustration_5.jpg"
+      }
+    ],
+    "searchTime": 1324.3,
+    "costDollars": {
+      "total": 0.007,
+      "search": {
+        "neural": 0.007
+      }
+    }
+  }
+  ```
+</Accordion>
+
+Los resultados se ordenan por relevancia. Cada uno incluye metadatos como el título, la URL y la fecha de publicación, además de lo que hayas solicitado en `contents`.
+
+<div id="writing-queries">
+  ## Cómo escribir consultas
+</div>
+
+El campo `query` es el único campo obligatorio al usar la Search API.
+
+Escribe las consultas en lenguaje natural. Incluye el tema y, cuando resulte útil, el tipo de fuente y el periodo de tiempo que te interesan.
+
+Las consultas pueden ser amplias y exploratorias. `"Latest news on EU battery policy"` le da a Exa suficiente contexto sobre tu intención para encontrar páginas relevantes; `"news"`, no. Cuando el tipo de fuente sea importante, indícalo en la consulta:
+
+```text theme={null}
+Artículos técnicos recientes que comparan la recuperación híbrida y la semántica en sistemas RAG
+```
+
+Consulta [Qué incluye el índice de Exa](/es/docs/search/data/overview) para saber qué contiene el índice de Exa y cómo buscar esos tipos de contenido.
+
+<h2 id="search-types">
+  Elige un tipo de búsqueda
+</h2>
+
+`type` selecciona un modo de búsqueda, cada uno ajustado a un equilibrio distinto entre velocidad, profundidad de búsqueda y síntesis. `auto` es el valor predeterminado y funciona para la mayoría de las búsquedas.
+
+| Tipo             | Úsalo cuando                                                                   |
+| ---------------- | ------------------------------------------------------------------------------ |
+| `auto`           | Quieres el mejor equilibrio predeterminado entre calidad y velocidad           |
+| `fast`           | La solicitud es sensible a la latencia                                         |
+| `instant`        | La solicitud forma parte de un flujo en tiempo real, como autocompletado o voz |
+| `deep-lite`      | La tarea requiere investigación y síntesis ligeras                             |
+| `deep`           | La tarea requiere búsqueda en varios pasos y una síntesis más sólida           |
+| `deep-reasoning` | La exhaustividad y la profundidad de razonamiento importan más que la latencia |
+
+Los modos deep ejecutan un proceso de investigación en lugar de una única pasada de recuperación. Consulta [Deep Search](/es/docs/search/deep-search) para conocer cómo funciona ese proceso y cómo usar sus controles adicionales.
+
+<Tip>
+  En lugar de `deep-reasoning`, usa [Exa Agent](/es/docs/agent/quickstart) para investigaciones de larga duración, creación
+  de listas y enrichment de múltiples saltos. Agent cuenta con más cómputo por ejecución y devuelve resultados
+  estructurados y fundamentados.
+</Tip>
+
+<div id="output-shapes">
+  ## Formatos de salida
+</div>
+
+Cada resultado incluye metadatos como su título, URL y fecha de publicación. Usa `contents` para añadir highlights, el texto completo o un resumen de la página.
+
+<Tabs>
+  <Tab title="Highlights">
+    Los highlights devuelven los extractos más relevantes para tu query. Aportan a los modelos y agentes
+    la evidencia que necesitan sin llenar la ventana de contexto con partes irrelevantes de cada página.
+
+    Es el formato de salida recomendado para la mayoría de las tareas.
+
+    Empieza con `highlights: true` a secas: Exa usa la query para seleccionar una cantidad adecuada de
+    contenido de cada resultado.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "How are inference providers reducing transformer latency?",
+          contents={"highlights": True},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "How are inference providers reducing transformer latency?",
+        { contents: { highlights: true } }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "How are inference providers reducing transformer latency?",
+          "contents": { "highlights": true }
+        }'
+      ```
+    </CodeGroup>
+
+    Consulta [Highlights](/es/docs/search/highlights) para conocer los Dynamic Highlights y cuándo conviene activarlos.
+  </Tab>
+
+  <Tab title="Texto completo">
+    El texto completo devuelve el cuerpo limpio de la página. Úsalo cuando la tarea dependa de un contexto más amplio, de la
+    estructura del documento o de detalles que puedan quedar fuera de los extractos centrados en la query.
+
+    Las páginas completas pueden ser extensas. Limita tanto el número de resultados como el texto devuelto por página.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "Technical postmortems of large-scale inference outages",
+          num_results=5,
+          contents={"text": {"max_characters": 10000}},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "Technical postmortems of large-scale inference outages",
+        {
+          numResults: 5,
+          contents: { text: { maxCharacters: 10000 } }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "Technical postmortems of large-scale inference outages",
+          "numResults": 5,
+          "contents": {
+            "text": { "maxCharacters": 10000 }
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+Elige una sola vista de contenido por solicitud. Pedir highlights y texto a la vez devuelve —y factura— dos vistas de la misma página. `summary` es una tercera opción, pero añade una llamada a un modelo de lenguaje por cada resultado.
+
+<Warning>
+  `/search` y `/contents` aceptan las mismas opciones de contenido, pero en lugares distintos:
+
+  * **`/search`** anida `highlights`, `text` y `summary` dentro del objeto `contents`:
+    `"contents": { "highlights": true }`
+  * **`/contents`** no tiene un envoltorio `contents`. Su cuerpo son las propias opciones de contenido, por lo que los
+    mismos campos van en el nivel superior, junto a `urls`: `"urls": [...], "highlights": true`
+</Warning>
+
+<div id="output-schema">
+  ## Esquema de salida
+</div>
+
+Agrega `outputSchema` cuando quieras que Exa sintetice los resultados de búsqueda. Funciona con todos los tipos de búsqueda y añade un objeto `output` a la respuesta.
+
+Las páginas ordenadas por relevancia permanecen en `results`. El valor generado se devuelve en `output.content`, con las fuentes y la confianza a nivel de campo en `output.grounding`.
+
+<Tabs>
+  <Tab title="Texto libre">
+    Usa `type: "text"` para obtener texto generado. Añade una `description` para especificar su formato o longitud.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "What changed in the latest EU battery policy?",
+          output_schema={
+              "type": "text",
+              "description": "Summarize the changes in three concise bullets",
+          },
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "What changed in the latest EU battery policy?",
+        {
+          outputSchema: {
+            type: "text",
+            description: "Summarize the changes in three concise bullets"
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "What changed in the latest EU battery policy?",
+          "outputSchema": {
+            "type": "text",
+            "description": "Summarize the changes in three concise bullets"
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="JSON estructurado">
+    Usa `type: "object"` para obtener JSON que siga las propiedades y los requisitos que definas.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "AI infrastructure companies that announced Series A or B funding in the past six months",
+          output_schema={
+              "type": "object",
+              "properties": {
+                  "companies": {
+                      "type": "array",
+                      "maxItems": 10,
+                      "items": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "round": {"type": "string"},
+                              "amount": {"type": "string"},
+                              "announcedDate": {
+                                  "type": "string",
+                                  "description": "The funding announcement date",
+                              },
+                              "leadInvestors": {
+                                  "type": "array",
+                                  "items": {"type": "string"},
+                              },
+                          },
+                          "required": ["name", "round", "amount", "announcedDate"],
+                      },
+                  }
+              },
+              "required": ["companies"],
+          },
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "AI infrastructure companies that announced Series A or B funding in the past six months",
+        {
+          outputSchema: {
+            type: "object",
+            properties: {
+              companies: {
+                type: "array",
+                maxItems: 10,
+                items: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string" },
+                    round: { type: "string" },
+                    amount: { type: "string" },
+                    announcedDate: {
+                      type: "string",
+                      description: "The funding announcement date"
+                    },
+                    leadInvestors: {
+                      type: "array",
+                      items: { type: "string" }
+                    }
+                  },
+                  required: ["name", "round", "amount", "announcedDate"]
+                }
+              }
+            },
+            required: ["companies"]
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "AI infrastructure companies that announced Series A or B funding in the past six months",
+          "outputSchema": {
+            "type": "object",
+            "properties": {
+              "companies": {
+                "type": "array",
+                "maxItems": 10,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "round": { "type": "string" },
+                    "amount": { "type": "string" },
+                    "announcedDate": {
+                      "type": "string",
+                      "description": "The funding announcement date"
+                    },
+                    "leadInvestors": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "required": ["name", "round", "amount", "announcedDate"]
+                }
+              }
+            },
+            "required": ["companies"]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+Usa `systemPrompt` para instrucciones como preferencias de fuentes o énfasis, y `outputSchema` para definir la estructura de la respuesta. En Python se usan `system_prompt` y `output_schema`.
+
+<Note>
+  Mantén los esquemas de objetos pequeños: admiten hasta 2 niveles de anidación y 10 propiedades. No agregues
+  campos de citas ni de confianza al esquema; Exa los devuelve automáticamente en `output.grounding`.
+</Note>
+
+<div id="filter-results">
+  ## Filtrar resultados
+</div>
+
+Los filtros son restricciones estrictas: añade uno cuando un resultado que quede fuera no te sirva de nada, y expresa las preferencias de fuente más flexibles en el texto de la query. La [referencia de la API](/es/docs/reference/search) incluye el conjunto completo.
+
+<div id="include-domains-or-paths">
+  ### Incluir dominios o rutas
+</div>
+
+`includeDomains` limita los resultados a las fuentes en las que confías. Acepta dominios completos, prefijos de ruta como `anthropic.com/news` y comodines de subdominio como `*.substack.com`.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "new model releases",
+      include_domains=["openai.com", "anthropic.com/news"],
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("new model releases", {
+    includeDomains: ["openai.com", "anthropic.com/news"],
+    contents: { highlights: true }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "new model releases",
+      "includeDomains": ["openai.com", "anthropic.com/news"],
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+Indica la ruta en el filtro en lugar de repetirla como operador `site:` dentro de la query.
+
+<div id="exclude-domains-or-paths">
+  ### Excluir dominios o rutas
+</div>
+
+`excludeDomains` elimina los resultados de dominios o rutas específicos. Admite los mismos prefijos de ruta y comodines de subdominio que `includeDomains`. Úsalo cuando esas fuentes harían que un resultado resulte inservible, no para expresar una preferencia.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "primary research on retrieval-augmented generation benchmarks",
+      exclude_domains=["medium.com", "dev.to"],
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "primary research on retrieval-augmented generation benchmarks",
+    {
+      excludeDomains: ["medium.com", "dev.to"],
+      contents: { highlights: true }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "primary research on retrieval-augmented generation benchmarks",
+      "excludeDomains": ["medium.com", "dev.to"],
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+<div id="content-freshness">
+  ## Actualidad del contenido
+</div>
+
+`contents.maxAgeHours` controla qué tan reciente debe ser el contenido extraído de cada resultado. No filtra los resultados por fecha de publicación.
+
+| Valor           | Comportamiento                                                                                                   |
+| --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Omitir          | Usa el contenido en caché cuando esté disponible y descarga la página cuando sea necesario                       |
+| Entero positivo | Usa el contenido en caché si tiene menos horas de antigüedad que este valor; de lo contrario, descarga la página |
+| `0`             | Descarga siempre contenido nuevo                                                                                 |
+| `-1`            | Usa únicamente contenido en caché                                                                                |
+
+La mayoría de las búsquedas deberían omitir este campo. Defínelo cuando el contenido desactualizado de una página resulte inservible, como en el caso de precios, disponibilidad o páginas que cambian con frecuencia.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "current pricing for serverless GPU providers",
+      contents={
+          "highlights": True,
+          "max_age_hours": 24,
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("current pricing for serverless GPU providers", {
+    contents: {
+      highlights: true,
+      maxAgeHours: 24
+    }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "current pricing for serverless GPU providers",
+      "contents": {
+        "highlights": true,
+        "maxAgeHours": 24
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="next-steps">
+  ## Próximos pasos
+</div>
+
+<Columns cols={2}>
+  <Card title="Buenas prácticas" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer la guía" arrow="true">
+    Presupuestos de tokens, actualidad del contenido, salida estructurada e instrucciones de sistema.
+  </Card>
+
+  <Card title="Referencia de la API" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir la referencia" arrow="true">
+    Todos los parámetros de solicitud y campos de respuesta, con un playground interactivo.
+  </Card>
+
+  <Card title="Contents" icon="file-text" href="/es/docs/contents/quickstart" cta="Abrir la guía" arrow="true">
+    Ya tienes las URL y quieres texto limpio, highlights o resúmenes.
+  </Card>
+
+  <Card title="Exa Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+    Necesitas investigación de larga duración, creación de listas o enrichment.
+  </Card>
+</Columns>

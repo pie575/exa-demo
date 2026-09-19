@@ -2,11 +2,21 @@
   "options": {
     "experimentalClearLocaleDirs": true,
     "mintlify": {
-      "inferTitleFromFilename": true
+      "inferTitleFromFilename": true,
+      "openapi": {
+        "files": [
+          "./docs/exa-spec.json",
+          "./docs/exa-spec.yaml",
+          "./docs/team-management-spec.yaml"
+        ]
+      }
     },
     "jsonSchema": {
       "./docs.json": {
         "preset": "mintlify-hide-default"
+      },
+      "./docs/exa-spec.json": {
+        "preset": "openapi"
       }
     },
     "yamlSchema": {

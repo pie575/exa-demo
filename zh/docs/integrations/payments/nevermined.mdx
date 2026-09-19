@@ -1,0 +1,89 @@
+---
+title: "Nevermined"
+sidebarTitle: "Nevermined"
+description: "通过 Nevermined x402 卡委托为 Exa 实现自主 agent 支付。每笔 7 美元的购买会开通一个 Exa API key 或为其充值 7 美元额度。"
+icon: "/docs/images/sidebar-icons/nevermined.svg"
+---
+
+agent 可通过 [Nevermined](https://nevermined.ai) 的 [x402 卡委托](https://nevermined.ai/docs/specs/x402-card-delegation)方案，使用信用卡向 Exa 付款。每笔 **$7 购买**都会返回一个含 **$7 Exa 额度**的 Exa API key。
+
+<Info>
+  请使用此 Nevermined 计划 ID：<br />`27800462147494506865542649899724877617306579171265399959488097895839186996870`<br />该计划运行在 Nevermined 的生产环境中 (API key 以 live 为前缀) 。此次购买购买的是 API 额度，而非单次 search 请求。
+</Info>
+
+首次使用 Nevermined 付款时，`POST /team-management/nevermined/purchase-key` 会开通一个新的 Exa API key 并为其充值 $7 额度。若该 key 额度用尽，可使用相同的委托铸造一个新的 x402 令牌，并再次调用同一端点。Exa 会返回同一个 API key，并再为其增加 $7 额度。
+
+<div id="buy-a-key">
+  ## 购买密钥
+</div>
+
+```bash theme={null}
+POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
+payment-signature: <x402-token>
+```
+
+* **费用：** 每次购买 $7，向 x402 令牌所引用的委托关联的银行卡扣款。
+* **响应 (首次付款方) ：** `{ status: "ok", apiKey: "…", expiresAt: null }` —— 一个含 $7 额度的新 Exa API key。
+* **响应 (已有付款方) ：** `{ status: "ok", apiKey: "…", expiresAt: null }` —— 同一个 Exa API key，额度再增加 $7。
+* **响应 (重放令牌) ：** 返回缓存结果，不再扣款。
+* **签名缺失或无效：** 返回 `402 Payment Required`，正文中包含付款要求。
+
+<div id="how-it-works">
+  ## 工作原理
+</div>
+
+支付环节由 Nevermined 处理；Exa 只能看到已签名的 x402 令牌。
+
+1. **一次性设置 (由卡片所有者完成) ：** 在 [nevermined.app](https://nevermined.app) 绑定一张卡片，并在该卡上创建一个 **委托** (即支出授权：所有者设定额度上限和有效期，还可将其限定到特定的 API key) ，然后为 agent 签发一个 Nevermined API key。
+2. **agent 查找自己的委托。** Nevermined SDK 可让 agent 发现其 key 有权支出的委托，并从中选择一个剩余预算充足 (至少 $7) 的。若没有可用的委托，所有者可在仪表板中创建，完全自主的 agent 也可通过 SDK 在卡片限制范围内自行创建。
+3. **agent 为上述计划 ID 铸造 x402 访问令牌**，采用卡委托方案，并通过 ID 引用该委托。委托必须在铸造前就已存在；令牌无法临时创建委托。
+4. **agent 通过 `payment-signature` header 将令牌 POST 到上述端点**，并从响应中获取 Exa API key。
+5. **该 key 可立即用于**标准的 [Exa Search API](/zh/docs/search/quickstart)。
+
+如需面向 agent 的完整操作指南 (SDK 方法、参数、委托的发现与创建、故障排查) ，请参阅 Nevermined 的 Exa 集成指南：[nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agent 可直接获取 [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)) 。
+
+<div id="what-7-buys">
+  ## $7 能用来做什么
+</div>
+
+额度按 Exa API 标准定价扣减。按当前费率，$7 的额度大致相当于：
+
+| 端点或功能                                       |                    价格 |        大致用量 |
+| ------------------------------------------- | --------------------: | ----------: |
+| Search (`instant`、`fast`、`auto`) ，最多 10 条结果 |        $7 / 1,000 次请求 |   1,000 次请求 |
+| Deep-Lite Search                            |       $10 / 1,000 次请求 |     700 次请求 |
+| Deep Search                                 |       $12 / 1,000 次请求 |    ~583 次请求 |
+| Deep-Reasoning Search                       |       $15 / 1,000 次请求 |    ~466 次请求 |
+| Contents (`text`、`highlights` 或 `summary`)  | 每种内容类型 $1 / 1,000 个页面 |   7,000 个页面 |
+| Search 或 Contents 的 AI 页面摘要                 |        $1 / 1,000 个页面 |   7,000 条摘要 |
+| 超出前 10 条的额外结果                               |        $1 / 1,000 条结果 | 7,000 条额外结果 |
+| Answer                                      |        $5 / 1,000 次请求 |   1,400 次请求 |
+| Monitors                                    |       $15 / 1,000 次请求 |    ~466 次请求 |
+
+Search 请求包含最多 10 条结果的正文与 highlights。超出 10 条的额外结果以及 AI 摘要单独计费。<br />
+完整定价详情请参阅 [Exa 定价](https://exa.ai/pricing)。
+
+<div id="when-the-key-runs-out">
+  ## 密钥额度耗尽时
+</div>
+
+当 API key 的额度用尽后，Exa 会在常规 API 端点上返回 **`HTTP 402`**：
+
+```json theme={null}
+{
+  "requestId": "...",
+  "error": "You have exceeded your credits limit. Please top up to keep using Exa at dashboard.exa.ai",
+  "tag": "NO_MORE_CREDITS"
+}
+```
+
+使用相同的计划 ID 和委托铸造一个新的 x402 令牌，然后再次 POST 到同一个 `/purchase-key` 端点。Exa 会向同一个 API key 追加 7 美元的额度。
+
+<div id="references">
+  ## 参考资料
+</div>
+
+* [Nevermined Exa 集成指南](https://nevermined.ai/docs/integrations/exa)
+* [x402 卡委托规范](https://nevermined.ai/docs/specs/x402-card-delegation)
+* [Exa 定价](https://exa.ai/pricing)
+* [Exa Search API](/zh/docs/search/quickstart)

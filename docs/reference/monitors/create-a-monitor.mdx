@@ -1,8 +1,23 @@
 ---
-openapi: "docs/exa-spec.yaml POST /monitors"
+openapi: "/docs/exa-spec.yaml POST /monitors"
 timestamp: false
 title: "Create a monitor"
-description: "Creates a new Monitor to run recurring Exa searches on a schedule.\n\nMonitors automatically execute your search query on a recurring schedule and deliver results to your webhook endpoint with automatic deduplication:\n\n- **Date-based filtering** only fetches content since the last run\n\n- **Semantic deduplication** tracks previous outputs to surface only new developments\n\nThe response includes a `webhookSecret` that is only returned once at creation time. Store it securely for webhook signature verification."
+description: "Creates a new Monitor to run recurring Exa searches on a schedule.
+
+
+  Monitors automatically execute your search query on a recurring schedule and
+  deliver results to your webhook endpoint with automatic deduplication:
+
+
+  - **Date-based filtering** only fetches content since the last run
+
+
+  - **Semantic deduplication** tracks previous outputs to surface only new
+  developments
+
+
+  The response includes a `webhookSecret` that is only returned once at creation
+  time. Store it securely for webhook signature verification."
 ---
 
 
