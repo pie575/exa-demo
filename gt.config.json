@@ -99,7 +99,9 @@
   "locales": [
     "es",
     "ru",
-    "zh"
+    "zh",
+    "ko",
+    "id"
   ],
   "defaultLocale": "en",
   "$schema": "https://assets.gtx.dev/config-schema.json"
