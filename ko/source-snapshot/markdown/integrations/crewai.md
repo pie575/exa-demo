@@ -1,0 +1,178 @@
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
+>
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+
+<div id="crewai">
+  # CrewAI
+</div>
+
+> CrewAI 에이전트에 Exa retrieval 기능을 추가하는 방법을 알아보세요.
+
+<Card title="코딩 에이전트 퀵스타트" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Exa를 처음 사용하시나요? 1분 안에 시작해 보세요.
+</Card>
+
+***
+
+[CrewAI](https://crewai.com/)는 복잡한 작업을 함께 수행하는 AI 에이전트를 오케스트레이션하는 프레임워크입니다.
+이 가이드에서는 Exa의 search 결과를 바탕으로 뉴스레터를 작성하는 에이전트 두 개로 구성된 크루를 만들어 봅니다. 다루는 내용은 다음과 같습니다:
+
+1. Exa 기반의 커스텀 CrewAI 도구 만들기
+2. 에이전트를 설정하고 Exa 기반 search 도구를 사용하는 역할을 각각 할당하기
+3. 에이전트를 크루로 구성해 뉴스레터 작성하기
+
+<Note>
+  CrewAI는 커스텀 래퍼를 작성하지 않고 바로 사용할 수 있는 내장 [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool)도 제공합니다. 아래의 커스텀 도구는 결과 형식을 세밀하게 제어하고 싶을 때 유용하며, 두 방식 모두 문제없이 동작합니다.
+</Note>
+
+***
+
+<div id="get-started">
+  ## 시작하기
+</div>
+
+<Steps>
+  <Step title="사전 요구 사항 및 설치">
+    crewAI 코어, crewAI 도구, Exa Python SDK 라이브러리를 설치합니다.
+
+    ```Python Python theme={null}
+    pip install crewai 'crewai[tools]' exa_py
+    ```
+  </Step>
+
+  <Step title="crewAI에서 사용자 지정 Exa 기반 도구 정의">
+    crewAI의 [@tool 데코레이터](https://docs.crewai.com/concepts/tools#utilizing-the-tool-decorator)를 사용해 [커스텀 도구](https://docs.crewai.com/concepts/tools)를 만듭니다. 이 도구 안에서 [Exa Python SDK](https://github.com/exa-labs/exa-py)의 Exa 클래스를 초기화하고, 요청을 보낸 뒤, 파싱한 결과를 반환할 수 있습니다.
+
+    ```Python Python theme={null}
+    from crewai_tools import tool
+    from exa_py import Exa
+    import os
+
+    exa_api_key = os.getenv("EXA_API_KEY")
+
+    @tool("Exa search and get contents")
+    def search_and_get_contents_tool(question: str) -> str:
+        """Tool using Exa's Python SDK to run semantic search and return result highlights."""
+
+        exa = Exa(api_key=exa_api_key)
+
+        response = exa.search(
+            question,
+            type="auto",
+            num_results=10,
+            contents={"highlights": True}
+        )
+
+        parsedResult = ''.join([
+          f'<Title id={idx}>{eachResult.title}</Title>'
+          f'<URL id={idx}>{eachResult.url}</URL>'
+          f'<Highlight id={idx}>{"".join(eachResult.highlights)}</Highlight>'
+          for (idx, eachResult) in enumerate(response.results)
+        ])
+
+        return parsedResult
+    ```
+
+    <Note> API key가 제대로 초기화되었는지 확인하세요. 이 예제에서는 OpenAI와 Exa key의 환경 변수 이름이 각각 `OPENAI_API_KEY`와 `EXA_API_KEY`입니다. </Note>
+
+    <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      대시보드에서 key를 생성하세요. 신규 계정에는 무료 credit이 제공됩니다.
+    </Card>
+  </Step>
+
+  <Step title="crewAI 에이전트 설정">
+    관련 crewAI 모듈을 가져옵니다. 그런 다음 위에서 정의한 커스텀 search 메서드를 참조하도록 `exa_tools`를 정의합니다.
+
+    ```Python Python theme={null}
+    from crewai import Task, Crew, Agent
+
+    exa_tools = search_and_get_contents_tool
+    ```
+
+    그런 다음 [에이전트 두 개](https://docs.crewai.com/concepts/Agents/)를 설정하고 [하나의 crew로 묶습니다](https://docs.crewai.com/concepts/Crews/):
+
+    * 하나는 Exa로 리서치를 수행하는 에이전트(위에서 정의한 커스텀 도구 제공)
+    * 다른 하나는 그 결과물로 뉴스레터를 작성하는 에이전트(LLM 사용)
+
+    ```Python Python theme={null}
+    # 메모리와 verbose 모드를 갖춘 시니어 리서처 agent 생성
+    researcher = Agent(
+      role='Researcher',
+      goal='Get the latest research on {topic}',
+      verbose=True,
+      memory=True,
+      backstory=(
+        "Driven by curiosity, you're at the forefront of"
+        "innovation, eager to explore and share knowledge that could change"
+        "the world."
+      ),
+      tools=[exa_tools],
+      allow_delegation=False
+    )
+
+    article_writer = Agent(
+      role='Writer',
+      goal='Write a great newsletter article on {topic}',
+      verbose=True,
+      memory=True,
+      backstory=(
+        "Driven by a love of writing and passion for"
+        "innovation, you are eager to share knowledge with"
+        "the world."
+      ),
+      tools=[exa_tools],
+      allow_delegation=False
+    )
+    ```
+  </Step>
+
+  <Step title="에이전트 작업 정의">
+    다음으로, 각 agent에 대한 [태스크](https://docs.crewai.com/concepts/Tasks/)를 정의하고, 위에서 구성한 모든 요소를 사용해 전체 크루를 생성합니다.
+
+    ```Python Python theme={null}
+    research_task = Task(
+      description=(
+        "Identify the latest research in {topic}."
+        "Your final report should clearly articulate the key points,"
+      ),
+      expected_output='A comprehensive 3 paragraphs long report on the {topic}.',
+      tools=[exa_tools],
+      agent=researcher,
+    )
+
+    write_article = Task(
+      description=(
+        "Write a newsletter article on the latest research in {topic}."
+        "Your article should be engaging, informative, and accurate."
+        "The article should address the audience with a greeting to the newsletter audience \"Hi readers!\", plus a similar signoff"
+      ),
+      expected_output='A comprehensive 3 paragraphs long newsletter article on the {topic}.',
+      agent=article_writer,
+    )
+
+    crew = Crew(
+      agents=[researcher, article_writer],
+      tasks=[research_task, write_article],
+      memory=True,
+      cache=True,
+      max_rpm=100,
+      share_crew=True
+    )
+    ```
+  </Step>
+
+  <Step title="크루 시작하기">
+    마지막으로 연구 주제를 입력 질의로 전달하여 crew를 실행합니다.
+
+    ```Python Python theme={null}
+    response = crew.kickoff(inputs={'topic': 'Latest AI research'})
+
+    print(response)
+    ```
+
+    crew는 Exa search 도구가 반환한 콘텐츠를 바탕으로 뉴스레터를 작성합니다.
+  </Step>
+</Steps>

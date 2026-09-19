@@ -1,0 +1,28 @@
+---
+title: "Answer"
+description: "Exa search 결과를 바탕으로 질문에 대한 LLM 답변을 받습니다. `/answer`는 Exa search를
+  수행한 뒤 LLM을 사용해 다음 중 하나를 생성합니다:
+
+  1. 명확한 질의에 대한 직접적인 답변 (예: \"프랑스의 수도는 어디인가요?\"에는 \"파리\"를 반환)
+
+  2. 개방형 질의에 대한 citations가 포함된 상세한 summary (예: \"의료 분야의 AI 현황은 어떤가요?\"에는 관련 출처의
+  citations가 포함된 summary를 반환)
+
+
+  응답에는 생성된 답변과 답변 작성에 사용된 출처가 함께 포함됩니다. 이 endpoint는 Streaming(`stream=True`)도
+  지원하며, 이 경우 토큰이 생성되는 대로 반환합니다.
+
+
+  또는 OpenAI 호환 [chat completions 인터페이스](/docs/integrations/openai-sdk#answer)를
+  사용할 수도 있습니다.\n"
+openapi: "/ko/docs/exa-spec.yaml POST /answer"
+timestamp: false
+---
+
+<Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+</Card>
+
+<Info>
+  `/answer`는 `outputSchema` 매개변수를 통해 structured output을 지원합니다. [JSON Schema](https://json-schema.org/draft-07) 객체를 전달하면 답변이 일반 문자열이 아니라 해당 schema에 맞는 구조화된 JSON으로 반환됩니다.
+</Info>

@@ -1,0 +1,937 @@
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
+>
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 본격적으로 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+
+<div id="exa-agent">
+  # Exa Agent
+</div>
+
+> 구조화된 출력을 반환하는 심층 리서치, 리스트 빌딩, enrichment 워크플로우를 실행하세요.
+
+Exa Agent는 리스트 빌딩, enrichment, 심층 리서치처럼 연산량이 많은 작업을 위한 비동기 사용량 기반 endpoint입니다. 복잡한 추론을 처리하며 다수의 구조화된 출력 필드를 반환할 수 있습니다.
+
+컨텍스트 agent라고 생각하면 됩니다. 원하는 데이터와 그 데이터를 받을 형태를 설명하면, Exa Agent가 그에 필요한 도구 call을 조율합니다. 한 번의 실행으로 여러 각도에서 search를 병렬로 펼치고, 그 결과 페이지를 읽어 요약하고, 리스트 빌딩을 병렬 실행되는 하위 작업으로 나누고, 각 후보를 criteria에 비추어 검증하고, 연락처를 enrich하고, 연결해 둔 [Exa Connect](/ko/docs/agent/connect/overview) data partners에 질의할 수 있습니다. `/search`와 `/contents` call을 직접 일일이 조율할 필요 없이, 취합된 컨텍스트를 하나의 grounded 구조화된 결과로 돌려받습니다.
+
+각 실행은 자연어 답변, schema 검증을 거친 JSON, 필드 수준 grounding, 메타데이터, cost 내역을 반환할 수 있습니다. 완료된 실행은 나중에 조회하거나, 지난 실행 목록을 확인하거나, 이벤트를 replay하거나, 이전 실행에 이어서 진행할 수 있습니다.
+
+<Tip>
+  MCP를 선호하시나요? Exa Agent와 [Exa Connect](/ko/docs/agent/connect/overview)는 [Exa MCP](/ko/docs/get-started/exa-mcp#exa-agent)에서 사용할 수 있습니다. `tools=agent_run`을 활성화하면 Claude, Cursor를 비롯한 MCP 클라이언트에서 다단계 리서치, 리스트 빌딩, enrichment, 구조화된 출력을 실행할 수 있습니다.
+</Tip>
+
+<div id="when-to-use-exa-agent">
+  ## Exa Agent를 사용해야 할 때
+</div>
+
+단일 search나 extraction call만으로는 부족한 워크플로우, 또는 데이터를 모으기 위해 search, 페이지 읽기, verification 단계를 직접 루프로 짜야 하는 상황이라면 Exa Agent를 사용하세요:
+
+* 개방형 criteria로 목록을 만들고 각 결과를 enrich
+* 여러 필드에 걸쳐 엔터티를 조사하고 citations 확보
+* &quot;기업을 찾은 다음 그 의사결정권자를 찾기&quot;와 같은 다단계 작업 실행
+* 장시간 실행되는 웹 리서치 작업에서 구조화된 JSON 생성
+* 웹 리서치와 프리미엄 data partners를 결합해 하나의 grounded answer 도출
+* &quot;결과를 10개 더 찾아줘&quot;와 같은 후속 요청으로 이전 실행에서 이어서 진행
+
+Exa Agent는 설계상 지연 시간이 길고 비동기로 동작합니다. call을 직접 조율하는 단일 저지연 search가 필요하다면 [Search API](/ko/docs/search/quickstart)부터 시작하세요.
+
+<div id="quickstart">
+  ## Quickstart
+</div>
+
+이 예제는 지정한 criteria에 맞는 인물의 구조화된 목록을 만드는 실행을 시작합니다. 결과는 `output.structured`에 JSON으로 반환됩니다.
+
+<div id="1-install-the-exa-sdk">
+  ### 1. Exa SDK 설치
+</div>
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install exa-py
+  ```
+
+  ```bash JavaScript theme={null}
+  npm install exa-js
+  ```
+</CodeGroup>
+
+<div id="2-set-your-api-key">
+  ### 2. API key 설정
+</div>
+
+<Tabs>
+  <Tab title="macOS/Linux">
+    ```bash theme={null}
+    export EXA_API_KEY="your-api-key"
+    ```
+  </Tab>
+
+  <Tab title="Windows">
+    ```powershell theme={null}
+    setx EXA_API_KEY "your-api-key"
+    ```
+  </Tab>
+</Tabs>
+
+<div id="3-create-a-run">
+  ### 3. 실행 생성하기
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      output_schema={
+          "type": "object",
+          "properties": {
+              "people": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "name": {"type": "string"},
+                          "job_title": {"type": "string"},
+                          "linkedin_url": {"type": "string", "format": "uri"},
+                      },
+                      "required": ["name", "job_title", "linkedin_url"],
+                  },
+              }
+          },
+          "required": ["people"],
+      },
+      effort="auto",
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Find engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months.",
+    outputSchema: {
+      type: "object",
+      properties: {
+        people: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              job_title: { type: "string" },
+              linkedin_url: { type: "string", format: "uri" }
+            },
+            required: ["name", "job_title", "linkedin_url"]
+          }
+        }
+      },
+      required: ["people"]
+    },
+    effort: "auto"
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      "effort": "auto",
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "people": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "job_title": { "type": "string" },
+                "linkedin_url": { "type": "string", "format": "uri" }
+              },
+              "required": ["name", "job_title", "linkedin_url"]
+            }
+          }
+        },
+        "required": ["people"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+실행을 생성할 때 `Accept: text/event-stream`을 추가하면 실행이 대기열에 등록, 시작, 완료되는 시점마다 server-sent events를 받을 수 있습니다. 자세한 내용은 [Stream events](#stream-events)를 참조하세요.
+
+<div id="4-poll-for-completion">
+  ### 4. 완료될 때까지 폴링하기
+</div>
+
+이벤트를 스트리밍하지 않는다면, 반환된 `id`를 저장해 두고 실행이 종료 상태에 도달할 때까지 폴링하세요.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run_id = "agent_run_01j..."
+  run = exa.agent.runs.poll_until_finished(
+      run_id,
+      poll_interval=4000,
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const runId = "agent_run_01j...";
+  const run = await exa.agent.runs.pollUntilFinished(runId, {
+    pollInterval: 4000
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  RUN_ID="agent_run_01j..."
+
+  while true; do
+    RUN_JSON="$(curl -s "https://api.exa.ai/agent/runs/$RUN_ID" \
+      -H "Authorization: Bearer $EXA_API_KEY")"
+
+    STATUS="$(echo "$RUN_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["status"])')"
+    echo "status=$STATUS"
+
+    if [ "$STATUS" = "completed" ] || [ "$STATUS" = "failed" ] || [ "$STATUS" = "cancelled" ]; then
+      echo "$RUN_JSON"
+      break
+    fi
+
+    sleep 4
+  done
+  ```
+</CodeGroup>
+
+완료된 실행에는 다음이 포함됩니다:
+
+* `output.text`: 자연어 답변
+* `output.structured`: `outputSchema`를 제공한 경우 검증된 JSON
+* `output.grounding`: 텍스트 또는 구조화된 필드에 대한 citations(생성된 경우)
+* `costDollars`: 해당 실행의 비용 내역
+
+<Note>
+  Exa Agent는 OpenAI 호환 Responses API를 통해서도 사용할 수 있습니다. OpenAI SDK의
+  엔드포인트를 `https://api.exa.ai`로 지정하고, `model: "exa-agent"`를 사용한 뒤
+  동기, 스트리밍, 백그라운드 실행 중 하나를 선택하세요. 자세한 내용은 [OpenAI SDK
+  호환성](/ko/docs/integrations/openai-sdk#agent-via-responses-api)을 참고하세요.
+</Note>
+
+<div id="verify-and-enrich-a-specific-entity">
+  ## 특정 엔티티 검증 및 enrich
+</div>
+
+Exa Agent는 list building뿐 아니라, 이미 알고 있는 단일 엔티티를 살펴보고 신뢰할 수 있는 출처를 근거로 주장을 검증한 뒤 구조화된 enrichment를 반환하는 데에도 활용할 수 있습니다. 이 예시에서는 특정 회사의 공식 웹사이트에 공개된 가격 페이지가 있는지 확인하고, 가격 정보가 있으면 그 세부 내용으로 결과를 enrich합니다. schema에서 필수 항목은 `domain`과 `verdict`뿐이며, 나머지는 모두 선택적인 enrichment입니다.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Inspect the official website redbarnrobotics.com and determine whether it has a publicly accessible pricing or plans page. A dedicated pricing page counts as present even if it only says 'Contact sales'.",
+      system_prompt="Judge only the company specified in the query. Use present only when a public pricing or plans page is found. Use absent only after successfully inspecting the website and finding no such page. If the website is unreachable, blocked, fails to render, or cannot be inspected reliably, use cannot_verify. Never use absent when inspection failed. Use only the company's official website as evidence.",
+      effort="low",
+      output_schema={
+          "type": "object",
+          "additionalProperties": False,
+          "required": ["domain", "verdict"],
+          "properties": {
+              "domain": {"type": "string", "const": "redbarnrobotics.com"},
+              "verdict": {
+                  "type": "string",
+                  "enum": ["present", "absent", "cannot_verify"],
+              },
+              "pricing_page_url": {"type": ["string", "null"], "format": "uri"},
+              "displays_numeric_prices": {"type": ["boolean", "null"]},
+              "pricing_model": {
+                  "type": ["string", "null"],
+                  "enum": [
+                      "free",
+                      "subscription",
+                      "usage_based",
+                      "one_time",
+                      "custom_quote",
+                      "mixed",
+                      "other",
+                      None,
+                  ],
+              },
+              "starting_price": {"type": ["number", "null"], "minimum": 0},
+              "currency": {
+                  "type": ["string", "null"],
+                  "description": "ISO 4217 code such as USD or EUR.",
+              },
+              "billing_period": {
+                  "type": ["string", "null"],
+                  "enum": [
+                      "monthly",
+                      "annual",
+                      "one_time",
+                      "usage_based",
+                      "variable",
+                      "other",
+                      None,
+                  ],
+              },
+              "has_free_plan": {"type": ["boolean", "null"]},
+              "has_free_trial": {"type": ["boolean", "null"]},
+              "reasoning": {"type": ["string", "null"], "maxLength": 300},
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+
+  print(json.dumps(run.output.structured if run.output else None, indent=2))
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Inspect the official website redbarnrobotics.com and determine whether it has a publicly accessible pricing or plans page. A dedicated pricing page counts as present even if it only says 'Contact sales'.",
+    systemPrompt:
+      "Judge only the company specified in the query. Use present only when a public pricing or plans page is found. Use absent only after successfully inspecting the website and finding no such page. If the website is unreachable, blocked, fails to render, or cannot be inspected reliably, use cannot_verify. Never use absent when inspection failed. Use only the company's official website as evidence.",
+    effort: "low",
+    outputSchema: {
+      type: "object",
+      additionalProperties: false,
+      required: ["domain", "verdict"],
+      properties: {
+        domain: { type: "string", const: "redbarnrobotics.com" },
+        verdict: {
+          type: "string",
+          enum: ["present", "absent", "cannot_verify"]
+        },
+        pricing_page_url: { type: ["string", "null"], format: "uri" },
+        displays_numeric_prices: { type: ["boolean", "null"] },
+        pricing_model: {
+          type: ["string", "null"],
+          enum: [
+            "free",
+            "subscription",
+            "usage_based",
+            "one_time",
+            "custom_quote",
+            "mixed",
+            "other",
+            null
+          ]
+        },
+        starting_price: { type: ["number", "null"], minimum: 0 },
+        currency: {
+          type: ["string", "null"],
+          description: "ISO 4217 code such as USD or EUR."
+        },
+        billing_period: {
+          type: ["string", "null"],
+          enum: [
+            "monthly",
+            "annual",
+            "one_time",
+            "usage_based",
+            "variable",
+            "other",
+            null
+          ]
+        },
+        has_free_plan: { type: ["boolean", "null"] },
+        has_free_trial: { type: ["boolean", "null"] },
+        reasoning: { type: ["string", "null"], maxLength: 300 }
+      }
+    }
+  });
+  const completedRun = await exa.agent.runs.pollUntilFinished(run.id);
+
+  console.log(JSON.stringify(completedRun.output?.structured, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Inspect the official website redbarnrobotics.com and determine whether it has a publicly accessible pricing or plans page. A dedicated pricing page counts as present even if it only says '"'"'Contact sales'"'"'.",
+      "systemPrompt": "Judge only the company specified in the query. Use present only when a public pricing or plans page is found. Use absent only after successfully inspecting the website and finding no such page. If the website is unreachable, blocked, fails to render, or cannot be inspected reliably, use cannot_verify. Never use absent when inspection failed. Use only the company'"'"'s official website as evidence.",
+      "effort": "low",
+      "outputSchema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["domain", "verdict"],
+        "properties": {
+          "domain": { "type": "string", "const": "redbarnrobotics.com" },
+          "verdict": {
+            "type": "string",
+            "enum": ["present", "absent", "cannot_verify"]
+          },
+          "pricing_page_url": { "type": ["string", "null"], "format": "uri" },
+          "displays_numeric_prices": { "type": ["boolean", "null"] },
+          "pricing_model": {
+            "type": ["string", "null"],
+            "enum": ["free", "subscription", "usage_based", "one_time", "custom_quote", "mixed", "other", null]
+          },
+          "starting_price": { "type": ["number", "null"], "minimum": 0 },
+          "currency": {
+            "type": ["string", "null"],
+            "description": "ISO 4217 code such as USD or EUR."
+          },
+          "billing_period": {
+            "type": ["string", "null"],
+            "enum": ["monthly", "annual", "one_time", "usage_based", "variable", "other", null]
+          },
+          "has_free_plan": { "type": ["boolean", "null"] },
+          "has_free_trial": { "type": ["boolean", "null"] },
+          "reasoning": { "type": ["string", "null"], "maxLength": 300 }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Note>
+  verification 워크플로우용 schema는 불확실성을 고려해서 설계해야 합니다. 검증이 불가능할 수 있는
+  필드는 nullable로 지정하고 `required`에서 빼두세요. 그래야 agent가 값을 지어내지 않고
+  `null`을 반환할 수 있습니다. `verdict` enum은 검사 실패(`cannot_verify`)와 실제로 부정적인
+  evidence(`absent`)를 구분합니다. 접속하지 못한 사이트는 해당 페이지가 존재하지 않는다는
+  evidence가 될 수 없습니다.
+</Note>
+
+<div id="stream-events">
+  ## Stream events
+</div>
+
+Streaming은 생성 요청을 열린 상태로 유지한 채, 실행이 완료될 때까지 Server-Sent Events(SSE)를 전송합니다. 이벤트 유형과 payload는 [Event format](#event-format)을 참고하세요.
+
+Python에서는 `stream=True`, JavaScript에서는 `stream: true`를 설정하거나, HTTP 요청에 `Accept: text/event-stream` 헤더를 전송하세요:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  events = exa.agent.runs.create(
+      query="Find five recently launched developer tools for evaluating AI agents.",
+      stream=True,
+  )
+
+  for event in events:
+      print(event.event, event.data)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const events = await exa.agent.runs.create({
+    query: "Find five recently launched developer tools for evaluating AI agents.",
+    stream: true
+  });
+
+  for await (const event of events) {
+    console.log(event.event, event.data);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -N -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Accept: text/event-stream" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find five recently launched developer tools for evaluating AI agents."
+    }'
+  ```
+</CodeGroup>
+
+<div id="event-format">
+  ### 이벤트 형식
+</div>
+
+각 SSE 프레임에는 이벤트 ID, 이벤트 이름, JSON payload가 포함됩니다:
+
+```text theme={null}
+id: 1
+event: agent_run.created
+data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:52.051Z"}
+```
+
+스트림에는 `: keep-alive`와 같은 주석 줄이 포함될 수도 있습니다. SSE 클라이언트는 주석을 자동으로 무시하며, 직접 구현한 파서도 동일하게 처리해야 합니다.
+
+<div id="event-types">
+  ### 이벤트 유형
+</div>
+
+| 이벤트                   | `data` payload                        | 사용 방법                                                                                               |
+| --------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `agent_run.created`   | `{ id, status: "queued", createdAt }` | 요청이 수락되는 즉시 실행 ID를 저장합니다.                                                                           |
+| `agent_run.started`   | `{ id, status: "running" }`           | 실행이 처리 중임을 표시합니다.                                                                                   |
+| `agent_run.completed` | 완료된 Agent 실행 객체                       | 최종 답변은 `data.output.text` 또는 `data.output.structured`에서, citations는 `data.output.grounding`에서 읽습니다. |
+| `agent_run.failed`    | `{ id, status: "failed", error }`     | `error.code`와 `error.message`를 노출합니다. 완료된 output은 제공되지 않습니다.                                        |
+| `agent_run.cancelled` | `{ id, status: "cancelled", ... }`    | 스트림 소비를 중단하고 해당 실행을 취소된 것으로 처리합니다.                                                                  |
+
+동일한 리서치 단계에 속한 이벤트에는 `callId`가 포함됩니다. 이는 도구 진행 이벤트의 `item.call_id`에 해당합니다. 이 값을 기준으로 search 추적, 소스, 도구 진행 상황을 묶으세요. 일부 search 추적 설명은 비동기로 생성되기 때문에 설명 대상인 소스나 도구 이벤트보다 늦게 도착할 수 있으므로, 도착 순서만으로 연관 짓지 마세요.
+
+`agent_run.source.added`는 완전한 citations 목록이 아니라 실시간 미리보기로 취급하세요. 최종 상태에 도달한 실행의 `output.grounding`이 기준이 되는 grounding output입니다.
+
+<div id="replay-stored-events">
+  ### 저장된 이벤트 replay
+</div>
+
+ZDR이 아닌 실행의 경우 [`GET /agent/runs/{id}/events`](/ko/docs/reference/agent-api/list-run-events)는 저장된 이벤트를 페이지네이션된 JSON으로 반환합니다. 저장된 이벤트를 SSE로 replay하려면 `Accept: text/event-stream`을, 클라이언트가 이미 처리한 이벤트를 건너뛰려면 `Last-Event-ID`를 함께 보내세요:
+
+```bash cURL theme={null}
+curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
+  -H "Accept: text/event-stream" \
+  -H "Last-Event-ID: 12" \
+  -H "Authorization: Bearer $EXA_API_KEY"
+```
+
+replay endpoint는 요청 시점에 저장되어 있던 이벤트를 전송한 뒤 연결을 종료하며, 진행 중인 실행을 계속 따라가지는 않습니다. ZDR 실행은 이벤트를 보관하지 않으므로 replay할 수 없습니다.
+
+향후 호환성을 위해, 애플리케이션이 인식하지 못하는 이벤트 이름은 무시하고 종료 이벤트가 도착할 때까지 계속 처리하세요.
+
+<div id="return-structured-json">
+  ## 구조화된 JSON 반환
+</div>
+
+`outputSchema`를 사용하면 schema로 검증된 JSON을 `output.structured`로 반환받을 수 있습니다.
+
+`outputSchema`는 [JSON Schema 명세](https://json-schema.org/)를 지원합니다.
+
+연락처 정보를 요청하려면 원하는 연락처 필드를 `outputSchema`에 정의하세요. 이메일 주소에는 `{ "type": "string", "format": "email" }`, 전화번호에는 `{ "type": "string", "format": "phone" }`, URL에는 `{ "type": "string", "format": "uri" }`처럼 표준 JSON Schema 형식을 사용하면 됩니다. 가능하면 `maxItems`로 목록 크기를 제한해 연락처 enrichment의 최대 cost를 예측할 수 있게 하세요.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      effort="auto",
+      output_schema={
+          "type": "object",
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "items": {
+                      "type": "object",
+                      "properties": {
+                          "name": {"type": "string"},
+                          "round": {"type": "string"},
+                          "website": {"type": "string"},
+                      },
+                      "required": ["name", "round"],
+                  },
+              }
+          },
+          "required": ["companies"],
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(
+      run.id,
+  )
+
+  print(json.dumps(run.output.structured if run.output else None, indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Find AI infrastructure companies that raised a Series A or B in the last 6 months.",
+    effort: "auto",
+    outputSchema: {
+      type: "object",
+      properties: {
+        companies: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              name: { type: "string" },
+              round: { type: "string" },
+              website: { type: "string" }
+            },
+            required: ["name", "round"]
+          }
+        }
+      },
+      required: ["companies"]
+    }
+  });
+  const completedRun = await exa.agent.runs.pollUntilFinished(run.id);
+
+  console.log(JSON.stringify(completedRun.output?.structured, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find AI infrastructure companies that raised a Series A or B in the last 6 months.",
+      "effort": "auto",
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "companies": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "round": { "type": "string" },
+                "website": { "type": "string" }
+              },
+              "required": ["name", "round"]
+            }
+          }
+        },
+        "required": ["companies"]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="process-input-rows">
+  ## 입력 행 처리
+</div>
+
+이미 보유한 데이터를 enrich하려면 `input.data`를 사용하세요. 각 데이터 엔티티에 필드를 추가하거나, 가져온 데이터를 기반으로 더 많은 엔티티를 발굴하거나, 두 가지를 모두 수행할 수 있습니다.
+
+행 enrichment의 전체 예제는 [Agent 예제](/ko/docs/agent/examples#enrich-input-rows-code)를 참고하세요.
+
+<div id="process-exclusions">
+  ## 제외 항목 처리
+</div>
+
+`input.exclusion`을 사용하면 특정 항목이 실행 결과에 나타나지 않도록 제외할 수 있습니다. 아래 예시에서는 가장 귀여운 동물 10종을 찾되, 염소와 판다는 이미 얼마나 귀여운지 알고 있으므로 실행에서 제외합니다.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find the top 10 cutest animals. Return each animal's common name and a source URL.",
+      input={
+          "exclusion": [
+              {"animal": "goat"},
+              {"animal": "panda"},
+          ]
+      },
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find the top 10 cutest animals. Return each animal's common name and a source URL.",
+    input: {
+      exclusion: [
+        { animal: "goat" },
+        { animal: "panda" }
+      ]
+    }
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find the top 10 cutest animals. Return each animal'"'"'s common name and a source URL.",
+      "input": {
+        "exclusion": [
+          { "animal": "goat" },
+          { "animal": "panda" }
+        ]
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="connect-data-sources">
+  ## 데이터 소스 연결
+</div>
+
+인덱스는 모든 실행에서 기본으로 제공됩니다. `dataSources`는 [Exa Connect](/ko/docs/agent/connect/overview) 파트너를 attach할 때만 사용하세요. 각 항목은 `provider`를 하나씩 지정합니다. `outputSchema`의 속성이 특정 소스를 참조하면(예: &quot;from Similarweb&quot;), Exa Agent는 웹 페이지에서 추측하지 않고 해당 provider 도구를 call합니다.
+
+```json theme={null}
+{
+  "dataSources": [
+    { "provider": "similarweb" },
+    { "provider": "fiber" }
+  ]
+}
+```
+
+data partners 전체 목록과 각 파트너별 예시는 [Exa Connect](/ko/docs/agent/connect/overview)에서 확인하세요.
+
+<div id="continue-from-a-previous-run">
+  ## 이전 실행 이어가기
+</div>
+
+이전 응답에 대해 follow-ups를 보내려면 `previousRunId`를 사용하세요. 각 follow-up은 자체 ID를 가진 새 실행을 시작합니다. `previousRunId`는 컨텍스트를 새 실행으로 전달하는 역할만 하며, 새 실행의 ID로 재사용되지는 않습니다.
+
+<CodeGroup>
+  ```python Python theme={null}
+  import json
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Narrow that list to companies hiring in San Francisco.",
+      previous_run_id="agent_run_01j...",
+  )
+
+  print(json.dumps(run.model_dump(), indent=2))
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Narrow that list to companies hiring in San Francisco.",
+    previousRunId: "agent_run_01j..."
+  });
+
+  console.log(JSON.stringify(run, null, 2));
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Narrow that list to companies hiring in San Francisco.",
+      "previousRunId": "agent_run_01j..."
+    }'
+  ```
+</CodeGroup>
+
+<div id="find-a-run-id">
+  ## 실행 ID 찾기
+</div>
+
+최근 실행 목록을 조회하고 각 상태를 확인합니다:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  runs = exa.agent.runs.list(
+      limit=10,
+  )
+
+  for run in runs.data:
+      query = (run.request or {}).get("query", "")
+      print(f"{run.id}\t{run.status}\t{run.created_at}\t{query}")
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const list = await exa.agent.runs.list({
+    limit: 10
+  });
+
+  for (const run of list.data) {
+    const query = run.request?.query ?? "";
+    console.log(`${run.id}\t${run.status}\t${run.createdAt}\t${query}`);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -s "https://api.exa.ai/agent/runs?limit=10" \
+    -H "Authorization: Bearer $EXA_API_KEY"
+  ```
+</CodeGroup>
+
+<div id="pricing">
+  ## 요금
+</div>
+
+비용은 사용량 기반이며 구성 요소별로 책정됩니다:
+
+| 구성 요소              | 가격                |
+| ------------------ | ----------------- |
+| Agent Compute Unit | `1 ACU = $0.10`   |
+| search 도구 call     | `$0.005 / search` |
+
+<Note>
+  contact enrichment는 위의 핵심 요금 구성 요소와 별도로 청구됩니다. 이메일 contact enrichment는 `$0.02 / email`, 전화번호 contact enrichment는 `$0.07 / phone number`입니다.
+</Note>
+
+`usage.agentComputeUnits`는 실행 전체에 걸친 모델 연산량을 측정합니다. 복잡한 질의, 특히 `input.data` 필드가 큰 질의는 더 많은 추론 단계와 도구 call이 필요해 ACU를 더 많이 소비합니다.
+
+concurrency 및 rate limits는 [Agent limits](/ko/docs/admin/billing#agent-limits)를 참고하세요.
+
+<div id="effort">
+  ### Effort
+</div>
+
+`effort`로 각 실행의 비용과 추론 수준을 선택할 수 있습니다. 지원되는 값은 `minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`이며 기본값은 `auto`입니다. 고정 effort는 요청당 가격이 예측 가능하지만, `auto`와 베타 `max`는 usage에 따라 과금됩니다:
+
+| Effort    | 가격                            |
+| --------- | ----------------------------- |
+| `minimal` | `$0.012 / request`            |
+| `low`     | `$0.025 / request`            |
+| `medium`  | `$0.10 / request`             |
+| `high`    | `$0.50 / request`             |
+| `xhigh`   | `$1.00 / request`             |
+| `auto`    | 사용량 기반, 기본 상한 `$5`까지          |
+| `max`     | **베타**, 사용량 기반, 기본 상한 `$20`까지 |
+
+<Info>
+  Agent Max는 지연 시간이나 cost보다 완결성과 철저함이 더 중요한 작업을 위한 최고 effort
+  단계로, 대규모 list building, 여러 출처를 활용한 deep 리서치, 검증이 까다로운 criteria
+  등에 적합합니다. 현재 퍼블릭 베타 단계이며, `effort: "max"`를 사용하는 요청에는
+  `Exa-Beta: agent-max-effort-2026-07-27`를 포함해야 합니다. 이 header에는 쉼표로 구분된
+  베타 토큰 목록을 지정할 수 있습니다.
+</Info>
+
+`budget.maxCostDollars`는 `auto`와 `max`에 적용할 수 있는 선택적 실행당 상한입니다. `$1`–`$100` 범위를 허용하며, 제공되는 최댓값은 `$100`이지만 서버에서 더 낮은 최댓값을 설정할 수도 있습니다. 기본 상한은 `auto`가 `$5`, `max`가 `$20`입니다. 이는 고정 가격이 아니라 상한이므로, 일찍 끝난 실행은 비용이 더 적게 듭니다. 고정 effort에서는 budget을 사용할 수 없습니다.
+
+<div id="choosing-an-effort-mode">
+  ### effort 모드 선택하기
+</div>
+
+고정 effort 모드는 일반적인 리서치에서 요청당 비용을 예측 가능하게 유지하고 싶을 때 적합합니다. 요청마다 엔티티 수가 달라질 수 있는 list building처럼 범위가 가변적인 작업에는 `auto`를 사용하세요.
+
+| Effort    | 적합한 용도                                     | 권장 schema 복잡도                       | 예상 실행 시간          |
+| --------- | ------------------------------------------ | ----------------------------------- | ----------------- |
+| `minimal` | 최저 비용 조회, 매우 좁은 범위의 사실 확인 작업, 짧은 답변        | 필드 한두 개, 얕은 schema                  | 가장 저렴하지만 가장 덜 철저함 |
+| `low`     | 단순 조회, 좁은 범위의 사실 확인 작업, 짧은 답변              | 필드 몇 개, 얕은 schema                   | 빠르고 가벼운 리서치       |
+| `medium`  | 대부분의 일반적인 리서치 작업의 기본 출발점                   | 보통 수준의 필드 수, 단순한 중첩 객체              | 품질과 실행 시간의 균형     |
+| `high`    | 난도 높은 리서치, 더 많은 citations, 더 엄격한 완결성       | 더 큰 schema 또는 더 세밀한 필드              | 더 느리지만 더 철저함      |
+| `xhigh`   | 비용이나 지연 시간보다 완결성이 중요한 고가치 작업               | 복잡한 schema, 많은 필드, 어려운 verification | 고정 effort 중 가장 느림 |
+| `auto`    | 범위가 가변적인 작업, list building, 난이도를 알 수 없는 작업 | 유연함. 엔티티 수나 필요한 작업량을 알 수 없을 때 유용    | 가변적               |
+| `max`     | 최고 수준의 effort 리서치 (베타)                     | 복잡한 schema, 많은 필드, 어려운 verification | 실행 시간이 가장 긺       |
+
+일반적인 단일 엔티티 리서치는 `medium`으로 시작하세요. 완결성보다 비용과 지연 시간이 더 중요하다면 `low`나 `minimal`로 낮추세요. 출력 schema가 더 크거나, 필드에 verification이 필요하거나, 작업에 더 깊은 추론이 필요하다면 `high` 또는 `xhigh`로 올리세요. list building처럼 많은 엔티티를 반환할 수 있는 워크플로우 등 범위를 미리 알 수 없는 경우에는 `auto`를 사용하세요.
+
+실행 시간은 질의 난이도, schema 복잡도, 외부 소스 가용성에 따라 달라집니다. effort 모드는 엄격한 지연 시간 보장이 아니라 품질·비용·실행 시간 간의 트레이드오프로 이해하시기 바랍니다.
+
+<div id="run-with-max-effort">
+  ### max effort로 실행하기
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.beta.agent.runs.create(
+      query="Find all companies building browser automation tools in the United States.",
+      effort="max",
+      budget={"maxCostDollars": 10},
+      betas=["agent-max-effort-2026-07-27"],
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.beta.agent.runs.create({
+    query: "Find all companies building browser automation tools in the United States.",
+    effort: "max",
+    budget: { maxCostDollars: 10 },
+    betas: ["agent-max-effort-2026-07-27"]
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: agent-max-effort-2026-07-27" \
+    -d '{
+      "query": "Find all companies building browser automation tools in the United States.",
+      "effort": "max",
+      "budget": { "maxCostDollars": 10 }
+    }'
+  ```
+</CodeGroup>
+
+위 SDK 예제를 사용하려면 Agent Max를 지원하는 `exa-py` 또는 `exa-js` 버전이 필요합니다.
+
+<div id="zero-data-retention">
+  ## Zero Data Retention
+</div>
+
+Exa Agent는 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)(ZDR)을 지원합니다. ZDR은 team 단위로 활성화되며, 계정에 적용하려면 [문의해 주세요](mailto:sales@exa.ai).
+
+team에 ZDR이 활성화되면 다음과 같이 동작합니다.
+
+* 스트리밍(`Accept: text/event-stream`)으로 실행을 생성해 출력을 실시간으로 받거나, 보존 기간 내에 비동기 실행을 폴링하세요.
+* 실행 데이터는 실행이 진행되는 동안, 그리고 종료 상태에 도달한 후 최대 10분간 이용할 수 있습니다. 이 기간이 지나면 해당 실행을 조회할 수 없습니다.
+* `previousRunId`는 사용할 수 없습니다.
+* Exa Connect `dataSources`는 사용할 수 없으며, 이를 포함한 요청은 `400` 오류를 반환합니다.
+
+<div id="next-steps">
+  ## 다음 단계
+</div>
+
+<Columns cols={2}>
+  <Card title="인덱스에 담긴 내용" icon="search" href="/ko/docs/search/data/overview" cta="가이드 열기" arrow="true">
+    공개 웹 전반의 뉴스, 코드, 기업, 인물 소스를 살펴보세요.
+  </Card>
+
+  <Card title="Exa Connect" icon="database" href="/ko/docs/agent/connect/overview" cta="가이드 열기" arrow="true">
+    프리미엄 파트너 데이터베이스를 실행에 연결하세요.
+  </Card>
+
+  <Card title="Agent 모범 사례" icon="lightbulb" href="/ko/docs/agent/best-practices" cta="가이드 열기" arrow="true">
+    Exa Agent 사용을 위한 모범 사례입니다.
+  </Card>
+
+  <Card title="Agent 예제" icon="code" href="/ko/docs/agent/examples" cta="가이드 열기" arrow="true">
+    Exa Agent 활용 예제입니다.
+  </Card>
+</Columns>

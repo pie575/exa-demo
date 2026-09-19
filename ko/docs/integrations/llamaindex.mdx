@@ -1,0 +1,97 @@
+---
+title: "LlamaIndex"
+description: "LlamaIndex Agent 애플리케이션에 Exa retrieval을 추가하는 방법을 소개하는 빠른 시작 가이드입니다."
+icon: "/docs/images/sidebar-icons/llamaindex.svg"
+---
+
+<Card title="코딩 에이전트 Quickstart" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Exa가 처음이신가요? 1분 안에 시작해 보세요.
+</Card>
+
+***
+
+LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 구축하는 프레임워크입니다. 이 가이드에서는 Exa의 LlamaIndex 통합을 사용해 다음을 진행합니다:
+
+1. Exa의 Search and Retrieve Highlight Tool을 LlamaIndex retriever로 지정하기
+2. 응답 생성에 이 도구를 활용하는 OpenAI Agent 설정하기
+
+***
+
+<div id="get-started">
+  ## 시작하기
+</div>
+
+<Steps>
+  <Step title="사전 요구 사항 및 설치">
+    llama-index, llama-index core, llama-index-tools-exa 라이브러리를 설치합니다. OpenAI 의존성은 core 라이브러리에 포함되어 있으므로 따로 지정하지 않아도 됩니다.
+
+    ```Python Python theme={null}
+    pip install llama-index llama-index-core llama-index-tools-exa
+    ```
+
+    또한 API key가 올바르게 초기화되어 있는지 확인하세요. 아래 코드는 환경 변수 이름으로 `EXA_API_KEY`를 사용합니다.
+
+    <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+    </Card>
+  </Step>
+
+  <Step title="Exa 도구 인스턴스화">
+    Exa 통합 라이브러리를 가져와 LlamaIndex의 `ExaToolSpec`을 인스턴스화합니다.
+
+    ```Python Python theme={null}
+    from llama_index.tools.exa import ExaToolSpec
+    import os
+
+    exa_tool = ExaToolSpec(
+        api_key=os.environ["EXA_API_KEY"],
+    )
+    ```
+  </Step>
+
+  <Step title="사용할 Exa 메서드 선택">
+    이 예시에서는 [search&#95;and&#95;retrieve&#95;highlights](https://docs.llamaindex.ai/en/stable/api_reference/tools/exa/) 메서드만 agent에 전달하면 되므로, LlamaIndex의 `.to_tool_list` 메서드로 이를 지정합니다. 또한 agent가 현재 날짜를 알 수 있도록 간단한 유틸리티인 `current_date`도 함께 전달합니다.
+
+    ```Python Python theme={null}
+    print('Tools that are provide by Exa LlamaIndex integration:')
+    print('\n'.join(map(str, (exa_tool.spec_functions))))
+
+    search_and_retrieve_highlights_tool = exa_tool.to_tool_list(
+        spec_functions=["search_and_retrieve_highlights", "current_date"]
+    )
+    ```
+  </Step>
+
+  <Step title="OpenAI agent 설정 및 Exa 기반 요청 실행">
+    위에서 추려낸 도구 목록을 전달해 [OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/)를 설정합니다.
+
+    ```Python Python theme={null}
+    from llama_index.agent.openai import OpenAIAgent
+
+    agent = OpenAIAgent.from_tools(
+        search_and_retrieve_highlights_tool,
+        verbose=True,
+    )
+    ```
+
+    그런 다음 chat 메서드로 agent와 상호작용할 수 있습니다.
+
+    ```Python Python theme={null}
+    agent.chat(
+        "Can you summarize the news from the last month related to the US stock market?"
+    )
+    ```
+
+    agent는 전달받은 Exa 도구를 call한 뒤 그 결과를 바탕으로 답변합니다. 실제 output은 query와 Exa가 반환하는 페이지의 게시 날짜에 따라 달라집니다.
+  </Step>
+</Steps>
+
+<Columns cols={2}>
+  <Card title="Search API 가이드" icon="search" href="/ko/docs/search/quickstart" cta="가이드 읽기" arrow="true">
+    Exa search parameters와 응답 필드를 살펴보세요.
+  </Card>
+
+  <Card title="LlamaIndex 도구 레퍼런스" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="레퍼런스 열기" arrow="true">
+    LlamaIndex 도구와 agent configuration을 알아보세요.
+  </Card>
+</Columns>

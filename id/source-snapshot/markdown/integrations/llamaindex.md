@@ -1,0 +1,104 @@
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
+>
+> Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+
+<div id="llamaindex">
+  # LlamaIndex
+</div>
+
+> Panduan quickstart tentang cara menambahkan retrieval Exa ke aplikasi Agent LlamaIndex.
+
+<Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+</Card>
+
+***
+
+LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data terstruktur. Dalam panduan ini, kita akan menggunakan integrasi LlamaIndex dari Exa untuk:
+
+1. Menetapkan Search and Retrieve Highlight Tool dari Exa sebagai retriever LlamaIndex
+2. Menyiapkan OpenAI Agent yang memakai tool ini saat menghasilkan respons
+
+***
+
+<div id="get-started">
+  ## Get started
+</div>
+
+<Steps>
+  <Step title="Prasyarat dan instalasi">
+    Instal pustaka llama-index, llama-index core, dan llama-index-tools-exa. Dependensi OpenAI sudah termasuk dalam pustaka core, jadi kita tidak perlu menyebutkannya.
+
+    ```Python Python theme={null}
+    pip install llama-index llama-index-core llama-index-tools-exa
+    ```
+
+    Pastikan juga API key sudah diinisialisasi dengan benar. Kode berikut menggunakan `EXA_API_KEY` sebagai nama variabel lingkungan yang relevan.
+
+    <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Buat key di dashboard. Akun baru mendapatkan credits gratis.
+    </Card>
+  </Step>
+
+  <Step title="Buat instance tool Exa">
+    Impor pustaka integrasi Exa yang relevan dan buat instance `ExaToolSpec` dari LlamaIndex.
+
+    ```Python Python theme={null}
+    from llama_index.tools.exa import ExaToolSpec
+    import os
+
+    exa_tool = ExaToolSpec(
+        api_key=os.environ["EXA_API_KEY"],
+    )
+    ```
+  </Step>
+
+  <Step title="Pilih metode Exa yang akan digunakan">
+    Pada contoh ini, kita hanya ingin meneruskan metode [search&#95;and&#95;retrieve&#95;highlights](https://docs.llamaindex.ai/en/stable/api_reference/tools/exa/) ke agent kita, jadi kita menentukannya lewat metode `.to_tool_list` dari LlamaIndex. Kita juga meneruskan `current_date`, sebuah utilitas sederhana agar agent kita mengetahui tanggal saat ini.
+
+    ```Python Python theme={null}
+    print('Tools that are provide by Exa LlamaIndex integration:')
+    print('\n'.join(map(str, (exa_tool.spec_functions))))
+
+    search_and_retrieve_highlights_tool = exa_tool.to_tool_list(
+        spec_functions=["search_and_retrieve_highlights", "current_date"]
+    )
+    ```
+  </Step>
+
+  <Step title="Siapkan OpenAI Agent dan buat permintaan bertenaga Exa">
+    Siapkan [OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/), lalu teruskan kumpulan tool yang sudah disaring di atas.
+
+    ```Python Python theme={null}
+    from llama_index.agent.openai import OpenAIAgent
+
+    agent = OpenAIAgent.from_tools(
+        search_and_retrieve_highlights_tool,
+        verbose=True,
+    )
+    ```
+
+    Selanjutnya kita bisa menggunakan metode chat untuk berinteraksi dengan agent.
+
+    ```Python Python theme={null}
+    agent.chat(
+        "Can you summarize the news from the last month related to the US stock market?"
+    )
+    ```
+
+    Agent akan memanggil tool Exa yang diberikan kepadanya, lalu menjawab berdasarkan hasil tersebut. Output persisnya bervariasi tergantung query dan tanggal publikasi halaman yang dikembalikan Exa.
+  </Step>
+</Steps>
+
+<Columns cols={2}>
+  <Card title="Panduan Search API" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
+    Tinjau search parameters dan kolom respons Exa.
+  </Card>
+
+  <Card title="Referensi tool LlamaIndex" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="Buka referensi" arrow="true">
+    Jelajahi tool LlamaIndex dan konfigurasi agent.
+  </Card>
+</Columns>

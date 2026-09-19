@@ -1,0 +1,346 @@
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
+>
+> Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+
+<div id="contents-api">
+  # Contents API
+</div>
+
+> Ekstrak teks, highlights, dan summaries dari URL mana pun.
+
+Exa Contents mengembalikan page content yang bersih dari URL, serta menangani halaman yang dirender JavaScript, PDF, dan tata letak kompleks secara otomatis.
+
+Semua fitur contents juga tersedia di [Exa Search](/id/docs/search/quickstart) untuk URL yang dikembalikan, tanpa biaya tambahan hingga 10 hasil per search ($1/1000 halaman setelahnya). Untuk kasus penggunaan tool web search, kami menyarankan penggunaan Search dengan cara ini daripada Contents.
+
+<Tip>
+  Untuk hasil search yang dijadikan konteks AI, gunakan `contents: { highlights: true }` pada `/search` —
+  Exa menyesuaikan panjang excerpt setiap hasil dengan tingkat relevansinya. Lihat [Highlights](/id/docs/search/highlights).
+</Tip>
+
+<div id="make-your-first-request">
+  ## Buat permintaan pertama Anda
+</div>
+
+Kirimkan satu atau beberapa URL atau ID dokumen, lalu minta highlights untuk bagian yang relevan dengan tugas Anda. Pada permintaan HTTP, cantumkan di `ids`:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  result = exa.get_contents(
+      ["https://exa.ai/blog/dynamic-highlights"],
+      highlights={"query": "token efficiency and quality results"},
+  )
+
+  print(result.results[0].highlights)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const result = await exa.getContents(
+    ["https://exa.ai/blog/dynamic-highlights"],
+    {
+      highlights: {
+        query: "token efficiency and quality results"
+      }
+    }
+  );
+
+  console.log(result.results[0].highlights);
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/contents" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "ids": ["https://exa.ai/blog/dynamic-highlights"],
+      "highlights": {
+        "query": "token efficiency and quality results"
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Accordion title="Contoh respons">
+  ```json theme={null}
+  {
+    "requestId": "e492118ccdedcba5088bfc4357a8a125",
+    "results": [
+      {
+        "id": "https://exa.ai/blog/dynamic-highlights",
+        "title": "Dynamic Highlights",
+        "url": "https://exa.ai/blog/dynamic-highlights",
+        "highlights": [
+          "With a 12k character budget, relative to existing highlights, Dynamic Highlights achieves a 40% average token efficiency gain with a notable quality increase..."
+        ]
+      }
+    ],
+    "statuses": [
+      {
+        "id": "https://exa.ai/blog/dynamic-highlights",
+        "status": "success",
+        "source": "cached"
+      }
+    ],
+    "costDollars": {
+      "total": 0.001
+    }
+  }
+  ```
+</Accordion>
+
+Setiap item dalam `results` memuat metadata halaman dan tampilan konten yang Anda minta. Periksa `statuses` untuk melihat berhasil atau gagalnya setiap URL.
+
+<h2 id="dynamic-highlights">
+  Bentuk output
+</h2>
+
+<Tabs>
+  <Tab title="Highlights">
+    Highlights mengembalikan cuplikan teks relevan yang disalin dari halaman. Mulailah dari sini untuk agent, RAG, dan
+    pencarian fakta karena highlights membuat konteks tetap lebih ringkas dibanding teks penuh.
+
+    Setel `highlights: true` untuk mengaktifkan highlights. Parameter `query` tambahan disarankan saat menggunakan Contents agar extraction konten dari halaman lebih terfokus:
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.get_contents(
+          ["https://example.com/research-paper"],
+          highlights={"query": "methodology and results"},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.getContents(
+        ["https://example.com/research-paper"],
+        {
+          highlights: {
+            query: "methodology and results"
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/contents" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "ids": ["https://example.com/research-paper"],
+          "highlights": {
+            "query": "methodology and results"
+          }
+        }'
+      ```
+    </CodeGroup>
+
+    Lihat [Highlights](/id/docs/search/highlights) untuk Dynamic Highlights dan panduan mengalokasikan konteks
+    di beberapa halaman.
+  </Tab>
+
+  <Tab title="Teks penuh">
+    Teks penuh mengembalikan isi halaman yang sudah bersih dalam format markdown. Gunakan ini saat tugas bergantung pada konteks yang luas,
+    struktur dokumen, atau detail yang mungkin terlewat oleh highlights.
+
+    Halaman penuh bisa berukuran besar, jadi gunakan `maxCharacters` bila Anda perlu membatasinya:
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.get_contents(
+          ["https://example.com/technical-report"],
+          text={"max_characters": 10000},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.getContents(
+        ["https://example.com/technical-report"],
+        {
+          text: {
+            maxCharacters: 10000
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/contents" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "ids": ["https://example.com/technical-report"],
+          "text": {
+            "maxCharacters": 10000
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Summary">
+    Summary melakukan satu pemanggilan model bahasa untuk setiap halaman. Gunakan ini saat Anda membutuhkan ringkasan hasil generasi atau
+    field yang diekstrak ke dalam schema JSON.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.get_contents(
+          ["https://example.com/company"],
+          summary={"query": "Summarize the product, customers, and pricing"},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.getContents(
+        ["https://example.com/company"],
+        {
+          summary: {
+            query: "Summarize the product, customers, and pricing"
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/contents" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "ids": ["https://example.com/company"],
+          "summary": {
+            "query": "Summarize the product, customers, and pricing"
+          }
+        }'
+      ```
+    </CodeGroup>
+
+    Untuk mengekstrak field alih-alih prosa, kirimkan schema JSON pada `summary.schema`. Summary akan
+    dikembalikan sebagai string JSON yang sesuai dengan schema tersebut; parse string tersebut untuk membaca field-nya:
+
+    ```json theme={null}
+    {
+      "ids": ["https://example.com/company"],
+      "summary": {
+        "schema": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "title": "Company Information",
+          "type": "object",
+          "properties": {
+            "name": { "type": "string", "description": "The company name" },
+            "industry": { "type": "string", "description": "Primary industry" },
+            "foundedYear": { "type": "number", "description": "Year the company was founded" }
+          },
+          "required": ["name"]
+        }
+      }
+    }
+    ```
+  </Tab>
+</Tabs>
+
+Pilih satu tampilan konten per permintaan. Meminta highlights, text, dan summary sekaligus akan mengembalikan dan menagihkan biaya setiap tampilan secara terpisah.
+
+<div id="content-freshness">
+  ## Content freshness
+</div>
+
+`maxAgeHours` mengatur seberapa baru page content yang diekstrak harus dibuat.
+
+| Nilai                  | Perilaku                                                                              |
+| ---------------------- | ------------------------------------------------------------------------------------- |
+| Dihilangkan            | Gunakan konten cache bila tersedia dan ambil halaman bila diperlukan                  |
+| Bilangan bulat positif | Gunakan konten cache jika lebih baru dari jumlah jam ini, jika tidak ambil halamannya |
+| `0`                    | Selalu ambil konten terbaru                                                           |
+| `-1`                   | Hanya gunakan konten cache                                                            |
+
+Sebagian besar permintaan sebaiknya menghilangkan kolom ini. Setel kolom ini bila page content yang usang tidak dapat dipakai, misalnya untuk harga, ketersediaan, atau halaman yang sering diperbarui. Padukan `maxAgeHours` yang rendah dengan `livecrawlTimeout` (milidetik) untuk membatasi durasi pengambilan konten terbaru.
+
+<Accordion title="Bermigrasi dari parameter livecrawl yang tidak digunakan lagi">
+  Parameter string `livecrawl` (`"always"`, `"preferred"`, `"fallback"`, `"never"`) sudah
+  tidak digunakan lagi dan digantikan oleh `maxAgeHours`:
+
+  | Nilai `livecrawl` lama | Setara dengan                                                             |
+  | ---------------------- | ------------------------------------------------------------------------- |
+  | `"always"`             | `maxAgeHours: 0`                                                          |
+  | `"never"`              | `maxAgeHours: -1`                                                         |
+  | `"fallback"`           | Hilangkan `maxAgeHours`                                                   |
+  | `"preferred"`          | Tidak ada padanan langsung; gunakan nilai rendah seperti `maxAgeHours: 1` |
+</Accordion>
+
+<div id="crawl-subpages">
+  ## Crawl subhalaman
+</div>
+
+Atur `subpages` untuk menelusuri tautan dari setiap URL awal. Tambahkan `subpageTarget` jika Anda ingin Exa memprioritaskan bagian situs tertentu:
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.get_contents(
+      ["https://docs.example.com"],
+      subpages=10,
+      subpage_target=["api", "reference", "guides"],
+      highlights=True,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.getContents(
+    ["https://docs.example.com"],
+    {
+      subpages: 10,
+      subpageTarget: ["api", "reference", "guides"],
+      highlights: true
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/contents" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "ids": ["https://docs.example.com"],
+      "subpages": 10,
+      "subpageTarget": ["api", "reference", "guides"],
+      "highlights": true
+    }'
+  ```
+</CodeGroup>
+
+<div id="images-and-favicons">
+  ## Gambar dan favicon
+</div>
+
+Setel `extras.imageLinks` ke jumlah URL gambar yang Anda inginkan dari setiap halaman. Hasil juga menyertakan
+`favicon` situs dan satu URL `image` yang representatif jika tersedia. Pada `/search`, opsi ini
+berada di `contents.extras.imageLinks`.
+
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
+
+<Columns cols={2}>
+  <Card title="Referensi API" icon="square-terminal" href="/id/docs/reference/get-contents" cta="Buka referensi" arrow="true">
+    Lihat semua parameter permintaan dan field respons.
+  </Card>
+
+  <Card title="Highlights" icon="highlighter" href="/id/docs/search/highlights" cta="Baca panduan" arrow="true">
+    Bandingkan highlights biasa dengan Dynamic Highlights untuk konteks agent dan RAG.
+  </Card>
+
+  <Card title="Search API" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">
+    Temukan halaman yang relevan sebelum mengekstrak kontennya.
+  </Card>
+
+  <Card title="SDK" icon="code" href="/id/docs/sdks/quickstart" cta="Lihat SDK" arrow="true">
+    Gunakan Exa dari Python atau JavaScript.
+  </Card>
+</Columns>

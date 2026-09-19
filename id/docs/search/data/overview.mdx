@@ -1,0 +1,202 @@
+---
+title: "Indeks Data"
+sidebarTitle: "Ikhtisar"
+icon: "database"
+description: "Apa saja yang diindeks Exa dari web publik dan sumber data privat."
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Buka di playground API" aria-label={`Buka "${query}" di playground API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupan yang terus diperbarui. Cakupannya meliputi:
+
+<AccordionGroup>
+  <Accordion title="Berita" icon="newspaper">
+    <Card title="Panduan berita" icon="newspaper" href="/id/docs/search/data/news" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan, contoh, dan praktik terbaik pencarian berita.
+    </Card>
+
+    Berita dan artikel:
+
+    <PlaygroundQuery query="coverage of the EU AI Act enforcement timeline published this month" />
+
+    Artikel blog dan listicle:
+
+    <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
+
+    Transkrip podcast dan video:
+
+    <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
+
+    Pemberitaan negatif:
+
+    <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
+  </Accordion>
+
+  <Accordion title="Kode & Dokumentasi" icon="code">
+    <Card title="Panduan Code & Docs" icon="code" href="/id/docs/search/data/code" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan, contoh, dan praktik terbaik pencarian kode.
+    </Card>
+
+    Repo GitHub:
+
+    <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
+
+    Dokumentasi API dan developer:
+
+    <PlaygroundQuery query="Stripe webhook signature verification documentation" />
+
+    Registry package, lengkap dengan detail versi dan rilis yang akurat:
+
+    <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
+
+    Direktori agent skill:
+
+    <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
+  </Accordion>
+
+  <Accordion title="Perusahaan & Orang" icon="users">
+    <Card title="Panduan Perusahaan & Orang" icon="users" href="/id/docs/search/data/companies-people" cta="Baca panduan" arrow="true">
+      Pelajari cara menemukan perusahaan, orang, dan hubungan di antara keduanya.
+    </Card>
+
+    Penemuan perusahaan dan sinyal operasional:
+
+    <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
+
+    Professional profiles berdasarkan peran, skill, dan lokasi:
+
+    <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
+
+    Orang yang disaring berdasarkan perusahaan tempat mereka bekerja:
+
+    <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
+
+    Riset perusahaan dan pemangku kepentingan dalam satu query:
+
+    <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
+  </Accordion>
+
+  <Accordion title="Pasar Keuangan" icon="chart-line">
+    <Card title="Panduan Pasar Keuangan" icon="chart-line" href="/id/docs/search/data/financial" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan untuk kuotasi harga, filings, earnings call, dan riset pasar.
+    </Card>
+
+    Harga, estimasi analis, dan laporan keuangan:
+
+    <PlaygroundQuery query="analyst price targets for NVIDIA after its most recent earnings" />
+
+    SEC filings, earnings call, dan filings internasional:
+
+    <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" />
+
+    Pendanaan yang telah diumumkan dan data lain yang dilaporkan secara publik:
+
+    <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
+
+    Data ekonomi yang dipublikasikan dan statistik pemerintah:
+
+    <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
+  </Accordion>
+
+  <Accordion title="Publikasi Riset" icon="book-open">
+    <Card title="Panduan Publikasi Riset" icon="book-open" href="/id/docs/search/data/research" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan riset untuk papers, paten, klinis, dan regulasi.
+    </Card>
+
+    Papers riset, paten, dan grants:
+
+    <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" />
+
+    Uji klinis dan interaksi obat:
+
+    <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
+
+    Approvals regulasi dan kesehatan:
+
+    <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
+  </Accordion>
+
+  <Accordion title="Catatan Hukum & Publik" icon="scale">
+    <Card title="Panduan Hukum & Rekaman Publik" icon="scale" href="/id/docs/search/data/legal" cta="Baca panduan" arrow="true">
+      Jelajahi yurisprudensi, paten, sanksi, dan kasus penggunaan rekaman publik.
+    </Card>
+
+    Rekaman hukum dan pengadilan:
+
+    <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
+
+    Sanksi dan watchlist:
+
+    <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
+
+    Kontrak pemerintah yang bersifat publik:
+
+    <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
+
+    Sensus dan rekaman publik lainnya:
+
+    <PlaygroundQuery query="census tract population change in the Austin metro area" />
+  </Accordion>
+
+  <Accordion title="Olahraga, Cuaca & Tempat" icon="map-pin">
+    <Card title="Panduan Olahraga, Cuaca & Tempat" icon="map-pin" href="/id/docs/search/data/sports-weather-places" cta="Baca panduan" arrow="true">
+      Pelajari cara melakukan query untuk sports data langsung, prakiraan cuaca, dan informasi lokal.
+    </Card>
+
+    Skor langsung, klasemen, dan jadwal:
+
+    <PlaygroundQuery query="NBA scores last night" />
+
+    Prakiraan cuaca untuk tempat dan tanggal mana pun:
+
+    <PlaygroundQuery query="weather in San Francisco tomorrow" />
+
+    Bisnis lokal, tempat acara, dan properti:
+
+    <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
+  </Accordion>
+
+  <Accordion title="Keamanan siber" icon="shield">
+    <Card title="Panduan keamanan siber" icon="shield" href="/id/docs/search/data/security" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan untuk kerentanan, advisory, dan risiko vendor.
+    </Card>
+
+    Advisory keamanan:
+
+    <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
+
+    Basis data kerentanan CVE dan GHSA:
+
+    <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
+
+    Daftar subprosesor data dan trust pages:
+
+    <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
+  </Accordion>
+</AccordionGroup>
+
+Panduan ini membahas pola data yang umum, tetapi Exa juga menelusuri web publik yang lebih luas, mencakup berbagai situs, format, dan bahasa.

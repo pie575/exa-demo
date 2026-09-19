@@ -1,0 +1,33 @@
+---
+title: "Answer"
+description: "Dapatkan jawaban LLM atas sebuah pertanyaan yang didasarkan pada
+  hasil Exa search. `/answer` menjalankan Exa search dan menggunakan LLM untuk
+  menghasilkan salah satu dari:
+
+  1. Jawaban langsung untuk kueri spesifik. (misalnya \"Apa ibu kota Prancis?\"
+  akan mengembalikan \"Paris\")
+
+  2. Ringkasan terperinci dengan citations untuk kueri terbuka (misalnya
+  \"Bagaimana kondisi ai di bidang kesehatan?\" akan mengembalikan ringkasan
+  dengan citations ke sumber-sumber yang relevan)
+
+
+  Respons mencakup jawaban yang dihasilkan sekaligus sumber yang digunakan untuk
+  membuatnya. Endpoint ini juga mendukung Streaming (dengan `stream=True`), yang
+  akan mengembalikan token seiring token dihasilkan.
+
+
+  Sebagai alternatif, Anda dapat menggunakan [antarmuka chat
+  completions](/docs/integrations/openai-sdk#answer) yang kompatibel dengan
+  OpenAI.\n"
+openapi: "/id/docs/exa-spec.yaml POST /answer"
+timestamp: false
+---
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>
+
+<Info>
+  `/answer` mendukung structured output melalui parameter `outputSchema`. Berikan objek [JSON Schema](https://json-schema.org/draft-07) dan jawaban akan dikembalikan sebagai JSON terstruktur yang sesuai dengan schema Anda, bukan sebagai string biasa.
+</Info>

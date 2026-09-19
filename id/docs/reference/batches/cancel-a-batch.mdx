@@ -1,0 +1,12 @@
+---
+title: "Membatalkan batch"
+description: "Batalkan batch yang sedang berjalan."
+openapi: "/id/docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+Batch akan berhenti menjadwalkan permintaan baru dan menuntaskan pekerjaan yang sedang berjalan sebelum berstatus `cancelled`. Membatalkan batch yang sudah berstatus `cancelling` atau `cancelled` akan mengembalikannya tanpa perubahan; batch yang berstatus `completed` atau `expired` tidak dapat dibatalkan.
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>

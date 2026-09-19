@@ -1,0 +1,150 @@
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
+>
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 본격적으로 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+
+<div id="code-docs">
+  # 코드 &amp; 문서
+</div>
+
+> Exa Search로 코드, 기술 문서, 구현 가이드를 찾아보세요.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="API 플레이그라운드에서 열기" aria-label={`API 플레이그라운드에서 "${query}" 열기`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+자연어 쿼리로 저장소, 기술 문서, 패키지 정보, 구현 가이드를 찾으려면 Exa Search를 사용하세요.
+
+<Tip>
+  Exa가 코딩 작업의 검색 성능을 어떻게 평가하는지 알아보려면 [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode)를
+  읽어보세요.
+</Tip>
+
+<div id="use-it-for">
+  ## 활용 사례
+</div>
+
+* coding agent 및 코드 생성 도구
+* 개발자용 검색 및 문서 제품
+* 디버깅, 마이그레이션, 설정 워크플로우
+* 저장소, 문서, 패키지 레지스트리 전반의 기술 리서치
+
+<div id="example-queries">
+  ## 예시 쿼리
+</div>
+
+<div id="discover-libraries-by-capability">
+  ### capability 기준으로 라이브러리 찾기
+</div>
+
+관심 있는 capability, 생태계, 제약 조건을 설명하세요. 정확한 프로젝트 이름에 의존하지 않고, 라이브러리가 어떤 일을 하는지를 기준으로 후보를 찾아옵니다.
+
+<PlaygroundQuery query="open source Rust libraries for vector similarity search" />
+
+<div id="retrieve-implementation-documentation">
+  ### 구현 문서 찾기
+</div>
+
+제품 이름과 정확한 작업을 명시하세요. 그러면 search가 일반적인 논의보다 API 문서와 구현 가이드를 우선적으로 찾아줍니다.
+
+<PlaygroundQuery query="Stripe webhook signature verification documentation" />
+
+<div id="check-version-specific-changes">
+  ### 버전별 변경 사항 확인
+</div>
+
+호환성이 중요하다면 릴리스 채널이나 버전을 함께 명시하세요. 그러면 구버전 릴리스에 관한 결과가 줄어듭니다.
+
+<PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
+
+<div id="find-reusable-agent-tooling">
+  ### 재사용 가능한 agent 도구 찾기
+</div>
+
+&quot;AI 도구&quot;처럼 광범위한 문구로 검색하지 말고, 산출물 유형과 작업을 구체적으로 명시하세요.
+
+<PlaygroundQuery query="agent skills for extracting tables from PDFs" />
+
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "how to use Exa search in python",
+      type="fast",
+      num_results=10,
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "how to use Exa search in python",
+    {
+      type: "fast",
+      numResults: 10,
+      contents: {
+        highlights: true,
+      },
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "how to use Exa search in python",
+      "type": "fast",
+      "numResults": 10,
+      "contents": {
+        "highlights": true
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent로 구조화된 데이터 가져오기
+</div>
+
+여러 출처에 걸친 조사가 필요한 구조화된 데이터라면 [Exa Agent 작업 실행](/ko/docs/agent/quickstart)을 사용하세요. 필요한 라이브러리, 기술적 criteria, 출력 필드를 설명하면 Agent가 schema 검증을 거친 결과와 citations를 반환합니다.
+
+<Card title="Agent 작업 시작하기" icon="bot" href="/ko/docs/agent/quickstart" cta="Agent 가이드 열기" arrow="true">
+  라이브러리를 비교하거나, 저장소 레코드를 enrich하거나, 여러 기술적 신호를 바탕으로 구조화된 목록을 만들어 보세요.
+</Card>

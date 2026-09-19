@@ -1,0 +1,42 @@
+---
+title: "Mendapatkan info team"
+description: "Ambil informasi tentang team Anda, termasuk penggunaan dan batas concurrency."
+openapi: "/id/docs/exa-spec.yaml GET /v0/teams/me"
+timestamp: false
+---
+
+<div id="overview">
+  ## Ringkasan
+</div>
+
+Endpoint Get Team Info mengembalikan informasi tentang team yang terautentikasi, termasuk concurrency usage team saat ini dan batas yang dikonfigurasi. Ini berguna untuk memantau usage Websets API Anda sekaligus memahami rate limits yang berlaku.
+
+<div id="response">
+  ## Response
+</div>
+
+Response mencakup:
+
+* **object**: Selalu &quot;team&quot;
+* **id**: Pengidentifikasi unik Team Anda
+* **name**: Nama Team Anda
+* **concurrency**: Penggunaan saat ini yang menunjukkan permintaan aktif dan yang sedang mengantre
+* **limits**: Batas concurrency Team Anda
+
+<div id="concurrency-fields">
+  ### Field Concurrency
+</div>
+
+Objek `concurrency` menampilkan status permintaan Anda saat ini:
+
+* **active**: Jumlah permintaan yang sedang diproses
+* **queued**: Jumlah permintaan yang menunggu untuk diproses
+
+<div id="limits-fields">
+  ### Field Limits
+</div>
+
+Objek `limits` menampilkan batas yang dikonfigurasi untuk team Anda:
+
+* **maxConcurrent**: Jumlah maksimum permintaan yang dapat diproses secara bersamaan (null berarti tidak terbatas)
+* **maxQueued**: Jumlah maksimum permintaan yang dapat menunggu dalam antrean (null berarti tidak terbatas)

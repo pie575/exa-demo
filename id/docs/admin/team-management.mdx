@@ -1,0 +1,60 @@
+---
+title: "Mengelola Team Anda"
+description: "Detail tentang struktur Team dan pengelolaan akun untuk platform Exa"
+---
+
+***
+
+<Card title="Buka API Dashboard" icon="layout-dashboard" horizontal href="https://dashboard.exa.ai">
+  Buat Team, undang anggota, dan kelola billing.
+</Card>
+
+Exa mengelola usage akun dan akses fitur berbayar melalui &#39;Team&#39;:
+
+Setelah akun dibuat, Anda akan ditempatkan di Team &#39;Personal&#39;. Gunakan dropdown di kiri atas dashboard Exa seperti yang ditampilkan di bawah ini untuk membuat Team baru atau berpindah antar Team yang Anda miliki. Anda dapat membuat Team sebanyak yang Anda inginkan.
+
+<div id="seeing-your-teams">
+  ## Melihat team Anda
+</div>
+
+<img src="/docs/images/admin/team-management/dashboard_team_switcher.png" alt="Dropdown team (kiri atas) pada Exa dashboard di bagian Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
+
+Dropdown team (kiri atas) pada Exa dashboard di bagian Team settings
+
+<div id="topping-up-a-teams-balance">
+  ## Mengisi saldo Team
+</div>
+
+Setelah Team yang diinginkan dipilih, Anda dapat mengisi saldo credit di halaman Billing.
+
+<img src="/docs/images/admin/team-management/dashboard_topup.png" alt="Pengisian saldo credit di halaman Billing" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
+
+<div id="inviting-people-to-your-team">
+  ## Mengundang orang ke Team Anda
+</div>
+
+Admin Team dapat menambahkan anggota melalui fitur Invite di Team settings.
+
+<img src="/docs/images/admin/team-management/dashboard_invite.png" alt="Mengundang anggota di Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite.png" />
+
+Setelah seorang anggota Team diundang, statusnya akan menjadi &#39;Pending&#39; di menu manajemen Team.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_pending.png" alt="Anggota Team tercantum dengan status undangan Pending" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_pending.png" />
+
+Mereka akan menerima email berisi undangan untuk bergabung dengan Team.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_email.png" alt="Email undangan Team" width="1094" height="1082" data-path="images/admin/team-management/dashboard_invite_email.png" />
+
+Setelah undangan diterima, Anda akan melihat kedua anggota berstatus &#39;Accepted&#39;. Semua anggota Team berbagi limit penggunaan dan fitur sesuai paket Team masing-masing.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_accepted.png" alt="Daftar anggota Team yang menampilkan status Accepted" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
+
+<div id="team-management-api">
+  ## Team Management API
+</div>
+
+Buat dan kelola API key secara terprogram dengan [Team Management API](/id/docs/reference/team-management/create-api-key).
+
+<Info>
+  Team Management API diaktifkan per team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+</Info>

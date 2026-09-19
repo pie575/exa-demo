@@ -1,0 +1,92 @@
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
+>
+> Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+
+<div id="exa-contents-skill">
+  # Exa Contents Skill
+</div>
+
+> Ekstrak konten halaman dengan Exa Contents saat Anda sudah memiliki URL-nya.
+
+Gunakan skill ini untuk mengajari agent Anda memanggil Exa Contents melalui cURL atau raw HTTP dengan praktik terbaik.
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>
+
+<Note>
+  Setel key Anda sebagai `EXA_API_KEY` di lingkungan agent Anda.
+</Note>
+
+<div id="setup">
+  ## Penyiapan
+</div>
+
+**Opsi A: pasang skill ini secara langsung:**
+
+```bash theme={null}
+npx skills add exa-labs/agent-skills --skill "exa-contents"
+```
+
+**Opsi B: Salin prompt ini ke coding agent Anda.**
+
+Prompt berikut akan memasang skill dan memverifikasi API key Anda tanpa menampilkannya:
+
+```text Copy this setup prompt into your agent theme={null}
+Siapkan agent skill Exa exa-contents di mesin ini.
+
+Tujuan:
+- Pasang skill exa-contents agar coding agent saya bisa menggunakannya untuk memanggil Exa Contents secara langsung lewat cURL atau raw HTTP.
+- Membuat Exa API key berfungsi TANPA pernah mengekspos, mencetak, atau menempelkan key tersebut ke chat ini.
+
+Agent yang dipilih:
+- Claude Code, Codex, Cursor, atau agent apa pun yang kompatibel dengan Agent Skills
+- Direktori instalasi global: ~/.claude/skills (Claude Code), ~/.codex/skills (Codex), ~/.agents/skills (Cursor / lainnya)
+- Direktori instalasi lokal proyek: .claude/skills (Claude Code), .agents/skills (Codex / Cursor / lainnya)
+
+Sumber skill:
+- URL SKILL.md: https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md
+
+Yang harus dilakukan:
+1. Pasang skill TERLEBIH DAHULU, sebelum penyiapan key apa pun. Utamakan instalasi lokal proyek jika sedang bekerja di dalam sebuah repo; selain itu, gunakan direktori global yang sesuai seperti tercantum di atas. Buat direktori skills yang dipilih lalu unduh skill-nya:
+   mkdir -p <skills-dir>/exa-contents && curl -fsSL "https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" -o <skills-dir>/exa-contents/SKILL.md
+   Lalu pastikan <skills-dir>/exa-contents/SKILL.md benar-benar ada.
+2. Periksa apakah Exa API key sudah tersedia DARI LINGKUNGAN TEMPAT KAMU MENJALANKAN PERINTAH — gunakan tool/shell yang sama dengan yang akan kamu pakai untuk menjalankan skill, bukan dengan meminta saya meng-echo-nya. Skill ini membaca key dari EXA_API_KEY lebih dulu, lalu dari berkas ~/.config/exa/key, jadi periksa keduanya tanpa pernah mencetak nilainya:
+   printf '%s\n' "${EXA_API_KEY:+env-set}"; [ -s ~/.config/exa/key ] && printf 'file-set\n'
+   Shell kamu kemungkinan non-interaktif dan TIDAK otomatis meng-source profil interaktif seperti ~/.zshrc atau ~/.bashrc, sehingga key yang saya atur di sana bisa tampak ada bagi saya tetapi kosong bagi kamu. Jika keduanya tidak muncul, key mungkin masih tersimpan di profil interaktif yang dilewati shell kamu: cari berkasnya TANPA mencetak nilainya dengan `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` (hanya menampilkan nama berkas — JANGAN PERNAH menjalankan `grep`/`cat`/`echo` biasa pada sebuah profil, karena baris `export EXA_API_KEY=...` akan membocorkan secret ke chat kita). Kemudian `source` berkas tersebut di dalam perintahmu dan ulangi pemeriksaan keberadaan di atas; jika muncul, tambahkan `source ...;` yang sama di awal setiap perintah berikutnya yang membutuhkan key.
+3. Hanya jika tidak ada key yang bisa ditemukan di mana pun, siapkan satu TANPA menyunting profil shell secara manual dan TANPA menempelkan key ke chat ini. Minta saya membuat/menyalin key di https://dashboard.exa.ai/api-keys, lalu di terminal saya sendiri saya akan meng-export EXA_API_KEY atau menuliskannya ke ~/.config/exa/key dengan mode 600 — jangan pernah meminta saya menempelkan key ke chat. Setelah itu, tunggu konfirmasi dari saya bahwa langkah tersebut selesai sebelum melanjutkan.
+4. Uji cepat key dari shell kamu sendiri — ambil dari variabel lingkungan atau dari berkas, lalu cetak kode statusnya saja:
+   KEY="${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}"
+   curl -s -o /dev/null -w "%{http_code}\n" -X POST https://api.exa.ai/contents \
+     -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
+     -d '{"urls":["https://exa.ai"],"text":true}'
+   Pertahankan endpoint, header, dan body persis seperti yang tertulis (jangan menebak schema-nya). Hasilnya harus 200, bukan 401/429. Jika pada langkah 2 kamu butuh awalan `source ...;` untuk melihat key dari variabel lingkungan, tambahkan juga di sini.
+5. Beri tahu saya cara memulai ulang atau memindai ulang agent saya agar skill tersebut terdeteksi.
+
+Aturan mutlak sepanjang proses: key adalah secret. Periksa hanya lewat pemeriksaan keberadaan/panjang (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) atau lewat kode status HTTP — jangan pernah mencetak, meng-`echo`, meng-`cat`, atau menjalankan `grep` yang menampilkan isi berkas atau variabel apa pun yang mungkin memuatnya, dan jangan pernah mencoba "menyensor" berkas key dengan regex. Jika sebuah key pernah terekspos, minta saya merotasinya di https://dashboard.exa.ai/api-keys.
+```
+
+<div id="view-source">
+  ## Lihat sumber
+</div>
+
+<Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="Lihat sumber" arrow="true">
+  Baca definisi skill exa-contents sebelum menginstalnya.
+</Card>
+
+<div id="related">
+  ## Terkait
+</div>
+
+<Columns cols={2}>
+  <Card title="Semua agent skill" icon="layers" href="/id/docs/get-started/agent-skills/overview" cta="Jelajahi skill" arrow="true">
+    Jelajahi seluruh skill Exa dan pasang semuanya sekaligus.
+  </Card>
+
+  <Card title="Repository skill" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Lihat sumber" arrow="true">
+    Sumber untuk setiap skill, termasuk file `SKILL.md` mentah.
+  </Card>
+</Columns>

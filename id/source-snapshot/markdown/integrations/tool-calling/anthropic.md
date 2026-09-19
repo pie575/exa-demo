@@ -1,0 +1,222 @@
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
+>
+> Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+
+<div id="anthropic-tool-calling">
+  # Anthropic Tool Calling
+</div>
+
+> Manfaatkan tool use Claude untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
+
+<Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+</Card>
+
+***
+
+[Tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) pada Claude memungkinkan model memanggil fungsi yang Anda definisikan di dalam kode. SDK Exa sudah menyertakan tool siap pakai untuk web search dan pembacaan halaman bagi Anthropic, sehingga Anda tidak perlu menulis sendiri schema tool, mengurai blok `tool_use`, atau memformat hasil Exa secara manual.
+
+<div id="get-started">
+  ## Get started
+</div>
+
+<Steps>
+  <Step title="Pasang SDK">
+    <CodeGroup>
+      ```bash Python theme={null}
+      pip install anthropic exa_py
+      ```
+
+      ```bash JavaScript theme={null}
+      npm install @anthropic-ai/sdk exa-js
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Siapkan API key Anda">
+    Atur variabel lingkungan `EXA_API_KEY` dan `ANTHROPIC_API_KEY`. Kunjungi [konsol Anthropic](https://console.anthropic.com/settings/keys) dan [dashboard Exa](https://dashboard.exa.ai/api-keys) untuk membuat API key Anda.
+
+    <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Buat key di dashboard. Akun baru mendapat credits gratis.
+    </Card>
+  </Step>
+
+  <Step title="Tambahkan tool Exa ke tool loop Anda">
+    Sertakan tool pada daftar `tools` di permintaan, lalu teruskan pesan assistant ke `handle_tool_use`. Fungsi ini menjalankan setiap blok `tool_use` dalam pesan dan mengembalikan blok `tool_result` yang sesuai, siap dikirim kembali pada pesan user berikutnya.
+
+    `web_search` melakukan search di web untuk halaman yang belum pernah dilihat model; `get_contents` membaca halaman yang URL-nya sudah tersedia, baik dari search sebelumnya maupun dari pengguna. Daftarkan salah satu atau keduanya.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      import anthropic
+      from exa_py import Exa
+
+      exa = Exa()  # membaca EXA_API_KEY dari lingkungan
+      claude = anthropic.Anthropic()
+
+      messages = [{"role": "user", "content": "What's the latest on AI chips?"}]
+
+      response = claude.messages.create(
+          model="claude-sonnet-4-6",
+          max_tokens=1024,
+          messages=messages,
+          tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],
+      )
+
+      messages.append({"role": "assistant", "content": response.content})
+      messages.append(
+          {"role": "user", "content": exa.anthropic.handle_tool_use(response)}
+      )
+
+      response = claude.messages.create(
+          model="claude-sonnet-4-6",
+          max_tokens=1024,
+          messages=messages,
+          tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],
+      )
+      print(response.content[0].text)
+      ```
+
+      ```javascript JavaScript theme={null}
+      import Anthropic from "@anthropic-ai/sdk";
+      import Exa from "exa-js";
+
+      const exa = new Exa(); // membaca EXA_API_KEY dari lingkungan
+      const anthropic = new Anthropic();
+
+      const messages = [
+        { role: "user", content: "What's the latest on AI chips?" },
+      ];
+
+      let response = await anthropic.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        messages,
+        tools: [exa.anthropic.webSearch(), exa.anthropic.getContents()],
+      });
+
+      messages.push({ role: "assistant", content: response.content });
+      messages.push({
+        role: "user",
+        content: await exa.anthropic.handleToolUse(response),
+      });
+
+      response = await anthropic.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        messages,
+        tools: [exa.anthropic.webSearch(), exa.anthropic.getContents()],
+      });
+      console.log(response.content[0].text);
+      ```
+    </CodeGroup>
+
+    Contoh ini hanya satu putaran agar ringkas. Agent sungguhan tetap menyertakan `tools` pada setiap permintaan dan mengulang langkah handler sampai model membalas tanpa blok `tool_use` — begitulah hasil search berlanjut menjadi pembacaan halaman.
+
+    Memanggil factory tanpa argumen akan memakai nilai bawaan yang direkomendasikan Exa: `type="auto"` dengan `contents={"highlights": True}` untuk search. Highlights mengembalikan excerpt yang relevan dengan query — bukan memotong teks halaman pada 10.000 karakter. Factory contents mengembalikan teks halaman; limit 10.000 karakter pada SDK hanya berlaku untuk `text`, dan hanya jika Anda tidak menyertakan `max_characters`.
+  </Step>
+</Steps>
+
+<div id="configuring-the-tools">
+  ## Mengonfigurasi tool
+</div>
+
+Argumen keyword adalah opsi Exa biasa yang diteruskan saat tool dijalankan — opsi search ke `exa.search()`, opsi contents ke `exa.get_contents()`:
+
+<CodeGroup>
+  ```python Python theme={null}
+  tools = [
+      exa.anthropic.web_search(category="news", contents={"text": True}),
+      exa.anthropic.get_contents(summary=True, livecrawl="preferred"),
+  ]
+  ```
+
+  ```javascript JavaScript theme={null}
+  const tools = [
+    exa.anthropic.webSearch({ category: "news", contents: { text: true } }),
+    exa.anthropic.getContents({ summary: true, livecrawl: "preferred" }),
+  ];
+  ```
+</CodeGroup>
+
+Model memilih `query` untuk search dan `urls` yang akan dibaca; selebihnya sudah ditetapkan saat Anda membuat tool, sehingga model tidak bisa mengubah apa yang di-crawl atau diekstraksi.
+
+Sementara itu, `name` (nilai bawaannya `"web_search"` dan `"get_contents"`) dan `description` menimpa definisi tool yang dilihat model. Anthropic mewajibkan nama tool bersifat unik, jadi dengan nama kustom, tool Exa bisa berjalan berdampingan dengan server tool bawaan Anthropic `web_search_20250305`, yang sudah memakai nama `web_search`:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = claude.messages.create(
+      model="claude-sonnet-4-6",
+      max_tokens=1024,
+      messages=messages,
+      tools=[
+          exa.anthropic.web_search(name="exa_web_search"),
+          {"type": "web_search_20250305", "name": "web_search", "max_uses": 5},
+      ],
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await anthropic.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 1024,
+    messages,
+    tools: [
+      exa.anthropic.webSearch({ name: "exa_web_search" }),
+      { type: "web_search_20250305", name: "web_search", max_uses: 5 },
+    ],
+  });
+  ```
+</CodeGroup>
+
+<div id="mixing-in-your-own-tools">
+  ## Menggabungkan tool Anda sendiri
+</div>
+
+`handle_tool_use` merespons setiap blok `tool_use` dalam pesan: blok yang menyebut tool yang tidak dikenalinya akan menghasilkan `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga permintaan lanjutan tidak pernah kehilangan hasil tool yang diperlukan. Jika Anda menjalankan tool sendiri bersama tool milik Exa, ganti hasil error tersebut dengan hasil Anda sebelum permintaan berikutnya.
+
+<div id="writing-the-loop-by-hand">
+  ## Menulis loop secara manual
+</div>
+
+Jika Anda lebih suka menangani sendiri schema dan eksekusi tool, definisikan tool tersebut dan proses blok `tool_use` secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` menyediakan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
+
+```python Python theme={null}
+TOOLS = [
+    {
+        "name": "exa_search",
+        "description": "Perform a search query on the web, and retrieve the most relevant URLs/web data.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query to perform.",
+                },
+            },
+            "required": ["query"],
+        },
+    }
+]
+
+def exa_search(query: str):
+    return exa.search(query=query, type="auto", contents={"highlights": True})
+
+def process_tool_use(response):
+    results = []
+    for block in response.content:
+        if block.type == "tool_use" and block.name == "exa_search":
+            results.append(
+                {
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": str(exa_search(**block.input)),
+                }
+            )
+    return results
+```
+
+Lihat [Quickstart SDK](/id/docs/sdks/quickstart) untuk opsi search dan contents di Python dan TypeScript.

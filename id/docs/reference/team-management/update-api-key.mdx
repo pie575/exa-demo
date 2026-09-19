@@ -1,0 +1,33 @@
+---
+title: "Perbarui API key"
+description: "Perbarui nama dan rate limit API key yang sudah ada."
+openapi: "/id/docs/team-management-spec.yaml PUT /api-keys/{id}"
+timestamp: false
+---
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
+</Card>
+
+<Info>
+  Team Management API diaktifkan per team. API ini diautentikasi dengan API key akun layanan, yang dibuat melalui tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+</Info>
+
+<div id="overview">
+  ## Ikhtisar
+</div>
+
+Endpoint Update API Key memungkinkan Anda mengubah API key yang sudah ada
+
+<div id="path-parameters">
+  ## Path Parameters
+</div>
+
+* **id**: Pengenal unik API key yang akan diperbarui.
+
+<div id="optional-parameters">
+  ## Parameter Opsional
+</div>
+
+* **name**: Nama deskriptif baru untuk API key
+* **rateLimit**: Rate limit baru dalam satuan permintaan per menit

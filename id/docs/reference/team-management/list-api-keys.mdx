@@ -1,0 +1,31 @@
+---
+title: "Daftar API key"
+description: "Ambil semua API key milik team Anda beserta metadatanya."
+openapi: "/id/docs/team-management-spec.yaml GET /api-keys"
+timestamp: false
+---
+
+<Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+</Card>
+
+<Info>
+  Team Management API diaktifkan per team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+</Info>
+
+<div id="overview">
+  ## Ikhtisar
+</div>
+
+Endpoint List API Keys mengembalikan semua API key yang terkait dengan team Anda, mencakup ID key, nama, rate limit, dan timestamp pembuatan untuk setiap key.
+
+<div id="response-format">
+  ## Format Respons
+</div>
+
+Respons berisi array objek API key dengan informasi berikut:
+
+* **id**: Pengenal unik untuk API key
+* **name**: Nama yang mudah dibaca (jika diisi saat pembuatan)
+* **rateLimit**: Rate limit dalam jumlah permintaan per menit (jika disetel)
+* **createdAt**: Timestamp ISO 8601 waktu key dibuat

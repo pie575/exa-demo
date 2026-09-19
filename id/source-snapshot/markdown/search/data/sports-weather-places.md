@@ -1,0 +1,189 @@
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
+>
+> Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+
+<div id="sports-weather-places">
+  # Olahraga, Cuaca &amp; Tempat
+</div>
+
+> Temukan data olahraga langsung, prakiraan cuaca, dan tempat-tempat lokal dengan Exa Search.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Buka di playground API" aria-label={`Buka "${query}" di playground API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Gunakan Exa Search untuk data olahraga langsung, prakiraan cuaca, dan informasi lokal tanpa perlu mengintegrasikan API terpisah untuk masing-masing. Ajukan pertanyaan dalam bahasa alami dengan menyebutkan team, tempat, dan rentang waktu yang Anda maksud.
+
+<div id="write-better-queries">
+  ## Tulis query yang lebih baik
+</div>
+
+Sebutkan lokasi atau team secara spesifik dan sertakan tanggal bila jawabannya bisa berubah seiring waktu. Tambahkan kondisi atau atribut yang relevan dengan tugas Anda, alih-alih meminta informasi yang terlalu umum.
+
+<Tabs>
+  <Tab title="Olahraga" icon="trophy">
+    <div id="included">
+      ### Yang tercakup
+    </div>
+
+    Sports data yang tersedia:
+
+    * **Skor**: pertandingan suatu liga pada hari tertentu, termasuk team, skor, status, waktu mulai, dan tempat pertandingan
+    * **Klasemen**: tabel liga terkini dengan pembagian konferensi atau divisi
+    * **Jadwal**: hasil pertandingan sebelumnya dan pertandingan mendatang untuk suatu liga atau team
+
+    Cakupannya meliputi NBA, WNBA, NFL, MLB, NHL, MLS, bola basket dan football tingkat universitas, liga sepak bola utama Eropa dan kompetisi UEFA, kriket, F1, UFC, tenis, dan golf.
+
+    <div id="ask-for-the-league-team-and-time">
+      ### Sebutkan liga, team, dan waktunya
+    </div>
+
+    <PlaygroundQuery query="NBA scores last night" />
+
+    <PlaygroundQuery query="Lakers schedule this week" />
+
+    <div id="add-the-surrounding-story">
+      ### Tambahkan konteks beritanya
+    </div>
+
+    Mintalah liputan yang Anda butuhkan sekaligus dengan data langsungnya.
+
+    <PlaygroundQuery query="NBA injury reports ahead of tonight's games" />
+  </Tab>
+
+  <Tab title="Cuaca" icon="cloud-sun">
+    <div id="included-2">
+      ### Yang tercakup
+    </div>
+
+    Prakiraan mencakup kondisi cuaca, suhu tertinggi dan terendah, curah hujan, angin, kelembapan, indeks UV, serta waktu matahari terbit dan terbenam menurut waktu setempat.
+
+    Query tanpa tanggal akan mengembalikan prakiraan hari ini. Mintalah hari atau rentang tertentu untuk mendapatkan satu halaman per hari, hingga 16 hari ke depan atau 92 hari ke belakang.
+
+    <div id="name-the-place-and-day">
+      ### Sebutkan tempat dan harinya
+    </div>
+
+    <PlaygroundQuery query="weather in San Francisco tomorrow" />
+
+    <div id="ask-about-the-condition-that-affects-your-plan">
+      ### Tanyakan kondisi yang memengaruhi rencana Anda
+    </div>
+
+    <PlaygroundQuery query="will it rain in Austin this weekend" />
+
+    <div id="combine-forecasts-with-reporting">
+      ### Gabungkan prakiraan dengan liputan berita
+    </div>
+
+    <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
+  </Tab>
+
+  <Tab title="Tempat" icon="map-pin">
+    <div id="included-3">
+      ### Yang tercakup
+    </div>
+
+    * Profil bisnis lokal, lengkap dengan alamat, jam buka, fasilitas, dan ulasan
+    * Tempat acara, atraksi, dan titik menarik
+    * Daftar properti dan catatan kepemilikan
+    * Keputusan zonasi, izin, dan catatan perencanaan
+
+    <div id="describe-the-place-like-you-would-ask-a-local">
+      ### Gambarkan tempatnya seperti saat Anda bertanya pada warga setempat
+    </div>
+
+    Gabungkan kategori, kawasan, dan atribut yang Anda anggap penting.
+
+    <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
+
+    <div id="name-the-record-type-and-geography">
+      ### Sebutkan jenis catatan dan wilayahnya
+    </div>
+
+    <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
+
+    <div id="compare-places-against-practical-constraints">
+      ### Bandingkan tempat berdasarkan kendala praktis
+    </div>
+
+    <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
+  </Tab>
+</Tabs>
+
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
+
+Ketiga jenis data ini menggunakan endpoint Search yang sama.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "weather in San Francisco tomorrow",
+      type="auto",
+      num_results=5,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search("weather in San Francisco tomorrow", {
+    type: "auto",
+    numResults: 5,
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "weather in San Francisco tomorrow",
+      "type": "auto",
+      "numResults": 5
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Dapatkan data terstruktur dengan Exa Agent
+</div>
+
+Untuk data terstruktur yang membutuhkan riset lintas banyak sumber, gunakan [task run Exa Agent](/id/docs/agent/quickstart). Jelaskan tempat, team, tanggal, criteria, dan field output yang Anda perlukan, lalu Agent akan mengembalikan hasil tervalidasi schema lengkap dengan citations.
+
+<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Bandingkan berbagai tempat, susun ringkasan hari pertandingan, atau gabungkan detail lokal dan kondisi cuaca menjadi hasil yang terstruktur.
+</Card>

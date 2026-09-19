@@ -502,6 +502,14 @@
         "$ref": "./es/docs.json"
       },
       {
+        "language": "id",
+        "$ref": "./id/docs.json"
+      },
+      {
+        "language": "ko",
+        "$ref": "./ko/docs.json"
+      },
+      {
         "language": "ru",
         "$ref": "./ru/docs.json"
       },
