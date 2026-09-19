@@ -1,0 +1,91 @@
+{
+  "id": "068",
+  "path": "/docs/reference/agent-api/cancel-a-run",
+  "production": {
+    "url": "https://exa.ai/docs/reference/agent-api/cancel-a-run",
+    "title": "Cancel a run - Exa",
+    "h1": "Cancel a run",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 190.5625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2915.453125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3011,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/reference/agent-api/cancel-a-run",
+    "title": "Cancel a run - Exa",
+    "h1": "Cancel a run",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 190.5625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2915.453125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3011,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

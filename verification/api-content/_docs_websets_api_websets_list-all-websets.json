@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/websets/list-all-websets",
+  "production": {
+    "status": 200,
+    "text": "List all websets\nCopy page\n\nReturns a list of Websets.\n\nYou can paginate through the results using the cursor parameter.\n\nYou can filter results using the search parameter to find Websets by ID, external ID, or title.\n\nGET\n/\nv0\n/\nwebsets\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nnumberdefault:25\n\nThe number of Websets to return\n\nRequired range: 1 <= x <= 100\n​\nsearch\nstring\n\nSearch term to filter Websets by ID, external ID, or title\n\nRequired string length: 2 - 50\nResponse\n200 - application/json\n\nList of Websets\n\n​\ndata\nobject[]required\n\nThe list of websets\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nCancel a running webset\nPrevious\nGet an item\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List all websets",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List all websets\nCopy page\n\nReturns a list of Websets.\n\nYou can paginate through the results using the cursor parameter.\n\nYou can filter results using the search parameter to find Websets by ID, external ID, or title.\n\nGET\n/\nv0\n/\nwebsets\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nnumberdefault:25\n\nThe number of Websets to return\n\nRequired range: 1 <= x <= 100\n​\nsearch\nstring\n\nSearch term to filter Websets by ID, external ID, or title\n\nRequired string length: 2 - 50\nResponse\n200 - application/json\n\nList of Websets\n\n​\ndata\nobject[]required\n\nThe list of websets\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nCancel a running webset\nPrevious\nGet an item\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List all websets",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1091,
+  "localLength": 1091
+}

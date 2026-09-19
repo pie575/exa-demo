@@ -1,0 +1,93 @@
+{
+  "id": "009",
+  "path": "/docs/admin/security/zero-data-retention",
+  "production": {
+    "url": "https://exa.ai/docs/admin/security/zero-data-retention",
+    "title": "Zero Data Retention - Exa",
+    "h1": "Zero Data Retention",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 310.71875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 937
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "Zero Data Retention (ZDR) is available on Enterprise plans and enabled per team. Contact sales@exa.ai for details.\nProduct\tZDR availability\nSearch\tAvailable\nContents\tAvailable\nAgent\tAvailable\nAnswer\tNot currently supported\nWebsets\tNot currently supported",
+    "scrollHeight": 1033,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/security/zero-data-retention",
+    "title": "Zero Data Retention - Exa",
+    "h1": "Zero Data Retention",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 310.71875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 937
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "Zero Data Retention (ZDR) is available on Enterprise plans and enabled per team. Contact sales@exa.ai for details.\nProduct\tZDR availability\nSearch\tAvailable\nContents\tAvailable\nAgent\tAvailable\nAnswer\tNot currently supported\nWebsets\tNot currently supported",
+    "scrollHeight": 1033,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

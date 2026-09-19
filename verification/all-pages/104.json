@@ -1,0 +1,103 @@
+{
+  "id": "104",
+  "path": "/docs/search/data/news",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/news",
+    "title": "News - Exa",
+    "h1": "News",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 91.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2551.6875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for reporting from major publications, trade press, and niche outlets. New articles become searchable within minutes of publication. Combine a natural-language query with date filters when the publication window is a hard requirement.\n​\nUse it for\nMarket and investment research\nCybersecurity and threat intelligence\nCompany, product, and competitor monitoring\nIndustry briefings and current-event research\n​\nExample queries\n​\nFollow a developing policy story\nName the topic, source type, and publication window so the results focus on the current phase of the story.\nnews coverage of the EU AI Act enforcement timeline published this month\n​\nFind practitioner analysis\nName the source type when you want analysis from practitioners rather than general news coverage.\nengineering blog posts about migrating from Postgres to ClickHouse\n​\nDiscover discussions in a specific format\nInclude the format and the subject in the query. This keeps the search open to episode pages and transcripts across the web.\npodcast episodes where founders discuss pricing strategy mistakes\n​\nResearch adverse media\nDescribe both the negative signal and the entity class you are investigating. Avoid reducing the query to a company name plus the word “news.”\nnegative press and regulatory complaints about payday lending companies\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"news articles about AI regulation updates in the European Union\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the stories, fields, and time window you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nBuild a sourced news brief, compare coverage, or extract normalized facts from a developing story.\nOpen Agent guide",
+    "scrollHeight": 2648,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/news",
+    "title": "News - Exa",
+    "h1": "News",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 91.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2551.6875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for reporting from major publications, trade press, and niche outlets. New articles become searchable within minutes of publication. Combine a natural-language query with date filters when the publication window is a hard requirement.\n​\nUse it for\nMarket and investment research\nCybersecurity and threat intelligence\nCompany, product, and competitor monitoring\nIndustry briefings and current-event research\n​\nExample queries\n​\nFollow a developing policy story\nName the topic, source type, and publication window so the results focus on the current phase of the story.\nnews coverage of the EU AI Act enforcement timeline published this month\n​\nFind practitioner analysis\nName the source type when you want analysis from practitioners rather than general news coverage.\nengineering blog posts about migrating from Postgres to ClickHouse\n​\nDiscover discussions in a specific format\nInclude the format and the subject in the query. This keeps the search open to episode pages and transcripts across the web.\npodcast episodes where founders discuss pricing strategy mistakes\n​\nResearch adverse media\nDescribe both the negative signal and the entity class you are investigating. Avoid reducing the query to a company name plus the word “news.”\nnegative press and regulatory complaints about payday lending companies\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"news articles about AI regulation updates in the European Union\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the stories, fields, and time window you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nBuild a sourced news brief, compare coverage, or extract normalized facts from a developing story.\nOpen Agent guide",
+    "scrollHeight": 2648,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

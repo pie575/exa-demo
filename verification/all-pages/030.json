@@ -1,0 +1,103 @@
+{
+  "id": "030",
+  "path": "/docs/get-started/agent-skills/exa-contents",
+  "production": {
+    "url": "https://exa.ai/docs/get-started/agent-skills/exa-contents",
+    "title": "Exa Contents Skill - Exa",
+    "h1": "Exa Contents Skill",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 277.96875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2593.328125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use this skill to teach your agent to call Exa Contents with cURL or raw HTTP, using best practices.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nSet your key as EXA_API_KEY in your agent environment.\n​\nSetup\nOption A: Install this skill directly:\nnpx skills add exa-labs/agent-skills --skill \"exa-contents\"\n\nOption B: Copy this prompt into your coding agent.\nThe following prompt installs the skill and verifies your API key without printing it:\nCopy this setup prompt into your agent\nSet up the Exa exa-contents agent skill on this machine.\n\nGoal:\n- Install the exa-contents skill so my coding agent can use it to call Exa Contents directly with cURL or raw HTTP.\n- Get an Exa API key working WITHOUT ever exposing, printing, or pasting the key into this chat.\n\nSelected agent:\n- Claude Code, Codex, Cursor, or any Agent-Skills-compatible agent\n- Global install directories: ~/.claude/skills (Claude Code), ~/.codex/skills (Codex), ~/.agents/skills (Cursor / other)\n- Project-local install directories: .claude/skills (Claude Code), .agents/skills (Codex / Cursor / other)\n\nSkill source:\n- SKILL.md URL: https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md\n\nWhat to do:\n1. Install the skill FIRST, before any key setup. Prefer a project-local install when working inside a repo; otherwise use the matching global directory listed above. Create the chosen skills directory and download the skill:\n   mkdir -p <skills-dir>/exa-contents && curl -fsSL \"https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md\" -o <skills-dir>/exa-contents/SKILL.md\n   Then verify that <skills-dir>/exa-contents/SKILL.md exists.\n2. Check whether an Exa API key is already available FROM YOUR OWN COMMAND-RUNNING ENVIRONMENT — use the same tool/shell you will run the skill with, not by asking me to echo it. The skill resolves the key from EXA_API_KEY first, then from the file ~/.config/exa/key, so check both without ever printing a value:\n   printf '%s\\n' \"${EXA_API_KEY:+env-set}\"; [ -s ~/.config/exa/key ] && printf 'file-set\\n'\n   Your shell is likely non-interactive and does NOT auto-source interactive profiles like ~/.zshrc or ~/.bashrc, so a key I set there can look present to me but empty to you. If neither shows, the key may still live in an interactive profile your shell skips: find which file WITHOUT printing its value using `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` (lists names only — NEVER run a plain `grep`/`cat`/`echo` on a profile, since an `export EXA_API_KEY=...` line would leak the secret into our chat). Then `source` that file inside your command and re-run the presence test above; if it shows, prepend that same `source ...;` to every later command that needs the key.\n3. Only if no key is resolvable anywhere, set one up WITHOUT hand-editing any shell profile and WITHOUT pasting the key into this chat. Tell me to create/copy a key at https://dashboard.exa.ai/api-keys, then in my own terminal either export EXA_API_KEY myself or write it to ~/.config/exa/key with mode 600 — never ask me to paste the key into chat. Then wait for me to confirm it is done before continuing.\n4. Smoke-test the key from your own shell — resolve it from the env var or the file, and print only the status code:\n   KEY=\"${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}\"\n   curl -s -o /dev/null -w \"%{http_code}\\n\" -X POST https://api.exa.ai/contents \\\n     -H \"Authorization: Bearer $KEY\" -H \"Content-Type: application/json\" \\\n     -d '{\"urls\":[\"https://exa.ai\"],\"text\":true}'\n   Keep the endpoint, headers, and body exactly as written (do not guess the schema). It must return 200, not 401/429. If you needed a `source ...;` prefix in step 2 to see an env key, prepend that here too.\n5. Tell me how to restart or rescan my agent so it discovers the skill.\n\nHard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to \"redact\" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.\n\n​\nView source\nexa-contents/SKILL.md\nRead the exa-contents skill definition before installing.\nView source\n​\nRelated\nAll agent skills\nBrowse every Exa skill and install them all at once.\nBrowse skills\nSkills repository\nSource for every skill, including raw SKILL.md files.\nView source",
+    "scrollHeight": 2689,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/get-started/agent-skills/exa-contents",
+    "title": "Exa Contents Skill - Exa",
+    "h1": "Exa Contents Skill",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 277.96875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2593.328125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use this skill to teach your agent to call Exa Contents with cURL or raw HTTP, using best practices.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nSet your key as EXA_API_KEY in your agent environment.\n​\nSetup\nOption A: Install this skill directly:\nnpx skills add exa-labs/agent-skills --skill \"exa-contents\"\n\nOption B: Copy this prompt into your coding agent.\nThe following prompt installs the skill and verifies your API key without printing it:\nCopy this setup prompt into your agent\nSet up the Exa exa-contents agent skill on this machine.\n\nGoal:\n- Install the exa-contents skill so my coding agent can use it to call Exa Contents directly with cURL or raw HTTP.\n- Get an Exa API key working WITHOUT ever exposing, printing, or pasting the key into this chat.\n\nSelected agent:\n- Claude Code, Codex, Cursor, or any Agent-Skills-compatible agent\n- Global install directories: ~/.claude/skills (Claude Code), ~/.codex/skills (Codex), ~/.agents/skills (Cursor / other)\n- Project-local install directories: .claude/skills (Claude Code), .agents/skills (Codex / Cursor / other)\n\nSkill source:\n- SKILL.md URL: https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md\n\nWhat to do:\n1. Install the skill FIRST, before any key setup. Prefer a project-local install when working inside a repo; otherwise use the matching global directory listed above. Create the chosen skills directory and download the skill:\n   mkdir -p <skills-dir>/exa-contents && curl -fsSL \"https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md\" -o <skills-dir>/exa-contents/SKILL.md\n   Then verify that <skills-dir>/exa-contents/SKILL.md exists.\n2. Check whether an Exa API key is already available FROM YOUR OWN COMMAND-RUNNING ENVIRONMENT — use the same tool/shell you will run the skill with, not by asking me to echo it. The skill resolves the key from EXA_API_KEY first, then from the file ~/.config/exa/key, so check both without ever printing a value:\n   printf '%s\\n' \"${EXA_API_KEY:+env-set}\"; [ -s ~/.config/exa/key ] && printf 'file-set\\n'\n   Your shell is likely non-interactive and does NOT auto-source interactive profiles like ~/.zshrc or ~/.bashrc, so a key I set there can look present to me but empty to you. If neither shows, the key may still live in an interactive profile your shell skips: find which file WITHOUT printing its value using `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` (lists names only — NEVER run a plain `grep`/`cat`/`echo` on a profile, since an `export EXA_API_KEY=...` line would leak the secret into our chat). Then `source` that file inside your command and re-run the presence test above; if it shows, prepend that same `source ...;` to every later command that needs the key.\n3. Only if no key is resolvable anywhere, set one up WITHOUT hand-editing any shell profile and WITHOUT pasting the key into this chat. Tell me to create/copy a key at https://dashboard.exa.ai/api-keys, then in my own terminal either export EXA_API_KEY myself or write it to ~/.config/exa/key with mode 600 — never ask me to paste the key into chat. Then wait for me to confirm it is done before continuing.\n4. Smoke-test the key from your own shell — resolve it from the env var or the file, and print only the status code:\n   KEY=\"${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}\"\n   curl -s -o /dev/null -w \"%{http_code}\\n\" -X POST https://api.exa.ai/contents \\\n     -H \"Authorization: Bearer $KEY\" -H \"Content-Type: application/json\" \\\n     -d '{\"urls\":[\"https://exa.ai\"],\"text\":true}'\n   Keep the endpoint, headers, and body exactly as written (do not guess the schema). It must return 200, not 401/429. If you needed a `source ...;` prefix in step 2 to see an env key, prepend that here too.\n5. Tell me how to restart or rescan my agent so it discovers the skill.\n\nHard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to \"redact\" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.\n\n​\nView source\nexa-contents/SKILL.md\nRead the exa-contents skill definition before installing.\nView source\n​\nRelated\nAll agent skills\nBrowse every Exa skill and install them all at once.\nBrowse skills\nSkills repository\nSource for every skill, including raw SKILL.md files.\nView source",
+    "scrollHeight": 2689,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

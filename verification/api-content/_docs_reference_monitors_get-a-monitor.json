@@ -1,0 +1,26 @@
+{
+  "route": "/docs/reference/monitors/get-a-monitor",
+  "production": {
+    "status": 200,
+    "text": "Get a monitor\nCopy page\n\nRetrieves a single monitor by its ID.\n\nGET\n/\nmonitors\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe monitor ID\n\nResponse\n200\napplication/json\n\nThe monitor\n\n​\nid\nstringrequired\n\nThe unique identifier for the monitor\n\n​\nname\nstring | nullrequired\n\nAn optional display name\n\n​\nstatus\nenum<string>required\n\nThe status of the monitor. active monitors run on schedule and can be triggered manually. paused monitors can only be triggered manually. disabled monitors are auto-disabled after 10 consecutive authentication failures.\n\nAvailable options: active, paused, disabled \n​\nsearch\nobjectrequired\n\nShow child attributes\n\n​\ntrigger\nobject | nullrequired\n\nThe interval-based schedule for automatic runs. Null if no schedule is set.\n\nShow child attributes\n\n​\noutputSchema\nobjectrequired\n\nControls the format of the run output. Defaults to { \"type\": \"text\" } if not specified. When type is \"text\", the output is a plain text summary. When type is \"object\", the output is structured JSON. If no properties are specified with \"object\" type, a schema is inferred automatically; otherwise the output adheres to the provided schema.\n\nOption 1\nOption 2\n\nShow child attributes\n\n​\nmetadata\nobject | nullrequired\n\nOptional key-value metadata for your own tracking. Echoed back in webhook deliveries so you can route updates to systems like Slack.\n\nShow child attributes\n\nExample:\n{\n  \"slack_channel_id\": \"C123ABC\",\n  \"slack_thread_id\": \"1745444400.123456\",\n  \"user_id\": \"U123ABC\"\n}\n​\nwebhook\nobjectrequired\n\nShow child attributes\n\n​\nnextRunAt\nstring<date-time>required\n\nWhen the next scheduled run will occur. Null if no trigger is set.\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the monitor was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the monitor was last updated\n\nList monitors\nPrevious\nUpdate a monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a monitor",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get a monitor\nCopy page\n\nRetrieves a single monitor by its ID.\n\nGET\n/\nmonitors\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe monitor ID\n\nResponse\n200\napplication/json\n\nThe monitor\n\n​\nid\nstringrequired\n\nThe unique identifier for the monitor\n\n​\nname\nstring | nullrequired\n\nAn optional display name\n\n​\nstatus\nenum<string>required\n\nThe status of the monitor. active monitors run on schedule and can be triggered manually. paused monitors can only be triggered manually. disabled monitors are auto-disabled after 10 consecutive authentication failures.\n\nAvailable options: active, paused, disabled \n​\nsearch\nobjectrequired\n\nShow child attributes\n\n​\ntrigger\nobject | nullrequired\n\nThe interval-based schedule for automatic runs. Null if no schedule is set.\n\nShow child attributes\n\n​\noutputSchema\nobjectrequired\n\nControls the format of the run output. Defaults to { \"type\": \"text\" } if not specified. When type is \"text\", the output is a plain text summary. When type is \"object\", the output is structured JSON. If no properties are specified with \"object\" type, a schema is inferred automatically; otherwise the output adheres to the provided schema.\n\nOption 1\nOption 2\n\nShow child attributes\n\n​\nmetadata\nobject | nullrequired\n\nOptional key-value metadata for your own tracking. Echoed back in webhook deliveries so you can route updates to systems like Slack.\n\nShow child attributes\n\nExample:\n{\n  \"slack_channel_id\": \"C123ABC\",\n  \"slack_thread_id\": \"1745444400.123456\",\n  \"user_id\": \"U123ABC\"\n}\n​\nwebhook\nobjectrequired\n\nShow child attributes\n\n​\nnextRunAt\nstring<date-time>required\n\nWhen the next scheduled run will occur. Null if no trigger is set.\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the monitor was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the monitor was last updated\n\nList monitors\nPrevious\nUpdate a monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a monitor",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 2049,
+  "localLength": 2049
+}

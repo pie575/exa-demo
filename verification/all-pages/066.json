@@ -1,0 +1,103 @@
+{
+  "id": "066",
+  "path": "/docs/integrations/vercel/fx",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/vercel/fx",
+    "title": "fx by Vercel Labs - Exa",
+    "h1": "fx by Vercel Labs",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 257.984375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3314.265625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "fx is a native coding agent and CLI from Vercel Labs, and an MCP client. Add Exa’s hosted MCP server to give it live web search and page reading.\n​\nInstallation\n1\n\nInstall fx\n\ncurl -fsSL https://fx.sh/setup.sh | bash\n\nThen sign in with fx login. See the fx docs for provider options.\n2\n\nAdd Exa\n\nStart fx by running fx, then add the Exa MCP server from the interactive shell:\n/mcp add --transport http exa https://mcp.exa.ai/mcp\n\nfx saves the server to ~/.fx/mcp.json and reloads MCP.\n3\n\nVerify the connection\n\n/mcp list\n\n​\nConfigure by hand\nfx reads MCP servers only from ~/.fx/mcp.json, so you can also add Exa there directly:\n~/.fx/mcp.json\n{\n  \"mcp\": {\n    \"exa\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.exa.ai/mcp\"\n    }\n  }\n}\n\nRun /mcp reload to apply the change without restarting fx.\nThe free plan covers casual use. To lift the rate limits, create an API key and add it to the config:\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n~/.fx/mcp.json\n{\n  \"mcp\": {\n    \"exa\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.exa.ai/mcp\",\n      \"header_env\": {\n        \"x-api-key\": \"EXA_API_KEY\"\n      }\n    }\n  }\n}\n\nheader_env maps a header name to an environment variable, so the key stays out of the config file.\n​\nTool discovery\nfx discovers MCP tools lazily: the server’s tools are not in the model’s context until a turn needs them, so adding Exa costs nothing on turns that don’t search the web.\nExa MCP\nReview the available tools, configuration options, and other clients.\nOpen guide",
+    "scrollHeight": 3410,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/vercel/fx",
+    "title": "fx by Vercel Labs - Exa",
+    "h1": "fx by Vercel Labs",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 257.984375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3314.265625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "fx is a native coding agent and CLI from Vercel Labs, and an MCP client. Add Exa’s hosted MCP server to give it live web search and page reading.\n​\nInstallation\n1\n\nInstall fx\n\ncurl -fsSL https://fx.sh/setup.sh | bash\n\nThen sign in with fx login. See the fx docs for provider options.\n2\n\nAdd Exa\n\nStart fx by running fx, then add the Exa MCP server from the interactive shell:\n/mcp add --transport http exa https://mcp.exa.ai/mcp\n\nfx saves the server to ~/.fx/mcp.json and reloads MCP.\n3\n\nVerify the connection\n\n/mcp list\n\n​\nConfigure by hand\nfx reads MCP servers only from ~/.fx/mcp.json, so you can also add Exa there directly:\n~/.fx/mcp.json\n{\n  \"mcp\": {\n    \"exa\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.exa.ai/mcp\"\n    }\n  }\n}\n\nRun /mcp reload to apply the change without restarting fx.\nThe free plan covers casual use. To lift the rate limits, create an API key and add it to the config:\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n~/.fx/mcp.json\n{\n  \"mcp\": {\n    \"exa\": {\n      \"type\": \"http\",\n      \"url\": \"https://mcp.exa.ai/mcp\",\n      \"header_env\": {\n        \"x-api-key\": \"EXA_API_KEY\"\n      }\n    }\n  }\n}\n\nheader_env maps a header name to an environment variable, so the key stays out of the config file.\n​\nTool discovery\nfx discovers MCP tools lazily: the server’s tools are not in the model’s context until a turn needs them, so adding Exa costs nothing on turns that don’t search the web.\nExa MCP\nReview the available tools, configuration options, and other clients.\nOpen guide",
+    "scrollHeight": 3410,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

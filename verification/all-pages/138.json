@@ -1,0 +1,91 @@
+{
+  "id": "138",
+  "path": "/docs/websets/api/websets/delete-a-webset",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/websets/delete-a-webset",
+    "title": "Delete a webset - Exa",
+    "h1": "Delete a webset",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 130.828125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 249.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 3084.84375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3181,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/websets/delete-a-webset",
+    "title": "Delete a webset - Exa",
+    "h1": "Delete a webset",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 130.828125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 249.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 3084.84375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3181,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

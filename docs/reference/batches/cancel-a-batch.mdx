@@ -1,0 +1,12 @@
+---
+title: "Cancel a batch"
+description: "Cancel an in-progress batch."
+openapi: "docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+The batch stops scheduling new requests and drains in-flight work before settling to `cancelled`. Cancelling a batch that is already `cancelling` or `cancelled` returns it unchanged; a batch that is `completed` or `expired` cannot be cancelled.
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

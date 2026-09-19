@@ -1,0 +1,101 @@
+{
+  "id": "035",
+  "path": "/docs/integrations/baseten",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/baseten",
+    "title": "Baseten - Exa",
+    "h1": "Baseten",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 127.765625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3161.9375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa is a web search provider in Baseten Hosted Tools. Baseten Model APIs serve open-source models, and Hosted Tools let those models search the web without you wiring up a tool loop: you add an Exa tool selector to a standard request, Baseten runs the model and the Exa searches together in a server-side loop, and you get back a grounded answer in the same response. No Exa API key is needed. Baseten passes Exa’s cost through to your Baseten bill with no markup.\n​\nUse the Exa web search tools\nSet the x-baseten-server-tools: true header, and add one or more Exa selectors to your tools array. Only the type is needed; Baseten expands the tool schema automatically, and the model decides when to search, what to search for, and which pages to read. Server-side tools work on Baseten’s Chat Completions, Messages, and Responses endpoints, buffered or streaming.\nPython\nJavaScript\ncURL\nfrom openai import OpenAI\n\nclient = OpenAI(\n    api_key=\"<BASETEN_API_KEY>\",\n    base_url=\"https://inference.baseten.co/v1\",\n    default_headers={\"x-baseten-server-tools\": \"true\"},\n)\n\nresponse = client.chat.completions.create(\n    model=\"zai-org/GLM-5.3-Fast\",\n    messages=[\n        {\"role\": \"user\", \"content\": \"What were the major AI announcements this week?\"}\n    ],\n    tools=[\n        {\"type\": \"baseten__exa__web_search_exa\"},\n        {\"type\": \"baseten__exa__web_fetch_exa\"},\n    ],\n    extra_body={\"baseten\": {\"tool_settings\": {\"max_react_iterations\": 5}}},\n)\n\nprint(response.choices[0].message.content)\n\nThree Exa tools are available. Give the model search plus fetch when it should discover sources and then read the pages it picks.\nSelector\tWhat the model gets\nbaseten__exa__web_search_exa\tExa search: relevant results with page content for a query\nbaseten__exa__web_search_advanced_exa\tSearch with domain filters, subpage crawling, and an optional summary per result\nbaseten__exa__web_fetch_exa\tFull page contents for a URL the model already has\nSelectors take no extra fields; the model fills in the tool arguments from Exa’s schema. Use the system prompt to steer search policy, such as when to search, whether to fetch primary sources, and how to cite. Use baseten.tool_settings to bound the loop:\nSetting\tUse it to\nmax_react_iterations\tCap model iterations per request (default 12, range 2 to 20). The last iteration is reserved for the answer, so N allows N - 1 rounds of tool calls.\nmax_tool_calls_per_iteration\tCap server-side tool calls in one iteration (default 10, range 1 to 10)\n​\nHow results come back\nThe final answer arrives through the endpoint’s normal field. Completed Exa calls are recorded per protocol: tool_use and tool_result blocks on Messages, mcp_call items on Responses, and baseten.iterations[].continuation_messages on Chat Completions. Streaming requests receive each search call and result as server-sent events while the loop runs, so you can show progress before the answer lands. The baseten.request.server_tool_calls[] array reports the outcome of every Exa call in the request.\n​\nPricing\nExa calls bill to your Baseten account at Exa’s rate with no markup, in addition to the model’s token costs: about $0.007 per search and $0.001 per fetched URL. Exa reports the charge for each call at runtime, so individual calls can deviate from these figures. Billed tool calls appear in Baseten workspace settings under Billing → Usage, grouped by provider. See Baseten’s pricing table for current rates.\nHosted Tools are in early access on Baseten with a 25 requests per minute limit per organization. Try Exa search in the Baseten playground, or contact Baseten to raise the limit for production workloads.\n​\nResources\nBaseten web search docs\nRunnable Messages, Responses, and Chat Completions examples with server-side tools.\nOpen docs\nServer-side tool reference\nTool catalog, loop settings, tool_choice formats, and response shapes.\nOpen reference",
+    "scrollHeight": 3258,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/baseten",
+    "title": "Baseten - Exa",
+    "h1": "Baseten",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 127.765625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3161.9375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa is a web search provider in Baseten Hosted Tools. Baseten Model APIs serve open-source models, and Hosted Tools let those models search the web without you wiring up a tool loop: you add an Exa tool selector to a standard request, Baseten runs the model and the Exa searches together in a server-side loop, and you get back a grounded answer in the same response. No Exa API key is needed. Baseten passes Exa’s cost through to your Baseten bill with no markup.\n​\nUse the Exa web search tools\nSet the x-baseten-server-tools: true header, and add one or more Exa selectors to your tools array. Only the type is needed; Baseten expands the tool schema automatically, and the model decides when to search, what to search for, and which pages to read. Server-side tools work on Baseten’s Chat Completions, Messages, and Responses endpoints, buffered or streaming.\nPython\nJavaScript\ncURL\nfrom openai import OpenAI\n\nclient = OpenAI(\n    api_key=\"<BASETEN_API_KEY>\",\n    base_url=\"https://inference.baseten.co/v1\",\n    default_headers={\"x-baseten-server-tools\": \"true\"},\n)\n\nresponse = client.chat.completions.create(\n    model=\"zai-org/GLM-5.3-Fast\",\n    messages=[\n        {\"role\": \"user\", \"content\": \"What were the major AI announcements this week?\"}\n    ],\n    tools=[\n        {\"type\": \"baseten__exa__web_search_exa\"},\n        {\"type\": \"baseten__exa__web_fetch_exa\"},\n    ],\n    extra_body={\"baseten\": {\"tool_settings\": {\"max_react_iterations\": 5}}},\n)\n\nprint(response.choices[0].message.content)\n\nThree Exa tools are available. Give the model search plus fetch when it should discover sources and then read the pages it picks.\nSelector\tWhat the model gets\nbaseten__exa__web_search_exa\tExa search: relevant results with page content for a query\nbaseten__exa__web_search_advanced_exa\tSearch with domain filters, subpage crawling, and an optional summary per result\nbaseten__exa__web_fetch_exa\tFull page contents for a URL the model already has\nSelectors take no extra fields; the model fills in the tool arguments from Exa’s schema. Use the system prompt to steer search policy, such as when to search, whether to fetch primary sources, and how to cite. Use baseten.tool_settings to bound the loop:\nSetting\tUse it to\nmax_react_iterations\tCap model iterations per request (default 12, range 2 to 20). The last iteration is reserved for the answer, so N allows N - 1 rounds of tool calls.\nmax_tool_calls_per_iteration\tCap server-side tool calls in one iteration (default 10, range 1 to 10)\n​\nHow results come back\nThe final answer arrives through the endpoint’s normal field. Completed Exa calls are recorded per protocol: tool_use and tool_result blocks on Messages, mcp_call items on Responses, and baseten.iterations[].continuation_messages on Chat Completions. Streaming requests receive each search call and result as server-sent events while the loop runs, so you can show progress before the answer lands. The baseten.request.server_tool_calls[] array reports the outcome of every Exa call in the request.\n​\nPricing\nExa calls bill to your Baseten account at Exa’s rate with no markup, in addition to the model’s token costs: about $0.007 per search and $0.001 per fetched URL. Exa reports the charge for each call at runtime, so individual calls can deviate from these figures. Billed tool calls appear in Baseten workspace settings under Billing → Usage, grouped by provider. See Baseten’s pricing table for current rates.\nHosted Tools are in early access on Baseten with a 25 requests per minute limit per organization. Try Exa search in the Baseten playground, or contact Baseten to raise the limit for production workloads.\n​\nResources\nBaseten web search docs\nRunnable Messages, Responses, and Chat Completions examples with server-side tools.\nOpen docs\nServer-side tool reference\nTool catalog, loop settings, tool_choice formats, and response shapes.\nOpen reference",
+    "scrollHeight": 3258,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

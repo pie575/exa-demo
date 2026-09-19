@@ -1,0 +1,62 @@
+---
+title: "Get API key usage"
+description: "Retrieve usage analytics and billing data for a specific API key."
+openapi: "docs/team-management-spec.yaml GET /api-keys/{id}/usage"
+timestamp: false
+---
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>
+
+<Info>
+  The Team Management API is enabled per team. It authenticates with a service account API key, which is created from the **Service keys** tab on the [API keys page](https://dashboard.exa.ai/api-keys) once the feature is enabled for your team. Contact [support@exa.ai](mailto:support@exa.ai) to request access.
+</Info>
+
+## Overview
+
+The Get API Key Usage endpoint allows you to retrieve detailed billing and usage analytics for a specific API key over a given time period. This endpoint returns cost data from Exa's billing system, providing an authoritative view of what you're being billed for that API key.
+
+## Path Parameters
+
+* **id**: The unique identifier of the API key to retrieve usage for
+
+## Query Parameters
+
+* **start\_date** (optional): Start date for the usage period in ISO 8601 format (e.g., `2025-01-01T00:00:00Z` or `2025-01-01`). Defaults to 30 days ago. Must be within the last 6 months (180 days).
+* **end\_date** (optional): End date for the usage period in ISO 8601 format. Defaults to the current time.
+* **group\_by** (optional): Time granularity for grouping results (`hour`, `day`, or `month`). Currently reserved for future enhancements and does not change the response shape. Defaults to `day`.
+
+## Response
+
+Returns detailed usage and billing information including:
+
+* **id**: Unique identifier of the API key
+* **api\_key\_id**: Unique identifier of the API key
+* **api\_key\_name**: Descriptive name of the API key (if set)
+* **team\_id**: Team ID this key belongs to
+* **period**: Object containing the start and end dates of the usage period
+* **total\_cost\_usd**: Total cost in USD for the specified period
+* **cost\_breakdown**: Array of cost breakdowns by price type, each containing:
+  * **price\_id**: Unique identifier for the price
+  * **price\_name**: Name of the price (e.g., "Neural Search", "Content Retrieval")
+  * **quantity**: Total quantity consumed
+  * **amount\_usd**: Cost in USD for this price type
+* **metadata**: Object containing report generation timestamp
+
+## Important Notes
+
+* **6-Month Lookback Limit**: The billing system has a 6-month (180-day) lookback limit. Requests with `start_date` older than 180 days will return a 400 error.
+* **Zero Usage**: If the API key has no usage in the requested period, `total_cost_usd` will be 0 and `cost_breakdown` may be empty.
+* **Team Ownership**: The service API key used for authentication must belong to the same team as the requested API key. Cross-team access is not permitted.
+* **Date Formats**: Dates can be provided in ISO 8601 format with or without time components (e.g., `2025-01-01` or `2025-01-01T00:00:00Z`).
+
+## Use Cases
+
+This endpoint is useful for:
+
+* Building API-key-level billing dashboards
+* Monitoring usage and costs for specific API keys
+* Creating automated alerts based on usage thresholds
+* Generating usage reports for internal cost allocation
+* Debugging billing questions for specific API keys

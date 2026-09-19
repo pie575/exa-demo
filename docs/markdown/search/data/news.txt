@@ -1,0 +1,117 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# News
+
+> Find current reporting, industry coverage, and emerging stories with Exa Search.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Open in API playground" aria-label={`Open "${query}" in the API playground`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Use Exa Search for reporting from major publications, trade press, and niche outlets. New articles become searchable within minutes of publication. Combine a natural-language query with date filters when the publication window is a hard requirement.
+
+## Use it for
+
+* Market and investment research
+* Cybersecurity and threat intelligence
+* Company, product, and competitor monitoring
+* Industry briefings and current-event research
+
+## Example queries
+
+### Follow a developing policy story
+
+Name the topic, source type, and publication window so the results focus on the current phase of the story.
+
+<PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
+
+### Find practitioner analysis
+
+Name the source type when you want analysis from practitioners rather than general news coverage.
+
+<PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
+
+### Discover discussions in a specific format
+
+Include the format and the subject in the query. This keeps the search open to episode pages and transcripts across the web.
+
+<PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
+
+### Research adverse media
+
+Describe both the negative signal and the entity class you are investigating. Avoid reducing the query to a company name plus the word “news.”
+
+<PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
+
+## Make a request
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "news articles about AI regulation updates in the European Union",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "news articles about AI regulation updates in the European Union",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "news articles about AI regulation updates in the European Union",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+## Get structured data with Exa Agent
+
+For structured data that requires research across multiple sources, use an [Exa Agent task run](/docs/agent/quickstart). Describe the stories, fields, and time window you need, and Agent returns schema-validated results with citations.
+
+<Card title="Start an Agent task" icon="bot" href="/docs/agent/quickstart" cta="Open Agent guide" arrow="true">
+  Build a sourced news brief, compare coverage, or extract normalized facts from a developing story.
+</Card>

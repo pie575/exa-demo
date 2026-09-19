@@ -1,0 +1,30 @@
+{
+  "route": "/docs/reference/batches/delete-a-batch",
+  "production": {
+    "status": 200,
+    "text": "Delete a batch\nCopy page\n\nDelete a batch in a terminal status.\n\nDELETE\n/\nbatches\n/\n{id}\nTry it\nDeleting a batch removes it from your team’s batch history. Only batches in a terminal status can be deleted.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nExa-Beta\nenum<string>required\n\nRequired beta token for the Batch API.\n\nAvailable options: batches-2026-06-06 \nPath Parameters\n​\nid\nstringrequired\n\nBatch ID.\n\nMinimum string length: 1\nExample:\n\n\"batch_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nOK\n\n​\nid\nstringrequired\n\nID of the deleted batch.\n\n​\nobject\nstringrequired\n\nThe object type, always batch.deleted.\n\nAllowed value: \"batch.deleted\"\n​\ndeleted\nbooleanrequired\n\nAlways true for a successful delete.\n\nCancel a batch\nPrevious\nCreate API key\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a batch",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Delete a batch\nCopy page\n\nDelete a batch in a terminal status.\n\nDELETE\n/\nbatches\n/\n{id}\nTry it\nDeleting a batch removes it from your team’s batch history. Only batches in a terminal status can be deleted.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nExa-Beta\nenum<string>required\n\nRequired beta token for the Batch API.\n\nAvailable options: batches-2026-06-06 \nPath Parameters\n​\nid\nstringrequired\n\nBatch ID.\n\nMinimum string length: 1\nExample:\n\n\"batch_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nOK\n\n​\nid\nstringrequired\n\nID of the deleted batch.\n\n​\nobject\nstringrequired\n\nThe object type, always batch.deleted.\n\nAllowed value: \"batch.deleted\"\n​\ndeleted\nbooleanrequired\n\nAlways true for a successful delete.\n\nCancel a batch\nPrevious\nCreate API key\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a batch",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1027,
+  "localLength": 1027
+}

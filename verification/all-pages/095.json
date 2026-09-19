@@ -1,0 +1,91 @@
+{
+  "id": "095",
+  "path": "/docs/reference/team-management/get-api-key",
+  "production": {
+    "url": "https://exa.ai/docs/reference/team-management/get-api-key",
+    "title": "Get API key - Exa",
+    "h1": "Get API key",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 179.1875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2004.328125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2100,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/reference/team-management/get-api-key",
+    "title": "Get API key - Exa",
+    "h1": "Get API key",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 179.1875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2004.328125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2100,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

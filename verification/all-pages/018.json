@@ -1,0 +1,103 @@
+{
+  "id": "018",
+  "path": "/docs/agent/connect/financialdatasets",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/financialdatasets",
+    "title": "Financial Datasets - Exa",
+    "h1": "Financial Datasets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 284.625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5040.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Financial Datasets provides machine-ready company and market data for AI agents. Through Exa Connect, agents can retrieve real-time and historical prices, company facts, financial statements and valuation metrics, earnings, insider and institutional ownership, SEC filings and filing sections, company news, and screen the U.S. market by fundamental criteria.\nAttach financial_datasets to an Exa Agent run, and the agent queries Financial Datasets alongside Exa web search.\n​\nUse it for\nBuilding structured company research snapshots.\nAnalyzing financial performance, valuation, and historical trends.\nReading SEC filings and extracting sections such as risk factors and MD&A.\nExamining insider transactions and institutional ownership.\nScreening the U.S. market by fundamental criteria.\nMonitoring company news and relevant developments.\n​\nData available\nEach of the following datasets is available under the financial_datasets provider; the agent selects whichever fits the task:\nDataset\tWhat it returns\nBeneficial ownership\t5%+ beneficial owners from Schedules 13D/13G, including activist and passive stakes.\nCompany facts\tName, sector, industry, exchange, location, SEC CIK, SIC classification.\nCompany news\tRecent news articles for a ticker.\nEarnings\tQuarterly revenue and EPS with YoY change and beat/miss surprises.\nFinancial metrics\tMarket cap, EV, P/E, P/B, P/S, EV/EBITDA, PEG, margins, ROE/ROA/ROIC, growth, EPS.\nFinancial statements\tIncome statement, balance sheet, and cash flow from SEC filings.\nHistorical stock prices\tOHLCV bars over a date range at day/week/month/year granularity.\nIndex-fund holdings\tETF/index-fund constituents by weight, or the funds that hold a given security.\nInsider ownership\tInsider holdings from SEC Forms 3 and 5 (shares owned by officers, directors, 10% owners).\nInsider trades\tSEC Form 4 insider transactions (name, role, type, shares, value).\nInstitutional ownership\t13F institutional holders, shares, and reported value.\nInterest rates\tCurrent and historical central-bank policy rates (Fed, ECB, BOJ, and more).\nSEC filing items\tExtracted text of specific 10-K/10-Q/8-K items (e.g. risk factors, MD&A).\nSEC filings\tFiling metadata and direct EDGAR links, optionally filtered by form type.\nSegmented financials\tRevenue, operating income, and other line items broken down by product, business segment, and geography.\nStock price snapshot\tCurrent real-time price, day change, and quote time.\nStock screener\tCompanies matching fundamental filter criteria.\n​\nProvider ID\nUse this value in dataSources:\nfinancial_datasets\n\n​\nExample\nBuild a structured company-research snapshot for NVIDIA.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=(\n        \"Analyze NVIDIA using its latest price, valuation metrics, most recent \"\n        \"quarterly financial statements and earnings, institutional and insider \"\n        \"activity, and material SEC filing sections. Return a structured \"\n        \"company-research snapshot with reporting dates.\"\n    ),\n    data_sources=[{\"provider\": \"financial_datasets\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"ticker\", \"price\", \"valuation\", \"financials\", \"earnings\", \"ownership\", \"filings\"],\n        \"properties\": {\n            \"ticker\": {\"type\": \"string\"},\n            \"price\": {\n                \"type\": \"object\",\n                \"required\": [\"latest\", \"asOf\"],\n                \"properties\": {\n                    \"latest\": {\"type\": \"number\"},\n                    \"asOf\": {\"type\": \"string\"},\n                },\n            },\n            \"valuation\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"marketCap\": {\"type\": \"number\"},\n                    \"peRatio\": {\"type\": \"number\"},\n                    \"evToEbitda\": {\"type\": \"number\"},\n                },\n            },\n            \"financials\": {\n                \"type\": \"object\",\n                \"required\": [\"reportPeriod\", \"summary\"],\n                \"properties\": {\n                    \"reportPeriod\": {\"type\": \"string\"},\n                    \"summary\": {\"type\": \"string\"},\n                },\n            },\n            \"earnings\": {\n                \"type\": \"object\",\n                \"required\": [\"reportPeriod\", \"summary\"],\n                \"properties\": {\n                    \"reportPeriod\": {\"type\": \"string\"},\n                    \"summary\": {\"type\": \"string\"},\n                },\n            },\n            \"ownership\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"institutionalHighlights\": {\"type\": \"string\"},\n                    \"insiderActivity\": {\"type\": \"string\"},\n                },\n            },\n            \"filings\": {\n                \"type\": \"array\",\n                \"maxItems\": 5,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"formType\", \"filedAt\", \"keySection\"],\n                    \"properties\": {\n                        \"formType\": {\"type\": \"string\"},\n                        \"filedAt\": {\"type\": \"string\"},\n                        \"keySection\": {\"type\": \"string\"},\n                    },\n                },\n            },\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nParticle: compare published coverage with podcast commentary.\nBaselayer: verify the underlying entity behind a ticker.\nFiber.ai: enrich a public company with private-market peers and leadership contacts.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 5137,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/financialdatasets",
+    "title": "Financial Datasets - Exa",
+    "h1": "Financial Datasets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 284.625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5040.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Financial Datasets provides machine-ready company and market data for AI agents. Through Exa Connect, agents can retrieve real-time and historical prices, company facts, financial statements and valuation metrics, earnings, insider and institutional ownership, SEC filings and filing sections, company news, and screen the U.S. market by fundamental criteria.\nAttach financial_datasets to an Exa Agent run, and the agent queries Financial Datasets alongside Exa web search.\n​\nUse it for\nBuilding structured company research snapshots.\nAnalyzing financial performance, valuation, and historical trends.\nReading SEC filings and extracting sections such as risk factors and MD&A.\nExamining insider transactions and institutional ownership.\nScreening the U.S. market by fundamental criteria.\nMonitoring company news and relevant developments.\n​\nData available\nEach of the following datasets is available under the financial_datasets provider; the agent selects whichever fits the task:\nDataset\tWhat it returns\nBeneficial ownership\t5%+ beneficial owners from Schedules 13D/13G, including activist and passive stakes.\nCompany facts\tName, sector, industry, exchange, location, SEC CIK, SIC classification.\nCompany news\tRecent news articles for a ticker.\nEarnings\tQuarterly revenue and EPS with YoY change and beat/miss surprises.\nFinancial metrics\tMarket cap, EV, P/E, P/B, P/S, EV/EBITDA, PEG, margins, ROE/ROA/ROIC, growth, EPS.\nFinancial statements\tIncome statement, balance sheet, and cash flow from SEC filings.\nHistorical stock prices\tOHLCV bars over a date range at day/week/month/year granularity.\nIndex-fund holdings\tETF/index-fund constituents by weight, or the funds that hold a given security.\nInsider ownership\tInsider holdings from SEC Forms 3 and 5 (shares owned by officers, directors, 10% owners).\nInsider trades\tSEC Form 4 insider transactions (name, role, type, shares, value).\nInstitutional ownership\t13F institutional holders, shares, and reported value.\nInterest rates\tCurrent and historical central-bank policy rates (Fed, ECB, BOJ, and more).\nSEC filing items\tExtracted text of specific 10-K/10-Q/8-K items (e.g. risk factors, MD&A).\nSEC filings\tFiling metadata and direct EDGAR links, optionally filtered by form type.\nSegmented financials\tRevenue, operating income, and other line items broken down by product, business segment, and geography.\nStock price snapshot\tCurrent real-time price, day change, and quote time.\nStock screener\tCompanies matching fundamental filter criteria.\n​\nProvider ID\nUse this value in dataSources:\nfinancial_datasets\n\n​\nExample\nBuild a structured company-research snapshot for NVIDIA.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=(\n        \"Analyze NVIDIA using its latest price, valuation metrics, most recent \"\n        \"quarterly financial statements and earnings, institutional and insider \"\n        \"activity, and material SEC filing sections. Return a structured \"\n        \"company-research snapshot with reporting dates.\"\n    ),\n    data_sources=[{\"provider\": \"financial_datasets\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"ticker\", \"price\", \"valuation\", \"financials\", \"earnings\", \"ownership\", \"filings\"],\n        \"properties\": {\n            \"ticker\": {\"type\": \"string\"},\n            \"price\": {\n                \"type\": \"object\",\n                \"required\": [\"latest\", \"asOf\"],\n                \"properties\": {\n                    \"latest\": {\"type\": \"number\"},\n                    \"asOf\": {\"type\": \"string\"},\n                },\n            },\n            \"valuation\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"marketCap\": {\"type\": \"number\"},\n                    \"peRatio\": {\"type\": \"number\"},\n                    \"evToEbitda\": {\"type\": \"number\"},\n                },\n            },\n            \"financials\": {\n                \"type\": \"object\",\n                \"required\": [\"reportPeriod\", \"summary\"],\n                \"properties\": {\n                    \"reportPeriod\": {\"type\": \"string\"},\n                    \"summary\": {\"type\": \"string\"},\n                },\n            },\n            \"earnings\": {\n                \"type\": \"object\",\n                \"required\": [\"reportPeriod\", \"summary\"],\n                \"properties\": {\n                    \"reportPeriod\": {\"type\": \"string\"},\n                    \"summary\": {\"type\": \"string\"},\n                },\n            },\n            \"ownership\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"institutionalHighlights\": {\"type\": \"string\"},\n                    \"insiderActivity\": {\"type\": \"string\"},\n                },\n            },\n            \"filings\": {\n                \"type\": \"array\",\n                \"maxItems\": 5,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"formType\", \"filedAt\", \"keySection\"],\n                    \"properties\": {\n                        \"formType\": {\"type\": \"string\"},\n                        \"filedAt\": {\"type\": \"string\"},\n                        \"keySection\": {\"type\": \"string\"},\n                    },\n                },\n            },\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nParticle: compare published coverage with podcast commentary.\nBaselayer: verify the underlying entity behind a ticker.\nFiber.ai: enrich a public company with private-market peers and leadership contacts.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 5137,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

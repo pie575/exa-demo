@@ -1,0 +1,91 @@
+{
+  "id": "139",
+  "path": "/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+    "title": "Cancel a running enrichment - Exa",
+    "h1": "Cancel a running enrichment",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 150
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 396,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2841.984375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2938,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+    "title": "Cancel a running enrichment - Exa",
+    "h1": "Cancel a running enrichment",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 150
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 396,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2841.984375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2938,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

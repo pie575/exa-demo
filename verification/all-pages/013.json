@@ -1,0 +1,91 @@
+{
+  "id": "013",
+  "path": "/docs/agent/connect/additional-partners",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/additional-partners",
+    "title": "Additional providers - Exa",
+    "h1": "Additional providers",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 311.046875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1443
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "Beyond the self-serve providers, Exa Connect supports additional data partners. These are available upon request, connect with our team to enable them for your account.\nTalk to our team\nTell us which partner your Exa Agent needs and we’ll get you connected.\nContact sales\nBecome a provider\nHave data to offer? Apply to join Exa Connect as a partner.\nApply",
+    "scrollHeight": 1539,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/additional-partners",
+    "title": "Additional providers - Exa",
+    "h1": "Additional providers",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 311.046875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1443
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "Beyond the self-serve providers, Exa Connect supports additional data partners. These are available upon request, connect with our team to enable them for your account.\nTalk to our team\nTell us which partner your Exa Agent needs and we’ll get you connected.\nContact sales\nBecome a provider\nHave data to offer? Apply to join Exa Connect as a partner.\nApply",
+    "scrollHeight": 1539,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

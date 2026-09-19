@@ -1,0 +1,103 @@
+{
+  "id": "042",
+  "path": "/docs/integrations/exa-slack",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/exa-slack",
+    "title": "Exa in Slack - Exa",
+    "h1": "Exa in Slack",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 181.84375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5863.96875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 492
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Bring Exa into your team’s Slack. Tag @Exa in any channel or thread with a research question, list-building task, or enrichment request. Exa searches the web, reads sources, and replies in-thread with cited answers.\n​\nGet started\n​\nInstallation\nGo to Dashboard > Management > Exa in Slack, then click Install.\nSlack’s OAuth flow opens. Pick the workspace you want Exa in, then click Allow.\nThe red “App is not approved by Slack” notice is expected and safe to ignore. It only means Exa isn’t in the public Slack Marketplace, not that anything is wrong.\nOnce installed, invite @Exa to a channel (or DM it directly) and start asking questions.\n​\nHow to use Exa from Slack\nIn any channel Exa has been added to, mention @Exa with your question:\n@Exa find all Series A fintech startups in SF\n\nExa replies to your question in-thread.\n​\nFollow-ups\nOnce Exa has answered in a thread, just reply in that thread to continue the conversation. No need to mention @Exa again. Exa remembers the conversation, so follow-ups build on the previous answer. Anyone in the thread can follow up.\n​\nDirect messages\nYou can also message Exa directly in a DM. No mention is needed there at all. Each message you send starts a new request, answered in a thread under that message. Reply in the thread to continue that conversation.\n​\nCancelling a run\nWhile a run is in progress, reply in the thread and ask Exa to stop the run. No mention needed.\nStop the current run\n\n​\nExa Connect providers\nExa automatically includes Exa Connect data providers when they are relevant to your question. To use a specific provider, mention it in your message:\n@Exa find me all AI infrastructure startups that raised funding this quarter using Fiber.ai\n\nFor a list of all available data providers, just ask Exa.\n​\nExamples\n​\nNews and current events\nLearn about the latest info on anything.\n​\nLarge list building\nPrefix the request with !max for exhaustive list building.\n​\nKeywords\nUse these in a thread Exa is in. Commands can follow an @Exa mention or start the message directly:\nKeyword\tFunction\n!max <message>\tRuns this request at max effort, designed for building very large lists.\nmute\tStops Exa from responding to un-mentioned replies in the thread. Explicit @Exa mentions still work.\nunmute\tResumes thread follow-ups after a mute.\nsleep\tStops Exa from working in the thread entirely. Mention @Exa to wake it up.\naside <message>\tPosts a side comment that Exa ignores, useful for talking to teammates in a thread Exa is following.\nhelp\tShows usage instructions.\n​\nPermissions\nThe Exa app for Slack requests the following scopes:\nPermission\tSlack access\tWhy Exa needs it\napp_mentions:read\tView messages that directly mention @Exa\tStart a request when someone mentions Exa in a channel or thread\nassistant:write\tAct as an App Agent in Slack\tUse Slack’s agent experience and stream answers into DMs and channel threads\nchannels:history\tView messages in public channels Exa has been added to\tReceive public-channel thread replies so follow-ups work without another mention\nchannels:read\tView basic information about public channels\tFind public channels that already contain Exa when choosing where to sync a web session\nchat:write\tSend messages as the Exa app\tPost thread roots, answers, progress updates, confirmations, and web-synced messages\nchat:write.customize\tCustomize an app-authored message’s name and avatar\tShow the web participant’s name and profile image on messages synchronized from the web app\nfiles:read\tView files shared in conversations Exa has been added to\tRead files attached to questions\nfiles:write\tUpload, edit, and delete files as the Exa app\tAttach result files, such as exported tables, to answers\ngroups:history\tView messages in private channels Exa has been added to\tReceive private-channel thread replies so follow-ups work without another mention\ngroups:read\tView basic information about private channels Exa has been added to\tFind eligible private channels and verify membership when choosing a web-session sync destination\nim:history\tView messages in direct messages with Exa\tReceive DM requests and follow-up replies\nim:write\tStart direct messages\tOpen a verified user’s Exa DM when they choose it as a web-session sync destination\nusers:read\tView people and their basic Slack profiles\tResolve mentions to names and use a web participant’s Slack profile image on synchronized messages\nusers:read.email\tView workspace members’ email addresses\tMatch Slack and Exa accounts for team attribution and customized web-message profile images\nchannels:read, groups:read, and im:write enable destination discovery for web-to-Slack sync. Existing installations can continue using their current Slack threads without these scopes, but must reconnect before using the corresponding destination. chat:write.customize is optional at runtime: without it, web-synced messages keep the standard Exa app identity and include the participant’s name in the message body.\nExa only receives messages from channels it has been explicitly invited to and from its own DMs.\n​\nPricing\nRuns started from Slack are billed to your Exa team. See pricing for details.\n​\nPrivacy\nFor details on how Exa handles your data, see the Exa privacy policy.",
+    "scrollHeight": 5960,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/exa-slack",
+    "title": "Exa in Slack - Exa",
+    "h1": "Exa in Slack",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 181.84375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5863.96875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 492
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Bring Exa into your team’s Slack. Tag @Exa in any channel or thread with a research question, list-building task, or enrichment request. Exa searches the web, reads sources, and replies in-thread with cited answers.\n​\nGet started\n​\nInstallation\nGo to Dashboard > Management > Exa in Slack, then click Install.\nSlack’s OAuth flow opens. Pick the workspace you want Exa in, then click Allow.\nThe red “App is not approved by Slack” notice is expected and safe to ignore. It only means Exa isn’t in the public Slack Marketplace, not that anything is wrong.\nOnce installed, invite @Exa to a channel (or DM it directly) and start asking questions.\n​\nHow to use Exa from Slack\nIn any channel Exa has been added to, mention @Exa with your question:\n@Exa find all Series A fintech startups in SF\n\nExa replies to your question in-thread.\n​\nFollow-ups\nOnce Exa has answered in a thread, just reply in that thread to continue the conversation. No need to mention @Exa again. Exa remembers the conversation, so follow-ups build on the previous answer. Anyone in the thread can follow up.\n​\nDirect messages\nYou can also message Exa directly in a DM. No mention is needed there at all. Each message you send starts a new request, answered in a thread under that message. Reply in the thread to continue that conversation.\n​\nCancelling a run\nWhile a run is in progress, reply in the thread and ask Exa to stop the run. No mention needed.\nStop the current run\n\n​\nExa Connect providers\nExa automatically includes Exa Connect data providers when they are relevant to your question. To use a specific provider, mention it in your message:\n@Exa find me all AI infrastructure startups that raised funding this quarter using Fiber.ai\n\nFor a list of all available data providers, just ask Exa.\n​\nExamples\n​\nNews and current events\nLearn about the latest info on anything.\n​\nLarge list building\nPrefix the request with !max for exhaustive list building.\n​\nKeywords\nUse these in a thread Exa is in. Commands can follow an @Exa mention or start the message directly:\nKeyword\tFunction\n!max <message>\tRuns this request at max effort, designed for building very large lists.\nmute\tStops Exa from responding to un-mentioned replies in the thread. Explicit @Exa mentions still work.\nunmute\tResumes thread follow-ups after a mute.\nsleep\tStops Exa from working in the thread entirely. Mention @Exa to wake it up.\naside <message>\tPosts a side comment that Exa ignores, useful for talking to teammates in a thread Exa is following.\nhelp\tShows usage instructions.\n​\nPermissions\nThe Exa app for Slack requests the following scopes:\nPermission\tSlack access\tWhy Exa needs it\napp_mentions:read\tView messages that directly mention @Exa\tStart a request when someone mentions Exa in a channel or thread\nassistant:write\tAct as an App Agent in Slack\tUse Slack’s agent experience and stream answers into DMs and channel threads\nchannels:history\tView messages in public channels Exa has been added to\tReceive public-channel thread replies so follow-ups work without another mention\nchannels:read\tView basic information about public channels\tFind public channels that already contain Exa when choosing where to sync a web session\nchat:write\tSend messages as the Exa app\tPost thread roots, answers, progress updates, confirmations, and web-synced messages\nchat:write.customize\tCustomize an app-authored message’s name and avatar\tShow the web participant’s name and profile image on messages synchronized from the web app\nfiles:read\tView files shared in conversations Exa has been added to\tRead files attached to questions\nfiles:write\tUpload, edit, and delete files as the Exa app\tAttach result files, such as exported tables, to answers\ngroups:history\tView messages in private channels Exa has been added to\tReceive private-channel thread replies so follow-ups work without another mention\ngroups:read\tView basic information about private channels Exa has been added to\tFind eligible private channels and verify membership when choosing a web-session sync destination\nim:history\tView messages in direct messages with Exa\tReceive DM requests and follow-up replies\nim:write\tStart direct messages\tOpen a verified user’s Exa DM when they choose it as a web-session sync destination\nusers:read\tView people and their basic Slack profiles\tResolve mentions to names and use a web participant’s Slack profile image on synchronized messages\nusers:read.email\tView workspace members’ email addresses\tMatch Slack and Exa accounts for team attribution and customized web-message profile images\nchannels:read, groups:read, and im:write enable destination discovery for web-to-Slack sync. Existing installations can continue using their current Slack threads without these scopes, but must reconnect before using the corresponding destination. chat:write.customize is optional at runtime: without it, web-synced messages keep the standard Exa app identity and include the participant’s name in the message body.\nExa only receives messages from channels it has been explicitly invited to and from its own DMs.\n​\nPricing\nRuns started from Slack are billed to your Exa team. See pricing for details.\n​\nPrivacy\nFor details on how Exa handles your data, see the Exa privacy policy.",
+    "scrollHeight": 5960,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

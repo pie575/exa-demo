@@ -1,0 +1,103 @@
+{
+  "id": "047",
+  "path": "/docs/integrations/llamaindex",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/llamaindex",
+    "title": "LlamaIndex - Exa",
+    "h1": "LlamaIndex",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 176.765625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3280.984375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 76
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\nLlamaIndex is a framework for building LLM applications powered by structured data. In this guide, we’ll use Exa’s LlamaIndex integration to:\nSpecify Exa’s Search and Retrieve Highlight Tool as a LlamaIndex retriever\nSet up an OpenAI Agent that uses this tool in its response generation\n​\nGet started\n1\n\nPrerequisites and installation\n\nInstall the llama-index, llama-index core, llama-index-tools-exa libraries. OpenAI dependencies are within the core library, so we don’t need to specify that.\nPython\npip install llama-index llama-index-core llama-index-tools-exa\n\nAlso ensure API keys are initialized properly. The following code uses the EXA_API_KEY as the relevant environment variable name.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nInstantiate Exa tool\n\nImport the relevant Exa integration library and instantiate LlamaIndex’s ExaToolSpec.\nPython\nfrom llama_index.tools.exa import ExaToolSpec\nimport os\n\nexa_tool = ExaToolSpec(\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\n3\n\nChoose the Exa method to use\n\nFor this example, we are only interested in passing the search_and_retrieve_highlights method to our agent, so we specify this using the .to_tool_list LlamaIndex method. We also pass current_date, a simple utility so our agent knows the current date.\nPython\nprint('Tools that are provide by Exa LlamaIndex integration:')\nprint('\\n'.join(map(str, (exa_tool.spec_functions))))\n\nsearch_and_retrieve_highlights_tool = exa_tool.to_tool_list(\n    spec_functions=[\"search_and_retrieve_highlights\", \"current_date\"]\n)\n\n4\n\nSet up an OpenAI agent and make Exa-powered requests\n\nSet up the OpenAIAgent, passing the filtered down toolset from above.\nPython\nfrom llama_index.agent.openai import OpenAIAgent\n\nagent = OpenAIAgent.from_tools(\n    search_and_retrieve_highlights_tool,\n    verbose=True,\n)\n\nWe can then use the chat method to interact with the agent.\nPython\nagent.chat(\n    \"Can you summarize the news from the last month related to the US stock market?\"\n)\n\nThe agent calls the Exa tools it was given, then answers from the results. The exact output varies with the query and the publication dates of the pages Exa returns.\nSearch API guide\nReview Exa search parameters and response fields.\nRead guide\nLlamaIndex tool reference\nExplore LlamaIndex tools and agent configuration.\nOpen reference",
+    "scrollHeight": 3377,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/llamaindex",
+    "title": "LlamaIndex - Exa",
+    "h1": "LlamaIndex",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 176.765625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3280.984375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 76
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\nLlamaIndex is a framework for building LLM applications powered by structured data. In this guide, we’ll use Exa’s LlamaIndex integration to:\nSpecify Exa’s Search and Retrieve Highlight Tool as a LlamaIndex retriever\nSet up an OpenAI Agent that uses this tool in its response generation\n​\nGet started\n1\n\nPrerequisites and installation\n\nInstall the llama-index, llama-index core, llama-index-tools-exa libraries. OpenAI dependencies are within the core library, so we don’t need to specify that.\nPython\npip install llama-index llama-index-core llama-index-tools-exa\n\nAlso ensure API keys are initialized properly. The following code uses the EXA_API_KEY as the relevant environment variable name.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nInstantiate Exa tool\n\nImport the relevant Exa integration library and instantiate LlamaIndex’s ExaToolSpec.\nPython\nfrom llama_index.tools.exa import ExaToolSpec\nimport os\n\nexa_tool = ExaToolSpec(\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\n3\n\nChoose the Exa method to use\n\nFor this example, we are only interested in passing the search_and_retrieve_highlights method to our agent, so we specify this using the .to_tool_list LlamaIndex method. We also pass current_date, a simple utility so our agent knows the current date.\nPython\nprint('Tools that are provide by Exa LlamaIndex integration:')\nprint('\\n'.join(map(str, (exa_tool.spec_functions))))\n\nsearch_and_retrieve_highlights_tool = exa_tool.to_tool_list(\n    spec_functions=[\"search_and_retrieve_highlights\", \"current_date\"]\n)\n\n4\n\nSet up an OpenAI agent and make Exa-powered requests\n\nSet up the OpenAIAgent, passing the filtered down toolset from above.\nPython\nfrom llama_index.agent.openai import OpenAIAgent\n\nagent = OpenAIAgent.from_tools(\n    search_and_retrieve_highlights_tool,\n    verbose=True,\n)\n\nWe can then use the chat method to interact with the agent.\nPython\nagent.chat(\n    \"Can you summarize the news from the last month related to the US stock market?\"\n)\n\nThe agent calls the Exa tools it was given, then answers from the results. The exact output varies with the query and the publication dates of the pages Exa returns.\nSearch API guide\nReview Exa search parameters and response fields.\nRead guide\nLlamaIndex tool reference\nExplore LlamaIndex tools and agent configuration.\nOpen reference",
+    "scrollHeight": 3377,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,28 @@
+{
+  "route": "/docs/reference/monitors/runs/list-runs",
+  "production": {
+    "status": 200,
+    "text": "List runs\nCopy page\n\nLists all runs for a monitor with cursor-based pagination. Runs are returned in reverse chronological order.\n\nGET\n/\nmonitors\n/\n{id}\n/\nruns\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe monitor ID\n\nQuery Parameters\n​\ncursor\nstring\n\nPagination cursor from a previous response\n\n​\nlimit\nintegerdefault:50\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\nResponse\n200\napplication/json\n\nA paginated list of runs\n\n​\ndata\nobject[]required\n\nThe list of runs\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | null\n\nCursor for the next page\n\nBatch action on monitors\nPrevious\nGet a run\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List runs",
+      "Authorizations",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List runs\nCopy page\n\nLists all runs for a monitor with cursor-based pagination. Runs are returned in reverse chronological order.\n\nGET\n/\nmonitors\n/\n{id}\n/\nruns\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe monitor ID\n\nQuery Parameters\n​\ncursor\nstring\n\nPagination cursor from a previous response\n\n​\nlimit\nintegerdefault:50\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\nResponse\n200\napplication/json\n\nA paginated list of runs\n\n​\ndata\nobject[]required\n\nThe list of runs\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | null\n\nCursor for the next page\n\nBatch action on monitors\nPrevious\nGet a run\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List runs",
+      "Authorizations",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 874,
+  "localLength": 874
+}

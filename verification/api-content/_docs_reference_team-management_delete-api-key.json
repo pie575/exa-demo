@@ -1,0 +1,32 @@
+{
+  "route": "/docs/reference/team-management/delete-api-key",
+  "production": {
+    "status": 200,
+    "text": "Delete API key\nCopy page\n\nPermanently delete an API key from your team.\n\nDELETE\n/\napi-keys\n/\n{id}\nTry it\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nThe Team Management API is enabled per team. It authenticates with a service account API key, which is created from the Service keys tab on the API keys page once the feature is enabled for your team. Contact support@exa.ai to request access.\n​\nOverview\nThe Delete API Key endpoint permanently removes an API key from your team.\n​\nPath Parameters\nid: The unique identifier of the API key to delete.\nAuthorizations\n​\nx-api-key\nstringheaderrequired\n\nService API key for team authentication\n\nPath Parameters\n​\nid\nstringrequired\n\nThe unique identifier of the API key to delete.\n\nResponse\n200\napplication/json\n\nAPI key deleted successfully\n\n​\nsuccess\nboolean\nExample:\n\ntrue\n\nUpdate API key\nPrevious\nCreate a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete API key",
+      "Get your Exa API key",
+      "​Overview",
+      "​Path Parameters",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Delete API key\nCopy page\n\nPermanently delete an API key from your team.\n\nDELETE\n/\napi-keys\n/\n{id}\nTry it\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nThe Team Management API is enabled per team. It authenticates with a service account API key, which is created from the Service keys tab on the API keys page once the feature is enabled for your team. Contact support@exa.ai to request access.\n​\nOverview\nThe Delete API Key endpoint permanently removes an API key from your team.\n​\nPath Parameters\nid: The unique identifier of the API key to delete.\nAuthorizations\n​\nx-api-key\nstringheaderrequired\n\nService API key for team authentication\n\nPath Parameters\n​\nid\nstringrequired\n\nThe unique identifier of the API key to delete.\n\nResponse\n200\napplication/json\n\nAPI key deleted successfully\n\n​\nsuccess\nboolean\nExample:\n\ntrue\n\nUpdate API key\nPrevious\nCreate a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete API key",
+      "Get your Exa API key",
+      "​Overview",
+      "​Path Parameters",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 943,
+  "localLength": 943
+}

@@ -1,0 +1,101 @@
+{
+  "id": "115",
+  "path": "/docs/websets/api/events/types",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/events/types",
+    "title": "Event types - Exa",
+    "h1": "Event types",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 181.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2170.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "The Websets API uses events to notify you about changes in your Websets. You can monitor these events through our events endpoint or by setting up webhooks.\nEvents are retained for 60 days before being automatically deleted.\n​\nWebset\nwebset.created - Emitted when a new Webset is created.\nwebset.deleted - Emitted when a Webset is deleted.\nwebset.paused - Emitted when a Webset’s operations are paused.\nwebset.idle - Emitted when a Webset has no running operations.\n​\nSearch\nwebset.search.created - Emitted when a new search is initiated.\nwebset.search.updated - Emitted when search progress is updated.\nwebset.search.completed - Emitted when a search finishes finding all items.\nwebset.search.canceled - Emitted when a search is manually canceled.\n​\nItem\nwebset.item.created - Emitted when a new item has been added to the Webset.\nwebset.item.enriched - Emitted when an item’s enrichment is completed.\n​\nImport\nimport.created - Emitted when a new import is initiated.\nimport.completed - Emitted when an import has been completed.\n​\nExport\nwebset.export.created - Emitted when a new export is initiated.\nwebset.export.completed - Emitted when an export has been completed.\n​\nMonitor\nmonitor.created - Emitted when a new monitor is created.\nmonitor.updated - Emitted when a monitor’s configuration is updated.\nmonitor.deleted - Emitted when a monitor is deleted.\nmonitor.run.created - Emitted when a monitor run starts.\nmonitor.run.completed - Emitted when a monitor run finishes.\nEach event includes:\nA unique id\nThe event type\nA data object containing the full resource that triggered the event\nA createdAt timestamp\nYou can use these events to:\nTrack the progress of searches and enrichments\nBuild real-time dashboards\nTrigger workflows when new items are found\nMonitor the status of your exports",
+    "scrollHeight": 2267,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/events/types",
+    "title": "Event types - Exa",
+    "h1": "Event types",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 181.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2170.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "The Websets API uses events to notify you about changes in your Websets. You can monitor these events through our events endpoint or by setting up webhooks.\nEvents are retained for 60 days before being automatically deleted.\n​\nWebset\nwebset.created - Emitted when a new Webset is created.\nwebset.deleted - Emitted when a Webset is deleted.\nwebset.paused - Emitted when a Webset’s operations are paused.\nwebset.idle - Emitted when a Webset has no running operations.\n​\nSearch\nwebset.search.created - Emitted when a new search is initiated.\nwebset.search.updated - Emitted when search progress is updated.\nwebset.search.completed - Emitted when a search finishes finding all items.\nwebset.search.canceled - Emitted when a search is manually canceled.\n​\nItem\nwebset.item.created - Emitted when a new item has been added to the Webset.\nwebset.item.enriched - Emitted when an item’s enrichment is completed.\n​\nImport\nimport.created - Emitted when a new import is initiated.\nimport.completed - Emitted when an import has been completed.\n​\nExport\nwebset.export.created - Emitted when a new export is initiated.\nwebset.export.completed - Emitted when an export has been completed.\n​\nMonitor\nmonitor.created - Emitted when a new monitor is created.\nmonitor.updated - Emitted when a monitor’s configuration is updated.\nmonitor.deleted - Emitted when a monitor is deleted.\nmonitor.run.created - Emitted when a monitor run starts.\nmonitor.run.completed - Emitted when a monitor run finishes.\nEach event includes:\nA unique id\nThe event type\nA data object containing the full resource that triggered the event\nA createdAt timestamp\nYou can use these events to:\nTrack the progress of searches and enrichments\nBuild real-time dashboards\nTrigger workflows when new items are found\nMonitor the status of your exports",
+    "scrollHeight": 2267,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

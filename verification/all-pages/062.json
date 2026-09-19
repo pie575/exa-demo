@@ -1,0 +1,103 @@
+{
+  "id": "062",
+  "path": "/docs/integrations/tool-calling/openai",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/tool-calling/openai",
+    "title": "OpenAI Tool Calling - Exa",
+    "h1": "OpenAI Tool Calling",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 302.4375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5088.59375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "OpenAI recommends the Responses API for all new projects. See the Responses API section below.\nOpenAI’s tool calling allows models to call functions that you define in your code. The Exa SDKs ship ready-made web search and page reading tools for OpenAI, so you don’t have to hand-write the tool schema, parse tool calls, or format Exa results yourself.\n​\nGet started\n1\n\nInstall the SDKs\n\nPython\nJavaScript\npip install openai exa_py\n\n2\n\nSet up your API keys\n\nSet the EXA_API_KEY and OPENAI_API_KEY environment variables. Visit the OpenAI dashboard and the Exa dashboard to generate your API keys.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nAdd the Exa tools to your tool loop\n\nPass the tools in the request’s tools list, then hand the assistant message to handle_tool_calls. It executes every Exa tool call in the message and returns the matching role: \"tool\" messages, ready to append to the conversation.\nweb_search searches the web for pages the model hasn’t seen; get_contents reads pages it already has URLs for, whether from an earlier search or from the user. Register either or both.\nPython\nJavaScript\nfrom exa_py import Exa\nfrom openai import OpenAI\n\nexa = Exa()  # reads EXA_API_KEY from the environment\nopenai_client = OpenAI()\n\nmessages = [{\"role\": \"user\", \"content\": \"What's the latest on AI chips?\"}]\n\ncompletion = openai_client.chat.completions.create(\n    model=\"gpt-5.6\",\n    reasoning_effort=\"none\",\n    messages=messages,\n    tools=[exa.openai.web_search(), exa.openai.get_contents()],\n)\n\nmessage = completion.choices[0].message\nmessages.append(message)\nmessages += exa.openai.handle_tool_calls(message)\n\ncompletion = openai_client.chat.completions.create(\n    model=\"gpt-5.6\",\n    reasoning_effort=\"none\",\n    messages=messages,\n)\nprint(completion.choices[0].message.content)\n\nThis is one round for brevity. A real agent keeps tools on every request and repeats the handler step until the model replies without tool calls — that’s how a search result turns into a follow-up page read.\nCalling the factories with no arguments gives Exa’s recommended defaults: type=\"auto\" with contents={\"highlights\": True} for search. Highlights return query-relevant excerpts — they do not cap page text at 10,000 characters. The contents factory returns page text; the SDK’s 10,000-character limit applies only to text, and only when you omit max_characters.\n​\nResponses API\nFor the OpenAI Responses API, use the responses factory with the same handle_tool_calls helper. The handler returns function_call_output items for a follow-up request.\nPython\nJavaScript\nresponse = openai_client.responses.create(\n    model=\"gpt-5.6\",\n    input=messages,\n    tools=[exa.openai.responses.web_search(), exa.openai.responses.get_contents()],\n)\n\nmessages += response.output\nmessages += exa.openai.responses.handle_tool_calls(response)\n\nChat Completions and the Responses API use different tool shapes and reject each other’s, so use the factory that matches the endpoint you’re calling.\n​\nConfiguring the tools\nKeyword arguments are regular Exa options, passed through when the tool runs — search options to exa.search(), contents options to exa.get_contents():\nPython\nJavaScript\ntools = [\n    exa.openai.web_search(category=\"news\", contents={\"text\": True}),\n    exa.openai.get_contents(summary=True, livecrawl=\"preferred\"),\n]\n\nThe model picks the search query and the urls to read; everything else is bound when you create the tool, so it can’t change what gets crawled or extracted.\nname (defaulting to \"web_search\" and \"get_contents\") and description instead override the tool definition the model sees. Use a custom name to run differently-configured Exa tools side by side, or to avoid clashes with other tools that reserve those names.\n​\nMixing in your own tools\nThe handlers answer every tool call in the message: a call naming a tool they can’t resolve gets an Error: unknown tool \"<name>\" output instead of being dropped, so the follow-up request never omits a required tool response. If you run your own tools alongside Exa’s, replace those error outputs with your own results before the next request.\n​\nWriting the loop by hand\nIf you’d rather own the tool schema and execution yourself, define the tool and process the calls manually. exa.tools.web_search() and exa.tools.get_contents() give you the same provider-neutral tool specs (with a run method) for hand-rolled loops, or you can write everything from scratch:\nPython\nimport json\n\nTOOLS = [\n    {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"exa_search\",\n            \"description\": \"Perform a search query on the web, and retrieve the most relevant URLs/web data.\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"query\": {\n                        \"type\": \"string\",\n                        \"description\": \"The search query to perform.\",\n                    },\n                },\n                \"required\": [\"query\"],\n            },\n        },\n    }\n]\n\ndef exa_search(query: str):\n    return exa.search(query=query, type=\"auto\", contents={\"highlights\": True})\n\ndef process_tool_calls(tool_calls, messages):\n    for tool_call in tool_calls:\n        if tool_call.function.name == \"exa_search\":\n            args = json.loads(tool_call.function.arguments)\n            messages.append(\n                {\n                    \"role\": \"tool\",\n                    \"content\": str(exa_search(**args)),\n                    \"tool_call_id\": tool_call.id,\n                }\n            )\n    return messages\n\nSee the SDK quickstart for search and contents options in Python and TypeScript.",
+    "scrollHeight": 5185,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/tool-calling/openai",
+    "title": "OpenAI Tool Calling - Exa",
+    "h1": "OpenAI Tool Calling",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 302.4375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5088.59375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "OpenAI recommends the Responses API for all new projects. See the Responses API section below.\nOpenAI’s tool calling allows models to call functions that you define in your code. The Exa SDKs ship ready-made web search and page reading tools for OpenAI, so you don’t have to hand-write the tool schema, parse tool calls, or format Exa results yourself.\n​\nGet started\n1\n\nInstall the SDKs\n\nPython\nJavaScript\npip install openai exa_py\n\n2\n\nSet up your API keys\n\nSet the EXA_API_KEY and OPENAI_API_KEY environment variables. Visit the OpenAI dashboard and the Exa dashboard to generate your API keys.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nAdd the Exa tools to your tool loop\n\nPass the tools in the request’s tools list, then hand the assistant message to handle_tool_calls. It executes every Exa tool call in the message and returns the matching role: \"tool\" messages, ready to append to the conversation.\nweb_search searches the web for pages the model hasn’t seen; get_contents reads pages it already has URLs for, whether from an earlier search or from the user. Register either or both.\nPython\nJavaScript\nfrom exa_py import Exa\nfrom openai import OpenAI\n\nexa = Exa()  # reads EXA_API_KEY from the environment\nopenai_client = OpenAI()\n\nmessages = [{\"role\": \"user\", \"content\": \"What's the latest on AI chips?\"}]\n\ncompletion = openai_client.chat.completions.create(\n    model=\"gpt-5.6\",\n    reasoning_effort=\"none\",\n    messages=messages,\n    tools=[exa.openai.web_search(), exa.openai.get_contents()],\n)\n\nmessage = completion.choices[0].message\nmessages.append(message)\nmessages += exa.openai.handle_tool_calls(message)\n\ncompletion = openai_client.chat.completions.create(\n    model=\"gpt-5.6\",\n    reasoning_effort=\"none\",\n    messages=messages,\n)\nprint(completion.choices[0].message.content)\n\nThis is one round for brevity. A real agent keeps tools on every request and repeats the handler step until the model replies without tool calls — that’s how a search result turns into a follow-up page read.\nCalling the factories with no arguments gives Exa’s recommended defaults: type=\"auto\" with contents={\"highlights\": True} for search. Highlights return query-relevant excerpts — they do not cap page text at 10,000 characters. The contents factory returns page text; the SDK’s 10,000-character limit applies only to text, and only when you omit max_characters.\n​\nResponses API\nFor the OpenAI Responses API, use the responses factory with the same handle_tool_calls helper. The handler returns function_call_output items for a follow-up request.\nPython\nJavaScript\nresponse = openai_client.responses.create(\n    model=\"gpt-5.6\",\n    input=messages,\n    tools=[exa.openai.responses.web_search(), exa.openai.responses.get_contents()],\n)\n\nmessages += response.output\nmessages += exa.openai.responses.handle_tool_calls(response)\n\nChat Completions and the Responses API use different tool shapes and reject each other’s, so use the factory that matches the endpoint you’re calling.\n​\nConfiguring the tools\nKeyword arguments are regular Exa options, passed through when the tool runs — search options to exa.search(), contents options to exa.get_contents():\nPython\nJavaScript\ntools = [\n    exa.openai.web_search(category=\"news\", contents={\"text\": True}),\n    exa.openai.get_contents(summary=True, livecrawl=\"preferred\"),\n]\n\nThe model picks the search query and the urls to read; everything else is bound when you create the tool, so it can’t change what gets crawled or extracted.\nname (defaulting to \"web_search\" and \"get_contents\") and description instead override the tool definition the model sees. Use a custom name to run differently-configured Exa tools side by side, or to avoid clashes with other tools that reserve those names.\n​\nMixing in your own tools\nThe handlers answer every tool call in the message: a call naming a tool they can’t resolve gets an Error: unknown tool \"<name>\" output instead of being dropped, so the follow-up request never omits a required tool response. If you run your own tools alongside Exa’s, replace those error outputs with your own results before the next request.\n​\nWriting the loop by hand\nIf you’d rather own the tool schema and execution yourself, define the tool and process the calls manually. exa.tools.web_search() and exa.tools.get_contents() give you the same provider-neutral tool specs (with a run method) for hand-rolled loops, or you can write everything from scratch:\nPython\nimport json\n\nTOOLS = [\n    {\n        \"type\": \"function\",\n        \"function\": {\n            \"name\": \"exa_search\",\n            \"description\": \"Perform a search query on the web, and retrieve the most relevant URLs/web data.\",\n            \"parameters\": {\n                \"type\": \"object\",\n                \"properties\": {\n                    \"query\": {\n                        \"type\": \"string\",\n                        \"description\": \"The search query to perform.\",\n                    },\n                },\n                \"required\": [\"query\"],\n            },\n        },\n    }\n]\n\ndef exa_search(query: str):\n    return exa.search(query=query, type=\"auto\", contents={\"highlights\": True})\n\ndef process_tool_calls(tool_calls, messages):\n    for tool_call in tool_calls:\n        if tool_call.function.name == \"exa_search\":\n            args = json.loads(tool_call.function.arguments)\n            messages.append(\n                {\n                    \"role\": \"tool\",\n                    \"content\": str(exa_search(**args)),\n                    \"tool_call_id\": tool_call.id,\n                }\n            )\n    return messages\n\nSee the SDK quickstart for search and contents options in Python and TypeScript.",
+    "scrollHeight": 5185,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

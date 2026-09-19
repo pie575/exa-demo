@@ -1,0 +1,103 @@
+{
+  "id": "064",
+  "path": "/docs/integrations/vercel/ai-gateway",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/vercel/ai-gateway",
+    "title": "Vercel AI Gateway - Exa",
+    "h1": "Vercel AI Gateway",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 283.828125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4734.265625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa web search through Vercel AI Gateway with gateway.tools.exaSearch() from the ai package. You do not need an Exa API key; Vercel bills these requests through AI Gateway. See Vercel’s web search documentation for the complete reference.\n​\nInstall\nInstall AI SDK 5 or later:\ninstall.sh\nnpm install ai\n\n​\nAuthentication\nAI Gateway requires an API key or OIDC token. Create an AI_GATEWAY_API_KEY in the Vercel dashboard under AI Gateway > API Keys, then add it to your environment.\n.env\nAI_GATEWAY_API_KEY=your-api-key-here\n\nWhen you deploy your application on Vercel, you can use the automatically available VERCEL_OIDC_TOKEN instead. See Vercel’s authentication and BYOK documentation.\n​\nQuick start\nYou can use Exa search with any supported model:\nquickstart.ts\nimport { gateway, generateText, stepCountIs } from 'ai';\n\nconst { text } = await generateText({\n  model: 'openai/gpt-5.6-sol',\n  prompt: 'What are the latest developments in AI this week?',\n  tools: {\n    exa_search: gateway.tools.exaSearch(),\n  },\n  stopWhen: stepCountIs(3),\n});\n\nconsole.log(text);\n\n​\nStreaming\nUse streamText to process generated text and search tool events as they arrive:\nstream.ts\nimport { gateway, streamText } from 'ai';\n\nconst result = streamText({\n  model: 'openai/gpt-5.6-sol',\n  prompt: 'What are the latest developments in AI this week?',\n  tools: {\n    exa_search: gateway.tools.exaSearch(),\n  },\n});\n\nfor await (const part of result.fullStream) {\n  if (part.type === 'text-delta') {\n    process.stdout.write(part.text);\n  } else if (part.type === 'tool-call') {\n    console.log('Tool call:', part.toolName);\n  } else if (part.type === 'tool-result') {\n    console.log('Search results received');\n  }\n}\n\nIn a Next.js route handler, return the stream to the client with return result.toUIMessageStreamResponse().\n​\nConfiguration\nPass options to gateway.tools.exaSearch() to tune your search:\nconfiguration.ts\ntools: {\n  exa_search: gateway.tools.exaSearch({\n    type: 'fast',\n    numResults: 5,\n    category: 'news',\n    includeDomains: ['reuters.com', 'bbc.com', 'nytimes.com'],\n    contents: {\n      highlights: true,\n      maxAgeHours: 24,\n    },\n  }),\n},\n\nThe available options include:\nOption\tDescription\ntype\tSearch mode: auto (default), fast, or instant.\nnumResults\tNumber of results to return, from 1 to 100. The default is 10.\ncategory\tContent category.\nincludeDomains / excludeDomains\tInclude or exclude specific domains.\nstartPublishedDate / endPublishedDate\tFilter results by publication date.\nuserLocation\tTwo-letter ISO country code for location-aware search.\ncontents.text\tReturn extracted page text.\ncontents.highlights\tReturn relevant page highlights.\ncontents.maxAgeHours\tSet the maximum age of cached content.\ncontents.livecrawlTimeout\tSet the livecrawl timeout.\ncontents.subpages / contents.subpageTarget\tCrawl subpages and optionally target a subpage.\ncontents.extras.links / contents.extras.imageLinks\tReturn links or image links from results.\nSee Vercel’s Exa web search reference for the full list of parameters and their behavior.\n​\nVercel eve agents\nAgents built with eve get the built-in web_search tool, and AI Gateway models run it on Exa by default, without the need for configuration or an Exa API key. To pin the provider explicitly, export it from agent/tools/web_search.ts:\nagent/tools/web_search.ts\nimport { webSearch } from 'eve/tools';\n\nexport default webSearch({ provider: 'exa' });\n\nModels called through a direct provider instead of AI Gateway keep their native web search. See eve’s harness documentation for the full tool set.\n​\nPricing\nExa web search is free through August 31 on AI Gateway and eve, so you can build with it today at no cost.\nAfter that, Vercel bills requests through AI Gateway at the rates in Vercel’s web search documentation.\nThis integration currently supports Exa’s standard search modes and content extraction controls. Deep synthesis modes and generated summaries are not exposed yet.\nUse the Exa AI SDK\nCall Exa directly with an Exa API key through @exalabs/ai-sdk.\nOpen guide\nRead Vercel's web search reference\nReview the complete AI Gateway configuration and pricing reference.\nOpen reference",
+    "scrollHeight": 4830,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/vercel/ai-gateway",
+    "title": "Vercel AI Gateway - Exa",
+    "h1": "Vercel AI Gateway",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 283.828125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4734.265625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa web search through Vercel AI Gateway with gateway.tools.exaSearch() from the ai package. You do not need an Exa API key; Vercel bills these requests through AI Gateway. See Vercel’s web search documentation for the complete reference.\n​\nInstall\nInstall AI SDK 5 or later:\ninstall.sh\nnpm install ai\n\n​\nAuthentication\nAI Gateway requires an API key or OIDC token. Create an AI_GATEWAY_API_KEY in the Vercel dashboard under AI Gateway > API Keys, then add it to your environment.\n.env\nAI_GATEWAY_API_KEY=your-api-key-here\n\nWhen you deploy your application on Vercel, you can use the automatically available VERCEL_OIDC_TOKEN instead. See Vercel’s authentication and BYOK documentation.\n​\nQuick start\nYou can use Exa search with any supported model:\nquickstart.ts\nimport { gateway, generateText, stepCountIs } from 'ai';\n\nconst { text } = await generateText({\n  model: 'openai/gpt-5.6-sol',\n  prompt: 'What are the latest developments in AI this week?',\n  tools: {\n    exa_search: gateway.tools.exaSearch(),\n  },\n  stopWhen: stepCountIs(3),\n});\n\nconsole.log(text);\n\n​\nStreaming\nUse streamText to process generated text and search tool events as they arrive:\nstream.ts\nimport { gateway, streamText } from 'ai';\n\nconst result = streamText({\n  model: 'openai/gpt-5.6-sol',\n  prompt: 'What are the latest developments in AI this week?',\n  tools: {\n    exa_search: gateway.tools.exaSearch(),\n  },\n});\n\nfor await (const part of result.fullStream) {\n  if (part.type === 'text-delta') {\n    process.stdout.write(part.text);\n  } else if (part.type === 'tool-call') {\n    console.log('Tool call:', part.toolName);\n  } else if (part.type === 'tool-result') {\n    console.log('Search results received');\n  }\n}\n\nIn a Next.js route handler, return the stream to the client with return result.toUIMessageStreamResponse().\n​\nConfiguration\nPass options to gateway.tools.exaSearch() to tune your search:\nconfiguration.ts\ntools: {\n  exa_search: gateway.tools.exaSearch({\n    type: 'fast',\n    numResults: 5,\n    category: 'news',\n    includeDomains: ['reuters.com', 'bbc.com', 'nytimes.com'],\n    contents: {\n      highlights: true,\n      maxAgeHours: 24,\n    },\n  }),\n},\n\nThe available options include:\nOption\tDescription\ntype\tSearch mode: auto (default), fast, or instant.\nnumResults\tNumber of results to return, from 1 to 100. The default is 10.\ncategory\tContent category.\nincludeDomains / excludeDomains\tInclude or exclude specific domains.\nstartPublishedDate / endPublishedDate\tFilter results by publication date.\nuserLocation\tTwo-letter ISO country code for location-aware search.\ncontents.text\tReturn extracted page text.\ncontents.highlights\tReturn relevant page highlights.\ncontents.maxAgeHours\tSet the maximum age of cached content.\ncontents.livecrawlTimeout\tSet the livecrawl timeout.\ncontents.subpages / contents.subpageTarget\tCrawl subpages and optionally target a subpage.\ncontents.extras.links / contents.extras.imageLinks\tReturn links or image links from results.\nSee Vercel’s Exa web search reference for the full list of parameters and their behavior.\n​\nVercel eve agents\nAgents built with eve get the built-in web_search tool, and AI Gateway models run it on Exa by default, without the need for configuration or an Exa API key. To pin the provider explicitly, export it from agent/tools/web_search.ts:\nagent/tools/web_search.ts\nimport { webSearch } from 'eve/tools';\n\nexport default webSearch({ provider: 'exa' });\n\nModels called through a direct provider instead of AI Gateway keep their native web search. See eve’s harness documentation for the full tool set.\n​\nPricing\nExa web search is free through August 31 on AI Gateway and eve, so you can build with it today at no cost.\nAfter that, Vercel bills requests through AI Gateway at the rates in Vercel’s web search documentation.\nThis integration currently supports Exa’s standard search modes and content extraction controls. Deep synthesis modes and generated summaries are not exposed yet.\nUse the Exa AI SDK\nCall Exa directly with an Exa API key through @exalabs/ai-sdk.\nOpen guide\nRead Vercel's web search reference\nReview the complete AI Gateway configuration and pricing reference.\nOpen reference",
+    "scrollHeight": 4830,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

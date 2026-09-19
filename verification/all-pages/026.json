@@ -1,0 +1,103 @@
+{
+  "id": "026",
+  "path": "/docs/batch/quickstart",
+  "production": {
+    "url": "https://exa.ai/docs/batch/quickstart",
+    "title": "Batch API - Exa",
+    "h1": "Batch API",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 154.046875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4879.5625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "The Batch API is available for Enterprise customers after Exa enables it for your team. Contact sales@exa.ai to discuss Enterprise access and enablement.\nThe Batch API lets you submit many Exa API requests at once and retrieve their results later as a JSONL file. Instead of sending thousands of individual requests and managing rate limits and retries yourself, you send a single batch, poll its status, and download all the results in one file.\nUse it for offline enrichment, backfills, or any other job that does not need an immediate response. Full request and response schemas are in the API reference.\nThe Batch API is in beta. Include the Exa-Beta: batches-2026-06-06 header on every request.\n​\nSupported requests\nEach batch item must be a POST request to one of these routes:\nRoute\tUse case\n/search\tRun Exa search requests asynchronously\n/agent/runs\tRun Exa Agent requests asynchronously\nEach item needs a batch-unique customId. The same customId is returned in the results file so you can map output rows back to your input data.\n​\nCreate a batch\ncURL\ncurl -s -X POST \"https://api.exa.ai/batches\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"requests\": [\n      {\n        \"customId\": \"row-1\",\n        \"method\": \"POST\",\n        \"url\": \"/search\",\n        \"body\": {\n          \"query\": \"Latest AI infrastructure funding rounds\"\n        }\n      },\n      {\n        \"customId\": \"row-2\",\n        \"method\": \"POST\",\n        \"url\": \"/agent/runs\",\n        \"body\": {\n          \"query\": \"Summarize recent vector database launches\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"project\": \"weekly-digest\"\n    }\n  }'\n\nThe response contains the batch ID and initial status:\n\nExample response\n\n​\nCheck status\nPoll the batch until it reaches a terminal status:\ncURL\ncurl -s \"https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\nBatch statuses are:\nStatus\tMeaning\nin_progress\tThe batch is running\ncompleted\tAll requests have finished and results are available\ncancelling\tCancellation was requested and in-flight work is draining\ncancelled\tThe batch was cancelled\nexpired\tResults are no longer available\nWhen the batch completes, resultsUrl contains a download URL for the JSONL results file, and expiresAt is set to the end of the results retention window.\nresultsUrl is a short-lived presigned URL. Re-fetch the batch to get a fresh URL whenever you need to download results again.\n​\nList batches\ncURL\ncurl -s \"https://api.exa.ai/batches?limit=100\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\nThe response is cursor-paginated: data holds up to limit batches, and when hasMore is true, pass nextCursor as the cursor query parameter to fetch the next page.\nPass status=completed to list only completed batches:\ncurl -s \"https://api.exa.ai/batches?status=completed\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\ncompleted is the only supported value; any other value returns an error. Completed listings are ordered by expiry and use their own cursor, so keep sending status=completed on every page — completed and unfiltered cursors are not interchangeable.\n{\n  \"object\": \"list\",\n  \"data\": [],\n  \"hasMore\": false,\n  \"nextCursor\": null\n}\n\n​\nDownload results\ncURL\ncurl \"$RESULTS_URL\" -o results.jsonl\n\nEach JSONL line contains the original customId and either a response or an error:\n{ \"customId\": \"row-1\", \"response\": { \"statusCode\": 200, \"body\": { \"results\": [] } } }\n{ \"customId\": \"row-2\", \"error\": { \"code\": \"API_ERROR\", \"message\": \"request failed\" } }\n\n​\nCancel a batch\ncURL\ncurl -X POST \"https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8/cancel\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\n​\nDelete a batch\ncURL\ncurl -X DELETE \"https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\n​\nAccess\nTo enable the Batch API for a team, contact sales@exa.ai.",
+    "scrollHeight": 4976,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/batch/quickstart",
+    "title": "Batch API - Exa",
+    "h1": "Batch API",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 154.046875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4879.5625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "The Batch API is available for Enterprise customers after Exa enables it for your team. Contact sales@exa.ai to discuss Enterprise access and enablement.\nThe Batch API lets you submit many Exa API requests at once and retrieve their results later as a JSONL file. Instead of sending thousands of individual requests and managing rate limits and retries yourself, you send a single batch, poll its status, and download all the results in one file.\nUse it for offline enrichment, backfills, or any other job that does not need an immediate response. Full request and response schemas are in the API reference.\nThe Batch API is in beta. Include the Exa-Beta: batches-2026-06-06 header on every request.\n​\nSupported requests\nEach batch item must be a POST request to one of these routes:\nRoute\tUse case\n/search\tRun Exa search requests asynchronously\n/agent/runs\tRun Exa Agent requests asynchronously\nEach item needs a batch-unique customId. The same customId is returned in the results file so you can map output rows back to your input data.\n​\nCreate a batch\ncURL\ncurl -s -X POST \"https://api.exa.ai/batches\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"requests\": [\n      {\n        \"customId\": \"row-1\",\n        \"method\": \"POST\",\n        \"url\": \"/search\",\n        \"body\": {\n          \"query\": \"Latest AI infrastructure funding rounds\"\n        }\n      },\n      {\n        \"customId\": \"row-2\",\n        \"method\": \"POST\",\n        \"url\": \"/agent/runs\",\n        \"body\": {\n          \"query\": \"Summarize recent vector database launches\"\n        }\n      }\n    ],\n    \"metadata\": {\n      \"project\": \"weekly-digest\"\n    }\n  }'\n\nThe response contains the batch ID and initial status:\n\nExample response\n\n​\nCheck status\nPoll the batch until it reaches a terminal status:\ncURL\ncurl -s \"https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\nBatch statuses are:\nStatus\tMeaning\nin_progress\tThe batch is running\ncompleted\tAll requests have finished and results are available\ncancelling\tCancellation was requested and in-flight work is draining\ncancelled\tThe batch was cancelled\nexpired\tResults are no longer available\nWhen the batch completes, resultsUrl contains a download URL for the JSONL results file, and expiresAt is set to the end of the results retention window.\nresultsUrl is a short-lived presigned URL. Re-fetch the batch to get a fresh URL whenever you need to download results again.\n​\nList batches\ncURL\ncurl -s \"https://api.exa.ai/batches?limit=100\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\nThe response is cursor-paginated: data holds up to limit batches, and when hasMore is true, pass nextCursor as the cursor query parameter to fetch the next page.\nPass status=completed to list only completed batches:\ncurl -s \"https://api.exa.ai/batches?status=completed\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\ncompleted is the only supported value; any other value returns an error. Completed listings are ordered by expiry and use their own cursor, so keep sending status=completed on every page — completed and unfiltered cursors are not interchangeable.\n{\n  \"object\": \"list\",\n  \"data\": [],\n  \"hasMore\": false,\n  \"nextCursor\": null\n}\n\n​\nDownload results\ncURL\ncurl \"$RESULTS_URL\" -o results.jsonl\n\nEach JSONL line contains the original customId and either a response or an error:\n{ \"customId\": \"row-1\", \"response\": { \"statusCode\": 200, \"body\": { \"results\": [] } } }\n{ \"customId\": \"row-2\", \"error\": { \"code\": \"API_ERROR\", \"message\": \"request failed\" } }\n\n​\nCancel a batch\ncURL\ncurl -X POST \"https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8/cancel\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\n​\nDelete a batch\ncURL\ncurl -X DELETE \"https://api.exa.ai/batches/batch_01j7x9v0m2n4p6q8r0s2t4v6w8\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -H \"Exa-Beta: batches-2026-06-06\"\n\n​\nAccess\nTo enable the Batch API for a team, contact sales@exa.ai.",
+    "scrollHeight": 4976,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

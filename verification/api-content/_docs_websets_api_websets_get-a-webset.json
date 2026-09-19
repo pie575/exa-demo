@@ -1,0 +1,28 @@
+{
+  "route": "/docs/websets/api/websets/get-a-webset",
+  "production": {
+    "status": 200,
+    "text": "Get a webset\nCopy page\n\nReturns a Webset by id or externalId, including its status, searches, imports, enrichments, and monitors.\n\nPass expand=items to include up to the first 100 items in the response.\n\nGET\n/\nv0\n/\nwebsets\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id or externalId of the Webset.\n\nQuery Parameters\n​\nexpand\nenum<string>[]\n\nExpand the response with the specified resources\n\nAvailable options: items \nResponse\n200\napplication/json\n\nWebset\n\n​\nid\nstringrequired\n\nThe unique identifier for the webset\n\n​\nobject\nstringdefault:websetrequired\nAllowed value: \"webset\"\n​\nstatus\nenum<string>required\n\nThe status of the webset\n\nAvailable options: idle, pending, running, paused \n​\nexternalId\nstring | nullrequired\n\nThe external identifier for the webset\n\n​\ntitle\nstring | nullrequired\n\nThe title of the webset\n\n​\nsearches\nobject[]required\n\nThe searches that have been performed on the webset.\n\nShow child attributes\n\n​\nimports\nobject[]required\n\nImports that have been performed on the webset.\n\nShow child attributes\n\n​\nenrichments\nobject[]required\n\nThe Enrichments to apply to the Webset Items.\n\nShow child attributes\n\n​\nmonitors\nobject[]required\n\nThe Monitors for the Webset.\n\nShow child attributes\n\n​\ndashboardUrl\nstring<uri>required\n\nThe URL to view the webset in the Exa dashboard\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the webset was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the webset was updated\n\n​\nexcludes\nobject[]\n\nThe Excludes sources (existing imports or websets) that apply to all operations within this Webset. Any results found within these sources will be omitted across all search and import operations.\n\nShow child attributes\n\n​\nmetadata\nobject\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\n​\nitems\nobject[]\n\nWhen expand query parameter contains items, this will contain the items in the webset\n\nShow child attributes\n\nCreate a webset\nPrevious\nUpdate a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a webset",
+      "Authorizations",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get a webset\nCopy page\n\nReturns a Webset by id or externalId, including its status, searches, imports, enrichments, and monitors.\n\nPass expand=items to include up to the first 100 items in the response.\n\nGET\n/\nv0\n/\nwebsets\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id or externalId of the Webset.\n\nQuery Parameters\n​\nexpand\nenum<string>[]\n\nExpand the response with the specified resources\n\nAvailable options: items \nResponse\n200\napplication/json\n\nWebset\n\n​\nid\nstringrequired\n\nThe unique identifier for the webset\n\n​\nobject\nstringdefault:websetrequired\nAllowed value: \"webset\"\n​\nstatus\nenum<string>required\n\nThe status of the webset\n\nAvailable options: idle, pending, running, paused \n​\nexternalId\nstring | nullrequired\n\nThe external identifier for the webset\n\n​\ntitle\nstring | nullrequired\n\nThe title of the webset\n\n​\nsearches\nobject[]required\n\nThe searches that have been performed on the webset.\n\nShow child attributes\n\n​\nimports\nobject[]required\n\nImports that have been performed on the webset.\n\nShow child attributes\n\n​\nenrichments\nobject[]required\n\nThe Enrichments to apply to the Webset Items.\n\nShow child attributes\n\n​\nmonitors\nobject[]required\n\nThe Monitors for the Webset.\n\nShow child attributes\n\n​\ndashboardUrl\nstring<uri>required\n\nThe URL to view the webset in the Exa dashboard\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the webset was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the webset was updated\n\n​\nexcludes\nobject[]\n\nThe Excludes sources (existing imports or websets) that apply to all operations within this Webset. Any results found within these sources will be omitted across all search and import operations.\n\nShow child attributes\n\n​\nmetadata\nobject\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\n​\nitems\nobject[]\n\nWhen expand query parameter contains items, this will contain the items in the webset\n\nShow child attributes\n\nCreate a webset\nPrevious\nUpdate a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a webset",
+      "Authorizations",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 2193,
+  "localLength": 2193
+}

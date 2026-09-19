@@ -1,0 +1,103 @@
+{
+  "id": "049",
+  "path": "/docs/integrations/n8n",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/n8n",
+    "title": "n8n - Exa",
+    "h1": "n8n",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 59.65625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3444.703125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "The official Exa node for n8n adds web search, content extraction, grounded answers, and Exa Agent runs to visual workflows. Use it as a regular workflow step or connect it to an n8n AI Agent as a tool.\n​\nInstall the Exa node\nThe package name is n8n-nodes-exa-official.\n1\n\nAdd the community node\n\nSearch for Exa in the n8n node picker. If it is not available on your instance, an instance owner can install n8n-nodes-exa-official by following n8n’s community node installation guide.\nThe node requires n8n 1.60 or newer and Node.js 20.15 or newer.\n2\n\nCreate an Exa API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nAdd Exa credentials\n\nAdd an Exa API credential in n8n and paste your key. Select that credential on each Exa node that should use the account.\n​\nRun a search\nAdd a trigger to a workflow.\nAdd the Exa node.\nChoose Search.\nEnter a query and select a search type.\nChoose a response format:\nResults for ranked pages\nText for a synthesized answer\nStructured for JSON matching your schema\nRun the node and pass its output to the next workflow step.\nSearch can also return text, highlights, summaries, links, and images from each result. Domain filters, publication dates, categories, maxAgeHours, and subpage crawling are available in the node’s optional fields.\n​\nAvailable resources\nResource\tOperations\nSearch\tSearch the web using auto, instant, fast, deep-lite, deep, or deep-reasoning, with optional synthesis and structured output.\nContents\tRetrieve cleaned text, highlights, summaries, links, and images for a list of URLs.\nAnswer\tGenerate a grounded answer with citations and optional structured output.\nAgent\tCreate, inspect, list, stream, poll, and cancel multi-step Agent runs.\n​\nUse Exa with an n8n AI Agent\nConnect an Exa node to an AI Agent node through its tool input. Parameters that the model should supply can use n8n’s $fromAI() expression:\n{{ $fromAI(\"query\", \"What should Exa search for?\", \"string\") }}\n\nSearch and Answer work well as grounding tools. Use the Agent resource when the task requires multi-step research, list building, structured enrichment, or premium Exa Connect data.\n​\nWait for an Agent run\nWhen creating an Agent run, Wait for Completion supports:\nStream to hold one server-sent events connection open until the run finishes\nPoll to check the run on an interval\nFor long-running or asynchronous workflows, turn Wait for Completion off, save the returned run id, and use Get Run later. The run continues on Exa after the n8n step finishes.\n​\nTroubleshooting\n\nThe Exa node is not in the node picker\n\nThe Exa credential is rejected\n\nAn Agent workflow times out\n\n​\nResources\nOfficial Exa node\nReview the current operations, compatibility, and source.\nView repository\nExa Agent\nBuild multi-step research and enrichment workflows.\nRead guide\nSearch best practices\nWrite better queries and choose the right search mode.\nRead guide",
+    "scrollHeight": 3541,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/n8n",
+    "title": "n8n - Exa",
+    "h1": "n8n",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 59.65625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3444.703125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "The official Exa node for n8n adds web search, content extraction, grounded answers, and Exa Agent runs to visual workflows. Use it as a regular workflow step or connect it to an n8n AI Agent as a tool.\n​\nInstall the Exa node\nThe package name is n8n-nodes-exa-official.\n1\n\nAdd the community node\n\nSearch for Exa in the n8n node picker. If it is not available on your instance, an instance owner can install n8n-nodes-exa-official by following n8n’s community node installation guide.\nThe node requires n8n 1.60 or newer and Node.js 20.15 or newer.\n2\n\nCreate an Exa API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nAdd Exa credentials\n\nAdd an Exa API credential in n8n and paste your key. Select that credential on each Exa node that should use the account.\n​\nRun a search\nAdd a trigger to a workflow.\nAdd the Exa node.\nChoose Search.\nEnter a query and select a search type.\nChoose a response format:\nResults for ranked pages\nText for a synthesized answer\nStructured for JSON matching your schema\nRun the node and pass its output to the next workflow step.\nSearch can also return text, highlights, summaries, links, and images from each result. Domain filters, publication dates, categories, maxAgeHours, and subpage crawling are available in the node’s optional fields.\n​\nAvailable resources\nResource\tOperations\nSearch\tSearch the web using auto, instant, fast, deep-lite, deep, or deep-reasoning, with optional synthesis and structured output.\nContents\tRetrieve cleaned text, highlights, summaries, links, and images for a list of URLs.\nAnswer\tGenerate a grounded answer with citations and optional structured output.\nAgent\tCreate, inspect, list, stream, poll, and cancel multi-step Agent runs.\n​\nUse Exa with an n8n AI Agent\nConnect an Exa node to an AI Agent node through its tool input. Parameters that the model should supply can use n8n’s $fromAI() expression:\n{{ $fromAI(\"query\", \"What should Exa search for?\", \"string\") }}\n\nSearch and Answer work well as grounding tools. Use the Agent resource when the task requires multi-step research, list building, structured enrichment, or premium Exa Connect data.\n​\nWait for an Agent run\nWhen creating an Agent run, Wait for Completion supports:\nStream to hold one server-sent events connection open until the run finishes\nPoll to check the run on an interval\nFor long-running or asynchronous workflows, turn Wait for Completion off, save the returned run id, and use Get Run later. The run continues on Exa after the n8n step finishes.\n​\nTroubleshooting\n\nThe Exa node is not in the node picker\n\nThe Exa credential is rejected\n\nAn Agent workflow times out\n\n​\nResources\nOfficial Exa node\nReview the current operations, compatibility, and source.\nView repository\nExa Agent\nBuild multi-step research and enrichment workflows.\nRead guide\nSearch best practices\nWrite better queries and choose the right search mode.\nRead guide",
+    "scrollHeight": 3541,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

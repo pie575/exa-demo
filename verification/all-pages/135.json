@@ -1,0 +1,101 @@
+{
+  "id": "135",
+  "path": "/docs/websets/api/webhooks/verifying-signatures",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/webhooks/verifying-signatures",
+    "title": "Verifying signatures - Exa",
+    "h1": "Verifying signatures",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 306.875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5515.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "When you receive a webhook from Exa, you should verify that it came from us to ensure the integrity and authenticity of the data. Exa signs all webhook payloads with a secret key that’s unique to your webhook endpoint.\n​\nHow Webhook Signatures Work\nExa uses HMAC SHA256 to sign webhook payloads. The signature is included in the Exa-Signature header, which contains:\nA timestamp (t=) indicating when the webhook was sent\nOne or more signatures (v1=) computed using the timestamp and payload\nThe signature format looks like this:\nExa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd\n\n​\nVerification Process\nTo verify a webhook signature:\nExtract the timestamp and signatures from the Exa-Signature header\nCreate the signed payload by concatenating the timestamp, a period, and the raw request body\nCompute the expected signature using HMAC SHA256 with your webhook secret\nCompare your computed signature with the provided signatures\nPython\nJavaScript/Node.js\nJava\nimport hmac\nimport hashlib\nimport time\n\ndef verify_webhook_signature(payload, signature_header, webhook_secret):\n    \"\"\"\n    Verify the signature of a webhook payload.\n\n    Args:\n        payload (str): The raw request body as a string\n        signature_header (str): The Exa-Signature header value\n        webhook_secret (str): Your webhook secret\n\n    Returns:\n        bool: True if signature is valid, False otherwise\n    \"\"\"\n    try:\n        # Parse the signature header\n        pairs = [pair.split('=', 1) for pair in signature_header.split(',')]\n        timestamp = None\n        signatures = []\n\n        for key, value in pairs:\n            if key == 't':\n                timestamp = value\n            elif key == 'v1':\n                signatures.append(value)\n\n        if not timestamp or not signatures:\n            return False\n\n        # Optional: Check if timestamp is recent (within 5 minutes)\n        current_time = int(time.time())\n        if abs(current_time - int(timestamp)) > 300:\n            print(\"Warning: Webhook timestamp is more than 5 minutes old\")\n\n        # Create the signed payload\n        signed_payload = f\"{timestamp}.{payload}\"\n\n        # Compute the expected signature\n        expected_signature = hmac.new(\n            webhook_secret.encode('utf-8'),\n            signed_payload.encode('utf-8'),\n            hashlib.sha256\n        ).hexdigest()\n\n        # Compare with provided signatures\n        return any(hmac.compare_digest(expected_signature, sig) for sig in signatures)\n\n    except Exception as e:\n        print(f\"Error verifying signature: {e}\")\n        return False\n\n# Example usage in a Flask webhook endpoint\nfrom flask import Flask, request, jsonify\nimport os\n\napp = Flask(__name__)\n\n@app.route('/webhook', methods=['POST'])\ndef handle_webhook():\n    # Get the raw payload and signature\n    payload = request.get_data(as_text=True)\n    signature_header = request.headers.get('Exa-Signature', '')\n    webhook_secret = os.environ.get('WEBHOOK_SECRET')\n\n    # Verify the signature\n    if not verify_webhook_signature(payload, signature_header, webhook_secret):\n        return jsonify({'error': 'Invalid signature'}), 400\n\n    # Process the webhook\n    webhook_data = request.get_json()\n    print(f\"Received {webhook_data['type']} event\")\n\n    return jsonify({'status': 'success'}), 200\n\n\n\n​\nSecurity Best Practices\nFollowing these practices will help ensure your webhook implementation is secure and robust:\nAlways Verify Signatures - Never process webhook data without first verifying the signature. This prevents attackers from sending fake webhooks to your endpoint.\nUse Timing-Safe Comparison - When comparing signatures, use functions like hmac.compare_digest() in Python or crypto.timingSafeEqual() in Node.js to prevent timing attacks.\nCheck Timestamp Freshness - Consider rejecting webhooks with timestamps that are too old (e.g., older than 5 minutes) to prevent replay attacks.\nStore Secrets Securely - Store your webhook secrets in environment variables or a secure secret management system. Never hardcode them in your application. Important: The webhook secret is only returned when you create a webhook - make sure to save it securely as it cannot be retrieved later.\nUse HTTPS - Always use HTTPS endpoints for your webhooks to ensure the data is encrypted in transit.\nRegister the Final URL - Webhook deliveries do not follow HTTP redirects (3xx responses). If your endpoint redirects, the delivery will be treated as a failure. Always register the URL that directly handles the payload.\n\n\n​\nTroubleshooting\n​\nInvalid Signature Errors\nIf you’re getting signature verification failures:\nCheck the raw payload: Make sure you’re using the raw request body, not a parsed JSON object\nVerify the secret: Ensure you’re using the correct webhook secret from when the webhook was created\nCheck header parsing: Make sure you’re correctly extracting the timestamp and signatures from the header\nEncoding issues: Ensure consistent UTF-8 encoding throughout the verification process\n​\nTesting Signatures Locally\nYou can test your signature verification logic using the webhook secret and a sample payload:\nPython\n# Test with a known payload and signature\ntest_payload = '{\"type\":\"webset.created\",\"data\":{\"id\":\"ws_test\"}}'\ntest_timestamp = \"1234567890\"\ntest_secret = \"your_webhook_secret\"\n\n# Create test signature\nimport hmac\nimport hashlib\n\nsigned_payload = f\"{test_timestamp}.{test_payload}\"\ntest_signature = hmac.new(\n    test_secret.encode('utf-8'),\n    signed_payload.encode('utf-8'),\n    hashlib.sha256\n).hexdigest()\n\ntest_header = f\"t={test_timestamp},v1={test_signature}\"\n\n# Verify it works\nis_valid = verify_webhook_signature(test_payload, test_header, test_secret)\nprint(f\"Test signature valid: {is_valid}\")  # Should print True\n\n\n\n​\nWhat’s Next?\nLearn about webhook events and their payloads\nSet up webhook retries and monitoring\nExplore webhook management endpoints",
+    "scrollHeight": 5612,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/webhooks/verifying-signatures",
+    "title": "Verifying signatures - Exa",
+    "h1": "Verifying signatures",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 306.875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5515.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "When you receive a webhook from Exa, you should verify that it came from us to ensure the integrity and authenticity of the data. Exa signs all webhook payloads with a secret key that’s unique to your webhook endpoint.\n​\nHow Webhook Signatures Work\nExa uses HMAC SHA256 to sign webhook payloads. The signature is included in the Exa-Signature header, which contains:\nA timestamp (t=) indicating when the webhook was sent\nOne or more signatures (v1=) computed using the timestamp and payload\nThe signature format looks like this:\nExa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd\n\n​\nVerification Process\nTo verify a webhook signature:\nExtract the timestamp and signatures from the Exa-Signature header\nCreate the signed payload by concatenating the timestamp, a period, and the raw request body\nCompute the expected signature using HMAC SHA256 with your webhook secret\nCompare your computed signature with the provided signatures\nPython\nJavaScript/Node.js\nJava\nimport hmac\nimport hashlib\nimport time\n\ndef verify_webhook_signature(payload, signature_header, webhook_secret):\n    \"\"\"\n    Verify the signature of a webhook payload.\n\n    Args:\n        payload (str): The raw request body as a string\n        signature_header (str): The Exa-Signature header value\n        webhook_secret (str): Your webhook secret\n\n    Returns:\n        bool: True if signature is valid, False otherwise\n    \"\"\"\n    try:\n        # Parse the signature header\n        pairs = [pair.split('=', 1) for pair in signature_header.split(',')]\n        timestamp = None\n        signatures = []\n\n        for key, value in pairs:\n            if key == 't':\n                timestamp = value\n            elif key == 'v1':\n                signatures.append(value)\n\n        if not timestamp or not signatures:\n            return False\n\n        # Optional: Check if timestamp is recent (within 5 minutes)\n        current_time = int(time.time())\n        if abs(current_time - int(timestamp)) > 300:\n            print(\"Warning: Webhook timestamp is more than 5 minutes old\")\n\n        # Create the signed payload\n        signed_payload = f\"{timestamp}.{payload}\"\n\n        # Compute the expected signature\n        expected_signature = hmac.new(\n            webhook_secret.encode('utf-8'),\n            signed_payload.encode('utf-8'),\n            hashlib.sha256\n        ).hexdigest()\n\n        # Compare with provided signatures\n        return any(hmac.compare_digest(expected_signature, sig) for sig in signatures)\n\n    except Exception as e:\n        print(f\"Error verifying signature: {e}\")\n        return False\n\n# Example usage in a Flask webhook endpoint\nfrom flask import Flask, request, jsonify\nimport os\n\napp = Flask(__name__)\n\n@app.route('/webhook', methods=['POST'])\ndef handle_webhook():\n    # Get the raw payload and signature\n    payload = request.get_data(as_text=True)\n    signature_header = request.headers.get('Exa-Signature', '')\n    webhook_secret = os.environ.get('WEBHOOK_SECRET')\n\n    # Verify the signature\n    if not verify_webhook_signature(payload, signature_header, webhook_secret):\n        return jsonify({'error': 'Invalid signature'}), 400\n\n    # Process the webhook\n    webhook_data = request.get_json()\n    print(f\"Received {webhook_data['type']} event\")\n\n    return jsonify({'status': 'success'}), 200\n\n\n\n​\nSecurity Best Practices\nFollowing these practices will help ensure your webhook implementation is secure and robust:\nAlways Verify Signatures - Never process webhook data without first verifying the signature. This prevents attackers from sending fake webhooks to your endpoint.\nUse Timing-Safe Comparison - When comparing signatures, use functions like hmac.compare_digest() in Python or crypto.timingSafeEqual() in Node.js to prevent timing attacks.\nCheck Timestamp Freshness - Consider rejecting webhooks with timestamps that are too old (e.g., older than 5 minutes) to prevent replay attacks.\nStore Secrets Securely - Store your webhook secrets in environment variables or a secure secret management system. Never hardcode them in your application. Important: The webhook secret is only returned when you create a webhook - make sure to save it securely as it cannot be retrieved later.\nUse HTTPS - Always use HTTPS endpoints for your webhooks to ensure the data is encrypted in transit.\nRegister the Final URL - Webhook deliveries do not follow HTTP redirects (3xx responses). If your endpoint redirects, the delivery will be treated as a failure. Always register the URL that directly handles the payload.\n\n\n​\nTroubleshooting\n​\nInvalid Signature Errors\nIf you’re getting signature verification failures:\nCheck the raw payload: Make sure you’re using the raw request body, not a parsed JSON object\nVerify the secret: Ensure you’re using the correct webhook secret from when the webhook was created\nCheck header parsing: Make sure you’re correctly extracting the timestamp and signatures from the header\nEncoding issues: Ensure consistent UTF-8 encoding throughout the verification process\n​\nTesting Signatures Locally\nYou can test your signature verification logic using the webhook secret and a sample payload:\nPython\n# Test with a known payload and signature\ntest_payload = '{\"type\":\"webset.created\",\"data\":{\"id\":\"ws_test\"}}'\ntest_timestamp = \"1234567890\"\ntest_secret = \"your_webhook_secret\"\n\n# Create test signature\nimport hmac\nimport hashlib\n\nsigned_payload = f\"{test_timestamp}.{test_payload}\"\ntest_signature = hmac.new(\n    test_secret.encode('utf-8'),\n    signed_payload.encode('utf-8'),\n    hashlib.sha256\n).hexdigest()\n\ntest_header = f\"t={test_timestamp},v1={test_signature}\"\n\n# Verify it works\nis_valid = verify_webhook_signature(test_payload, test_header, test_secret)\nprint(f\"Test signature valid: {is_valid}\")  # Should print True\n\n\n\n​\nWhat’s Next?\nLearn about webhook events and their payloads\nSet up webhook retries and monitoring\nExplore webhook management endpoints",
+    "scrollHeight": 5612,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

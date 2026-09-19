@@ -1,0 +1,108 @@
+---
+title: "Hermes Agent"
+sidebarTitle: "Hermes Agent"
+description: "Give Hermes Agent live web search and page contents with Exa."
+icon: "/docs/images/sidebar-icons/hermes-agent.svg"
+---
+
+[Hermes Agent](https://github.com/NousResearch/hermes-agent) includes Exa as a native backend for its model-callable `web_search` and `web_extract` tools. Use Exa for both capabilities, or pair it with another Hermes web provider.
+
+## Connect your Exa account
+
+<Steps>
+  <Step title="Get an Exa API key">
+    <Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Create a key in the dashboard. New accounts start with free credits.
+    </Card>
+  </Step>
+
+  <Step title="Select Exa in Hermes">
+    Run the tool setup wizard:
+
+    ```bash theme={null}
+    hermes tools
+    ```
+
+    Open **Web Search & Extract**, choose Exa, and select the API-key-backed option. When prompted, enter your Exa API key. Hermes stores secrets in `~/.hermes/.env` and provider selection in `~/.hermes/config.yaml`.
+  </Step>
+
+  <Step title="Test web access">
+    Start Hermes and ask it to search, then read one of the results:
+
+    ```text theme={null}
+    Search the web for the latest Exa product updates, then read the most relevant result.
+    ```
+
+    Hermes should call `web_search`, followed by `web_extract` when it needs the page itself.
+  </Step>
+</Steps>
+
+## Configure manually
+
+Add your key to the Hermes environment file:
+
+```bash ~/.hermes/.env theme={null}
+EXA_API_KEY=your-exa-api-key
+```
+
+Then select Exa for both web capabilities:
+
+```yaml ~/.hermes/config.yaml theme={null}
+web:
+  search_backend: "exa"
+  extract_backend: "exa"
+```
+
+You can use the shared fallback instead:
+
+```yaml ~/.hermes/config.yaml theme={null}
+web:
+  backend: "exa"
+```
+
+The per-capability settings take precedence over `web.backend`. This lets you use Exa only for search or only for extraction when combining providers.
+
+## Tools Hermes gets
+
+| Tool          | Exa behavior                                                                     |
+| ------------- | -------------------------------------------------------------------------------- |
+| `web_search`  | Searches with Exa and returns ranked pages with titles, URLs, and text snippets. |
+| `web_extract` | Retrieves readable content from one or more URLs through Exa Contents.           |
+
+Hermes truncates long extracted pages to its configured character budget and stores the complete text on disk. Change the default with `web.extract_char_limit`, or let the agent request a larger `char_limit` for an individual call.
+
+<Note>
+  Hermes can use Exa through its keyless free-provider pool without an API key. That pool is rate-limited and may rotate among providers. Configure `EXA_API_KEY` and select the API-key-backed Exa option when you need requests to use your Exa account consistently.
+</Note>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Hermes does not select Exa">
+    Run `hermes tools` and explicitly select Exa. If you configure files manually, check that `web.search_backend`, `web.extract_backend`, or `web.backend` is set to `exa`.
+  </Accordion>
+
+  <Accordion title="Hermes reports that EXA_API_KEY is missing">
+    Add the key to `~/.hermes/.env`, then restart Hermes so it reloads the environment.
+  </Accordion>
+
+  <Accordion title="Search works but extraction uses another provider">
+    Hermes can configure search and extraction independently. Set both `web.search_backend` and `web.extract_backend` to `exa`.
+  </Accordion>
+</AccordionGroup>
+
+## Resources
+
+<Columns cols={3}>
+  <Card title="Hermes web tools" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Read guide" arrow="true">
+    Review Hermes provider selection, caching, and extraction behavior.
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/docs/search/quickstart" cta="Read guide" arrow="true">
+    Learn how Exa searches, filters, and returns page contents.
+  </Card>
+
+  <Card title="Exa Contents" icon="file-text" href="/docs/contents/quickstart" cta="Read guide" arrow="true">
+    Understand the extraction API behind `web_extract`.
+  </Card>
+</Columns>

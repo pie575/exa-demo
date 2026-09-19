@@ -1,0 +1,105 @@
+{
+  "theme": "aspen",
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Exa",
+  "colors": {
+    "primary": "#1840ED",
+    "light": "#5F7CFF",
+    "dark": "#2751F6"
+  },
+  "logo": {
+    "light": "https://mintcdn.com/exa-52/rjfwhV9stZF3dXkq/logo/light.svg?fit=max&auto=format&n=rjfwhV9stZF3dXkq&q=85&s=23f6eeaafae25b4c8b6efb60ddc68e0c",
+    "dark": "https://mintcdn.com/exa-52/rjfwhV9stZF3dXkq/logo/dark.svg?fit=max&auto=format&n=rjfwhV9stZF3dXkq&q=85&s=977afb715a77c49036c8991b22bb82c7",
+    "href": "https://exa.ai/docs/search/quickstart"
+  },
+  "favicon": "https://mintcdn.com/exa-52/rjfwhV9stZF3dXkq/images/favicon-32x32.png?fit=max&auto=format&n=rjfwhV9stZF3dXkq&q=85&s=469bcaa3f02ba2672ac0dca63321dcb0",
+  "api": {
+    "playground": {
+      "proxy": false
+    },
+    "examples": {
+      "languages": [
+        "python",
+        "javascript",
+        "bash"
+      ]
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "href": "https://exa.ai/blog",
+        "label": "Blog"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "API Dashboard",
+      "href": "https://dashboard.exa.ai/login?redirect=/"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/exaailabs",
+      "linkedin": "https://www.linkedin.com/company/exa-ai"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://exa.ai/docs",
+      "og:type": "website",
+      "og:site_name": "Exa Docs"
+    },
+    "organization": {
+      "id": "https://exa.ai/#organization",
+      "name": "Exa",
+      "legalName": "Exa Labs Inc.",
+      "url": "https://exa.ai",
+      "logo": "https://exa.imgix.net/logo_cream.png",
+      "sameAs": [
+        "https://x.com/exaailabs",
+        "https://www.linkedin.com/company/exa-ai/",
+        "https://github.com/exa-labs"
+      ]
+    },
+    "indexing": "navigable"
+  },
+  "fonts": {
+    "heading": {
+      "family": "ABCDiatype",
+      "weight": 700,
+      "source": "https://exa.ai/fonts/ABCDiatype-Bold.woff2",
+      "format": "woff2"
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "errors": {
+    "404": {
+      "redirect": false,
+      "title": "Page not found",
+      "description": "This URL does not exist. The index of every docs page is at [https://exa.ai/docs/llms.txt](https://exa.ai/docs/llms.txt) and the full documentation in one file is at [https://exa.ai/docs/llms-full.txt](https://exa.ai/docs/llms-full.txt). Append `.md` to any docs URL to get the page as Markdown."
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view"
+    ],
+    "display": "header"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "styling": {
+    "latex": false,
+    "codeblocks": "system"
+  },
+  "navigation": {
+    "global": {
+      "anchors": []
+    },
+    "pages": []
+  }
+}

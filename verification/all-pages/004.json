@@ -1,0 +1,101 @@
+{
+  "id": "004",
+  "path": "/docs/admin/mcp-enterprise-managed-auth",
+  "production": {
+    "url": "https://exa.ai/docs/admin/mcp-enterprise-managed-auth",
+    "title": "Enterprise Managed Auth for Claude - Exa",
+    "h1": "Enterprise Managed Auth for Claude",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 150
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 540,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3355.734375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "By default, every member connects the Exa connector in Claude by signing in to Exa once through OAuth. With Enterprise Managed Auth (EMA) they get it silently through Okta instead: no Exa login screen, no consent prompt, no API keys handed around.\nAccess follows your directory: deprovision someone in Okta and their Exa access through Claude stops with it. EMA is the MCP enterprise managed authorization extension.\n​\nBefore you start\nA Claude Team or Enterprise organization with your identity provider connected, and admin access to it.\nAn Exa organization (not a personal team) with SSO and directory sync, and admin access to it.\nOkta as your identity provider, on Okta Identity Engine with Cross App Access (XAA) enabled, and Super Admin access to the tenant. Okta is the only identity provider supported today.\n​\nExa values you’ll need\nField\tValue\nIssuer URL (Exa’s authorization server)\thttps://auth.exa.ai\nResource / MCP server URL\thttps://mcp.exa.ai/mcp\nScope\tmcp:tools\n​\nSet up EMA\n1\n\nProvision your members in Exa\n\nEvery member who will use the connector must already exist in Exa and belong to a team in your Exa organization, with the same email address Okta asserts, on a domain verified on your organization. EMA never creates accounts. Use directory sync, or invite them to the team.\n2\n\nRegister your identity provider in Exa\n\nIn the Exa dashboard, open Organization, find Enterprise-managed auth (Claude MCP), and click Register identity provider. Paste your Okta SSO / app embed URL (https://your-org.okta.com/app/.../sso/saml). Exa validates the URL when you register it.\nThe registration stays Pending verification until the first provisioned member successfully connects Claude through Okta, then flips to Active on its own. There is nothing else to click. Issuers that Exa set up for you show as Managed by Exa; contact support to change those. If Exa doesn’t recognize your URL, contact support@exa.ai.\n3\n\nConfigure Cross App Access in Okta\n\nFollow Okta’s Cross App Access guide for Claude EMA. For Exa:\nOpen the Exa application in the Okta Admin Console, go to Resource Server, enable XAA, and set the Resource URL and Issuer URL to https://auth.exa.ai. Leave Audience/tenant ID empty.\nIf the Exa app is a custom SAML app, confirm its Name ID Format is EmailAddress, since Exa matches the asserted email to the member’s Exa account.\nRegister the Claude AI Agent under Directory → AI Agents, add its public key from Anthropic, add the Claude app as a delegated caller, and add Exa as a Resource Connection using the Client ID Anthropic gives you.\n4\n\nTurn on managed authorization in Claude\n\nIn Claude, go to Organization settings → Connectors, select the Exa connector, and on the Configuration tab click Set up next to Managed authorization. Confirm the IdP connection, run the test, choose the roles that inherit the connector, and save. See Anthropic’s admin guide for the role and scope options.\nMembers get the connector the next time they sign in. You can leave browser sign-in enabled alongside managed authorization; Claude tries managed authorization first and falls back to the normal OAuth login if it fails.\nUsage through Claude bills to the member’s Exa team, under that team’s plan and rate limits, the same as anything else they run on the team.\n​\nRevoking access\nOne member: remove them in Okta, or from their team in Exa. Either one ends their access through Claude.\nEveryone: remove the issuer on the Organization page, or turn managed authorization off in Claude. New connections stop immediately and sessions already open end shortly after. You can register the issuer again at any time.\n​\nTroubleshooting\n\nIt works for some members but not others\n\nNothing works for anyone\n\nRegistration says the identity provider is already registered\n\nFor anything else, contact support@exa.ai with your Exa organization name, the affected member’s email, and roughly when the attempt happened.",
+    "scrollHeight": 3452,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/mcp-enterprise-managed-auth",
+    "title": "Enterprise Managed Auth for Claude - Exa",
+    "h1": "Enterprise Managed Auth for Claude",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 150
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 540,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3355.734375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "By default, every member connects the Exa connector in Claude by signing in to Exa once through OAuth. With Enterprise Managed Auth (EMA) they get it silently through Okta instead: no Exa login screen, no consent prompt, no API keys handed around.\nAccess follows your directory: deprovision someone in Okta and their Exa access through Claude stops with it. EMA is the MCP enterprise managed authorization extension.\n​\nBefore you start\nA Claude Team or Enterprise organization with your identity provider connected, and admin access to it.\nAn Exa organization (not a personal team) with SSO and directory sync, and admin access to it.\nOkta as your identity provider, on Okta Identity Engine with Cross App Access (XAA) enabled, and Super Admin access to the tenant. Okta is the only identity provider supported today.\n​\nExa values you’ll need\nField\tValue\nIssuer URL (Exa’s authorization server)\thttps://auth.exa.ai\nResource / MCP server URL\thttps://mcp.exa.ai/mcp\nScope\tmcp:tools\n​\nSet up EMA\n1\n\nProvision your members in Exa\n\nEvery member who will use the connector must already exist in Exa and belong to a team in your Exa organization, with the same email address Okta asserts, on a domain verified on your organization. EMA never creates accounts. Use directory sync, or invite them to the team.\n2\n\nRegister your identity provider in Exa\n\nIn the Exa dashboard, open Organization, find Enterprise-managed auth (Claude MCP), and click Register identity provider. Paste your Okta SSO / app embed URL (https://your-org.okta.com/app/.../sso/saml). Exa validates the URL when you register it.\nThe registration stays Pending verification until the first provisioned member successfully connects Claude through Okta, then flips to Active on its own. There is nothing else to click. Issuers that Exa set up for you show as Managed by Exa; contact support to change those. If Exa doesn’t recognize your URL, contact support@exa.ai.\n3\n\nConfigure Cross App Access in Okta\n\nFollow Okta’s Cross App Access guide for Claude EMA. For Exa:\nOpen the Exa application in the Okta Admin Console, go to Resource Server, enable XAA, and set the Resource URL and Issuer URL to https://auth.exa.ai. Leave Audience/tenant ID empty.\nIf the Exa app is a custom SAML app, confirm its Name ID Format is EmailAddress, since Exa matches the asserted email to the member’s Exa account.\nRegister the Claude AI Agent under Directory → AI Agents, add its public key from Anthropic, add the Claude app as a delegated caller, and add Exa as a Resource Connection using the Client ID Anthropic gives you.\n4\n\nTurn on managed authorization in Claude\n\nIn Claude, go to Organization settings → Connectors, select the Exa connector, and on the Configuration tab click Set up next to Managed authorization. Confirm the IdP connection, run the test, choose the roles that inherit the connector, and save. See Anthropic’s admin guide for the role and scope options.\nMembers get the connector the next time they sign in. You can leave browser sign-in enabled alongside managed authorization; Claude tries managed authorization first and falls back to the normal OAuth login if it fails.\nUsage through Claude bills to the member’s Exa team, under that team’s plan and rate limits, the same as anything else they run on the team.\n​\nRevoking access\nOne member: remove them in Okta, or from their team in Exa. Either one ends their access through Claude.\nEveryone: remove the issuer on the Organization page, or turn managed authorization off in Claude. New connections stop immediately and sessions already open end shortly after. You can register the issuer again at any time.\n​\nTroubleshooting\n\nIt works for some members but not others\n\nNothing works for anyone\n\nRegistration says the identity provider is already registered\n\nFor anything else, contact support@exa.ai with your Exa organization name, the affected member’s email, and roughly when the attempt happened.",
+    "scrollHeight": 3452,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

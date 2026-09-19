@@ -1,0 +1,91 @@
+{
+  "id": "152",
+  "path": "/docs/websets/api/websets/searches/get-a-search",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/websets/searches/get-a-search",
+    "title": "Get a search - Exa",
+    "h1": "Get a search",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 192.890625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 4388.75
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 4485,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/websets/searches/get-a-search",
+    "title": "Get a search - Exa",
+    "h1": "Get a search",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 192.890625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 4388.75
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 4485,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

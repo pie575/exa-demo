@@ -1,0 +1,103 @@
+{
+  "id": "015",
+  "path": "/docs/agent/connect/baselayer",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/baselayer",
+    "title": "Baselayer - Exa",
+    "h1": "Baselayer",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 151.09375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3664.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Baselayer is a Know Your Business (KYB) platform that verifies US entities against authoritative registration and risk data. It resolves a business by name and address and returns the full profile: officers, state registrations, entity structure, and verification status.\nAttach baselayer to an Exa Agent run through Exa Connect, and the agent queries Baselayer alongside Exa web search.\n​\nUse it for\nKYB onboarding and vendor/customer verification.\nDue diligence on officers, registrations, and entity structure.\nScreening businesses for risk and watchlist hits.\n​\nProvider ID\nUse this value in dataSources:\nbaselayer\n\n​\nPricing\nBaselayer bills per order, and the rate depends on the operation and its parameters:\nOperation\tPrice\nBusiness search\t$1.00 / search\nBusiness lookup / officers / registrations / officer reverse lookup\tFree (reads of a prior search)\nLien search\t$2.00 / state searched\nLitigation search\t$1.00 / category (litigation, bankruptcy)\nWatchlist screen\t$0.10 – $0.25 / list requested\nIndustry classification\t$0.35 / call\nWebsite analysis\t$0.35 / call\nWeb presence\t$0.15 – $0.35 / selected analysis\nInternational business search\t$4.00 / search\nParameter choices change the price: a lien search across two states costs $4.00, a watchlist screen of all six supported lists costs $1.35, and a web presence call is the sum of the analyses you select (or of Baselayer’s default set — NAICS prediction and website analysis — when you select none).\n​\nExample\nVerify a business and retrieve its officer and registration details.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.\",\n    data_sources=[{\"provider\": \"baselayer\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"business\"],\n        \"properties\": {\n            \"business\": {\n                \"type\": \"object\",\n                \"required\": [\"name\", \"verified\", \"incorporationState\", \"officers\"],\n                \"properties\": {\n                    \"name\": {\"type\": \"string\"},\n                    \"verified\": {\"type\": \"boolean\"},\n                    \"incorporationState\": {\"type\": \"string\"},\n                    \"officers\": {\n                        \"type\": \"array\",\n                        \"items\": {\n                            \"type\": \"object\",\n                            \"required\": [\"name\", \"title\"],\n                            \"properties\": {\n                                \"name\": {\"type\": \"string\"},\n                                \"title\": {\"type\": \"string\"},\n                            },\n                        },\n                    },\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nFiber.ai: enrich a verified business with firmographics, headcount, and contacts.\nFinancial Datasets: add recent news coverage for public entities.\nSimilarweb: benchmark a verified company’s web traffic and competitors.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 3761,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/baselayer",
+    "title": "Baselayer - Exa",
+    "h1": "Baselayer",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 151.09375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3664.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Baselayer is a Know Your Business (KYB) platform that verifies US entities against authoritative registration and risk data. It resolves a business by name and address and returns the full profile: officers, state registrations, entity structure, and verification status.\nAttach baselayer to an Exa Agent run through Exa Connect, and the agent queries Baselayer alongside Exa web search.\n​\nUse it for\nKYB onboarding and vendor/customer verification.\nDue diligence on officers, registrations, and entity structure.\nScreening businesses for risk and watchlist hits.\n​\nProvider ID\nUse this value in dataSources:\nbaselayer\n\n​\nPricing\nBaselayer bills per order, and the rate depends on the operation and its parameters:\nOperation\tPrice\nBusiness search\t$1.00 / search\nBusiness lookup / officers / registrations / officer reverse lookup\tFree (reads of a prior search)\nLien search\t$2.00 / state searched\nLitigation search\t$1.00 / category (litigation, bankruptcy)\nWatchlist screen\t$0.10 – $0.25 / list requested\nIndustry classification\t$0.35 / call\nWebsite analysis\t$0.35 / call\nWeb presence\t$0.15 – $0.35 / selected analysis\nInternational business search\t$4.00 / search\nParameter choices change the price: a lien search across two states costs $4.00, a watchlist screen of all six supported lists costs $1.35, and a web presence call is the sum of the analyses you select (or of Baselayer’s default set — NAICS prediction and website analysis — when you select none).\n​\nExample\nVerify a business and retrieve its officer and registration details.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.\",\n    data_sources=[{\"provider\": \"baselayer\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"business\"],\n        \"properties\": {\n            \"business\": {\n                \"type\": \"object\",\n                \"required\": [\"name\", \"verified\", \"incorporationState\", \"officers\"],\n                \"properties\": {\n                    \"name\": {\"type\": \"string\"},\n                    \"verified\": {\"type\": \"boolean\"},\n                    \"incorporationState\": {\"type\": \"string\"},\n                    \"officers\": {\n                        \"type\": \"array\",\n                        \"items\": {\n                            \"type\": \"object\",\n                            \"required\": [\"name\", \"title\"],\n                            \"properties\": {\n                                \"name\": {\"type\": \"string\"},\n                                \"title\": {\"type\": \"string\"},\n                            },\n                        },\n                    },\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nFiber.ai: enrich a verified business with firmographics, headcount, and contacts.\nFinancial Datasets: add recent news coverage for public entities.\nSimilarweb: benchmark a verified company’s web traffic and competitors.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 3761,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

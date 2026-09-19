@@ -1,0 +1,91 @@
+{
+  "id": "134",
+  "path": "/docs/websets/api/webhooks/update-a-webhook",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/webhooks/update-a-webhook",
+    "title": "Update a webhook - Exa",
+    "h1": "Update a webhook",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 288.9375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 3255.625
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3352,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/webhooks/update-a-webhook",
+    "title": "Update a webhook - Exa",
+    "h1": "Update a webhook",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 288.9375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 3255.625
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3352,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

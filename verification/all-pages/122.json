@@ -1,0 +1,91 @@
+{
+  "id": "122",
+  "path": "/docs/websets/api/monitors/delete-monitor",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/monitors/delete-monitor",
+    "title": "Delete a Websets monitor - Exa",
+    "h1": "Delete a Websets monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 122
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 396,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2646.484375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2742,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/monitors/delete-monitor",
+    "title": "Delete a Websets monitor - Exa",
+    "h1": "Delete a Websets monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 122
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 396,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2646.484375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2742,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

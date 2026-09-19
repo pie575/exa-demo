@@ -1,0 +1,103 @@
+{
+  "id": "044",
+  "path": "/docs/integrations/gumloop",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/gumloop",
+    "title": "Gumloop - Exa",
+    "h1": "Gumloop",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 141.671875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3475.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Gumloop includes Exa as a built-in MCP integration. Add it to an agent or Agent Node to search the web, extract pages, find related sources, and produce citation-backed answers inside a workflow.\n​\nAdd Exa to a Gumloop agent\n1\n\nOpen the agent\n\nOpen your agent’s configuration, then select Add tools → Connect an app with MCP.\n2\n\nConnect Exa\n\nSearch for Exa, select the integration, and complete the authentication flow.\n3\n\nChoose the tools\n\nOpen the connected Exa integration and enable only the tools the agent needs. This makes tool selection clearer and prevents the agent from calling unrelated actions.\n4\n\nTest the connection\n\nAsk the agent:\nFind five recent articles about AI regulation and summarize the key changes with source links.\n\nReview the run to confirm that the agent called Exa and returned cited sources.\n​\nAvailable tools\nTool\tUse it for\nSearch\tFind relevant pages with neural or keyword search.\nGet Contents\tExtract full text, summaries, and metadata from known URLs.\nFind Similar\tDiscover pages related to a source URL.\nAnswer\tGenerate a grounded answer with citations.\nCreate Research Task\tStart longer-running research.\nGet Research Task\tRetrieve a research task’s status and result.\nFor a conversational agent, enable Search, Get Contents, and Answer first. Add the remaining tools only when the workflow requires them.\n​\nUse Exa in a workflow\n​\nAgent Node\nAdd an Agent Node to a deterministic Gumloop flow and attach Exa as one of its tools. The node can decide whether to search, retrieve complete pages, or chain several Exa calls before passing its output to the next workflow step.\nThis works well for:\nenriching CRM or spreadsheet rows with current web evidence\nmonitoring news and sending a sourced summary to Slack or email\nresearching companies before routing records to a sales workflow\ncomparing products and writing the result to a document\n​\nReusable custom MCP node\nFor a single repeatable action, create a dedicated node:\nOpen the node library and find Exa.\nSelect Create a node with AI.\nDescribe one action, such as Search for funding announcements from the past seven days.\nTest the generated node, verify its inputs and outputs, then save it.\nUse an Agent Node when the task requires dynamic planning or multiple tools. Use a custom MCP node when the same Exa operation should run predictably on every item.\n​\nPrompt patterns\n\nSearch and summarize\n\nEnrich a company\n\nRead a known page\n\n​\nTroubleshooting\n\nExa is not available to the agent\n\nThe agent chooses the wrong action\n\nA workflow needs a predictable single call\n\n​\nResources\nGumloop Exa integration\nReview Gumloop’s current tools and Agent Node workflow.\nRead guide\nExa MCP server\nUnderstand the Exa tools exposed through MCP.\nRead guide\nExa Search\nLearn how to shape search queries and returned contents.\nRead guide",
+    "scrollHeight": 3572,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/gumloop",
+    "title": "Gumloop - Exa",
+    "h1": "Gumloop",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 141.671875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3475.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Gumloop includes Exa as a built-in MCP integration. Add it to an agent or Agent Node to search the web, extract pages, find related sources, and produce citation-backed answers inside a workflow.\n​\nAdd Exa to a Gumloop agent\n1\n\nOpen the agent\n\nOpen your agent’s configuration, then select Add tools → Connect an app with MCP.\n2\n\nConnect Exa\n\nSearch for Exa, select the integration, and complete the authentication flow.\n3\n\nChoose the tools\n\nOpen the connected Exa integration and enable only the tools the agent needs. This makes tool selection clearer and prevents the agent from calling unrelated actions.\n4\n\nTest the connection\n\nAsk the agent:\nFind five recent articles about AI regulation and summarize the key changes with source links.\n\nReview the run to confirm that the agent called Exa and returned cited sources.\n​\nAvailable tools\nTool\tUse it for\nSearch\tFind relevant pages with neural or keyword search.\nGet Contents\tExtract full text, summaries, and metadata from known URLs.\nFind Similar\tDiscover pages related to a source URL.\nAnswer\tGenerate a grounded answer with citations.\nCreate Research Task\tStart longer-running research.\nGet Research Task\tRetrieve a research task’s status and result.\nFor a conversational agent, enable Search, Get Contents, and Answer first. Add the remaining tools only when the workflow requires them.\n​\nUse Exa in a workflow\n​\nAgent Node\nAdd an Agent Node to a deterministic Gumloop flow and attach Exa as one of its tools. The node can decide whether to search, retrieve complete pages, or chain several Exa calls before passing its output to the next workflow step.\nThis works well for:\nenriching CRM or spreadsheet rows with current web evidence\nmonitoring news and sending a sourced summary to Slack or email\nresearching companies before routing records to a sales workflow\ncomparing products and writing the result to a document\n​\nReusable custom MCP node\nFor a single repeatable action, create a dedicated node:\nOpen the node library and find Exa.\nSelect Create a node with AI.\nDescribe one action, such as Search for funding announcements from the past seven days.\nTest the generated node, verify its inputs and outputs, then save it.\nUse an Agent Node when the task requires dynamic planning or multiple tools. Use a custom MCP node when the same Exa operation should run predictably on every item.\n​\nPrompt patterns\n\nSearch and summarize\n\nEnrich a company\n\nRead a known page\n\n​\nTroubleshooting\n\nExa is not available to the agent\n\nThe agent chooses the wrong action\n\nA workflow needs a predictable single call\n\n​\nResources\nGumloop Exa integration\nReview Gumloop’s current tools and Agent Node workflow.\nRead guide\nExa MCP server\nUnderstand the Exa tools exposed through MCP.\nRead guide\nExa Search\nLearn how to shape search queries and returned contents.\nRead guide",
+    "scrollHeight": 3572,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

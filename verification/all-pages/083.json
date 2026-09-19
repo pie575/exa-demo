@@ -1,0 +1,91 @@
+{
+  "id": "083",
+  "path": "/docs/reference/monitors/create-a-monitor",
+  "production": {
+    "url": "https://exa.ai/docs/reference/monitors/create-a-monitor",
+    "title": "Create a monitor - Exa",
+    "h1": "Create a monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 392.65625
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 257.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 4617.359375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 4713,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/reference/monitors/create-a-monitor",
+    "title": "Create a monitor - Exa",
+    "h1": "Create a monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 392.65625
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 257.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 4617.359375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 4713,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

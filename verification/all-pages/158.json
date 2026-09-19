@@ -1,0 +1,101 @@
+{
+  "id": "158",
+  "path": "/docs/websets/quickstart",
+  "production": {
+    "url": "https://exa.ai/docs/websets/quickstart",
+    "title": "Websets - Exa",
+    "h1": "Websets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 140.015625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3072.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\nWhat Are Websets?\nA Webset starts with a natural-language query and a target item count. Add criteria that every result must satisfy and enrichment fields to populate for each accepted item. Results arrive asynchronously through the dashboard, API, or webhooks.\nYou can also build websets visually in the Dashboard, no code required.\nStarting a new list-building or enrichment workflow? Use Exa Agent. Use this guide to maintain or extend an existing Websets integration. The Websets API requires a paid Websets plan; Search API credits and Websets credits are separate.\n​\nHow It Works\nDefine a search: Provide a natural-language query, a result count, and optional verification criteria and enrichments.\nSearch and verify: Websets finds candidates and checks each one against your criteria. Only matching results become items.\nRun enrichments: For each verified item, Websets searches for the additional data you requested, such as a CEO name, funding amount, or contact information.\nReceive results: Poll for status, use webhooks for updates, or check the dashboard as items arrive.\n​\nKey Capabilities\nFeature\tWhat It Does\nCriteria verification\tEach result is checked against rules you define, so you only get relevant matches\nEnrichments\tExtract specific data points (text, numbers, dates, booleans) for every result\nMonitors\tSchedule recurring searches to keep your webset updated automatically\nWebhooks\tGet real-time HTTP callbacks as items are added or enriched\nImports\tBring your own URLs and run enrichments on them\n​\nHuman Quickstart\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nInstall the SDK:\nPython\nJavaScript\npip install exa-py\n\nThen make your first request:\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\nfrom exa_py.websets.types import CreateWebsetParameters, CreateEnrichmentParameters\nimport os\n\nexa = Exa(api_key=os.getenv(\"EXA_API_KEY\"))\n\nwebset = exa.websets.create(\n    params=CreateWebsetParameters(\n        search={\n            \"query\": \"Top AI research labs focusing on large language models\",\n            \"count\": 5\n        },\n        enrichments=[\n            CreateEnrichmentParameters(\n                description=\"LinkedIn profile of VP of Engineering or related role\",\n                format=\"text\",\n            ),\n        ],\n    )\n)\n\nprint(f\"Webset created with ID: {webset.id}\")\nprint(f\"View your Webset at: {webset.dashboard_url}\")\n\n# Wait until Webset completes processing\nwebset = exa.websets.wait_until_idle(webset.id)\n\n# Retrieve Webset Items\nitems = exa.websets.items.list(webset_id=webset.id)\nfor item in items.data:\n    print(f\"Item: {item.model_dump_json(indent=2)}\")\n\nSee Zero Data Retention for product availability.\n​\nNext\nDashboard Guide - Step-by-step guide to using Websets in the dashboard\nHow It Works - Deep dive into the event-driven architecture\nWebsets API Reference - Full API reference for all endpoints",
+    "scrollHeight": 3169,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/quickstart",
+    "title": "Websets - Exa",
+    "h1": "Websets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 140.015625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3072.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\nWhat Are Websets?\nA Webset starts with a natural-language query and a target item count. Add criteria that every result must satisfy and enrichment fields to populate for each accepted item. Results arrive asynchronously through the dashboard, API, or webhooks.\nYou can also build websets visually in the Dashboard, no code required.\nStarting a new list-building or enrichment workflow? Use Exa Agent. Use this guide to maintain or extend an existing Websets integration. The Websets API requires a paid Websets plan; Search API credits and Websets credits are separate.\n​\nHow It Works\nDefine a search: Provide a natural-language query, a result count, and optional verification criteria and enrichments.\nSearch and verify: Websets finds candidates and checks each one against your criteria. Only matching results become items.\nRun enrichments: For each verified item, Websets searches for the additional data you requested, such as a CEO name, funding amount, or contact information.\nReceive results: Poll for status, use webhooks for updates, or check the dashboard as items arrive.\n​\nKey Capabilities\nFeature\tWhat It Does\nCriteria verification\tEach result is checked against rules you define, so you only get relevant matches\nEnrichments\tExtract specific data points (text, numbers, dates, booleans) for every result\nMonitors\tSchedule recurring searches to keep your webset updated automatically\nWebhooks\tGet real-time HTTP callbacks as items are added or enriched\nImports\tBring your own URLs and run enrichments on them\n​\nHuman Quickstart\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nInstall the SDK:\nPython\nJavaScript\npip install exa-py\n\nThen make your first request:\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\nfrom exa_py.websets.types import CreateWebsetParameters, CreateEnrichmentParameters\nimport os\n\nexa = Exa(api_key=os.getenv(\"EXA_API_KEY\"))\n\nwebset = exa.websets.create(\n    params=CreateWebsetParameters(\n        search={\n            \"query\": \"Top AI research labs focusing on large language models\",\n            \"count\": 5\n        },\n        enrichments=[\n            CreateEnrichmentParameters(\n                description=\"LinkedIn profile of VP of Engineering or related role\",\n                format=\"text\",\n            ),\n        ],\n    )\n)\n\nprint(f\"Webset created with ID: {webset.id}\")\nprint(f\"View your Webset at: {webset.dashboard_url}\")\n\n# Wait until Webset completes processing\nwebset = exa.websets.wait_until_idle(webset.id)\n\n# Retrieve Webset Items\nitems = exa.websets.items.list(webset_id=webset.id)\nfor item in items.data:\n    print(f\"Item: {item.model_dump_json(indent=2)}\")\n\nSee Zero Data Retention for product availability.\n​\nNext\nDashboard Guide - Step-by-step guide to using Websets in the dashboard\nHow It Works - Deep dive into the event-driven architecture\nWebsets API Reference - Full API reference for all endpoints",
+    "scrollHeight": 3169,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

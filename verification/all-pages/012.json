@@ -1,0 +1,103 @@
+{
+  "id": "012",
+  "path": "/docs/agent/best-practices",
+  "production": {
+    "url": "https://exa.ai/docs/agent/best-practices",
+    "title": "Agent Best Practices - Exa",
+    "h1": "Agent Best Practices",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 327.03125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5400.890625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 308
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use this guide after the Exa Agent quickstart to improve query quality, structure outputs, and control runtime and cost. For complete requests, start with Agent examples.\n​\nCore principles\nTreat query as a task specification. Name what Agent should find, the scope of the work, the evidence required, and what a complete result looks like.\nPython\nJavaScript\ncURL\nrun = exa.agent.runs.create(\n    query=\"Find up to 10 current engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months. Include only people whose current role and company funding can be verified from public sources.\",\n)\n\nWithout an outputSchema, Agent returns prose in output.text and citations in output.grounding. Add another field only when it has a clear job:\nField\tUse it when\noutputSchema\tDownstream code needs structured fields\ninput.data\tYou already have rows to enrich\ninput.exclusion\tKnown records should not be returned\ndataSources\tA field should come from an Exa Connect partner\npreviousRunId\tThe request continues a completed run\neffort\tCost or research depth needs an explicit setting\nbudget.maxCostDollars\tAn auto or max run needs a hard cost ceiling\nKeep rows, exclusions, and response shape in their dedicated fields rather than embedding them in query.\n​\nWriting list-building and enrichment queries\nFor list building, define the entity, target count, qualification criteria, exclusions, and evidence bar. For enrichment, put the existing records in input.data and describe only the research Agent should add.\nAsk for a rationale when qualification requires judgment. Give examples only when a criterion has multiple plausible interpretations.\nQuery\nFind up to 20 current engineering leaders at US-based AI infrastructure companies\nthat announced a Series A or B between March 1 and August 31, 2026.\n\nInclude CTOs, VPs of Engineering, and Heads of Engineering. Exclude founders without\nan operating engineering role and anyone whose current employment cannot be verified.\nFor each person, return their name, current title, company, company website, funding\nannouncement date, and a short explanation of why they qualify. Verify employment on\nthe company website or another current source, and verify funding from the company\nannouncement or a reputable business publication.\n\nSee Find all GTM members for a discovery request and Enrich input rows for the corresponding row-enrichment pattern.\n​\nHandle asynchronous runs\nAgent runs can take seconds to minutes while they search, read, and reason. Build around the lifecycle instead of holding an application request open.\n1\n\nCreate and persist\n\nCreate the run and save its returned id with your request metadata. The create response is not the final result.\n2\n\nWait for a terminal state\n\nUse an SDK polling helper, poll GET /agent/runs/{id}, or consume the SSE stream. Continue while the run is queued or running.\n3\n\nStore the result\n\nStop waiting at completed, failed, or cancelled, then persist the terminal response and grounding.\nPersisting the run ID lets your application recover after a restart, reconnect to a stream, and inspect failures. Keep latency down by narrowing the scope, limiting result count, keeping the schema focused, and choosing minimal or low when speed matters more than completeness.\nFor batches, benchmark representative tasks before estimating concurrency or putting Agent on a synchronous UI path. Runtime varies with item count, schema complexity, source availability, and effort.\nFor Zero Data Retention teams, consume the live stream or poll within the retention window. previousRunId and Connect dataSources are not available. See Zero Data Retention.\n​\nWrite custom JSON schemas for structured output\nUse outputSchema when downstream code needs machine-readable fields, normalized values, table rows, or enrichment records. If a prose answer is enough, omit it and read output.text; structured output adds formatting work and can increase latency.\nKeep research instructions in query and response shape in outputSchema. Use clear property names and descriptions, choose the narrowest useful types, and bound arrays with maxItems.\nOutput schema\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"people\": {\n      \"type\": \"array\",\n      \"maxItems\": 10,\n      \"description\": \"Current engineering leaders who satisfy every criterion in the query.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\",\n            \"description\": \"The person's full name.\"\n          },\n          \"job_title\": {\n            \"type\": \"string\",\n            \"description\": \"Their current title at the qualifying company.\"\n          },\n          \"company\": {\n            \"type\": \"string\",\n            \"description\": \"The qualifying company's canonical name.\"\n          },\n          \"qualification_rationale\": {\n            \"type\": \"string\",\n            \"description\": \"A concise explanation of how the person satisfies the query criteria.\"\n          }\n        },\n        \"required\": [\"name\", \"job_title\", \"company\", \"qualification_rationale\"]\n      }\n    }\n  },\n  \"required\": [\"people\"]\n}\n\nSee all 33 lines\nSchema adherence validates shape, not facts. Agent may return null when evidence does not support a field, even if the submitted schema marks it as required or non-nullable. stopReason: schema_satisfied means Agent considers the expected shape complete with those nulls allowed; it does not guarantee strict validation against the submitted schema.\nDo not duplicate Exa’s built-in citations or confidence in your schema. Add a rationale field only when each item should explain why it qualifies, and persist output.grounding with the structured result. Verify important claims against their sources and test schema changes on representative inputs before shipping.\nBrowse the structured Agent examples to compare schemas for list building, KYB, job postings, exclusions, and continued runs.\n​\nAgent vs Search\nNeed\tStart with\nWeb results for your LLM\tSearch\nFast research and synthesis\tDeep Search\nAsync list building, multi-hop research, or enrichment\tAgent\nUse Agent when the work requires several retrieval steps, per-entity verification, or enrichment over known records. Use Search when you need pages quickly and your application will perform the remaining reasoning.\n​\nTips for common use cases\nIf you need\tUse\tAvoid\nA researched list of unknown size\tauto and a bounded outputSchema\tA fixed cheap effort and an unbounded array\nEnrichment of records you already have\tinput.data plus fields to add\tPasting the table into query\nA follow-up over the last result set\tpreviousRunId\tRe-sending the full previous output\nRecords that should not appear again\tinput.exclusion plus downstream deduplication\tTreating exclusions as a strict identity guarantee\nPremium provider data\tExa Connect with dataSources\tAsking Agent to infer provider-only fields from the open web\nPredictable per-request cost\tA fixed effort\tauto or max without a budget\nCompleteness over latency & cost\txhigh or max\tRaising effort before tightening the query\n​\nNext steps\nAgent quickstart\nCreate a run, stream events, set effort, and read structured output.\nOpen guide\nAgent examples\nCopy complete list-building, enrichment, KYB, exclusion, and follow-up requests.\nBrowse examples\nExa Connect\nAdd premium company, people, traffic, compliance, finance, and other provider data.\nBrowse data partners\nSearch best practices\nRetrieval quality, latency, and synthesis when Search is enough.\nRead guide",
+    "scrollHeight": 5497,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/best-practices",
+    "title": "Agent Best Practices - Exa",
+    "h1": "Agent Best Practices",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 327.03125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5400.890625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 308
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use this guide after the Exa Agent quickstart to improve query quality, structure outputs, and control runtime and cost. For complete requests, start with Agent examples.\n​\nCore principles\nTreat query as a task specification. Name what Agent should find, the scope of the work, the evidence required, and what a complete result looks like.\nPython\nJavaScript\ncURL\nrun = exa.agent.runs.create(\n    query=\"Find up to 10 current engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months. Include only people whose current role and company funding can be verified from public sources.\",\n)\n\nWithout an outputSchema, Agent returns prose in output.text and citations in output.grounding. Add another field only when it has a clear job:\nField\tUse it when\noutputSchema\tDownstream code needs structured fields\ninput.data\tYou already have rows to enrich\ninput.exclusion\tKnown records should not be returned\ndataSources\tA field should come from an Exa Connect partner\npreviousRunId\tThe request continues a completed run\neffort\tCost or research depth needs an explicit setting\nbudget.maxCostDollars\tAn auto or max run needs a hard cost ceiling\nKeep rows, exclusions, and response shape in their dedicated fields rather than embedding them in query.\n​\nWriting list-building and enrichment queries\nFor list building, define the entity, target count, qualification criteria, exclusions, and evidence bar. For enrichment, put the existing records in input.data and describe only the research Agent should add.\nAsk for a rationale when qualification requires judgment. Give examples only when a criterion has multiple plausible interpretations.\nQuery\nFind up to 20 current engineering leaders at US-based AI infrastructure companies\nthat announced a Series A or B between March 1 and August 31, 2026.\n\nInclude CTOs, VPs of Engineering, and Heads of Engineering. Exclude founders without\nan operating engineering role and anyone whose current employment cannot be verified.\nFor each person, return their name, current title, company, company website, funding\nannouncement date, and a short explanation of why they qualify. Verify employment on\nthe company website or another current source, and verify funding from the company\nannouncement or a reputable business publication.\n\nSee Find all GTM members for a discovery request and Enrich input rows for the corresponding row-enrichment pattern.\n​\nHandle asynchronous runs\nAgent runs can take seconds to minutes while they search, read, and reason. Build around the lifecycle instead of holding an application request open.\n1\n\nCreate and persist\n\nCreate the run and save its returned id with your request metadata. The create response is not the final result.\n2\n\nWait for a terminal state\n\nUse an SDK polling helper, poll GET /agent/runs/{id}, or consume the SSE stream. Continue while the run is queued or running.\n3\n\nStore the result\n\nStop waiting at completed, failed, or cancelled, then persist the terminal response and grounding.\nPersisting the run ID lets your application recover after a restart, reconnect to a stream, and inspect failures. Keep latency down by narrowing the scope, limiting result count, keeping the schema focused, and choosing minimal or low when speed matters more than completeness.\nFor batches, benchmark representative tasks before estimating concurrency or putting Agent on a synchronous UI path. Runtime varies with item count, schema complexity, source availability, and effort.\nFor Zero Data Retention teams, consume the live stream or poll within the retention window. previousRunId and Connect dataSources are not available. See Zero Data Retention.\n​\nWrite custom JSON schemas for structured output\nUse outputSchema when downstream code needs machine-readable fields, normalized values, table rows, or enrichment records. If a prose answer is enough, omit it and read output.text; structured output adds formatting work and can increase latency.\nKeep research instructions in query and response shape in outputSchema. Use clear property names and descriptions, choose the narrowest useful types, and bound arrays with maxItems.\nOutput schema\n{\n  \"type\": \"object\",\n  \"properties\": {\n    \"people\": {\n      \"type\": \"array\",\n      \"maxItems\": 10,\n      \"description\": \"Current engineering leaders who satisfy every criterion in the query.\",\n      \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n          \"name\": {\n            \"type\": \"string\",\n            \"description\": \"The person's full name.\"\n          },\n          \"job_title\": {\n            \"type\": \"string\",\n            \"description\": \"Their current title at the qualifying company.\"\n          },\n          \"company\": {\n            \"type\": \"string\",\n            \"description\": \"The qualifying company's canonical name.\"\n          },\n          \"qualification_rationale\": {\n            \"type\": \"string\",\n            \"description\": \"A concise explanation of how the person satisfies the query criteria.\"\n          }\n        },\n        \"required\": [\"name\", \"job_title\", \"company\", \"qualification_rationale\"]\n      }\n    }\n  },\n  \"required\": [\"people\"]\n}\n\nSee all 33 lines\nSchema adherence validates shape, not facts. Agent may return null when evidence does not support a field, even if the submitted schema marks it as required or non-nullable. stopReason: schema_satisfied means Agent considers the expected shape complete with those nulls allowed; it does not guarantee strict validation against the submitted schema.\nDo not duplicate Exa’s built-in citations or confidence in your schema. Add a rationale field only when each item should explain why it qualifies, and persist output.grounding with the structured result. Verify important claims against their sources and test schema changes on representative inputs before shipping.\nBrowse the structured Agent examples to compare schemas for list building, KYB, job postings, exclusions, and continued runs.\n​\nAgent vs Search\nNeed\tStart with\nWeb results for your LLM\tSearch\nFast research and synthesis\tDeep Search\nAsync list building, multi-hop research, or enrichment\tAgent\nUse Agent when the work requires several retrieval steps, per-entity verification, or enrichment over known records. Use Search when you need pages quickly and your application will perform the remaining reasoning.\n​\nTips for common use cases\nIf you need\tUse\tAvoid\nA researched list of unknown size\tauto and a bounded outputSchema\tA fixed cheap effort and an unbounded array\nEnrichment of records you already have\tinput.data plus fields to add\tPasting the table into query\nA follow-up over the last result set\tpreviousRunId\tRe-sending the full previous output\nRecords that should not appear again\tinput.exclusion plus downstream deduplication\tTreating exclusions as a strict identity guarantee\nPremium provider data\tExa Connect with dataSources\tAsking Agent to infer provider-only fields from the open web\nPredictable per-request cost\tA fixed effort\tauto or max without a budget\nCompleteness over latency & cost\txhigh or max\tRaising effort before tightening the query\n​\nNext steps\nAgent quickstart\nCreate a run, stream events, set effort, and read structured output.\nOpen guide\nAgent examples\nCopy complete list-building, enrichment, KYB, exclusion, and follow-up requests.\nBrowse examples\nExa Connect\nAdd premium company, people, traffic, compliance, finance, and other provider data.\nBrowse data partners\nSearch best practices\nRetrieval quality, latency, and synthesis when Search is enough.\nRead guide",
+    "scrollHeight": 5497,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

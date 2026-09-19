@@ -1,0 +1,101 @@
+{
+  "id": "112",
+  "path": "/docs/search/snapshot",
+  "production": {
+    "url": "https://exa.ai/docs/search/snapshot",
+    "title": "Exa Snapshot - Exa",
+    "h1": "Exa Snapshot",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 211.1875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3240.734375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Snapshot keeps stored versions of pages Exa has crawled. Send snapshotAsOf to pin the request to a datetime.\nUse this to backtest agents, run reproducible evals, and compare earlier versions of docs, pricing pages, policies, and filings.\nExa Snapshot is available on pay as you go at 10 QPS, with a rolling 5-month index window. After 100 requests, talk to sales to continue.\n​\nSearch at a datetime\nOn /search, put snapshotAsOf inside contents.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"latest stable Python release notes\",\n    num_results=3,\n    contents={\n        \"snapshot_as_of\": \"2026-07-01T00:00:00Z\",\n        \"highlights\": True,\n    },\n)\n\nfor r in result.results:\n    print(r.title, r.url)\n\nExa discovers candidate URLs, then keeps only pages with a stored version at or before snapshotAsOf.\n\nExample response\n\n​\nPin contents to a datetime\nAdd snapshotAsOf at the top level of a /contents request.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.get_contents(\n    [\"https://en.wikipedia.org/wiki/2026\"],\n    snapshot_as_of=\"2026-06-01T00:00:00Z\",\n    text=True,\n)\n\nprint(result.results[0].text[:300])\n\nExa returns the newest stored version at or before that datetime.\n\nExample response\n\nIDs with no eligible version are omitted from results and reported in statuses with \"status\": \"error\" and \"tag\": \"CONTENT_NOT_CACHED\".\n​\nHow snapshots work\nField\tWhere\tMeaning\nsnapshotAsOf\tRequest\tDatetime cutoff. Exa returns the newest stored version at or before this instant.\nFor both endpoints:\nReturned page content comes from that stored version.\nTitle, author, publication date, text, highlights, and summaries are generated only from that version.\nPages without an eligible version in the 5-month window are omitted.\nOn Search, the cutoff bounds content, not ranking. Exa still uses current retrieval signals to discover candidate URLs. Use the results as evidence bounded by snapshotAsOf, not as an exact reconstruction of what a search would have ranked at that time.\n​\nLimits and compatibility\n\nAccess, rate limit, and lookback\n\nHistorical requests use stored content\n\nSupported Search requests\n\n​\nCommon uses\nUse Exa Snapshot when the task depends on what Exa had stored by a specific datetime:\nBacktest an agent without exposing it to later page updates.\nRun an evaluation against a repeatable content boundary.\nCompare earlier versions of documentation, pricing, policies, or filings.",
+    "scrollHeight": 3337,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/snapshot",
+    "title": "Exa Snapshot - Exa",
+    "h1": "Exa Snapshot",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 211.1875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3240.734375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Snapshot keeps stored versions of pages Exa has crawled. Send snapshotAsOf to pin the request to a datetime.\nUse this to backtest agents, run reproducible evals, and compare earlier versions of docs, pricing pages, policies, and filings.\nExa Snapshot is available on pay as you go at 10 QPS, with a rolling 5-month index window. After 100 requests, talk to sales to continue.\n​\nSearch at a datetime\nOn /search, put snapshotAsOf inside contents.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"latest stable Python release notes\",\n    num_results=3,\n    contents={\n        \"snapshot_as_of\": \"2026-07-01T00:00:00Z\",\n        \"highlights\": True,\n    },\n)\n\nfor r in result.results:\n    print(r.title, r.url)\n\nExa discovers candidate URLs, then keeps only pages with a stored version at or before snapshotAsOf.\n\nExample response\n\n​\nPin contents to a datetime\nAdd snapshotAsOf at the top level of a /contents request.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.get_contents(\n    [\"https://en.wikipedia.org/wiki/2026\"],\n    snapshot_as_of=\"2026-06-01T00:00:00Z\",\n    text=True,\n)\n\nprint(result.results[0].text[:300])\n\nExa returns the newest stored version at or before that datetime.\n\nExample response\n\nIDs with no eligible version are omitted from results and reported in statuses with \"status\": \"error\" and \"tag\": \"CONTENT_NOT_CACHED\".\n​\nHow snapshots work\nField\tWhere\tMeaning\nsnapshotAsOf\tRequest\tDatetime cutoff. Exa returns the newest stored version at or before this instant.\nFor both endpoints:\nReturned page content comes from that stored version.\nTitle, author, publication date, text, highlights, and summaries are generated only from that version.\nPages without an eligible version in the 5-month window are omitted.\nOn Search, the cutoff bounds content, not ranking. Exa still uses current retrieval signals to discover candidate URLs. Use the results as evidence bounded by snapshotAsOf, not as an exact reconstruction of what a search would have ranked at that time.\n​\nLimits and compatibility\n\nAccess, rate limit, and lookback\n\nHistorical requests use stored content\n\nSupported Search requests\n\n​\nCommon uses\nUse Exa Snapshot when the task depends on what Exa had stored by a specific datetime:\nBacktest an agent without exposing it to later page updates.\nRun an evaluation against a repeatable content boundary.\nCompare earlier versions of documentation, pricing, policies, or filings.",
+    "scrollHeight": 3337,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,103 @@
+{
+  "id": "052",
+  "path": "/docs/integrations/openhuman",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/openhuman",
+    "title": "OpenHuman - Exa",
+    "h1": "OpenHuman",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.3125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5713.1875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "OpenHuman by TinyHumans is a desktop AI assistant with a native web search tool the agent calls on its own. Exa is the search provider behind that tool.\nApproach\tSetup\tRuns on\nOpenHuman Managed\tNone\tOpenHuman’s backend, powered by Exa. No API key.\nExa provider\tPaste an Exa API key\tYour machine, straight to https://api.exa.ai on your own Exa account.\n​\nOpenHuman Managed\nManaged search is the default. Choose Simple during onboarding and the agent can search the web immediately.\n\nChoose Simple during onboarding for Exa-powered managed search\n\nManaged is the fastest way to get Exa results. No key to create, store, or rotate, no credentials on your machine, and search is billed on your OpenHuman subscription.\n​\nExa provider\nConfigure Exa directly to run search on your own Exa account and give the agent Exa’s search and page-contents tools.\n​\nGet your Exa API key\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n​\nAdd Exa in OpenHuman\nOpen Connections, then select Search engine under API keys.\n\nConnections → API keys → Search engine\n\nSelect Exa.\n\nExa selected, waiting on a key\n\nPaste your key into Exa API key and select Save.\n\nSave the Exa API key\n\nExa configured as the active search engine\n\n​\nConfiguration\nThe panel writes to OpenHuman’s config.toml. Set the same values in the file or the environment instead:\nconfig.toml\nEnvironment\nconfig.toml\n[search]\nengine = \"exa\"        # required\nmax_results = 5       # optional, 1-20\ntimeout_secs = 15     # optional\n\n[search.exa]\napi_key = \"your-exa-api-key\"   # required\n\n​\nTools the agent gets\nTool\tReturns\nweb_search_tool\tWeb search, served by Exa.\nexa_search\tRanked pages with titles, URLs, publish dates, and optional text.\nexa_get_contents\tFull contents of given URLs, with optional summaries or highlights.\nThe agent sets Exa’s search parameters per call, so plain instructions are enough to steer search mode, domains, dates, and categories.\n​\nTroubleshooting\n\nExa search unavailable: no API key configured\n\nExa rejected the configured API key (HTTP 401)\n\nExa returned non-2xx status\n\nOpenHuman Managed is missing from the engine list\n\n​\nResources\nOpenHuman web search docs\nRead OpenHuman’s own reference for its search engines.\nOpen guide\nExa search API\nUnderstand the search modes, filters, and content options behind the Exa tools.\nRead guide\nSearch best practices\nGet better results out of every query.\nRead guide",
+    "scrollHeight": 5809,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/openhuman",
+    "title": "OpenHuman - Exa",
+    "h1": "OpenHuman",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.3125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5713.1875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "OpenHuman by TinyHumans is a desktop AI assistant with a native web search tool the agent calls on its own. Exa is the search provider behind that tool.\nApproach\tSetup\tRuns on\nOpenHuman Managed\tNone\tOpenHuman’s backend, powered by Exa. No API key.\nExa provider\tPaste an Exa API key\tYour machine, straight to https://api.exa.ai on your own Exa account.\n​\nOpenHuman Managed\nManaged search is the default. Choose Simple during onboarding and the agent can search the web immediately.\n\nChoose Simple during onboarding for Exa-powered managed search\n\nManaged is the fastest way to get Exa results. No key to create, store, or rotate, no credentials on your machine, and search is billed on your OpenHuman subscription.\n​\nExa provider\nConfigure Exa directly to run search on your own Exa account and give the agent Exa’s search and page-contents tools.\n​\nGet your Exa API key\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n​\nAdd Exa in OpenHuman\nOpen Connections, then select Search engine under API keys.\n\nConnections → API keys → Search engine\n\nSelect Exa.\n\nExa selected, waiting on a key\n\nPaste your key into Exa API key and select Save.\n\nSave the Exa API key\n\nExa configured as the active search engine\n\n​\nConfiguration\nThe panel writes to OpenHuman’s config.toml. Set the same values in the file or the environment instead:\nconfig.toml\nEnvironment\nconfig.toml\n[search]\nengine = \"exa\"        # required\nmax_results = 5       # optional, 1-20\ntimeout_secs = 15     # optional\n\n[search.exa]\napi_key = \"your-exa-api-key\"   # required\n\n​\nTools the agent gets\nTool\tReturns\nweb_search_tool\tWeb search, served by Exa.\nexa_search\tRanked pages with titles, URLs, publish dates, and optional text.\nexa_get_contents\tFull contents of given URLs, with optional summaries or highlights.\nThe agent sets Exa’s search parameters per call, so plain instructions are enough to steer search mode, domains, dates, and categories.\n​\nTroubleshooting\n\nExa search unavailable: no API key configured\n\nExa rejected the configured API key (HTTP 401)\n\nExa returned non-2xx status\n\nOpenHuman Managed is missing from the engine list\n\n​\nResources\nOpenHuman web search docs\nRead OpenHuman’s own reference for its search engines.\nOpen guide\nExa search API\nUnderstand the search modes, filters, and content options behind the Exa tools.\nRead guide\nSearch best practices\nGet better results out of every query.\nRead guide",
+    "scrollHeight": 5809,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,103 @@
+{
+  "id": "010",
+  "path": "/docs/admin/status",
+  "production": {
+    "url": "https://exa.ai/docs/admin/status",
+    "title": "Status Page - Exa",
+    "h1": "Status Page",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 188.28125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1583.96875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 108
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa publishes service availability at status.exa.ai: the current state of the Search API, Websets, and Exa MCP, active incidents with updates as they progress, and 90 days of uptime history.\nAll systems operational\nstatus.exa.ai ↗\nSearch API\nOperational\nWebsets\nOperational\nExa MCP\nOperational\nAgents API\nOperational\nChecked 5:42:38 PM · refreshes every 5 minutes\n​\nSubscribe to updates\nSubscribe on the status page to be notified when an incident is opened, updated, or resolved. Notifications are delivered by email, Slack, Google Chat, or webhook.\n​\nGet help\nIf requests keep failing while all systems report operational, the cause is likely request-level — check Error codes first.\nEmail support\nSend the response status, error body, and requestId for the fastest diagnosis.\nEmail support\nEnterprise support\nUptime and support SLAs are available on Enterprise plans.\nContact sales",
+    "scrollHeight": 1680,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/status",
+    "title": "Status Page - Exa",
+    "h1": "Status Page",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 188.28125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1583.96875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 108
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa publishes service availability at status.exa.ai: the current state of the Search API, Websets, and Exa MCP, active incidents with updates as they progress, and 90 days of uptime history.\nAll systems operational\nstatus.exa.ai ↗\nSearch API\nOperational\nWebsets\nOperational\nExa MCP\nOperational\nAgents API\nOperational\nChecked 5:59:06 PM · refreshes every 5 minutes\n​\nSubscribe to updates\nSubscribe on the status page to be notified when an incident is opened, updated, or resolved. Notifications are delivered by email, Slack, Google Chat, or webhook.\n​\nGet help\nIf requests keep failing while all systems report operational, the cause is likely request-level — check Error codes first.\nEmail support\nSend the response status, error body, and requestId for the fastest diagnosis.\nEmail support\nEnterprise support\nUptime and support SLAs are available on Enterprise plans.\nContact sales",
+    "scrollHeight": 1680,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

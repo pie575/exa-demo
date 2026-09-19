@@ -1,0 +1,12 @@
+---
+title: "Create a batch"
+description: "Submit a batch of Exa API requests to run asynchronously."
+openapi: "docs/exa-spec.yaml POST /batches"
+timestamp: false
+---
+
+Each item in `requests` is a `POST` to `/search` or `/agent/runs` with a batch-unique `customId`. The same `customId` is returned in the results file so you can map output rows back to your input data. See the [Batch API guide](/docs/batch/quickstart) for the end-to-end workflow.
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

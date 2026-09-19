@@ -1,0 +1,101 @@
+{
+  "id": "011",
+  "path": "/docs/admin/team-management",
+  "production": {
+    "url": "https://exa.ai/docs/admin/team-management",
+    "title": "Managing Your Team - Exa",
+    "h1": "Managing Your Team",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 319.796875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4747.25
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Go to API Dashboard\nCreate teams, invite members, and manage billing.\nExa organizes account usage and paid feature access through ‘Teams’:\nUpon account creation, you’re placed in a ‘Personal’ Team. You can use the dropdown in the top-left of the Exa dashboard shown below to create a new Team or select between other Teams you have. You can make as many Teams as you like.\n​\nSeeing your teams\nTeam dropdown (top-left) within the Exa dashboard under Team settings\n​\nTopping up a Team’s balance\nWith the desired Team selected, you can top up your credit balance in the Billing page.\n​\nInviting people to your team\nTeam admins can add members via the Invite feature in Team settings.\nOnce a team member is invited, their status will be ‘Pending’ on the team management menu.\nThey will receive an email inviting them to join the team.\nOnce accepted, you’ll see both members are ‘Accepted’. All Team members share the usage limits and features of their respective Team’s plan.\n​\nTeam Management API\nCreate and manage API keys programmatically with the Team Management API.\nThe Team Management API is enabled per team. It authenticates with a service account API key, which is created from the Service keys tab on the API keys page once the feature is enabled for your team. Contact support@exa.ai to request access.",
+    "scrollHeight": 4843,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/team-management",
+    "title": "Managing Your Team - Exa",
+    "h1": "Managing Your Team",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 319.796875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4747.25
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Go to API Dashboard\nCreate teams, invite members, and manage billing.\nExa organizes account usage and paid feature access through ‘Teams’:\nUpon account creation, you’re placed in a ‘Personal’ Team. You can use the dropdown in the top-left of the Exa dashboard shown below to create a new Team or select between other Teams you have. You can make as many Teams as you like.\n​\nSeeing your teams\nTeam dropdown (top-left) within the Exa dashboard under Team settings\n​\nTopping up a Team’s balance\nWith the desired Team selected, you can top up your credit balance in the Billing page.\n​\nInviting people to your team\nTeam admins can add members via the Invite feature in Team settings.\nOnce a team member is invited, their status will be ‘Pending’ on the team management menu.\nThey will receive an email inviting them to join the team.\nOnce accepted, you’ll see both members are ‘Accepted’. All Team members share the usage limits and features of their respective Team’s plan.\n​\nTeam Management API\nCreate and manage API keys programmatically with the Team Management API.\nThe Team Management API is enabled per team. It authenticates with a service account API key, which is created from the Service keys tab on the API keys page once the feature is enabled for your team. Contact support@exa.ai to request access.",
+    "scrollHeight": 4843,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

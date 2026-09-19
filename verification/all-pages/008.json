@@ -1,0 +1,103 @@
+{
+  "id": "008",
+  "path": "/docs/admin/security/overview",
+  "production": {
+    "url": "https://exa.ai/docs/admin/security/overview",
+    "title": "Security Overview - Exa",
+    "h1": "Security Overview",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 284.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1233.984375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 76
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa takes data security and privacy seriously. We are proud to be SOC 2 Type II certified, demonstrating our commitment to maintaining rigorous information security practices and controls.\nContact us at sales@exa.ai to discuss an Enterprise plan if you are interested in Zero Data Retention, HIPAA compliance, or other customized data security solutions.\nVisit our Trust Center to view our SOC 2 reports, Data Processing Agreement, and other security documentation.\n​\nRegional access restrictions\nTo comply with sanctions and trade restrictions, Exa blocks API access from sanctioned or otherwise restricted countries and regions, including Crimea, Cuba, Iran, North Korea, Russia, Syria, Ukraine, and Venezuela.\nRequests from these locations may be blocked by Cloudflare before they reach Exa. In that case, the response may be a Cloudflare WAF block page with a Ray ID instead of the standard Exa API error JSON.\nIf you believe your traffic is being geolocated incorrectly, contact hello@exa.ai with your source IP address, country or region, request timestamp, and Cloudflare Ray ID.",
+    "scrollHeight": 1330,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/security/overview",
+    "title": "Security Overview - Exa",
+    "h1": "Security Overview",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 284.125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1233.984375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 76
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa takes data security and privacy seriously. We are proud to be SOC 2 Type II certified, demonstrating our commitment to maintaining rigorous information security practices and controls.\nContact us at sales@exa.ai to discuss an Enterprise plan if you are interested in Zero Data Retention, HIPAA compliance, or other customized data security solutions.\nVisit our Trust Center to view our SOC 2 reports, Data Processing Agreement, and other security documentation.\n​\nRegional access restrictions\nTo comply with sanctions and trade restrictions, Exa blocks API access from sanctioned or otherwise restricted countries and regions, including Crimea, Cuba, Iran, North Korea, Russia, Syria, Ukraine, and Venezuela.\nRequests from these locations may be blocked by Cloudflare before they reach Exa. In that case, the response may be a Cloudflare WAF block page with a Ray ID instead of the standard Exa API error JSON.\nIf you believe your traffic is being geolocated incorrectly, contact hello@exa.ai with your source IP address, country or region, request timestamp, and Cloudflare Ray ID.",
+    "scrollHeight": 1330,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/websets/items/delete-an-item",
+  "production": {
+    "status": 200,
+    "text": "Delete an item\nCopy page\n\nDeletes an Item from the Webset.\n\nThis will cancel any enrichment process for it.\n\nDELETE\n/\nv0\n/\nwebsets\n/\n{webset}\n/\nitems\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nwebset\nstringrequired\n\nThe id or externalId of the Webset\n\n​\nid\nstringrequired\n\nThe id of the Webset item\n\nResponse\n200 - application/json\n\nWebset Item deleted\n\n​\nid\nstringrequired\n\nThe unique identifier for the Webset Item\n\n​\nobject\nstringdefault:webset_itemrequired\nAllowed value: \"webset_item\"\n​\nsource\nenum<string>required\n\nThe source of the Item\n\nAvailable options: search, import \n​\nsourceId\nstringrequired\n\nThe unique identifier for the source\n\n​\nwebsetId\nstringrequired\n\nThe unique identifier for the Webset this Item belongs to.\n\n​\nproperties\nPerson · objectrequired\n\nThe properties of the Item\n\nPerson\nCompany\nArticle\nResearch Paper\nCustom\n\nShow child attributes\n\n​\nevaluations\nobject[]required\n\nThe criteria evaluations of the item\n\nShow child attributes\n\n​\nenrichments\nobject[] | nullrequired\n\nThe enrichments results of the Webset item\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the item was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the item was last updated\n\n​\nsourceEntityId\nstring\n\nThe original identifier used to resolve this item (e.g., email, name, or URL). Only relevant when the source is import.\n\n​\nscopeId\nstring\n\nThe import that sourced this item, when the item came from a scoped search with evaluate enabled on the import.\n\nGet an item\nPrevious\nList all items for a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete an item",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Delete an item\nCopy page\n\nDeletes an Item from the Webset.\n\nThis will cancel any enrichment process for it.\n\nDELETE\n/\nv0\n/\nwebsets\n/\n{webset}\n/\nitems\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nwebset\nstringrequired\n\nThe id or externalId of the Webset\n\n​\nid\nstringrequired\n\nThe id of the Webset item\n\nResponse\n200 - application/json\n\nWebset Item deleted\n\n​\nid\nstringrequired\n\nThe unique identifier for the Webset Item\n\n​\nobject\nstringdefault:webset_itemrequired\nAllowed value: \"webset_item\"\n​\nsource\nenum<string>required\n\nThe source of the Item\n\nAvailable options: search, import \n​\nsourceId\nstringrequired\n\nThe unique identifier for the source\n\n​\nwebsetId\nstringrequired\n\nThe unique identifier for the Webset this Item belongs to.\n\n​\nproperties\nPerson · objectrequired\n\nThe properties of the Item\n\nPerson\nCompany\nArticle\nResearch Paper\nCustom\n\nShow child attributes\n\n​\nevaluations\nobject[]required\n\nThe criteria evaluations of the item\n\nShow child attributes\n\n​\nenrichments\nobject[] | nullrequired\n\nThe enrichments results of the Webset item\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the item was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the item was last updated\n\n​\nsourceEntityId\nstring\n\nThe original identifier used to resolve this item (e.g., email, name, or URL). Only relevant when the source is import.\n\n​\nscopeId\nstring\n\nThe import that sourced this item, when the item came from a scoped search with evaluate enabled on the import.\n\nGet an item\nPrevious\nList all items for a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete an item",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1755,
+  "localLength": 1755
+}

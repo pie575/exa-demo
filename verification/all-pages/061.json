@@ -1,0 +1,103 @@
+{
+  "id": "061",
+  "path": "/docs/integrations/tool-calling/anthropic",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/tool-calling/anthropic",
+    "title": "Anthropic Tool Calling - Exa",
+    "h1": "Anthropic Tool Calling",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 337.6875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4877.609375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\nClaude’s tool use allows models to call functions that you define in your code. The Exa SDKs ship ready-made web search and page reading tools for Anthropic, so you don’t have to hand-write the tool schema, parse tool_use blocks, or format Exa results yourself.\n​\nGet started\n1\n\nInstall the SDKs\n\nPython\nJavaScript\npip install anthropic exa_py\n\n2\n\nSet up your API keys\n\nSet the EXA_API_KEY and ANTHROPIC_API_KEY environment variables. Visit the Anthropic console and the Exa dashboard to generate your API keys.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nAdd the Exa tools to your tool loop\n\nPass the tools in the request’s tools list, then hand the assistant message to handle_tool_use. It executes every tool_use block in the message and returns the matching tool_result blocks, ready to send back in the next user message.\nweb_search searches the web for pages the model hasn’t seen; get_contents reads pages it already has URLs for, whether from an earlier search or from the user. Register either or both.\nPython\nJavaScript\nimport anthropic\nfrom exa_py import Exa\n\nexa = Exa()  # reads EXA_API_KEY from the environment\nclaude = anthropic.Anthropic()\n\nmessages = [{\"role\": \"user\", \"content\": \"What's the latest on AI chips?\"}]\n\nresponse = claude.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=messages,\n    tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],\n)\n\nmessages.append({\"role\": \"assistant\", \"content\": response.content})\nmessages.append(\n    {\"role\": \"user\", \"content\": exa.anthropic.handle_tool_use(response)}\n)\n\nresponse = claude.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=messages,\n    tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],\n)\nprint(response.content[0].text)\n\nThis is one round for brevity. A real agent keeps tools on every request and repeats the handler step until the model replies without tool_use blocks — that’s how a search result turns into a follow-up page read.\nCalling the factories with no arguments gives Exa’s recommended defaults: type=\"auto\" with contents={\"highlights\": True} for search. Highlights return query-relevant excerpts — they do not cap page text at 10,000 characters. The contents factory returns page text; the SDK’s 10,000-character limit applies only to text, and only when you omit max_characters.\n​\nConfiguring the tools\nKeyword arguments are regular Exa options, passed through when the tool runs — search options to exa.search(), contents options to exa.get_contents():\nPython\nJavaScript\ntools = [\n    exa.anthropic.web_search(category=\"news\", contents={\"text\": True}),\n    exa.anthropic.get_contents(summary=True, livecrawl=\"preferred\"),\n]\n\nThe model picks the search query and the urls to read; everything else is bound when you create the tool, so it can’t change what gets crawled or extracted.\nname (defaulting to \"web_search\" and \"get_contents\") and description instead override the tool definition the model sees. Anthropic requires tool names to be unique, so a custom name lets the Exa tool run alongside Anthropic’s built-in web_search_20250305 server tool, which reserves the web_search name:\nPython\nJavaScript\nresponse = claude.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=messages,\n    tools=[\n        exa.anthropic.web_search(name=\"exa_web_search\"),\n        {\"type\": \"web_search_20250305\", \"name\": \"web_search\", \"max_uses\": 5},\n    ],\n)\n\n​\nMixing in your own tools\nhandle_tool_use answers every tool_use block in the message: a block naming a tool it can’t resolve gets an Error: unknown tool \"<name>\" result instead of being dropped, so the follow-up request never omits a required tool result. If you run your own tools alongside Exa’s, replace those error results with your own before the next request.\n​\nWriting the loop by hand\nIf you’d rather own the tool schema and execution yourself, define the tool and process the tool_use blocks manually. exa.tools.web_search() and exa.tools.get_contents() give you the same provider-neutral tool specs (with a run method) for hand-rolled loops, or you can write everything from scratch:\nPython\nTOOLS = [\n    {\n        \"name\": \"exa_search\",\n        \"description\": \"Perform a search query on the web, and retrieve the most relevant URLs/web data.\",\n        \"input_schema\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"query\": {\n                    \"type\": \"string\",\n                    \"description\": \"The search query to perform.\",\n                },\n            },\n            \"required\": [\"query\"],\n        },\n    }\n]\n\ndef exa_search(query: str):\n    return exa.search(query=query, type=\"auto\", contents={\"highlights\": True})\n\ndef process_tool_use(response):\n    results = []\n    for block in response.content:\n        if block.type == \"tool_use\" and block.name == \"exa_search\":\n            results.append(\n                {\n                    \"type\": \"tool_result\",\n                    \"tool_use_id\": block.id,\n                    \"content\": str(exa_search(**block.input)),\n                }\n            )\n    return results\n\nSee the SDK quickstart for search and contents options in Python and TypeScript.",
+    "scrollHeight": 4974,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/tool-calling/anthropic",
+    "title": "Anthropic Tool Calling - Exa",
+    "h1": "Anthropic Tool Calling",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 337.6875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4877.609375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\nClaude’s tool use allows models to call functions that you define in your code. The Exa SDKs ship ready-made web search and page reading tools for Anthropic, so you don’t have to hand-write the tool schema, parse tool_use blocks, or format Exa results yourself.\n​\nGet started\n1\n\nInstall the SDKs\n\nPython\nJavaScript\npip install anthropic exa_py\n\n2\n\nSet up your API keys\n\nSet the EXA_API_KEY and ANTHROPIC_API_KEY environment variables. Visit the Anthropic console and the Exa dashboard to generate your API keys.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nAdd the Exa tools to your tool loop\n\nPass the tools in the request’s tools list, then hand the assistant message to handle_tool_use. It executes every tool_use block in the message and returns the matching tool_result blocks, ready to send back in the next user message.\nweb_search searches the web for pages the model hasn’t seen; get_contents reads pages it already has URLs for, whether from an earlier search or from the user. Register either or both.\nPython\nJavaScript\nimport anthropic\nfrom exa_py import Exa\n\nexa = Exa()  # reads EXA_API_KEY from the environment\nclaude = anthropic.Anthropic()\n\nmessages = [{\"role\": \"user\", \"content\": \"What's the latest on AI chips?\"}]\n\nresponse = claude.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=messages,\n    tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],\n)\n\nmessages.append({\"role\": \"assistant\", \"content\": response.content})\nmessages.append(\n    {\"role\": \"user\", \"content\": exa.anthropic.handle_tool_use(response)}\n)\n\nresponse = claude.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=messages,\n    tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],\n)\nprint(response.content[0].text)\n\nThis is one round for brevity. A real agent keeps tools on every request and repeats the handler step until the model replies without tool_use blocks — that’s how a search result turns into a follow-up page read.\nCalling the factories with no arguments gives Exa’s recommended defaults: type=\"auto\" with contents={\"highlights\": True} for search. Highlights return query-relevant excerpts — they do not cap page text at 10,000 characters. The contents factory returns page text; the SDK’s 10,000-character limit applies only to text, and only when you omit max_characters.\n​\nConfiguring the tools\nKeyword arguments are regular Exa options, passed through when the tool runs — search options to exa.search(), contents options to exa.get_contents():\nPython\nJavaScript\ntools = [\n    exa.anthropic.web_search(category=\"news\", contents={\"text\": True}),\n    exa.anthropic.get_contents(summary=True, livecrawl=\"preferred\"),\n]\n\nThe model picks the search query and the urls to read; everything else is bound when you create the tool, so it can’t change what gets crawled or extracted.\nname (defaulting to \"web_search\" and \"get_contents\") and description instead override the tool definition the model sees. Anthropic requires tool names to be unique, so a custom name lets the Exa tool run alongside Anthropic’s built-in web_search_20250305 server tool, which reserves the web_search name:\nPython\nJavaScript\nresponse = claude.messages.create(\n    model=\"claude-sonnet-4-6\",\n    max_tokens=1024,\n    messages=messages,\n    tools=[\n        exa.anthropic.web_search(name=\"exa_web_search\"),\n        {\"type\": \"web_search_20250305\", \"name\": \"web_search\", \"max_uses\": 5},\n    ],\n)\n\n​\nMixing in your own tools\nhandle_tool_use answers every tool_use block in the message: a block naming a tool it can’t resolve gets an Error: unknown tool \"<name>\" result instead of being dropped, so the follow-up request never omits a required tool result. If you run your own tools alongside Exa’s, replace those error results with your own before the next request.\n​\nWriting the loop by hand\nIf you’d rather own the tool schema and execution yourself, define the tool and process the tool_use blocks manually. exa.tools.web_search() and exa.tools.get_contents() give you the same provider-neutral tool specs (with a run method) for hand-rolled loops, or you can write everything from scratch:\nPython\nTOOLS = [\n    {\n        \"name\": \"exa_search\",\n        \"description\": \"Perform a search query on the web, and retrieve the most relevant URLs/web data.\",\n        \"input_schema\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"query\": {\n                    \"type\": \"string\",\n                    \"description\": \"The search query to perform.\",\n                },\n            },\n            \"required\": [\"query\"],\n        },\n    }\n]\n\ndef exa_search(query: str):\n    return exa.search(query=query, type=\"auto\", contents={\"highlights\": True})\n\ndef process_tool_use(response):\n    results = []\n    for block in response.content:\n        if block.type == \"tool_use\" and block.name == \"exa_search\":\n            results.append(\n                {\n                    \"type\": \"tool_result\",\n                    \"tool_use_id\": block.id,\n                    \"content\": str(exa_search(**block.input)),\n                }\n            )\n    return results\n\nSee the SDK quickstart for search and contents options in Python and TypeScript.",
+    "scrollHeight": 4974,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

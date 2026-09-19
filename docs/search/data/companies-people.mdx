@@ -1,0 +1,152 @@
+---
+title: "Companies & People"
+sidebarTitle: "Companies & People"
+icon: "users"
+description: "Find companies, professional profiles, and the relationships between them with Exa Search."
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Open in API playground" aria-label={`Open "${query}" in the API playground`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Use Exa Search for organizations and the people connected to them. These searches work best together: describe the company traits that qualify a person, or the people and roles that reveal how a company operates.
+
+<Columns cols={2}>
+  <Card title="Company retrieval benchmark" icon="building" href="https://exa.ai/blog/company-search-benchmarks">
+    See how Exa evaluates company retrieval and fact extraction.
+  </Card>
+
+  <Card title="People retrieval benchmark" icon="users" href="https://exa.ai/blog/people-search-benchmark">
+    See how Exa evaluates targeted lookups and profile discovery.
+  </Card>
+</Columns>
+
+## Use it for
+
+* Company, candidate, and expert discovery
+* Account research and stakeholder mapping
+* Market maps, investment research, and deal sourcing
+* Leadership, hiring, and organization research
+
+## Write better queries
+
+Start with the entity you want, then add the traits and relationships that qualify it. Ask for the source type when it matters, such as company homepages, professional profiles, job postings, or personal websites.
+
+<Tabs>
+  <Tab title="Companies" icon="building">
+    ### Discover companies by what they do
+
+    Describe the customer, product, capability, stage, and geography that define the market. This finds candidates based on what they do instead of relying on a predefined company list.
+
+    <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
+
+    ### Find operating signals
+
+    Name the signal and the company traits that matter. Search can retrieve job postings, pricing pages, product documentation, and reporting alongside company pages.
+
+    <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
+
+    ### Research funding activity
+
+    Specify the round, industry, participant, and time window.
+
+    <PlaygroundQuery query="investors who led seed rounds in robotics in the last year" />
+  </Tab>
+
+  <Tab title="People" icon="users">
+    ### Discover people by role and skills
+
+    Combine the role, seniority, location, relevant skills, and source type you want.
+
+    <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
+
+    ### Qualify people by company traits
+
+    Describe the person's relationship to the company and the traits that qualify the company. This works better than building a company list first.
+
+    <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
+
+    ### Find personal websites and public work
+
+    Name the profession or research area and ask explicitly for personal websites, talks, interviews, or articles.
+
+    <PlaygroundQuery query="personal blogs of distributed systems researchers" />
+  </Tab>
+</Tabs>
+
+## Search both together
+
+Write one query that expresses the relationship you need. Exa can return company pages, professional profiles, hiring pages, and public references in the same result set.
+
+<PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
+
+## Make a request
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "heads of security at Series B healthcare software companies that sell to hospitals",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "heads of security at Series B healthcare software companies that sell to hospitals",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "heads of security at Series B healthcare software companies that sell to hospitals",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+## Get structured data with Exa Agent
+
+For structured data that requires research across multiple sources, use an [Exa Agent task run](/docs/agent/quickstart). Describe the companies, people, qualification criteria, and output fields you need, and Agent returns schema-validated results with citations.
+
+<Card title="Start an Agent task" icon="bot" href="/docs/agent/quickstart" cta="Open Agent guide" arrow="true">
+  Build and qualify company or people lists, then enrich each record with fields gathered from multiple sources.
+</Card>

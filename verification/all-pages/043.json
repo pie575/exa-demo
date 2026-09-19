@@ -1,0 +1,103 @@
+{
+  "id": "043",
+  "path": "/docs/integrations/grok-build",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/grok-build",
+    "title": "Grok Build - Exa",
+    "h1": "Grok Build",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 160.0625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2172.953125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa is available as a plugin on the Grok Build marketplace. It gives Grok real-time web search, page reading, and a deep research skill.\n​\nInstallation\n1\n\nInstall Grok Build\n\nInstall the Grok CLI (see the Grok Build docs for details):\ncurl -fsSL https://x.ai/cli/install.sh | bash\n\nThen sign in to your xAI account:\ngrok login\n\n2\n\nOpen the marketplace\n\nStart Grok Build by running grok, then open the marketplace:\n/marketplace\n\n3\n\nInstall the Exa plugin\n\nFind exa in the list and press i to install it.\n4\n\nSign in to Exa\n\nOpen the MCP servers tab with /mcp, select exa, and press i to sign in. Your browser opens the Exa sign-in page. New accounts get free credits at signup.\nOnce exa shows ready, ask Grok anything that needs the web.\n​\nWhat you get\nweb_search_exa: real-time web search. Supports natural language queries and category filters like news, companies, people, research papers, and GitHub.\nweb_fetch_exa: reads any URL and returns the page content as clean markdown.\nexa-search skill: a deep research skill. Ask Grok for a deep dive on a topic and it runs multiple searches, reads the best sources, and answers with citations.\n​\nExample prompts\n“Search for recent news about xAI”\n“Read https://exa.ai and summarize it”\n“Do a deep dive on open source inference engines”",
+    "scrollHeight": 2269,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/grok-build",
+    "title": "Grok Build - Exa",
+    "h1": "Grok Build",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 160.0625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2172.953125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa is available as a plugin on the Grok Build marketplace. It gives Grok real-time web search, page reading, and a deep research skill.\n​\nInstallation\n1\n\nInstall Grok Build\n\nInstall the Grok CLI (see the Grok Build docs for details):\ncurl -fsSL https://x.ai/cli/install.sh | bash\n\nThen sign in to your xAI account:\ngrok login\n\n2\n\nOpen the marketplace\n\nStart Grok Build by running grok, then open the marketplace:\n/marketplace\n\n3\n\nInstall the Exa plugin\n\nFind exa in the list and press i to install it.\n4\n\nSign in to Exa\n\nOpen the MCP servers tab with /mcp, select exa, and press i to sign in. Your browser opens the Exa sign-in page. New accounts get free credits at signup.\nOnce exa shows ready, ask Grok anything that needs the web.\n​\nWhat you get\nweb_search_exa: real-time web search. Supports natural language queries and category filters like news, companies, people, research papers, and GitHub.\nweb_fetch_exa: reads any URL and returns the page content as clean markdown.\nexa-search skill: a deep research skill. Ask Grok for a deep dive on a topic and it runs multiple searches, reads the best sources, and answers with citations.\n​\nExample prompts\n“Search for recent news about xAI”\n“Read https://exa.ai and summarize it”\n“Do a deep dive on open source inference engines”",
+    "scrollHeight": 2269,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

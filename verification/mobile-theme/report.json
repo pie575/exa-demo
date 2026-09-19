@@ -1,0 +1,736 @@
+[
+  {
+    "route": "/docs",
+    "mode": "mobile-light",
+    "production": {
+      "title": "Start building with Exa",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 138
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 306.796875,
+          "height": 42
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 2470.953125
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Start building with Exa",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 138
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 306.796875,
+          "height": 42
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 2470.953125
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/reference/search",
+    "mode": "mobile-light",
+    "production": {
+      "title": "Search",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 152
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 91.421875,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 8617.21875
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-reference-search-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Search",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 152
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 91.421875,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 8617.21875
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-reference-search-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/search/quickstart",
+    "mode": "mobile-light",
+    "production": {
+      "title": "Exa Search API",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 152
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 195.21875,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 9023.0625
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-search-quickstart-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Exa Search API",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 152
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 195.21875,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 9023.0625
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-search-quickstart-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/admin/pricing",
+    "mode": "mobile-light",
+    "production": {
+      "title": "Pricing",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 180
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 90.515625,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 6237.890625
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-admin-pricing-production.png",
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    "local": {
+      "title": "Pricing",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 180
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 90.515625,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 6233.890625
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-admin-pricing-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/changelog",
+    "mode": "mobile-light",
+    "production": {
+      "title": "Changelog",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 152
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 140.734375,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 11418.109375
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-changelog-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Changelog",
+      "dark": false,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 152
+        },
+        "#header h1": {
+          "x": 20,
+          "y": 146,
+          "width": 140.734375,
+          "height": 36
+        },
+        "#content-area": {
+          "x": 20,
+          "y": 144,
+          "width": 350,
+          "height": 11418.109375
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      },
+      "file": "verification/mobile-theme/mobile-light-docs-changelog-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs",
+    "mode": "desktop-dark",
+    "production": {
+      "title": "Start building with Exa",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 1056,
+          "height": 110
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 306.796875,
+          "height": 42
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 1056,
+          "height": 1840.953125
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Start building with Exa",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 1056,
+          "height": 110
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 306.796875,
+          "height": 42
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 1056,
+          "height": 1840.953125
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/reference/search",
+    "mode": "desktop-dark",
+    "production": {
+      "title": "Search",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 560,
+          "height": 110
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 109.703125,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 560,
+          "height": 7053.34375
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-reference-search-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Search",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 560,
+          "height": 110
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 109.703125,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 560,
+          "height": 7053.34375
+        },
+        "#sidebar": null,
+        "#table-of-contents": null
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-reference-search-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/search/quickstart",
+    "mode": "desktop-dark",
+    "production": {
+      "title": "Exa Search API",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 82
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 234.265625,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 6521.9375
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 1188,
+          "y": 112,
+          "width": 264,
+          "height": 364
+        }
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-search-quickstart-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Exa Search API",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 82
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 234.265625,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 6521.9375
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 1188,
+          "y": 112,
+          "width": 264,
+          "height": 364
+        }
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-search-quickstart-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/admin/pricing",
+    "mode": "desktop-dark",
+    "production": {
+      "title": "Pricing",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 82
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 108.625,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 4377.90625
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 1188,
+          "y": 112,
+          "width": 264,
+          "height": 288
+        }
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-admin-pricing-production.png",
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    "local": {
+      "title": "Pricing",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 82
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 108.625,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 4377.90625
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 1188,
+          "y": 112,
+          "width": 264,
+          "height": 288
+        }
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-admin-pricing-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  },
+  {
+    "route": "/docs/changelog",
+    "mode": "desktop-dark",
+    "production": {
+      "title": "Changelog",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 82
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 168.890625,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 8692.109375
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 1188,
+          "y": 112,
+          "width": 264,
+          "height": 844
+        }
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-changelog-production.png",
+      "errors": []
+    },
+    "local": {
+      "title": "Changelog",
+      "dark": true,
+      "horizontalOverflow": false,
+      "overflowingElements": [],
+      "brokenVisibleImages": [],
+      "geometry": {
+        "#header": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 82
+        },
+        "#header h1": {
+          "x": 396,
+          "y": 98,
+          "width": 168.890625,
+          "height": 40
+        },
+        "#content-area": {
+          "x": 396,
+          "y": 96,
+          "width": 704,
+          "height": 8692.109375
+        },
+        "#sidebar": null,
+        "#table-of-contents": {
+          "x": 1188,
+          "y": 112,
+          "width": 264,
+          "height": 844
+        }
+      },
+      "file": "verification/mobile-theme/desktop-dark-docs-changelog-local.png",
+      "errors": []
+    },
+    "deltas": {}
+  }
+]

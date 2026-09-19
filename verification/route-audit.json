@@ -1,0 +1,976 @@
+{
+  "source_pages": 159,
+  "local_pages": 159,
+  "navigation_entries": 159,
+  "missing_pages": [],
+  "extra_pages": [],
+  "missing_navigation": [],
+  "unexpected_navigation": [],
+  "broken_internal_links": [],
+  "missing_assets": [],
+  "invalid_api_references": [],
+  "unconverted_api_fences": [],
+  "source_checksum_errors": [],
+  "import_errors": [],
+  "api_pages": 69,
+  "checked_internal_links": 379,
+  "checked_asset_references": 47,
+  "routes": [
+    {
+      "route": "/docs/admin/billing",
+      "status": 200,
+      "title": "Billing and Rate Limits - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/error-codes",
+      "status": 200,
+      "title": "Error Codes - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/faqs",
+      "status": 200,
+      "title": "FAQs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/mcp-enterprise-managed-auth",
+      "status": 200,
+      "title": "Enterprise Managed Auth for Claude - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/openapi-spec",
+      "status": 200,
+      "title": "OpenAPI Specification - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/pricing",
+      "status": 200,
+      "title": "Pricing - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/security/hipaa",
+      "status": 200,
+      "title": "HIPAA - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/security/overview",
+      "status": 200,
+      "title": "Security Overview - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/security/zero-data-retention",
+      "status": 200,
+      "title": "Zero Data Retention - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/status",
+      "status": 200,
+      "title": "Status Page - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/admin/team-management",
+      "status": 200,
+      "title": "Managing Your Team - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/best-practices",
+      "status": 200,
+      "title": "Agent Best Practices - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/additional-partners",
+      "status": 200,
+      "title": "Additional providers - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/affiliatecom",
+      "status": 200,
+      "title": "Affiliate.com - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/baselayer",
+      "status": 200,
+      "title": "Baselayer - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/combining-providers",
+      "status": 200,
+      "title": "Combining providers - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/fiber",
+      "status": 200,
+      "title": "Fiber.ai - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/financialdatasets",
+      "status": 200,
+      "title": "Financial Datasets - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/jinko",
+      "status": 200,
+      "title": "Jinko - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/overview",
+      "status": 200,
+      "title": "Exa Connect - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/particle",
+      "status": 200,
+      "title": "Particle - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/polymarket",
+      "status": 200,
+      "title": "Polymarket - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/connect/similarweb",
+      "status": 200,
+      "title": "Similarweb - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/examples",
+      "status": 200,
+      "title": "Examples - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/agent/quickstart",
+      "status": 200,
+      "title": "Exa Agent - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/batch/quickstart",
+      "status": 200,
+      "title": "Batch API - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/changelog",
+      "status": 200,
+      "title": "Changelog - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/contents/quickstart",
+      "status": 200,
+      "title": "Contents API - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/get-started/agent-skills/build-with-exa",
+      "status": 200,
+      "title": "Build with Exa Skill - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/get-started/agent-skills/exa-contents",
+      "status": 200,
+      "title": "Exa Contents Skill - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/get-started/agent-skills/exa-search",
+      "status": 200,
+      "title": "Exa Search Skill - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/get-started/agent-skills/overview",
+      "status": 200,
+      "title": "Agent Skills - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/get-started/exa-mcp",
+      "status": 200,
+      "title": "Exa MCP - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/get-started/quickstart",
+      "status": 200,
+      "title": "Developer quickstart - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs",
+      "status": 200,
+      "title": "Start building with Exa - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/baseten",
+      "status": 200,
+      "title": "Baseten - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/browserbase",
+      "status": 200,
+      "title": "Browserbase - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/chatgpt-codex",
+      "status": 200,
+      "title": "Exa in Codex and ChatGPT - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/claude-web-desktop",
+      "status": 200,
+      "title": "Exa in Claude Code, Web, and Desktop - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/crewai",
+      "status": 200,
+      "title": "CrewAI - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/elevenlabs",
+      "status": 200,
+      "title": "ElevenLabs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/exa-for-sheets",
+      "status": 200,
+      "title": "Exa for Google Sheets - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/exa-slack",
+      "status": 200,
+      "title": "Exa in Slack - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/grok-build",
+      "status": 200,
+      "title": "Grok Build - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/gumloop",
+      "status": 200,
+      "title": "Gumloop - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/hermes-agent",
+      "status": 200,
+      "title": "Hermes Agent - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/langchain",
+      "status": 200,
+      "title": "LangChain - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/llamaindex",
+      "status": 200,
+      "title": "LlamaIndex - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/marketplaces/stripe-projects",
+      "status": 200,
+      "title": "Stripe Projects - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/n8n",
+      "status": 200,
+      "title": "n8n - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/openai-sdk",
+      "status": 200,
+      "title": "OpenAI SDK Compatibility - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/openclaw",
+      "status": 200,
+      "title": "OpenClaw - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/openhuman",
+      "status": 200,
+      "title": "OpenHuman - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/openrouter",
+      "status": 200,
+      "title": "OpenRouter - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/payments/mpp/gtm-enrichment",
+      "status": 200,
+      "title": "Tempo MPP GTM Enrichment Cookbook - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/payments/mpp/quickstart",
+      "status": 200,
+      "title": "Pay with MPP (Tempo) - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/payments/nevermined",
+      "status": 200,
+      "title": "Nevermined - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/payments/x402/agentkit",
+      "status": 200,
+      "title": "World AgentKit - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/payments/x402/quickstart",
+      "status": 200,
+      "title": "Pay with x402 - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/pydantic-ai",
+      "status": 200,
+      "title": "Pydantic AI - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/snowflake",
+      "status": 200,
+      "title": "Snowflake - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/tool-calling/anthropic",
+      "status": 200,
+      "title": "Anthropic Tool Calling - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/tool-calling/openai",
+      "status": 200,
+      "title": "OpenAI Tool Calling - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/truefoundry",
+      "status": 200,
+      "title": "TrueFoundry - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/vercel/ai-gateway",
+      "status": 200,
+      "title": "Vercel AI Gateway - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/vercel/ai-sdk",
+      "status": 200,
+      "title": "AI SDK by Vercel - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/integrations/vercel/fx",
+      "status": 200,
+      "title": "fx by Vercel Labs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/monitors/quickstart",
+      "status": 200,
+      "title": "Monitors API - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/cancel-a-run",
+      "status": 200,
+      "title": "Cancel a run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/create-a-run",
+      "status": 200,
+      "title": "Create a run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/delete-a-run",
+      "status": 200,
+      "title": "Delete a run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/get-a-run",
+      "status": 200,
+      "title": "Get an Agent run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/list-run-events",
+      "status": 200,
+      "title": "List run events - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/list-runs",
+      "status": 200,
+      "title": "List Agent runs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/agent-api/stop-a-run",
+      "status": 200,
+      "title": "Stop a run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/answer",
+      "status": 200,
+      "title": "Answer - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/batches/cancel-a-batch",
+      "status": 200,
+      "title": "Cancel a batch - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/batches/create-a-batch",
+      "status": 200,
+      "title": "Create a batch - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/batches/delete-a-batch",
+      "status": 200,
+      "title": "Delete a batch - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/batches/get-a-batch",
+      "status": 200,
+      "title": "Get a batch - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/batches/list-batches",
+      "status": 200,
+      "title": "List batches - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/get-contents",
+      "status": 200,
+      "title": "Contents - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/batch-monitors",
+      "status": 200,
+      "title": "Batch action on monitors - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/create-a-monitor",
+      "status": 200,
+      "title": "Create a monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/delete-a-monitor",
+      "status": 200,
+      "title": "Delete a monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/get-a-monitor",
+      "status": 200,
+      "title": "Get a monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/list-monitors",
+      "status": 200,
+      "title": "List monitors - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/runs/get-a-run",
+      "status": 200,
+      "title": "Get a run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/runs/list-runs",
+      "status": 200,
+      "title": "List runs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/trigger-a-monitor",
+      "status": 200,
+      "title": "Trigger a monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/monitors/update-a-monitor",
+      "status": 200,
+      "title": "Update a monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/search",
+      "status": 200,
+      "title": "Search - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/team-management/create-api-key",
+      "status": 200,
+      "title": "Create API key - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/team-management/delete-api-key",
+      "status": 200,
+      "title": "Delete API key - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/team-management/get-api-key",
+      "status": 200,
+      "title": "Get API key - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/team-management/get-api-key-usage",
+      "status": 200,
+      "title": "Get API key usage - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/team-management/list-api-keys",
+      "status": 200,
+      "title": "List API keys - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/reference/team-management/update-api-key",
+      "status": 200,
+      "title": "Update API key - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/sdks/quickstart",
+      "status": 200,
+      "title": "SDK Quickstart - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/best-practices",
+      "status": 200,
+      "title": "Search Best Practices - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/code",
+      "status": 200,
+      "title": "Code &amp; Docs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/companies-people",
+      "status": 200,
+      "title": "Companies &amp; People - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/financial",
+      "status": 200,
+      "title": "Financial Markets - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/legal",
+      "status": 200,
+      "title": "Legal &amp; Public Records - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/news",
+      "status": 200,
+      "title": "News - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/overview",
+      "status": 200,
+      "title": "Data Index - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/research",
+      "status": 200,
+      "title": "Research Publications - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/security",
+      "status": 200,
+      "title": "Cybersecurity - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/data/sports-weather-places",
+      "status": 200,
+      "title": "Sports, Weather &amp; Places - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/deep-search",
+      "status": 200,
+      "title": "Deep Search - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/highlights",
+      "status": 200,
+      "title": "Highlights - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/quickstart",
+      "status": 200,
+      "title": "Exa Search API - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/search/snapshot",
+      "status": 200,
+      "title": "Exa Snapshot - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/events/get-an-event",
+      "status": 200,
+      "title": "Get an event - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/events/list-all-events",
+      "status": 200,
+      "title": "List all events - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/events/types",
+      "status": 200,
+      "title": "Event types - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/imports/create-an-import",
+      "status": 200,
+      "title": "Create an import - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/imports/delete-import",
+      "status": 200,
+      "title": "Delete an import - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/imports/get-import",
+      "status": 200,
+      "title": "Get an import - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/imports/list-imports",
+      "status": 200,
+      "title": "List imports - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/imports/update-import",
+      "status": 200,
+      "title": "Update an import - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/create-a-monitor",
+      "status": 200,
+      "title": "Create a Websets monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/delete-monitor",
+      "status": 200,
+      "title": "Delete a Websets monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/get-monitor",
+      "status": 200,
+      "title": "Get a Websets monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/list-monitors",
+      "status": 200,
+      "title": "List Websets monitors - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/runs/get-monitor-run",
+      "status": 200,
+      "title": "Get a monitor run - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/runs/list-monitor-runs",
+      "status": 200,
+      "title": "List monitor runs - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/monitors/update-monitor",
+      "status": 200,
+      "title": "Update a Websets monitor - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/teams/get-team-info",
+      "status": 200,
+      "title": "Get team info - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+      "status": 200,
+      "title": "List webhook attempts - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/create-a-webhook",
+      "status": 200,
+      "title": "Create a webhook - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/delete-a-webhook",
+      "status": 200,
+      "title": "Delete a webhook - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/get-a-webhook",
+      "status": 200,
+      "title": "Get a webhook - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/list-webhooks",
+      "status": 200,
+      "title": "List webhooks - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/update-a-webhook",
+      "status": 200,
+      "title": "Update a webhook - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/webhooks/verifying-signatures",
+      "status": 200,
+      "title": "Verifying signatures - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/cancel-a-running-webset",
+      "status": 200,
+      "title": "Cancel a running webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/create-a-webset",
+      "status": 200,
+      "title": "Create a webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/delete-a-webset",
+      "status": 200,
+      "title": "Delete a webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+      "status": 200,
+      "title": "Cancel a running enrichment - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/enrichments/create-an-enrichment",
+      "status": 200,
+      "title": "Create an enrichment - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/enrichments/delete-an-enrichment",
+      "status": 200,
+      "title": "Delete an enrichment - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/enrichments/get-an-enrichment",
+      "status": 200,
+      "title": "Get an enrichment - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/enrichments/update-an-enrichment",
+      "status": 200,
+      "title": "Update an enrichment - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/get-a-webset",
+      "status": 200,
+      "title": "Get a webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/items/delete-an-item",
+      "status": 200,
+      "title": "Delete an item - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/items/get-an-item",
+      "status": 200,
+      "title": "Get an item - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/items/list-all-items-for-a-webset",
+      "status": 200,
+      "title": "List all items for a webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/list-all-websets",
+      "status": 200,
+      "title": "List all websets - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/preview-a-webset",
+      "status": 200,
+      "title": "Preview a webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/searches/cancel-a-running-search",
+      "status": 200,
+      "title": "Cancel a running search - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/searches/create-a-search",
+      "status": 200,
+      "title": "Create a search - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/searches/get-a-search",
+      "status": 200,
+      "title": "Get a search - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/api/websets/update-a-webset",
+      "status": 200,
+      "title": "Update a webset - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/dashboard/exclude-results",
+      "status": 200,
+      "title": "Exclude Results - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/dashboard/get-started",
+      "status": 200,
+      "title": "Get started - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/dashboard/import-from-csv",
+      "status": 200,
+      "title": "Import from CSV - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/imports-and-search",
+      "status": 200,
+      "title": "How to Use Imports - Exa",
+      "ok": true
+    },
+    {
+      "route": "/docs/websets/quickstart",
+      "status": 200,
+      "title": "Websets - Exa",
+      "ok": true
+    }
+  ],
+  "route_errors": [],
+  "passed": true
+}

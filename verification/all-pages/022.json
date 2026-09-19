@@ -1,0 +1,101 @@
+{
+  "id": "022",
+  "path": "/docs/agent/connect/polymarket",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/polymarket",
+    "title": "Polymarket - Exa",
+    "h1": "Polymarket",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 174.53125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3069.890625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Polymarket is a prediction-market platform where market prices represent the crowd’s implied probability of real-world outcomes. Exa Connect provides read-only access to Polymarket’s public market data.\nAttach polymarket to an Exa Agent run, and the agent queries Polymarket alongside Exa web search.\n​\nUse it for\nFinding prediction markets and current market-implied odds for a topic.\nComparing how the implied probability of an outcome changed over time.\nInspecting market liquidity, bid/ask depth, and top position holders.\nReviewing a trader’s current positions and recent on-chain activity.\n​\nProvider ID\nUse this value in dataSources:\npolymarket\n\n​\nPricing\nPolymarket’s read APIs are unauthenticated and free, so Polymarket tool calls cost nothing: you pay only the standard Agent run pricing.\n​\nData available\nData\tDescription\nMarkets and events\tCurrent prediction markets and events, with implied-probability prices, volume, and liquidity.\nPrice history\tHow an outcome’s implied probability moved over time.\nOrder books\tLive bid/ask depth and spread for a market outcome.\nHolders and traders\tTop position holders for a market, plus a trader’s current positions and recent on-chain activity.\n​\nExample\nGet the market-implied odds of a Fed rate cut and how they moved over the past month.\nPython\nTypeScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=(\n        \"What are the current market-implied odds of a Fed rate cut at the \"\n        \"next FOMC meeting, and how have they moved over the past month?\"\n    ),\n    data_sources=[{\"provider\": \"polymarket\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"market\", \"currentProbability\", \"trend\"],\n        \"properties\": {\n            \"market\": {\"type\": \"string\", \"description\": \"the market question\"},\n            \"currentProbability\": {\"type\": \"number\", \"description\": \"between 0 and 1\"},\n            \"trend\": {\"type\": \"string\", \"description\": \"how the implied probability moved over the past month\"},\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nExa web search: add reporting and background context to market odds.\nParticle: pull the news coverage behind a move in the odds.\nFinancial Datasets: connect market-implied odds to prices, fundamentals, and macro data.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 3166,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/polymarket",
+    "title": "Polymarket - Exa",
+    "h1": "Polymarket",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 174.53125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3069.890625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Polymarket is a prediction-market platform where market prices represent the crowd’s implied probability of real-world outcomes. Exa Connect provides read-only access to Polymarket’s public market data.\nAttach polymarket to an Exa Agent run, and the agent queries Polymarket alongside Exa web search.\n​\nUse it for\nFinding prediction markets and current market-implied odds for a topic.\nComparing how the implied probability of an outcome changed over time.\nInspecting market liquidity, bid/ask depth, and top position holders.\nReviewing a trader’s current positions and recent on-chain activity.\n​\nProvider ID\nUse this value in dataSources:\npolymarket\n\n​\nPricing\nPolymarket’s read APIs are unauthenticated and free, so Polymarket tool calls cost nothing: you pay only the standard Agent run pricing.\n​\nData available\nData\tDescription\nMarkets and events\tCurrent prediction markets and events, with implied-probability prices, volume, and liquidity.\nPrice history\tHow an outcome’s implied probability moved over time.\nOrder books\tLive bid/ask depth and spread for a market outcome.\nHolders and traders\tTop position holders for a market, plus a trader’s current positions and recent on-chain activity.\n​\nExample\nGet the market-implied odds of a Fed rate cut and how they moved over the past month.\nPython\nTypeScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=(\n        \"What are the current market-implied odds of a Fed rate cut at the \"\n        \"next FOMC meeting, and how have they moved over the past month?\"\n    ),\n    data_sources=[{\"provider\": \"polymarket\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"market\", \"currentProbability\", \"trend\"],\n        \"properties\": {\n            \"market\": {\"type\": \"string\", \"description\": \"the market question\"},\n            \"currentProbability\": {\"type\": \"number\", \"description\": \"between 0 and 1\"},\n            \"trend\": {\"type\": \"string\", \"description\": \"how the implied probability moved over the past month\"},\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nExa web search: add reporting and background context to market odds.\nParticle: pull the news coverage behind a move in the odds.\nFinancial Datasets: connect market-implied odds to prices, fundamentals, and macro data.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 3166,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

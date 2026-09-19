@@ -1,0 +1,103 @@
+{
+  "id": "017",
+  "path": "/docs/agent/connect/fiber",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/fiber",
+    "title": "Fiber.ai - Exa",
+    "h1": "Fiber.ai",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 112.078125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3471.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Fiber.ai is a B2B data platform with fresh data on 40M+ companies, 850M+ people, and 30M+ jobs. Search live company, people, and job data, and enrich incomplete records with work emails, personal emails, and phone numbers.\nAttach fiber to an Exa Agent run through Exa Connect, and the agent queries Fiber.ai alongside Exa web search.\n​\nUse it for\nCleaning up a CRM by reverse-looking-up a work or personal email to a person, or enriching a partial company/person record.\nTracking real-time LinkedIn signals: job changes, promotions, new jobs, headcount changes, and fundraising.\nFinding relevant posts across LinkedIn, X, Instagram, TikTok, Reddit, and YouTube, pulling their comments and reactions, then enriching the authors’ contact info.\nSearching across 40M+ companies and 850M+ people and enriching prospects with work email, personal email, and phone numbers.\n​\nProvider ID\nUse this value in dataSources:\nfiber\n\n​\nPricing\nFiber.ai bills in credits at $0.02 / credit, and each call is charged the credits Fiber reports for it:\nOperation\tCredits\nSearch\t2 + 1 per result returned\nCompany lookup\t~2 per candidate returned\nPerson lookup / email reverse lookup\t2\nContact reveal\t2 (work email) – 5 (phone)\nCalls that return no match (or whose charge Fiber refunds) are free. Parameter choices change the price: a company lookup’s numResults sets how many candidates you pay for, and a search’s result count drives most of its cost.\n​\nExample\nBuild a B2B prospecting list of Series A fintech companies in New York with 50–200 employees.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"I'm building a B2B sales prospecting list using a B2B company database. Find Series A fintech companies in New York with 50-200 employees, and for each return the company's LinkedIn profile, domain, employee count, and funding stage.\",\n    data_sources=[{\"provider\": \"fiber\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"companies\"],\n        \"properties\": {\n            \"companies\": {\n                \"type\": \"array\",\n                \"maxItems\": 10,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"name\", \"domain\", \"employeeCount\", \"fundingStage\"],\n                    \"properties\": {\n                        \"name\": {\"type\": \"string\"},\n                        \"domain\": {\"type\": \"string\"},\n                        \"employeeCount\": {\"type\": \"number\"},\n                        \"fundingStage\": {\"type\": \"string\"},\n                    },\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nSimilarweb: size up a prospect’s web presence and competitors.\nBaselayer: verify officers and registrations for shortlisted US businesses.\nParticle: find what podcasts are saying about a company or executive.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 3568,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/fiber",
+    "title": "Fiber.ai - Exa",
+    "h1": "Fiber.ai",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 112.078125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3471.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Fiber.ai is a B2B data platform with fresh data on 40M+ companies, 850M+ people, and 30M+ jobs. Search live company, people, and job data, and enrich incomplete records with work emails, personal emails, and phone numbers.\nAttach fiber to an Exa Agent run through Exa Connect, and the agent queries Fiber.ai alongside Exa web search.\n​\nUse it for\nCleaning up a CRM by reverse-looking-up a work or personal email to a person, or enriching a partial company/person record.\nTracking real-time LinkedIn signals: job changes, promotions, new jobs, headcount changes, and fundraising.\nFinding relevant posts across LinkedIn, X, Instagram, TikTok, Reddit, and YouTube, pulling their comments and reactions, then enriching the authors’ contact info.\nSearching across 40M+ companies and 850M+ people and enriching prospects with work email, personal email, and phone numbers.\n​\nProvider ID\nUse this value in dataSources:\nfiber\n\n​\nPricing\nFiber.ai bills in credits at $0.02 / credit, and each call is charged the credits Fiber reports for it:\nOperation\tCredits\nSearch\t2 + 1 per result returned\nCompany lookup\t~2 per candidate returned\nPerson lookup / email reverse lookup\t2\nContact reveal\t2 (work email) – 5 (phone)\nCalls that return no match (or whose charge Fiber refunds) are free. Parameter choices change the price: a company lookup’s numResults sets how many candidates you pay for, and a search’s result count drives most of its cost.\n​\nExample\nBuild a B2B prospecting list of Series A fintech companies in New York with 50–200 employees.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"I'm building a B2B sales prospecting list using a B2B company database. Find Series A fintech companies in New York with 50-200 employees, and for each return the company's LinkedIn profile, domain, employee count, and funding stage.\",\n    data_sources=[{\"provider\": \"fiber\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"companies\"],\n        \"properties\": {\n            \"companies\": {\n                \"type\": \"array\",\n                \"maxItems\": 10,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"name\", \"domain\", \"employeeCount\", \"fundingStage\"],\n                    \"properties\": {\n                        \"name\": {\"type\": \"string\"},\n                        \"domain\": {\"type\": \"string\"},\n                        \"employeeCount\": {\"type\": \"number\"},\n                        \"fundingStage\": {\"type\": \"string\"},\n                    },\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nSimilarweb: size up a prospect’s web presence and competitors.\nBaselayer: verify officers and registrations for shortlisted US businesses.\nParticle: find what podcasts are saying about a company or executive.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 3568,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

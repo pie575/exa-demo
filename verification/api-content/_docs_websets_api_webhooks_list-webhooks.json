@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/webhooks/list-webhooks",
+  "production": {
+    "status": 200,
+    "text": "List webhooks\nCopy page\n\nReturns the active Webhooks for your team.\n\nYou can paginate through the results using the cursor parameter.\n\nGET\n/\nv0\n/\nwebhooks\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:25\n\nThe number of results to return\n\nRequired range: 1 <= x <= 200\nResponse\n200 - application/json\n\nList of webhooks\n\n​\ndata\nobject[]required\n\nThe list of webhooks\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nDelete a webhook\nPrevious\nList webhook attempts\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List webhooks",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List webhooks\nCopy page\n\nReturns the active Webhooks for your team.\n\nYou can paginate through the results using the cursor parameter.\n\nGET\n/\nv0\n/\nwebhooks\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:25\n\nThe number of results to return\n\nRequired range: 1 <= x <= 200\nResponse\n200 - application/json\n\nList of webhooks\n\n​\ndata\nobject[]required\n\nThe list of webhooks\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nDelete a webhook\nPrevious\nList webhook attempts\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List webhooks",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 906,
+  "localLength": 906
+}

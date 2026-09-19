@@ -1,0 +1,103 @@
+{
+  "id": "002",
+  "path": "/docs/admin/error-codes",
+  "production": {
+    "url": "https://exa.ai/docs/admin/error-codes",
+    "title": "Error Codes - Exa",
+    "h1": "Error Codes",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 184.25,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5026.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa APIs signal failures with standard HTTP status codes and a JSON error body.\n​\nHTTP status codes\nCode\tMeaning\tWhat to do\n400 Bad Request\tThe body, query parameters, headers, or combination of options is invalid.\tCorrect the request using the returned message.\n401 Unauthorized\tThe API key is missing or invalid.\tVerify the authentication header and API key.\n402 Payment Required\tCredits are exhausted or a spending budget was exceeded.\tTop up credits or contact your team administrator.\n403 Forbidden\tThe API key does not have access to the requested feature, or the request was blocked by policy.\tCheck the returned message and your plan’s feature access.\n404 Not Found\tThe route or requested resource does not exist.\tVerify the endpoint and resource ID.\n409 Conflict\tThe request conflicts with existing state — for example, a Webset with the same externalId already exists.\tFetch the existing resource or use a different identifier.\n422 Unprocessable Entity\tA Websets preview query could not be decomposed into a valid entity and criteria.\tRephrase the preview query.\n429 Too Many Requests\tYour API key, team, or network exceeded a rate or concurrency limit.\tReduce your request rate; wait for Retry-After seconds when present, otherwise use exponential backoff.\n500 Internal Server Error\tAn unexpected server error occurred.\tRetry after a brief delay. Contact support if it persists.\n503 Service Unavailable\tExa is temporarily over capacity (SERVICE_OVERLOADED) or unavailable. The request was not processed and is not billed.\tRetry with exponential backoff. This is independent of your request rate, so reducing it does not help — retrying does.\n504 Gateway Timeout\tThe request exceeded its processing deadline.\tRetry the request or reduce its scope.\nURL-level failures from /contents are reported in the statuses field of a successful 200 response, not as request-level errors. See Content fetch status tags.\n​\nError response structure\nError responses return a requestId, a human-readable error message, and a machine-readable tag:\n{\n  \"requestId\": \"67207943fab9832d162b5317f4cca830\",\n  \"error\": \"Invalid request body | Validation error: Invalid value for type\",\n  \"tag\": \"INVALID_REQUEST_BODY\"\n}\n\nInclude the requestId when contacting support for faster troubleshooting.\nThe set of tags is open-ended and tag names are self-explanatory. Branch on the HTTP status code first and treat unrecognized tags as additional detail rather than parse failures.\n​\nCommon error tags\n​\nAccount, billing, and access\nTag\tHTTP code\tDescription\nINVALID_API_KEY\t401\tThe API key is missing, empty, or invalid.\nNO_MORE_CREDITS\t402\tThe account has no remaining credits — top up at dashboard.exa.ai.\nAPI_KEY_BUDGET_EXCEEDED\t402\tThe API key exceeded its spending budget — contact your team administrator.\nTEAM_BUDGET_EXCEEDED\t402\tThe team exceeded its spending budget for the current billing period.\nFEATURE_DISABLED\t403\tThe requested endpoint, search type, or option is not enabled for your plan.\nPROHIBITED_CONTENT\t403\tThe request was rejected by content safety moderation.\nCONTENT_FILTER_ERROR\t403\tContent was rejected by a safety policy during processing.\nRATE_LIMIT_EXCEEDED\t429\tYour API key, team, or network exceeded its own rate limit — reduce your request rate.\nSERVICE_OVERLOADED\t503\tExa is temporarily over capacity and shed the request before processing it — retry with exponential backoff.\n​\nRequest validation\nTag\tHTTP code\tDescription\nINVALID_REQUEST_BODY\t400\tThe JSON body failed schema validation.\nINVALID_REQUEST\t400\tOptions conflict with each other, or a beta feature was used without its Exa-Beta header.\nINVALID_NUM_RESULTS\t400\tnumResults must be ≤ 100 when highlights are requested.\nNUM_RESULTS_EXCEEDED\t400\tThe requested result count exceeds your plan’s limit.\nINVALID_JSON_SCHEMA\t400\tThe provided output schema is invalid.\nSUBPAGES_LIMIT_EXCEEDED\t400\t/contents allows at most 100 subpages per request.\n​\nPayment protocols\nRequests paid through x402 or MPP can also return:\nTag\tHTTP code\tDescription\nX402_PAYMENT_REQUIRED\t402\tPayment is required.\nX402_INVALID_SIGNATURE\t400\tThe x402 payment signature is invalid.\nX402_VERIFICATION_FAILED\t402\tThe x402 payment could not be verified.\nMPP_VERIFICATION_FAILED\t402\tThe MPP payment could not be verified.\nX402_TOO_MANY_UNPAID\t429\tToo many x402 requests are awaiting payment.\nX402_WALLET_RATE_LIMITED\t429\tThe x402 wallet exceeded its rate limit.\nX402_INTERNAL_ERROR\t500\tExa could not create x402 payment requirements.\n​\nContent fetch status tags\nWhen /contents receives multiple URLs, one URL can fail while the others succeed. URL-level failures are returned in the statuses field and do not fail the request:\n{\n  \"results\": [],\n  \"statuses\": [\n    {\n      \"id\": \"https://example.com\",\n      \"status\": \"error\",\n      \"error\": {\n        \"tag\": \"CRAWL_NOT_FOUND\",\n        \"httpStatusCode\": 404\n      }\n    }\n  ]\n}\n\nhttpStatusCode describes the target page, not the /contents response.\nTag\tDescription\tHow to handle\nCRAWL_NOT_FOUND\tThe target page was not found.\tVerify the URL is correct and accessible.\nCRAWL_HTTP_{status}\tThe target returned an HTTP error, such as CRAWL_HTTP_403.\tHandle the embedded target status.\nCRAWL_TIMEOUT\tThe crawl timed out while fetching the target page.\tRetry the request or try again later.\nCRAWL_LIVECRAWL_TIMEOUT\tLive retrieval exceeded your requested livecrawlTimeout.\tIncrease livecrawlTimeout or adjust maxAgeHours.\nSOURCE_NOT_AVAILABLE\tAccess to the source is forbidden or the source is unavailable.\tCheck whether the source requires authentication or is restricted.\nUNSUPPORTED_URL\tThe URL scheme is not supported for content fetching.\tUse a standard HTTP or HTTPS URL.\nCRAWL_UNKNOWN_ERROR\tThe crawl failed for another reason.\tRetry the request; contact support if persistent.\nThese status tags are specific to /contents; /search does not return a statuses field.\n​\nGetting help\nCheck Exa Status when 500, 503, or 504 errors persist.\nCheck Rate Limits for current limits.\nReview the endpoint’s API reference for request requirements.\nContact hello@exa.ai with the response status, error body, and requestId.",
+    "scrollHeight": 5123,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/error-codes",
+    "title": "Error Codes - Exa",
+    "h1": "Error Codes",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 184.25,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5026.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa APIs signal failures with standard HTTP status codes and a JSON error body.\n​\nHTTP status codes\nCode\tMeaning\tWhat to do\n400 Bad Request\tThe body, query parameters, headers, or combination of options is invalid.\tCorrect the request using the returned message.\n401 Unauthorized\tThe API key is missing or invalid.\tVerify the authentication header and API key.\n402 Payment Required\tCredits are exhausted or a spending budget was exceeded.\tTop up credits or contact your team administrator.\n403 Forbidden\tThe API key does not have access to the requested feature, or the request was blocked by policy.\tCheck the returned message and your plan’s feature access.\n404 Not Found\tThe route or requested resource does not exist.\tVerify the endpoint and resource ID.\n409 Conflict\tThe request conflicts with existing state — for example, a Webset with the same externalId already exists.\tFetch the existing resource or use a different identifier.\n422 Unprocessable Entity\tA Websets preview query could not be decomposed into a valid entity and criteria.\tRephrase the preview query.\n429 Too Many Requests\tYour API key, team, or network exceeded a rate or concurrency limit.\tReduce your request rate; wait for Retry-After seconds when present, otherwise use exponential backoff.\n500 Internal Server Error\tAn unexpected server error occurred.\tRetry after a brief delay. Contact support if it persists.\n503 Service Unavailable\tExa is temporarily over capacity (SERVICE_OVERLOADED) or unavailable. The request was not processed and is not billed.\tRetry with exponential backoff. This is independent of your request rate, so reducing it does not help — retrying does.\n504 Gateway Timeout\tThe request exceeded its processing deadline.\tRetry the request or reduce its scope.\nURL-level failures from /contents are reported in the statuses field of a successful 200 response, not as request-level errors. See Content fetch status tags.\n​\nError response structure\nError responses return a requestId, a human-readable error message, and a machine-readable tag:\n{\n  \"requestId\": \"67207943fab9832d162b5317f4cca830\",\n  \"error\": \"Invalid request body | Validation error: Invalid value for type\",\n  \"tag\": \"INVALID_REQUEST_BODY\"\n}\n\nInclude the requestId when contacting support for faster troubleshooting.\nThe set of tags is open-ended and tag names are self-explanatory. Branch on the HTTP status code first and treat unrecognized tags as additional detail rather than parse failures.\n​\nCommon error tags\n​\nAccount, billing, and access\nTag\tHTTP code\tDescription\nINVALID_API_KEY\t401\tThe API key is missing, empty, or invalid.\nNO_MORE_CREDITS\t402\tThe account has no remaining credits — top up at dashboard.exa.ai.\nAPI_KEY_BUDGET_EXCEEDED\t402\tThe API key exceeded its spending budget — contact your team administrator.\nTEAM_BUDGET_EXCEEDED\t402\tThe team exceeded its spending budget for the current billing period.\nFEATURE_DISABLED\t403\tThe requested endpoint, search type, or option is not enabled for your plan.\nPROHIBITED_CONTENT\t403\tThe request was rejected by content safety moderation.\nCONTENT_FILTER_ERROR\t403\tContent was rejected by a safety policy during processing.\nRATE_LIMIT_EXCEEDED\t429\tYour API key, team, or network exceeded its own rate limit — reduce your request rate.\nSERVICE_OVERLOADED\t503\tExa is temporarily over capacity and shed the request before processing it — retry with exponential backoff.\n​\nRequest validation\nTag\tHTTP code\tDescription\nINVALID_REQUEST_BODY\t400\tThe JSON body failed schema validation.\nINVALID_REQUEST\t400\tOptions conflict with each other, or a beta feature was used without its Exa-Beta header.\nINVALID_NUM_RESULTS\t400\tnumResults must be ≤ 100 when highlights are requested.\nNUM_RESULTS_EXCEEDED\t400\tThe requested result count exceeds your plan’s limit.\nINVALID_JSON_SCHEMA\t400\tThe provided output schema is invalid.\nSUBPAGES_LIMIT_EXCEEDED\t400\t/contents allows at most 100 subpages per request.\n​\nPayment protocols\nRequests paid through x402 or MPP can also return:\nTag\tHTTP code\tDescription\nX402_PAYMENT_REQUIRED\t402\tPayment is required.\nX402_INVALID_SIGNATURE\t400\tThe x402 payment signature is invalid.\nX402_VERIFICATION_FAILED\t402\tThe x402 payment could not be verified.\nMPP_VERIFICATION_FAILED\t402\tThe MPP payment could not be verified.\nX402_TOO_MANY_UNPAID\t429\tToo many x402 requests are awaiting payment.\nX402_WALLET_RATE_LIMITED\t429\tThe x402 wallet exceeded its rate limit.\nX402_INTERNAL_ERROR\t500\tExa could not create x402 payment requirements.\n​\nContent fetch status tags\nWhen /contents receives multiple URLs, one URL can fail while the others succeed. URL-level failures are returned in the statuses field and do not fail the request:\n{\n  \"results\": [],\n  \"statuses\": [\n    {\n      \"id\": \"https://example.com\",\n      \"status\": \"error\",\n      \"error\": {\n        \"tag\": \"CRAWL_NOT_FOUND\",\n        \"httpStatusCode\": 404\n      }\n    }\n  ]\n}\n\nhttpStatusCode describes the target page, not the /contents response.\nTag\tDescription\tHow to handle\nCRAWL_NOT_FOUND\tThe target page was not found.\tVerify the URL is correct and accessible.\nCRAWL_HTTP_{status}\tThe target returned an HTTP error, such as CRAWL_HTTP_403.\tHandle the embedded target status.\nCRAWL_TIMEOUT\tThe crawl timed out while fetching the target page.\tRetry the request or try again later.\nCRAWL_LIVECRAWL_TIMEOUT\tLive retrieval exceeded your requested livecrawlTimeout.\tIncrease livecrawlTimeout or adjust maxAgeHours.\nSOURCE_NOT_AVAILABLE\tAccess to the source is forbidden or the source is unavailable.\tCheck whether the source requires authentication or is restricted.\nUNSUPPORTED_URL\tThe URL scheme is not supported for content fetching.\tUse a standard HTTP or HTTPS URL.\nCRAWL_UNKNOWN_ERROR\tThe crawl failed for another reason.\tRetry the request; contact support if persistent.\nThese status tags are specific to /contents; /search does not return a statuses field.\n​\nGetting help\nCheck Exa Status when 500, 503, or 504 errors persist.\nCheck Rate Limits for current limits.\nReview the endpoint’s API reference for request requirements.\nContact hello@exa.ai with the response status, error body, and requestId.",
+    "scrollHeight": 5123,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,103 @@
+{
+  "id": "108",
+  "path": "/docs/search/data/sports-weather-places",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/sports-weather-places",
+    "title": "Sports, Weather & Places - Exa",
+    "h1": "Sports, Weather & Places",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 392.734375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2406.515625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for live sports data, weather forecasts, and local information without integrating a separate API for each one. Ask a natural-language question with the team, place, and time window you care about.\n​\nWrite better queries\nName the location or team precisely and include a date whenever the answer changes over time. Add the condition or attribute that matters to your task instead of asking for broad information.\nSports\nWeather\nPlaces\n​\nIncluded\nAvailable sports data:\nScores: games for a league on a day, including teams, scores, status, start time, and venue\nStandings: current league tables with conference or division splits\nSchedules: past results and upcoming games for a league or team\nCoverage includes the NBA, WNBA, NFL, MLB, NHL, MLS, college basketball and football, major European soccer leagues and UEFA competitions, cricket, F1, UFC, tennis, and golf.\n​\nAsk for the league, team, and time\nNBA scores last night\nLakers schedule this week\n​\nAdd the surrounding story\nAsk for the reporting you need alongside the live data.\nNBA injury reports ahead of tonight's games\n​\nMake a request\nAll three data types use the same Search endpoint.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"weather in San Francisco tomorrow\",\n    type=\"auto\",\n    num_results=5,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the places, teams, dates, criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nCompare places, assemble a game-day brief, or combine local details and conditions into structured results.\nOpen Agent guide",
+    "scrollHeight": 2503,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/sports-weather-places",
+    "title": "Sports, Weather & Places - Exa",
+    "h1": "Sports, Weather & Places",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 392.734375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2406.515625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for live sports data, weather forecasts, and local information without integrating a separate API for each one. Ask a natural-language question with the team, place, and time window you care about.\n​\nWrite better queries\nName the location or team precisely and include a date whenever the answer changes over time. Add the condition or attribute that matters to your task instead of asking for broad information.\nSports\nWeather\nPlaces\n​\nIncluded\nAvailable sports data:\nScores: games for a league on a day, including teams, scores, status, start time, and venue\nStandings: current league tables with conference or division splits\nSchedules: past results and upcoming games for a league or team\nCoverage includes the NBA, WNBA, NFL, MLB, NHL, MLS, college basketball and football, major European soccer leagues and UEFA competitions, cricket, F1, UFC, tennis, and golf.\n​\nAsk for the league, team, and time\nNBA scores last night\nLakers schedule this week\n​\nAdd the surrounding story\nAsk for the reporting you need alongside the live data.\nNBA injury reports ahead of tonight's games\n​\nMake a request\nAll three data types use the same Search endpoint.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"weather in San Francisco tomorrow\",\n    type=\"auto\",\n    num_results=5,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the places, teams, dates, criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nCompare places, assemble a game-day brief, or combine local details and conditions into structured results.\nOpen Agent guide",
+    "scrollHeight": 2503,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

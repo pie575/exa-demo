@@ -1,0 +1,91 @@
+{
+  "id": "148",
+  "path": "/docs/websets/api/websets/list-all-websets",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/websets/list-all-websets",
+    "title": "List all websets - Exa",
+    "h1": "List all websets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 207.65625
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 236.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 1942.34375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2038,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/websets/list-all-websets",
+    "title": "List all websets - Exa",
+    "h1": "List all websets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 207.65625
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 236.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 1942.34375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2038,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

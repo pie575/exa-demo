@@ -1,0 +1,7 @@
+node_modules/
+.mintlify/
+.DS_Store
+*.log
+verification/screenshots/
+verification/browser-profile/
+verification/all-pages/*.png

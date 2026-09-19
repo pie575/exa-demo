@@ -1,0 +1,103 @@
+{
+  "id": "106",
+  "path": "/docs/search/data/research",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/research",
+    "title": "Research Publications - Exa",
+    "h1": "Research Publications",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 343.703125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2851.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 332
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for research publications and related records, including titles, abstracts, authors, venues, citations, publisher pages, preprints, and repository pages.\nRead SOTA Search Over Academic Publications to learn more about publication search quality.\n​\nIncluded\nPapers and preprints, including full-text chunks where a parsed full text is available\nPatents, with abstracts, claims, inventors, and assignees\nGrants and funding announcements\nClinical trials, drug labels, and interaction data\nRegulatory and health approvals\n​\nUse it for\nLiterature review and citation discovery\nPrior-art and patent landscaping\nClinical and pharmaceutical research\nGrant and funding-opportunity discovery\n​\nExample queries\n​\nFind papers on a topic\nDescribe the method or finding rather than guessing at title keywords. The publication category keeps results to papers.\npapers on evaluation benchmarks for retrieval-augmented generation\n​\nSearch clinical evidence\nName the phase, intervention, and population so trial registrations and results pages rank above general coverage.\nphase 3 trials of GLP-1 agonists in adolescent patients\n​\nTrack regulatory approvals\nName the regulator and the device or drug class you are watching.\nFDA approvals for AI-based diagnostic devices\n​\nRun a prior-art search\nDescribe the invention functionally, the way a claim would, instead of using a product name.\npatents on cooling battery packs with immersion dielectric fluid\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"papers on evaluation benchmarks for retrieval-augmented generation\",\n    type=\"auto\",\n    category=\"publication\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the publications, inclusion criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nBuild a literature map, screen papers against inclusion criteria, or gather fields from several publications into one table.\nOpen Agent guide",
+    "scrollHeight": 2948,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/research",
+    "title": "Research Publications - Exa",
+    "h1": "Research Publications",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 343.703125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2851.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 332
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for research publications and related records, including titles, abstracts, authors, venues, citations, publisher pages, preprints, and repository pages.\nRead SOTA Search Over Academic Publications to learn more about publication search quality.\n​\nIncluded\nPapers and preprints, including full-text chunks where a parsed full text is available\nPatents, with abstracts, claims, inventors, and assignees\nGrants and funding announcements\nClinical trials, drug labels, and interaction data\nRegulatory and health approvals\n​\nUse it for\nLiterature review and citation discovery\nPrior-art and patent landscaping\nClinical and pharmaceutical research\nGrant and funding-opportunity discovery\n​\nExample queries\n​\nFind papers on a topic\nDescribe the method or finding rather than guessing at title keywords. The publication category keeps results to papers.\npapers on evaluation benchmarks for retrieval-augmented generation\n​\nSearch clinical evidence\nName the phase, intervention, and population so trial registrations and results pages rank above general coverage.\nphase 3 trials of GLP-1 agonists in adolescent patients\n​\nTrack regulatory approvals\nName the regulator and the device or drug class you are watching.\nFDA approvals for AI-based diagnostic devices\n​\nRun a prior-art search\nDescribe the invention functionally, the way a claim would, instead of using a product name.\npatents on cooling battery packs with immersion dielectric fluid\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"papers on evaluation benchmarks for retrieval-augmented generation\",\n    type=\"auto\",\n    category=\"publication\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the publications, inclusion criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nBuild a literature map, screen papers against inclusion criteria, or gather fields from several publications into one table.\nOpen Agent guide",
+    "scrollHeight": 2948,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

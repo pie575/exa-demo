@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "url": "/docs/llms.txt",
+      "status": "200",
+      "bytes": 22069,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "63ccfbf41d1f963f3b81f2bcb97ea8c8e4c04573acafbf10d2c52fe01eb41800",
+      "error": ""
+    },
+    {
+      "url": "/docs/llms-full.txt",
+      "status": "200",
+      "bytes": 766571,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "4da33fbbd32fb0151f6dc518d5b2e1967a451bebd612fec50391a6eeabc96a85",
+      "error": ""
+    },
+    {
+      "url": "/docs/exa-spec.yaml",
+      "status": "200",
+      "bytes": 409831,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "a900b746e076537a7b1a6a2c1509dcb642acc18c7f3e032f3cfe5fbce0f52983",
+      "error": ""
+    },
+    {
+      "url": "/docs/exa-spec.json",
+      "status": "200",
+      "bytes": 547801,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "dcfcf961b155a8b0f2edba3b29ab5e916c1a66cfc3b39dad4bd180303a46a201",
+      "error": ""
+    },
+    {
+      "url": "/docs/team-management-spec.yaml",
+      "status": "200",
+      "bytes": 32062,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "3cb487d56b67a3f0ae45fe0750341a9ceedfbd6084b36bf1b14b0802bb785c8d",
+      "error": ""
+    },
+    {
+      "url": "/docs.md",
+      "status": "200",
+      "bytes": 29460,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "af4afd0bffc817d5d9d3546506cf0785b6178a613cf603a4595b554c51e18e1d",
+      "error": ""
+    },
+    {
+      "url": "/docs/index.md",
+      "status": "200",
+      "bytes": 29460,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "af4afd0bffc817d5d9d3546506cf0785b6178a613cf603a4595b554c51e18e1d",
+      "error": ""
+    },
+    {
+      "url": "/docs/search/quickstart.md",
+      "status": "200",
+      "bytes": 20017,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "9aa35587a36fdc5145bd55da5bc81b6f497a93f0368add52e65a46d7983bca73",
+      "error": ""
+    },
+    {
+      "url": "/docs/reference/search.md",
+      "status": "200",
+      "bytes": 95681,
+      "matches_source": true,
+      "passed": true,
+      "sha256": "e2857f78216d4ba88402d5b5df1595c28774fd7bd1e9f3b1ddcfa06046bebf38",
+      "error": ""
+    }
+  ],
+  "passed": true
+}

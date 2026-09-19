@@ -1,0 +1,103 @@
+{
+  "id": "045",
+  "path": "/docs/integrations/hermes-agent",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/hermes-agent",
+    "title": "Hermes Agent - Exa",
+    "h1": "Hermes Agent",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 222.734375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3383.109375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Hermes Agent includes Exa as a native backend for its model-callable web_search and web_extract tools. Use Exa for both capabilities, or pair it with another Hermes web provider.\n​\nConnect your Exa account\n1\n\nGet an Exa API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nSelect Exa in Hermes\n\nRun the tool setup wizard:\nhermes tools\n\nOpen Web Search & Extract, choose Exa, and select the API-key-backed option. When prompted, enter your Exa API key. Hermes stores secrets in ~/.hermes/.env and provider selection in ~/.hermes/config.yaml.\n3\n\nTest web access\n\nStart Hermes and ask it to search, then read one of the results:\nSearch the web for the latest Exa product updates, then read the most relevant result.\n\nHermes should call web_search, followed by web_extract when it needs the page itself.\n​\nConfigure manually\nAdd your key to the Hermes environment file:\n~/.hermes/.env\nEXA_API_KEY=your-exa-api-key\n\nThen select Exa for both web capabilities:\n~/.hermes/config.yaml\nweb:\n  search_backend: \"exa\"\n  extract_backend: \"exa\"\n\nYou can use the shared fallback instead:\n~/.hermes/config.yaml\nweb:\n  backend: \"exa\"\n\nThe per-capability settings take precedence over web.backend. This lets you use Exa only for search or only for extraction when combining providers.\n​\nTools Hermes gets\nTool\tExa behavior\nweb_search\tSearches with Exa and returns ranked pages with titles, URLs, and text snippets.\nweb_extract\tRetrieves readable content from one or more URLs through Exa Contents.\nHermes truncates long extracted pages to its configured character budget and stores the complete text on disk. Change the default with web.extract_char_limit, or let the agent request a larger char_limit for an individual call.\nHermes can use Exa through its keyless free-provider pool without an API key. That pool is rate-limited and may rotate among providers. Configure EXA_API_KEY and select the API-key-backed Exa option when you need requests to use your Exa account consistently.\n​\nTroubleshooting\n\nHermes does not select Exa\n\nHermes reports that EXA_API_KEY is missing\n\nSearch works but extraction uses another provider\n\n​\nResources\nHermes web tools\nReview Hermes provider selection, caching, and extraction behavior.\nRead guide\nExa Search\nLearn how Exa searches, filters, and returns page contents.\nRead guide\nExa Contents\nUnderstand the extraction API behind web_extract.\nRead guide",
+    "scrollHeight": 3479,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/hermes-agent",
+    "title": "Hermes Agent - Exa",
+    "h1": "Hermes Agent",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 222.734375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3383.109375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Hermes Agent includes Exa as a native backend for its model-callable web_search and web_extract tools. Use Exa for both capabilities, or pair it with another Hermes web provider.\n​\nConnect your Exa account\n1\n\nGet an Exa API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nSelect Exa in Hermes\n\nRun the tool setup wizard:\nhermes tools\n\nOpen Web Search & Extract, choose Exa, and select the API-key-backed option. When prompted, enter your Exa API key. Hermes stores secrets in ~/.hermes/.env and provider selection in ~/.hermes/config.yaml.\n3\n\nTest web access\n\nStart Hermes and ask it to search, then read one of the results:\nSearch the web for the latest Exa product updates, then read the most relevant result.\n\nHermes should call web_search, followed by web_extract when it needs the page itself.\n​\nConfigure manually\nAdd your key to the Hermes environment file:\n~/.hermes/.env\nEXA_API_KEY=your-exa-api-key\n\nThen select Exa for both web capabilities:\n~/.hermes/config.yaml\nweb:\n  search_backend: \"exa\"\n  extract_backend: \"exa\"\n\nYou can use the shared fallback instead:\n~/.hermes/config.yaml\nweb:\n  backend: \"exa\"\n\nThe per-capability settings take precedence over web.backend. This lets you use Exa only for search or only for extraction when combining providers.\n​\nTools Hermes gets\nTool\tExa behavior\nweb_search\tSearches with Exa and returns ranked pages with titles, URLs, and text snippets.\nweb_extract\tRetrieves readable content from one or more URLs through Exa Contents.\nHermes truncates long extracted pages to its configured character budget and stores the complete text on disk. Change the default with web.extract_char_limit, or let the agent request a larger char_limit for an individual call.\nHermes can use Exa through its keyless free-provider pool without an API key. That pool is rate-limited and may rotate among providers. Configure EXA_API_KEY and select the API-key-backed Exa option when you need requests to use your Exa account consistently.\n​\nTroubleshooting\n\nHermes does not select Exa\n\nHermes reports that EXA_API_KEY is missing\n\nSearch works but extraction uses another provider\n\n​\nResources\nHermes web tools\nReview Hermes provider selection, caching, and extraction behavior.\nRead guide\nExa Search\nLearn how Exa searches, filters, and returns page contents.\nRead guide\nExa Contents\nUnderstand the extraction API behind web_extract.\nRead guide",
+    "scrollHeight": 3479,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

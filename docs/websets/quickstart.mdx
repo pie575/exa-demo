@@ -1,0 +1,148 @@
+---
+title: "Websets"
+sidebarTitle: "Quickstart"
+description: "Build verified, enriched datasets from the web."
+boost: 4
+---
+
+## What Are Websets?
+
+A Webset starts with a natural-language query and a target item count. Add criteria that every result must satisfy and enrichment fields to populate for each accepted item. Results arrive asynchronously through the dashboard, API, or webhooks.
+
+You can also build websets visually in the [Dashboard](/docs/websets/dashboard/get-started), no code
+required.
+
+<Info>
+  Starting a new list-building or enrichment workflow? Use [Exa Agent](/docs/agent/quickstart).
+  Use this guide to maintain or extend an existing Websets integration.
+  The Websets API requires a paid Websets plan; Search API credits and Websets credits are separate.
+</Info>
+
+## How It Works
+
+1. **Define a search:** Provide a natural-language query, a result count, and optional verification criteria and enrichments.
+2. **Search and verify:** Websets finds candidates and checks each one against your criteria. Only matching results become items.
+3. **Run enrichments:** For each verified item, Websets searches for the additional data you requested, such as a CEO name, funding amount, or contact information.
+4. **Receive results:** Poll for status, use webhooks for updates, or check the dashboard as items arrive.
+
+## Key Capabilities
+
+| Feature                   | What It Does                                                                      |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| **Criteria verification** | Each result is checked against rules you define, so you only get relevant matches |
+| **Enrichments**           | Extract specific data points (text, numbers, dates, booleans) for every result    |
+| **Monitors**              | Schedule recurring searches to keep your webset updated automatically             |
+| **Webhooks**              | Get real-time HTTP callbacks as items are added or enriched                       |
+| **Imports**               | Bring your own URLs and run enrichments on them                                   |
+
+## Human Quickstart
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>
+
+Install the SDK:
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install exa-py
+  ```
+
+  ```bash JavaScript theme={null}
+  npm install exa-js
+  ```
+</CodeGroup>
+
+Then make your first request:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+  from exa_py.websets.types import CreateWebsetParameters, CreateEnrichmentParameters
+  import os
+
+  exa = Exa(api_key=os.getenv("EXA_API_KEY"))
+
+  webset = exa.websets.create(
+      params=CreateWebsetParameters(
+          search={
+              "query": "Top AI research labs focusing on large language models",
+              "count": 5
+          },
+          enrichments=[
+              CreateEnrichmentParameters(
+                  description="LinkedIn profile of VP of Engineering or related role",
+                  format="text",
+              ),
+          ],
+      )
+  )
+
+  print(f"Webset created with ID: {webset.id}")
+  print(f"View your Webset at: {webset.dashboard_url}")
+
+  # Wait until Webset completes processing
+  webset = exa.websets.wait_until_idle(webset.id)
+
+  # Retrieve Webset Items
+  items = exa.websets.items.list(webset_id=webset.id)
+  for item in items.data:
+      print(f"Item: {item.model_dump_json(indent=2)}")
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa(process.env.EXA_API_KEY);
+
+  const webset = await exa.websets.create({
+    search: {
+      query: "Top AI research labs focusing on large language models",
+      count: 10
+    },
+    enrichments: [
+      { description: "Estimate the company's founding year", format: "number" }
+    ],
+  });
+
+  console.log(`Webset created with ID: ${webset.id}`);
+  console.log(`View your Webset at: ${webset.dashboardUrl}`);
+
+  const idleWebset = await exa.websets.waitUntilIdle(webset.id, {
+    timeout: 60000,
+    pollInterval: 2000,
+    onPoll: (status) => console.log(`Current status: ${status}...`)
+  });
+
+  const items = await exa.websets.items.list(webset.id, { limit: 10 });
+  for (const item of items.data) {
+    console.log(`Item: ${JSON.stringify(item, null, 2)}`);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/websets/v0/websets/" \
+    -H "accept: application/json" \
+    -H "content-type: application/json" \
+    -H "Authorization: Bearer ${EXA_API_KEY}" \
+    -d '{
+      "search": {
+        "query": "Top AI research labs focusing on large language models",
+        "count": 5
+      },
+      "enrichments": [
+        {"description": "Find the company'\''s founding year", "format": "number"}
+      ]
+    }'
+  ```
+</CodeGroup>
+
+<Note>
+  See [Zero Data Retention](/docs/admin/security/zero-data-retention) for product availability.
+</Note>
+
+## Next
+
+* [**Dashboard Guide**](./dashboard/get-started) - Step-by-step guide to using Websets in the dashboard
+* [**How It Works**](/docs/websets/quickstart) - Deep dive into the event-driven architecture
+* [**Websets API Reference**](./api/websets/create-a-webset) - Full API reference for all endpoints

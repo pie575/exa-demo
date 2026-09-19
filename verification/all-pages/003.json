@@ -1,0 +1,93 @@
+{
+  "id": "003",
+  "path": "/docs/admin/faqs",
+  "production": {
+    "url": "https://exa.ai/docs/admin/faqs",
+    "title": "FAQs - Exa",
+    "h1": "FAQs",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 86.546875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1211.3125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "What is Exa?\n\nWhich Exa product should I use?\n\nWhat is Exa Connect?\n\nWhat's different about Exa Search?\n\nHow large is Exa's index?\n\nHow fresh are Exa's results?\n\nDoes Exa operate a crawler?\n\nHow does Exa help ground LLM responses?\n\nCan I restrict which sources Exa searches?\n\nWhat security and data-retention options are available?\n\nHow does Exa pricing work?",
+    "scrollHeight": 1307,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/faqs",
+    "title": "FAQs - Exa",
+    "h1": "FAQs",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 86.546875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1211.3125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "What is Exa?\n\nWhich Exa product should I use?\n\nWhat is Exa Connect?\n\nWhat's different about Exa Search?\n\nHow large is Exa's index?\n\nHow fresh are Exa's results?\n\nDoes Exa operate a crawler?\n\nHow does Exa help ground LLM responses?\n\nCan I restrict which sources Exa searches?\n\nWhat security and data-retention options are available?\n\nHow does Exa pricing work?",
+    "scrollHeight": 1307,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

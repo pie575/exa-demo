@@ -1,0 +1,103 @@
+{
+  "id": "055",
+  "path": "/docs/integrations/payments/mpp/quickstart",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/payments/mpp/quickstart",
+    "title": "Pay with MPP (Tempo) - Exa",
+    "h1": "Pay with MPP (Tempo)",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 344.453125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7628.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 748
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\nWhat is MPP?\nMPP (Machine Payments Protocol) is an open, HTTP-native payment standard built on the 402 Payment Required status code. It lets clients pay for API access per-request using multiple payment methods, including stablecoins on Tempo, with no accounts, API keys, or subscriptions needed. The examples on this page use Tempo; Exa currently settles MPP payments in USDC.e on Tempo mainnet.\nExa supports MPP on two endpoints: /search and /contents. When you send a request without an API key or payment credential, Exa responds with 402 and a WWW-Authenticate: Payment challenge describing the price and how to pay. Your client signs a payment, retries the request with an Authorization: Payment credential, and receives the results once the payment settles on-chain.\nThis is ideal for AI agents that need to autonomously pay for web search without pre-provisioned credentials.\nMPP and API key access are independent. If your request includes an x-api-key header, the normal API key billing flow is used and MPP is bypassed entirely.\n​\nSupported endpoints\nEndpoint\tMethod\tDescription\n/search\tPOST\tWeb search with all search types (instant, auto, fast, deep, deep-lite, deep-reasoning)\n/contents\tPOST\tContent retrieval by URL or document ID\nOther Exa endpoints do not accept MPP payments yet.\n​\nGet started\nYou need a Tempo-compatible wallet funded with USDC.e. Export your wallet’s private key before running an example:\nexport WALLET_PRIVATE_KEY=\"0x...\"\n\n​\nInstall the client\nTypeScript\nPython\nnpm install mppx viem\n\n​\nMake a paid search request\nUse the MPP client to sign and submit a payment for a search request:\nTypeScript\nPython\nimport { Mppx, tempo } from \"mppx/client\";\nimport { privateKeyToAccount } from \"viem/accounts\";\n\nconst account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);\nconst mppx = Mppx.create({\n  methods: [tempo.charge({ account })],\n});\n\nconst response = await mppx.fetch(\"https://api.exa.ai/search\", {\n  method: \"POST\",\n  headers: { \"Content-Type\": \"application/json\" },\n  body: JSON.stringify({\n    query: \"best machine learning frameworks\",\n    numResults: 5,\n  }),\n});\n\nconst data = await response.json();\nconsole.log(data.results);\nconsole.log(\"Payment receipt:\", response.headers.get(\"Payment-Receipt\"));\n\nA successful run prints the search results and the Payment-Receipt header containing the on-chain transaction hash.\n​\nPay from the command line\nIf you prefer not to manage a raw private key, use the Tempo Wallet CLI instead. tempo wallet login creates or connects a Tempo wallet, authorizes a local access key, and can include free MPP Credits for new sign-ups.\n​\nInstall and authenticate\ncurl -fsSL https://tempo.xyz/install | bash\ntempo add wallet\ntempo add request\ntempo wallet login\n\nOn a remote host without a local browser, use tempo wallet login --no-browser and open the printed URL on your device to authorize the CLI.\n​\nCheck balances and credits\ntempo wallet whoami\ntempo wallet whoami --credits\n\n​\nMake a paid request\ntempo request --max-spend 1.00 https://api.exa.ai/search \\\n  --json '{\"query\": \"Series A fintech companies\", \"numResults\": 5}'\n\ntempo request intercepts the 402 Payment Required challenge, pays, and retries automatically.\nFor full CLI reference, see the Tempo Wallet CLI docs and tempo request docs.\n​\nGas fees\nExa sponsors the Tempo network fee and pays it in USDC.e. Your wallet only needs enough USDC.e for the API charge; it does not need pathUSD or another gas-token balance. You do not configure a fee payer. Exa’s payment challenge and the MPP SDK handle sponsorship automatically.\n​\nPricing\nMPP uses the same bundled pricing as API key billing. Exa calculates the price from the request parameters before processing the request.\n​\nSearch\nSearch type\tPrice for up to 10 results\ninstant, auto, fast\t$0.007 per request\ndeep-lite, deep\t$0.012 per request\ndeep-reasoning\t$0.015 per request\nAdding contents.summary costs another $0.001 per result.\nMPP search requests are capped at 10 results. If numResults is greater than 10, Exa uses 10 and prices the request for 10 results. If you need more, use API key billing.\n​\nContents\nEach requested content type costs $0.001 per URL:\nContent type\tPrice per URL\ntext\t$0.001\nhighlights\t$0.001\nsummary\t$0.001\nIf you do not request text, highlights, or summary, Exa enables text by default.\n​\nPricing examples\nRequest\tPrice\n/search with type: \"auto\"\t$0.007\n/search with 3 results and contents.summary\t$0.010\n/search with type: \"deep\"\t$0.012\n/contents for 2 URLs with text: true\t$0.002\n/contents for 1 URL with text and summary\t$0.002\n​\nHow the payment flow works\nThe SDK automates this flow, but you can inspect it directly over HTTP:\nSend a request without an API key or payment credential. Exa returns 402 with a WWW-Authenticate: Payment challenge containing the price, token, recipient, network, and sponsorship details.\nSign the challenge and retry with Authorization: Payment <credential>.\nExa processes the request while settling the payment. After settlement confirms, Exa returns the results with a Payment-Receipt header. If settlement fails, Exa returns 402 with a fresh challenge and no results.\n​\nInspect a payment challenge\nYou can inspect the price and payment details without a wallet:\ncurl -s -D - -X POST \"https://api.exa.ai/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"test query\", \"numResults\": 3}'\n\nLook for the WWW-Authenticate: Payment header in the 402 response. Unpaid discovery requests are rate-limited, so use this for debugging rather than polling.\n​\nPayment reference\nExa accepts MPP payments in USDC.e on Tempo mainnet.\nNetwork\tIdentifier\tToken\tAsset\nTempo mainnet\teip155:4217\tUSDC.e\t0x20c000000000000000000000b9537d11c60e8b50\nUSDC.e has 6 decimals. The challenge expresses prices in atomic units, so 7000 is $0.007 and 1000000 is $1.00.\nExa supports MPP and x402 on the same endpoints. An unauthenticated 402 response can include both the MPP WWW-Authenticate: Payment challenge and the x402 PAYMENT-REQUIRED header. Use the headers for the payment protocol your client supports.\n​\nHeaders\nHeader\tDirection\tDescription\nAuthorization: Payment <credential>\tRequest\tMPP payment credential\nWWW-Authenticate: Payment\t402 response\tPrice and payment instructions for the request\nPayment-Receipt\tSuccessful response\tSettlement receipt, including the on-chain transaction hash\n​\nErrors\nStatus\tDescription\n402\tThe payment credential is missing or invalid; the response includes a fresh challenge\n402\tThe payment amount does not match the request price, or settlement failed\n429\tThis IP sent too many unpaid discovery requests\n429\tThis wallet exceeded the paid-request rate limit\n​\nRate limits\nMPP rate limits are shared with x402 and are separate from API key limits:\nLimit\tThreshold\tWindow\nUnpaid discovery requests per IP\t5 requests\t60 seconds\nPaid requests per wallet\t10 requests\t1 second\n​\nFAQ\n\nCan I use MPP and an API key together?\n\nWhat happens if settlement fails after my request was processed?\n\nWhich wallets are supported?\n\n​\nResources\nMPP protocol docs: protocol details and authentication format\nmppx documentation: MPP TypeScript SDK reference\npympp documentation: MPP Python SDK reference\nTempo: Tempo network documentation\nPay with x402: pay for the same endpoints with x402\nExa Search API guide: full search parameter reference\nExa Contents API guide: full contents parameter reference",
+    "scrollHeight": 7725,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/payments/mpp/quickstart",
+    "title": "Pay with MPP (Tempo) - Exa",
+    "h1": "Pay with MPP (Tempo)",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 344.453125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7628.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 748
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\nWhat is MPP?\nMPP (Machine Payments Protocol) is an open, HTTP-native payment standard built on the 402 Payment Required status code. It lets clients pay for API access per-request using multiple payment methods, including stablecoins on Tempo, with no accounts, API keys, or subscriptions needed. The examples on this page use Tempo; Exa currently settles MPP payments in USDC.e on Tempo mainnet.\nExa supports MPP on two endpoints: /search and /contents. When you send a request without an API key or payment credential, Exa responds with 402 and a WWW-Authenticate: Payment challenge describing the price and how to pay. Your client signs a payment, retries the request with an Authorization: Payment credential, and receives the results once the payment settles on-chain.\nThis is ideal for AI agents that need to autonomously pay for web search without pre-provisioned credentials.\nMPP and API key access are independent. If your request includes an x-api-key header, the normal API key billing flow is used and MPP is bypassed entirely.\n​\nSupported endpoints\nEndpoint\tMethod\tDescription\n/search\tPOST\tWeb search with all search types (instant, auto, fast, deep, deep-lite, deep-reasoning)\n/contents\tPOST\tContent retrieval by URL or document ID\nOther Exa endpoints do not accept MPP payments yet.\n​\nGet started\nYou need a Tempo-compatible wallet funded with USDC.e. Export your wallet’s private key before running an example:\nexport WALLET_PRIVATE_KEY=\"0x...\"\n\n​\nInstall the client\nTypeScript\nPython\nnpm install mppx viem\n\n​\nMake a paid search request\nUse the MPP client to sign and submit a payment for a search request:\nTypeScript\nPython\nimport { Mppx, tempo } from \"mppx/client\";\nimport { privateKeyToAccount } from \"viem/accounts\";\n\nconst account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);\nconst mppx = Mppx.create({\n  methods: [tempo.charge({ account })],\n});\n\nconst response = await mppx.fetch(\"https://api.exa.ai/search\", {\n  method: \"POST\",\n  headers: { \"Content-Type\": \"application/json\" },\n  body: JSON.stringify({\n    query: \"best machine learning frameworks\",\n    numResults: 5,\n  }),\n});\n\nconst data = await response.json();\nconsole.log(data.results);\nconsole.log(\"Payment receipt:\", response.headers.get(\"Payment-Receipt\"));\n\nA successful run prints the search results and the Payment-Receipt header containing the on-chain transaction hash.\n​\nPay from the command line\nIf you prefer not to manage a raw private key, use the Tempo Wallet CLI instead. tempo wallet login creates or connects a Tempo wallet, authorizes a local access key, and can include free MPP Credits for new sign-ups.\n​\nInstall and authenticate\ncurl -fsSL https://tempo.xyz/install | bash\ntempo add wallet\ntempo add request\ntempo wallet login\n\nOn a remote host without a local browser, use tempo wallet login --no-browser and open the printed URL on your device to authorize the CLI.\n​\nCheck balances and credits\ntempo wallet whoami\ntempo wallet whoami --credits\n\n​\nMake a paid request\ntempo request --max-spend 1.00 https://api.exa.ai/search \\\n  --json '{\"query\": \"Series A fintech companies\", \"numResults\": 5}'\n\ntempo request intercepts the 402 Payment Required challenge, pays, and retries automatically.\nFor full CLI reference, see the Tempo Wallet CLI docs and tempo request docs.\n​\nGas fees\nExa sponsors the Tempo network fee and pays it in USDC.e. Your wallet only needs enough USDC.e for the API charge; it does not need pathUSD or another gas-token balance. You do not configure a fee payer. Exa’s payment challenge and the MPP SDK handle sponsorship automatically.\n​\nPricing\nMPP uses the same bundled pricing as API key billing. Exa calculates the price from the request parameters before processing the request.\n​\nSearch\nSearch type\tPrice for up to 10 results\ninstant, auto, fast\t$0.007 per request\ndeep-lite, deep\t$0.012 per request\ndeep-reasoning\t$0.015 per request\nAdding contents.summary costs another $0.001 per result.\nMPP search requests are capped at 10 results. If numResults is greater than 10, Exa uses 10 and prices the request for 10 results. If you need more, use API key billing.\n​\nContents\nEach requested content type costs $0.001 per URL:\nContent type\tPrice per URL\ntext\t$0.001\nhighlights\t$0.001\nsummary\t$0.001\nIf you do not request text, highlights, or summary, Exa enables text by default.\n​\nPricing examples\nRequest\tPrice\n/search with type: \"auto\"\t$0.007\n/search with 3 results and contents.summary\t$0.010\n/search with type: \"deep\"\t$0.012\n/contents for 2 URLs with text: true\t$0.002\n/contents for 1 URL with text and summary\t$0.002\n​\nHow the payment flow works\nThe SDK automates this flow, but you can inspect it directly over HTTP:\nSend a request without an API key or payment credential. Exa returns 402 with a WWW-Authenticate: Payment challenge containing the price, token, recipient, network, and sponsorship details.\nSign the challenge and retry with Authorization: Payment <credential>.\nExa processes the request while settling the payment. After settlement confirms, Exa returns the results with a Payment-Receipt header. If settlement fails, Exa returns 402 with a fresh challenge and no results.\n​\nInspect a payment challenge\nYou can inspect the price and payment details without a wallet:\ncurl -s -D - -X POST \"https://api.exa.ai/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"test query\", \"numResults\": 3}'\n\nLook for the WWW-Authenticate: Payment header in the 402 response. Unpaid discovery requests are rate-limited, so use this for debugging rather than polling.\n​\nPayment reference\nExa accepts MPP payments in USDC.e on Tempo mainnet.\nNetwork\tIdentifier\tToken\tAsset\nTempo mainnet\teip155:4217\tUSDC.e\t0x20c000000000000000000000b9537d11c60e8b50\nUSDC.e has 6 decimals. The challenge expresses prices in atomic units, so 7000 is $0.007 and 1000000 is $1.00.\nExa supports MPP and x402 on the same endpoints. An unauthenticated 402 response can include both the MPP WWW-Authenticate: Payment challenge and the x402 PAYMENT-REQUIRED header. Use the headers for the payment protocol your client supports.\n​\nHeaders\nHeader\tDirection\tDescription\nAuthorization: Payment <credential>\tRequest\tMPP payment credential\nWWW-Authenticate: Payment\t402 response\tPrice and payment instructions for the request\nPayment-Receipt\tSuccessful response\tSettlement receipt, including the on-chain transaction hash\n​\nErrors\nStatus\tDescription\n402\tThe payment credential is missing or invalid; the response includes a fresh challenge\n402\tThe payment amount does not match the request price, or settlement failed\n429\tThis IP sent too many unpaid discovery requests\n429\tThis wallet exceeded the paid-request rate limit\n​\nRate limits\nMPP rate limits are shared with x402 and are separate from API key limits:\nLimit\tThreshold\tWindow\nUnpaid discovery requests per IP\t5 requests\t60 seconds\nPaid requests per wallet\t10 requests\t1 second\n​\nFAQ\n\nCan I use MPP and an API key together?\n\nWhat happens if settlement fails after my request was processed?\n\nWhich wallets are supported?\n\n​\nResources\nMPP protocol docs: protocol details and authentication format\nmppx documentation: MPP TypeScript SDK reference\npympp documentation: MPP Python SDK reference\nTempo: Tempo network documentation\nPay with x402: pay for the same endpoints with x402\nExa Search API guide: full search parameter reference\nExa Contents API guide: full contents parameter reference",
+    "scrollHeight": 7725,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

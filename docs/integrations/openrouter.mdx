@@ -1,0 +1,117 @@
+---
+title: "OpenRouter"
+sidebarTitle: "OpenRouter"
+description: "Ground any OpenRouter model with Exa web search through the openrouter:web_search server tool."
+icon: "/docs/images/sidebar-icons/openrouter.svg"
+keywords: ["OpenRouter", "web search", "server tool", "grounding", "url_citation"]
+---
+
+Exa is the search engine behind [OpenRouter](https://openrouter.ai)'s web search. OpenRouter gives you one API for hundreds of models, and Exa gives those models live web access: any model without native search grounds through Exa by default, and any model can be pointed at Exa explicitly. No Exa API key is needed. OpenRouter runs the searches server-side and bills them to your OpenRouter credits.
+
+## Use the web search server tool
+
+Add `openrouter:web_search` to your `tools` array and the model decides when to search, what to search for, and whether to search again within the same request. [Server tools](https://openrouter.ai/docs/guides/features/server-tools/web-search) are in beta on OpenRouter, and they replace the deprecated `web` plugin and `:online` model variants; see OpenRouter's [migration guide](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) if you use either.
+
+<CodeGroup>
+  ```javascript JavaScript theme={null}
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-5.2",
+      messages: [
+        { role: "user", content: "What were the major AI announcements this week?" },
+      ],
+      tools: [{ type: "openrouter:web_search" }],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  ```
+
+  ```python Python theme={null}
+  import requests
+
+  response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+          "Authorization": "Bearer <OPENROUTER_API_KEY>",
+          "Content-Type": "application/json",
+      },
+      json={
+          "model": "openai/gpt-5.2",
+          "messages": [
+              {"role": "user", "content": "What were the major AI announcements this week?"}
+          ],
+          "tools": [{"type": "openrouter:web_search"}],
+      },
+  )
+
+  print(response.json()["choices"][0]["message"]["content"])
+  ```
+
+  ```bash cURL theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer <OPENROUTER_API_KEY>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openai/gpt-5.2",
+      "messages": [
+        { "role": "user", "content": "What were the major AI announcements this week?" }
+      ],
+      "tools": [{ "type": "openrouter:web_search" }]
+    }'
+  ```
+</CodeGroup>
+
+With the default `engine: "auto"`, OpenRouter uses the provider's native search where a model has one and Exa everywhere else. Set `engine: "exa"` to keep one search behavior across every model:
+
+```json theme={null}
+{
+  "type": "openrouter:web_search",
+  "parameters": {
+    "engine": "exa",
+    "mode": "auto",
+    "max_results": 5,
+    "max_total_results": 20,
+    "allowed_domains": ["arxiv.org"],
+    "excluded_domains": ["reddit.com"]
+  }
+}
+```
+
+| Parameter                             | Use it to                                                                                                                                                          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `mode`                                | Trade latency for depth: `instant`, `fast`, `auto` (default), `deep-lite`, `deep`, or `deep-reasoning`. The modes map to Exa's [search types](/docs/search/quickstart). |
+| `max_results`                         | Cap results per search call (default 5)                                                                                                                            |
+| `max_uses`                            | Cap how many times the model may search in one request                                                                                                             |
+| `max_total_results`                   | Cap cumulative results across all searches in one request                                                                                                          |
+| `max_characters`                      | Set an exact per-result character budget for highlights                                                                                                            |
+| `search_context_size`                 | Use a preset budget instead: `low`, `medium`, or `high`                                                                                                            |
+| `allowed_domains`, `excluded_domains` | Filter result domains. Exa supports both filters in the same request.                                                                                              |
+
+## How results come back
+
+OpenRouter requests [Exa highlights](/docs/search/highlights) for each result rather than full page text: extractive excerpts sized adaptively, typically 2,000 to 4,000 characters per result, unless you set `max_characters` or `search_context_size`. The model reads the excerpts, and API callers receive them in standardized `url_citation` annotations on the response message. Within one result, `[...]` markers separate excerpts drawn from different parts of the page.
+
+## Pricing
+
+Exa searches bill to your OpenRouter credits, in addition to the model's token costs for reading the results. The `instant`, `fast`, and `auto` modes cost \$0.007 per search, `deep-lite` and `deep` cost \$0.012, and `deep-reasoning` costs \$0.015. Each search includes up to 10 results, and additional results cost \$0.001 each. See [OpenRouter's web search docs](https://openrouter.ai/docs/guides/features/server-tools/web-search) for current rates.
+
+The response's `usage` object reports how many searches the model ran in `server_tool_use.web_search_requests`.
+
+## Resources
+
+<Columns cols={2}>
+  <Card title="Server tool docs" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="Open docs" arrow="true">
+    Full configuration reference for `openrouter:web_search`.
+  </Card>
+
+  <Card title="Customer story" icon="book-open" href="https://exa.ai/customers/openrouter" cta="Read story" arrow="true">
+    How OpenRouter gives hundreds of models web search with Exa.
+  </Card>
+</Columns>

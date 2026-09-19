@@ -1,0 +1,103 @@
+{
+  "id": "014",
+  "path": "/docs/agent/connect/affiliatecom",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/affiliatecom",
+    "title": "Affiliate.com - Exa",
+    "h1": "Affiliate.com",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.890625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2756.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Affiliate.com aggregates product catalogs across merchants and affiliate networks into a single searchable index, with live pricing, brands, and direct merchant links.\nAttach affiliate to an Exa Agent run through Exa Connect, and the agent queries Affiliate.com alongside Exa web search.\n​\nUse it for\nProduct discovery and price comparison across merchants.\nPowering shopping assistants and buying-guide content.\nSurfacing affiliate links alongside research.\n​\nProvider ID\nUse this value in dataSources:\naffiliate\n\n​\nExample\nFind wireless noise-cancelling headphones under $300 and compare pricing.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"Find wireless noise-cancelling headphones under $300 with pricing from multiple merchants.\",\n    data_sources=[{\"provider\": \"affiliate\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"products\"],\n        \"properties\": {\n            \"products\": {\n                \"type\": \"array\",\n                \"maxItems\": 10,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"name\", \"brand\", \"price\", \"merchant\"],\n                    \"properties\": {\n                        \"name\": {\"type\": \"string\"},\n                        \"brand\": {\"type\": \"string\"},\n                        \"price\": {\"type\": \"string\", \"description\": \"price with currency\"},\n                        \"merchant\": {\"type\": \"string\"},\n                    },\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nSimilarweb: gauge a merchant’s reach before recommending it.\nFiber.ai: research the company behind a merchant or brand.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 2853,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/affiliatecom",
+    "title": "Affiliate.com - Exa",
+    "h1": "Affiliate.com",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.890625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2756.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Affiliate.com aggregates product catalogs across merchants and affiliate networks into a single searchable index, with live pricing, brands, and direct merchant links.\nAttach affiliate to an Exa Agent run through Exa Connect, and the agent queries Affiliate.com alongside Exa web search.\n​\nUse it for\nProduct discovery and price comparison across merchants.\nPowering shopping assistants and buying-guide content.\nSurfacing affiliate links alongside research.\n​\nProvider ID\nUse this value in dataSources:\naffiliate\n\n​\nExample\nFind wireless noise-cancelling headphones under $300 and compare pricing.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"Find wireless noise-cancelling headphones under $300 with pricing from multiple merchants.\",\n    data_sources=[{\"provider\": \"affiliate\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"products\"],\n        \"properties\": {\n            \"products\": {\n                \"type\": \"array\",\n                \"maxItems\": 10,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"name\", \"brand\", \"price\", \"merchant\"],\n                    \"properties\": {\n                        \"name\": {\"type\": \"string\"},\n                        \"brand\": {\"type\": \"string\"},\n                        \"price\": {\"type\": \"string\", \"description\": \"price with currency\"},\n                        \"merchant\": {\"type\": \"string\"},\n                    },\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nPairs well with\nSimilarweb: gauge a merchant’s reach before recommending it.\nFiber.ai: research the company behind a merchant or brand.\n​\nNext steps\nAttach it to a run\nThe Exa Connect quickstart covers dataSources, pricing, and the full partner catalog.\nOpen quickstart\nCombine providers\nAttach up to five partners to one run and shape the query so each one fires.\nRead guide\nLearn Exa Agent\nCreate runs, stream progress, design output schemas, and control effort and cost.\nOpen guide\nGet an API key\nCreate a key in the dashboard and run this page’s example as-is. New accounts start with free credits.\nCreate a key",
+    "scrollHeight": 2853,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

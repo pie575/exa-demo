@@ -1,0 +1,10 @@
+import {chromium} from 'playwright';
+import fs from 'node:fs/promises';
+const browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1512,height:982},colorScheme:'light'});
+await page.goto('https://exa.ai/docs/search/quickstart',{waitUntil:'domcontentloaded'});await page.waitForTimeout(2000);
+await page.locator('.docs-sidebar-search').click();await page.waitForTimeout(1000);
+await page.screenshot({path:'verification/screenshots/production-search-dialog.png'});
+await fs.writeFile('verification/production-search-dialog.html',await page.locator('[role="dialog"]').first().evaluate(e=>e.outerHTML));
+await page.locator('input').filter({visible:true}).first().fill('quickstart').catch(()=>{});await page.waitForTimeout(1200);
+await page.screenshot({path:'verification/screenshots/production-search-results.png'});await browser.close();

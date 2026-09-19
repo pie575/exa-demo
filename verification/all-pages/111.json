@@ -1,0 +1,101 @@
+{
+  "id": "111",
+  "path": "/docs/search/quickstart",
+  "production": {
+    "url": "https://exa.ai/docs/search/quickstart",
+    "title": "Exa Search API - Exa",
+    "h1": "Exa Search API",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 234.265625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 6521.9375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 364
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Search takes a natural language query and returns ranked web results with clean page content.\n​\nMake your first request\nStart with a query in natural language and contents: { highlights: true }, which returns excerpts sized to each result’s relevance. Other fields control how Exa searches and what each result includes; the rest of this page covers the ones you will actually use.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"recent techniques for improving retrieval in RAG systems\",\n    type=\"auto\",\n    contents={\"highlights\": True},\n)\n\nfor item in result.results:\n    print(item.title, item.url)\n    print(item.highlights)\n\nSearch returns up to 10 results by default. Set numResults to request up to 100 results; fewer may be returned when fewer relevant pages are available. Search does not support pagination.\n\nExample response\n\nResults are ranked by relevance. Each one carries metadata such as title, URL, and publication date, plus whatever you requested under contents.\n​\nWriting queries\nThe query field is the only required field when using the Search API.\nWrite queries in natural language. Include the subject and, when useful, the kind of source and time period you want.\nQueries can be broad and exploratory. \"Latest news on EU battery policy\" gives Exa enough intent to discover relevant pages; \"news\" does not. When the source type matters, name it in the query:\nRecent technical articles comparing hybrid and semantic retrieval for RAG systems\n\nSee What’s in Exa’s Index for what Exa’s index includes and how to search those content types.\n​\nChoose a search type\ntype selects a search mode, each tuned for a different balance of speed, search depth, and synthesis. auto is the default and works for most searches.\nType\tUse it when\nauto\tYou want the best default balance of quality and speed\nfast\tThe request is latency-sensitive\ninstant\tThe request is on a real-time path such as autocomplete or voice\ndeep-lite\tThe task needs lightweight research and synthesis\ndeep\tThe task requires multi-step search and stronger synthesis\ndeep-reasoning\tCompleteness and reasoning depth matter more than latency\nDeep modes run a research process rather than a single retrieval pass. See Deep Search for how that process works and how to use its additional controls.\nInstead of deep-reasoning, use Exa Agent for long-running research, list building, and multi-hop enrichment. Agent has more compute per run and returns grounded, structured results.\n​\nOutput shapes\nEvery result includes metadata such as its title, URL, and publication date. Use contents to add highlights, full text, or a summary from the page.\nHighlights\nFull text\nHighlights return the excerpts most relevant to your query. They give models and agents the evidence they need without filling the context window with unrelated parts of each page.\nThis is the recommended output shape for most tasks.\nStart with bare highlights: true. Exa uses the query to select an appropriate amount of content from each result.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"How are inference providers reducing transformer latency?\",\n    contents={\"highlights\": True},\n)\n\nSee Highlights for Dynamic Highlights and guidance on when to enable it.\nPick one content view per request. Requesting both highlights and text returns and bills two views of the same page. summary is a third option, but it adds a language model call for every result.\n/search and /contents accept the same content options in different places:\n/search nests highlights, text, and summary inside the contents object: \"contents\": { \"highlights\": true }\n/contents has no contents wrapper. Its body is the content options themselves, so the same fields sit at the top level next to urls: \"urls\": [...], \"highlights\": true\n​\nOutput schema\nAdd outputSchema when you want Exa to synthesize the search results. It works with every search type and adds an output object to the response.\nThe ranked pages remain in results. The generated value is returned in output.content, with field-level sources and confidence in output.grounding.\nFreeform Text\nStructured JSON\nUse type: \"text\" for generated prose. Add a description to specify its format or length.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"What changed in the latest EU battery policy?\",\n    output_schema={\n        \"type\": \"text\",\n        \"description\": \"Summarize the changes in three concise bullets\",\n    },\n)\n\nUse systemPrompt for instructions such as source preferences or emphasis; use outputSchema for the response shape. Python uses system_prompt and output_schema.\nKeep object schemas small: they support up to 2 levels of nesting and 10 properties. Do not add citation or confidence fields to the schema; Exa returns them automatically in output.grounding.\n​\nFilter results\nFilters are hard constraints: add one when a result outside it would be unusable to you, and keep softer source preferences in the query text instead. The API reference has the full set.\n​\nInclude domains or paths\nincludeDomains restricts results to sources you trust. It accepts full domains, path prefixes such as anthropic.com/news, and subdomain wildcards such as *.substack.com.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"new model releases\",\n    include_domains=[\"openai.com\", \"anthropic.com/news\"],\n    contents={\"highlights\": True},\n)\n\nPut the path in the filter rather than repeating it as a site: operator in the query.\n​\nExclude domains or paths\nexcludeDomains removes results from specific domains or paths. It supports the same path prefixes and subdomain wildcards as includeDomains. Use it when those sources would make a result unusable, not to express a preference.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"primary research on retrieval-augmented generation benchmarks\",\n    exclude_domains=[\"medium.com\", \"dev.to\"],\n    contents={\"highlights\": True},\n)\n\n​\nContent freshness\ncontents.maxAgeHours controls how fresh the content extracted from each result must be. It does not filter results by publication date.\nValue\tBehavior\nOmit\tUse cached content when available and fetch the page when needed\nPositive integer\tUse cached content if it is newer than this many hours; otherwise fetch the page\n0\tAlways fetch fresh content\n-1\tOnly use cached content\nMost searches should omit this field. Set it when stale page content would be unusable, such as for prices, availability, or a page that changes frequently.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"current pricing for serverless GPU providers\",\n    contents={\n        \"highlights\": True,\n        \"max_age_hours\": 24,\n    },\n)\n\n​\nNext steps\nBest practices\nToken budgets, content freshness, structured output, and system prompts.\nRead guide\nAPI reference\nEvery request parameter and response field, with a live playground.\nOpen reference\nContents\nYou already have the URLs and want clean text, highlights, or summaries.\nOpen guide\nExa Agent\nYou need long-running research, list building, or enrichment.\nOpen guide",
+    "scrollHeight": 6618,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/quickstart",
+    "title": "Exa Search API - Exa",
+    "h1": "Exa Search API",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 234.265625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 6521.9375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 364
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Search takes a natural language query and returns ranked web results with clean page content.\n​\nMake your first request\nStart with a query in natural language and contents: { highlights: true }, which returns excerpts sized to each result’s relevance. Other fields control how Exa searches and what each result includes; the rest of this page covers the ones you will actually use.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"recent techniques for improving retrieval in RAG systems\",\n    type=\"auto\",\n    contents={\"highlights\": True},\n)\n\nfor item in result.results:\n    print(item.title, item.url)\n    print(item.highlights)\n\nSearch returns up to 10 results by default. Set numResults to request up to 100 results; fewer may be returned when fewer relevant pages are available. Search does not support pagination.\n\nExample response\n\nResults are ranked by relevance. Each one carries metadata such as title, URL, and publication date, plus whatever you requested under contents.\n​\nWriting queries\nThe query field is the only required field when using the Search API.\nWrite queries in natural language. Include the subject and, when useful, the kind of source and time period you want.\nQueries can be broad and exploratory. \"Latest news on EU battery policy\" gives Exa enough intent to discover relevant pages; \"news\" does not. When the source type matters, name it in the query:\nRecent technical articles comparing hybrid and semantic retrieval for RAG systems\n\nSee What’s in Exa’s Index for what Exa’s index includes and how to search those content types.\n​\nChoose a search type\ntype selects a search mode, each tuned for a different balance of speed, search depth, and synthesis. auto is the default and works for most searches.\nType\tUse it when\nauto\tYou want the best default balance of quality and speed\nfast\tThe request is latency-sensitive\ninstant\tThe request is on a real-time path such as autocomplete or voice\ndeep-lite\tThe task needs lightweight research and synthesis\ndeep\tThe task requires multi-step search and stronger synthesis\ndeep-reasoning\tCompleteness and reasoning depth matter more than latency\nDeep modes run a research process rather than a single retrieval pass. See Deep Search for how that process works and how to use its additional controls.\nInstead of deep-reasoning, use Exa Agent for long-running research, list building, and multi-hop enrichment. Agent has more compute per run and returns grounded, structured results.\n​\nOutput shapes\nEvery result includes metadata such as its title, URL, and publication date. Use contents to add highlights, full text, or a summary from the page.\nHighlights\nFull text\nHighlights return the excerpts most relevant to your query. They give models and agents the evidence they need without filling the context window with unrelated parts of each page.\nThis is the recommended output shape for most tasks.\nStart with bare highlights: true. Exa uses the query to select an appropriate amount of content from each result.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"How are inference providers reducing transformer latency?\",\n    contents={\"highlights\": True},\n)\n\nSee Highlights for Dynamic Highlights and guidance on when to enable it.\nPick one content view per request. Requesting both highlights and text returns and bills two views of the same page. summary is a third option, but it adds a language model call for every result.\n/search and /contents accept the same content options in different places:\n/search nests highlights, text, and summary inside the contents object: \"contents\": { \"highlights\": true }\n/contents has no contents wrapper. Its body is the content options themselves, so the same fields sit at the top level next to urls: \"urls\": [...], \"highlights\": true\n​\nOutput schema\nAdd outputSchema when you want Exa to synthesize the search results. It works with every search type and adds an output object to the response.\nThe ranked pages remain in results. The generated value is returned in output.content, with field-level sources and confidence in output.grounding.\nFreeform Text\nStructured JSON\nUse type: \"text\" for generated prose. Add a description to specify its format or length.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"What changed in the latest EU battery policy?\",\n    output_schema={\n        \"type\": \"text\",\n        \"description\": \"Summarize the changes in three concise bullets\",\n    },\n)\n\nUse systemPrompt for instructions such as source preferences or emphasis; use outputSchema for the response shape. Python uses system_prompt and output_schema.\nKeep object schemas small: they support up to 2 levels of nesting and 10 properties. Do not add citation or confidence fields to the schema; Exa returns them automatically in output.grounding.\n​\nFilter results\nFilters are hard constraints: add one when a result outside it would be unusable to you, and keep softer source preferences in the query text instead. The API reference has the full set.\n​\nInclude domains or paths\nincludeDomains restricts results to sources you trust. It accepts full domains, path prefixes such as anthropic.com/news, and subdomain wildcards such as *.substack.com.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"new model releases\",\n    include_domains=[\"openai.com\", \"anthropic.com/news\"],\n    contents={\"highlights\": True},\n)\n\nPut the path in the filter rather than repeating it as a site: operator in the query.\n​\nExclude domains or paths\nexcludeDomains removes results from specific domains or paths. It supports the same path prefixes and subdomain wildcards as includeDomains. Use it when those sources would make a result unusable, not to express a preference.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"primary research on retrieval-augmented generation benchmarks\",\n    exclude_domains=[\"medium.com\", \"dev.to\"],\n    contents={\"highlights\": True},\n)\n\n​\nContent freshness\ncontents.maxAgeHours controls how fresh the content extracted from each result must be. It does not filter results by publication date.\nValue\tBehavior\nOmit\tUse cached content when available and fetch the page when needed\nPositive integer\tUse cached content if it is newer than this many hours; otherwise fetch the page\n0\tAlways fetch fresh content\n-1\tOnly use cached content\nMost searches should omit this field. Set it when stale page content would be unusable, such as for prices, availability, or a page that changes frequently.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"current pricing for serverless GPU providers\",\n    contents={\n        \"highlights\": True,\n        \"max_age_hours\": 24,\n    },\n)\n\n​\nNext steps\nBest practices\nToken budgets, content freshness, structured output, and system prompts.\nRead guide\nAPI reference\nEvery request parameter and response field, with a live playground.\nOpen reference\nContents\nYou already have the URLs and want clean text, highlights, or summaries.\nOpen guide\nExa Agent\nYou need long-running research, list building, or enrichment.\nOpen guide",
+    "scrollHeight": 6618,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,12 @@
+---
+title: "Get a batch"
+description: "Retrieve a batch by ID."
+openapi: "docs/exa-spec.yaml GET /batches/{id}"
+timestamp: false
+---
+
+Use this endpoint to poll a batch until it reaches `completed`, `cancelled`, or `expired`. When the batch completes, `resultsUrl` holds a short-lived presigned URL for the JSONL results file; re-fetch the batch to get a fresh URL.
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

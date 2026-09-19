@@ -1,0 +1,103 @@
+{
+  "id": "038",
+  "path": "/docs/integrations/claude-web-desktop",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/claude-web-desktop",
+    "title": "Exa in Claude Code, Web, and Desktop - Exa",
+    "h1": "Exa in Claude Code, Web, and Desktop",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 122
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 540,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4030.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 256
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Install Exa in Claude Code or connect it to Claude Web, Desktop, and Cowork to give Claude access to current information from the web. Claude can search in natural language, read the pages that matter, and use those sources while it works.\n​\nInstall Exa\nClaude Web, Desktop & Cowork\nClaude Code CLI\n1\n\nOpen the connector directory\n\nIn a new Claude chat, select the plus button, choose Add connector, and search for Exa.\n2\n\nConnect Exa\n\nOpen Exa, select Connect to Claude, and authorize access when prompted.\n\nOpening the connector directory in Claude, finding Exa, connecting it, and authorizing access\n\n3\n\nUse Exa\n\nStart a new chat and ask for something that needs current information from the web.\nBoth options make Exa available without editing an MCP configuration file.\n​\nWork with what’s on the web right now\nIn Claude Code, Exa can search current documentation, issues, changelogs, and real-world examples while working in your repository. The same integration gives Claude Web, Desktop, and Cowork current news, research, company information, product details, and other sources that may not already be in context.\nWe're on Tailwind v3. Use Exa to find and read the official Tailwind v4\nupgrade guide, then migrate this project to v4.\n\nClaude Code can use what it finds to make the change in your codebase. In other Claude clients, it can use the same sources in answers, artifacts, and Cowork tasks.\nThe same pattern works whenever the answer depends on current or specific web sources:\n“Find the latest release notes for this dependency and summarize the breaking changes.”\n“Search for recent primary research on inference-time scaling and compare the methods.”\n“Read the current Stripe webhook documentation and explain the recommended retry behavior.”\n“Find official pricing pages for these products and compare their entry-level plans.”\n​\nSearch, read, and research\nThe Exa integration gives Claude tools to search and read the web, which it can combine across a longer research task.\nSearch\nSearch in natural language and get relevant page content, not only a list of links.\nRead\nRead a page you point to, including documentation, research, changelogs, issues, and articles.\nResearch\nRun multiple searches, inspect useful pages, and combine the evidence into a sourced response.\n​\nResearch without leaving Claude\nAsk for the result you want and tell Claude what kinds of sources matter:\nCompare the managed offerings, licensing, and pricing of the main\nopen source vector databases. Use current primary sources and cite them.\n\nClaude can use Exa throughout the conversation to find and read the sources needed for the task. Use this for technical research, competitive analysis, market mapping, company research, or any question whose answer lives across the web.\n​\nUse Exa in Cowork\nThe same connector is available in Cowork. Give Claude a task that depends on outside information, and it can search or read pages while working with your files and other connected tools.\nReview this competitive brief, verify every pricing claim against the\ncurrent vendor pages with Exa, and update the document with citations.\n\n​\nPrefer MCP directly?\nIf you’re configuring Claude manually or using another MCP client, you can connect directly to Exa’s hosted MCP server:\nclaude mcp add --transport http exa https://mcp.exa.ai/mcp\n\nSee Exa MCP for other clients, configuration options, and available tools.\nOpen the Exa connector\nAdd Exa in Claude’s connector directory.",
+    "scrollHeight": 4127,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/claude-web-desktop",
+    "title": "Exa in Claude Code, Web, and Desktop - Exa",
+    "h1": "Exa in Claude Code, Web, and Desktop",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 122
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 540,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4030.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 256
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Install Exa in Claude Code or connect it to Claude Web, Desktop, and Cowork to give Claude access to current information from the web. Claude can search in natural language, read the pages that matter, and use those sources while it works.\n​\nInstall Exa\nClaude Web, Desktop & Cowork\nClaude Code CLI\n1\n\nOpen the connector directory\n\nIn a new Claude chat, select the plus button, choose Add connector, and search for Exa.\n2\n\nConnect Exa\n\nOpen Exa, select Connect to Claude, and authorize access when prompted.\n\nOpening the connector directory in Claude, finding Exa, connecting it, and authorizing access\n\n3\n\nUse Exa\n\nStart a new chat and ask for something that needs current information from the web.\nBoth options make Exa available without editing an MCP configuration file.\n​\nWork with what’s on the web right now\nIn Claude Code, Exa can search current documentation, issues, changelogs, and real-world examples while working in your repository. The same integration gives Claude Web, Desktop, and Cowork current news, research, company information, product details, and other sources that may not already be in context.\nWe're on Tailwind v3. Use Exa to find and read the official Tailwind v4\nupgrade guide, then migrate this project to v4.\n\nClaude Code can use what it finds to make the change in your codebase. In other Claude clients, it can use the same sources in answers, artifacts, and Cowork tasks.\nThe same pattern works whenever the answer depends on current or specific web sources:\n“Find the latest release notes for this dependency and summarize the breaking changes.”\n“Search for recent primary research on inference-time scaling and compare the methods.”\n“Read the current Stripe webhook documentation and explain the recommended retry behavior.”\n“Find official pricing pages for these products and compare their entry-level plans.”\n​\nSearch, read, and research\nThe Exa integration gives Claude tools to search and read the web, which it can combine across a longer research task.\nSearch\nSearch in natural language and get relevant page content, not only a list of links.\nRead\nRead a page you point to, including documentation, research, changelogs, issues, and articles.\nResearch\nRun multiple searches, inspect useful pages, and combine the evidence into a sourced response.\n​\nResearch without leaving Claude\nAsk for the result you want and tell Claude what kinds of sources matter:\nCompare the managed offerings, licensing, and pricing of the main\nopen source vector databases. Use current primary sources and cite them.\n\nClaude can use Exa throughout the conversation to find and read the sources needed for the task. Use this for technical research, competitive analysis, market mapping, company research, or any question whose answer lives across the web.\n​\nUse Exa in Cowork\nThe same connector is available in Cowork. Give Claude a task that depends on outside information, and it can search or read pages while working with your files and other connected tools.\nReview this competitive brief, verify every pricing claim against the\ncurrent vendor pages with Exa, and update the document with citations.\n\n​\nPrefer MCP directly?\nIf you’re configuring Claude manually or using another MCP client, you can connect directly to Exa’s hosted MCP server:\nclaude mcp add --transport http exa https://mcp.exa.ai/mcp\n\nSee Exa MCP for other clients, configuration options, and available tools.\nOpen the Exa connector\nAdd Exa in Claude’s connector directory.",
+    "scrollHeight": 4127,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

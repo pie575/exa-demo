@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/monitors/get-monitor",
+  "production": {
+    "status": 200,
+    "text": "Get a Websets monitor\nCopy page\n\nGets a specific monitor.\n\nGET\n/\nv0\n/\nmonitors\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the Monitor\n\nResponse\n200 - application/json\n\nMonitor details\n\n​\nid\nstringrequired\n\nThe unique identifier for the Monitor\n\n​\nobject\nenum<string>required\n\nThe type of object\n\nAvailable options: monitor \n​\nstatus\nenum<string>required\n\nThe status of the Monitor\n\nAvailable options: enabled, disabled \n​\nwebsetId\nstringrequired\n\nThe id of the Webset the Monitor belongs to\n\n​\ncadence\nobjectrequired\n\nHow often the monitor will run\n\nShow child attributes\n\n​\nbehavior\nobjectrequired\n\nBehavior to perform when monitor runs\n\nShow child attributes\n\n​\nlastRun\nMonitorRun · object | nullrequired\n\nThe last run of the monitor\n\nShow child attributes\n\n​\nnextRunAt\nstring<date-time> | nullrequired\n\nDate and time when the next run will occur in\n\n​\nmetadata\nobjectrequired\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the monitor was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the monitor was last updated\n\nCreate a Websets monitor\nPrevious\nUpdate a Websets monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a Websets monitor",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get a Websets monitor\nCopy page\n\nGets a specific monitor.\n\nGET\n/\nv0\n/\nmonitors\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the Monitor\n\nResponse\n200 - application/json\n\nMonitor details\n\n​\nid\nstringrequired\n\nThe unique identifier for the Monitor\n\n​\nobject\nenum<string>required\n\nThe type of object\n\nAvailable options: monitor \n​\nstatus\nenum<string>required\n\nThe status of the Monitor\n\nAvailable options: enabled, disabled \n​\nwebsetId\nstringrequired\n\nThe id of the Webset the Monitor belongs to\n\n​\ncadence\nobjectrequired\n\nHow often the monitor will run\n\nShow child attributes\n\n​\nbehavior\nobjectrequired\n\nBehavior to perform when monitor runs\n\nShow child attributes\n\n​\nlastRun\nMonitorRun · object | nullrequired\n\nThe last run of the monitor\n\nShow child attributes\n\n​\nnextRunAt\nstring<date-time> | nullrequired\n\nDate and time when the next run will occur in\n\n​\nmetadata\nobjectrequired\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the monitor was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the monitor was last updated\n\nCreate a Websets monitor\nPrevious\nUpdate a Websets monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a Websets monitor",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1398,
+  "localLength": 1398
+}

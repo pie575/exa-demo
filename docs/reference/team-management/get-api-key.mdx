@@ -1,0 +1,32 @@
+---
+title: "Get API key"
+description: "Retrieve details of a specific API key by its ID."
+openapi: "docs/team-management-spec.yaml GET /api-keys/{id}"
+timestamp: false
+---
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>
+
+<Info>
+  The Team Management API is enabled per team. It authenticates with a service account API key, which is created from the **Service keys** tab on the [API keys page](https://dashboard.exa.ai/api-keys) once the feature is enabled for your team. Contact [support@exa.ai](mailto:support@exa.ai) to request access.
+</Info>
+
+## Overview
+
+The Get API Key endpoint allows you to retrieve detailed information about a specific API key using its unique identifier.
+
+## Path Parameters
+
+* **id**: The unique identifier of the API key to retrieve
+
+## Response
+
+Returns detailed information about the API key including:
+
+* **id**: Unique identifier
+* **name**: Descriptive name
+* **rateLimit**: Rate limit in requests per minute (if set)
+* **teamId**: Team ID this key belongs to
+* **createdAt**: When the key was created

@@ -1,0 +1,103 @@
+{
+  "id": "099",
+  "path": "/docs/search/best-practices",
+  "production": {
+    "url": "https://exa.ai/docs/search/best-practices",
+    "title": "Search Best Practices - Exa",
+    "h1": "Search Best Practices",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 341.140625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5735.890625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 288
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "This guide assumes you already have a working Search API request. It covers how to improve that request following Exa’s recommended best practices.\n​\nStart with the smallest useful request\nThe best baseline is a natural-language query with highlights: true. Exa sizes each result’s excerpts to its relevance, so there is no character budget to tune:\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Recent technical articles comparing hybrid and semantic retrieval for RAG systems\",\n    contents={\"highlights\": True},\n)\n\nThis gives you ranked pages and token-efficient context per page, relevant to the query.\nAdd additional parameters only as needed:\nParameter\tAdd it when\ntype\tAdjusting to meet a latency budget or depth requirement\nnumResults\tFewer pages for a smaller context window, or more for broader recall\noutputSchema\tSynthesizing results or structuring them into JSON\nmaxAgeHours\tCached page content may be too old\nhighlights.maxCharacters\tYour application requires a fixed excerpt limit per page\nDomain or date filters\tResults outside the constraint would be unusable\n​\nSearch vs. Deep Search\nStandard search retrieves and ranks pages for a query. Deep Search runs a research process that can search iteratively, inspect what it found, refine the search, and synthesize a grounded result.\nNeed\tStart with\nRanked pages for a well-formed query\tauto or fast\nDifficult searches, synthesis across many results, or structured outputs that cannot be filled with a single search (3+ fields)\tdeep\nLong-running research, list building, or multi-hop enrichment\tExa Agent\nDeep modes are recommended by default when using outputSchema. Read the Deep Search guide for full instructions and examples.\n​\nImprove retrieval quality\nWhen results need improvement, change one part of the request at a time.\n1\n\nClarify the query\n\nDescribe the pages you want, not a bag of keywords. Include the subject and any source type, time period, or other detail that changes what a relevant result looks like.\nBenchmark papers evaluating long-context retrieval methods on legal documents\n\n2\n\nRead the response in layers\n\nLook at the titles, URLs, publication dates, and highlights before changing the request.\n{\n  \"results\": [\n    {\n      \"title\": \"Long-Context Retrieval Methods on Legal Documents\",\n      \"url\": \"https://arxiv.org/abs/2608.00000\",\n      \"publishedDate\": \"2026-08-26T00:00:00.000Z\",\n      \"highlights\": [\n        \"We compare long-context retrieval methods across legal document benchmarks...\"\n      ]\n    }\n  ]\n}\n\nThe title and URL show the kind of source Exa retrieved, publishedDate shows its recency, and the highlight shows the evidence that matched the query. Refine the query to retrieve different pages, add date filters to narrow the time period, or fetch full text when you need more context from a useful result.\n3\n\nAdd only hard constraints\n\nUse includeDomains, excludeDomains, and publication-date filters only when a result that violates the constraint cannot be used. Put retrieval preferences in the query and, when synthesizing, put response instructions in systemPrompt.\n4\n\nChange the search mode last\n\nUse a faster mode for a latency requirement or a deep mode when the retrieval process itself needs iteration and reasoning. A different mode cannot repair an underspecified query.\nKeep a small set of representative queries while tuning. Compare result relevance and downstream task success across the set instead of optimizing for one example. Record requestId, searchTime, and costDollars so regressions are reproducible.\n​\nBudget latency and context\nEach control spends a different resource:\nControl\tWhat it adds\nMore results\tMore pages, response data, and downstream context\nFull text\tBroader page context and a larger payload\nsummary\tOne additional language model call per result\noutputSchema\tSynthesis across the retrieved results\ncontents.maxAgeHours: 0\tA fresh page fetch instead of cached content\nDeep search types\tIterative search, synthesis, and reasoning\nFor a real-time path where cached content is acceptable, combine the lowest-latency mode with highlights and cache-only content:\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Recent product updates from major AI labs\",\n    type=\"instant\",\n    contents={\n        \"highlights\": True,\n        \"max_age_hours\": -1,\n    },\n)\n\nDo not use this recipe when page freshness is part of correctness. Start from auto and default freshness unless the product has a measured latency target.\nTo let Exa allocate one context budget across the whole result set — more from strong sources, less from redundant ones — see the Dynamic Highlights research preview.\n​\nTips for common use cases\nIf you need\tUse\tAvoid\nNewer publications\tPut the time window in the query or use publication-date filters\tmaxAgeHours\nFresh content from pages that change\tcontents.maxAgeHours\tPublication-date filters\nA preferred kind of source\tQuery phrasing; systemPrompt when synthesizing\tA hard domain allowlist\nResults only from approved sources\tincludeDomains\tRepeating site: in the query\nA small structured output\toutputSchema with standard Search\tChoosing Deep only because the output is JSON\nA multi-item researched output\tdeep with outputSchema, or Exa Agent\tExpecting one retrieval pass to gather every item\nMore context from a few pages\tSearch with highlights, then call Contents\tFull text for every result\nLower latency\tMeasure fast or instant with compact content\tAdding freshness or synthesis controls by default\n​\nWhen to use another endpoint\nUse a different Exa endpoint when the task changes shape:\nTask\tUse\nLong-running research, list building, or enrichment\tExa Agent\nThe URLs are already known\tContents\nRun a search on a schedule\tMonitors\n​\nNext steps\nSearch API reference\nEvery request parameter and response field.\nOpen reference\nSearch quickstart\nCore request shapes, filters, output, and freshness.\nReview guide\nContents API\nExtract highlights or full text from pages you already know.\nOpen guide\nExa Agent\nLong-running research, list building, and enrichment.\nOpen guide",
+    "scrollHeight": 5832,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/best-practices",
+    "title": "Search Best Practices - Exa",
+    "h1": "Search Best Practices",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 341.140625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5735.890625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 288
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "This guide assumes you already have a working Search API request. It covers how to improve that request following Exa’s recommended best practices.\n​\nStart with the smallest useful request\nThe best baseline is a natural-language query with highlights: true. Exa sizes each result’s excerpts to its relevance, so there is no character budget to tune:\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Recent technical articles comparing hybrid and semantic retrieval for RAG systems\",\n    contents={\"highlights\": True},\n)\n\nThis gives you ranked pages and token-efficient context per page, relevant to the query.\nAdd additional parameters only as needed:\nParameter\tAdd it when\ntype\tAdjusting to meet a latency budget or depth requirement\nnumResults\tFewer pages for a smaller context window, or more for broader recall\noutputSchema\tSynthesizing results or structuring them into JSON\nmaxAgeHours\tCached page content may be too old\nhighlights.maxCharacters\tYour application requires a fixed excerpt limit per page\nDomain or date filters\tResults outside the constraint would be unusable\n​\nSearch vs. Deep Search\nStandard search retrieves and ranks pages for a query. Deep Search runs a research process that can search iteratively, inspect what it found, refine the search, and synthesize a grounded result.\nNeed\tStart with\nRanked pages for a well-formed query\tauto or fast\nDifficult searches, synthesis across many results, or structured outputs that cannot be filled with a single search (3+ fields)\tdeep\nLong-running research, list building, or multi-hop enrichment\tExa Agent\nDeep modes are recommended by default when using outputSchema. Read the Deep Search guide for full instructions and examples.\n​\nImprove retrieval quality\nWhen results need improvement, change one part of the request at a time.\n1\n\nClarify the query\n\nDescribe the pages you want, not a bag of keywords. Include the subject and any source type, time period, or other detail that changes what a relevant result looks like.\nBenchmark papers evaluating long-context retrieval methods on legal documents\n\n2\n\nRead the response in layers\n\nLook at the titles, URLs, publication dates, and highlights before changing the request.\n{\n  \"results\": [\n    {\n      \"title\": \"Long-Context Retrieval Methods on Legal Documents\",\n      \"url\": \"https://arxiv.org/abs/2608.00000\",\n      \"publishedDate\": \"2026-08-26T00:00:00.000Z\",\n      \"highlights\": [\n        \"We compare long-context retrieval methods across legal document benchmarks...\"\n      ]\n    }\n  ]\n}\n\nThe title and URL show the kind of source Exa retrieved, publishedDate shows its recency, and the highlight shows the evidence that matched the query. Refine the query to retrieve different pages, add date filters to narrow the time period, or fetch full text when you need more context from a useful result.\n3\n\nAdd only hard constraints\n\nUse includeDomains, excludeDomains, and publication-date filters only when a result that violates the constraint cannot be used. Put retrieval preferences in the query and, when synthesizing, put response instructions in systemPrompt.\n4\n\nChange the search mode last\n\nUse a faster mode for a latency requirement or a deep mode when the retrieval process itself needs iteration and reasoning. A different mode cannot repair an underspecified query.\nKeep a small set of representative queries while tuning. Compare result relevance and downstream task success across the set instead of optimizing for one example. Record requestId, searchTime, and costDollars so regressions are reproducible.\n​\nBudget latency and context\nEach control spends a different resource:\nControl\tWhat it adds\nMore results\tMore pages, response data, and downstream context\nFull text\tBroader page context and a larger payload\nsummary\tOne additional language model call per result\noutputSchema\tSynthesis across the retrieved results\ncontents.maxAgeHours: 0\tA fresh page fetch instead of cached content\nDeep search types\tIterative search, synthesis, and reasoning\nFor a real-time path where cached content is acceptable, combine the lowest-latency mode with highlights and cache-only content:\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Recent product updates from major AI labs\",\n    type=\"instant\",\n    contents={\n        \"highlights\": True,\n        \"max_age_hours\": -1,\n    },\n)\n\nDo not use this recipe when page freshness is part of correctness. Start from auto and default freshness unless the product has a measured latency target.\nTo let Exa allocate one context budget across the whole result set — more from strong sources, less from redundant ones — see the Dynamic Highlights research preview.\n​\nTips for common use cases\nIf you need\tUse\tAvoid\nNewer publications\tPut the time window in the query or use publication-date filters\tmaxAgeHours\nFresh content from pages that change\tcontents.maxAgeHours\tPublication-date filters\nA preferred kind of source\tQuery phrasing; systemPrompt when synthesizing\tA hard domain allowlist\nResults only from approved sources\tincludeDomains\tRepeating site: in the query\nA small structured output\toutputSchema with standard Search\tChoosing Deep only because the output is JSON\nA multi-item researched output\tdeep with outputSchema, or Exa Agent\tExpecting one retrieval pass to gather every item\nMore context from a few pages\tSearch with highlights, then call Contents\tFull text for every result\nLower latency\tMeasure fast or instant with compact content\tAdding freshness or synthesis controls by default\n​\nWhen to use another endpoint\nUse a different Exa endpoint when the task changes shape:\nTask\tUse\nLong-running research, list building, or enrichment\tExa Agent\nThe URLs are already known\tContents\nRun a search on a schedule\tMonitors\n​\nNext steps\nSearch API reference\nEvery request parameter and response field.\nOpen reference\nSearch quickstart\nCore request shapes, filters, output, and freshness.\nReview guide\nContents API\nExtract highlights or full text from pages you already know.\nOpen guide\nExa Agent\nLong-running research, list building, and enrichment.\nOpen guide",
+    "scrollHeight": 5832,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

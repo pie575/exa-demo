@@ -1,0 +1,103 @@
+{
+  "id": "007",
+  "path": "/docs/admin/security/hipaa",
+  "production": {
+    "url": "https://exa.ai/docs/admin/security/hipaa",
+    "title": "HIPAA - Exa",
+    "h1": "HIPAA",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 105.671875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2226.9375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "HIPAA compliance is available for Enterprise customers after Exa enables it for your team. Contact sales@exa.ai to discuss Enterprise access, BAA requirements, and enablement.\nHIPAA mode is controlled per request with a top-level compliance field:\n{\n  \"compliance\": \"hipaa\"\n}\n\nWhen this field is present on an eligible team, Exa handles the request with HIPAA compliance controls. If your team is not enabled, the API returns 403 FEATURE_DISABLED.\nHIPAA mode includes Zero Data Retention for those requests: Exa does not persist PHI.\n​\nSupported endpoints\nThe compliance field is recognized on:\n/search\n/contents\nOther endpoints reject the field.\n​\nRequirements\nHIPAA mode supports cached retrieval only. Compatible requests:\nOn /search, set type to instant or fast\nRequest text or highlights (not summary)\nUse cache-only content: omit freshness fields, or set maxAgeHours: -1 on /contents\nIncompatible requests return 400 INVALID_REQUEST_BODY, including:\nsummary on /contents, or contents.summary on /search\nFreshness settings that require a live fetch, such as maxAgeHours: 0 or a positive maxAgeHours\nSearch requests that omit type, or use a type other than instant or fast\n​\nExample\ncURL\ncurl -s -X POST \"https://api.exa.ai/contents\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -d '{\n    \"urls\": [\"https://example.com/article\"],\n    \"compliance\": \"hipaa\",\n    \"highlights\": true,\n    \"maxAgeHours\": -1\n  }'\n\n​\nAccess\nTo enable HIPAA mode for your team, contact sales@exa.ai. See the Trust Center for Exa security documentation.",
+    "scrollHeight": 2323,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/security/hipaa",
+    "title": "HIPAA - Exa",
+    "h1": "HIPAA",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 105.671875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2226.9375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 172
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "HIPAA compliance is available for Enterprise customers after Exa enables it for your team. Contact sales@exa.ai to discuss Enterprise access, BAA requirements, and enablement.\nHIPAA mode is controlled per request with a top-level compliance field:\n{\n  \"compliance\": \"hipaa\"\n}\n\nWhen this field is present on an eligible team, Exa handles the request with HIPAA compliance controls. If your team is not enabled, the API returns 403 FEATURE_DISABLED.\nHIPAA mode includes Zero Data Retention for those requests: Exa does not persist PHI.\n​\nSupported endpoints\nThe compliance field is recognized on:\n/search\n/contents\nOther endpoints reject the field.\n​\nRequirements\nHIPAA mode supports cached retrieval only. Compatible requests:\nOn /search, set type to instant or fast\nRequest text or highlights (not summary)\nUse cache-only content: omit freshness fields, or set maxAgeHours: -1 on /contents\nIncompatible requests return 400 INVALID_REQUEST_BODY, including:\nsummary on /contents, or contents.summary on /search\nFreshness settings that require a live fetch, such as maxAgeHours: 0 or a positive maxAgeHours\nSearch requests that omit type, or use a type other than instant or fast\n​\nExample\ncURL\ncurl -s -X POST \"https://api.exa.ai/contents\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer $EXA_API_KEY\" \\\n  -d '{\n    \"urls\": [\"https://example.com/article\"],\n    \"compliance\": \"hipaa\",\n    \"highlights\": true,\n    \"maxAgeHours\": -1\n  }'\n\n​\nAccess\nTo enable HIPAA mode for your team, contact sales@exa.ai. See the Trust Center for Exa security documentation.",
+    "scrollHeight": 2323,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

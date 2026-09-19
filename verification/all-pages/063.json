@@ -1,0 +1,103 @@
+{
+  "id": "063",
+  "path": "/docs/integrations/truefoundry",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/truefoundry",
+    "title": "TrueFoundry - Exa",
+    "h1": "TrueFoundry",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.3125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7305.40625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "TrueFoundry AI Gateway is an enterprise-grade proxy layer between your applications and LLM providers or MCP servers. It provides unified access to 1,000+ LLMs with centralized observability and governance.\nTrueFoundry provides Exa as an official remote server in its MCP Gateway. Connect the Exa MCP server to give your teams one managed endpoint for web search, content fetching, and agentic research.\n\nExa in the TrueFoundry official remote MCP server catalog\n\n​\nAdd Exa to TrueFoundry\nOpen MCP Servers in the TrueFoundry sidebar and select Add new MCP Server.\nSelect Connect Official Remote MCP Servers.\n\nChoose the official remote MCP server catalog\n\nFind Exa in the catalog and select + Add.\nConfirm the pre-filled server details:\nField\tValue\nName\texa\nDescription\tSearch Engine made for AIs by Exa\nURL\thttps://mcp.exa.ai/mcp\nAuthentication\tOptional (The MCP Server works without authentication. You only need an Exa API key if you reach the free rate limit.)\nAdd the users or teams that should manage or use the server. Leave Auth Data off, then select Update MCP Server.\n\nConfigure the Exa server and its collaborators\n\nOpen the Tools tab and confirm that Exa’s search, content fetching, and agentic research tools are available.\n​\nConfigure the Exa server\nThe pre-filled URL exposes Exa’s default toolset. Change it only if you need to restrict the available tools or use your own API key.\n​\nChoose which tools are available\nPass a comma-separated list of tool names in the tools query parameter:\nhttps://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_tools\n\nYou can enter the URL in the server form or use Apply using YAML:\nurl: >-\n  https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_tools\nname: exa\ntype: mcp-server/remote\ndescription: Search Engine made for AIs by Exa\ncollaborators:\n  - role_id: mcp-server-manager\n    subject: user:you@your-company.com\n\nYou can find available tool names in the Exa MCP documentation.\n​\nUse your Exa API key to bypass the free rate limit\nIf you reach the free rate limit, add your Exa API key to the server URL:\nhttps://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n​\nConnect an MCP client\nOpen the Exa server’s How To Use tab and select your client. TrueFoundry generates the tenant-specific endpoint and ready-to-paste configuration for Cursor, Claude Code, VS Code, Windsurf, Codex, and other MCP clients.\n\nCopy the configuration for your MCP client\n\n​\nTest a tool\nSelect Try beside an Exa tool, enter its inputs, then select Execute Tool. The playground displays the JSON response so you can verify the tool before using it in an agent.\n\nRun an Exa tool in the TrueFoundry playground\n\n​\nManage and monitor tools\nToggle individual tools to control what MCP clients can call\nUse Tool Metrics to review traffic, latency, and errors\nExport invocation traces to your observability stack through OpenTelemetry\n\nManage the Exa tools exposed to MCP clients\n\n​\nResources\nTrueFoundry setup guide\nRead TrueFoundry’s guide to its Exa MCP server.\nOpen guide\nExa MCP documentation\nReview Exa’s tools, configuration, and usage examples.\nOpen guide\nExa MCP Server\nView the server source and releases on GitHub.\nView source",
+    "scrollHeight": 7401,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/truefoundry",
+    "title": "TrueFoundry - Exa",
+    "h1": "TrueFoundry",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.3125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7305.40625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "TrueFoundry AI Gateway is an enterprise-grade proxy layer between your applications and LLM providers or MCP servers. It provides unified access to 1,000+ LLMs with centralized observability and governance.\nTrueFoundry provides Exa as an official remote server in its MCP Gateway. Connect the Exa MCP server to give your teams one managed endpoint for web search, content fetching, and agentic research.\n\nExa in the TrueFoundry official remote MCP server catalog\n\n​\nAdd Exa to TrueFoundry\nOpen MCP Servers in the TrueFoundry sidebar and select Add new MCP Server.\nSelect Connect Official Remote MCP Servers.\n\nChoose the official remote MCP server catalog\n\nFind Exa in the catalog and select + Add.\nConfirm the pre-filled server details:\nField\tValue\nName\texa\nDescription\tSearch Engine made for AIs by Exa\nURL\thttps://mcp.exa.ai/mcp\nAuthentication\tOptional (The MCP Server works without authentication. You only need an Exa API key if you reach the free rate limit.)\nAdd the users or teams that should manage or use the server. Leave Auth Data off, then select Update MCP Server.\n\nConfigure the Exa server and its collaborators\n\nOpen the Tools tab and confirm that Exa’s search, content fetching, and agentic research tools are available.\n​\nConfigure the Exa server\nThe pre-filled URL exposes Exa’s default toolset. Change it only if you need to restrict the available tools or use your own API key.\n​\nChoose which tools are available\nPass a comma-separated list of tool names in the tools query parameter:\nhttps://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_tools\n\nYou can enter the URL in the server form or use Apply using YAML:\nurl: >-\n  https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_tools\nname: exa\ntype: mcp-server/remote\ndescription: Search Engine made for AIs by Exa\ncollaborators:\n  - role_id: mcp-server-manager\n    subject: user:you@your-company.com\n\nYou can find available tool names in the Exa MCP documentation.\n​\nUse your Exa API key to bypass the free rate limit\nIf you reach the free rate limit, add your Exa API key to the server URL:\nhttps://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n​\nConnect an MCP client\nOpen the Exa server’s How To Use tab and select your client. TrueFoundry generates the tenant-specific endpoint and ready-to-paste configuration for Cursor, Claude Code, VS Code, Windsurf, Codex, and other MCP clients.\n\nCopy the configuration for your MCP client\n\n​\nTest a tool\nSelect Try beside an Exa tool, enter its inputs, then select Execute Tool. The playground displays the JSON response so you can verify the tool before using it in an agent.\n\nRun an Exa tool in the TrueFoundry playground\n\n​\nManage and monitor tools\nToggle individual tools to control what MCP clients can call\nUse Tool Metrics to review traffic, latency, and errors\nExport invocation traces to your observability stack through OpenTelemetry\n\nManage the Exa tools exposed to MCP clients\n\n​\nResources\nTrueFoundry setup guide\nRead TrueFoundry’s guide to its Exa MCP server.\nOpen guide\nExa MCP documentation\nReview Exa’s tools, configuration, and usage examples.\nOpen guide\nExa MCP Server\nView the server source and releases on GitHub.\nView source",
+    "scrollHeight": 7401,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

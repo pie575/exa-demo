@@ -1,0 +1,103 @@
+{
+  "id": "001",
+  "path": "/docs/admin/billing",
+  "production": {
+    "url": "https://exa.ai/docs/admin/billing",
+    "title": "Billing and Rate Limits - Exa",
+    "h1": "Billing and Rate Limits",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 339.09375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4150.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa offers a Free tier, pay-as-you-go billing, and custom Enterprise plans. API usage draws from your team’s credit balance, while rate limits control how quickly the team can make requests.\nBilling dashboard\nAdd credits, configure auto recharge, and view invoices.\nManage billing\nAPI keys\nReview usage and set a lower limit for an individual key.\nManage API keys\nPricing\nCompare current rates across Exa products.\nView pricing\n​\nPlans at a glance\nPlan\tBilling\tRate limit\tAgent concurrency\nFree\t$20 in introductory credits, then $10 in credits refreshed monthly\t10 QPS\t50 active runs\nPay as you go\tPrepaid credits with no subscription or minimum spend\t10 QPS, up to 25 QPS\t50 active runs\nEnterprise\tCustom volume pricing and optional postpaid invoicing\tCustom\tCustom\nContact Us\nWe’ll advise on the best set up to handle latency, scale, ZDR, and more.\nContact sales\n​\nBilling basics\nRequests are charged against prepaid credits at the rates in Pricing or under your Enterprise contract. Team owners can add credits from the Billing dashboard; payments are processed through Stripe.\nIf your team exhausts its credits, requests return 402 Payment Required. An API key that reaches its assigned budget also returns 402. Add credits or ask a team administrator to adjust the key’s budget. See Error codes.\nFor historical usage by API key, use Get API key usage.\n​\nRate limits\nRate limits are measured in queries per second (QPS) and apply to your team as a whole, across all of its API keys. You can give an individual key a lower limit from the API Keys page, but its traffic still counts toward the team limit.\nEndpoint\tDefault limit\n/search, /answer, /chat/completions\t10 QPS\n/search with type deep-lite, deep, or deep-reasoning\t5 QPS\n/contents\t100 QPS\n/agent/runs, /responses\t5 QPS and 50 active runs\n/websets/*\t20 QPS\nSome endpoints share rate limit capacity. Limits are subject to change and can vary by plan; Websets searches also have plan-based concurrency limits, which you can check with Get Team Info.\nWhen you exceed a limit, requests return 429 Too Many Requests. Wait for the Retry-After header when present, or retry with exponential backoff. See Error codes.\n​\nAgent limits\nAgent limits are two separate controls: how many runs can be in progress at once, and how fast you can start new ones.\nConcurrency: 50 Agent runs can be in progress at a time. This limit is separate from your QPS and does not change when your QPS is raised. Starting a run past the limit returns 429 with error code CONCURRENCY_LIMIT_REACHED; wait for a run to finish or contact us to raise your concurrency limit.\nStarting runs: POST /agent/runs draws from your account QPS, and each run start counts as two requests. You can start runs at half your QPS, so an account with the default 10 QPS can start 5 runs per second, and 25 QPS allows 12 per second.\nPolling: GET requests for run status, events, and run lists do not count against your QPS and never block dispatch, so poll running Agents independently of how fast you start new ones.\n​\n25 QPS on pay as you go\nAdd $1,000 in credits within any 30-day window and your team’s rate limit rises to 25 QPS for 90 days, automatically. The threshold counts credits you purchase, not credits you spend, and requalifying resets the 90 days. Track your progress on the Billing dashboard.\nNeed more than 25 QPS? Talk to sales.\n​\nAuto recharge\nAuto recharge purchases credits when your balance reaches a threshold you choose. Configure it from the Billing dashboard.\nSetting\tDescription\nRecharge amount\tCredits purchased each time auto recharge triggers, from $5 to $10,000.\nRecharge threshold\tThe balance at which the recharge triggers.\nMonthly maximum\tOptional cap on auto-recharge purchases during the billing cycle. Set it to $0 or leave it blank for no cap.\nFor example, a $100 recharge amount, $10 threshold, and $500 monthly maximum purchases $100 whenever the balance reaches $10, up to $500 in automatic purchases during the cycle.\nFor an upcoming launch or other high-volume workload, add enough credits in advance and set an auto-recharge amount that avoids many small payment attempts.\n​\nReceipts and invoices\nExa emails receipts for credit purchases and auto recharges from billing@exa.ai. Add the address to your allow list if needed. Your full invoice history is available in the Billing dashboard.\nPostpaid invoice billing is available with an Enterprise plan.\n​\nGet help\nIncrease your limits\nRequest more than 25 QPS, custom concurrency, volume pricing, or postpaid billing.\nContact sales\nBilling support\nGet help with payments, credits, invoices, or account billing questions.\nEmail billing",
+    "scrollHeight": 4247,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/billing",
+    "title": "Billing and Rate Limits - Exa",
+    "h1": "Billing and Rate Limits",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 339.09375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4150.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa offers a Free tier, pay-as-you-go billing, and custom Enterprise plans. API usage draws from your team’s credit balance, while rate limits control how quickly the team can make requests.\nBilling dashboard\nAdd credits, configure auto recharge, and view invoices.\nManage billing\nAPI keys\nReview usage and set a lower limit for an individual key.\nManage API keys\nPricing\nCompare current rates across Exa products.\nView pricing\n​\nPlans at a glance\nPlan\tBilling\tRate limit\tAgent concurrency\nFree\t$20 in introductory credits, then $10 in credits refreshed monthly\t10 QPS\t50 active runs\nPay as you go\tPrepaid credits with no subscription or minimum spend\t10 QPS, up to 25 QPS\t50 active runs\nEnterprise\tCustom volume pricing and optional postpaid invoicing\tCustom\tCustom\nContact Us\nWe’ll advise on the best set up to handle latency, scale, ZDR, and more.\nContact sales\n​\nBilling basics\nRequests are charged against prepaid credits at the rates in Pricing or under your Enterprise contract. Team owners can add credits from the Billing dashboard; payments are processed through Stripe.\nIf your team exhausts its credits, requests return 402 Payment Required. An API key that reaches its assigned budget also returns 402. Add credits or ask a team administrator to adjust the key’s budget. See Error codes.\nFor historical usage by API key, use Get API key usage.\n​\nRate limits\nRate limits are measured in queries per second (QPS) and apply to your team as a whole, across all of its API keys. You can give an individual key a lower limit from the API Keys page, but its traffic still counts toward the team limit.\nEndpoint\tDefault limit\n/search, /answer, /chat/completions\t10 QPS\n/search with type deep-lite, deep, or deep-reasoning\t5 QPS\n/contents\t100 QPS\n/agent/runs, /responses\t5 QPS and 50 active runs\n/websets/*\t20 QPS\nSome endpoints share rate limit capacity. Limits are subject to change and can vary by plan; Websets searches also have plan-based concurrency limits, which you can check with Get Team Info.\nWhen you exceed a limit, requests return 429 Too Many Requests. Wait for the Retry-After header when present, or retry with exponential backoff. See Error codes.\n​\nAgent limits\nAgent limits are two separate controls: how many runs can be in progress at once, and how fast you can start new ones.\nConcurrency: 50 Agent runs can be in progress at a time. This limit is separate from your QPS and does not change when your QPS is raised. Starting a run past the limit returns 429 with error code CONCURRENCY_LIMIT_REACHED; wait for a run to finish or contact us to raise your concurrency limit.\nStarting runs: POST /agent/runs draws from your account QPS, and each run start counts as two requests. You can start runs at half your QPS, so an account with the default 10 QPS can start 5 runs per second, and 25 QPS allows 12 per second.\nPolling: GET requests for run status, events, and run lists do not count against your QPS and never block dispatch, so poll running Agents independently of how fast you start new ones.\n​\n25 QPS on pay as you go\nAdd $1,000 in credits within any 30-day window and your team’s rate limit rises to 25 QPS for 90 days, automatically. The threshold counts credits you purchase, not credits you spend, and requalifying resets the 90 days. Track your progress on the Billing dashboard.\nNeed more than 25 QPS? Talk to sales.\n​\nAuto recharge\nAuto recharge purchases credits when your balance reaches a threshold you choose. Configure it from the Billing dashboard.\nSetting\tDescription\nRecharge amount\tCredits purchased each time auto recharge triggers, from $5 to $10,000.\nRecharge threshold\tThe balance at which the recharge triggers.\nMonthly maximum\tOptional cap on auto-recharge purchases during the billing cycle. Set it to $0 or leave it blank for no cap.\nFor example, a $100 recharge amount, $10 threshold, and $500 monthly maximum purchases $100 whenever the balance reaches $10, up to $500 in automatic purchases during the cycle.\nFor an upcoming launch or other high-volume workload, add enough credits in advance and set an auto-recharge amount that avoids many small payment attempts.\n​\nReceipts and invoices\nExa emails receipts for credit purchases and auto recharges from billing@exa.ai. Add the address to your allow list if needed. Your full invoice history is available in the Billing dashboard.\nPostpaid invoice billing is available with an Enterprise plan.\n​\nGet help\nIncrease your limits\nRequest more than 25 QPS, custom concurrency, volume pricing, or postpaid billing.\nContact sales\nBilling support\nGet help with payments, credits, invoices, or account billing questions.\nEmail billing",
+    "scrollHeight": 4247,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

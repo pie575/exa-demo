@@ -1,0 +1,91 @@
+{
+  "id": "121",
+  "path": "/docs/websets/api/monitors/create-a-monitor",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/monitors/create-a-monitor",
+    "title": "Create a Websets monitor - Exa",
+    "h1": "Create a Websets monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 444.328125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 396,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 3452.734375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3549,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/monitors/create-a-monitor",
+    "title": "Create a Websets monitor - Exa",
+    "h1": "Create a Websets monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 444.328125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 396,
+        "height": 80
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 3452.734375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 3549,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

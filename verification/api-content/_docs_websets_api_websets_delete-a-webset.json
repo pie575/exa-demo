@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/websets/delete-a-webset",
+  "production": {
+    "status": 200,
+    "text": "Delete a webset\nCopy page\n\nDeletes a Webset.\n\nOnce deleted, the Webset and all its Items will no longer be available.\n\nDELETE\n/\nv0\n/\nwebsets\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id or externalId of the Webset\n\nResponse\n200\napplication/json\n\nWebset deleted\n\n​\nid\nstringrequired\n\nThe unique identifier for the webset\n\n​\nobject\nstringdefault:websetrequired\nAllowed value: \"webset\"\n​\nstatus\nenum<string>required\n\nThe status of the webset\n\nAvailable options: idle, pending, running, paused \n​\nexternalId\nstring | nullrequired\n\nThe external identifier for the webset\n\n​\ntitle\nstring | nullrequired\n\nThe title of the webset\n\n​\nsearches\nobject[]required\n\nThe searches that have been performed on the webset.\n\nShow child attributes\n\n​\nimports\nobject[]required\n\nImports that have been performed on the webset.\n\nShow child attributes\n\n​\nenrichments\nobject[]required\n\nThe Enrichments to apply to the Webset Items.\n\nShow child attributes\n\n​\nmonitors\nobject[]required\n\nThe Monitors for the Webset.\n\nShow child attributes\n\n​\ndashboardUrl\nstring<uri>required\n\nThe URL to view the webset in the Exa dashboard\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the webset was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the webset was updated\n\n​\nexcludes\nobject[]\n\nThe Excludes sources (existing imports or websets) that apply to all operations within this Webset. Any results found within these sources will be omitted across all search and import operations.\n\nShow child attributes\n\n​\nmetadata\nobject\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\nUpdate a webset\nPrevious\nPreview a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a webset",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Delete a webset\nCopy page\n\nDeletes a Webset.\n\nOnce deleted, the Webset and all its Items will no longer be available.\n\nDELETE\n/\nv0\n/\nwebsets\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id or externalId of the Webset\n\nResponse\n200\napplication/json\n\nWebset deleted\n\n​\nid\nstringrequired\n\nThe unique identifier for the webset\n\n​\nobject\nstringdefault:websetrequired\nAllowed value: \"webset\"\n​\nstatus\nenum<string>required\n\nThe status of the webset\n\nAvailable options: idle, pending, running, paused \n​\nexternalId\nstring | nullrequired\n\nThe external identifier for the webset\n\n​\ntitle\nstring | nullrequired\n\nThe title of the webset\n\n​\nsearches\nobject[]required\n\nThe searches that have been performed on the webset.\n\nShow child attributes\n\n​\nimports\nobject[]required\n\nImports that have been performed on the webset.\n\nShow child attributes\n\n​\nenrichments\nobject[]required\n\nThe Enrichments to apply to the Webset Items.\n\nShow child attributes\n\n​\nmonitors\nobject[]required\n\nThe Monitors for the Webset.\n\nShow child attributes\n\n​\ndashboardUrl\nstring<uri>required\n\nThe URL to view the webset in the Exa dashboard\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the webset was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the webset was updated\n\n​\nexcludes\nobject[]\n\nThe Excludes sources (existing imports or websets) that apply to all operations within this Webset. Any results found within these sources will be omitted across all search and import operations.\n\nShow child attributes\n\n​\nmetadata\nobject\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\nUpdate a webset\nPrevious\nPreview a webset\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a webset",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1873,
+  "localLength": 1873
+}

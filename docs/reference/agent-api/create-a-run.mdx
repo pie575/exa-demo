@@ -1,0 +1,18 @@
+---
+title: "Create a run"
+description: "Create an asynchronous Agent run. The response returns the run object immediately unless you request server-sent events."
+openapi: "docs/exa-spec.yaml POST /agent/runs"
+timestamp: false
+---
+
+Create a run with a natural-language `query`. Add `outputSchema` for validated structured JSON, `input.data` for rows to process, `input.exclusion` for records or entities to avoid, or `previousRunId` to continue from a completed run.
+
+Set `Accept: text/event-stream` to stream run events as the run is created, started, and completed.
+
+<Note>
+  **Connect:** Pass `dataSources` to give the agent access to third-party data providers during the run. See the [Connect guide](/docs/agent/quickstart#connect-data-sources) for details.
+</Note>
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

@@ -1,0 +1,103 @@
+{
+  "id": "050",
+  "path": "/docs/integrations/openai-sdk",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/openai-sdk",
+    "title": "OpenAI SDK Compatibility - Exa",
+    "h1": "OpenAI SDK Compatibility",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 410.625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 6068.4375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\n​\nOverview\nExa provides OpenAI-compatible endpoints that work with the OpenAI SDK:\nEndpoint\tOpenAI Interface\tModels Available\tUse Case\n/chat/completions\tChat Completions API\texa\tTraditional chat interface\n/responses\tResponses API\texa-agent\tAgent API (async research, enrichment, list-building)\n/chat/completions routes to /answer, and /responses routes to the Agent API. See Agent via Responses API below.\n​\nAnswer\nTo use Exa’s /answer endpoint via the chat completions interface:\nReplace base URL with https://api.exa.ai\nReplace API key with your Exa API key\nReplace model name with exa.\nSee the full /answer endpoint reference. For custom routing behavior, contact hello@exa.ai.\nPython\nJavaScript\ncURL\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(\n  base_url=\"https://api.exa.ai\", # use exa as the base url\n  api_key=os.environ[\"EXA_API_KEY\"],\n)\n\ncompletion = client.chat.completions.create(\n  model=\"exa\",\n  messages = [\n  {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n  {\"role\": \"user\", \"content\": \"What are the latest developments in quantum computing?\"}\n],\n\n# use extra_body to pass extra parameters to the /answer endpoint\n  extra_body={\n    \"text\": True # include full text from sources\n  }\n)\n\nprint(completion.choices[0].message.content)  # print the response content\nprint(completion.choices[0].message.citations)  # print the citations\n\n​\nAgent via Responses API\nExa’s /responses endpoint exposes the Agent API through the OpenAI Responses interface, so the OpenAI SDKs work against it unchanged. Set model: \"exa-agent\" and choose an execution mode:\nMode\tRequest\tBehavior\nSynchronous\tdefault (no stream/background)\tThe request blocks and returns the completed response object.\nStreaming\tstream: true\tThe request streams OpenAI Responses events (SSE) as the run progresses, ending with response.completed.\nBackground\tbackground: true\tThe request returns immediately with an in_progress response; poll GET /responses/{id} for the result.\nSet reasoning.effort (minimal, low, medium, high, xhigh, auto, max) to trade cost against depth, and cancel a run with POST /responses/{id}/cancel. For max, set Exa-Beta: agent-max-effort-2026-07-27 as a client default header. The Agent guide covers the run model, output shape, and effort pricing that back this surface.\nhigh, xhigh, and max reasoning.effort runs too long for a synchronous request and return 400. Use stream: true or background: true for those runs. /responses has no budget field; max uses its default per-run cap.\nUse previous_response_id to continue a completed Responses run.\n​\nSynchronous\nThe request blocks until the run completes and returns the terminal response object.\nPython\nJavaScript\ncURL\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://api.exa.ai\",\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\nresponse = client.responses.create(\n    model=\"exa-agent\",\n    input=\"Find the top 5 AI startups founded in 2025 with their funding amounts\",\n    reasoning={\"effort\": \"medium\"},\n)\n\nprint(response.output_text)\n\n​\nStreaming\nSet stream: true to receive Responses stream events over SSE. Events carry a monotonic sequence_number and finish with response.completed; there is no [DONE] sentinel. The stream may include : keep-alive comment lines, which SSE clients ignore.\nPython\nJavaScript\ncURL\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://api.exa.ai\",\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\nwith client.responses.stream(\n    model=\"exa-agent\",\n    input=\"Find the top 5 AI startups founded in 2025 with their funding amounts\",\n) as stream:\n    for event in stream:\n        if event.type == \"response.output_text.delta\":\n            print(event.delta, end=\"\", flush=True)\n    final = stream.get_final_response()\n\nprint(\"\\n\\n\", final.output_text)\n\n​\nBackground\nSet background: true to start a run without holding the connection open, then poll GET /responses/{id} until it reaches a terminal status. To stream instead of polling, use Streaming.\nPython\nJavaScript\ncURL\nimport os\nimport time\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://api.exa.ai\",\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\nresponse = client.responses.create(\n    model=\"exa-agent\",\n    input=\"Find the top 5 AI startups founded in 2025 with their funding amounts\",\n    background=True,\n)\n\n# Poll until complete\nwhile response.status in (\"queued\", \"in_progress\"):\n    time.sleep(5)\n    response = client.responses.retrieve(response.id)\n\nprint(response.output_text)\n\n​\nChat wrapper\nExa provides a Python wrapper that automatically enhances any OpenAI chat completion with RAG capabilities. With one line of code, you can turn any OpenAI chat completion into an Exa-powered RAG system that handles search, chunking, and prompting automatically.\nPython\nimport os\nfrom openai import OpenAI\nfrom exa_py import Exa\n\n# Initialize clients\nopenai = OpenAI(api_key=os.environ[\"OPENAI_API_KEY\"])\nexa = Exa(api_key=os.environ[\"EXA_API_KEY\"])\n\n# Wrap the OpenAI client\nexa_openai = exa.wrap(openai)\n\n# Use exactly like the normal OpenAI client\ncompletion = exa_openai.chat.completions.create(\n    model=\"gpt-5.6-sol\",\n    messages=[{\"role\": \"user\", \"content\": \"What is the latest climate tech news?\"}]\n)\n\nprint(completion.choices[0].message.content)\n\nThe wrapped client works exactly like the native OpenAI client, except it automatically improves your completions with relevant search results when needed.\nThe wrapper supports any parameters from the exa.search() function.\ncompletion = exa_openai.chat.completions.create(\n    model=\"gpt-5.6-sol\",\n    messages=messages,\n    use_exa=\"auto\",              # \"auto\", \"required\", or \"none\"\n    num_results=5,               # defaults to 3\n    result_max_len=1024,         # defaults to 2048 characters\n    include_domains=[\"arxiv.org\"],\n    category=\"publication\",\n    start_published_date=\"2019-01-01\"\n)\n",
+    "scrollHeight": 6164,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/openai-sdk",
+    "title": "OpenAI SDK Compatibility - Exa",
+    "h1": "OpenAI SDK Compatibility",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 410.625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 6068.4375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 268
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\n​\nOverview\nExa provides OpenAI-compatible endpoints that work with the OpenAI SDK:\nEndpoint\tOpenAI Interface\tModels Available\tUse Case\n/chat/completions\tChat Completions API\texa\tTraditional chat interface\n/responses\tResponses API\texa-agent\tAgent API (async research, enrichment, list-building)\n/chat/completions routes to /answer, and /responses routes to the Agent API. See Agent via Responses API below.\n​\nAnswer\nTo use Exa’s /answer endpoint via the chat completions interface:\nReplace base URL with https://api.exa.ai\nReplace API key with your Exa API key\nReplace model name with exa.\nSee the full /answer endpoint reference. For custom routing behavior, contact hello@exa.ai.\nPython\nJavaScript\ncURL\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(\n  base_url=\"https://api.exa.ai\", # use exa as the base url\n  api_key=os.environ[\"EXA_API_KEY\"],\n)\n\ncompletion = client.chat.completions.create(\n  model=\"exa\",\n  messages = [\n  {\"role\": \"system\", \"content\": \"You are a helpful assistant.\"},\n  {\"role\": \"user\", \"content\": \"What are the latest developments in quantum computing?\"}\n],\n\n# use extra_body to pass extra parameters to the /answer endpoint\n  extra_body={\n    \"text\": True # include full text from sources\n  }\n)\n\nprint(completion.choices[0].message.content)  # print the response content\nprint(completion.choices[0].message.citations)  # print the citations\n\n​\nAgent via Responses API\nExa’s /responses endpoint exposes the Agent API through the OpenAI Responses interface, so the OpenAI SDKs work against it unchanged. Set model: \"exa-agent\" and choose an execution mode:\nMode\tRequest\tBehavior\nSynchronous\tdefault (no stream/background)\tThe request blocks and returns the completed response object.\nStreaming\tstream: true\tThe request streams OpenAI Responses events (SSE) as the run progresses, ending with response.completed.\nBackground\tbackground: true\tThe request returns immediately with an in_progress response; poll GET /responses/{id} for the result.\nSet reasoning.effort (minimal, low, medium, high, xhigh, auto, max) to trade cost against depth, and cancel a run with POST /responses/{id}/cancel. For max, set Exa-Beta: agent-max-effort-2026-07-27 as a client default header. The Agent guide covers the run model, output shape, and effort pricing that back this surface.\nhigh, xhigh, and max reasoning.effort runs too long for a synchronous request and return 400. Use stream: true or background: true for those runs. /responses has no budget field; max uses its default per-run cap.\nUse previous_response_id to continue a completed Responses run.\n​\nSynchronous\nThe request blocks until the run completes and returns the terminal response object.\nPython\nJavaScript\ncURL\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://api.exa.ai\",\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\nresponse = client.responses.create(\n    model=\"exa-agent\",\n    input=\"Find the top 5 AI startups founded in 2025 with their funding amounts\",\n    reasoning={\"effort\": \"medium\"},\n)\n\nprint(response.output_text)\n\n​\nStreaming\nSet stream: true to receive Responses stream events over SSE. Events carry a monotonic sequence_number and finish with response.completed; there is no [DONE] sentinel. The stream may include : keep-alive comment lines, which SSE clients ignore.\nPython\nJavaScript\ncURL\nimport os\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://api.exa.ai\",\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\nwith client.responses.stream(\n    model=\"exa-agent\",\n    input=\"Find the top 5 AI startups founded in 2025 with their funding amounts\",\n) as stream:\n    for event in stream:\n        if event.type == \"response.output_text.delta\":\n            print(event.delta, end=\"\", flush=True)\n    final = stream.get_final_response()\n\nprint(\"\\n\\n\", final.output_text)\n\n​\nBackground\nSet background: true to start a run without holding the connection open, then poll GET /responses/{id} until it reaches a terminal status. To stream instead of polling, use Streaming.\nPython\nJavaScript\ncURL\nimport os\nimport time\nfrom openai import OpenAI\n\nclient = OpenAI(\n    base_url=\"https://api.exa.ai\",\n    api_key=os.environ[\"EXA_API_KEY\"],\n)\n\nresponse = client.responses.create(\n    model=\"exa-agent\",\n    input=\"Find the top 5 AI startups founded in 2025 with their funding amounts\",\n    background=True,\n)\n\n# Poll until complete\nwhile response.status in (\"queued\", \"in_progress\"):\n    time.sleep(5)\n    response = client.responses.retrieve(response.id)\n\nprint(response.output_text)\n\n​\nChat wrapper\nExa provides a Python wrapper that automatically enhances any OpenAI chat completion with RAG capabilities. With one line of code, you can turn any OpenAI chat completion into an Exa-powered RAG system that handles search, chunking, and prompting automatically.\nPython\nimport os\nfrom openai import OpenAI\nfrom exa_py import Exa\n\n# Initialize clients\nopenai = OpenAI(api_key=os.environ[\"OPENAI_API_KEY\"])\nexa = Exa(api_key=os.environ[\"EXA_API_KEY\"])\n\n# Wrap the OpenAI client\nexa_openai = exa.wrap(openai)\n\n# Use exactly like the normal OpenAI client\ncompletion = exa_openai.chat.completions.create(\n    model=\"gpt-5.6-sol\",\n    messages=[{\"role\": \"user\", \"content\": \"What is the latest climate tech news?\"}]\n)\n\nprint(completion.choices[0].message.content)\n\nThe wrapped client works exactly like the native OpenAI client, except it automatically improves your completions with relevant search results when needed.\nThe wrapper supports any parameters from the exa.search() function.\ncompletion = exa_openai.chat.completions.create(\n    model=\"gpt-5.6-sol\",\n    messages=messages,\n    use_exa=\"auto\",              # \"auto\", \"required\", or \"none\"\n    num_results=5,               # defaults to 3\n    result_max_len=1024,         # defaults to 2048 characters\n    include_domains=[\"arxiv.org\"],\n    category=\"publication\",\n    start_published_date=\"2019-01-01\"\n)\n",
+    "scrollHeight": 6164,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

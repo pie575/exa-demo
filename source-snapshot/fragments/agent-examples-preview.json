@@ -1,0 +1,8 @@
+{
+  "source": "https://exa.ai/docs/agent/examples",
+  "selector": "[aria-label=\"Example Agent responses as spreadsheets\"]",
+  "reason": "Production Visibility content is intentionally omitted from the individual Markdown export.",
+  "bytes": 25643,
+  "sha256": "f6f285b7d9decc963648b2eb9315eb3d7505de33498f017444d8155a89145eac",
+  "tabs": 7
+}

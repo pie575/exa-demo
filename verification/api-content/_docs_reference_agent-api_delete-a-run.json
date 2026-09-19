@@ -1,0 +1,28 @@
+{
+  "route": "/docs/reference/agent-api/delete-a-run",
+  "production": {
+    "status": 200,
+    "text": "Delete a run\nCopy page\n\nDelete a stored Agent run.\n\nDELETE\n/\nagent\n/\nruns\n/\n{id}\nTry it\nDeleting a run removes the stored run from your team’s Agent run history.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nAgent run ID.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nAgent run deleted\n\n​\nid\nstringrequired\n\nAgent run ID. New run IDs are returned with the agent_run_ prefix.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\n​\nobject\nstringrequired\nAllowed value: \"agent_run.deleted\"\n​\ndeleted\nbooleanrequired\nStop a run\nPrevious\nList run events\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a run",
+      "Get your Exa API key",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Delete a run\nCopy page\n\nDelete a stored Agent run.\n\nDELETE\n/\nagent\n/\nruns\n/\n{id}\nTry it\nDeleting a run removes the stored run from your team’s Agent run history.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nAgent run ID.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nAgent run deleted\n\n​\nid\nstringrequired\n\nAgent run ID. New run IDs are returned with the agent_run_ prefix.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\n​\nobject\nstringrequired\nAllowed value: \"agent_run.deleted\"\n​\ndeleted\nbooleanrequired\nStop a run\nPrevious\nList run events\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a run",
+      "Get your Exa API key",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 995,
+  "localLength": 995
+}

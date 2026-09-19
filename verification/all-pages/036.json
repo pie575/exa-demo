@@ -1,0 +1,103 @@
+{
+  "id": "036",
+  "path": "/docs/integrations/browserbase",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/browserbase",
+    "title": "Browserbase - Exa",
+    "h1": "Browserbase",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 205.3125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3158.953125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa to find companies and careers pages, then use Browserbase and Stagehand to inspect and interact with those pages.\n​\nInstall\nInstall the packages used by the Browserbase Exa template:\nnpm\nnpm install @browserbasehq/stagehand dotenv exa-js zod\n\n​\nConfigure environment variables\nSet the API keys used by Exa and Browserbase:\n.env\nBROWSERBASE_API_KEY=your-browserbase-api-key\nEXA_API_KEY=your-exa-api-key\n\n​\nSearch and interact with a page\nThe following example follows the template’s workflow: search for companies, find a careers page, open it in a Browserbase session, extract the job description, and let a Stagehand agent interact with the page.\nquickstart.ts\nimport \"dotenv/config\";\nimport { Stagehand } from \"@browserbasehq/stagehand\";\nimport Exa from \"exa-js\";\nimport { z } from \"zod\";\n\nconst exa = new Exa(process.env.EXA_API_KEY);\n\nconst companies = await exa.search(\"AI startups in SF\", {\n  category: \"company\",\n  type: \"auto\",\n  numResults: 5,\n  contents: { text: true },\n});\n\nconst company = companies.results[0];\nif (!company?.url) {\n  throw new Error(\"No matching company found\");\n}\n\nconst companyDomain = new URL(company.url).hostname.replace(\"www.\", \"\");\nconst careers = await exa.search(`${companyDomain} careers page`, {\n  excludeDomains: [\"linkedin.com\"],\n  type: \"deep\",\n  numResults: 5,\n  contents: { text: true },\n});\n\nconst careersUrl = careers.results[0]?.url;\nif (!careersUrl) {\n  throw new Error(\"No careers page found\");\n}\n\nconst stagehand = new Stagehand({\n  env: \"BROWSERBASE\",\n  model: \"google/gemini-2.5-pro\",\n});\n\ntry {\n  await stagehand.init();\n  const page = stagehand.context.pages()[0];\n  await page.goto(careersUrl);\n\n  const jobDescription = await stagehand.extract(\n    \"Extract the job title, requirements, responsibilities, and other important details from this page.\",\n    z.object({\n      jobTitle: z.string(),\n      requirements: z.array(z.string()),\n      responsibilities: z.array(z.string()),\n      details: z.string(),\n    }),\n  );\n\n  const agent = stagehand.agent({\n    mode: \"hybrid\",\n    model: \"google/gemini-3-flash-preview\",\n    systemPrompt: \"Interact with the page without submitting an application.\",\n  });\n\n  const result = await agent.execute({\n    instruction: `Review this job posting and identify the next application step. Job details: ${JSON.stringify(jobDescription)}`,\n    maxSteps: 10,\n  });\n\n  console.log(result);\n} finally {\n  await stagehand.close();\n}\n\nThe template includes the complete workflow for extracting job details, generating tailored responses, and filling application forms. See the TypeScript implementation or Python implementation.",
+    "scrollHeight": 3255,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/browserbase",
+    "title": "Browserbase - Exa",
+    "h1": "Browserbase",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 205.3125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3158.953125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa to find companies and careers pages, then use Browserbase and Stagehand to inspect and interact with those pages.\n​\nInstall\nInstall the packages used by the Browserbase Exa template:\nnpm\nnpm install @browserbasehq/stagehand dotenv exa-js zod\n\n​\nConfigure environment variables\nSet the API keys used by Exa and Browserbase:\n.env\nBROWSERBASE_API_KEY=your-browserbase-api-key\nEXA_API_KEY=your-exa-api-key\n\n​\nSearch and interact with a page\nThe following example follows the template’s workflow: search for companies, find a careers page, open it in a Browserbase session, extract the job description, and let a Stagehand agent interact with the page.\nquickstart.ts\nimport \"dotenv/config\";\nimport { Stagehand } from \"@browserbasehq/stagehand\";\nimport Exa from \"exa-js\";\nimport { z } from \"zod\";\n\nconst exa = new Exa(process.env.EXA_API_KEY);\n\nconst companies = await exa.search(\"AI startups in SF\", {\n  category: \"company\",\n  type: \"auto\",\n  numResults: 5,\n  contents: { text: true },\n});\n\nconst company = companies.results[0];\nif (!company?.url) {\n  throw new Error(\"No matching company found\");\n}\n\nconst companyDomain = new URL(company.url).hostname.replace(\"www.\", \"\");\nconst careers = await exa.search(`${companyDomain} careers page`, {\n  excludeDomains: [\"linkedin.com\"],\n  type: \"deep\",\n  numResults: 5,\n  contents: { text: true },\n});\n\nconst careersUrl = careers.results[0]?.url;\nif (!careersUrl) {\n  throw new Error(\"No careers page found\");\n}\n\nconst stagehand = new Stagehand({\n  env: \"BROWSERBASE\",\n  model: \"google/gemini-2.5-pro\",\n});\n\ntry {\n  await stagehand.init();\n  const page = stagehand.context.pages()[0];\n  await page.goto(careersUrl);\n\n  const jobDescription = await stagehand.extract(\n    \"Extract the job title, requirements, responsibilities, and other important details from this page.\",\n    z.object({\n      jobTitle: z.string(),\n      requirements: z.array(z.string()),\n      responsibilities: z.array(z.string()),\n      details: z.string(),\n    }),\n  );\n\n  const agent = stagehand.agent({\n    mode: \"hybrid\",\n    model: \"google/gemini-3-flash-preview\",\n    systemPrompt: \"Interact with the page without submitting an application.\",\n  });\n\n  const result = await agent.execute({\n    instruction: `Review this job posting and identify the next application step. Job details: ${JSON.stringify(jobDescription)}`,\n    maxSteps: 10,\n  });\n\n  console.log(result);\n} finally {\n  await stagehand.close();\n}\n\nThe template includes the complete workflow for extracting job details, generating tailored responses, and filling application forms. See the TypeScript implementation or Python implementation.",
+    "scrollHeight": 3255,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

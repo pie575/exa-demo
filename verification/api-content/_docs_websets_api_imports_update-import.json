@@ -1,0 +1,28 @@
+{
+  "route": "/docs/websets/api/imports/update-import",
+  "production": {
+    "status": 200,
+    "text": "Update an import\nCopy page\n\nUpdates a import configuration.\n\nPATCH\n/\nv0\n/\nimports\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the Import\n\nBody\napplication/json\n​\nmetadata\nobject\n\nShow child attributes\n\n​\ntitle\nstring\nResponse\n200 - application/json\n\nImport updated successfully\n\n​\nid\nstringrequired\n\nThe unique identifier for the Import\n\n​\nobject\nenum<string>required\n\nThe type of object\n\nAvailable options: import \n​\nstatus\nenum<string>required\n\nThe status of the Import\n\nAvailable options: pending, processing, completed, failed, canceled \n​\nformat\nenum<string>required\n\nThe format of the import.\n\nAvailable options: csv, webset \n​\nentity\nCompany · objectrequired\n\nThe type of entity the import contains.\n\nCompany\nPerson\nArticle\nResearch Paper\nCustom\n\nShow child attributes\n\n​\ntitle\nstringrequired\n\nThe title of the import\n\n​\ncount\nnumberrequired\n\nThe number of entities in the import\n\n​\nmetadata\nobjectrequired\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\n​\nfailedReason\nenum<string> | nullrequired\n\nThe reason the import failed\n\nAvailable options: invalid_format, invalid_file_content, missing_identifier \n​\nfailedAt\nstring<date-time> | nullrequired\n\nWhen the import failed\n\n​\nfailedMessage\nstring | nullrequired\n\nA human readable message of the import failure\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the import was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the import was last updated\n\nGet an import\nPrevious\nDelete an import\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Update an import",
+      "Authorizations",
+      "Path Parameters",
+      "Body",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Update an import\nCopy page\n\nUpdates a import configuration.\n\nPATCH\n/\nv0\n/\nimports\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the Import\n\nBody\napplication/json\n​\nmetadata\nobject\n\nShow child attributes\n\n​\ntitle\nstring\nResponse\n200 - application/json\n\nImport updated successfully\n\n​\nid\nstringrequired\n\nThe unique identifier for the Import\n\n​\nobject\nenum<string>required\n\nThe type of object\n\nAvailable options: import \n​\nstatus\nenum<string>required\n\nThe status of the Import\n\nAvailable options: pending, processing, completed, failed, canceled \n​\nformat\nenum<string>required\n\nThe format of the import.\n\nAvailable options: csv, webset \n​\nentity\nCompany · objectrequired\n\nThe type of entity the import contains.\n\nCompany\nPerson\nArticle\nResearch Paper\nCustom\n\nShow child attributes\n\n​\ntitle\nstringrequired\n\nThe title of the import\n\n​\ncount\nnumberrequired\n\nThe number of entities in the import\n\n​\nmetadata\nobjectrequired\n\nSet of key-value pairs you want to associate with this object.\n\nShow child attributes\n\n​\nfailedReason\nenum<string> | nullrequired\n\nThe reason the import failed\n\nAvailable options: invalid_format, invalid_file_content, missing_identifier \n​\nfailedAt\nstring<date-time> | nullrequired\n\nWhen the import failed\n\n​\nfailedMessage\nstring | nullrequired\n\nA human readable message of the import failure\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the import was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the import was last updated\n\nGet an import\nPrevious\nDelete an import\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Update an import",
+      "Authorizations",
+      "Path Parameters",
+      "Body",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1718,
+  "localLength": 1718
+}

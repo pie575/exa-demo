@@ -1,0 +1,1042 @@
+{
+  "index": {
+    "title": "Start building with Exa",
+    "sidebarTitle": "Overview",
+    "description": "A powerful web search tool designed for agents. Everything optimized to get you token-efficient, accurate results.",
+    "mode": "wide",
+    "timestamp": false,
+    "hideFooterPagination": true,
+    "contextual": {
+      "options": []
+    }
+  },
+  "get-started/quickstart": {
+    "title": "Developer quickstart",
+    "sidebarTitle": "Quickstart",
+    "description": "Get an API key, then use Exa from your code or your agent.",
+    "boost": 3
+  },
+  "get-started/exa-mcp": {
+    "title": "Exa MCP",
+    "description": "Connect ChatGPT, Codex, Claude, Grok, Cursor, and any other MCP client to Exa's web search, page fetching, Exa Agent, and Exa Connect tools.",
+    "sidebarTitle": "MCP",
+    "keywords": [
+      "Exa MCP",
+      "MCP server",
+      "web search",
+      "ChatGPT",
+      "Codex",
+      "Claude Code",
+      "Cursor"
+    ]
+  },
+  "get-started/agent-skills/overview": {
+    "title": "Agent Skills",
+    "sidebarTitle": "Overview",
+    "description": "Install Exa skills in Claude Code, Codex, and other coding agents.",
+    "keywords": [
+      "agent skills",
+      "claude code",
+      "cursor",
+      "codex",
+      "exa api"
+    ]
+  },
+  "get-started/agent-skills/build-with-exa": {
+    "title": "Build with Exa Skill",
+    "sidebarTitle": "Build with Exa",
+    "description": "An agent skill to help developers implement any part of the Exa API platform.",
+    "keywords": [
+      "build with exa",
+      "agent skills",
+      "exa api",
+      "sdk"
+    ]
+  },
+  "get-started/agent-skills/exa-search": {
+    "title": "Exa Search Skill",
+    "sidebarTitle": "Exa Search",
+    "description": "Find relevant web pages and return synthesized content in under two seconds with Exa Search.",
+    "keywords": [
+      "exa search",
+      "agent skills",
+      "curl",
+      "http"
+    ],
+    "searchable": false
+  },
+  "get-started/agent-skills/exa-contents": {
+    "title": "Exa Contents Skill",
+    "sidebarTitle": "Exa Contents",
+    "description": "Extract page content with Exa Contents when you already have the URLs.",
+    "keywords": [
+      "exa contents",
+      "agent skills",
+      "curl",
+      "http"
+    ],
+    "searchable": false
+  },
+  "search/quickstart": {
+    "title": "Exa Search API",
+    "sidebarTitle": "Quickstart",
+    "description": "Search the web in natural language and get clean, relevant page content in one request.",
+    "keywords": [
+      "search api",
+      "web search",
+      "semantic search",
+      "retrieval",
+      "rag",
+      "highlights"
+    ],
+    "boost": 6
+  },
+  "search/deep-search": {
+    "title": "Deep Search",
+    "sidebarTitle": "Deep Search",
+    "description": "Use iterative search, reasoning, and grounded synthesis for complex research tasks.",
+    "keywords": [
+      "deep search",
+      "deep-lite",
+      "deep-reasoning",
+      "structured output",
+      "additional queries"
+    ]
+  },
+  "search/highlights": {
+    "title": "Highlights",
+    "description": "Return query-relevant excerpts from Exa Search results while controlling context size and latency.",
+    "keywords": [
+      "search highlights",
+      "dynamic highlights",
+      "rag",
+      "token efficiency",
+      "search context"
+    ]
+  },
+  "search/snapshot": {
+    "title": "Exa Snapshot",
+    "sidebarTitle": "Snapshot",
+    "description": "Pin Search and Contents to a stored version of a page at a datetime you choose.",
+    "keywords": [
+      "exa snapshot",
+      "snapshotAsOf",
+      "historical contents",
+      "versioned search"
+    ]
+  },
+  "search/best-practices": {
+    "title": "Search Best Practices",
+    "sidebarTitle": "Best Practices",
+    "description": "Tune retrieval quality, latency, context, and synthesis for production Search API integrations.",
+    "keywords": [
+      "search api",
+      "search quality",
+      "rag",
+      "retrieval",
+      "latency",
+      "structured output"
+    ]
+  },
+  "search/data/overview": {
+    "title": "Data Index",
+    "sidebarTitle": "Overview",
+    "icon": "database",
+    "description": "What Exa indexes across the public web and private data sources."
+  },
+  "search/data/news": {
+    "title": "News",
+    "sidebarTitle": "News",
+    "icon": "newspaper",
+    "description": "Find current reporting, industry coverage, and emerging stories with Exa Search."
+  },
+  "search/data/code": {
+    "title": "Code & Docs",
+    "sidebarTitle": "Code & Docs",
+    "icon": "code",
+    "description": "Find code, technical documentation, and implementation guidance with Exa Search."
+  },
+  "search/data/companies-people": {
+    "title": "Companies & People",
+    "sidebarTitle": "Companies & People",
+    "icon": "users",
+    "description": "Find companies, professional profiles, and the relationships between them with Exa Search."
+  },
+  "search/data/financial": {
+    "title": "Financial Markets",
+    "sidebarTitle": "Financial Markets",
+    "icon": "chart-line",
+    "description": "Find market data, filings, earnings calls, and economic releases with Exa Search."
+  },
+  "search/data/research": {
+    "title": "Research Publications",
+    "sidebarTitle": "Research Publications",
+    "icon": "book-open",
+    "description": "Find academic papers, patents, grants, clinical trials, and regulatory approvals with Exa Search."
+  },
+  "search/data/legal": {
+    "title": "Legal & Public Records",
+    "sidebarTitle": "Legal & Public Records",
+    "icon": "scale",
+    "description": "Find court opinions, patents, sanctions, government contracts, and other public records with Exa Search."
+  },
+  "search/data/sports-weather-places": {
+    "title": "Sports, Weather & Places",
+    "sidebarTitle": "Sports, Weather & Places",
+    "icon": "map-pin",
+    "description": "Find live sports data, weather forecasts, and local places with Exa Search."
+  },
+  "search/data/security": {
+    "title": "Cybersecurity",
+    "sidebarTitle": "Cybersecurity",
+    "icon": "shield",
+    "description": "Find vulnerabilities, advisories, threat reporting, and trust documentation with Exa Search."
+  },
+  "agent/quickstart": {
+    "title": "Exa Agent",
+    "sidebarTitle": "Quickstart",
+    "description": "Run deep research, list-building, and enrichment workflows that return structured outputs.",
+    "boost": 6
+  },
+  "agent/best-practices": {
+    "title": "Agent Best Practices",
+    "sidebarTitle": "Best Practices",
+    "description": "Tune query quality, structured output, effort, and cost for production Exa Agent integrations.",
+    "keywords": [
+      "agent api",
+      "list building",
+      "enrichment",
+      "structured output",
+      "effort",
+      "grounding"
+    ]
+  },
+  "agent/examples": {
+    "title": "Examples",
+    "description": "Production Exa Agent examples for list building, KYB intelligence, job postings, and structured outputs."
+  },
+  "agent/connect/overview": {
+    "title": "Exa Connect",
+    "sidebarTitle": "Overview",
+    "description": "Give your Exa Agent live access to premium data partners, alongside Exa web search, in a single run.",
+    "boost": 5
+  },
+  "agent/connect/fiber": {
+    "title": "Fiber.ai",
+    "description": "Search Fiber.ai's B2B database for companies, people, and LinkedIn profiles.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/fiber.svg"
+  },
+  "agent/connect/similarweb": {
+    "title": "Similarweb",
+    "description": "Get website traffic estimates, global rankings, and competitor discovery.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/similarweb.svg"
+  },
+  "agent/connect/baselayer": {
+    "title": "Baselayer",
+    "description": "Verify US businesses and retrieve KYB data: officers, registrations, risk scores.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/baselayer.svg"
+  },
+  "agent/connect/polymarket": {
+    "title": "Polymarket",
+    "description": "Get prediction-market odds, price history, order books, and trader positions.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/polymarket.svg",
+    "timestamp": false
+  },
+  "agent/connect/affiliatecom": {
+    "title": "Affiliate.com",
+    "description": "Search product catalogs across merchants and affiliate networks.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/affiliatecom.svg"
+  },
+  "agent/connect/particle": {
+    "title": "Particle",
+    "description": "Search podcast transcripts with speaker attribution and timestamps.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/particle.svg"
+  },
+  "agent/connect/financialdatasets": {
+    "title": "Financial Datasets",
+    "description": "Structured financial and market data for 27,000+ U.S. tickers: prices, fundamentals, earnings, SEC filings, ownership, and stock screening.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/financialdatasets.svg"
+  },
+  "agent/connect/jinko": {
+    "title": "Jinko",
+    "description": "Flight and Hotel search with real-time pricing.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/jinko.svg"
+  },
+  "agent/connect/combining-providers": {
+    "title": "Combining providers",
+    "description": "Use several data partners together in a single Exa Agent run."
+  },
+  "agent/connect/additional-partners": {
+    "title": "Additional providers",
+    "description": "Exa Connect partners beyond the self-serve provider set."
+  },
+  "contents/quickstart": {
+    "title": "Contents API",
+    "sidebarTitle": "Contents",
+    "description": "Extract text, highlights, and summaries from any URL.",
+    "boost": 4
+  },
+  "monitors/quickstart": {
+    "title": "Monitors API",
+    "sidebarTitle": "Monitors",
+    "description": "Run recurring searches and receive newly discovered results by webhook.",
+    "boost": 4
+  },
+  "batch/quickstart": {
+    "title": "Batch API",
+    "sidebarTitle": "Batch",
+    "description": "Run Exa API requests asynchronously in batches.",
+    "boost": 4
+  },
+  "sdks/quickstart": {
+    "title": "SDK Quickstart",
+    "sidebarTitle": "Quickstart",
+    "description": "Install and use the Exa Python and JavaScript SDKs"
+  },
+  "integrations/chatgpt-codex": {
+    "title": "Exa in Codex and ChatGPT",
+    "sidebarTitle": "ChatGPT & Codex",
+    "description": "Search the web, read any page, and research with Exa directly from Codex and ChatGPT.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/codex.svg",
+    "keywords": [
+      "Codex",
+      "ChatGPT",
+      "OpenAI plugin",
+      "Exa MCP",
+      "web search"
+    ],
+    "boost": 5
+  },
+  "integrations/claude-web-desktop": {
+    "title": "Exa in Claude Code, Web, and Desktop",
+    "sidebarTitle": "Claude Code, Web & Desktop",
+    "description": "Search the web and read any page with Exa directly from Claude",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/anthropic.svg",
+    "keywords": [
+      "Claude",
+      "Claude Code",
+      "Claude Web",
+      "Claude Desktop",
+      "Exa MCP",
+      "web search"
+    ]
+  },
+  "integrations/openai-sdk": {
+    "title": "OpenAI SDK Compatibility",
+    "sidebarTitle": "OpenAI SDK",
+    "description": "Use Exa's endpoints as a drop-in replacement for OpenAI - supporting both chat completions and responses APIs.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openai.svg"
+  },
+  "integrations/tool-calling/openai": {
+    "title": "OpenAI Tool Calling",
+    "description": "Use OpenAI tool calling to add Exa web search and page contents to your application.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openai.svg"
+  },
+  "integrations/tool-calling/anthropic": {
+    "title": "Anthropic Tool Calling",
+    "description": "Use Claude tool use to add Exa web search and page contents to your application.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/anthropic.svg"
+  },
+  "integrations/vercel/ai-sdk": {
+    "title": "AI SDK by Vercel",
+    "description": "Add Exa web search to AI SDK applications with the @exalabs/ai-sdk package.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg"
+  },
+  "integrations/vercel/ai-gateway": {
+    "title": "Vercel AI Gateway",
+    "description": "Use Exa web search through Vercel AI Gateway with the AI SDK.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg"
+  },
+  "integrations/vercel/fx": {
+    "title": "fx by Vercel Labs",
+    "sidebarTitle": "Fx by Vercel",
+    "description": "Add Exa web search to fx, Vercel Labs' native coding agent, with the hosted Exa MCP server.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg",
+    "keywords": [
+      "fx",
+      "Vercel Labs",
+      "Exa MCP",
+      "coding agent",
+      "web search"
+    ]
+  },
+  "integrations/marketplaces/stripe-projects": {
+    "title": "Stripe Projects",
+    "sidebarTitle": "Stripe Projects",
+    "description": "Integrate Exa from your terminal using the Stripe Projects CLI.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/stripe.svg"
+  },
+  "integrations/payments/x402/quickstart": {
+    "title": "Pay with x402",
+    "sidebarTitle": "x402 Payments",
+    "description": "Use Exa's Search and Contents APIs without an API key. Pay per request with USDC on Base or Solana via the x402 protocol.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/x402.svg"
+  },
+  "integrations/payments/x402/agentkit": {
+    "title": "World AgentKit",
+    "sidebarTitle": "World AgentKit",
+    "description": "Let verified human-backed AI agents access Exa for free using World AgentKit \u2014 no USDC needed.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/world.svg"
+  },
+  "integrations/payments/mpp/quickstart": {
+    "title": "Pay with MPP (Tempo)",
+    "sidebarTitle": "MPP Payments",
+    "description": "Call Exa's Search and Contents APIs without an API key by paying per request with USDC.e on Tempo.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/tempo.svg"
+  },
+  "integrations/payments/mpp/gtm-enrichment": {
+    "title": "Tempo MPP GTM Enrichment Cookbook",
+    "sidebarTitle": "GTM enrichment with MPP",
+    "description": "Build a GTM enrichment workflow that pays per Exa search and contents request with Tempo MPP \u2014 no API key required.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/tempo.svg"
+  },
+  "integrations/payments/nevermined": {
+    "title": "Nevermined",
+    "sidebarTitle": "Nevermined",
+    "description": "Autonomous agent payments for Exa via Nevermined x402 card delegation. A 7 USD purchase provisions or tops up an Exa API key with 7 USD of credits.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/nevermined.svg"
+  },
+  "integrations/exa-slack": {
+    "title": "Exa in Slack",
+    "description": "Install Exa in Slack and tag @Exa in any channel or thread for cited research, list-building, and enrichment answers.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/exa-slack.svg"
+  },
+  "integrations/hermes-agent": {
+    "title": "Hermes Agent",
+    "sidebarTitle": "Hermes Agent",
+    "description": "Give Hermes Agent live web search and page contents with Exa.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/hermes-agent.svg"
+  },
+  "integrations/n8n": {
+    "title": "n8n",
+    "sidebarTitle": "n8n",
+    "description": "Use Exa search and contents inside n8n workflows.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/n8n.svg"
+  },
+  "integrations/openclaw": {
+    "title": "OpenClaw",
+    "sidebarTitle": "OpenClaw",
+    "description": "Give OpenClaw live web search and page contents with Exa.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openclaw.svg"
+  },
+  "integrations/openrouter": {
+    "title": "OpenRouter",
+    "sidebarTitle": "OpenRouter",
+    "description": "Ground any OpenRouter model with Exa web search through the openrouter:web_search server tool.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openrouter.svg",
+    "keywords": [
+      "OpenRouter",
+      "web search",
+      "server tool",
+      "grounding",
+      "url_citation"
+    ]
+  },
+  "integrations/baseten": {
+    "title": "Baseten",
+    "sidebarTitle": "Baseten",
+    "description": "Ground open-source models on Baseten Model APIs with Exa web search through Baseten Hosted Tools.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/baseten.svg",
+    "keywords": [
+      "Baseten",
+      "Hosted Tools",
+      "Grounded Inference",
+      "web search",
+      "server-side tools",
+      "open-source models"
+    ]
+  },
+  "integrations/gumloop": {
+    "title": "Gumloop",
+    "sidebarTitle": "Gumloop",
+    "description": "Use Exa search and contents inside Gumloop flows.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/gumloop.svg"
+  },
+  "integrations/exa-for-sheets": {
+    "title": "Exa for Google Sheets",
+    "description": "Use Exa Agent and Exa formulas inside Google Sheets.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/exa-for-sheets.svg"
+  },
+  "integrations/crewai": {
+    "title": "CrewAI",
+    "description": "Learn how to add Exa retrieval capabilities to your CrewAI agents.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/crewai.svg"
+  },
+  "integrations/elevenlabs": {
+    "title": "ElevenLabs",
+    "description": "Add Exa web search to ElevenLabs voice agents.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/elevenlabs.svg"
+  },
+  "integrations/openhuman": {
+    "title": "OpenHuman",
+    "description": "Give the OpenHuman agent live web search with Exa, either managed or with your own Exa API key.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openhuman.svg"
+  },
+  "integrations/truefoundry": {
+    "title": "TrueFoundry",
+    "description": "Connect Exa to the TrueFoundry MCP Gateway for centralized access controls, tool management, and usage monitoring.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/truefoundry.svg"
+  },
+  "integrations/snowflake": {
+    "title": "Snowflake",
+    "description": "Use Exa search and content retrieval from Snowflake stored procedures and Cortex Agents.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/snowflake.svg"
+  },
+  "integrations/grok-build": {
+    "title": "Grok Build",
+    "description": "Use Exa web search in Grok Build. Install the Exa plugin from the Grok Build marketplace and sign in with your Exa account.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/grok-build.svg"
+  },
+  "integrations/llamaindex": {
+    "title": "LlamaIndex",
+    "description": "A quick-start guide on how to add Exa retrieval to a LlamaIndex Agent Application.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/llamaindex.svg"
+  },
+  "integrations/pydantic-ai": {
+    "title": "Pydantic AI",
+    "description": "Give a Pydantic AI agent web research tools backed by the Exa search API.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/pydantic-ai.svg"
+  },
+  "integrations/langchain": {
+    "title": "LangChain",
+    "description": "How to use Exa's integration with LangChain to perform RAG.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/langchain.svg"
+  },
+  "integrations/browserbase": {
+    "title": "Browserbase",
+    "description": "Combine Exa company search with Browserbase browser automation for job application workflows.",
+    "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/browserbase.svg"
+  },
+  "admin/pricing": {
+    "title": "Pricing",
+    "description": "Pay-as-you-go rates for Exa Search, Contents, Answer, Monitors, and the Agent API",
+    "keywords": [
+      "pricing",
+      "cost",
+      "rates",
+      "credits",
+      "billing",
+      "agent compute units"
+    ]
+  },
+  "admin/billing": {
+    "title": "Billing and Rate Limits",
+    "sidebarTitle": "Billing & Rate Limits",
+    "description": "Manage Exa credits, invoices, and API rate limits.",
+    "keywords": [
+      "billing",
+      "credits",
+      "rate limits",
+      "QPS",
+      "invoices",
+      "auto recharge"
+    ]
+  },
+  "admin/team-management": {
+    "title": "Managing Your Team",
+    "description": "Details on Team structure and account management for the Exa platform"
+  },
+  "admin/security/overview": {
+    "title": "Security Overview",
+    "sidebarTitle": "Overview",
+    "description": "Exa security, compliance, and regional access information."
+  },
+  "admin/security/zero-data-retention": {
+    "title": "Zero Data Retention",
+    "description": "Zero Data Retention availability across Exa products."
+  },
+  "admin/security/hipaa": {
+    "title": "HIPAA",
+    "description": "Use HIPAA compliance mode for eligible cached retrieval requests."
+  },
+  "admin/mcp-enterprise-managed-auth": {
+    "title": "Enterprise Managed Auth for Claude",
+    "description": "Set up Enterprise Managed Auth (EMA) so Claude connects to Exa MCP through your identity provider, including Okta Cross App Access (XAA).",
+    "sidebarTitle": "Enterprise Managed Auth"
+  },
+  "admin/status": {
+    "title": "Status Page",
+    "description": "Live availability, active incidents, and uptime history for Exa services.",
+    "keywords": [
+      "status",
+      "uptime",
+      "incident",
+      "outage",
+      "degraded",
+      "maintenance"
+    ]
+  },
+  "admin/error-codes": {
+    "title": "Error Codes",
+    "description": "Reference for common error codes used by the Exa API"
+  },
+  "admin/openapi-spec": {
+    "title": "OpenAPI Specification",
+    "description": "Download the OpenAPI specs for the Exa public API and Team Management API in YAML or JSON."
+  },
+  "admin/faqs": {
+    "title": "FAQs",
+    "description": "Answers to common questions about Exa products, search index, freshness, grounding, security, and pricing."
+  },
+  "websets/quickstart": {
+    "title": "Websets",
+    "sidebarTitle": "Quickstart",
+    "description": "Build verified, enriched datasets from the web.",
+    "boost": 4
+  },
+  "websets/imports-and-search": {
+    "title": "How to Use Imports",
+    "description": "A step-by-step guide to importing URLs into Websets -- enriching your list, scoring it against criteria, discovering new matches, and combining all three."
+  },
+  "websets/dashboard/get-started": {
+    "title": "Get started",
+    "description": "Welcome to the Websets Dashboard! Find anything you want on the web, no matter how complex."
+  },
+  "websets/dashboard/import-from-csv": {
+    "title": "Import from CSV",
+    "description": "Turn your existing CSV data into a Webset"
+  },
+  "websets/dashboard/exclude-results": {
+    "title": "Exclude Results",
+    "description": "Avoid duplicate results in your new searches by excluding URLs from previous Websets or CSV files."
+  },
+  "reference/search": {
+    "title": "Search",
+    "description": "The search endpoint lets you search the web and extract contents from the results.",
+    "openapi": "exa-spec.yaml POST /search",
+    "timestamp": false
+  },
+  "reference/get-contents": {
+    "title": "Contents",
+    "description": "Get the full page contents, summaries, and metadata for a list of URLs.\n\nReturns instant results from our cache, with automatic live crawling as fallback for uncached pages.",
+    "openapi": "exa-spec.yaml POST /contents",
+    "timestamp": false
+  },
+  "reference/agent-api/create-a-run": {
+    "title": "Create a run",
+    "description": "Create an asynchronous Agent run. The response returns the run object immediately unless you request server-sent events.",
+    "openapi": "exa-spec.yaml POST /agent/runs",
+    "timestamp": false
+  },
+  "reference/agent-api/get-a-run": {
+    "title": "Get an Agent run",
+    "sidebarTitle": "Get a run",
+    "description": "Retrieve an Agent run by ID.",
+    "openapi": "exa-spec.yaml GET /agent/runs/{id}",
+    "timestamp": false
+  },
+  "reference/agent-api/list-runs": {
+    "title": "List Agent runs",
+    "sidebarTitle": "List runs",
+    "description": "Retrieve a paginated list of Agent runs for your team.",
+    "openapi": "exa-spec.yaml GET /agent/runs",
+    "timestamp": false
+  },
+  "reference/agent-api/cancel-a-run": {
+    "title": "Cancel a run",
+    "description": "Cancel a queued or running Agent run.",
+    "openapi": "exa-spec.yaml POST /agent/runs/{id}/cancel",
+    "timestamp": false
+  },
+  "reference/agent-api/stop-a-run": {
+    "title": "Stop a run",
+    "description": "Gracefully stop a running Agent run and keep the results gathered so far.",
+    "openapi": "exa-spec.yaml POST /agent/runs/{id}/stop",
+    "timestamp": false
+  },
+  "reference/agent-api/delete-a-run": {
+    "title": "Delete a run",
+    "description": "Delete a stored Agent run.",
+    "openapi": "exa-spec.yaml DELETE /agent/runs/{id}",
+    "timestamp": false
+  },
+  "reference/agent-api/list-run-events": {
+    "title": "List run events",
+    "description": "List stored Agent run events or replay them as server-sent events.",
+    "openapi": "exa-spec.yaml GET /agent/runs/{id}/events",
+    "timestamp": false
+  },
+  "reference/monitors/create-a-monitor": {
+    "openapi": "exa-spec.yaml POST /monitors",
+    "timestamp": false,
+    "title": "Create a monitor",
+    "description": "Creates a new Monitor to run recurring Exa searches on a schedule.\n\nMonitors automatically execute your search query on a recurring schedule and deliver results to your webhook endpoint with automatic deduplication:\n\n- **Date-based filtering** only fetches content since the last run\n\n- **Semantic deduplication** tracks previous outputs to surface only new developments\n\nThe response includes a `webhookSecret` that is only returned once at creation time. Store it securely for webhook signature verification."
+  },
+  "reference/monitors/list-monitors": {
+    "openapi": "exa-spec.yaml GET /monitors",
+    "timestamp": false,
+    "title": "List monitors",
+    "description": "Lists all monitors for the authenticated team. Supports filtering by status and cursor-based pagination."
+  },
+  "reference/monitors/get-a-monitor": {
+    "openapi": "exa-spec.yaml GET /monitors/{id}",
+    "timestamp": false,
+    "title": "Get a monitor",
+    "description": "Retrieves a single monitor by its ID."
+  },
+  "reference/monitors/update-a-monitor": {
+    "openapi": "exa-spec.yaml PATCH /monitors/{id}",
+    "timestamp": false,
+    "title": "Update a monitor",
+    "description": "Updates an existing monitor. All fields are optional. For `search`, you can send a partial object containing only the fields you want to change. Set `trigger` to `null` to remove the schedule."
+  },
+  "reference/monitors/delete-a-monitor": {
+    "openapi": "exa-spec.yaml DELETE /monitors/{id}",
+    "timestamp": false,
+    "title": "Delete a monitor",
+    "description": "Deletes a monitor. This cannot be undone."
+  },
+  "reference/monitors/trigger-a-monitor": {
+    "openapi": "exa-spec.yaml POST /monitors/{id}/trigger",
+    "timestamp": false,
+    "title": "Trigger a monitor",
+    "description": "Triggers a run immediately, regardless of the schedule. Works for monitors with status `active` or `paused`."
+  },
+  "reference/monitors/batch-monitors": {
+    "openapi": "exa-spec.yaml POST /monitors/batch",
+    "timestamp": false,
+    "title": "Batch action on monitors",
+    "description": "Perform a batch action on monitors matching the provided filters.\n\nSupported actions:\n- **delete**: Permanently remove matching monitors\n- **pause**: Pause matching monitors\n- **unpause**: Unpause matching monitors\n\nUse `dry_run: true` (the default) to preview which monitors would be affected before performing the action. Results are paginated via the `limit` parameter; loop until `has_more` is `false` to process all matching monitors."
+  },
+  "reference/monitors/runs/list-runs": {
+    "openapi": "exa-spec.yaml GET /monitors/{id}/runs",
+    "timestamp": false,
+    "title": "List runs",
+    "description": "Lists all runs for a monitor with cursor-based pagination. Runs are returned in reverse chronological order."
+  },
+  "reference/monitors/runs/get-a-run": {
+    "openapi": "exa-spec.yaml GET /monitors/{id}/runs/{runId}",
+    "timestamp": false,
+    "title": "Get a run",
+    "description": "Retrieves a single run by its ID, including the full output if the run is completed."
+  },
+  "reference/answer": {
+    "title": "Answer",
+    "description": "Get an LLM answer to a question informed by Exa search results. `/answer` performs an Exa search and uses an LLM to generate either:\n1. A direct answer for specific queries. (i.e. \"What is the capital of France?\" would return \"Paris\")\n2. A detailed summary with citations for open-ended queries (i.e. \"What is the state of ai in healthcare?\" would return a summary with citations to relevant sources)\n\nThe response includes both the generated answer and the sources used to create it. The endpoint also supports streaming (as `stream=True`), which will return tokens as they are generated.\n\nAlternatively, you can use the OpenAI compatible [chat completions interface](https://exa.ai/docs/integrations/openai-sdk#answer).\n",
+    "openapi": "exa-spec.yaml POST /answer",
+    "timestamp": false
+  },
+  "reference/batches/create-a-batch": {
+    "title": "Create a batch",
+    "description": "Submit a batch of Exa API requests to run asynchronously.",
+    "openapi": "exa-spec.yaml POST /batches",
+    "timestamp": false
+  },
+  "reference/batches/list-batches": {
+    "title": "List batches",
+    "description": "Retrieve a paginated list of batches for your team.",
+    "openapi": "exa-spec.yaml GET /batches",
+    "timestamp": false
+  },
+  "reference/batches/get-a-batch": {
+    "title": "Get a batch",
+    "description": "Retrieve a batch by ID.",
+    "openapi": "exa-spec.yaml GET /batches/{id}",
+    "timestamp": false
+  },
+  "reference/batches/cancel-a-batch": {
+    "title": "Cancel a batch",
+    "description": "Cancel an in-progress batch.",
+    "openapi": "exa-spec.yaml POST /batches/{id}/cancel",
+    "timestamp": false
+  },
+  "reference/batches/delete-a-batch": {
+    "title": "Delete a batch",
+    "description": "Delete a batch in a terminal status.",
+    "openapi": "exa-spec.yaml DELETE /batches/{id}",
+    "timestamp": false
+  },
+  "reference/team-management/create-api-key": {
+    "title": "Create API key",
+    "description": "Create a new API key for your team with optional name and rate limit configuration.",
+    "openapi": "team-management-spec.yaml POST /api-keys",
+    "timestamp": false
+  },
+  "reference/team-management/list-api-keys": {
+    "title": "List API keys",
+    "description": "Retrieve all API keys belonging to your team with their metadata.",
+    "openapi": "team-management-spec.yaml GET /api-keys",
+    "timestamp": false
+  },
+  "reference/team-management/get-api-key": {
+    "title": "Get API key",
+    "description": "Retrieve details of a specific API key by its ID.",
+    "openapi": "team-management-spec.yaml GET /api-keys/{id}",
+    "timestamp": false
+  },
+  "reference/team-management/get-api-key-usage": {
+    "title": "Get API key usage",
+    "description": "Retrieve usage analytics and billing data for a specific API key.",
+    "openapi": "team-management-spec.yaml GET /api-keys/{id}/usage",
+    "timestamp": false
+  },
+  "reference/team-management/update-api-key": {
+    "title": "Update API key",
+    "description": "Update the name and rate limit of an existing API key.",
+    "openapi": "team-management-spec.yaml PUT /api-keys/{id}",
+    "timestamp": false
+  },
+  "reference/team-management/delete-api-key": {
+    "title": "Delete API key",
+    "description": "Permanently delete an API key from your team.",
+    "openapi": "team-management-spec.yaml DELETE /api-keys/{id}",
+    "timestamp": false
+  },
+  "websets/api/websets/create-a-webset": {
+    "title": "Create a webset",
+    "openapi": "exa-spec.yaml POST /v0/websets",
+    "timestamp": false,
+    "description": "Creates a new Webset with optional search, import, and enrichment configurations. The Webset will automatically begin processing once created.\n\nYou can specify an `externalId` to reference the Webset with your own identifiers for easier integration."
+  },
+  "websets/api/websets/get-a-webset": {
+    "title": "Get a webset",
+    "openapi": "exa-spec.yaml GET /v0/websets/{id}",
+    "timestamp": false,
+    "description": "Returns a Webset by `id` or `externalId`, including its status, searches, imports, enrichments, and monitors.\n\nPass `expand=items` to include up to the first 100 items in the response."
+  },
+  "websets/api/websets/update-a-webset": {
+    "title": "Update a webset",
+    "openapi": "exa-spec.yaml POST /v0/websets/{id}",
+    "timestamp": false,
+    "description": "Updates the `title` or `metadata` of a Webset. Searches, imports, and enrichments are managed through their own endpoints."
+  },
+  "websets/api/websets/delete-a-webset": {
+    "title": "Delete a webset",
+    "openapi": "exa-spec.yaml DELETE /v0/websets/{id}",
+    "timestamp": false,
+    "description": "Deletes a Webset.\n\nOnce deleted, the Webset and all its Items will no longer be available."
+  },
+  "websets/api/websets/preview-a-webset": {
+    "title": "Preview a webset",
+    "openapi": "exa-spec.yaml POST /v0/websets/preview",
+    "timestamp": false,
+    "description": "Preview how a search query will be decomposed before creating a webset. This endpoint performs the same query analysis that happens during webset creation, allowing you to see the detected entity type, generated search criteria, and available enrichment columns in advance.\n\nUse this to help users understand how their search will be interpreted before committing to a full webset creation."
+  },
+  "websets/api/websets/cancel-a-running-webset": {
+    "title": "Cancel a running webset",
+    "openapi": "exa-spec.yaml POST /v0/websets/{id}/cancel",
+    "timestamp": false,
+    "description": "Cancels all operations being performed on a Webset.\n\nAny enrichment or search will be stopped and the Webset will be marked as `idle`."
+  },
+  "websets/api/websets/list-all-websets": {
+    "title": "List all websets",
+    "openapi": "exa-spec.yaml GET /v0/websets",
+    "timestamp": false,
+    "description": "Returns a list of Websets.\n\nYou can paginate through the results using the `cursor` parameter.\n\nYou can filter results using the `search` parameter to find Websets by ID, external ID, or title."
+  },
+  "websets/api/websets/items/get-an-item": {
+    "title": "Get an item",
+    "openapi": "exa-spec.yaml GET /v0/websets/{webset}/items/{id}",
+    "timestamp": false,
+    "description": "Returns a Webset Item."
+  },
+  "websets/api/websets/items/delete-an-item": {
+    "title": "Delete an item",
+    "openapi": "exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}",
+    "timestamp": false,
+    "description": "Deletes an Item from the Webset.\n\nThis will cancel any enrichment process for it."
+  },
+  "websets/api/websets/items/list-all-items-for-a-webset": {
+    "title": "List all items for a webset",
+    "openapi": "exa-spec.yaml GET /v0/websets/{webset}/items",
+    "timestamp": false,
+    "description": "Returns a list of Webset Items.\n\nYou can paginate through the Items using the `cursor` parameter."
+  },
+  "websets/api/websets/searches/create-a-search": {
+    "title": "Create a search",
+    "openapi": "exa-spec.yaml POST /v0/websets/{webset}/searches",
+    "timestamp": false,
+    "description": "Creates a new Search for the Webset.\n\nThe default behavior is to reuse the previous Search results and evaluate them against the new criteria."
+  },
+  "websets/api/websets/searches/get-a-search": {
+    "title": "Get a search",
+    "openapi": "exa-spec.yaml GET /v0/websets/{webset}/searches/{id}",
+    "timestamp": false,
+    "description": "Gets a Search by id"
+  },
+  "websets/api/websets/searches/cancel-a-running-search": {
+    "title": "Cancel a running search",
+    "openapi": "exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel",
+    "timestamp": false,
+    "description": "Cancels a currently running Search.\n\nYou can cancel all searches at once by using the `websets/:webset/cancel` endpoint."
+  },
+  "websets/api/websets/enrichments/create-an-enrichment": {
+    "title": "Create an enrichment",
+    "openapi": "exa-spec.yaml POST /v0/websets/{webset}/enrichments",
+    "timestamp": false,
+    "description": "Create an Enrichment for a Webset."
+  },
+  "websets/api/websets/enrichments/get-an-enrichment": {
+    "title": "Get an enrichment",
+    "openapi": "exa-spec.yaml GET /v0/websets/{webset}/enrichments/{id}",
+    "timestamp": false,
+    "description": "Returns an Enrichment configured on a Webset, including its status, description, format, and options."
+  },
+  "websets/api/websets/enrichments/update-an-enrichment": {
+    "title": "Update an enrichment",
+    "openapi": "exa-spec.yaml PATCH /v0/websets/{webset}/enrichments/{id}",
+    "timestamp": false,
+    "description": "Update an Enrichment configuration for a Webset."
+  },
+  "websets/api/websets/enrichments/delete-an-enrichment": {
+    "title": "Delete an enrichment",
+    "openapi": "exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}",
+    "timestamp": false,
+    "description": "When deleting an Enrichment, any running enrichments will be canceled and all existing `enrichment_result` generated by this Enrichment will no longer be available."
+  },
+  "websets/api/websets/enrichments/cancel-a-running-enrichment": {
+    "title": "Cancel a running enrichment",
+    "openapi": "exa-spec.yaml POST /v0/websets/{webset}/enrichments/{id}/cancel",
+    "timestamp": false,
+    "description": "All running enrichments will be canceled. You can not resume an Enrichment after it has been canceled."
+  },
+  "websets/api/imports/create-an-import": {
+    "title": "Create an import",
+    "openapi": "exa-spec.yaml POST /v0/imports",
+    "timestamp": false,
+    "description": "Creates a new import to upload your data into Websets. Imports can be used to:\n\n- **Enrich**: Enhance your data with additional information using our AI-powered enrichment engine\n- **Search**: Query your data using Websets' agentic search with natural language filters\n- **Exclude**: Prevent duplicate or already known results from appearing in your searches\n\nOnce the import is created, you can upload your data to the returned `uploadUrl` until `uploadValidUntil` (by default 1 hour)."
+  },
+  "websets/api/imports/get-import": {
+    "title": "Get an import",
+    "openapi": "exa-spec.yaml GET /v0/imports/{id}",
+    "timestamp": false,
+    "description": "Gets a specific import."
+  },
+  "websets/api/imports/update-import": {
+    "title": "Update an import",
+    "openapi": "exa-spec.yaml PATCH /v0/imports/{id}",
+    "timestamp": false,
+    "description": "Updates a import configuration."
+  },
+  "websets/api/imports/delete-import": {
+    "title": "Delete an import",
+    "openapi": "exa-spec.yaml DELETE /v0/imports/{id}",
+    "timestamp": false,
+    "description": "Deletes a import."
+  },
+  "websets/api/imports/list-imports": {
+    "title": "List imports",
+    "openapi": "exa-spec.yaml GET /v0/imports",
+    "timestamp": false,
+    "description": "Lists all imports for the Webset."
+  },
+  "websets/api/monitors/create-a-monitor": {
+    "title": "Create a Websets monitor",
+    "sidebarTitle": "Create a monitor",
+    "openapi": "exa-spec.yaml POST /v0/monitors",
+    "timestamp": false,
+    "description": "Creates a new `Monitor` to continuously keep your Websets updated with fresh data.\n\nMonitors automatically run on your defined schedule to ensure your Websets stay current without manual intervention:\n\n- **Find new content**: Execute `search` operations to discover fresh items matching your criteria\n- **Update existing content**: Run `refresh` operations to update items contents and enrichments\n- **Automated scheduling**: Configure `cron` expressions and `timezone` for precise scheduling control"
+  },
+  "websets/api/monitors/get-monitor": {
+    "title": "Get a Websets monitor",
+    "sidebarTitle": "Get a monitor",
+    "openapi": "exa-spec.yaml GET /v0/monitors/{id}",
+    "timestamp": false,
+    "description": "Gets a specific monitor."
+  },
+  "websets/api/monitors/update-monitor": {
+    "title": "Update a Websets monitor",
+    "sidebarTitle": "Update a monitor",
+    "openapi": "exa-spec.yaml PATCH /v0/monitors/{id}",
+    "timestamp": false,
+    "description": "Updates a monitor configuration."
+  },
+  "websets/api/monitors/delete-monitor": {
+    "title": "Delete a Websets monitor",
+    "sidebarTitle": "Delete a monitor",
+    "openapi": "exa-spec.yaml DELETE /v0/monitors/{id}",
+    "timestamp": false,
+    "description": "Deletes a monitor."
+  },
+  "websets/api/monitors/list-monitors": {
+    "title": "List Websets monitors",
+    "sidebarTitle": "List monitors",
+    "openapi": "exa-spec.yaml GET /v0/monitors",
+    "timestamp": false,
+    "description": "Lists all monitors for the Webset."
+  },
+  "websets/api/monitors/runs/list-monitor-runs": {
+    "title": "List monitor runs",
+    "openapi": "exa-spec.yaml GET /v0/monitors/{monitor}/runs",
+    "timestamp": false,
+    "description": "Lists all runs for the Monitor."
+  },
+  "websets/api/monitors/runs/get-monitor-run": {
+    "title": "Get a monitor run",
+    "openapi": "exa-spec.yaml GET /v0/monitors/{monitor}/runs/{id}",
+    "timestamp": false,
+    "description": "Gets a specific monitor run."
+  },
+  "websets/api/webhooks/create-a-webhook": {
+    "title": "Create a webhook",
+    "openapi": "exa-spec.yaml POST /v0/webhooks",
+    "timestamp": false,
+    "description": "Creates a Webhook that delivers the selected events to your URL as they occur.\n\nThe response includes the signing `secret` used to verify deliveries; it is only returned on creation."
+  },
+  "websets/api/webhooks/get-a-webhook": {
+    "title": "Get a webhook",
+    "openapi": "exa-spec.yaml GET /v0/webhooks/{id}",
+    "timestamp": false,
+    "description": "Returns a Webhook by id, including its status, subscribed events, target URL, and metadata. The signing `secret` is not returned."
+  },
+  "websets/api/webhooks/update-a-webhook": {
+    "title": "Update a webhook",
+    "openapi": "exa-spec.yaml PATCH /v0/webhooks/{id}",
+    "timestamp": false,
+    "description": "Updates the target URL, subscribed events, or metadata of a Webhook. Omitted fields are left unchanged."
+  },
+  "websets/api/webhooks/delete-a-webhook": {
+    "title": "Delete a webhook",
+    "openapi": "exa-spec.yaml DELETE /v0/webhooks/{id}",
+    "timestamp": false,
+    "description": "Deletes a Webhook. Its status becomes `inactive`, which stops future webhook deliveries to its URL."
+  },
+  "websets/api/webhooks/list-webhooks": {
+    "title": "List webhooks",
+    "openapi": "exa-spec.yaml GET /v0/webhooks",
+    "timestamp": false,
+    "description": "Returns the active Webhooks for your team.\n\nYou can paginate through the results using the `cursor` parameter."
+  },
+  "websets/api/webhooks/attempts/list-webhook-attempts": {
+    "title": "List webhook attempts",
+    "openapi": "exa-spec.yaml GET /v0/webhooks/{id}/attempts",
+    "timestamp": false,
+    "description": "List all attempts made by a Webhook ordered in descending order."
+  },
+  "websets/api/webhooks/verifying-signatures": {
+    "title": "Verifying signatures",
+    "description": "Learn how to securely verify webhook signatures to ensure requests are from Exa",
+    "timestamp": false
+  },
+  "websets/api/events/types": {
+    "title": "Event types",
+    "sidebarTitle": "Types",
+    "description": "Learn about the events that occur within the Webset API",
+    "timestamp": false,
+    "searchable": false
+  },
+  "websets/api/events/list-all-events": {
+    "title": "List all events",
+    "openapi": "exa-spec.yaml GET /v0/events",
+    "timestamp": false,
+    "description": "List all events that have occurred in the system.\n\nYou can paginate through the results using the `cursor` parameter."
+  },
+  "websets/api/events/get-an-event": {
+    "title": "Get an event",
+    "openapi": "exa-spec.yaml GET /v0/events/{id}",
+    "timestamp": false,
+    "description": "Get a single Event by id.\n\nYou can subscribe to Events by creating a Webhook."
+  },
+  "websets/api/teams/get-team-info": {
+    "title": "Get team info",
+    "description": "Retrieve information about your team including concurrency usage and limits.",
+    "openapi": "exa-spec.yaml GET /v0/teams/me",
+    "timestamp": false
+  },
+  "changelog": {
+    "title": "Changelog",
+    "description": "Product updates and announcements from Exa.",
+    "rss": true,
+    "timestamp": false
+  }
+}

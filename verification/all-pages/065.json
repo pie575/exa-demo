@@ -1,0 +1,103 @@
+{
+  "id": "065",
+  "path": "/docs/integrations/vercel/ai-sdk",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/vercel/ai-sdk",
+    "title": "AI SDK by Vercel - Exa",
+    "h1": "AI SDK by Vercel",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 259.171875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4240.28125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use the @exalabs/ai-sdk package to add Exa web search to applications built with the AI SDK by Vercel. You provide an Exa API key, and the webSearch() tool handles search requests for your model.\n​\nInstall\ninstall.sh\nnpm install @exalabs/ai-sdk\n\n​\nQuick start\nquickstart.ts\nimport { generateText, stepCountIs } from 'ai';\nimport { webSearch } from '@exalabs/ai-sdk';\nimport { openai } from '@ai-sdk/openai';\n\nconst { text } = await generateText({\n  model: openai('gpt-5-nano'),\n  prompt: 'Tell me the latest developments in AI',\n  system: 'Only use web search once per turn. Answer based on the information you have.',\n  tools: {\n    webSearch: webSearch(),\n  },\n  stopWhen: stepCountIs(3),\n});\n\nconsole.log(text);\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nSet your key as EXA_API_KEY before you run the example. The package reads this environment variable automatically.\n​\nDefaults\nwebSearch() uses these defaults:\ntype: auto\nnumResults: 10\ncontents.text: 3000 characters per result\nmaxAgeHours: the default cache fallback; set this option when you need stricter freshness\n​\nConfigure search\nUse the options below to tune search and content extraction:\nconfiguration.ts\nconst { text } = await generateText({\n  model: openai('gpt-5-nano'),\n  prompt: 'Find the top AI companies in Europe founded after 2018',\n  tools: {\n    webSearch: webSearch({\n      type: 'auto',\n      numResults: 6,\n      category: 'company',\n      contents: {\n        text: { maxCharacters: 1000 },\n        maxAgeHours: 1,\n        summary: true,\n      },\n    }),\n  },\n  stopWhen: stepCountIs(5),\n});\n\nconsole.log(text);\n\n​\nSearch options\nOption\tDescription\ntype\tSearch mode: auto, fast, instant, deep-lite, deep, or deep-reasoning.\ncategory\tContent category: company, publication, news, personal site, people, or financial report.\nnumResults\tNumber of results to return.\nincludeDomains / excludeDomains\tInclude or exclude specific domains.\nstartPublishedDate / endPublishedDate\tFilter results by publication date in ISO 8601 format.\nincludeText / excludeText\tRequire or exclude text in results.\nuserLocation\tTwo-letter country code for location-aware search.\n​\nContent options\nOption\tDescription\ncontents.text\tReturn extracted text. Supports maxCharacters and includeHtmlTags.\ncontents.summary\tReturn an AI-generated summary. Supports a query.\ncontents.maxAgeHours\tUse cached content only when it is within the specified age; otherwise, use livecrawl.\ncontents.livecrawlTimeout\tSet the livecrawl timeout.\ncontents.subpages / contents.subpageTarget\tCrawl subpages and optionally target a subpage.\ncontents.extras.links / contents.extras.imageLinks\tReturn links or image links from results.\n​\nTypeScript support\nThe package includes TypeScript types:\ntypes.ts\nimport { webSearch, ExaSearchConfig, ExaSearchResult } from '@exalabs/ai-sdk';\n\nconst config: ExaSearchConfig = {\n  numResults: 10,\n  type: 'auto',\n};\n\nconst search = webSearch(config);\n\n​\nRelated pages\nUse Vercel AI Gateway\nUse Exa web search without an Exa API key through Vercel’s AI Gateway.\nOpen guide\nExplore the AI SDK package\nView the source code and package details on GitHub.\nView source\nYou can also find the package on npm and read the Vercel AI SDK web search guide.",
+    "scrollHeight": 4336,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/vercel/ai-sdk",
+    "title": "AI SDK by Vercel - Exa",
+    "h1": "AI SDK by Vercel",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 259.171875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4240.28125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use the @exalabs/ai-sdk package to add Exa web search to applications built with the AI SDK by Vercel. You provide an Exa API key, and the webSearch() tool handles search requests for your model.\n​\nInstall\ninstall.sh\nnpm install @exalabs/ai-sdk\n\n​\nQuick start\nquickstart.ts\nimport { generateText, stepCountIs } from 'ai';\nimport { webSearch } from '@exalabs/ai-sdk';\nimport { openai } from '@ai-sdk/openai';\n\nconst { text } = await generateText({\n  model: openai('gpt-5-nano'),\n  prompt: 'Tell me the latest developments in AI',\n  system: 'Only use web search once per turn. Answer based on the information you have.',\n  tools: {\n    webSearch: webSearch(),\n  },\n  stopWhen: stepCountIs(3),\n});\n\nconsole.log(text);\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nSet your key as EXA_API_KEY before you run the example. The package reads this environment variable automatically.\n​\nDefaults\nwebSearch() uses these defaults:\ntype: auto\nnumResults: 10\ncontents.text: 3000 characters per result\nmaxAgeHours: the default cache fallback; set this option when you need stricter freshness\n​\nConfigure search\nUse the options below to tune search and content extraction:\nconfiguration.ts\nconst { text } = await generateText({\n  model: openai('gpt-5-nano'),\n  prompt: 'Find the top AI companies in Europe founded after 2018',\n  tools: {\n    webSearch: webSearch({\n      type: 'auto',\n      numResults: 6,\n      category: 'company',\n      contents: {\n        text: { maxCharacters: 1000 },\n        maxAgeHours: 1,\n        summary: true,\n      },\n    }),\n  },\n  stopWhen: stepCountIs(5),\n});\n\nconsole.log(text);\n\n​\nSearch options\nOption\tDescription\ntype\tSearch mode: auto, fast, instant, deep-lite, deep, or deep-reasoning.\ncategory\tContent category: company, publication, news, personal site, people, or financial report.\nnumResults\tNumber of results to return.\nincludeDomains / excludeDomains\tInclude or exclude specific domains.\nstartPublishedDate / endPublishedDate\tFilter results by publication date in ISO 8601 format.\nincludeText / excludeText\tRequire or exclude text in results.\nuserLocation\tTwo-letter country code for location-aware search.\n​\nContent options\nOption\tDescription\ncontents.text\tReturn extracted text. Supports maxCharacters and includeHtmlTags.\ncontents.summary\tReturn an AI-generated summary. Supports a query.\ncontents.maxAgeHours\tUse cached content only when it is within the specified age; otherwise, use livecrawl.\ncontents.livecrawlTimeout\tSet the livecrawl timeout.\ncontents.subpages / contents.subpageTarget\tCrawl subpages and optionally target a subpage.\ncontents.extras.links / contents.extras.imageLinks\tReturn links or image links from results.\n​\nTypeScript support\nThe package includes TypeScript types:\ntypes.ts\nimport { webSearch, ExaSearchConfig, ExaSearchResult } from '@exalabs/ai-sdk';\n\nconst config: ExaSearchConfig = {\n  numResults: 10,\n  type: 'auto',\n};\n\nconst search = webSearch(config);\n\n​\nRelated pages\nUse Vercel AI Gateway\nUse Exa web search without an Exa API key through Vercel’s AI Gateway.\nOpen guide\nExplore the AI SDK package\nView the source code and package details on GitHub.\nView source\nYou can also find the package on npm and read the Vercel AI SDK web search guide.",
+    "scrollHeight": 4336,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

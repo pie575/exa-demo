@@ -1,0 +1,101 @@
+{
+  "id": "154",
+  "path": "/docs/websets/dashboard/exclude-results",
+  "production": {
+    "url": "https://exa.ai/docs/websets/dashboard/exclude-results",
+    "title": "Exclude Results - Exa",
+    "h1": "Exclude Results",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 245.34375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1844.5
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "\n\n​\nOverview\nThe Exclude Results feature ensures you don’t get duplicate results when creating new searches. By specifying URLs to exclude based on previous Websets or uploaded CSV files, you can focus on discovering fresh, unique results that complement your existing data.\n\n\n​\nHow it works\nBegin creating a new Webset\nBelow the criteria in the sidepanel, click “Exclude”\nSelect from past Websets or upload a CSV with URLs to exclude. You can select multiple sources to exclude from.\nStart your search, with only new results that don’t match your exclusions\nThe maximum number of results you can exclude is determined by your plan.\n\n\n​\nWhen to use exclusions\nFinding leads that aren’t already in your CRM\nFollowing up on previous searches with refined criteria\nExcluding results you already know about",
+    "scrollHeight": 1941,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/dashboard/exclude-results",
+    "title": "Exclude Results - Exa",
+    "h1": "Exclude Results",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 245.34375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1844.5
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "\n\n​\nOverview\nThe Exclude Results feature ensures you don’t get duplicate results when creating new searches. By specifying URLs to exclude based on previous Websets or uploaded CSV files, you can focus on discovering fresh, unique results that complement your existing data.\n\n\n​\nHow it works\nBegin creating a new Webset\nBelow the criteria in the sidepanel, click “Exclude”\nSelect from past Websets or upload a CSV with URLs to exclude. You can select multiple sources to exclude from.\nStart your search, with only new results that don’t match your exclusions\nThe maximum number of results you can exclude is determined by your plan.\n\n\n​\nWhen to use exclusions\nFinding leads that aren’t already in your CRM\nFollowing up on previous searches with refined criteria\nExcluding results you already know about",
+    "scrollHeight": 1941,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

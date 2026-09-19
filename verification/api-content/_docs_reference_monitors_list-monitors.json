@@ -1,0 +1,26 @@
+{
+  "route": "/docs/reference/monitors/list-monitors",
+  "production": {
+    "status": 200,
+    "text": "List monitors\nCopy page\n\nLists all monitors for the authenticated team. Supports filtering by status and cursor-based pagination.\n\nGET\n/\nmonitors\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\nstatus\nenum<string>\n\nFilter monitors by status\n\nAvailable options: active, paused, disabled \n​\ncursor\nstring\n\nPagination cursor from a previous response\n\n​\nlimit\nintegerdefault:50\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\n​\nname\nstring\n\nFilter monitors by name (case-insensitive substring match)\n\nMaximum string length: 250\n​\nmetadata\nobject\n\nFilter monitors by metadata key-value pairs (exact match, AND semantics). Use bracket notation: metadata[key]=value.\n\nShow child attributes\n\nResponse\n200\napplication/json\n\nA paginated list of monitors\n\n​\ndata\nobject[]required\n\nThe list of monitors\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | null\n\nCursor for the next page\n\nCreate a monitor\nPrevious\nGet a monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List monitors",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List monitors\nCopy page\n\nLists all monitors for the authenticated team. Supports filtering by status and cursor-based pagination.\n\nGET\n/\nmonitors\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\nstatus\nenum<string>\n\nFilter monitors by status\n\nAvailable options: active, paused, disabled \n​\ncursor\nstring\n\nPagination cursor from a previous response\n\n​\nlimit\nintegerdefault:50\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\n​\nname\nstring\n\nFilter monitors by name (case-insensitive substring match)\n\nMaximum string length: 250\n​\nmetadata\nobject\n\nFilter monitors by metadata key-value pairs (exact match, AND semantics). Use bracket notation: metadata[key]=value.\n\nShow child attributes\n\nResponse\n200\napplication/json\n\nA paginated list of monitors\n\n​\ndata\nobject[]required\n\nThe list of monitors\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | null\n\nCursor for the next page\n\nCreate a monitor\nPrevious\nGet a monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List monitors",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1168,
+  "localLength": 1168
+}

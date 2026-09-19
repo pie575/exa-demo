@@ -1,0 +1,32 @@
+{
+  "route": "/docs/websets/api/teams/get-team-info",
+  "production": {
+    "status": 200,
+    "text": "Get team info\nCopy page\n\nRetrieve information about your team including concurrency usage and limits.\n\nGET\n/\nv0\n/\nteams\n/\nme\nTry it\n​\nOverview\nThe Get Team Info endpoint returns information about the authenticated team, including the team’s current concurrency usage and configured limits. This is useful for monitoring your Websets API usage and understanding your rate limits.\n​\nResponse\nThe response includes:\nobject: Always “team”\nid: Your team’s unique identifier\nname: Your team’s name\nconcurrency: Current usage showing active and queued requests\nlimits: Your team’s concurrency limits\n​\nConcurrency Fields\nThe concurrency object shows your current request state:\nactive: Number of requests currently being processed\nqueued: Number of requests waiting to be processed\n​\nLimits Fields\nThe limits object shows your team’s configured limits:\nmaxConcurrent: Maximum number of requests that can be processed simultaneously (null means unlimited)\nmaxQueued: Maximum number of requests that can wait in the queue (null means unlimited)\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nResponse\n200 - application/json\n\nTeam information retrieved successfully\n\n​\nobject\nstringrequired\n\nThe object type, always \"team\".\n\nAllowed value: \"team\"\n​\nid\nstringrequired\n\nUnique identifier for the team.\n\n​\nname\nstringrequired\n\nName of the team.\n\n​\nconcurrency\nobjectrequired\n\nCurrent concurrency usage.\n\nShow child attributes\n\n​\nlimits\nobjectrequired\n\nConcurrency limits for the team.\n\nShow child attributes\n\nGet an event\nPrevious\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get team info",
+      "​Overview",
+      "​Response",
+      "​Concurrency Fields",
+      "​Limits Fields",
+      "Authorizations",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get team info\nCopy page\n\nRetrieve information about your team including concurrency usage and limits.\n\nGET\n/\nv0\n/\nteams\n/\nme\nTry it\n​\nOverview\nThe Get Team Info endpoint returns information about the authenticated team, including the team’s current concurrency usage and configured limits. This is useful for monitoring your Websets API usage and understanding your rate limits.\n​\nResponse\nThe response includes:\nobject: Always “team”\nid: Your team’s unique identifier\nname: Your team’s name\nconcurrency: Current usage showing active and queued requests\nlimits: Your team’s concurrency limits\n​\nConcurrency Fields\nThe concurrency object shows your current request state:\nactive: Number of requests currently being processed\nqueued: Number of requests waiting to be processed\n​\nLimits Fields\nThe limits object shows your team’s configured limits:\nmaxConcurrent: Maximum number of requests that can be processed simultaneously (null means unlimited)\nmaxQueued: Maximum number of requests that can wait in the queue (null means unlimited)\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nResponse\n200 - application/json\n\nTeam information retrieved successfully\n\n​\nobject\nstringrequired\n\nThe object type, always \"team\".\n\nAllowed value: \"team\"\n​\nid\nstringrequired\n\nUnique identifier for the team.\n\n​\nname\nstringrequired\n\nName of the team.\n\n​\nconcurrency\nobjectrequired\n\nCurrent concurrency usage.\n\nShow child attributes\n\n​\nlimits\nobjectrequired\n\nConcurrency limits for the team.\n\nShow child attributes\n\nGet an event\nPrevious\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get team info",
+      "​Overview",
+      "​Response",
+      "​Concurrency Fields",
+      "​Limits Fields",
+      "Authorizations",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1677,
+  "localLength": 1677
+}

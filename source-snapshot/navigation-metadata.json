@@ -1,0 +1,840 @@
+{
+  "global": {
+    "anchors": []
+  },
+  "tabs": [
+    {
+      "tab": "Documentation",
+      "pages": [
+        {
+          "title": "Start building with Exa",
+          "sidebarTitle": "Overview",
+          "description": "A powerful web search tool designed for agents. Everything optimized to get you token-efficient, accurate results.",
+          "mode": "wide",
+          "timestamp": false,
+          "hideFooterPagination": true,
+          "contextual": {
+            "options": []
+          },
+          "href": ""
+        },
+        {
+          "group": "Get Started",
+          "boost": 3,
+          "pages": [
+            {
+              "title": "Developer quickstart",
+              "sidebarTitle": "Quickstart",
+              "description": "Get an API key, then use Exa from your code or your agent.",
+              "boost": 3,
+              "href": "/get-started/quickstart"
+            },
+            {
+              "title": "Exa MCP",
+              "description": "Connect ChatGPT, Codex, Claude, Grok, Cursor, and any other MCP client to Exa's web search, page fetching, Exa Agent, and Exa Connect tools.",
+              "sidebarTitle": "MCP",
+              "keywords": [
+                "Exa MCP",
+                "MCP server",
+                "web search",
+                "ChatGPT",
+                "Codex",
+                "Claude Code",
+                "Cursor"
+              ],
+              "href": "/get-started/exa-mcp"
+            },
+            {
+              "group": "Agent Skills",
+              "boost": 0.5,
+              "pages": [
+                {
+                  "title": "Agent Skills",
+                  "sidebarTitle": "Overview",
+                  "description": "Install Exa skills in Claude Code, Codex, and other coding agents.",
+                  "keywords": [
+                    "agent skills",
+                    "claude code",
+                    "cursor",
+                    "codex",
+                    "exa api"
+                  ],
+                  "href": "/get-started/agent-skills/overview"
+                },
+                {
+                  "title": "Build with Exa Skill",
+                  "sidebarTitle": "Build with Exa",
+                  "description": "An agent skill to help developers implement any part of the Exa API platform.",
+                  "keywords": [
+                    "build with exa",
+                    "agent skills",
+                    "exa api",
+                    "sdk"
+                  ],
+                  "href": "/get-started/agent-skills/build-with-exa"
+                },
+                {
+                  "title": "Exa Search Skill",
+                  "sidebarTitle": "Exa Search",
+                  "description": "Find relevant web pages and return synthesized content in under two seconds with Exa Search.",
+                  "keywords": [
+                    "exa search",
+                    "agent skills",
+                    "curl",
+                    "http"
+                  ],
+                  "searchable": false,
+                  "href": "/get-started/agent-skills/exa-search"
+                },
+                {
+                  "title": "Exa Contents Skill",
+                  "sidebarTitle": "Exa Contents",
+                  "description": "Extract page content with Exa Contents when you already have the URLs.",
+                  "keywords": [
+                    "exa contents",
+                    "agent skills",
+                    "curl",
+                    "http"
+                  ],
+                  "searchable": false,
+                  "href": "/get-started/agent-skills/exa-contents"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Search",
+          "boost": 5,
+          "pages": [
+            {
+              "title": "Exa Search API",
+              "sidebarTitle": "Quickstart",
+              "description": "Search the web in natural language and get clean, relevant page content in one request.",
+              "keywords": [
+                "search api",
+                "web search",
+                "semantic search",
+                "retrieval",
+                "rag",
+                "highlights"
+              ],
+              "boost": 6,
+              "href": "/search/quickstart"
+            },
+            {
+              "title": "Deep Search",
+              "sidebarTitle": "Deep Search",
+              "description": "Use iterative search, reasoning, and grounded synthesis for complex research tasks.",
+              "keywords": [
+                "deep search",
+                "deep-lite",
+                "deep-reasoning",
+                "structured output",
+                "additional queries"
+              ],
+              "href": "/search/deep-search"
+            },
+            {
+              "title": "Highlights",
+              "description": "Return query-relevant excerpts from Exa Search results while controlling context size and latency.",
+              "keywords": [
+                "search highlights",
+                "dynamic highlights",
+                "rag",
+                "token efficiency",
+                "search context"
+              ],
+              "href": "/search/highlights"
+            },
+            {
+              "title": "Exa Snapshot",
+              "sidebarTitle": "Snapshot",
+              "description": "Pin Search and Contents to a stored version of a page at a datetime you choose.",
+              "keywords": [
+                "exa snapshot",
+                "snapshotAsOf",
+                "historical contents",
+                "versioned search"
+              ],
+              "href": "/search/snapshot"
+            },
+            {
+              "title": "Search Best Practices",
+              "sidebarTitle": "Best Practices",
+              "description": "Tune retrieval quality, latency, context, and synthesis for production Search API integrations.",
+              "keywords": [
+                "search api",
+                "search quality",
+                "rag",
+                "retrieval",
+                "latency",
+                "structured output"
+              ],
+              "href": "/search/best-practices"
+            },
+            {
+              "group": "Data",
+              "pages": [
+                {
+                  "title": "Data Index",
+                  "sidebarTitle": "Overview",
+                  "icon": "database",
+                  "description": "What Exa indexes across the public web and private data sources.",
+                  "href": "/search/data/overview"
+                },
+                {
+                  "title": "News",
+                  "sidebarTitle": "News",
+                  "icon": "newspaper",
+                  "description": "Find current reporting, industry coverage, and emerging stories with Exa Search.",
+                  "href": "/search/data/news"
+                },
+                {
+                  "title": "Code & Docs",
+                  "sidebarTitle": "Code & Docs",
+                  "icon": "code",
+                  "description": "Find code, technical documentation, and implementation guidance with Exa Search.",
+                  "href": "/search/data/code"
+                },
+                {
+                  "title": "Companies & People",
+                  "sidebarTitle": "Companies & People",
+                  "icon": "users",
+                  "description": "Find companies, professional profiles, and the relationships between them with Exa Search.",
+                  "href": "/search/data/companies-people"
+                },
+                {
+                  "title": "Financial Markets",
+                  "sidebarTitle": "Financial Markets",
+                  "icon": "chart-line",
+                  "description": "Find market data, filings, earnings calls, and economic releases with Exa Search.",
+                  "href": "/search/data/financial"
+                },
+                {
+                  "title": "Research Publications",
+                  "sidebarTitle": "Research Publications",
+                  "icon": "book-open",
+                  "description": "Find academic papers, patents, grants, clinical trials, and regulatory approvals with Exa Search.",
+                  "href": "/search/data/research"
+                },
+                {
+                  "title": "Legal & Public Records",
+                  "sidebarTitle": "Legal & Public Records",
+                  "icon": "scale",
+                  "description": "Find court opinions, patents, sanctions, government contracts, and other public records with Exa Search.",
+                  "href": "/search/data/legal"
+                },
+                {
+                  "title": "Sports, Weather & Places",
+                  "sidebarTitle": "Sports, Weather & Places",
+                  "icon": "map-pin",
+                  "description": "Find live sports data, weather forecasts, and local places with Exa Search.",
+                  "href": "/search/data/sports-weather-places"
+                },
+                {
+                  "title": "Cybersecurity",
+                  "sidebarTitle": "Cybersecurity",
+                  "icon": "shield",
+                  "description": "Find vulnerabilities, advisories, threat reporting, and trust documentation with Exa Search.",
+                  "href": "/search/data/security"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Agent",
+          "boost": 5,
+          "pages": [
+            {
+              "title": "Exa Agent",
+              "sidebarTitle": "Quickstart",
+              "description": "Run deep research, list-building, and enrichment workflows that return structured outputs.",
+              "boost": 6,
+              "href": "/agent/quickstart"
+            },
+            {
+              "title": "Agent Best Practices",
+              "sidebarTitle": "Best Practices",
+              "description": "Tune query quality, structured output, effort, and cost for production Exa Agent integrations.",
+              "keywords": [
+                "agent api",
+                "list building",
+                "enrichment",
+                "structured output",
+                "effort",
+                "grounding"
+              ],
+              "href": "/agent/best-practices"
+            },
+            {
+              "title": "Examples",
+              "description": "Production Exa Agent examples for list building, KYB intelligence, job postings, and structured outputs.",
+              "href": "/agent/examples"
+            },
+            {
+              "group": "Exa Connect",
+              "boost": 4,
+              "pages": [
+                {
+                  "title": "Exa Connect",
+                  "sidebarTitle": "Overview",
+                  "description": "Give your Exa Agent live access to premium data partners, alongside Exa web search, in a single run.",
+                  "boost": 5,
+                  "href": "/agent/connect/overview"
+                },
+                {
+                  "group": "Self-Serve Providers",
+                  "boost": 2,
+                  "pages": [
+                    {
+                      "title": "Fiber.ai",
+                      "description": "Search Fiber.ai's B2B database for companies, people, and LinkedIn profiles.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/fiber.svg",
+                      "href": "/agent/connect/fiber"
+                    },
+                    {
+                      "title": "Similarweb",
+                      "description": "Get website traffic estimates, global rankings, and competitor discovery.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/similarweb.svg",
+                      "href": "/agent/connect/similarweb"
+                    },
+                    {
+                      "title": "Baselayer",
+                      "description": "Verify US businesses and retrieve KYB data: officers, registrations, risk scores.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/baselayer.svg",
+                      "href": "/agent/connect/baselayer"
+                    },
+                    {
+                      "title": "Polymarket",
+                      "description": "Get prediction-market odds, price history, order books, and trader positions.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/polymarket.svg",
+                      "timestamp": false,
+                      "href": "/agent/connect/polymarket"
+                    },
+                    {
+                      "title": "Affiliate.com",
+                      "description": "Search product catalogs across merchants and affiliate networks.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/affiliatecom.svg",
+                      "href": "/agent/connect/affiliatecom"
+                    },
+                    {
+                      "title": "Particle",
+                      "description": "Search podcast transcripts with speaker attribution and timestamps.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/particle.svg",
+                      "href": "/agent/connect/particle"
+                    },
+                    {
+                      "title": "Financial Datasets",
+                      "description": "Structured financial and market data for 27,000+ U.S. tickers: prices, fundamentals, earnings, SEC filings, ownership, and stock screening.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/financialdatasets.svg",
+                      "href": "/agent/connect/financialdatasets"
+                    },
+                    {
+                      "title": "Jinko",
+                      "description": "Flight and Hotel search with real-time pricing.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/jinko.svg",
+                      "href": "/agent/connect/jinko"
+                    }
+                  ]
+                },
+                {
+                  "title": "Combining providers",
+                  "description": "Use several data partners together in a single Exa Agent run.",
+                  "href": "/agent/connect/combining-providers"
+                },
+                {
+                  "title": "Additional providers",
+                  "description": "Exa Connect partners beyond the self-serve provider set.",
+                  "href": "/agent/connect/additional-partners"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Other APIs",
+          "boost": 3,
+          "pages": [
+            {
+              "title": "Contents API",
+              "sidebarTitle": "Contents",
+              "description": "Extract text, highlights, and summaries from any URL.",
+              "boost": 4,
+              "href": "/contents/quickstart"
+            },
+            {
+              "title": "Monitors API",
+              "sidebarTitle": "Monitors",
+              "description": "Run recurring searches and receive newly discovered results by webhook.",
+              "boost": 4,
+              "href": "/monitors/quickstart"
+            },
+            {
+              "title": "Batch API",
+              "sidebarTitle": "Batch",
+              "description": "Run Exa API requests asynchronously in batches.",
+              "boost": 4,
+              "href": "/batch/quickstart"
+            }
+          ]
+        },
+        {
+          "group": "SDKs",
+          "boost": 2,
+          "pages": [
+            {
+              "title": "SDK Quickstart",
+              "sidebarTitle": "Quickstart",
+              "description": "Install and use the Exa Python and JavaScript SDKs",
+              "href": "/sdks/quickstart"
+            }
+          ]
+        },
+        {
+          "group": "Integrations",
+          "boost": 2,
+          "pages": [
+            {
+              "title": "Exa in Codex and ChatGPT",
+              "sidebarTitle": "ChatGPT & Codex",
+              "description": "Search the web, read any page, and research with Exa directly from Codex and ChatGPT.",
+              "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/codex.svg",
+              "keywords": [
+                "Codex",
+                "ChatGPT",
+                "OpenAI plugin",
+                "Exa MCP",
+                "web search"
+              ],
+              "boost": 5,
+              "href": "/integrations/chatgpt-codex"
+            },
+            {
+              "title": "Exa in Claude Code, Web, and Desktop",
+              "sidebarTitle": "Claude Code, Web & Desktop",
+              "description": "Search the web and read any page with Exa directly from Claude",
+              "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/anthropic.svg",
+              "keywords": [
+                "Claude",
+                "Claude Code",
+                "Claude Web",
+                "Claude Desktop",
+                "Exa MCP",
+                "web search"
+              ],
+              "href": "/integrations/claude-web-desktop"
+            },
+            {
+              "title": "OpenAI SDK Compatibility",
+              "sidebarTitle": "OpenAI SDK",
+              "description": "Use Exa's endpoints as a drop-in replacement for OpenAI - supporting both chat completions and responses APIs.",
+              "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openai.svg",
+              "href": "/integrations/openai-sdk"
+            },
+            {
+              "group": "Tool Calling",
+              "pages": [
+                {
+                  "title": "OpenAI Tool Calling",
+                  "description": "Use OpenAI tool calling to add Exa web search and page contents to your application.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openai.svg",
+                  "href": "/integrations/tool-calling/openai"
+                },
+                {
+                  "title": "Anthropic Tool Calling",
+                  "description": "Use Claude tool use to add Exa web search and page contents to your application.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/anthropic.svg",
+                  "href": "/integrations/tool-calling/anthropic"
+                }
+              ]
+            },
+            {
+              "group": "Vercel",
+              "pages": [
+                {
+                  "title": "AI SDK by Vercel",
+                  "description": "Add Exa web search to AI SDK applications with the @exalabs/ai-sdk package.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg",
+                  "href": "/integrations/vercel/ai-sdk"
+                },
+                {
+                  "title": "Vercel AI Gateway",
+                  "description": "Use Exa web search through Vercel AI Gateway with the AI SDK.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg",
+                  "href": "/integrations/vercel/ai-gateway"
+                },
+                {
+                  "title": "fx by Vercel Labs",
+                  "sidebarTitle": "Fx by Vercel",
+                  "description": "Add Exa web search to fx, Vercel Labs' native coding agent, with the hosted Exa MCP server.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg",
+                  "keywords": [
+                    "fx",
+                    "Vercel Labs",
+                    "Exa MCP",
+                    "coding agent",
+                    "web search"
+                  ],
+                  "href": "/integrations/vercel/fx"
+                }
+              ]
+            },
+            {
+              "group": "Marketplaces",
+              "pages": [
+                {
+                  "title": "Stripe Projects",
+                  "sidebarTitle": "Stripe Projects",
+                  "description": "Integrate Exa from your terminal using the Stripe Projects CLI.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/stripe.svg",
+                  "href": "/integrations/marketplaces/stripe-projects"
+                }
+              ]
+            },
+            {
+              "group": "Agentic Payments",
+              "pages": [
+                {
+                  "group": "x402",
+                  "pages": [
+                    {
+                      "title": "Pay with x402",
+                      "sidebarTitle": "x402 Payments",
+                      "description": "Use Exa's Search and Contents APIs without an API key. Pay per request with USDC on Base or Solana via the x402 protocol.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/x402.svg",
+                      "href": "/integrations/payments/x402/quickstart"
+                    },
+                    {
+                      "title": "World AgentKit",
+                      "sidebarTitle": "World AgentKit",
+                      "description": "Let verified human-backed AI agents access Exa for free using World AgentKit \u2014 no USDC needed.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/world.svg",
+                      "href": "/integrations/payments/x402/agentkit"
+                    }
+                  ]
+                },
+                {
+                  "group": "MPP",
+                  "pages": [
+                    {
+                      "title": "Pay with MPP (Tempo)",
+                      "sidebarTitle": "MPP Payments",
+                      "description": "Call Exa's Search and Contents APIs without an API key by paying per request with USDC.e on Tempo.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/tempo.svg",
+                      "href": "/integrations/payments/mpp/quickstart"
+                    },
+                    {
+                      "title": "Tempo MPP GTM Enrichment Cookbook",
+                      "sidebarTitle": "GTM enrichment with MPP",
+                      "description": "Build a GTM enrichment workflow that pays per Exa search and contents request with Tempo MPP \u2014 no API key required.",
+                      "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/tempo.svg",
+                      "href": "/integrations/payments/mpp/gtm-enrichment"
+                    }
+                  ]
+                },
+                {
+                  "title": "Nevermined",
+                  "sidebarTitle": "Nevermined",
+                  "description": "Autonomous agent payments for Exa via Nevermined x402 card delegation. A 7 USD purchase provisions or tops up an Exa API key with 7 USD of credits.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/nevermined.svg",
+                  "href": "/integrations/payments/nevermined"
+                }
+              ]
+            },
+            {
+              "group": "More Integrations",
+              "boost": 0.6,
+              "pages": [
+                {
+                  "title": "Exa in Slack",
+                  "description": "Install Exa in Slack and tag @Exa in any channel or thread for cited research, list-building, and enrichment answers.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/exa-slack.svg",
+                  "href": "/integrations/exa-slack"
+                },
+                {
+                  "title": "Hermes Agent",
+                  "sidebarTitle": "Hermes Agent",
+                  "description": "Give Hermes Agent live web search and page contents with Exa.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/hermes-agent.svg",
+                  "href": "/integrations/hermes-agent"
+                },
+                {
+                  "title": "n8n",
+                  "sidebarTitle": "n8n",
+                  "description": "Use Exa search and contents inside n8n workflows.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/n8n.svg",
+                  "href": "/integrations/n8n"
+                },
+                {
+                  "title": "OpenClaw",
+                  "sidebarTitle": "OpenClaw",
+                  "description": "Give OpenClaw live web search and page contents with Exa.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openclaw.svg",
+                  "href": "/integrations/openclaw"
+                },
+                {
+                  "title": "OpenRouter",
+                  "sidebarTitle": "OpenRouter",
+                  "description": "Ground any OpenRouter model with Exa web search through the openrouter:web_search server tool.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openrouter.svg",
+                  "keywords": [
+                    "OpenRouter",
+                    "web search",
+                    "server tool",
+                    "grounding",
+                    "url_citation"
+                  ],
+                  "href": "/integrations/openrouter"
+                },
+                {
+                  "title": "Baseten",
+                  "sidebarTitle": "Baseten",
+                  "description": "Ground open-source models on Baseten Model APIs with Exa web search through Baseten Hosted Tools.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/baseten.svg",
+                  "keywords": [
+                    "Baseten",
+                    "Hosted Tools",
+                    "Grounded Inference",
+                    "web search",
+                    "server-side tools",
+                    "open-source models"
+                  ],
+                  "href": "/integrations/baseten"
+                },
+                {
+                  "title": "Gumloop",
+                  "sidebarTitle": "Gumloop",
+                  "description": "Use Exa search and contents inside Gumloop flows.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/gumloop.svg",
+                  "href": "/integrations/gumloop"
+                },
+                {
+                  "title": "Exa for Google Sheets",
+                  "description": "Use Exa Agent and Exa formulas inside Google Sheets.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/exa-for-sheets.svg",
+                  "href": "/integrations/exa-for-sheets"
+                },
+                {
+                  "title": "CrewAI",
+                  "description": "Learn how to add Exa retrieval capabilities to your CrewAI agents.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/crewai.svg",
+                  "href": "/integrations/crewai"
+                },
+                {
+                  "title": "ElevenLabs",
+                  "description": "Add Exa web search to ElevenLabs voice agents.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/elevenlabs.svg",
+                  "href": "/integrations/elevenlabs"
+                },
+                {
+                  "title": "OpenHuman",
+                  "description": "Give the OpenHuman agent live web search with Exa, either managed or with your own Exa API key.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openhuman.svg",
+                  "href": "/integrations/openhuman"
+                },
+                {
+                  "title": "TrueFoundry",
+                  "description": "Connect Exa to the TrueFoundry MCP Gateway for centralized access controls, tool management, and usage monitoring.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/truefoundry.svg",
+                  "href": "/integrations/truefoundry"
+                },
+                {
+                  "title": "Snowflake",
+                  "description": "Use Exa search and content retrieval from Snowflake stored procedures and Cortex Agents.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/snowflake.svg",
+                  "href": "/integrations/snowflake"
+                },
+                {
+                  "title": "Grok Build",
+                  "description": "Use Exa web search in Grok Build. Install the Exa plugin from the Grok Build marketplace and sign in with your Exa account.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/grok-build.svg",
+                  "href": "/integrations/grok-build"
+                },
+                {
+                  "title": "LlamaIndex",
+                  "description": "A quick-start guide on how to add Exa retrieval to a LlamaIndex Agent Application.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/llamaindex.svg",
+                  "href": "/integrations/llamaindex"
+                },
+                {
+                  "title": "Pydantic AI",
+                  "description": "Give a Pydantic AI agent web research tools backed by the Exa search API.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/pydantic-ai.svg",
+                  "href": "/integrations/pydantic-ai"
+                },
+                {
+                  "title": "LangChain",
+                  "description": "How to use Exa's integration with LangChain to perform RAG.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/langchain.svg",
+                  "href": "/integrations/langchain"
+                },
+                {
+                  "title": "Browserbase",
+                  "description": "Combine Exa company search with Browserbase browser automation for job application workflows.",
+                  "icon": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/browserbase.svg",
+                  "href": "/integrations/browserbase"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "group": "Admin",
+          "boost": 0.8,
+          "pages": [
+            {
+              "title": "Pricing",
+              "description": "Pay-as-you-go rates for Exa Search, Contents, Answer, Monitors, and the Agent API",
+              "keywords": [
+                "pricing",
+                "cost",
+                "rates",
+                "credits",
+                "billing",
+                "agent compute units"
+              ],
+              "href": "/admin/pricing"
+            },
+            {
+              "title": "Billing and Rate Limits",
+              "sidebarTitle": "Billing & Rate Limits",
+              "description": "Manage Exa credits, invoices, and API rate limits.",
+              "keywords": [
+                "billing",
+                "credits",
+                "rate limits",
+                "QPS",
+                "invoices",
+                "auto recharge"
+              ],
+              "href": "/admin/billing"
+            },
+            {
+              "title": "Managing Your Team",
+              "description": "Details on Team structure and account management for the Exa platform",
+              "href": "/admin/team-management"
+            },
+            {
+              "group": "Security & Compliance",
+              "pages": [
+                {
+                  "title": "Security Overview",
+                  "sidebarTitle": "Overview",
+                  "description": "Exa security, compliance, and regional access information.",
+                  "href": "/admin/security/overview"
+                },
+                {
+                  "title": "Zero Data Retention",
+                  "description": "Zero Data Retention availability across Exa products.",
+                  "href": "/admin/security/zero-data-retention"
+                },
+                {
+                  "title": "HIPAA",
+                  "description": "Use HIPAA compliance mode for eligible cached retrieval requests.",
+                  "href": "/admin/security/hipaa"
+                }
+              ]
+            },
+            {
+              "title": "Enterprise Managed Auth for Claude",
+              "description": "Set up Enterprise Managed Auth (EMA) so Claude connects to Exa MCP through your identity provider, including Okta Cross App Access (XAA).",
+              "sidebarTitle": "Enterprise Managed Auth",
+              "href": "/admin/mcp-enterprise-managed-auth"
+            },
+            {
+              "group": "Reference",
+              "pages": [
+                {
+                  "title": "Status Page",
+                  "description": "Live availability, active incidents, and uptime history for Exa services.",
+                  "keywords": [
+                    "status",
+                    "uptime",
+                    "incident",
+                    "outage",
+                    "degraded",
+                    "maintenance"
+                  ],
+                  "href": "/admin/status"
+                },
+                {
+                  "title": "Error Codes",
+                  "description": "Reference for common error codes used by the Exa API",
+                  "href": "/admin/error-codes"
+                },
+                {
+                  "title": "OpenAPI Specification",
+                  "description": "Download the OpenAPI specs for the Exa public API and Team Management API in YAML or JSON.",
+                  "href": "/admin/openapi-spec"
+                }
+              ]
+            },
+            {
+              "title": "FAQs",
+              "description": "Answers to common questions about Exa products, search index, freshness, grounding, security, and pricing.",
+              "href": "/admin/faqs"
+            }
+          ]
+        },
+        {
+          "group": "Websets",
+          "boost": 0.4,
+          "pages": [
+            {
+              "title": "Websets",
+              "sidebarTitle": "Quickstart",
+              "description": "Build verified, enriched datasets from the web.",
+              "boost": 4,
+              "href": "/websets/quickstart"
+            },
+            {
+              "title": "How to Use Imports",
+              "description": "A step-by-step guide to importing URLs into Websets -- enriching your list, scoring it against criteria, discovering new matches, and combining all three.",
+              "href": "/websets/imports-and-search"
+            },
+            {
+              "group": "Dashboard",
+              "pages": [
+                {
+                  "title": "Get started",
+                  "description": "Welcome to the Websets Dashboard! Find anything you want on the web, no matter how complex.",
+                  "href": "/websets/dashboard/get-started"
+                },
+                {
+                  "title": "Import from CSV",
+                  "description": "Turn your existing CSV data into a Webset",
+                  "href": "/websets/dashboard/import-from-csv"
+                },
+                {
+                  "title": "Exclude Results",
+                  "description": "Avoid duplicate results in your new searches by excluding URLs from previous Websets or CSV files.",
+                  "href": "/websets/dashboard/exclude-results"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tab": "API Reference",
+      "pages": [
+        {
+          "title": "API Reference",
+          "href": "/reference/search"
+        }
+      ]
+    },
+    {
+      "tab": "Changelog",
+      "pages": [
+        {
+          "title": "Changelog",
+          "href": "/changelog"
+        }
+      ]
+    }
+  ]
+}

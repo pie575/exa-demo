@@ -1,0 +1,103 @@
+{
+  "id": "006",
+  "path": "/docs/admin/pricing",
+  "production": {
+    "url": "https://exa.ai/docs/admin/pricing",
+    "title": "Pricing - Exa",
+    "h1": "Pricing",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 108.625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4377.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 288
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa is pay-as-you-go. There is no subscription and no minimum spend: you load credits and are charged per request, at the rates below.\nStart for free. New accounts get $20 in free credits (around 2,800 searches) and the Free Tier adds $10 in credits every month. Get an API key and start building.\nScaling up? For high volume, custom indexes, higher rate limits, SLAs, or Zero Data Retention, talk to us about an Enterprise plan with volume discounts.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n​\nProducts\nSearch\n$7 / 1k requests\nReal-time search with token-efficient page contents.\nDeep Search\n$12–15 / 1k requests\nMulti-step research with structured outputs and citations.\nContents\n$1 / 1k pages\nFull page text, highlights, and summaries for known URLs.\nAnswer\n$5 / 1k requests\nAn LLM answer to a question, with citations.\nMonitors\n$15 / 1k requests\nScheduled searches that surface new events on the web.\nAgent\n$0.012–$1.00 / fixed-effort run, or usage-based\nAsync deep research, list building, and enrichment.\n​\nSearch, Contents, Answer, and Monitors\nEach endpoint has a base price per request that includes up to 10 results. Additional results and Exa-generated page summaries are billed on top.\nEndpoint\tBase price\n(up to 10 results)\tEach result above 10\tAI page summaries\n/search\t$7 / 1k requests\t$1 / 1k results\t$1 / 1k pages\n/answer\t$5 / 1k requests\t—\t—\n/monitors\t$15 / 1k requests\t$1 / 1k results\t$1 / 1k pages\n/contents\t$1 / 1k pages, per content type\t—\t$1 / 1k pages\n​\nAgent\nSet a fixed effort on Agent for a predictable per-request price. auto is the default metered mode; beta max is also metered and uses the same usage rates:\nEffort\tPrice\nminimal\t$0.012 / request\nlow\t$0.025 / request\nmedium\t$0.10 / request\nhigh\t$0.50 / request\nxhigh\t$1.00 / request\nMetered runs bill actual usage up to their per-run cap. auto defaults to a $5 cap; beta max defaults to a $20 cap:\nUsage component\tPrice\nAgent Compute Units\t$0.10 / ACU\nSearch tool calls\t$0.005 / search\nEmail contact enrichment\t$0.02 / email\nPhone contact enrichment\t$0.07 / phone number\n​\nConnect providers\nRuns that use Exa Connect data sources additionally bill each provider call — for example Fiber.ai at $0.02 per credit and Baselayer at $0.15–$4.00 per order depending on the operation. See Connect pricing for all provider rates.\n​\nDeep Search\nSet with type on /search. Additional results and AI page summaries cost the same as standard search.\nType\tBase price\n(up to 10 results)\tLatency\tBest for\ndeep-lite\t$12 / 1k requests\t~4 seconds\tLightweight synthesis\ndeep\t$12 / 1k requests\t4–15 seconds\tMulti-step reasoning with structured outputs\ndeep-reasoning\t$15 / 1k requests\t12–40 seconds\tHarder research tasks\n​\nEnterprise\nFor high volume, custom datasets, and stricter security requirements.\nPowerful search\nUp to 1,000 results per search, requests above 25 results, custom rate limits (QPS), tailored moderation, and custom indexes.\nEnterprise support\nSLAs and MSAs, 1:1 onboarding and support, and Zero Data Retention.\nCustom pricing\nVolume discounts and postpaid invoice billing.\nTalk to us\nGet a quote for enterprise volume and terms\n​\nCost glossary\n\nRequest\n\nResult\n\nPage and content type\n\nAI page summary\n\nAgent Compute Unit (ACU)\n\nEffort\n\nContact enrichment\n\nCredits\n\nBilling\nAdd credits, set up auto recharge, and find your invoices",
+    "scrollHeight": 4474,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/pricing",
+    "title": "Pricing - Exa",
+    "h1": "Pricing",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 108.625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4377.90625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 288
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa is pay-as-you-go. There is no subscription and no minimum spend: you load credits and are charged per request, at the rates below.\nStart for free. New accounts get $20 in free credits (around 2,800 searches) and the Free Tier adds $10 in credits every month. Get an API key and start building.\nScaling up? For high volume, custom indexes, higher rate limits, SLAs, or Zero Data Retention, talk to us about an Enterprise plan with volume discounts.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n​\nProducts\nSearch\n$7 / 1k requests\nReal-time search with token-efficient page contents.\nDeep Search\n$12–15 / 1k requests\nMulti-step research with structured outputs and citations.\nContents\n$1 / 1k pages\nFull page text, highlights, and summaries for known URLs.\nAnswer\n$5 / 1k requests\nAn LLM answer to a question, with citations.\nMonitors\n$15 / 1k requests\nScheduled searches that surface new events on the web.\nAgent\n$0.012–$1.00 / fixed-effort run, or usage-based\nAsync deep research, list building, and enrichment.\n​\nSearch, Contents, Answer, and Monitors\nEach endpoint has a base price per request that includes up to 10 results. Additional results and Exa-generated page summaries are billed on top.\nEndpoint\tBase price\n(up to 10 results)\tEach result above 10\tAI page summaries\n/search\t$7 / 1k requests\t$1 / 1k results\t$1 / 1k pages\n/answer\t$5 / 1k requests\t—\t—\n/monitors\t$15 / 1k requests\t$1 / 1k results\t$1 / 1k pages\n/contents\t$1 / 1k pages, per content type\t—\t$1 / 1k pages\n​\nAgent\nSet a fixed effort on Agent for a predictable per-request price. auto is the default metered mode; beta max is also metered and uses the same usage rates:\nEffort\tPrice\nminimal\t$0.012 / request\nlow\t$0.025 / request\nmedium\t$0.10 / request\nhigh\t$0.50 / request\nxhigh\t$1.00 / request\nMetered runs bill actual usage up to their per-run cap. auto defaults to a $5 cap; beta max defaults to a $20 cap:\nUsage component\tPrice\nAgent Compute Units\t$0.10 / ACU\nSearch tool calls\t$0.005 / search\nEmail contact enrichment\t$0.02 / email\nPhone contact enrichment\t$0.07 / phone number\n​\nConnect providers\nRuns that use Exa Connect data sources additionally bill each provider call — for example Fiber.ai at $0.02 per credit and Baselayer at $0.15–$4.00 per order depending on the operation. See Connect pricing for all provider rates.\n​\nDeep Search\nSet with type on /search. Additional results and AI page summaries cost the same as standard search.\nType\tBase price\n(up to 10 results)\tLatency\tBest for\ndeep-lite\t$12 / 1k requests\t~4 seconds\tLightweight synthesis\ndeep\t$12 / 1k requests\t4–15 seconds\tMulti-step reasoning with structured outputs\ndeep-reasoning\t$15 / 1k requests\t12–40 seconds\tHarder research tasks\n​\nEnterprise\nFor high volume, custom datasets, and stricter security requirements.\nPowerful search\nUp to 1,000 results per search, requests above 25 results, custom rate limits (QPS), tailored moderation, and custom indexes.\nEnterprise support\nSLAs and MSAs, 1:1 onboarding and support, and Zero Data Retention.\nCustom pricing\nVolume discounts and postpaid invoice billing.\nTalk to us\nGet a quote for enterprise volume and terms\n​\nCost glossary\n\nRequest\n\nResult\n\nPage and content type\n\nAI page summary\n\nAgent Compute Unit (ACU)\n\nEffort\n\nContact enrichment\n\nCredits\n\nBilling\nAdd credits, set up auto recharge, and find your invoices",
+    "scrollHeight": 4474,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

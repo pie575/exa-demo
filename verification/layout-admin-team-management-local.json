@@ -1,0 +1,571 @@
+{
+  "images": [
+    {
+      "image": {
+        "text": "",
+        "tag": "IMG",
+        "id": "",
+        "class": "",
+        "x": 396,
+        "y": 600.984375,
+        "w": 704,
+        "h": 456.609375,
+        "padding": "0px",
+        "margin": "32px 0px"
+      },
+      "parent": {
+        "text": "",
+        "tag": "SPAN",
+        "id": "",
+        "class": "contents",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "parentHtml": "<span class=\"contents\"><img data-path=\"images/admin/team-management/dashboard_team_switcher.png\" src=\"/docs/images/admin/team-management/dashboard_team_switcher.png\" alt=\"Team dropdown (top-left) within the Exa dashboard under Team settings\" class=\"\" width=\"2954\" height=\"1916\"></span>",
+      "natural": [
+        2954,
+        1916
+      ]
+    },
+    {
+      "image": {
+        "text": "",
+        "tag": "IMG",
+        "id": "",
+        "class": "",
+        "x": 396,
+        "y": 1263.578125,
+        "w": 704,
+        "h": 456.609375,
+        "padding": "0px",
+        "margin": "32px 0px"
+      },
+      "parent": {
+        "text": "",
+        "tag": "SPAN",
+        "id": "",
+        "class": "contents",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "parentHtml": "<span class=\"contents\"><img data-path=\"images/admin/team-management/dashboard_topup.png\" src=\"/docs/images/admin/team-management/dashboard_topup.png\" alt=\"Billing page credit balance top up\" class=\"\" width=\"2954\" height=\"1916\"></span>",
+      "natural": [
+        2954,
+        1916
+      ]
+    },
+    {
+      "image": {
+        "text": "",
+        "tag": "IMG",
+        "id": "",
+        "class": "",
+        "x": 396,
+        "y": 1866.171875,
+        "w": 704,
+        "h": 456.609375,
+        "padding": "0px",
+        "margin": "32px 0px"
+      },
+      "parent": {
+        "text": "",
+        "tag": "SPAN",
+        "id": "",
+        "class": "contents",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "parentHtml": "<span class=\"contents\"><img data-path=\"images/admin/team-management/dashboard_invite.png\" src=\"/docs/images/admin/team-management/dashboard_invite.png\" alt=\"Inviting a member in Team settings\" class=\"\" width=\"2954\" height=\"1916\"></span>",
+      "natural": [
+        2954,
+        1916
+      ]
+    },
+    {
+      "image": {
+        "text": "",
+        "tag": "IMG",
+        "id": "",
+        "class": "",
+        "x": 396,
+        "y": 2414.78125,
+        "w": 704,
+        "h": 456.609375,
+        "padding": "0px",
+        "margin": "32px 0px"
+      },
+      "parent": {
+        "text": "",
+        "tag": "SPAN",
+        "id": "",
+        "class": "contents",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "parentHtml": "<span class=\"contents\"><img data-path=\"images/admin/team-management/dashboard_invite_pending.png\" src=\"/docs/images/admin/team-management/dashboard_invite_pending.png\" alt=\"Team member listed with Pending invite status\" class=\"\" width=\"2954\" height=\"1916\"></span>",
+      "natural": [
+        2954,
+        1916
+      ]
+    },
+    {
+      "image": {
+        "text": "",
+        "tag": "IMG",
+        "id": "",
+        "class": "",
+        "x": 396,
+        "y": 2963.390625,
+        "w": 704,
+        "h": 696.265625,
+        "padding": "0px",
+        "margin": "32px 0px"
+      },
+      "parent": {
+        "text": "",
+        "tag": "SPAN",
+        "id": "",
+        "class": "contents",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "parentHtml": "<span class=\"contents\"><img data-path=\"images/admin/team-management/dashboard_invite_email.png\" src=\"/docs/images/admin/team-management/dashboard_invite_email.png\" alt=\"Team invitation email\" class=\"\" width=\"1094\" height=\"1082\"></span>",
+      "natural": [
+        1094,
+        1082
+      ]
+    },
+    {
+      "image": {
+        "text": "",
+        "tag": "IMG",
+        "id": "",
+        "class": "",
+        "x": 396,
+        "y": 3779.65625,
+        "w": 704,
+        "h": 456.609375,
+        "padding": "0px",
+        "margin": "32px 0px"
+      },
+      "parent": {
+        "text": "",
+        "tag": "SPAN",
+        "id": "",
+        "class": "contents",
+        "x": 0,
+        "y": 0,
+        "w": 0,
+        "h": 0,
+        "padding": "0px",
+        "margin": "0px"
+      },
+      "parentHtml": "<span class=\"contents\"><img data-path=\"images/admin/team-management/dashboard_invite_accepted.png\" src=\"/docs/images/admin/team-management/dashboard_invite_accepted.png\" alt=\"Team members list showing Accepted status\" class=\"\" width=\"2954\" height=\"1916\"></span>",
+      "natural": [
+        2954,
+        1916
+      ]
+    }
+  ],
+  "assistantBefore": {
+    "content": "\"\"",
+    "position": "absolute",
+    "top": "29px",
+    "left": "0px",
+    "right": "0px",
+    "bottom": "-147px",
+    "width": "704px",
+    "height": "200px",
+    "background": "rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box",
+    "zIndex": "auto",
+    "pointerEvents": "none"
+  },
+  "ids": [
+    {
+      "text": "Managing Your Team\nCopy page\n\nDetails on Team structure and account management for the Exa platform",
+      "tag": "HEADER",
+      "id": "header",
+      "class": "relative leading-none @container/page-header",
+      "x": 396,
+      "y": 96,
+      "w": 704,
+      "h": 82,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "Managing Your Team",
+      "tag": "H1",
+      "id": "page-title",
+      "class": "text-3xl sm:text-4xl text-gray-900 tracking-tight dark:text-gray-200 [overflow-wrap:anywhere] font-semibold",
+      "x": 396,
+      "y": 98,
+      "w": 319.796875,
+      "h": 40,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "Copy page",
+      "tag": "DIV",
+      "id": "page-context-menu",
+      "class": "items-center shrink-0 min-w-[156px] justify-end ml-auto hidden @[520px]/page-header:flex",
+      "x": 944,
+      "y": 101,
+      "w": 156,
+      "h": 34,
+      "padding": "0px",
+      "margin": "0px 0px 0px 220.203px"
+    },
+    {
+      "text": "Copy page",
+      "tag": "BUTTON",
+      "id": "page-context-menu-button",
+      "class": "rounded-l-xl px-3 text-gray-700 dark:text-gray-300 py-1.5 border border-gray-200 dark:border-white/[0.07] bg-background-light dark:bg-background-dark hover:bg-gray-600/5 dark:hover:bg-gray-200/5 border-r-0",
+      "x": 944.453125,
+      "y": 101,
+      "w": 121.546875,
+      "h": 34,
+      "padding": "6px 12px",
+      "margin": "0px"
+    },
+    {
+      "text": "",
+      "tag": "BUTTON",
+      "id": "base-ui-_R_dn4cqraum6ebr9fiutb_",
+      "class": "group disabled:pointer-events-none [&>span]:line-clamp-1 overflow-hidden group focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary dark:focus-visible:outline-primary-light py-0.5 gap-1 text-sm text-gray-950/50 dark:text-white/50 group-hover:text-gray-950/70 dark:group-hover:text-white/70 rounded-none rounded-r-xl border flex items-center justify-center h-[34px] border-gray-200 aspect-square dark:border-white/[0.07] bg-background-light dark:bg-background-dark hover:bg-gray-600/5 dark:hover:bg-gray-200/5",
+      "x": 1066,
+      "y": 101,
+      "w": 34,
+      "h": 34,
+      "padding": "2px 0px",
+      "margin": "0px"
+    },
+    {
+      "text": "Copy pageCopy page",
+      "tag": "DIV",
+      "id": "page-context-menu",
+      "class": "flex items-center shrink-0 min-w-[156px] mt-3 @[520px]/page-header:hidden",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "padding": "0px",
+      "margin": "12px 0px 0px"
+    },
+    {
+      "text": "Copy pageCopy page",
+      "tag": "BUTTON",
+      "id": "page-context-menu-button",
+      "class": "rounded-l-xl px-3 text-gray-700 dark:text-gray-300 py-1.5 border border-gray-200 dark:border-white/[0.07] bg-background-light dark:bg-background-dark hover:bg-gray-600/5 dark:hover:bg-gray-200/5 border-r-0",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "padding": "6px 12px",
+      "margin": "0px"
+    },
+    {
+      "text": "",
+      "tag": "BUTTON",
+      "id": "base-ui-_R_rccqraum6ebr9fiutb_",
+      "class": "group disabled:pointer-events-none [&>span]:line-clamp-1 overflow-hidden group focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-primary dark:focus-visible:outline-primary-light py-0.5 gap-1 text-sm text-gray-950/50 dark:text-white/50 group-hover:text-gray-950/70 dark:group-hover:text-white/70 rounded-none rounded-r-xl border flex items-center justify-center h-[34px] border-gray-200 aspect-square dark:border-white/[0.07] bg-background-light dark:bg-background-dark hover:bg-gray-600/5 dark:hover:bg-gray-200/5",
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "padding": "2px 0px",
+      "margin": "0px"
+    },
+    {
+      "text": "Go to API Dashboard\nCreate teams, invite members, and manage billing.\nExa organizes account usage an",
+      "tag": "DIV",
+      "id": "content",
+      "class": "mdx-content @container/columns-container relative mt-8 prose prose-gray dark:prose-invert [contain:inline-size] isolate empty:hidden mb-14",
+      "x": 396,
+      "y": 210,
+      "w": 704,
+      "h": 4270.25,
+      "padding": "0px",
+      "margin": "32px 0px 56px"
+    },
+    {
+      "text": "Go to API Dashboard",
+      "tag": "H2",
+      "id": "_R_35cqraum6ebr9fiutb_",
+      "class": "not-prose font-semibold text-base text-gray-800 dark:text-white",
+      "x": 461,
+      "y": 280,
+      "w": 614,
+      "h": 24,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "Create teams, invite members, and manage billing.",
+      "tag": "DIV",
+      "id": "_R_35cqraum6ebr9fiutbH1_",
+      "class": "prose font-normal text-base text-gray-600 dark:text-gray-400 leading-6 mt-0",
+      "x": 461,
+      "y": 304,
+      "w": 614,
+      "h": 24,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "​\nSeeing your teams",
+      "tag": "H2",
+      "id": "seeing-your-teams",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 537,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "​\nTopping up a Team’s balance",
+      "tag": "H2",
+      "id": "topping-up-a-team’s-balance",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 1153.59375,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "​\nInviting people to your team",
+      "tag": "H2",
+      "id": "inviting-people-to-your-team",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 1756.1875,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "​\nTeam Management API",
+      "tag": "H2",
+      "id": "team-management-api",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 4272.265625,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "Billing and Rate Limits\nPrevious\nSecurity Overview\nNext",
+      "tag": "NAV",
+      "id": "pagination",
+      "class": "grid lg:grid-cols-2 gap-4",
+      "x": 396,
+      "y": 4636.25,
+      "w": 704,
+      "h": 74,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "x\nlinkedin\nllms.txt for AI agents",
+      "tag": "FOOTER",
+      "id": "footer",
+      "class": "flex gap-12 justify-between pt-10 border-t border-gray-100 sm:flex dark:border-gray-800/50 pb-28",
+      "x": 396,
+      "y": 4792.25,
+      "w": 704,
+      "h": 173,
+      "padding": "40px 0px 112px",
+      "margin": "0px"
+    }
+  ],
+  "content": [
+    {
+      "text": "Managing Your Team\nCopy page\n\nDetails on Team structure and account management for the Exa platform",
+      "tag": "HEADER",
+      "id": "header",
+      "class": "relative leading-none @container/page-header",
+      "x": 396,
+      "y": 96,
+      "w": 704,
+      "h": 82,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "Go to API Dashboard\nCreate teams, invite members, and manage billing.\nExa organizes account usage an",
+      "tag": "DIV",
+      "id": "content",
+      "class": "mdx-content @container/columns-container relative mt-8 prose prose-gray dark:prose-invert [contain:inline-size] isolate empty:hidden mb-14",
+      "x": 396,
+      "y": 210,
+      "w": 704,
+      "h": 4270.25,
+      "padding": "0px",
+      "margin": "32px 0px 56px"
+    },
+    {
+      "text": "Last modified on September 15, 2026",
+      "tag": "DIV",
+      "id": "",
+      "class": "pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400",
+      "x": 396,
+      "y": 4536.25,
+      "w": 704,
+      "h": 100,
+      "padding": "16px 0px 64px",
+      "margin": "0px"
+    },
+    {
+      "text": "Billing and Rate Limits\nPrevious\nSecurity Overview\nNext",
+      "tag": "NAV",
+      "id": "pagination",
+      "class": "grid lg:grid-cols-2 gap-4",
+      "x": 396,
+      "y": 4636.25,
+      "w": 704,
+      "h": 74,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "",
+      "tag": "DIV",
+      "id": "",
+      "class": "left-0 right-0 sticky bottom-0 w-full overflow-hidden z-20 pointer-events-none print:hidden invisible",
+      "x": 396,
+      "y": 900,
+      "w": 704,
+      "h": 82,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "x\nlinkedin\nllms.txt for AI agents",
+      "tag": "FOOTER",
+      "id": "footer",
+      "class": "flex gap-12 justify-between pt-10 border-t border-gray-100 sm:flex dark:border-gray-800/50 pb-28",
+      "x": 396,
+      "y": 4792.25,
+      "w": 704,
+      "h": 173,
+      "padding": "40px 0px 112px",
+      "margin": "0px"
+    }
+  ],
+  "headings": [
+    {
+      "text": "Go to API Dashboard",
+      "tag": "H2",
+      "id": "_R_35cqraum6ebr9fiutb_",
+      "class": "not-prose font-semibold text-base text-gray-800 dark:text-white",
+      "x": 461,
+      "y": 280,
+      "w": 614,
+      "h": 24,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "​\nSeeing your teams",
+      "tag": "H2",
+      "id": "seeing-your-teams",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 537,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "​\nTopping up a Team’s balance",
+      "tag": "H2",
+      "id": "topping-up-a-team’s-balance",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 1153.59375,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "​\nInviting people to your team",
+      "tag": "H2",
+      "id": "inviting-people-to-your-team",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 1756.1875,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    },
+    {
+      "text": "​\nTeam Management API",
+      "tag": "H2",
+      "id": "team-management-api",
+      "class": "flex whitespace-pre-wrap group font-semibold",
+      "x": 396,
+      "y": 4272.265625,
+      "w": 704,
+      "h": 31.984375,
+      "padding": "0px",
+      "margin": "36px 0px 18px"
+    }
+  ],
+  "blocks": [
+    {
+      "text": "",
+      "tag": "DIV",
+      "id": "",
+      "class": "left-0 right-0 sticky bottom-0 w-full overflow-hidden z-20 pointer-events-none print:hidden invisible",
+      "x": 396,
+      "y": 900,
+      "w": 704,
+      "h": 82,
+      "padding": "0px",
+      "margin": "0px"
+    },
+    {
+      "text": "x\nlinkedin\nllms.txt for AI agents",
+      "tag": "FOOTER",
+      "id": "footer",
+      "class": "flex gap-12 justify-between pt-10 border-t border-gray-100 sm:flex dark:border-gray-800/50 pb-28",
+      "x": 396,
+      "y": 4792.25,
+      "w": 704,
+      "h": 173,
+      "padding": "40px 0px 112px",
+      "margin": "0px"
+    }
+  ]
+}

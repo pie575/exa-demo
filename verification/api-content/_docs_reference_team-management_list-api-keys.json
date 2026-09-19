@@ -1,0 +1,32 @@
+{
+  "route": "/docs/reference/team-management/list-api-keys",
+  "production": {
+    "status": 200,
+    "text": "List API keys\nCopy page\n\nRetrieve all API keys belonging to your team with their metadata.\n\nGET\n/\napi-keys\nTry it\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nThe Team Management API is enabled per team. It authenticates with a service account API key, which is created from the Service keys tab on the API keys page once the feature is enabled for your team. Contact support@exa.ai to request access.\n​\nOverview\nThe List API Keys endpoint returns all API keys associated with your team. This includes the key ID, name, rate limit, and creation timestamp for each key.\n​\nResponse Format\nThe response includes an array of API key objects with the following information:\nid: Unique identifier for the API key\nname: Human-readable name (if provided during creation)\nrateLimit: Rate limit in requests per minute (if set)\ncreatedAt: ISO 8601 timestamp of when the key was created\nAuthorizations\n​\nx-api-key\nstringheaderrequired\n\nService API key for team authentication\n\nQuery Parameters\n​\napi_key_id\nstring\n\nOptional API key ID to retrieve a specific key.\n\nResponse\n200\napplication/json\n\nList of API keys retrieved successfully\n\nOption 1\nOption 2\n​\napiKeys\nobject[]\n\nShow child attributes\n\nCreate API key\nPrevious\nGet API key\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List API keys",
+      "Get your Exa API key",
+      "​Overview",
+      "​Response Format",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List API keys\nCopy page\n\nRetrieve all API keys belonging to your team with their metadata.\n\nGET\n/\napi-keys\nTry it\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nThe Team Management API is enabled per team. It authenticates with a service account API key, which is created from the Service keys tab on the API keys page once the feature is enabled for your team. Contact support@exa.ai to request access.\n​\nOverview\nThe List API Keys endpoint returns all API keys associated with your team. This includes the key ID, name, rate limit, and creation timestamp for each key.\n​\nResponse Format\nThe response includes an array of API key objects with the following information:\nid: Unique identifier for the API key\nname: Human-readable name (if provided during creation)\nrateLimit: Rate limit in requests per minute (if set)\ncreatedAt: ISO 8601 timestamp of when the key was created\nAuthorizations\n​\nx-api-key\nstringheaderrequired\n\nService API key for team authentication\n\nQuery Parameters\n​\napi_key_id\nstring\n\nOptional API key ID to retrieve a specific key.\n\nResponse\n200\napplication/json\n\nList of API keys retrieved successfully\n\nOption 1\nOption 2\n​\napiKeys\nobject[]\n\nShow child attributes\n\nCreate API key\nPrevious\nGet API key\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List API keys",
+      "Get your Exa API key",
+      "​Overview",
+      "​Response Format",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1304,
+  "localLength": 1304
+}

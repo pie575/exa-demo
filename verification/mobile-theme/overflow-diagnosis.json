@@ -1,0 +1,141 @@
+{
+  "width": 390,
+  "html": {
+    "client": 390,
+    "scroll": 390,
+    "overflow": "auto"
+  },
+  "body": {
+    "client": 390,
+    "scroll": 390,
+    "overflow": "visible"
+  },
+  "elements": [
+    {
+      "tag": "LABEL",
+      "id": "",
+      "classes": "",
+      "x": 903.3125,
+      "y": 703.515625,
+      "width": 192.546875,
+      "right": 1095.859375,
+      "overflow": "visible",
+      "position": "relative",
+      "visibility": "visible",
+      "display": "block",
+      "html": "<label for=\"docs-home-api-agent-research\">Analyze a complex topic</label>"
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "classes": "",
+      "x": 719.921875,
+      "y": 703.515625,
+      "width": 177.390625,
+      "right": 897.3125,
+      "overflow": "visible",
+      "position": "relative",
+      "visibility": "visible",
+      "display": "block",
+      "html": "<label for=\"docs-home-api-agent\">Build a researched list</label>"
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "classes": "",
+      "x": 517.875,
+      "y": 703.515625,
+      "width": 196.046875,
+      "right": 713.921875,
+      "overflow": "visible",
+      "position": "relative",
+      "visibility": "visible",
+      "display": "block",
+      "html": "<label for=\"docs-home-api-tools\">Give an LLM web search</label>"
+    },
+    {
+      "tag": "CODE",
+      "id": "",
+      "classes": "",
+      "x": 52,
+      "y": 776.515625,
+      "width": 591.203125,
+      "right": 643.203125,
+      "overflow": "visible",
+      "position": "relative",
+      "visibility": "visible",
+      "display": "block",
+      "html": "<code language=\"python\" numberoflines=\"12\"><span class=\"line\"><span style=\"color: rgb(207, 34, 46); --shiki-dark: #C586C0;\">from</span><span style=\"color: rgb(31, 35, 40); --shiki-dark: #D4D4D4;\"> exa_py </span><span style=\"color: rgb(207, 34, 46); --shiki-dark: #C586C0;\">import</span><span style=\"c"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "classes": "line",
+      "x": 52,
+      "y": 867.453125,
+      "width": 460.203125,
+      "right": 512.203125,
+      "overflow": "visible",
+      "position": "static",
+      "visibility": "visible",
+      "display": "inline",
+      "html": "<span class=\"line\"><span style=\"color: rgb(10, 48, 105); --shiki-dark: #CE9178;\">    \"companies selling AI voice agents to dental practices\"</span><span style=\"color: rgb(31, 35, 40); --shiki-dark: #D4D4D4;\">,</span></span>"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "classes": "",
+      "x": 504.53125,
+      "y": 867.453125,
+      "width": 7.671875,
+      "right": 512.203125,
+      "overflow": "visible",
+      "position": "static",
+      "visibility": "visible",
+      "display": "inline",
+      "html": "<span style=\"color: rgb(31, 35, 40); --shiki-dark: #D4D4D4;\">,</span>"
+    },
+    {
+      "tag": "LABEL",
+      "id": "",
+      "classes": "",
+      "x": 335.625,
+      "y": 703.515625,
+      "width": 176.25,
+      "right": 511.875,
+      "overflow": "visible",
+      "position": "relative",
+      "visibility": "visible",
+      "display": "block",
+      "html": "<label for=\"docs-home-api-deep\">Get structured output</label>"
+    },
+    {
+      "tag": "SPAN",
+      "id": "",
+      "classes": "",
+      "x": 52,
+      "y": 867.453125,
+      "width": 452.53125,
+      "right": 504.53125,
+      "overflow": "visible",
+      "position": "static",
+      "visibility": "visible",
+      "display": "inline",
+      "html": "<span style=\"color: rgb(10, 48, 105); --shiki-dark: #CE9178;\">    \"companies selling AI voice agents to dental practices\"</span>"
+    },
+    {
+      "tag": "A",
+      "id": "",
+      "classes": "",
+      "x": 334.90625,
+      "y": 25,
+      "width": 60.109375,
+      "right": 395.015625,
+      "overflow": "visible",
+      "position": "static",
+      "visibility": "visible",
+      "display": "inline",
+      "html": "<a href=\"/llms.txt\" tabindex=\"-1\">/llms.txt</a>"
+    }
+  ]
+}

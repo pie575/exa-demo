@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/events/get-an-event",
+  "production": {
+    "status": 200,
+    "text": "Get an event\nCopy page\n\nGet a single Event by id.\n\nYou can subscribe to Events by creating a Webhook.\n\nGET\n/\nv0\n/\nevents\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the event\n\nResponse\n200\napplication/json\nWebsetCreatedEvent\nWebsetDeletedEvent\nWebsetIdleEvent\nWebsetPausedEvent\nWebsetItemCreatedEvent\nWebsetItemEnrichedEvent\nWebsetSearchCreatedEvent\nWebsetSearchUpdatedEvent\nWebsetSearchCanceledEvent\nWebsetSearchCompletedEvent\nImportCreatedEvent\nImportCompletedEvent\nMonitorCreatedEvent\nMonitorUpdatedEvent\nMonitorDeletedEvent\nMonitorRunCreatedEvent\nMonitorRunCompletedEvent\n​\nid\nstringrequired\n\nThe unique identifier for the event\n\n​\nobject\nstringdefault:eventrequired\nAllowed value: \"event\"\n​\ndata\nobjectrequired\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the event was created\n\n​\ntype\nstringdefault:webset.createdrequired\nAllowed value: \"webset.created\"\nList all events\nPrevious\nGet team info\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get an event",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get an event\nCopy page\n\nGet a single Event by id.\n\nYou can subscribe to Events by creating a Webhook.\n\nGET\n/\nv0\n/\nevents\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the event\n\nResponse\n200\napplication/json\nWebsetCreatedEvent\nWebsetDeletedEvent\nWebsetIdleEvent\nWebsetPausedEvent\nWebsetItemCreatedEvent\nWebsetItemEnrichedEvent\nWebsetSearchCreatedEvent\nWebsetSearchUpdatedEvent\nWebsetSearchCanceledEvent\nWebsetSearchCompletedEvent\nImportCreatedEvent\nImportCompletedEvent\nMonitorCreatedEvent\nMonitorUpdatedEvent\nMonitorDeletedEvent\nMonitorRunCreatedEvent\nMonitorRunCompletedEvent\n​\nid\nstringrequired\n\nThe unique identifier for the event\n\n​\nobject\nstringdefault:eventrequired\nAllowed value: \"event\"\n​\ndata\nobjectrequired\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the event was created\n\n​\ntype\nstringdefault:webset.createdrequired\nAllowed value: \"webset.created\"\nList all events\nPrevious\nGet team info\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get an event",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1163,
+  "localLength": 1163
+}

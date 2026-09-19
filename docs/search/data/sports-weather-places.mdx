@@ -1,0 +1,155 @@
+---
+title: "Sports, Weather & Places"
+sidebarTitle: "Sports, Weather & Places"
+icon: "map-pin"
+description: "Find live sports data, weather forecasts, and local places with Exa Search."
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Open in API playground" aria-label={`Open "${query}" in the API playground`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Use Exa Search for live sports data, weather forecasts, and local information without integrating a separate API for each one. Ask a natural-language question with the team, place, and time window you care about.
+
+## Write better queries
+
+Name the location or team precisely and include a date whenever the answer changes over time. Add the condition or attribute that matters to your task instead of asking for broad information.
+
+<Tabs>
+  <Tab title="Sports" icon="trophy">
+    ### Included
+
+    Available sports data:
+
+    * **Scores**: games for a league on a day, including teams, scores, status, start time, and venue
+    * **Standings**: current league tables with conference or division splits
+    * **Schedules**: past results and upcoming games for a league or team
+
+    Coverage includes the NBA, WNBA, NFL, MLB, NHL, MLS, college basketball and football, major European soccer leagues and UEFA competitions, cricket, F1, UFC, tennis, and golf.
+
+    ### Ask for the league, team, and time
+
+    <PlaygroundQuery query="NBA scores last night" />
+
+    <PlaygroundQuery query="Lakers schedule this week" />
+
+    ### Add the surrounding story
+
+    Ask for the reporting you need alongside the live data.
+
+    <PlaygroundQuery query="NBA injury reports ahead of tonight's games" />
+  </Tab>
+
+  <Tab title="Weather" icon="cloud-sun">
+    ### Included
+
+    Forecasts include conditions, high and low temperatures, precipitation, wind, humidity, UV index, and sunrise and sunset in the place's local time.
+
+    A query with no date returns today's forecast. Ask for a specific day or range to get one page per day, up to 16 days ahead or 92 days back.
+
+    ### Name the place and day
+
+    <PlaygroundQuery query="weather in San Francisco tomorrow" />
+
+    ### Ask about the condition that affects your plan
+
+    <PlaygroundQuery query="will it rain in Austin this weekend" />
+
+    ### Combine forecasts with reporting
+
+    <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
+  </Tab>
+
+  <Tab title="Places" icon="map-pin">
+    ### Included
+
+    * Local business profiles, with addresses, hours, amenities, and reviews
+    * Venues, attractions, and points of interest
+    * Real estate listings and property records
+    * Zoning decisions, permits, and planning records
+
+    ### Describe the place like you would ask a local
+
+    Combine the category, neighborhood, and attributes that matter.
+
+    <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
+
+    ### Name the record type and geography
+
+    <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
+
+    ### Compare places against practical constraints
+
+    <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
+  </Tab>
+</Tabs>
+
+## Make a request
+
+All three data types use the same Search endpoint.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "weather in San Francisco tomorrow",
+      type="auto",
+      num_results=5,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search("weather in San Francisco tomorrow", {
+    type: "auto",
+    numResults: 5,
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "weather in San Francisco tomorrow",
+      "type": "auto",
+      "numResults": 5
+    }'
+  ```
+</CodeGroup>
+
+## Get structured data with Exa Agent
+
+For structured data that requires research across multiple sources, use an [Exa Agent task run](/docs/agent/quickstart). Describe the places, teams, dates, criteria, and output fields you need, and Agent returns schema-validated results with citations.
+
+<Card title="Start an Agent task" icon="bot" href="/docs/agent/quickstart" cta="Open Agent guide" arrow="true">
+  Compare places, assemble a game-day brief, or combine local details and conditions into structured results.
+</Card>

@@ -1,0 +1,176 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Similarweb
+
+> Get website traffic estimates, global rankings, and competitor discovery.
+
+[Similarweb](https://www.similarweb.com) is a leading source of digital market
+intelligence. It models the traffic and engagement of millions of websites and
+apps, covering estimated visits, traffic sources, audience demographics, and the
+competitive set around any domain.
+
+Attach `similarweb` to an [Exa Agent](/docs/agent/quickstart) run through
+[Exa Connect](/docs/agent/connect/overview), and the agent queries
+Similarweb alongside Exa web search.
+
+## Use it for
+
+* Benchmarking a company's web traffic and engagement against its peers.
+* Mapping a domain's competitors and audience-overlapping sites.
+* Sizing markets and screening companies by digital footprint.
+* Enriching company and category research with real behavioral data.
+
+## Provider ID
+
+Use this value in `dataSources`:
+
+```text theme={null}
+similarweb
+```
+
+## Pricing
+
+Similarweb bills in data credits at `$0.30 / credit`, and each call is charged
+the credits Similarweb reports for it. Credits scale with the data returned —
+roughly one credit per data point (metric × row × month) — so the price of a call
+is set by its parameters:
+
+| Tool                  | Credits                                                        |
+| --------------------- | -------------------------------------------------------------- |
+| Traffic and rank      | up to 7 per month requested (1–2 months)                       |
+| Similar sites         | 3 per site returned (1–5 sites)                                |
+| Traffic sources       | 10                                                             |
+| Top referrers         | 3 per referrer returned (1–5)                                  |
+| Top countries         | 3 per country returned (1–5)                                   |
+| Top pages             | 2 per page returned (1–7)                                      |
+| Top keywords          | 1–10 (about 1 per 100 keyword data points; 50 keywords is \~7) |
+| Keyword overview      | 1–2                                                            |
+| Audience demographics | 8                                                              |
+| Audience overlap      | 2 per domain combination (2–3 domains: 6–14)                   |
+| Technologies          | 10                                                             |
+| Top sites by category | 1 per site returned (1–10)                                     |
+
+Calls that return no data (an unknown or low-traffic domain, a keyword with no
+search volume) are free. `numResults` and `months` set how many data points you
+pay for, so keep them as small as the task needs.
+
+## Example
+
+Find 10 fast-growing B2B SaaS companies and their estimated web traffic.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+      data_sources=[{"provider": "similarweb"}],
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "domain", "monthlyVisits"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "monthlyVisits": {"type": "number", "description": "from Similarweb"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+    dataSources: [{ provider: "similarweb" }],
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["name", "domain", "monthlyVisits"],
+            properties: {
+              name: { type: "string" },
+              domain: { type: "string" },
+              monthlyVisits: { type: "number", description: "from Similarweb" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+      "dataSources": [{ "provider": "similarweb" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["companies"],
+        "properties": {
+          "companies": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["name", "domain", "monthlyVisits"],
+              "properties": {
+                "name": { "type": "string" },
+                "domain": { "type": "string" },
+                "monthlyVisits": { "type": "number", "description": "from Similarweb" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+## Pairs well with
+
+* [Fiber.ai](/docs/agent/connect/fiber): turn discovered competitors into enriched company records.
+* [Affiliate.com](/docs/agent/connect/affiliatecom): gauge a merchant's reach before recommending products from it.
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Attach it to a run" icon="rocket" href="/docs/agent/connect/overview" cta="Open quickstart" arrow="true">
+    The Exa Connect quickstart covers `dataSources`, pricing, and the full partner catalog.
+  </Card>
+
+  <Card title="Combine providers" icon="blend" href="/docs/agent/connect/combining-providers" cta="Read guide" arrow="true">
+    Attach up to five partners to one run and shape the query so each one fires.
+  </Card>
+
+  <Card title="Learn Exa Agent" icon="book-open" href="/docs/agent/quickstart" cta="Open guide" arrow="true">
+    Create runs, stream progress, design output schemas, and control effort and cost.
+  </Card>
+
+  <Card title="Get an API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Create a key" arrow="true">
+    Create a key in the dashboard and run this page's example as-is. New accounts start with free credits.
+  </Card>
+</Columns>

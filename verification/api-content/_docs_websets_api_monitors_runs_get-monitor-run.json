@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/monitors/runs/get-monitor-run",
+  "production": {
+    "status": 200,
+    "text": "Get a monitor run\nCopy page\n\nGets a specific monitor run.\n\nGET\n/\nv0\n/\nmonitors\n/\n{monitor}\n/\nruns\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nmonitor\nstringrequired\n\nThe id of the Monitor to get the run for\n\n​\nid\nstringrequired\nResponse\n200 - application/json\n\nMonitor run details\n\n​\nid\nstringrequired\n\nThe unique identifier for the Monitor Run\n\n​\nobject\nenum<string>required\n\nThe type of object\n\nAvailable options: monitor_run \n​\nmonitorId\nstringrequired\n\nThe monitor that the run is associated with\n\n​\nstatus\nenum<string>required\n\nThe status of the Monitor Run\n\nAvailable options: created, running, completed, canceled, failed \n​\ncompletedAt\nstring<date-time> | nullrequired\n\nWhen the run completed\n\n​\nfailedAt\nstring<date-time> | nullrequired\n\nWhen the run failed\n\n​\nfailedReason\nstring | nullrequired\n\nThe reason the run failed\n\n​\ncanceledAt\nstring<date-time> | nullrequired\n\nWhen the run was canceled\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the run was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the run was last updated\n\n​\ntype\nenum<string>required\n\nThe type of the Monitor Run\n\nAvailable options: search, refresh \nList monitor runs\nPrevious\nCreate a webhook\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a monitor run",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get a monitor run\nCopy page\n\nGets a specific monitor run.\n\nGET\n/\nv0\n/\nmonitors\n/\n{monitor}\n/\nruns\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nmonitor\nstringrequired\n\nThe id of the Monitor to get the run for\n\n​\nid\nstringrequired\nResponse\n200 - application/json\n\nMonitor run details\n\n​\nid\nstringrequired\n\nThe unique identifier for the Monitor Run\n\n​\nobject\nenum<string>required\n\nThe type of object\n\nAvailable options: monitor_run \n​\nmonitorId\nstringrequired\n\nThe monitor that the run is associated with\n\n​\nstatus\nenum<string>required\n\nThe status of the Monitor Run\n\nAvailable options: created, running, completed, canceled, failed \n​\ncompletedAt\nstring<date-time> | nullrequired\n\nWhen the run completed\n\n​\nfailedAt\nstring<date-time> | nullrequired\n\nWhen the run failed\n\n​\nfailedReason\nstring | nullrequired\n\nThe reason the run failed\n\n​\ncanceledAt\nstring<date-time> | nullrequired\n\nWhen the run was canceled\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the run was created\n\n​\nupdatedAt\nstring<date-time>required\n\nWhen the run was last updated\n\n​\ntype\nenum<string>required\n\nThe type of the Monitor Run\n\nAvailable options: search, refresh \nList monitor runs\nPrevious\nCreate a webhook\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a monitor run",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1379,
+  "localLength": 1379
+}

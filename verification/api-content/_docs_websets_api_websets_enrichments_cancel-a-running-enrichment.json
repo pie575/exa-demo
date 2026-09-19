@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+  "production": {
+    "status": 200,
+    "text": "Cancel a running enrichment\nCopy page\n\nAll running enrichments will be canceled. You can not resume an Enrichment after it has been canceled.\n\nPOST\n/\nv0\n/\nwebsets\n/\n{webset}\n/\nenrichments\n/\n{id}\n/\ncancel\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nwebset\nstringrequired\n\nThe id or externalId of the Webset\n\n​\nid\nstringrequired\n\nThe id of the Enrichment\n\nResponse\n200 - application/json\n\nEnrichment cancelled\n\n​\nid\nstringrequired\n\nThe unique identifier for the enrichment\n\n​\nobject\nstringdefault:webset_enrichmentrequired\nAllowed value: \"webset_enrichment\"\n​\nstatus\nenum<string>required\n\nThe status of the enrichment\n\nAvailable options: pending, canceled, completed \n​\nwebsetId\nstringrequired\n\nThe unique identifier for the Webset this enrichment belongs to.\n\n​\ntitle\nstring | nullrequired\n\nThe title of the enrichment.\n\nThis will be automatically generated based on the description and format.\n\n​\ndescription\nstringrequired\n\nThe description of the enrichment task provided during the creation of the enrichment.\n\n​\nformat\nenum<string> | nullrequired\n\nThe format of the enrichment response.\n\nAvailable options: text, date, number, options, email, phone, url \n​\noptions\nWebsetEnrichmentOptions · object[] | nullrequired\n\nWhen the format is options, the different options for the enrichment agent to choose from.\n\nShow child attributes\n\n​\ninstructions\nstring | nullrequired\n\nThe instructions for the enrichment Agent.\n\nThis will be automatically generated based on the description and format.\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the enrichment was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the enrichment was updated\n\n​\nmetadata\nobject\n\nThe metadata of the enrichment\n\nShow child attributes\n\nDelete an enrichment\nPrevious\nCreate an import\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Cancel a running enrichment",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Cancel a running enrichment\nCopy page\n\nAll running enrichments will be canceled. You can not resume an Enrichment after it has been canceled.\n\nPOST\n/\nv0\n/\nwebsets\n/\n{webset}\n/\nenrichments\n/\n{id}\n/\ncancel\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nwebset\nstringrequired\n\nThe id or externalId of the Webset\n\n​\nid\nstringrequired\n\nThe id of the Enrichment\n\nResponse\n200 - application/json\n\nEnrichment cancelled\n\n​\nid\nstringrequired\n\nThe unique identifier for the enrichment\n\n​\nobject\nstringdefault:webset_enrichmentrequired\nAllowed value: \"webset_enrichment\"\n​\nstatus\nenum<string>required\n\nThe status of the enrichment\n\nAvailable options: pending, canceled, completed \n​\nwebsetId\nstringrequired\n\nThe unique identifier for the Webset this enrichment belongs to.\n\n​\ntitle\nstring | nullrequired\n\nThe title of the enrichment.\n\nThis will be automatically generated based on the description and format.\n\n​\ndescription\nstringrequired\n\nThe description of the enrichment task provided during the creation of the enrichment.\n\n​\nformat\nenum<string> | nullrequired\n\nThe format of the enrichment response.\n\nAvailable options: text, date, number, options, email, phone, url \n​\noptions\nWebsetEnrichmentOptions · object[] | nullrequired\n\nWhen the format is options, the different options for the enrichment agent to choose from.\n\nShow child attributes\n\n​\ninstructions\nstring | nullrequired\n\nThe instructions for the enrichment Agent.\n\nThis will be automatically generated based on the description and format.\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the enrichment was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the enrichment was updated\n\n​\nmetadata\nobject\n\nThe metadata of the enrichment\n\nShow child attributes\n\nDelete an enrichment\nPrevious\nCreate an import\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Cancel a running enrichment",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1974,
+  "localLength": 1974
+}

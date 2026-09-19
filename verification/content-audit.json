@@ -1,0 +1,19 @@
+{
+  "source_pages": 159,
+  "local_pages": 159,
+  "navigation_entries": 159,
+  "missing_pages": [],
+  "extra_pages": [],
+  "missing_navigation": [],
+  "unexpected_navigation": [],
+  "broken_internal_links": [],
+  "missing_assets": [],
+  "invalid_api_references": [],
+  "unconverted_api_fences": [],
+  "source_checksum_errors": [],
+  "import_errors": [],
+  "api_pages": 69,
+  "checked_internal_links": 378,
+  "checked_asset_references": 47,
+  "passed": true
+}

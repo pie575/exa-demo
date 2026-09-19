@@ -1,0 +1,103 @@
+{
+  "id": "051",
+  "path": "/docs/integrations/openclaw",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/openclaw",
+    "title": "OpenClaw - Exa",
+    "h1": "OpenClaw",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 164.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4258.78125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "OpenClaw supports Exa as a native web_search provider. Once selected, every OpenClaw agent can use Exa search modes, date filters, and content extraction through the built-in web tool.\n​\nSet up Exa\n1\n\nInstall the Exa plugin\n\nopenclaw plugins install @openclaw/exa-plugin\nopenclaw gateway restart\n\n2\n\nGet an Exa API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nStore the key\n\nFor a gateway installation, add the key to ~/.openclaw/.env:\n~/.openclaw/.env\nEXA_API_KEY=your-exa-api-key\n\nRestart the gateway after changing its environment.\n4\n\nSelect Exa for web search\n\nRun:\nopenclaw configure --section web\n\nChoose Exa as the web search provider. OpenClaw stores the provider selection in its configuration and reads the credential from EXA_API_KEY.\n​\nConfigure manually\nYou can select Exa directly in OpenClaw’s JSON5 configuration:\n{\n  tools: {\n    web: {\n      search: {\n        provider: \"exa\",\n      },\n    },\n  },\n}\n\nTo store the key in configuration instead of the gateway environment:\n{\n  plugins: {\n    entries: {\n      exa: {\n        config: {\n          webSearch: {\n            apiKey: \"exa-...\",\n          },\n        },\n      },\n    },\n  },\n}\n\nPrefer EXA_API_KEY or an OpenClaw SecretRef over committing an API key to a configuration file.\n​\nWhat agents can request\nOpenClaw exposes Exa through web_search.\nParameter\tPurpose\nquery\tThe web search query.\ncount\tNumber of results, up to 100 and subject to the selected search type’s limit.\ntype\tExa search mode, including auto, neural, fast, instant, deep, and deep-reasoning.\nfreshness\tRestrict results to a recent day, week, month, or year.\ndate_after / date_before\tRestrict results with YYYY-MM-DD boundaries.\ncontents\tReturn full text, highlights, or summaries with each result.\nIf contents is omitted, OpenClaw requests highlights by default. The agent can ask for a different content shape when it needs complete pages or summaries:\nawait web_search({\n  query: \"transformer architecture explained\",\n  type: \"neural\",\n  contents: {\n    text: { maxCharacters: 5000 },\n    highlights: { numSentences: 3 },\n    summary: true,\n  },\n});\n\nOpenClaw caches web search results for 15 minutes by default. Change tools.web.search.cacheTtlMinutes or set it to 0 when every request must be fresh.\n​\nTroubleshooting\n\nOpenClaw does not show Exa as a provider\n\nOpenClaw reports a missing Exa key\n\nSearch results appear stale\n\n​\nResources\nOpenClaw Exa provider\nReview the current plugin configuration and tool parameters.\nRead guide\nExa Search\nCompare Exa search modes and response formats.\nRead guide\nContent freshness\nControl indexed and live-retrieved page contents.\nRead guide",
+    "scrollHeight": 4355,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/openclaw",
+    "title": "OpenClaw - Exa",
+    "h1": "OpenClaw",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 164.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4258.78125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "OpenClaw supports Exa as a native web_search provider. Once selected, every OpenClaw agent can use Exa search modes, date filters, and content extraction through the built-in web tool.\n​\nSet up Exa\n1\n\nInstall the Exa plugin\n\nopenclaw plugins install @openclaw/exa-plugin\nopenclaw gateway restart\n\n2\n\nGet an Exa API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n3\n\nStore the key\n\nFor a gateway installation, add the key to ~/.openclaw/.env:\n~/.openclaw/.env\nEXA_API_KEY=your-exa-api-key\n\nRestart the gateway after changing its environment.\n4\n\nSelect Exa for web search\n\nRun:\nopenclaw configure --section web\n\nChoose Exa as the web search provider. OpenClaw stores the provider selection in its configuration and reads the credential from EXA_API_KEY.\n​\nConfigure manually\nYou can select Exa directly in OpenClaw’s JSON5 configuration:\n{\n  tools: {\n    web: {\n      search: {\n        provider: \"exa\",\n      },\n    },\n  },\n}\n\nTo store the key in configuration instead of the gateway environment:\n{\n  plugins: {\n    entries: {\n      exa: {\n        config: {\n          webSearch: {\n            apiKey: \"exa-...\",\n          },\n        },\n      },\n    },\n  },\n}\n\nPrefer EXA_API_KEY or an OpenClaw SecretRef over committing an API key to a configuration file.\n​\nWhat agents can request\nOpenClaw exposes Exa through web_search.\nParameter\tPurpose\nquery\tThe web search query.\ncount\tNumber of results, up to 100 and subject to the selected search type’s limit.\ntype\tExa search mode, including auto, neural, fast, instant, deep, and deep-reasoning.\nfreshness\tRestrict results to a recent day, week, month, or year.\ndate_after / date_before\tRestrict results with YYYY-MM-DD boundaries.\ncontents\tReturn full text, highlights, or summaries with each result.\nIf contents is omitted, OpenClaw requests highlights by default. The agent can ask for a different content shape when it needs complete pages or summaries:\nawait web_search({\n  query: \"transformer architecture explained\",\n  type: \"neural\",\n  contents: {\n    text: { maxCharacters: 5000 },\n    highlights: { numSentences: 3 },\n    summary: true,\n  },\n});\n\nOpenClaw caches web search results for 15 minutes by default. Change tools.web.search.cacheTtlMinutes or set it to 0 when every request must be fresh.\n​\nTroubleshooting\n\nOpenClaw does not show Exa as a provider\n\nOpenClaw reports a missing Exa key\n\nSearch results appear stale\n\n​\nResources\nOpenClaw Exa provider\nReview the current plugin configuration and tool parameters.\nRead guide\nExa Search\nCompare Exa search modes and response formats.\nRead guide\nContent freshness\nControl indexed and live-retrieved page contents.\nRead guide",
+    "scrollHeight": 4355,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,91 @@
+{
+  "id": "141",
+  "path": "/docs/websets/api/websets/enrichments/delete-an-enrichment",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/websets/enrichments/delete-an-enrichment",
+    "title": "Delete an enrichment - Exa",
+    "h1": "Delete an enrichment",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 138
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 329.4375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2829.984375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2926,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/websets/enrichments/delete-an-enrichment",
+    "title": "Delete an enrichment - Exa",
+    "h1": "Delete an enrichment",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 138
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 329.4375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 2829.984375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2926,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

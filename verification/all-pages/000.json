@@ -1,0 +1,95 @@
+{
+  "id": "000",
+  "path": "/docs",
+  "production": {
+    "url": "https://exa.ai/docs",
+    "title": "Start building with Exa - Exa",
+    "h1": "Start building with Exa",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 1056,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 306.796875,
+        "height": 42
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 1056,
+        "height": 1840.953125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [
+      "https://exa.ai/docs/images/home/quickstart-banner.webp",
+      "https://exa.ai/docs/images/home/api-search.webp",
+      "https://exa.ai/docs/images/home/api-agent.webp"
+    ],
+    "bodyText": "If you’re an LLM, read LLMs.txt\nAdd Exa to your agent\n\nGet started in under a minute\n\nGet Started\nGet API Key\n​\nExamples\nPython\nJavaScript\ncURL\nSearch the web\nGet page contents\nGet structured output\nGive an LLM web search\nBuild a researched list\nAnalyze a complex topic\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"companies selling AI voice agents to dental practices\",\n    contents={\"highlights\": True},\n)\n\nfor hit in result.results:\n    print(hit.title, hit.url)\n    print(hit.highlights)\n\nOpen in playground\n​\nAvailable APIs\nSearch\nReal-time, grounded data with token-efficient page contents\nAgent\nAsync agents for deep research, list building, and enrichment\nDeep Search\nSearch that reasons across sources and returns structured output\nContents\nFull text, highlights, and summaries from any URL",
+    "scrollHeight": 1937,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/",
+    "title": "Start building with Exa - Exa",
+    "h1": "Start building with Exa",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 1056,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 306.796875,
+        "height": 42
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 1056,
+        "height": 1840.953125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "If you’re an LLM, read LLMs.txt\nAdd Exa to your agent\n\nGet started in under a minute\n\nGet Started\nGet API Key\n​\nExamples\nPython\nJavaScript\ncURL\nSearch the web\nGet page contents\nGet structured output\nGive an LLM web search\nBuild a researched list\nAnalyze a complex topic\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"companies selling AI voice agents to dental practices\",\n    contents={\"highlights\": True},\n)\n\nfor hit in result.results:\n    print(hit.title, hit.url)\n    print(hit.highlights)\n\nOpen in playground\n​\nAvailable APIs\nSearch\nReal-time, grounded data with token-efficient page contents\nAgent\nAsync agents for deep research, list building, and enrichment\nDeep Search\nSearch that reasons across sources and returns structured output\nContents\nFull text, highlights, and summaries from any URL",
+    "scrollHeight": 1937,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

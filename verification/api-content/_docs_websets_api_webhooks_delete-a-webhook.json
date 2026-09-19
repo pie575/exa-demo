@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/webhooks/delete-a-webhook",
+  "production": {
+    "status": 200,
+    "text": "Delete a webhook\nCopy page\n\nDeletes a Webhook. Its status becomes inactive, which stops future webhook deliveries to its URL.\n\nDELETE\n/\nv0\n/\nwebhooks\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the webhook\n\nResponse\n200\napplication/json\n\nWebhook\n\n​\nid\nstringrequired\n\nThe unique identifier for the webhook\n\n​\nobject\nstringdefault:webhookrequired\nAllowed value: \"webhook\"\n​\nstatus\nenum<string>required\n\nThe status of the webhook\n\nAvailable options: active, inactive \n​\nevents\nenum<string>[]required\n\nThe events to trigger the webhook\n\nMinimum array length: 1\nAvailable options: webset.created, webset.deleted, webset.paused, webset.idle, webset.search.created, webset.search.canceled, webset.search.completed, webset.search.updated, import.created, import.completed, webset.item.created, webset.item.enriched, monitor.created, monitor.updated, monitor.deleted, monitor.run.created, monitor.run.completed, webset.export.created, webset.export.completed \n​\nurl\nstring<uri>required\n\nThe URL to send the webhook to\n\n​\nsecret\nstring | nullrequired\n\nThe secret to verify the webhook signature. Only returned on Webhook creation.\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the webhook was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the webhook was last updated\n\n​\nmetadata\nobject\n\nThe metadata of the webhook\n\nShow child attributes\n\nUpdate a webhook\nPrevious\nList webhooks\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a webhook",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Delete a webhook\nCopy page\n\nDeletes a Webhook. Its status becomes inactive, which stops future webhook deliveries to its URL.\n\nDELETE\n/\nv0\n/\nwebhooks\n/\n{id}\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe id of the webhook\n\nResponse\n200\napplication/json\n\nWebhook\n\n​\nid\nstringrequired\n\nThe unique identifier for the webhook\n\n​\nobject\nstringdefault:webhookrequired\nAllowed value: \"webhook\"\n​\nstatus\nenum<string>required\n\nThe status of the webhook\n\nAvailable options: active, inactive \n​\nevents\nenum<string>[]required\n\nThe events to trigger the webhook\n\nMinimum array length: 1\nAvailable options: webset.created, webset.deleted, webset.paused, webset.idle, webset.search.created, webset.search.canceled, webset.search.completed, webset.search.updated, import.created, import.completed, webset.item.created, webset.item.enriched, monitor.created, monitor.updated, monitor.deleted, monitor.run.created, monitor.run.completed, webset.export.created, webset.export.completed \n​\nurl\nstring<uri>required\n\nThe URL to send the webhook to\n\n​\nsecret\nstring | nullrequired\n\nThe secret to verify the webhook signature. Only returned on Webhook creation.\n\n​\ncreatedAt\nstring<date-time>required\n\nThe date and time the webhook was created\n\n​\nupdatedAt\nstring<date-time>required\n\nThe date and time the webhook was last updated\n\n​\nmetadata\nobject\n\nThe metadata of the webhook\n\nShow child attributes\n\nUpdate a webhook\nPrevious\nList webhooks\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Delete a webhook",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1631,
+  "localLength": 1631
+}

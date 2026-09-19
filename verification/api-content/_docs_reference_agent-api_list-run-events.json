@@ -1,0 +1,32 @@
+{
+  "route": "/docs/reference/agent-api/list-run-events",
+  "production": {
+    "status": 200,
+    "text": "List run events\nCopy page\n\nList stored Agent run events or replay them as server-sent events.\n\nGET\n/\nagent\n/\nruns\n/\n{id}\n/\nevents\nTry it\nBy default, this endpoint returns a paginated JSON list of stored events. Set Accept: text/event-stream to replay stored events as SSE. For JSON pagination, use cursor. For SSE replay, use Last-Event-ID.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nAccept\nenum<string>\n\nSet to text/event-stream to receive server-sent events.\n\nAvailable options: application/json, text/event-stream \n​\nLast-Event-ID\nstring\n\nFor SSE replay, return only events after this event ID.\n\nPath Parameters\n​\nid\nstringrequired\n\nAgent run ID.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nQuery Parameters\n​\nlimit\nintegerdefault:20\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\n​\ncursor\nstring\n\nCursor for pagination. Use the nextCursor value from the previous event list response.\n\nResponse\n200\napplication/json\n\nAgent run events\n\n​\nobject\nstringrequired\nAllowed value: \"list\"\n​\ndata\nobject[]required\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | nullrequired\nDelete a run\nPrevious\nCreate a monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List run events",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List run events\nCopy page\n\nList stored Agent run events or replay them as server-sent events.\n\nGET\n/\nagent\n/\nruns\n/\n{id}\n/\nevents\nTry it\nBy default, this endpoint returns a paginated JSON list of stored events. Set Accept: text/event-stream to replay stored events as SSE. For JSON pagination, use cursor. For SSE replay, use Last-Event-ID.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nAccept\nenum<string>\n\nSet to text/event-stream to receive server-sent events.\n\nAvailable options: application/json, text/event-stream \n​\nLast-Event-ID\nstring\n\nFor SSE replay, return only events after this event ID.\n\nPath Parameters\n​\nid\nstringrequired\n\nAgent run ID.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nQuery Parameters\n​\nlimit\nintegerdefault:20\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\n​\ncursor\nstring\n\nCursor for pagination. Use the nextCursor value from the previous event list response.\n\nResponse\n200\napplication/json\n\nAgent run events\n\n​\nobject\nstringrequired\nAllowed value: \"list\"\n​\ndata\nobject[]required\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | nullrequired\nDelete a run\nPrevious\nCreate a monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List run events",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1512,
+  "localLength": 1512
+}

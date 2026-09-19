@@ -1,0 +1,62 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# FAQs
+
+> Answers to common questions about Exa products, search index, freshness, grounding, security, and pricing.
+
+<AccordionGroup>
+  <Accordion title="What is Exa?">
+    Exa provides web search and research infrastructure for AI applications. It combines an independent search index with content extraction and agentic research APIs, so applications can find sources, retrieve their contents, and produce grounded outputs.
+  </Accordion>
+
+  <Accordion title="Which Exa product should I use?">
+    * Use the [Search API](/docs/search/quickstart) to find ranked web results and optionally return highlights, full text, or summaries.
+    * Use the [Contents API](/docs/contents/quickstart) when you already have URLs and need their extracted contents.
+    * Use the [Agent API](/docs/agent/quickstart) for asynchronous, multi-step research, list building, and structured enrichment.
+    * Use [Monitors](/docs/monitors/quickstart) to run recurring searches and receive newly discovered results.
+  </Accordion>
+
+  <Accordion title="What is Exa Connect?">
+    [Exa Connect](/docs/agent/connect/overview) gives Exa Agent access to premium data providers alongside web search in the same run. Add providers through `dataSources`, and Exa Agent chooses when to query each source before combining partner data and web research into one grounded, structured output.
+
+    For self-serve providers, Exa handles provider authentication and usage billing, so you do not need to build a separate integration or establish a separate provider account.
+  </Accordion>
+
+  <Accordion title="What's different about Exa Search?">
+    Exa Search is built for programmatic retrieval rather than ad-driven browsing. It can search by meaning, accept natural-language queries, and return page contents in the same request. Search modes range from low-latency retrieval to multi-step research with structured output.
+
+    See the [Search quickstart](/docs/search/quickstart) for available search types and response formats.
+  </Accordion>
+
+  <Accordion title="How large is Exa's index?">
+    As of August 2026, Exa's index tracks 1.4 trillion URLs and serves 100 billion pages from across the public web. The index changes continuously as pages are discovered, refreshed, or removed.
+  </Accordion>
+
+  <Accordion title="How fresh are Exa's results?">
+    Exa discovers and refreshes pages continuously, with timing that varies by source and how often a page changes. When you need content newer than the indexed copy, use the Contents API's [`maxAgeHours`](/docs/contents/quickstart#content-freshness) option to control cache age and live retrieval.
+  </Accordion>
+
+  <Accordion title="Does Exa operate a crawler?">
+    Yes. Exa operates `ExaSearchBot` to discover and refresh pages on the public web for search and retrieval. It respects the Robots Exclusion Protocol, limits request rates per site, and does not attempt to bypass logins, paywalls, or CAPTCHAs.
+
+    `robots.txt` controls crawling. To remove an already indexed page, use a `noindex` robots meta tag or an `X-Robots-Tag: noindex` response header; Exa removes the page after its next re-fetch. See [Exa Search Crawler](https://crawler.exa.ai/) for the user agent, cryptographic verification instructions, and crawler controls.
+  </Accordion>
+
+  <Accordion title="How does Exa help ground LLM responses?">
+    Exa returns source URLs and the web content used for retrieval, allowing an application to generate answers with citations and inspect the supporting evidence. Search quality and source grounding can reduce unsupported claims, but the application and its language model remain responsible for how retrieved information is interpreted and presented.
+  </Accordion>
+
+  <Accordion title="Can I restrict which sources Exa searches?">
+    Yes. Use `includeDomains` to limit Search to selected domains or `excludeDomains` to remove unwanted sources. Exa also provides data categories for source-specific retrieval such as companies, people, news, and code. See [Search best practices](/docs/search/best-practices) and [Data](/docs/search/data/overview).
+  </Accordion>
+
+  <Accordion title="What security and data-retention options are available?">
+    Exa offers security and compliance controls for production and enterprise use cases, including [Zero Data Retention](/docs/admin/security/zero-data-retention) and [HIPAA compliance](/docs/admin/security/hipaa) for eligible Enterprise customers. See [Security & Compliance](/docs/admin/security/overview) for details.
+  </Accordion>
+
+  <Accordion title="How does Exa pricing work?">
+    API usage is billed from account credits according to the endpoint and options used. New accounts receive free credits, and paid usage is pay-as-you-go unless your organization has an enterprise contract. See [Pricing](/docs/admin/pricing) and [Billing](/docs/admin/billing).
+  </Accordion>
+</AccordionGroup>

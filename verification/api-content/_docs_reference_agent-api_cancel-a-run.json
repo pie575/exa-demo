@@ -1,0 +1,28 @@
+{
+  "route": "/docs/reference/agent-api/cancel-a-run",
+  "production": {
+    "status": 200,
+    "text": "Cancel a run\nCopy page\n\nCancel a queued or running Agent run.\n\nPOST\n/\nagent\n/\nruns\n/\n{id}\n/\ncancel\nTry it\nIf the run is still active, it transitions to cancelled immediately and terminates without returning any results. The run ends with status cancelled and stopReason: cancelled. You are billed for usage accrued before cancellation. If the run has already reached a terminal status (completed, failed, or cancelled), the endpoint returns the existing run unchanged.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nAgent run ID.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nAgent run\n\n​\nid\nstringrequired\n\nAgent run ID. New run IDs are returned with the agent_run_ prefix.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\n​\nobject\nstringrequired\nAllowed value: \"agent_run\"\n​\nstatus\nenum<string>required\nAvailable options: queued, running, completed, failed, cancelled \n​\nstopReason\nenum<string> | nullrequired\n\nWhy the run stopped. null while the run is queued or running.\n\nAvailable options: schema_satisfied, budget_reached, stopped, error, cancelled \n​\ncreatedAt\nstring<date-time>required\n\nWhen the run was created\n\n​\ncompletedAt\nstring<date-time>required\n​\nrequest\nobject | nullrequired\n\nCanonicalized request fields stored with the run.\n\nShow child attributes\n\n​\noutput\nobjectrequired\n\nShow child attributes\n\n​\nusage\nobjectrequired\n\nShow child attributes\n\n​\ncostDollars\nobjectrequired\n\nShow child attributes\n\nList Agent runs\nPrevious\nStop a run\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Cancel a run",
+      "Get your Exa API key",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Cancel a run\nCopy page\n\nCancel a queued or running Agent run.\n\nPOST\n/\nagent\n/\nruns\n/\n{id}\n/\ncancel\nTry it\nIf the run is still active, it transitions to cancelled immediately and terminates without returning any results. The run ends with status cancelled and stopReason: cancelled. You are billed for usage accrued before cancellation. If the run has already reached a terminal status (completed, failed, or cancelled), the endpoint returns the existing run unchanged.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nAgent run ID.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nAgent run\n\n​\nid\nstringrequired\n\nAgent run ID. New run IDs are returned with the agent_run_ prefix.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\n​\nobject\nstringrequired\nAllowed value: \"agent_run\"\n​\nstatus\nenum<string>required\nAvailable options: queued, running, completed, failed, cancelled \n​\nstopReason\nenum<string> | nullrequired\n\nWhy the run stopped. null while the run is queued or running.\n\nAvailable options: schema_satisfied, budget_reached, stopped, error, cancelled \n​\ncreatedAt\nstring<date-time>required\n\nWhen the run was created\n\n​\ncompletedAt\nstring<date-time>required\n​\nrequest\nobject | nullrequired\n\nCanonicalized request fields stored with the run.\n\nShow child attributes\n\n​\noutput\nobjectrequired\n\nShow child attributes\n\n​\nusage\nobjectrequired\n\nShow child attributes\n\n​\ncostDollars\nobjectrequired\n\nShow child attributes\n\nList Agent runs\nPrevious\nStop a run\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Cancel a run",
+      "Get your Exa API key",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1901,
+  "localLength": 1901
+}

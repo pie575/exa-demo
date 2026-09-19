@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/imports/list-imports",
+  "production": {
+    "status": 200,
+    "text": "List imports\nCopy page\n\nLists all imports for the Webset.\n\nGET\n/\nv0\n/\nimports\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:25\n\nThe number of results to return\n\nRequired range: 1 <= x <= 200\nResponse\n200 - application/json\n\nList of imports\n\n​\ndata\nobject[]required\n\nThe list of imports\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nDelete an import\nPrevious\nCreate a Websets monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List imports",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List imports\nCopy page\n\nLists all imports for the Webset.\n\nGET\n/\nv0\n/\nimports\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:25\n\nThe number of results to return\n\nRequired range: 1 <= x <= 200\nResponse\n200 - application/json\n\nList of imports\n\n​\ndata\nobject[]required\n\nThe list of imports\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nDelete an import\nPrevious\nCreate a Websets monitor\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List imports",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 830,
+  "localLength": 830
+}

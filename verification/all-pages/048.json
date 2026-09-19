@@ -1,0 +1,103 @@
+{
+  "id": "048",
+  "path": "/docs/integrations/marketplaces/stripe-projects",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/marketplaces/stripe-projects",
+    "title": "Stripe Projects - Exa",
+    "h1": "Stripe Projects",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 230.375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2310.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Stripe Projects lets you and your coding agents provision third-party services from the terminal, with no dashboards and no copy-pasting keys. A single command creates an Exa account and syncs an API key into your project.\n​\nPrerequisites\nInstall the Stripe CLI and the Projects plugin:\nbrew install stripe/stripe-cli/stripe && stripe plugin install projects\n\nFor other platforms and full CLI setup, see Stripe Projects.\n​\nGet started\nFrom your project directory, initialize a project, add Exa, and pull credentials:\nstripe projects init\nstripe projects add exa/api\nstripe projects env --pull\n\nYour .env now contains an EXA_API_KEY. The Exa SDKs and Quickstart read this variable automatically, so your code works without any changes.\nThe key is provisioned in an Exa account you own. Manage usage, keys, and billing anytime from the Exa Dashboard.\n​\nLink an existing Exa team\nAlready have an Exa account? Connect it first so the API key is provisioned under your existing team:\nstripe projects link exa\nstripe projects add exa/api\n\nstripe projects link opens Exa so you can authenticate and associate your team with your Stripe account. Open the linked Exa Dashboard anytime with stripe projects open exa.\n​\nProvision from your coding agent\nstripe projects init writes a Stripe Projects Agent Skill into your project, so you can let your agent (Claude Code, Cursor, Codex, and others) run the flow for you:\nUse Stripe Projects to add Exa and wire up the API key.\n\n​\nNext steps\nQuickstart: make your first Exa search with our SDKs.\nStripe Projects docs: full CLI reference, environments, and billing.\nExa Dashboard: manage API keys, usage, and billing.\nProvider catalog: browse all Stripe Projects providers.",
+    "scrollHeight": 2407,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/marketplaces/stripe-projects",
+    "title": "Stripe Projects - Exa",
+    "h1": "Stripe Projects",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 230.375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2310.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Stripe Projects lets you and your coding agents provision third-party services from the terminal, with no dashboards and no copy-pasting keys. A single command creates an Exa account and syncs an API key into your project.\n​\nPrerequisites\nInstall the Stripe CLI and the Projects plugin:\nbrew install stripe/stripe-cli/stripe && stripe plugin install projects\n\nFor other platforms and full CLI setup, see Stripe Projects.\n​\nGet started\nFrom your project directory, initialize a project, add Exa, and pull credentials:\nstripe projects init\nstripe projects add exa/api\nstripe projects env --pull\n\nYour .env now contains an EXA_API_KEY. The Exa SDKs and Quickstart read this variable automatically, so your code works without any changes.\nThe key is provisioned in an Exa account you own. Manage usage, keys, and billing anytime from the Exa Dashboard.\n​\nLink an existing Exa team\nAlready have an Exa account? Connect it first so the API key is provisioned under your existing team:\nstripe projects link exa\nstripe projects add exa/api\n\nstripe projects link opens Exa so you can authenticate and associate your team with your Stripe account. Open the linked Exa Dashboard anytime with stripe projects open exa.\n​\nProvision from your coding agent\nstripe projects init writes a Stripe Projects Agent Skill into your project, so you can let your agent (Claude Code, Cursor, Codex, and others) run the flow for you:\nUse Stripe Projects to add Exa and wire up the API key.\n\n​\nNext steps\nQuickstart: make your first Exa search with our SDKs.\nStripe Projects docs: full CLI reference, environments, and billing.\nExa Dashboard: manage API keys, usage, and billing.\nProvider catalog: browse all Stripe Projects providers.",
+    "scrollHeight": 2407,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

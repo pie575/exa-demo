@@ -1,0 +1,103 @@
+{
+  "id": "109",
+  "path": "/docs/search/deep-search",
+  "production": {
+    "url": "https://exa.ai/docs/search/deep-search",
+    "title": "Deep Search - Exa",
+    "h1": "Deep Search",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 199.953125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7091.25
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Deep Search is the research mode of the Search API. It uses the same /search endpoint, but the retrieval process can issue multiple searches, inspect the evidence, refine its approach, and synthesize a grounded result.\nUse standard Search when you need ranked pages for a well-formed query. Use Deep when finding the answer requires research.\n​\nHow Deep Search works\nDeep Search adds a research loop before the final response:\n1\n\nPlan the search\n\nExa starts with your query and may expand it into searches that cover different parts of the request. You can supply starting variations with additionalQueries.\n2\n\nSearch and inspect\n\nDeep searches for evidence, compares the findings with the request, and determines what is supported or still missing.\n3\n\nRefine\n\nWhen the evidence is incomplete or contradictory, Deep can issue a more targeted search instead of returning the first plausible pages.\n4\n\nSelect and synthesize\n\nDeep selects the useful results and then uses the same synthesis path as other search types. When you provide outputSchema, the response includes structured output.content and field-level citations in output.grounding.\nThis process is especially useful for lists and structured outputs. Each requested item may require a different search, and Deep can gather and check those results before producing the final structure.\n​\nChoose a Deep mode\nType\tUse it when\ndeep-lite\tYou need lightweight query expansion and synthesis\ndeep\tThe task needs iterative search, evidence gathering, or multiple structured items\ndeep-reasoning\tThe task requires more deliberate reasoning across difficult or conflicting evidence\nStart with deep for research workflows. Move to deep-lite when the task is simpler and latency matters.\nInstead of deep-reasoning, use Exa Agent for long-running research, list building, and multi-hop enrichment. Agent has more compute per run and returns grounded, structured results.\nSee Pricing for current cost and latency guidance.\n​\nMake a Deep request\nSet type on a normal Search API request:\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"Compare how major database vendors support vector, keyword, and hybrid retrieval\",\n    type=\"deep\",\n    contents={\"highlights\": True},\n)\n\nDeep returns the selected search results under results. Add outputSchema when you also want a synthesized answer or structured dataset.\n​\nProvide starting queries\nDeep normally decides which searches to run. Use additionalQueries when you already know distinct terminology, perspectives, or subproblems that the research should cover:\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Compare current approaches to inference-time scaling\",\n    additional_queries=[\n        \"inference-time compute scaling benchmark\",\n        \"test-time reasoning methods survey\",\n        \"adaptive compute language models\",\n    ],\n    type=\"deep\",\n    contents={\"highlights\": True},\n)\n\nThe main query is always included. You can provide up to 10 additional queries, and the list is available only to Deep search types.\nDo not provide minor rephrasings just to increase search volume. Add queries when each one contributes a meaningfully different search direction.\n​\nGuide behavior and output separately\nsystemPrompt and outputSchema affect different parts of the request:\nsystemPrompt guides source preferences, novelty, deduplication, and Deep’s research behavior.\noutputSchema defines the final shape and triggers synthesis.\nThe query should describe what to research. The system prompt should describe how to conduct and present that research.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Find AI infrastructure companies that announced Series A or B funding in the last six months\",\n    type=\"deep\",\n    system_prompt=\"Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.\",\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"companies\"],\n        \"properties\": {\n            \"companies\": {\n                \"type\": \"array\",\n                \"maxItems\": 8,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"name\", \"round\", \"amount\"],\n                    \"properties\": {\n                        \"name\": {\"type\": \"string\"},\n                        \"round\": {\"type\": \"string\"},\n                        \"amount\": {\"type\": \"string\"},\n                    },\n                },\n            }\n        },\n    },\n)\n\nPrefer Deep when you need more than two structured items or each item must satisfy several requirements. Standard search types use the same synthesis path, but they do not perform the same iterative research before synthesis.\n​\nRead the grounded response\nStructured responses separate generated values from their evidence:\n{\n  \"results\": [\n    {\n      \"title\": \"Acme AI raises $30M Series B\",\n      \"url\": \"https://acme.example/news/series-b\"\n    }\n  ],\n  \"output\": {\n    \"content\": {\n      \"companies\": [\n        {\n          \"name\": \"Acme AI\",\n          \"round\": \"Series B\",\n          \"amount\": \"$30M\"\n        }\n      ]\n    },\n    \"grounding\": [\n      {\n        \"field\": \"companies[0].amount\",\n        \"citations\": [\n          {\n            \"title\": \"Acme AI raises $30M Series B\",\n            \"url\": \"https://acme.example/news/series-b\"\n          }\n        ],\n        \"confidence\": \"high\"\n      }\n    ]\n  }\n}\n\nUse output.content as the generated result and output.grounding to show or verify the sources supporting each field. Do not add citation or confidence fields to your own schema; Exa returns them automatically.\nnumResults controls how many selected pages are returned in results. It does not set the number of searches Deep may perform.\n​\nStream the synthesis\nSet stream: true with outputSchema to receive the synthesized output over server-sent events:\nPython\nJavaScript\ncURL\nimport os\nimport requests\n\nresponse = requests.post(\n    \"https://api.exa.ai/search\",\n    headers={\"Authorization\": f\"Bearer {os.environ['EXA_API_KEY']}\"},\n    json={\n        \"query\": \"Explain the competing technical approaches to long-context retrieval\",\n        \"type\": \"deep\",\n        \"stream\": True,\n        \"outputSchema\": {\n            \"type\": \"text\",\n            \"description\": \"A grounded comparison organized by approach\",\n        },\n    },\n    stream=True,\n)\nresponse.raise_for_status()\n\nfor line in response.iter_lines(decode_unicode=True):\n    if line:\n        print(line)\n\nConsume the typed events until done. The final event contains the completed output and search time, with cost information when available.\n​\nWhen to stay with standard Search\nDeep is unnecessary when one retrieval pass can satisfy the request:\nYou need relevant pages, not a researched conclusion.\nThe query already identifies a specific source or narrow topic.\nYour application performs its own reasoning and only needs retrieval.\nThe request is on an interactive, autocomplete, or voice path.\nUse auto for the default quality and speed balance, or fast and instant for measured latency requirements.\nSearch API guide\nBuild requests, choose result content, and apply filters.\nReview Search\nSearch best practices\nImprove quality, context, latency, and agent integrations.\nTune retrieval\nSearch API reference\nSee every request parameter and response field.\nOpen reference\nPricing\nReview current Deep Search costs and latency.\nCompare modes",
+    "scrollHeight": 7187,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/deep-search",
+    "title": "Deep Search - Exa",
+    "h1": "Deep Search",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 199.953125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7091.25
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Deep Search is the research mode of the Search API. It uses the same /search endpoint, but the retrieval process can issue multiple searches, inspect the evidence, refine its approach, and synthesize a grounded result.\nUse standard Search when you need ranked pages for a well-formed query. Use Deep when finding the answer requires research.\n​\nHow Deep Search works\nDeep Search adds a research loop before the final response:\n1\n\nPlan the search\n\nExa starts with your query and may expand it into searches that cover different parts of the request. You can supply starting variations with additionalQueries.\n2\n\nSearch and inspect\n\nDeep searches for evidence, compares the findings with the request, and determines what is supported or still missing.\n3\n\nRefine\n\nWhen the evidence is incomplete or contradictory, Deep can issue a more targeted search instead of returning the first plausible pages.\n4\n\nSelect and synthesize\n\nDeep selects the useful results and then uses the same synthesis path as other search types. When you provide outputSchema, the response includes structured output.content and field-level citations in output.grounding.\nThis process is especially useful for lists and structured outputs. Each requested item may require a different search, and Deep can gather and check those results before producing the final structure.\n​\nChoose a Deep mode\nType\tUse it when\ndeep-lite\tYou need lightweight query expansion and synthesis\ndeep\tThe task needs iterative search, evidence gathering, or multiple structured items\ndeep-reasoning\tThe task requires more deliberate reasoning across difficult or conflicting evidence\nStart with deep for research workflows. Move to deep-lite when the task is simpler and latency matters.\nInstead of deep-reasoning, use Exa Agent for long-running research, list building, and multi-hop enrichment. Agent has more compute per run and returns grounded, structured results.\nSee Pricing for current cost and latency guidance.\n​\nMake a Deep request\nSet type on a normal Search API request:\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.search(\n    \"Compare how major database vendors support vector, keyword, and hybrid retrieval\",\n    type=\"deep\",\n    contents={\"highlights\": True},\n)\n\nDeep returns the selected search results under results. Add outputSchema when you also want a synthesized answer or structured dataset.\n​\nProvide starting queries\nDeep normally decides which searches to run. Use additionalQueries when you already know distinct terminology, perspectives, or subproblems that the research should cover:\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Compare current approaches to inference-time scaling\",\n    additional_queries=[\n        \"inference-time compute scaling benchmark\",\n        \"test-time reasoning methods survey\",\n        \"adaptive compute language models\",\n    ],\n    type=\"deep\",\n    contents={\"highlights\": True},\n)\n\nThe main query is always included. You can provide up to 10 additional queries, and the list is available only to Deep search types.\nDo not provide minor rephrasings just to increase search volume. Add queries when each one contributes a meaningfully different search direction.\n​\nGuide behavior and output separately\nsystemPrompt and outputSchema affect different parts of the request:\nsystemPrompt guides source preferences, novelty, deduplication, and Deep’s research behavior.\noutputSchema defines the final shape and triggers synthesis.\nThe query should describe what to research. The system prompt should describe how to conduct and present that research.\nPython\nJavaScript\ncURL\nresult = exa.search(\n    \"Find AI infrastructure companies that announced Series A or B funding in the last six months\",\n    type=\"deep\",\n    system_prompt=\"Prefer company announcements and investor portfolio pages. Exclude duplicate rounds.\",\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"companies\"],\n        \"properties\": {\n            \"companies\": {\n                \"type\": \"array\",\n                \"maxItems\": 8,\n                \"items\": {\n                    \"type\": \"object\",\n                    \"required\": [\"name\", \"round\", \"amount\"],\n                    \"properties\": {\n                        \"name\": {\"type\": \"string\"},\n                        \"round\": {\"type\": \"string\"},\n                        \"amount\": {\"type\": \"string\"},\n                    },\n                },\n            }\n        },\n    },\n)\n\nPrefer Deep when you need more than two structured items or each item must satisfy several requirements. Standard search types use the same synthesis path, but they do not perform the same iterative research before synthesis.\n​\nRead the grounded response\nStructured responses separate generated values from their evidence:\n{\n  \"results\": [\n    {\n      \"title\": \"Acme AI raises $30M Series B\",\n      \"url\": \"https://acme.example/news/series-b\"\n    }\n  ],\n  \"output\": {\n    \"content\": {\n      \"companies\": [\n        {\n          \"name\": \"Acme AI\",\n          \"round\": \"Series B\",\n          \"amount\": \"$30M\"\n        }\n      ]\n    },\n    \"grounding\": [\n      {\n        \"field\": \"companies[0].amount\",\n        \"citations\": [\n          {\n            \"title\": \"Acme AI raises $30M Series B\",\n            \"url\": \"https://acme.example/news/series-b\"\n          }\n        ],\n        \"confidence\": \"high\"\n      }\n    ]\n  }\n}\n\nUse output.content as the generated result and output.grounding to show or verify the sources supporting each field. Do not add citation or confidence fields to your own schema; Exa returns them automatically.\nnumResults controls how many selected pages are returned in results. It does not set the number of searches Deep may perform.\n​\nStream the synthesis\nSet stream: true with outputSchema to receive the synthesized output over server-sent events:\nPython\nJavaScript\ncURL\nimport os\nimport requests\n\nresponse = requests.post(\n    \"https://api.exa.ai/search\",\n    headers={\"Authorization\": f\"Bearer {os.environ['EXA_API_KEY']}\"},\n    json={\n        \"query\": \"Explain the competing technical approaches to long-context retrieval\",\n        \"type\": \"deep\",\n        \"stream\": True,\n        \"outputSchema\": {\n            \"type\": \"text\",\n            \"description\": \"A grounded comparison organized by approach\",\n        },\n    },\n    stream=True,\n)\nresponse.raise_for_status()\n\nfor line in response.iter_lines(decode_unicode=True):\n    if line:\n        print(line)\n\nConsume the typed events until done. The final event contains the completed output and search time, with cost information when available.\n​\nWhen to stay with standard Search\nDeep is unnecessary when one retrieval pass can satisfy the request:\nYou need relevant pages, not a researched conclusion.\nThe query already identifies a specific source or narrow topic.\nYour application performs its own reasoning and only needs retrieval.\nThe request is on an interactive, autocomplete, or voice path.\nUse auto for the default quality and speed balance, or fast and instant for measured latency requirements.\nSearch API guide\nBuild requests, choose result content, and apply filters.\nReview Search\nSearch best practices\nImprove quality, context, latency, and agent integrations.\nTune retrieval\nSearch API reference\nSee every request parameter and response field.\nOpen reference\nPricing\nReview current Deep Search costs and latency.\nCompare modes",
+    "scrollHeight": 7187,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

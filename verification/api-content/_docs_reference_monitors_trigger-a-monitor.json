@@ -1,0 +1,26 @@
+{
+  "route": "/docs/reference/monitors/trigger-a-monitor",
+  "production": {
+    "status": 200,
+    "text": "Trigger a monitor\nCopy page\n\nTriggers a run immediately, regardless of the schedule. Works for monitors with status active or paused.\n\nPOST\n/\nmonitors\n/\n{id}\n/\ntrigger\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe monitor ID\n\nResponse\n200\napplication/json\n\nWhether the monitor was triggered\n\n​\ntriggered\nbooleanrequired\n\nWhether the monitor was successfully triggered\n\nDelete a monitor\nPrevious\nBatch action on monitors\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Trigger a monitor",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Trigger a monitor\nCopy page\n\nTriggers a run immediately, regardless of the schedule. Works for monitors with status active or paused.\n\nPOST\n/\nmonitors\n/\n{id}\n/\ntrigger\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nid\nstringrequired\n\nThe monitor ID\n\nResponse\n200\napplication/json\n\nWhether the monitor was triggered\n\n​\ntriggered\nbooleanrequired\n\nWhether the monitor was successfully triggered\n\nDelete a monitor\nPrevious\nBatch action on monitors\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Trigger a monitor",
+      "Authorizations",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 633,
+  "localLength": 633
+}

@@ -1,0 +1,103 @@
+{
+  "id": "056",
+  "path": "/docs/integrations/payments/nevermined",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/payments/nevermined",
+    "title": "Nevermined - Exa",
+    "h1": "Nevermined",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 189.375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3503.296875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Agents pay Exa with a credit card via Nevermined’s x402 card-delegation scheme. Each $7 purchase returns an Exa API key with $7 of Exa credits.\nUse this Nevermined plan ID:\n27800462147494506865542649899724877617306579171265399959488097895839186996870\nThis plan runs on Nevermined’s live environment (live-prefixed API keys). The purchase is for API credits, not for a single search request.\nFor a first-time Nevermined payer, POST /team-management/nevermined/purchase-key provisions a new Exa API key and adds $7 of credits. If the key runs out, mint a fresh x402 token with the same delegation and call the same endpoint again. Exa returns the same API key with another $7 of credits added.\n​\nBuy a key\nPOST https://admin-api.exa.ai/team-management/nevermined/purchase-key\npayment-signature: <x402-token>\n\nCost: $7 per purchase, charged to the card behind the delegation referenced by the x402 token.\nResponse (new payer): { status: \"ok\", apiKey: \"…\", expiresAt: null } — a new Exa API key with $7 of credits.\nResponse (returning payer): { status: \"ok\", apiKey: \"…\", expiresAt: null } — the same Exa API key with $7 more credits.\nResponse (replayed token): cached result, no new charge.\nMissing/invalid signature: 402 Payment Required with payment requirements in the body.\n​\nHow it works\nThe payment side is handled by Nevermined; Exa only sees the signed x402 token.\nOne-time setup (by the card owner): enroll a card at nevermined.app, create a delegation on it (the spending permission: the owner sets a limit and duration, and can scope it to a specific API key), and issue a Nevermined API key for the agent.\nThe agent finds its delegation. The Nevermined SDK lets the agent discover the delegations its key can spend from and pick one with enough remaining budget (at least $7). If none exists, the owner creates one in the dashboard, or a fully autonomous agent can create one through the SDK within the card’s limits.\nThe agent mints an x402 access token for the plan ID above, on the card-delegation scheme, referencing the delegation by ID. Delegations must exist before minting; tokens cannot create them on the fly.\nThe agent POSTs the token to the endpoint above in the payment-signature header and receives the Exa API key from the response.\nThe key works immediately against the standard Exa Search API.\nFor the complete agent-ready walkthrough (SDK methods, parameters, delegation discovery and creation, troubleshooting), follow Nevermined’s Exa integration guide: nevermined.ai/docs/integrations/exa (agents: fetch nevermined.ai/docs/integrations/exa.md).\n​\nWhat $7 buys\nCredits are consumed at standard Exa API pricing. At current rates, $7 of credits covers roughly:\nEndpoint or feature\tPrice\tApproximate usage\nSearch (instant, fast, auto) with up to 10 results\t$7 / 1,000 requests\t1,000 requests\nDeep-Lite Search\t$10 / 1,000 requests\t700 requests\nDeep Search\t$12 / 1,000 requests\t~583 requests\nDeep-Reasoning Search\t$15 / 1,000 requests\t~466 requests\nContents (text, highlights, or summary)\t$1 / 1,000 pages per content type\t7,000 pages\nAI page summaries on Search or Contents\t$1 / 1,000 pages\t7,000 summaries\nAdditional results beyond the first 10\t$1 / 1,000 results\t7,000 extra results\nAnswer\t$5 / 1,000 requests\t1,400 requests\nMonitors\t$15 / 1,000 requests\t~466 requests\nSearch requests include text and highlights for up to 10 results. Extra results beyond 10 and AI summaries are billed separately.\nFor full pricing details, see Exa pricing.\n​\nWhen the key runs out\nExa returns HTTP 402 on the regular API endpoints once the API key’s credits are exhausted:\n{\n  \"requestId\": \"...\",\n  \"error\": \"You have exceeded your credits limit. Please top up to keep using Exa at dashboard.exa.ai\",\n  \"tag\": \"NO_MORE_CREDITS\"\n}\n\nMint a fresh x402 token with the same plan ID and delegation, then POST it again to the same /purchase-key endpoint. Exa adds another $7 of credits to the same API key.\n​\nReferences\nNevermined Exa integration guide\nx402 card-delegation spec\nExa pricing\nExa Search API",
+    "scrollHeight": 3599,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/payments/nevermined",
+    "title": "Nevermined - Exa",
+    "h1": "Nevermined",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 189.375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3503.296875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Agents pay Exa with a credit card via Nevermined’s x402 card-delegation scheme. Each $7 purchase returns an Exa API key with $7 of Exa credits.\nUse this Nevermined plan ID:\n27800462147494506865542649899724877617306579171265399959488097895839186996870\nThis plan runs on Nevermined’s live environment (live-prefixed API keys). The purchase is for API credits, not for a single search request.\nFor a first-time Nevermined payer, POST /team-management/nevermined/purchase-key provisions a new Exa API key and adds $7 of credits. If the key runs out, mint a fresh x402 token with the same delegation and call the same endpoint again. Exa returns the same API key with another $7 of credits added.\n​\nBuy a key\nPOST https://admin-api.exa.ai/team-management/nevermined/purchase-key\npayment-signature: <x402-token>\n\nCost: $7 per purchase, charged to the card behind the delegation referenced by the x402 token.\nResponse (new payer): { status: \"ok\", apiKey: \"…\", expiresAt: null } — a new Exa API key with $7 of credits.\nResponse (returning payer): { status: \"ok\", apiKey: \"…\", expiresAt: null } — the same Exa API key with $7 more credits.\nResponse (replayed token): cached result, no new charge.\nMissing/invalid signature: 402 Payment Required with payment requirements in the body.\n​\nHow it works\nThe payment side is handled by Nevermined; Exa only sees the signed x402 token.\nOne-time setup (by the card owner): enroll a card at nevermined.app, create a delegation on it (the spending permission: the owner sets a limit and duration, and can scope it to a specific API key), and issue a Nevermined API key for the agent.\nThe agent finds its delegation. The Nevermined SDK lets the agent discover the delegations its key can spend from and pick one with enough remaining budget (at least $7). If none exists, the owner creates one in the dashboard, or a fully autonomous agent can create one through the SDK within the card’s limits.\nThe agent mints an x402 access token for the plan ID above, on the card-delegation scheme, referencing the delegation by ID. Delegations must exist before minting; tokens cannot create them on the fly.\nThe agent POSTs the token to the endpoint above in the payment-signature header and receives the Exa API key from the response.\nThe key works immediately against the standard Exa Search API.\nFor the complete agent-ready walkthrough (SDK methods, parameters, delegation discovery and creation, troubleshooting), follow Nevermined’s Exa integration guide: nevermined.ai/docs/integrations/exa (agents: fetch nevermined.ai/docs/integrations/exa.md).\n​\nWhat $7 buys\nCredits are consumed at standard Exa API pricing. At current rates, $7 of credits covers roughly:\nEndpoint or feature\tPrice\tApproximate usage\nSearch (instant, fast, auto) with up to 10 results\t$7 / 1,000 requests\t1,000 requests\nDeep-Lite Search\t$10 / 1,000 requests\t700 requests\nDeep Search\t$12 / 1,000 requests\t~583 requests\nDeep-Reasoning Search\t$15 / 1,000 requests\t~466 requests\nContents (text, highlights, or summary)\t$1 / 1,000 pages per content type\t7,000 pages\nAI page summaries on Search or Contents\t$1 / 1,000 pages\t7,000 summaries\nAdditional results beyond the first 10\t$1 / 1,000 results\t7,000 extra results\nAnswer\t$5 / 1,000 requests\t1,400 requests\nMonitors\t$15 / 1,000 requests\t~466 requests\nSearch requests include text and highlights for up to 10 results. Extra results beyond 10 and AI summaries are billed separately.\nFor full pricing details, see Exa pricing.\n​\nWhen the key runs out\nExa returns HTTP 402 on the regular API endpoints once the API key’s credits are exhausted:\n{\n  \"requestId\": \"...\",\n  \"error\": \"You have exceeded your credits limit. Please top up to keep using Exa at dashboard.exa.ai\",\n  \"tag\": \"NO_MORE_CREDITS\"\n}\n\nMint a fresh x402 token with the same plan ID and delegation, then POST it again to the same /purchase-key endpoint. Exa adds another $7 of credits to the same API key.\n​\nReferences\nNevermined Exa integration guide\nx402 card-delegation spec\nExa pricing\nExa Search API",
+    "scrollHeight": 3599,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

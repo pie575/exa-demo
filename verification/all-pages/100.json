@@ -1,0 +1,103 @@
+{
+  "id": "100",
+  "path": "/docs/search/data/code",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/code",
+    "title": "Code & Docs - Exa",
+    "h1": "Code & Docs",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 201.828125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2613.6875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for repositories, technical documentation, package information, and implementation guidance with natural-language queries.\nRead WebCode: Search Evals for Coding Agents to learn how Exa evaluates retrieval for coding tasks.\n​\nUse it for\nCoding agents and code-generation tools\nDeveloper search and documentation products\nDebugging, migration, and configuration workflows\nTechnical research across repositories, docs, and package registries\n​\nExample queries\n​\nDiscover libraries by capability\nDescribe the capability, ecosystem, and constraints you care about. This retrieves candidates based on what they do instead of relying on an exact project name.\nopen source Rust libraries for vector similarity search\n​\nRetrieve implementation documentation\nName the product and the exact operation. Search can then prioritize API documentation and implementation guides over general discussion.\nStripe webhook signature verification documentation\n​\nCheck version-specific changes\nInclude the release channel or version when compatibility matters. This reduces results about older releases.\nbreaking changes in the latest stable release of Pydantic v2\n​\nFind reusable agent tooling\nState the artifact type and task rather than searching for a broad phrase such as “AI tools.”\nagent skills for extracting tables from PDFs\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"how to use Exa search in python\",\n    type=\"fast\",\n    num_results=10,\n    contents={\"highlights\": True},\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the libraries, technical criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nCompare libraries, enrich repository records, or produce a structured list from multiple technical signals.\nOpen Agent guide",
+    "scrollHeight": 2710,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/code",
+    "title": "Code & Docs - Exa",
+    "h1": "Code & Docs",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 201.828125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2613.6875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for repositories, technical documentation, package information, and implementation guidance with natural-language queries.\nRead WebCode: Search Evals for Coding Agents to learn how Exa evaluates retrieval for coding tasks.\n​\nUse it for\nCoding agents and code-generation tools\nDeveloper search and documentation products\nDebugging, migration, and configuration workflows\nTechnical research across repositories, docs, and package registries\n​\nExample queries\n​\nDiscover libraries by capability\nDescribe the capability, ecosystem, and constraints you care about. This retrieves candidates based on what they do instead of relying on an exact project name.\nopen source Rust libraries for vector similarity search\n​\nRetrieve implementation documentation\nName the product and the exact operation. Search can then prioritize API documentation and implementation guides over general discussion.\nStripe webhook signature verification documentation\n​\nCheck version-specific changes\nInclude the release channel or version when compatibility matters. This reduces results about older releases.\nbreaking changes in the latest stable release of Pydantic v2\n​\nFind reusable agent tooling\nState the artifact type and task rather than searching for a broad phrase such as “AI tools.”\nagent skills for extracting tables from PDFs\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"how to use Exa search in python\",\n    type=\"fast\",\n    num_results=10,\n    contents={\"highlights\": True},\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the libraries, technical criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nCompare libraries, enrich repository records, or produce a structured list from multiple technical signals.\nOpen Agent guide",
+    "scrollHeight": 2710,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

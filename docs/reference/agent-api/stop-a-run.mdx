@@ -1,0 +1,19 @@
+---
+title: "Stop a run"
+description: "Gracefully stop a running Agent run and keep the results gathered so far."
+openapi: "docs/exa-spec.yaml POST /agent/runs/{id}/stop"
+timestamp: false
+---
+
+If the run is still active, the agent wraps up and completes the run early with the results gathered so far. The run ends with status `completed` and `stopReason: stopped`. You are billed for usage accrued before the stop. If the run has already reached a terminal status (completed, failed, or cancelled), the endpoint returns the existing run unchanged.
+
+To terminate a run immediately without returning any results, use [cancel](/docs/reference/agent-api/cancel-a-run) instead.
+
+<Note>
+  Only supported on `max` effort runs. `Exa-Beta: agent-max-effort-2026-07-27` must be
+  passed as a request header. The header accepts a comma-separated list of beta tokens.
+</Note>
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

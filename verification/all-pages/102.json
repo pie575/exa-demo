@@ -1,0 +1,103 @@
+{
+  "id": "102",
+  "path": "/docs/search/data/financial",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/financial",
+    "title": "Financial Markets - Exa",
+    "h1": "Financial Markets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 273.859375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2924.859375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 364
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for prices, filings, transcripts, and the reporting around them in one query. A question about a ticker can return the quote, the latest earnings call, and analyst coverage together.\n​\nIncluded\nQuotes and recent price history for stocks, crypto, forex, indices, futures, options, and commodities\nSecurity profiles with key statistics and daily OHLCV history\nEarnings call transcripts, with prepared remarks and Q&A attributed to speakers\nSEC filings, reported financials, and international filings\nAnalyst estimates, funding announcements, and economic releases\n​\nUse it for\nEquity and credit research\nKYC, KYB, and adverse-media screening\nPortfolio and policy monitoring\nDeal sourcing and private-market research\n​\nExample queries\n​\nLook up a quote\nName the ticker or company and the figure you want. A cashtag such as $NVDA also works.\nNVIDIA stock price and change today\n​\nRead an earnings call\nName the company and quarter to retrieve the transcript rather than coverage of it.\nTyson Foods Q4 FY2025 earnings call transcript\n​\nSearch filings\nDescribe the disclosure you are looking for, not just the form type. The financial report category keeps results to filings and reports.\n10-K risk factors that mention dependency on third-party AI models\n​\nTrack private-market activity\nSpecify the round, sector, and time window.\nSeries B rounds in climate tech announced this quarter\n​\nFollow economic data\nName the release and the figure you want from it.\nmost recent US CPI release and month-over-month change\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"10-K risk factors that mention dependency on third-party AI models\",\n    type=\"auto\",\n    category=\"financial report\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the securities, periods, criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nScreen companies, compare filings, or assemble a structured brief across a portfolio.\nOpen Agent guide",
+    "scrollHeight": 3021,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/financial",
+    "title": "Financial Markets - Exa",
+    "h1": "Financial Markets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 273.859375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2924.859375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 364
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for prices, filings, transcripts, and the reporting around them in one query. A question about a ticker can return the quote, the latest earnings call, and analyst coverage together.\n​\nIncluded\nQuotes and recent price history for stocks, crypto, forex, indices, futures, options, and commodities\nSecurity profiles with key statistics and daily OHLCV history\nEarnings call transcripts, with prepared remarks and Q&A attributed to speakers\nSEC filings, reported financials, and international filings\nAnalyst estimates, funding announcements, and economic releases\n​\nUse it for\nEquity and credit research\nKYC, KYB, and adverse-media screening\nPortfolio and policy monitoring\nDeal sourcing and private-market research\n​\nExample queries\n​\nLook up a quote\nName the ticker or company and the figure you want. A cashtag such as $NVDA also works.\nNVIDIA stock price and change today\n​\nRead an earnings call\nName the company and quarter to retrieve the transcript rather than coverage of it.\nTyson Foods Q4 FY2025 earnings call transcript\n​\nSearch filings\nDescribe the disclosure you are looking for, not just the form type. The financial report category keeps results to filings and reports.\n10-K risk factors that mention dependency on third-party AI models\n​\nTrack private-market activity\nSpecify the round, sector, and time window.\nSeries B rounds in climate tech announced this quarter\n​\nFollow economic data\nName the release and the figure you want from it.\nmost recent US CPI release and month-over-month change\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"10-K risk factors that mention dependency on third-party AI models\",\n    type=\"auto\",\n    category=\"financial report\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the securities, periods, criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nScreen companies, compare filings, or assemble a structured brief across a portfolio.\nOpen Agent guide",
+    "scrollHeight": 3021,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

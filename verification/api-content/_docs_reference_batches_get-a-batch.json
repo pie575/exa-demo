@@ -1,0 +1,30 @@
+{
+  "route": "/docs/reference/batches/get-a-batch",
+  "production": {
+    "status": 200,
+    "text": "Get a batch\nCopy page\n\nRetrieve a batch by ID.\n\nGET\n/\nbatches\n/\n{id}\nTry it\nUse this endpoint to poll a batch until it reaches completed, cancelled, or expired. When the batch completes, resultsUrl holds a short-lived presigned URL for the JSONL results file; re-fetch the batch to get a fresh URL.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nExa-Beta\nenum<string>required\n\nRequired beta token for the Batch API.\n\nAvailable options: batches-2026-06-06 \nPath Parameters\n​\nid\nstringrequired\n\nBatch ID.\n\nMinimum string length: 1\nExample:\n\n\"batch_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nOK\n\n​\nid\nstringrequired\n\nBatch ID. New batch IDs are returned with the batch_ prefix.\n\nExample:\n\n\"batch_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\n​\nobject\nstringrequired\n\nThe object type, always batch.\n\nAllowed value: \"batch\"\n​\nstatus\nenum<string>required\n\nLifecycle status of the batch.\n\nAvailable options: in_progress, completed, cancelling, cancelled, expired \n​\nrequestCounts\nobjectrequired\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the batch was created.\n\n​\nexpiresAt\nstring<date-time>required\n\nWhen the batch expires, or null if it does not expire.\n\n​\nendedAt\nstring<date-time>required\n\nWhen the batch reached a terminal status, or null while it is still running.\n\n​\nresultsUrl\nstring | nullrequired\n\nShort-lived presigned download URL for the batch results file (JSONL), or null until the batch completes. This is a direct object-store download link, not an API route; fetch it as-is and re-fetch the batch to mint a fresh URL once it expires.\n\n​\nmetadata\nobjectrequired\n\nCaller-provided key-value metadata for your own tracking.\n\nShow child attributes\n\nExample:\n{\n  \"slack_channel_id\": \"C123ABC\",\n  \"slack_thread_id\": \"1745444400.123456\",\n  \"user_id\": \"U123ABC\"\n}\nList batches\nPrevious\nCancel a batch\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a batch",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Get a batch\nCopy page\n\nRetrieve a batch by ID.\n\nGET\n/\nbatches\n/\n{id}\nTry it\nUse this endpoint to poll a batch until it reaches completed, cancelled, or expired. When the batch completes, resultsUrl holds a short-lived presigned URL for the JSONL results file; re-fetch the batch to get a fresh URL.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nExa-Beta\nenum<string>required\n\nRequired beta token for the Batch API.\n\nAvailable options: batches-2026-06-06 \nPath Parameters\n​\nid\nstringrequired\n\nBatch ID.\n\nMinimum string length: 1\nExample:\n\n\"batch_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nOK\n\n​\nid\nstringrequired\n\nBatch ID. New batch IDs are returned with the batch_ prefix.\n\nExample:\n\n\"batch_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\n​\nobject\nstringrequired\n\nThe object type, always batch.\n\nAllowed value: \"batch\"\n​\nstatus\nenum<string>required\n\nLifecycle status of the batch.\n\nAvailable options: in_progress, completed, cancelling, cancelled, expired \n​\nrequestCounts\nobjectrequired\n\nShow child attributes\n\n​\ncreatedAt\nstring<date-time>required\n\nWhen the batch was created.\n\n​\nexpiresAt\nstring<date-time>required\n\nWhen the batch expires, or null if it does not expire.\n\n​\nendedAt\nstring<date-time>required\n\nWhen the batch reached a terminal status, or null while it is still running.\n\n​\nresultsUrl\nstring | nullrequired\n\nShort-lived presigned download URL for the batch results file (JSONL), or null until the batch completes. This is a direct object-store download link, not an API route; fetch it as-is and re-fetch the batch to mint a fresh URL once it expires.\n\n​\nmetadata\nobjectrequired\n\nCaller-provided key-value metadata for your own tracking.\n\nShow child attributes\n\nExample:\n{\n  \"slack_channel_id\": \"C123ABC\",\n  \"slack_thread_id\": \"1745444400.123456\",\n  \"user_id\": \"U123ABC\"\n}\nList batches\nPrevious\nCancel a batch\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Get a batch",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Path Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 2092,
+  "localLength": 2092
+}

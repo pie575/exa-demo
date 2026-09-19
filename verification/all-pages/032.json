@@ -1,0 +1,103 @@
+{
+  "id": "032",
+  "path": "/docs/get-started/agent-skills/overview",
+  "production": {
+    "url": "https://exa.ai/docs/get-started/agent-skills/overview",
+    "title": "Agent Skills - Exa",
+    "h1": "Agent Skills",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 183.75,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1951.328125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa skills teach coding agents how to search, retrieve content, and build with Exa’s APIs. Find them in the open-source exa-labs/agent-skills repository.\nEach skill contains markdown files that follow the open Agent Skills standard, so the same files install into any compatible agent.\n​\nInstall\nInstall every Exa skill at once:\nnpx skills add exa-labs/agent-skills\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nSet your key as EXA_API_KEY in your agent environment.\nOr open a skill page below and copy its setup prompt into your agent. The prompt installs that skill and verifies your API key without printing it.\n​\nSkills\nEach skill page includes a one-line description, a copyable setup prompt, and a link to the raw SKILL.md source.\nBuild with Exa\nBuild applications and agents with Exa’s full API platform.\nOpen skill\nExa Search\nCall Exa Search directly with cURL or raw HTTP.\nOpen skill\nExa Contents\nCall Exa Contents directly with cURL or raw HTTP.\nOpen skill\n​\nRelated\nSkills repository\nSource for every skill, including raw SKILL.md files.\nView source\nExa MCP\nConnect Claude, Cursor, VS Code, and other clients to Exa over MCP.\nOpen guide",
+    "scrollHeight": 2047,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/get-started/agent-skills/overview",
+    "title": "Agent Skills - Exa",
+    "h1": "Agent Skills",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 183.75,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 1951.328125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 140
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa skills teach coding agents how to search, retrieve content, and build with Exa’s APIs. Find them in the open-source exa-labs/agent-skills repository.\nEach skill contains markdown files that follow the open Agent Skills standard, so the same files install into any compatible agent.\n​\nInstall\nInstall every Exa skill at once:\nnpx skills add exa-labs/agent-skills\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nSet your key as EXA_API_KEY in your agent environment.\nOr open a skill page below and copy its setup prompt into your agent. The prompt installs that skill and verifies your API key without printing it.\n​\nSkills\nEach skill page includes a one-line description, a copyable setup prompt, and a link to the raw SKILL.md source.\nBuild with Exa\nBuild applications and agents with Exa’s full API platform.\nOpen skill\nExa Search\nCall Exa Search directly with cURL or raw HTTP.\nOpen skill\nExa Contents\nCall Exa Contents directly with cURL or raw HTTP.\nOpen skill\n​\nRelated\nSkills repository\nSource for every skill, including raw SKILL.md files.\nView source\nExa MCP\nConnect Claude, Cursor, VS Code, and other clients to Exa over MCP.\nOpen guide",
+    "scrollHeight": 2047,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

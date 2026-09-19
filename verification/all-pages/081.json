@@ -1,0 +1,91 @@
+{
+  "id": "081",
+  "path": "/docs/reference/get-contents",
+  "production": {
+    "url": "https://exa.ai/docs/reference/get-contents",
+    "title": "Contents - Exa",
+    "h1": "Contents",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 158.828125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 144.46875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 5325.140625
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 5421,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/reference/get-contents",
+    "title": "Contents - Exa",
+    "h1": "Contents",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 158.828125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 144.46875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 5325.140625
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 5421,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,677 @@
+{
+  "assets": [
+    {
+      "source": "https://exa.ai/docs/exa-spec.json",
+      "path": "docs/exa-spec.json",
+      "bytes": 547801,
+      "sha256": "dcfcf961b155a8b0f2edba3b29ab5e916c1a66cfc3b39dad4bd180303a46a201"
+    },
+    {
+      "source": "https://exa.ai/docs/exa-spec.yaml",
+      "path": "docs/exa-spec.yaml",
+      "bytes": 409831,
+      "sha256": "a900b746e076537a7b1a6a2c1509dcb642acc18c7f3e032f3cfe5fbce0f52983"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=147e5a3b3aad77d25be023b47b7aae24",
+      "path": "docs/images/admin/team-management/dashboard_invite.png",
+      "bytes": 157161,
+      "sha256": "5e303950476dfd8f1c8d9d5ba9764872daadf6635828b492c009787c2e239e67"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_accepted.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=15396c783df64ffee162ab2de434a045",
+      "path": "docs/images/admin/team-management/dashboard_invite_accepted.png",
+      "bytes": 155270,
+      "sha256": "53a77c85b84298e6ba900eb168c5d91c5d502afda0464f21842d00487e37443f"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_email.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=7d65d4f112225013af525d3114882c34",
+      "path": "docs/images/admin/team-management/dashboard_invite_email.png",
+      "bytes": 40889,
+      "sha256": "1c136e2210ec90fc0b646306571f92b6086c9b5f0093c9995fdfeeafea8c253c"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_pending.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=589f2e9b1543fc4048e760fee475c28e",
+      "path": "docs/images/admin/team-management/dashboard_invite_pending.png",
+      "bytes": 155090,
+      "sha256": "b91979db4023bac9a20efbd057fbd68c45c0004b77a597894927e1bfb95bdab5"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_team_switcher.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=094d2830e671762132604cace63b423a",
+      "path": "docs/images/admin/team-management/dashboard_team_switcher.png",
+      "bytes": 204565,
+      "sha256": "d7a2a81950830c611072b1ae274bead4a08de846eaf9477d4fb9ec50d42d549c"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_topup.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=36f4bbbd52a71bae490be4df3ba1b500",
+      "path": "docs/images/admin/team-management/dashboard_topup.png",
+      "bytes": 211948,
+      "sha256": "c988e736334f288e7939c5ef5464f9d2a3c5ad34b6783e6fbaf8e1ba80b799a4"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/affiliatecom.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=b193bea9be653125ba5695f3cd2c027a",
+      "path": "docs/images/agent/connect/affiliatecom.svg",
+      "bytes": 2675,
+      "sha256": "73512731359a86130fa27b7ac85bfaad1bbc7842b1dc2896e1248c45213aafb4"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/baselayer.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=d73cd54ad8fc01672a8407aabefee887",
+      "path": "docs/images/agent/connect/baselayer.svg",
+      "bytes": 1944,
+      "sha256": "018e123b9ea6bff51d7a57ed76db7d99a2647398bd887a2f936965dc6293163a"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/fiber.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=e2292b486593416a57b075123bcfc513",
+      "path": "docs/images/agent/connect/fiber.svg",
+      "bytes": 1596,
+      "sha256": "8a7454b84ba20640cc5d66900662381656dc546ca6a600891fc057b1b58326a6"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/financialdatasets.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=24052e4641fa4060e1ccf64482b10e00",
+      "path": "docs/images/agent/connect/financialdatasets.svg",
+      "bytes": 1103,
+      "sha256": "ce13e9dc929ba4908cfe37f7a8206304f3a97060690f9defc5bac81d40d15b3a"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/jinko.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=958d2ec147d452f12c0904f41ffb2311",
+      "path": "docs/images/agent/connect/jinko.svg",
+      "bytes": 1801,
+      "sha256": "0dca5404cb2aca890246a213e9b3d99594f7c6b8478622b68ad683563f22de76"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/particle.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=72ab9729a143893f286fa369ceeb036f",
+      "path": "docs/images/agent/connect/particle.svg",
+      "bytes": 5572,
+      "sha256": "64489dae075b091f453097c693cae49ecd0ae9954a209a134e6a2e8d2d77305b"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/polymarket.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5a3541cde8f59cb64491fa6f4f40f12c",
+      "path": "docs/images/agent/connect/polymarket.svg",
+      "bytes": 740,
+      "sha256": "2da411abbfea871f4de0a5de78e3b911b7c355fe48eaa49351dd25c5097ca66a"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/crunchbase.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=97592e9c2692657ca50a2d5eef89e8f3",
+      "path": "docs/images/agent/connect/request/crunchbase.svg",
+      "bytes": 8213,
+      "sha256": "1d0f7c7fdf3959a3ea71d1fce50ada6c495af3c5541297c3f78c5b8db983cb23"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/definitivehealthcare.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=ab33b6c5389640c387d1eee1ba73ee8b",
+      "path": "docs/images/agent/connect/request/definitivehealthcare.svg",
+      "bytes": 5532,
+      "sha256": "2ae46e954b054b0286c88231715e27888d60ab0d0207881ac69122f3094d9e54"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/faraday-dark.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=e03854b9170676ac999a900ea652f8d5",
+      "path": "docs/images/agent/connect/request/faraday-dark.svg",
+      "bytes": 3042,
+      "sha256": "4769aa42255f19b5ab1b4e20a7a57513a077b0087e63c9130cd0cec0959a44ca"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/faraday.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=162f2ddca64277246c578f413d2597b8",
+      "path": "docs/images/agent/connect/request/faraday.svg",
+      "bytes": 3122,
+      "sha256": "2482b8725670a31423ab86804b29ee46455dd705218cdf2f189ee93a3ea8c2cf"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/harmonic-dark.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=b29d8adc2027087e3ac7b63887810196",
+      "path": "docs/images/agent/connect/request/harmonic-dark.svg",
+      "bytes": 6500,
+      "sha256": "88f54d511524ee92147cd85aedfe42a2fa48a8661f6e5c16af3685a6591a62d3"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/harmonic.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=c9387f4c7c9af923e53024e22d99f2cb",
+      "path": "docs/images/agent/connect/request/harmonic.svg",
+      "bytes": 6523,
+      "sha256": "8987edb125923b38682c07196d41523e249e5aa302cea54162372d47fa4abc37"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/intellizence.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=3842b745b95002bdb522f0ce6e2c05bc",
+      "path": "docs/images/agent/connect/request/intellizence.svg",
+      "bytes": 5755,
+      "sha256": "4608fb324cfa76edf3dfc2e07c0323100b37ae6daf4a59b107ad95ba362c95f7"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/kernel-dark.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=634bc8b0579ed1395faaab42290997ff",
+      "path": "docs/images/agent/connect/request/kernel-dark.svg",
+      "bytes": 10636,
+      "sha256": "2b8f191c5eaed71ed0e4a4bb362c23ef5fdd8fdf0adce84756f2ea37ff04d935"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/kernel.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=45ccc674d0eab287372a425ed68e35e9",
+      "path": "docs/images/agent/connect/request/kernel.svg",
+      "bytes": 10639,
+      "sha256": "6beac02156550a47d223b9c203b33ed60a9f63cda7fe1457d201ee1ed550cd13"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/zoominfo-dark.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=a491df193bf82e55cd987ca3059d4270",
+      "path": "docs/images/agent/connect/request/zoominfo-dark.svg",
+      "bytes": 8107,
+      "sha256": "794e9f58e1c5e4188191df6d02a0ef13cd5b03de0710dda055f2157fca6f0c12"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/request/zoominfo.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=a13e7ba1509de47a2b7a7882a535ef70",
+      "path": "docs/images/agent/connect/request/zoominfo.svg",
+      "bytes": 8124,
+      "sha256": "1c345aa37e25d0f263292f2106c6f4375fba70a1f25cb54d3c07b8876a7c7dc8"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/agent/connect/similarweb.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=7ac916fb46576857bd10c95f12ae78dc",
+      "path": "docs/images/agent/connect/similarweb.svg",
+      "bytes": 1342,
+      "sha256": "1f126802fa07fafe13984f0421645332d9993dfe4963fa2ed85fbbfabb9fb5fe"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/rjfwhV9stZF3dXkq/images/favicon-32x32.png?fit=max&auto=format&n=rjfwhV9stZF3dXkq&q=85&s=469bcaa3f02ba2672ac0dca63321dcb0",
+      "path": "docs/images/favicon-32x32.png",
+      "bytes": 370,
+      "sha256": "8a3c0cd87fd683c1b81e1bb896049e2eb7db8ffadd44e0282054e3c1f429f320"
+    },
+    {
+      "source": "https://exa.ai/docs/images/home/api-agent.webp",
+      "path": "docs/images/home/api-agent.webp",
+      "bytes": 56270,
+      "sha256": "54c81828b345be0e0c717866014b1b068fe903d4b7c3016d0ea60ef8f530a507"
+    },
+    {
+      "source": "https://exa.ai/docs/images/home/api-contents.webp",
+      "path": "docs/images/home/api-contents.webp",
+      "bytes": 53860,
+      "sha256": "b0edd8e60e291646fde7e51f0b2aef4385c814bbee833811381c9cc43d5d0108"
+    },
+    {
+      "source": "https://exa.ai/docs/images/home/api-monitors.webp",
+      "path": "docs/images/home/api-monitors.webp",
+      "bytes": 14136,
+      "sha256": "3142083f48eac8b147d933529681831924c017c89b9b06926be330da4b58ced6"
+    },
+    {
+      "source": "https://exa.ai/docs/images/home/api-search-deep.webp",
+      "path": "docs/images/home/api-search-deep.webp",
+      "bytes": 27006,
+      "sha256": "46c0cbc224b73cdfd86e6d450d053a271ff4b94cbbdcc9f50738c36f30d2aad9"
+    },
+    {
+      "source": "https://exa.ai/docs/images/home/api-search.webp",
+      "path": "docs/images/home/api-search.webp",
+      "bytes": 60312,
+      "sha256": "9358ba05e13bc2e7f03c53b73187ec9869d0fe65d526a497c97352affe004bae"
+    },
+    {
+      "source": "https://exa.ai/docs/images/home/quickstart-banner.webp",
+      "path": "docs/images/home/quickstart-banner.webp",
+      "bytes": 5712,
+      "sha256": "0345dc6a240e0d525de731f2c0c221162b671981ffa71f914216da8a42e9713a"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/chatgpt-codex/install-codex.gif?s=170c67f79603bc3a0dc470266a3f29f7",
+      "path": "docs/images/integrations/chatgpt-codex/install-codex.gif",
+      "bytes": 3460308,
+      "sha256": "f6f31465176e2d894f9357536a39339641e06211f5c740c4a4fde86a035ac154"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/claude-web-desktop/claude-code.gif?s=1a6d69ab819e600fd2101771380a5711",
+      "path": "docs/images/integrations/claude-web-desktop/claude-code.gif",
+      "bytes": 7116612,
+      "sha256": "a99206383d39b5953763c993298d14fdf04797795fa516becbeaf545e92db1f3"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/claude-web-desktop/install-claude.gif?s=259e8d897252e7f8435b94dc6ceeae5d",
+      "path": "docs/images/integrations/claude-web-desktop/install-claude.gif",
+      "bytes": 2937014,
+      "sha256": "a674b4a007c9b40ca81c5ab5ab515bdcfbd414a95889953b5323d2c7280e211e"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/elevenlabs/parameters.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=618ca64cac86308c571a8268f48342a5",
+      "path": "docs/images/integrations/elevenlabs/parameters.png",
+      "bytes": 31386,
+      "sha256": "8fc22c56f25a8c497f595b8803f9cca5bd7454c9a28e5ecfcd0f4d28457c568c"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/dashboard-install.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5c4f876b2618cb7c86126aa8d7c6b8a1",
+      "path": "docs/images/integrations/exa-slack/dashboard-install.png",
+      "bytes": 75269,
+      "sha256": "ebde8bf13aeb838f34eb6394dab8d3e13a8991317c0eac775ab2beaeac413e28"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2",
+      "path": "docs/images/integrations/exa-slack/max-list-building.png",
+      "bytes": 92015,
+      "sha256": "194ea33a68fe1d70c8b843cfa7786e8544fb166f908741805193abaf193741d9"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/oauth-approval.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=81e3f3a144d7edfcd599cf26ac76b332",
+      "path": "docs/images/integrations/exa-slack/oauth-approval.png",
+      "bytes": 81667,
+      "sha256": "de72d28ceaed6d4e76accb561f76767943e9151321604c0eb0d2e25ef006a4bc"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f",
+      "path": "docs/images/integrations/exa-slack/thread-answer.png",
+      "bytes": 83316,
+      "sha256": "7780a4abe941b7790a1386f0a1d6f3eda784ca9fffc4b523185282de0c725314"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/configured.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=b3c8df585a06a31daa8bba6c2a516722",
+      "path": "docs/images/integrations/openhuman/configured.png",
+      "bytes": 82475,
+      "sha256": "7ff301d197cadfc7c09ebf674a7e89f48430860024fdb745eace0ce186e61fb3"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/connections-search.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=fade0adb98ff41285546365851f79df7",
+      "path": "docs/images/integrations/openhuman/connections-search.png",
+      "bytes": 92124,
+      "sha256": "402fdd1d7332c46a057dc23d00c000eaca63e0860c8be264c73756acdec6f618"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/enter-api-key.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=1a5f91044b2b020317ce9705f76cf1a4",
+      "path": "docs/images/integrations/openhuman/enter-api-key.png",
+      "bytes": 89477,
+      "sha256": "533e82a37130c18d7281142fe27691808274f672b9fedaaa76dc63e446492b2a"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/onboarding-runtime-choice.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=bc4395e75a47554bf741c39bc23a9b36",
+      "path": "docs/images/integrations/openhuman/onboarding-runtime-choice.png",
+      "bytes": 67255,
+      "sha256": "1efb014fa5e49fb477df208e9050b0e09a80356ceba5f78e4af946f09c6641c5"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/select-exa.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=3b6a9f492b89da38097bb243730aed70",
+      "path": "docs/images/integrations/openhuman/select-exa.png",
+      "bytes": 99601,
+      "sha256": "96d6604af7212aba41cba843a4b3aa110c41b0fe09816af29cc5b0e3207c55b7"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/payments/x402/payment-flow.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5a560d80bb84828e03dfacd61351e9fb",
+      "path": "docs/images/integrations/payments/x402/payment-flow.png",
+      "bytes": 351621,
+      "sha256": "ebd7de05d2c89d637445d13e759d71556e1ad3ff3c2eb7f9d5cef9d494eb26aa"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/pydantic-ai/logo.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=aee1bf45859bf6a3debf4177d0aefb3f",
+      "path": "docs/images/integrations/pydantic-ai/logo.svg",
+      "bytes": 1980,
+      "sha256": "edc442a24c483af0139d93061b62e4a1b578088fc7c88613df2f84dac9b5f19f"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/add-official-remote.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=10d74f3a1f862de3a971bfe49df11ec2",
+      "path": "docs/images/integrations/truefoundry/add-official-remote.png",
+      "bytes": 78337,
+      "sha256": "4e8f61befc46a46eb3b6a64646ffefd1e79b566ec275264e90cba8eaa1834c27"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/catalog.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=add2e6b185410cfac99d0ed9fdf56a10",
+      "path": "docs/images/integrations/truefoundry/catalog.png",
+      "bytes": 136892,
+      "sha256": "d50f2ab954da843699d9e61d1866656a18bc40be85a12c9917270dcd11d57edb"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/how-to-use.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=ec79070bbb5919f931ed52f8ae961183",
+      "path": "docs/images/integrations/truefoundry/how-to-use.png",
+      "bytes": 125200,
+      "sha256": "78a1032d21ac0d8ca64c7c9ede5534dec9942e55d0f7add49e2d9365bb44f317"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/register-form.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=daa55b5af716a4bfad9dd61a54ab805c",
+      "path": "docs/images/integrations/truefoundry/register-form.png",
+      "bytes": 58301,
+      "sha256": "2d974bf2f34ef099c6b133079275ffe6b78e346bdc25149dec8ae48892457f1b"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tool-playground.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=6cb86026c8ea245de4a9c701f4b51b8e",
+      "path": "docs/images/integrations/truefoundry/tool-playground.png",
+      "bytes": 191922,
+      "sha256": "5ce0bcd2c4222d8b10ccd57bbce5271343eefb38c141449ed3233f01cabe47fc"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tools-list.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=d0cef2a24127c7bfc0099876dee8f891",
+      "path": "docs/images/integrations/truefoundry/tools-list.png",
+      "bytes": 256759,
+      "sha256": "f9db3331852881aafdd79b304a42c91f7b54ce67d42de4bc39e95181b55c1554"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/vercel/fx/install-exa.gif?s=2e331148abdf5bdf083e6f651e3b8b75",
+      "path": "docs/images/integrations/vercel/fx/install-exa.gif",
+      "bytes": 167546,
+      "sha256": "b4ea7120b9916e54fd5c47773b0d3cd9069498feede5e21777fe4cd3d4dba343"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/chatgpt.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=877edee72e2a7a4f7b9c7c936c6d4316",
+      "path": "docs/images/mcp-clients/chatgpt.svg",
+      "bytes": 1574,
+      "sha256": "6c9013bdb3cd47c12d8d56e82abf6a22f0efd32a06306497fba9023f69b0e645"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude-code.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=f7f017b187974c56e5822d7baf8272fa",
+      "path": "docs/images/mcp-clients/claude-code.svg",
+      "bytes": 418,
+      "sha256": "3a4f1ac978d1104bb194a174ccb16b09a881c8a7fa8156514544e7a052569b91"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56",
+      "path": "docs/images/mcp-clients/claude.svg",
+      "bytes": 1928,
+      "sha256": "765ef990727713cfdbfe4e6a7aab9e555ac0be8190f25a33b7b9a0a2a54e7e56"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/cursor.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=2df7fb1b4be985ad431617e4dfe7a42f",
+      "path": "docs/images/mcp-clients/cursor.svg",
+      "bytes": 458,
+      "sha256": "4e7a826ece9721ac1b208718645f217a2d0d5df9d6c9e10fca11eaffcd95241f"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/grok.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=52ce55e129bd951b5c96471cf21153e7",
+      "path": "docs/images/mcp-clients/grok.svg",
+      "bytes": 928,
+      "sha256": "f44e7ae67f783e4b9400cd039e08b768172d19a74c3799528762da4ce3b75efa"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/other-clients.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=187e423022b8fc3ed950a967a10ff700",
+      "path": "docs/images/mcp-clients/other-clients.svg",
+      "bytes": 323,
+      "sha256": "4eabd21189b0031d3aea8bed7504ef85422b6c7d0d741b18dc14cce1789a56e4"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/vscode.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9828a7b963d47467df217a38c716fea2",
+      "path": "docs/images/mcp-clients/vscode.svg",
+      "bytes": 478,
+      "sha256": "610d7913513c085a0474f52a4112334e8b8200b6a3154f1bc8cd2a410583550f"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/affiliatecom.svg",
+      "path": "docs/images/sidebar-icons/affiliatecom.svg",
+      "bytes": 2367,
+      "sha256": "0928d6c3f5142cc8a3c156754f46a4550ec5b0d8213726fcc661f64a5d5ce71e"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/anthropic.svg",
+      "path": "docs/images/sidebar-icons/anthropic.svg",
+      "bytes": 286,
+      "sha256": "70eb69f3ee62b3da7e6d264156d15f1ef067606b04accc5e0975a440ce48749a"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/baselayer.svg",
+      "path": "docs/images/sidebar-icons/baselayer.svg",
+      "bytes": 1851,
+      "sha256": "33ff778e086f93bc1f5bbb2d61f778766cbf28c012be17d1c30bc4315da368bb"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/baseten.svg",
+      "path": "docs/images/sidebar-icons/baseten.svg",
+      "bytes": 494,
+      "sha256": "c9ffe52ae8b20b21943e1c05c3b20e35559c1aa6b300b9d94822a455188a090f"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/browserbase.svg",
+      "path": "docs/images/sidebar-icons/browserbase.svg",
+      "bytes": 252,
+      "sha256": "75263389dd81941602ee91b1c7e4e9b124a68da2d17f1a6a63efe5e24a2d2058"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/codex.svg",
+      "path": "docs/images/sidebar-icons/codex.svg",
+      "bytes": 1315,
+      "sha256": "a3d23d291a18a6e5e15c10e6d16c48d383dca728199168ca793bd947b763932c"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/crewai.svg",
+      "path": "docs/images/sidebar-icons/crewai.svg",
+      "bytes": 800,
+      "sha256": "1de819d634490f1c5044ddc209d1896be4cde08dd655a8677a30699970e28e73"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/elevenlabs.svg",
+      "path": "docs/images/sidebar-icons/elevenlabs.svg",
+      "bytes": 175,
+      "sha256": "e57bd37a298c600b05314956c750347627ba15a2165720c12ce7d12b91adfcf6"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/exa-for-sheets.svg",
+      "path": "docs/images/sidebar-icons/exa-for-sheets.svg",
+      "bytes": 414,
+      "sha256": "02826c58e66478b5f0cb97adcf81879b3de2e78d4558d8759166270c4e08fc30"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/exa-slack.svg",
+      "path": "docs/images/sidebar-icons/exa-slack.svg",
+      "bytes": 1818,
+      "sha256": "8f6a1d7c347c0897f945a4065b248449ae49393a6247d9511c49b23b2fa6cbb9"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/fiber.svg",
+      "path": "docs/images/sidebar-icons/fiber.svg",
+      "bytes": 618,
+      "sha256": "11886247aa522fd123a5afa3a5b1c49a6a9bf93b474d3d0b67dcd7dbf759c92b"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/financialdatasets.svg",
+      "path": "docs/images/sidebar-icons/financialdatasets.svg",
+      "bytes": 11183,
+      "sha256": "ba40dd913608af54a7032b1bdf9a5ba4da1951adf0deac128cd3b7f4159e5b05"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/grok-build.svg",
+      "path": "docs/images/sidebar-icons/grok-build.svg",
+      "bytes": 937,
+      "sha256": "643444b5ecedda935ede089af0df4575aece6e0315716af63c02a83fad43eae8"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/gumloop.svg",
+      "path": "docs/images/sidebar-icons/gumloop.svg",
+      "bytes": 9912,
+      "sha256": "477427aac553513f596a4d333cbe1b60fdeecfe19ad3cf3f638233dad80f66fd"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/hermes-agent.svg",
+      "path": "docs/images/sidebar-icons/hermes-agent.svg",
+      "bytes": 63892,
+      "sha256": "9e56abcabfd84cffeddc32b87f7f0ff6c5c726234de721f2f0b9a96be7061eb1"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/jinko.svg",
+      "path": "docs/images/sidebar-icons/jinko.svg",
+      "bytes": 304,
+      "sha256": "fe20c19056b0ad45d9f474608164f34d78fd329fe81450c99676fcd9ac49d0b1"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/langchain.svg",
+      "path": "docs/images/sidebar-icons/langchain.svg",
+      "bytes": 508,
+      "sha256": "f22c53d435deef9a3fcf9c75b070a41f6d2e89a30be1af1d5434ae7226e79840"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/llamaindex.svg",
+      "path": "docs/images/sidebar-icons/llamaindex.svg",
+      "bytes": 5666,
+      "sha256": "40bae2696b163733b09ab5ace63e6d8f2a44acf0e7496c40e55155befb8ab395"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/n8n.svg",
+      "path": "docs/images/sidebar-icons/n8n.svg",
+      "bytes": 1487,
+      "sha256": "5f8fa812a8cfc8d15a6e87bb9881f5fd41575d05e4b9189c46609ca181c5967c"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/nevermined.svg",
+      "path": "docs/images/sidebar-icons/nevermined.svg",
+      "bytes": 299,
+      "sha256": "988f6a748d50821ac6394f28bba5674a819fbfd24b7c78b625b7a40d2c5b2718"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openai.svg",
+      "path": "docs/images/sidebar-icons/openai.svg",
+      "bytes": 1938,
+      "sha256": "b18d60477fd6f52c4babd65977ef5fe912de743c35c7aca1e23247df5c975f06"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openclaw.svg",
+      "path": "docs/images/sidebar-icons/openclaw.svg",
+      "bytes": 2966,
+      "sha256": "a5982277145efc22ef29bfc92bac348f73b074965e679f08b1a1ab78cd00674f"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openhuman.svg",
+      "path": "docs/images/sidebar-icons/openhuman.svg",
+      "bytes": 524,
+      "sha256": "486c98e6d71cc91e0157efa7ba39c94ea88762582d64347dd9d305a65a558c12"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/openrouter.svg",
+      "path": "docs/images/sidebar-icons/openrouter.svg",
+      "bytes": 517,
+      "sha256": "c6bd0de7709537f505fd244eafaeb066cdff08bcfbfddf60e85388d824221a07"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/particle.svg",
+      "path": "docs/images/sidebar-icons/particle.svg",
+      "bytes": 5373,
+      "sha256": "9de2b3cccb802d91c1d86cf6abdb1ee7039e96ff2948abb15e92ef0b92f8fda7"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/polymarket.svg",
+      "path": "docs/images/sidebar-icons/polymarket.svg",
+      "bytes": 697,
+      "sha256": "263bf033d6d4be243e69c5406116b461832ead6eb8221356a1669792d7ba1e23"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/pydantic-ai.svg",
+      "path": "docs/images/sidebar-icons/pydantic-ai.svg",
+      "bytes": 1230,
+      "sha256": "f4045cb71e2589896587833df308f0e22257e65ec4b9c13484ece5bc34434cf3"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/similarweb.svg",
+      "path": "docs/images/sidebar-icons/similarweb.svg",
+      "bytes": 1276,
+      "sha256": "6da688b9c631767b2be77e35d7bbdff868d0f23ad6857ee44668a6dee03e7c37"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/snowflake.svg",
+      "path": "docs/images/sidebar-icons/snowflake.svg",
+      "bytes": 4313,
+      "sha256": "42fd4a114d4f847c2a766809d62a1d9da2997dab8fd3df7bb8f3cd530ca58284"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/stripe.svg",
+      "path": "docs/images/sidebar-icons/stripe.svg",
+      "bytes": 627,
+      "sha256": "a0667ce6a8852cd01cee699aa786a843fad7f8b4b8652863638781ed8e4c7d1b"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/tempo.svg",
+      "path": "docs/images/sidebar-icons/tempo.svg",
+      "bytes": 228,
+      "sha256": "7fe6a128a0e316c9a11c5c167d141e3a3eb877ae970c528e08a5bb765bb6760d"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/truefoundry.svg",
+      "path": "docs/images/sidebar-icons/truefoundry.svg",
+      "bytes": 3812,
+      "sha256": "c301ec76b4de4f27518b3778fbe1bf777abb0b2e192d09e1bf5ae2778ce5edf5"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/vercel.svg",
+      "path": "docs/images/sidebar-icons/vercel.svg",
+      "bytes": 157,
+      "sha256": "68a965f0e441ae0c8c183db650b2db63d2431985464be5dacae6418ec6442a09"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/world.svg",
+      "path": "docs/images/sidebar-icons/world.svg",
+      "bytes": 1503,
+      "sha256": "38bd387a1a6fc4fdb60c410b4405d332d95cef147c2fc7959cbdcaafba11d785"
+    },
+    {
+      "source": "https://mintlify.s3.us-west-1.amazonaws.com/exa-52/images/sidebar-icons/x402.svg",
+      "path": "docs/images/sidebar-icons/x402.svg",
+      "bytes": 442,
+      "sha256": "d2f12677568d443934cb464151fba385decf7d1af8430b135ae8f81e4cc882b0"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075",
+      "path": "docs/images/websets/add-enrichment.png",
+      "bytes": 233432,
+      "sha256": "d2200201bbf43a558158bbf3f0e4968d910d856c10e5416b1845c141cafab0a7"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/exclude-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=b28ac0441991bc4543571ffc2a900963",
+      "path": "docs/images/websets/exclude-flow.png",
+      "bytes": 81737,
+      "sha256": "b3ebeedc7702beca5180553bd673eaed11dc9b4ceabc854e5c4c8f77a6db2cb9"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/import-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=6cf23e9e291fe7811942d18c3aa08b33",
+      "path": "docs/images/websets/import-flow.png",
+      "bytes": 41783,
+      "sha256": "fe253bef4ad541f4b865ba37291deba51619265234c0675dcd4ade825d3ae078"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/websets-landing.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=8573cf90a9e9f98c757ac0fa56c8a64d",
+      "path": "docs/images/websets/websets-landing.png",
+      "bytes": 142466,
+      "sha256": "9a3c6608b896bed77db9b95684104a210503f573576b605a095ebe702c0b5a89"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/websets-preview.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=15c47c556750ad0f1cebfb78b1ea52aa",
+      "path": "docs/images/websets/websets-preview.png",
+      "bytes": 212364,
+      "sha256": "48e6f4941819a56c64c77cf7d9f19e12d0dfe464a70c95c1e22e046a67b21d57"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/websets-result.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=793c040207129ee6c2efc1c8d922d6fe",
+      "path": "docs/images/websets/websets-result.png",
+      "bytes": 355744,
+      "sha256": "cd5237b98484ce2960bf85750ee2aa05e0f71c5de755b1bfb86cc6777eb18d9e"
+    },
+    {
+      "source": "https://exa.ai/docs/llms.txt",
+      "path": "docs/llms.txt",
+      "bytes": 24309,
+      "sha256": "42aaa705c7e7824b9815f8f1eef4900f7a9bc3d784957d5c98d04b601433157d"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/rjfwhV9stZF3dXkq/logo/dark.svg?fit=max&auto=format&n=rjfwhV9stZF3dXkq&q=85&s=977afb715a77c49036c8991b22bb82c7",
+      "path": "docs/logo/dark.svg",
+      "bytes": 4280,
+      "sha256": "7d18c6e04b29df47838a66f64e8c26668eed18b40273a0e63ad8fab9ca927b6b"
+    },
+    {
+      "source": "https://mintcdn.com/exa-52/rjfwhV9stZF3dXkq/logo/light.svg?fit=max&auto=format&n=rjfwhV9stZF3dXkq&q=85&s=23f6eeaafae25b4c8b6efb60ddc68e0c",
+      "path": "docs/logo/light.svg",
+      "bytes": 4282,
+      "sha256": "785095dcd0eee5a6c689b326ac2a6d3a506b569c3503ad3c3cc886a53425a01c"
+    },
+    {
+      "source": "https://exa.ai/docs/team-management-spec.yaml",
+      "path": "docs/team-management-spec.yaml",
+      "bytes": 32062,
+      "sha256": "3cb487d56b67a3f0ae45fe0750341a9ceedfbd6084b36bf1b14b0802bb785c8d"
+    },
+    {
+      "source": "https://exa.ai/fonts/ABCDiatype-Bold.woff2",
+      "path": "fonts/ABCDiatype-Bold.woff2",
+      "bytes": 51704,
+      "sha256": "72425c423f8f95522cf83806bba0983c7c551b0ab54540ac4b479ea49bf8b1b2"
+    },
+    {
+      "source": "https://exa.ai/fonts/ABCDiatype-Medium.woff2",
+      "path": "fonts/ABCDiatype-Medium.woff2",
+      "bytes": 53112,
+      "sha256": "bdcca7f0c53eb39245571e8f324d038201f6d8b6604f13e327507f3b0c02bf89"
+    },
+    {
+      "source": "https://exa.ai/fonts/ABCDiatype-Regular.woff2",
+      "path": "fonts/ABCDiatype-Regular.woff2",
+      "bytes": 49184,
+      "sha256": "a673720520b4f0397f94838fe63e6008a08f4a818b21ff48ac66c50121cbf800"
+    },
+    {
+      "source": "https://exa.ai/fonts/GeistMono-Regular.woff2",
+      "path": "fonts/GeistMono-Regular.woff2",
+      "bytes": 29412,
+      "sha256": "a8eb1f882a9c87d414fc6d6a5db473155a6c1012520b4e6d6037587273b074e5"
+    }
+  ],
+  "errors": []
+}

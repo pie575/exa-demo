@@ -1,0 +1,93 @@
+{
+  "id": "005",
+  "path": "/docs/admin/openapi-spec",
+  "production": {
+    "url": "https://exa.ai/docs/admin/openapi-spec",
+    "title": "OpenAPI Specification - Exa",
+    "h1": "OpenAPI Specification",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 353.0625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 938.375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "You can view up-to-date versions of our OpenAPI specs here:\nPublic API Spec: YAML · JSON\nTeam Management API Spec\nThe raw OpenAPI specs are the source of truth for request and response schemas. Generated reference pages may omit recipes, migration notes, and recommended defaults; use the guides and examples for current integration guidance such as type: \"auto\", highlights, and freshness settings. These links always point at the specs served by this docs deployment.",
+    "scrollHeight": 1034,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/admin/openapi-spec",
+    "title": "OpenAPI Specification - Exa",
+    "h1": "OpenAPI Specification",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 353.0625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 938.375
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "You can view up-to-date versions of our OpenAPI specs here:\nPublic API Spec: YAML · JSON\nTeam Management API Spec\nThe raw OpenAPI specs are the source of truth for request and response schemas. Generated reference pages may omit recipes, migration notes, and recommended defaults; use the guides and examples for current integration guidance such as type: \"auto\", highlights, and freshness settings. These links always point at the specs served by this docs deployment.",
+    "scrollHeight": 1034,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

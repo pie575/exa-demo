@@ -1,0 +1,103 @@
+{
+  "id": "034",
+  "path": "/docs/get-started/quickstart",
+  "production": {
+    "url": "https://exa.ai/docs/get-started/quickstart",
+    "title": "Developer quickstart - Exa",
+    "h1": "Developer quickstart",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 321.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2871.59375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\n1. Get an API key\n1\n\nVisit the Exa Dashboard\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nSet the key as an environment variable\n\nmacOS/Linux\nWindows\nexport EXA_API_KEY=\"your-api-key\"\n\n​\n2. Choose how you’ll use Exa\nExa fits into your application two ways: call the APIs from your own code, or connect an agent you already use.\nCall the APIs\nUse Search, Contents, and Exa Agent from your own code. Install an SDK below and make your first request.\nInstall an SDK\nConnect your agent\nConnect ChatGPT, Claude, Codex, or Cursor to Exa’s search and research tools. No API key is required.\nSet up Exa MCP\nBuilding with the APIs? Pick where to start:\nStart with\tUse it for\nSearch\tFinding relevant web pages & returning synthesized content in under 2s\nDeep Search\tHigher-quality search where an LLM iteratively finds better results\nAgent\tLong-running asynchronous research, list building, enrichment, or reports\nContents\tExtracting page content when you already have the URL(s)\n​\n3. Install an SDK\nPython\nJavaScript\npip install exa-py\n\n​\n4. Make your first request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"best blog posts about vector databases\",\n    contents={\"highlights\": True},\n)\n\nfor result in results.results:\n    print(result.title, result.url)\n\n​\nNext steps\nSearch API\nFind relevant pages and return clean content or structured outputs.\nRead guide\nAgent API\nBuild long-running research, list-building, and enrichment workflows.\nRead guide\nContents API\nExtract clean content from pages you already know.\nRead guide\nExa MCP\nConnect any MCP client to Exa’s web search, page fetching, and Exa Agent tools.\nRead guide",
+    "scrollHeight": 2968,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/get-started/quickstart",
+    "title": "Developer quickstart - Exa",
+    "h1": "Developer quickstart",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 321.8125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2871.59375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 204
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\n1. Get an API key\n1\n\nVisit the Exa Dashboard\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nSet the key as an environment variable\n\nmacOS/Linux\nWindows\nexport EXA_API_KEY=\"your-api-key\"\n\n​\n2. Choose how you’ll use Exa\nExa fits into your application two ways: call the APIs from your own code, or connect an agent you already use.\nCall the APIs\nUse Search, Contents, and Exa Agent from your own code. Install an SDK below and make your first request.\nInstall an SDK\nConnect your agent\nConnect ChatGPT, Claude, Codex, or Cursor to Exa’s search and research tools. No API key is required.\nSet up Exa MCP\nBuilding with the APIs? Pick where to start:\nStart with\tUse it for\nSearch\tFinding relevant web pages & returning synthesized content in under 2s\nDeep Search\tHigher-quality search where an LLM iteratively finds better results\nAgent\tLong-running asynchronous research, list building, enrichment, or reports\nContents\tExtracting page content when you already have the URL(s)\n​\n3. Install an SDK\nPython\nJavaScript\npip install exa-py\n\n​\n4. Make your first request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"best blog posts about vector databases\",\n    contents={\"highlights\": True},\n)\n\nfor result in results.results:\n    print(result.title, result.url)\n\n​\nNext steps\nSearch API\nFind relevant pages and return clean content or structured outputs.\nRead guide\nAgent API\nBuild long-running research, list-building, and enrichment workflows.\nRead guide\nContents API\nExtract clean content from pages you already know.\nRead guide\nExa MCP\nConnect any MCP client to Exa’s web search, page fetching, and Exa Agent tools.\nRead guide",
+    "scrollHeight": 2968,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

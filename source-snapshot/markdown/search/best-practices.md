@@ -1,0 +1,216 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Search Best Practices
+
+> Tune retrieval quality, latency, context, and synthesis for production Search API integrations.
+
+This guide assumes you already have a working [Search API request](/docs/search/quickstart). It covers how to improve that request following Exa's recommended best practices.
+
+## Start with the smallest useful request
+
+The best baseline is a natural-language query with `highlights: true`. Exa sizes each result's excerpts to its relevance, so there is no character budget to tune:
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Recent technical articles comparing hybrid and semantic retrieval for RAG systems",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "Recent technical articles comparing hybrid and semantic retrieval for RAG systems",
+    { contents: { highlights: true } }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Recent technical articles comparing hybrid and semantic retrieval for RAG systems",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+This gives you ranked pages and token-efficient context per page, relevant to the query.
+
+Add additional parameters only as needed:
+
+| Parameter                  | Add it when                                                          |
+| -------------------------- | -------------------------------------------------------------------- |
+| `type`                     | Adjusting to meet a latency budget or depth requirement              |
+| `numResults`               | Fewer pages for a smaller context window, or more for broader recall |
+| `outputSchema`             | Synthesizing results or structuring them into JSON                   |
+| `maxAgeHours`              | Cached page content may be too old                                   |
+| `highlights.maxCharacters` | Your application requires a fixed excerpt limit per page             |
+| Domain or date filters     | Results outside the constraint would be unusable                     |
+
+## Search vs. Deep Search
+
+Standard search retrieves and ranks pages for a query. Deep Search runs a research process that can
+search iteratively, inspect what it found, refine the search, and synthesize a grounded result.
+
+| Need                                                                                                                            | Start with                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| Ranked pages for a well-formed query                                                                                            | `auto` or `fast`               |
+| Difficult searches, synthesis across many results, or structured outputs that cannot be filled with a single search (3+ fields) | `deep`                         |
+| Long-running research, list building, or multi-hop enrichment                                                                   | [Exa Agent](/docs/agent/quickstart) |
+
+Deep modes are recommended by default when using `outputSchema`. Read the [Deep Search guide](/docs/search/deep-search) for full instructions and examples.
+
+## Improve retrieval quality
+
+When results need improvement, change one part of the request at a time.
+
+<Steps>
+  <Step title="Clarify the query">
+    Describe the pages you want, not a bag of keywords. Include the subject and any source type,
+    time period, or other detail that changes what a relevant result looks like.
+
+    ```text theme={null}
+    Benchmark papers evaluating long-context retrieval methods on legal documents
+    ```
+  </Step>
+
+  <Step title="Read the response in layers">
+    Look at the titles, URLs, publication dates, and highlights before changing the request.
+
+    ```json theme={null}
+    {
+      "results": [
+        {
+          "title": "Long-Context Retrieval Methods on Legal Documents",
+          "url": "https://arxiv.org/abs/2608.00000",
+          "publishedDate": "2026-08-26T00:00:00.000Z",
+          "highlights": [
+            "We compare long-context retrieval methods across legal document benchmarks..."
+          ]
+        }
+      ]
+    }
+    ```
+
+    The title and URL show the kind of source Exa retrieved, `publishedDate` shows
+    its recency, and the highlight shows the evidence that matched the query. Refine the query to
+    retrieve different pages, add date filters to narrow the time period, or fetch full text when
+    you need more context from a useful result.
+  </Step>
+
+  <Step title="Add only hard constraints">
+    Use `includeDomains`, `excludeDomains`, and publication-date filters only when a result that
+    violates the constraint cannot be used. Put retrieval preferences in the query and, when
+    synthesizing, put response instructions in `systemPrompt`.
+  </Step>
+
+  <Step title="Change the search mode last">
+    Use a faster mode for a latency requirement or a deep mode when the retrieval process itself
+    needs iteration and reasoning. A different mode cannot repair an underspecified query.
+  </Step>
+</Steps>
+
+Keep a small set of representative queries while tuning. Compare result relevance and downstream task success across the set instead of optimizing for one example. Record `requestId`, `searchTime`, and `costDollars` so regressions are reproducible.
+
+## Budget latency and context
+
+Each control spends a different resource:
+
+| Control                   | What it adds                                      |
+| ------------------------- | ------------------------------------------------- |
+| More results              | More pages, response data, and downstream context |
+| Full text                 | Broader page context and a larger payload         |
+| `summary`                 | One additional language model call per result     |
+| `outputSchema`            | Synthesis across the retrieved results            |
+| `contents.maxAgeHours: 0` | A fresh page fetch instead of cached content      |
+| Deep search types         | Iterative search, synthesis, and reasoning        |
+
+For a real-time path where cached content is acceptable, combine the lowest-latency mode with highlights and cache-only content:
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Recent product updates from major AI labs",
+      type="instant",
+      contents={
+          "highlights": True,
+          "max_age_hours": -1,
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("Recent product updates from major AI labs", {
+    type: "instant",
+    contents: {
+      highlights: true,
+      maxAgeHours: -1
+    }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Recent product updates from major AI labs",
+      "type": "instant",
+      "contents": {
+        "highlights": true,
+        "maxAgeHours": -1
+      }
+    }'
+  ```
+</CodeGroup>
+
+Do not use this recipe when page freshness is part of correctness. Start from `auto` and default freshness unless the product has a measured latency target.
+
+To let Exa allocate one context budget across the whole result set — more from strong sources, less from redundant ones — see the [Dynamic Highlights research preview](/docs/search/highlights#dynamic-highlights).
+
+## Tips for common use cases
+
+| If you need                          | Use                                                              | Avoid                                             |
+| ------------------------------------ | ---------------------------------------------------------------- | ------------------------------------------------- |
+| Newer publications                   | Put the time window in the query or use publication-date filters | `maxAgeHours`                                     |
+| Fresh content from pages that change | `contents.maxAgeHours`                                           | Publication-date filters                          |
+| A preferred kind of source           | Query phrasing; `systemPrompt` when synthesizing                 | A hard domain allowlist                           |
+| Results only from approved sources   | `includeDomains`                                                 | Repeating `site:` in the query                    |
+| A small structured output            | `outputSchema` with standard Search                              | Choosing Deep only because the output is JSON     |
+| A multi-item researched output       | `deep` with `outputSchema`, or [Exa Agent](/docs/agent/quickstart)    | Expecting one retrieval pass to gather every item |
+| More context from a few pages        | Search with highlights, then call Contents                       | Full text for every result                        |
+| Lower latency                        | Measure `fast` or `instant` with compact content                 | Adding freshness or synthesis controls by default |
+
+## When to use another endpoint
+
+Use a different Exa endpoint when the task changes shape:
+
+| Task                                                | Use                              |
+| --------------------------------------------------- | -------------------------------- |
+| Long-running research, list building, or enrichment | [Exa Agent](/docs/agent/quickstart)   |
+| The URLs are already known                          | [Contents](/docs/contents/quickstart) |
+| Run a search on a schedule                          | [Monitors](/docs/monitors/quickstart) |
+
+## Next steps
+
+<Columns cols={2}>
+  <Card title="Search API reference" icon="square-terminal" href="/docs/reference/search" cta="Open reference" arrow="true">
+    Every request parameter and response field.
+  </Card>
+
+  <Card title="Search quickstart" icon="search" href="/docs/search/quickstart" cta="Review guide" arrow="true">
+    Core request shapes, filters, output, and freshness.
+  </Card>
+
+  <Card title="Contents API" icon="file-text" href="/docs/contents/quickstart" cta="Open guide" arrow="true">
+    Extract highlights or full text from pages you already know.
+  </Card>
+
+  <Card title="Exa Agent" icon="bot" href="/docs/agent/quickstart" cta="Open guide" arrow="true">
+    Long-running research, list building, and enrichment.
+  </Card>
+</Columns>

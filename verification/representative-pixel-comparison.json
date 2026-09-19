@@ -1,0 +1,34 @@
+[
+  {
+    "page": "home-desktop",
+    "pixels": 1484784,
+    "identical": false,
+    "meanAbsoluteDifference": 7.408485005226349e-05,
+    "pixelsDifferingOver3": 8,
+    "pixelsDifferingOver3Percent": 0.0005387989094710072
+  },
+  {
+    "page": "home-mobile",
+    "pixels": 329160,
+    "identical": true,
+    "meanAbsoluteDifference": 0.0,
+    "pixelsDifferingOver3": 0,
+    "pixelsDifferingOver3Percent": 0.0
+  },
+  {
+    "page": "search-quickstart-desktop",
+    "pixels": 1484784,
+    "identical": true,
+    "meanAbsoluteDifference": 0.0,
+    "pixelsDifferingOver3": 0,
+    "pixelsDifferingOver3Percent": 0.0
+  },
+  {
+    "page": "search-quickstart-mobile",
+    "pixels": 329160,
+    "identical": false,
+    "meanAbsoluteDifference": 6.68367966946166e-05,
+    "pixelsDifferingOver3": 1,
+    "pixelsDifferingOver3Percent": 0.0003038036213391664
+  }
+]

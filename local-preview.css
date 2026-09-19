@@ -1,0 +1,17 @@
+/* Local Mintlify preview: hide Next.js's development badge, which is absent
+   from the production documentation, and provide a local documentation search
+   launcher in the space used by Mintlify's hosted assistant. */
+nextjs-portal, [role="status"][aria-live="polite"][style*="--timing-bounce"] { display: none !important; }
+/* Mintlify already renders its exact hosted assistant layout in preview but
+   hides it. Reveal that native layout and bind it to local search in JS. */
+html[data-exa-local-preview] [data-assistant-bar] { visibility: visible !important; }
+/* Exa's hosted footer has social links and llms.txt only. The CLI adds its
+   own preview attribution block; retain the production footer arrangement. */
+#footer > div:has(a[href*="utm_campaign=poweredBy"]) { display: none; }
+/* Hosted Mintlify optimizes these authored images into <picture> and removes
+   prose image margins. Its local renderer uses a contents span instead. */
+#content span.contents > img[src^="/docs/images/"] { margin-block: 0; }
+
+/* Custom API code examples omit the assistant's action-row flex wrapper in
+   local preview. Keep the restored actions on the production's single row. */
+.docs-local-code-actions { display: flex; align-items: center; gap: 8px; }

@@ -1,0 +1,52 @@
+---
+title: "Managing Your Team"
+description: "Details on Team structure and account management for the Exa platform"
+---
+
+***
+
+<Card title="Go to API Dashboard" icon="layout-dashboard" horizontal href="https://dashboard.exa.ai">
+  Create teams, invite members, and manage billing.
+</Card>
+
+Exa organizes account usage and paid feature access through 'Teams':
+
+Upon account creation, you're placed in a 'Personal' Team. You can use the dropdown in the top-left of the Exa dashboard shown below to create a new Team or select between other Teams you have. You can make as many Teams as you like.
+
+## Seeing your teams
+
+<img src="/docs/images/admin/team-management/dashboard_team_switcher.png" alt="Team dropdown (top-left) within the Exa dashboard under Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
+
+Team dropdown (top-left) within the Exa dashboard under Team settings
+
+## Topping up a Team's balance
+
+With the desired Team selected, you can top up your credit balance in the Billing page.
+
+<img src="/docs/images/admin/team-management/dashboard_topup.png" alt="Billing page credit balance top up" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
+
+## Inviting people to your team
+
+Team admins can add members via the Invite feature in Team settings.
+
+<img src="/docs/images/admin/team-management/dashboard_invite.png" alt="Inviting a member in Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite.png" />
+
+Once a team member is invited, their status will be 'Pending' on the team management menu.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_pending.png" alt="Team member listed with Pending invite status" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_pending.png" />
+
+They will receive an email inviting them to join the team.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_email.png" alt="Team invitation email" width="1094" height="1082" data-path="images/admin/team-management/dashboard_invite_email.png" />
+
+Once accepted, you'll see both members are 'Accepted'. All Team members share the usage limits and features of their respective Team's plan.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_accepted.png" alt="Team members list showing Accepted status" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
+
+## Team Management API
+
+Create and manage API keys programmatically with the [Team Management API](/docs/reference/team-management/create-api-key).
+
+<Info>
+  The Team Management API is enabled per team. It authenticates with a service account API key, which is created from the **Service keys** tab on the [API keys page](https://dashboard.exa.ai/api-keys) once the feature is enabled for your team. Contact [support@exa.ai](mailto:support@exa.ai) to request access.
+</Info>

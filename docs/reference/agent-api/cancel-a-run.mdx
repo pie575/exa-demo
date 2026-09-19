@@ -1,0 +1,12 @@
+---
+title: "Cancel a run"
+description: "Cancel a queued or running Agent run."
+openapi: "docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
+timestamp: false
+---
+
+If the run is still active, it transitions to `cancelled` immediately and terminates without returning any results. The run ends with status `cancelled` and `stopReason: cancelled`. You are billed for usage accrued before cancellation. If the run has already reached a terminal status (completed, failed, or cancelled), the endpoint returns the existing run unchanged.
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

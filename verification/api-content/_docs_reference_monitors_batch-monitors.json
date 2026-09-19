@@ -1,0 +1,26 @@
+{
+  "route": "/docs/reference/monitors/batch-monitors",
+  "production": {
+    "status": 200,
+    "text": "Batch action on monitors\nCopy page\n\nPerform a batch action on monitors matching the provided filters.\n\nSupported actions:\n\ndelete: Permanently remove matching monitors\npause: Pause matching monitors\nunpause: Unpause matching monitors\n\nUse dry_run: true (the default) to preview which monitors would be affected before performing the action. Results are paginated via the limit parameter; loop until has_more is false to process all matching monitors.\n\nPOST\n/\nmonitors\n/\nbatch\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nBody\napplication/json\n​\naction\nenum<string>required\n\nThe action to perform on matching monitors. delete permanently removes them, pause sets their status to paused, and unpause sets their status to active.\n\nAvailable options: delete, pause, unpause \n​\nfilter\nobjectrequired\n\nAt least one filter field must be provided to prevent accidental bulk operations.\n\nShow child attributes\n\n​\ndry_run\nbooleandefault:true\n\nWhen true, returns the monitors that would be affected without performing the action. Defaults to true.\n\n​\nlimit\nintegerdefault:50\n\nMaximum number of monitors to process in a single request. Defaults to 50, maximum 500.\n\nRequired range: 1 <= x <= 500\nResponse\n200\napplication/json\n\nBatch action result\n\n​\naction\nenum<string>required\n\nThe action that was performed\n\nAvailable options: delete, pause, unpause \n​\naffected\nintegerrequired\n\nThe number of monitors affected by the action\n\n​\nids\nstring[]required\n\nThe IDs of the monitors that were affected\n\n​\ndry_run\nbooleanrequired\n\nWhether this was a dry run\n\n​\nhas_more\nbooleanrequired\n\nWhether there are more monitors matching the filter. If true, repeat the request to process the next batch.\n\nTrigger a monitor\nPrevious\nList runs\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Batch action on monitors",
+      "Authorizations",
+      "Body",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "Batch action on monitors\nCopy page\n\nPerform a batch action on monitors matching the provided filters.\n\nSupported actions:\n\ndelete: Permanently remove matching monitors\npause: Pause matching monitors\nunpause: Unpause matching monitors\n\nUse dry_run: true (the default) to preview which monitors would be affected before performing the action. Results are paginated via the limit parameter; loop until has_more is false to process all matching monitors.\n\nPOST\n/\nmonitors\n/\nbatch\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nBody\napplication/json\n​\naction\nenum<string>required\n\nThe action to perform on matching monitors. delete permanently removes them, pause sets their status to paused, and unpause sets their status to active.\n\nAvailable options: delete, pause, unpause \n​\nfilter\nobjectrequired\n\nAt least one filter field must be provided to prevent accidental bulk operations.\n\nShow child attributes\n\n​\ndry_run\nbooleandefault:true\n\nWhen true, returns the monitors that would be affected without performing the action. Defaults to true.\n\n​\nlimit\nintegerdefault:50\n\nMaximum number of monitors to process in a single request. Defaults to 50, maximum 500.\n\nRequired range: 1 <= x <= 500\nResponse\n200\napplication/json\n\nBatch action result\n\n​\naction\nenum<string>required\n\nThe action that was performed\n\nAvailable options: delete, pause, unpause \n​\naffected\nintegerrequired\n\nThe number of monitors affected by the action\n\n​\nids\nstring[]required\n\nThe IDs of the monitors that were affected\n\n​\ndry_run\nbooleanrequired\n\nWhether this was a dry run\n\n​\nhas_more\nbooleanrequired\n\nWhether there are more monitors matching the filter. If true, repeat the request to process the next batch.\n\nTrigger a monitor\nPrevious\nList runs\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "Batch action on monitors",
+      "Authorizations",
+      "Body",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1886,
+  "localLength": 1886
+}

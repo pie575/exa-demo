@@ -1,0 +1,103 @@
+{
+  "id": "101",
+  "path": "/docs/search/data/companies-people",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/companies-people",
+    "title": "Companies & People - Exa",
+    "h1": "Companies & People",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 319.4375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2906.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for organizations and the people connected to them. These searches work best together: describe the company traits that qualify a person, or the people and roles that reveal how a company operates.\nCompany retrieval benchmark\nSee how Exa evaluates company retrieval and fact extraction.\nPeople retrieval benchmark\nSee how Exa evaluates targeted lookups and profile discovery.\n​\nUse it for\nCompany, candidate, and expert discovery\nAccount research and stakeholder mapping\nMarket maps, investment research, and deal sourcing\nLeadership, hiring, and organization research\n​\nWrite better queries\nStart with the entity you want, then add the traits and relationships that qualify it. Ask for the source type when it matters, such as company homepages, professional profiles, job postings, or personal websites.\nCompanies\nPeople\n​\nDiscover companies by what they do\nDescribe the customer, product, capability, stage, and geography that define the market. This finds candidates based on what they do instead of relying on a predefined company list.\ncompanies selling AI voice agents to dental practices\n​\nFind operating signals\nName the signal and the company traits that matter. Search can retrieve job postings, pricing pages, product documentation, and reporting alongside company pages.\nremote staff engineer roles at Series B fintech companies\n​\nResearch funding activity\nSpecify the round, industry, participant, and time window.\ninvestors who led seed rounds in robotics in the last year\n​\nSearch both together\nWrite one query that expresses the relationship you need. Exa can return company pages, professional profiles, hiring pages, and public references in the same result set.\nheads of security at Series B healthcare software companies that sell to hospitals\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"heads of security at Series B healthcare software companies that sell to hospitals\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the companies, people, qualification criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nBuild and qualify company or people lists, then enrich each record with fields gathered from multiple sources.\nOpen Agent guide",
+    "scrollHeight": 3003,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/companies-people",
+    "title": "Companies & People - Exa",
+    "h1": "Companies & People",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 319.4375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2906.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 320
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for organizations and the people connected to them. These searches work best together: describe the company traits that qualify a person, or the people and roles that reveal how a company operates.\nCompany retrieval benchmark\nSee how Exa evaluates company retrieval and fact extraction.\nPeople retrieval benchmark\nSee how Exa evaluates targeted lookups and profile discovery.\n​\nUse it for\nCompany, candidate, and expert discovery\nAccount research and stakeholder mapping\nMarket maps, investment research, and deal sourcing\nLeadership, hiring, and organization research\n​\nWrite better queries\nStart with the entity you want, then add the traits and relationships that qualify it. Ask for the source type when it matters, such as company homepages, professional profiles, job postings, or personal websites.\nCompanies\nPeople\n​\nDiscover companies by what they do\nDescribe the customer, product, capability, stage, and geography that define the market. This finds candidates based on what they do instead of relying on a predefined company list.\ncompanies selling AI voice agents to dental practices\n​\nFind operating signals\nName the signal and the company traits that matter. Search can retrieve job postings, pricing pages, product documentation, and reporting alongside company pages.\nremote staff engineer roles at Series B fintech companies\n​\nResearch funding activity\nSpecify the round, industry, participant, and time window.\ninvestors who led seed rounds in robotics in the last year\n​\nSearch both together\nWrite one query that expresses the relationship you need. Exa can return company pages, professional profiles, hiring pages, and public references in the same result set.\nheads of security at Series B healthcare software companies that sell to hospitals\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"heads of security at Series B healthcare software companies that sell to hospitals\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the companies, people, qualification criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nBuild and qualify company or people lists, then enrich each record with fields gathered from multiple sources.\nOpen Agent guide",
+    "scrollHeight": 3003,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,12 @@
+---
+title: "List run events"
+description: "List stored Agent run events or replay them as server-sent events."
+openapi: "docs/exa-spec.yaml GET /agent/runs/{id}/events"
+timestamp: false
+---
+
+By default, this endpoint returns a paginated JSON list of stored events. Set `Accept: text/event-stream` to replay stored events as SSE. For JSON pagination, use `cursor`. For SSE replay, use `Last-Event-ID`.
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

@@ -1,0 +1,103 @@
+{
+  "id": "057",
+  "path": "/docs/integrations/payments/x402/agentkit",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/payments/x402/agentkit",
+    "title": "World AgentKit - Exa",
+    "h1": "World AgentKit",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 240.203125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5276.3125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 468
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\nWhat is AgentKit?\nWorld AgentKit is a toolkit that lets AI agents prove they are backed by a real, verified human via World ID. When integrated with x402, it enables a free trial path: agents registered in World’s AgentBook can access Exa’s /search and /contents endpoints without paying USDC.\nThis works alongside the standard x402 payment flow. Each verified human gets 100 free requests per month across all agents they back. Once exhausted, the agent falls back to the normal USDC payment path. Counters reset at the start of each calendar month (UTC).\nAgentKit free trial and x402 payment are both bypassed if your request includes an x-api-key or Authorization: Bearer header. The normal API key billing flow takes priority.\n​\nHow it works\nWhen a client hits /search or /contents without an API key, Exa responds with 402 Payment Required. The response includes an agentkit extension in the PAYMENT-REQUIRED header containing a CAIP-122 (Sign-In with Ethereum) challenge.\nThe agent signs this challenge with its registered wallet, and Exa verifies:\nSignature check — validates the SIWE signature against the wallet address (supports both EOA via EIP-191 and smart contract wallets via ERC-1271)\nAgentBook lookup — resolves the wallet to an anonymous humanId via the AgentBook contract on World Chain (eip155:480), confirming a unique verified human delegated their identity to this agent\nUsage check — if the human still has free trial uses remaining, access is granted; otherwise, falls back to requiring USDC payment\n​\nQuickstart\n​\n1. Register your agent in AgentBook\nThis is a one-time setup. You need the World App with a verified identity.\nnpx @worldcoin/agentkit-cli register <your-agent-wallet-address>\n\nThe CLI triggers a World App verification flow, then submits a registration transaction on World Chain. Once complete, any server using AgentKit can look up your wallet and confirm it is backed by a real person.\n​\n2. Send a request (get the challenge)\ncurl -s -D - -X POST \"https://api.exa.ai/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"fusion energy breakthroughs\", \"numResults\": 5}'\n\nThe 402 response includes an agentkit extension inside the decoded PAYMENT-REQUIRED payload:\n{\n  \"x402Version\": 2,\n  \"accepts\": [ ... ],\n  \"extensions\": {\n    \"agentkit\": {\n      \"info\": {\n        \"version\": \"1\",\n        \"statement\": \"Verify your agent is backed by a real human to access Exa\",\n        \"domain\": \"api.exa.ai\",\n        \"uri\": \"https://api.exa.ai/search\",\n        \"nonce\": \"abc123...\",\n        \"issuedAt\": \"2026-04-11T01:30:00.000Z\",\n        \"resources\": [\"https://api.exa.ai/search\"]\n      },\n      \"supportedChains\": [\n        { \"chainId\": \"eip155:480\", \"type\": \"eip191\" },\n        { \"chainId\": \"eip155:480\", \"type\": \"eip1271\" }\n      ],\n      \"schema\": { ... },\n      \"_options\": {\n        \"statement\": \"Verify your agent is backed by a real human to access Exa\",\n        \"mode\": { \"type\": \"free-trial\", \"uses\": 100 },\n        \"network\": \"eip155:480\"\n      }\n    }\n  }\n}\n\n​\n3. Sign the challenge and resubmit\nConstruct a SIWE message from the info fields (domain, uri, nonce, statement, etc.), sign it with your registered agent wallet using one of the supportedChains types, and send it in the agentkit header (base64-encoded JSON):\ncurl -X POST \"https://api.exa.ai/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"agentkit: <base64-encoded-signed-challenge>\" \\\n  -d '{\"query\": \"fusion energy breakthroughs\", \"numResults\": 5}'\n\nIf the agent is verified and has free trial uses remaining, Exa returns 200 with search results — no payment needed.\n​\nUsing the AgentKit x402 skill\nInstead of implementing the challenge-response flow manually, add the agentkit-x402 skill to your AI agent:\nnpx skills add worldcoin/agentkit agentkit-x402\n\nThis skill automatically handles the full flow when the agent encounters a 402 response with an AgentKit extension.\n​\nFree trial details\nEach verified human gets 100 free requests per month across all agents they back\nUsage counters reset at the start of each calendar month (UTC)\nUsage is tracked per human per endpoint (/search and /contents are counted separately)\nTwo agents backed by the same human share the same counter\nOnce free trial uses are exhausted for the month, the agent falls back to the standard x402 payment flow\nThe same 10-result cap applies to free trial requests on /search\nThe free trial counter is not currently exposed in the API response — when uses are exhausted, the server responds with a standard 402 without granting free access\n​\nSupported endpoints\nEndpoint\tx402 Payment\tAgentKit Free Trial\n/search\tYes\tYes\n/contents\tYes\tYes\nAll other Exa endpoints are not supported via x402 or AgentKit free trial.\n​\nNetwork details\nProperty\tValue\nAgentBook chain\tWorld Chain\nChain ID (CAIP-2)\teip155:480\nVerification\tAgentBook contract on World Chain\nSupported wallet types\tEOA (EIP-191) and smart contract wallets (ERC-1271)\n​\nFAQ\n\nCan I use both x402 payment and AgentKit?\n\nWhat happens if my agent isn't registered in AgentBook?\n\nDo two agents backed by the same human get separate free trial quotas?\n\nWhich blockchain networks are involved?\n\nWhat wallet types are supported?\n\n​\nResources\nx402 payment guide: standard USDC payment flow\nWorld AgentKit docs: full AgentKit documentation\nWorld AgentKit integration guide: AgentBook registration\nWorld AgentKit SDK reference: SDK API reference\nAgentKit x402 skill: pre-built skill for AI agents\nx402 protocol docs: full x402 specification",
+    "scrollHeight": 5372,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/payments/x402/agentkit",
+    "title": "World AgentKit - Exa",
+    "h1": "World AgentKit",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 240.203125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 5276.3125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 468
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "​\nWhat is AgentKit?\nWorld AgentKit is a toolkit that lets AI agents prove they are backed by a real, verified human via World ID. When integrated with x402, it enables a free trial path: agents registered in World’s AgentBook can access Exa’s /search and /contents endpoints without paying USDC.\nThis works alongside the standard x402 payment flow. Each verified human gets 100 free requests per month across all agents they back. Once exhausted, the agent falls back to the normal USDC payment path. Counters reset at the start of each calendar month (UTC).\nAgentKit free trial and x402 payment are both bypassed if your request includes an x-api-key or Authorization: Bearer header. The normal API key billing flow takes priority.\n​\nHow it works\nWhen a client hits /search or /contents without an API key, Exa responds with 402 Payment Required. The response includes an agentkit extension in the PAYMENT-REQUIRED header containing a CAIP-122 (Sign-In with Ethereum) challenge.\nThe agent signs this challenge with its registered wallet, and Exa verifies:\nSignature check — validates the SIWE signature against the wallet address (supports both EOA via EIP-191 and smart contract wallets via ERC-1271)\nAgentBook lookup — resolves the wallet to an anonymous humanId via the AgentBook contract on World Chain (eip155:480), confirming a unique verified human delegated their identity to this agent\nUsage check — if the human still has free trial uses remaining, access is granted; otherwise, falls back to requiring USDC payment\n​\nQuickstart\n​\n1. Register your agent in AgentBook\nThis is a one-time setup. You need the World App with a verified identity.\nnpx @worldcoin/agentkit-cli register <your-agent-wallet-address>\n\nThe CLI triggers a World App verification flow, then submits a registration transaction on World Chain. Once complete, any server using AgentKit can look up your wallet and confirm it is backed by a real person.\n​\n2. Send a request (get the challenge)\ncurl -s -D - -X POST \"https://api.exa.ai/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"query\": \"fusion energy breakthroughs\", \"numResults\": 5}'\n\nThe 402 response includes an agentkit extension inside the decoded PAYMENT-REQUIRED payload:\n{\n  \"x402Version\": 2,\n  \"accepts\": [ ... ],\n  \"extensions\": {\n    \"agentkit\": {\n      \"info\": {\n        \"version\": \"1\",\n        \"statement\": \"Verify your agent is backed by a real human to access Exa\",\n        \"domain\": \"api.exa.ai\",\n        \"uri\": \"https://api.exa.ai/search\",\n        \"nonce\": \"abc123...\",\n        \"issuedAt\": \"2026-04-11T01:30:00.000Z\",\n        \"resources\": [\"https://api.exa.ai/search\"]\n      },\n      \"supportedChains\": [\n        { \"chainId\": \"eip155:480\", \"type\": \"eip191\" },\n        { \"chainId\": \"eip155:480\", \"type\": \"eip1271\" }\n      ],\n      \"schema\": { ... },\n      \"_options\": {\n        \"statement\": \"Verify your agent is backed by a real human to access Exa\",\n        \"mode\": { \"type\": \"free-trial\", \"uses\": 100 },\n        \"network\": \"eip155:480\"\n      }\n    }\n  }\n}\n\n​\n3. Sign the challenge and resubmit\nConstruct a SIWE message from the info fields (domain, uri, nonce, statement, etc.), sign it with your registered agent wallet using one of the supportedChains types, and send it in the agentkit header (base64-encoded JSON):\ncurl -X POST \"https://api.exa.ai/search\" \\\n  -H \"Content-Type: application/json\" \\\n  -H \"agentkit: <base64-encoded-signed-challenge>\" \\\n  -d '{\"query\": \"fusion energy breakthroughs\", \"numResults\": 5}'\n\nIf the agent is verified and has free trial uses remaining, Exa returns 200 with search results — no payment needed.\n​\nUsing the AgentKit x402 skill\nInstead of implementing the challenge-response flow manually, add the agentkit-x402 skill to your AI agent:\nnpx skills add worldcoin/agentkit agentkit-x402\n\nThis skill automatically handles the full flow when the agent encounters a 402 response with an AgentKit extension.\n​\nFree trial details\nEach verified human gets 100 free requests per month across all agents they back\nUsage counters reset at the start of each calendar month (UTC)\nUsage is tracked per human per endpoint (/search and /contents are counted separately)\nTwo agents backed by the same human share the same counter\nOnce free trial uses are exhausted for the month, the agent falls back to the standard x402 payment flow\nThe same 10-result cap applies to free trial requests on /search\nThe free trial counter is not currently exposed in the API response — when uses are exhausted, the server responds with a standard 402 without granting free access\n​\nSupported endpoints\nEndpoint\tx402 Payment\tAgentKit Free Trial\n/search\tYes\tYes\n/contents\tYes\tYes\nAll other Exa endpoints are not supported via x402 or AgentKit free trial.\n​\nNetwork details\nProperty\tValue\nAgentBook chain\tWorld Chain\nChain ID (CAIP-2)\teip155:480\nVerification\tAgentBook contract on World Chain\nSupported wallet types\tEOA (EIP-191) and smart contract wallets (ERC-1271)\n​\nFAQ\n\nCan I use both x402 payment and AgentKit?\n\nWhat happens if my agent isn't registered in AgentBook?\n\nDo two agents backed by the same human get separate free trial quotas?\n\nWhich blockchain networks are involved?\n\nWhat wallet types are supported?\n\n​\nResources\nx402 payment guide: standard USDC payment flow\nWorld AgentKit docs: full AgentKit documentation\nWorld AgentKit integration guide: AgentBook registration\nWorld AgentKit SDK reference: SDK API reference\nAgentKit x402 skill: pre-built skill for AI agents\nx402 protocol docs: full x402 specification",
+    "scrollHeight": 5372,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

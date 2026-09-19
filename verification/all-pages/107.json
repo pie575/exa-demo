@@ -1,0 +1,103 @@
+{
+  "id": "107",
+  "path": "/docs/search/data/security",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/security",
+    "title": "Cybersecurity - Exa",
+    "h1": "Cybersecurity",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 218.59375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2697.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 332
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for vulnerability records, vendor advisories, and threat research from the sources security teams already read.\n​\nIncluded\nCVE and GHSA vulnerability records\nVendor security advisories and patch notes\nThreat intelligence reports and incident write-ups\nTrust pages, subprocessor lists, and compliance documentation\nSecurity blogs, conference talks, and research\n​\nUse it for\nVulnerability triage and exposure assessment\nThreat intelligence and adversary tracking\nVendor risk and third-party security reviews\nSecurity monitoring and alerting\n​\nExample queries\n​\nTriage a vulnerability class\nName the product, version range, and severity.\ncritical CVEs affecting Apache Struts 6.x\n​\nFind vendor advisories\nDescribe the exploitation status and product class rather than one CVE ID.\nvendor advisories for actively exploited VPN vulnerabilities\n​\nReview a vendor’s security posture\nName the document type and the vendor class.\nsubprocessor lists for SOC 2 compliant CRM vendors\n​\nResearch an adversary\nName the group or campaign and the technique or sector you care about.\nreports on ransomware groups targeting healthcare providers this year\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"critical CVEs affecting Apache Struts 6.x\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the products, threat criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nScreen a vendor across advisories, breach reporting, and trust pages, or assemble normalized vulnerability data.\nOpen Agent guide",
+    "scrollHeight": 2794,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/security",
+    "title": "Cybersecurity - Exa",
+    "h1": "Cybersecurity",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 218.59375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2697.671875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 332
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for vulnerability records, vendor advisories, and threat research from the sources security teams already read.\n​\nIncluded\nCVE and GHSA vulnerability records\nVendor security advisories and patch notes\nThreat intelligence reports and incident write-ups\nTrust pages, subprocessor lists, and compliance documentation\nSecurity blogs, conference talks, and research\n​\nUse it for\nVulnerability triage and exposure assessment\nThreat intelligence and adversary tracking\nVendor risk and third-party security reviews\nSecurity monitoring and alerting\n​\nExample queries\n​\nTriage a vulnerability class\nName the product, version range, and severity.\ncritical CVEs affecting Apache Struts 6.x\n​\nFind vendor advisories\nDescribe the exploitation status and product class rather than one CVE ID.\nvendor advisories for actively exploited VPN vulnerabilities\n​\nReview a vendor’s security posture\nName the document type and the vendor class.\nsubprocessor lists for SOC 2 compliant CRM vendors\n​\nResearch an adversary\nName the group or campaign and the technique or sector you care about.\nreports on ransomware groups targeting healthcare providers this year\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"critical CVEs affecting Apache Struts 6.x\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the products, threat criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nScreen a vendor across advisories, breach reporting, and trust pages, or assemble normalized vulnerability data.\nOpen Agent guide",
+    "scrollHeight": 2794,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

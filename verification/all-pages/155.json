@@ -1,0 +1,101 @@
+{
+  "id": "155",
+  "path": "/docs/websets/dashboard/get-started",
+  "production": {
+    "url": "https://exa.ai/docs/websets/dashboard/get-started",
+    "title": "Get started - Exa",
+    "h1": "Get started",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 176.15625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4436.296875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 288
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "\n\n​\n1. Sign up\nWebsets is now generally available at https://websets.exa.ai/!\nIf you’d like to ask us about it, book a call here.\n\n\n​\n2. Get started\nWebsets is very easy to use.\nDescribe what you want in plain English - make it as complicated as you’d like!\nConfirm your criteria and data category look good.\nConfirm how many results you want, then start your search.\n\n\n​\n3. Inside your Webset\nIn brief, Websets does the following:\nBreak down what you’re asking for\nFind promising data that might satisfy your ask\nVerify all criteria using AI agents and finding parallel sources\nAdjust search based on feedback you provide our agent\nIf you’re not satisfied with the initial results you see, refine the criteria in “Edit criteria” or inside the chat.\n\n\n​\n4. Interacting with your Webset\nOnce the Webset is complete, you can interact with the components!\nClick on a result to see:\nIts AI-generated summary\nThe criteria it met to be included in the Webset\nThe sources that informed the matching (you can click through the sources here)\nYou can manually delete results, to clean up your Webset before exporting it.\n\n\n​\n5. Add more result criteria and custom columns\nAdd enrichments: You can create custom enrichment columns, asking for any information you want. Think contact information (email & phone number), revenue, employee count, sentiment analysis, summary of the paper, etc. Fill in:\nThe name of the column (e.g. ‘Revenue’)\nThe column type (e.g. ‘Number’)\nInstructions for Websets to find the data (e.g. ‘Find the annual revenue of the company’)\nOr click “fill in for me” for the instructions to be generated automatically by our agent\n\n\n​\n6. Share and export your Webset\nClick export to download your Webset as a CSV file.\nClick share to get a link for your Webset.\n\n\n​\n7. Search history\nIf you click on the sidebar icon in the top left, you’ll see your full history with all past Websets in the left panel.",
+    "scrollHeight": 4532,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/dashboard/get-started",
+    "title": "Get started - Exa",
+    "h1": "Get started",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 176.15625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4436.296875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 288
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "\n\n​\n1. Sign up\nWebsets is now generally available at https://websets.exa.ai/!\nIf you’d like to ask us about it, book a call here.\n\n\n​\n2. Get started\nWebsets is very easy to use.\nDescribe what you want in plain English - make it as complicated as you’d like!\nConfirm your criteria and data category look good.\nConfirm how many results you want, then start your search.\n\n\n​\n3. Inside your Webset\nIn brief, Websets does the following:\nBreak down what you’re asking for\nFind promising data that might satisfy your ask\nVerify all criteria using AI agents and finding parallel sources\nAdjust search based on feedback you provide our agent\nIf you’re not satisfied with the initial results you see, refine the criteria in “Edit criteria” or inside the chat.\n\n\n​\n4. Interacting with your Webset\nOnce the Webset is complete, you can interact with the components!\nClick on a result to see:\nIts AI-generated summary\nThe criteria it met to be included in the Webset\nThe sources that informed the matching (you can click through the sources here)\nYou can manually delete results, to clean up your Webset before exporting it.\n\n\n​\n5. Add more result criteria and custom columns\nAdd enrichments: You can create custom enrichment columns, asking for any information you want. Think contact information (email & phone number), revenue, employee count, sentiment analysis, summary of the paper, etc. Fill in:\nThe name of the column (e.g. ‘Revenue’)\nThe column type (e.g. ‘Number’)\nInstructions for Websets to find the data (e.g. ‘Find the annual revenue of the company’)\nOr click “fill in for me” for the instructions to be generated automatically by our agent\n\n\n​\n6. Share and export your Webset\nClick export to download your Webset as a CSV file.\nClick share to get a link for your Webset.\n\n\n​\n7. Search history\nIf you click on the sidebar icon in the top left, you’ll see your full history with all past Websets in the left panel.",
+    "scrollHeight": 4532,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

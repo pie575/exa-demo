@@ -1,0 +1,103 @@
+{
+  "id": "103",
+  "path": "/docs/search/data/legal",
+  "production": {
+    "url": "https://exa.ai/docs/search/data/legal",
+    "title": "Legal & Public Records - Exa",
+    "h1": "Legal & Public Records",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 354.03125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2940.859375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 364
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for primary legal sources and government records alongside the commentary written about them.\n​\nIncluded\nUS court opinions, with full text, court, docket, and citation metadata\nGranted US patents, with abstract, claims, description, inventors, and assignees\nStatutes, regulations, and agency guidance\nSanctions lists and watchlists\nGovernment contracts and procurement records\nCensus data and other public statistical records\n​\nUse it for\nCase-law research and legal RAG\nRegulatory and policy monitoring\nPrior-art and freedom-to-operate searches\nCompliance screening and due diligence\nPublic-sector market research\n​\nExample queries\n​\nFind case law\nDescribe the legal question and jurisdiction in plain language rather than a citation.\nCalifornia appellate decisions on non-compete enforceability\n​\nSearch patents\nDescribe what the invention does, the way a claim would.\npatents on cooling battery packs with immersion dielectric fluid\n​\nScreen against sanctions\nName the list and the entity class you are screening.\nOFAC sanctions listings added for shipping companies\n​\nResearch government spending\nName the buying agency or service category and the time window.\nfederal contracts awarded for cloud migration services\n​\nPull public statistics\nName the dataset and geography.\ncensus tract population change in the Austin metro area\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"California appellate decisions on non-compete enforceability\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the jurisdictions, record types, criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nScreen an entity across record types or trace a regulatory change through primary sources and coverage.\nOpen Agent guide",
+    "scrollHeight": 3037,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/search/data/legal",
+    "title": "Legal & Public Records - Exa",
+    "h1": "Legal & Public Records",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 354.03125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 2940.859375
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 364
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa Search for primary legal sources and government records alongside the commentary written about them.\n​\nIncluded\nUS court opinions, with full text, court, docket, and citation metadata\nGranted US patents, with abstract, claims, description, inventors, and assignees\nStatutes, regulations, and agency guidance\nSanctions lists and watchlists\nGovernment contracts and procurement records\nCensus data and other public statistical records\n​\nUse it for\nCase-law research and legal RAG\nRegulatory and policy monitoring\nPrior-art and freedom-to-operate searches\nCompliance screening and due diligence\nPublic-sector market research\n​\nExample queries\n​\nFind case law\nDescribe the legal question and jurisdiction in plain language rather than a citation.\nCalifornia appellate decisions on non-compete enforceability\n​\nSearch patents\nDescribe what the invention does, the way a claim would.\npatents on cooling battery packs with immersion dielectric fluid\n​\nScreen against sanctions\nName the list and the entity class you are screening.\nOFAC sanctions listings added for shipping companies\n​\nResearch government spending\nName the buying agency or service category and the time window.\nfederal contracts awarded for cloud migration services\n​\nPull public statistics\nName the dataset and geography.\ncensus tract population change in the Austin metro area\n​\nMake a request\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresults = exa.search(\n    \"California appellate decisions on non-compete enforceability\",\n    type=\"auto\",\n    num_results=10,\n)\n\n​\nGet structured data with Exa Agent\nFor structured data that requires research across multiple sources, use an Exa Agent task run. Describe the jurisdictions, record types, criteria, and output fields you need, and Agent returns schema-validated results with citations.\nStart an Agent task\nScreen an entity across record types or trace a regulatory change through primary sources and coverage.\nOpen Agent guide",
+    "scrollHeight": 3037,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

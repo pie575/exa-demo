@@ -1,0 +1,101 @@
+{
+  "id": "033",
+  "path": "/docs/get-started/exa-mcp",
+  "production": {
+    "url": "https://exa.ai/docs/get-started/exa-mcp",
+    "title": "Exa MCP - Exa",
+    "h1": "Exa MCP",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 143.578125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 6868.953125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 332
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa MCP to improve the built-in web search in ChatGPT, Claude, and MCP-compatible tools with Exa’s search capabilities, including web search, code search, Exa Agent, and Exa Connect.\nExa offers a hosted server that works in any MCP client:\nhttps://mcp.exa.ai/mcp\n\nNo API key is required to get started. Exa MCP is open source and available on GitHub.\n​\nInstall\nChatGPT & Codex\nClaude\nGrok Build\nCursor\nVS Code\nOther clients\nExa is an official plugin in OpenAI’s plugin directory, which includes the hosted MCP server plus Exa’s search and exa-agent skills.\n1\n\nOpen the plugin\n\nGo to chatgpt.com/plugins/exa. It opens Exa in OpenAI’s plugin directory, which is the same directory for ChatGPT and for Codex.\n2\n\nInstall it\n\nSelect the plus button to install. Sign in to Exa when prompted, either during install or the first time Codex or ChatGPT uses it.\n\nOpening Plugins in Codex, adding Exa, and authorizing access\n\n3\n\nStart a new session\n\nSkills load in chats and CLI sessions started after the install, so open a fresh one and ask for something that needs the web.\nThat’s it. The plugin includes both Exa’s MCP integration and skills, so there’s no separate MCP or skill setup required.\nSee Exa in Codex and ChatGPT for the full setup and workflow guide.\n​\nAuthentication\nExa MCP supports three authentication modes:\nMode\tUse it for\tSetup\nKeyless\tFree rate-limited usage without sign-in or API key\tConnect to https://mcp.exa.ai/mcp\nOAuth\tInteractive clients, marketplace installs, production usage\tConnect to https://mcp.exa.ai/mcp?login to sign in to Exa in the browser. Usage belongs to your Exa team.\nAPI key\tClients without MCP OAuth\tConnect to https://mcp.exa.ai/mcp with the x-api-key header set to your API key\n​\nSign in with OAuth\nChatGPT, Claude, and other marketplace installs prompt you to sign in when needed. In any client that supports MCP OAuth, you can request the same flow by connecting to:\nhttps://mcp.exa.ai/mcp?login\n\nYour client discovers Exa’s authorization server, opens the browser sign-in, and manages access.\n​\nUse an API key\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAdd the x-api-key header to the MCP server configuration:\nx-api-key: YOUR_EXA_API_KEY\n\n​\nAvailable Tools\nTool\tAvailability\tUse it for\nweb_search_exa\tEnabled by default\tSearch the web and return relevant, ready-to-use content\nweb_fetch_exa\tEnabled by default\tRead clean content from one or more known URLs\nweb_search_advanced_exa\tAvailiable when opted in\tConfigure web search with advanced filters and controls\nagent_run\tAvailable with OAuth or API key\tRun multi-step research, list-building, enrichment, and structured output\nUse the tools URL parameter to choose what your client sees. For example, to enable all tools:\nhttps://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run\n\nAn explicit tools list replaces the defaults, so include every tool you want enabled including web search and fetch.\n​\nExa Agent\nUse Exa Agent for research that takes more than one search—for example, building a list, checking each item against criteria, or returning structured results.\nAgent runs are usage-based, so agent_run requires OAuth or an API key. This URL starts OAuth and adds Agent alongside the default tools:\nhttps://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run\n\nIf you use an API key, omit login and add the key as described in Authentication.\n1\n\nDescribe what you need\n\nAsk for the research in plain language. Your assistant passes the request to agent_run with a query, and Exa Agent works out what to search, reads the sources, and checks what it finds against the request.\nAsk your Agent to provide an outputSchema only when your application needs the findings in a consistent JSON format. You can share one with your assistant in the system prompt, or have it generate one for you.\n2\n\nGet the result\n\nWhen the research completes, the tool call hands your assistant the full research package:\nThe written findings\nThe sources behind them\nValidated JSON if you provided outputSchema\nUsage and cost\nYour assistant writes its reply from this package, so tell it what you want done with the output. You can ask it to summarize the findings, compare them, save them to a file, or anything else.\n3\n\nContinue if it needs more time\n\nResearch that outlasts a single MCP call doesn’t fail: the tool reports status: \"running\" with an id while the run continues on Exa. Your assistant calls agent_run again with that id as runId to pick the same run back up.\n\nOptional controls\n\nUse runId to keep waiting on current work. Use previousRunId to ask a new follow-up based on finished work.\nSee the Exa Agent guide for output schema patterns, effort modes, data sources, and pricing.\n​\nAdvanced search\nUse web_search_advanced_exa when the request needs explicit category or domain filters, date ranges, text constraints, geo-targeting, query expansion, summaries, highlights, freshness control, or subpage crawling. For ordinary searches, keep web_search_exa; it gives the model a smaller tool surface and requires less configuration.\nAdvanced Search does not require authentication, although authenticated connections use your own plan and rate limits. Enable it alongside the default tools with:\nhttps://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa\n\nThe MCP tool presents common Search API controls as tool-friendly fields such as includeDomains, startPublishedDate, enableHighlights, and maxAgeHours. Read the tool schema in your client for the exact field names.\n​\nTroubleshooting\n\nRate limit error (429)\n\nAgent is missing or asks for authentication\n\nOAuth sign-in does not open\n\nTools not appearing\n\nClaude desktop not connecting\n\nConfig file not found\n\n​\nResources\nGitHub\nExa MCP source code.\nView source\nnpm\nRun Exa MCP locally with the npm package.\nOpen package\nAgent skills\nPortable skills that pair with Exa MCP.\nBrowse skills\nExa in Codex and ChatGPT\nFull setup and workflow guide for the Exa plugin.\nOpen guide",
+    "scrollHeight": 6965,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/get-started/exa-mcp",
+    "title": "Exa MCP - Exa",
+    "h1": "Exa MCP",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 143.578125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 6868.953125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 332
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Use Exa MCP to improve the built-in web search in ChatGPT, Claude, and MCP-compatible tools with Exa’s search capabilities, including web search, code search, Exa Agent, and Exa Connect.\nExa offers a hosted server that works in any MCP client:\nhttps://mcp.exa.ai/mcp\n\nNo API key is required to get started. Exa MCP is open source and available on GitHub.\n​\nInstall\nChatGPT & Codex\nClaude\nGrok Build\nCursor\nVS Code\nOther clients\nExa is an official plugin in OpenAI’s plugin directory, which includes the hosted MCP server plus Exa’s search and exa-agent skills.\n1\n\nOpen the plugin\n\nGo to chatgpt.com/plugins/exa. It opens Exa in OpenAI’s plugin directory, which is the same directory for ChatGPT and for Codex.\n2\n\nInstall it\n\nSelect the plus button to install. Sign in to Exa when prompted, either during install or the first time Codex or ChatGPT uses it.\n\nOpening Plugins in Codex, adding Exa, and authorizing access\n\n3\n\nStart a new session\n\nSkills load in chats and CLI sessions started after the install, so open a fresh one and ask for something that needs the web.\nThat’s it. The plugin includes both Exa’s MCP integration and skills, so there’s no separate MCP or skill setup required.\nSee Exa in Codex and ChatGPT for the full setup and workflow guide.\n​\nAuthentication\nExa MCP supports three authentication modes:\nMode\tUse it for\tSetup\nKeyless\tFree rate-limited usage without sign-in or API key\tConnect to https://mcp.exa.ai/mcp\nOAuth\tInteractive clients, marketplace installs, production usage\tConnect to https://mcp.exa.ai/mcp?login to sign in to Exa in the browser. Usage belongs to your Exa team.\nAPI key\tClients without MCP OAuth\tConnect to https://mcp.exa.ai/mcp with the x-api-key header set to your API key\n​\nSign in with OAuth\nChatGPT, Claude, and other marketplace installs prompt you to sign in when needed. In any client that supports MCP OAuth, you can request the same flow by connecting to:\nhttps://mcp.exa.ai/mcp?login\n\nYour client discovers Exa’s authorization server, opens the browser sign-in, and manages access.\n​\nUse an API key\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAdd the x-api-key header to the MCP server configuration:\nx-api-key: YOUR_EXA_API_KEY\n\n​\nAvailable Tools\nTool\tAvailability\tUse it for\nweb_search_exa\tEnabled by default\tSearch the web and return relevant, ready-to-use content\nweb_fetch_exa\tEnabled by default\tRead clean content from one or more known URLs\nweb_search_advanced_exa\tAvailiable when opted in\tConfigure web search with advanced filters and controls\nagent_run\tAvailable with OAuth or API key\tRun multi-step research, list-building, enrichment, and structured output\nUse the tools URL parameter to choose what your client sees. For example, to enable all tools:\nhttps://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run\n\nAn explicit tools list replaces the defaults, so include every tool you want enabled including web search and fetch.\n​\nExa Agent\nUse Exa Agent for research that takes more than one search—for example, building a list, checking each item against criteria, or returning structured results.\nAgent runs are usage-based, so agent_run requires OAuth or an API key. This URL starts OAuth and adds Agent alongside the default tools:\nhttps://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run\n\nIf you use an API key, omit login and add the key as described in Authentication.\n1\n\nDescribe what you need\n\nAsk for the research in plain language. Your assistant passes the request to agent_run with a query, and Exa Agent works out what to search, reads the sources, and checks what it finds against the request.\nAsk your Agent to provide an outputSchema only when your application needs the findings in a consistent JSON format. You can share one with your assistant in the system prompt, or have it generate one for you.\n2\n\nGet the result\n\nWhen the research completes, the tool call hands your assistant the full research package:\nThe written findings\nThe sources behind them\nValidated JSON if you provided outputSchema\nUsage and cost\nYour assistant writes its reply from this package, so tell it what you want done with the output. You can ask it to summarize the findings, compare them, save them to a file, or anything else.\n3\n\nContinue if it needs more time\n\nResearch that outlasts a single MCP call doesn’t fail: the tool reports status: \"running\" with an id while the run continues on Exa. Your assistant calls agent_run again with that id as runId to pick the same run back up.\n\nOptional controls\n\nUse runId to keep waiting on current work. Use previousRunId to ask a new follow-up based on finished work.\nSee the Exa Agent guide for output schema patterns, effort modes, data sources, and pricing.\n​\nAdvanced search\nUse web_search_advanced_exa when the request needs explicit category or domain filters, date ranges, text constraints, geo-targeting, query expansion, summaries, highlights, freshness control, or subpage crawling. For ordinary searches, keep web_search_exa; it gives the model a smaller tool surface and requires less configuration.\nAdvanced Search does not require authentication, although authenticated connections use your own plan and rate limits. Enable it alongside the default tools with:\nhttps://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa\n\nThe MCP tool presents common Search API controls as tool-friendly fields such as includeDomains, startPublishedDate, enableHighlights, and maxAgeHours. Read the tool schema in your client for the exact field names.\n​\nTroubleshooting\n\nRate limit error (429)\n\nAgent is missing or asks for authentication\n\nOAuth sign-in does not open\n\nTools not appearing\n\nClaude desktop not connecting\n\nConfig file not found\n\n​\nResources\nGitHub\nExa MCP source code.\nView source\nnpm\nRun Exa MCP locally with the npm package.\nOpen package\nAgent skills\nPortable skills that pair with Exa MCP.\nBrowse skills\nExa in Codex and ChatGPT\nFull setup and workflow guide for the Exa plugin.\nOpen guide",
+    "scrollHeight": 6965,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

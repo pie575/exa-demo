@@ -1,0 +1,1118 @@
+{
+  "pages": [
+    {
+      "path": "docs.mdx",
+      "source": "https://exa.ai/docs",
+      "markdown": "source-snapshot/markdown/index.md",
+      "sha256": "af4afd0bffc817d5d9d3546506cf0785b6178a613cf603a4595b554c51e18e1d",
+      "bytes": 29460
+    },
+    {
+      "path": "docs/admin/billing.mdx",
+      "source": "https://exa.ai/docs/admin/billing",
+      "markdown": "source-snapshot/markdown/admin/billing.md",
+      "sha256": "b24919f2c008226ea044aadac331eab54964f92262bfdbec29d3ed6bf7db8156",
+      "bytes": 7382
+    },
+    {
+      "path": "docs/admin/error-codes.mdx",
+      "source": "https://exa.ai/docs/admin/error-codes",
+      "markdown": "source-snapshot/markdown/admin/error-codes.md",
+      "sha256": "0388fec09d8428082237c07f51faf61235e8f199c15031ad14fc7498e5c6a8a9",
+      "bytes": 10992
+    },
+    {
+      "path": "docs/admin/faqs.mdx",
+      "source": "https://exa.ai/docs/admin/faqs",
+      "markdown": "source-snapshot/markdown/admin/faqs.md",
+      "sha256": "60375fd607935ea53fdeaa8df564e5f928dfdd2790669f0e7ae7a597359a3889",
+      "bytes": 5066
+    },
+    {
+      "path": "docs/admin/mcp-enterprise-managed-auth.mdx",
+      "source": "https://exa.ai/docs/admin/mcp-enterprise-managed-auth",
+      "markdown": "source-snapshot/markdown/admin/mcp-enterprise-managed-auth.md",
+      "sha256": "e384bb4efe6a929ee9e72144671b4dce5410b5a69494a68ea389bbfd0d9d24de",
+      "bytes": 6234
+    },
+    {
+      "path": "docs/admin/openapi-spec.mdx",
+      "source": "https://exa.ai/docs/admin/openapi-spec",
+      "markdown": "source-snapshot/markdown/admin/openapi-spec.md",
+      "sha256": "17caa13b148ed0183da1012248d8f433fca48aab1cc93cbc0b6997f3b34c91e0",
+      "bytes": 881
+    },
+    {
+      "path": "docs/admin/pricing.mdx",
+      "source": "https://exa.ai/docs/admin/pricing",
+      "markdown": "source-snapshot/markdown/admin/pricing.md",
+      "sha256": "11ffe400d1cd3380d33877d1f89864b4d687b18c4c1e41f0179bd100980f2d7f",
+      "bytes": 7695
+    },
+    {
+      "path": "docs/admin/security/hipaa.mdx",
+      "source": "https://exa.ai/docs/admin/security/hipaa",
+      "markdown": "source-snapshot/markdown/admin/security/hipaa.md",
+      "sha256": "84598377d6f19f8739d320043287bf7ef42601087ee933f16b8dd249e6b5c106",
+      "bytes": 2197
+    },
+    {
+      "path": "docs/admin/security/overview.mdx",
+      "source": "https://exa.ai/docs/admin/security/overview",
+      "markdown": "source-snapshot/markdown/admin/security/overview.md",
+      "sha256": "b2106ab22e1c5ccc4614f7e0f1c3ce0bd6a1c60947de9c63fbe6429c08f00fa1",
+      "bytes": 1500
+    },
+    {
+      "path": "docs/admin/security/zero-data-retention.mdx",
+      "source": "https://exa.ai/docs/admin/security/zero-data-retention",
+      "markdown": "source-snapshot/markdown/admin/security/zero-data-retention.md",
+      "sha256": "cfcc3b48d40589063de65be29f45c39965b97ed5bd5a02dc38e50e81b585e670",
+      "bytes": 666
+    },
+    {
+      "path": "docs/admin/status.mdx",
+      "source": "https://exa.ai/docs/admin/status",
+      "markdown": "source-snapshot/markdown/admin/status.md",
+      "sha256": "def4e085e249101181cc816bc5dff6715929a29fe92914c8b564b0290c0423a7",
+      "bytes": 7665
+    },
+    {
+      "path": "docs/admin/team-management.mdx",
+      "source": "https://exa.ai/docs/admin/team-management",
+      "markdown": "source-snapshot/markdown/admin/team-management.md",
+      "sha256": "8d44bbabb4d4690c85a3f913461bed1a3c8a34f45b22fef9631ce97d961ac216",
+      "bytes": 3834
+    },
+    {
+      "path": "docs/agent/best-practices.mdx",
+      "source": "https://exa.ai/docs/agent/best-practices",
+      "markdown": "source-snapshot/markdown/agent/best-practices.md",
+      "sha256": "1906c452672b2f04b4a1cd4bdbaca03602cc6c338a1d30db98dad9d5f4d5861f",
+      "bytes": 11273
+    },
+    {
+      "path": "docs/agent/connect/additional-partners.mdx",
+      "source": "https://exa.ai/docs/agent/connect/additional-partners",
+      "markdown": "source-snapshot/markdown/agent/connect/additional-partners.md",
+      "sha256": "c335a65f4beb05c0a74b40a54b69367e3df68261358da7a2bfe8fd967f37cf66",
+      "bytes": 5400
+    },
+    {
+      "path": "docs/agent/connect/affiliatecom.mdx",
+      "source": "https://exa.ai/docs/agent/connect/affiliatecom",
+      "markdown": "source-snapshot/markdown/agent/connect/affiliatecom.md",
+      "sha256": "e37bb1f5f85b85d2f4a687165e7e636a2ff85cd5448b0ef40d816759a47b0b65",
+      "bytes": 5035
+    },
+    {
+      "path": "docs/agent/connect/baselayer.mdx",
+      "source": "https://exa.ai/docs/agent/connect/baselayer",
+      "markdown": "source-snapshot/markdown/agent/connect/baselayer.md",
+      "sha256": "810b19e98f51241e8bcd61d65099f4469e2587ef8376976b9a98673bc671e690",
+      "bytes": 7689
+    },
+    {
+      "path": "docs/agent/connect/combining-providers.mdx",
+      "source": "https://exa.ai/docs/agent/connect/combining-providers",
+      "markdown": "source-snapshot/markdown/agent/connect/combining-providers.md",
+      "sha256": "2d657671464a7705f09c05d626e0c142e5e90250ea3673b280ad071a5db6050b",
+      "bytes": 7310
+    },
+    {
+      "path": "docs/agent/connect/fiber.mdx",
+      "source": "https://exa.ai/docs/agent/connect/fiber",
+      "markdown": "source-snapshot/markdown/agent/connect/fiber.md",
+      "sha256": "0a7a652102203271602254e6853d04cdddc599cbc4e75fbced2c4926a715d389",
+      "bytes": 6767
+    },
+    {
+      "path": "docs/agent/connect/financialdatasets.mdx",
+      "source": "https://exa.ai/docs/agent/connect/financialdatasets",
+      "markdown": "source-snapshot/markdown/agent/connect/financialdatasets.md",
+      "sha256": "7d9dafd2cf37bc64f057e53189112624efe7669c230d3104d2cc2a5da63aebfa",
+      "bytes": 12807
+    },
+    {
+      "path": "docs/agent/connect/jinko.mdx",
+      "source": "https://exa.ai/docs/agent/connect/jinko",
+      "markdown": "source-snapshot/markdown/agent/connect/jinko.md",
+      "sha256": "6dcfad2553d8618c28dcbd8da6b870c18f27af504248806e9e818a0e51178d0e",
+      "bytes": 5113
+    },
+    {
+      "path": "docs/agent/connect/overview.mdx",
+      "source": "https://exa.ai/docs/agent/connect/overview",
+      "markdown": "source-snapshot/markdown/agent/connect/overview.md",
+      "sha256": "bf6750bb5c746654ffde79e7079d74cf4d9f2428d2eb3c234d742c404a4e9dff",
+      "bytes": 11681
+    },
+    {
+      "path": "docs/agent/connect/particle.mdx",
+      "source": "https://exa.ai/docs/agent/connect/particle",
+      "markdown": "source-snapshot/markdown/agent/connect/particle.md",
+      "sha256": "776fc0050569b5bbfa9628e81464aa4241da89f7104780b38b742953f38d672f",
+      "bytes": 5394
+    },
+    {
+      "path": "docs/agent/connect/polymarket.mdx",
+      "source": "https://exa.ai/docs/agent/connect/polymarket",
+      "markdown": "source-snapshot/markdown/agent/connect/polymarket.md",
+      "sha256": "8cb26d5114b2327bad5082ad1bb770e7d12a5b1d17636d24f9323db42fbacba9",
+      "bytes": 5812
+    },
+    {
+      "path": "docs/agent/connect/similarweb.mdx",
+      "source": "https://exa.ai/docs/agent/connect/similarweb",
+      "markdown": "source-snapshot/markdown/agent/connect/similarweb.md",
+      "sha256": "f33825fd90c9ca11bcbff8ea70bfa0cab30015fff4d4f59e94e2fdb085ba7f43",
+      "bytes": 6852
+    },
+    {
+      "path": "docs/agent/examples.mdx",
+      "source": "https://exa.ai/docs/agent/examples",
+      "markdown": "source-snapshot/markdown/agent/examples.md",
+      "sha256": "afeaa16d1d0822bcdc2b5f6c93aea19e5afc9bb49ba3f086d970614111ace879",
+      "bytes": 43258
+    },
+    {
+      "path": "docs/agent/quickstart.mdx",
+      "source": "https://exa.ai/docs/agent/quickstart",
+      "markdown": "source-snapshot/markdown/agent/quickstart.md",
+      "sha256": "5027b2c2be1127513cf73463e61dd5816be3c07467f828e1a67edc5f11b84999",
+      "bytes": 35113
+    },
+    {
+      "path": "docs/batch/quickstart.mdx",
+      "source": "https://exa.ai/docs/batch/quickstart",
+      "markdown": "source-snapshot/markdown/batch/quickstart.md",
+      "sha256": "cd9576a851d55d4c3ef5a76a9588a87116e0e28f941e2f594d2379ff5f312f2b",
+      "bytes": 5917
+    },
+    {
+      "path": "docs/changelog.mdx",
+      "source": "https://exa.ai/docs/changelog",
+      "markdown": "source-snapshot/markdown/changelog.md",
+      "sha256": "0913a48e5e0db9bb59464b7b60f720ef40d720f785981bf04e9289f2cda29f89",
+      "bytes": 15371
+    },
+    {
+      "path": "docs/contents/quickstart.mdx",
+      "source": "https://exa.ai/docs/contents/quickstart",
+      "markdown": "source-snapshot/markdown/contents/quickstart.md",
+      "sha256": "102171d1ed03383b039091e62a91b8b3cb2984666fd364a0e88b9e2a0d788de8",
+      "bytes": 11012
+    },
+    {
+      "path": "docs/get-started/agent-skills/build-with-exa.mdx",
+      "source": "https://exa.ai/docs/get-started/agent-skills/build-with-exa",
+      "markdown": "source-snapshot/markdown/get-started/agent-skills/build-with-exa.md",
+      "sha256": "a9348c5bff8088eb21aab58f3339c19aa9c920c7f2c210bda76dbf2940af8b52",
+      "bytes": 5534
+    },
+    {
+      "path": "docs/get-started/agent-skills/exa-contents.mdx",
+      "source": "https://exa.ai/docs/get-started/agent-skills/exa-contents",
+      "markdown": "source-snapshot/markdown/get-started/agent-skills/exa-contents.md",
+      "sha256": "73dd6135d27996b37e5b4e445e1436fdb431233773f115579e22217a3ab1acca",
+      "bytes": 5491
+    },
+    {
+      "path": "docs/get-started/agent-skills/exa-search.mdx",
+      "source": "https://exa.ai/docs/get-started/agent-skills/exa-search",
+      "markdown": "source-snapshot/markdown/get-started/agent-skills/exa-search.md",
+      "sha256": "914713eca7d37f0d68021bd8829515b9451ef723cdf3bba8d14c4d74ca3aca47",
+      "bytes": 5477
+    },
+    {
+      "path": "docs/get-started/agent-skills/overview.mdx",
+      "source": "https://exa.ai/docs/get-started/agent-skills/overview",
+      "markdown": "source-snapshot/markdown/get-started/agent-skills/overview.md",
+      "sha256": "aa5ffdeb4432bb0f8121108b941655eeed020ddf7df71201fe4dc3a63c0a2ce3",
+      "bytes": 2297
+    },
+    {
+      "path": "docs/get-started/exa-mcp.mdx",
+      "source": "https://exa.ai/docs/get-started/exa-mcp",
+      "markdown": "source-snapshot/markdown/get-started/exa-mcp.md",
+      "sha256": "cbd5bbafd068fbbe62f5ffc0931eba517d473ee192a8ad4bd8d591a51007f712",
+      "bytes": 19430
+    },
+    {
+      "path": "docs/get-started/quickstart.mdx",
+      "source": "https://exa.ai/docs/get-started/quickstart",
+      "markdown": "source-snapshot/markdown/get-started/quickstart.md",
+      "sha256": "8f7f50565256aaa8532c869dbcd02fede354ec030c09b75f37508f7025f53b43",
+      "bytes": 4550
+    },
+    {
+      "path": "docs/integrations/baseten.mdx",
+      "source": "https://exa.ai/docs/integrations/baseten",
+      "markdown": "source-snapshot/markdown/integrations/baseten.md",
+      "sha256": "bc1e5c5509c7136344dd8f793f90876584a208c81d0f50d540d25c327399d6bb",
+      "bytes": 7000
+    },
+    {
+      "path": "docs/integrations/browserbase.mdx",
+      "source": "https://exa.ai/docs/integrations/browserbase",
+      "markdown": "source-snapshot/markdown/integrations/browserbase.md",
+      "sha256": "246e384bbe84a2080dc9b7842bd5cf3d33c575b1fefbf22342893cddfa25ed75",
+      "bytes": 3158
+    },
+    {
+      "path": "docs/integrations/chatgpt-codex.mdx",
+      "source": "https://exa.ai/docs/integrations/chatgpt-codex",
+      "markdown": "source-snapshot/markdown/integrations/chatgpt-codex.md",
+      "sha256": "79d4967c1a73ca2b5d216f930e77fa8ecc99f74fd32431d943944d3cd35bdd20",
+      "bytes": 4976
+    },
+    {
+      "path": "docs/integrations/claude-web-desktop.mdx",
+      "source": "https://exa.ai/docs/integrations/claude-web-desktop",
+      "markdown": "source-snapshot/markdown/integrations/claude-web-desktop.md",
+      "sha256": "d3f9b8fb61be3cd1665b7c190f86765140067229ddd5d9827f2da8d99e33c56c",
+      "bytes": 6371
+    },
+    {
+      "path": "docs/integrations/crewai.mdx",
+      "source": "https://exa.ai/docs/integrations/crewai",
+      "markdown": "source-snapshot/markdown/integrations/crewai.md",
+      "sha256": "b1cfb64d7c7515abe80bf5fdd5ddd42d2897f0564c1ae2bbab25cecf16d41ec1",
+      "bytes": 6122
+    },
+    {
+      "path": "docs/integrations/elevenlabs.mdx",
+      "source": "https://exa.ai/docs/integrations/elevenlabs",
+      "markdown": "source-snapshot/markdown/integrations/elevenlabs.md",
+      "sha256": "c0e1c0ac238b8efbf34ef71ffcf812f746859891a3cd15fc8614d8e83bf9cc6e",
+      "bytes": 13518
+    },
+    {
+      "path": "docs/integrations/exa-for-sheets.mdx",
+      "source": "https://exa.ai/docs/integrations/exa-for-sheets",
+      "markdown": "source-snapshot/markdown/integrations/exa-for-sheets.md",
+      "sha256": "fbddb0b5055feb4207e54092134f4ca2317815a1286ad842add5b8ee45ba657a",
+      "bytes": 13177
+    },
+    {
+      "path": "docs/integrations/exa-slack.mdx",
+      "source": "https://exa.ai/docs/integrations/exa-slack",
+      "markdown": "source-snapshot/markdown/integrations/exa-slack.md",
+      "sha256": "86184e2c8158eabf3152d7ca4f9da3209041abcd0dc14570b1e5f0a0c1e9780a",
+      "bytes": 9191
+    },
+    {
+      "path": "docs/integrations/grok-build.mdx",
+      "source": "https://exa.ai/docs/integrations/grok-build",
+      "markdown": "source-snapshot/markdown/integrations/grok-build.md",
+      "sha256": "6d1b1d45af376e323faacd0e80ee8da3456a01668c09351c2fbc3131d2217755",
+      "bytes": 1989
+    },
+    {
+      "path": "docs/integrations/gumloop.mdx",
+      "source": "https://exa.ai/docs/integrations/gumloop",
+      "markdown": "source-snapshot/markdown/integrations/gumloop.md",
+      "sha256": "8cc67e58722138fb228920124182220153efe0b37da77a6b33be57194cbc93f2",
+      "bytes": 5213
+    },
+    {
+      "path": "docs/integrations/hermes-agent.mdx",
+      "source": "https://exa.ai/docs/integrations/hermes-agent",
+      "markdown": "source-snapshot/markdown/integrations/hermes-agent.md",
+      "sha256": "d4ab8282d7bf442b50309a7e03847665653be313cebf1878020ff305a4806d16",
+      "bytes": 4262
+    },
+    {
+      "path": "docs/integrations/langchain.mdx",
+      "source": "https://exa.ai/docs/integrations/langchain",
+      "markdown": "source-snapshot/markdown/integrations/langchain.md",
+      "sha256": "50d06f4f28ac8b3e3c5b1c3a89c2ab658356da95d624fc015d293440eb24e5e6",
+      "bytes": 10048
+    },
+    {
+      "path": "docs/integrations/llamaindex.mdx",
+      "source": "https://exa.ai/docs/integrations/llamaindex",
+      "markdown": "source-snapshot/markdown/integrations/llamaindex.md",
+      "sha256": "2b0cc29ed95c0a73bbb70106c5c82daace015d0045dbd7b7b3c03443a347dc05",
+      "bytes": 3717
+    },
+    {
+      "path": "docs/integrations/marketplaces/stripe-projects.mdx",
+      "source": "https://exa.ai/docs/integrations/marketplaces/stripe-projects",
+      "markdown": "source-snapshot/markdown/integrations/marketplaces/stripe-projects.md",
+      "sha256": "9400be346f2b42787cd092aaba8933b9830a64b11d8c1c46d8f856f9d5e8f913",
+      "bytes": 2390
+    },
+    {
+      "path": "docs/integrations/n8n.mdx",
+      "source": "https://exa.ai/docs/integrations/n8n",
+      "markdown": "source-snapshot/markdown/integrations/n8n.md",
+      "sha256": "a5d05ce1491bf346275a96e2b88adeb38d9817f10d632f428c9ad1fd583bd694",
+      "bytes": 5138
+    },
+    {
+      "path": "docs/integrations/openai-sdk.mdx",
+      "source": "https://exa.ai/docs/integrations/openai-sdk",
+      "markdown": "source-snapshot/markdown/integrations/openai-sdk.md",
+      "sha256": "4c1bd17887f79180f8a49e8dd518307ab091df9f6a176608499cb024b13fd162",
+      "bytes": 12104
+    },
+    {
+      "path": "docs/integrations/openclaw.mdx",
+      "source": "https://exa.ai/docs/integrations/openclaw",
+      "markdown": "source-snapshot/markdown/integrations/openclaw.md",
+      "sha256": "e548827bd454590722303aff27de1d585d1bda829d5f105a81a761898288d4b1",
+      "bytes": 5006
+    },
+    {
+      "path": "docs/integrations/openhuman.mdx",
+      "source": "https://exa.ai/docs/integrations/openhuman",
+      "markdown": "source-snapshot/markdown/integrations/openhuman.md",
+      "sha256": "df2de1f2a9871e123b3e67874835f03f4e1765a6de00471434a7bdf973271722",
+      "bytes": 7464
+    },
+    {
+      "path": "docs/integrations/openrouter.mdx",
+      "source": "https://exa.ai/docs/integrations/openrouter",
+      "markdown": "source-snapshot/markdown/integrations/openrouter.md",
+      "sha256": "1e367fa58ca339ac1e3c7c7abbd43abd871ff6b6eb597d219a1fc5de072cb228",
+      "bytes": 6689
+    },
+    {
+      "path": "docs/integrations/payments/mpp/gtm-enrichment.mdx",
+      "source": "https://exa.ai/docs/integrations/payments/mpp/gtm-enrichment",
+      "markdown": "source-snapshot/markdown/integrations/payments/mpp/gtm-enrichment.md",
+      "sha256": "21a3e19af11d6083f702f0dddb864ba2a932a46c14c5ef46cb2e6d7489bee08b",
+      "bytes": 17897
+    },
+    {
+      "path": "docs/integrations/payments/mpp/quickstart.mdx",
+      "source": "https://exa.ai/docs/integrations/payments/mpp/quickstart",
+      "markdown": "source-snapshot/markdown/integrations/payments/mpp/quickstart.md",
+      "sha256": "648e897c8ef259c00d582bc414a717fe56260f4d0e122e3271fad711a4556d37",
+      "bytes": 11970
+    },
+    {
+      "path": "docs/integrations/payments/nevermined.mdx",
+      "source": "https://exa.ai/docs/integrations/payments/nevermined",
+      "markdown": "source-snapshot/markdown/integrations/payments/nevermined.md",
+      "sha256": "c959d722572aae949bb3c27817e98dc564dacec8c1b564f0afaca24def9df1bc",
+      "bytes": 5706
+    },
+    {
+      "path": "docs/integrations/payments/x402/agentkit.mdx",
+      "source": "https://exa.ai/docs/integrations/payments/x402/agentkit",
+      "markdown": "source-snapshot/markdown/integrations/payments/x402/agentkit.md",
+      "sha256": "090d4690fe8f97c8155bc814c6c69fbe5f77b215ad23bbd49835339e6057e644",
+      "bytes": 8607
+    },
+    {
+      "path": "docs/integrations/payments/x402/quickstart.mdx",
+      "source": "https://exa.ai/docs/integrations/payments/x402/quickstart",
+      "markdown": "source-snapshot/markdown/integrations/payments/x402/quickstart.md",
+      "sha256": "db831dcba552cf22995f7e470775617020e1e3613f300922dc91de904b8b8876",
+      "bytes": 17277
+    },
+    {
+      "path": "docs/integrations/pydantic-ai.mdx",
+      "source": "https://exa.ai/docs/integrations/pydantic-ai",
+      "markdown": "source-snapshot/markdown/integrations/pydantic-ai.md",
+      "sha256": "053aecc64d4a42640be5030b951cff54725cb8190a874c491d0b61a2ccbdd852",
+      "bytes": 9886
+    },
+    {
+      "path": "docs/integrations/snowflake.mdx",
+      "source": "https://exa.ai/docs/integrations/snowflake",
+      "markdown": "source-snapshot/markdown/integrations/snowflake.md",
+      "sha256": "451812613407eaf6b588d44e4bfa2007d4303257c864e36fb660f94d86ee3042",
+      "bytes": 27206
+    },
+    {
+      "path": "docs/integrations/tool-calling/anthropic.mdx",
+      "source": "https://exa.ai/docs/integrations/tool-calling/anthropic",
+      "markdown": "source-snapshot/markdown/integrations/tool-calling/anthropic.md",
+      "sha256": "a61eac59ca7266bff5cbf45909ad4940e05e2da18ec8c4434884804b413eac30",
+      "bytes": 8237
+    },
+    {
+      "path": "docs/integrations/tool-calling/openai.mdx",
+      "source": "https://exa.ai/docs/integrations/tool-calling/openai",
+      "markdown": "source-snapshot/markdown/integrations/tool-calling/openai.md",
+      "sha256": "8c5823aea10a5728899b6ade83540172dbfa1331b3c1759dc35f536563da36fe",
+      "bytes": 8398
+    },
+    {
+      "path": "docs/integrations/truefoundry.mdx",
+      "source": "https://exa.ai/docs/integrations/truefoundry",
+      "markdown": "source-snapshot/markdown/integrations/truefoundry.md",
+      "sha256": "121dbe19b9088f225a1ff12b7018d661c6d070fe1494de9548a12ab091be9205",
+      "bytes": 7609
+    },
+    {
+      "path": "docs/integrations/vercel/ai-gateway.mdx",
+      "source": "https://exa.ai/docs/integrations/vercel/ai-gateway",
+      "markdown": "source-snapshot/markdown/integrations/vercel/ai-gateway.md",
+      "sha256": "ce7fca1979d1b6f7e0e37a028b51575e3a1cd40278afc852f708e92a98518a9b",
+      "bytes": 6326
+    },
+    {
+      "path": "docs/integrations/vercel/ai-sdk.mdx",
+      "source": "https://exa.ai/docs/integrations/vercel/ai-sdk",
+      "markdown": "source-snapshot/markdown/integrations/vercel/ai-sdk.md",
+      "sha256": "6a6987ae58b65492c50f6ddf5b50607960c78260872692edd0b2526ff6346d21",
+      "bytes": 5668
+    },
+    {
+      "path": "docs/integrations/vercel/fx.mdx",
+      "source": "https://exa.ai/docs/integrations/vercel/fx",
+      "markdown": "source-snapshot/markdown/integrations/vercel/fx.md",
+      "sha256": "8bca4baad7a62d1872e7a477859204555c7dcaa08b0e8574cde8c2162a9931c8",
+      "bytes": 2720
+    },
+    {
+      "path": "docs/monitors/quickstart.mdx",
+      "source": "https://exa.ai/docs/monitors/quickstart",
+      "markdown": "source-snapshot/markdown/monitors/quickstart.md",
+      "sha256": "e215e19c1ca2aa0922c4740a6948660349c9f3758d2921ac171bcf55a5567494",
+      "bytes": 12514
+    },
+    {
+      "path": "docs/reference/agent-api/cancel-a-run.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/cancel-a-run",
+      "markdown": "source-snapshot/markdown/reference/agent-api/cancel-a-run.md",
+      "sha256": "31bb2fa35ea128f142545d4aa64005a3f22033b7457f6e715adaa2f6061c369d",
+      "bytes": 15705
+    },
+    {
+      "path": "docs/reference/agent-api/create-a-run.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/create-a-run",
+      "markdown": "source-snapshot/markdown/reference/agent-api/create-a-run.md",
+      "sha256": "674fdd074aed5d50c7542b605f04d2fa7ca7b4602d37155e54e82b9a5fe00067",
+      "bytes": 27093
+    },
+    {
+      "path": "docs/reference/agent-api/delete-a-run.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/delete-a-run",
+      "markdown": "source-snapshot/markdown/reference/agent-api/delete-a-run.md",
+      "sha256": "45480a6aeec3ad9b6bae737e4a7262e24b65c8e7f64562db8f390a8f46553046",
+      "bytes": 5627
+    },
+    {
+      "path": "docs/reference/agent-api/get-a-run.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/get-a-run",
+      "markdown": "source-snapshot/markdown/reference/agent-api/get-a-run.md",
+      "sha256": "9d24af292b8db811b241b2a81b2a51ce13260bbd18ef1a143dab274805cadac3",
+      "bytes": 15179
+    },
+    {
+      "path": "docs/reference/agent-api/list-run-events.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/list-run-events",
+      "markdown": "source-snapshot/markdown/reference/agent-api/list-run-events.md",
+      "sha256": "d79ddc82b7164c89311d1bdd80c2cdd77a64f6e4d3f0558edc04b89f1dc6de43",
+      "bytes": 8524
+    },
+    {
+      "path": "docs/reference/agent-api/list-runs.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/list-runs",
+      "markdown": "source-snapshot/markdown/reference/agent-api/list-runs.md",
+      "sha256": "de4d902f11132b2aac074633a9e44ea33f54087979a60d7f9c1e75e826b81d8e",
+      "bytes": 15524
+    },
+    {
+      "path": "docs/reference/agent-api/stop-a-run.mdx",
+      "source": "https://exa.ai/docs/reference/agent-api/stop-a-run",
+      "markdown": "source-snapshot/markdown/reference/agent-api/stop-a-run.md",
+      "sha256": "ae32dcfb84edcd3c587f6e6a665513f1679080767befa530e16f63d23b7619b2",
+      "bytes": 16539
+    },
+    {
+      "path": "docs/reference/answer.mdx",
+      "source": "https://exa.ai/docs/reference/answer",
+      "markdown": "source-snapshot/markdown/reference/answer.md",
+      "sha256": "d3e70081d9acfa9efb0e09f79400d059195161b824301a71f9998531d29de86f",
+      "bytes": 24636
+    },
+    {
+      "path": "docs/reference/batches/cancel-a-batch.mdx",
+      "source": "https://exa.ai/docs/reference/batches/cancel-a-batch",
+      "markdown": "source-snapshot/markdown/reference/batches/cancel-a-batch.md",
+      "sha256": "bfc0336e68ea3bc698a4901509b42c004d5eac2ab25e9c56fdc78a4d273bc453",
+      "bytes": 11064
+    },
+    {
+      "path": "docs/reference/batches/create-a-batch.mdx",
+      "source": "https://exa.ai/docs/reference/batches/create-a-batch",
+      "markdown": "source-snapshot/markdown/reference/batches/create-a-batch.md",
+      "sha256": "f4da003aae293f9e8df4ff758c01da9de47d682db3de02765e30c3dbcca7f0a7",
+      "bytes": 12627
+    },
+    {
+      "path": "docs/reference/batches/delete-a-batch.mdx",
+      "source": "https://exa.ai/docs/reference/batches/delete-a-batch",
+      "markdown": "source-snapshot/markdown/reference/batches/delete-a-batch.md",
+      "sha256": "15621044205918dbabe7956610469788856176b66c87a54a9eccc8fb5ca719fe",
+      "bytes": 7870
+    },
+    {
+      "path": "docs/reference/batches/get-a-batch.mdx",
+      "source": "https://exa.ai/docs/reference/batches/get-a-batch",
+      "markdown": "source-snapshot/markdown/reference/batches/get-a-batch.md",
+      "sha256": "ce774cc0b2c3df98f3fe291fd57ff65b8d155f83e467fc344f4c0492355839d6",
+      "bytes": 10334
+    },
+    {
+      "path": "docs/reference/batches/list-batches.mdx",
+      "source": "https://exa.ai/docs/reference/batches/list-batches",
+      "markdown": "source-snapshot/markdown/reference/batches/list-batches.md",
+      "sha256": "f330f9dfa63845b2e8c4caaa887a04c50846d1a2672460430de283b3c5f0c45b",
+      "bytes": 11477
+    },
+    {
+      "path": "docs/reference/get-contents.mdx",
+      "source": "https://exa.ai/docs/reference/get-contents",
+      "markdown": "source-snapshot/markdown/reference/get-contents.md",
+      "sha256": "8bb4bb0eed3efcf5bc16437a380181f0e3326ba1c2cf9e63bf029eaf2845229d",
+      "bytes": 71998
+    },
+    {
+      "path": "docs/reference/monitors/batch-monitors.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/batch-monitors",
+      "markdown": "source-snapshot/markdown/reference/monitors/batch-monitors.md",
+      "sha256": "c27e7dd52c37d5781e00fb79c207cd2e9acd395ce8b26dcece912da4fe568dcb",
+      "bytes": 9065
+    },
+    {
+      "path": "docs/reference/monitors/create-a-monitor.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/create-a-monitor",
+      "markdown": "source-snapshot/markdown/reference/monitors/create-a-monitor.md",
+      "sha256": "e249bbd2856e36b306fd5055e5becde15ccd843aa6e6e640ab61fda691b67b75",
+      "bytes": 48661
+    },
+    {
+      "path": "docs/reference/monitors/delete-a-monitor.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/delete-a-monitor",
+      "markdown": "source-snapshot/markdown/reference/monitors/delete-a-monitor.md",
+      "sha256": "e6615d747d92dab22210ac42d2c0ea2f73c7a6bc75759ec776a6717165789e35",
+      "bytes": 28533
+    },
+    {
+      "path": "docs/reference/monitors/get-a-monitor.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/get-a-monitor",
+      "markdown": "source-snapshot/markdown/reference/monitors/get-a-monitor.md",
+      "sha256": "cdbc57f1940a6e730803a0d8760255c20466f93624231f4b3bdb6da98e2f56a4",
+      "bytes": 28502
+    },
+    {
+      "path": "docs/reference/monitors/list-monitors.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/list-monitors",
+      "markdown": "source-snapshot/markdown/reference/monitors/list-monitors.md",
+      "sha256": "b220534477bd69f5db58cf5ca4696c3b8808c4b924f96314c0e2e1f8137ca72d",
+      "bytes": 29930
+    },
+    {
+      "path": "docs/reference/monitors/runs/get-a-run.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/runs/get-a-run",
+      "markdown": "source-snapshot/markdown/reference/monitors/runs/get-a-run.md",
+      "sha256": "ebbc07fea4eeb958c5a7f753cb13519156a2c7cbb5b984925b5ac3872e73e705",
+      "bytes": 11590
+    },
+    {
+      "path": "docs/reference/monitors/runs/list-runs.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/runs/list-runs",
+      "markdown": "source-snapshot/markdown/reference/monitors/runs/list-runs.md",
+      "sha256": "f9c863e97330dcc4653b36e3b89b2925365dccbb245cdb94f0e645108fec993f",
+      "bytes": 12379
+    },
+    {
+      "path": "docs/reference/monitors/trigger-a-monitor.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/trigger-a-monitor",
+      "markdown": "source-snapshot/markdown/reference/monitors/trigger-a-monitor.md",
+      "sha256": "1eed09f1bb2fad31fd4ff63f47d2512b8a1cfc7b009a5260a89aa91f486d6d47",
+      "bytes": 6462
+    },
+    {
+      "path": "docs/reference/monitors/update-a-monitor.mdx",
+      "source": "https://exa.ai/docs/reference/monitors/update-a-monitor",
+      "markdown": "source-snapshot/markdown/reference/monitors/update-a-monitor.md",
+      "sha256": "9c87c657ef7792e9c0dfbd9cc4a72fa66155faffc01de08186da4fa645c2858b",
+      "bytes": 48992
+    },
+    {
+      "path": "docs/reference/search.mdx",
+      "source": "https://exa.ai/docs/reference/search",
+      "markdown": "source-snapshot/markdown/reference/search.md",
+      "sha256": "e2857f78216d4ba88402d5b5df1595c28774fd7bd1e9f3b1ddcfa06046bebf38",
+      "bytes": 95681
+    },
+    {
+      "path": "docs/reference/team-management/create-api-key.mdx",
+      "source": "https://exa.ai/docs/reference/team-management/create-api-key",
+      "markdown": "source-snapshot/markdown/reference/team-management/create-api-key.md",
+      "sha256": "4220049b5d35117d49e59c84b715f7d671d399b4bbdc000df250adfae1ad5d71",
+      "bytes": 7420
+    },
+    {
+      "path": "docs/reference/team-management/delete-api-key.mdx",
+      "source": "https://exa.ai/docs/reference/team-management/delete-api-key",
+      "markdown": "source-snapshot/markdown/reference/team-management/delete-api-key.md",
+      "sha256": "969bb8cdeaf8a6c4110ee07e46dbb4dcd67fd9b1248538760a6e8fad6f82f36b",
+      "bytes": 4817
+    },
+    {
+      "path": "docs/reference/team-management/get-api-key-usage.mdx",
+      "source": "https://exa.ai/docs/reference/team-management/get-api-key-usage",
+      "markdown": "source-snapshot/markdown/reference/team-management/get-api-key-usage.md",
+      "sha256": "50bdfaee8fa4d14c16bd6516dc81e582c412f2227a63973071af4284b7c5a751",
+      "bytes": 12787
+    },
+    {
+      "path": "docs/reference/team-management/get-api-key.mdx",
+      "source": "https://exa.ai/docs/reference/team-management/get-api-key",
+      "markdown": "source-snapshot/markdown/reference/team-management/get-api-key.md",
+      "sha256": "2421cb6a231b2f495d50077b7abf7cb178bd801a10b6240d0f26690b5b09e3a6",
+      "bytes": 4750
+    },
+    {
+      "path": "docs/reference/team-management/list-api-keys.mdx",
+      "source": "https://exa.ai/docs/reference/team-management/list-api-keys",
+      "markdown": "source-snapshot/markdown/reference/team-management/list-api-keys.md",
+      "sha256": "2bf665fda40f42e0ce3db755d3b204faa9926dc52a30deba2a23e7590a5111da",
+      "bytes": 7308
+    },
+    {
+      "path": "docs/reference/team-management/update-api-key.mdx",
+      "source": "https://exa.ai/docs/reference/team-management/update-api-key",
+      "markdown": "source-snapshot/markdown/reference/team-management/update-api-key.md",
+      "sha256": "2cd8ae68d6183462b57a591a14ee77daf579513ecedce0ca0d7b93f5769689a7",
+      "bytes": 7987
+    },
+    {
+      "path": "docs/sdks/quickstart.mdx",
+      "source": "https://exa.ai/docs/sdks/quickstart",
+      "markdown": "source-snapshot/markdown/sdks/quickstart.md",
+      "sha256": "acf7ca00699982ed709ba71220a92e5241abd5d77ef7bbaf8f232f0643528232",
+      "bytes": 8771
+    },
+    {
+      "path": "docs/search/best-practices.mdx",
+      "source": "https://exa.ai/docs/search/best-practices",
+      "markdown": "source-snapshot/markdown/search/best-practices.md",
+      "sha256": "43ce5fd575cc0c2f2017860215ae47926939770ed67e6cc295a1d4bc7d754525",
+      "bytes": 10774
+    },
+    {
+      "path": "docs/search/data/code.mdx",
+      "source": "https://exa.ai/docs/search/data/code",
+      "markdown": "source-snapshot/markdown/search/data/code.md",
+      "sha256": "98cf75d5811d5e2b27724e96d70f55a39a29c9a3f81c7eb75e94122e6f70600c",
+      "bytes": 4360
+    },
+    {
+      "path": "docs/search/data/companies-people.mdx",
+      "source": "https://exa.ai/docs/search/data/companies-people",
+      "markdown": "source-snapshot/markdown/search/data/companies-people.md",
+      "sha256": "403cdf644c1c0f98f8300dfdbc3fa5357be7d32864a81c5405e225bee15602e1",
+      "bytes": 5964
+    },
+    {
+      "path": "docs/search/data/financial.mdx",
+      "source": "https://exa.ai/docs/search/data/financial",
+      "markdown": "source-snapshot/markdown/search/data/financial.md",
+      "sha256": "6da8c8aa30ff6459d3f0b544f0982d8887b949c2c0f5aec114bfd6f21aebccff",
+      "bytes": 4636
+    },
+    {
+      "path": "docs/search/data/legal.mdx",
+      "source": "https://exa.ai/docs/search/data/legal",
+      "markdown": "source-snapshot/markdown/search/data/legal.md",
+      "sha256": "d002b4a0018e5876649f7a8319583401260d64a571f70f7ec673455367f590fa",
+      "bytes": 4358
+    },
+    {
+      "path": "docs/search/data/news.mdx",
+      "source": "https://exa.ai/docs/search/data/news",
+      "markdown": "source-snapshot/markdown/search/data/news.md",
+      "sha256": "6222e96e6df585c0886cac8116738e17949f12eb18fb0e6ba650d1cb1245a42f",
+      "bytes": 4227
+    },
+    {
+      "path": "docs/search/data/overview.mdx",
+      "source": "https://exa.ai/docs/search/data/overview",
+      "markdown": "source-snapshot/markdown/search/data/overview.md",
+      "sha256": "7137414196e2948e63f689e2945b7f4734d6cbd503779c67485de278bccd2fee",
+      "bytes": 7762
+    },
+    {
+      "path": "docs/search/data/research.mdx",
+      "source": "https://exa.ai/docs/search/data/research",
+      "markdown": "source-snapshot/markdown/search/data/research.md",
+      "sha256": "740103d84f2782404ff75aae26bdec5025c7218f11c9881307df9348b7d6832b",
+      "bytes": 4629
+    },
+    {
+      "path": "docs/search/data/security.mdx",
+      "source": "https://exa.ai/docs/search/data/security",
+      "markdown": "source-snapshot/markdown/search/data/security.md",
+      "sha256": "db1c09e624a78f81d3d2ade5c35abd90fd983db60d9f9811ee0b2bae9497368d",
+      "bytes": 4044
+    },
+    {
+      "path": "docs/search/data/sports-weather-places.mdx",
+      "source": "https://exa.ai/docs/search/data/sports-weather-places",
+      "markdown": "source-snapshot/markdown/search/data/sports-weather-places.md",
+      "sha256": "a2119d7de9b19436a7ffefd4f8d682886b71338bd309f851ff22bd4d15b35ebc",
+      "bytes": 5576
+    },
+    {
+      "path": "docs/search/deep-search.mdx",
+      "source": "https://exa.ai/docs/search/deep-search",
+      "markdown": "source-snapshot/markdown/search/deep-search.md",
+      "sha256": "fb616dac1def71ee9c6876490060ecc3b1c2578f61748e6020735751579c875f",
+      "bytes": 13573
+    },
+    {
+      "path": "docs/search/highlights.mdx",
+      "source": "https://exa.ai/docs/search/highlights",
+      "markdown": "source-snapshot/markdown/search/highlights.md",
+      "sha256": "6ab82067dcc2f85cdd3ceaeb8e48c3fa34e1896c638399b423a8ce9963ddfc0a",
+      "bytes": 6013
+    },
+    {
+      "path": "docs/search/quickstart.mdx",
+      "source": "https://exa.ai/docs/search/quickstart",
+      "markdown": "source-snapshot/markdown/search/quickstart.md",
+      "sha256": "9aa35587a36fdc5145bd55da5bc81b6f497a93f0368add52e65a46d7983bca73",
+      "bytes": 20017
+    },
+    {
+      "path": "docs/search/snapshot.mdx",
+      "source": "https://exa.ai/docs/search/snapshot",
+      "markdown": "source-snapshot/markdown/search/snapshot.md",
+      "sha256": "bac27cc72c51e7157b1774514664563675f200bddf489a94da581dde67f78f5a",
+      "bytes": 7325
+    },
+    {
+      "path": "docs/websets/api/events/get-an-event.mdx",
+      "source": "https://exa.ai/docs/websets/api/events/get-an-event",
+      "markdown": "source-snapshot/markdown/websets/api/events/get-an-event.md",
+      "sha256": "a969af2bc85fa12cca54f1811386a763ee5f9fcc6e262062b335bf976564850e",
+      "bytes": 59255
+    },
+    {
+      "path": "docs/websets/api/events/list-all-events.mdx",
+      "source": "https://exa.ai/docs/websets/api/events/list-all-events",
+      "markdown": "source-snapshot/markdown/websets/api/events/list-all-events.md",
+      "sha256": "e4a43c9ce678ef2427cad2f1bff6429de490aacf805f37303359b25c9cadf866",
+      "bytes": 61535
+    },
+    {
+      "path": "docs/websets/api/events/types.mdx",
+      "source": "https://exa.ai/docs/websets/api/events/types",
+      "markdown": "source-snapshot/markdown/websets/api/events/types.md",
+      "sha256": "975c9ae04fa38370b97f81ffc955f2fbfd2322dc762878151a04613290b4244e",
+      "bytes": 2261
+    },
+    {
+      "path": "docs/websets/api/imports/create-an-import.mdx",
+      "source": "https://exa.ai/docs/websets/api/imports/create-an-import",
+      "markdown": "source-snapshot/markdown/websets/api/imports/create-an-import.md",
+      "sha256": "b407e17039c17bdf11948faa1e3b9c621022826127496da69a754cd73189070c",
+      "bytes": 9157
+    },
+    {
+      "path": "docs/websets/api/imports/delete-import.mdx",
+      "source": "https://exa.ai/docs/websets/api/imports/delete-import",
+      "markdown": "source-snapshot/markdown/websets/api/imports/delete-import.md",
+      "sha256": "7f544dbd4b818e594ba670a39eacaef80a442481ad50c368eb688919d5b86b1d",
+      "bytes": 5417
+    },
+    {
+      "path": "docs/websets/api/imports/get-import.mdx",
+      "source": "https://exa.ai/docs/websets/api/imports/get-import",
+      "markdown": "source-snapshot/markdown/websets/api/imports/get-import.md",
+      "sha256": "fe691a86c7a96bb374517055372b5a6ae07579c086ab8a3cd7bb8de62ec6f574",
+      "bytes": 5401
+    },
+    {
+      "path": "docs/websets/api/imports/list-imports.mdx",
+      "source": "https://exa.ai/docs/websets/api/imports/list-imports",
+      "markdown": "source-snapshot/markdown/websets/api/imports/list-imports.md",
+      "sha256": "867813ac922f86075a684485a364ab90aa7907938611658030b9824f25ab90b4",
+      "bytes": 6256
+    },
+    {
+      "path": "docs/websets/api/imports/update-import.mdx",
+      "source": "https://exa.ai/docs/websets/api/imports/update-import",
+      "markdown": "source-snapshot/markdown/websets/api/imports/update-import.md",
+      "sha256": "6813b11d77017e05d561385bf6767c14dcac417a63378c971172a68c716eac4f",
+      "bytes": 5847
+    },
+    {
+      "path": "docs/websets/api/monitors/create-a-monitor.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/create-a-monitor",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/create-a-monitor.md",
+      "sha256": "8f0e4ccf500a9f30d430245a95f7dee84c4b0785d2989fe202720740f05f654f",
+      "bytes": 13383
+    },
+    {
+      "path": "docs/websets/api/monitors/delete-monitor.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/delete-monitor",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/delete-monitor.md",
+      "sha256": "ca934b41d43af381bfc17f4bec1587e18e590aa1e8ea0703dbccaaead8c218c4",
+      "bytes": 9256
+    },
+    {
+      "path": "docs/websets/api/monitors/get-monitor.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/get-monitor",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/get-monitor.md",
+      "sha256": "0cadc143999764318fd50c2384590aa1d141154b15b0f03864633d5d1dcb3143",
+      "bytes": 9240
+    },
+    {
+      "path": "docs/websets/api/monitors/list-monitors.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/list-monitors",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/list-monitors.md",
+      "sha256": "cc5761c2b52c3b98f967abfa2bd05d21ed2137c98dcc195ab22efded01e159fc",
+      "bytes": 10277
+    },
+    {
+      "path": "docs/websets/api/monitors/runs/get-monitor-run.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/runs/get-monitor-run",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/runs/get-monitor-run.md",
+      "sha256": "4872cb8a657361a4a176747d53ad521afdb76f9e9c39aba3c8a1e49856edf840",
+      "bytes": 3717
+    },
+    {
+      "path": "docs/websets/api/monitors/runs/list-monitor-runs.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/runs/list-monitor-runs",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/runs/list-monitor-runs.md",
+      "sha256": "bfe30bb844668eeed7844949d7263256b14aed8026dec29dd3c7888f0ef7d157",
+      "bytes": 4172
+    },
+    {
+      "path": "docs/websets/api/monitors/update-monitor.mdx",
+      "source": "https://exa.ai/docs/websets/api/monitors/update-monitor",
+      "markdown": "source-snapshot/markdown/websets/api/monitors/update-monitor.md",
+      "sha256": "cdff8a0c6f340d335ab747f4d6755fe1d172070d6ef0b1051facf452588e79b7",
+      "bytes": 12267
+    },
+    {
+      "path": "docs/websets/api/teams/get-team-info.mdx",
+      "source": "https://exa.ai/docs/websets/api/teams/get-team-info",
+      "markdown": "source-snapshot/markdown/websets/api/teams/get-team-info.md",
+      "sha256": "77f38b8448ce9e6bcde2f28198e1fc942ef20ec7f1d8f1018daf9db90cbedbda",
+      "bytes": 4343
+    },
+    {
+      "path": "docs/websets/api/webhooks/attempts/list-webhook-attempts.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/attempts/list-webhook-attempts.md",
+      "sha256": "003280880a859a19187f695423e2c577e906f0be3e41ca567b2379d527422796",
+      "bytes": 6278
+    },
+    {
+      "path": "docs/websets/api/webhooks/create-a-webhook.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/create-a-webhook",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/create-a-webhook.md",
+      "sha256": "4f7b8a6ffcc297e3189328cfe78d01df01c56c9bac0d3b2cbfc99d2aa492bbed",
+      "bytes": 5236
+    },
+    {
+      "path": "docs/websets/api/webhooks/delete-a-webhook.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/delete-a-webhook",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/delete-a-webhook.md",
+      "sha256": "e35c621b70c42dccdbbfc8507e530e7b8c6cc3232f94d87878f5d55ac26e5a04",
+      "bytes": 4406
+    },
+    {
+      "path": "docs/websets/api/webhooks/get-a-webhook.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/get-a-webhook",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/get-a-webhook.md",
+      "sha256": "635f4643a3aecdf6d03f137e012db53d5eaca9abfb16827cbbc9cb31ee34a76d",
+      "bytes": 4451
+    },
+    {
+      "path": "docs/websets/api/webhooks/list-webhooks.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/list-webhooks",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/list-webhooks.md",
+      "sha256": "11f3838e8bd19ea00d6363297f90e1817bf61520d4a452241a67cebb26df5466",
+      "bytes": 4966
+    },
+    {
+      "path": "docs/websets/api/webhooks/update-a-webhook.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/update-a-webhook",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/update-a-webhook.md",
+      "sha256": "9cb5dca89a60bbfdf502346be370b265d42e8d9936fe8b469810c60e780cdb4e",
+      "bytes": 5433
+    },
+    {
+      "path": "docs/websets/api/webhooks/verifying-signatures.mdx",
+      "source": "https://exa.ai/docs/websets/api/webhooks/verifying-signatures",
+      "markdown": "source-snapshot/markdown/websets/api/webhooks/verifying-signatures.md",
+      "sha256": "282f612fe82a121c73f026255b0657fe1f4efaefe784f61f15f4739fc109960f",
+      "bytes": 16862
+    },
+    {
+      "path": "docs/websets/api/websets/cancel-a-running-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/cancel-a-running-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/cancel-a-running-webset.md",
+      "sha256": "791d74f85d7069f21ab122f5b1c58c862cbfa301359b70f154f981a84d0c9417",
+      "bytes": 25773
+    },
+    {
+      "path": "docs/websets/api/websets/create-a-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/create-a-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/create-a-webset.md",
+      "sha256": "528039c451978b109ea313ec4d7a41794e9f1f4ebce09af7e7590662d87553a9",
+      "bytes": 36007
+    },
+    {
+      "path": "docs/websets/api/websets/delete-a-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/delete-a-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/delete-a-webset.md",
+      "sha256": "5f05805dc3445f1fbdd74e8d3c65295c03e66f4b1a32ed675eee833a288e0baa",
+      "bytes": 25939
+    },
+    {
+      "path": "docs/websets/api/websets/enrichments/cancel-a-running-enrichment.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+      "markdown": "source-snapshot/markdown/websets/api/websets/enrichments/cancel-a-running-enrichment.md",
+      "sha256": "33dfa0ad39ce19eb4db35f60a7ca709b2f32e1478003e1d269607e790b301fa2",
+      "bytes": 5043
+    },
+    {
+      "path": "docs/websets/api/websets/enrichments/create-an-enrichment.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/create-an-enrichment",
+      "markdown": "source-snapshot/markdown/websets/api/websets/enrichments/create-an-enrichment.md",
+      "sha256": "db31feef6c0ba5aff7604e349e54522f44a276e2e8633b818717530d4614c3e1",
+      "bytes": 6333
+    },
+    {
+      "path": "docs/websets/api/websets/enrichments/delete-an-enrichment.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/delete-an-enrichment",
+      "markdown": "source-snapshot/markdown/websets/api/websets/enrichments/delete-an-enrichment.md",
+      "sha256": "81104639bc87d86e8a50a46a3f8a9bb2d3b8128f29639d54f3474a19d58acdf6",
+      "bytes": 5149
+    },
+    {
+      "path": "docs/websets/api/websets/enrichments/get-an-enrichment.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/get-an-enrichment",
+      "markdown": "source-snapshot/markdown/websets/api/websets/enrichments/get-an-enrichment.md",
+      "sha256": "5bed92d2255dd1e42cf0b57a55d0dde704255b27677ab5abf3fb94d80df90142",
+      "bytes": 4992
+    },
+    {
+      "path": "docs/websets/api/websets/enrichments/update-an-enrichment.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/update-an-enrichment",
+      "markdown": "source-snapshot/markdown/websets/api/websets/enrichments/update-an-enrichment.md",
+      "sha256": "b8a56b90d27d210fc4bfd38209303eb8d57221ba371c43231fba86eaf3dd1bd2",
+      "bytes": 3443
+    },
+    {
+      "path": "docs/websets/api/websets/get-a-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/get-a-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/get-a-webset.md",
+      "sha256": "c3a4013cf0d59745d45611fe97cfcd7d418f12e37b5d6fbe1dcacb075843a1d3",
+      "bytes": 47222
+    },
+    {
+      "path": "docs/websets/api/websets/items/delete-an-item.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/items/delete-an-item",
+      "markdown": "source-snapshot/markdown/websets/api/websets/items/delete-an-item.md",
+      "sha256": "b1643f7b83943892734deb606819c83203d615ed90a694686fe039008ead319a",
+      "bytes": 22706
+    },
+    {
+      "path": "docs/websets/api/websets/items/get-an-item.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/items/get-an-item",
+      "markdown": "source-snapshot/markdown/websets/api/websets/items/get-an-item.md",
+      "sha256": "3ab625b939720bbb44eac53d44ba4a8d69de9279bd9b29ad278d110178c370c0",
+      "bytes": 22546
+    },
+    {
+      "path": "docs/websets/api/websets/items/list-all-items-for-a-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/items/list-all-items-for-a-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/items/list-all-items-for-a-webset.md",
+      "sha256": "74c94003b6ca179a7bb2eb4d66ec81112d08220c50b932d194d595b5cdb66fb9",
+      "bytes": 23741
+    },
+    {
+      "path": "docs/websets/api/websets/list-all-websets.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/list-all-websets",
+      "markdown": "source-snapshot/markdown/websets/api/websets/list-all-websets.md",
+      "sha256": "19e413205fa6ba251ebf6d7cb7426c47db8f5dfd66bae2db137047e0edb88fc2",
+      "bytes": 26930
+    },
+    {
+      "path": "docs/websets/api/websets/preview-a-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/preview-a-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/preview-a-webset.md",
+      "sha256": "217e0a442b327782f3083dcf5e607a305b679614004c0f7e82e8600836ced69b",
+      "bytes": 24344
+    },
+    {
+      "path": "docs/websets/api/websets/searches/cancel-a-running-search.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/searches/cancel-a-running-search",
+      "markdown": "source-snapshot/markdown/websets/api/websets/searches/cancel-a-running-search.md",
+      "sha256": "0b594a405f59669cd40209a9644a264893415c77f29924bcc9ce1d043fdf761d",
+      "bytes": 11900
+    },
+    {
+      "path": "docs/websets/api/websets/searches/create-a-search.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/searches/create-a-search",
+      "markdown": "source-snapshot/markdown/websets/api/websets/searches/create-a-search.md",
+      "sha256": "474985dfbbc358588f11198537c14441d32111b74d47001874a5823d852441ae",
+      "bytes": 17349
+    },
+    {
+      "path": "docs/websets/api/websets/searches/get-a-search.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/searches/get-a-search",
+      "markdown": "source-snapshot/markdown/websets/api/websets/searches/get-a-search.md",
+      "sha256": "3076f1f99e538f3e8abc7c0767a1f4bf70dd7c87b80bb2f5e49b188d2192c3d5",
+      "bytes": 11630
+    },
+    {
+      "path": "docs/websets/api/websets/update-a-webset.mdx",
+      "source": "https://exa.ai/docs/websets/api/websets/update-a-webset",
+      "markdown": "source-snapshot/markdown/websets/api/websets/update-a-webset.md",
+      "sha256": "8b7c4776c0de3854da55976d613bbccaa9c33d80d3e238372d0a96839efc25b5",
+      "bytes": 26727
+    },
+    {
+      "path": "docs/websets/dashboard/exclude-results.mdx",
+      "source": "https://exa.ai/docs/websets/dashboard/exclude-results",
+      "markdown": "source-snapshot/markdown/websets/dashboard/exclude-results.md",
+      "sha256": "a23e3f2599ae426c242fde0c7a4802ab08eca36d453f1183b83a57f1c57b770d",
+      "bytes": 1436
+    },
+    {
+      "path": "docs/websets/dashboard/get-started.mdx",
+      "source": "https://exa.ai/docs/websets/dashboard/get-started",
+      "markdown": "source-snapshot/markdown/websets/dashboard/get-started.md",
+      "sha256": "16b09e89fcdf6d01d6333f381f67e9711865b3da79a83d54d127407a43a02cf3",
+      "bytes": 3595
+    },
+    {
+      "path": "docs/websets/dashboard/import-from-csv.mdx",
+      "source": "https://exa.ai/docs/websets/dashboard/import-from-csv",
+      "markdown": "source-snapshot/markdown/websets/dashboard/import-from-csv.md",
+      "sha256": "f03d8805beb6108ebc0c1fd64e2fffe8a916e960fcc882f671c5b2a67b10c32a",
+      "bytes": 2175
+    },
+    {
+      "path": "docs/websets/imports-and-search.mdx",
+      "source": "https://exa.ai/docs/websets/imports-and-search",
+      "markdown": "source-snapshot/markdown/websets/imports-and-search.md",
+      "sha256": "9199370817d72cc41ebbbe05739922ef108584a5a992810f5251a13843b4571a",
+      "bytes": 24525
+    },
+    {
+      "path": "docs/websets/quickstart.mdx",
+      "source": "https://exa.ai/docs/websets/quickstart",
+      "markdown": "source-snapshot/markdown/websets/quickstart.md",
+      "sha256": "35823a79cafde807098675a093a98c8686f4ec89cda97d65c691c85096f33406",
+      "bytes": 5439
+    }
+  ],
+  "errors": []
+}

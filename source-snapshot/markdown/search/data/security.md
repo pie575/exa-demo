@@ -1,0 +1,125 @@
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Cybersecurity
+
+> Find vulnerabilities, advisories, threat reporting, and trust documentation with Exa Search.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Open in API playground" aria-label={`Open "${query}" in the API playground`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Use Exa Search for vulnerability records, vendor advisories, and threat research from the sources security teams already read.
+
+## Included
+
+* CVE and GHSA vulnerability records
+* Vendor security advisories and patch notes
+* Threat intelligence reports and incident write-ups
+* Trust pages, subprocessor lists, and compliance documentation
+* Security blogs, conference talks, and research
+
+## Use it for
+
+* Vulnerability triage and exposure assessment
+* Threat intelligence and adversary tracking
+* Vendor risk and third-party security reviews
+* Security monitoring and alerting
+
+## Example queries
+
+### Triage a vulnerability class
+
+Name the product, version range, and severity.
+
+<PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
+
+### Find vendor advisories
+
+Describe the exploitation status and product class rather than one CVE ID.
+
+<PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
+
+### Review a vendor's security posture
+
+Name the document type and the vendor class.
+
+<PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
+
+### Research an adversary
+
+Name the group or campaign and the technique or sector you care about.
+
+<PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
+
+## Make a request
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "critical CVEs affecting Apache Struts 6.x",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "critical CVEs affecting Apache Struts 6.x",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "critical CVEs affecting Apache Struts 6.x",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+## Get structured data with Exa Agent
+
+For structured data that requires research across multiple sources, use an [Exa Agent task run](/docs/agent/quickstart). Describe the products, threat criteria, and output fields you need, and Agent returns schema-validated results with citations.
+
+<Card title="Start an Agent task" icon="bot" href="/docs/agent/quickstart" cta="Open Agent guide" arrow="true">
+  Screen a vendor across advisories, breach reporting, and trust pages, or assemble normalized vulnerability data.
+</Card>

@@ -1,0 +1,13 @@
+---
+title: "List Agent runs"
+sidebarTitle: "List runs"
+description: "Retrieve a paginated list of Agent runs for your team."
+openapi: "docs/exa-spec.yaml GET /agent/runs"
+timestamp: false
+---
+
+Runs are returned from newest to oldest. Use `limit` to control page size and `cursor` with the `nextCursor` from the previous response to fetch the next page.
+
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Create a key in the dashboard. New accounts start with free credits.
+</Card>

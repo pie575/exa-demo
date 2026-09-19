@@ -1,0 +1,30 @@
+{
+  "route": "/docs/reference/batches/list-batches",
+  "production": {
+    "status": 200,
+    "text": "List batches\nCopy page\n\nRetrieve a paginated list of batches for your team.\n\nGET\n/\nbatches\nTry it\nBatches are returned from newest to oldest. Use limit to control page size and cursor with the nextCursor from the previous response to fetch the next page. Pass status=completed to list only completed batches; completed listings use their own cursor, so keep sending status=completed on every page.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nExa-Beta\nenum<string>required\n\nRequired beta token for the Batch API.\n\nAvailable options: batches-2026-06-06 \nQuery Parameters\n​\ncursor\nstring\n\nPagination cursor from a previous response\n\n​\nlimit\nintegerdefault:100\n\nMaximum number of batches to return per page. Defaults to 100 when omitted; there is no upper bound.\n\nRequired range: x >= 1\n​\nstatus\nstring\n\nFilter the listing to completed batches. completed is the only supported value; any other value returns a 400. Completed listings are ordered by expiry and use a distinct cursor, so keep sending status=completed on every cursor-paginated request.\n\nAllowed value: \"completed\"\nResponse\n200\napplication/json\n\nOK\n\n​\nobject\nstringrequired\n\nThe object type, always list.\n\nAllowed value: \"list\"\n​\ndata\nobject[]required\n\nThe page of batches, newest first.\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | nullrequired\n\nCursor for the next page\n\nCreate a batch\nPrevious\nGet a batch\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List batches",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List batches\nCopy page\n\nRetrieve a paginated list of batches for your team.\n\nGET\n/\nbatches\nTry it\nBatches are returned from newest to oldest. Use limit to control page size and cursor with the nextCursor from the previous response to fetch the next page. Pass status=completed to list only completed batches; completed listings use their own cursor, so keep sending status=completed on every page.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nHeaders\n​\nExa-Beta\nenum<string>required\n\nRequired beta token for the Batch API.\n\nAvailable options: batches-2026-06-06 \nQuery Parameters\n​\ncursor\nstring\n\nPagination cursor from a previous response\n\n​\nlimit\nintegerdefault:100\n\nMaximum number of batches to return per page. Defaults to 100 when omitted; there is no upper bound.\n\nRequired range: x >= 1\n​\nstatus\nstring\n\nFilter the listing to completed batches. completed is the only supported value; any other value returns a 400. Completed listings are ordered by expiry and use a distinct cursor, so keep sending status=completed on every cursor-paginated request.\n\nAllowed value: \"completed\"\nResponse\n200\napplication/json\n\nOK\n\n​\nobject\nstringrequired\n\nThe object type, always list.\n\nAllowed value: \"list\"\n​\ndata\nobject[]required\n\nThe page of batches, newest first.\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | nullrequired\n\nCursor for the next page\n\nCreate a batch\nPrevious\nGet a batch\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List batches",
+      "Get your Exa API key",
+      "Authorizations",
+      "Headers",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1696,
+  "localLength": 1696
+}

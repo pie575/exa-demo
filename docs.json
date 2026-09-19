@@ -1,0 +1,1184 @@
+{
+  "theme": "aspen",
+  "$schema": "https://mintlify.com/docs.json",
+  "name": "Exa",
+  "colors": {
+    "primary": "#1840ED",
+    "light": "#5F7CFF",
+    "dark": "#2751F6"
+  },
+  "logo": {
+    "light": "/docs/logo/light.svg",
+    "dark": "/docs/logo/dark.svg",
+    "href": "/docs/search/quickstart"
+  },
+  "favicon": "/docs/images/favicon-32x32.png",
+  "api": {
+    "playground": {
+      "proxy": false
+    },
+    "examples": {
+      "languages": [
+        "python",
+        "javascript",
+        "bash"
+      ]
+    }
+  },
+  "navbar": {
+    "links": [
+      {
+        "href": "https://exa.ai/blog",
+        "label": "Blog"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "API Dashboard",
+      "href": "https://dashboard.exa.ai/login?redirect=/"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://twitter.com/exaailabs",
+      "linkedin": "https://www.linkedin.com/company/exa-ai"
+    }
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://exa.ai/docs",
+      "og:type": "website",
+      "og:site_name": "Exa Docs"
+    },
+    "organization": {
+      "id": "https://exa.ai/#organization",
+      "name": "Exa",
+      "legalName": "Exa Labs Inc.",
+      "url": "https://exa.ai",
+      "logo": "https://exa.imgix.net/logo_cream.png",
+      "sameAs": [
+        "https://x.com/exaailabs",
+        "https://www.linkedin.com/company/exa-ai/",
+        "https://github.com/exa-labs"
+      ]
+    },
+    "indexing": "navigable"
+  },
+  "fonts": {
+    "heading": {
+      "family": "ABCDiatype",
+      "weight": 700,
+      "source": "/fonts/ABCDiatype-Bold.woff2",
+      "format": "woff2"
+    }
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "errors": {
+    "404": {
+      "redirect": false,
+      "title": "Page not found",
+      "description": "This URL does not exist. The index of every docs page is at [https://exa.ai/docs/llms.txt](https://exa.ai/docs/llms.txt) and the full documentation in one file is at [https://exa.ai/docs/llms-full.txt](https://exa.ai/docs/llms-full.txt). Append `.md` to any docs URL to get the page as Markdown."
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view"
+    ],
+    "display": "header"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "styling": {
+    "latex": false,
+    "codeblocks": "system"
+  },
+  "navigation": {
+    "global": {
+      "anchors": []
+    },
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "pages": [
+          "docs",
+          {
+            "group": "Get Started",
+            "boost": 3,
+            "pages": [
+              "docs/get-started/quickstart",
+              "docs/get-started/exa-mcp",
+              {
+                "group": "Agent Skills",
+                "boost": 0.5,
+                "pages": [
+                  "docs/get-started/agent-skills/overview",
+                  "docs/get-started/agent-skills/build-with-exa",
+                  "docs/get-started/agent-skills/exa-search",
+                  "docs/get-started/agent-skills/exa-contents"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Search",
+            "boost": 5,
+            "pages": [
+              "docs/search/quickstart",
+              "docs/search/deep-search",
+              "docs/search/highlights",
+              "docs/search/snapshot",
+              "docs/search/best-practices",
+              {
+                "group": "Data",
+                "pages": [
+                  "docs/search/data/overview",
+                  "docs/search/data/news",
+                  "docs/search/data/code",
+                  "docs/search/data/companies-people",
+                  "docs/search/data/financial",
+                  "docs/search/data/research",
+                  "docs/search/data/legal",
+                  "docs/search/data/sports-weather-places",
+                  "docs/search/data/security"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Agent",
+            "boost": 5,
+            "pages": [
+              "docs/agent/quickstart",
+              "docs/agent/best-practices",
+              "docs/agent/examples",
+              {
+                "group": "Exa Connect",
+                "boost": 4,
+                "pages": [
+                  "docs/agent/connect/overview",
+                  {
+                    "group": "Self-Serve Providers",
+                    "boost": 2,
+                    "pages": [
+                      "docs/agent/connect/fiber",
+                      "docs/agent/connect/similarweb",
+                      "docs/agent/connect/baselayer",
+                      "docs/agent/connect/polymarket",
+                      "docs/agent/connect/affiliatecom",
+                      "docs/agent/connect/particle",
+                      "docs/agent/connect/financialdatasets",
+                      "docs/agent/connect/jinko"
+                    ]
+                  },
+                  "docs/agent/connect/combining-providers",
+                  "docs/agent/connect/additional-partners"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Other APIs",
+            "boost": 3,
+            "pages": [
+              "docs/contents/quickstart",
+              "docs/monitors/quickstart",
+              "docs/batch/quickstart"
+            ]
+          },
+          {
+            "group": "SDKs",
+            "boost": 2,
+            "pages": [
+              "docs/sdks/quickstart"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "boost": 2,
+            "pages": [
+              "docs/integrations/chatgpt-codex",
+              "docs/integrations/claude-web-desktop",
+              "docs/integrations/openai-sdk",
+              {
+                "group": "Tool Calling",
+                "pages": [
+                  "docs/integrations/tool-calling/openai",
+                  "docs/integrations/tool-calling/anthropic"
+                ]
+              },
+              {
+                "group": "Vercel",
+                "pages": [
+                  "docs/integrations/vercel/ai-sdk",
+                  "docs/integrations/vercel/ai-gateway",
+                  "docs/integrations/vercel/fx"
+                ]
+              },
+              {
+                "group": "Marketplaces",
+                "pages": [
+                  "docs/integrations/marketplaces/stripe-projects"
+                ]
+              },
+              {
+                "group": "Agentic Payments",
+                "pages": [
+                  {
+                    "group": "x402",
+                    "pages": [
+                      "docs/integrations/payments/x402/quickstart",
+                      "docs/integrations/payments/x402/agentkit"
+                    ]
+                  },
+                  {
+                    "group": "MPP",
+                    "pages": [
+                      "docs/integrations/payments/mpp/quickstart",
+                      "docs/integrations/payments/mpp/gtm-enrichment"
+                    ]
+                  },
+                  "docs/integrations/payments/nevermined"
+                ]
+              },
+              {
+                "group": "More Integrations",
+                "boost": 0.6,
+                "pages": [
+                  "docs/integrations/exa-slack",
+                  "docs/integrations/hermes-agent",
+                  "docs/integrations/n8n",
+                  "docs/integrations/openclaw",
+                  "docs/integrations/openrouter",
+                  "docs/integrations/baseten",
+                  "docs/integrations/gumloop",
+                  "docs/integrations/exa-for-sheets",
+                  "docs/integrations/crewai",
+                  "docs/integrations/elevenlabs",
+                  "docs/integrations/openhuman",
+                  "docs/integrations/truefoundry",
+                  "docs/integrations/snowflake",
+                  "docs/integrations/grok-build",
+                  "docs/integrations/llamaindex",
+                  "docs/integrations/pydantic-ai",
+                  "docs/integrations/langchain",
+                  "docs/integrations/browserbase"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Admin",
+            "boost": 0.8,
+            "pages": [
+              "docs/admin/pricing",
+              "docs/admin/billing",
+              "docs/admin/team-management",
+              {
+                "group": "Security & Compliance",
+                "pages": [
+                  "docs/admin/security/overview",
+                  "docs/admin/security/zero-data-retention",
+                  "docs/admin/security/hipaa"
+                ]
+              },
+              "docs/admin/mcp-enterprise-managed-auth",
+              {
+                "group": "Reference",
+                "pages": [
+                  "docs/admin/status",
+                  "docs/admin/error-codes",
+                  "docs/admin/openapi-spec"
+                ]
+              },
+              "docs/admin/faqs"
+            ]
+          },
+          {
+            "group": "Websets",
+            "boost": 0.4,
+            "pages": [
+              "docs/websets/quickstart",
+              "docs/websets/imports-and-search",
+              {
+                "group": "Dashboard",
+                "pages": [
+                  "docs/websets/dashboard/get-started",
+                  "docs/websets/dashboard/import-from-csv",
+                  "docs/websets/dashboard/exclude-results"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Search",
+            "boost": 4,
+            "pages": [
+              "docs/reference/search"
+            ]
+          },
+          {
+            "group": "Contents",
+            "boost": 4,
+            "pages": [
+              "docs/reference/get-contents"
+            ]
+          },
+          {
+            "group": "Agent",
+            "boost": 4,
+            "pages": [
+              "docs/reference/agent-api/create-a-run",
+              "docs/reference/agent-api/get-a-run",
+              "docs/reference/agent-api/list-runs",
+              "docs/reference/agent-api/cancel-a-run",
+              "docs/reference/agent-api/stop-a-run",
+              "docs/reference/agent-api/delete-a-run",
+              "docs/reference/agent-api/list-run-events"
+            ]
+          },
+          {
+            "group": "Monitors",
+            "boost": 2,
+            "pages": [
+              "docs/reference/monitors/create-a-monitor",
+              "docs/reference/monitors/list-monitors",
+              "docs/reference/monitors/get-a-monitor",
+              "docs/reference/monitors/update-a-monitor",
+              "docs/reference/monitors/delete-a-monitor",
+              "docs/reference/monitors/trigger-a-monitor",
+              "docs/reference/monitors/batch-monitors",
+              {
+                "group": "Runs",
+                "pages": [
+                  "docs/reference/monitors/runs/list-runs",
+                  "docs/reference/monitors/runs/get-a-run"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Answer",
+            "boost": 2,
+            "pages": [
+              "docs/reference/answer"
+            ]
+          },
+          {
+            "group": "Batch",
+            "boost": 2,
+            "pages": [
+              "docs/reference/batches/create-a-batch",
+              "docs/reference/batches/list-batches",
+              "docs/reference/batches/get-a-batch",
+              "docs/reference/batches/cancel-a-batch",
+              "docs/reference/batches/delete-a-batch"
+            ]
+          },
+          {
+            "group": "Team Management",
+            "boost": 0.25,
+            "pages": [
+              "docs/reference/team-management/create-api-key",
+              "docs/reference/team-management/list-api-keys",
+              "docs/reference/team-management/get-api-key",
+              "docs/reference/team-management/get-api-key-usage",
+              "docs/reference/team-management/update-api-key",
+              "docs/reference/team-management/delete-api-key"
+            ]
+          },
+          {
+            "group": "Websets",
+            "boost": 0.25,
+            "pages": [
+              {
+                "group": "Websets",
+                "icon": "folder",
+                "pages": [
+                  "docs/websets/api/websets/create-a-webset",
+                  "docs/websets/api/websets/get-a-webset",
+                  "docs/websets/api/websets/update-a-webset",
+                  "docs/websets/api/websets/delete-a-webset",
+                  "docs/websets/api/websets/preview-a-webset",
+                  "docs/websets/api/websets/cancel-a-running-webset",
+                  "docs/websets/api/websets/list-all-websets"
+                ]
+              },
+              {
+                "group": "Items",
+                "icon": "list",
+                "pages": [
+                  "docs/websets/api/websets/items/get-an-item",
+                  "docs/websets/api/websets/items/delete-an-item",
+                  "docs/websets/api/websets/items/list-all-items-for-a-webset"
+                ]
+              },
+              {
+                "group": "Searches",
+                "icon": "search",
+                "pages": [
+                  "docs/websets/api/websets/searches/create-a-search",
+                  "docs/websets/api/websets/searches/get-a-search",
+                  "docs/websets/api/websets/searches/cancel-a-running-search"
+                ]
+              },
+              {
+                "group": "Enrichments",
+                "icon": "sparkles",
+                "pages": [
+                  "docs/websets/api/websets/enrichments/create-an-enrichment",
+                  "docs/websets/api/websets/enrichments/get-an-enrichment",
+                  "docs/websets/api/websets/enrichments/update-an-enrichment",
+                  "docs/websets/api/websets/enrichments/delete-an-enrichment",
+                  "docs/websets/api/websets/enrichments/cancel-a-running-enrichment"
+                ]
+              },
+              {
+                "group": "Imports",
+                "icon": "cloud-download",
+                "pages": [
+                  "docs/websets/api/imports/create-an-import",
+                  "docs/websets/api/imports/get-import",
+                  "docs/websets/api/imports/update-import",
+                  "docs/websets/api/imports/delete-import",
+                  "docs/websets/api/imports/list-imports"
+                ]
+              },
+              {
+                "group": "Monitors",
+                "icon": "satellite",
+                "pages": [
+                  "docs/websets/api/monitors/create-a-monitor",
+                  "docs/websets/api/monitors/get-monitor",
+                  "docs/websets/api/monitors/update-monitor",
+                  "docs/websets/api/monitors/delete-monitor",
+                  "docs/websets/api/monitors/list-monitors",
+                  {
+                    "group": "Monitor Runs",
+                    "icon": "play",
+                    "pages": [
+                      "docs/websets/api/monitors/runs/list-monitor-runs",
+                      "docs/websets/api/monitors/runs/get-monitor-run"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Webhooks",
+                "icon": "webhook",
+                "pages": [
+                  "docs/websets/api/webhooks/create-a-webhook",
+                  "docs/websets/api/webhooks/get-a-webhook",
+                  "docs/websets/api/webhooks/update-a-webhook",
+                  "docs/websets/api/webhooks/delete-a-webhook",
+                  "docs/websets/api/webhooks/list-webhooks",
+                  "docs/websets/api/webhooks/attempts/list-webhook-attempts",
+                  "docs/websets/api/webhooks/verifying-signatures"
+                ]
+              },
+              {
+                "group": "Events",
+                "icon": "bell",
+                "pages": [
+                  "docs/websets/api/events/types",
+                  "docs/websets/api/events/list-all-events",
+                  "docs/websets/api/events/get-an-event"
+                ]
+              },
+              {
+                "group": "Teams",
+                "icon": "users",
+                "pages": [
+                  "docs/websets/api/teams/get-team-info"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Updates",
+            "boost": 0.5,
+            "root": "docs/changelog",
+            "pages": [
+              "docs/changelog"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/docs"
+    },
+    {
+      "source": "/docs/index",
+      "destination": "/docs"
+    },
+    {
+      "source": "/docs/admin/billing.md",
+      "destination": "/docs/markdown/admin/billing.txt"
+    },
+    {
+      "source": "/docs/admin/error-codes.md",
+      "destination": "/docs/markdown/admin/error-codes.txt"
+    },
+    {
+      "source": "/docs/admin/faqs.md",
+      "destination": "/docs/markdown/admin/faqs.txt"
+    },
+    {
+      "source": "/docs/admin/mcp-enterprise-managed-auth.md",
+      "destination": "/docs/markdown/admin/mcp-enterprise-managed-auth.txt"
+    },
+    {
+      "source": "/docs/admin/openapi-spec.md",
+      "destination": "/docs/markdown/admin/openapi-spec.txt"
+    },
+    {
+      "source": "/docs/admin/pricing.md",
+      "destination": "/docs/markdown/admin/pricing.txt"
+    },
+    {
+      "source": "/docs/admin/security/hipaa.md",
+      "destination": "/docs/markdown/admin/security/hipaa.txt"
+    },
+    {
+      "source": "/docs/admin/security/overview.md",
+      "destination": "/docs/markdown/admin/security/overview.txt"
+    },
+    {
+      "source": "/docs/admin/security/zero-data-retention.md",
+      "destination": "/docs/markdown/admin/security/zero-data-retention.txt"
+    },
+    {
+      "source": "/docs/admin/status.md",
+      "destination": "/docs/markdown/admin/status.txt"
+    },
+    {
+      "source": "/docs/admin/team-management.md",
+      "destination": "/docs/markdown/admin/team-management.txt"
+    },
+    {
+      "source": "/docs/agent/best-practices.md",
+      "destination": "/docs/markdown/agent/best-practices.txt"
+    },
+    {
+      "source": "/docs/agent/connect/additional-partners.md",
+      "destination": "/docs/markdown/agent/connect/additional-partners.txt"
+    },
+    {
+      "source": "/docs/agent/connect/affiliatecom.md",
+      "destination": "/docs/markdown/agent/connect/affiliatecom.txt"
+    },
+    {
+      "source": "/docs/agent/connect/baselayer.md",
+      "destination": "/docs/markdown/agent/connect/baselayer.txt"
+    },
+    {
+      "source": "/docs/agent/connect/combining-providers.md",
+      "destination": "/docs/markdown/agent/connect/combining-providers.txt"
+    },
+    {
+      "source": "/docs/agent/connect/fiber.md",
+      "destination": "/docs/markdown/agent/connect/fiber.txt"
+    },
+    {
+      "source": "/docs/agent/connect/financialdatasets.md",
+      "destination": "/docs/markdown/agent/connect/financialdatasets.txt"
+    },
+    {
+      "source": "/docs/agent/connect/jinko.md",
+      "destination": "/docs/markdown/agent/connect/jinko.txt"
+    },
+    {
+      "source": "/docs/agent/connect/overview.md",
+      "destination": "/docs/markdown/agent/connect/overview.txt"
+    },
+    {
+      "source": "/docs/agent/connect/particle.md",
+      "destination": "/docs/markdown/agent/connect/particle.txt"
+    },
+    {
+      "source": "/docs/agent/connect/polymarket.md",
+      "destination": "/docs/markdown/agent/connect/polymarket.txt"
+    },
+    {
+      "source": "/docs/agent/connect/similarweb.md",
+      "destination": "/docs/markdown/agent/connect/similarweb.txt"
+    },
+    {
+      "source": "/docs/agent/examples.md",
+      "destination": "/docs/markdown/agent/examples.txt"
+    },
+    {
+      "source": "/docs/agent/quickstart.md",
+      "destination": "/docs/markdown/agent/quickstart.txt"
+    },
+    {
+      "source": "/docs/batch/quickstart.md",
+      "destination": "/docs/markdown/batch/quickstart.txt"
+    },
+    {
+      "source": "/docs/changelog.md",
+      "destination": "/docs/markdown/changelog.txt"
+    },
+    {
+      "source": "/docs/contents/quickstart.md",
+      "destination": "/docs/markdown/contents/quickstart.txt"
+    },
+    {
+      "source": "/docs/get-started/agent-skills/build-with-exa.md",
+      "destination": "/docs/markdown/get-started/agent-skills/build-with-exa.txt"
+    },
+    {
+      "source": "/docs/get-started/agent-skills/exa-contents.md",
+      "destination": "/docs/markdown/get-started/agent-skills/exa-contents.txt"
+    },
+    {
+      "source": "/docs/get-started/agent-skills/exa-search.md",
+      "destination": "/docs/markdown/get-started/agent-skills/exa-search.txt"
+    },
+    {
+      "source": "/docs/get-started/agent-skills/overview.md",
+      "destination": "/docs/markdown/get-started/agent-skills/overview.txt"
+    },
+    {
+      "source": "/docs/get-started/exa-mcp.md",
+      "destination": "/docs/markdown/get-started/exa-mcp.txt"
+    },
+    {
+      "source": "/docs/get-started/quickstart.md",
+      "destination": "/docs/markdown/get-started/quickstart.txt"
+    },
+    {
+      "source": "/docs/index.md",
+      "destination": "/docs/markdown/index.txt"
+    },
+    {
+      "source": "/docs/integrations/baseten.md",
+      "destination": "/docs/markdown/integrations/baseten.txt"
+    },
+    {
+      "source": "/docs/integrations/browserbase.md",
+      "destination": "/docs/markdown/integrations/browserbase.txt"
+    },
+    {
+      "source": "/docs/integrations/chatgpt-codex.md",
+      "destination": "/docs/markdown/integrations/chatgpt-codex.txt"
+    },
+    {
+      "source": "/docs/integrations/claude-web-desktop.md",
+      "destination": "/docs/markdown/integrations/claude-web-desktop.txt"
+    },
+    {
+      "source": "/docs/integrations/crewai.md",
+      "destination": "/docs/markdown/integrations/crewai.txt"
+    },
+    {
+      "source": "/docs/integrations/elevenlabs.md",
+      "destination": "/docs/markdown/integrations/elevenlabs.txt"
+    },
+    {
+      "source": "/docs/integrations/exa-for-sheets.md",
+      "destination": "/docs/markdown/integrations/exa-for-sheets.txt"
+    },
+    {
+      "source": "/docs/integrations/exa-slack.md",
+      "destination": "/docs/markdown/integrations/exa-slack.txt"
+    },
+    {
+      "source": "/docs/integrations/grok-build.md",
+      "destination": "/docs/markdown/integrations/grok-build.txt"
+    },
+    {
+      "source": "/docs/integrations/gumloop.md",
+      "destination": "/docs/markdown/integrations/gumloop.txt"
+    },
+    {
+      "source": "/docs/integrations/hermes-agent.md",
+      "destination": "/docs/markdown/integrations/hermes-agent.txt"
+    },
+    {
+      "source": "/docs/integrations/langchain.md",
+      "destination": "/docs/markdown/integrations/langchain.txt"
+    },
+    {
+      "source": "/docs/integrations/llamaindex.md",
+      "destination": "/docs/markdown/integrations/llamaindex.txt"
+    },
+    {
+      "source": "/docs/integrations/marketplaces/stripe-projects.md",
+      "destination": "/docs/markdown/integrations/marketplaces/stripe-projects.txt"
+    },
+    {
+      "source": "/docs/integrations/n8n.md",
+      "destination": "/docs/markdown/integrations/n8n.txt"
+    },
+    {
+      "source": "/docs/integrations/openai-sdk.md",
+      "destination": "/docs/markdown/integrations/openai-sdk.txt"
+    },
+    {
+      "source": "/docs/integrations/openclaw.md",
+      "destination": "/docs/markdown/integrations/openclaw.txt"
+    },
+    {
+      "source": "/docs/integrations/openhuman.md",
+      "destination": "/docs/markdown/integrations/openhuman.txt"
+    },
+    {
+      "source": "/docs/integrations/openrouter.md",
+      "destination": "/docs/markdown/integrations/openrouter.txt"
+    },
+    {
+      "source": "/docs/integrations/payments/mpp/gtm-enrichment.md",
+      "destination": "/docs/markdown/integrations/payments/mpp/gtm-enrichment.txt"
+    },
+    {
+      "source": "/docs/integrations/payments/mpp/quickstart.md",
+      "destination": "/docs/markdown/integrations/payments/mpp/quickstart.txt"
+    },
+    {
+      "source": "/docs/integrations/payments/nevermined.md",
+      "destination": "/docs/markdown/integrations/payments/nevermined.txt"
+    },
+    {
+      "source": "/docs/integrations/payments/x402/agentkit.md",
+      "destination": "/docs/markdown/integrations/payments/x402/agentkit.txt"
+    },
+    {
+      "source": "/docs/integrations/payments/x402/quickstart.md",
+      "destination": "/docs/markdown/integrations/payments/x402/quickstart.txt"
+    },
+    {
+      "source": "/docs/integrations/pydantic-ai.md",
+      "destination": "/docs/markdown/integrations/pydantic-ai.txt"
+    },
+    {
+      "source": "/docs/integrations/snowflake.md",
+      "destination": "/docs/markdown/integrations/snowflake.txt"
+    },
+    {
+      "source": "/docs/integrations/tool-calling/anthropic.md",
+      "destination": "/docs/markdown/integrations/tool-calling/anthropic.txt"
+    },
+    {
+      "source": "/docs/integrations/tool-calling/openai.md",
+      "destination": "/docs/markdown/integrations/tool-calling/openai.txt"
+    },
+    {
+      "source": "/docs/integrations/truefoundry.md",
+      "destination": "/docs/markdown/integrations/truefoundry.txt"
+    },
+    {
+      "source": "/docs/integrations/vercel/ai-gateway.md",
+      "destination": "/docs/markdown/integrations/vercel/ai-gateway.txt"
+    },
+    {
+      "source": "/docs/integrations/vercel/ai-sdk.md",
+      "destination": "/docs/markdown/integrations/vercel/ai-sdk.txt"
+    },
+    {
+      "source": "/docs/integrations/vercel/fx.md",
+      "destination": "/docs/markdown/integrations/vercel/fx.txt"
+    },
+    {
+      "source": "/docs/monitors/quickstart.md",
+      "destination": "/docs/markdown/monitors/quickstart.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/cancel-a-run.md",
+      "destination": "/docs/markdown/reference/agent-api/cancel-a-run.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/create-a-run.md",
+      "destination": "/docs/markdown/reference/agent-api/create-a-run.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/delete-a-run.md",
+      "destination": "/docs/markdown/reference/agent-api/delete-a-run.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/get-a-run.md",
+      "destination": "/docs/markdown/reference/agent-api/get-a-run.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/list-run-events.md",
+      "destination": "/docs/markdown/reference/agent-api/list-run-events.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/list-runs.md",
+      "destination": "/docs/markdown/reference/agent-api/list-runs.txt"
+    },
+    {
+      "source": "/docs/reference/agent-api/stop-a-run.md",
+      "destination": "/docs/markdown/reference/agent-api/stop-a-run.txt"
+    },
+    {
+      "source": "/docs/reference/answer.md",
+      "destination": "/docs/markdown/reference/answer.txt"
+    },
+    {
+      "source": "/docs/reference/batches/cancel-a-batch.md",
+      "destination": "/docs/markdown/reference/batches/cancel-a-batch.txt"
+    },
+    {
+      "source": "/docs/reference/batches/create-a-batch.md",
+      "destination": "/docs/markdown/reference/batches/create-a-batch.txt"
+    },
+    {
+      "source": "/docs/reference/batches/delete-a-batch.md",
+      "destination": "/docs/markdown/reference/batches/delete-a-batch.txt"
+    },
+    {
+      "source": "/docs/reference/batches/get-a-batch.md",
+      "destination": "/docs/markdown/reference/batches/get-a-batch.txt"
+    },
+    {
+      "source": "/docs/reference/batches/list-batches.md",
+      "destination": "/docs/markdown/reference/batches/list-batches.txt"
+    },
+    {
+      "source": "/docs/reference/get-contents.md",
+      "destination": "/docs/markdown/reference/get-contents.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/batch-monitors.md",
+      "destination": "/docs/markdown/reference/monitors/batch-monitors.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/create-a-monitor.md",
+      "destination": "/docs/markdown/reference/monitors/create-a-monitor.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/delete-a-monitor.md",
+      "destination": "/docs/markdown/reference/monitors/delete-a-monitor.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/get-a-monitor.md",
+      "destination": "/docs/markdown/reference/monitors/get-a-monitor.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/list-monitors.md",
+      "destination": "/docs/markdown/reference/monitors/list-monitors.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/runs/get-a-run.md",
+      "destination": "/docs/markdown/reference/monitors/runs/get-a-run.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/runs/list-runs.md",
+      "destination": "/docs/markdown/reference/monitors/runs/list-runs.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/trigger-a-monitor.md",
+      "destination": "/docs/markdown/reference/monitors/trigger-a-monitor.txt"
+    },
+    {
+      "source": "/docs/reference/monitors/update-a-monitor.md",
+      "destination": "/docs/markdown/reference/monitors/update-a-monitor.txt"
+    },
+    {
+      "source": "/docs/reference/search.md",
+      "destination": "/docs/markdown/reference/search.txt"
+    },
+    {
+      "source": "/docs/reference/team-management/create-api-key.md",
+      "destination": "/docs/markdown/reference/team-management/create-api-key.txt"
+    },
+    {
+      "source": "/docs/reference/team-management/delete-api-key.md",
+      "destination": "/docs/markdown/reference/team-management/delete-api-key.txt"
+    },
+    {
+      "source": "/docs/reference/team-management/get-api-key.md",
+      "destination": "/docs/markdown/reference/team-management/get-api-key.txt"
+    },
+    {
+      "source": "/docs/reference/team-management/get-api-key-usage.md",
+      "destination": "/docs/markdown/reference/team-management/get-api-key-usage.txt"
+    },
+    {
+      "source": "/docs/reference/team-management/list-api-keys.md",
+      "destination": "/docs/markdown/reference/team-management/list-api-keys.txt"
+    },
+    {
+      "source": "/docs/reference/team-management/update-api-key.md",
+      "destination": "/docs/markdown/reference/team-management/update-api-key.txt"
+    },
+    {
+      "source": "/docs/sdks/quickstart.md",
+      "destination": "/docs/markdown/sdks/quickstart.txt"
+    },
+    {
+      "source": "/docs/search/best-practices.md",
+      "destination": "/docs/markdown/search/best-practices.txt"
+    },
+    {
+      "source": "/docs/search/data/code.md",
+      "destination": "/docs/markdown/search/data/code.txt"
+    },
+    {
+      "source": "/docs/search/data/companies-people.md",
+      "destination": "/docs/markdown/search/data/companies-people.txt"
+    },
+    {
+      "source": "/docs/search/data/financial.md",
+      "destination": "/docs/markdown/search/data/financial.txt"
+    },
+    {
+      "source": "/docs/search/data/legal.md",
+      "destination": "/docs/markdown/search/data/legal.txt"
+    },
+    {
+      "source": "/docs/search/data/news.md",
+      "destination": "/docs/markdown/search/data/news.txt"
+    },
+    {
+      "source": "/docs/search/data/overview.md",
+      "destination": "/docs/markdown/search/data/overview.txt"
+    },
+    {
+      "source": "/docs/search/data/research.md",
+      "destination": "/docs/markdown/search/data/research.txt"
+    },
+    {
+      "source": "/docs/search/data/security.md",
+      "destination": "/docs/markdown/search/data/security.txt"
+    },
+    {
+      "source": "/docs/search/data/sports-weather-places.md",
+      "destination": "/docs/markdown/search/data/sports-weather-places.txt"
+    },
+    {
+      "source": "/docs/search/deep-search.md",
+      "destination": "/docs/markdown/search/deep-search.txt"
+    },
+    {
+      "source": "/docs/search/highlights.md",
+      "destination": "/docs/markdown/search/highlights.txt"
+    },
+    {
+      "source": "/docs/search/quickstart.md",
+      "destination": "/docs/markdown/search/quickstart.txt"
+    },
+    {
+      "source": "/docs/search/snapshot.md",
+      "destination": "/docs/markdown/search/snapshot.txt"
+    },
+    {
+      "source": "/docs/websets/api/events/get-an-event.md",
+      "destination": "/docs/markdown/websets/api/events/get-an-event.txt"
+    },
+    {
+      "source": "/docs/websets/api/events/list-all-events.md",
+      "destination": "/docs/markdown/websets/api/events/list-all-events.txt"
+    },
+    {
+      "source": "/docs/websets/api/events/types.md",
+      "destination": "/docs/markdown/websets/api/events/types.txt"
+    },
+    {
+      "source": "/docs/websets/api/imports/create-an-import.md",
+      "destination": "/docs/markdown/websets/api/imports/create-an-import.txt"
+    },
+    {
+      "source": "/docs/websets/api/imports/delete-import.md",
+      "destination": "/docs/markdown/websets/api/imports/delete-import.txt"
+    },
+    {
+      "source": "/docs/websets/api/imports/get-import.md",
+      "destination": "/docs/markdown/websets/api/imports/get-import.txt"
+    },
+    {
+      "source": "/docs/websets/api/imports/list-imports.md",
+      "destination": "/docs/markdown/websets/api/imports/list-imports.txt"
+    },
+    {
+      "source": "/docs/websets/api/imports/update-import.md",
+      "destination": "/docs/markdown/websets/api/imports/update-import.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/create-a-monitor.md",
+      "destination": "/docs/markdown/websets/api/monitors/create-a-monitor.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/delete-monitor.md",
+      "destination": "/docs/markdown/websets/api/monitors/delete-monitor.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/get-monitor.md",
+      "destination": "/docs/markdown/websets/api/monitors/get-monitor.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/list-monitors.md",
+      "destination": "/docs/markdown/websets/api/monitors/list-monitors.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/runs/get-monitor-run.md",
+      "destination": "/docs/markdown/websets/api/monitors/runs/get-monitor-run.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/runs/list-monitor-runs.md",
+      "destination": "/docs/markdown/websets/api/monitors/runs/list-monitor-runs.txt"
+    },
+    {
+      "source": "/docs/websets/api/monitors/update-monitor.md",
+      "destination": "/docs/markdown/websets/api/monitors/update-monitor.txt"
+    },
+    {
+      "source": "/docs/websets/api/teams/get-team-info.md",
+      "destination": "/docs/markdown/websets/api/teams/get-team-info.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/attempts/list-webhook-attempts.md",
+      "destination": "/docs/markdown/websets/api/webhooks/attempts/list-webhook-attempts.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/create-a-webhook.md",
+      "destination": "/docs/markdown/websets/api/webhooks/create-a-webhook.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/delete-a-webhook.md",
+      "destination": "/docs/markdown/websets/api/webhooks/delete-a-webhook.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/get-a-webhook.md",
+      "destination": "/docs/markdown/websets/api/webhooks/get-a-webhook.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/list-webhooks.md",
+      "destination": "/docs/markdown/websets/api/webhooks/list-webhooks.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/update-a-webhook.md",
+      "destination": "/docs/markdown/websets/api/webhooks/update-a-webhook.txt"
+    },
+    {
+      "source": "/docs/websets/api/webhooks/verifying-signatures.md",
+      "destination": "/docs/markdown/websets/api/webhooks/verifying-signatures.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/cancel-a-running-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/cancel-a-running-webset.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/create-a-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/create-a-webset.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/delete-a-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/delete-a-webset.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/enrichments/cancel-a-running-enrichment.md",
+      "destination": "/docs/markdown/websets/api/websets/enrichments/cancel-a-running-enrichment.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/enrichments/create-an-enrichment.md",
+      "destination": "/docs/markdown/websets/api/websets/enrichments/create-an-enrichment.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/enrichments/delete-an-enrichment.md",
+      "destination": "/docs/markdown/websets/api/websets/enrichments/delete-an-enrichment.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/enrichments/get-an-enrichment.md",
+      "destination": "/docs/markdown/websets/api/websets/enrichments/get-an-enrichment.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/enrichments/update-an-enrichment.md",
+      "destination": "/docs/markdown/websets/api/websets/enrichments/update-an-enrichment.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/get-a-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/get-a-webset.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/items/delete-an-item.md",
+      "destination": "/docs/markdown/websets/api/websets/items/delete-an-item.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/items/get-an-item.md",
+      "destination": "/docs/markdown/websets/api/websets/items/get-an-item.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/items/list-all-items-for-a-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/items/list-all-items-for-a-webset.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/list-all-websets.md",
+      "destination": "/docs/markdown/websets/api/websets/list-all-websets.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/preview-a-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/preview-a-webset.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/searches/cancel-a-running-search.md",
+      "destination": "/docs/markdown/websets/api/websets/searches/cancel-a-running-search.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/searches/create-a-search.md",
+      "destination": "/docs/markdown/websets/api/websets/searches/create-a-search.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/searches/get-a-search.md",
+      "destination": "/docs/markdown/websets/api/websets/searches/get-a-search.txt"
+    },
+    {
+      "source": "/docs/websets/api/websets/update-a-webset.md",
+      "destination": "/docs/markdown/websets/api/websets/update-a-webset.txt"
+    },
+    {
+      "source": "/docs/websets/dashboard/exclude-results.md",
+      "destination": "/docs/markdown/websets/dashboard/exclude-results.txt"
+    },
+    {
+      "source": "/docs/websets/dashboard/get-started.md",
+      "destination": "/docs/markdown/websets/dashboard/get-started.txt"
+    },
+    {
+      "source": "/docs/websets/dashboard/import-from-csv.md",
+      "destination": "/docs/markdown/websets/dashboard/import-from-csv.txt"
+    },
+    {
+      "source": "/docs/websets/imports-and-search.md",
+      "destination": "/docs/markdown/websets/imports-and-search.txt"
+    },
+    {
+      "source": "/docs/websets/quickstart.md",
+      "destination": "/docs/markdown/websets/quickstart.txt"
+    },
+    {
+      "source": "/docs.md",
+      "destination": "/docs/markdown/index.txt"
+    },
+    {
+      "source": "/docs/exa-spec.yaml",
+      "destination": "/docs/downloads/exa-spec.yaml.txt"
+    },
+    {
+      "source": "/docs/exa-spec.json",
+      "destination": "/docs/downloads/exa-spec.json.txt"
+    },
+    {
+      "source": "/docs/team-management-spec.yaml",
+      "destination": "/docs/downloads/team-management-spec.yaml.txt"
+    }
+  ]
+}

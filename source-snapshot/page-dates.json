@@ -1,0 +1,1117 @@
+{
+  "pages": [
+    {
+      "path": "/docs",
+      "source": "https://exa.ai/docs",
+      "label": null,
+      "source_html_sha256": "7b645c1aa6a1fc99ad55a638fb8add14eeb2df19cc32c046aed7d7195da1f4f5",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/admin/billing",
+      "source": "https://exa.ai/docs/admin/billing",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "e78eadcf17eea1b0bbd0198fe9c369b657a36ba6ea7a5e0ef60bc916224dbab9",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/error-codes",
+      "source": "https://exa.ai/docs/admin/error-codes",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "28db808ffaddcb2351a67028225ceabd113af0f9f32ae1be1c04dd1df16ce309",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/faqs",
+      "source": "https://exa.ai/docs/admin/faqs",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "d604ea79b32dcf94cf3fa35608bed516a96358b170eaec84e8a6e1064a2436c2",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/mcp-enterprise-managed-auth",
+      "source": "https://exa.ai/docs/admin/mcp-enterprise-managed-auth",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "dbd7213947f4a9b25711d658fb72a28d140595376bf4069cd698be1dfd891f26",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/openapi-spec",
+      "source": "https://exa.ai/docs/admin/openapi-spec",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "3a5a09c3bc1ab6f1651c991eaad262831e1575756c8488d366e06d3940a1d6b0",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/pricing",
+      "source": "https://exa.ai/docs/admin/pricing",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "2ac6c7405b2c8d231c13f31c4729dde896ff082db8ac33b76c3313f9c9008f9f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/security/hipaa",
+      "source": "https://exa.ai/docs/admin/security/hipaa",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "302e5152b98dcb2edc18f675b504c4df3ff7ac392bd9677966bb347af98d09c7",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/security/overview",
+      "source": "https://exa.ai/docs/admin/security/overview",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "60f434f82d6016f8869cdc076da0ed843e6a25974f4d1d3c0272a087e49ef6b5",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/security/zero-data-retention",
+      "source": "https://exa.ai/docs/admin/security/zero-data-retention",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "875a9155ca7688ced65f59968deec8dd74fc47249f332629c0cbb629b112637d",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/status",
+      "source": "https://exa.ai/docs/admin/status",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "478d6401362403f0847ccb9bdd52f7163be2d86080d4016811808e2e98279b4e",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/admin/team-management",
+      "source": "https://exa.ai/docs/admin/team-management",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "edc17b5adcb423452ed75a0f02b6d74f61a06a951db411ae7fecb2b0fcc4f88e",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/best-practices",
+      "source": "https://exa.ai/docs/agent/best-practices",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "48ed2734e1f5f0b1124907fbac0d5081274bf603cadc0f8d46a004e65cd4f012",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/additional-partners",
+      "source": "https://exa.ai/docs/agent/connect/additional-partners",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "561750e04b4bdc28858a39c22e3c0fcaddd9bc87fff7cbb24d091f5854701d01",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/affiliatecom",
+      "source": "https://exa.ai/docs/agent/connect/affiliatecom",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "4ca64a4092b8e5c77a9a7ff52e22eeb0caf46d5ec1cb8ea0362a359eab3354a3",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/baselayer",
+      "source": "https://exa.ai/docs/agent/connect/baselayer",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "5d0345aad45bf3d4997338b2cea347ba3ae701bad1e786a4d989a5cf820fbea1",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/combining-providers",
+      "source": "https://exa.ai/docs/agent/connect/combining-providers",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "49cbf094161121cc3b9cf53d1218237d5df1fdf143e0b4c0893b14e83cbb77d6",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/fiber",
+      "source": "https://exa.ai/docs/agent/connect/fiber",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "abb619a62964efb4deee6805f2ec1bcd753f0859e8d532974fa88b5393ae4f1b",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/financialdatasets",
+      "source": "https://exa.ai/docs/agent/connect/financialdatasets",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "f30f21204fb75134441556fd6ee9abbe9dc78e8cfd0c04a8fd2bfae58a7c6434",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/jinko",
+      "source": "https://exa.ai/docs/agent/connect/jinko",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "e1b87500f24379f3442a4ddf0d52f47e64e8231a1badfb5fa75c7ade7d1173e6",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/overview",
+      "source": "https://exa.ai/docs/agent/connect/overview",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "3a4fc2fe1b5fd1f7f71bcc3ff601455515010ab1cafe313763de53b3f0dea304",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/particle",
+      "source": "https://exa.ai/docs/agent/connect/particle",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "51bd4da1b80c2e67cada0fe95e8cd3abe3ab38d1a3e32cfea5b9fd095a0388d8",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/connect/polymarket",
+      "source": "https://exa.ai/docs/agent/connect/polymarket",
+      "label": null,
+      "source_html_sha256": "dafcc7ac29f3fec11a5e34b63df2176f51a57b4131b4a4db6de4245ea7c14898",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/agent/connect/similarweb",
+      "source": "https://exa.ai/docs/agent/connect/similarweb",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "ad14f8423d078ce93d12f3a7a6bb80f61398031ca4808368201286e6f06d7588",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/examples",
+      "source": "https://exa.ai/docs/agent/examples",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "02d47c311725e404b5b806f53de759f266f46c26bbe56a6715bdaade1a3b770f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/agent/quickstart",
+      "source": "https://exa.ai/docs/agent/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "13a69194525e20758505046edad598713b417ddf64d7f4c434ed50fcdd4747e2",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/batch/quickstart",
+      "source": "https://exa.ai/docs/batch/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "542065e81a092e20f67c6ce37e33dc6a0272b3a5c7c3331d720fa7adac8ddb89",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/changelog",
+      "source": "https://exa.ai/docs/changelog",
+      "label": null,
+      "source_html_sha256": "259e16b1024fbea64bc66ec130d935c23cfeca58376d8e0add390058b72b7733",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/contents/quickstart",
+      "source": "https://exa.ai/docs/contents/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "ab718d4ec7b67f14202f33d643153e68d8cc45c764af1b6a3faacf991cb631d2",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/get-started/agent-skills/build-with-exa",
+      "source": "https://exa.ai/docs/get-started/agent-skills/build-with-exa",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "6573602c94977221fabc255da1e115e6a40e8e49d1ef4505debceccefb932afa",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/get-started/agent-skills/exa-contents",
+      "source": "https://exa.ai/docs/get-started/agent-skills/exa-contents",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "c0a99131eea71c6537511c1a24021968c24907b7436d8da0a097d9d23c8a56f3",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/get-started/agent-skills/exa-search",
+      "source": "https://exa.ai/docs/get-started/agent-skills/exa-search",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "10f873b746f6d724987eaa93c3779dcec6bf35a79d08d8140910ec194cf01f56",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/get-started/agent-skills/overview",
+      "source": "https://exa.ai/docs/get-started/agent-skills/overview",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "51de83bf4da9c76a05f3047e75cdcbc4d6112a9c40d66e981a138709a990a4e1",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/get-started/exa-mcp",
+      "source": "https://exa.ai/docs/get-started/exa-mcp",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "933e7fb98b6c9541c4047272600d343c29f8df211c101b3169d460a4333618c2",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/get-started/quickstart",
+      "source": "https://exa.ai/docs/get-started/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "e1bf4597e38541d7fb17fb9b6a994c4c299667efddc79d7775c1a0a1e089cc7f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/baseten",
+      "source": "https://exa.ai/docs/integrations/baseten",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "b7776de15e573c0aa92d5a7e3d327d6e65aadf88dd9fd3e9d83529cc52a0528f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/browserbase",
+      "source": "https://exa.ai/docs/integrations/browserbase",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "f84cc01efc44c1a17b0f1cf4cf52a165be258f5e96f3857622720077c35b3538",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/chatgpt-codex",
+      "source": "https://exa.ai/docs/integrations/chatgpt-codex",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "f976c2fa9c6b948e75c3065bc944eb0adb6d6c6691a165c65599fe7f1eda51ed",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/claude-web-desktop",
+      "source": "https://exa.ai/docs/integrations/claude-web-desktop",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "b5ba5385643c85924b4bd67f49b00a61196f0289cefd2a45fcaeb596c96d8eb0",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/crewai",
+      "source": "https://exa.ai/docs/integrations/crewai",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "926ee19fcc40e007622a01fdc84342d5c8a653af0a864e3376624e8d56c7ff07",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/elevenlabs",
+      "source": "https://exa.ai/docs/integrations/elevenlabs",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "1d70da009162d290043bb4186fa1ae49ea09266d87c73578fea19384ed258c07",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/exa-for-sheets",
+      "source": "https://exa.ai/docs/integrations/exa-for-sheets",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "1c0dc5c3fd74af2932e472c84e4cc6e3adfaf262f2a1618c5ea5e2cc1efef1de",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/exa-slack",
+      "source": "https://exa.ai/docs/integrations/exa-slack",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "7f07e3493c4659669b2141939181fea5875058b05585af141be07968c7aff7a4",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/grok-build",
+      "source": "https://exa.ai/docs/integrations/grok-build",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "7ef4b3110e38e2f55ce18b9ad67b39a698c4bfd1a1022b0377e5f49cfd691659",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/gumloop",
+      "source": "https://exa.ai/docs/integrations/gumloop",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "0a927d24453cd3796ad54817435632b1f8aed896c527930047c722a28e051634",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/hermes-agent",
+      "source": "https://exa.ai/docs/integrations/hermes-agent",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "3fc63ffdc9f96f83c33f24b7a1b2a81740035d4ccef62ad20ac1184cc1bd6155",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/langchain",
+      "source": "https://exa.ai/docs/integrations/langchain",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "6266beae9e114a75da3dbd03c605bda5ba69120d28b6a8a57c02ee7ec5a113a3",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/llamaindex",
+      "source": "https://exa.ai/docs/integrations/llamaindex",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "dec11f5197e9e6a7f912164405a3932887aec94ec50795eaad5d17a781a2a608",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/marketplaces/stripe-projects",
+      "source": "https://exa.ai/docs/integrations/marketplaces/stripe-projects",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "04a881393c06d3bb1f766c7385d59ae8affd9928ee96cf02f8ddbe1c95d2db91",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/n8n",
+      "source": "https://exa.ai/docs/integrations/n8n",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "562a0b195d7d14da86b093739ce0092eebe436e1fba2f9718a9357717db331ed",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/openai-sdk",
+      "source": "https://exa.ai/docs/integrations/openai-sdk",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "47b233baef8c09bdf3d3e1bf6d653c29c63313c0f8e41bf44dcade193236eed5",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/openclaw",
+      "source": "https://exa.ai/docs/integrations/openclaw",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "734d0d082778c870912786cef1186c1e1b3d67303696629105a92516e86285f9",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/openhuman",
+      "source": "https://exa.ai/docs/integrations/openhuman",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "b2f2b9c23cb766d2b4c4589a563e08990f7216111302e72c3e9ef934f801865f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/openrouter",
+      "source": "https://exa.ai/docs/integrations/openrouter",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "100436a8ab5a453240b278a2b8d3863a5c43ca4d03e5bf47f1ae2b0229055ed4",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/payments/mpp/gtm-enrichment",
+      "source": "https://exa.ai/docs/integrations/payments/mpp/gtm-enrichment",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "b7ee2c49496ab21fbb2064b1e941d8e182a2848e1992e2ba3b79348f3d9dbccd",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/payments/mpp/quickstart",
+      "source": "https://exa.ai/docs/integrations/payments/mpp/quickstart",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "96c3b9e7861f22a15f9da5674ecaea9e7a2b9f5338abadac5f623477bd274ae1",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/payments/nevermined",
+      "source": "https://exa.ai/docs/integrations/payments/nevermined",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "5f3efdd25792f0008b262a62ab86d89cabdfd7b95d76dc74bb1d6bb12217aeb8",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/payments/x402/agentkit",
+      "source": "https://exa.ai/docs/integrations/payments/x402/agentkit",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "523a1dc7e619ff36d1ad2c64b0392a75bba44a29ff4fe51068833d363c8716ce",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/payments/x402/quickstart",
+      "source": "https://exa.ai/docs/integrations/payments/x402/quickstart",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "d254a848ab90152c820a9f0d3b39af1c88d118e66fc27a27cfbdbdd430520d49",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/pydantic-ai",
+      "source": "https://exa.ai/docs/integrations/pydantic-ai",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "75a9e086595dd1d944a787c72168d77f82b6bc00527e27b25753fb97224753ea",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/snowflake",
+      "source": "https://exa.ai/docs/integrations/snowflake",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "265bf93279e599df4cecc1937e7fbdabbd369c21db3e933fb54654e3c56f6c56",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/tool-calling/anthropic",
+      "source": "https://exa.ai/docs/integrations/tool-calling/anthropic",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "168f0fddf65b2c24d9027aba276951c8fdddbbf25adf0a3a86897c29b18a3560",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/tool-calling/openai",
+      "source": "https://exa.ai/docs/integrations/tool-calling/openai",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "bfa029680c4e27d5ebb9ebdc0c1b0ac57b8372bfce6f0916f6341f03ed6dab58",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/truefoundry",
+      "source": "https://exa.ai/docs/integrations/truefoundry",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "739f1de9cb5a9532d230ec3efe72a839e21cd99d4656eb6ccd7becf11b2af67d",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/vercel/ai-gateway",
+      "source": "https://exa.ai/docs/integrations/vercel/ai-gateway",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "c29853eaaf63b81cc4b567f0c06f53f743155158ad837a4bfdb28ff715b2948c",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/vercel/ai-sdk",
+      "source": "https://exa.ai/docs/integrations/vercel/ai-sdk",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "38c334c1228baf93c49f1b99ae038a25dfae013cbedfc3bd684e9992c4234680",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/integrations/vercel/fx",
+      "source": "https://exa.ai/docs/integrations/vercel/fx",
+      "label": "Last modified on September 16, 2026",
+      "source_html_sha256": "f7342707fe236f28550277addbda1058bea27fa4224a3c95dc51dedb9ffc469c",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 16, 2026</div>"
+    },
+    {
+      "path": "/docs/monitors/quickstart",
+      "source": "https://exa.ai/docs/monitors/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "b74089c6b5496bd4f1de94368ed883b123a008093dbe658d509bfd0bceeba740",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/reference/agent-api/cancel-a-run",
+      "source": "https://exa.ai/docs/reference/agent-api/cancel-a-run",
+      "label": null,
+      "source_html_sha256": "6672a5801544544f0abb854f8dd9ff56546461cf6cca5c398f62cf331e8b0547",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/agent-api/create-a-run",
+      "source": "https://exa.ai/docs/reference/agent-api/create-a-run",
+      "label": null,
+      "source_html_sha256": "316a442e67dbcf9efdc4d4e4928dc43627307ac21081a0bda4e9cf5b2aa776cf",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/agent-api/delete-a-run",
+      "source": "https://exa.ai/docs/reference/agent-api/delete-a-run",
+      "label": null,
+      "source_html_sha256": "4dd769e5338db54350dc9e159f04fefdc4d17266bfcc6e1bd3d85cfa09ab5a18",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/agent-api/get-a-run",
+      "source": "https://exa.ai/docs/reference/agent-api/get-a-run",
+      "label": null,
+      "source_html_sha256": "52138bdb8430b137787e97061619a388ab902a7cc21acbccd5f80b96f36af06e",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/agent-api/list-run-events",
+      "source": "https://exa.ai/docs/reference/agent-api/list-run-events",
+      "label": null,
+      "source_html_sha256": "bceff7723454724f3b40979f62eec6f315656f1b8becd993df5fb6ce62e2d488",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/agent-api/list-runs",
+      "source": "https://exa.ai/docs/reference/agent-api/list-runs",
+      "label": null,
+      "source_html_sha256": "7f814fa28ff40539806169568c8f04d03c5520500754309b60c6fcee2e6b4b00",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/agent-api/stop-a-run",
+      "source": "https://exa.ai/docs/reference/agent-api/stop-a-run",
+      "label": null,
+      "source_html_sha256": "a1015fa0d48cfadbbabf22e6df94540e89cb41fce43720215b1d7de2182c0c00",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/answer",
+      "source": "https://exa.ai/docs/reference/answer",
+      "label": null,
+      "source_html_sha256": "1979b376a357ff5a9429d6c172be2258a4572b22ce0c85642f83f1346a550002",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/batches/cancel-a-batch",
+      "source": "https://exa.ai/docs/reference/batches/cancel-a-batch",
+      "label": null,
+      "source_html_sha256": "388ad4910095fa45c62ef661ac464c4b0fa3d69af120d16e43194f12cb9f16bd",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/batches/create-a-batch",
+      "source": "https://exa.ai/docs/reference/batches/create-a-batch",
+      "label": null,
+      "source_html_sha256": "99a10dc15dda94a726d0f71b55119df87db8dcb3d18a77efed9b851614ad748d",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/batches/delete-a-batch",
+      "source": "https://exa.ai/docs/reference/batches/delete-a-batch",
+      "label": null,
+      "source_html_sha256": "991399c7b42220cd848776822eea700d200a0e8768219476dae8a3e3bd13f9bc",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/batches/get-a-batch",
+      "source": "https://exa.ai/docs/reference/batches/get-a-batch",
+      "label": null,
+      "source_html_sha256": "56f60ef175ed8ee49740d687e639f03bb44ea9302cd656163e99ee4caf40adee",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/batches/list-batches",
+      "source": "https://exa.ai/docs/reference/batches/list-batches",
+      "label": null,
+      "source_html_sha256": "1d8b6bd2592268be29837f7f07a19e4132936af49267f1fdea7d2bce201cc352",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/get-contents",
+      "source": "https://exa.ai/docs/reference/get-contents",
+      "label": null,
+      "source_html_sha256": "2670f1a9e60ae7f20a6008e1ef20e32dfc73b96159bace56803fa9a58f000ef8",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/batch-monitors",
+      "source": "https://exa.ai/docs/reference/monitors/batch-monitors",
+      "label": null,
+      "source_html_sha256": "dd94b76d28c958c3b9e8b9b250e75abc83ce22243d3ce5fd963351b9b995ba06",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/create-a-monitor",
+      "source": "https://exa.ai/docs/reference/monitors/create-a-monitor",
+      "label": null,
+      "source_html_sha256": "213372d6767a7f0a5ee8f80d0f24719851b689690804feac52589062d33a67bc",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/delete-a-monitor",
+      "source": "https://exa.ai/docs/reference/monitors/delete-a-monitor",
+      "label": null,
+      "source_html_sha256": "c9375c1e8f610ec203e784d45b067a26d7df708b968722829760626d97402b76",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/get-a-monitor",
+      "source": "https://exa.ai/docs/reference/monitors/get-a-monitor",
+      "label": null,
+      "source_html_sha256": "b51abd4979cd8f5d4c036c1ee0632c3652454a833442ddc564d4a0df76133928",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/list-monitors",
+      "source": "https://exa.ai/docs/reference/monitors/list-monitors",
+      "label": null,
+      "source_html_sha256": "fda0d9fcbc80e5f9f0d29353f56854e9e7ed91881ede13e81ab5c472ff923dcc",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/runs/get-a-run",
+      "source": "https://exa.ai/docs/reference/monitors/runs/get-a-run",
+      "label": null,
+      "source_html_sha256": "6ed387ea65265d3a6eb028ed20985d7f671032917860eddd3464a082289b7a99",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/runs/list-runs",
+      "source": "https://exa.ai/docs/reference/monitors/runs/list-runs",
+      "label": null,
+      "source_html_sha256": "03363e954264d685ea976986e5e1c285c5e00bccac592762ffdd1f153a2688ae",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/trigger-a-monitor",
+      "source": "https://exa.ai/docs/reference/monitors/trigger-a-monitor",
+      "label": null,
+      "source_html_sha256": "977cacb7641d26ca80f3e3efa1282ac441be78b254c26034abba44457381dca4",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/monitors/update-a-monitor",
+      "source": "https://exa.ai/docs/reference/monitors/update-a-monitor",
+      "label": null,
+      "source_html_sha256": "8ffaa72b938029da248f20a0bca66f1eaa310848a08650396a1f22e03f61cb7f",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/search",
+      "source": "https://exa.ai/docs/reference/search",
+      "label": null,
+      "source_html_sha256": "f68c98cb6e285e1dc0999a092689435572a290530922a50b8aebedfdfa7c86df",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/team-management/create-api-key",
+      "source": "https://exa.ai/docs/reference/team-management/create-api-key",
+      "label": null,
+      "source_html_sha256": "2baf56378ea992c8fcdf50c2e7af3b666073d75cf5c493cdd7ed7d388f8100af",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/team-management/delete-api-key",
+      "source": "https://exa.ai/docs/reference/team-management/delete-api-key",
+      "label": null,
+      "source_html_sha256": "66a5e52876b308e5642216028511ae2c7b3f1c9edcfc54fa7e7425eb51d6b415",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/team-management/get-api-key",
+      "source": "https://exa.ai/docs/reference/team-management/get-api-key",
+      "label": null,
+      "source_html_sha256": "d1cdd3df3903bda6a41f37415dcee8ea88e51a640695559cba210eb2f6ec3590",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/team-management/get-api-key-usage",
+      "source": "https://exa.ai/docs/reference/team-management/get-api-key-usage",
+      "label": null,
+      "source_html_sha256": "140182eb7faef4b22b136a46d61706d722f2caf71f6554cb3036a117be9c9619",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/team-management/list-api-keys",
+      "source": "https://exa.ai/docs/reference/team-management/list-api-keys",
+      "label": null,
+      "source_html_sha256": "2e685ccc8baa6ec4ad098ccb9e006485e6ef8f9670cdd7797176e3c8cc7b8471",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/reference/team-management/update-api-key",
+      "source": "https://exa.ai/docs/reference/team-management/update-api-key",
+      "label": null,
+      "source_html_sha256": "5a82998cf51ad15ed486e36482cd9ea0da5dd9eb184cd6322fe46bb89c5eb197",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/sdks/quickstart",
+      "source": "https://exa.ai/docs/sdks/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "55bb7e35e10742fcb759775b22b2b93cce2d6feef2f16e32b23be78e71cfb100",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/best-practices",
+      "source": "https://exa.ai/docs/search/best-practices",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "07dc18cad4341347a98a07f4ddaf37c6b30b6fb319163cd3ea03b29976d555f1",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/code",
+      "source": "https://exa.ai/docs/search/data/code",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "aed5469367a6496b22d62b361b4a8a03a3200c72b0eaad8275058e0430c9ecaa",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/companies-people",
+      "source": "https://exa.ai/docs/search/data/companies-people",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "2d43613e2563de6357b770df83420bda4959339953d5ee8ca3c2027ad7c2d85f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/financial",
+      "source": "https://exa.ai/docs/search/data/financial",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "d4eefb99e791a84b54d8850c3403bf3a158c51cbcb3ef84da665f4d4390e1c46",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/legal",
+      "source": "https://exa.ai/docs/search/data/legal",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "4e3cce0eae2ee318ad550274a24fea75ec1ba6094aa49baa048528ac3eafc025",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/news",
+      "source": "https://exa.ai/docs/search/data/news",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "0f27ce68a2929549a77a857b52125d6b40e757e4e2b34ad02110327952316cea",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/overview",
+      "source": "https://exa.ai/docs/search/data/overview",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "51e959b26007e0109b0bb8b6036814e705c6bf825fe5cb8884ffda250f53d1b0",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/research",
+      "source": "https://exa.ai/docs/search/data/research",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "0fd0c156e33a41569624ec7efbccb525d008d7214d2e63a91a7f5eb97ee17896",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/security",
+      "source": "https://exa.ai/docs/search/data/security",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "5dd7c828c8d2fc97bcbb13a0ee4f9d416c7c07e88ae34b4ac0414703ff11c2c8",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/data/sports-weather-places",
+      "source": "https://exa.ai/docs/search/data/sports-weather-places",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "2322a38b2e6369dc20fabc2636c31ef62234a70db53e9665f33781be7da8e8a7",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/deep-search",
+      "source": "https://exa.ai/docs/search/deep-search",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "193030c112a5d2a111a6bb3cb8e71f90345c4d4681e3e824c43ae0fa3aec2e37",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/highlights",
+      "source": "https://exa.ai/docs/search/highlights",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "a16710bf89ce3fd4f01bb1fa109e79a25b46f5d052b31624a268c27105d40c93",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/quickstart",
+      "source": "https://exa.ai/docs/search/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "2cdf1ac6591ecedc0aba350d004d2c97165aeb5a8c0ed601484a6703df621b1c",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/search/snapshot",
+      "source": "https://exa.ai/docs/search/snapshot",
+      "label": "Last modified on September 17, 2026",
+      "source_html_sha256": "8c9f82c3826630845742fed8979e37b3535c1728617f3d1170f7eac8eec8f7f4",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 17, 2026</div>"
+    },
+    {
+      "path": "/docs/websets/api/events/get-an-event",
+      "source": "https://exa.ai/docs/websets/api/events/get-an-event",
+      "label": null,
+      "source_html_sha256": "eec4fb55d348bf11ba84ed1412bfafda2df7f2db0b5ce8583a2ac4bada8d7b5c",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/events/list-all-events",
+      "source": "https://exa.ai/docs/websets/api/events/list-all-events",
+      "label": null,
+      "source_html_sha256": "162b7048ce1c5d84d078a8ab8f67d8589eb2d4e17963b35f68017813e7fad8bd",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/events/types",
+      "source": "https://exa.ai/docs/websets/api/events/types",
+      "label": null,
+      "source_html_sha256": "25acfe620a10af1789ba3d60a0dc0830cfeb44e758868397439a44e4026e81d5",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/imports/create-an-import",
+      "source": "https://exa.ai/docs/websets/api/imports/create-an-import",
+      "label": null,
+      "source_html_sha256": "f0e5184bc7e1ab36d6cfc67ebbd82ef43861e8678df2932b8535f4d13be26f4c",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/imports/delete-import",
+      "source": "https://exa.ai/docs/websets/api/imports/delete-import",
+      "label": null,
+      "source_html_sha256": "120fb7db77b2b28908407b7c087cf43a003a1e2b72f87aec8213db0935c296d2",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/imports/get-import",
+      "source": "https://exa.ai/docs/websets/api/imports/get-import",
+      "label": null,
+      "source_html_sha256": "91d0870a2d5d540417aa9910b2854cd078101a300af1bcbec5271b23b0b2b1f1",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/imports/list-imports",
+      "source": "https://exa.ai/docs/websets/api/imports/list-imports",
+      "label": null,
+      "source_html_sha256": "a1d55fae530eb692e95dc3252057d22e841454ffb20f42da847ae7ce36b93d4b",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/imports/update-import",
+      "source": "https://exa.ai/docs/websets/api/imports/update-import",
+      "label": null,
+      "source_html_sha256": "9bbf7670bb955f83c14fa3903e082f35e1b11ad092863298dd41bffadb7a6a72",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/create-a-monitor",
+      "source": "https://exa.ai/docs/websets/api/monitors/create-a-monitor",
+      "label": null,
+      "source_html_sha256": "21634c077afa35d9614607200280fa2de08a7a0a6a2bfea82f4a3bbcf4247c92",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/delete-monitor",
+      "source": "https://exa.ai/docs/websets/api/monitors/delete-monitor",
+      "label": null,
+      "source_html_sha256": "cb36cc03de83d9870c94e9504f3132c64c63bb6ebdb23f907b50d07de07f5ceb",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/get-monitor",
+      "source": "https://exa.ai/docs/websets/api/monitors/get-monitor",
+      "label": null,
+      "source_html_sha256": "b7c6c90a7f326213f4b1b7a7bff6679cf35216e6532f84c6d56e29d8e47b2d2e",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/list-monitors",
+      "source": "https://exa.ai/docs/websets/api/monitors/list-monitors",
+      "label": null,
+      "source_html_sha256": "a1489cb18d890de96c60f395dda5c78b397b31a157803b3dfc93dfa783f00a46",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/runs/get-monitor-run",
+      "source": "https://exa.ai/docs/websets/api/monitors/runs/get-monitor-run",
+      "label": null,
+      "source_html_sha256": "f81616b0e90fbed9ea1bb0770e43d731ae86e7a6d202c20915d6db88870c9263",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/runs/list-monitor-runs",
+      "source": "https://exa.ai/docs/websets/api/monitors/runs/list-monitor-runs",
+      "label": null,
+      "source_html_sha256": "e25e1b529be8cd36b1e56309536c128c5611f7c7408a3e71ecb01d19c4fcdd3b",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/monitors/update-monitor",
+      "source": "https://exa.ai/docs/websets/api/monitors/update-monitor",
+      "label": null,
+      "source_html_sha256": "b092c30b43b3b47ca13f485362a1273261a174d6b60c5e3c3fc8bbc2f5d6c62f",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/teams/get-team-info",
+      "source": "https://exa.ai/docs/websets/api/teams/get-team-info",
+      "label": null,
+      "source_html_sha256": "c9cc4f2aa5927804ac3c5b76af7c261d9ca05034cfb9c01c404122dec0b3bd36",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+      "source": "https://exa.ai/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+      "label": null,
+      "source_html_sha256": "a518f9b057e07e33e2c8c478c39d831191a42caf212c58f06d363d926e05f7b2",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/create-a-webhook",
+      "source": "https://exa.ai/docs/websets/api/webhooks/create-a-webhook",
+      "label": null,
+      "source_html_sha256": "a76a564d0bb6cf7bfdd74218e5f6035bc23b0c28b030fd5e2b400045142ecc56",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/delete-a-webhook",
+      "source": "https://exa.ai/docs/websets/api/webhooks/delete-a-webhook",
+      "label": null,
+      "source_html_sha256": "217d94b2db27f06e96f6e47232d3c43252bdb94c63479427b9da1d2b00e2e05b",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/get-a-webhook",
+      "source": "https://exa.ai/docs/websets/api/webhooks/get-a-webhook",
+      "label": null,
+      "source_html_sha256": "cb44adf2e7a0e5f6089510d4c81b36c63e94f621bde771509a5fc924bb007647",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/list-webhooks",
+      "source": "https://exa.ai/docs/websets/api/webhooks/list-webhooks",
+      "label": null,
+      "source_html_sha256": "7325e24f0c723b688ecdf1986cecbc7756382d8913127edbf5a93a0214211168",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/update-a-webhook",
+      "source": "https://exa.ai/docs/websets/api/webhooks/update-a-webhook",
+      "label": null,
+      "source_html_sha256": "f0e8b2dc880fa68029ffd987f420a8091be17e2bae2df6e4252b84557a22ab00",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/webhooks/verifying-signatures",
+      "source": "https://exa.ai/docs/websets/api/webhooks/verifying-signatures",
+      "label": null,
+      "source_html_sha256": "910d661365925b1cb6ee854b9d03672fb55c5fe1e25f3c4aa09243e245becf03",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/cancel-a-running-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/cancel-a-running-webset",
+      "label": null,
+      "source_html_sha256": "93450bfa93c72d6ec72350b2fac2674a8a73aef31be85b89c65bd036611faa91",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/create-a-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/create-a-webset",
+      "label": null,
+      "source_html_sha256": "f9606503d3ec884893ebdbfd0f758e8dbb4ff28d67e3ac3ae7ace41f55a23bcd",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/delete-a-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/delete-a-webset",
+      "label": null,
+      "source_html_sha256": "b8d3dcc21b8c0c789280e374a4efe0ccc26099a57efe341d2ead514e647b8765",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/cancel-a-running-enrichment",
+      "label": null,
+      "source_html_sha256": "a45f8105ffbd83879c9bc3758f8fd3bd853ff97f41a0072b7563308ecbbbc7b7",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/enrichments/create-an-enrichment",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/create-an-enrichment",
+      "label": null,
+      "source_html_sha256": "0b5cd3b8a21b35df4ed40d9cce70971944839545431ba3ab3f6f53e3b5e8e680",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/enrichments/delete-an-enrichment",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/delete-an-enrichment",
+      "label": null,
+      "source_html_sha256": "d1dd69fe2ac1363d47e10139184c13372c5529ff2472fcf395b6df8b54764f63",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/enrichments/get-an-enrichment",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/get-an-enrichment",
+      "label": null,
+      "source_html_sha256": "18f2dc52dce85cc44685a7b755e8a82ad49ea1bd0f276f22652335cc88c17eb5",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/enrichments/update-an-enrichment",
+      "source": "https://exa.ai/docs/websets/api/websets/enrichments/update-an-enrichment",
+      "label": null,
+      "source_html_sha256": "0dcdaca1b0c59e45527a707a62505f7f423c7025162b4f6481c2df759c328302",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/get-a-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/get-a-webset",
+      "label": null,
+      "source_html_sha256": "bdb8dca41bdb58b6770f2f3382641d59c0f1cf364998e52570b58fc49c5a7592",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/items/delete-an-item",
+      "source": "https://exa.ai/docs/websets/api/websets/items/delete-an-item",
+      "label": null,
+      "source_html_sha256": "e69b032636276f056fde7b108c9dad675733159bbe5a501f686e46ee21a1f621",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/items/get-an-item",
+      "source": "https://exa.ai/docs/websets/api/websets/items/get-an-item",
+      "label": null,
+      "source_html_sha256": "4b90d915bdeb69072f38cc13d1f65160bbe4252b2b29f51c629410db910895c8",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/items/list-all-items-for-a-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/items/list-all-items-for-a-webset",
+      "label": null,
+      "source_html_sha256": "c7e5d7784fbd94956513621d6074f351a6353a9aa955ebd2af92420230d60cea",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/list-all-websets",
+      "source": "https://exa.ai/docs/websets/api/websets/list-all-websets",
+      "label": null,
+      "source_html_sha256": "1e7837b630467d38486ef42c207d5c1e6595c0584bf953f8c756f8fc4cba9426",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/preview-a-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/preview-a-webset",
+      "label": null,
+      "source_html_sha256": "88869dd4a82497ed106fc2d80fffe8d2feed00000b8803aaa1aa691ef6070aad",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/searches/cancel-a-running-search",
+      "source": "https://exa.ai/docs/websets/api/websets/searches/cancel-a-running-search",
+      "label": null,
+      "source_html_sha256": "bfc2995d85096c0576c005fe274c72de8b1eeda3ab4e2deefca509674ccd7582",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/searches/create-a-search",
+      "source": "https://exa.ai/docs/websets/api/websets/searches/create-a-search",
+      "label": null,
+      "source_html_sha256": "2d6c9afe9d99e8c07551089d85c0a469f0e013c5e37cb79e157682addc368555",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/searches/get-a-search",
+      "source": "https://exa.ai/docs/websets/api/websets/searches/get-a-search",
+      "label": null,
+      "source_html_sha256": "2fd1cbbea66be7a123dbfff99501e52107a194b82550591c0369e31d4ed38a32",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/api/websets/update-a-webset",
+      "source": "https://exa.ai/docs/websets/api/websets/update-a-webset",
+      "label": null,
+      "source_html_sha256": "a165b091d4eeb1cf31f2f8b58cadda13df5ad9b5367b4de94b0e3455d3905d0b",
+      "source_fragment": null
+    },
+    {
+      "path": "/docs/websets/dashboard/exclude-results",
+      "source": "https://exa.ai/docs/websets/dashboard/exclude-results",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "7c8b9d5aaa410d29ee3c762e9bc5a324bc02cbb910d5297c1afea829dc575877",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/websets/dashboard/get-started",
+      "source": "https://exa.ai/docs/websets/dashboard/get-started",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "2f28d73a9d790a90cb4a9bc1fdf347019d612566a974e08533c139b82effcf66",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/websets/dashboard/import-from-csv",
+      "source": "https://exa.ai/docs/websets/dashboard/import-from-csv",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "e7a66984a1e2efca8f42a900e6065c52e44ba25e7b4cf89444a0edb6d0a0b428",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/websets/imports-and-search",
+      "source": "https://exa.ai/docs/websets/imports-and-search",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "57b55e4842b10910478c71ac28999dd907744f52e3b4fa978a9c70869a92cd4f",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    },
+    {
+      "path": "/docs/websets/quickstart",
+      "source": "https://exa.ai/docs/websets/quickstart",
+      "label": "Last modified on September 15, 2026",
+      "source_html_sha256": "421ee0230ee141fba518f156d16a452e296937f7d527f7bbfe9f91d66c3498e7",
+      "source_fragment": "<div class=\"pt-4 pb-16 text-sm text-gray-500 dark:text-gray-400\">Last modified on<!-- --> <!-- -->September 15, 2026</div>"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "id": "028",
+  "path": "/docs/contents/quickstart",
+  "production": {
+    "url": "https://exa.ai/docs/contents/quickstart",
+    "title": "Contents API - Exa",
+    "h1": "Contents API",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 206.609375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3720.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Contents returns clean page content from URLs, handling JavaScript-rendered pages, PDFs, and complex layouts automatically.\nAll contents features are also available in Exa Search for returned URLs, at no extra charge up to 10 results per search ($1/1000 pages afterwards). We recommend using Search in this way instead of Contents for web search tool use cases.\nFor search results feeding AI context, request contents: { highlights: true } on /search — Exa sizes each result’s excerpts to its relevance. See Highlights.\n​\nMake your first request\nPass one or more URLs or document IDs and request highlights for the parts relevant to your task. In HTTP requests, provide them in ids:\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.get_contents(\n    [\"https://exa.ai/blog/dynamic-highlights\"],\n    highlights={\"query\": \"token efficiency and quality results\"},\n)\n\nprint(result.results[0].highlights)\n\n\nExample response\n\nEach item in results includes page metadata and the content view you requested. Check statuses for the success or failure of every URL.\n​\nOutput shapes\nHighlights\nFull text\nSummary\nHighlights return relevant passages copied from the page. Start here for agents, RAG, and factual lookups because highlights keep context smaller than full text.\nSet highlights: true to enable highlights. An additional query parameter is recommended when using Contents to focus content extraction from the page:\nPython\nJavaScript\ncURL\nresult = exa.get_contents(\n    [\"https://example.com/research-paper\"],\n    highlights={\"query\": \"methodology and results\"},\n)\n\nSee Highlights for Dynamic Highlights and guidance on allocating context across several pages.\nPick one content view per request. Requesting highlights, text, and summary together returns and bills each view separately.\n​\nContent freshness\nmaxAgeHours controls how fresh the extracted page content must be.\nValue\tBehavior\nOmit\tUse cached content when available and fetch the page when needed\nPositive integer\tUse cached content if it is newer than this many hours, otherwise fetch the page\n0\tAlways fetch fresh content\n-1\tOnly use cached content\nMost requests should omit this field. Set it when stale page content would be unusable, such as for prices, availability, or frequently updated pages. Pair a low maxAgeHours with livecrawlTimeout (milliseconds) to cap how long a fresh fetch may take.\n\nMigrate from the deprecated livecrawl parameter\n\n​\nCrawl subpages\nSet subpages to follow links from each starting URL. Add subpageTarget when you want Exa to prioritize particular site sections:\nPython\nJavaScript\ncURL\nresult = exa.get_contents(\n    [\"https://docs.example.com\"],\n    subpages=10,\n    subpage_target=[\"api\", \"reference\", \"guides\"],\n    highlights=True,\n)\n\n​\nImages and favicons\nSet extras.imageLinks to the number of image URLs you want from each page. Results also include the site’s favicon and a representative image URL when available. On /search, this option sits at contents.extras.imageLinks.\n​\nNext steps\nAPI reference\nSee every request parameter and response field.\nOpen reference\nHighlights\nCompare regular and Dynamic Highlights for agent and RAG context.\nRead guide\nSearch API\nFind relevant pages before extracting their content.\nOpen guide\nSDKs\nUse Exa from Python or JavaScript.\nView SDKs",
+    "scrollHeight": 3817,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/contents/quickstart",
+    "title": "Contents API - Exa",
+    "h1": "Contents API",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 206.609375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 3720.53125
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Contents returns clean page content from URLs, handling JavaScript-rendered pages, PDFs, and complex layouts automatically.\nAll contents features are also available in Exa Search for returned URLs, at no extra charge up to 10 results per search ($1/1000 pages afterwards). We recommend using Search in this way instead of Contents for web search tool use cases.\nFor search results feeding AI context, request contents: { highlights: true } on /search — Exa sizes each result’s excerpts to its relevance. See Highlights.\n​\nMake your first request\nPass one or more URLs or document IDs and request highlights for the parts relevant to your task. In HTTP requests, provide them in ids:\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\n\nresult = exa.get_contents(\n    [\"https://exa.ai/blog/dynamic-highlights\"],\n    highlights={\"query\": \"token efficiency and quality results\"},\n)\n\nprint(result.results[0].highlights)\n\n\nExample response\n\nEach item in results includes page metadata and the content view you requested. Check statuses for the success or failure of every URL.\n​\nOutput shapes\nHighlights\nFull text\nSummary\nHighlights return relevant passages copied from the page. Start here for agents, RAG, and factual lookups because highlights keep context smaller than full text.\nSet highlights: true to enable highlights. An additional query parameter is recommended when using Contents to focus content extraction from the page:\nPython\nJavaScript\ncURL\nresult = exa.get_contents(\n    [\"https://example.com/research-paper\"],\n    highlights={\"query\": \"methodology and results\"},\n)\n\nSee Highlights for Dynamic Highlights and guidance on allocating context across several pages.\nPick one content view per request. Requesting highlights, text, and summary together returns and bills each view separately.\n​\nContent freshness\nmaxAgeHours controls how fresh the extracted page content must be.\nValue\tBehavior\nOmit\tUse cached content when available and fetch the page when needed\nPositive integer\tUse cached content if it is newer than this many hours, otherwise fetch the page\n0\tAlways fetch fresh content\n-1\tOnly use cached content\nMost requests should omit this field. Set it when stale page content would be unusable, such as for prices, availability, or frequently updated pages. Pair a low maxAgeHours with livecrawlTimeout (milliseconds) to cap how long a fresh fetch may take.\n\nMigrate from the deprecated livecrawl parameter\n\n​\nCrawl subpages\nSet subpages to follow links from each starting URL. Add subpageTarget when you want Exa to prioritize particular site sections:\nPython\nJavaScript\ncURL\nresult = exa.get_contents(\n    [\"https://docs.example.com\"],\n    subpages=10,\n    subpage_target=[\"api\", \"reference\", \"guides\"],\n    highlights=True,\n)\n\n​\nImages and favicons\nSet extras.imageLinks to the number of image URLs you want from each page. Results also include the site’s favicon and a representative image URL when available. On /search, this option sits at contents.extras.imageLinks.\n​\nNext steps\nAPI reference\nSee every request parameter and response field.\nOpen reference\nHighlights\nCompare regular and Dynamic Highlights for agent and RAG context.\nRead guide\nSearch API\nFind relevant pages before extracting their content.\nOpen guide\nSDKs\nUse Exa from Python or JavaScript.\nView SDKs",
+    "scrollHeight": 3817,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

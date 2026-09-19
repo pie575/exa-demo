@@ -1,0 +1,101 @@
+{
+  "id": "037",
+  "path": "/docs/integrations/chatgpt-codex",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/chatgpt-codex",
+    "title": "Exa in Codex and ChatGPT - Exa",
+    "h1": "Exa in Codex and ChatGPT",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 412.359375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4115.65625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 256
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Install the Exa plugin once to give Codex and ChatGPT access to the live web through Exa. Search for up-to-date information, read the sources that matter, and run deeper research without leaving your conversation or coding session.\n​\nInstall Exa\n1\n\nOpen the plugin\n\nGo to chatgpt.com/plugins/exa. It opens Exa in OpenAI’s plugin directory, which is the same directory for ChatGPT and for Codex.\n2\n\nInstall it\n\nSelect the plus button to install. Sign in to Exa when prompted, either during install or the first time Codex or ChatGPT uses it.\n\nOpening Plugins in Codex, adding Exa, and authorizing access\n\n3\n\nStart a new session\n\nSkills load in chats and CLI sessions started after the install, so open a fresh one and ask for something that needs the web.\nThat’s it. The plugin includes both Exa’s MCP integration and skills, so there’s no separate MCP or skill setup required.\n​\nBuild with what’s on the web right now\nThe libraries, APIs, and tools you build with change every day. With Exa installed, Codex can search for the latest documentation, issues, changelogs, and real-world examples while it works.\nFrom inside your repo:\nWe're on Tailwind v3. Search for the Tailwind v4 upgrade guide, read it,\nthen migrate this project to v4.\n\nCodex can search with Exa, read the relevant sources, and use what it finds to make the change in your codebase.\nThe same works whenever the answer might be somewhere outside your repo:\n“Search the tokio-tungstenite issues and changelog for this error before you try to fix it.”\n“Find real examples of Postgres advisory locks in Rust and recommend the pattern that fits this worker pool.”\n“Read the current Stripe webhook docs and check our implementation against them.”\n“Search for the latest migration guide for this dependency, then upgrade it.”\n​\nSearch, read, and research\nThe Exa plugin gives Codex and ChatGPT three ways to work with the web.\nSearch\nSearch in natural language and get the content of the best pages back, not a list of links.\nRead\nRead a page you point it at, whether that’s docs, a changelog, an issue, or a blog post.\nResearch\nWork through a question that takes more than one search, and answer it with citations.\n​\nResearch without leaving ChatGPT\nExa works in ChatGPT too. Ask a question that needs fresh information and use Exa to search and research the web from the conversation.\nCompare the managed offerings, licensing, and pricing of the main\nopen source vector databases. Use current primary sources and cite them.\n\nInstead of relying only on information already in context, ChatGPT can use Exa to find and read the sources needed for the task.\nUse it for competitive research, technical research, market mapping, company research, or anything else where the answer lives across the web.\n​\nMCP + skills, together\nUnder the hood, the plugin combines two parts of Exa’s agent stack.\nExa MCP gives Codex and ChatGPT tools for accessing Exa. It’s the connection between the agent and Exa’s search and research capabilities.\nExa skills give the agent additional instructions for using those capabilities in useful workflows, including web research and Exa Agent.\nYou don’t need to configure either separately when you install the plugin.\n​\nPrefer MCP directly?\nThe plugin is the recommended way to use Exa with Codex and ChatGPT. If you’re configuring Codex manually or using another MCP client, you can connect directly to Exa’s hosted MCP server:\ncodex mcp add exa --url https://mcp.exa.ai/mcp\n\nSee Exa MCP for other clients, configuration options, and available tools.\nInstall Exa for ChatGPT and Codex\nAdd the Exa plugin from the ChatGPT marketplace.",
+    "scrollHeight": 4212,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/chatgpt-codex",
+    "title": "Exa in Codex and ChatGPT - Exa",
+    "h1": "Exa in Codex and ChatGPT",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 412.359375,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4115.65625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 256
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Install the Exa plugin once to give Codex and ChatGPT access to the live web through Exa. Search for up-to-date information, read the sources that matter, and run deeper research without leaving your conversation or coding session.\n​\nInstall Exa\n1\n\nOpen the plugin\n\nGo to chatgpt.com/plugins/exa. It opens Exa in OpenAI’s plugin directory, which is the same directory for ChatGPT and for Codex.\n2\n\nInstall it\n\nSelect the plus button to install. Sign in to Exa when prompted, either during install or the first time Codex or ChatGPT uses it.\n\nOpening Plugins in Codex, adding Exa, and authorizing access\n\n3\n\nStart a new session\n\nSkills load in chats and CLI sessions started after the install, so open a fresh one and ask for something that needs the web.\nThat’s it. The plugin includes both Exa’s MCP integration and skills, so there’s no separate MCP or skill setup required.\n​\nBuild with what’s on the web right now\nThe libraries, APIs, and tools you build with change every day. With Exa installed, Codex can search for the latest documentation, issues, changelogs, and real-world examples while it works.\nFrom inside your repo:\nWe're on Tailwind v3. Search for the Tailwind v4 upgrade guide, read it,\nthen migrate this project to v4.\n\nCodex can search with Exa, read the relevant sources, and use what it finds to make the change in your codebase.\nThe same works whenever the answer might be somewhere outside your repo:\n“Search the tokio-tungstenite issues and changelog for this error before you try to fix it.”\n“Find real examples of Postgres advisory locks in Rust and recommend the pattern that fits this worker pool.”\n“Read the current Stripe webhook docs and check our implementation against them.”\n“Search for the latest migration guide for this dependency, then upgrade it.”\n​\nSearch, read, and research\nThe Exa plugin gives Codex and ChatGPT three ways to work with the web.\nSearch\nSearch in natural language and get the content of the best pages back, not a list of links.\nRead\nRead a page you point it at, whether that’s docs, a changelog, an issue, or a blog post.\nResearch\nWork through a question that takes more than one search, and answer it with citations.\n​\nResearch without leaving ChatGPT\nExa works in ChatGPT too. Ask a question that needs fresh information and use Exa to search and research the web from the conversation.\nCompare the managed offerings, licensing, and pricing of the main\nopen source vector databases. Use current primary sources and cite them.\n\nInstead of relying only on information already in context, ChatGPT can use Exa to find and read the sources needed for the task.\nUse it for competitive research, technical research, market mapping, company research, or anything else where the answer lives across the web.\n​\nMCP + skills, together\nUnder the hood, the plugin combines two parts of Exa’s agent stack.\nExa MCP gives Codex and ChatGPT tools for accessing Exa. It’s the connection between the agent and Exa’s search and research capabilities.\nExa skills give the agent additional instructions for using those capabilities in useful workflows, including web research and Exa Agent.\nYou don’t need to configure either separately when you install the plugin.\n​\nPrefer MCP directly?\nThe plugin is the recommended way to use Exa with Codex and ChatGPT. If you’re configuring Codex manually or using another MCP client, you can connect directly to Exa’s hosted MCP server:\ncodex mcp add exa --url https://mcp.exa.ai/mcp\n\nSee Exa MCP for other clients, configuration options, and available tools.\nInstall Exa for ChatGPT and Codex\nAdd the Exa plugin from the ChatGPT marketplace.",
+    "scrollHeight": 4212,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

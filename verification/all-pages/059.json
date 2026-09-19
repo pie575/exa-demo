@@ -1,0 +1,103 @@
+{
+  "id": "059",
+  "path": "/docs/integrations/pydantic-ai",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/pydantic-ai",
+    "title": "Pydantic AI - Exa",
+    "h1": "Pydantic AI",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 176.40625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7037.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\nPydantic AI is a Python agent framework from the team behind Pydantic. Its harness ships an official Exa integration as two composable capabilities:\nExaSearch: web research tools backed by the Exa Search API: web_search (top results with their most relevant excerpts, plus an optional synthesized text summary), get_page (full-page retrieval for a specific URL), and opt-in deep_search (a synthesized, cited answer in one call).\nExaAgent: delegates long-running research to the Exa Agent API as deferred tool calls.\nA capability bundles the tools, per-tool output budgets, and short research guidance in the system prompt, so you don’t have to wire a search API to a page fetcher and prompt the agent to research methodically yourself.\nSee the full reference from Pydantic here.\nRead Pydantic's article about building a Research Agent with Exa\nA walkthrough of three copy-paste research agents built on Pydantic AI and Exa.\n​\nGet Started\n1\n\nPre-requisites and installation\n\nInstall the harness with the Exa extra and set your EXA_API_KEY environment variable.\nBash\nuv add \"pydantic-ai-harness[exa]\"\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nAdd ExaSearch to an agent\n\nPass ExaSearch to an Agent via the capabilities parameter. Authentication comes from EXA_API_KEY by default.\nPython\nfrom pydantic_ai import Agent\nfrom pydantic_ai_harness.exa import ExaSearch\n\nagent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch()])\n\nresult = agent.run_sync('What changed in the latest stable Python release?')\nprint(result.output)\n\nExaSearch contributes two tools to the agent:\nTool\tPurpose\nweb_search\tSearch the web and return the top num_results pages, each with title, URL, and its most relevant excerpts.\nget_page\tRetrieve the full text of one specific URL — a promising web_search hit, or a URL the user provided.\nweb_search returns short excerpts (Exa highlights) rather than full page text, so surveying several sources stays cheap; the agent then reads a chosen page with get_page. A URL or question that returns no content, a rate limit, or a transient failure surfaces to the model as a ModelRetry so the run can recover; authentication failures (401/403) propagate as configuration errors.\n3\n\nEnable deep search (optional)\n\ndeep_search runs Exa’s multi-step deep search (type='deep'): Exa expands the question into multiple queries, searches, and returns an answer grounded in citations in one tool call. It invests more time and search depth than web_search, so it is off by default. Enable it explicitly:\nPython\nfrom pydantic_ai_harness.exa import ExaSearch\n\nagent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch(include_deep_search=True)])\n\nWhen enabled, the capability’s instructions tell the model to treat deep_search as an escalation from web_search, not a replacement.\n​\nConfiguration\nEvery field of ExaSearch with its default:\nPython\nfrom pydantic_ai_harness.exa import ExaSearch\n\nExaSearch(\n    num_results=5,             # results per web_search call (1 to 100)\n    max_text_chars=10_000,     # get_page text cap, in characters (1 to 10,000)\n    text_summary=False,        # web_search also returns a synthesized text summary\n    include_deep_search=False, # also expose the deep_search tool\n    include_domains=[],        # only search these domains (allowlist)\n    exclude_domains=[],        # never search these domains (denylist)\n    guidance=None,             # None = default instructions, '' = none, str = custom\n    client=None,               # ExaClient -- None builds exa_py.AsyncExa from EXA_API_KEY\n)\n\ninclude_domains and exclude_domains apply to web_search and deep_search, and are mutually exclusive. Out-of-range limits and setting both domain lists raise at construction.\n​\nText summary\nSet text_summary to have every web_search call also request a synthesized plain-text summary of the results. Pass True for an unconstrained summary, or a string describing the desired format:\nPython\nfrom pydantic_ai_harness.exa import ExaSearch\n\nExaSearch(text_summary='One concise sentence with the requested facts.')\n\nThe tool’s return shape is unchanged: when Exa returns a summary it is prepended as a Summary: line.\n​\nStructured citations\nEvery tool returns a ToolReturn: return_value carries the readable text the model sees (including the Sources: blocks), and metadata carries the sources as structured ExaSource records ({'url': ..., 'title': ...}) under the 'sources' key. Metadata is never sent to the model, so rendering citations needs no text parsing:\nPython\nfrom pydantic_ai.messages import ModelRequest, ToolReturnPart\n\nfor message in result.all_messages():\n    if isinstance(message, ModelRequest):\n        for part in message.parts:\n            if isinstance(part, ToolReturnPart) and part.metadata is not None:\n                for source in part.metadata.get('sources', []):\n                    print(source['url'], source['title'])\n\n​\nCustom client\nThe default client is exa_py.AsyncExa, configured from EXA_API_KEY. Pass any object satisfying the ExaClient protocol to configure authentication or the base URL explicitly, or to substitute a fake in tests:\nPython\nfrom exa_py import AsyncExa\nfrom pydantic_ai_harness.exa import ExaSearch\n\nExaSearch(client=AsyncExa(api_key='...'))\n\n​\nExa agent runs\nThe Exa Agent API runs open-ended research tasks asynchronously. The ExaAgent capability maps that lifecycle onto Pydantic AI’s deferred tool calls: its exa_agent tool creates the run and defers, carrying the Exa run ID in the deferred call’s metadata.\nPython\nfrom pydantic_ai import Agent\nfrom pydantic_ai_harness.exa import ExaAgent\n\nagent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaAgent()])\n\nBy default (execution='inline') the capability resolves its own deferred calls within the agent run by polling the Exa run to completion, so the tool behaves like a regular (if slow) tool. With execution='external' the calls bubble up as DeferredToolRequests output for the host application to resolve out of band.\nEvery field of ExaAgent with its default:\nPython\nfrom pydantic_ai_harness.exa import ExaAgent\n\nExaAgent(\n    effort=None,          # 'low' | 'medium' | 'high' | 'xhigh' | 'auto' -- None = API default\n    execution='inline',   # 'inline' polls to completion; 'external' bubbles DeferredToolRequests\n    output_schema=None,   # BaseModel class or dict schema for structured output\n    system_prompt=None,   # forwarded to the Exa agent run\n    poll_interval=1000,   # ms between polls when resolving inline\n    timeout_ms=3_600_000, # ms to wait for a run when resolving inline\n    guidance=None,        # None = default instructions, '' = none, str = custom\n    runs=None,            # ExaAgentRuns -- None builds AsyncExa().agent.runs from EXA_API_KEY\n)\n\n​\nAgent spec (YAML/JSON)\nBoth capabilities work with Pydantic AI’s agent spec, so you can declare them in a config file instead of Python:\nagent.yaml\nmodel: anthropic:claude-sonnet-4-6\ncapabilities:\n  - ExaSearch:\n      num_results: 3\n      include_deep_search: true\n  - ExaAgent:\n      effort: low\n\nPython\nfrom pydantic_ai import Agent\nfrom pydantic_ai_harness.exa import ExaAgent, ExaSearch\n\nagent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAgent])\n\nPass custom_capability_types so the spec loader knows how to instantiate the capabilities. Spec-loaded instances always build the default client from EXA_API_KEY.\n​\nNext\nSearch API - Semantic search with highlights, summaries, and deep search\nAgent API - Open-ended asynchronous research runs\nMCP Setup - Exa’s hosted MCP server\nSDKs - Python and JavaScript SDK docs",
+    "scrollHeight": 7134,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/pydantic-ai",
+    "title": "Pydantic AI - Exa",
+    "h1": "Pydantic AI",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 176.40625,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 7037.921875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 300
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Coding Agent Quickstart\nNew to Exa? Get started in under a minute.\nPydantic AI is a Python agent framework from the team behind Pydantic. Its harness ships an official Exa integration as two composable capabilities:\nExaSearch: web research tools backed by the Exa Search API: web_search (top results with their most relevant excerpts, plus an optional synthesized text summary), get_page (full-page retrieval for a specific URL), and opt-in deep_search (a synthesized, cited answer in one call).\nExaAgent: delegates long-running research to the Exa Agent API as deferred tool calls.\nA capability bundles the tools, per-tool output budgets, and short research guidance in the system prompt, so you don’t have to wire a search API to a page fetcher and prompt the agent to research methodically yourself.\nSee the full reference from Pydantic here.\nRead Pydantic's article about building a Research Agent with Exa\nA walkthrough of three copy-paste research agents built on Pydantic AI and Exa.\n​\nGet Started\n1\n\nPre-requisites and installation\n\nInstall the harness with the Exa extra and set your EXA_API_KEY environment variable.\nBash\nuv add \"pydantic-ai-harness[exa]\"\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\n2\n\nAdd ExaSearch to an agent\n\nPass ExaSearch to an Agent via the capabilities parameter. Authentication comes from EXA_API_KEY by default.\nPython\nfrom pydantic_ai import Agent\nfrom pydantic_ai_harness.exa import ExaSearch\n\nagent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch()])\n\nresult = agent.run_sync('What changed in the latest stable Python release?')\nprint(result.output)\n\nExaSearch contributes two tools to the agent:\nTool\tPurpose\nweb_search\tSearch the web and return the top num_results pages, each with title, URL, and its most relevant excerpts.\nget_page\tRetrieve the full text of one specific URL — a promising web_search hit, or a URL the user provided.\nweb_search returns short excerpts (Exa highlights) rather than full page text, so surveying several sources stays cheap; the agent then reads a chosen page with get_page. A URL or question that returns no content, a rate limit, or a transient failure surfaces to the model as a ModelRetry so the run can recover; authentication failures (401/403) propagate as configuration errors.\n3\n\nEnable deep search (optional)\n\ndeep_search runs Exa’s multi-step deep search (type='deep'): Exa expands the question into multiple queries, searches, and returns an answer grounded in citations in one tool call. It invests more time and search depth than web_search, so it is off by default. Enable it explicitly:\nPython\nfrom pydantic_ai_harness.exa import ExaSearch\n\nagent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch(include_deep_search=True)])\n\nWhen enabled, the capability’s instructions tell the model to treat deep_search as an escalation from web_search, not a replacement.\n​\nConfiguration\nEvery field of ExaSearch with its default:\nPython\nfrom pydantic_ai_harness.exa import ExaSearch\n\nExaSearch(\n    num_results=5,             # results per web_search call (1 to 100)\n    max_text_chars=10_000,     # get_page text cap, in characters (1 to 10,000)\n    text_summary=False,        # web_search also returns a synthesized text summary\n    include_deep_search=False, # also expose the deep_search tool\n    include_domains=[],        # only search these domains (allowlist)\n    exclude_domains=[],        # never search these domains (denylist)\n    guidance=None,             # None = default instructions, '' = none, str = custom\n    client=None,               # ExaClient -- None builds exa_py.AsyncExa from EXA_API_KEY\n)\n\ninclude_domains and exclude_domains apply to web_search and deep_search, and are mutually exclusive. Out-of-range limits and setting both domain lists raise at construction.\n​\nText summary\nSet text_summary to have every web_search call also request a synthesized plain-text summary of the results. Pass True for an unconstrained summary, or a string describing the desired format:\nPython\nfrom pydantic_ai_harness.exa import ExaSearch\n\nExaSearch(text_summary='One concise sentence with the requested facts.')\n\nThe tool’s return shape is unchanged: when Exa returns a summary it is prepended as a Summary: line.\n​\nStructured citations\nEvery tool returns a ToolReturn: return_value carries the readable text the model sees (including the Sources: blocks), and metadata carries the sources as structured ExaSource records ({'url': ..., 'title': ...}) under the 'sources' key. Metadata is never sent to the model, so rendering citations needs no text parsing:\nPython\nfrom pydantic_ai.messages import ModelRequest, ToolReturnPart\n\nfor message in result.all_messages():\n    if isinstance(message, ModelRequest):\n        for part in message.parts:\n            if isinstance(part, ToolReturnPart) and part.metadata is not None:\n                for source in part.metadata.get('sources', []):\n                    print(source['url'], source['title'])\n\n​\nCustom client\nThe default client is exa_py.AsyncExa, configured from EXA_API_KEY. Pass any object satisfying the ExaClient protocol to configure authentication or the base URL explicitly, or to substitute a fake in tests:\nPython\nfrom exa_py import AsyncExa\nfrom pydantic_ai_harness.exa import ExaSearch\n\nExaSearch(client=AsyncExa(api_key='...'))\n\n​\nExa agent runs\nThe Exa Agent API runs open-ended research tasks asynchronously. The ExaAgent capability maps that lifecycle onto Pydantic AI’s deferred tool calls: its exa_agent tool creates the run and defers, carrying the Exa run ID in the deferred call’s metadata.\nPython\nfrom pydantic_ai import Agent\nfrom pydantic_ai_harness.exa import ExaAgent\n\nagent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaAgent()])\n\nBy default (execution='inline') the capability resolves its own deferred calls within the agent run by polling the Exa run to completion, so the tool behaves like a regular (if slow) tool. With execution='external' the calls bubble up as DeferredToolRequests output for the host application to resolve out of band.\nEvery field of ExaAgent with its default:\nPython\nfrom pydantic_ai_harness.exa import ExaAgent\n\nExaAgent(\n    effort=None,          # 'low' | 'medium' | 'high' | 'xhigh' | 'auto' -- None = API default\n    execution='inline',   # 'inline' polls to completion; 'external' bubbles DeferredToolRequests\n    output_schema=None,   # BaseModel class or dict schema for structured output\n    system_prompt=None,   # forwarded to the Exa agent run\n    poll_interval=1000,   # ms between polls when resolving inline\n    timeout_ms=3_600_000, # ms to wait for a run when resolving inline\n    guidance=None,        # None = default instructions, '' = none, str = custom\n    runs=None,            # ExaAgentRuns -- None builds AsyncExa().agent.runs from EXA_API_KEY\n)\n\n​\nAgent spec (YAML/JSON)\nBoth capabilities work with Pydantic AI’s agent spec, so you can declare them in a config file instead of Python:\nagent.yaml\nmodel: anthropic:claude-sonnet-4-6\ncapabilities:\n  - ExaSearch:\n      num_results: 3\n      include_deep_search: true\n  - ExaAgent:\n      effort: low\n\nPython\nfrom pydantic_ai import Agent\nfrom pydantic_ai_harness.exa import ExaAgent, ExaSearch\n\nagent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAgent])\n\nPass custom_capability_types so the spec loader knows how to instantiate the capabilities. Spec-loaded instances always build the default client from EXA_API_KEY.\n​\nNext\nSearch API - Semantic search with highlights, summaries, and deep search\nAgent API - Open-ended asynchronous research runs\nMCP Setup - Exa’s hosted MCP server\nSDKs - Python and JavaScript SDK docs",
+    "scrollHeight": 7134,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

@@ -1,0 +1,28 @@
+{
+  "route": "/docs/websets/api/websets/items/list-all-items-for-a-webset",
+  "production": {
+    "status": 200,
+    "text": "List all items for a webset\nCopy page\n\nReturns a list of Webset Items.\n\nYou can paginate through the Items using the cursor parameter.\n\nGET\n/\nv0\n/\nwebsets\n/\n{webset}\n/\nitems\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nwebset\nstringrequired\n\nThe id or externalId of the Webset\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:20\n\nThe number of results to return\n\nRequired range: 1 <= x <= 100\n​\nsourceId\nstring\n\nThe id of the source\n\nResponse\n200 - application/json\n\nWebset Items\n\n​\ndata\nobject[]required\n\nThe list of webset items\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more Items to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of Items\n\nDelete an item\nPrevious\nCreate a search\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List all items for a webset",
+      "Authorizations",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List all items for a webset\nCopy page\n\nReturns a list of Webset Items.\n\nYou can paginate through the Items using the cursor parameter.\n\nGET\n/\nv0\n/\nwebsets\n/\n{webset}\n/\nitems\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nPath Parameters\n​\nwebset\nstringrequired\n\nThe id or externalId of the Webset\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:20\n\nThe number of results to return\n\nRequired range: 1 <= x <= 100\n​\nsourceId\nstring\n\nThe id of the source\n\nResponse\n200 - application/json\n\nWebset Items\n\n​\ndata\nobject[]required\n\nThe list of webset items\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more Items to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of Items\n\nDelete an item\nPrevious\nCreate a search\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List all items for a webset",
+      "Authorizations",
+      "Path Parameters",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1031,
+  "localLength": 1031
+}

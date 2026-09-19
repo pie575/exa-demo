@@ -1,0 +1,26 @@
+{
+  "route": "/docs/websets/api/monitors/list-monitors",
+  "production": {
+    "status": 200,
+    "text": "List Websets monitors\nCopy page\n\nLists all monitors for the Webset.\n\nGET\n/\nv0\n/\nmonitors\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:25\n\nThe number of results to return\n\nRequired range: 1 <= x <= 200\n​\nwebsetId\nstring\n\nThe id of the Webset to list monitors for\n\nResponse\n200 - application/json\n\nList of monitors\n\n​\ndata\nobject[]required\n\nThe list of monitors\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nDelete a Websets monitor\nPrevious\nList monitor runs\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List Websets monitors",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List Websets monitors\nCopy page\n\nLists all monitors for the Webset.\n\nGET\n/\nv0\n/\nmonitors\nTry it\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\ncursor\nstring\n\nThe cursor to paginate through the results\n\nMinimum string length: 1\n​\nlimit\nintegerdefault:25\n\nThe number of results to return\n\nRequired range: 1 <= x <= 200\n​\nwebsetId\nstring\n\nThe id of the Webset to list monitors for\n\nResponse\n200 - application/json\n\nList of monitors\n\n​\ndata\nobject[]required\n\nThe list of monitors\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results to paginate through\n\n​\nnextCursor\nstring | nullrequired\n\nThe cursor to paginate through the next set of results\n\nDelete a Websets monitor\nPrevious\nList monitor runs\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List Websets monitors",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 906,
+  "localLength": 906
+}

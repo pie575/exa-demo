@@ -1,0 +1,91 @@
+{
+  "id": "147",
+  "path": "/docs/websets/api/websets/items/list-all-items-for-a-webset",
+  "production": {
+    "url": "https://exa.ai/docs/websets/api/websets/items/list-all-items-for-a-webset",
+    "title": "List all items for a webset - Exa",
+    "h1": "List all items for a webset",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 130.828125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 385.671875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 1994.03125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2090,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/websets/api/websets/items/list-all-items-for-a-webset",
+    "title": "List all items for a webset - Exa",
+    "h1": "List all items for a webset",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 130.828125
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 385.671875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 1994.03125
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 2090,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

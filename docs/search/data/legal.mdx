@@ -1,0 +1,132 @@
+---
+title: "Legal & Public Records"
+sidebarTitle: "Legal & Public Records"
+icon: "scale"
+description: "Find court opinions, patents, sanctions, government contracts, and other public records with Exa Search."
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Open in API playground" aria-label={`Open "${query}" in the API playground`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Use Exa Search for primary legal sources and government records alongside the commentary written about them.
+
+## Included
+
+* US court opinions, with full text, court, docket, and citation metadata
+* Granted US patents, with abstract, claims, description, inventors, and assignees
+* Statutes, regulations, and agency guidance
+* Sanctions lists and watchlists
+* Government contracts and procurement records
+* Census data and other public statistical records
+
+## Use it for
+
+* Case-law research and legal RAG
+* Regulatory and policy monitoring
+* Prior-art and freedom-to-operate searches
+* Compliance screening and due diligence
+* Public-sector market research
+
+## Example queries
+
+### Find case law
+
+Describe the legal question and jurisdiction in plain language rather than a citation.
+
+<PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
+
+### Search patents
+
+Describe what the invention does, the way a claim would.
+
+<PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
+
+### Screen against sanctions
+
+Name the list and the entity class you are screening.
+
+<PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
+
+### Research government spending
+
+Name the buying agency or service category and the time window.
+
+<PlaygroundQuery query="federal contracts awarded for cloud migration services" />
+
+### Pull public statistics
+
+Name the dataset and geography.
+
+<PlaygroundQuery query="census tract population change in the Austin metro area" />
+
+## Make a request
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "California appellate decisions on non-compete enforceability",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "California appellate decisions on non-compete enforceability",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "California appellate decisions on non-compete enforceability",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+## Get structured data with Exa Agent
+
+For structured data that requires research across multiple sources, use an [Exa Agent task run](/docs/agent/quickstart). Describe the jurisdictions, record types, criteria, and output fields you need, and Agent returns schema-validated results with citations.
+
+<Card title="Start an Agent task" icon="bot" href="/docs/agent/quickstart" cta="Open Agent guide" arrow="true">
+  Screen an entity across record types or trace a regulatory change through primary sources and coverage.
+</Card>

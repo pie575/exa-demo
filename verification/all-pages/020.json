@@ -1,0 +1,103 @@
+{
+  "id": "020",
+  "path": "/docs/agent/connect/overview",
+  "production": {
+    "url": "https://exa.ai/docs/agent/connect/overview",
+    "title": "Exa Connect - Exa",
+    "h1": "Exa Connect",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.171875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4772.296875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Connect integrates premium data partners into the Exa Agent loop. Attach a provider to a run, and the Exa Agent queries that partner’s database alongside web search before combining the results into one grounded, structured answer.\nNew to agent runs? Start with the Exa Agent guide, then come back to attach data partners.\nExa Agent already searches the full data index, the same news, code, company, and people sources as the Search API. Exa Connect adds premium partner databases on top of it.\nPrefer MCP? Exa Agent and Exa Connect are available in Exa MCP. Enable tools=agent_run to run multi-step research, list-building, enrichment, and structured output from Claude, Cursor, and other MCP clients.\n​\nWhy Exa Connect\nPremium data without separate integrations. Access partner data without signing contracts or wiring up an SDK. You call one Exa API.\nExa handles the plumbing. We manage provider authentication, tool selection, retries, and result ranking.\nThe Exa Agent chooses the source. When your outputSchema asks for “monthly visits from Similarweb” or “verified officers,” the Exa Agent calls the matching partner tool instead of guessing from a web page.\nIndex and partner data in one run. Connect sits on top of the Exa index. The Exa Agent uses each source where it is strongest and cites the results.\n​\nHow it works\nAttach one or more providers via the dataSources array on POST /agent/runs.\nThe Exa Agent selects the right tool for each step based on your query and outputSchema: partner data or Exa web search.\nPartner results are fused with web research into your structured output, with sources attached.\n​\nPricing\nExa Connect pricing is additive with standard Agent run pricing. You pay the usual Agent compute and search costs, plus the provider call charge for each Exa Connect tool call.\nProvider\tPrice\nFiber.ai\t$0.02 / credit\nSimilarweb\t$0.30 / credit\nBaselayer\t$0.10 – $4.00 / order (varies by operation)\nPolymarket\tFree\nAffiliate.com\t$0.015 / call\nParticle\t$0.015 / call\nFinancial Datasets\t$0.01 / call\nJinko\t$0.005 / call\nFiber.ai bills in credits rather than per call, because its own charge varies by call: a search costs 2 credits plus 1 per result returned, a company or person lookup is billed per candidate returned (so raising a company lookup’s numResults to disambiguate an ambiguous name costs more), and a contact reveal 2–5 credits depending on whether you ask for work email, personal email, or phone. You are charged the credits Fiber reports for each call; calls that return no match are free. See Fiber.ai pricing.\nSimilarweb bills in data credits (roughly one per metric × row × month), so a call’s price follows its numResults/months — 1 to 15 credits per call. You are charged the credits Similarweb reports for each call; calls that return no data are free. See Similarweb pricing.\nBaselayer bills per order, and the rate depends on the operation: a KYB business search is $1.00, a UCC lien search is $2.00 per state searched, a litigation/bankruptcy docket search is $1.00 per category, watchlist screening is $0.10–$0.25 per list requested, industry classification and website analysis are $0.35 each, web presence is the sum of the selected analyses ($0.15–$0.35 each), and an international business search is $4.00. Follow-up reads of a prior business search (business lookup, officers, registrations, officer reverse lookup) are free. See Baselayer pricing.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"Profile Anthropic: total funding and estimated monthly web traffic.\",\n    data_sources=[{\"provider\": \"fiber\"}, {\"provider\": \"similarweb\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"company\"],\n        \"properties\": {\n            \"company\": {\n                \"type\": \"object\",\n                \"required\": [\"name\", \"totalFunding\", \"monthlyVisits\"],\n                \"properties\": {\n                    \"name\": {\"type\": \"string\"},\n                    \"totalFunding\": {\"type\": \"string\", \"description\": \"from Fiber.ai\"},\n                    \"monthlyVisits\": {\"type\": \"number\", \"description\": \"from Similarweb\"},\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nData partners\nFiber.ai\nGTM & recruiting. B2B database of companies and people for lead discovery and contact research.\nSimilarweb\nWeb analytics. Traffic estimates, global rankings, and competitor discovery for any domain.\nBaselayer\nCompliance & KYB. Verify US businesses: officers, registrations, and risk signals.\nPolymarket\nPrediction markets. Prediction market odds, price history, and trader positions from Polymarket.\nAffiliate.com\nCommerce. Product catalog search with pricing, brands, and merchant links.\nParticle\nMedia intelligence. Search podcast transcripts with speaker attribution and timestamps.\nFinancial Datasets\nFinance. Prices, fundamentals, earnings, SEC filings, ownership, and stock screening for 27,000+ U.S. tickers.\nJinko\nTravel. Flight and Hotel search with real-time pricing.\nNeed a source that isn’t listed above? See our Additional providers, which are available upon request by contacting our team.\n​\nUsage\n​\nCombining providers\nAttach as many partners as your task needs. The Exa Agent calls each one where it is strongest and blends the results with web search into a single structured answer:\n{\n  \"dataSources\": [\n    { \"provider\": \"similarweb\" },\n    { \"provider\": \"fiber\" },\n    { \"provider\": \"harmonic\" }\n  ]\n}\n\nFor a full walkthrough, including how to shape your query and outputSchema so every partner fires, see Combining providers.",
+    "scrollHeight": 4868,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/agent/connect/overview",
+    "title": "Exa Connect - Exa",
+    "h1": "Exa Connect",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 110
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 196.171875,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 4772.296875
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 236
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Exa Connect integrates premium data partners into the Exa Agent loop. Attach a provider to a run, and the Exa Agent queries that partner’s database alongside web search before combining the results into one grounded, structured answer.\nNew to agent runs? Start with the Exa Agent guide, then come back to attach data partners.\nExa Agent already searches the full data index, the same news, code, company, and people sources as the Search API. Exa Connect adds premium partner databases on top of it.\nPrefer MCP? Exa Agent and Exa Connect are available in Exa MCP. Enable tools=agent_run to run multi-step research, list-building, enrichment, and structured output from Claude, Cursor, and other MCP clients.\n​\nWhy Exa Connect\nPremium data without separate integrations. Access partner data without signing contracts or wiring up an SDK. You call one Exa API.\nExa handles the plumbing. We manage provider authentication, tool selection, retries, and result ranking.\nThe Exa Agent chooses the source. When your outputSchema asks for “monthly visits from Similarweb” or “verified officers,” the Exa Agent calls the matching partner tool instead of guessing from a web page.\nIndex and partner data in one run. Connect sits on top of the Exa index. The Exa Agent uses each source where it is strongest and cites the results.\n​\nHow it works\nAttach one or more providers via the dataSources array on POST /agent/runs.\nThe Exa Agent selects the right tool for each step based on your query and outputSchema: partner data or Exa web search.\nPartner results are fused with web research into your structured output, with sources attached.\n​\nPricing\nExa Connect pricing is additive with standard Agent run pricing. You pay the usual Agent compute and search costs, plus the provider call charge for each Exa Connect tool call.\nProvider\tPrice\nFiber.ai\t$0.02 / credit\nSimilarweb\t$0.30 / credit\nBaselayer\t$0.10 – $4.00 / order (varies by operation)\nPolymarket\tFree\nAffiliate.com\t$0.015 / call\nParticle\t$0.015 / call\nFinancial Datasets\t$0.01 / call\nJinko\t$0.005 / call\nFiber.ai bills in credits rather than per call, because its own charge varies by call: a search costs 2 credits plus 1 per result returned, a company or person lookup is billed per candidate returned (so raising a company lookup’s numResults to disambiguate an ambiguous name costs more), and a contact reveal 2–5 credits depending on whether you ask for work email, personal email, or phone. You are charged the credits Fiber reports for each call; calls that return no match are free. See Fiber.ai pricing.\nSimilarweb bills in data credits (roughly one per metric × row × month), so a call’s price follows its numResults/months — 1 to 15 credits per call. You are charged the credits Similarweb reports for each call; calls that return no data are free. See Similarweb pricing.\nBaselayer bills per order, and the rate depends on the operation: a KYB business search is $1.00, a UCC lien search is $2.00 per state searched, a litigation/bankruptcy docket search is $1.00 per category, watchlist screening is $0.10–$0.25 per list requested, industry classification and website analysis are $0.35 each, web presence is the sum of the selected analyses ($0.15–$0.35 each), and an international business search is $4.00. Follow-up reads of a prior business search (business lookup, officers, registrations, officer reverse lookup) are free. See Baselayer pricing.\nPython\nJavaScript\ncURL\nfrom exa_py import Exa\n\nexa = Exa()\nrun = exa.agent.runs.create(\n    query=\"Profile Anthropic: total funding and estimated monthly web traffic.\",\n    data_sources=[{\"provider\": \"fiber\"}, {\"provider\": \"similarweb\"}],\n    output_schema={\n        \"type\": \"object\",\n        \"required\": [\"company\"],\n        \"properties\": {\n            \"company\": {\n                \"type\": \"object\",\n                \"required\": [\"name\", \"totalFunding\", \"monthlyVisits\"],\n                \"properties\": {\n                    \"name\": {\"type\": \"string\"},\n                    \"totalFunding\": {\"type\": \"string\", \"description\": \"from Fiber.ai\"},\n                    \"monthlyVisits\": {\"type\": \"number\", \"description\": \"from Similarweb\"},\n                },\n            }\n        },\n    },\n)\nrun = exa.agent.runs.poll_until_finished(run.id)\n\n​\nData partners\nFiber.ai\nGTM & recruiting. B2B database of companies and people for lead discovery and contact research.\nSimilarweb\nWeb analytics. Traffic estimates, global rankings, and competitor discovery for any domain.\nBaselayer\nCompliance & KYB. Verify US businesses: officers, registrations, and risk signals.\nPolymarket\nPrediction markets. Prediction market odds, price history, and trader positions from Polymarket.\nAffiliate.com\nCommerce. Product catalog search with pricing, brands, and merchant links.\nParticle\nMedia intelligence. Search podcast transcripts with speaker attribution and timestamps.\nFinancial Datasets\nFinance. Prices, fundamentals, earnings, SEC filings, ownership, and stock screening for 27,000+ U.S. tickers.\nJinko\nTravel. Flight and Hotel search with real-time pricing.\nNeed a source that isn’t listed above? See our Additional providers, which are available upon request by contacting our team.\n​\nUsage\n​\nCombining providers\nAttach as many partners as your task needs. The Exa Agent calls each one where it is strongest and blends the results with web search into a single structured answer:\n{\n  \"dataSources\": [\n    { \"provider\": \"similarweb\" },\n    { \"provider\": \"fiber\" },\n    { \"provider\": \"harmonic\" }\n  ]\n}\n\nFor a full walkthrough, including how to shape your query and outputSchema so every partner fires, see Combining providers.",
+    "scrollHeight": 4868,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

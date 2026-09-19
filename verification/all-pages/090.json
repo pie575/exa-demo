@@ -1,0 +1,91 @@
+{
+  "id": "090",
+  "path": "/docs/reference/monitors/update-a-monitor",
+  "production": {
+    "url": "https://exa.ai/docs/reference/monitors/update-a-monitor",
+    "title": "Update a monitor - Exa",
+    "h1": "Update a monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 138
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 266.078125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 4678.65625
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 4775,
+    "status": 200,
+    "errors": []
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/reference/monitors/update-a-monitor",
+    "title": "Update a monitor - Exa",
+    "h1": "Update a monitor",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 138
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 266.078125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 560,
+        "height": 4678.65625
+      },
+      "#table-of-contents": null
+    },
+    "brokenImages": [],
+    "bodyText": "",
+    "scrollHeight": 4775,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

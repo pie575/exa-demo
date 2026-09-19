@@ -1,0 +1,103 @@
+{
+  "id": "041",
+  "path": "/docs/integrations/exa-for-sheets",
+  "production": {
+    "url": "https://exa.ai/docs/integrations/exa-for-sheets",
+    "title": "Exa for Google Sheets - Exa",
+    "h1": "Exa for Google Sheets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 339.453125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 8719.40625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 492
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Multiple Google accounts: The add-on must run under the first (default) Google account in your browser profile. If you are logged into multiple accounts, you may not be able to save or load your API key. To fix this, open Sheets in an incognito window with only one account, or sign out of extra accounts so the account you want is the default. Learn more.\nUse Exa inside Google Sheets to research the web, generate tables, and fill missing data.\nThe add-on gives you two ways to work:\nExa Agent for full tables and multi-cell tasks\n=EXA(...) for one answer in one cell\n​\nInstall\n1\n\nInstall the add-on\n\nGo to the Exa AI add-on in the Google Workspace Marketplace and click Install.\n2\n\nOpen a Google Sheet\n\nOpen a new or existing spreadsheet.\n3\n\nOpen the sidebar\n\nGo to Extensions → Exa AI → Open Sidebar.\n4\n\nAdd your API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nPaste the key in the sidebar.\n5\n\nStart using Exa\n\nOpen Exa Agent and start using Exa in your sheet.\n​\nExa Agent\nExa Agent lets you use Exa across multiple cells in Google Sheets.\nUse it when you want to:\ngenerate a full table from one prompt\nfill missing cells in an existing table\ncontinue a table by adding new rows\nenrich a list with web data\n​\nGenerate a table\nUse Generate table when you want Exa to create a new table.\nOpen the sidebar.\nGo to Exa Agent.\nChoose Generate table.\nWrite what you want.\nClick Generate table.\nExample prompt:\nFind top 40 AI companies and return company name, website URL, CEO, founding date, headquarters, and a short description.\n\nExa researches the web and writes the table into your sheet.\nBy default, the table starts at the selected cell. You can choose another start cell in More options.\n​\nFill cells\nUse Fill cells when you already have a table and want Exa to fill missing data.\nSelect the blank cells in your sheet.\nOpen Exa Agent.\nChoose Fill cells.\nClick Fill selected cells.\nExa looks at the table around your selection and fills the blanks.\nSelect blank cells in a table that already has clear headers before you use Fill cells.\nExample:\nCompany\tWebsite\tCEO\tHeadquarters\nApple\thttps://apple.com\t\t\nGoogle\thttps://google.com\tSundar Pichai\tMountain View\nSelect the blank cells for Apple, then click Fill selected cells. Exa uses the company name and the nearby rows as context.\n​\nContinue rows\nYou can also select blank rows under a table.\nIf your table ends at rank 55 and you select the next two blank rows, Exa can continue the table with rank 56 and rank 57.\nExa uses the existing rows as examples, keeps the same columns, and avoids repeating items already in the table.\n​\n=EXA(...)\nUse =EXA(...) when you want one answer in one cell. It searches the web, reads the top results, and returns a concise answer.\n=EXA(\"what you want\", cell)\n\nParameter\tRequired\tDescription\nprompt\tYes\tWhat information you want (e.g., \"Return only the CEO name\").\ncontext\tNo\tCell reference or text to enrich (e.g., a company name in A2).\nExamples:\n=EXA(\"Return only the company website URL\", A2)\n=EXA(\"Return only the CEO name\", A2)\n=EXA(\"Return only the headquarters\", A2)\n=EXA(\"Return the Amazon rating of this product\", A2)\n\nThe second argument is the context. You can drag the formula down a column to run it for many rows.\nUse =EXA(...) for simple one-cell answers. Use Exa Agent when you want to create or fill a whole table.\n​\n=EXA_ANSWER(...)\nAdvanced AI answers with full control over output format. Use this when you need system prompts, structured JSON output, citations, or a specific search type.\n=EXA_ANSWER(prompt, [prefix], [suffix], [includeCitations], [systemPrompt], [outputSchema], [returnRawJson], [type])\n\nParameter\tRequired\tDefault\tDescription\nprompt\tYes\t—\tThe main question or prompt.\nprefix\tNo\t\"\"\tText added before the prompt.\nsuffix\tNo\t\"\"\tText added after the prompt.\nincludeCitations\tNo\tFALSE\tIf TRUE, appends numbered source citations.\nsystemPrompt\tNo\t\"\"\tSystem instructions to control output format (e.g., \"only return a number\").\noutputSchema\tNo\t\"\"\tJSON schema for structured output. Generate schemas here.\nreturnRawJson\tNo\tFALSE\tIf TRUE and outputSchema is set, returns the full JSON instead of extracting the value.\ntype\tNo\t\"deep\"\tSearch type: \"auto\", \"neural\", \"fast\", or \"deep\".\nExamples:\n=EXA_ANSWER(\"OpenAI CEO\", \"\", \"\", FALSE, \"only return a name\")\n=EXA_ANSWER(\"Modal AI headcount\", \"\", \"\", FALSE, \"only return a number\")\n=EXA_ANSWER(\"ceo of exa.ai\", \"\", \"\", FALSE, \"\", \"{\"\"type\"\":\"\"object\"\",\"\"properties\"\":{\"\"name\"\":{\"\"type\"\":\"\"string\"\"}}}\")\n\n​\n=EXA_SEARCH(...)\nSearches the web and returns a vertical list of URLs. Supports domain filtering, category filtering, content highlights, and synthesized output via outputSchema.\n=EXA_SEARCH(query, [numResults], [searchType], [prefix], [suffix], [includeDomainsStr], [excludeDomainsStr], [category], [highlightsMaxChars], [outputSchemaJson])\n\nParameter\tRequired\tDefault\tDescription\nquery\tYes\t—\tThe search query.\nnumResults\tNo\t1\tNumber of results (1–10).\nsearchType\tNo\t\"auto\"\t\"auto\", \"neural\", or \"keyword\".\nprefix\tNo\t\"\"\tText added before the query.\nsuffix\tNo\t\"\"\tText added after the query.\nincludeDomainsStr\tNo\t\"\"\tComma-separated domains to include (e.g., \"linkedin.com,crunchbase.com\").\nexcludeDomainsStr\tNo\t\"\"\tComma-separated domains to exclude.\ncategory\tNo\t\"\"\tFilter by type: \"company\", \"publication\", \"news\", \"personal site\", \"financial report\", \"people\".\nhighlightsMaxChars\tNo\t0\tIf > 0, requests content highlights with this character limit per result.\noutputSchemaJson\tNo\t\"\"\tJSON string for outputSchema (e.g., \"{\"\"type\"\":\"\"text\"\",\"\"description\"\":\"\"summarize\"\"}\"). When set, returns synthesized output text instead of URLs.\nExamples:\n=EXA_SEARCH(\"AI startups\", 5, \"auto\", \"\", \"\", \"linkedin.com,crunchbase.com\")\n=EXA_SEARCH(\"transformer architecture\", 5, \"auto\", \"\", \"\", \"\", \"\", \"publication\")\n\n​\n=EXA_CONTENTS(...)\nExtracts the text content from a URL.\n=EXA_CONTENTS(url)\n\nParameter\tRequired\tDescription\nurl\tYes\tThe full URL (must start with http or https).\n​\n=EXA_FINDSIMILAR(...)\nFinds URLs similar to a reference URL, with optional domain and text filters.\n=EXA_FINDSIMILAR(url, [numResults], [includeDomainsStr], [excludeDomainsStr], [includeTextStr], [excludeTextStr])\n\nParameter\tRequired\tDefault\tDescription\nurl\tYes\t—\tThe reference URL.\nnumResults\tNo\t1\tNumber of results (1–10).\nincludeDomainsStr\tNo\t\"\"\tComma-separated domains to include.\nexcludeDomainsStr\tNo\t\"\"\tComma-separated domains to exclude.\nincludeTextStr\tNo\t\"\"\tPhrase that must appear in results.\nexcludeTextStr\tNo\t\"\"\tPhrase that must not appear in results.\n​\nBatch\nUse Batch when you want to work with many Exa formula cells at once.\nBatch can:\nrefresh selected cells with Exa formulas\nconvert selected Exa formulas into normal values\nConvert formulas to values when you want to keep the current results and stop the formulas from running again.\n​\nWhen to use what\nTask\tUse\nCreate a full table from a prompt\tExa Agent → Generate table\nFill blank cells in a table\tExa Agent → Fill cells\nContinue a table with new rows\tExa Agent → Fill cells\nGet one value in one cell\t=EXA(...)\nGet an answer with system prompt or structured output\t=EXA_ANSWER(...)\nSearch and get a list of URLs\t=EXA_SEARCH(...)\nExtract text from a URL\t=EXA_CONTENTS(...)\nFind pages similar to a URL\t=EXA_FINDSIMILAR(...)\nRefresh many Exa formulas\tBatch\nSave formula results as plain text\tBatch → Convert to values\n​\nNotes\nExa API requests count against your usage quota. Use Batch → Convert to values to freeze results and stop formulas from recalculating.\nThe add-on automatically retries up to 3 times with exponential backoff when rate limited (HTTP 429).\nStart with small batches (10–20 rows) before scaling to hundreds.\n​\nLinks\nInstall Exa AI for Google Sheets\nGet an Exa API key\nGitHub repository\nPrivacy Policy",
+    "scrollHeight": 8815,
+    "status": 200,
+    "errors": [
+      "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+    ]
+  },
+  "local": {
+    "url": "http://localhost:3000/docs/integrations/exa-for-sheets",
+    "title": "Exa for Google Sheets - Exa",
+    "h1": "Exa for Google Sheets",
+    "geometry": {
+      "#navbar": {
+        "x": 0,
+        "y": 0,
+        "width": 1512,
+        "height": 56
+      },
+      "#sidebar-content": {
+        "x": 20,
+        "y": 56,
+        "width": 288,
+        "height": 926
+      },
+      "#header": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 82
+      },
+      "#header h1": {
+        "x": 396,
+        "y": 98,
+        "width": 339.453125,
+        "height": 40
+      },
+      "#content-area": {
+        "x": 396,
+        "y": 96,
+        "width": 704,
+        "height": 8719.40625
+      },
+      "#table-of-contents": {
+        "x": 1188,
+        "y": 112,
+        "width": 264,
+        "height": 492
+      }
+    },
+    "brokenImages": [],
+    "bodyText": "Multiple Google accounts: The add-on must run under the first (default) Google account in your browser profile. If you are logged into multiple accounts, you may not be able to save or load your API key. To fix this, open Sheets in an incognito window with only one account, or sign out of extra accounts so the account you want is the default. Learn more.\nUse Exa inside Google Sheets to research the web, generate tables, and fill missing data.\nThe add-on gives you two ways to work:\nExa Agent for full tables and multi-cell tasks\n=EXA(...) for one answer in one cell\n​\nInstall\n1\n\nInstall the add-on\n\nGo to the Exa AI add-on in the Google Workspace Marketplace and click Install.\n2\n\nOpen a Google Sheet\n\nOpen a new or existing spreadsheet.\n3\n\nOpen the sidebar\n\nGo to Extensions → Exa AI → Open Sidebar.\n4\n\nAdd your API key\n\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nPaste the key in the sidebar.\n5\n\nStart using Exa\n\nOpen Exa Agent and start using Exa in your sheet.\n​\nExa Agent\nExa Agent lets you use Exa across multiple cells in Google Sheets.\nUse it when you want to:\ngenerate a full table from one prompt\nfill missing cells in an existing table\ncontinue a table by adding new rows\nenrich a list with web data\n​\nGenerate a table\nUse Generate table when you want Exa to create a new table.\nOpen the sidebar.\nGo to Exa Agent.\nChoose Generate table.\nWrite what you want.\nClick Generate table.\nExample prompt:\nFind top 40 AI companies and return company name, website URL, CEO, founding date, headquarters, and a short description.\n\nExa researches the web and writes the table into your sheet.\nBy default, the table starts at the selected cell. You can choose another start cell in More options.\n​\nFill cells\nUse Fill cells when you already have a table and want Exa to fill missing data.\nSelect the blank cells in your sheet.\nOpen Exa Agent.\nChoose Fill cells.\nClick Fill selected cells.\nExa looks at the table around your selection and fills the blanks.\nSelect blank cells in a table that already has clear headers before you use Fill cells.\nExample:\nCompany\tWebsite\tCEO\tHeadquarters\nApple\thttps://apple.com\t\t\nGoogle\thttps://google.com\tSundar Pichai\tMountain View\nSelect the blank cells for Apple, then click Fill selected cells. Exa uses the company name and the nearby rows as context.\n​\nContinue rows\nYou can also select blank rows under a table.\nIf your table ends at rank 55 and you select the next two blank rows, Exa can continue the table with rank 56 and rank 57.\nExa uses the existing rows as examples, keeps the same columns, and avoids repeating items already in the table.\n​\n=EXA(...)\nUse =EXA(...) when you want one answer in one cell. It searches the web, reads the top results, and returns a concise answer.\n=EXA(\"what you want\", cell)\n\nParameter\tRequired\tDescription\nprompt\tYes\tWhat information you want (e.g., \"Return only the CEO name\").\ncontext\tNo\tCell reference or text to enrich (e.g., a company name in A2).\nExamples:\n=EXA(\"Return only the company website URL\", A2)\n=EXA(\"Return only the CEO name\", A2)\n=EXA(\"Return only the headquarters\", A2)\n=EXA(\"Return the Amazon rating of this product\", A2)\n\nThe second argument is the context. You can drag the formula down a column to run it for many rows.\nUse =EXA(...) for simple one-cell answers. Use Exa Agent when you want to create or fill a whole table.\n​\n=EXA_ANSWER(...)\nAdvanced AI answers with full control over output format. Use this when you need system prompts, structured JSON output, citations, or a specific search type.\n=EXA_ANSWER(prompt, [prefix], [suffix], [includeCitations], [systemPrompt], [outputSchema], [returnRawJson], [type])\n\nParameter\tRequired\tDefault\tDescription\nprompt\tYes\t—\tThe main question or prompt.\nprefix\tNo\t\"\"\tText added before the prompt.\nsuffix\tNo\t\"\"\tText added after the prompt.\nincludeCitations\tNo\tFALSE\tIf TRUE, appends numbered source citations.\nsystemPrompt\tNo\t\"\"\tSystem instructions to control output format (e.g., \"only return a number\").\noutputSchema\tNo\t\"\"\tJSON schema for structured output. Generate schemas here.\nreturnRawJson\tNo\tFALSE\tIf TRUE and outputSchema is set, returns the full JSON instead of extracting the value.\ntype\tNo\t\"deep\"\tSearch type: \"auto\", \"neural\", \"fast\", or \"deep\".\nExamples:\n=EXA_ANSWER(\"OpenAI CEO\", \"\", \"\", FALSE, \"only return a name\")\n=EXA_ANSWER(\"Modal AI headcount\", \"\", \"\", FALSE, \"only return a number\")\n=EXA_ANSWER(\"ceo of exa.ai\", \"\", \"\", FALSE, \"\", \"{\"\"type\"\":\"\"object\"\",\"\"properties\"\":{\"\"name\"\":{\"\"type\"\":\"\"string\"\"}}}\")\n\n​\n=EXA_SEARCH(...)\nSearches the web and returns a vertical list of URLs. Supports domain filtering, category filtering, content highlights, and synthesized output via outputSchema.\n=EXA_SEARCH(query, [numResults], [searchType], [prefix], [suffix], [includeDomainsStr], [excludeDomainsStr], [category], [highlightsMaxChars], [outputSchemaJson])\n\nParameter\tRequired\tDefault\tDescription\nquery\tYes\t—\tThe search query.\nnumResults\tNo\t1\tNumber of results (1–10).\nsearchType\tNo\t\"auto\"\t\"auto\", \"neural\", or \"keyword\".\nprefix\tNo\t\"\"\tText added before the query.\nsuffix\tNo\t\"\"\tText added after the query.\nincludeDomainsStr\tNo\t\"\"\tComma-separated domains to include (e.g., \"linkedin.com,crunchbase.com\").\nexcludeDomainsStr\tNo\t\"\"\tComma-separated domains to exclude.\ncategory\tNo\t\"\"\tFilter by type: \"company\", \"publication\", \"news\", \"personal site\", \"financial report\", \"people\".\nhighlightsMaxChars\tNo\t0\tIf > 0, requests content highlights with this character limit per result.\noutputSchemaJson\tNo\t\"\"\tJSON string for outputSchema (e.g., \"{\"\"type\"\":\"\"text\"\",\"\"description\"\":\"\"summarize\"\"}\"). When set, returns synthesized output text instead of URLs.\nExamples:\n=EXA_SEARCH(\"AI startups\", 5, \"auto\", \"\", \"\", \"linkedin.com,crunchbase.com\")\n=EXA_SEARCH(\"transformer architecture\", 5, \"auto\", \"\", \"\", \"\", \"\", \"publication\")\n\n​\n=EXA_CONTENTS(...)\nExtracts the text content from a URL.\n=EXA_CONTENTS(url)\n\nParameter\tRequired\tDescription\nurl\tYes\tThe full URL (must start with http or https).\n​\n=EXA_FINDSIMILAR(...)\nFinds URLs similar to a reference URL, with optional domain and text filters.\n=EXA_FINDSIMILAR(url, [numResults], [includeDomainsStr], [excludeDomainsStr], [includeTextStr], [excludeTextStr])\n\nParameter\tRequired\tDefault\tDescription\nurl\tYes\t—\tThe reference URL.\nnumResults\tNo\t1\tNumber of results (1–10).\nincludeDomainsStr\tNo\t\"\"\tComma-separated domains to include.\nexcludeDomainsStr\tNo\t\"\"\tComma-separated domains to exclude.\nincludeTextStr\tNo\t\"\"\tPhrase that must appear in results.\nexcludeTextStr\tNo\t\"\"\tPhrase that must not appear in results.\n​\nBatch\nUse Batch when you want to work with many Exa formula cells at once.\nBatch can:\nrefresh selected cells with Exa formulas\nconvert selected Exa formulas into normal values\nConvert formulas to values when you want to keep the current results and stop the formulas from running again.\n​\nWhen to use what\nTask\tUse\nCreate a full table from a prompt\tExa Agent → Generate table\nFill blank cells in a table\tExa Agent → Fill cells\nContinue a table with new rows\tExa Agent → Fill cells\nGet one value in one cell\t=EXA(...)\nGet an answer with system prompt or structured output\t=EXA_ANSWER(...)\nSearch and get a list of URLs\t=EXA_SEARCH(...)\nExtract text from a URL\t=EXA_CONTENTS(...)\nFind pages similar to a URL\t=EXA_FINDSIMILAR(...)\nRefresh many Exa formulas\tBatch\nSave formula results as plain text\tBatch → Convert to values\n​\nNotes\nExa API requests count against your usage quota. Use Batch → Convert to values to freeze results and stop formulas from recalculating.\nThe add-on automatically retries up to 3 times with exponential backoff when rate limited (HTTP 429).\nStart with small batches (10–20 rows) before scaling to hundreds.\n​\nLinks\nInstall Exa AI for Google Sheets\nGet an Exa API key\nGitHub repository\nPrivacy Policy",
+    "scrollHeight": 8815,
+    "status": 200,
+    "errors": []
+  },
+  "deltas": {}
+}

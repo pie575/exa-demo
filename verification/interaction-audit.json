@@ -1,0 +1,79 @@
+{
+  "checks": [
+    {
+      "name": "Homepage radio tabs switch visible language and API examples",
+      "passed": true,
+      "detail": [
+        "docs-home-lang-python",
+        "docs-home-lang-javascript",
+        "docs-home-lang-curl",
+        "docs-home-api-search",
+        "docs-home-api-contents",
+        "docs-home-api-deep",
+        "docs-home-api-tools",
+        "docs-home-api-agent",
+        "docs-home-api-agent-research"
+      ]
+    },
+    {
+      "name": "Local full-text search opens, finds text, and navigates with keyboard",
+      "passed": true,
+      "detail": "Exa Snapshot\nExa Snapshot keeps stored versions of pages Exa has crawled. Send snapshotAsOf to pin the request to a datetime. Use this to backtest agents, run reproducible evals, and compare earlier vers\nsearch › snapshot"
+    },
+    {
+      "name": "Search shortcut, empty result state, and Escape",
+      "passed": true,
+      "detail": "No results state displayed; Escape closed dialog"
+    },
+    {
+      "name": "Bottom search launcher opens the local index",
+      "passed": true,
+      "detail": "Native bottom bar opens local search with pointer and keyboard"
+    },
+    {
+      "name": "Quickstart JavaScript code tab and clipboard copy work",
+      "passed": true,
+      "detail": {
+        "codeLength": 318
+      }
+    },
+    {
+      "name": "Theme control switches to dark mode",
+      "passed": true
+    },
+    {
+      "name": "Native API schema and examples /docs/reference/search",
+      "passed": true,
+      "detail": {
+        "title": "Search",
+        "codeBlocks": 23
+      }
+    },
+    {
+      "name": "Native API schema and examples /docs/websets/api/websets/create-a-webset",
+      "passed": true,
+      "detail": {
+        "title": "Create a webset",
+        "codeBlocks": 8
+      }
+    },
+    {
+      "name": "Native API schema and examples /docs/reference/team-management/create-api-key",
+      "passed": true,
+      "detail": {
+        "title": "Create API key",
+        "codeBlocks": 8
+      }
+    },
+    {
+      "name": "Agent example spreadsheet switches all seven output tabs",
+      "passed": true
+    },
+    {
+      "name": "Mobile navigation and mobile search are usable",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

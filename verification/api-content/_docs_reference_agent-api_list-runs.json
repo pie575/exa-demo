@@ -1,0 +1,28 @@
+{
+  "route": "/docs/reference/agent-api/list-runs",
+  "production": {
+    "status": 200,
+    "text": "List Agent runs\nCopy page\n\nRetrieve a paginated list of Agent runs for your team.\n\nGET\n/\nagent\n/\nruns\nTry it\nRuns are returned from newest to oldest. Use limit to control page size and cursor with the nextCursor from the previous response to fetch the next page.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\nlimit\nintegerdefault:20\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\n​\ncursor\nstring\n\nCursor for pagination. Use the nextCursor value from the previous run list response.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nPaginated Agent runs\n\n​\nobject\nstringrequired\nAllowed value: \"list\"\n​\ndata\nobject[]required\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | nullrequired\n\nAgent run ID. New run IDs are returned with the agent_run_ prefix.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nGet an Agent run\nPrevious\nCancel a run\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List Agent runs",
+      "Get your Exa API key",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "local": {
+    "status": 200,
+    "text": "List Agent runs\nCopy page\n\nRetrieve a paginated list of Agent runs for your team.\n\nGET\n/\nagent\n/\nruns\nTry it\nRuns are returned from newest to oldest. Use limit to control page size and cursor with the nextCursor from the previous response to fetch the next page.\nGet your Exa API key\nCreate a key in the dashboard. New accounts start with free credits.\nAuthorizations\napiKey\nbearer\napiKey\n​\nx-api-key\nstringheaderrequired\n\nPass your Exa API key in the x-api-key header. You can also authenticate with Authorization: Bearer .\n\nQuery Parameters\n​\nlimit\nintegerdefault:20\n\nNumber of results per page\n\nRequired range: 1 <= x <= 100\n​\ncursor\nstring\n\nCursor for pagination. Use the nextCursor value from the previous run list response.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nResponse\n200\napplication/json\n\nPaginated Agent runs\n\n​\nobject\nstringrequired\nAllowed value: \"list\"\n​\ndata\nobject[]required\n\nShow child attributes\n\n​\nhasMore\nbooleanrequired\n\nWhether there are more results\n\n​\nnextCursor\nstring | nullrequired\n\nAgent run ID. New run IDs are returned with the agent_run_ prefix.\n\nRequired string length: 1 - 200\nPattern: ^[A-Za-z0-9_.:-]+$\nExample:\n\n\"agent_run_01j7x9v0m2n4p6q8r0s2t4v6w8\"\n\nGet an Agent run\nPrevious\nCancel a run\nNext\nx\nlinkedin\nllms.txt for AI agents",
+    "headings": [
+      "List Agent runs",
+      "Get your Exa API key",
+      "Authorizations",
+      "Query Parameters",
+      "Response"
+    ]
+  },
+  "identical": true,
+  "productionLength": 1338,
+  "localLength": 1338
+}
