@@ -101,7 +101,8 @@
     "ru",
     "zh",
     "ko",
-    "id"
+    "id",
+    "fr"
   ],
   "defaultLocale": "en",
   "$schema": "https://assets.gtx.dev/config-schema.json"
