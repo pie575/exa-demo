@@ -1,0 +1,125 @@
+---
+title: "OpenRouter"
+sidebarTitle: "OpenRouter"
+description: "Подключите к любой модели OpenRouter веб-поиск Exa через серверный инструмент openrouter:web_search."
+icon: "/docs/images/sidebar-icons/openrouter.svg"
+keywords: ["OpenRouter", "веб-поиск", "серверный инструмент", "grounding", "url_citation"]
+---
+
+Exa — поисковая система, на которой работает веб-поиск в [OpenRouter](https://openrouter.ai). OpenRouter даёт единый API к сотням моделей, а Exa открывает этим моделям доступ к актуальным данным из интернета: любая модель без собственного поиска по умолчанию использует Exa для grounding, и любую модель можно явно направить на Exa. Собственный Exa API key при этом не нужен. OpenRouter выполняет поисковые запросы на своей стороне и списывает их стоимость с ваших кредитов OpenRouter.
+
+<div id="use-the-web-search-server-tool">
+  ## Использование серверного инструмента веб-поиска
+</div>
+
+Добавьте `openrouter:web_search` в массив `tools` — и модель сама решит, когда искать, что искать и нужно ли повторить поиск в рамках того же запроса. [Серверные инструменты](https://openrouter.ai/docs/guides/features/server-tools/web-search) в OpenRouter находятся в стадии бета-тестирования; они заменяют устаревший плагин `web` и варианты моделей `:online`. Если вы используете что-то из этого, см. [руководство по миграции](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) от OpenRouter.
+
+<CodeGroup>
+  ```javascript JavaScript theme={null}
+  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "openai/gpt-5.2",
+      messages: [
+        { role: "user", content: "What were the major AI announcements this week?" },
+      ],
+      tools: [{ type: "openrouter:web_search" }],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.choices[0].message.content);
+  ```
+
+  ```python Python theme={null}
+  import requests
+
+  response = requests.post(
+      "https://openrouter.ai/api/v1/chat/completions",
+      headers={
+          "Authorization": "Bearer <OPENROUTER_API_KEY>",
+          "Content-Type": "application/json",
+      },
+      json={
+          "model": "openai/gpt-5.2",
+          "messages": [
+              {"role": "user", "content": "What were the major AI announcements this week?"}
+          ],
+          "tools": [{"type": "openrouter:web_search"}],
+      },
+  )
+
+  print(response.json()["choices"][0]["message"]["content"])
+  ```
+
+  ```bash cURL theme={null}
+  curl https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer <OPENROUTER_API_KEY>" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "openai/gpt-5.2",
+      "messages": [
+        { "role": "user", "content": "What were the major AI announcements this week?" }
+      ],
+      "tools": [{ "type": "openrouter:web_search" }]
+    }'
+  ```
+</CodeGroup>
+
+При значении по умолчанию `engine: "auto"` OpenRouter использует собственный поиск провайдера там, где он есть у модели, и Exa во всех остальных случаях. Укажите `engine: "exa"`, чтобы поиск работал одинаково для всех моделей:
+
+```json theme={null}
+{
+  "type": "openrouter:web_search",
+  "parameters": {
+    "engine": "exa",
+    "mode": "auto",
+    "max_results": 5,
+    "max_total_results": 20,
+    "allowed_domains": ["arxiv.org"],
+    "excluded_domains": ["reddit.com"]
+  }
+}
+```
+
+| Параметр                              | Для чего использовать                                                                                                                                                                          |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mode`                                | Найти баланс между задержкой и глубиной: `instant`, `fast`, `auto` (по умолчанию), `deep-lite`, `deep` или `deep-reasoning`. Режимы соответствуют [типам поиска](/ru/docs/search/quickstart) Exa. |
+| `max_results`                         | Ограничить число результатов на один вызов search (по умолчанию 5)                                                                                                                             |
+| `max_uses`                            | Ограничить, сколько раз модель может выполнить search в рамках одного запроса                                                                                                                  |
+| `max_total_results`                   | Ограничить суммарное число результатов по всем поискам в одном запросе                                                                                                                         |
+| `max_characters`                      | Задать точный лимит символов на один результат для highlights                                                                                                                                  |
+| `search_context_size`                 | Использовать готовый предустановленный лимит: `low`, `medium` или `high`                                                                                                                       |
+| `allowed_domains`, `excluded_domains` | Фильтровать домены результатов. Exa поддерживает оба фильтра в одном запросе.                                                                                                                  |
+
+<div id="how-results-come-back">
+  ## Как возвращаются результаты
+</div>
+
+Для каждого результата OpenRouter запрашивает [highlights Exa](/ru/docs/search/highlights), а не полный текст страницы: это извлечённые фрагменты с адаптивным размером, обычно от 2 000 до 4 000 символов на результат, если вы не задали `max_characters` или `search_context_size`. Модель читает эти фрагменты, а клиенты API получают их в виде стандартизированных аннотаций `url_citation` в ответном сообщении. В пределах одного результата маркеры `[...]` разделяют фрагменты, взятые из разных частей страницы.
+
+<div id="pricing">
+  ## Тарификация
+</div>
+
+Поисковые запросы Exa оплачиваются кредитами OpenRouter — дополнительно к стоимости токенов модели, затраченных на чтение результатов. Режимы `instant`, `fast` и `auto` стоят $0.007 за поиск, `deep-lite` и `deep` — $0.012, а `deep-reasoning` — $0.015. В каждый поиск включено до 10 результатов, каждый дополнительный результат стоит $0.001. Актуальные тарифы см. в [документации OpenRouter по веб-поиску](https://openrouter.ai/docs/guides/features/server-tools/web-search).
+
+Объект `usage` в ответе показывает, сколько поисков выполнила модель, в поле `server_tool_use.web_search_requests`.
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+<Columns cols={2}>
+  <Card title="Документация по серверному инструменту" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="Открыть документацию" arrow="true">
+    Полный справочник по настройке `openrouter:web_search`.
+  </Card>
+
+  <Card title="История клиента" icon="book-open" href="https://exa.ai/customers/openrouter" cta="Читать историю" arrow="true">
+    Как OpenRouter с помощью Exa даёт сотням моделей доступ к веб-поиску.
+  </Card>
+</Columns>

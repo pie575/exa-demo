@@ -1,0 +1,187 @@
+---
+title: "Precios"
+description: "Tarifas de pago por uso para Exa Search, Contents, Answer, Monitors y la Agent API"
+keywords: ["pricing", "cost", "rates", "credits", "billing", "agent compute units"]
+---
+
+***
+
+Exa funciona con pago por uso. No hay suscripción ni gasto mínimo: cargas créditos y se te cobra por solicitud, según las tarifas que se indican a continuación.
+
+<Check>
+  **Empieza gratis.** Las cuentas nuevas reciben $20 en créditos gratuitos (unas 2.800 búsquedas) y el Free Tier suma $10 en créditos cada mes. Consigue una API key y empieza a desarrollar.
+
+  **¿Quieres escalar?** Para alto volumen, índices personalizados, límites de tasa más altos, SLA o Zero Data Retention, [habla con nosotros](https://exa.ai/contact/sales) sobre un [plan Enterprise](#enterprise) con descuentos por volumen.
+</Check>
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
+</Card>
+
+<div id="products">
+  ## Productos
+</div>
+
+<Columns cols={3}>
+  <Card title="Search" icon="search" href="/es/docs/search/quickstart">
+    **$7** / 1k solicitudes
+
+    Search en tiempo real con contenido eficiente en tokens.
+  </Card>
+
+  <Card title="Deep Search" icon="microscope" href="/es/docs/search/deep-search">
+    **$12–15** / 1k solicitudes
+
+    Investigación de varios pasos con salidas estructuradas y citas.
+  </Card>
+
+  <Card title="Contents" icon="file-text" href="/es/docs/contents/quickstart">
+    **$1** / 1k páginas
+
+    Texto completo de la página, highlights y resúmenes para URL conocidas.
+  </Card>
+
+  <Card title="Answer" icon="message-circle" href="/es/docs/reference/answer">
+    **$5** / 1k solicitudes
+
+    Una respuesta de un LLM a una pregunta, con citas.
+  </Card>
+
+  <Card title="Monitors" icon="bell" href="/es/docs/monitors/quickstart">
+    **$15** / 1k solicitudes
+
+    Búsquedas programadas que detectan nuevos eventos en la web.
+  </Card>
+
+  <Card title="Agent" icon="bot" href="/es/docs/agent/quickstart">
+    **$0.012–$1.00** / ejecución de esfuerzo fijo, o según uso
+
+    Investigación profunda asíncrona, creación de listas y enrichment.
+  </Card>
+</Columns>
+
+<div id="search-contents-answer-and-monitors">
+  ## Search, Contents, Answer y Monitors
+</div>
+
+Cada endpoint tiene un precio base por solicitud que incluye hasta 10 resultados. Los resultados adicionales y los resúmenes de página generados por Exa se facturan aparte.
+
+| Endpoint    | Precio base<br />(hasta 10 resultados) | Cada resultado a partir del 11 | Resúmenes de página con IA |
+| ----------- | -------------------------------------- | ------------------------------ | -------------------------- |
+| `/search`   | $7 / 1k solicitudes                    | $1 / 1k resultados             | $1 / 1k páginas            |
+| `/answer`   | $5 / 1k solicitudes                    | —                              | —                          |
+| `/monitors` | $15 / 1k solicitudes                   | $1 / 1k resultados             | $1 / 1k páginas            |
+| `/contents` | $1 / 1k páginas, por tipo de contenido | —                              | $1 / 1k páginas            |
+
+<div id="agent">
+  ## Agent
+</div>
+
+Fija un `effort` concreto en [Agent](/es/docs/agent/quickstart) para obtener un precio predecible por solicitud. `auto` es el modo medido predeterminado; el modo beta `max` también es medido y usa las mismas tarifas de uso:
+
+| Effort    | Precio             |
+| --------- | ------------------ |
+| `minimal` | $0,012 / solicitud |
+| `low`     | $0,025 / solicitud |
+| `medium`  | $0,10 / solicitud  |
+| `high`    | $0,50 / solicitud  |
+| `xhigh`   | $1,00 / solicitud  |
+
+Las ejecuciones medidas facturan el uso real hasta su límite por ejecución. `auto` tiene un límite predeterminado de $5; el modo beta `max`, de $20:
+
+| Componente de uso                   | Precio                     |
+| ----------------------------------- | -------------------------- |
+| Agent Compute Units                 | $0,10 / ACU                |
+| Llamadas a la herramienta de search | $0,005 / search            |
+| Enrichment de contacto por correo   | $0,02 / correo             |
+| Enrichment de contacto telefónico   | $0,07 / número de teléfono |
+
+<div id="connect-providers">
+  ### Proveedores de Connect
+</div>
+
+Las ejecuciones que usan fuentes de datos de [Exa Connect](/es/docs/agent/connect/overview)
+también facturan cada llamada al proveedor; por ejemplo,
+[Fiber.ai](/es/docs/agent/connect/fiber#pricing) a $0.02 por crédito y
+[Baselayer](/es/docs/agent/connect/baselayer#pricing) entre $0.15 y $4.00 por
+pedido, según la operación. Consulta
+[Precios de Connect](/es/docs/agent/connect/overview#pricing) para ver todas
+las tarifas de los proveedores.
+
+<div id="deep-search">
+  ## Deep Search
+</div>
+
+Se configura con `type` en [`/search`](/es/docs/search/deep-search). Los resultados adicionales y los resúmenes de página con IA cuestan lo mismo que una search estándar.
+
+| Tipo             | Precio base<br />(hasta 10 resultados) | Latencia       | Ideal para                                             |
+| ---------------- | -------------------------------------- | -------------- | ------------------------------------------------------ |
+| `deep-lite`      | $12 / 1k solicitudes                   | ~4 segundos    | Síntesis ligera                                        |
+| `deep`           | $12 / 1k solicitudes                   | 4–15 segundos  | Razonamiento de varios pasos con salidas estructuradas |
+| `deep-reasoning` | $15 / 1k solicitudes                   | 12–40 segundos | Tareas de investigación más complejas                  |
+
+<div id="enterprise">
+  ## Enterprise
+</div>
+
+Para grandes volúmenes, conjuntos de datos personalizados y requisitos de seguridad más estrictos.
+
+<Columns cols={3}>
+  <Card title="Search potente" icon="gauge">
+    Hasta 1.000 resultados por Search, solicitudes de más de 25 resultados, límites de tasa (QPS) personalizados, moderación a medida e índices personalizados.
+  </Card>
+
+  <Card title="Soporte empresarial" icon="headphones">
+    SLA y MSA, incorporación y soporte 1:1, y [Zero Data Retention](/es/docs/admin/security/zero-data-retention).
+  </Card>
+
+  <Card title="Precios personalizados" icon="tag">
+    Descuentos por volumen y facturación pospago mediante factura.
+  </Card>
+</Columns>
+
+<Card title="Habla con nosotros" icon="mail" horizontal href="https://exa.ai/contact/sales">
+  Solicita un presupuesto con volúmenes y condiciones para empresas
+</Card>
+
+<div id="cost-glossary">
+  ## Glosario de costos
+</div>
+
+<AccordionGroup>
+  <Accordion title="Solicitud">
+    Una llamada a la API a un endpoint. Los precios se indican por cada 1.000 solicitudes, de modo que una tarifa de $7 / 1k equivale a $0,007 por llamada.
+  </Accordion>
+
+  <Accordion title="Resultado">
+    Un resultado de search devuelto en una respuesta. El precio base cubre los primeros 10 resultados de una solicitud; cada resultado adicional por encima de 10 suma $1 / 1k resultados. Por lo tanto, solicitar `numResults: 20` cuesta el precio base más 10 resultados adicionales.
+  </Accordion>
+
+  <Accordion title="Página y tipo de contenido">
+    Una página es una URL para la que Exa devuelve contenido. Un tipo de contenido es una vista de esa página: `text`, `highlights` o `summary`. `/contents` factura cada tipo de contenido por separado, así que una página con `text` y `highlights` cuenta como dos.
+  </Accordion>
+
+  <Accordion title="Resumen de página con IA">
+    Un resumen de una página generado por Exa mediante una llamada adicional al LLM de nuestro lado. Se factura a $1 / 1k páginas en cualquier endpoint que devuelva uno.
+  </Accordion>
+
+  <Accordion title="Agent Compute Unit (ACU)">
+    La unidad de cómputo de modelo que consume una ejecución del Agent, reportada como `usage.agentComputeUnits`. Las ejecuciones más largas, un `input.data` más grande y una mayor cantidad de pasos de razonamiento consumen más ACU.
+  </Accordion>
+
+  <Accordion title="Effort">
+    El parámetro del Agent que equilibra costo y latencia frente a exhaustividad. `auto` factura por consumo (ACU más llamadas a herramientas) hasta un tope predeterminado de $5; `max` (beta) usa las mismas tarifas de uso hasta un tope predeterminado de $20. Los niveles fijos facturan un precio fijo por solicitud. Consulta [Modos de effort del Agent](/es/docs/agent/quickstart#effort).
+  </Accordion>
+
+  <Accordion title="Enrichment de contactos">
+    Una consulta del Agent que devuelve una dirección de correo electrónico o un número de teléfono de una persona o empresa. Se factura por cada contacto encontrado, además de los demás costos de la ejecución.
+  </Accordion>
+
+  <Accordion title="Créditos">
+    Saldo prepago en dólares en tu cuenta. El uso descuenta créditos según las tarifas anteriores.
+  </Accordion>
+</AccordionGroup>
+
+<Card title="Facturación" icon="credit-card" horizontal href="/es/docs/admin/billing">
+  Añade créditos, configura la recarga automática y encuentra tus facturas
+</Card>

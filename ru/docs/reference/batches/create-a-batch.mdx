@@ -1,0 +1,12 @@
+---
+title: "Создание батча"
+description: "Отправьте пакет запросов к Exa API для асинхронного выполнения."
+openapi: "/ru/docs/exa-spec.yaml POST /batches"
+timestamp: false
+---
+
+Каждый элемент в `requests` — это `POST`-запрос к `/search` или `/agent/runs` с уникальным в пределах батча `customId`. Этот же `customId` возвращается в файле результатов, что позволяет сопоставить строки вывода с исходными данными. Полный рабочий процесс описан в [руководстве по Batch API](/ru/docs/batch/quickstart).
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте key в дашборде. Новым аккаунтам начисляются бесплатные кредиты.
+</Card>

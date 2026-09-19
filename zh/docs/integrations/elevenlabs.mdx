@@ -1,0 +1,351 @@
+---
+title: "ElevenLabs"
+description: "为 ElevenLabs 语音 agent 添加 Exa 网页搜索能力。"
+icon: "/docs/images/sidebar-icons/elevenlabs.svg"
+---
+
+***
+
+ElevenLabs 语音 agent 可以把 Exa 作为 **webhook 工具**，在对话过程中实时搜索网页。当 agent 判断需要获取最新信息时，ElevenLabs 会直接向 Exa 的 `/search` 端点发起 HTTP POST 请求——你无需自建服务器或中间层。
+
+将 Exa 接入 ElevenLabs 有两种方式：
+
+| 方式                       | 配置方法                  | 灵活性                |
+| ------------------------ | --------------------- | ------------------ |
+| **Webhook 工具** (推荐)      | 通过 API 或控制台配置         | 可完全控制搜索参数、内容选项和请求头 |
+| **内置 Exa 集成** (alpha 版)  | 在 ElevenLabs 控制台中一键接入 | 更简单，但配置项有限         |
+
+本指南介绍 webhook 工具方式，它能让你完全掌控 Exa 的调用方式。你也可以通过 [ElevenLabs 控制台](https://elevenlabs.io/app/conversational-ai)配置该集成。
+
+<div id="how-it-works">
+  ## 工作原理
+</div>
+
+1. 用户与语音 agent 对话
+2. LLM 根据工具描述决定调用 `web_search`
+3. ElevenLabs 使用你配置的请求头和请求体，向 `https://api.exa.ai/search` 发起 POST 请求
+4. 由 LLM 决定的参数 (搜索 `query`) 会与你设定的固定值 (`type`、`numResults`、`contents`) 合并
+5. Exa 的结果回传给 LLM，由其以对话形式作出回应
+
+无需服务器，无需回调 URL，也无需监听器。ElevenLabs 就是直接调用 Exa 的 HTTP 客户端。工具调用的超时时间为 20 秒。
+
+<div id="prerequisites">
+  ## 前置条件
+</div>
+
+* 一个 [Exa API key](https://dashboard.exa.ai/api-keys)
+* 一个 [ElevenLabs API key](https://elevenlabs.io/app/settings/api-keys)
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户会获赠免费额度。
+</Card>
+
+<div id="get-started">
+  ## 开始使用
+</div>
+
+<Steps>
+  <Step title="创建 webhook 工具">
+    使用 ElevenLabs 的 [Create Tool API](https://elevenlabs.io/docs/api-reference/tools/create) 注册一个指向 Exa search 端点的 webhook 工具。
+
+    关键概念：带 `constant_value` 的属性是固定值 (每次请求都会发送) ，而带 `description` 的属性由 LLM 在运行时决定。
+
+    ```bash bash theme={null}
+    curl -s -X POST "https://api.elevenlabs.io/v1/convai/tools" \
+      -H "xi-api-key: $ELEVENLABS_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "tool_config": {
+          "type": "webhook",
+          "name": "web_search",
+          "description": "Search the web using Exa. Use this when the user asks anything that needs current or factual information.",
+          "api_schema": {
+            "url": "https://api.exa.ai/search",
+            "method": "POST",
+            "request_headers": {
+              "x-api-key": "YOUR_EXA_API_KEY",
+              "Content-Type": "application/json",
+              "x-exa-integration": "elevenlabs"
+            },
+            "request_body_schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "description": "Natural language search query. Be specific."
+                },
+                "type": {
+                  "type": "string",
+                  "constant_value": "instant"
+                },
+                "numResults": {
+                  "type": "integer",
+                  "constant_value": 5
+                },
+                "contents": {
+                  "type": "object",
+                  "properties": {
+                    "highlights": {
+                      "type": "boolean",
+                      "constant_value": true
+                    }
+                  }
+                }
+              },
+              "required": ["query"]
+            }
+          }
+        }
+      }'
+    ```
+
+    这样创建出的工具具有以下特性：
+
+    * `query` — 由 LLM 根据对话上下文填充
+    * `type: "instant"` — 使用 Exa 最快的搜索模式 (约 150ms)
+    * `numResults: 5` — 每次 search 返回 5 条结果
+    * `contents.highlights: true` — 返回节省 token 的 highlights 片段 (最适合语音场景的延迟要求)
+
+    保存返回的 `id` — 后续将工具关联到 agent 时会用到。
+
+    <Note>
+      如果你已经有 agent，可以跳过第 2 步，在 ElevenLabs 控制台的 **Agent &gt; Tools** 中把该工具添加到现有 agent，或通过 [Update Agent API](https://elevenlabs.io/docs/api-reference/agents/update) 添加。工具只有关联到 agent 后才会生效。
+    </Note>
+  </Step>
+
+  <Step title="创建带有该工具的 agent">
+    创建一个对话式 agent，并通过 ID 关联该 webhook 工具。
+
+    ```bash bash theme={null}
+    curl -s -X POST "https://api.elevenlabs.io/v1/convai/agents/create" \
+      -H "xi-api-key: $ELEVENLABS_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "name": "Exa Search Assistant",
+        "conversation_config": {
+          "agent": {
+            "prompt": {
+              "prompt": "You are a helpful voice assistant with real-time web search powered by Exa. When users ask questions that need current information, use the web_search tool.\n\nGuidelines:\n- Search proactively for time-sensitive or factual questions.\n- Summarize results conversationally — do not read URLs aloud.\n- Cite sources naturally.\n- Keep responses concise — this is voice.",
+              "tool_ids": ["YOUR_TOOL_ID"]
+            },
+            "first_message": "Hey! I can search the web for you in real-time. What would you like to know?"
+          }
+        }
+      }'
+    ```
+
+    响应中包含一个 `agent_id`。在 ElevenLabs 控制台中打开该 agent 即可测试：
+
+    ```text theme={null}
+    https://elevenlabs.io/app/conversational-ai/agents/YOUR_AGENT_ID
+    ```
+  </Step>
+
+  <Step title="嵌入组件">
+    两行 HTML 即可把该 agent 添加到任意网页：
+
+    ```html html theme={null}
+    <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    ```
+  </Step>
+</Steps>
+
+<div id="full-python-example">
+  ## 完整 Python 示例
+</div>
+
+该脚本在一次运行中同时创建 webhook 工具和 Agent：
+
+```python python theme={null}
+import os
+import requests
+
+ELEVENLABS_API_KEY = os.environ["ELEVENLABS_API_KEY"]
+EXA_API_KEY = os.environ["EXA_API_KEY"]
+BASE = "https://api.elevenlabs.io/v1/convai"
+HEADERS = {"xi-api-key": ELEVENLABS_API_KEY, "Content-Type": "application/json"}
+
+# 1. 创建 webhook 工具
+tool_resp = requests.post(f"{BASE}/tools", headers=HEADERS, json={
+    "tool_config": {
+        "type": "webhook",
+        "name": "web_search",
+        "description": (
+            "Search the web using Exa. Use this when the user asks anything "
+            "that needs current or factual information."
+        ),
+        "api_schema": {
+            "url": "https://api.exa.ai/search",
+            "method": "POST",
+            "request_headers": {
+                "x-api-key": EXA_API_KEY,
+                "Content-Type": "application/json",
+                "x-exa-integration": "elevenlabs",
+            },
+            "request_body_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Natural language search query. Be specific.",
+                    },
+                    "type": {"type": "string", "constant_value": "instant"},
+                    "numResults": {"type": "integer", "constant_value": 5},
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "highlights": {
+                                "type": "boolean",
+                                "constant_value": True,
+                            }
+                        },
+                    },
+                },
+                "required": ["query"],
+            },
+        },
+    }
+})
+tool_resp.raise_for_status()
+tool_id = tool_resp.json()["id"]
+print(f"Tool created: {tool_id}")
+
+# 2. 创建 agent
+agent_resp = requests.post(f"{BASE}/agents/create", headers=HEADERS, json={
+    "name": "Exa Search Assistant",
+    "conversation_config": {
+        "agent": {
+            "prompt": {
+                "prompt": (
+                    "You are a helpful voice assistant with real-time web search "
+                    "powered by Exa. When users ask questions that need current "
+                    "information, use the web_search tool.\n\n"
+                    "Guidelines:\n"
+                    "- Search proactively for time-sensitive or factual questions.\n"
+                    "- Summarize results conversationally — do not read URLs aloud.\n"
+                    "- Cite sources naturally.\n"
+                    "- Keep responses concise — this is voice."
+                ),
+                "tool_ids": [tool_id],
+            },
+            "first_message": "Hey! I can search the web for you. What would you like to know?",
+        }
+    },
+})
+agent_resp.raise_for_status()
+agent_id = agent_resp.json()["agent_id"]
+print(f"Agent created: {agent_id}")
+print(f"Dashboard: https://elevenlabs.io/app/conversational-ai/agents/{agent_id}")
+```
+
+运行：
+
+```bash bash theme={null}
+export ELEVENLABS_API_KEY="your-key"
+export EXA_API_KEY="your-key"
+python elevenlabs_exa_webhook.py
+```
+
+<div id="customizing-search-parameters">
+  ## 自定义搜索参数
+</div>
+
+webhook 工具的请求体 schema 与 [Exa 的 Search API](/zh/docs/reference/search) 完全对应。以下是一些常见配置：
+
+<div id="search-type">
+  ### 搜索类型
+</div>
+
+通过 `type` 常量控制速度与质量的权衡：
+
+| 类型        | 延迟     | 适用场景       |
+| --------- | ------ | ---------- |
+| `instant` | ~150ms | 语音对话 (推荐)  |
+| `auto`    | ~1s    | 通用场景       |
+
+语音 agent 建议从 `instant` 开始。若希望 Exa 为每个查询自动选择当前最合适的搜索模式，则使用 `auto`。
+
+<div id="content-options">
+  ### 内容选项
+</div>
+
+通过 `contents` 对象指定结果的返回方式：
+
+```json json theme={null}
+{
+  "contents": {
+    "type": "object",
+    "properties": {
+      "highlights": {
+        "type": "boolean",
+        "constant_value": true
+      }
+    }
+  }
+}
+```
+
+* **`highlights`** —— 节省 token 的摘录片段。当你只想获取相关片段、避免撑爆 LLM 上下文时使用。传入 `true` 即可获得质量最高的默认结果。
+* **`text`** —— 完整页面的 markdown。当 Agent 需要完整页面内容时使用。可通过 `maxCharacters` 限制长度。
+* **`summary`** —— 由 LLM 为每个页面生成的摘要。延迟较高，但能提供经过归纳提炼的内容。
+
+对于语音 Agent，推荐默认使用 `highlights: true`——它在相关性与响应速度之间取得了平衡。
+
+<div id="filtering-results">
+  ### 筛选结果
+</div>
+
+以常量形式添加域名或日期筛选条件：
+
+```json json theme={null}
+{
+  "includeDomains": {
+    "type": "array",
+    "constant_value": ["reuters.com", "apnews.com", "bbc.com"]
+  }
+}
+```
+
+```json json theme={null}
+{
+  "startPublishedDate": {
+    "type": "string",
+    "constant_value": "2025-01-01T00:00:00.000Z"
+  }
+}
+```
+
+<div id="number-of-results">
+  ### 结果数量
+</div>
+
+根据使用场景调整 `numResults`。语音场景下，3-5 条结果可以保证响应速度；研究型 Agent 则建议 10 条以上，以获得更广的覆盖面。
+
+<div id="schema-reference">
+  ## Schema 参考
+</div>
+
+ElevenLabs 的 webhook 工具使用 JSON Schema，包含以下属性类型：
+
+* **`constant_value`** — 每次请求都发送的固定值，LLM 既看不到也无法修改。支持字符串、数字和布尔值。
+* **`description`** — LLM 在运行时根据该描述确定取值。适用于 `query` 等动态参数。
+* **嵌套对象** — 使用 `type: "object"` 搭配 `properties` 构建 `contents.highlights` 这类嵌套结构。
+
+在控制台中，每个参数都有一个模式开关：**Fixed** 或 **LLM**。
+
+<Frame>
+  <img src="/docs/images/integrations/elevenlabs/parameters.png" alt="ElevenLabs webhook 工具参数配置，展示 Fixed 与 LLM 模式开关" width="1692" height="898" data-path="images/integrations/elevenlabs/parameters.png" />
+</Frame>
+
+设为 **Fixed** 的参数 (在 API 中用 `constant_value` 标记) 会在每次请求中原样发送；设为 **LLM** 的参数 (用 `description` 标记) 则由模型在运行时决定取值。请尽量多保留 Fixed 参数——每多一个由 LLM 确定的参数，就会多一次工具调用步骤，从而增加响应延迟。
+
+完整的 ElevenLabs webhook 工具 Schema，请参阅 [ElevenLabs 服务端工具文档](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools)。
+
+<div id="built-in-exa-integration-alpha">
+  ## 内置 Exa 集成 (alpha)
+</div>
+
+ElevenLabs 还提供了内置的 Exa 集成，可在 agent 仪表板的 **Tools &gt; Integrations** 中找到。这种方式设置起来更简单，但相比 webhook 工具方式，自定义搜索参数要更困难一些。
+
+如果需要完全掌控搜索类型、内容选项和过滤条件，建议采用上文介绍的 webhook 工具方式。

@@ -1,0 +1,144 @@
+---
+title: "Код и документация"
+sidebarTitle: "Код и документация"
+icon: "code"
+description: "Находите код, техническую документацию и руководства по внедрению с помощью Exa Search."
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Открыть в песочнице API" aria-label={`Открыть "${query}" в песочнице API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Используйте Exa Search для поиска репозиториев, технической документации, сведений о пакетах и рекомендаций по реализации — с помощью запросов на естественном языке.
+
+<Tip>
+  Прочитайте [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode), чтобы узнать, как Exa
+  оценивает качество поиска для задач написания кода.
+</Tip>
+
+<div id="use-it-for">
+  ## Для чего использовать
+</div>
+
+* Кодинг-агенты и инструменты генерации кода
+* Продукты для поиска по коду и документации для разработчиков
+* Рабочие процессы отладки, миграции и настройки
+* Технические исследования по репозиториям, документации и реестрам пакетов
+
+<div id="example-queries">
+  ## Примеры запросов
+</div>
+
+<div id="discover-libraries-by-capability">
+  ### Поиск библиотек по возможностям
+</div>
+
+Опишите интересующие вас возможности, экосистему и ограничения. Так подходящие библиотеки находятся по тому, что они умеют, а не по точному названию проекта.
+
+<PlaygroundQuery query="open source Rust libraries for vector similarity search" />
+
+<div id="retrieve-implementation-documentation">
+  ### Поиск документации по внедрению
+</div>
+
+Укажите название продукта и конкретную операцию. Тогда search сможет отдать приоритет документации по API и руководствам по внедрению, а не общим обсуждениям.
+
+<PlaygroundQuery query="Stripe webhook signature verification documentation" />
+
+<div id="check-version-specific-changes">
+  ### Проверка изменений в конкретной версии
+</div>
+
+Указывайте канал выпуска или версию, если важна совместимость. Так в выдаче будет меньше результатов о старых релизах.
+
+<PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
+
+<div id="find-reusable-agent-tooling">
+  ### Поиск переиспользуемых инструментов для агентов
+</div>
+
+Указывайте тип артефакта и задачу, а не ищите по общей фразе вроде «AI tools».
+
+<PlaygroundQuery query="agent skills for extracting tables from PDFs" />
+
+<div id="make-a-request">
+  ## Отправьте запрос
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "how to use Exa search in python",
+      type="fast",
+      num_results=10,
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "how to use Exa search in python",
+    {
+      type: "fast",
+      numResults: 10,
+      contents: {
+        highlights: true,
+      },
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "how to use Exa search in python",
+      "type": "fast",
+      "numResults": 10,
+      "contents": {
+        "highlights": true
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Получение структурированных данных с помощью Exa Agent
+</div>
+
+Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные библиотеки, технические критерии и поля вывода — и Agent вернёт проверенные по схеме результаты со ссылками на источники.
+
+<Card title="Запустить задачу Agent" icon="bot" href="/ru/docs/agent/quickstart" cta="Открыть руководство по Agent" arrow="true">
+  Сравнивайте библиотеки, обогащайте записи о репозиториях или формируйте структурированный список на основе нескольких технических признаков.
+</Card>

@@ -1,0 +1,94 @@
+---
+title: "fx от Vercel Labs"
+sidebarTitle: "Fx от Vercel"
+description: "Добавьте веб-поиск Exa в fx — нативный кодинг-агент от Vercel Labs — с помощью хостингового MCP-сервера Exa."
+icon: "/docs/images/sidebar-icons/vercel.svg"
+keywords: ["fx", "Vercel Labs", "Exa MCP", "кодинг-агент", "веб-поиск"]
+---
+
+[fx](https://fx.sh) — это нативный кодинг-агент и CLI от Vercel Labs, а также MCP-клиент. Подключите к нему хостинговый MCP-сервер Exa, чтобы добавить поиск в вебе в реальном времени и чтение страниц.
+
+<Frame>
+  <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="Установка fx, добавление MCP-сервера Exa командой /mcp add и запуск живого веб-поиска Exa" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
+</Frame>
+
+<div id="installation">
+  ## Установка
+</div>
+
+<Steps>
+  <Step title="Установите fx">
+    ```bash theme={null}
+    curl -fsSL https://fx.sh/setup.sh | bash
+    ```
+
+    Затем выполните вход командой `fx login`. Варианты провайдеров описаны в [документации fx](https://fx.sh/docs).
+  </Step>
+
+  <Step title="Добавьте Exa">
+    Запустите fx командой `fx`, затем добавьте MCP-сервер Exa из интерактивной оболочки:
+
+    ```text theme={null}
+    /mcp add --transport http exa https://mcp.exa.ai/mcp
+    ```
+
+    fx сохранит сервер в `~/.fx/mcp.json` и перезагрузит MCP.
+  </Step>
+
+  <Step title="Проверьте подключение">
+    ```text theme={null}
+    /mcp list
+    ```
+  </Step>
+</Steps>
+
+<div id="configure-by-hand">
+  ## Настройка вручную
+</div>
+
+fx считывает MCP-серверы только из `~/.fx/mcp.json`, поэтому вы можете добавить Exa прямо туда:
+
+```json ~/.fx/mcp.json theme={null}
+{
+  "mcp": {
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp"
+    }
+  }
+}
+```
+
+Выполните `/mcp reload`, чтобы применить изменения без перезапуска fx.
+
+Бесплатного плана достаточно для нерегулярного использования. Чтобы повысить лимиты частоты запросов, создайте API key и добавьте его в конфигурацию:
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте key в панели управления. Новым аккаунтам начисляются бесплатные кредиты.
+</Card>
+
+```json ~/.fx/mcp.json theme={null}
+{
+  "mcp": {
+    "exa": {
+      "type": "http",
+      "url": "https://mcp.exa.ai/mcp",
+      "header_env": {
+        "x-api-key": "EXA_API_KEY"
+      }
+    }
+  }
+}
+```
+
+`header_env` сопоставляет имя header с переменной окружения, благодаря чему key не хранится в файле конфигурации.
+
+<div id="tool-discovery">
+  ## Обнаружение инструментов
+</div>
+
+fx обнаруживает инструменты MCP лениво: инструменты сервера не попадают в контекст модели, пока они не потребуются на конкретном шаге, поэтому добавление Exa ничего не стоит на тех шагах, где поиск в вебе не нужен.
+
+<Card title="Exa MCP" icon="plug" href="/ru/docs/get-started/exa-mcp" cta="Открыть руководство" arrow="true">
+  Ознакомьтесь с доступными инструментами, параметрами настройки и другими клиентами.
+</Card>

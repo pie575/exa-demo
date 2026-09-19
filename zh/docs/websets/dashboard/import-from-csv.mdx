@@ -1,0 +1,69 @@
+---
+title: "从 CSV 导入"
+description: "将现有的 CSV 数据转换为 Webset"
+---
+
+<br />
+
+<div id="overview">
+  ## 概览
+</div>
+
+CSV 导入功能可将你现有的、包含 URL 的 CSV 文件转换为功能完备的 Websets。如果你已经有一份网站、公司或资源清单，希望为其丰富更多数据，或通过 criteria 进行筛选，这一功能再合适不过。
+
+<br />
+
+<div id="how-it-works">
+  ## 工作原理
+</div>
+
+<img src="/docs/images/websets/import-flow.png" alt="CSV import flow for creating a Webset" width="1512" height="857" data-path="images/websets/import-flow.png" />
+
+1. 点击「Start from CSV」，选择你的 CSV 文件
+2. 指定哪一列包含你要分析的 URL
+3. 在继续之前，确认数据的导入方式
+4. 你的 URL 会被转换为一个 Webset，并附带丰富内容和元数据
+
+<br />
+
+<div id="csv-preparation">
+  ## CSV 准备
+</div>
+
+确保你的 CSV 文件包含 URL 列
+
+* People 搜索：URL 必须是 LinkedIn 个人主页 URL (例如 [https://linkedin.com/in/username](https://linkedin.com/in/username)) 
+* Company 搜索：URL 必须是公司主页 URL (例如 [https://example.com](https://example.com)) 
+* 其他搜索：可使用任意类型的 URL
+
+如果你没有 URL，Websets 会根据 CSV 每行中的信息以及你提供的额外信息来推断 URL。
+
+可导入的结果数量上限取决于你的套餐。
+
+<div id="what-happens-next">
+  ## 接下来会发生什么？
+</div>
+
+导入完成后，你的 CSV 会成为一个完整的 Webset，你可以在其中：
+
+<div id="enrich-with-custom-columns">
+  ### 使用自定义列丰富数据
+</div>
+
+为每个 URL 添加你需要的任何信息：
+
+* 联系方式 (邮箱、电话号码) 
+* 公司指标 (营收、员工数) 
+* 内容分析 (情感倾向、主题、摘要) 
+* 贴合你业务场景的自定义数据
+
+<div id="apply-search-criteria">
+  ### 应用搜索 criteria
+</div>
+
+根据特定 criteria 筛选导入的 URL：
+
+* 公司阶段或规模
+* 行业或领域
+* 地理位置
+* 内容类型或主题

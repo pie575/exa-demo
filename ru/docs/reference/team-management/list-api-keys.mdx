@@ -1,0 +1,31 @@
+---
+title: "Список API keys"
+description: "Получение всех API keys вашей команды вместе с их метаданными."
+openapi: "/ru/docs/team-management-spec.yaml GET /api-keys"
+timestamp: false
+---
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте key в панели управления. Новым аккаунтам начисляются бесплатные credits.
+</Card>
+
+<Info>
+  Team Management API включается отдельно для каждой команды. Аутентификация выполняется с помощью API key сервисного аккаунта, который создаётся на вкладке **Service keys** на [странице API keys](https://dashboard.exa.ai/api-keys) после того, как эта возможность будет включена для вашей команды. Чтобы запросить доступ, напишите на [support@exa.ai](mailto:support@exa.ai).
+</Info>
+
+<div id="overview">
+  ## Обзор
+</div>
+
+Эндпоинт List API Keys возвращает все API key, связанные с вашей командой. Для каждого key возвращаются идентификатор, название, лимит запросов и время создания.
+
+<div id="response-format">
+  ## Формат ответа
+</div>
+
+Ответ содержит массив объектов API key со следующей информацией:
+
+* **id**: уникальный идентификатор API key
+* **name**: понятное имя (если было указано при создании)
+* **rateLimit**: лимит запросов в минуту (если задано)
+* **createdAt**: время создания ключа в формате ISO 8601

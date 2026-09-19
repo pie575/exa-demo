@@ -1,0 +1,153 @@
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
+>
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索前，可通过该文件了解所有可用页面。
+
+<div id="polymarket">
+  # Polymarket
+</div>
+
+> 获取预测市场赔率、历史价格、订单簿和交易者持仓。
+
+[Polymarket](https://polymarket.com) 是一个预测市场平台，其市场价格反映了大众对现实世界事件结果的隐含概率判断。[Exa Connect](/zh/docs/agent/connect/overview) 提供对 Polymarket 公开市场数据的只读访问。
+
+只需在 [Exa Agent](/zh/docs/agent/quickstart) 运行中附加 `polymarket`，Agent 就会在进行 Exa 网页搜索的同时查询 Polymarket。
+
+<div id="use-it-for">
+  ## 适用场景
+</div>
+
+* 查找某一话题的预测市场及当前市场隐含赔率。
+* 对比某一结果的隐含概率随时间的变化。
+* 查看市场流动性、买卖盘深度以及持仓量最大的账户。
+* 查看某位交易者的当前持仓和近期链上活动。
+
+<div id="provider-id">
+  ## Provider ID
+</div>
+
+在 `dataSources` 中使用此值：
+
+```text theme={null}
+polymarket
+```
+
+<div id="pricing">
+  ## 定价
+</div>
+
+Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具不收取任何费用：你只需支付标准的
+[Agent 运行费用](/zh/docs/agent/quickstart#pricing)。
+
+<div id="data-available">
+  ## 可用数据
+</div>
+
+| 数据      | 说明                              |
+| ------- | ------------------------------- |
+| 市场与事件   | 当前的预测市场和事件，包含隐含概率价格、成交量和流动性。    |
+| 价格历史    | 某一结果的隐含概率随时间的变化走势。              |
+| 订单簿     | 某一市场结果的实时买卖盘深度与价差。              |
+| 持仓者与交易者 | 某一市场的头部持仓者，以及某位交易者的当前持仓和近期链上活动。 |
+
+<div id="example">
+  ## 示例
+</div>
+
+获取市场隐含赔率，以及过去一个月内的变化情况。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query=(
+          "What are the current market-implied odds of a Fed rate cut at the "
+          "next FOMC meeting, and how have they moved over the past month?"
+      ),
+      data_sources=[{"provider": "polymarket"}],
+      output_schema={
+          "type": "object",
+          "required": ["market", "currentProbability", "trend"],
+          "properties": {
+              "market": {"type": "string", "description": "the market question"},
+              "currentProbability": {"type": "number", "description": "between 0 and 1"},
+              "trend": {"type": "string", "description": "how the implied probability moved over the past month"},
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "What are the current market-implied odds of a Fed rate cut at the next FOMC meeting, and how have they moved over the past month?",
+    dataSources: [{ provider: "polymarket" }],
+    outputSchema: {
+      type: "object",
+      required: ["market", "currentProbability", "trend"],
+      properties: {
+        market: { type: "string", description: "the market question" },
+        currentProbability: { type: "number", description: "between 0 and 1" },
+        trend: { type: "string", description: "how the implied probability moved over the past month" },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "What are the current market-implied odds of a Fed rate cut at the next FOMC meeting, and how have they moved over the past month?",
+      "dataSources": [{ "provider": "polymarket" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["market", "currentProbability", "trend"],
+        "properties": {
+          "market": { "type": "string", "description": "the market question" },
+          "currentProbability": { "type": "number", "description": "between 0 and 1" },
+          "trend": { "type": "string", "description": "how the implied probability moved over the past month" }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## 搭配使用效果更佳
+</div>
+
+* [Exa 网页搜索](/zh/docs/search/quickstart)：为市场赔率补充新闻报道与背景信息。
+* [Particle](/zh/docs/agent/connect/particle)：挖掘赔率变动背后的新闻报道。
+* [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：将市场隐含赔率与价格、基本面和宏观数据关联起来。
+
+<div id="next-steps">
+  ## 后续步骤
+</div>
+
+<Columns cols={2}>
+  <Card title="将其附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速入门" arrow="true">
+    Exa Connect 快速入门介绍了 `dataSources`、定价以及完整的合作方目录。
+  </Card>
+
+  <Card title="组合多个数据提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
+    在一次运行中最多附加五个合作方，并设计好 query，让每个合作方都能被触发。
+  </Card>
+
+  <Card title="了解 Exa Agent" icon="book-open" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">
+    创建运行、流式获取进度、设计输出结构，并控制投入程度与成本。
+  </Card>
+
+  <Card title="获取 API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建 key" arrow="true">
+    在控制台中创建一个 key，即可直接运行本页示例。新账户附赠免费额度。
+  </Card>
+</Columns>

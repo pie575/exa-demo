@@ -1,0 +1,322 @@
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
+>
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
+
+<div id="pay-with-mpp-tempo">
+  # 使用 MPP (Tempo) 付款
+</div>
+
+> 无需 API key，只需在 Tempo 上用 USDC.e 按请求付费，即可调用 Exa 的 Search 和 Contents API。
+
+<div id="what-is-mpp">
+  ## 什么是 MPP？
+</div>
+
+MPP (Machine Payments Protocol，机器支付协议) 是一个基于 `402 Payment Required` 状态码构建的开放式 HTTP 原生支付标准。它让客户端可以按请求为 API 访问付费，支持多种支付方式，包括 [Tempo](https://tempo.xyz) 上的稳定币，无需账户、API key 或订阅。本页示例均使用 Tempo；Exa 目前在 Tempo 主网上以 USDC.e 结算 MPP 支付。
+
+Exa 在两个端点上支持 MPP：**`/search`** 和 **`/contents`**。当你发送的请求不包含 API key 或支付凭证时，Exa 会返回 `402` 以及一个 `WWW-Authenticate: Payment` 支付质询，其中说明了价格和支付方式。你的客户端对支付进行签名，携带 `Authorization: Payment` 凭证重试请求，待支付在链上结算后即可拿到结果。
+
+这非常适合需要在没有预先配置凭证的情况下自主为网页 search 付费的 **AI 智能体**。
+
+<Info>
+  MPP 与 API key 访问相互独立。如果请求中包含 `x-api-key` header，则走常规的 API key 计费流程，MPP 会被完全绕过。
+</Info>
+
+<div id="supported-endpoints">
+  ## 支持的端点
+</div>
+
+| 端点          | 方法   | 描述                                                                           |
+| ----------- | ---- | ---------------------------------------------------------------------------- |
+| `/search`   | POST | 网页搜索，支持所有搜索类型 (`instant`、`auto`、`fast`、`deep`、`deep-lite`、`deep-reasoning`)  |
+| `/contents` | POST | 按 URL 或文档 ID 获取内容                                                            |
+
+其他 Exa 端点*暂*不支持 MPP 支付。
+
+<div id="get-started">
+  ## 快速开始
+</div>
+
+你需要一个兼容 Tempo 且已充值 USDC.e 的钱包。运行示例前，请先导出钱包的私钥：
+
+```bash theme={null}
+export WALLET_PRIVATE_KEY="0x..."
+```
+
+<div id="install-the-client">
+  ### 安装客户端
+</div>
+
+<CodeGroup>
+  ```bash TypeScript theme={null}
+  npm install mppx viem
+  ```
+
+  ```bash Python theme={null}
+  pip install "pympp[tempo]"
+  ```
+</CodeGroup>
+
+<div id="make-a-paid-search-request">
+  ### 发起付费 search 请求
+</div>
+
+使用 MPP 客户端为 search 请求签名并提交付款：
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import { Mppx, tempo } from "mppx/client";
+  import { privateKeyToAccount } from "viem/accounts";
+
+  const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);
+  const mppx = Mppx.create({
+    methods: [tempo.charge({ account })],
+  });
+
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "best machine learning frameworks",
+      numResults: 5,
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.results);
+  console.log("Payment receipt:", response.headers.get("Payment-Receipt"));
+  ```
+
+  ```python Python theme={null}
+  import asyncio
+  import os
+
+  from mpp.client import Client
+  from mpp.methods.tempo import ChargeIntent, TempoAccount, tempo
+
+
+  async def main() -> None:
+      account = TempoAccount.from_key(os.environ["WALLET_PRIVATE_KEY"])
+      method = tempo(
+          account=account,
+          chain_id=4217,
+          intents={"charge": ChargeIntent()},
+      )
+
+      async with Client(methods=[method]) as client:
+          response = await client.post(
+              "https://api.exa.ai/search",
+              json={"query": "best machine learning frameworks", "numResults": 5},
+          )
+
+      data = response.json()
+      for result in data["results"]:
+          print(result["url"], result["title"])
+      print("Payment receipt:", response.headers.get("Payment-Receipt"))
+
+
+  asyncio.run(main())
+  ```
+</CodeGroup>
+
+运行成功后，会输出 search 结果，以及包含链上交易哈希的 `Payment-Receipt` header。
+
+<div id="pay-from-the-command-line">
+  ## 从命令行付款
+</div>
+
+如果你不想直接管理原始私钥，可以改用 Tempo Wallet CLI。`tempo wallet login` 会创建或连接 Tempo 钱包、授权一个本地访问密钥，并可为新注册用户附赠免费的 MPP 积分。
+
+<div id="install-and-authenticate">
+  ### 安装与认证
+</div>
+
+```bash theme={null}
+curl -fsSL https://tempo.xyz/install | bash
+tempo add wallet
+tempo add request
+tempo wallet login
+```
+
+在没有本地浏览器的远程主机上，请运行 `tempo wallet login --no-browser`，然后在你的设备上打开命令行输出的 URL，为 CLI 授权。
+
+<div id="check-balances-and-credits">
+  ### 查看余额和积分
+</div>
+
+```bash theme={null}
+tempo wallet whoami
+tempo wallet whoami --credits
+```
+
+<div id="make-a-paid-request">
+  ### 发起付费请求
+</div>
+
+```bash theme={null}
+tempo request --max-spend 1.00 https://api.exa.ai/search \
+  --json '{"query": "Series A fintech companies", "numResults": 5}'
+```
+
+`tempo request` 会拦截 `402 Payment Required` 质询，自动完成支付并重试请求。
+
+完整的 CLI 参考请参阅 [Tempo Wallet CLI 文档](https://tempo.xyz/developers/docs/cli/wallet)和 [`tempo request` 文档](https://tempo.xyz/developers/docs/cli/request)。
+
+<div id="gas-fees">
+  ## Gas 费用
+</div>
+
+Exa 会代付 Tempo 网络费用，并以 USDC.e 结算。你的钱包只需持有足够支付 API 费用的 USDC.e，无需持有 pathUSD 或其他 gas 代币余额。你无需配置费用支付方，Exa 的支付质询和 MPP SDK 会自动完成代付。
+
+<div id="pricing">
+  ## 定价
+</div>
+
+MPP 采用与 API key 计费相同的打包定价。Exa 会在处理请求前，根据请求参数计算价格。
+
+<div id="search">
+  ### Search
+</div>
+
+| 搜索类型                    | 最多 10 条结果的价格 |
+| ----------------------- | ------------ |
+| `instant`、`auto`、`fast` | 每次请求 $0.007  |
+| `deep-lite`、`deep`      | 每次请求 $0.012  |
+| `deep-reasoning`        | 每次请求 $0.015  |
+
+添加 `contents.summary` 需额外支付**每条结果 $0.001**。
+
+<Warning>
+  MPP 搜索请求的结果数上限为 10 条。如果 `numResults` 大于 10，Exa 会按 10 处理，并按 10 条结果计费。如需更多结果，请使用 [API key 计费](/zh/docs/search/quickstart)。
+</Warning>
+
+<div id="contents">
+  ### Contents
+</div>
+
+请求的每种内容类型，每个 URL 收费 $0.001：
+
+| 内容类型         | 每个 URL 价格 |
+| ------------ | --------- |
+| `text`       | $0.001    |
+| `highlights` | $0.001    |
+| `summary`    | $0.001    |
+
+如果你未请求 `text`、`highlights` 或 `summary`，Exa 会默认启用 `text`。
+
+<div id="pricing-examples">
+  ### 定价示例
+</div>
+
+| 请求                                           | 价格     |
+| -------------------------------------------- | ------ |
+| `/search`，`type: "auto"`                     | $0.007 |
+| `/search`，返回 3 条结果并包含 `contents.summary`     | $0.010 |
+| `/search`，`type: "deep"`                     | $0.012 |
+| `/contents`，获取 2 个 URL，`text: true`          | $0.002 |
+| `/contents`，获取 1 个 URL，包含 `text` 和 `summary` | $0.002 |
+
+<div id="how-the-payment-flow-works">
+  ## 支付流程的工作原理
+</div>
+
+SDK 会自动完成整个流程，但你也可以直接通过 HTTP 查看其中的细节：
+
+1. 发送不带 API key 或支付凭证的请求。Exa 返回 `402`，并附带 `WWW-Authenticate: Payment` 质询，其中包含价格、代币、收款方、网络和代付等信息。
+2. 对该质询签名后，使用 `Authorization: Payment <credential>` 重新发起请求。
+3. Exa 在处理请求的同时完成支付结算。结算确认后，Exa 返回结果，并附带 `Payment-Receipt` header。若结算失败，Exa 会返回 `402` 和一个新的质询，不返回任何结果。
+
+<div id="inspect-a-payment-challenge">
+  ### 查看支付质询
+</div>
+
+无需钱包即可查看价格和支付详情：
+
+```bash theme={null}
+curl -s -D - -X POST "https://api.exa.ai/search" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "test query", "numResults": 3}'
+```
+
+在 `402` 响应中查找 `WWW-Authenticate: Payment` header。未付费的发现请求会受到速率限制，因此请仅将其用于调试，而不要用于轮询。
+
+<div id="payment-reference">
+  ## 支付参考
+</div>
+
+Exa 接受在 Tempo 主网上使用 USDC.e 进行的 MPP 支付。
+
+| 网络       | 标识符           | 代币     | 资产                                           |
+| -------- | ------------- | ------ | -------------------------------------------- |
+| Tempo 主网 | `eip155:4217` | USDC.e | `0x20c000000000000000000000b9537d11c60e8b50` |
+
+USDC.e 有 6 位小数。挑战 (challenge) 中的价格以原子单位表示，因此 `7000` 表示 $0.007，`1000000` 表示 $1.00。
+
+<Note>
+  Exa 在同一组端点上同时支持 MPP 和 [x402](/zh/docs/integrations/payments/x402/quickstart)。未经身份验证的 `402` 响应可同时包含 MPP 的 `WWW-Authenticate: Payment` 挑战和 x402 的 `PAYMENT-REQUIRED` header。请根据客户端支持的支付协议，使用对应的 header。
+</Note>
+
+<div id="headers">
+  ### Headers
+</div>
+
+| Header                                | 方向       | 说明            |
+| ------------------------------------- | -------- | ------------- |
+| `Authorization: Payment <credential>` | 请求       | MPP 支付凭据      |
+| `WWW-Authenticate: Payment`           | `402` 响应 | 该请求的价格与支付说明   |
+| `Payment-Receipt`                     | 成功响应     | 结算收据，包含链上交易哈希 |
+
+<div id="errors">
+  ### 错误
+</div>
+
+| 状态码   | 说明                           |
+| ----- | ---------------------------- |
+| `402` | 支付凭证缺失或无效；响应中会返回新的 challenge |
+| `402` | 支付金额与请求价格不符，或结算失败            |
+| `429` | 该 IP 发送的未付费发现请求过多            |
+| `429` | 该钱包超出付费请求速率限制                |
+
+<div id="rate-limits">
+  ### 速率限制
+</div>
+
+MPP 速率限制与 x402 共用，并独立于 API key 限制：
+
+| 限制             | 阈值     | 时间窗口 |
+| -------------- | ------ | ---- |
+| 每个 IP 的未付费发现请求 | 5 个请求  | 60 秒 |
+| 每个钱包的付费请求      | 10 个请求 | 1 秒  |
+
+<div id="faq">
+  ## 常见问题
+</div>
+
+<AccordionGroup>
+  <Accordion title="可以同时使用 MPP 和 API key 吗？">
+    如果请求中包含 `x-api-key` header，则以 API key 流程为准，MPP 会被跳过。两者不能叠加，每个请求只能二选一。
+  </Accordion>
+
+  <Accordion title="如果请求已处理但结算失败，会怎么样？">
+    响应会被拦截。你会收到 `402`，并附带一个新的 `WWW-Authenticate: Payment` 质询，便于客户端重试。结算成功之前不会返回任何结果。
+  </Accordion>
+
+  <Accordion title="支持哪些钱包？">
+    任何客户端 SDK 能够完成签名的 Tempo 兼容 EVM 钱包 —— 例如搭配 `mppx` 使用的 `viem` 账户 (TypeScript) ，或搭配 `pympp` 使用的 `eth-account` key (Python) 。对于 AI 智能体，请使用在 Tempo 上持有 USDC.e 余额的钱包，以支付请求费用。
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## 资源
+</div>
+
+* [MPP 协议文档](https://mpp.dev/protocol)：协议详情与鉴权格式
+* [mppx 文档](https://mpp.dev/sdk/typescript)：MPP TypeScript SDK 参考
+* [pympp 文档](https://mpp.dev/sdk/python)：MPP Python SDK 参考
+* [Tempo](https://tempo.xyz)：Tempo 网络文档
+* [使用 x402 支付](/zh/docs/integrations/payments/x402/quickstart)：通过 x402 为相同端点支付
+* [Exa Search API 指南](/zh/docs/search/quickstart)：完整的 search 参数参考
+* [Exa Contents API 指南](/zh/docs/contents/quickstart)：完整的 contents 参数参考

@@ -1,0 +1,341 @@
+---
+title: "更新日志"
+description: "来自 Exa 的产品更新与公告。"
+rss: true
+timestamp: false
+---
+
+<Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
+  <div id="dynamic-highlights-research-preview">
+    ## Dynamic Highlights (研究预览版)
+  </div>
+
+  Dynamic Highlights 会在整个结果集范围内挑选摘录，而不是孤立地处理每个页面。它会把更多共享上下文预算分配给有价值的来源，而对那些只是重复已返回信息的来源，则分配更少的上下文。
+
+  * **单轮 RAG**：在编程类和通用问答类评测中，配合 Exa Auto 使用时，词元效率提升约 49%，下游质量提升 2.4%。
+  * **智能体**：在完整的智能体运行轨迹中词元消耗减少约 30%，并在 BrowseComp、WideSearch 以及内部的公司与人物评测中质量提升 1%。
+
+  设置了 `dynamic: true` 的请求需要携带 `Exa-Beta: dynamic-highlights-2026-08-28` header。
+
+  [阅读 Dynamic Highlights 指南 →](/zh/docs/contents/quickstart)
+</Update>
+
+<Update label="July 23, 2026" rss={{ title: "Publication research" }}>
+  <div id="publication-research">
+    ## 学术出版物研究
+  </div>
+
+  我们大幅扩展并改进了针对学术出版物的研究能力。
+
+  * **3.5 亿篇出版物**：可在包含 3.5 亿篇出版物的索引中进行 search。
+  * **更丰富的机构与人物结果**：search 现在会同时返回机构及其关联人物，每一项都是涵盖出版物、主要合作者、研究领域和资助情况的详细档案。
+  * **智能体式人物与机构 search**：智能体现在可以对人物和机构进行 search。
+  * **公开检索基准**：我们发布了面向出版物检索的公开基准。
+  * **新增 `publication` search 类别**：使用 `category: "publication"` 查询学术结果，该类别取代了原有的 `research paper` 类别。
+  * **已弃用的类别**：`pdf`、`github` 和 `tweet` search 类别即将弃用。
+  * **`startCrawlDate` / `endCrawlDate`**：这两个已弃用的参数现在对所有团队均不再生效，但仍可传入以保持兼容。
+
+  通过 API 使用 `publication` [search 类别](/zh/docs/search/quickstart)进行查询，或[在控制台中试用 →](https://dashboard.exa.ai/playground/search?type=instant)。
+</Update>
+
+<Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
+  <div id="exa-agent-and-exa-connect-in-mcp">
+    ## MCP 中的 Exa Agent 与 Exa Connect
+  </div>
+
+  Exa Agent 现已在 Exa MCP 中提供。当任务不止需要一次 search 调用时，可在 Claude、Cursor 或任何其他 MCP 客户端中使用它。
+
+  使用 `https://mcp.exa.ai/mcp?tools=agent_run` 启用 Agent 工具，然后调用 `agent_run`，即可运行该 Agent 直至完成并返回输出。
+
+  Exa Connect 数据源可通过 Agent 流程使用，因此当某次运行仅靠网页 search 还不够时，你可以接入高级数据合作伙伴。
+
+  [阅读 Exa MCP 指南 →](/zh/docs/get-started/exa-mcp) · [阅读 Exa Agent 指南 →](/zh/docs/agent/quickstart) · [公告推文 →](https://x.com/ExaAILabs/status/2072389192458592672)
+</Update>
+
+<Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
+  <div id="introducing-exa-connect">
+    ## 推出 Exa Connect
+  </div>
+
+  Exa Connect 让 Exa Agent 能够实时访问全球的公开与私有数据。首发合作方包括 Similarweb、Fiber.ai、Baselayer、Financial Datasets、Affiliate.com、Particle、Jinko 以及其他合作伙伴。你可以在 `POST /agent/runs` 中通过 `dataSources` 接入它们。
+
+  [阅读 Exa Connect 指南 →](/zh/docs/agent/connect/overview) · [公告推文 →](https://x.com/ExaAILabs/status/2069842203577651283)
+</Update>
+
+<Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
+  <div id="introducing-exa-agent">
+    ## 推出 Exa Agent
+  </div>
+
+  我们发布了可通过 API 访问的新一代前沿网页研究智能体。
+
+  Exa Agent API 支持的参数包括自然语言 query、`effort` 模式、用于结构化输出的 `outputSchema`，以及用于在已有数据集基础上继续构建的 `input.data`。
+
+  [阅读 Exa Agent API 指南 →](/zh/docs/agent/quickstart)
+</Update>
+
+<Update label="April 1, 2026" rss={{ title: "API 弃用通知" }}>
+  <div id="api-deprecation-notice">
+    ## API 弃用通知
+  </div>
+
+  我们下线了 Exa API 中的若干遗留项：
+
+  * **`/research` 端点**：由 `/search` 搭配 `type: "deep-reasoning"` 取代。
+  * **`resolvedSearchType` 和 `highlightScores` (响应字段)&#x20;**：自 4 月 15 日起返回 `null`，5 月 1 日移除。
+  * **`startCrawlDate` / `endCrawlDate` (已弃用的请求参数)&#x20;**：自 4 月 15 日起被静默忽略。
+
+  [迁移到 Deep search →](/zh/docs/reference/search)
+</Update>
+
+<Update label="March 30, 2026" rss={{ title: "推出 Exa Monitors" }}>
+  <div id="introducing-exa-monitors">
+    ## 推出 Exa Monitors
+  </div>
+
+  Monitors 会按计划运行 Exa 搜索，并将结果推送到你的 webhook，同时与此前各次运行的结果去重，因此你只会收到新内容。
+
+  * **持续追踪话题**：竞品动态、融资轮次、监管变化、研究论文。
+  * **结构化结果**：通过 `outputSchema` 返回纯文本或带类型的 JSON。
+  * **灵活调度**：按间隔运行 (最短 1 小时) 或手动触发。
+
+  [阅读 Monitors API 指南 →](/zh/docs/monitors/quickstart)
+</Update>
+
+<Update label="March 4, 2026" rss={{ title: "Exa Deep 全面改版" }}>
+  <div id="exa-deep-revamp">
+    ## Exa Deep 全面改版
+  </div>
+
+  Exa Deep 更快、更便宜，现在还支持带字段级 grounding 的结构化输出。
+
+  * **新增 `deep-reasoning` 类型**，适用于需要更多算力投入的任务 (12-50 秒) ；`deep` 耗时 4-12 秒。
+  * 常规 `deep` 搜索**价格下调 20%**。
+  * 通过 `outputSchema` 实现**结构化输出**，响应中包含 `output.content` 和 `output.grounding` (字段级引用与置信度) 。
+
+  完整价格请参见下方的 [Exa 价格更新](#exa-pricing-update)。
+
+  [阅读 Search API 参考 →](/zh/docs/reference/search)
+</Update>
+
+<Update label="March 3, 2026" rss={{ title: "Exa 价格更新" }}>
+  <div id="exa-pricing-update">
+    ## Exa 价格更新
+  </div>
+
+  我们简化并下调了价格。前 10 条搜索结果的 contents 现已免费包含，新价格自动生效，无需任何操作。
+
+  * **带 contents 的搜索**：每 1000 次请求 $7 (含 10 条结果、text + highlights) ；每额外 1000 条结果 $1。
+  * **摘要**：每 1000 次 $1，搜索和 contents 均适用。
+  * **Exa Deep**：每 1000 次请求 $12；**Deep (Reasoning)&#x20;**&#x20;每 1000 次 $15。
+  * **Contents 端点**：每种内容类型每 1000 个页面 $1。
+
+  [查看当前价格 →](https://exa.ai/pricing)
+</Update>
+
+<Update label="February 5, 2026" rss={{ title: "推出 Exa Instant Search" }}>
+  <div id="introducing-exa-instant-search">
+    ## 推出 Exa Instant Search
+  </div>
+
+  Exa Instant 是我们速度最快的搜索类型，在提升神经搜索质量的同时将延迟控制在 150 毫秒以内。使用 `type="instant"` 即可启用。
+
+  * **为实时场景打造**：聊天应用、语音 AI、编码智能体、自动补全和实时建议。
+  * 以我们所提供的最低延迟带来**业界领先的质量**。
+
+  [阅读 Search API 指南 →](/zh/docs/search/quickstart) · [在控制台中体验 →](https://dashboard.exa.ai/playground/search?type=instant)
+</Update>
+
+<Update label="February 2, 2026" rss={{ title: "Highlights、内容新鲜度与 MCP 更新" }}>
+  <div id="highlights-content-freshness-and-mcp-updates">
+    ## Highlights、内容新鲜度与 MCP 更新
+  </div>
+
+  内容提取与访问方面的三项改进：
+
+  * **用于 highlights 的 `maxCharacters`**：现已成为控制 highlight 长度的首选方式，`numSentences` 和 `highlightsPerUrl` 已弃用。
+  * **用于内容新鲜度的 `maxAgeHours`**：以基于时效的控制取代布尔值 `livecrawl` (`0` 表示始终抓取，`-1` 表示仅使用缓存，`24` 表示内容超过 24 小时才抓取) 。
+  * **Exa MCP 免费额度**：无需认证即可试用，限 3 QPS、每天 150 次调用；添加 API key 即可获得完整访问权限。
+
+  [内容新鲜度文档 →](/zh/docs/contents/quickstart#content-freshness) · [Exa MCP →](/zh/docs/get-started/exa-mcp)
+</Update>
+
+<Update label="January 21, 2026" rss={{ title: "Introducing Exa Company Search" }}>
+  <div id="introducing-exa-company-search">
+    ## 推出 Exa 公司搜索
+  </div>
+
+  公司搜索现已采用微调的检索模型与实体匹配流程。使用 `type="auto"`、`category="company"`。
+
+  * **多维属性均精准**：行业、地区、融资阶段与员工人数。
+  * **结构化实体数据**：结果返回带类型的公司信息 (员工规模、总部、财务数据、网站流量) 。
+  * **适用场景**：销售线索挖掘、市场调研与供应链工作流。
+
+  [阅读公司与人物搜索文档 →](/zh/docs/search/data/companies-people) · [阅读基准测试博客 →](https://exa.ai/blog/company-search-benchmarks)
+</Update>
+
+<Update label="December 19, 2025" rss={{ title: "Introducing Exa People Search" }}>
+  <div id="introducing-exa-people-search">
+    ## 推出 Exa 人物搜索
+  </div>
+
+  人物搜索现已通过混合检索系统覆盖超过 10 亿份公开档案。`linkedin` 类别由新的 `people` 类别取代。
+
+  * **覆盖更广**：涵盖全网档案，不再局限于 LinkedIn。
+  * **准确度更高**：针对职位、技能与公司类 query 微调的向量嵌入。
+  * **适用场景**：销售、招聘与市场调研。
+
+  [阅读公司与人物搜索文档 →](/zh/docs/search/data/companies-people) · [阅读基准测试博客 →](https://exa.ai/blog/people-search-benchmark)
+</Update>
+
+<Update label="November 26, 2025" rss={{ title: "JS SDK: highlights restored" }}>
+  <div id="js-sdk-highlights-restored">
+    ## JS SDK：恢复 highlights
+  </div>
+
+  自 `exa-js` v2.0.11 起，JavaScript SDK 重新支持 highlights，返回关键句及其相关性分数。在 search 与 contents 调用中传入 `highlights: true` 或 `highlights: { maxCharacters, query }` 即可。
+
+  [阅读 JavaScript SDK 文档 →](/zh/docs/sdks/quickstart)
+</Update>
+
+<Update label="November 20, 2025" rss={{ title: "New Deep Search Type" }}>
+  <div id="new-deep-search-type">
+    ## 新增 Deep 搜索类型
+  </div>
+
+  Exa Deep 通过并行执行多次 search 并为每条结果返回高质量上下文，从而找到更优结果。使用 `type="deep"` 启用。
+
+  * **query 扩展**：只需发送一个 query，我们会自动生成多个变体；也可通过 `additionalQueries` 自行提供。
+  * **并行 search 与智能排序**，覆盖你的 query 及全部变体。
+  * 为每条结果提供**详细摘要**。
+
+  [阅读 Search API 参考 →](/zh/docs/reference/search)
+</Update>
+
+<Update label="November 5, 2025" rss={{ title: "Added Language Filtering" }}>
+  <div id="added-language-filtering">
+    ## 新增语言过滤
+  </div>
+
+  Exa 现在会检测你的 query 所用语言，并仅返回该语言的结果。对所有用户默认启用，无需任何配置。
+
+  [阅读 Search API 指南 →](/zh/docs/search/quickstart)
+</Update>
+
+<Update label="October 28, 2025" rss={{ title: "SDK changes: highlights removed and contents returned by default" }}>
+  <div id="sdk-changes-highlights-removed-and-contents-returned-by-default">
+    ## SDK 变更：移除 highlights，默认返回 contents
+  </div>
+
+  这是一次包含破坏性变更的 SDK 大版本更新：
+
+  * **默认返回 contents**：search 现在会包含 page contents；可选择关闭以加快搜索速度。
+  * **SDK 中移除 highlights**：后续已在 JS SDK 中恢复，参见 [JS SDK：恢复 highlights](#js-sdk-highlights-restored)。
+  * **`use_autoprompt` 已弃用**：已从所有 API 响应中移除。
+
+  [阅读 Python SDK 文档 →](/zh/docs/sdks/quickstart)
+</Update>
+
+<Update label="August 4, 2025" rss={{ title: "Domain Path Filter Support" }}>
+  <div id="domain-path-filter-support">
+    ## 支持域名路径过滤
+  </div>
+
+  `includeDomains` 与 `excludeDomains` 现已支持更精细的定位：
+
+  * **按路径过滤**：例如 `exa.ai/blog` 或 `linkedin.com/company`。
+  * **子域名通配符**：例如 `*.substack.com`。
+
+  适用于将搜索范围限定在博客、产品目录或目录站点。
+
+  [阅读 Search API 参考 →](/zh/docs/reference/search)
+</Update>
+
+<Update label="July 30, 2025" rss={{ title: "Geolocation Filter Support" }}>
+  <div id="geolocation-filter-support">
+    ## 支持地理位置过滤
+  </div>
+
+  新增的 `userLocation` 参数可让结果向用户所在地区倾斜，传入 [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 国家代码 (例如 `"us"`、`"fr"`) 。适用于多地区应用、区域语言内容以及本地发现场景。
+
+  [阅读 Search API 参考 →](/zh/docs/reference/search)
+</Update>
+
+<Update label="July 29, 2025" rss={{ title: "New Fast Search Type" }}>
+  <div id="new-fast-search-type">
+    ## 全新的 Fast 搜索类型
+  </div>
+
+  Exa Fast 采用精简的搜索模型，p50 延迟低于 425 毫秒。通过 `type="fast"` 即可启用。
+
+  * **与神经搜索共用同一套 Exa 高质量内容索引**。
+  * **与其他搜索类型完全参数兼容**。
+  * **专为**快速网页 grounding、智能体工作流和低延迟产品打造。
+
+  [阅读 Search API 指南 →](/zh/docs/search/quickstart) · [在控制台中试用 →](https://dashboard.exa.ai/playground/search?q=blog%20post%20about%20AI\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22fast%22%2C%22livecrawl%22%3A%22never%22%7D)
+</Update>
+
+<Update label="July 21, 2025" rss={{ title: "Score Deprecation in Auto Search" }}>
+  <div id="score-deprecation-in-auto-search">
+    ## Auto 搜索中的 score 字段弃用
+  </div>
+
+  新的 Auto 搜索架构已无法产出有意义的相关性分数，因此 `score` 字段将从 Auto 搜索结果中移除。
+
+  * **Auto 搜索**：不再返回 `score`；结果本身已按相关性排序。
+  * **神经搜索**：分数保持不变。如果你依赖分数，请设置 `type="neural"`。
+
+  [阅读 Search API 参考 →](/zh/docs/reference/search)
+</Update>
+
+<Update label="June 23, 2025" rss={{ title: "Markdown Contents as Default" }}>
+  <div id="markdown-contents-as-default">
+    ## Markdown 内容成为默认格式
+  </div>
+
+  所有端点现在默认返回干净的 markdown，更适合 LLM、RAG 和常规文本处理。无需任何操作。
+
+  * **`includeHtmlTags=false` (默认)&#x20;**：内容会被处理为干净的 markdown。
+  * **`includeHtmlTags=true`**：返回原始 HTML，不做 markdown 处理。
+
+  无论哪种方式，广告、导航等无关内容都会被剔除。
+
+  [阅读 Contents 文档 →](/zh/docs/contents/quickstart)
+</Update>
+
+<Update label="June 7, 2025" rss={{ title: "New Livecrawl Option: Preferred" }}>
+  <div id="new-livecrawl-option-preferred">
+    ## 新的 Livecrawl 选项：preferred
+  </div>
+
+  <Warning>
+    历史条目：`livecrawl` 字符串参数现已弃用。新集成请改用 `maxAgeHours` 搭配 `livecrawlTimeout`。参见[内容新鲜度](/zh/docs/contents/quickstart#content-freshness)。
+  </Warning>
+
+  已弃用的 `livecrawl: "preferred"` 选项会尝试重新抓取，抓取失败时则回退到缓存内容 (不同于 `"always"`，后者会直接报错) 。它非常适合既希望获取最新内容、又不想因站点临时不可用而失败的生产环境应用。
+
+  [阅读内容新鲜度文档 →](/zh/docs/contents/quickstart#content-freshness)
+</Update>
+
+<Update label="May 22, 2025" rss={{ title: "Contents Endpoint Status Changes" }}>
+  <div id="contents-endpoint-status-changes">
+    ## Contents 端点状态变更
+  </div>
+
+  `/contents` 现在返回按 URL 分别给出的 `statuses` 字段，而不是单个 HTTP 错误，因此你可以逐个处理每个 URL 的结果。该端点仅在出现内部问题时才会报错。
+
+  * **`status`**：每个 URL 为 `"success"` 或 `"error"`。
+  * **`error.tag`**：例如 `CRAWL_NOT_FOUND`、`CRAWL_TIMEOUT`、`SOURCE_NOT_AVAILABLE`，并附带 `httpStatusCode`。
+
+  [阅读错误码参考 →](/zh/docs/admin/error-codes)
+</Update>
+
+<Update label="December 11, 2024" rss={{ title: "Auto search as Default" }}>
+  <div id="auto-search-as-default">
+    ## Auto 搜索成为默认方式
+  </div>
+
+  Auto 搜索现已成为默认方式，会自动将每个 query 路由到最合适的搜索方法。无需任何操作；如需保持此前的行为，请设置 `type="neural"`。
+
+  [了解 Exa 的搜索类型 →](/zh/docs/search/quickstart)
+</Update>

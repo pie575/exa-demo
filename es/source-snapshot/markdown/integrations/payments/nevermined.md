@@ -1,0 +1,95 @@
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="nevermined">
+  # Nevermined
+</div>
+
+> Pagos de agentes autónomos para Exa mediante la delegación de tarjeta x402 de Nevermined. Una compra de 7 USD aprovisiona o recarga una API key de Exa con 7 USD en credits.
+
+Los agentes pagan a Exa con tarjeta de crédito mediante el esquema de [delegación de tarjeta x402](https://nevermined.ai/docs/specs/x402-card-delegation) de [Nevermined](https://nevermined.ai). Cada **compra de $7** devuelve una API key de Exa con **$7 en credits de Exa**.
+
+<Info>
+  Usa este ID de plan de Nevermined:<br />`27800462147494506865542649899724877617306579171265399959488097895839186996870`<br />Este plan se ejecuta en el entorno de producción de Nevermined (API keys con prefijo live). La compra corresponde a credits de API, no a una única solicitud de search.
+</Info>
+
+Si es la primera vez que un pagador usa Nevermined, `POST /team-management/nevermined/purchase-key` aprovisiona una nueva API key de Exa y añade $7 en credits. Si la key se agota, genera un nuevo token x402 con la misma delegación y vuelve a llamar al mismo endpoint: Exa devuelve la misma API key con $7 adicionales en credits.
+
+<div id="buy-a-key">
+  ## Comprar una key
+</div>
+
+```bash theme={null}
+POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
+payment-signature: <x402-token>
+```
+
+* **Costo:** $7 por compra, cargados a la tarjeta vinculada a la delegación a la que hace referencia el token x402.
+* **Respuesta (nuevo pagador):** `{ status: "ok", apiKey: "…", expiresAt: null }` — una nueva Exa API key con $7 de credits.
+* **Respuesta (pagador recurrente):** `{ status: "ok", apiKey: "…", expiresAt: null }` — la misma Exa API key con $7 adicionales de credits.
+* **Respuesta (token reutilizado):** resultado en caché, sin cargo adicional.
+* **Firma ausente o inválida:** `402 Payment Required` con los requisitos de pago en el cuerpo.
+
+<div id="how-it-works">
+  ## Cómo funciona
+</div>
+
+Nevermined se encarga de la parte de pagos; Exa solo ve el token x402 firmado.
+
+1. **Configuración inicial (a cargo del titular de la tarjeta):** registra una tarjeta en [nevermined.app](https://nevermined.app), crea una **delegación** sobre ella (el permiso de gasto: el titular define un límite y una duración, y puede acotarla a una API key concreta) y emite una API key de Nevermined para el agente.
+2. **El agente localiza su delegación.** El SDK de Nevermined permite al agente descubrir las delegaciones con las que puede gastar su key y elegir una que tenga presupuesto suficiente (al menos $7). Si no hay ninguna, el titular puede crearla desde el panel, o bien un agente totalmente autónomo puede crearla mediante el SDK dentro de los límites de la tarjeta.
+3. **El agente acuña un token de acceso x402** para el ID de plan anterior, con el esquema de delegación de tarjeta, referenciando la delegación por su ID. Las delegaciones deben existir antes de la acuñación; los tokens no pueden crearlas sobre la marcha.
+4. **El agente envía el token por POST al endpoint anterior** en el encabezado `payment-signature` y recibe la Exa API key en la respuesta.
+5. **La key funciona de inmediato** con la [Exa Search API](/es/docs/search/quickstart) estándar.
+
+Para ver la guía completa lista para agentes (métodos del SDK, parámetros, descubrimiento y creación de delegaciones, resolución de problemas), consulta la guía de integración de Exa de Nevermined: [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agentes: obtén [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)).
+
+<div id="what-7-buys">
+  ## Qué puedes hacer con $7
+</div>
+
+Los credits se consumen según los precios estándar de la API de Exa. Con las tarifas actuales, $7 en credits cubren aproximadamente:
+
+| Endpoint o funcionalidad                                   |                                   Precio |         Uso aproximado |
+| ---------------------------------------------------------- | ---------------------------------------: | ---------------------: |
+| Search (`instant`, `fast`, `auto`) con hasta 10 resultados |                   $7 / 1.000 solicitudes |      1.000 solicitudes |
+| Deep-Lite Search                                           |                  $10 / 1.000 solicitudes |        700 solicitudes |
+| Deep Search                                                |                  $12 / 1.000 solicitudes |       ~583 solicitudes |
+| Deep-Reasoning Search                                      |                  $15 / 1.000 solicitudes |       ~466 solicitudes |
+| Contents (`text`, `highlights` o `summary`)                | $1 / 1.000 páginas por tipo de contenido |          7.000 páginas |
+| Resúmenes de página con IA en Search o Contents            |                       $1 / 1.000 páginas |        7.000 resúmenes |
+| Resultados adicionales a partir del décimo                 |                    $1 / 1.000 resultados | 7.000 resultados extra |
+| Answer                                                     |                   $5 / 1.000 solicitudes |      1.400 solicitudes |
+| Monitors                                                   |                  $15 / 1.000 solicitudes |       ~466 solicitudes |
+
+Las solicitudes de search incluyen texto y highlights para hasta 10 resultados. Los resultados que superen esos 10 y los resúmenes con IA se facturan por separado.<br />
+Para conocer todos los detalles de precios, consulta [precios de Exa](https://exa.ai/pricing).
+
+<div id="when-the-key-runs-out">
+  ## Cuando la key se agota
+</div>
+
+Exa devuelve **`HTTP 402`** en los endpoints habituales de la API cuando se agotan los credits de la API key:
+
+```json theme={null}
+{
+  "requestId": "...",
+  "error": "You have exceeded your credits limit. Please top up to keep using Exa at dashboard.exa.ai",
+  "tag": "NO_MORE_CREDITS"
+}
+```
+
+Acuña un nuevo token x402 con el mismo ID de plan y la misma delegación, y vuelve a enviarlo mediante POST al mismo endpoint `/purchase-key`. Exa añade otros $7 en credits a la misma API key.
+
+<div id="references">
+  ## Referencias
+</div>
+
+* [Guía de integración de Exa con Nevermined](https://nevermined.ai/docs/integrations/exa)
+* [Especificación de delegación de tarjetas x402](https://nevermined.ai/docs/specs/x402-card-delegation)
+* [Precios de Exa](https://exa.ai/pricing)
+* [Exa Search API](/es/docs/search/quickstart)

@@ -1,0 +1,152 @@
+---
+title: "Registros legales y públicos"
+sidebarTitle: "Registros legales y públicos"
+icon: "scale"
+description: "Encuentra sentencias judiciales, patentes, sanciones, contratos públicos y otros registros públicos con Exa Search."
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Usa Exa Search para acceder a fuentes jurídicas primarias y registros gubernamentales, junto con los comentarios escritos sobre ellos.
+
+<div id="included">
+  ## Incluido
+</div>
+
+* Sentencias de tribunales de EE. UU., con texto completo y metadatos de tribunal, expediente y cita
+* Patentes concedidas en EE. UU., con resumen, reivindicaciones, descripción, inventores y titulares
+* Leyes, reglamentos y directrices de organismos públicos
+* Listas de sanciones y listas de vigilancia
+* Contratos públicos y registros de contratación
+* Datos censales y otros registros estadísticos públicos
+
+<div id="use-it-for">
+  ## Úsalo para
+</div>
+
+* Investigación jurisprudencial y RAG legal
+* Seguimiento normativo y de políticas públicas
+* Búsquedas de estado de la técnica y de libertad de operación
+* Cribado de cumplimiento normativo y diligencia debida
+* Estudios de mercado del sector público
+
+<div id="example-queries">
+  ## Consultas de ejemplo
+</div>
+
+<div id="find-case-law">
+  ### Encontrar jurisprudencia
+</div>
+
+Describe la cuestión jurídica y la jurisdicción en lenguaje sencillo, en lugar de citar una referencia.
+
+<PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
+
+<div id="search-patents">
+  ### Buscar patentes
+</div>
+
+Describe lo que hace la invención, tal como lo haría una reivindicación.
+
+<PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
+
+<div id="screen-against-sanctions">
+  ### Filtrar contra listas de sanciones
+</div>
+
+Indica la lista y el tipo de entidad que estás revisando.
+
+<PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
+
+<div id="research-government-spending">
+  ### Investigar el gasto público
+</div>
+
+Indica la agencia compradora o la categoría de servicio y el período de tiempo.
+
+<PlaygroundQuery query="federal contracts awarded for cloud migration services" />
+
+<div id="pull-public-statistics">
+  ### Obtener estadísticas públicas
+</div>
+
+Indica el conjunto de datos y la zona geográfica.
+
+<PlaygroundQuery query="census tract population change in the Austin metro area" />
+
+<div id="make-a-request">
+  ## Realizar una solicitud
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "California appellate decisions on non-compete enforceability",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "California appellate decisions on non-compete enforceability",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "California appellate decisions on non-compete enforceability",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Obtener datos estructurados con Exa Agent
+</div>
+
+Para datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criteria y los campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+
+<Card title="Iniciar una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
+  Analiza una entidad en distintos tipos de registro o rastrea un cambio normativo a través de fuentes primarias y su cobertura.
+</Card>

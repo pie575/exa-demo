@@ -1,0 +1,3151 @@
+---
+title: "示例"
+description: "用于列表构建、KYB 情报、招聘信息和结构化输出的生产级 Exa Agent 示例。"
+---
+
+以下示例展示了 Exa Agent 在生产环境中的工作流模式，涵盖列表构建、KYB 情报、招聘信息和结构化输出。
+
+<div aria-label={"以电子表格形式呈现的 Agent 响应"} className={"agent-output-sheet"}>
+  <input defaultChecked={true} className={"agent-output-tab-input"} id={"agent-output-tab-findall"} name={"agent-output-preview"} type={"radio"} />
+
+  <input className={"agent-output-tab-input"} id={"agent-output-tab-kyb"} name={"agent-output-preview"} type={"radio"} />
+
+  <input className={"agent-output-tab-input"} id={"agent-output-tab-jobs"} name={"agent-output-preview"} type={"radio"} />
+
+  <input className={"agent-output-tab-input"} id={"agent-output-tab-rows"} name={"agent-output-preview"} type={"radio"} />
+
+  <input className={"agent-output-tab-input"} id={"agent-output-tab-contacts"} name={"agent-output-preview"} type={"radio"} />
+
+  <input className={"agent-output-tab-input"} id={"agent-output-tab-exclusions"} name={"agent-output-preview"} type={"radio"} />
+
+  <input className={"agent-output-tab-input"} id={"agent-output-tab-followup"} name={"agent-output-preview"} type={"radio"} />
+
+  <div className={"agent-output-panels"}>
+    <div aria-label={"查找所有结果预览"} className={"agent-output-panel agent-output-panel-findall"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"Agent 响应示例"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.gtm_members"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=Find%20all%20GTM%20members%20currently%20working%20at%20Exa.ai.%20Verify%20each%20person%20is%20at%20the%20correct%20company%3A%20Exa%2C%20the%20AI%20search%20company%20at%20exa.ai%2C%20not%20any%20other%20company%20named%20Exa.%20Include%20the%20company%20name%20in%20every%20row.%20Include%20only%20people%20with%20public%20evidence%20that%20they%20currently%20work%20at%20Exa%20and%20whose%20role%20is%20go-to-market%2C%20such%20as%20sales%2C%20business%20development%2C%20partnerships%2C%20customer%20success%2C%20marketing%2C%20growth%2C%20or%20revenue.%20Return%20one%20row%20per%20person."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#find-all-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"查找所有人员表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"full_name"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"title"}
+              </th>
+
+              <th>
+                {"gtm_function"}
+              </th>
+
+              <th>
+                {"company_verified_as_exa_ai"}
+              </th>
+
+              <th>
+                {"evidence_urls"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td>
+                {"Marcus Holm"}
+              </td>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                {"首席营收官（CRO）"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"营收 / GTM 负责人"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"2 个链接"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"Karan Singh"}
+              </td>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                {"收入运营副总裁"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"收入运营"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"2 个链接"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"4"}
+              </th>
+
+              <td>
+                {"Jatin Gupta"}
+              </td>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                {"GTM 工程师"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"GTM 工程 / 增长"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"3 个链接"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"5"}
+              </th>
+
+              <td>
+                {"Gavin Smith"}
+              </td>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                {"创始战略客户经理"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"销售"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"1 个链接"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"6"}
+              </th>
+
+              <td>
+                {"Chris Perpignani"}
+              </td>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                {"Exa 企业增长负责人"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"企业增长 / 销售"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"2 个链接"}
+                </span>
+              </td>
+            </tr>
+
+            <tr className={"agent-output-placeholder-row agent-output-more-row"}>
+              <th className={"agent-output-rownum"}>
+                {"7"}
+              </th>
+
+              <td className={"agent-output-more"}>
+                {"… 另有 7 项"}
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-pill"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-pill agent-output-blur-wide"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div aria-label={"KYB 情报结果预览"} className={"agent-output-panel agent-output-panel-kyb"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"Agent 响应示例"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.company_intel"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=Research%20Ramp%20(ramp.com)%20as%20a%20potential%20partner%20for%20a%20fintech%20infrastructure%20company.%20Verify%20the%20company%20identity.%20Return%20concise%20KYB%20intelligence%20covering%20company%20identity%2C%20brand%20or%20ecosystem%20partnerships%2C%20public%20mentions%20or%20notable%20news%2C%20recent%20investment%20activity%2C%20and%20risk%20notes.%20Use%20public%20sources%20and%20include%20source%20URLs."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#kyb-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"KYB 情报表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"category"}
+              </th>
+
+              <th>
+                {"signal"}
+              </th>
+
+              <th>
+                {"detail"}
+              </th>
+
+              <th>
+                {"source"}
+              </th>
+
+              <th>
+                {"disposition"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td>
+                {"Ramp Business Corporation"}
+              </td>
+
+              <td>
+                {"主体"}
+              </td>
+
+              <td>
+                {"Ramp Business Corporation"}
+              </td>
+
+              <td>
+                {"面向企业卡、费用管理、应付账款、采购与报表的财务运营平台。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"ramp.com/about-us"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"已验证"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"Ramp Business Corporation"}
+              </td>
+
+              <td>
+                {"合作关系"}
+              </td>
+
+              <td>
+                {"Microsoft"}
+              </td>
+
+              <td>
+                {"Ramp 新闻稿中重点提及的 Microsoft 365、Copilot 与 Teams 集成。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"ramp.com/press"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"生态"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"4"}
+              </th>
+
+              <td>
+                {"Ramp Business Corporation"}
+              </td>
+
+              <td>
+                {"合作关系"}
+              </td>
+
+              <td>
+                {"Visa"}
+              </td>
+
+              <td>
+                {"面向自主式 AI 企业支付的深化支付网络合作。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"PRNewswire"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"支付"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"5"}
+              </th>
+
+              <td>
+                {"Ramp Business Corporation"}
+              </td>
+
+              <td>
+                {"投资"}
+              </td>
+
+              <td>
+                {"F 轮"}
+              </td>
+
+              <td>
+                {"7.5 亿美元融资，估值 440 亿美元。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"PRNewswire"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"2026-06-04"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"6"}
+              </th>
+
+              <td>
+                {"Ramp Business Corporation"}
+              </td>
+
+              <td>
+                {"风险"}
+              </td>
+
+              <td>
+                {"银行 / 合规依赖"}
+              </td>
+
+              <td>
+                {"金融机构合作方及仅面向企业的 KYB 流程是重点尽调事项。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"法律条款"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"待审阅"}
+                </span>
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div aria-label={"职位招聘结果预览"} className={"agent-output-panel agent-output-panel-jobs"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"Agent 响应示例"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.job_postings"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=Find%20current%20open%20job%20postings%20for%20Exa%20on%20Ashby.%20Use%20Ashby-hosted%20postings%2C%20preferably%20jobs.ashbyhq.com%2Fexa%2C%20and%20verify%20each%20job%20is%20for%20Exa%2C%20the%20AI%20search%20company%20at%20exa.ai.%20Return%20up%20to%205%20postings%20with%20company%20name%2C%20title%2C%20function%2C%20location%2C%20Ashby%20posting%20URL%2C%20and%20why%20it%20is%20relevant."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#job-postings-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"职位发布表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"title"}
+              </th>
+
+              <th>
+                {"function"}
+              </th>
+
+              <th>
+                {"location"}
+              </th>
+
+              <th>
+                {"company_verified_as_exa_ai"}
+              </th>
+
+              <th>
+                {"source_platform"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                <a className={"agent-output-link"} href={"https://jobs.ashbyhq.com/exa/93317180-34e0-45ff-84a3-d5bca4d7f7ae"}>
+                  {"客户经理 @ Exa"}
+                </a>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"销售"}
+                </span>
+              </td>
+
+              <td>
+                {"加利福尼亚州旧金山"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"Ashby"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                <a className={"agent-output-link"} href={"https://jobs.ashbyhq.com/exa/dc8a6537-12b4-40af-b8da-55639a01dca3"}>
+                  {"销售拓展代表"}
+                </a>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"销售拓展"}
+                </span>
+              </td>
+
+              <td>
+                {"未指定"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"Ashby"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"4"}
+              </th>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                <a className={"agent-output-link"} href={"https://jobs.ashbyhq.com/exa/e3e0cd05-d71a-491d-a553-2a991741915c"}>
+                  {"创始客户经理 - 纽约"}
+                </a>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"销售"}
+                </span>
+              </td>
+
+              <td>
+                {"纽约市"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"Ashby"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"5"}
+              </th>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                <a className={"agent-output-link"} href={"https://jobs.ashbyhq.com/exa/b5665525-c2a3-4c6a-a3dd-d0d1f1df01f8"}>
+                  {"创始人执行助理"}
+                </a>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"运营"}
+                </span>
+              </td>
+
+              <td>
+                {"加利福尼亚州旧金山"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"Ashby"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"6"}
+              </th>
+
+              <td>
+                {"Exa"}
+              </td>
+
+              <td>
+                <a className={"agent-output-link"} href={"https://jobs.ashbyhq.com/exa/41eb773d-9909-422c-b6b8-5bbdc407d318"}>
+                  {"后端软件工程师"}
+                </a>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"工程"}
+                </span>
+              </td>
+
+              <td>
+                {"加利福尼亚州旧金山"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"Ashby"}
+                </span>
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-pill"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div aria-label={"行 Enrichment 结果预览"} className={"agent-output-panel agent-output-panel-rows"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"Agent 响应示例"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.reports"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=For%20each%20input%20company%2C%20produce%20a%20concise%20research%20brief.%20Use%20recent%2C%20reputable%20sources.%20Return%20one%20report%20per%20input%20row."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#enrich-input-rows-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"行 Enrichment 表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"domain"}
+              </th>
+
+              <th>
+                {"overview"}
+              </th>
+
+              <th>
+                {"buyingSignals"}
+              </th>
+
+              <th>
+                {"sourceUrls"}
+              </th>
+
+              <th>
+                {"verified_domain"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td>
+                {"Ramp"}
+              </td>
+
+              <td>
+                {"ramp.com"}
+              </td>
+
+              <td>
+                {"覆盖企业卡、费用报销、账单支付与采购的财务自动化平台。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"企业"}
+                </span>
+
+                <span className={"agent-output-chip"}>
+                  {"采购"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"3 个链接"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"Mercury"}
+              </td>
+
+              <td>
+                {"mercury.com"}
+              </td>
+
+              <td>
+                {"为初创公司提供企业银行、资金管理与财务流程服务。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"聚焦初创"}
+                </span>
+
+                <span className={"agent-output-chip"}>
+                  {"银行"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"2 个链接"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"true"}
+                </span>
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-pill"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-pill agent-output-blur-wide"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div aria-label={"有限联系人 Enrichment 结果预览"} className={"agent-output-panel agent-output-panel-contacts"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"匿名化示例响应"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.contacts"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=For%20each%20company%2C%20find%20the%20best%20sales%20or%20partnerships%20contact.%20Prefer%20leadership%20or%20go-to-market%20roles.%20Return%20anonymized%20contact%20labels%20in%20examples%20and%20include%20evidence%20for%20why%20each%20role%20is%20relevant."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#bounded-contact-fields-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"有界联系人 Enrichment 表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"contact_label"}
+              </th>
+
+              <th>
+                {"role"}
+              </th>
+
+              <th>
+                {"relevanceReason"}
+              </th>
+
+              <th>
+                {"evidence_scope"}
+              </th>
+
+              <th>
+                {"contact_cost_bound"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td>
+                {"LangChain"}
+              </td>
+
+              <td>
+                {"联系人 A"}
+              </td>
+
+              <td>
+                {"合作伙伴负责人"}
+              </td>
+
+              <td>
+                {"负责生态集成与合作伙伴拓展。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"职位依据"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"最多 2 个"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"Modal"}
+              </td>
+
+              <td>
+                {"联系人 B"}
+              </td>
+
+              <td>
+                {"GTM 负责人"}
+              </td>
+
+              <td>
+                {"与算力、开发者及平台类合作相关。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"职位依据"}
+                </span>
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"最多 2 个"}
+                </span>
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div aria-label={"排除结果预览"} className={"agent-output-panel agent-output-panel-exclusions"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"合成示例响应"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.companies"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=Find%2010%20seed-stage%20companies%20building%20infrastructure%20for%20AI%20coding%20agents.%20Do%20not%20return%20companies%20in%20the%20exclusion%20list."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#exclude-known-records-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"排除项表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"domain"}
+              </th>
+
+              <th>
+                {"reason"}
+              </th>
+
+              <th>
+                {"sourceUrl"}
+              </th>
+
+              <th>
+                {"excluded_match"}
+              </th>
+
+              <th>
+                {"status"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr className={"agent-output-note-row"}>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td className={"agent-output-note"} colSpan={"6"}>
+                {"示例输出；已排除的输入行：Cursor 和 CodeRabbit"}
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"PatchPilot"}
+              </td>
+
+              <td>
+                {"patchpilot.ai"}
+              </td>
+
+              <td>
+                {"构建智能体化代码修复基础设施。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"融资"}
+                </span>
+              </td>
+
+              <td>
+                {"无"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"新增"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"4"}
+              </th>
+
+              <td>
+                {"StackRelay"}
+              </td>
+
+              <td>
+                {"stackrelay.dev"}
+              </td>
+
+              <td>
+                {"跨工具调度编码智能体任务。"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"主页"}
+                </span>
+              </td>
+
+              <td>
+                {"无"}
+              </td>
+
+              <td>
+                <span className={"agent-output-chip"}>
+                  {"新增"}
+                </span>
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xs"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div aria-label={"后续结果预览"} className={"agent-output-panel agent-output-panel-followup"} role={"tabpanel"}>
+      <div className={"agent-output-toolbar"}>
+        <div>
+          <div className={"agent-output-eyebrow"}>
+            {"示例响应（合成数据）"}
+          </div>
+
+          <div className={"agent-output-title"}>
+            <code>
+              {"output.structured.companies"}
+            </code>
+          </div>
+        </div>
+
+        <div className={"agent-output-actions"}>
+          <a
+            className={"agent-output-cta"}
+            href={
+"https://dashboard.exa.ai/playground/agent?q=From%20the%20companies%20you%20found%2C%20narrow%20the%20list%20to%20those%20hiring%20platform%20engineers%20in%20San%20Francisco.%20Add%20the%20hiring%20page%20URL%20for%20each%20match."
+}
+          >
+            <span data-as={"p"}>
+              {"在控制台中试用"}
+            </span>
+          </a>
+
+          <a className={"agent-output-cta"} href={"#continue-workflow-code"}>
+            {"预览代码"}
+          </a>
+        </div>
+      </div>
+
+      <div aria-label={"跟进表"} className={"agent-output-scroll"} role={"region"}>
+        <table className={"agent-output-grid"}>
+          <thead>
+            <tr className={"agent-output-columns"}>
+              <th aria-label={"行号"} className={"agent-output-corner"} />
+
+              <th>
+                {"A"}
+              </th>
+
+              <th>
+                {"B"}
+              </th>
+
+              <th>
+                {"C"}
+              </th>
+
+              <th>
+                {"D"}
+              </th>
+
+              <th>
+                {"E"}
+              </th>
+
+              <th>
+                {"F"}
+              </th>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"1"}
+              </th>
+
+              <th>
+                {"company"}
+              </th>
+
+              <th>
+                {"website"}
+              </th>
+
+              <th>
+                {"hiringPageUrl"}
+              </th>
+
+              <th>
+                {"hiringEvidence"}
+              </th>
+
+              <th>
+                {"location"}
+              </th>
+
+              <th>
+                {"followup_source"}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr className={"agent-output-note-row"}>
+              <th className={"agent-output-rownum"}>
+                {"2"}
+              </th>
+
+              <td className={"agent-output-note"} colSpan={"6"}>
+                {"延续上一次运行的示例输出：将此前的公司结果缩小到旧金山的招聘匹配项"}
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"3"}
+              </th>
+
+              <td>
+                {"Northstar IDE"}
+              </td>
+
+              <td>
+                {"northstar.dev"}
+              </td>
+
+              <td>
+                {"/careers/platform"}
+              </td>
+
+              <td>
+                {"正在招聘平台工程师。"}
+              </td>
+
+              <td>
+                {"旧金山"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"上一次运行"}
+                </span>
+              </td>
+            </tr>
+
+            <tr>
+              <th className={"agent-output-rownum"}>
+                {"4"}
+              </th>
+
+              <td>
+                {"TraceForge"}
+              </td>
+
+              <td>
+                {"traceforge.dev"}
+              </td>
+
+              <td>
+                {"/jobs"}
+              </td>
+
+              <td>
+                {"正在为 Agent 运行时团队招聘基础设施工程师。"}
+              </td>
+
+              <td>
+                {"旧金山"}
+              </td>
+
+              <td>
+                <span className={"agent-output-source"}>
+                  {"上一次运行"}
+                </span>
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+            </tr>
+
+            <tr aria-hidden={"true"} className={"agent-output-placeholder-row"}>
+              <th className={"agent-output-rownum"} />
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-xl"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-lg"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-md"} />
+              </td>
+
+              <td>
+                <span className={"agent-output-blur agent-output-blur-sm"} />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div aria-label={"示例结果预览"} className={"agent-output-tabs"}>
+    <label className={"agent-output-tab agent-output-tab-findall"} htmlFor={"agent-output-tab-findall"}>
+      {"查找全部"}
+    </label>
+
+    <label className={"agent-output-tab agent-output-tab-kyb"} htmlFor={"agent-output-tab-kyb"}>
+      {"KYC / KYB"}
+    </label>
+
+    <label className={"agent-output-tab agent-output-tab-jobs"} htmlFor={"agent-output-tab-jobs"}>
+      {"招聘信息"}
+    </label>
+
+    <label className={"agent-output-tab agent-output-tab-rows"} htmlFor={"agent-output-tab-rows"}>
+      {"丰富行数据"}
+    </label>
+
+    <label className={"agent-output-tab agent-output-tab-contacts"} htmlFor={"agent-output-tab-contacts"}>
+      {"查找联系人"}
+    </label>
+
+    <label className={"agent-output-tab agent-output-tab-exclusions"} htmlFor={"agent-output-tab-exclusions"}>
+      {"跳过已知项"}
+    </label>
+
+    <label className={"agent-output-tab agent-output-tab-followup"} htmlFor={"agent-output-tab-followup"}>
+      {"继续工作流"}
+    </label>
+  </div>
+</div>
+
+<h2 id="find-all-code">
+  查找 Exa.ai 的所有 GTM 成员
+</h2>
+
+当需要由 Agent 自行找出这些行时，请使用发现型提示词。要明确进行公司消歧，并要求提供当前在职的证据，避免名称相似的公司混入结果。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find all GTM members currently working at Exa.ai. Verify each person is at the correct company: Exa, the AI search company at exa.ai, not any other company named Exa. Include the company name in every row. Include only people with public evidence that they currently work at Exa and whose role is go-to-market, such as sales, business development, partnerships, customer success, marketing, growth, or revenue. Return one row per person.",
+      effort="high",
+      output_schema={
+          "type": "object",
+          "required": ["gtm_members"],
+          "properties": {
+              "gtm_members": {
+                  "type": "array",
+                  "maxItems": 100,
+                  "items": {
+                      "type": "object",
+                      "required": ["full_name", "company", "title", "gtm_function", "company_verified_as_exa_ai", "evidence_urls"],
+                      "properties": {
+                          "full_name": {"type": "string"},
+                          "company": {"type": "string"},
+                          "title": {"type": "string"},
+                          "gtm_function": {"type": "string"},
+                          "company_verified_as_exa_ai": {"type": "boolean"},
+                          "evidence_summary": {"type": "string"},
+                          "profile_url": {"type": "string", "format": "uri"},
+                          "evidence_urls": {
+                              "type": "array",
+                              "items": {"type": "string", "format": "uri"},
+                              "minItems": 1,
+                          },
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find all GTM members currently working at Exa.ai. Verify each person is at the correct company: Exa, the AI search company at exa.ai, not any other company named Exa. Include the company name in every row. Include only people with public evidence that they currently work at Exa and whose role is go-to-market, such as sales, business development, partnerships, customer success, marketing, growth, or revenue. Return one row per person.",
+    effort: "high",
+    outputSchema: {
+      type: "object",
+      required: ["gtm_members"],
+      properties: {
+        gtm_members: {
+          type: "array",
+          maxItems: 100,
+          items: {
+            type: "object",
+            required: ["full_name", "company", "title", "gtm_function", "company_verified_as_exa_ai", "evidence_urls"],
+            properties: {
+              full_name: { type: "string" },
+              company: { type: "string" },
+              title: { type: "string" },
+              gtm_function: { type: "string" },
+              company_verified_as_exa_ai: { type: "boolean" },
+              evidence_summary: { type: "string" },
+              profile_url: { type: "string", format: "uri" },
+              evidence_urls: {
+                type: "array",
+                items: { type: "string", format: "uri" },
+                minItems: 1
+              }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '
+  {
+    "query": "Find all GTM members currently working at Exa.ai. Verify each person is at the correct company: Exa, the AI search company at exa.ai, not any other company named Exa. Include the company name in every row. Include only people with public evidence that they currently work at Exa and whose role is go-to-market, such as sales, business development, partnerships, customer success, marketing, growth, or revenue. Return one row per person.",
+    "effort": "high",
+    "outputSchema": {
+      "type": "object",
+      "required": ["gtm_members"],
+      "properties": {
+        "gtm_members": {
+          "type": "array",
+          "maxItems": 100,
+          "items": {
+            "type": "object",
+            "required": ["full_name", "company", "title", "gtm_function", "company_verified_as_exa_ai", "evidence_urls"],
+            "properties": {
+              "full_name": { "type": "string" },
+              "company": { "type": "string" },
+              "title": { "type": "string" },
+              "gtm_function": { "type": "string" },
+              "company_verified_as_exa_ai": { "type": "boolean" },
+              "evidence_summary": { "type": "string" },
+              "profile_url": { "type": "string", "format": "uri" },
+              "evidence_urls": {
+                "type": "array",
+                "items": { "type": "string", "format": "uri" },
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  '
+  ```
+</CodeGroup>
+
+<h2 id="kyb-code">
+  KYC / KYB 情报
+</h2>
+
+当合作伙伴或供应商尽调需要的是全网公开情报，而不只是某一个资料页面时，请使用 Agent。你可以在一个结构化对象中一次性获取身份核验、业务背景、公开信号、投资动态以及明确的风险提示。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Research Ramp (ramp.com) as a potential partner for a fintech infrastructure company. Verify the company identity. Return concise KYB intelligence covering company identity, brand or ecosystem partnerships, public mentions or notable news, recent investment activity, and risk notes. Use public sources and include source URLs.",
+      effort="medium",
+      output_schema={
+          "type": "object",
+          "required": ["company_intel"],
+          "properties": {
+              "company_intel": {
+                  "type": "object",
+                  "required": [
+                      "company",
+                      "domain",
+                      "identity_verified",
+                      "business_summary",
+                      "brand_partnerships",
+                      "public_mentions",
+                      "investment_activity",
+                      "risk_notes",
+                      "source_urls",
+                  ],
+                  "properties": {
+                      "company": {"type": "string"},
+                      "domain": {"type": "string"},
+                      "identity_verified": {"type": "boolean"},
+                      "business_summary": {"type": "string"},
+                      "brand_partnerships": {
+                          "type": "array",
+                          "maxItems": 3,
+                          "items": {
+                              "type": "object",
+                              "required": ["partner", "relationship", "evidence"],
+                              "properties": {
+                                  "partner": {"type": "string"},
+                                  "relationship": {"type": "string"},
+                                  "evidence": {"type": "string"},
+                              },
+                          },
+                      },
+                      "public_mentions": {
+                          "type": "array",
+                          "maxItems": 3,
+                          "items": {
+                              "type": "object",
+                              "required": ["mention", "source"],
+                              "properties": {
+                                  "mention": {"type": "string"},
+                                  "date": {"type": "string"},
+                                  "source": {"type": "string", "format": "uri"},
+                              },
+                          },
+                      },
+                      "investment_activity": {
+                          "type": "array",
+                          "maxItems": 3,
+                          "items": {
+                              "type": "object",
+                              "required": ["event", "source"],
+                              "properties": {
+                                  "event": {"type": "string"},
+                                  "amount_or_valuation": {"type": "string"},
+                                  "date": {"type": "string"},
+                                  "source": {"type": "string", "format": "uri"},
+                              },
+                          },
+                      },
+                      "risk_notes": {
+                          "type": "array",
+                          "maxItems": 3,
+                          "items": {"type": "string"},
+                      },
+                      "source_urls": {
+                          "type": "array",
+                          "maxItems": 8,
+                          "items": {"type": "string", "format": "uri"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Research Ramp (ramp.com) as a potential partner for a fintech infrastructure company. Verify the company identity. Return concise KYB intelligence covering company identity, brand or ecosystem partnerships, public mentions or notable news, recent investment activity, and risk notes. Use public sources and include source URLs.",
+    effort: "medium",
+    outputSchema: {
+      type: "object",
+      required: ["company_intel"],
+      properties: {
+        company_intel: {
+          type: "object",
+          required: [
+            "company",
+            "domain",
+            "identity_verified",
+            "business_summary",
+            "brand_partnerships",
+            "public_mentions",
+            "investment_activity",
+            "risk_notes",
+            "source_urls"
+          ],
+          properties: {
+            company: { type: "string" },
+            domain: { type: "string" },
+            identity_verified: { type: "boolean" },
+            business_summary: { type: "string" },
+            brand_partnerships: {
+              type: "array",
+              maxItems: 3,
+              items: {
+                type: "object",
+                required: ["partner", "relationship", "evidence"],
+                properties: {
+                  partner: { type: "string" },
+                  relationship: { type: "string" },
+                  evidence: { type: "string" }
+                }
+              }
+            },
+            public_mentions: {
+              type: "array",
+              maxItems: 3,
+              items: {
+                type: "object",
+                required: ["mention", "source"],
+                properties: {
+                  mention: { type: "string" },
+                  date: { type: "string" },
+                  source: { type: "string", format: "uri" }
+                }
+              }
+            },
+            investment_activity: {
+              type: "array",
+              maxItems: 3,
+              items: {
+                type: "object",
+                required: ["event", "source"],
+                properties: {
+                  event: { type: "string" },
+                  amount_or_valuation: { type: "string" },
+                  date: { type: "string" },
+                  source: { type: "string", format: "uri" }
+                }
+              }
+            },
+            risk_notes: {
+              type: "array",
+              maxItems: 3,
+              items: { type: "string" }
+            },
+            source_urls: {
+              type: "array",
+              maxItems: 8,
+              items: { type: "string", format: "uri" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '
+  {
+    "query": "Research Ramp (ramp.com) as a potential partner for a fintech infrastructure company. Verify the company identity. Return concise KYB intelligence covering company identity, brand or ecosystem partnerships, public mentions or notable news, recent investment activity, and risk notes. Use public sources and include source URLs.",
+    "effort": "medium",
+    "outputSchema": {
+      "type": "object",
+      "required": ["company_intel"],
+      "properties": {
+        "company_intel": {
+          "type": "object",
+          "required": [
+            "company",
+            "domain",
+            "identity_verified",
+            "business_summary",
+            "brand_partnerships",
+            "public_mentions",
+            "investment_activity",
+            "risk_notes",
+            "source_urls"
+          ],
+          "properties": {
+            "company": { "type": "string" },
+            "domain": { "type": "string" },
+            "identity_verified": { "type": "boolean" },
+            "business_summary": { "type": "string" },
+            "brand_partnerships": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "required": ["partner", "relationship", "evidence"],
+                "properties": {
+                  "partner": { "type": "string" },
+                  "relationship": { "type": "string" },
+                  "evidence": { "type": "string" }
+                }
+              }
+            },
+            "public_mentions": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "required": ["mention", "source"],
+                "properties": {
+                  "mention": { "type": "string" },
+                  "date": { "type": "string" },
+                  "source": { "type": "string", "format": "uri" }
+                }
+              }
+            },
+            "investment_activity": {
+              "type": "array",
+              "maxItems": 3,
+              "items": {
+                "type": "object",
+                "required": ["event", "source"],
+                "properties": {
+                  "event": { "type": "string" },
+                  "amount_or_valuation": { "type": "string" },
+                  "date": { "type": "string" },
+                  "source": { "type": "string", "format": "uri" }
+                }
+              }
+            },
+            "risk_notes": {
+              "type": "array",
+              "maxItems": 3,
+              "items": { "type": "string" }
+            },
+            "source_urls": {
+              "type": "array",
+              "maxItems": 8,
+              "items": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    }
+  }
+  '
+  ```
+</CodeGroup>
+
+<h2 id="job-postings-code">
+  职位发布
+</h2>
+
+当招聘职位散落在公司官网、聚合网站和初创公司名录中时，可以使用 Agent。本示例将信息来源限定为 Exa 托管在 Ashby 上的招聘页面，但仍需进行公司消歧。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find current open job postings for Exa on Ashby. Use Ashby-hosted postings, preferably jobs.ashbyhq.com/exa, and verify each job is for Exa, the AI search company at exa.ai. Return up to 5 postings with company name, title, function, location, Ashby posting URL, and why it is relevant.",
+      effort="medium",
+      output_schema={
+          "type": "object",
+          "required": ["job_postings"],
+          "properties": {
+              "job_postings": {
+                  "type": "array",
+                  "maxItems": 5,
+                  "items": {
+                      "type": "object",
+                      "required": [
+                          "title",
+                          "company",
+                          "function",
+                          "location",
+                          "company_verified_as_exa_ai",
+                          "posting_url",
+                          "source_platform",
+                          "why_relevant",
+                      ],
+                      "properties": {
+                          "title": {"type": "string"},
+                          "company": {"type": "string"},
+                          "function": {"type": "string"},
+                          "location": {"type": "string"},
+                          "company_verified_as_exa_ai": {"type": "boolean"},
+                          "posting_url": {"type": "string", "format": "uri"},
+                          "source_platform": {"type": "string"},
+                          "why_relevant": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find current open job postings for Exa on Ashby. Use Ashby-hosted postings, preferably jobs.ashbyhq.com/exa, and verify each job is for Exa, the AI search company at exa.ai. Return up to 5 postings with company name, title, function, location, Ashby posting URL, and why it is relevant.",
+    effort: "medium",
+    outputSchema: {
+      type: "object",
+      required: ["job_postings"],
+      properties: {
+        job_postings: {
+          type: "array",
+          maxItems: 5,
+          items: {
+            type: "object",
+            required: [
+              "title",
+              "company",
+              "function",
+              "location",
+              "company_verified_as_exa_ai",
+              "posting_url",
+              "source_platform",
+              "why_relevant"
+            ],
+            properties: {
+              title: { type: "string" },
+              company: { type: "string" },
+              function: { type: "string" },
+              location: { type: "string" },
+              company_verified_as_exa_ai: { type: "boolean" },
+              posting_url: { type: "string", format: "uri" },
+              source_platform: { type: "string" },
+              why_relevant: { type: "string" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '
+  {
+    "query": "Find current open job postings for Exa on Ashby. Use Ashby-hosted postings, preferably jobs.ashbyhq.com/exa, and verify each job is for Exa, the AI search company at exa.ai. Return up to 5 postings with company name, title, function, location, Ashby posting URL, and why it is relevant.",
+    "effort": "medium",
+    "outputSchema": {
+      "type": "object",
+      "required": ["job_postings"],
+      "properties": {
+        "job_postings": {
+          "type": "array",
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "title",
+              "company",
+              "function",
+              "location",
+              "company_verified_as_exa_ai",
+              "posting_url",
+              "source_platform",
+              "why_relevant"
+            ],
+            "properties": {
+              "title": { "type": "string" },
+              "company": { "type": "string" },
+              "function": { "type": "string" },
+              "location": { "type": "string" },
+              "company_verified_as_exa_ai": { "type": "boolean" },
+              "posting_url": { "type": "string", "format": "uri" },
+              "source_platform": { "type": "string" },
+              "why_relevant": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+  '
+  ```
+</CodeGroup>
+
+<h2 id="enrich-input-rows-code">
+  丰富输入行
+</h2>
+
+如果你的系统中已有这些记录，需要 Agent 对每条记录做研究或信息补全，请使用 `input.data`。这种模式把行标识保留在结构化输入中，而不是塞进提示词里。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="For each input company, produce a concise research brief. Use recent, reputable sources. Return one report per input row.",
+      effort="medium",
+      input={"data": [{"company": "Ramp", "domain": "ramp.com"}, {"company": "Mercury", "domain": "mercury.com"}]},
+      output_schema={
+          "type": "object",
+          "required": ["reports"],
+          "properties": {
+              "reports": {
+                  "type": "array",
+                  "maxItems": 2,
+                  "items": {
+                      "type": "object",
+                      "required": ["company", "domain", "overview", "buyingSignals", "sourceUrls", "verified_domain"],
+                      "properties": {
+                          "company": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "overview": {"type": "string"},
+                          "buyingSignals": {
+                              "type": "array",
+                              "maxItems": 3,
+                              "items": {"type": "string"},
+                          },
+                          "sourceUrls": {
+                              "type": "array",
+                              "minItems": 1,
+                              "items": {"type": "string", "format": "uri"},
+                          },
+                          "verified_domain": {"type": "boolean"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "For each input company, produce a concise research brief. Use recent, reputable sources. Return one report per input row.",
+    effort: "medium",
+    input: { data: [{ company: "Ramp", domain: "ramp.com" }, { company: "Mercury", domain: "mercury.com" }] },
+    outputSchema: {
+      type: "object",
+      required: ["reports"],
+      properties: {
+        reports: {
+          type: "array",
+          maxItems: 2,
+          items: {
+            type: "object",
+            required: ["company", "domain", "overview", "buyingSignals", "sourceUrls", "verified_domain"],
+            properties: {
+              company: { type: "string" },
+              domain: { type: "string" },
+              overview: { type: "string" },
+              buyingSignals: {
+                type: "array",
+                maxItems: 3,
+                items: { type: "string" }
+              },
+              sourceUrls: {
+                type: "array",
+                minItems: 1,
+                items: { type: "string", format: "uri" }
+              },
+              verified_domain: { type: "boolean" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '
+  {
+    "query": "For each input company, produce a concise research brief. Use recent, reputable sources. Return one report per input row.",
+    "effort": "medium",
+    "input": {
+      "data": [
+        { "company": "Ramp", "domain": "ramp.com" },
+        { "company": "Mercury", "domain": "mercury.com" }
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": ["reports"],
+      "properties": {
+        "reports": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["company", "domain", "overview", "buyingSignals", "sourceUrls", "verified_domain"],
+            "properties": {
+              "company": { "type": "string" },
+              "domain": { "type": "string" },
+              "overview": { "type": "string" },
+              "buyingSignals": {
+                "type": "array",
+                "maxItems": 3,
+                "items": { "type": "string" }
+              },
+              "sourceUrls": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "type": "string", "format": "uri" }
+              },
+              "verified_domain": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    }
+  }
+  '
+  ```
+</CodeGroup>
+
+<h2 id="bounded-contact-fields-code">
+  用受限的联系人字段为行数据做 enrichment
+</h2>
+
+面向联系人的工作流可能会产生单独的联系人 enrichment 费用。此处的文档版本做了匿名化处理，只展示数据结构，不公开真实姓名、邮箱、电话号码或个人主页链接。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="For each company, find the best sales or partnerships contact. Prefer leadership or go-to-market roles. Return anonymized contact labels in examples and include evidence for why each role is relevant.",
+      effort="high",
+      input={"data": [{"company": "LangChain", "domain": "langchain.com"}, {"company": "Modal", "domain": "modal.com"}]},
+      output_schema={
+          "type": "object",
+          "required": ["contacts"],
+          "properties": {
+              "contacts": {
+                  "type": "array",
+                  "maxItems": 2,
+                  "items": {
+                      "type": "object",
+                      "required": ["company", "contact_label", "role", "relevanceReason"],
+                      "properties": {
+                          "company": {"type": "string"},
+                          "contact_label": {"type": "string"},
+                          "role": {"type": "string"},
+                          "relevanceReason": {"type": "string"},
+                          "contact_cost_bound": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "For each company, find the best sales or partnerships contact. Prefer leadership or go-to-market roles. Return anonymized contact labels in examples and include evidence for why each role is relevant.",
+    effort: "high",
+    input: { data: [{ company: "LangChain", domain: "langchain.com" }, { company: "Modal", domain: "modal.com" }] },
+    outputSchema: {
+      type: "object",
+      required: ["contacts"],
+      properties: {
+        contacts: {
+          type: "array",
+          maxItems: 2,
+          items: {
+            type: "object",
+            required: ["company", "contact_label", "role", "relevanceReason"],
+            properties: {
+              company: { type: "string" },
+              contact_label: { type: "string" },
+              role: { type: "string" },
+              relevanceReason: { type: "string" },
+              contact_cost_bound: { type: "string" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '
+  {
+    "query": "For each company, find the best sales or partnerships contact. Prefer leadership or go-to-market roles. Return anonymized contact labels in examples and include evidence for why each role is relevant.",
+    "effort": "high",
+    "input": {
+      "data": [
+        { "company": "LangChain", "domain": "langchain.com" },
+        { "company": "Modal", "domain": "modal.com" }
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": ["contacts"],
+      "properties": {
+        "contacts": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["company", "contact_label", "role", "relevanceReason"],
+            "properties": {
+              "company": { "type": "string" },
+              "contact_label": { "type": "string" },
+              "role": { "type": "string" },
+              "relevanceReason": { "type": "string" },
+              "contact_cost_bound": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+  '
+  ```
+</CodeGroup>
+
+<h2 id="exclude-known-records-code">
+  排除已知记录
+</h2>
+
+如果希望 Agent 避开你的产品已经审阅、展示或拒绝过的记录，请使用 `input.exclusion`。
+表格预览中返回的公司名称均为合成数据，这样既能直观呈现排除机制，又不会让人误以为这些行来自真实的生产运行。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find 10 seed-stage companies building infrastructure for AI coding agents. Do not return companies in the exclusion list.",
+      effort="auto",
+      input={"exclusion": [{"company": "Cursor", "domain": "cursor.com"}, {"company": "CodeRabbit", "domain": "coderabbit.ai"}]},
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["company", "domain", "reason", "sourceUrl"],
+                      "properties": {
+                          "company": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "reason": {"type": "string"},
+                          "sourceUrl": {"type": "string", "format": "uri"},
+                          "excluded_match": {"type": "string"},
+                          "status": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find 10 seed-stage companies building infrastructure for AI coding agents. Do not return companies in the exclusion list.",
+    effort: "auto",
+    input: { exclusion: [{ company: "Cursor", domain: "cursor.com" }, { company: "CodeRabbit", domain: "coderabbit.ai" }] },
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["company", "domain", "reason", "sourceUrl"],
+            properties: {
+              company: { type: "string" },
+              domain: { type: "string" },
+              reason: { type: "string" },
+              sourceUrl: { type: "string", format: "uri" },
+              excluded_match: { type: "string" },
+              status: { type: "string" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '
+  {
+    "query": "Find 10 seed-stage companies building infrastructure for AI coding agents. Do not return companies in the exclusion list.",
+    "effort": "auto",
+    "input": {
+      "exclusion": [
+        { "company": "Cursor", "domain": "cursor.com" },
+        { "company": "CodeRabbit", "domain": "coderabbit.ai" }
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": ["companies"],
+      "properties": {
+        "companies": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "required": ["company", "domain", "reason", "sourceUrl"],
+            "properties": {
+              "company": { "type": "string" },
+              "domain": { "type": "string" },
+              "reason": { "type": "string" },
+              "sourceUrl": { "type": "string", "format": "uri" },
+              "excluded_match": { "type": "string" },
+              "status": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+  '
+  ```
+</CodeGroup>
+
+<h2 id="continue-workflow-code">
+  继续已完成的工作流
+</h2>
+
+如果下一次请求需要沿用某次已完成运行的上下文，请使用 `previousRunId`。
+下方表格预览中的公司名称均为虚构数据，仅用于演示这种接续模式，不会暴露真实的历史运行结果。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="From the companies you found, narrow the list to those hiring platform engineers in San Francisco. Add the hiring page URL for each match.",
+      previous_run_id="agent_run_01j...",
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["company", "website", "hiringPageUrl"],
+                      "properties": {
+                          "company": {"type": "string"},
+                          "website": {"type": "string", "format": "uri"},
+                          "hiringPageUrl": {"type": "string", "format": "uri"},
+                          "hiringEvidence": {"type": "string"},
+                          "location": {"type": "string"},
+                          "followup_source": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    previousRunId: "agent_run_01j...",
+    query: "From the companies you found, narrow the list to those hiring platform engineers in San Francisco. Add the hiring page URL for each match.",
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["company", "website", "hiringPageUrl"],
+            properties: {
+              company: { type: "string" },
+              website: { type: "string", format: "uri" },
+              hiringPageUrl: { type: "string", format: "uri" },
+              hiringEvidence: { type: "string" },
+              location: { type: "string" },
+              followup_source: { type: "string" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '{
+    "previousRunId": "agent_run_01j...",
+    "query": "From the companies you found, narrow the list to those hiring platform engineers in San Francisco. Add the hiring page URL for each match.",
+    "outputSchema": {
+      "type": "object",
+      "required": ["companies"],
+      "properties": {
+        "companies": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "object",
+            "required": ["company", "website", "hiringPageUrl"],
+            "properties": {
+              "company": { "type": "string" },
+              "website": { "type": "string", "format": "uri" },
+              "hiringPageUrl": { "type": "string", "format": "uri" },
+              "hiringEvidence": { "type": "string" },
+              "location": { "type": "string" },
+              "followup_source": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }'
+  ```
+</CodeGroup>
+
+<div id="broad-list-building-with-agent-max">
+  ## 使用 Agent Max 进行大范围列表构建
+</div>
+
+当完整性和全面性比延迟或成本更重要时，请使用 `effort: "max"`，例如构建大型列表、跨多来源的深度研究，以及难以验证的 criteria。Agent Max 目前处于公开测试阶段：请在请求中附带 `Exa-Beta: agent-max-effort-2026-07-27`。该 header 支持以逗号分隔的 beta 标记列表。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.beta.agent.runs.create(
+      query="Find all companies building browser automation tools in the United States.",
+      effort="max",
+      budget={"maxCostDollars": 10},
+      betas=["agent-max-effort-2026-07-27"],
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.beta.agent.runs.create({
+    query: "Find all companies building browser automation tools in the United States.",
+    effort: "max",
+    budget: { maxCostDollars: 10 },
+    betas: ["agent-max-effort-2026-07-27"]
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -H "Exa-Beta: agent-max-effort-2026-07-27" \
+    -d '{
+      "query": "Find all companies building browser automation tools in the United States.",
+      "effort": "max",
+      "budget": { "maxCostDollars": 10 }
+    }'
+  ```
+</CodeGroup>
+
+<div id="attach-a-data-partner-with-exa-connect">
+  ## 使用 Exa Connect 接入数据合作伙伴
+</div>
+
+通过 `dataSources`，可让 Exa Agent 在运行期间从高级数据合作伙伴获取数据。下面的示例将 Similarweb 的流量数据和 Harmonic 的融资数据与网络调研结合，为每家公司补充信息。完整的合作伙伴列表请参见 [Exa Connect](/zh/docs/agent/connect/overview)。
+
+<CodeGroup>
+  ```python Python expandable theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="For each input company, report estimated monthly visits and total funding raised. Use the attached data partners.",
+      effort="medium",
+      data_sources=[
+          {"provider": "similarweb"},
+          {"provider": "harmonic"},
+      ],
+      input={
+          "data": [
+              {"company": "Ramp", "domain": "ramp.com"},
+              {"company": "Mercury", "domain": "mercury.com"},
+          ]
+      },
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 2,
+                  "items": {
+                      "type": "object",
+                      "required": ["company", "domain", "monthlyVisits", "totalFunding"],
+                      "properties": {
+                          "company": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "monthlyVisits": {"type": "number", "description": "from Similarweb"},
+                          "totalFunding": {"type": "string", "description": "from Harmonic"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  print(run)
+  ```
+
+  ```javascript JavaScript expandable theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "For each input company, report estimated monthly visits and total funding raised. Use the attached data partners.",
+    effort: "medium",
+    dataSources: [{ provider: "similarweb" }, { provider: "harmonic" }],
+    input: {
+      data: [
+        { company: "Ramp", domain: "ramp.com" },
+        { company: "Mercury", domain: "mercury.com" }
+      ]
+    },
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 2,
+          items: {
+            type: "object",
+            required: ["company", "domain", "monthlyVisits", "totalFunding"],
+            properties: {
+              company: { type: "string" },
+              domain: { type: "string" },
+              monthlyVisits: { type: "number", description: "from Similarweb" },
+              totalFunding: { type: "string", description: "from Harmonic" }
+            }
+          }
+        }
+      }
+    }
+  });
+  console.log(run);
+  ```
+
+  ```bash cURL expandable theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "x-api-key: $EXA_API_KEY" \
+    -d '{
+    "query": "For each input company, report estimated monthly visits and total funding raised. Use the attached data partners.",
+    "effort": "medium",
+    "dataSources": [
+      { "provider": "similarweb" },
+      { "provider": "harmonic" }
+    ],
+    "input": {
+      "data": [
+        { "company": "Ramp", "domain": "ramp.com" },
+        { "company": "Mercury", "domain": "mercury.com" }
+      ]
+    },
+    "outputSchema": {
+      "type": "object",
+      "required": ["companies"],
+      "properties": {
+        "companies": {
+          "type": "array",
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["company", "domain", "monthlyVisits", "totalFunding"],
+            "properties": {
+              "company": { "type": "string" },
+              "domain": { "type": "string" },
+              "monthlyVisits": { "type": "number", "description": "from Similarweb" },
+              "totalFunding": { "type": "string", "description": "from Harmonic" }
+            }
+          }
+        }
+      }
+    }
+  }'
+  ```
+</CodeGroup>
+
+<div id="production-checklist">
+  ## 生产环境检查清单
+</div>
+
+* 为 Agent 提供明确的 `query`，写清任务单元以及期望的来源质量。
+* 对于已知记录，使用 `input.data`，不要把数据行直接写进提示词。
+* 对于不应再次返回的记录，使用 `input.exclusion`。
+* 只要下游代码要消费结果，就加上 `outputSchema`。
+* 需要可预期的范围和成本时，为数组设置 `maxItems`。
+* 保存返回的运行 `id`，以便后续轮询、重放事件、查看成本或从该次运行继续。

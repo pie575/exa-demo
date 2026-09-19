@@ -1,0 +1,164 @@
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="jinko">
+  # Jinko
+</div>
+
+> Búsqueda de vuelos y hoteles con precios en tiempo real.
+
+[Jinko](https://gojinko.com) es una plataforma de búsqueda de viajes que ofrece
+búsqueda de vuelos y hoteles con precios en tiempo real. Consulta ofertas de vuelos
+en tiempo real para una ruta y una fecha, compara habitaciones y tarifas de hoteles para un destino
+o para alojamientos concretos, y explora los destinos a los que puedes llegar desde tus aeropuertos de salida.
+
+Adjunta `jinko` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
+[Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
+Jinko junto con la búsqueda web de Exa.
+
+<div id="use-it-for">
+  ## Úsalo para
+</div>
+
+* Buscar ofertas de vuelos en tiempo real con tarifas, equipaje y políticas de cambio para una ruta y una fecha.
+* Encontrar hoteles con tarifas de habitación en tiempo real para un destino, o volver a consultar hoteles concretos.
+* Descubrir destinos y fechas flexibles en distintos rangos de fechas, clases de cabina y presupuestos.
+
+<div id="provider-id">
+  ## ID del proveedor
+</div>
+
+Usa este valor en `dataSources`:
+
+```text theme={null}
+jinko
+```
+
+<div id="example">
+  ## Ejemplo
+</div>
+
+Encuentra destinos de playa a los que se pueda volar desde Nueva York por menos de $400 ida y vuelta en marzo.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find beach destinations reachable from New York for under $400 round-trip in March.",
+      data_sources=[{"provider": "jinko"}],
+      output_schema={
+          "type": "object",
+          "required": ["destinations"],
+          "properties": {
+              "destinations": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["city", "iataCode", "lowestFare"],
+                      "properties": {
+                          "city": {"type": "string"},
+                          "iataCode": {"type": "string"},
+                          "lowestFare": {"type": "number", "description": "round-trip fare in USD"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find beach destinations reachable from New York for under $400 round-trip in March.",
+    dataSources: [{ provider: "jinko" }],
+    outputSchema: {
+      type: "object",
+      required: ["destinations"],
+      properties: {
+        destinations: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["city", "iataCode", "lowestFare"],
+            properties: {
+              city: { type: "string" },
+              iataCode: { type: "string" },
+              lowestFare: { type: "number", description: "round-trip fare in USD" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find beach destinations reachable from New York for under $400 round-trip in March.",
+      "dataSources": [{ "provider": "jinko" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["destinations"],
+        "properties": {
+          "destinations": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["city", "iataCode", "lowestFare"],
+              "properties": {
+                "city": { "type": "string" },
+                "iataCode": { "type": "string" },
+                "lowestFare": { "type": "number", "description": "round-trip fare in USD" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
+
+* [Similarweb](/es/docs/agent/connect/similarweb): investiga los sitios de viajes y las plataformas de reservas que hay detrás de un destino.
+* [Particle](/es/docs/agent/connect/particle): obtén cobertura reciente y comentarios de viajes sobre un lugar.
+
+<div id="next-steps">
+  ## Próximos pasos
+</div>
+
+<Columns cols={2}>
+  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir la guía rápida" arrow="true">
+    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
+  </Card>
+
+  <Card title="Combinar proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
+    Adjunta hasta cinco partners a una misma ejecución y formula la query de modo que todos se activen.
+  </Card>
+
+  <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+    Crea ejecuciones, transmite el progreso en tiempo real, diseña esquemas de salida y controla el esfuerzo y el costo.
+  </Card>
+
+  <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
+    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con credits gratuitos.
+  </Card>
+</Columns>

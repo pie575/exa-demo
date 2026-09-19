@@ -1,0 +1,220 @@
+---
+title: "Pydantic AI"
+description: "为 Pydantic AI 智能体提供由 Exa 搜索 API 支持的网络研究工具。"
+icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
+---
+
+<Card title="编程智能体快速上手" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  初次使用 Exa？一分钟内即可上手。
+</Card>
+
+***
+
+[Pydantic AI](https://pydantic.dev/docs/ai/) 是 Pydantic 团队推出的 Python 智能体框架。其 [harness](https://pydantic.dev/docs/ai/harness/exa-search/) 以两项可组合的能力提供官方 Exa 集成：
+
+* **`ExaSearch`**：由 Exa Search API 支持的网络研究工具，包含 `web_search` (返回排名靠前的结果及其最相关摘录，并可选返回综合生成的文本摘要) 、`get_page` (获取指定 URL 的完整页面内容) ，以及可选启用的 `deep_search` (一次调用即可获得带引用的综合答案) 。
+* **`ExaAgent`**：以延迟工具调用的方式，将长时间运行的研究任务委托给 [Exa Agent API](/zh/docs/agent/quickstart)。
+
+每项能力都打包了相应的工具、各工具的输出预算，以及系统提示中的简短研究指引，因此你无需自行将搜索 API 与页面抓取工具串联起来，也不必自己编写提示词来引导智能体有条理地开展研究。
+
+<Info> 完整参考文档请见 Pydantic 官方[说明](https://pydantic.dev/docs/ai/harness/exa-search/)。 </Info>
+
+<Card title="阅读 Pydantic 关于使用 Exa 构建研究智能体的文章" icon="/docs/images/integrations/pydantic-ai/logo.svg" horizontal href="https://pydantic.dev/articles/harness-exa" width="120" height="120" data-path="images/integrations/pydantic-ai/logo.svg">
+  详细讲解三个基于 Pydantic AI 与 Exa 构建、可直接复制使用的研究智能体。
+</Card>
+
+***
+
+<div id="get-started">
+  ## 快速开始
+</div>
+
+<Steps>
+  <Step title="前置条件与安装">
+    安装带 Exa extra 的 harness，并设置 `EXA_API_KEY` 环境变量。
+
+    ```Bash Bash theme={null}
+    uv add "pydantic-ai-harness[exa]"
+    ```
+
+    <Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      在控制台中创建一个 key。新账户可获得免费额度。
+    </Card>
+  </Step>
+
+  <Step title="为 agent 添加 ExaSearch">
+    通过 `capabilities` 参数将 `ExaSearch` 传入 `Agent`。默认情况下，身份验证凭据取自 `EXA_API_KEY`。
+
+    ```Python Python theme={null}
+    from pydantic_ai import Agent
+    from pydantic_ai_harness.exa import ExaSearch
+
+    agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch()])
+
+    result = agent.run_sync('What changed in the latest stable Python release?')
+    print(result.output)
+    ```
+
+    `ExaSearch` 会为 agent 增加两个工具：
+
+    | 工具           | 用途                                                       |
+    | ------------ | -------------------------------------------------------- |
+    | `web_search` | 搜索网页并返回排名靠前的 `num_results` 个页面，每个页面包含标题、URL 及其最相关的摘录。    |
+    | `get_page`   | 获取某个指定 URL 的全文——可以是 `web_search` 中值得深入的结果，也可以是用户提供的 URL。 |
+
+    `web_search` 返回的是简短摘录 (Exa highlights) 而非完整页面正文，因此浏览多个来源的成本很低；随后 agent 再用 `get_page` 读取选定的页面。若某个 URL 或问题未返回内容、触发限流或出现瞬时故障，都会以 `ModelRetry` 的形式呈现给模型，让本次运行有机会恢复；而身份验证失败 (401/403) 会作为配置错误向上抛出。
+  </Step>
+
+  <Step title="启用深度搜索（可选）">
+    `deep_search` 会运行 Exa 的多步 [深度搜索](/zh/docs/search/quickstart) (`type='deep'`) ：Exa 会把问题拆解为多个查询并分别搜索，在一次工具调用中返回有引用来源支撑的答案。相比 `web_search`，它耗时更长、搜索更深入，因此默认关闭，需显式启用：
+
+    ```Python Python theme={null}
+    from pydantic_ai_harness.exa import ExaSearch
+
+    agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch(include_deep_search=True)])
+    ```
+
+    启用后，该能力的指令会告知模型：应把 `deep_search` 当作 `web_search` 的进一步升级手段，而非替代方案。
+  </Step>
+</Steps>
+
+***
+
+<div id="configuration">
+  ## 配置
+</div>
+
+`ExaSearch` 的所有字段及其默认值：
+
+```Python Python theme={null}
+from pydantic_ai_harness.exa import ExaSearch
+
+ExaSearch(
+    num_results=5,             # 每次 web_search 调用返回的结果数（1 到 100）
+    max_text_chars=10_000,     # get_page 文本上限，单位为字符（1 到 10,000）
+    text_summary=False,        # web_search 同时返回综合生成的文本摘要
+    include_deep_search=False, # 同时开放 deep_search 工具
+    include_domains=[],        # 仅搜索这些域名（允许列表）
+    exclude_domains=[],        # 从不搜索这些域名（拒绝列表）
+    guidance=None,             # None = 默认说明，'' = 不使用，str = 自定义
+    client=None,               # ExaClient —— None 表示根据 EXA_API_KEY 构建 exa_py.AsyncExa
+)
+```
+
+`include_domains` 和 `exclude_domains` 适用于 `web_search` 和 `deep_search`，且二者互斥。限制值超出范围或同时设置这两个域名列表，都会在构造时抛出异常。
+
+<div id="text-summary">
+  ### 文本摘要
+</div>
+
+设置 `text_summary` 后，每次 `web_search` 调用都会额外请求一份对结果综合生成的纯文本摘要。传入 `True` 可获得不限格式的摘要，也可传入一个字符串来描述所需的格式：
+
+```Python Python theme={null}
+from pydantic_ai_harness.exa import ExaSearch
+
+ExaSearch(text_summary='One concise sentence with the requested facts.')
+```
+
+该工具的返回结构保持不变：当 Exa 返回 summary 时，会以 `Summary:` 行的形式添加在开头。
+
+<div id="structured-citations">
+  ### 结构化引用
+</div>
+
+每个工具都会返回一个 `ToolReturn`：`return_value` 包含模型可见的可读文本 (含 `Sources:` 区块) ，`metadata` 则在 `'sources'` 键下以结构化的 `ExaSource` 记录 (`{'url': ..., 'title': ...}`) 形式提供来源信息。元数据不会发送给模型，因此渲染引用时无需解析文本：
+
+```Python Python theme={null}
+from pydantic_ai.messages import ModelRequest, ToolReturnPart
+
+for message in result.all_messages():
+    if isinstance(message, ModelRequest):
+        for part in message.parts:
+            if isinstance(part, ToolReturnPart) and part.metadata is not None:
+                for source in part.metadata.get('sources', []):
+                    print(source['url'], source['title'])
+```
+
+<div id="custom-client">
+  ### 自定义客户端
+</div>
+
+默认客户端为 `exa_py.AsyncExa`，由 `EXA_API_KEY` 配置。你可以传入任何符合 `ExaClient` 协议的对象，以显式配置认证方式或基础 URL，或在测试中替换为伪实现：
+
+```Python Python theme={null}
+from exa_py import AsyncExa
+from pydantic_ai_harness.exa import ExaSearch
+
+ExaSearch(client=AsyncExa(api_key='...'))
+```
+
+***
+
+<div id="exa-agent-runs">
+  ## Exa agent 运行
+</div>
+
+[Exa Agent API](/zh/docs/agent/quickstart) 以异步方式执行开放式研究任务。`ExaAgent` 能力将这一生命周期映射到 Pydantic AI 的[延迟工具调用](https://pydantic.dev/docs/ai/deferred-tools/)：其 `exa_agent` 工具会创建运行并进入延迟状态，同时在延迟调用的元数据中携带 Exa 运行 ID。
+
+```Python Python theme={null}
+from pydantic_ai import Agent
+from pydantic_ai_harness.exa import ExaAgent
+
+agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaAgent()])
+```
+
+默认情况下 (`execution='inline'`) ，该能力会在 Agent 运行期间通过轮询 Exa 运行直至完成，自行解析这些延迟调用，因此该工具用起来和普通工具没有区别 (只是慢一些) 。设置 `execution='external'` 时，这些调用会以 `DeferredToolRequests` 输出的形式向上传递，由宿主应用在带外自行解析。
+
+`ExaAgent` 的全部字段及其默认值：
+
+```Python Python theme={null}
+from pydantic_ai_harness.exa import ExaAgent
+
+ExaAgent(
+    effort=None,          # 'low' | 'medium' | 'high' | 'xhigh' | 'auto' —— None 表示使用 API 默认值
+    execution='inline',   # 'inline' 轮询至运行完成；'external' 将 DeferredToolRequests 向上抛出
+    output_schema=None,   # 用于结构化输出的 BaseModel 类或 dict schema
+    system_prompt=None,   # 转发给 Exa agent 运行
+    poll_interval=1000,   # inline 模式下两次轮询的间隔（毫秒）
+    timeout_ms=3_600_000, # inline 模式下等待运行完成的超时时间（毫秒）
+    guidance=None,        # None 表示默认指令，'' 表示不使用，str 表示自定义
+    runs=None,            # ExaAgentRuns —— 为 None 时根据 EXA_API_KEY 构建 AsyncExa().agent.runs
+)
+```
+
+***
+
+<div id="agent-spec-yamljson">
+  ## Agent spec (YAML/JSON)
+</div>
+
+这两项能力都支持 Pydantic AI 的 [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec)，因此你可以在配置文件中声明它们，而不必写 Python 代码：
+
+```yaml agent.yaml theme={null}
+model: anthropic:claude-sonnet-4-6
+capabilities:
+  - ExaSearch:
+      num_results: 3
+      include_deep_search: true
+  - ExaAgent:
+      effort: low
+```
+
+```Python Python theme={null}
+from pydantic_ai import Agent
+from pydantic_ai_harness.exa import ExaAgent, ExaSearch
+
+agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAgent])
+```
+
+传入 `custom_capability_types`，以便 spec 加载器知道如何实例化这些能力。通过 spec 加载的实例始终基于 `EXA_API_KEY` 构建默认客户端。
+
+***
+
+<div id="next">
+  ## 下一步
+</div>
+
+* [**Search API**](/zh/docs/search/quickstart) - 语义搜索，支持 highlights、摘要与深度搜索
+* [**Agent API**](/zh/docs/agent/quickstart) - 开放式异步研究任务
+* [**MCP 设置**](/zh/docs/get-started/exa-mcp) - Exa 托管的 MCP 服务器
+* [**SDK**](/zh/docs/sdks/quickstart) - Python 与 JavaScript SDK 文档

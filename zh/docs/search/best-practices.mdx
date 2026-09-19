@@ -1,0 +1,226 @@
+---
+title: "Search 最佳实践"
+sidebarTitle: "最佳实践"
+description: "为生产环境的 Search API 集成优化检索质量、延迟、上下文与结果综合。"
+keywords: ["search api", "search quality", "rag", "retrieval", "latency", "structured output"]
+---
+
+本指南假定你已经有一个可用的 [Search API 请求](/zh/docs/search/quickstart)，并介绍如何按照 Exa 推荐的最佳实践进一步优化该请求。
+
+<div id="start-with-the-smallest-useful-request">
+  ## 从最小可用请求开始
+</div>
+
+最好的基线做法是：用一个自然语言 query，并设置 `highlights: true`。Exa 会按每条结果的相关性自动调整摘录长度，因此无需调节字符预算：
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Recent technical articles comparing hybrid and semantic retrieval for RAG systems",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "Recent technical articles comparing hybrid and semantic retrieval for RAG systems",
+    { contents: { highlights: true } }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Recent technical articles comparing hybrid and semantic retrieval for RAG systems",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+这样你会得到排序后的页面，以及每个页面中与 query 相关、且节省 token 的上下文。
+
+仅在确有需要时再添加其他参数：
+
+| 参数                         | 何时添加                       |
+| -------------------------- | -------------------------- |
+| `type`                     | 需要满足延迟预算或检索深度要求时           |
+| `numResults`               | 上下文窗口较小时减少页面数，或为扩大召回而增加页面数 |
+| `outputSchema`             | 需要综合结果或将其结构化为 JSON 时       |
+| `maxAgeHours`              | 缓存的页面内容可能过于陈旧时             |
+| `highlights.maxCharacters` | 你的应用要求每个页面的摘录长度有固定上限时      |
+| 域名或日期过滤条件                  | 不符合该约束的结果对你毫无用处时           |
+
+<div id="search-vs-deep-search">
+  ## Search 与 Deep Search 对比
+</div>
+
+标准 search 针对 query 检索页面并排序。Deep Search 则会运行一套研究流程：迭代搜索、审视已找到的内容、优化搜索，并综合出有据可依的结果。
+
+| 需求                                          | 建议使用                                |
+| ------------------------------------------- | ----------------------------------- |
+| 为表述清晰的 query 返回排序后的页面                       | `auto` 或 `fast`                     |
+| 高难度搜索、跨多个结果的信息综合，或单次搜索无法填满的结构化输出 (3 个以上字段)  | `deep`                              |
+| 长时间运行的研究、列表构建或多跳 enrichment                 | [Exa Agent](/zh/docs/agent/quickstart) |
+
+使用 `outputSchema` 时，默认推荐采用 deep 模式。完整说明与示例请参阅 [Deep Search 指南](/zh/docs/search/deep-search)。
+
+<div id="improve-retrieval-quality">
+  ## 提升检索质量
+</div>
+
+当结果不理想时，每次只调整请求中的一个部分。
+
+<Steps>
+  <Step title="明确查询">
+    描述你想要的页面，而不是堆砌关键词。写清主题，以及任何会影响相关结果判定的来源类型、
+    时间范围或其他细节。
+
+    ```text theme={null}
+    Benchmark papers evaluating long-context retrieval methods on legal documents
+    ```
+  </Step>
+
+  <Step title="分层阅读响应">
+    在修改请求之前，先看标题、URL、发布日期和 highlights。
+
+    ```json theme={null}
+    {
+      "results": [
+        {
+          "title": "Long-Context Retrieval Methods on Legal Documents",
+          "url": "https://arxiv.org/abs/2608.00000",
+          "publishedDate": "2026-08-26T00:00:00.000Z",
+          "highlights": [
+            "We compare long-context retrieval methods across legal document benchmarks..."
+          ]
+        }
+      ]
+    }
+    ```
+
+    标题和 URL 反映 Exa 检索到的来源类型，`publishedDate` 反映其时效性，
+    highlight 则给出与查询匹配的依据。要检索不同的页面，就优化查询；要收窄时间范围，就加上日期过滤器；
+    如果某个结果有价值、但需要更多上下文，则抓取全文。
+  </Step>
+
+  <Step title="只添加硬性约束">
+    只有当违反约束的结果完全不可用时，才使用 `includeDomains`、`excludeDomains` 和发布日期筛选条件。
+    把检索偏好写进查询；在进行内容合成时，把响应要求写进 `systemPrompt`。
+  </Step>
+
+  <Step title="最后再调整搜索模式">
+    有延迟要求时使用更快的模式；检索过程本身需要迭代和推理时使用深度模式。
+    换一种模式并不能弥补描述不充分的查询。
+  </Step>
+</Steps>
+
+调优时请固定一小组有代表性的查询，在整组查询上比较结果相关性和下游任务的成功率，而不是针对单个示例做优化。记录 `requestId`、`searchTime` 和 `costDollars`，以便回归问题可复现。
+
+<div id="budget-latency-and-context">
+  ## 规划延迟与上下文预算
+</div>
+
+每项控制消耗的资源各不相同：
+
+| 控制项                       | 带来的额外开销              |
+| ------------------------- | -------------------- |
+| 更多结果                      | 更多页面、响应数据以及下游上下文     |
+| 全文                        | 更广的页面上下文和更大的 payload |
+| `summary`                 | 每条结果额外一次语言模型调用       |
+| `outputSchema`            | 对检索到的结果进行综合          |
+| `contents.maxAgeHours: 0` | 重新抓取页面，而非使用缓存内容      |
+| 深度搜索类型                    | 迭代搜索、综合与推理           |
+
+对于可接受缓存内容的实时场景，可将最低延迟模式与 highlights、仅用缓存的 contents 组合使用：
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "Recent product updates from major AI labs",
+      type="instant",
+      contents={
+          "highlights": True,
+          "max_age_hours": -1,
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("Recent product updates from major AI labs", {
+    type: "instant",
+    contents: {
+      highlights: true,
+      maxAgeHours: -1
+    }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Recent product updates from major AI labs",
+      "type": "instant",
+      "contents": {
+        "highlights": true,
+        "maxAgeHours": -1
+      }
+    }'
+  ```
+</CodeGroup>
+
+当页面新鲜度直接关系到结果正确性时，请勿使用这一方案。除非产品有经过实测的延迟目标，否则建议从 `auto` 和默认新鲜度设置起步。
+
+若希望由 Exa 在整个结果集范围内统一分配上下文预算——优质来源多取、冗余来源少取——请参阅 [Dynamic Highlights 研究预览](/zh/docs/search/highlights#dynamic-highlights)。
+
+<div id="tips-for-common-use-cases">
+  ## 常见用例小贴士
+</div>
+
+| 如果你需要        | 使用                                                             | 避免                  |
+| ------------ | -------------------------------------------------------------- | ------------------- |
+| 较新发表的内容      | 在查询中写明时间范围，或使用发布日期筛选条件                                         | `maxAgeHours`       |
+| 经常更新页面的最新内容  | `contents.maxAgeHours`                                         | 发布日期筛选条件            |
+| 偏向某一类信息来源    | 查询措辞；合成时使用 `systemPrompt`                                      | 强制的域名白名单            |
+| 仅来自认可来源的结果   | `includeDomains`                                               | 在查询中反复使用 `site:`    |
+| 小型结构化输出      | 标准 Search 配合 `outputSchema`                                    | 仅因输出为 JSON 就选择 Deep |
+| 多条目的研究型输出    | `deep` 配合 `outputSchema`，或 [Exa Agent](/zh/docs/agent/quickstart) | 指望一次检索就收集齐所有条目      |
+| 从少量页面获取更多上下文 | 先用带 highlights 的搜索，再调用 Contents                                | 为每条结果都取全文           |
+| 更低的延迟        | 搭配精简内容测试 `fast` 或 `instant`                                    | 默认开启时效性或合成相关控制      |
+
+<div id="when-to-use-another-endpoint">
+  ## 何时使用其他端点
+</div>
+
+当任务性质发生变化时，可改用其他 Exa 端点：
+
+| 任务                        | 使用                                    |
+| ------------------------- | ------------------------------------- |
+| 长时间运行的研究、列表构建或 enrichment | [Exa Agent](/zh/docs/agent/quickstart)   |
+| 已知 URL                    | [Contents](/zh/docs/contents/quickstart) |
+| 按计划定期执行 search            | [Monitors](/zh/docs/monitors/quickstart) |
+
+<div id="next-steps">
+  ## 后续步骤
+</div>
+
+<Columns cols={2}>
+  <Card title="Search API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考文档" arrow="true">
+    全部请求参数与响应字段。
+  </Card>
+
+  <Card title="Search 快速开始" icon="search" href="/zh/docs/search/quickstart" cta="查看指南" arrow="true">
+    核心请求结构、筛选条件、输出与新鲜度。
+  </Card>
+
+  <Card title="Contents API" icon="file-text" href="/zh/docs/contents/quickstart" cta="打开指南" arrow="true">
+    从已知页面中提取 highlights 或全文。
+  </Card>
+
+  <Card title="Exa Agent" icon="bot" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">
+    长时间运行的研究、列表构建与 enrichment。
+  </Card>
+</Columns>

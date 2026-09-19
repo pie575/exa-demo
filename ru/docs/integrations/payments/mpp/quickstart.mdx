@@ -1,0 +1,316 @@
+---
+title: "Оплата через MPP (Tempo)"
+sidebarTitle: "Платежи MPP"
+description: "Вызывайте API Search и Contents от Exa без API key — оплачивайте каждый запрос в USDC.e на Tempo."
+icon: "/docs/images/sidebar-icons/tempo.svg"
+---
+
+<div id="what-is-mpp">
+  ## Что такое MPP?
+</div>
+
+MPP (Machine Payments Protocol) — это открытый HTTP-ориентированный стандарт платежей, построенный на коде состояния `402 Payment Required`. Он позволяет клиентам оплачивать доступ к API отдельно за каждый запрос разными способами, в том числе стейблкоинами в сети [Tempo](https://tempo.xyz), — без учётных записей, API key и подписок. В примерах на этой странице используется Tempo; сейчас Exa проводит расчёты по MPP-платежам в USDC.e в основной сети Tempo.
+
+Exa поддерживает MPP на двух эндпоинтах: **`/search`** и **`/contents`**. Если вы отправляете запрос без API key или платёжных учётных данных, Exa отвечает кодом `402` и challenge `WWW-Authenticate: Payment`, в котором указаны цена и порядок оплаты. Ваш клиент подписывает платёж, повторяет запрос с учётными данными `Authorization: Payment` и получает результаты, как только платёж проходит в блокчейне.
+
+Это идеальный вариант для **ИИ-агентов**, которым нужно самостоятельно оплачивать web search без заранее выданных учётных данных.
+
+<Info>
+  MPP и доступ по API key независимы друг от друга. Если запрос содержит header `x-api-key`, применяется обычная схема тарификации по API key, а MPP не используется вовсе.
+</Info>
+
+<div id="supported-endpoints">
+  ## Поддерживаемые эндпоинты
+</div>
+
+| Эндпоинт    | Метод | Описание                                                                                            |
+| ----------- | ----- | --------------------------------------------------------------------------------------------------- |
+| `/search`   | POST  | Веб-поиск со всеми типами поиска (`instant`, `auto`, `fast`, `deep`, `deep-lite`, `deep-reasoning`) |
+| `/contents` | POST  | Получение содержимого по URL или ID документа                                                       |
+
+Остальные эндпоинты Exa *пока* не принимают платежи MPP.
+
+<div id="get-started">
+  ## Начало работы
+</div>
+
+Вам понадобится совместимый с Tempo кошелёк, пополненный USDC.e. Перед запуском примера экспортируйте приватный ключ кошелька:
+
+```bash theme={null}
+export WALLET_PRIVATE_KEY="0x..."
+```
+
+<div id="install-the-client">
+  ### Установка клиента
+</div>
+
+<CodeGroup>
+  ```bash TypeScript theme={null}
+  npm install mppx viem
+  ```
+
+  ```bash Python theme={null}
+  pip install "pympp[tempo]"
+  ```
+</CodeGroup>
+
+<div id="make-a-paid-search-request">
+  ### Выполните платный поисковый запрос
+</div>
+
+Используйте клиент MPP, чтобы подписать и отправить платёж за поисковый запрос:
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import { Mppx, tempo } from "mppx/client";
+  import { privateKeyToAccount } from "viem/accounts";
+
+  const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);
+  const mppx = Mppx.create({
+    methods: [tempo.charge({ account })],
+  });
+
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "best machine learning frameworks",
+      numResults: 5,
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data.results);
+  console.log("Payment receipt:", response.headers.get("Payment-Receipt"));
+  ```
+
+  ```python Python theme={null}
+  import asyncio
+  import os
+
+  from mpp.client import Client
+  from mpp.methods.tempo import ChargeIntent, TempoAccount, tempo
+
+
+  async def main() -> None:
+      account = TempoAccount.from_key(os.environ["WALLET_PRIVATE_KEY"])
+      method = tempo(
+          account=account,
+          chain_id=4217,
+          intents={"charge": ChargeIntent()},
+      )
+
+      async with Client(methods=[method]) as client:
+          response = await client.post(
+              "https://api.exa.ai/search",
+              json={"query": "best machine learning frameworks", "numResults": 5},
+          )
+
+      data = response.json()
+      for result in data["results"]:
+          print(result["url"], result["title"])
+      print("Payment receipt:", response.headers.get("Payment-Receipt"))
+
+
+  asyncio.run(main())
+  ```
+</CodeGroup>
+
+При успешном выполнении в вывод попадают результаты поиска и header `Payment-Receipt` с хешем ончейн-транзакции.
+
+<div id="pay-from-the-command-line">
+  ## Оплата из командной строки
+</div>
+
+Если вы предпочитаете не работать напрямую с приватным ключом, воспользуйтесь Tempo Wallet CLI. Команда `tempo wallet login` создаёт или подключает кошелёк Tempo, авторизует локальный ключ доступа и может начислять бесплатные MPP Credits новым пользователям.
+
+<div id="install-and-authenticate">
+  ### Установка и аутентификация
+</div>
+
+```bash theme={null}
+curl -fsSL https://tempo.xyz/install | bash
+tempo add wallet
+tempo add request
+tempo wallet login
+```
+
+На удалённом хосте без локального браузера выполните `tempo wallet login --no-browser` и откройте выведенный URL на своём устройстве, чтобы авторизовать CLI.
+
+<div id="check-balances-and-credits">
+  ### Проверка балансов и credits
+</div>
+
+```bash theme={null}
+tempo wallet whoami
+tempo wallet whoami --credits
+```
+
+<div id="make-a-paid-request">
+  ### Выполните платный запрос
+</div>
+
+```bash theme={null}
+tempo request --max-spend 1.00 https://api.exa.ai/search \
+  --json '{"query": "Series A fintech companies", "numResults": 5}'
+```
+
+`tempo request` перехватывает ответ `402 Payment Required`, выполняет оплату и автоматически повторяет запрос.
+
+Полный справочник по CLI см. в [документации Tempo Wallet CLI](https://tempo.xyz/developers/docs/cli/wallet) и [документации `tempo request`](https://tempo.xyz/developers/docs/cli/request).
+
+<div id="gas-fees">
+  ## Комиссии за газ
+</div>
+
+Exa берёт на себя сетевую комиссию Tempo и оплачивает её в USDC.e. На вашем кошельке достаточно иметь USDC.e для оплаты вызовов API; баланс pathUSD или другого газового токена не нужен. Плательщика комиссии настраивать не требуется — challenge Exa и MPP SDK берут спонсирование на себя автоматически.
+
+<div id="pricing">
+  ## Тарификация
+</div>
+
+MPP использует ту же пакетную тарификацию, что и оплата по API key. Exa рассчитывает стоимость по параметрам запроса до его обработки.
+
+<div id="search">
+  ### Search
+</div>
+
+| Тип поиска                | Цена за не более чем 10 результатов |
+| ------------------------- | ----------------------------------- |
+| `instant`, `auto`, `fast` | $0.007 за запрос                    |
+| `deep-lite`, `deep`       | $0.012 за запрос                    |
+| `deep-reasoning`          | $0.015 за запрос                    |
+
+Добавление `contents.summary` обойдётся ещё в **$0.001 за результат**.
+
+<Warning>
+  Поисковые запросы через MPP ограничены 10 результатами. Если значение `numResults` больше 10, Exa использует 10 и тарифицирует запрос как 10 результатов. Если вам нужно больше, используйте [оплату по API key](/ru/docs/search/quickstart).
+</Warning>
+
+<div id="contents">
+  ### Contents
+</div>
+
+Каждый запрошенный тип контента стоит $0.001 за URL:
+
+| Тип контента | Цена за URL |
+| ------------ | ----------- |
+| `text`       | $0.001      |
+| `highlights` | $0.001      |
+| `summary`    | $0.001      |
+
+Если вы не запрашиваете `text`, `highlights` или `summary`, Exa по умолчанию включает `text`.
+
+<div id="pricing-examples">
+  ### Примеры расчёта стоимости
+</div>
+
+| Запрос                                          | Цена   |
+| ----------------------------------------------- | ------ |
+| `/search` с `type: "auto"`                      | $0.007 |
+| `/search` с 3 результатами и `contents.summary` | $0.010 |
+| `/search` с `type: "deep"`                      | $0.012 |
+| `/contents` для 2 URL с `text: true`            | $0.002 |
+| `/contents` для 1 URL с `text` и `summary`      | $0.002 |
+
+<div id="how-the-payment-flow-works">
+  ## Как работает процесс оплаты
+</div>
+
+SDK автоматизирует этот процесс, но вы можете изучить его напрямую по HTTP:
+
+1. Отправьте запрос без API key или платёжных учётных данных. Exa вернёт `402` с challenge-заголовком `WWW-Authenticate: Payment`, в котором указаны цена, токен, получатель, сеть и сведения о спонсировании.
+2. Подпишите challenge и повторите запрос с `Authorization: Payment <credential>`.
+3. Exa обрабатывает запрос и одновременно проводит расчёт по платежу. После подтверждения расчёта Exa возвращает результаты с header `Payment-Receipt`. Если расчёт не удался, Exa возвращает `402` с новым challenge и без результатов.
+
+<div id="inspect-a-payment-challenge">
+  ### Просмотр платёжного challenge
+</div>
+
+Цену и детали оплаты можно посмотреть без кошелька:
+
+```bash theme={null}
+curl -s -D - -X POST "https://api.exa.ai/search" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "test query", "numResults": 3}'
+```
+
+Найдите header `WWW-Authenticate: Payment` в ответе `402`. Для неоплаченных discovery-запросов действуют ограничения по частоте, поэтому используйте такой запрос для отладки, а не для регулярного опроса.
+
+<div id="payment-reference">
+  ## Справочник по платежам
+</div>
+
+Exa принимает платежи MPP в USDC.e в основной сети Tempo.
+
+| Сеть                | Идентификатор | Токен  | Актив                                        |
+| ------------------- | ------------- | ------ | -------------------------------------------- |
+| Основная сеть Tempo | `eip155:4217` | USDC.e | `0x20c000000000000000000000b9537d11c60e8b50` |
+
+У USDC.e 6 знаков после запятой. В challenge цены указываются в атомарных единицах, поэтому `7000` — это $0,007, а `1000000` — $1,00.
+
+<Note>
+  Exa поддерживает MPP и [x402](/ru/docs/integrations/payments/x402/quickstart) на одних и тех же эндпоинтах. Ответ `402` без аутентификации может содержать одновременно MPP-challenge `WWW-Authenticate: Payment` и header `PAYMENT-REQUIRED` протокола x402. Используйте те headers, которые соответствуют платёжному протоколу, поддерживаемому вашим клиентом.
+</Note>
+
+<div id="headers">
+  ### Headers
+</div>
+
+| Header                                | Направление    | Описание                                           |
+| ------------------------------------- | -------------- | -------------------------------------------------- |
+| `Authorization: Payment <credential>` | Запрос         | Платёжные учётные данные MPP                       |
+| `WWW-Authenticate: Payment`           | Ответ `402`    | Стоимость и платёжные инструкции для запроса       |
+| `Payment-Receipt`                     | Успешный ответ | Квитанция о расчёте, включая хеш ончейн-транзакции |
+
+<div id="errors">
+  ### Ошибки
+</div>
+
+| Статус | Описание                                                                                |
+| ------ | --------------------------------------------------------------------------------------- |
+| `402`  | Платёжные учётные данные отсутствуют или недействительны; в ответе возвращается новый challenge |
+| `402`  | Сумма платежа не соответствует стоимости запроса либо расчёт не удался                  |
+| `429`  | С этого IP-адреса отправлено слишком много неоплаченных discovery-запросов              |
+| `429`  | Этот кошелёк превысил лимит частоты оплаченных запросов                                 |
+
+<div id="rate-limits">
+  ### Лимиты частоты запросов
+</div>
+
+Лимиты MPP общие с x402 и не зависят от лимитов API key:
+
+| Лимит                                     | Порог       | Окно      |
+| ----------------------------------------- | ----------- | --------- |
+| Неоплаченные discovery-запросы на один IP | 5 запросов  | 60 секунд |
+| Оплаченные запросы на один кошелёк        | 10 запросов | 1 секунда |
+
+<div id="faq">
+  ## FAQ
+</div>
+
+<AccordionGroup>
+  <Accordion title="Можно ли использовать MPP и API key одновременно?">
+    Если запрос содержит header `x-api-key`, приоритет отдаётся схеме с API key, а MPP не применяется. Эти механизмы не комбинируются: в каждом запросе работает только один из них.
+  </Accordion>
+
+  <Accordion title="Что произойдёт, если расчёт не пройдёт после обработки запроса?">
+    Ответ будет заблокирован. Вы получите `402` с новым challenge `WWW-Authenticate: Payment`, чтобы клиент мог повторить попытку. Пока расчёт не завершится успешно, результаты не возвращаются.
+  </Accordion>
+
+  <Accordion title="Какие кошельки поддерживаются?">
+    Любой совместимый с Tempo EVM-кошелёк, подпись которым поддерживает клиентский SDK, — аккаунт `viem` с `mppx` (TypeScript) или ключ `eth-account` с `pympp` (Python). Для ИИ-агентов используйте кошелёк с балансом USDC.e в Tempo, чтобы покрывать стоимость запросов.
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+* [Документация протокола MPP](https://mpp.dev/protocol): описание протокола и формат аутентификации
+* [Документация mppx](https://mpp.dev/sdk/typescript): справочник по MPP TypeScript SDK
+* [Документация pympp](https://mpp.dev/sdk/python): справочник по MPP Python SDK
+* [Tempo](https://tempo.xyz): документация сети Tempo
+* [Оплата через x402](/ru/docs/integrations/payments/x402/quickstart): оплата тех же эндпоинтов с помощью x402
+* [Руководство по Exa Search API](/ru/docs/search/quickstart): полный справочник параметров search
+* [Руководство по Exa Contents API](/ru/docs/contents/quickstart): полный справочник параметров contents

@@ -1,0 +1,13 @@
+---
+title: "Listar ejecuciones de Agent"
+sidebarTitle: "Listar ejecuciones"
+description: "Obtén una lista paginada de las ejecuciones de Agent de tu equipo."
+openapi: "/es/docs/exa-spec.yaml GET /agent/runs"
+timestamp: false
+---
+
+Las ejecuciones se devuelven de la más reciente a la más antigua. Usa `limit` para controlar el tamaño de página y `cursor` junto con el valor `nextCursor` de la respuesta anterior para obtener la siguiente página.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas incluyen credits gratuitos.
+</Card>

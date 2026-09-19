@@ -1,0 +1,323 @@
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="sdk-quickstart">
+  # Inicio rápido con los SDK
+</div>
+
+> Instala y usa los SDK de Exa para Python y JavaScript
+
+Los SDK oficiales de Exa. Busca en la web, obtén el contenido de las páginas y consigue respuestas con citas.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
+</Card>
+
+<div id="install">
+  ## Instalación
+</div>
+
+<CodeGroup>
+  ```bash pip theme={null}
+  pip install exa-py
+  ```
+
+  ```bash uv theme={null}
+  uv add exa-py
+  ```
+
+  ```bash npm theme={null}
+  npm install exa-js
+  ```
+
+  ```bash pnpm theme={null}
+  pnpm add exa-js
+  ```
+</CodeGroup>
+
+El SDK de Python requiere Python 3.9 o superior.
+
+<div id="authentication">
+  ## Autenticación
+</div>
+
+Define tu API key como variable de entorno:
+
+<Tabs>
+  <Tab title="macOS/Linux">
+    ```bash theme={null}
+    export EXA_API_KEY="your-api-key"
+    ```
+  </Tab>
+
+  <Tab title="Windows">
+    ```powershell theme={null}
+    setx EXA_API_KEY "your-api-key"
+    ```
+  </Tab>
+</Tabs>
+
+<div id="getting-started">
+  ## Primeros pasos
+</div>
+
+Inicializa el cliente y ejecuta tu primera búsqueda:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "latest developments in fusion energy",
+      type="auto",
+      contents={"highlights": True},
+  )
+
+  for source in results.results:
+      print(source.url, source.highlights)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search("latest developments in fusion energy", {
+    type: "auto",
+    contents: {
+      highlights: true,
+    },
+  });
+
+  for (const source of results.results) {
+    console.log(source.url, source.highlights);
+  }
+  ```
+</CodeGroup>
+
+<Note>
+  Ambos clientes leen tu key desde la variable de entorno `EXA_API_KEY`. Si prefieres indicarla de forma explícita,
+  pásala en línea: `Exa(api_key="your-api-key")` o `new Exa("your-api-key")`.
+</Note>
+
+<div id="recommended-defaults">
+  ## Valores predeterminados recomendados
+</div>
+
+| Decisión            | Valor predeterminado recomendado                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------- |
+| Punto de partida    | Usa `search`                                                                                      |
+| Tipo de búsqueda    | Mantén `auto` salvo que la latencia o las necesidades de síntesis exijan otro tipo                |
+| Contenido de página | Empieza con `highlights: true`                                                                    |
+| URLs conocidas      | Usa `get_contents` / `getContents`                                                                |
+| Actualidad          | Define `max_age_hours` / `maxAgeHours` solo cuando el contenido desactualizado resulte inservible |
+
+<Warning>
+  Los dos tipos de solicitud admiten las mismas opciones de contenido, pero en lugares distintos:
+
+  | Método                         | Dónde se indica la opción de contenido                                           |
+  | ------------------------------ | -------------------------------------------------------------------------------- |
+  | `search`                       | Dentro de `contents`, como en `exa.search(query, contents={"highlights": True})` |
+  | `get_contents` / `getContents` | Directamente en la solicitud, como en `exa.get_contents(urls, highlights=True)`  |
+</Warning>
+
+<div id="search">
+  ## Search
+</div>
+
+Search encuentra páginas relevantes y devuelve su contenido en una sola llamada.
+
+<Tip>
+  Usa `highlights: true` para respuestas de IA, RAG y vistas previas de búsqueda. Exa ajusta los
+  extractos de cada resultado según su relevancia; define `max_characters` / `maxCharacters` solo si tu aplicación
+  requiere un límite fijo.
+</Tip>
+
+Filtros, rangos de fechas y número de resultados:
+
+<CodeGroup>
+  ```python Python theme={null}
+  results = exa.search(
+      "climate tech news",
+      num_results=20,
+      start_published_date="2024-01-01",
+      include_domains=["techcrunch.com", "wired.com"],
+      contents={"highlights": True}
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("interesting articles about space", {
+    numResults: 10,
+    includeDomains: ["nasa.gov", "space.com"],
+    startPublishedDate: "2024-01-01",
+    contents: {
+      highlights: true,
+    },
+  });
+  ```
+</CodeGroup>
+
+<div id="output-schema">
+  ### Esquema de salida
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  structured_results = exa.search(
+      "Who is the CEO of OpenAI?",
+      type="deep",
+      system_prompt="Prefer official sources and avoid duplicate results",
+      output_schema={
+          "type": "object",
+          "properties": {
+              "leader": {"type": "string"},
+              "title": {"type": "string"},
+              "source_count": {"type": "number"}
+          },
+          "required": ["leader", "title"]
+      },
+      contents={"highlights": True}
+  )
+
+  print(structured_results.output.content if structured_results.output else None)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const structuredResult = await exa.search("Who is the CEO of OpenAI?", {
+    type: "deep",
+    systemPrompt: "Prefer official sources and avoid duplicate results",
+    outputSchema: {
+      type: "object",
+      properties: {
+        leader: { type: "string" },
+        title: { type: "string" },
+        sourceCount: { type: "number" },
+      },
+      required: ["leader", "title"],
+    },
+    contents: {
+      highlights: true,
+    },
+  });
+
+  console.log(structuredResult.output?.content);
+  ```
+</CodeGroup>
+
+<Note>
+  `output_schema` / `outputSchema` funciona con todos los tipos de search y devuelve el valor sintetizado
+  en `output.content`. Usa `system_prompt` / `systemPrompt` para indicar preferencias de fuentes o énfasis.
+  El grounding se devuelve automáticamente en `output.grounding`, por lo que no debes duplicar las citas ni la
+  confianza en tu esquema.
+</Note>
+
+Los modos deep son recomendables cuando la salida requiere investigar a través de varias búsquedas. Usa `deep-lite` para investigaciones ligeras o `deep` para búsquedas de varios pasos y una síntesis más sólida. Consulta la [guía de Search](/es/docs/search/quickstart) para ver todas las opciones de la solicitud.
+
+<div id="contents">
+  ## Contents
+</div>
+
+Extrae highlights, texto completo o resúmenes de URLs que ya conoces. Empieza con highlights y
+añade una query para centrarlos en la información que necesitas.
+
+<CodeGroup>
+  ```python Python theme={null}
+  results = exa.get_contents(
+      ["https://exa.ai/blog/dynamic-highlights"],
+      highlights={"query": "token efficiency and result quality"},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const results = await exa.getContents(["https://exa.ai/blog/dynamic-highlights"], {
+    highlights: {
+      query: "token efficiency and result quality",
+    },
+  });
+  ```
+</CodeGroup>
+
+Usa el texto completo cuando necesites más contexto o la estructura del documento. Consulta la [guía de Contents](/es/docs/contents/quickstart) para conocer los formatos de salida, los controles de actualidad y el rastreo de subpáginas.
+
+<div id="answer">
+  ## Answer
+</div>
+
+Obtén respuestas a preguntas con citas.
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = exa.answer("What caused the 2008 financial crisis?")
+  print(response.answer)
+
+  for chunk in exa.stream_answer("Explain quantum computing"):
+      print(chunk, end="", flush=True)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await exa.answer("What caused the 2008 financial crisis?");
+  console.log(response.answer);
+
+  for await (const chunk of exa.streamAnswer("Explain quantum computing")) {
+    if (chunk.content) {
+      process.stdout.write(chunk.content);
+    }
+  }
+  ```
+</CodeGroup>
+
+<div id="async-and-types">
+  ## Async y tipos
+</div>
+
+Python expone `AsyncExa` para operaciones asíncronas, y el SDK de JavaScript incluye tipos de TypeScript para
+todos los métodos.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import AsyncExa
+
+  exa = AsyncExa()
+
+  results = await exa.search(
+      "machine learning startups",
+      contents={"highlights": True}
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Exa from "exa-js";
+  import type { SearchResponse, RegularSearchOptions } from "exa-js";
+  ```
+</CodeGroup>
+
+<div id="resources">
+  ## Recursos
+</div>
+
+Python: [código fuente de exa-py](https://github.com/exa-labs/exa-py) y [paquete en PyPI](https://pypi.org/project/exa-py/). JavaScript: [código fuente de exa-js](https://github.com/exa-labs/exa-js) y [paquete en npm](https://www.npmjs.com/package/exa-js).
+
+<div id="continue">
+  ## Continuar
+</div>
+
+<Columns cols={3}>
+  <Card title="Guía de Search" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
+    Vuelve a la guía principal de Search para ver patrones de solicitud, filtros y modos más avanzados.
+  </Card>
+
+  <Card title="Referencia de Search" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir referencia" arrow="true">
+    Consulta el esquema completo de solicitud y respuesta de `/search`.
+  </Card>
+
+  <Card title="Guía de Contents" icon="file-text" href="/es/docs/contents/quickstart" cta="Abrir guía" arrow="true">
+    Usa Contents cuando ya conoces las URL y quieres extraer el contenido directamente.
+  </Card>
+</Columns>

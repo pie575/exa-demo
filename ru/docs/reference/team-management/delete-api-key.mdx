@@ -1,0 +1,26 @@
+---
+title: "Удаление API key"
+description: "Безвозвратное удаление API key из вашей команды."
+openapi: "/ru/docs/team-management-spec.yaml DELETE /api-keys/{id}"
+timestamp: false
+---
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте key в панели управления. Новые аккаунты получают бесплатные кредиты.
+</Card>
+
+<Info>
+  Team Management API включается отдельно для каждой команды. Аутентификация выполняется с помощью API key сервисного аккаунта — его можно создать на вкладке **Service keys** на [странице API keys](https://dashboard.exa.ai/api-keys) после того, как эта возможность будет включена для вашей команды. Чтобы запросить доступ, напишите на [support@exa.ai](mailto:support@exa.ai).
+</Info>
+
+<div id="overview">
+  ## Обзор
+</div>
+
+Эндпоинт Delete API Key безвозвратно удаляет API key из вашей команды.
+
+<div id="path-parameters">
+  ## Параметры пути
+</div>
+
+* **id**: Уникальный идентификатор API key, который требуется удалить.

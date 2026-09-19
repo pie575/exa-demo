@@ -1,0 +1,20 @@
+---
+title: "Crear una ejecución"
+description: "Crea una ejecución asíncrona de Agent. La respuesta devuelve el
+  objeto de la ejecución de inmediato, salvo que solicites eventos enviados por
+  el servidor."
+openapi: "/es/docs/exa-spec.yaml POST /agent/runs"
+timestamp: false
+---
+
+Crea una ejecución con un `query` en lenguaje natural. Añade `outputSchema` para obtener JSON estructurado y validado, `input.data` para las filas que se van a procesar, `input.exclusion` para los registros o entidades que se deben evitar, o `previousRunId` para continuar a partir de una ejecución completada.
+
+Establece `Accept: text/event-stream` para transmitir los eventos de la ejecución a medida que esta se crea, se inicia y se completa.
+
+<Note>
+  **Connect:** Pasa `dataSources` para dar al agente acceso a proveedores de datos externos durante la ejecución. Consulta la [guía de Connect](/es/docs/agent/quickstart#connect-data-sources) para más detalles.
+</Note>
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
+</Card>

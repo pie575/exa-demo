@@ -1,0 +1,31 @@
+---
+title: "列出 API key"
+description: "获取团队下所有 API key 及其元数据。"
+openapi: "/zh/docs/team-management-spec.yaml GET /api-keys"
+timestamp: false
+---
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建 key。新账户可获赠免费积分。
+</Card>
+
+<Info>
+  Team Management API 按团队单独启用，使用服务账户 API key 进行认证。为你的团队启用该功能后，即可在 [API keys 页面](https://dashboard.exa.ai/api-keys)的 **Service keys** 标签页中创建此类 key。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+</Info>
+
+<div id="overview">
+  ## 概览
+</div>
+
+List API Keys 端点会返回与你的团队关联的所有 API key，包括每个 key 的 key ID、名称、速率限制和创建时间戳。
+
+<div id="response-format">
+  ## 响应格式
+</div>
+
+响应包含一个 API key 对象数组，每个对象包含以下信息：
+
+* **id**：API key 的唯一标识符
+* **name**：易读名称 (如果创建时提供了该名称) 
+* **rateLimit**：速率限制，单位为每分钟请求数 (如果已设置) 
+* **createdAt**：key 创建时间的 ISO 8601 时间戳

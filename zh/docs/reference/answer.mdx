@@ -1,0 +1,26 @@
+---
+title: "Answer"
+description: "基于 Exa search 结果，由 LLM 给出问题的答案。`/answer` 会执行一次 Exa search，并使用 LLM
+  生成以下两种结果之一：
+
+  1. 针对具体问题的直接答案（例如“法国的首都是哪里？”会返回“巴黎”）
+
+  2. 针对开放式问题的详细总结及引用来源（例如“人工智能在医疗领域的现状如何？”会返回带有相关来源引用的总结）
+
+
+  响应中同时包含生成的答案以及生成时所用的来源。该端点还支持流式传输（设置 `stream=True`），会在 token 生成的同时逐步返回。
+
+
+  此外，你也可以使用兼容 OpenAI 的 [chat completions
+  接口](/docs/integrations/openai-sdk#answer)。\n"
+openapi: "/zh/docs/exa-spec.yaml POST /answer"
+timestamp: false
+---
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建一个 key。新账户可获得免费额度。
+</Card>
+
+<Info>
+  `/answer` 支持通过 `outputSchema` 参数返回结构化输出。传入一个 [JSON Schema](https://json-schema.org/draft-07) 对象后，答案将以符合该 schema 的结构化 JSON 形式返回，而不是纯字符串。
+</Info>

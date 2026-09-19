@@ -1,0 +1,12 @@
+---
+title: "Obtener un lote"
+description: "Recupera un lote por ID."
+openapi: "/es/docs/exa-spec.yaml GET /batches/{id}"
+timestamp: false
+---
+
+Usa este endpoint para consultar un lote hasta que llegue al estado `completed`, `cancelled` o `expired`. Cuando el lote se completa, `resultsUrl` contiene una URL prefirmada de corta duración para el archivo JSONL de resultados; vuelve a solicitar el lote para obtener una URL nueva.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
+</Card>

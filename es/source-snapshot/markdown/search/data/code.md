@@ -1,0 +1,150 @@
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="code-docs">
+  # Código y documentación
+</div>
+
+> Encuentra código, documentación técnica y orientación para la implementación con Exa Search.
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Usa Exa Search para encontrar repositorios, documentación técnica, información de paquetes y guías de implementación mediante consultas en lenguaje natural.
+
+<Tip>
+  Lee [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode) para conocer cómo Exa
+  evalúa la recuperación de información en tareas de programación.
+</Tip>
+
+<div id="use-it-for">
+  ## Úsalo para
+</div>
+
+* Agentes de programación y herramientas de generación de código
+* Productos de búsqueda y documentación para desarrolladores
+* Flujos de trabajo de depuración, migración y configuración
+* Investigación técnica en repositorios, documentación y registros de paquetes
+
+<div id="example-queries">
+  ## Ejemplos de consultas
+</div>
+
+<div id="discover-libraries-by-capability">
+  ### Descubre bibliotecas por capacidad
+</div>
+
+Describe la capacidad, el ecosistema y las restricciones que te importan. Así se obtienen candidatos según lo que hacen, en lugar de depender del nombre exacto del proyecto.
+
+<PlaygroundQuery query="open source Rust libraries for vector similarity search" />
+
+<div id="retrieve-implementation-documentation">
+  ### Recuperar documentación de implementación
+</div>
+
+Indica el producto y la operación exacta. Así, Search puede priorizar la documentación de la API y las guías de implementación frente a los debates generales.
+
+<PlaygroundQuery query="Stripe webhook signature verification documentation" />
+
+<div id="check-version-specific-changes">
+  ### Consultar cambios específicos de una versión
+</div>
+
+Incluye el canal de publicación o la versión cuando la compatibilidad sea importante. Así se reducen los resultados sobre versiones anteriores.
+
+<PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
+
+<div id="find-reusable-agent-tooling">
+  ### Encontrar herramientas de agentes reutilizables
+</div>
+
+Indica el tipo de artefacto y la tarea en lugar de buscar una frase genérica como «herramientas de IA».
+
+<PlaygroundQuery query="agent skills for extracting tables from PDFs" />
+
+<div id="make-a-request">
+  ## Haz una solicitud
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "how to use Exa search in python",
+      type="fast",
+      num_results=10,
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "how to use Exa search in python",
+    {
+      type: "fast",
+      numResults: 10,
+      contents: {
+        highlights: true,
+      },
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "how to use Exa search in python",
+      "type": "fast",
+      "numResults": 10,
+      "contents": {
+        "highlights": true
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Obtén datos estructurados con Exa Agent
+</div>
+
+Para datos estructurados que requieren investigar en varias fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las bibliotecas, los criterios técnicos y los campos de salida que necesitas, y Agent devolverá resultados validados con el esquema y con citas.
+
+<Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
+  Compara bibliotecas, enriquece registros de repositorios o genera una lista estructurada a partir de múltiples señales técnicas.
+</Card>

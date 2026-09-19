@@ -1,0 +1,12 @@
+---
+title: "Listar lotes"
+description: "Recupera una lista paginada de los lotes de tu equipo."
+openapi: "/es/docs/exa-spec.yaml GET /batches"
+timestamp: false
+---
+
+Los lotes se devuelven del más reciente al más antiguo. Usa `limit` para controlar el tamaño de página y `cursor` con el `nextCursor` de la respuesta anterior para obtener la página siguiente. Pasa `status=completed` para listar únicamente los lotes completados; estos listados usan su propio cursor, así que sigue enviando `status=completed` en cada página.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
+</Card>

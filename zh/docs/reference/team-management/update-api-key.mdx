@@ -1,0 +1,33 @@
+---
+title: "更新 API key"
+description: "更新现有 API key 的名称和速率限制。"
+openapi: "/zh/docs/team-management-spec.yaml PUT /api-keys/{id}"
+timestamp: false
+---
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建 key。新账户可获得免费积分。
+</Card>
+
+<Info>
+  Team Management API 需按团队单独启用，并使用服务账户 API key 进行身份验证。该功能为你的团队启用后，即可在 [API keys 页面](https://dashboard.exa.ai/api-keys)的 **Service keys** 标签页中创建此 key。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+</Info>
+
+<div id="overview">
+  ## 概览
+</div>
+
+更新 API key 端点可用于修改现有的 API key
+
+<div id="path-parameters">
+  ## 路径参数
+</div>
+
+* **id**：要更新的 API key 的唯一标识符。
+
+<div id="optional-parameters">
+  ## 可选参数
+</div>
+
+* **name**：API key 的新描述性名称
+* **rateLimit**：新的速率限制，单位为每分钟请求数

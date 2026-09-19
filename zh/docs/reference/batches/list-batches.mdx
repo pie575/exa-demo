@@ -1,0 +1,12 @@
+---
+title: "列出批次"
+description: "获取团队批次的分页列表。"
+openapi: "/zh/docs/exa-spec.yaml GET /batches"
+timestamp: false
+---
+
+批次按从新到旧的顺序返回。使用 `limit` 控制每页数量，并将上一次响应中的 `nextCursor` 作为 `cursor` 传入以获取下一页。传入 `status=completed` 可仅列出已完成的批次；已完成列表使用独立的 cursor，因此每一页请求都需带上 `status=completed`。
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建一个 key。新账户会赠送免费额度。
+</Card>

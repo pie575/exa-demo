@@ -1,0 +1,12 @@
+---
+title: "Cancelar una ejecución"
+description: "Cancela una ejecución de Agent en cola o en curso."
+openapi: "/es/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
+timestamp: false
+---
+
+Si la ejecución sigue activa, pasa a `cancelled` de inmediato y finaliza sin devolver ningún resultado. La ejecución termina con el estado `cancelled` y `stopReason: cancelled`. Se factura el uso acumulado antes de la cancelación. Si la ejecución ya alcanzó un estado terminal (completed, failed o cancelled), el endpoint devuelve la ejecución existente sin cambios.
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el dashboard. Las cuentas nuevas empiezan con créditos gratuitos.
+</Card>

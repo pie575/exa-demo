@@ -1,0 +1,193 @@
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
+>
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+
+<div id="similarweb">
+  # Similarweb
+</div>
+
+> Obtén estimaciones de tráfico web, rankings globales y descubrimiento de competidores.
+
+[Similarweb](https://www.similarweb.com) es una de las principales fuentes de
+inteligencia de mercado digital. Modela el tráfico y la interacción de millones de sitios
+web y aplicaciones, e incluye visitas estimadas, fuentes de tráfico, datos demográficos de la audiencia y el
+conjunto competitivo en torno a cualquier dominio.
+
+Adjunta `similarweb` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
+[Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
+Similarweb junto con la búsqueda web de Exa.
+
+<div id="use-it-for">
+  ## Úsalo para
+</div>
+
+* Comparar el tráfico web y la interacción de una empresa con los de su competencia.
+* Identificar los competidores de un dominio y los sitios con audiencia coincidente.
+* Dimensionar mercados y filtrar empresas según su huella digital.
+* Enriquecer la investigación de empresas y categorías con datos reales de comportamiento.
+
+<div id="provider-id">
+  ## ID del proveedor
+</div>
+
+Usa este valor en `dataSources`:
+
+```text theme={null}
+similarweb
+```
+
+<div id="pricing">
+  ## Precios
+</div>
+
+Similarweb factura en credits de datos a `$0.30 / credit`, y cada llamada se cobra
+según los credits que Similarweb reporta para ella. Los credits aumentan con los datos devueltos:
+aproximadamente un credit por punto de datos (métrica × fila × mes), de modo que el precio de una llamada
+depende de sus parámetros:
+
+| Herramienta                      | Credits                                                                                                   |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Tráfico y ranking                | hasta 7 por mes solicitado (1–2 meses)                                                                    |
+| Sitios similares                 | 3 por sitio devuelto (1–5 sitios)                                                                         |
+| Fuentes de tráfico               | 10                                                                                                        |
+| Principales referentes           | 3 por referente devuelto (1–5)                                                                            |
+| Principales países               | 3 por país devuelto (1–5)                                                                                 |
+| Principales páginas              | 2 por página devuelta (1–7)                                                                               |
+| Principales palabras clave       | 1–10 (aproximadamente 1 por cada 100 puntos de datos de palabras clave; 50 palabras clave equivalen a ~7) |
+| Resumen de palabra clave         | 1–2                                                                                                       |
+| Demografía de la audiencia       | 8                                                                                                         |
+| Solapamiento de audiencia        | 2 por combinación de dominios (2–3 dominios: 6–14)                                                        |
+| Tecnologías                      | 10                                                                                                        |
+| Principales sitios por categoría | 1 por sitio devuelto (1–10)                                                                               |
+
+Las llamadas que no devuelven datos (un dominio desconocido o con poco tráfico, una palabra clave sin
+volumen de búsqueda) son gratuitas. `numResults` y `months` determinan por cuántos puntos de datos
+pagas, así que mantenlos en el mínimo que necesite la tarea.
+
+<div id="example">
+  ## Ejemplo
+</div>
+
+Encuentra 10 empresas SaaS B2B de rápido crecimiento y su tráfico web estimado.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+      data_sources=[{"provider": "similarweb"}],
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "domain", "monthlyVisits"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "monthlyVisits": {"type": "number", "description": "from Similarweb"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+    dataSources: [{ provider: "similarweb" }],
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["name", "domain", "monthlyVisits"],
+            properties: {
+              name: { type: "string" },
+              domain: { type: "string" },
+              monthlyVisits: { type: "number", description: "from Similarweb" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+      "dataSources": [{ "provider": "similarweb" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["companies"],
+        "properties": {
+          "companies": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["name", "domain", "monthlyVisits"],
+              "properties": {
+                "name": { "type": "string" },
+                "domain": { "type": "string" },
+                "monthlyVisits": { "type": "number", "description": "from Similarweb" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
+
+* [Fiber.ai](/es/docs/agent/connect/fiber): convierte los competidores detectados en registros de empresas enriquecidos.
+* [Affiliate.com](/es/docs/agent/connect/affiliatecom): mide el alcance de un comercio antes de recomendar sus productos.
+
+<div id="next-steps">
+  ## Próximos pasos
+</div>
+
+<Columns cols={2}>
+  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir la guía rápida" arrow="true">
+    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
+  </Card>
+
+  <Card title="Combinar proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
+    Adjunta hasta cinco partners a una misma ejecución y ajusta la query para que se active cada uno.
+  </Card>
+
+  <Card title="Aprende Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+    Crea ejecuciones, transmite el progreso en streaming, diseña esquemas de salida y controla el esfuerzo y el costo.
+  </Card>
+
+  <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
+    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con credits gratuitos.
+  </Card>
+</Columns>

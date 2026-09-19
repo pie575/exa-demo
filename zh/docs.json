@@ -1,0 +1,423 @@
+{
+  "global": {
+    "anchors": []
+  },
+  "tabs": [
+    {
+      "pages": [
+        "zh/docs",
+        {
+          "boost": 3,
+          "group": "快速入门",
+          "pages": [
+            "zh/docs/get-started/quickstart",
+            "zh/docs/get-started/exa-mcp",
+            {
+              "boost": 0.5,
+              "group": "Agent 技能",
+              "pages": [
+                "zh/docs/get-started/agent-skills/overview",
+                "zh/docs/get-started/agent-skills/build-with-exa",
+                "zh/docs/get-started/agent-skills/exa-search",
+                "zh/docs/get-started/agent-skills/exa-contents"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Search",
+          "pages": [
+            "zh/docs/search/quickstart",
+            "zh/docs/search/deep-search",
+            "zh/docs/search/highlights",
+            "zh/docs/search/snapshot",
+            "zh/docs/search/best-practices",
+            {
+              "group": "数据",
+              "pages": [
+                "zh/docs/search/data/overview",
+                "zh/docs/search/data/news",
+                "zh/docs/search/data/code",
+                "zh/docs/search/data/companies-people",
+                "zh/docs/search/data/financial",
+                "zh/docs/search/data/research",
+                "zh/docs/search/data/legal",
+                "zh/docs/search/data/sports-weather-places",
+                "zh/docs/search/data/security"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Agent",
+          "pages": [
+            "zh/docs/agent/quickstart",
+            "zh/docs/agent/best-practices",
+            "zh/docs/agent/examples",
+            {
+              "boost": 4,
+              "group": "Exa Connect",
+              "pages": [
+                "zh/docs/agent/connect/overview",
+                {
+                  "boost": 2,
+                  "group": "自助服务提供商",
+                  "pages": [
+                    "zh/docs/agent/connect/fiber",
+                    "zh/docs/agent/connect/similarweb",
+                    "zh/docs/agent/connect/baselayer",
+                    "zh/docs/agent/connect/polymarket",
+                    "zh/docs/agent/connect/affiliatecom",
+                    "zh/docs/agent/connect/particle",
+                    "zh/docs/agent/connect/financialdatasets",
+                    "zh/docs/agent/connect/jinko"
+                  ]
+                },
+                "zh/docs/agent/connect/combining-providers",
+                "zh/docs/agent/connect/additional-partners"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 3,
+          "group": "其他 API",
+          "pages": [
+            "zh/docs/contents/quickstart",
+            "zh/docs/monitors/quickstart",
+            "zh/docs/batch/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "SDK",
+          "pages": [
+            "zh/docs/sdks/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "集成",
+          "pages": [
+            "zh/docs/integrations/chatgpt-codex",
+            "zh/docs/integrations/claude-web-desktop",
+            "zh/docs/integrations/openai-sdk",
+            {
+              "group": "工具调用",
+              "pages": [
+                "zh/docs/integrations/tool-calling/openai",
+                "zh/docs/integrations/tool-calling/anthropic"
+              ]
+            },
+            {
+              "group": "Vercel",
+              "pages": [
+                "zh/docs/integrations/vercel/ai-sdk",
+                "zh/docs/integrations/vercel/ai-gateway",
+                "zh/docs/integrations/vercel/fx"
+              ]
+            },
+            {
+              "group": "市场",
+              "pages": [
+                "zh/docs/integrations/marketplaces/stripe-projects"
+              ]
+            },
+            {
+              "group": "智能体支付",
+              "pages": [
+                {
+                  "group": "x402",
+                  "pages": [
+                    "zh/docs/integrations/payments/x402/quickstart",
+                    "zh/docs/integrations/payments/x402/agentkit"
+                  ]
+                },
+                {
+                  "group": "MPP",
+                  "pages": [
+                    "zh/docs/integrations/payments/mpp/quickstart",
+                    "zh/docs/integrations/payments/mpp/gtm-enrichment"
+                  ]
+                },
+                "zh/docs/integrations/payments/nevermined"
+              ]
+            },
+            {
+              "boost": 0.6,
+              "group": "更多集成",
+              "pages": [
+                "zh/docs/integrations/exa-slack",
+                "zh/docs/integrations/hermes-agent",
+                "zh/docs/integrations/n8n",
+                "zh/docs/integrations/openclaw",
+                "zh/docs/integrations/openrouter",
+                "zh/docs/integrations/baseten",
+                "zh/docs/integrations/gumloop",
+                "zh/docs/integrations/exa-for-sheets",
+                "zh/docs/integrations/crewai",
+                "zh/docs/integrations/elevenlabs",
+                "zh/docs/integrations/openhuman",
+                "zh/docs/integrations/truefoundry",
+                "zh/docs/integrations/snowflake",
+                "zh/docs/integrations/grok-build",
+                "zh/docs/integrations/llamaindex",
+                "zh/docs/integrations/pydantic-ai",
+                "zh/docs/integrations/langchain",
+                "zh/docs/integrations/browserbase"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 0.8,
+          "group": "管理",
+          "pages": [
+            "zh/docs/admin/pricing",
+            "zh/docs/admin/billing",
+            "zh/docs/admin/team-management",
+            {
+              "group": "安全与合规",
+              "pages": [
+                "zh/docs/admin/security/overview",
+                "zh/docs/admin/security/zero-data-retention",
+                "zh/docs/admin/security/hipaa"
+              ]
+            },
+            "zh/docs/admin/mcp-enterprise-managed-auth",
+            {
+              "group": "参考文档",
+              "pages": [
+                "zh/docs/admin/status",
+                "zh/docs/admin/error-codes",
+                "zh/docs/admin/openapi-spec"
+              ]
+            },
+            "zh/docs/admin/faqs"
+          ]
+        },
+        {
+          "boost": 0.4,
+          "group": "Websets",
+          "pages": [
+            "zh/docs/websets/quickstart",
+            "zh/docs/websets/imports-and-search",
+            {
+              "group": "控制台",
+              "pages": [
+                "zh/docs/websets/dashboard/get-started",
+                "zh/docs/websets/dashboard/import-from-csv",
+                "zh/docs/websets/dashboard/exclude-results"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "文档"
+    },
+    {
+      "groups": [
+        {
+          "boost": 4,
+          "group": "Search",
+          "pages": [
+            "zh/docs/reference/search"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Contents",
+          "pages": [
+            "zh/docs/reference/get-contents"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Agent",
+          "pages": [
+            "zh/docs/reference/agent-api/create-a-run",
+            "zh/docs/reference/agent-api/get-a-run",
+            "zh/docs/reference/agent-api/list-runs",
+            "zh/docs/reference/agent-api/cancel-a-run",
+            "zh/docs/reference/agent-api/stop-a-run",
+            "zh/docs/reference/agent-api/delete-a-run",
+            "zh/docs/reference/agent-api/list-run-events"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "监控",
+          "pages": [
+            "zh/docs/reference/monitors/create-a-monitor",
+            "zh/docs/reference/monitors/list-monitors",
+            "zh/docs/reference/monitors/get-a-monitor",
+            "zh/docs/reference/monitors/update-a-monitor",
+            "zh/docs/reference/monitors/delete-a-monitor",
+            "zh/docs/reference/monitors/trigger-a-monitor",
+            "zh/docs/reference/monitors/batch-monitors",
+            {
+              "group": "运行",
+              "pages": [
+                "zh/docs/reference/monitors/runs/list-runs",
+                "zh/docs/reference/monitors/runs/get-a-run"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "回答",
+          "pages": [
+            "zh/docs/reference/answer"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "批处理",
+          "pages": [
+            "zh/docs/reference/batches/create-a-batch",
+            "zh/docs/reference/batches/list-batches",
+            "zh/docs/reference/batches/get-a-batch",
+            "zh/docs/reference/batches/cancel-a-batch",
+            "zh/docs/reference/batches/delete-a-batch"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "团队管理",
+          "pages": [
+            "zh/docs/reference/team-management/create-api-key",
+            "zh/docs/reference/team-management/list-api-keys",
+            "zh/docs/reference/team-management/get-api-key",
+            "zh/docs/reference/team-management/get-api-key-usage",
+            "zh/docs/reference/team-management/update-api-key",
+            "zh/docs/reference/team-management/delete-api-key"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Websets",
+          "pages": [
+            {
+              "group": "Websets",
+              "icon": "folder",
+              "pages": [
+                "zh/docs/websets/api/websets/create-a-webset",
+                "zh/docs/websets/api/websets/get-a-webset",
+                "zh/docs/websets/api/websets/update-a-webset",
+                "zh/docs/websets/api/websets/delete-a-webset",
+                "zh/docs/websets/api/websets/preview-a-webset",
+                "zh/docs/websets/api/websets/cancel-a-running-webset",
+                "zh/docs/websets/api/websets/list-all-websets"
+              ]
+            },
+            {
+              "group": "项目",
+              "icon": "list",
+              "pages": [
+                "zh/docs/websets/api/websets/items/get-an-item",
+                "zh/docs/websets/api/websets/items/delete-an-item",
+                "zh/docs/websets/api/websets/items/list-all-items-for-a-webset"
+              ]
+            },
+            {
+              "group": "Searches",
+              "icon": "search",
+              "pages": [
+                "zh/docs/websets/api/websets/searches/create-a-search",
+                "zh/docs/websets/api/websets/searches/get-a-search",
+                "zh/docs/websets/api/websets/searches/cancel-a-running-search"
+              ]
+            },
+            {
+              "group": "Enrichments",
+              "icon": "sparkles",
+              "pages": [
+                "zh/docs/websets/api/websets/enrichments/create-an-enrichment",
+                "zh/docs/websets/api/websets/enrichments/get-an-enrichment",
+                "zh/docs/websets/api/websets/enrichments/update-an-enrichment",
+                "zh/docs/websets/api/websets/enrichments/delete-an-enrichment",
+                "zh/docs/websets/api/websets/enrichments/cancel-a-running-enrichment"
+              ]
+            },
+            {
+              "group": "导入",
+              "icon": "cloud-download",
+              "pages": [
+                "zh/docs/websets/api/imports/create-an-import",
+                "zh/docs/websets/api/imports/get-import",
+                "zh/docs/websets/api/imports/update-import",
+                "zh/docs/websets/api/imports/delete-import",
+                "zh/docs/websets/api/imports/list-imports"
+              ]
+            },
+            {
+              "group": "监控",
+              "icon": "satellite",
+              "pages": [
+                "zh/docs/websets/api/monitors/create-a-monitor",
+                "zh/docs/websets/api/monitors/get-monitor",
+                "zh/docs/websets/api/monitors/update-monitor",
+                "zh/docs/websets/api/monitors/delete-monitor",
+                "zh/docs/websets/api/monitors/list-monitors",
+                {
+                  "group": "监控运行",
+                  "icon": "play",
+                  "pages": [
+                    "zh/docs/websets/api/monitors/runs/list-monitor-runs",
+                    "zh/docs/websets/api/monitors/runs/get-monitor-run"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "Webhook",
+              "icon": "webhook",
+              "pages": [
+                "zh/docs/websets/api/webhooks/create-a-webhook",
+                "zh/docs/websets/api/webhooks/get-a-webhook",
+                "zh/docs/websets/api/webhooks/update-a-webhook",
+                "zh/docs/websets/api/webhooks/delete-a-webhook",
+                "zh/docs/websets/api/webhooks/list-webhooks",
+                "zh/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+                "zh/docs/websets/api/webhooks/verifying-signatures"
+              ]
+            },
+            {
+              "group": "事件",
+              "icon": "bell",
+              "pages": [
+                "zh/docs/websets/api/events/types",
+                "zh/docs/websets/api/events/list-all-events",
+                "zh/docs/websets/api/events/get-an-event"
+              ]
+            },
+            {
+              "group": "团队",
+              "icon": "users",
+              "pages": [
+                "zh/docs/websets/api/teams/get-team-info"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "API 参考"
+    },
+    {
+      "groups": [
+        {
+          "boost": 0.5,
+          "group": "更新",
+          "pages": [
+            "zh/docs/changelog"
+          ],
+          "root": "zh/docs/changelog"
+        }
+      ],
+      "tab": "更新日志"
+    }
+  ]
+}

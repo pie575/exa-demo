@@ -1,0 +1,12 @@
+---
+title: "列出运行事件"
+description: "列出已存储的 Agent 运行事件，或以 server-sent events 形式重放这些事件。"
+openapi: "/zh/docs/exa-spec.yaml GET /agent/runs/{id}/events"
+timestamp: false
+---
+
+默认情况下，该端点返回已存储事件的分页 JSON 列表。设置 `Accept: text/event-stream` 即可将已存储事件以 SSE 形式重放。JSON 分页请使用 `cursor`；SSE 重放请使用 `Last-Event-ID`。
+
+<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在仪表板中创建 key。新账户可获得免费额度。
+</Card>

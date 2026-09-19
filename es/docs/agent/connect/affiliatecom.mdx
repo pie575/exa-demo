@@ -1,0 +1,159 @@
+---
+title: "Affiliate.com"
+description: "Busca catálogos de productos en comercios y redes de afiliados."
+icon: "/docs/images/sidebar-icons/affiliatecom.svg"
+---
+
+[Affiliate.com](https://affiliate.com) reúne los catálogos de productos de
+comercios y redes de afiliados en un único índice consultable, con precios en
+tiempo real, marcas y enlaces directos a los comercios.
+
+Adjunta `affiliate` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
+[Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
+Affiliate.com junto con la búsqueda web de Exa.
+
+<div id="use-it-for">
+  ## Úsalo para
+</div>
+
+* Descubrir productos y comparar precios entre distintos comercios.
+* Impulsar asistentes de compra y contenido de guías de compra.
+* Mostrar enlaces de afiliados junto a los resultados de investigación.
+
+<div id="provider-id">
+  ## ID del proveedor
+</div>
+
+Usa este valor en `dataSources`:
+
+```text theme={null}
+affiliate
+```
+
+<div id="example">
+  ## Ejemplo
+</div>
+
+Encuentra auriculares inalámbricos con cancelación de ruido por menos de $300 y compara precios.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find wireless noise-cancelling headphones under $300 with pricing from multiple merchants.",
+      data_sources=[{"provider": "affiliate"}],
+      output_schema={
+          "type": "object",
+          "required": ["products"],
+          "properties": {
+              "products": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "brand", "price", "merchant"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "brand": {"type": "string"},
+                          "price": {"type": "string", "description": "price with currency"},
+                          "merchant": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find wireless noise-cancelling headphones under $300 with pricing from multiple merchants.",
+    dataSources: [{ provider: "affiliate" }],
+    outputSchema: {
+      type: "object",
+      required: ["products"],
+      properties: {
+        products: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["name", "brand", "price", "merchant"],
+            properties: {
+              name: { type: "string" },
+              brand: { type: "string" },
+              price: { type: "string", description: "price with currency" },
+              merchant: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find wireless noise-cancelling headphones under $300 with pricing from multiple merchants.",
+      "dataSources": [{ "provider": "affiliate" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["products"],
+        "properties": {
+          "products": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["name", "brand", "price", "merchant"],
+              "properties": {
+                "name": { "type": "string" },
+                "brand": { "type": "string" },
+                "price": { "type": "string", "description": "price with currency" },
+                "merchant": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
+
+* [Similarweb](/es/docs/agent/connect/similarweb): mide el alcance de un comercio antes de recomendarlo.
+* [Fiber.ai](/es/docs/agent/connect/fiber): investiga la empresa detrás de un comercio o una marca.
+
+<div id="next-steps">
+  ## Próximos pasos
+</div>
+
+<Columns cols={2}>
+  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir la guía rápida" arrow="true">
+    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de socios.
+  </Card>
+
+  <Card title="Combinar proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
+    Adjunta hasta cinco socios a una misma ejecución y formula la query de modo que cada uno se active.
+  </Card>
+
+  <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+    Crea ejecuciones, transmite el progreso, diseña esquemas de salida y controla el esfuerzo y el costo.
+  </Card>
+
+  <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
+    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con créditos gratuitos.
+  </Card>
+</Columns>

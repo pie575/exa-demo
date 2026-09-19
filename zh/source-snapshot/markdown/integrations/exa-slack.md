@@ -1,0 +1,162 @@
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
+>
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件查看所有可用页面。
+
+<div id="exa-in-slack">
+  # Slack 中的 Exa
+</div>
+
+> 在 Slack 中安装 Exa，在任意频道或消息串中 @Exa，即可获得带引用来源的研究结果、列表构建和 enrichment 回答。
+
+把 Exa 引入团队的 Slack。在任意频道或消息串中 @**Exa**，提出研究问题、列表构建任务或 enrichment 请求。Exa 会搜索网络、阅读来源，并在消息串内回复带引用来源的答案。
+
+<div id="get-started">
+  ## 开始使用
+</div>
+
+<div id="installation">
+  ### 安装
+</div>
+
+1. 前往 [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack)，然后点击 **Install**。
+
+<img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/dashboard-install.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5c4f876b2618cb7c86126aa8d7c6b8a1" alt="Exa 控制台中的 Exa in Slack 页面，含 Install 按钮" width="3414" height="900" data-path="images/integrations/exa-slack/dashboard-install.png" />
+
+2. 此时会打开 Slack 的 OAuth 授权流程。选择要安装 Exa 的工作区，然后点击 **Allow**。
+
+<img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/oauth-approval.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=81e3f3a144d7edfcd599cf26ac76b332" alt="Exa 应用的 Slack OAuth 授权界面，显示 &#x22;App is not approved by Slack&#x22; 提示、工作区选择器、请求的权限以及 Allow 按钮" width="1820" height="1180" data-path="images/integrations/exa-slack/oauth-approval.png" />
+
+<Note>
+  红色的 **“App is not approved by Slack”** 提示属于正常现象，可以放心忽略。它只说明
+  Exa 尚未上架 Slack 公共应用市场，并不代表存在任何问题。
+</Note>
+
+3. 安装完成后，将 @Exa 邀请进某个频道 (或直接私信它) ，即可开始提问。
+
+<div id="how-to-use-exa-from-slack">
+  ## 如何在 Slack 中使用 Exa
+</div>
+
+在任何已添加 Exa 的频道中，@Exa 并提出你的问题：
+
+```text theme={null}
+@Exa 查找旧金山所有获得 A 轮融资的金融科技初创公司
+```
+
+Exa 会在该消息串中回复你的问题。
+
+<div id="follow-ups">
+  ### 追问
+</div>
+
+Exa 在某个消息串中回答后，直接在该消息串里回复即可继续对话，无需再次 @Exa。Exa 会记住上下文，因此追问会基于上一个回答继续展开。消息串中的任何人都可以追问。
+
+<div id="direct-messages">
+  ### 私信
+</div>
+
+你也可以在私信中直接给 Exa 发消息，完全无需 @ 提及。你发送的每条消息都会发起一次新请求，并在该消息下的消息串中给出回答。在消息串中回复即可继续该对话。
+
+<div id="cancelling-a-run">
+  ### 取消运行
+</div>
+
+运行进行期间，在该消息串中回复，让 Exa 停止本次运行即可，无需 @ 提及。
+
+```text theme={null}
+停止当前运行
+```
+
+<div id="exa-connect-providers">
+  ### Exa Connect 数据提供方
+</div>
+
+当 [Exa Connect](/zh/docs/agent/connect/overview) 数据提供方与你的问题相关时，Exa 会自动将其纳入。若要使用特定的数据提供方，请在消息中直接提及该提供方：
+
+```text theme={null}
+@Exa 用 Fiber.ai 帮我找出本季度获得融资的所有 AI 基础设施初创公司
+```
+
+如需了解所有可用的数据提供方列表，直接询问 Exa 即可。
+
+<div id="examples">
+  ## 示例
+</div>
+
+<div id="news-and-current-events">
+  ### 新闻与时事
+</div>
+
+随时了解任何话题的最新动态。
+
+<img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f" alt="Exa 在 Slack 消息串中回答关于某个主题最新新闻的问题，并以表格形式展示带日期的结果" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
+
+<div id="large-list-building">
+  ### 大规模 list building
+</div>
+
+在请求前加上 `!max`，即可进行穷尽式的 list building。
+
+<img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2" alt="Exa 在 Slack 消息串中执行 !max list building 请求并返回结果表格" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
+
+<div id="keywords">
+  ## 关键词
+</div>
+
+在有 Exa 的消息串中使用这些关键词。命令可以跟在 `@Exa` 提及之后，也可以直接作为消息开头：
+
+| 关键词               | 功能                                      |
+| ----------------- | --------------------------------------- |
+| `!max <message>`  | 以最大 effort 运行该请求，专为构建超大列表而设计。           |
+| `mute`            | 让 Exa 不再回复消息串中未提及它的消息。显式 @Exa 提及仍然有效。   |
+| `unmute`          | 解除 `mute`，恢复对消息串后续消息的回复。                |
+| `sleep`           | 让 Exa 完全停止在该消息串中工作。提及 @Exa 即可将其唤醒。      |
+| `aside <message>` | 发布一条 Exa 会忽略的旁注，适合在 Exa 正在关注的消息串中与同事交流。 |
+| `help`            | 显示使用说明。                                 |
+
+<div id="permissions">
+  ## 权限
+</div>
+
+Slack 版 Exa 应用会请求以下 scope：
+
+| 权限                     | Slack 访问权限               | Exa 为何需要该权限                           |
+| ---------------------- | ------------------------ | ------------------------------------- |
+| `app_mentions:read`    | 查看直接提及 @Exa 的消息          | 当有人在频道或消息串中提及 Exa 时发起请求               |
+| `assistant:write`      | 在 Slack 中作为 App Agent 运行 | 使用 Slack 的 agent 体验，将答案流式输出到私信和频道消息串中 |
+| `channels:history`     | 查看已添加 Exa 的公开频道中的消息      | 接收公开频道的消息串回复，让追问无需再次提及即可生效            |
+| `channels:read`        | 查看公开频道的基本信息              | 在选择网页会话同步位置时，查找已包含 Exa 的公开频道          |
+| `chat:write`           | 以 Exa 应用身份发送消息           | 发布消息串根消息、答案、进度更新、确认信息以及网页同步的消息        |
+| `chat:write.customize` | 自定义应用所发消息的名称和头像          | 在从网页应用同步来的消息上显示网页参与者的姓名和头像            |
+| `files:read`           | 查看已添加 Exa 的会话中共享的文件      | 读取问题所附带的文件                            |
+| `files:write`          | 以 Exa 应用身份上传、编辑和删除文件     | 将结果文件 (例如导出的表格) 附加到答案中                |
+| `groups:history`       | 查看已添加 Exa 的私有频道中的消息      | 接收私有频道的消息串回复，让追问无需再次提及即可生效            |
+| `groups:read`          | 查看已添加 Exa 的私有频道的基本信息     | 在选择网页会话同步目标时，查找符合条件的私有频道并验证成员身份       |
+| `im:history`           | 查看与 Exa 的私信中的消息          | 接收私信请求和追问回复                           |
+| `im:write`             | 发起私信                     | 当已验证用户选择将 Exa 私信作为网页会话同步目标时，打开该私信     |
+| `users:read`           | 查看成员及其基本 Slack 资料        | 将提及解析为姓名，并在同步消息上使用网页参与者的 Slack 头像     |
+| `users:read.email`     | 查看工作区成员的电子邮件地址           | 匹配 Slack 与 Exa 账号，用于团队归属和自定义网页消息头像    |
+
+<Note>
+  `channels:read`、`groups:read` 和 `im:write` 用于实现网页到 Slack 同步的目标位置发现。
+  已完成安装的用户即使没有这些 scope，也可继续使用现有的 Slack 消息串，但在使用相应目标位置前
+  必须重新连接。`chat:write.customize` 在运行时为可选项：若未授予，网页同步的消息将沿用标准的 Exa 应用身份，
+  并在消息正文中标注参与者的姓名。
+</Note>
+
+Exa 仅接收其被明确邀请加入的频道中的消息，以及自身私信中的消息。
+
+<div id="pricing">
+  ## 定价
+</div>
+
+从 Slack 发起的运行将计入你的 Exa 团队账单。详见[定价](https://exa.ai/pricing)。
+
+<div id="privacy">
+  ## 隐私
+</div>
+
+有关 Exa 如何处理你的数据，请参阅 [Exa 隐私政策](https://exa.ai/privacy-policy)。

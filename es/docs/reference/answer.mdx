@@ -1,0 +1,32 @@
+---
+title: "Answer"
+description: "Obtén la respuesta de un LLM a una pregunta, fundamentada en
+  resultados de Exa Search. `/answer` realiza una búsqueda con Exa y usa un LLM
+  para generar:
+
+  1. Una respuesta directa para consultas específicas (por ejemplo, \"¿Cuál es
+  la capital de Francia?\" devolvería \"París\").
+
+  2. Un resumen detallado con citas para consultas abiertas (por ejemplo,
+  \"¿Cuál es el estado de la IA en el sector salud?\" devolvería un resumen con
+  citas de fuentes relevantes).
+
+
+  La respuesta incluye tanto el texto generado como las fuentes utilizadas para
+  crearlo. El endpoint también admite streaming (con `stream=True`), que
+  devuelve los tokens a medida que se generan.
+
+
+  Como alternativa, puedes usar la [interfaz de chat
+  completions](/docs/integrations/openai-sdk#answer) compatible con OpenAI.\n"
+openapi: "/es/docs/exa-spec.yaml POST /answer"
+timestamp: false
+---
+
+<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
+</Card>
+
+<Info>
+  `/answer` admite salida estructurada mediante el parámetro `outputSchema`. Pasa un objeto [JSON Schema](https://json-schema.org/draft-07) y la respuesta se devolverá como JSON estructurado conforme a tu esquema, en lugar de una cadena de texto simple.
+</Info>

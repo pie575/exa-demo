@@ -1,0 +1,106 @@
+{
+  "options": {
+    "experimentalClearLocaleDirs": true,
+    "mintlify": {
+      "inferTitleFromFilename": true,
+      "openapi": {
+        "files": [
+          "./docs/exa-spec.json",
+          "./docs/exa-spec.yaml",
+          "./docs/team-management-spec.yaml"
+        ]
+      }
+    },
+    "jsonSchema": {
+      "./docs.json": {
+        "preset": "mintlify-hide-default"
+      },
+      "./docs/exa-spec.json": {
+        "preset": "openapi"
+      }
+    },
+    "yamlSchema": {
+      "./docs/exa-spec.yaml": {
+        "preset": "openapi"
+      },
+      "./docs/team-management-spec.yaml": {
+        "preset": "openapi"
+      }
+    },
+    "docsUrlPattern": "/[locale]",
+    "docsImportPattern": "/snippets/[locale]",
+    "generateRedirects": "./docs.json",
+    "experimentalLocalizeStaticImports": true,
+    "experimentalLocalizeStaticUrls": true,
+    "experimentalLocalizeRelativeAssets": true,
+    "docsHideDefaultLocaleImport": true,
+    "experimentalHideDefaultLocale": true,
+    "experimentalAddHeaderAnchorIds": "mintlify"
+  },
+  "files": {
+    "json": {
+      "include": [
+        "./docs/exa-spec.json",
+        "./docs.json"
+      ],
+      "transform": [
+        {
+          "match": "^docs/exa-spec.json$",
+          "replace": "{locale}/docs/exa-spec.json"
+        }
+      ]
+    },
+    "yaml": {
+      "include": [
+        "./docs/exa-spec.yaml",
+        "./docs/team-management-spec.yaml"
+      ],
+      "transform": [
+        {
+          "match": "^docs/exa-spec.yaml$",
+          "replace": "{locale}/docs/exa-spec.yaml"
+        },
+        {
+          "match": "^docs/team-management-spec.yaml$",
+          "replace": "{locale}/docs/team-management-spec.yaml"
+        }
+      ]
+    },
+    "mdx": {
+      "include": [
+        "./**/*.mdx",
+        "./**/*.md"
+      ],
+      "transform": {
+        "match": "^(snippets/)?(.*)$",
+        "replace": "$1{locale}/$2"
+      },
+      "exclude": [
+        "./[locales]/**/*.mdx",
+        "./snippets/[locales]/**/*.mdx",
+        "./[locales]/**/*.md",
+        "./snippets/[locales]/**/*.md",
+        "./**/README.md",
+        "./**/LICENSE.md",
+        "./**/COPYING.md",
+        "./**/NOTICE.md",
+        "./**/CHANGELOG.md",
+        "./**/HISTORY.md",
+        "./**/CODE_OF_CONDUCT.md",
+        "./**/CONTRIBUTING.md",
+        "./**/SECURITY.md",
+        "./**/GOVERNANCE.md",
+        "./**/AGENTS.md",
+        "./**/OWNERS.md",
+        "./**/MAINTAINERS.md"
+      ]
+    }
+  },
+  "locales": [
+    "es",
+    "ru",
+    "zh"
+  ],
+  "defaultLocale": "en",
+  "$schema": "https://assets.gtx.dev/config-schema.json"
+}

@@ -1,8 +1,22 @@
 ---
-openapi: "docs/exa-spec.yaml POST /monitors/batch"
+openapi: "/docs/exa-spec.yaml POST /monitors/batch"
 timestamp: false
 title: "Batch action on monitors"
-description: "Perform a batch action on monitors matching the provided filters.\n\nSupported actions:\n- **delete**: Permanently remove matching monitors\n- **pause**: Pause matching monitors\n- **unpause**: Unpause matching monitors\n\nUse `dry_run: true` (the default) to preview which monitors would be affected before performing the action. Results are paginated via the `limit` parameter; loop until `has_more` is `false` to process all matching monitors."
+description: "Perform a batch action on monitors matching the provided filters.
+
+
+  Supported actions:
+
+  - **delete**: Permanently remove matching monitors
+
+  - **pause**: Pause matching monitors
+
+  - **unpause**: Unpause matching monitors
+
+
+  Use `dry_run: true` (the default) to preview which monitors would be affected
+  before performing the action. Results are paginated via the `limit` parameter;
+  loop until `has_more` is `false` to process all matching monitors."
 ---
 
 
