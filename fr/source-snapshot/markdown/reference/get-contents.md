@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="contents">
-  # Contents
-</div>
+# Contents {#contents}
 
-> Récupérez l&#39;intégralité du contenu des pages, les summaries et les metadata pour une liste d&#39;URL.
+> Récupérez l&#39;intégralité des page contents, des résumés et des métadonnées pour une liste d&#39;URL.
 
 Renvoie des résultats instantanés depuis notre cache, avec un crawl en direct automatique en secours pour les pages non mises en cache.
 
 ***
 
-<Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0

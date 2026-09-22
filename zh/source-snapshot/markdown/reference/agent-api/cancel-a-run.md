@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="cancel-a-run">
-  # 取消运行
-</div>
+# 取消运行 {#cancel-a-run}
 
 > 取消排队中或正在运行的 Agent 运行。
 
-如果运行仍处于活动状态，它会立即转为 `cancelled` 并终止，不返回任何结果。该运行将以状态 `cancelled` 和 `stopReason: cancelled` 结束。取消前已产生的用量仍会计费。如果运行已处于终态 (completed、failed 或 cancelled) ，该端点将原样返回现有运行。
+如果该运行仍在进行中，它会立即转为 `cancelled` 并终止，不返回任何结果。运行结束时状态为 `cancelled`，`stopReason: cancelled`。取消前已产生的用量仍会计费。如果运行已处于终止状态 (completed、failed 或 cancelled) ，该端点将原样返回现有运行。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0

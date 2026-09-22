@@ -1,51 +1,39 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-api-key">
-  # Obtener API key
-</div>
+# Obtener API key {#get-api-key}
 
-> Recupera los detalles de una API key específica mediante su ID.
+> Recupera los detalles de una API key específica a partir de su ID.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
 <Info>
-  La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la función esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
+  La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la funcionalidad está habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
 </Info>
 
-<div id="overview">
-  ## Descripción general
-</div>
+## Descripción general {#overview}
 
-El endpoint Get API Key permite obtener información detallada de una API key concreta a partir de su identificador único.
+El endpoint Get API Key permite obtener información detallada sobre una API key específica a partir de su identificador único.
 
-<div id="path-parameters">
-  ## Parámetros de ruta
-</div>
+## Path Parameters {#path-parameters}
 
 * **id**: El identificador único de la API key que se desea obtener
 
-<div id="response">
-  ## Respuesta
-</div>
+## Respuesta {#response}
 
 Devuelve información detallada sobre la API key, que incluye:
 
 * **id**: Identificador único
 * **name**: Nombre descriptivo
-* **rateLimit**: Límite de solicitudes por minuto (si está definido)
+* **rateLimit**: Límite de tasa en solicitudes por minuto (si está configurado)
 * **teamId**: ID del equipo al que pertenece esta key
 * **createdAt**: Fecha de creación de la key
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}
 openapi: 3.1.0
@@ -53,10 +41,10 @@ info:
   version: 1.0.0
   title: Team Management API
   description: >-
-    API for managing API keys within teams. Provides CRUD operations for
-    creating, listing, updating, and deleting API keys with team-based access
-    controls. The API is enabled per team. Contact support@exa.ai to request
-    access.
+    API para gestionar API keys dentro de los equipos. Ofrece operaciones CRUD
+    para crear, listar, actualizar y eliminar API keys con controles de acceso
+    basados en el equipo. La API se habilita por equipo. Escribe a
+    support@exa.ai para solicitar acceso.
 servers:
   - url: https://admin-api.exa.ai/team-management
 security:
@@ -66,8 +54,8 @@ paths:
     get:
       tags:
         - Team Management
-      summary: Get API key
-      description: Retrieves details of a specific API key by its ID.
+      summary: Obtener API key
+      description: Recupera los detalles de una API key específica por su ID.
       operationId: get-api-key
       parameters:
         - name: id
@@ -75,10 +63,10 @@ paths:
           required: true
           schema:
             type: string
-          description: The unique identifier of the API key.
+          description: El identificador único de la API key.
       responses:
         '200':
-          description: API key retrieved successfully
+          description: API key recuperada correctamente
           content:
             application/json:
               schema:
@@ -96,15 +84,15 @@ paths:
                         type:
                           - integer
                           - 'null'
-                        description: Rate limit in requests per second
+                        description: Límite de tasa en solicitudes por segundo
                       budgetCents:
                         type:
                           - integer
                           - 'null'
-                        description: Spending budget for the API key, in cents
+                        description: Presupuesto de gasto de la API key, en centavos
                       isOverBudget:
                         type: boolean
-                        description: Whether the API key is currently over its budget
+                        description: Indica si la API key ha superado actualmente su presupuesto
                       teamId:
                         type: string
                         format: uuid
@@ -112,7 +100,7 @@ paths:
                         type: string
                         format: date-time
         '400':
-          description: Bad request - invalid API key ID format
+          description: Solicitud incorrecta: formato de ID de API key no válido
           content:
             application/json:
               schema:
@@ -122,7 +110,7 @@ paths:
                     type: string
                     example: Invalid API key ID format.
         '401':
-          description: Unauthorized - Invalid or missing service key
+          description: No autorizado: service key no válida o ausente
           content:
             application/json:
               schema:
@@ -132,7 +120,7 @@ paths:
                     type: string
                     example: Unauthorized
         '404':
-          description: Not found - API key does not exist
+          description: No encontrado: la API key no existe
           content:
             application/json:
               schema:
@@ -145,7 +133,7 @@ paths:
         - apikey: []
       x-codeSamples:
         - lang: bash
-          label: Get a specific API key
+          label: Obtener una API key específica
           source: >
             curl -X GET 'https://admin-api.exa.ai/team-management/api-keys/{id}'
             \
@@ -156,6 +144,6 @@ components:
       type: apiKey
       in: header
       name: x-api-key
-      description: Service API key for team authentication
+      description: Service API key para la autenticación del equipo
 
 ```

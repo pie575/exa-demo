@@ -1,31 +1,29 @@
 ---
 title: "CrewAI"
-description: "Aprende a añadir capacidades de recuperación de Exa a tus agents de CrewAI."
+description: "Aprende a añadir capacidades de recuperación de Exa a tus agentes de CrewAI."
 icon: "/docs/images/sidebar-icons/crewai.svg"
 ---
 
-<Card title="Inicio rápido de Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+<Card title="Quickstart de agentes de programación" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
   ¿Es tu primera vez con Exa? Empieza en menos de un minuto.
 </Card>
 
 ***
 
-[CrewAI](https://crewai.com/) es un framework para orquestar agents de IA que trabajan juntos para llevar a cabo tareas complejas.
-En esta guía crearemos un crew de dos agents que genera un boletín a partir de los resultados de search de Exa. Veremos cómo:
+[CrewAI](https://crewai.com/) es un framework para orquestar agentes de IA que colaboran entre sí para completar tareas complejas.
+En esta guía crearemos un crew de dos agentes que genera un boletín a partir de los resultados de búsqueda de Exa. Veremos cómo:
 
-1. Crear una herramienta personalizada de CrewAI impulsada por Exa
-2. Configurar los agents y asignarles roles específicos que usen la herramienta de search impulsada por Exa
-3. Organizar los agents en un crew que escribirá un boletín
+1. Crear una herramienta personalizada de CrewAI basada en Exa
+2. Configurar agentes y asignarles roles específicos que usen esa herramienta de búsqueda basada en Exa
+3. Organizar los agentes en un crew que escribirá un boletín
 
 <Note>
-  CrewAI también incluye una herramienta integrada, [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool), que puedes usar tal cual sin escribir un wrapper personalizado. La herramienta personalizada que se muestra a continuación es útil si quieres control total sobre el formato de los resultados; ambos enfoques funcionan.
+  CrewAI también incluye una herramienta integrada, [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool), que puedes usar tal cual sin escribir un wrapper personalizado. La herramienta personalizada que se muestra a continuación resulta útil si quieres control total sobre el formato de los resultados; ambos enfoques funcionan.
 </Note>
 
 ***
 
-<div id="get-started">
-  ## Comenzar
-</div>
+## Primeros pasos {#get-started}
 
 <Steps>
   <Step title="Requisitos previos e instalación">
@@ -71,13 +69,13 @@ En esta guía crearemos un crew de dos agents que genera un boletín a partir de
 
     <Note> Asegúrate de que tus API keys estén inicializadas correctamente. En esta demostración, los nombres de las variables de entorno son `OPENAI_API_KEY` y `EXA_API_KEY` para las keys de OpenAI y Exa, respectivamente. </Note>
 
-    <Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+    <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
     </Card>
   </Step>
 
-  <Step title="Configura un agente de crewAI">
-    Importa los módulos correspondientes de crewAI. Luego, define `exa_tools` para que haga referencia al método de búsqueda personalizado que definimos más arriba.
+  <Step title="Configurar un agente de crewAI">
+    Importa los módulos de crewAI correspondientes. Luego, define `exa_tools` para que haga referencia al método de búsqueda personalizado que definimos anteriormente.
 
     ```Python Python theme={null}
     from crewai import Task, Crew, Agent
@@ -85,13 +83,13 @@ En esta guía crearemos un crew de dos agents que genera un boletín a partir de
     exa_tools = search_and_get_contents_tool
     ```
 
-    Luego configuramos[ dos agentes](https://docs.crewai.com/concepts/Agents/) y los reunimos en un mismo [crew](https://docs.crewai.com/concepts/Crews/):
+    Luego configuramos[ dos agentes](https://docs.crewai.com/concepts/Agents/) y los reunimos en un [crew](https://docs.crewai.com/concepts/Crews/):
 
     * Uno para investigar con Exa (usando la herramienta personalizada definida arriba)
-    * Otro para redactar un boletín como resultado (usando un LLM)
+    * Otro para redactar un boletín como output (usando un LLM)
 
     ```Python Python theme={null}
-    # Creación de un agent investigador senior con memoria y modo detallado
+    # Creación de un agente investigador sénior con memoria y modo detallado
     researcher = Agent(
       role='Researcher',
       goal='Get the latest research on {topic}',
@@ -123,7 +121,7 @@ En esta guía crearemos un crew de dos agents que genera un boletín a partir de
   </Step>
 
   <Step title="Definir tareas para los agentes">
-    A continuación, definiremos las [tareas](https://docs.crewai.com/concepts/Tasks/) de cada agent y crearemos el crew completo con todos los componentes que configuramos más arriba.
+    A continuación, definiremos [tareas](https://docs.crewai.com/concepts/Tasks/) para cada agente y crearemos el crew completo con todos los componentes que configuramos anteriormente.
 
     ```Python Python theme={null}
     research_task = Task(
@@ -157,8 +155,8 @@ En esta guía crearemos un crew de dos agents que genera un boletín a partir de
     ```
   </Step>
 
-  <Step title="Preparar al equipo">
-    Por último, ponemos en marcha la crew proporcionando un tema de investigación como query de entrada.
+  <Step title="Puesta en marcha del equipo">
+    Por último, ponemos en marcha el crew proporcionando un tema de investigación como consulta de entrada.
 
     ```Python Python theme={null}
     response = crew.kickoff(inputs={'topic': 'Latest AI research'})
@@ -166,6 +164,6 @@ En esta guía crearemos un crew de dos agents que genera un boletín a partir de
     print(response)
     ```
 
-    El equipo redacta el boletín a partir del contenido que devolvió la herramienta de search de Exa.
+    El crew redacta el boletín a partir del contenido devuelto por la herramienta Exa Search.
   </Step>
 </Steps>

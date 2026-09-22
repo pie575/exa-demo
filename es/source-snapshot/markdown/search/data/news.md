@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="news">
-  # Noticias
-</div>
+# Noticias {#news}
 
-> Encuentra información de actualidad, cobertura del sector e historias emergentes con Exa Search.
+> Encuentra información de actualidad, cobertura sectorial e historias emergentes con Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el entorno de pruebas de la API" aria-label={`Abrir "${query}" en el entorno de pruebas de la API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,56 +33,42 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para encontrar coberturas de grandes publicaciones, prensa especializada y medios de nicho. Los artículos nuevos se pueden buscar a los pocos minutos de publicarse. Combina una query en lenguaje natural con filtros de fecha cuando la ventana de publicación sea un requisito ineludible.
+Usa Exa Search para encontrar reportajes de grandes medios, prensa especializada y publicaciones de nicho. Los artículos nuevos se pueden buscar a los pocos minutos de su publicación. Combina una consulta en lenguaje natural con filtros de fecha cuando la ventana de publicación sea un requisito estricto.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
 * Investigación de mercados e inversiones
 * Ciberseguridad e inteligencia de amenazas
-* Monitorización de empresas, productos y competidores
+* Monitoreo de empresas, productos y competidores
 * Informes sectoriales e investigación de actualidad
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### Seguir una noticia de política en desarrollo
-</div>
+### Seguir una noticia de política en desarrollo {#follow-a-developing-policy-story}
 
 Indica el tema, el tipo de fuente y la ventana de publicación para que los resultados se centren en la fase actual de la noticia.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### Encontrar análisis de profesionales
-</div>
+### Encontrar análisis de profesionales {#find-practitioner-analysis}
 
 Indica el tipo de fuente cuando quieras análisis de profesionales del sector y no cobertura periodística general.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### Descubre debates en un formato específico
-</div>
+### Descubre debates en un formato específico {#discover-discussions-in-a-specific-format}
 
-Incluye el formato y el tema en la query. De este modo, la búsqueda sigue abierta a páginas de episodios y transcripciones de toda la web.
+Incluye el formato y el tema en la consulta. De este modo, la búsqueda sigue abierta a páginas de episodios y transcripts de toda la web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### Investigar prensa adversa
-</div>
+### Investigar prensa adversa {#research-adverse-media}
 
-Describe tanto la señal negativa como el tipo de entidad que estás investigando. Evita reducir la query al nombre de una empresa seguido de la palabra «noticias».
+Describe tanto la señal negativa como el tipo de entidad que estás investigando. Evita reducir la consulta al nombre de una empresa más la palabra «noticias».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## Realizar una solicitud
-</div>
+## Realizar una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -127,12 +109,10 @@ Describe tanto la señal negativa como el tipo de entidad que estás investigand
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para obtener datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las noticias, los campos y el periodo de tiempo que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para obtener datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las noticias, los campos y el periodo de tiempo que necesitas, y Agent devolverá resultados validados con el esquema y con citas.
 
 <Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Crea un resumen de noticias con fuentes, compara coberturas o extrae datos normalizados de una noticia en desarrollo.
+  Crea un resumen de noticias con fuentes, compara la cobertura o extrae datos normalizados de una noticia en desarrollo.
 </Card>

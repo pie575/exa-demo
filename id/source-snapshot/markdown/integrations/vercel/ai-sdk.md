@@ -1,29 +1,21 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="ai-sdk-by-vercel">
-  # AI SDK by Vercel
-</div>
+# AI SDK by Vercel {#ai-sdk-by-vercel}
 
 > Tambahkan Exa web search ke aplikasi AI SDK dengan package @exalabs/ai-sdk.
 
-Gunakan package `@exalabs/ai-sdk` untuk menambahkan Exa web search ke aplikasi yang dibangun dengan AI SDK by Vercel. Anda cukup menyediakan Exa API key, dan tool `webSearch()` akan menangani search request untuk model Anda.
+Gunakan package `@exalabs/ai-sdk` untuk menambahkan Exa web search ke aplikasi yang dibangun dengan AI SDK by Vercel. Anda cukup menyediakan Exa API key, dan tool `webSearch()` akan menangani permintaan search untuk model Anda.
 
-<div id="install">
-  ## Instalasi
-</div>
+## Pasang {#install}
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-<div id="quick-start">
-  ## Mulai cepat
-</div>
+## Mulai cepat {#quick-start}
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -44,29 +36,25 @@ console.log(text);
 ```
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru langsung mendapat credits gratis.
+  Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
 <Info>
-  Setel key Anda sebagai `EXA_API_KEY` sebelum menjalankan contoh ini. Package akan membaca variabel lingkungan tersebut secara otomatis.
+  Setel key Anda sebagai `EXA_API_KEY` sebelum menjalankan contoh ini. Package akan membaca variabel lingkungan ini secara otomatis.
 </Info>
 
-<div id="defaults">
-  ## Default
-</div>
+## Default {#defaults}
 
 `webSearch()` menggunakan default berikut:
 
 * `type`: `auto`
 * `numResults`: `10`
 * `contents.text`: `3000` karakter per hasil
-* `maxAgeHours`: fallback cache default; atur opsi ini jika Anda memerlukan freshness yang lebih ketat
+* `maxAgeHours`: fallback cache default; atur opsi ini jika Anda memerlukan kebaruan yang lebih ketat
 
-<div id="configure-search">
-  ## Konfigurasi search
-</div>
+## Konfigurasi search {#configure-search}
 
-Gunakan opsi di bawah ini untuk menyetel search dan extraction konten:
+Gunakan options berikut untuk menyetel search dan extraction konten:
 
 ```typescript configuration.ts theme={null}
 const { text } = await generateText({
@@ -90,9 +78,7 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="search-options">
-  ### Opsi pencarian
-</div>
+### Opsi pencarian {#search-options}
 
 | Opsi                                      | Deskripsi                                                                                              |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -102,24 +88,20 @@ console.log(text);
 | `includeDomains` / `excludeDomains`       | Menyertakan atau mengecualikan domain tertentu.                                                        |
 | `startPublishedDate` / `endPublishedDate` | Memfilter hasil berdasarkan tanggal publikasi dalam format ISO 8601.                                   |
 | `includeText` / `excludeText`             | Mewajibkan atau mengecualikan teks dalam hasil.                                                        |
-| `userLocation`                            | Kode negara dua huruf untuk pencarian yang mempertimbangkan lokasi.                                    |
+| `userLocation`                            | Kode negara dua huruf untuk pencarian berbasis lokasi.                                                 |
 
-<div id="content-options">
-  ### Opsi konten
-</div>
+### Content options {#content-options}
 
-| Opsi                                                   | Deskripsi                                                                                                 |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| `contents.text`                                        | Mengembalikan teks hasil ekstraksi. Mendukung `maxCharacters` dan `includeHtmlTags`.                      |
-| `contents.summary`                                     | Mengembalikan summary yang dihasilkan AI. Mendukung `query`.                                              |
-| `contents.maxAgeHours`                                 | Gunakan konten cache hanya jika usianya masih dalam batas yang ditentukan; jika tidak, gunakan livecrawl. |
-| `contents.livecrawlTimeout`                            | Menetapkan batas waktu livecrawl.                                                                         |
-| `contents.subpages` / `contents.subpageTarget`         | Merayapi subhalaman dan, jika perlu, menargetkan subhalaman tertentu.                                     |
-| `contents.extras.links` / `contents.extras.imageLinks` | Mengembalikan tautan atau tautan gambar dari hasil.                                                       |
+| Opsi                                                   | Deskripsi                                                                                                     |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| `contents.text`                                        | Mengembalikan teks hasil ekstraksi. Mendukung `maxCharacters` dan `includeHtmlTags`.                          |
+| `contents.summary`                                     | Mengembalikan ringkasan yang dihasilkan AI. Mendukung `query`.                                                |
+| `contents.maxAgeHours`                                 | Gunakan konten dari cache hanya jika masih dalam rentang usia yang ditentukan; jika tidak, gunakan livecrawl. |
+| `contents.livecrawlTimeout`                            | Mengatur batas waktu livecrawl.                                                                               |
+| `contents.subpages` / `contents.subpageTarget`         | Meng-crawl subhalaman dan secara opsional menargetkan subhalaman tertentu.                                    |
+| `contents.extras.links` / `contents.extras.imageLinks` | Mengembalikan tautan atau tautan gambar dari hasil.                                                           |
 
-<div id="typescript-support">
-  ## Dukungan TypeScript
-</div>
+## Dukungan TypeScript {#typescript-support}
 
 Package ini sudah menyertakan tipe TypeScript:
 
@@ -134,12 +116,10 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-<div id="related-pages">
-  ## Halaman terkait
-</div>
+## Halaman terkait {#related-pages}
 
 <Columns cols={2}>
-  <Card title="Menggunakan Vercel AI Gateway" icon="cloud" href="/id/docs/integrations/vercel/ai-gateway" cta="Buka panduan" arrow="true">
+  <Card title="Gunakan Vercel AI Gateway" icon="cloud" href="/id/docs/integrations/vercel/ai-gateway" cta="Buka panduan" arrow="true">
     Gunakan Exa web search tanpa Exa API key melalui AI Gateway milik Vercel.
   </Card>
 

@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="openrouter">
-  # OpenRouter
-</div>
+# OpenRouter {#openrouter}
 
-> Fundamenta cualquier modelo de OpenRouter con la búsqueda web de Exa mediante la herramienta de servidor openrouter:web&#95;search.
+> Fundamenta cualquier modelo de OpenRouter con Exa web search mediante la herramienta de servidor openrouter:web&#95;search.
 
-Exa es el motor de búsqueda detrás de la búsqueda web de [OpenRouter](https://openrouter.ai). OpenRouter te ofrece una sola API para cientos de modelos, y Exa les da a esos modelos acceso web en tiempo real: cualquier modelo sin búsqueda nativa se fundamenta a través de Exa de forma predeterminada, y cualquier modelo puede dirigirse a Exa de forma explícita. No se necesita ninguna Exa API key. OpenRouter ejecuta las búsquedas del lado del servidor y las cobra a tus credits de OpenRouter.
+Exa es el motor de búsqueda que impulsa la búsqueda web de [OpenRouter](https://openrouter.ai). OpenRouter te ofrece una sola API para cientos de modelos y Exa les da a esos modelos acceso web en tiempo real: cualquier modelo sin búsqueda nativa se fundamenta a través de Exa de forma predeterminada, y cualquier modelo puede dirigirse a Exa de forma explícita. No hace falta una API key de Exa. OpenRouter ejecuta las búsquedas del lado del servidor y las cobra a tus créditos de OpenRouter.
 
-<div id="use-the-web-search-server-tool">
-  ## Usa la herramienta de servidor de búsqueda web
-</div>
+## Usa la herramienta de servidor de búsqueda web {#use-the-web-search-server-tool}
 
-Agrega `openrouter:web_search` a tu arreglo `tools` y el modelo decidirá cuándo buscar, qué buscar y si debe volver a buscar dentro de la misma solicitud. Las [herramientas de servidor](https://openrouter.ai/docs/guides/features/server-tools/web-search) están en beta en OpenRouter y sustituyen al complemento `web`, ya obsoleto, y a las variantes de modelo `:online`; si usas alguno de ellos, consulta la [guía de migración](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) de OpenRouter.
+Agrega `openrouter:web_search` a tu arreglo `tools` y el modelo decidirá cuándo buscar, qué buscar y si conviene volver a buscar dentro de la misma solicitud. Las [herramientas de servidor](https://openrouter.ai/docs/guides/features/server-tools/web-search) están en beta en OpenRouter y sustituyen al plugin `web` deprecado y a las variantes de modelo `:online`; si usas alguno de los dos, consulta la [guía de migración](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) de OpenRouter.
 
 <CodeGroup>
   ```javascript JavaScript theme={null}
@@ -75,7 +69,7 @@ Agrega `openrouter:web_search` a tu arreglo `tools` y el modelo decidirá cuánd
   ```
 </CodeGroup>
 
-Con el valor predeterminado `engine: "auto"`, OpenRouter usa la búsqueda nativa del proveedor cuando el modelo tiene una, y Exa en todos los demás casos. Configura `engine: "exa"` para mantener un mismo comportamiento de búsqueda en todos los modelos:
+Con el valor predeterminado `engine: "auto"`, OpenRouter usa la búsqueda nativa del proveedor en los modelos que la tienen y Exa en todos los demás. Configura `engine: "exa"` para mantener un mismo comportamiento de búsqueda en todos los modelos:
 
 ```json theme={null}
 {
@@ -91,37 +85,31 @@ Con el valor predeterminado `engine: "auto"`, OpenRouter usa la búsqueda nativa
 }
 ```
 
-| Parámetro                             | Úsalo para                                                                                                                                                                                                            |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mode`                                | Sacrificar latencia a cambio de profundidad: `instant`, `fast`, `auto` (predeterminado), `deep-lite`, `deep` o `deep-reasoning`. Los modos se corresponden con los [tipos de search](/es/docs/search/quickstart) de Exa. |
-| `max_results`                         | Limitar los resultados por llamada de search (5 de forma predeterminada)                                                                                                                                              |
-| `max_uses`                            | Limitar cuántas veces puede buscar el modelo en una misma solicitud                                                                                                                                                   |
-| `max_total_results`                   | Limitar los resultados acumulados de todas las búsquedas en una misma solicitud                                                                                                                                       |
-| `max_characters`                      | Fijar un presupuesto exacto de caracteres por resultado para los highlights                                                                                                                                           |
-| `search_context_size`                 | Usar en su lugar un presupuesto predefinido: `low`, `medium` o `high`                                                                                                                                                 |
-| `allowed_domains`, `excluded_domains` | Filtrar los dominios de los resultados. Exa admite ambos filtros en la misma solicitud.                                                                                                                               |
+| Parámetro                             | Úsalo para                                                                                                                                                                                                    |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mode`                                | Equilibrar latencia y profundidad: `instant`, `fast`, `auto` (predeterminado), `deep-lite`, `deep` o `deep-reasoning`. Los modos se corresponden con los [tipos de búsqueda](/es/docs/search/quickstart) de Exa. |
+| `max_results`                         | Limitar los resultados por llamada de búsqueda (5 de forma predeterminada)                                                                                                                                    |
+| `max_uses`                            | Limitar cuántas veces puede buscar el modelo en una misma solicitud                                                                                                                                           |
+| `max_total_results`                   | Limitar los resultados acumulados de todas las búsquedas en una misma solicitud                                                                                                                               |
+| `max_characters`                      | Fijar un presupuesto de caracteres exacto por resultado para los highlights                                                                                                                                   |
+| `search_context_size`                 | Usar en su lugar un presupuesto predefinido: `low`, `medium` o `high`                                                                                                                                         |
+| `allowed_domains`, `excluded_domains` | Filtrar los dominios de los resultados. Exa admite ambos filtros en la misma solicitud.                                                                                                                       |
 
-<div id="how-results-come-back">
-  ## Cómo se devuelven los resultados
-</div>
+## Cómo se devuelven los resultados {#how-results-come-back}
 
-OpenRouter solicita [highlights de Exa](/es/docs/search/highlights) para cada resultado en lugar del texto completo de la página: extractos de tamaño adaptativo, normalmente de 2.000 a 4.000 caracteres por resultado, salvo que definas `max_characters` o `search_context_size`. El modelo lee esos extractos y quienes consumen la API los reciben en anotaciones `url_citation` estandarizadas dentro del mensaje de respuesta. Dentro de un mismo resultado, los marcadores `[...]` separan extractos tomados de distintas partes de la página.
+OpenRouter solicita [highlights de Exa](/es/docs/search/highlights) para cada resultado en lugar del texto completo de la página: extractos de tamaño adaptable, normalmente de 2.000 a 4.000 caracteres por resultado, salvo que definas `max_characters` o `search_context_size`. El modelo lee los extractos y quienes llaman a la API los reciben en anotaciones `url_citation` estandarizadas dentro del mensaje de respuesta. Dentro de un mismo resultado, los marcadores `[...]` separan extractos tomados de distintas partes de la página.
 
-<div id="pricing">
-  ## Precios
-</div>
+## Precios {#pricing}
 
-Las búsquedas de Exa se cobran a tus créditos de OpenRouter, además de los costos de tokens del modelo por leer los resultados. Los modos `instant`, `fast` y `auto` cuestan $0.007 por búsqueda, `deep-lite` y `deep` cuestan $0.012, y `deep-reasoning` cuesta $0.015. Cada búsqueda incluye hasta 10 resultados, y cada resultado adicional cuesta $0.001. Consulta la [documentación de búsqueda web de OpenRouter](https://openrouter.ai/docs/guides/features/server-tools/web-search) para conocer las tarifas actuales.
+Las búsquedas de Exa se cobran con cargo a tus créditos de OpenRouter, además de los costos de tokens del modelo por leer los resultados. Los modos `instant`, `fast` y `auto` cuestan $0.007 por búsqueda, `deep-lite` y `deep` cuestan $0.012, y `deep-reasoning` cuesta $0.015. Cada búsqueda incluye hasta 10 resultados, y cada resultado adicional cuesta $0.001. Consulta la [documentación de búsqueda web de OpenRouter](https://openrouter.ai/docs/guides/features/server-tools/web-search) para ver las tarifas actuales.
 
 El objeto `usage` de la respuesta indica cuántas búsquedas ejecutó el modelo en `server_tool_use.web_search_requests`.
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
 <Columns cols={2}>
   <Card title="Documentación de la herramienta de servidor" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="Abrir documentación" arrow="true">
-    Referencia completa de configuración para `openrouter:web_search`.
+    Referencia completa de configuración de `openrouter:web_search`.
   </Card>
 
   <Card title="Caso de cliente" icon="book-open" href="https://exa.ai/customers/openrouter" cta="Leer el caso" arrow="true">

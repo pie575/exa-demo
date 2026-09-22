@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="list-batches">
-  # Listar lotes
-</div>
+# Listar batches {#list-batches}
 
-> Recupera una lista paginada de los lotes de tu equipo.
+> Recupera una lista paginada de los batches de tu equipo.
 
-Los lotes se devuelven del más reciente al más antiguo. Usa `limit` para controlar el tamaño de página y `cursor` junto con el `nextCursor` de la respuesta anterior para obtener la página siguiente. Pasa `status=completed` para listar únicamente los lotes completados; estos listados usan su propio cursor, así que envía `status=completed` en cada página.
+Los batches se devuelven del más reciente al más antiguo. Usa `limit` para controlar el tamaño de página y `cursor` junto con el `nextCursor` de la respuesta anterior para obtener la página siguiente. Envía `status=completed` para listar solo los batches completados; estos listados usan su propio cursor, así que incluye `status=completed` en cada página.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas comienzan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches
 openapi: 3.1.0
@@ -37,23 +31,25 @@ paths:
     get:
       tags:
         - Batches
-      summary: List batches
-      description: List batches for your team, ordered from newest to oldest.
+      summary: Listar batches
+      description: >-
+        Lista los batches de tu equipo, ordenados del más reciente al más
+        antiguo.
       operationId: listBatches
       parameters:
         - in: query
           name: cursor
           schema:
             type: string
-            description: Pagination cursor from a previous response
+            description: Cursor de paginación de una respuesta anterior
         - in: query
           name: limit
           schema:
             type: integer
             minimum: 1
             description: >-
-              Maximum number of batches to return per page. Defaults to 100 when
-              omitted; there is no upper bound.
+              Número máximo de batches a devolver por página. Si se omite, el
+              valor por defecto es 100; no hay límite superior.
             default: 100
         - in: query
           name: status
@@ -61,10 +57,11 @@ paths:
             type: string
             const: completed
             description: >-
-              Filter the listing to completed batches. `completed` is the only
-              supported value; any other value returns a 400. Completed listings
-              are ordered by expiry and use a distinct cursor, so keep sending
-              `status=completed` on every cursor-paginated request.
+              Filtra el listado para mostrar solo los batches completados.
+              `completed` es el único valor admitido; cualquier otro valor
+              devuelve un 400. Los listados de completados se ordenan por
+              expiración y usan un cursor distinto, así que sigue enviando
+              `status=completed` en cada solicitud paginada por cursor.
         - $ref: '#/components/parameters/BatchesBetaHeader'
       responses:
         '200':
@@ -110,14 +107,14 @@ components:
         type: string
         enum:
           - batches-2026-06-06
-        description: Required beta token for the Batch API.
+        description: Token beta obligatorio para la Batch API.
       required: true
-      description: Required beta token for the Batch API.
+      description: Token beta obligatorio para la Batch API.
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        Identificador único de la solicitud. Coincide con el campo `requestId`
+        que se devuelve en los cuerpos de respuesta que lo incluyen.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -128,20 +125,20 @@ components:
         object:
           type: string
           const: list
-          description: The object type, always `list`.
+          description: El tipo de objeto, siempre `list`.
         data:
           type: array
           items:
             $ref: '#/components/schemas/Batch'
-          description: The page of batches, newest first.
+          description: La página de batches, del más reciente al más antiguo.
         hasMore:
           type: boolean
-          description: Whether there are more results
+          description: Indica si hay más resultados
         nextCursor:
           anyOf:
             - type: string
             - type: 'null'
-          description: Cursor for the next page
+          description: Cursor de la página siguiente
       required:
         - object
         - data
@@ -153,12 +150,14 @@ components:
       properties:
         id:
           type: string
-          description: Batch ID. New batch IDs are returned with the `batch_` prefix.
+          description: >-
+            ID del batch. Los nuevos IDs de batch se devuelven con el prefijo
+            `batch_`.
           example: batch_01j7x9v0m2n4p6q8r0s2t4v6w8
         object:
           type: string
           const: batch
-          description: The object type, always `batch`.
+          description: El tipo de objeto, siempre `batch`.
         status:
           $ref: '#/components/schemas/BatchStatus'
         requestCounts:
@@ -166,13 +165,13 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: When the batch was created.
+          description: Cuándo se creó el batch.
         expiresAt:
           anyOf:
             - type: string
               format: date-time
             - type: 'null'
-          description: When the batch expires, or `null` if it does not expire.
+          description: Cuándo expira el batch, o `null` si no expira.
           format: date-time
         endedAt:
           anyOf:
@@ -180,25 +179,28 @@ components:
               format: date-time
             - type: 'null'
           description: >-
-            When the batch reached a terminal status, or `null` while it is
-            still running.
+            Cuándo el batch alcanzó un estado terminal, o `null` mientras sigue
+            en ejecución.
           format: date-time
         resultsUrl:
           anyOf:
             - type: string
             - type: 'null'
           description: >-
-            Short-lived presigned download URL for the batch results file
-            (JSONL), or `null` until the batch completes. This is a direct
-            object-store download link, not an API route; fetch it as-is and
-            re-fetch the batch to mint a fresh URL once it expires.
+            URL de descarga prefirmada y de corta duración para el archivo de
+            resultados del batch (JSONL), o `null` hasta que el batch se
+            complete. Es un enlace de descarga directo al almacén de objetos, no
+            una ruta de la API; úsalo tal cual y vuelve a consultar el batch para
+            generar una URL nueva cuando expire.
         metadata:
           type: object
           propertyNames:
             type: string
           additionalProperties:
             type: string
-          description: Caller-provided key-value metadata for your own tracking.
+          description: >-
+            Metadatos clave-valor proporcionados por quien realiza la llamada,
+            para tu propio seguimiento.
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -219,19 +221,20 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Human-readable message describing the error.
+          description: Mensaje legible que describe el error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            Machine-readable error tag identifying the failure. The set of tags
-            is open-ended: new tags may be added at any time, so treat
-            unrecognized tags as a generic error of the response's HTTP status.
-            Known tags are listed as examples.
+            Tag de error legible por máquina que identifica el fallo. El conjunto
+            de tags es abierto: pueden añadirse nuevos tags en cualquier momento,
+            así que trata los tags no reconocidos como un error genérico del
+            estado HTTP de la respuesta. Los tags conocidos se listan como
+            ejemplos.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -267,7 +270,9 @@ components:
         - error
         - tag
       additionalProperties: false
-      description: Standard error envelope returned by the Exa API for failed requests.
+      description: >-
+        Envoltorio de error estándar que devuelve la API de Exa para las
+        solicitudes fallidas.
     BatchStatus:
       type: string
       enum:
@@ -276,14 +281,14 @@ components:
         - cancelling
         - cancelled
         - expired
-      description: Lifecycle status of the batch.
+      description: Estado del ciclo de vida del batch.
     BatchRequestCounts:
       type: object
       properties:
         total:
           type: integer
           minimum: 0
-          description: Total requests in the batch.
+          description: Total de solicitudes en el batch.
         completed:
           type: integer
           minimum: 0

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-a-websets-monitor">
-  # Créer un monitor Websets
-</div>
+# Créer un monitor Websets {#create-a-websets-monitor}
 
 > Crée un nouveau `Monitor` pour tenir vos Websets continuellement à jour avec des données fraîches.
 
 Les monitors s&#39;exécutent automatiquement selon le schedule que vous définissez, afin que vos Websets restent à jour sans intervention manuelle :
 
-* **Trouver du nouveau contenu** : exécutez des opérations `search` pour découvrir de nouveaux items correspondant à vos criteria
-* **Mettre à jour le contenu existant** : exécutez des opérations `refresh` pour actualiser les contents et les enrichments des items
-* **Planification automatisée** : configurez des expressions `cron` et le `timezone` pour un contrôle précis de la planification
+* **Trouver du nouveau contenu** : exécutez des opérations `search` pour découvrir de nouveaux items correspondant à vos critères
+* **Mettre à jour le contenu existant** : exécutez des opérations `refresh` pour actualiser les contenus et les enrichments des items
+* **Planification automatisée** : configurez des expressions `cron` et un `timezone` pour un contrôle précis de la planification
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0
@@ -39,24 +33,25 @@ paths:
     post:
       tags:
         - Monitors
-      summary: Create a Monitor
+      summary: Créer un monitor
       description: >-
-        Creates a new `Monitor` to continuously keep your Websets updated with
-        fresh data.
+        Crée un nouveau `Monitor` pour alimenter en continu vos Websets avec des
+        données fraîches.
 
 
-        Monitors automatically run on your defined schedule to ensure your
-        Websets stay current without manual intervention:
+        Les monitors s'exécutent automatiquement selon le schedule que vous
+        définissez, afin que vos Websets restent à jour sans intervention
+        manuelle :
 
 
-        - **Find new content**: Execute `search` operations to discover fresh
-        items matching your criteria
+        - **Trouver du nouveau contenu** : exécutez des opérations `search` pour
+        découvrir de nouveaux items correspondant à vos critères
 
-        - **Update existing content**: Run `refresh` operations to update items
-        contents and enrichments
+        - **Mettre à jour le contenu existant** : exécutez des opérations
+        `refresh` pour actualiser le contenu et les enrichments des items
 
-        - **Automated scheduling**: Configure `cron` expressions and `timezone`
-        for precise scheduling control
+        - **Planification automatisée** : configurez des expressions `cron` et
+        le `timezone` pour un contrôle précis de la planification
       operationId: monitors-create
       requestBody:
         required: true
@@ -66,12 +61,12 @@ paths:
               $ref: '#/components/schemas/CreateMonitorParameters'
       responses:
         '201':
-          description: Monitor created successfully
+          description: Monitor créé avec succès
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: Identifiant unique de la requête.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -86,22 +81,23 @@ components:
     CreateMonitorParameters:
       properties:
         websetId:
-          description: The id of the Webset
+          description: L'id du Webset
           type: string
         cadence:
           properties:
             cron:
               description: >-
-                Cron expression for monitor cadence (must be a valid Unix cron
-                with 5 fields). The schedule must trigger at most once per day.
+                Expression cron définissant la cadence du monitor (doit être une
+                expression cron Unix valide à 5 fields). Le schedule doit se
+                déclencher au plus une fois par jour.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: Fuseau horaire IANA (par exemple, "America/New_York")
               type: string
           required:
             - cron
-          description: How often the monitor will run
+          description: Fréquence d'exécution du monitor
           type: object
         behavior:
           properties:
@@ -109,15 +105,15 @@ components:
               properties:
                 query:
                   description: >-
-                    The query to search for. By default, the query from the last
-                    search is used.
+                    La requête à rechercher. Par défaut, la requête de la
+                    dernière search est utilisée.
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    The criteria to search for. By default, the criteria from
-                    the last search is used.
+                    Les critères à rechercher. Par défaut, les critères de la
+                    dernière search sont utilisés.
                   maxItems: 5
                   items:
                     properties:
@@ -133,15 +129,15 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    The entity to search for. By default, the entity from the
-                    last search/import is used.
+                    L'entité à rechercher. Par défaut, l'entité de la dernière
+                    search/du dernier import est utilisée.
                 count:
                   exclusiveMinimum: 0
-                  description: The maximum number of results to find
+                  description: Le nombre maximum de résultats à trouver
                   type: number
                 behavior:
                   default: append
-                  description: The behaviour of the Search when it is added to a Webset.
+                  description: Le comportement de la Search lorsqu'elle est ajoutée à un Webset.
                   enum:
                     - override
                     - append
@@ -149,11 +145,12 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                Spécifiez les paramètres de recherche du Monitor.
 
 
-                By default, the search parameters (query, entity and criteria)
-                from the last search are used when no parameters are provided.
+                Par défaut, si aucun paramètre n'est fourni, les paramètres de
+                recherche (query, entity et criteria) de la dernière search sont
+                utilisés.
               type: object
             type:
               type: string
@@ -162,7 +159,7 @@ components:
           required:
             - type
             - config
-          description: Behavior to perform when monitor runs
+          description: Comportement à appliquer lors des runs du monitor
           type: object
         metadata:
           propertyNames:
@@ -178,36 +175,37 @@ components:
     Monitor:
       properties:
         id:
-          description: The unique identifier for the Monitor
+          description: L'identifiant unique du Monitor
           type: string
         object:
           enum:
             - monitor
-          description: The type of object
+          description: Le type d'objet
           type: string
         status:
           enum:
             - enabled
             - disabled
-          description: The status of the Monitor
+          description: Le statut du Monitor
           type: string
         websetId:
-          description: The id of the Webset the Monitor belongs to
+          description: L'id du Webset auquel appartient le Monitor
           type: string
         cadence:
           properties:
             cron:
               description: >-
-                Cron expression for monitor cadence (must be a valid Unix cron
-                with 5 fields). The schedule must trigger at most once per day.
+                Expression cron définissant la cadence du monitor (doit être une
+                expression cron Unix valide à 5 fields). Le schedule doit se
+                déclencher au plus une fois par jour.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: Fuseau horaire IANA (par exemple, "America/New_York")
               type: string
           required:
             - cron
-          description: How often the monitor will run
+          description: Fréquence d'exécution du monitor
           type: object
         behavior:
           properties:
@@ -215,15 +213,15 @@ components:
               properties:
                 query:
                   description: >-
-                    The query to search for. By default, the query from the last
-                    search is used.
+                    La requête à rechercher. Par défaut, la requête de la
+                    dernière search est utilisée.
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    The criteria to search for. By default, the criteria from
-                    the last search is used.
+                    Les critères à rechercher. Par défaut, les critères de la
+                    dernière search sont utilisés.
                   maxItems: 5
                   items:
                     properties:
@@ -239,15 +237,15 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    The entity to search for. By default, the entity from the
-                    last search/import is used.
+                    L'entité à rechercher. Par défaut, l'entité de la dernière
+                    search/du dernier import est utilisée.
                 count:
                   exclusiveMinimum: 0
-                  description: The maximum number of results to find
+                  description: Le nombre maximum de résultats à trouver
                   type: number
                 behavior:
                   default: append
-                  description: The behaviour of the Search when it is added to a Webset.
+                  description: Le comportement de la Search lorsqu'elle est ajoutée à un Webset.
                   enum:
                     - override
                     - append
@@ -255,7 +253,7 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                Spécifiez les paramètres de recherche du Monitor.
 
 
                 By default, the search parameters (query, entity and criteria)

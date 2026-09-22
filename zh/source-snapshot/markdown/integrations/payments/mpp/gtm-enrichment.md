@@ -1,56 +1,46 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，可通过该文件查看所有可用页面。
 
-<div id="tempo-mpp-gtm-enrichment-cookbook">
-  # Tempo MPP GTM Enrichment 实践手册
-</div>
+# Tempo MPP GTM 增强手册 {#tempo-mpp-gtm-enrichment-cookbook}
 
-> 构建 GTM enrichment 工作流，通过 Tempo MPP 按每次 Exa search 与 contents 请求付费——无需 API key。
+> 构建 GTM 增强工作流，通过 Tempo MPP 按每次 Exa search 和 页面内容 请求付费，无需 API 密钥。
 
-参考本手册，基于 Exa 的 `/search` 与 `/contents` 端点构建 GTM enrichment 智能体或流水线，并通过 Machine
-Payments Protocol (MPP) 按请求付费。MPP 支持多种支付方式，本文示例使用 [Tempo](https://tempo.xyz) 上的稳定币。无需按月订阅，无需
-API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客户或公司做 enrichment 时按量付费。
+使用本手册，在 Exa 的 `/search` 和 `/contents` 端点之上构建 GTM 增强 agent 或
+pipeline，并通过 Machine Payments Protocol (MPP) 按请求付费。MPP 支持多种支付方式，
+本文示例使用 [Tempo](https://tempo.xyz) 上的稳定币。无需月度订阅，无需
+API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富潜在客户或公司数据的过程中按量付费。
 
 <Info>
-  目前 MPP 仅支持 Exa 的 `/search` 和 `/contents` 端点。
-  Agent API (`/agent/runs`) 和 `/answer` 需要 Exa API key，走标准的 API key 计费流程。
+  MPP 目前仅支持 Exa 的 `/search` 和 `/contents` 端点。
+  Agent API (`/agent/runs`) 和 `/answer` 需要 Exa API 密钥，走标准的
+  API 密钥计费流程。
 </Info>
 
-<div id="what-youll-build">
-  ## 你将构建什么
-</div>
+## 你将构建什么 {#what-youll-build}
 
-一条轻量级的 enrichment 流水线：给定一组公司名称或目标描述后，它会
+一个轻量级的增强 pipeline：给定一组公司名称或目标描述后，它会：
 
 1. 使用 Exa `/search`，配合 `type: "deep"` 和 `outputSchema`，找到公司官方页面并提取关键元数据。
-2. 对返回结果使用 `contents.highlights`，提取融资、总部、员工规模和产品相关的来源片段。
-3. 为每条输入生成一条 CSV 或 JSON 格式的 enrichment 记录。
+2. 对返回的 result 使用 `contents.highlights`，提取有关融资、总部、员工人数和产品的来源片段。
+3. 为每条输入生成一条 CSV 或 JSON 格式的增强记录。
 
-该模式适用于线索列表 enrichment、客户调研以及外呼个性化等场景。由于它由独立的 `/search` + `/contents` 调用组成，每一步都可以通过 MPP 付费。
+该模式适用于线索列表增强、客户调研和外呼个性化。由于它由独立的 `/search` 与 `/contents` 调用组成，每一步都可以通过 MPP 付费。
 
-<div id="prerequisites">
-  ## 前置条件
-</div>
+## 前置条件 {#prerequisites}
 
-* 一个兼容 Tempo 的钱包，并已在 Tempo 主网充值 **USDC.e**。
-* 一种在运行时安全加载钱包私钥的方式 (见下文；切勿提交私钥或将其暴露在源代码中) 。
+* 一个兼容 Tempo 的 wallet，并在 Tempo mainnet 上存有 **USDC.e**。
+* 一种在运行时安全加载 wallet 私钥的方式 (见下文；切勿提交私钥，也不要将其暴露在源代码中) 。
 * 已安装 `mppx` (TypeScript) 或 `pympp` (Python) 。
 
 <Info>
-  如果希望使用无需原始私钥的命令行方案，请使用 [Tempo Wallet CLI](/zh/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line)。`tempo wallet login` 可创建或连接钱包，新注册用户还可能获得免费的 MPP 积分。
+  如果希望使用无需原始私钥的命令行方式，请使用 [Tempo Wallet CLI](/zh/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line)。`tempo wallet login` 会创建或连接一个 wallet，新注册用户还可能获得免费的 MPP 积分。
 </Info>
 
-<div id="mpp-setup">
-  ## MPP 设置
-</div>
+## MPP 设置 {#mpp-setup}
 
-<div id="install-the-client">
-  ### 安装客户端
-</div>
+### 安装客户端 {#install-the-client}
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -62,34 +52,30 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
   ```
 </CodeGroup>
 
-<div id="load-your-private-key-safely">
-  ### 安全地加载私钥
-</div>
+### 安全地加载私钥 {#load-your-private-key-safely}
 
-切勿硬编码私钥。下面的示例从运行时环境变量中读取 `WALLET_PRIVATE_KEY`，仅适用于本地开发。在生产环境中，请使用密钥管理服务加载，例如 1Password、AWS Secrets Manager 或 HashiCorp Vault。
+切勿硬编码私钥。下面的示例从运行时环境中读取 `WALLET_PRIVATE_KEY`，仅供本地开发使用。在 production 环境中，请通过 secrets manager 加载，例如 1Password、AWS Secrets Manager 或 HashiCorp Vault。
 
 <CodeGroup>
   ```bash TypeScript theme={null}
-  # 在你的 shell 或 CI 密钥存储中设置；切勿提交该值
+  # 在你的 shell 或 CI secrets 存储中设置；切勿提交此值
   export WALLET_PRIVATE_KEY="0x..."
   ```
 
   ```bash Python theme={null}
-  # 在你的 shell 或 CI 密钥存储中设置；切勿提交该值
+  # 在你的 shell 或 CI secrets 存储中设置；切勿提交此值
   export WALLET_PRIVATE_KEY="0x..."
   ```
 </CodeGroup>
 
-<div id="make-a-paid-search-request">
-  ### 发起一次付费 search 请求
-</div>
+### 发起一次付费 search 请求 {#make-a-paid-search-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
   import { Mppx, tempo } from "mppx/client";
   import { privateKeyToAccount } from "viem/accounts";
 
-  // 在生产环境中，请从密钥管理服务加载该值 —— 切勿将原始值提交到代码仓库。
+  // 在 production 环境中，请从 secrets manager 加载该值，切勿提交原始值。
   const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);
   const mppx = Mppx.create({
     methods: [tempo.charge({ account })],
@@ -119,7 +105,7 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
 
 
   async def main() -> None:
-      # 在生产环境中，请从密钥管理服务加载该值 —— 切勿将原始值提交到代码仓库。
+      # 在 production 环境中，请从 secrets manager 加载该值，切勿提交原始值。
       account = TempoAccount.from_key(os.environ["WALLET_PRIVATE_KEY"])
       method = tempo(
           account=account,
@@ -147,11 +133,9 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
   ```
 </CodeGroup>
 
-请求成功时会返回 Exa 结果，并附带一个 `Payment-Receipt` header，其中包含链上交易哈希。
+请求成功时，响应会返回 Exa 结果，并附带一个包含 on-chain 交易哈希的 `Payment-Receipt` header。
 
-<div id="make-a-paid-contents-request">
-  ### 发起付费的 contents 请求
-</div>
+### 发起付费的页面内容请求 {#make-a-paid-contents-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -184,15 +168,11 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
   ```
 </CodeGroup>
 
-<div id="gtm-enrichment-recipe">
-  ## GTM enrichment 实践方案
-</div>
+## GTM 增强实践方案 {#gtm-enrichment-recipe}
 
-<div id="enrich-a-list-of-companies">
-  ### 对公司列表做 enrichment
-</div>
+### 增强公司列表 {#enrich-a-list-of-companies}
 
-给定一组公司名称，为每家公司搜索其页面并提取结构化信息。
+给定一份公司名称列表，为每家公司搜索其页面并提取结构化详情。
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -316,11 +296,9 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
   ```
 </CodeGroup>
 
-<div id="enrich-a-person-profile">
-  ### 丰富人物档案
-</div>
+### 增强个人档案 {#enrich-a-person-profile}
 
-本示例使用 `type: "deep"`、`contents.highlights` 和 `outputSchema`
+本示例使用 `type: "deep"`、`contents.highlights` 和 `outputSchema` 来
 调研某个人物并返回结构化档案。
 
 <CodeGroup>
@@ -404,16 +382,14 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
 </CodeGroup>
 
 <Note>
-  这里用 `type: "deep"` 获得更深入的推理，并用 `outputSchema`
-  约束响应结构。深度搜索按每次请求 $0.012 计费，
+  这里用 `type: "deep"` 获得更深入的推理，并用 `outputSchema` 约束
+  响应结构。深度搜索的价格为每次请求 $0.012，
   `contents.highlights` 每条结果额外收取 $0.001。
 </Note>
 
-<div id="structured-output">
-  ### 结构化输出
-</div>
+### 结构化输出 {#structured-output}
 
-如果你想要的是 JSON 字段而非纯文本，可以在 search 请求中使用 `outputSchema`。Exa 会返回一个与你的 schema 结构一致的 `output` 对象。
+如果你想要 JSON field 而不是纯文本，可在搜索请求中使用 `outputSchema`。Exa 会返回一个符合你 schema 结构的 `output` 对象。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -479,15 +455,13 @@ API key，也不按席位计费：只需为钱包充值 USDC.e，在对潜在客
 </CodeGroup>
 
 <Note>
-  `outputSchema` 搭配 `deep-lite` 或 `deep` 搜索类型使用效果最佳。它会在 Exa 侧额外产生一次
+  `outputSchema` 配合 `deep-lite` 或 `deep` 搜索类型效果最佳。它会在 Exa 端增加一次
   LLM 调用，因此按 `deep-lite`/`deep` 计费。
 </Note>
 
-<div id="pricing-and-limits">
-  ## 定价与限制
-</div>
+## 定价与限制 {#pricing-and-limits}
 
-MPP 采用与 API key 计费相同的按请求定价。MPP 搜索请求
+MPP 采用与 API 密钥计费相同的按请求定价。MPP 搜索请求
 最多返回 10 条结果。
 
 | 操作                                             | 价格            |
@@ -499,51 +473,47 @@ MPP 采用与 API key 计费相同的按请求定价。MPP 搜索请求
 | `contents.highlights`                          | 每个 URL $0.001 |
 | `contents.summary`                             | 每条结果 $0.001   |
 
-完整参考请参见 [Pay with MPP (Tempo)](/zh/docs/integrations/payments/mpp/quickstart)，
+完整参考请见 [使用 MPP 支付 (Tempo) ](/zh/docs/integrations/payments/mpp/quickstart)，
 其中包含速率限制、网络详情和支付 header。
 
-<div id="production-tips">
-  ## 生产环境建议
-</div>
+## Production 提示 {#production-tips}
 
-* **只向钱包充值 USDC.e。** Exa 会代付 Tempo 网络手续费，因此钱包无需另外持有 gas 代币。
-* **处理 `402` 响应。** MPP SDK 会自动重试；若使用自定义客户端，则应在收到 `402` 时根据 `WWW-Authenticate: Payment` 质询发起重试。
-* **缓存 `/contents` 结果。** Contents 按 URL 计费，请按 URL 缓存，避免为同一个公司页面重复付费。
+* **只向 wallet 充值 USDC.e。** Exa 会代付 Tempo 网络手续费，因此 wallet
+  无需单独准备 gas token。
+* **处理 `402` 响应。** MPP SDK 会自动重试，但自定义客户端需在收到 `402` 时，
+  依据 `WWW-Authenticate: Payment` 挑战发起重试。
+* **缓存 `/contents` 结果。** 页面内容按 URL 计费。按 URL 缓存可避免为同一家公司的页面重复付费。
 * **注意 10 条结果上限。** MPP search 会将 `numResults` 限制为 10。
-* **切勿提交私钥。** 请从密钥管理服务加载 `WALLET_PRIVATE_KEY`，不要放入源代码版本库。
+* **切勿提交私钥。** 请从 secrets manager 加载 `WALLET_PRIVATE_KEY`，不要放进源代码管理系统。
 
-<div id="faq">
-  ## FAQ
-</div>
+## 常见问题 {#faq}
 
 <AccordionGroup>
-  <Accordion title="MPP 可以配合 Exa Agent API 使用吗？">
+  <Accordion title="可以在 Exa Agent API 中使用 MPP 吗？">
     不可以。在 Exa 代码库中，MPP 仅接入了 `/search` 和 `/contents`。
-    `/agent/runs` 和 `/answer` 需要 Exa API key，并采用标准的 API key
+    `/agent/runs` 和 `/answer` 需要 Exa API 密钥，并采用标准的 API 密钥
     计费方式。
   </Accordion>
 
-  <Accordion title="可以在同一个请求中同时使用 MPP 和 Exa API key 吗？">
-    不可以。如果请求中包含 `x-api-key` 或 `Authorization: Bearer`，则
-    API key 流程优先，MPP 会被绕过。
+  <Accordion title="可以在同一个请求中同时使用 MPP 和 Exa API 密钥吗？">
+    不可以。如果请求中包含 `x-api-key` 或 `Authorization: Bearer`，则以 API
+    密钥流程优先，MPP 会被跳过。
   </Accordion>
 
-  <Accordion title="MPP 结算失败会怎样？">
-    Exa 会返回 `402`，并附带一个新的 `WWW-Authenticate: Payment` 质询，不返回
-    任何结果。你的客户端可以重新发起付款并重试。在结算成功之前，不会返回任何结果。
+  <Accordion title="如果 MPP 结算失败会怎样？">
+    Exa 会返回 `402`，并附带一个新的 `WWW-Authenticate: Payment` 挑战，不返回
+    任何结果。客户端可以发起新的支付后重试。结算成功之前不会返回任何结果。
   </Accordion>
 
-  <Accordion title="每个环境都需要单独的 Tempo 钱包吗？">
-    可以复用同一个钱包，但我们建议开发环境和生产环境分别使用独立钱包。
-    单个钱包的 QPS 为 10 请求/秒，该限制涵盖此钱包发出的所有请求。
+  <Accordion title="每个环境都需要单独的 Tempo wallet 吗？">
+    可以复用同一个 wallet，但我们建议 development 和 production 分别使用独立的
+    wallet。单个 wallet 的 QPS 限制为 10 次/秒，涵盖该 wallet 发出的所有请求。
   </Accordion>
 </AccordionGroup>
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 下一步 {#next-steps}
 
-* [使用 MPP (Tempo) 付款](/zh/docs/integrations/payments/mpp/quickstart)：完整的 MPP 参考文档
+* [使用 MPP (Tempo) 支付](/zh/docs/integrations/payments/mpp/quickstart)：完整的 MPP 参考文档
 * [Exa Search API 指南](/zh/docs/search/quickstart)：搜索参数参考
-* [Exa Contents API 指南](/zh/docs/contents/quickstart)：contents 参数参考
+* [Exa Contents API 指南](/zh/docs/contents/quickstart)：页面内容参数参考
 * [Tempo MPP 文档](https://mpp.dev/protocol)：协议与 SDK 详情

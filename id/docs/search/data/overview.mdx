@@ -1,8 +1,8 @@
 ---
-title: "Indeks Data"
+title: "Data Index"
 sidebarTitle: "Ikhtisar"
 icon: "database"
-description: "Apa saja yang diindeks Exa dari web publik dan sumber data privat."
+description: "Apa saja yang diindeks Exa di seluruh public web dan sumber data privat."
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -31,7 +31,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupan yang terus diperbarui. Cakupannya meliputi:
+Exa menelusuri public web serta sejumlah sumber data privat pilihan, dengan cakupan yang terus diperbarui. Cakupan ini meliputi:
 
 <AccordionGroup>
   <Accordion title="Berita" icon="newspaper">
@@ -43,7 +43,7 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="coverage of the EU AI Act enforcement timeline published this month" />
 
-    Artikel blog dan listicle:
+    Postingan blog dan listicle:
 
     <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
@@ -61,7 +61,7 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
       Jelajahi kasus penggunaan, contoh, dan praktik terbaik pencarian kode.
     </Card>
 
-    Repo GitHub:
+    Repositori GitHub:
 
     <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
@@ -69,7 +69,7 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-    Registry package, lengkap dengan detail versi dan rilis yang akurat:
+    Registri package, lengkap dengan detail versi dan rilis yang presisi:
 
     <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
@@ -87,7 +87,7 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-    Professional profiles berdasarkan peran, skill, dan lokasi:
+    Profil profesional berdasarkan role, skill, dan lokasi:
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
@@ -95,13 +95,13 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-    Riset perusahaan dan pemangku kepentingan dalam satu query:
+    Research perusahaan dan pemangku kepentingan dalam satu query:
 
     <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
   </Accordion>
 
   <Accordion title="Pasar Keuangan" icon="chart-line">
-    <Card title="Panduan Pasar Keuangan" icon="chart-line" href="/id/docs/search/data/financial" cta="Baca panduan" arrow="true">
+    <Card title="Panduan Financial Markets" icon="chart-line" href="/id/docs/search/data/financial" cta="Baca panduan" arrow="true">
       Jelajahi kasus penggunaan untuk kuotasi harga, filings, earnings call, dan riset pasar.
     </Card>
 
@@ -113,7 +113,7 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" />
 
-    Pendanaan yang telah diumumkan dan data lain yang dilaporkan secara publik:
+    Pendanaan yang diumumkan dan data lain yang dilaporkan ke publik:
 
     <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
@@ -122,12 +122,12 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
     <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
   </Accordion>
 
-  <Accordion title="Publikasi Riset" icon="book-open">
-    <Card title="Panduan Publikasi Riset" icon="book-open" href="/id/docs/search/data/research" cta="Baca panduan" arrow="true">
-      Jelajahi kasus penggunaan riset untuk papers, paten, klinis, dan regulasi.
+  <Accordion title="Publikasi Research" icon="book-open">
+    <Card title="Panduan Research Publications" icon="book-open" href="/id/docs/search/data/research" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan research untuk paper, paten, klinis, dan regulasi.
     </Card>
 
-    Papers riset, paten, dan grants:
+    Paper research, paten, dan hibah:
 
     <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" />
 
@@ -135,17 +135,17 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-    Approvals regulasi dan kesehatan:
+    Persetujuan regulasi dan kesehatan:
 
     <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
   </Accordion>
 
   <Accordion title="Catatan Hukum & Publik" icon="scale">
-    <Card title="Panduan Hukum & Rekaman Publik" icon="scale" href="/id/docs/search/data/legal" cta="Baca panduan" arrow="true">
-      Jelajahi yurisprudensi, paten, sanksi, dan kasus penggunaan rekaman publik.
+    <Card title="Panduan Catatan Hukum & Publik" icon="scale" href="/id/docs/search/data/legal" cta="Baca panduan" arrow="true">
+      Jelajahi yurisprudensi, paten, sanksi, dan kasus penggunaan catatan publik.
     </Card>
 
-    Rekaman hukum dan pengadilan:
+    Catatan hukum dan pengadilan:
 
     <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
@@ -157,30 +157,30 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-    Sensus dan rekaman publik lainnya:
+    Sensus dan catatan publik lainnya:
 
     <PlaygroundQuery query="census tract population change in the Austin metro area" />
   </Accordion>
 
-  <Accordion title="Olahraga, Cuaca & Tempat" icon="map-pin">
+  <Accordion title="Olahraga, Cuaca & Lokasi" icon="map-pin">
     <Card title="Panduan Olahraga, Cuaca & Tempat" icon="map-pin" href="/id/docs/search/data/sports-weather-places" cta="Baca panduan" arrow="true">
-      Pelajari cara melakukan query untuk sports data langsung, prakiraan cuaca, dan informasi lokal.
+      Pelajari cara melakukan query untuk data olahraga langsung, prakiraan cuaca, dan informasi lokal.
     </Card>
 
-    Skor langsung, klasemen, dan jadwal:
+    Skor langsung, klasemen, dan jadwal pertandingan:
 
     <PlaygroundQuery query="NBA scores last night" />
 
-    Prakiraan cuaca untuk tempat dan tanggal mana pun:
+    Prakiraan cuaca untuk tempat dan tanggal apa pun:
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-    Bisnis lokal, tempat acara, dan properti:
+    Bisnis lokal, tempat usaha, dan properti:
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
   </Accordion>
 
-  <Accordion title="Keamanan siber" icon="shield">
+  <Accordion title="Keamanan Siber" icon="shield">
     <Card title="Panduan keamanan siber" icon="shield" href="/id/docs/search/data/security" cta="Baca panduan" arrow="true">
       Jelajahi kasus penggunaan untuk kerentanan, advisory, dan risiko vendor.
     </Card>
@@ -193,10 +193,10 @@ Exa menelusuri web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-    Daftar subprosesor data dan trust pages:
+    Daftar subprosesor data dan trust page:
 
     <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
   </Accordion>
 </AccordionGroup>
 
-Panduan ini membahas pola data yang umum, tetapi Exa juga menelusuri web publik yang lebih luas, mencakup berbagai situs, format, dan bahasa.
+Panduan ini membahas pola data yang umum, tetapi Exa juga melakukan pencarian di public web yang lebih luas, mencakup banyak situs, format, dan bahasa.

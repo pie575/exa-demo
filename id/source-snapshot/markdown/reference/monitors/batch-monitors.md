@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="batch-action-on-monitors">
-  # Aksi batch pada monitor
-</div>
+# Aksi batch pada monitor {#batch-action-on-monitors}
 
-> Lakukan aksi batch pada monitor yang sesuai dengan filter yang diberikan.
+> Lakukan aksi batch pada monitor yang cocok dengan filter yang diberikan.
 
 Aksi yang didukung:
 
-* **delete**: Menghapus monitor yang sesuai secara permanen
-* **pause**: Menjeda monitor yang sesuai
-* **unpause**: Melanjutkan kembali monitor yang sesuai
+* **delete**: Menghapus monitor yang cocok secara permanen
+* **pause**: Menjeda monitor yang cocok
+* **unpause**: Melanjutkan kembali monitor yang cocok
 
-Gunakan `dry_run: true` (nilai bawaan) untuk melihat pratinjau monitor mana saja yang akan terpengaruh sebelum menjalankan aksi. Hasil dipaginasi melalui parameter `limit`; lakukan perulangan hingga `has_more` bernilai `false` untuk memproses seluruh monitor yang sesuai.
+Gunakan `dry_run: true` (default) untuk melihat pratinjau monitor mana saja yang akan terpengaruh sebelum aksi dijalankan. Hasil dipaginasi melalui parameter `limit`; lakukan loop hingga `has_more` bernilai `false` untuk memproses semua monitor yang cocok.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/batch
 openapi: 3.1.0

@@ -1,23 +1,21 @@
 ---
-title: "Build with Exa skill"
-sidebarTitle: "Build with Exa"
-description: "一项帮助开发者实现 Exa API 平台任意功能的 agent skill。"
+title: "Build with Exa Skill"
+sidebarTitle: "使用 Exa 构建"
+description: "一个帮助开发者实现 Exa API 平台任意功能的 agent skill。"
 keywords: ["build with exa", "agent skills", "exa api", "sdk"]
 ---
 
-使用此 skill，让你的 agent 学会按照最佳实践，基于 Exa 的 API 构建应用和 agent。
+使用此 skill，让你的 agent 学会按照最佳实践，用 Exa 的 API 构建应用和 agent。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费额度。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
 <Note>
-  在你的 agent 环境中将 key 设置为 `EXA_API_KEY`。
+  在你的 agent 环境中将密钥设置为 `EXA_API_KEY`。
 </Note>
 
-<div id="setup">
-  ## 设置
-</div>
+## 设置 {#setup}
 
 **方式 A：直接安装此 skill：**
 
@@ -25,16 +23,16 @@ keywords: ["build with exa", "agent skills", "exa api", "sdk"]
 npx skills add exa-labs/agent-skills --skill "build-with-exa"
 ```
 
-**方式 B：将以下提示词复制到你的编码 Agent 中。**
+**方式 B：将以下 prompt 复制到你的编码智能体中。**
 
-下面的提示词会安装该 skill，并在不打印 API key 的前提下验证它：
+以下 prompt 会安装该 skill，并在不打印 API 密钥的情况下完成校验：
 
 ```text Copy this setup prompt into your agent theme={null}
-在本机上配置 Exa 的 build-with-exa agent skill。
+在这台机器上配置 Exa build-with-exa agent skill。
 
 目标：
-- 安装 build-with-exa skill，使我的编码 agent 能够借助 Exa 的完整 API 平台构建应用与 agent。
-- 让 Exa API key 可正常使用，且全程不得在本对话中暴露、打印或粘贴该 key。
+- 安装 build-with-exa skill，让我的编码智能体能用它基于 Exa 完整的 API 平台构建应用和 agent。
+- 让 Exa API 密钥可用，且全程不得暴露、打印该密钥，也不得将其粘贴到本对话中。
 
 所选 agent：
 - Claude Code、Codex、Cursor，或任何兼容 Agent Skills 的 agent
@@ -42,45 +40,41 @@ npx skills add exa-labs/agent-skills --skill "build-with-exa"
 - 项目本地安装目录：.claude/skills（Claude Code）、.agents/skills（Codex / Cursor / 其他）
 
 Skill 来源：
-- SKILL.md 地址：https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md
+- SKILL.md URL：https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md
 
-操作步骤：
-1. 先安装 skill，再进行任何 key 配置。在仓库内工作时优先采用项目本地安装；否则使用上面列出的对应全局目录。创建所选的 skills 目录并下载 skill：
+执行步骤：
+1. 先安装 skill，再做任何密钥配置。在代码仓库中工作时优先采用项目本地安装；否则使用上面列出的对应全局目录。创建所选的 skills 目录并下载 skill：
    mkdir -p <skills-dir>/build-with-exa && curl -fsSL "https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" -o <skills-dir>/build-with-exa/SKILL.md
-   然后确认 <skills-dir>/build-with-exa/SKILL.md 已存在。
-2. 在你自己运行命令的环境中检查是否已有可用的 Exa API key——请使用你后续运行该 skill 所用的同一工具/shell，而不是让我把它 echo 出来。该 skill 会先从 EXA_API_KEY 解析 key，再从文件 ~/.config/exa/key 解析，因此两处都要检查，且不得打印任何值：
+   然后确认 <skills-dir>/build-with-exa/SKILL.md 确实存在。
+2. 在你自己运行命令的环境中检查是否已有可用的 Exa API 密钥 — 使用你运行该 skill 时所用的同一工具/shell，而不是让我把它 echo 出来。该 skill 先从 EXA_API_KEY 解析密钥，再从文件 ~/.config/exa/key 解析，因此两者都要检查，且不得打印出任何值：
    printf '%s\n' "${EXA_API_KEY:+env-set}"; [ -s ~/.config/exa/key ] && printf 'file-set\n'
-   你的 shell 很可能是非交互式的，不会自动 source ~/.zshrc 或 ~/.bashrc 这类交互式配置文件，因此我在那里设置的 key 在我看来是存在的，对你却是空的。如果两处都没有结果，key 可能仍存放在你的 shell 跳过的交互式配置文件里：用 `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` 找出是哪个文件，且不要打印其内容（该命令仅列出文件名——绝不要对配置文件直接运行 `grep`/`cat`/`echo`，因为 `export EXA_API_KEY=...` 这样的行会把密钥泄露到我们的对话中）。随后在你的命令中 `source` 该文件，并重新运行上面的存在性检查；若显示已设置，则之后每条需要该 key 的命令都要加上同样的 `source ...;` 前缀。
-3. 只有在任何位置都解析不到 key 时，才去配置一个，且不得手工编辑任何 shell 配置文件，也不得把 key 粘贴到本对话中。请告诉我到 https://dashboard.exa.ai/api-keys 创建或复制 key，然后由我在自己的终端里自行 export EXA_API_KEY，或以 600 权限写入 ~/.config/exa/key——绝不要让我把 key 粘贴到对话里。然后等我确认完成后再继续。
-4. 在你自己的 shell 中对该 key 做冒烟测试——从环境变量或文件中解析它，并且只打印状态码：
+   你的 shell 很可能是非交互式的，不会自动 source ~/.zshrc 或 ~/.bashrc 这类交互式配置文件，因此我在那里设置的密钥，在我看来存在，在你那里却是空的。如果两项检查都没有结果，密钥可能仍存放在你的 shell 跳过的交互式配置文件中：用 `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` 找出是哪个文件，且不要打印其值（该命令只列出文件名 — 绝不要对配置文件直接运行 `grep`/`cat`/`echo`，因为 `export EXA_API_KEY=...` 这一行会把 secret 泄露到我们的对话中）。然后在你的命令中 `source` 该文件，并重新运行上面的存在性检测；如果这次有结果，就在后续每条需要密钥的命令前都加上同样的 `source ...;`。
+3. 只有在任何位置都解析不到密钥时，才去配置一个，且不得手工编辑任何 shell 配置文件，也不得把密钥粘贴到本对话中。告诉我到 https://dashboard.exa.ai/api-keys 创建或复制一个密钥，然后由我自己在终端中 export EXA_API_KEY，或者以 600 权限将其写入 ~/.config/exa/key — 绝不要让我把密钥粘贴到对话里。随后等我确认完成后再继续。
+4. 在你自己的 shell 中对密钥做冒烟测试 — 从环境变量或文件中解析它，并且只打印状态码：
    KEY="${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}"
    curl -s -o /dev/null -w "%{http_code}\n" -X POST https://api.exa.ai/search \
      -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
      -d '{"query":"exa.ai","numResults":1}'
-   请严格保持上述 endpoint、header 和请求体不变（不要猜测 schema）。它必须返回 200，而不是 401/429。如果第 2 步中需要加 `source ...;` 前缀才能读到环境变量里的 key，这里同样要加上。
-5. 告诉我如何重启或重新扫描我的 agent，使其能够发现该 skill。
+   端点、header 和请求体必须与上面写的完全一致（不要臆测 schema）。必须返回 200，而不是 401/429。如果第 2 步中你需要加 `source ...;` 前缀才能读到环境变量里的密钥，这里也要加上。
+5. 告诉我如何重启或重新扫描我的 agent，好让它发现该 skill。
 
-全程必须遵守的硬性规则：key 是机密。只能通过存在性/长度检查（`${EXA_API_KEY:+set}`、`[ -s ~/.config/exa/key ]`）或 HTTP 状态码来查看它——绝不要对任何可能包含它的文件或变量执行打印、`echo`、`cat` 或带输出的 `grep`，也绝不要尝试用正则去"脱敏"key 文件。一旦 key 被泄露，请告诉我到 https://dashboard.exa.ai/api-keys 轮换它。
+全程必须遵守的硬性规则：密钥是 secret。只能通过存在性/长度检查（`${EXA_API_KEY:+set}`、`[ -s ~/.config/exa/key ]`）或 HTTP 状态码来查看它 — 绝不要打印、`echo`、`cat`，或用带输出的 `grep` 处理任何可能包含它的文件或变量，也不要试图用正则表达式对密钥文件做“脱敏”。一旦密钥泄露，请告诉我到 https://dashboard.exa.ai/api-keys 轮换密钥。
 ```
 
-<div id="view-source">
-  ## 查看源文件
-</div>
+## 查看源文件 {#view-source}
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="查看源文件" arrow="true">
-  安装前请先阅读 build-with-exa skill 定义。
+  安装前请先阅读 build-with-exa skill 的定义。
 </Card>
 
-<div id="related">
-  ## 相关内容
-</div>
+## 相关内容 {#related}
 
 <Columns cols={2}>
-  <Card title="全部 Agent Skills" icon="layers" href="/zh/docs/get-started/agent-skills/overview" cta="浏览 skills" arrow="true">
-    浏览 Exa 的所有 skill，并一次性全部安装。
+  <Card title="全部 agent skills" icon="layers" href="/zh/docs/get-started/agent-skills/overview" cta="浏览 skills" arrow="true">
+    浏览所有 Exa skill，并一次性全部安装。
   </Card>
 
-  <Card title="Skills 仓库" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="查看源文件" arrow="true">
-    每个 skill 的源码，包含原始 `SKILL.md` 文件。
+  <Card title="Skills 代码仓库" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="查看源文件" arrow="true">
+    每个 skill 的源文件，包括原始 `SKILL.md` 文件。
   </Card>
 </Columns>

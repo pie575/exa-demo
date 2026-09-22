@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="data-index">
-  # Index de données
-</div>
+# Index de données {#data-index}
 
 > Ce qu&#39;Exa indexe sur le web public et dans les sources de données privées.
 
@@ -37,7 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Exa explore le web public ainsi qu&#39;une sélection de sources de données privées, avec une couverture actualisée en continu. Cela comprend :
+Exa effectue des recherches sur le web public et sur une sélection de sources de données privées, avec une couverture actualisée en continu. Cela comprend :
 
 <AccordionGroup>
   <Accordion title="Actualités" icon="newspaper">
@@ -47,19 +43,19 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
     Actualités et articles :
 
-    <PlaygroundQuery query="couverture du calendrier d'application de l'AI Act européen publiée ce mois-ci" />
+    <PlaygroundQuery query="coverage of the EU AI Act enforcement timeline published this month" />
 
     Articles de blog et listicles :
 
-    <PlaygroundQuery query="articles de blog technique sur la migration de Postgres vers ClickHouse" />
+    <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
     Transcriptions de podcasts et de vidéos :
 
-    <PlaygroundQuery query="épisodes de podcast où des fondateurs évoquent leurs erreurs de stratégie tarifaire" />
+    <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
     Presse défavorable :
 
-    <PlaygroundQuery query="presse négative et plaintes réglementaires visant les sociétés de prêt sur salaire" />
+    <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
   </Accordion>
 
   <Accordion title="Code et documentation" icon="code">
@@ -67,7 +63,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
       Découvrez les cas d&#39;usage, exemples et bonnes pratiques de la recherche de code.
     </Card>
 
-    Dépôts GitHub :
+    Repos GitHub :
 
     <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
@@ -75,7 +71,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
     <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-    Registres de packages, avec le détail précis des versions et des publications :
+    Registres de packages, avec les détails précis de version et de release :
 
     <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
@@ -86,7 +82,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
   <Accordion title="Entreprises et personnes" icon="users">
     <Card title="Guide Entreprises et personnes" icon="users" href="/fr/docs/search/data/companies-people" cta="Lire le guide" arrow="true">
-      Découvrez comment trouver des entreprises, des personnes et les liens qui les unissent.
+      Découvrez comment trouver des entreprises, des personnes et les relations qui les lient.
     </Card>
 
     Découverte d&#39;entreprises et signaux d&#39;activité :
@@ -97,7 +93,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-    Personnes filtrées selon l&#39;entreprise pour laquelle elles travaillent :
+    Personnes ciblées selon l&#39;entreprise pour laquelle elles travaillent :
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
@@ -108,7 +104,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
   <Accordion title="Marchés financiers" icon="chart-line">
     <Card title="Guide des marchés financiers" icon="chart-line" href="/fr/docs/search/data/financial" cta="Lire le guide" arrow="true">
-      Découvrez les cas d&#39;usage liés aux quotes, aux filings, aux earnings calls et à la recherche de marché.
+      Découvrez les cas d&#39;usage liés aux quotes, aux filings, aux earnings calls et à l&#39;analyse de marché.
     </Card>
 
     Cours, estimations d&#39;analystes et rapports financiers :
@@ -128,12 +124,12 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
     <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
   </Accordion>
 
-  <Accordion title="Publications scientifiques" icon="book-open">
+  <Accordion title="Publications de recherche" icon="book-open">
     <Card title="Guide des publications de recherche" icon="book-open" href="/fr/docs/search/data/research" cta="Lire le guide" arrow="true">
-      Découvrez des cas d&#39;usage portant sur les articles scientifiques, les brevets, la recherche clinique et réglementaire.
+      Découvrez les cas d&#39;usage liés aux papers, aux brevets, aux essais cliniques et à la recherche réglementaire.
     </Card>
 
-    Articles de recherche, brevets et subventions :
+    Papers de recherche, brevets et subventions :
 
     <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" />
 
@@ -141,21 +137,21 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
     <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-    Autorisations réglementaires et sanitaires :
+    Approbations réglementaires et sanitaires :
 
     <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
   </Accordion>
 
-  <Accordion title="Documents juridiques et publics" icon="scale">
-    <Card title="Guide Juridique et registres publics" icon="scale" href="/fr/docs/search/data/legal" cta="Lire le guide" arrow="true">
-      Découvrez les cas d&#39;usage liés à la jurisprudence, aux brevets, aux sanctions et aux registres publics.
+  <Accordion title="Documents juridiques et archives publiques" icon="scale">
+    <Card title="Guide Juridique et records publics" icon="scale" href="/fr/docs/search/data/legal" cta="Lire le guide" arrow="true">
+      Explorez la jurisprudence, les brevets, les sanctions et les cas d&#39;usage liés aux records publics.
     </Card>
 
-    Documents juridiques et judiciaires :
+    Records juridiques et judiciaires :
 
     <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-    Sanctions et listes de surveillance :
+    Sanctions et watchlists :
 
     <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
@@ -163,7 +159,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
     <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-    Recensements et autres registres publics :
+    Recensements et autres records publics :
 
     <PlaygroundQuery query="census tract population change in the Austin metro area" />
   </Accordion>
@@ -173,7 +169,7 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
       Découvrez comment interroger des données sportives en direct, des prévisions météo et des informations locales.
     </Card>
 
-    Scores, classements et calendriers en direct :
+    Scores en direct, classements et calendriers :
 
     <PlaygroundQuery query="NBA scores last night" />
 
@@ -187,8 +183,8 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
   </Accordion>
 
   <Accordion title="Cybersécurité" icon="shield">
-    <Card title="Guide cybersécurité" icon="shield" href="/fr/docs/search/data/security" cta="Lire le guide" arrow="true">
-      Explorez les cas d&#39;usage liés aux vulnérabilités, aux advisories et aux risques liés aux vendors.
+    <Card title="Guide de cybersécurité" icon="shield" href="/fr/docs/search/data/security" cta="Lire le guide" arrow="true">
+      Découvrez des cas d&#39;usage liés aux vulnérabilités, aux advisories et aux risques vendor.
     </Card>
 
     Advisories de sécurité :
@@ -199,10 +195,10 @@ Exa explore le web public ainsi qu&#39;une sélection de sources de données pri
 
     <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-    Listes de sous-traitants de données et trust pages :
+    Listes de sous-traitants de données et pages de confiance :
 
     <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
   </Accordion>
 </AccordionGroup>
 
-Ces guides couvrent les cas d&#39;usage de données les plus courants, mais Exa effectue aussi des recherches sur l&#39;ensemble du web public, sur de nombreux sites, formats et langues.
+Ces guides couvrent les cas d&#39;usage de données les plus courants, mais Exa effectue aussi des recherches sur l&#39;ensemble du web public, à travers de nombreux sites, formats et langues.

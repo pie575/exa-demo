@@ -1,37 +1,29 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="similarweb">
-  # Similarweb
-</div>
+# Similarweb {#similarweb}
 
-> Obtén estimaciones de tráfico web, rankings globales y descubrimiento de competidores.
+> Obtén estimaciones de tráfico de sitios web, rankings globales y descubrimiento de competidores.
 
 [Similarweb](https://www.similarweb.com) es una de las principales fuentes de
-inteligencia de mercado digital. Modela el tráfico y la interacción de millones de sitios
-web y aplicaciones, e incluye visitas estimadas, fuentes de tráfico, datos demográficos de la audiencia y el
+inteligencia de mercado digital. Modela el tráfico y la interacción de millones de sitios web y
+aplicaciones, e incluye visitas estimadas, fuentes de tráfico, demografía de la audiencia y el
 conjunto competitivo en torno a cualquier dominio.
 
-Adjunta `similarweb` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
+Adjunta `similarweb` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
-Similarweb junto con la búsqueda web de Exa.
+Similarweb junto con Exa web search.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Comparar el tráfico web y la interacción de una empresa con los de su competencia.
-* Identificar los competidores de un dominio y los sitios con audiencia coincidente.
-* Dimensionar mercados y filtrar empresas según su huella digital.
+* Comparar el tráfico web y el engagement de una empresa con los de empresas similares.
+* Mapear los competidores de un dominio y los sitios con audiencia coincidente.
+* Dimensionar mercados y cribar empresas según su huella digital.
 * Enriquecer la investigación de empresas y categorías con datos reales de comportamiento.
 
-<div id="provider-id">
-  ## ID del proveedor
-</div>
+## ID del proveedor {#provider-id}
 
 Usa este valor en `dataSources`:
 
@@ -39,37 +31,33 @@ Usa este valor en `dataSources`:
 similarweb
 ```
 
-<div id="pricing">
-  ## Precios
-</div>
+## Precios {#pricing}
 
-Similarweb factura en credits de datos a `$0.30 / credit`, y cada llamada se cobra
-según los credits que Similarweb reporta para ella. Los credits aumentan con los datos devueltos:
-aproximadamente un credit por punto de datos (métrica × fila × mes), de modo que el precio de una llamada
-depende de sus parámetros:
+Similarweb factura en créditos de datos a `$0.30 / credit`, y cada llamada se cobra
+según los créditos que Similarweb informa para ella. Los créditos aumentan con los datos devueltos:
+aproximadamente un crédito por punto de datos (métrica × fila × mes), por lo que el precio de una llamada
+lo determinan sus parámetros:
 
-| Herramienta                      | Credits                                                                                                   |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Tráfico y ranking                | hasta 7 por mes solicitado (1–2 meses)                                                                    |
-| Sitios similares                 | 3 por sitio devuelto (1–5 sitios)                                                                         |
-| Fuentes de tráfico               | 10                                                                                                        |
-| Principales referentes           | 3 por referente devuelto (1–5)                                                                            |
-| Principales países               | 3 por país devuelto (1–5)                                                                                 |
-| Principales páginas              | 2 por página devuelta (1–7)                                                                               |
-| Principales palabras clave       | 1–10 (aproximadamente 1 por cada 100 puntos de datos de palabras clave; 50 palabras clave equivalen a ~7) |
-| Resumen de palabra clave         | 1–2                                                                                                       |
-| Demografía de la audiencia       | 8                                                                                                         |
-| Solapamiento de audiencia        | 2 por combinación de dominios (2–3 dominios: 6–14)                                                        |
-| Tecnologías                      | 10                                                                                                        |
-| Principales sitios por categoría | 1 por sitio devuelto (1–10)                                                                               |
+| Herramienta                      | Créditos                                                                                       |
+| -------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Tráfico y ranking                | hasta 7 por mes solicitado (1–2 meses)                                                         |
+| Sitios similares                 | 3 por sitio devuelto (1–5 sitios)                                                              |
+| Fuentes de tráfico               | 10                                                                                             |
+| Principales referentes           | 3 por referente devuelto (1–5)                                                                 |
+| Principales países               | 3 por país devuelto (1–5)                                                                      |
+| Principales páginas              | 2 por página devuelta (1–7)                                                                    |
+| Principales palabras clave       | 1–10 (alrededor de 1 por cada 100 puntos de datos de palabras clave; 50 palabras clave son ~7) |
+| Resumen de palabras clave        | 1–2                                                                                            |
+| Demografía de la audiencia       | 8                                                                                              |
+| Solapamiento de audiencia        | 2 por combinación de dominios (2–3 dominios: 6–14)                                             |
+| Tecnologías                      | 10                                                                                             |
+| Principales sitios por categoría | 1 por sitio devuelto (1–10)                                                                    |
 
 Las llamadas que no devuelven datos (un dominio desconocido o con poco tráfico, una palabra clave sin
 volumen de búsqueda) son gratuitas. `numResults` y `months` determinan por cuántos puntos de datos
-pagas, así que mantenlos en el mínimo que necesite la tarea.
+pagas, así que mantenlos tan bajos como lo permita la tarea.
 
-<div id="example">
-  ## Ejemplo
-</div>
+## Ejemplo {#example}
 
 Encuentra 10 empresas SaaS B2B de rápido crecimiento y su tráfico web estimado.
 
@@ -163,31 +151,27 @@ Encuentra 10 empresas SaaS B2B de rápido crecimiento y su tráfico web estimado
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Combina bien con
-</div>
+## Combina bien con {#pairs-well-with}
 
-* [Fiber.ai](/es/docs/agent/connect/fiber): convierte los competidores detectados en registros de empresas enriquecidos.
-* [Affiliate.com](/es/docs/agent/connect/affiliatecom): mide el alcance de un comercio antes de recomendar sus productos.
+* [Fiber.ai](/es/docs/agent/connect/fiber): convierte los competidores descubiertos en registros de empresas enriquecidos.
+* [Affiliate.com](/es/docs/agent/connect/affiliatecom): evalúa el alcance de un comercio antes de recomendar sus productos.
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir la guía rápida" arrow="true">
-    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
+  <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">
+    El quickstart de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
   </Card>
 
-  <Card title="Combinar proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
-    Adjunta hasta cinco partners a una misma ejecución y ajusta la query para que se active cada uno.
+  <Card title="Combina proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
+    Adjunta hasta cinco partners a un mismo run y formula la consulta para que todos se activen.
   </Card>
 
-  <Card title="Aprende Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
-    Crea ejecuciones, transmite el progreso en streaming, diseña esquemas de salida y controla el esfuerzo y el costo.
+  <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+    Crea runs, transmite el progreso en streaming, diseña esquemas de output y controla el effort y el costo.
   </Card>
 
   <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
-    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con credits gratuitos.
+    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con créditos gratuitos.
   </Card>
 </Columns>

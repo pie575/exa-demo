@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="create-an-import">
-  # Membuat import
-</div>
+# Membuat impor {#create-an-import}
 
-> Membuat import baru untuk mengunggah data Anda ke Websets. Import dapat digunakan untuk:
+> Membuat impor baru untuk mengunggah data Anda ke Websets. Impor dapat digunakan untuk:
 
-* **Enrich**: Memperkaya data Anda dengan informasi tambahan menggunakan mesin enrichment berbasis AI kami
-* **Search**: Mengueri data Anda menggunakan search agentic Websets dengan filter berbahasa alami
-* **Exclude**: Mencegah hasil duplikat atau yang sudah diketahui muncul pada search Anda
+* **Enrich**: Memperkaya data Anda dengan informasi tambahan menggunakan mesin enrichment bertenaga AI kami
+* **Search**: Menelusuri data Anda menggunakan agentic search Websets dengan filter berbahasa alami
+* **Exclude**: Mencegah hasil duplikat atau yang sudah diketahui muncul dalam search Anda
 
-Setelah import dibuat, Anda dapat mengunggah data ke `uploadUrl` yang dikembalikan hingga `uploadValidUntil` (secara default 1 jam).
+Setelah impor dibuat, Anda dapat mengunggah data ke `uploadUrl` yang dikembalikan hingga `uploadValidUntil` (secara default 1 jam).
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

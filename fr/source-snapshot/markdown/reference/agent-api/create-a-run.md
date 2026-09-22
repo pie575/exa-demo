@@ -1,31 +1,25 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-a-run">
-  # Créer un run
-</div>
+# Créer un run {#create-a-run}
 
-> Créez un run d&#39;Agent asynchrone. La response renvoie immédiatement l&#39;objet run, sauf si vous demandez des server-sent events.
+> Crée un run Agent asynchrone. La réponse renvoie immédiatement l&#39;objet run, sauf si vous demandez des server-sent events.
 
-Créez un run avec une `query` en langage naturel. Ajoutez `outputSchema` pour obtenir du JSON structuré et validé, `input.data` pour les lignes à traiter, `input.exclusion` pour les records ou entités à exclure, ou `previousRunId` pour reprendre à partir d&#39;un run terminé.
+Créez un run avec une `query` en langage naturel. Ajoutez `outputSchema` pour obtenir un JSON structuré validé, `input.data` pour les lignes à traiter, `input.exclusion` pour les records ou entités à exclure, ou `previousRunId` pour reprendre à partir d&#39;un run terminé.
 
-Définissez `Accept: text/event-stream` pour diffuser les événements du run au fil de sa création, de son démarrage et de son achèvement.
+Définissez `Accept: text/event-stream` pour diffuser les événements du run au fur et à mesure de sa création, de son démarrage et de son achèvement.
 
 <Note>
   **Connect :** transmettez `dataSources` pour donner à l&#39;agent accès à des data providers tiers pendant le run. Consultez le [guide Connect](/fr/docs/agent/quickstart#connect-data-sources) pour plus de détails.
 </Note>
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0
@@ -815,18 +809,18 @@ components:
         url:
           type: string
           format: uri
-          description: Source URL.
+          description: URL de la source.
         title:
           type: string
-          description: Source title.
+          description: Titre de la source.
       required:
         - url
       additionalProperties: false
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        Identifiant unique de la requête. Correspond au field `requestId`
+        renvoyé dans les corps de réponse qui en contiennent un.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -836,12 +830,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez
+        également vous authentifier avec Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez
+        également vous authentifier avec Authorization: Bearer <key>.
 ```

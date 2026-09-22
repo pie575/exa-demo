@@ -1,45 +1,35 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="vercel-ai-gateway">
-  # Vercel AI Gateway
-</div>
+# Vercel AI Gateway {#vercel-ai-gateway}
 
 > Gunakan Exa web search melalui Vercel AI Gateway dengan AI SDK.
 
-Gunakan Exa web search melalui [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) dengan `gateway.tools.exaSearch()` dari package `ai`. Anda tidak memerlukan Exa API key; Vercel menagihkan permintaan ini melalui AI Gateway. Lihat [dokumentasi web search](https://vercel.com/docs/ai-gateway/models-and-providers/web-search) milik Vercel untuk referensi lengkapnya.
+Gunakan Exa web search melalui [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) dengan `gateway.tools.exaSearch()` dari package `ai`. Anda tidak memerlukan Exa API key; Vercel menagih permintaan ini melalui AI Gateway. Lihat [dokumentasi web search](https://vercel.com/docs/ai-gateway/models-and-providers/web-search) dari Vercel untuk referensi lengkapnya.
 
-<div id="install">
-  ## Instalasi
-</div>
+## Pasang {#install}
 
-Instal AI SDK 5 atau versi yang lebih baru:
+Pasang AI SDK 5 atau versi yang lebih baru:
 
 ```bash install.sh theme={null}
 npm install ai
 ```
 
-<div id="authentication">
-  ## Autentikasi
-</div>
+## Autentikasi {#authentication}
 
 <Info>
-  AI Gateway memerlukan API key atau token OIDC. Buat `AI_GATEWAY_API_KEY` di dashboard Vercel pada bagian **AI Gateway &gt; API Keys**, lalu tambahkan ke environment Anda.
+  AI Gateway memerlukan API key atau token OIDC. Buat `AI_GATEWAY_API_KEY` di dashboard Vercel pada menu **AI Gateway &gt; API Keys**, lalu tambahkan ke environment Anda.
 </Info>
 
 ```bash .env theme={null}
 AI_GATEWAY_API_KEY=your-api-key-here
 ```
 
-Saat men-deploy aplikasi Anda di Vercel, Anda dapat menggunakan `VERCEL_OIDC_TOKEN` yang tersedia secara otomatis sebagai gantinya. Lihat [dokumentasi autentikasi dan BYOK](https://vercel.com/docs/ai-gateway/authentication-and-byok) dari Vercel.
+Saat men-deploy aplikasi Anda di Vercel, Anda dapat menggunakan `VERCEL_OIDC_TOKEN` yang otomatis tersedia sebagai gantinya. Lihat [dokumentasi autentikasi dan BYOK](https://vercel.com/docs/ai-gateway/authentication-and-byok) milik Vercel.
 
-<div id="quick-start">
-  ## Mulai cepat
-</div>
+## Mulai cepat {#quick-start}
 
 Anda dapat menggunakan Exa search dengan model apa pun yang didukung:
 
@@ -58,11 +48,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="streaming">
-  ## Streaming
-</div>
+## Streaming {#streaming}
 
-Gunakan `streamText` untuk memproses teks yang dihasilkan dan event search tool begitu diterima:
+Gunakan `streamText` untuk memproses teks yang dihasilkan dan events tool search begitu diterima:
 
 ```typescript stream.ts theme={null}
 import { gateway, streamText } from 'ai';
@@ -86,13 +74,11 @@ for await (const part of result.fullStream) {
 }
 ```
 
-Pada route handler Next.js, kembalikan stream ke klien dengan `return result.toUIMessageStreamResponse()`.
+Pada route handler Next.js, kembalikan stream ke client dengan `return result.toUIMessageStreamResponse()`.
 
-<div id="configuration">
-  ## Konfigurasi
-</div>
+## Konfigurasi {#configuration}
 
-Teruskan opsi ke `gateway.tools.exaSearch()` untuk menyesuaikan search Anda:
+Berikan options ke `gateway.tools.exaSearch()` untuk menyetel search Anda:
 
 ```typescript configuration.ts theme={null}
 tools: {
@@ -109,30 +95,28 @@ tools: {
 },
 ```
 
-Opsi yang tersedia meliputi:
+Opsi yang tersedia mencakup:
 
-| Opsi                                                   | Deskripsi                                                         |
-| ------------------------------------------------------ | ----------------------------------------------------------------- |
-| `type`                                                 | Search mode: `auto` (bawaan), `fast`, atau `instant`.             |
-| `numResults`                                           | Jumlah hasil yang dikembalikan, dari 1 hingga 100. Bawaannya 10.  |
-| `category`                                             | Kategori konten.                                                  |
-| `includeDomains` / `excludeDomains`                    | Menyertakan atau mengecualikan domain tertentu.                   |
-| `startPublishedDate` / `endPublishedDate`              | Menyaring hasil berdasarkan tanggal publikasi.                    |
-| `userLocation`                                         | Kode negara ISO dua huruf untuk search yang mengenali lokasi.     |
-| `contents.text`                                        | Mengembalikan teks halaman hasil ekstraksi.                       |
-| `contents.highlights`                                  | Mengembalikan highlights halaman yang relevan.                    |
-| `contents.maxAgeHours`                                 | Menetapkan usia maksimum konten yang di-cache.                    |
-| `contents.livecrawlTimeout`                            | Menetapkan batas waktu livecrawl.                                 |
-| `contents.subpages` / `contents.subpageTarget`         | Meng-crawl subhalaman dan secara opsional menargetkan subhalaman. |
-| `contents.extras.links` / `contents.extras.imageLinks` | Mengembalikan tautan atau tautan gambar dari hasil.               |
+| Opsi                                                   | Deskripsi                                                              |
+| ------------------------------------------------------ | ---------------------------------------------------------------------- |
+| `type`                                                 | Search mode: `auto` (default), `fast`, atau `instant`.                 |
+| `numResults`                                           | Jumlah hasil yang dikembalikan, dari 1 hingga 100. Default-nya 10.     |
+| `category`                                             | Kategori konten.                                                       |
+| `includeDomains` / `excludeDomains`                    | Menyertakan atau mengecualikan domain tertentu.                        |
+| `startPublishedDate` / `endPublishedDate`              | Memfilter hasil berdasarkan publication date.                          |
+| `userLocation`                                         | Kode negara ISO dua huruf untuk search yang mempertimbangkan lokasi.   |
+| `contents.text`                                        | Mengembalikan teks halaman hasil ekstraksi.                            |
+| `contents.highlights`                                  | Mengembalikan kutipan halaman yang relevan.                            |
+| `contents.maxAgeHours`                                 | Menetapkan usia maksimum konten yang di-cache.                         |
+| `contents.livecrawlTimeout`                            | Menetapkan batas waktu livecrawl.                                      |
+| `contents.subpages` / `contents.subpageTarget`         | Meng-crawl subhalaman dan secara opsional menargetkan satu subhalaman. |
+| `contents.extras.links` / `contents.extras.imageLinks` | Mengembalikan tautan atau tautan gambar dari hasil.                    |
 
 Lihat [referensi Exa web search](https://vercel.com/docs/ai-gateway/models-and-providers/web-search) dari Vercel untuk daftar lengkap parameter beserta perilakunya.
 
-<div id="vercel-eve-agents">
-  ## Vercel eve agents
-</div>
+## Vercel eve agents {#vercel-eve-agents}
 
-Agent yang dibangun dengan [eve](https://eve.dev) otomatis mendapatkan tool bawaan `web_search`, dan model AI Gateway menjalankannya di Exa secara default, tanpa perlu konfigurasi atau Exa API key. Untuk menetapkan provider secara eksplisit, ekspor dari `agent/tools/web_search.ts`:
+Agent yang dibuat dengan [eve](https://eve.dev) sudah dilengkapi tool `web_search` bawaan, dan model AI Gateway menjalankannya di Exa secara default, tanpa perlu konfigurasi atau Exa API key. Untuk menetapkan provider secara eksplisit, export dari `agent/tools/web_search.ts`:
 
 ```typescript agent/tools/web_search.ts theme={null}
 import { webSearch } from 'eve/tools';
@@ -140,28 +124,26 @@ import { webSearch } from 'eve/tools';
 export default webSearch({ provider: 'exa' });
 ```
 
-Model yang dipanggil melalui provider langsung, bukan melalui AI Gateway, tetap mempertahankan web search bawaannya. Lihat [dokumentasi harness](https://eve.dev/docs/concepts/default-harness#built-in-tools) eve untuk daftar tool lengkapnya.
+Model yang dipanggil melalui provider langsung alih-alih AI Gateway tetap mempertahankan web search bawaannya. Lihat [dokumentasi harness](https://eve.dev/docs/concepts/default-harness#built-in-tools) eve untuk daftar tool lengkapnya.
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
 <Tip>
   Exa web search **gratis hingga 31 Agustus** di AI Gateway dan eve, jadi Anda sudah bisa mulai membangun dengannya hari ini tanpa biaya.
 </Tip>
 
-Setelah itu, Vercel akan menagih permintaan melalui AI Gateway sesuai tarif yang tercantum dalam [dokumentasi web search](https://vercel.com/docs/ai-gateway/models-and-providers/web-search) Vercel.
+Setelah itu, Vercel akan menagih permintaan melalui AI Gateway sesuai tarif yang tercantum di [dokumentasi web search](https://vercel.com/docs/ai-gateway/models-and-providers/web-search) Vercel.
 
 <Note>
-  Saat ini integrasi ini mendukung search mode standar Exa dan kontrol extraction konten. Mode deep synthesis dan summaries yang dihasilkan belum tersedia.
+  Saat ini integrasi ini mendukung mode search standar Exa serta kontrol extraction konten. Mode deep synthesis dan summaries yang dihasilkan belum tersedia.
 </Note>
 
 <Columns cols={2}>
   <Card title="Gunakan Exa AI SDK" icon="code" href="/id/docs/integrations/vercel/ai-sdk" cta="Buka panduan" arrow="true">
-    Panggil Exa secara langsung menggunakan Exa API key melalui `@exalabs/ai-sdk`.
+    Panggil Exa secara langsung dengan Exa API key melalui `@exalabs/ai-sdk`.
   </Card>
 
-  <Card title="Baca referensi web search Vercel" icon="book" href="https://vercel.com/docs/ai-gateway/models-and-providers/web-search" cta="Buka referensi" arrow="true">
+  <Card title="Baca referensi web search dari Vercel" icon="book" href="https://vercel.com/docs/ai-gateway/models-and-providers/web-search" cta="Buka referensi" arrow="true">
     Tinjau referensi lengkap konfigurasi dan harga AI Gateway.
   </Card>
 </Columns>

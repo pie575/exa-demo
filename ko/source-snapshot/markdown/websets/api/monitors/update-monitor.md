@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="update-a-websets-monitor">
-  # Websets monitor 업데이트
-</div>
+# Websets monitor 업데이트 {#update-a-websets-monitor}
 
 > monitor 구성을 업데이트합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/monitors/{id}
 openapi: 3.1.0
@@ -110,16 +104,16 @@ components:
           properties:
             cron:
               description: >-
-                모니터 주기에 대한 cron 표현식(필드가 5개인 유효한 Unix cron이어야 합니다). 이 스케줄은 하루에
-                최대 한 번만 트리거되어야 합니다.
+                Cron expression for monitor cadence (must be a valid Unix cron
+                with 5 fields). The schedule must trigger at most once per day.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA 시간대(예: "America/New_York")
+              description: IANA timezone (e.g., "America/New_York")
               type: string
           required:
             - cron
-          description: 모니터가 실행되는 빈도
+          description: How often the monitor will run
           type: object
         behavior:
           properties:

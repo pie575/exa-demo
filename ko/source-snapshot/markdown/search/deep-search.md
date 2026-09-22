@@ -1,69 +1,63 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="deep-search">
-  # Deep Search
-</div>
+# Deep Search {#deep-search}
 
-> 복잡한 리서치 작업에 반복적인 search와 추론, 근거 기반 synthesis를 활용하세요.
+> 복잡한 리서치 작업에 반복적인 search, 추론, 근거 기반 synthesis를 활용하세요.
 
-Deep Search는 Search API의 리서치 모드입니다. 동일한 `/search` endpoint를 사용하지만, retrieval 과정에서 여러 차례 search를 실행하고 evidence를 검토한 뒤 접근 방식을 다듬어 근거에 기반한 결과를 synthesis할 수 있습니다.
+Deep Search는 Search API의 리서치 모드입니다. 동일한 `/search` 엔드포인트를 사용하지만, 검색 과정에서 여러 번의 search를 실행하고 evidence를 검토하며 접근 방식을 다듬어 근거 기반 결과를 synthesis할 수 있습니다.
 
-잘 정의된 질의에 대해 순위가 매겨진 페이지가 필요하다면 표준 search를 사용하세요. 답을 찾는 데 리서치가 필요하다면 Deep을 사용하세요.
+잘 정의된 질의에 대해 순위가 매겨진 페이지가 필요하다면 standard Search를, 답을 찾는 데 리서치가 필요하다면 Deep을 사용하세요.
 
-<div id="how-deep-search-works">
-  ## Deep Search 작동 방식
-</div>
+## Deep Search 작동 방식 {#how-deep-search-works}
 
-Deep Search는 최종 응답을 생성하기 전에 리서치 루프를 추가합니다:
+Deep Search는 최종 response를 내놓기 전에 리서치 loop를 거칩니다:
 
 <Steps>
   <Step title="search 계획 수립">
-    Exa는 사용자의 `query`에서 출발해, 요청의 여러 측면을 각각 다루는 search로 확장할 수 있습니다. `additionalQueries`로 시작 질의의 변형을 직접 제공할 수도 있습니다.
+    Exa는 사용자의 `query`에서 출발해, 요청의 여러 측면을 포괄하도록 이를 여러 searches로 확장할 수 있습니다.
+    `additionalQueries`로 시작 질의 변형을 직접 지정할 수도 있습니다.
   </Step>
 
   <Step title="search 및 검토">
-    Deep은 evidence를 찾아 요청 내용과 대조하고, 무엇이 뒷받침되었고 무엇이 아직 부족한지 판단합니다.
+    Deep은 evidence를 찾아 요청 내용과 대조하고, 무엇이 뒷받침되고 무엇이 아직 부족한지 판단합니다.
   </Step>
 
   <Step title="정교화">
-    evidence가 불완전하거나 서로 모순될 때, Deep은 처음 나온 그럴듯한 페이지를 그대로 반환하지 않고 더 표적화된 search를 실행할 수 있습니다.
+    evidence가 불완전하거나 서로 모순될 때, Deep은 그럴듯해 보이는 첫 페이지를 그대로 반환하는 대신
+    더 정밀하게 겨냥한 search를 새로 수행할 수 있습니다.
   </Step>
 
   <Step title="선별 및 synthesis">
-    Deep은 유용한 결과를 선별한 뒤, 다른 search type과 동일한 synthesis path를 사용합니다. `outputSchema`를 제공하면 응답에 구조화된 `output.content`와 `output.grounding` 내 필드 단위 citations가 포함됩니다.
+    Deep은 쓸모 있는 결과만 선별한 뒤, 다른 search types와 동일한 synthesis path를 사용합니다.
+    `outputSchema`를 제공하면 response에 구조화된 `output.content`와
+    `output.grounding`의 field 수준 citations가 포함됩니다.
   </Step>
 </Steps>
 
-이 과정은 목록과 구조화된 output에 특히 유용합니다. 요청된 item마다 서로 다른 search가 필요할 수 있는데, Deep은 최종 구조를 만들기 전에 이러한 결과를 수집하고 확인할 수 있습니다.
+이 과정은 목록이나 structured outputs에 특히 유용합니다. 요청한 항목마다 서로 다른 search가 필요할 수 있는데, Deep은 최종 구조를 만들기 전에 그 결과들을 모아 검증할 수 있습니다.
 
-<div id="choose-a-deep-mode">
-  ## Deep 모드 선택하기
-</div>
+## Deep 모드 선택하기 {#choose-a-deep-mode}
 
-| 유형               | 사용 시점                                                 |
-| ---------------- | ----------------------------------------------------- |
-| `deep-lite`      | 가벼운 질의 확장과 synthesis가 필요할 때                           |
-| `deep`           | 반복적인 search, evidence 수집, 또는 여러 개의 구조화된 항목이 필요한 작업일 때 |
-| `deep-reasoning` | 어렵거나 상충하는 evidence를 두고 더 신중한 추론이 필요한 작업일 때            |
+| 유형               | 사용 시점                                                |
+| ---------------- | ---------------------------------------------------- |
+| `deep-lite`      | 가벼운 질의 확장과 synthesis가 필요할 때                          |
+| `deep`           | 반복적인 search, evidence 수집 또는 여러 개의 구조화된 항목이 필요한 작업일 때 |
+| `deep-reasoning` | 어렵거나 서로 상충하는 evidence를 두고 더 신중한 추론이 필요한 작업일 때        |
 
-리서치 워크플로우라면 `deep`으로 시작하세요. 작업이 비교적 단순하고 지연 시간이 중요하다면 `deep-lite`를 사용하세요.
+리서치 워크플로우라면 `deep`으로 시작하세요. 작업이 비교적 단순하고 latency가 중요하다면 `deep-lite`로 전환하세요.
 
 <Tip>
-  장시간 실행되는 리서치, 목록 구성, 다단계 enrichment에는 `deep-reasoning` 대신 [Exa Agent](/ko/docs/agent/quickstart)를 사용하세요. Agent는 실행당 연산 자원이 더 많고, evidence에 기반한 구조화된 결과를 반환합니다.
+  장시간 실행되는 리서치, 리스트 구축, 멀티홉 enrichment에는 `deep-reasoning` 대신 [Exa Agent](/ko/docs/agent/quickstart)를 사용하세요. Agent는 실행당 더 많은 연산 자원을 사용하며 근거 기반의 구조화된 결과를 반환합니다.
 </Tip>
 
-최신 cost 및 지연 시간 관련 안내는 [Pricing](/ko/docs/admin/pricing#deep-search)을 참고하세요.
+현재 비용 및 latency 관련 안내는 [Pricing](/ko/docs/admin/pricing#deep-search)을 참고하세요.
 
-<div id="make-a-deep-request">
-  ## Deep 요청 보내기
-</div>
+## Deep 요청 보내기 {#make-a-deep-request}
 
-일반 Search API 요청에 `type`을 지정하면 됩니다:
+일반 Search API 요청에 `type`만 설정하면 됩니다:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -104,13 +98,11 @@ Deep Search는 최종 응답을 생성하기 전에 리서치 루프를 추가�
   ```
 </CodeGroup>
 
-Deep는 선별된 검색 결과를 `results` 아래에 반환합니다. 종합된 답변이나 구조화된 데이터셋까지 받으려면 `outputSchema`를 추가하세요.
+Deep은 선별된 검색 결과를 `results`에 담아 반환합니다. 종합된 답변이나 구조화된 데이터셋까지 필요하다면 `outputSchema`를 추가하세요.
 
-<div id="provide-starting-queries">
-  ## 시작 질의 제공하기
-</div>
+## 시작 질의 제공하기 {#provide-starting-queries}
 
-deep은 일반적으로 어떤 search를 실행할지 스스로 결정합니다. 조사에서 다뤄야 할 별개의 용어, 관점, 하위 문제를 이미 알고 있다면 `additionalQueries`를 사용하세요:
+Deep은 보통 어떤 검색을 실행할지 스스로 결정합니다. 리서치가 다뤄야 할 구체적인 용어, 관점, 하위 문제를 이미 알고 있다면 `additionalQueries`를 사용하세요:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -158,20 +150,18 @@ deep은 일반적으로 어떤 search를 실행할지 스스로 결정합니다.
   ```
 </CodeGroup>
 
-기본 `query`는 항상 포함됩니다. 추가 질의는 최대 10개까지 제공할 수 있으며, 이 목록은 Deep search type에서만 사용할 수 있습니다.
+기본 `query`는 항상 포함됩니다. 추가 질의는 최대 10개까지 지정할 수 있으며, 이 목록은 Deep search type에서만 사용할 수 있습니다.
 
-단순히 검색량을 늘리려고 표현만 살짝 바꾼 질의는 넣지 마세요. 각 질의가 의미 있게 다른 검색 방향을 더해 줄 때만 추가하세요.
+검색량을 늘리려는 목적만으로 표현만 살짝 바꾼 질의를 넣지 마세요. 각 질의가 의미 있게 다른 검색 방향을 더할 때만 추가하세요.
 
-<div id="guide-behavior-and-output-separately">
-  ## 동작과 출력을 따로 제어하기
-</div>
+## 동작과 output을 따로 제어하기 {#guide-behavior-and-output-separately}
 
-`systemPrompt`와 `outputSchema`는 요청에서 서로 다른 부분에 영향을 줍니다:
+`systemPrompt`와 `outputSchema`는 요청의 서로 다른 부분에 영향을 줍니다.
 
-* `systemPrompt`는 출처 선호, 최신성, 중복 제거, 그리고 Deep의 리서치 방식을 안내합니다.
-* `outputSchema`는 최종 결과의 형태를 정의하고 synthesis를 촉발합니다.
+* `systemPrompt`는 소스 선호도, 최신성, 중복 제거, 그리고 Deep의 리서치 동작을 안내합니다.
+* `outputSchema`는 최종 형태를 정의하고 synthesis를 트리거합니다.
 
-query에는 무엇을 조사할지를, system prompt에는 그 조사를 어떻게 수행하고 어떻게 제시할지를 담아야 합니다.
+질의에는 무엇을 리서치할지를 담고, system prompt에는 그 리서치를 어떻게 수행하고 어떻게 제시할지를 담으세요.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -262,13 +252,11 @@ query에는 무엇을 조사할지를, system prompt에는 그 조사를 어떻�
   ```
 </CodeGroup>
 
-구조화된 item이 두 개를 넘게 필요하거나 각 item이 여러 조건을 충족해야 한다면 Deep을 사용하세요. 표준 search types도 동일한 synthesis path를 사용하지만, synthesis 전에 이와 같은 반복적 리서치를 수행하지는 않습니다.
+구조화된 항목이 세 개 이상 필요하거나 각 항목이 여러 요건을 충족해야 한다면 Deep을 사용하세요. 표준 search type도 동일한 synthesis 경로를 사용하지만, synthesis 이전에 같은 수준의 반복 리서치를 수행하지는 않습니다.
 
-<div id="read-the-grounded-response">
-  ## grounded 응답 읽기
-</div>
+## 근거 기반 response 읽기 {#read-the-grounded-response}
 
-구조화된 응답은 생성된 값과 그에 대한 evidence를 분리해서 보여줍니다:
+구조화된 response는 생성된 값과 그 evidence를 분리해서 보여줍니다:
 
 ```json theme={null}
 {
@@ -304,15 +292,13 @@ query에는 무엇을 조사할지를, system prompt에는 그 조사를 어떻�
 }
 ```
 
-`output.content`는 생성된 결과로 사용하고, `output.grounding`은 각 필드를 뒷받침하는 출처를 표시하거나 검증하는 데 사용하세요. 직접 정의한 schema에 인용이나 신뢰도 필드를 추가할 필요는 없습니다. Exa가 자동으로 반환합니다.
+생성된 result는 `output.content`에서 확인하고, 각 field를 뒷받침하는 소스를 표시하거나 검증하려면 `output.grounding`을 사용하세요. 직접 정의한 schema에 인용이나 confidence field를 추가할 필요는 없습니다. Exa가 자동으로 반환합니다.
 
-`numResults`는 `results`에 반환되는 선별된 페이지 수를 제어합니다. Deep이 수행할 수 있는 searches 횟수를 설정하는 값은 아닙니다.
+`numResults`는 `results`에 반환되는 선별된 페이지 수를 제어합니다. Deep이 수행하는 searches 횟수를 설정하는 값은 아닙니다.
 
-<div id="stream-the-synthesis">
-  ## synthesis 스트리밍
-</div>
+## synthesis 스트리밍 {#stream-the-synthesis}
 
-`outputSchema`와 함께 `stream: true`를 설정하면 synthesis 결과를 server-sent events로 받을 수 있습니다:
+`outputSchema`와 함께 `stream: true`를 설정하면 synthesis된 output을 server-sent events로 받을 수 있습니다:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -384,35 +370,33 @@ query에는 무엇을 조사할지를, system prompt에는 그 조사를 어떻�
   ```
 </CodeGroup>
 
-`done`이 도착할 때까지 타입이 지정된 이벤트를 처리하세요. 마지막 이벤트에는 완성된 output과 search 소요 시간이 담기며, 사용 가능한 경우 cost 정보도 함께 포함됩니다.
+`done`이 나올 때까지 타입이 지정된 이벤트를 처리하세요. 마지막 이벤트에는 완성된 output과 search 소요 시간이 담기며, 비용 정보가 있는 경우 함께 포함됩니다.
 
-<div id="when-to-stay-with-standard-search">
-  ## 표준 search를 그대로 사용해야 할 때
-</div>
+## 기본 search를 그대로 사용해야 할 때 {#when-to-stay-with-standard-search}
 
-한 번의 retrieval로 요청을 처리할 수 있다면 deep은 필요하지 않습니다:
+한 번의 검색만으로 요청을 충족할 수 있다면 deep은 필요하지 않습니다:
 
-* 조사를 거친 결론이 아니라 관련 페이지가 필요한 경우.
-* 질의가 이미 특정 출처나 좁은 주제를 지목하고 있는 경우.
-* 애플리케이션이 자체적으로 추론을 수행하고 retrieval만 필요한 경우.
-* 요청이 대화형, 자동완성, 음성 경로에서 처리되는 경우.
+* 리서치를 거친 결론이 아니라 관련 페이지가 필요한 경우.
+* 질의가 이미 특정 소스나 좁은 주제를 지목하고 있는 경우.
+* 애플리케이션이 자체적으로 추론을 수행하고 검색만 필요한 경우.
+* 요청이 대화형, 자동 완성, 음성 경로에서 처리되는 경우.
 
-품질과 속도의 기본 균형이 필요하면 `auto`를, 지연 시간 요구 사항이 정해져 있다면 `fast`나 `instant`를 사용하세요.
+품질과 속도의 기본 균형을 원한다면 `auto`를, latency 요구 사항이 정해져 있다면 `fast` 또는 `instant`를 사용하세요.
 
 <Columns cols={2}>
-  <Card title="Search API 가이드" icon="search" href="/ko/docs/search/quickstart" cta="search 살펴보기" arrow="true">
-    요청을 구성하고, 결과 콘텐츠를 선택하고, 필터를 적용하세요.
+  <Card title="Search API 가이드" icon="search" href="/ko/docs/search/quickstart" cta="Search 살펴보기" arrow="true">
+    요청을 구성하고, result content를 선택하고, 필터를 적용하세요.
   </Card>
 
-  <Card title="search 모범 사례" icon="sliders-horizontal" href="/ko/docs/search/best-practices" cta="retrieval 조정하기" arrow="true">
-    품질, 컨텍스트, 지연 시간, agent 연동을 개선하세요.
+  <Card title="Search 베스트 프랙티스" icon="sliders-horizontal" href="/ko/docs/search/best-practices" cta="검색 튜닝하기" arrow="true">
+    품질, 컨텍스트, latency, agent 연동을 개선하세요.
   </Card>
 
-  <Card title="Search API reference" icon="square-terminal" href="/ko/docs/reference/search" cta="레퍼런스 열기" arrow="true">
-    모든 요청 매개변수와 응답 필드를 확인하세요.
+  <Card title="Search API reference" icon="square-terminal" href="/ko/docs/reference/search" cta="reference 열기" arrow="true">
+    모든 요청 매개변수와 response field를 확인하세요.
   </Card>
 
-  <Card title="요금" icon="credit-card" href="/ko/docs/admin/pricing#deep-search" cta="모드 비교하기" arrow="true">
-    현재 deep search의 cost와 지연 시간을 확인하세요.
+  <Card title="Pricing" icon="credit-card" href="/ko/docs/admin/pricing#deep-search" cta="모드 비교하기" arrow="true">
+    현재 Deep Search 비용과 latency를 확인하세요.
   </Card>
 </Columns>

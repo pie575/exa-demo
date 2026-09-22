@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在进一步浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="list-all-items-for-a-webset">
-  # 列出某个 webset 的所有 item
-</div>
+# 列出某个 webset 的所有项目 {#list-all-items-for-a-webset}
 
-> 返回 Webset Item 列表。
+> 返回 Webset 项目列表。
 
-你可以使用 `cursor` 参数分页浏览这些 Item。
+你可以使用 `cursor` 参数对项目进行分页。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items
 openapi: 3.1.0

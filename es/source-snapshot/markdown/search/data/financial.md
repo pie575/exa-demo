@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="financial-markets">
-  # Mercados financieros
-</div>
+# Mercados financieros {#financial-markets}
 
-> Encuentra datos de mercado, informes regulatorios, llamadas de resultados y publicaciones económicas con Exa Search.
+> Encuentra datos de mercado, informes regulatorios, earnings calls y publicaciones económicas con Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el entorno de pruebas de la API" aria-label={`Abrir "${query}" en el entorno de pruebas de la API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,74 +33,56 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para obtener precios, informes regulatorios, transcripciones y la cobertura informativa en torno a ellos en una sola query. Una pregunta sobre un ticker puede devolver la cotización, la última llamada de resultados y el análisis de los analistas, todo junto.
+Usa Exa Search para obtener precios, informes regulatorios, transcripts y la cobertura informativa sobre ellos en una sola consulta. Una pregunta sobre un ticker puede devolver, de una vez, la cotización, la última earnings call y la cobertura de los analistas.
 
-<div id="included">
-  ## Incluido
-</div>
+## Incluido {#included}
 
-* Cotizaciones e historial reciente de precios de acciones, criptomonedas, divisas, índices, futuros, opciones y materias primas
+* Cotizaciones e historial de precios reciente de acciones, cripto, divisas, índices, futuros, opciones y materias primas
 * Perfiles de valores con estadísticas clave e historial diario OHLCV
-* Transcripciones de llamadas de resultados, con comentarios preparados y turno de preguntas y respuestas atribuidos a cada interlocutor
-* Informes regulatorios presentados ante la SEC, estados financieros reportados y presentaciones regulatorias internacionales
+* Transcripts de earnings calls, con comentarios preparados y sesiones de preguntas y respuestas atribuidas a cada participante
+* Documentos presentados ante la SEC, estados financieros reportados e informes regulatorios internacionales
 * Estimaciones de analistas, anuncios de financiación y publicaciones económicas
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Análisis de renta variable y crédito
-* KYC, KYB y screening de medios adversos
-* Monitorización de carteras y políticas
+* Investigación de renta variable y crédito
+* KYC, KYB y cribado de medios adversos
+* Seguimiento de carteras y políticas
 * Originación de operaciones e investigación de mercados privados
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="look-up-a-quote">
-  ### Consultar una cotización
-</div>
+### Consultar una cotización {#look-up-a-quote}
 
-Indica el ticker o la empresa y el dato que buscas. También funciona un cashtag como `$NVDA`.
+Indica el ticker o la empresa y el dato que necesitas. También puedes usar un cashtag como `$NVDA`.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-<div id="read-an-earnings-call">
-  ### Leer una llamada de resultados
-</div>
+### Leer una earnings call {#read-an-earnings-call}
 
-Indica la empresa y el trimestre para obtener la transcripción en lugar de las noticias sobre ella.
+Indica el nombre de la empresa y el trimestre para obtener el transcript y no las noticias que hablan sobre él.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-<div id="search-filings">
-  ### Buscar informes regulatorios
-</div>
+### Buscar informes regulatorios {#search-filings}
 
-Describe la información que buscas, no solo el tipo de formulario. La categoría `financial report` restringe los resultados a informes regulatorios e informes.
+Describe la información que buscas, no solo el tipo de formulario. La categoría `financial report` limita los resultados a informes regulatorios y reportes.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-<div id="track-private-market-activity">
-  ### Seguir la actividad del mercado privado
-</div>
+### Seguir la actividad del mercado privado {#track-private-market-activity}
 
-Especifica la ronda, el sector y el periodo de tiempo.
+Especifica la ronda, el sector y el intervalo de tiempo.
 
-<PlaygroundQuery query="Rondas de Serie B en tecnología climática anunciadas este trimestre" />
+<PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-<div id="follow-economic-data">
-  ### Seguir datos económicos
-</div>
+### Sigue los datos económicos {#follow-economic-data}
 
 Indica la publicación y la cifra que quieres obtener de ella.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-<div id="make-a-request">
-  ## Realizar una solicitud
-</div>
+## Realizar una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -148,12 +126,10 @@ Indica la publicación y la cifra que quieres obtener de ella.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los valores, los periodos, los criteria y los campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los valores, periodos, criteria y campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
 <Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Filtra empresas, compara informes regulatorios o elabora un informe estructurado de toda una cartera.
+  Filtra empresas, compara informes regulatorios o elabora un resumen estructurado de toda una cartera.
 </Card>

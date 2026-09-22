@@ -1,52 +1,44 @@
 ---
 title: "Websets"
 sidebarTitle: "Quickstart"
-description: "Bangun dataset yang terverifikasi dan diperkaya dari web."
+description: "Bangun dataset yang terverifikasi dan ter-enrich dari web."
 boost: 4
 ---
 
-<div id="what-are-websets">
-  ## Apa Itu Websets?
-</div>
+## Apa Itu Websets? {#what-are-websets}
 
-Sebuah Webset dimulai dari query berbahasa alami dan jumlah item yang ditargetkan. Tambahkan criteria yang harus dipenuhi oleh setiap hasil serta bidang enrichment yang akan diisi untuk setiap item yang diterima. Hasil dikirimkan secara asinkron melalui dashboard, API, atau webhook.
+Sebuah Webset dimulai dari query berbahasa alami dan jumlah item yang ditargetkan. Tambahkan kriteria yang harus dipenuhi setiap hasil serta field enrichment yang akan diisi untuk setiap item yang diterima. Hasil dikirimkan secara asinkron melalui dashboard, API, atau webhook.
 
-Anda juga dapat membangun webset secara visual di [Dashboard](/id/docs/websets/dashboard/get-started), tanpa perlu
+Anda juga bisa membangun webset secara visual di [Dashboard](/id/docs/websets/dashboard/get-started), tanpa perlu
 menulis kode.
 
 <Info>
-  Baru memulai workflow pembuatan daftar atau enrichment? Gunakan [Exa Agent](/id/docs/agent/quickstart).
+  Memulai workflow list building atau enrichment baru? Gunakan [Exa Agent](/id/docs/agent/quickstart).
   Gunakan panduan ini untuk memelihara atau memperluas integrasi Websets yang sudah ada.
-  Websets API memerlukan paket Websets berbayar; credit Search API dan credit Websets bersifat terpisah.
+  Websets API memerlukan plan Websets berbayar; credits Search API dan credits Websets bersifat terpisah.
 </Info>
 
-<div id="how-it-works">
-  ## Cara Kerjanya
-</div>
+## Cara Kerjanya {#how-it-works}
 
-1. **Tentukan sebuah search:** Berikan query dalam bahasa alami, jumlah hasil, serta criteria verification dan enrichment opsional.
-2. **Search dan verifikasi:** Websets mencari kandidat dan memeriksa setiap kandidat terhadap criteria Anda. Hanya hasil yang cocok yang menjadi item.
-3. **Jalankan enrichment:** Untuk setiap item yang terverifikasi, Websets mencari data tambahan yang Anda minta, seperti nama CEO, nilai pendanaan, atau informasi kontak.
-4. **Terima hasil:** Poll statusnya, gunakan webhook untuk pembaruan, atau periksa dashboard saat item mulai berdatangan.
+1. **Tentukan search:** Berikan query dalam bahasa alami, jumlah hasil, serta kriteria verifikasi dan enrichment opsional.
+2. **Search dan verifikasi:** Websets mencari kandidat dan mengevaluasi setiap kandidat berdasarkan kriteria Anda. Hanya hasil yang cocok yang menjadi item.
+3. **Jalankan enrichment:** Untuk setiap item yang terverifikasi, Websets mencari data tambahan yang Anda minta, seperti nama CEO, jumlah pendanaan, atau informasi kontak.
+4. **Terima hasil:** Lakukan poll untuk memeriksa status, gunakan webhook untuk pembaruan, atau pantau dashboard saat item mulai berdatangan.
 
-<div id="key-capabilities">
-  ## Kemampuan Utama
-</div>
+## Kemampuan Utama {#key-capabilities}
 
-| Fitur                   | Fungsinya                                                                                                           |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| **Verifikasi criteria** | Setiap hasil diperiksa berdasarkan aturan yang Anda tentukan, sehingga Anda hanya memperoleh kecocokan yang relevan |
-| **Enrichment**          | Mengekstrak poin data tertentu (teks, angka, tanggal, boolean) untuk setiap hasil                                   |
-| **Monitor**             | Menjadwalkan search berkala agar webset Anda selalu diperbarui secara otomatis                                      |
-| **Webhook**             | Menerima callback HTTP secara real-time saat item ditambahkan atau diperkaya                                        |
-| **Import**              | Memasukkan URL Anda sendiri dan menjalankan enrichment pada URL tersebut                                            |
+| Fitur                   | Fungsinya                                                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| **Verifikasi kriteria** | Setiap hasil diperiksa berdasarkan aturan yang Anda tentukan, sehingga Anda hanya mendapatkan hasil yang relevan |
+| **Enrichments**         | Ekstrak data spesifik (teks, angka, tanggal, boolean) untuk setiap hasil                                         |
+| **Monitors**            | Jadwalkan search berulang agar webset Anda tetap diperbarui secara otomatis                                      |
+| **Webhooks**            | Dapatkan callback HTTP secara real-time saat item ditambahkan atau di-enrich                                     |
+| **Imports**             | Gunakan URL Anda sendiri dan jalankan enrichment pada URL tersebut                                               |
 
-<div id="human-quickstart">
-  ## Quickstart untuk Manusia
-</div>
+## Quickstart untuk Manusia {#human-quickstart}
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+  Buat key di dashboard. Akun baru langsung mendapat credits gratis.
 </Card>
 
 Instal SDK:
@@ -149,9 +141,7 @@ Lalu kirim permintaan pertama Anda:
   Lihat [Zero Data Retention](/id/docs/admin/security/zero-data-retention) untuk ketersediaan produk.
 </Note>
 
-<div id="next">
-  ## Selanjutnya
-</div>
+## Berikutnya {#next}
 
 * [**Panduan Dashboard**](./dashboard/get-started) - Panduan langkah demi langkah untuk menggunakan Websets di dashboard
 * [**Cara Kerjanya**](/id/docs/websets/quickstart) - Pembahasan mendalam tentang arsitektur berbasis event

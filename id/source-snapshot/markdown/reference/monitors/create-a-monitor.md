@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="create-a-monitor">
-  # Membuat monitor
-</div>
+# Membuat monitor {#create-a-monitor}
 
 > Membuat Monitor baru untuk menjalankan Exa search secara berulang sesuai jadwal.
 
-Monitor akan menjalankan query search Anda secara berkala sesuai jadwal dan mengirimkan hasilnya ke endpoint webhook Anda dengan deduplikasi otomatis:
+Monitors secara otomatis menjalankan query search Anda pada jadwal berulang dan mengirimkan hasil ke endpoint webhook Anda dengan deduplikasi otomatis:
 
-* **Penyaringan berbasis tanggal** hanya mengambil konten sejak run terakhir
+* **Pemfilteran berbasis tanggal** hanya mengambil konten sejak run terakhir
 
-* **Deduplikasi semantik** melacak output sebelumnya agar hanya perkembangan baru yang ditampilkan
+* **Deduplikasi semantik** melacak output sebelumnya sehingga hanya perkembangan baru yang ditampilkan
 
-Respons menyertakan `webhookSecret` yang hanya dikembalikan sekali saat pembuatan. Simpan secara aman untuk keperluan signature verification webhook.
+Response menyertakan `webhookSecret` yang hanya dikembalikan satu kali saat pembuatan. Simpan dengan aman untuk verifikasi signature webhook.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

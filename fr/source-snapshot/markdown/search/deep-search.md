@@ -1,76 +1,66 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="deep-search">
-  # Deep Search
-</div>
+# Deep Search {#deep-search}
 
 > Exploitez la recherche itérative, le raisonnement et la synthèse fondée sur des preuves pour vos tâches de recherche complexes.
 
-Deep Search est le mode recherche approfondie de la Search API. Il utilise le même endpoint `/search`, mais le processus de récupération peut lancer plusieurs recherches, examiner les preuves, affiner son approche et produire une synthèse fondée sur ces preuves.
+Deep Search est le mode recherche de la Search API. Il utilise le même endpoint `/search`, mais le processus de retrieval peut lancer plusieurs recherches, examiner les preuves, affiner son approche et synthétiser un résultat fondé sur des preuves.
 
-Utilisez la recherche standard lorsque vous avez besoin de pages classées pour une query bien formulée. Utilisez le mode deep lorsque trouver la réponse exige un véritable travail de recherche.
+Utilisez le Search standard lorsque vous avez besoin de pages classées pour une requête bien formulée. Utilisez Deep lorsque trouver la réponse nécessite une véritable recherche.
 
-<div id="how-deep-search-works">
-  ## Fonctionnement de Deep Search
-</div>
+## Fonctionnement de Deep Search {#how-deep-search-works}
 
-Deep Search ajoute une boucle de recherche avant la réponse finale :
+Deep Search ajoute une loop de recherche avant la réponse finale :
 
 <Steps>
   <Step title="Planifier la recherche">
-    Exa part de votre `query` et peut la décliner en plusieurs recherches couvrant différents aspects
-    de la requête. Vous pouvez fournir des variantes de départ avec `additionalQueries`.
+    Exa part de votre `query` et peut la décliner en plusieurs recherches couvrant différents aspects de la
+    requête. Vous pouvez fournir des variantes de départ avec `additionalQueries`.
   </Step>
 
   <Step title="Rechercher et examiner">
-    Deep recherche des preuves, confronte les résultats obtenus à la requête et détermine ce qui est
+    Deep recherche des preuves, les confronte à la requête et détermine ce qui est
     étayé ou encore manquant.
   </Step>
 
   <Step title="Affiner">
-    Lorsque les preuves sont incomplètes ou contradictoires, Deep peut lancer une recherche plus
-    ciblée au lieu de renvoyer les premières pages plausibles.
+    Lorsque les preuves sont incomplètes ou contradictoires, Deep peut lancer une recherche plus ciblée au lieu
+    de renvoyer les premières pages plausibles.
   </Step>
 
   <Step title="Sélectionner et synthétiser">
-    Deep sélectionne les résultats utiles, puis emprunte la même voie de synthèse que les autres
-    types de recherche. Lorsque vous fournissez `outputSchema`, la réponse inclut un `output.content`
-    structuré ainsi que des citations au niveau des champs dans `output.grounding`.
+    Deep sélectionne les résultats utiles, puis emprunte le même chemin de synthèse que les autres search type.
+    Lorsque vous fournissez `outputSchema`, la réponse inclut un `output.content` structuré et
+    des citations au niveau des field dans `output.grounding`.
   </Step>
 </Steps>
 
-Ce processus s&#39;avère particulièrement utile pour les listes et les sorties structurées. Chaque élément demandé peut nécessiter une recherche distincte, et Deep peut rassembler et vérifier ces résultats avant de produire la structure finale.
+Ce processus est particulièrement utile pour les listes et les sorties structurées. Chaque élément demandé peut nécessiter une recherche distincte, et Deep peut rassembler et vérifier ces résultats avant de produire la structure finale.
 
-<div id="choose-a-deep-mode">
-  ## Choisir un mode Deep
-</div>
+## Choisir un mode Deep {#choose-a-deep-mode}
 
-| Type             | À utiliser quand                                                                                   |
-| ---------------- | -------------------------------------------------------------------------------------------------- |
-| `deep-lite`      | Vous avez besoin d&#39;une expansion de query et d&#39;une synthèse légères                       |
-| `deep`           | La tâche nécessite une search itérative, une collecte de preuves ou plusieurs items structurés |
-| `deep-reasoning` | La tâche exige un raisonnement plus poussé face à des preuves complexes ou contradictoires        |
+| Type             | À utiliser quand                                                                                     |
+| ---------------- | ---------------------------------------------------------------------------------------------------- |
+| `deep-lite`      | Vous avez besoin d&#39;une expansion de requête et d&#39;une synthèse légères                        |
+| `deep`           | La tâche nécessite une recherche itérative, une collecte de preuves ou plusieurs éléments structurés |
+| `deep-reasoning` | La tâche exige un raisonnement plus poussé face à des preuves complexes ou contradictoires           |
 
-Commencez par `deep` pour les workflows de recherche. Passez à `deep-lite` lorsque la tâche est plus simple et que la latence est critique.
+Commencez par `deep` pour les workflows de recherche. Passez à `deep-lite` lorsque la tâche est plus simple et que la latence est déterminante.
 
 <Tip>
   Plutôt que `deep-reasoning`, utilisez [Exa Agent](/fr/docs/agent/quickstart) pour la recherche de longue durée, la
-  constitution de listes et l&#39;enrichment multi-étapes. Agent dispose de davantage de puissance de calcul par run et renvoie des résultats
-  structurés et grounded.
+  constitution de listes et l&#39;enrichment multi-étapes. Agent dispose de plus de puissance de calcul par run et renvoie des résultats
+  structurés et fondés sur des preuves.
 </Tip>
 
-Consultez [Pricing](/fr/docs/admin/pricing#deep-search) pour connaître les cost actuels et les recommandations en matière de latence.
+Consultez la [tarification](/fr/docs/admin/pricing#deep-search) pour connaître les coûts et les latences actuels.
 
-<div id="make-a-deep-request">
-  ## Effectuer une requête Deep
-</div>
+## Effectuer une requête Deep {#make-a-deep-request}
 
-Définissez `type` dans une requête Search API classique :
+Définissez `type` dans une requête classique de la Search API :
 
 <CodeGroup>
   ```python Python theme={null}
@@ -113,11 +103,9 @@ Définissez `type` dans une requête Search API classique :
 
 Deep renvoie les résultats de recherche sélectionnés dans `results`. Ajoutez `outputSchema` si vous souhaitez également obtenir une réponse synthétisée ou un jeu de données structuré.
 
-<div id="provide-starting-queries">
-  ## Fournir des requêtes de départ
-</div>
+## Fournir des requêtes de départ {#provide-starting-queries}
 
-Deep détermine normalement les searches à exécuter. Utilisez `additionalQueries` lorsque vous connaissez déjà une terminologie, des angles d&#39;approche ou des sous-problèmes précis que la recherche doit couvrir :
+En principe, c&#39;est Deep qui décide des recherches à lancer. Utilisez `additionalQueries` lorsque vous connaissez déjà une terminologie, des angles d&#39;approche ou des sous-problèmes précis que la recherche doit couvrir :
 
 <CodeGroup>
   ```python Python theme={null}
@@ -165,20 +153,18 @@ Deep détermine normalement les searches à exécuter. Utilisez `additionalQueri
   ```
 </CodeGroup>
 
-La `query` principale est toujours incluse. Vous pouvez fournir jusqu&#39;à 10 requêtes supplémentaires ; cette liste n&#39;est disponible que pour les search types Deep.
+La `query` principale est toujours incluse. Vous pouvez fournir jusqu&#39;à 10 requêtes supplémentaires ; cette liste n&#39;est disponible que pour les search type Deep.
 
-Évitez les simples reformulations destinées uniquement à augmenter le volume de searches. N&#39;ajoutez une requête que si elle ouvre une piste de recherche véritablement différente.
+N&#39;ajoutez pas de simples reformulations dans le seul but d&#39;augmenter le volume de recherche. Ajoutez une requête uniquement si elle ouvre une piste de recherche réellement différente.
 
-<div id="guide-behavior-and-output-separately">
-  ## Guider le comportement et la sortie séparément
-</div>
+## Guider le comportement et l&#39;output séparément {#guide-behavior-and-output-separately}
 
 `systemPrompt` et `outputSchema` agissent sur des parties différentes de la requête :
 
-* `systemPrompt` oriente les préférences de sources, la nouveauté, la déduplication et le comportement de recherche de Deep.
-* `outputSchema` définit la forme finale de la sortie et déclenche la synthèse.
+* `systemPrompt` guide les préférences de sources, la nouveauté, la déduplication et le comportement de recherche de Deep.
+* `outputSchema` définit la forme finale du résultat et déclenche la synthèse.
 
-La query doit décrire ce qu&#39;il faut rechercher. Le system prompt, lui, doit décrire comment mener et présenter cette recherche.
+La requête doit décrire ce qu&#39;il faut rechercher. Le system prompt doit décrire comment mener et présenter cette recherche.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -269,13 +255,11 @@ La query doit décrire ce qu&#39;il faut rechercher. Le system prompt, lui, doit
   ```
 </CodeGroup>
 
-Privilégiez Deep lorsqu&#39;il vous faut plus de deux items structurés ou lorsque chaque item doit satisfaire plusieurs exigences. Les search types standard empruntent le même synthèse path, mais ils n&#39;effectuent pas la même recherche itérative en amont de la synthèse.
+Privilégiez Deep lorsque vous avez besoin de plus de deux items structurés ou que chaque item doit satisfaire plusieurs exigences. Les search type standards empruntent le même chemin de synthèse, mais n&#39;effectuent pas la même recherche itérative en amont.
 
-<div id="read-the-grounded-response">
-  ## Lire la réponse étayée
-</div>
+## Lire la réponse fondée sur des preuves {#read-the-grounded-response}
 
-Les réponses structurées séparent les valeurs générées des preuves qui les étayent :
+Les réponses structurées séparent les valeurs générées de leurs preuves :
 
 ```json theme={null}
 {
@@ -311,15 +295,13 @@ Les réponses structurées séparent les valeurs générées des preuves qui les
 }
 ```
 
-Utilisez `output.content` comme résultat généré et `output.grounding` pour afficher ou vérifier les sources qui étayent chaque champ. N&#39;ajoutez pas de champs de citation ou de confiance à votre propre schéma ; Exa les renvoie automatiquement.
+Utilisez `output.content` comme résultat généré et `output.grounding` pour afficher ou vérifier les sources qui appuient chaque field. N&#39;ajoutez pas de fields de citation ou de confiance à votre propre schéma ; Exa les renvoie automatiquement.
 
 `numResults` détermine le nombre de pages sélectionnées renvoyées dans `results`. Ce paramètre ne définit pas le nombre de recherches que Deep peut effectuer.
 
-<div id="stream-the-synthesis">
-  ## Diffuser la synthèse en streaming
-</div>
+## Diffuser la synthèse en streaming {#stream-the-synthesis}
 
-Définissez `stream: true` avec `outputSchema` pour recevoir la sortie synthétisée via des server-sent events :
+Définissez `stream: true` avec `outputSchema` pour recevoir l&#39;output synthétisé via les server-sent events :
 
 <CodeGroup>
   ```python Python theme={null}
@@ -391,35 +373,33 @@ Définissez `stream: true` avec `outputSchema` pour recevoir la sortie synthéti
   ```
 </CodeGroup>
 
-Consommez les événements typés jusqu&#39;à `done`. L&#39;événement final contient la sortie complète et la durée de la recherche, ainsi que les informations de coût lorsqu&#39;elles sont disponibles.
+Consommez les events typés jusqu&#39;à `done`. L&#39;event final contient l&#39;output complet et la durée de la search, ainsi que les informations de cost lorsqu&#39;elles sont disponibles.
 
-<div id="when-to-stay-with-standard-search">
-  ## Quand s&#39;en tenir à la Search standard
-</div>
+## Quand s&#39;en tenir au Search standard {#when-to-stay-with-standard-search}
 
-Le mode deep est superflu lorsqu&#39;une seule passe de retrieval suffit à répondre à la requête :
+Deep est inutile lorsqu&#39;une seule passe de retrieval suffit à répondre à la requête :
 
 * Vous avez besoin de pages pertinentes, pas d&#39;une conclusion issue d&#39;une recherche approfondie.
-* La query cible déjà une source précise ou un sujet restreint.
-* Votre application assure elle-même le raisonnement et n&#39;a besoin que du retrieval.
+* La requête identifie déjà une source précise ou un sujet restreint.
+* Votre application effectue son propre raisonnement et n&#39;a besoin que du retrieval.
 * La requête s&#39;inscrit dans un parcours interactif, d&#39;autocomplétion ou vocal.
 
-Utilisez `auto` pour l&#39;équilibre qualité/vitesse par défaut, ou `fast` et `instant` lorsque la latence doit rester maîtrisée.
+Utilisez `auto` pour l&#39;équilibre par défaut entre qualité et rapidité, ou `fast` et `instant` lorsque vous avez des exigences de latence précises.
 
 <Columns cols={2}>
   <Card title="Guide de la Search API" icon="search" href="/fr/docs/search/quickstart" cta="Consulter Search" arrow="true">
-    Construisez des requêtes, choisissez le contenu des résultats et appliquez des filtres.
+    Construisez des requests, choisissez le contenu des results et appliquez des filtres.
   </Card>
 
-  <Card title="Bonnes pratiques de Search" icon="sliders-horizontal" href="/fr/docs/search/best-practices" cta="Affiner le retrieval" arrow="true">
-    Améliorez la qualité, le contexte, la latence et les intégrations avec les agents.
+  <Card title="Bonnes pratiques Search" icon="sliders-horizontal" href="/fr/docs/search/best-practices" cta="Affiner le retrieval" arrow="true">
+    Améliorez la qualité, le context, la latence et les integrations d&#39;agents.
   </Card>
 
-  <Card title="Référence de la Search API" icon="square-terminal" href="/fr/docs/reference/search" cta="Ouvrir la référence" arrow="true">
-    Découvrez chaque paramètre de requête et chaque champ de réponse.
+  <Card title="Search API reference" icon="square-terminal" href="/fr/docs/reference/search" cta="Ouvrir la reference" arrow="true">
+    Découvrez chaque paramètre de request et chaque field de réponse.
   </Card>
 
-  <Card title="Tarification" icon="credit-card" href="/fr/docs/admin/pricing#deep-search" cta="Comparer les modes" arrow="true">
+  <Card title="tarification" icon="credit-card" href="/fr/docs/admin/pricing#deep-search" cta="Comparer les modes" arrow="true">
     Consultez les coûts et la latence actuels de Deep Search.
   </Card>
 </Columns>

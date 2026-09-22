@@ -1,17 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="anthropic-tool-calling">
-  # Uso de herramientas con Anthropic
-</div>
+# Anthropic Tool Calling {#anthropic-tool-calling}
 
-> Aprovecha el uso de herramientas de Claude para añadir búsqueda web de Exa y contenido de páginas a tu aplicación.
+> Usa el uso de herramientas de Claude para añadir Exa web search y contenido de páginas a tu aplicación.
 
-<Card title="Inicio rápido del agente de programación" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+<Card title="Quickstart de agente de programación" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
   ¿Es tu primera vez con Exa? Empieza en menos de un minuto.
 </Card>
 
@@ -19,9 +15,7 @@
 
 El [uso de herramientas](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) de Claude permite que los modelos llamen a funciones que defines en tu código. Los SDK de Exa incluyen herramientas listas para usar de búsqueda web y lectura de páginas para Anthropic, así que no tienes que escribir a mano el esquema de la herramienta, analizar los bloques `tool_use` ni dar formato a los resultados de Exa por tu cuenta.
 
-<div id="get-started">
-  ## Empezar
-</div>
+## Primeros pasos {#get-started}
 
 <Steps>
   <Step title="Instala los SDK">
@@ -39,15 +33,15 @@ El [uso de herramientas](https://docs.anthropic.com/en/docs/build-with-claude/to
   <Step title="Configura tus API keys">
     Define las variables de entorno `EXA_API_KEY` y `ANTHROPIC_API_KEY`. Visita la [consola de Anthropic](https://console.anthropic.com/settings/keys) y el [panel de Exa](https://dashboard.exa.ai/api-keys) para generar tus API keys.
 
-    <Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Crea una key en el panel. Las cuentas nuevas empiezan con credits gratuitos.
+    <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
     </Card>
   </Step>
 
   <Step title="Añade las herramientas de Exa a tu bucle de herramientas">
-    Pasa las herramientas en la lista `tools` de la solicitud y luego entrega el mensaje del asistente a `handle_tool_use`. Esta función ejecuta cada bloque `tool_use` del mensaje y devuelve los bloques `tool_result` correspondientes, listos para enviarse en el siguiente mensaje del usuario.
+    Pasa las herramientas en la lista `tools` de la solicitud y luego entrega el mensaje del asistente a `handle_tool_use`. Este ejecuta cada bloque `tool_use` del mensaje y devuelve los bloques `tool_result` correspondientes, listos para enviarse en el siguiente mensaje del usuario.
 
-    `web_search` busca en la web páginas que el modelo aún no ha visto; `get_contents` lee páginas cuyas URL ya conoce, ya sea por una search anterior o porque se las dio el usuario. Registra una o ambas.
+    `web_search` busca en la web páginas que el modelo no ha visto; `get_contents` lee páginas cuyas URL ya conoce, ya sea por una búsqueda anterior o porque las aportó el usuario. Registra una o ambas.
 
     <CodeGroup>
       ```python Python theme={null}
@@ -114,17 +108,15 @@ El [uso de herramientas](https://docs.anthropic.com/en/docs/build-with-claude/to
       ```
     </CodeGroup>
 
-    Aquí mostramos una sola ronda, por brevedad. Un agente real mantiene `tools` en cada solicitud y repite el paso del manejador hasta que el modelo responde sin bloques `tool_use`: así es como un resultado de search deriva en la lectura posterior de una página.
+    Aquí se muestra una sola ronda por brevedad. Un agente real mantiene `tools` en cada solicitud y repite el paso del handler hasta que el modelo responde sin bloques `tool_use`: así es como un resultado de búsqueda deriva en la lectura de una página de follow-up.
 
-    Llamar a las fábricas sin argumentos aplica los valores predeterminados recomendados de Exa: `type="auto"` con `contents={"highlights": True}` para la search. Los highlights devuelven extractos relevantes para la query; no limitan el texto de la página a 10.000 caracteres. La fábrica de contenido devuelve el texto de la página; el límite de 10.000 caracteres del SDK se aplica solo a `text`, y únicamente cuando omites `max_characters`.
+    Llamar a las fábricas sin argumentos aplica los valores por defecto recomendados por Exa: `type="auto"` con `contents={"highlights": True}` para la búsqueda. Los highlights devuelven extractos relevantes para la consulta; no limitan el texto de la página a 10.000 caracteres. La fábrica de contenido devuelve el texto de la página; el límite de 10.000 caracteres del SDK se aplica solo a `text`, y únicamente cuando omites `max_characters`.
   </Step>
 </Steps>
 
-<div id="configuring-the-tools">
-  ## Configuración de las herramientas
-</div>
+## Configuración de las herramientas {#configuring-the-tools}
 
-Los argumentos con nombre son opciones habituales de Exa que se pasan cuando se ejecuta la herramienta: las opciones de search van a `exa.search()` y las de contenido a `exa.get_contents()`:
+Los argumentos con nombre son opciones habituales de Exa que se transmiten cuando se ejecuta la herramienta: las opciones de búsqueda a `exa.search()` y las de contenido a `exa.get_contents()`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -142,9 +134,9 @@ Los argumentos con nombre son opciones habituales de Exa que se pasan cuando se 
   ```
 </CodeGroup>
 
-El modelo elige la `query` de búsqueda y las `urls` que va a leer; todo lo demás queda fijado al crear la herramienta, así que no puede cambiar qué se rastrea ni qué se extrae.
+El modelo elige la `query` de búsqueda y las `urls` que va a leer; todo lo demás queda fijado al crear la herramienta, de modo que no puede cambiar qué se rastrea ni qué se extrae.
 
-En cambio, `name` (con valor predeterminado `"web_search"` y `"get_contents"`) y `description` sobrescriben la definición de la herramienta que ve el modelo. Anthropic exige que los nombres de herramientas sean únicos, por lo que un nombre personalizado permite que la herramienta de Exa funcione junto a la herramienta de servidor integrada de Anthropic `web_search_20250305`, que reserva el nombre `web_search`:
+En cambio, `name` (con valor predeterminado `"web_search"` y `"get_contents"`) y `description` sobrescriben la definición de la herramienta que ve el modelo. Anthropic exige que los nombres de las herramientas sean únicos, así que un nombre personalizado permite que la herramienta de Exa se ejecute junto a `web_search_20250305`, la herramienta de servidor integrada de Anthropic, que reserva el nombre `web_search`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -172,17 +164,13 @@ En cambio, `name` (con valor predeterminado `"web_search"` y `"get_contents"`) y
   ```
 </CodeGroup>
 
-<div id="mixing-in-your-own-tools">
-  ## Cómo integrar tus propias herramientas
-</div>
+## Cómo combinar tus propias herramientas {#mixing-in-your-own-tools}
 
-`handle_tool_use` responde a todos los bloques `tool_use` del mensaje: si un bloque nombra una herramienta que no puede resolver, recibe un resultado `Error: unknown tool "<name>"` en lugar de descartarse, de modo que la solicitud posterior nunca omite un resultado de herramienta obligatorio. Si ejecutas tus propias herramientas junto con las de Exa, sustituye esos resultados de error por los tuyos antes de la siguiente solicitud.
+`handle_tool_use` responde a todos los bloques `tool_use` del mensaje: un bloque que nombre una herramienta que no puede resolver recibe un resultado `Error: unknown tool "<name>"` en lugar de descartarse, de modo que la solicitud de follow-up nunca omite un resultado de herramienta obligatorio. Si ejecutas tus propias herramientas junto con las de Exa, sustituye esos resultados de error por los tuyos antes de la siguiente solicitud.
 
-<div id="writing-the-loop-by-hand">
-  ## Escribir el bucle a mano
-</div>
+## Escribir el bucle a mano {#writing-the-loop-by-hand}
 
-Si prefieres controlar tú mismo el esquema y la ejecución de la herramienta, define la herramienta y procesa los bloques `tool_use` de forma manual. `exa.tools.web_search()` y `exa.tools.get_contents()` te ofrecen las mismas especificaciones de herramientas independientes del proveedor (con un método `run`) para bucles hechos a mano, o puedes escribirlo todo desde cero:
+Si prefieres encargarte tú mismo del esquema de la herramienta y de su ejecución, define la herramienta y procesa los bloques `tool_use` manualmente. `exa.tools.web_search()` y `exa.tools.get_contents()` te ofrecen las mismas especificaciones de herramienta independientes del proveedor (con un método `run`) para bucles hechos a mano, o puedes escribirlo todo desde cero:
 
 ```python Python theme={null}
 TOOLS = [
@@ -219,4 +207,4 @@ def process_tool_use(response):
     return results
 ```
 
-Consulta la [guía rápida del SDK](/es/docs/sdks/quickstart) para conocer las opciones de search y contenido en Python y TypeScript.
+Consulta el [quickstart del SDK](/es/docs/sdks/quickstart) para ver las opciones de búsqueda y contenido en Python y TypeScript.

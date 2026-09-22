@@ -5,14 +5,12 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 ---
 
 <Info>
-  OpenAI 建议所有新项目使用 Responses API。请参阅下方的 [Responses API](#responses-api) 部分。
+  OpenAI 建议所有新项目使用 Responses API。请参阅下方的 [Responses API](#responses-api) 章节。
 </Info>
 
-OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-calling?lang=python)允许模型调用你在代码中定义的函数。Exa SDK 为 OpenAI 提供了开箱即用的网页搜索和页面读取工具，你无需自己编写工具 schema、解析工具调用或格式化 Exa 返回结果。
+OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-calling?lang=python)让模型可以调用你在代码中定义的函数。Exa SDK 为 OpenAI 提供了开箱即用的网页搜索和页面读取 tools，你无需自己手写 tool schema、解析工具调用或格式化 Exa 结果。
 
-<div id="get-started">
-  ## 快速开始
-</div>
+## 快速开始 {#get-started}
 
 <Steps>
   <Step title="安装 SDK">
@@ -27,18 +25,18 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
     </CodeGroup>
   </Step>
 
-  <Step title="配置 API key">
-    设置 `EXA_API_KEY` 和 `OPENAI_API_KEY` 环境变量。访问 [OpenAI 控制台](https://platform.openai.com/api-keys) 和 [Exa 控制台](https://dashboard.exa.ai/api-keys) 生成你的 API key。
+  <Step title="配置 API 密钥">
+    设置 `EXA_API_KEY` 和 `OPENAI_API_KEY` 环境变量。访问 [OpenAI 控制台](https://platform.openai.com/api-keys) 和 [Exa 控制台](https://dashboard.exa.ai/api-keys) 生成 API 密钥。
 
-    <Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      在控制台中创建一个 key。新账户会获赠免费额度。
+    <Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      在控制台中创建密钥。新账户会获得免费积分。
     </Card>
   </Step>
 
-  <Step title="将 Exa 工具加入你的工具循环">
-    在请求的 `tools` 列表中传入这些工具，然后把助手消息交给 `handle_tool_calls`。它会执行消息中的每一次 Exa 工具调用，并返回对应的 `role: "tool"` 消息，可直接追加到对话中。
+  <Step title="将 Exa tools 加入你的工具 loop">
+    在请求的 `tools` 列表中传入这些 tools，然后把 assistant 消息交给 `handle_tool_calls`。它会执行消息中的每一个 Exa 工具调用，并返回对应的 `role: "tool"` 消息，可直接追加到对话中。
 
-    `web_search` 用于在网络上搜索模型尚未见过的页面；`get_contents` 用于读取已知 URL 的页面，无论 URL 来自此前的 search 还是来自用户。两者可任选其一，也可同时注册。
+    `web_search` 用于在网络上搜索模型尚未看过的页面；`get_contents` 用于读取已知 URL 的页面，无论 URL 来自此前的 search 还是来自用户。两个工具可任选其一，也可同时注册。
 
     <CodeGroup>
       ```python Python theme={null}
@@ -99,17 +97,15 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
       ```
     </CodeGroup>
 
-    为简洁起见，这里只演示了一轮。真实的 agent 会在每次请求中都带上 `tools`，并反复执行处理函数，直到模型不再发起工具调用为止——search 结果正是这样延伸为后续的页面读取。
+    为简洁起见，这里只演示一轮。实际的 agent 会在每次请求中都带上 `tools`，并不断重复处理器这一步，直到模型返回不含工具调用的回复，search 结果正是这样进一步转化为后续的页面读取。
 
-    不带参数调用这些工厂函数即可使用 Exa 推荐的默认值：search 使用 `type="auto"`，并搭配 `contents={"highlights": True}`。highlights 返回与 query 相关的摘录，并不会把页面文本截断到 10,000 个字符。contents 工厂函数返回页面文本；SDK 的 10,000 字符限制只作用于 `text`，且仅在你省略 `max_characters` 时生效。
+    不带参数调用这些工厂函数即可使用 Exa 推荐的默认值：search 使用 `type="auto"`，并搭配 `contents={"highlights": True}`。Highlights 返回与 query 相关的摘录，并不会把页面文本截断到 10,000 个字符。contents 工厂函数返回页面文本；SDK 的 10,000 字符上限仅作用于 `text`，且仅在省略 `max_characters` 时生效。
   </Step>
 </Steps>
 
-<div id="responses-api">
-  ## Responses API
-</div>
+## Responses API {#responses-api}
 
-对于 OpenAI Responses API，请使用 `responses` 工厂函数，并搭配同样的 `handle_tool_calls` 辅助函数。该处理函数会返回 `function_call_output` 项，供后续请求使用。
+对于 OpenAI Responses API，请使用 `responses` 工厂函数，并搭配相同的 `handle_tool_calls` 辅助函数。该处理器会返回 `function_call_output` 项，供后续请求使用。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -136,14 +132,12 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
 </CodeGroup>
 
 <Note>
-  Chat Completions 与 Responses API 使用不同的工具格式，且互不接受对方的格式，因此请使用与所调用端点相匹配的工厂函数。
+  Chat Completions 与 Responses API 所用的 tools 结构不同，且互不接受对方的格式，因此请使用与所调用端点相匹配的工厂函数。
 </Note>
 
-<div id="configuring-the-tools">
-  ## 配置工具
-</div>
+## 配置 tools {#configuring-the-tools}
 
-关键字参数就是常规的 Exa 选项，会在工具运行时透传下去 —— search 选项传给 `exa.search()`，contents 选项传给 `exa.get_contents()`：
+关键字参数就是常规的 Exa options，会在工具运行时透传下去：search options 传给 `exa.search()`，页面内容选项传给 `exa.get_contents()`：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -161,21 +155,17 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
   ```
 </CodeGroup>
 
-模型只决定 search 的 `query` 和要读取的 `urls`；其余参数在创建工具时就已绑定，因此模型无法改变抓取或提取的内容。
+模型只负责选择搜索的 `query` 和要读取的 `urls`；其余参数在创建工具时就已绑定，因此模型无法改变抓取或提取的内容。
 
-而 `name` (默认为 `"web_search"` 和 `"get_contents"`) 和 `description` 则会覆盖模型看到的工具定义。可以用自定义 `name` 来并行使用配置不同的 Exa 工具，或避免与占用这些名称的其他工具冲突。
+而 `name` (默认为 `"web_search"` 和 `"get_contents"`) 和 `description` 则会覆盖模型所看到的工具定义。可以用自定义 `name` 来同时使用多个配置不同的 Exa tools，或避免与占用这些名称的其他 tools 冲突。
 
-<div id="mixing-in-your-own-tools">
-  ## 混合使用你自己的工具
-</div>
+## 混入你自己的工具 {#mixing-in-your-own-tools}
 
-处理函数会对消息中的每一次工具调用作出响应：若某次调用指定了它无法识别的工具，输出的是 `Error: unknown tool "<name>"`，而不会被直接丢弃，因此后续请求不会遗漏任何必需的工具响应。如果你在使用 Exa 工具的同时还运行了自己的工具，请在发起下一次请求前，用你自己的结果替换这些错误输出。
+处理器会应答消息中的每一个工具调用：若某个调用指定了它们无法识别的工具，会输出 `Error: unknown tool "<name>"`，而不是直接丢弃，这样后续请求就不会遗漏必需的工具响应。如果你在 Exa 的 tools 之外还运行了自己的 tools，请在发起下一个请求前，用你自己的结果替换这些错误输出。
 
-<div id="writing-the-loop-by-hand">
-  ## 手动编写循环
-</div>
+## 手动编写 loop {#writing-the-loop-by-hand}
 
-如果你想自己掌控工具 schema 和执行过程，可以手动定义工具并处理调用。`exa.tools.web_search()` 和 `exa.tools.get_contents()` 同样会提供与厂商无关的工具规范 (带有 `run` 方法) 供手写循环使用，你也可以完全从零开始编写：
+如果你希望自己掌控 tool schema 和执行流程，可以手动定义工具并处理调用。`exa.tools.web_search()` 和 `exa.tools.get_contents()` 为手写 loop 提供了同样与提供方无关的工具规范 (带 `run` 方法) ，你也可以完全从零编写：
 
 ```python Python theme={null}
 import json
@@ -217,4 +207,4 @@ def process_tool_calls(tool_calls, messages):
     return messages
 ```
 
-有关 Python 和 TypeScript 中的 search 与 contents 选项，请参阅 [SDK 快速开始](/zh/docs/sdks/quickstart)。
+有关 Python 和 TypeScript 中的 search 与页面内容选项，请参阅 [SDK 快速开始](/zh/docs/sdks/quickstart)。

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入查阅之前，可通过该文件了解所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="list-webhook-attempts">
-  # 列出 webhook 尝试记录
-</div>
+# 列出 webhook 尝试记录 {#list-webhook-attempts}
 
 > 按降序列出某个 Webhook 的所有尝试记录。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}/attempts
 openapi: 3.1.0

@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
-> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="create-a-webhook">
-  # Crear un webhook
-</div>
+# Crear un webhook {#create-a-webhook}
 
-> Crea un Webhook que entrega los eventos seleccionados a tu URL a medida que ocurren.
+> Crea un Webhook que entrega los eventos seleccionados a tu URL a medida que se producen.
 
-La respuesta incluye el `secret` de firma que se usa para verificar las entregas; solo se devuelve al crearlo.
+La respuesta incluye el `secret` de firma que se usa para verificar las entregas; solo se devuelve en el momento de la creación.
 
 <Warning>
-  **No se siguen las redirecciones.** Las entregas de webhooks se envían directamente
-  a la URL registrada. Si tu endpoint responde con una redirección 3xx, la entrega
+  **No se siguen las redirecciones.** Las entregas de webhooks se envían directamente a la
+  URL registrada. Si tu endpoint responde con una redirección 3xx, la entrega
   se considerará fallida. Registra siempre la URL de destino final.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0
@@ -41,14 +35,14 @@ paths:
     post:
       tags:
         - Webhooks
-      summary: Create a Webhook
+      summary: Crear un webhook
       description: >-
-        Creates a Webhook that delivers the selected events to your URL as they
-        occur.
+        Crea un webhook que entrega los eventos seleccionados a tu URL a medida
+        que ocurren.
 
 
-        The response includes the signing `secret` used to verify deliveries; it
-        is only returned on creation.
+        La respuesta incluye el `secret` de firma que se usa para verificar las
+        entregas; solo se devuelve al crearlo.
       operationId: webhooks-create
       requestBody:
         required: true
@@ -63,7 +57,7 @@ paths:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: Identificador único de la solicitud.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -82,14 +76,14 @@ components:
           maxItems: 19
           items:
             $ref: '#/components/schemas/EventType'
-          description: The events to trigger the webhook
+          description: Los eventos que activan el webhook
           type: array
         url:
           format: uri
-          description: The URL to send the webhook to
+          description: La URL a la que se envía el webhook
           type: string
         metadata:
-          description: Set of key-value pairs you want to associate with this object.
+          description: Conjunto de pares clave-valor que quieres asociar con este objeto.
           propertyNames:
             type: string
           additionalProperties:
@@ -103,7 +97,7 @@ components:
     Webhook:
       properties:
         id:
-          description: The unique identifier for the webhook
+          description: El identificador único del webhook
           type: string
         object:
           const: webhook
@@ -114,27 +108,27 @@ components:
             - active
             - inactive
           title: WebhookStatus
-          description: The status of the webhook
+          description: El estado del webhook
           type: string
         events:
           minItems: 1
           items:
             $ref: '#/components/schemas/EventType'
-          description: The events to trigger the webhook
+          description: Los eventos que activan el webhook
           type: array
         url:
           format: uri
-          description: The URL to send the webhook to
+          description: La URL a la que se envía el webhook
           type: string
         secret:
           type: string
           description: >-
-            The secret to verify the webhook signature. Only returned on Webhook
-            creation.
+            El secreto para verificar la firma del webhook. Solo se devuelve al
+            crear el webhook.
           nullable: true
         metadata:
           default: {}
-          description: The metadata of the webhook
+          description: Los metadatos del webhook
           propertyNames:
             type: string
           additionalProperties:
@@ -143,11 +137,11 @@ components:
           type: object
         createdAt:
           format: date-time
-          description: The date and time the webhook was created
+          description: La fecha y hora en que se creó el webhook
           type: string
         updatedAt:
           format: date-time
-          description: The date and time the webhook was last updated
+          description: La fecha y hora de la última actualización del webhook
           type: string
       required:
         - id
@@ -187,13 +181,13 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
 
 ```

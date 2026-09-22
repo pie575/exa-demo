@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="start-building-with-exa">
-  # 开始使用 Exa 构建
-</div>
+# 开始用 Exa 构建 {#start-building-with-exa}
 
-> 专为 agent 打造的强大网页搜索工具。全面优化，助你获得精准且节省 token 的结果。
+> 专为 agent 打造的强大网页搜索工具。各环节全面优化，助你获得节省 token 的精准结果。
 
 export const DocsImage = props => {
   const docsBase = () => {
@@ -33,38 +29,38 @@ export const ApiCards = ({only}) => {
   const cards = [{
     id: "search",
     title: "Search",
-    body: "提供实时、可靠且节省 token 的页面内容",
+    body: "提供实时、有据可依且节省 token 的页面内容数据",
     href: "/search/quickstart",
     image: "/images/home/api-search.webp",
-    alt: "Exa 搜索框，显示按排名排列的网页结果及其来源域名"
+    alt: "Exa 搜索框，显示按排名排序的网页结果及其来源域名"
   }, {
     id: "agent",
     title: "Agent",
-    body: "用于深度研究、构建列表和 enrichment 的异步 agent",
+    body: "用于深度研究、列表构建和增强的异步 agent",
     href: "/agent/quickstart",
     image: "/images/home/api-agent.webp",
-    alt: "包含合作关系、客户案例和云服务使用情况等补充信息的公司电子表格"
+    alt: "包含合作伙伴关系、客户案例和云用量等增强信息的公司电子表格"
   }, {
     id: "search-deep",
-    title: "Deep Search",
-    body: "可跨来源推理并返回结构化输出的 Search",
+    title: "深度搜索",
+    body: "跨多个来源推理并返回结构化输出的搜索",
     href: "/search/deep-search",
     image: "/images/home/api-search-deep.webp",
-    alt: "返回有关生物技术公司的结构化 JSON 的深度搜索查询"
+    alt: "返回生物技术公司结构化 JSON 的深度搜索 query"
   }, {
     id: "contents",
     title: "Contents",
-    body: "从任意 URL 获取全文、highlights 和摘要",
+    body: "从任何 URL 获取完整文本、highlights 和摘要",
     href: "/contents/quickstart",
     image: "/images/home/api-contents.webp",
-    alt: "提取的波音 Wikipedia 页面内容"
+    alt: "为 Boeing 提取的 Wikipedia 页面内容"
   }, {
     id: "monitors",
     title: "Monitors",
-    body: "监测网页并推送新结果的定时搜索",
+    body: "持续监测网络并推送新结果的定时搜索",
     href: "/monitors/quickstart",
     image: "/images/home/api-monitors.webp",
-    alt: "名为 Anthropic Releases and News、每天运行的 monitor",
+    alt: "名为 Anthropic Releases and News、每天运行的 Monitor",
     hidden: true
   }];
   const visible = only ? only.map(id => cards.find(card => card.id === id)).filter(Boolean) : cards.filter(card => !card.hidden);
@@ -88,7 +84,7 @@ export const ApiCards = ({only}) => {
     <DocsImage className="docs-home-quickstart-bg" src="/docs/images/home/quickstart-banner.webp" alt="" aria-hidden="true" />
 
     <div className="docs-home-quickstart-copy">
-      <span className="docs-home-quickstart-title">将 Exa 接入你的 agent</span>
+      <span className="docs-home-quickstart-title">为你的 agent 接入 Exa</span>
       <p>一分钟内即可上手</p>
     </div>
 
@@ -104,7 +100,7 @@ export const ApiCards = ({only}) => {
           <path d="M4.66671 5.25C2.41539 5.25 0.583374 7.08202 0.583374 9.33333C0.583374 11.5847 2.41539 13.4167 4.66671 13.4167C6.91802 13.4167 8.75004 11.5847 8.75004 9.33333C8.75004 7.08202 6.91802 5.25 4.66671 5.25ZM4.08337 11.0833C3.43902 11.0833 2.91671 10.5609 2.91671 9.91667C2.91671 9.27243 3.43902 8.75 4.08337 8.75C4.72772 8.75 5.25004 9.27232 5.25004 9.91667C5.25004 10.561 4.72772 11.0833 4.08337 11.0833Z" fill="currentColor" />
         </svg>
 
-        获取 API key
+        获取 API 密钥
       </a>
     </div>
   </div>
@@ -166,7 +162,7 @@ export const ApiCards = ({only}) => {
         <label htmlFor="docs-home-api-contents">获取页面内容</label>
         <label htmlFor="docs-home-api-deep">获取结构化输出</label>
         <label htmlFor="docs-home-api-tools">为 LLM 接入网页搜索</label>
-        <label htmlFor="docs-home-api-agent">生成调研过的列表</label>
+        <label htmlFor="docs-home-api-agent">生成经过研究的列表</label>
         <label htmlFor="docs-home-api-agent-research">分析复杂主题</label>
       </div>
 
@@ -345,7 +341,7 @@ export const ApiCards = ({only}) => {
 
         <div className="docs-home-code" data-pane="tools-curl">
           ```bash theme={null}
-          # 1. 为模型提供一个 Exa search 工具，由它自行决定 query。
+          # 1. 为模型提供一个 Exa search 工具，让它自行决定 query。
           USER_MSG='{ "role": "user", "content": "What'\''s the latest on AI chips?" }'
           TOOLS='[{ "type": "function", "function": {
             "name": "web_search",
@@ -358,7 +354,7 @@ export const ApiCards = ({only}) => {
             -d "{ \"model\": \"gpt-5.6\", \"messages\": [$USER_MSG], \"tools\": $TOOLS }" \
             | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["choices"][0]["message"]))')"
 
-          # 2. 针对 Exa 执行该工具调用。
+          # 2. 向 Exa 执行该工具调用。
           SEARCH_BODY="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           args = json.loads(json.load(sys.stdin)["tool_calls"][0]["function"]["arguments"])

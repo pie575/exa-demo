@@ -13,7 +13,7 @@ paths:
     post:
       operationId: create-api-key
       summary: 创建 API 密钥
-      description: 为已认证的团队创建新的 API 密钥。可选择指定 API 密钥的名称、速率限制和预算。
+      description: 为已认证团队创建新的 API 密钥。可选择指定 API 密钥的名称、速率限制和预算。
       x-codeSamples:
         - lang: bash
           label: Create API key with name and rate limit
@@ -139,9 +139,9 @@ paths:
                       createdAt:
                         type: string
                         format: date-time
-                        description: 密钥的创建时间
+                        description: 密钥创建时间
         "400":
-          description: 请求无效 - 参数无效
+          description: 错误请求 - 参数无效
           content:
             application/json:
               schema:
@@ -178,7 +178,7 @@ paths:
           required: false
           schema:
             type: string
-          description: 用于获取特定密钥的可选 API 密钥 ID。
+          description: 用于获取指定密钥的可选 API 密钥 ID。
       x-codeSamples:
         - lang: bash
           label: List all API keys
@@ -277,7 +277,7 @@ paths:
                             type: string
                             format: date-time
         "400":
-          description: 请求无效 - API 密钥 ID 格式无效
+          description: 错误请求 - API 密钥 ID 格式无效
           content:
             application/json:
               schema:
@@ -326,7 +326,7 @@ paths:
     get:
       operationId: get-api-key
       summary: 获取 API 密钥
-      description: 根据 ID 获取特定 API 密钥的详细信息。
+      description: 通过 ID 获取指定 API 密钥的详细信息。
       parameters:
         - name: id
           in: path
@@ -377,7 +377,7 @@ paths:
                         type: string
                         format: date-time
         "400":
-          description: 请求无效 - API 密钥 ID 格式无效
+          description: 错误请求 - API 密钥 ID 格式无效
           content:
             application/json:
               schema:
@@ -550,7 +550,7 @@ paths:
                         type: string
                         format: date-time
         "400":
-          description: 请求无效 - 参数无效
+          description: 错误请求 - 参数无效
           content:
             application/json:
               schema:
@@ -656,7 +656,7 @@ paths:
                     type: boolean
                     example: true
         "400":
-          description: 请求无效 - 参数无效
+          description: 错误请求 - 参数无效
           content:
             application/json:
               schema:
@@ -705,7 +705,7 @@ paths:
     get:
       operationId: get-api-key-usage
       summary: 获取 API 密钥用量
-      description: 获取特定 API 密钥在指定时间段内的用量分析和计费数据。从计费系统返回按定价类型划分的成本明细。
+      description: 获取指定 API 密钥在给定时间段内的用量分析和计费数据。从计费系统返回按价格类型划分的费用明细。
       parameters:
         - name: id
           in: path
@@ -719,7 +719,7 @@ paths:
           schema:
             type: string
             format: date-time
-          description: 用量周期的开始日期（ISO 8601 格式）。默认为 30 天前。必须在过去 6 个月（180 天）内。
+          description: 用量周期的开始日期（ISO 8601 格式）。默认为 30 天前。必须在最近 6 个月（180 天）内。
           example: 2025-01-01T00:00:00Z
         - name: end_date
           in: query
@@ -738,7 +738,7 @@ paths:
               - hour
               - day
               - month
-          description: 用于对结果分组的时间粒度。当前预留供未来增强功能使用，不会改变响应结构。默认为 'day'。
+          description: 用于对结果分组的时间粒度。目前预留供未来增强使用，不会改变响应结构。默认为 'day'。
           example: day
       x-codeSamples:
         - lang: bash
@@ -816,7 +816,7 @@ paths:
                     type:
                       - string
                       - "null"
-                    description: API 密钥的名称
+                    description: API 密钥名称
                   team_id:
                     type: string
                     format: uuid
@@ -834,33 +834,33 @@ paths:
                         description: 用量周期结束时间
                   total_cost_usd:
                     type: number
-                    description: 该周期的总成本（美元）
+                    description: 该周期内以美元计的总费用
                     example: 45.67
                   cost_breakdown:
                     type: array
-                    description: 按定价类型划分的成本明细
+                    description: 按价格类型划分的费用明细
                     items:
                       type: object
                       properties:
                         price_id:
                           type: string
-                          description: 定价的唯一标识符
+                          description: 价格的唯一标识符
                         price_name:
                           type: string
-                          description: 定价名称（例如，“神经搜索”、“内容检索”）
+                          description: 价格名称（例如，“Neural Search”“Content Retrieval”）
                         quantity:
                           type: number
-                          description: 消耗总量
+                          description: 总消耗量
                         amount_usd:
                           type: number
-                          description: 此定价类型的成本（美元）
+                          description: 此价格类型的美元费用
                   metadata:
                     type: object
                     properties:
                       generated_at:
                         type: string
                         format: date-time
-                        description: 此报告的生成时间
+                        description: 报告生成时间
               example:
                 id: key_abc123def456
                 api_key_id: 550e8400-e29b-41d4-a716-446655440000
@@ -882,7 +882,7 @@ paths:
                 metadata:
                   generated_at: 2025-02-01T10:30:00Z
         "400":
-          description: 请求无效 - 参数无效
+          description: 错误请求 - 参数无效
           content:
             application/json:
               schema:

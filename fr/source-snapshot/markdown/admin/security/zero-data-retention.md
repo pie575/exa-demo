@@ -1,17 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="zero-data-retention">
-  # Zero Data Retention
-</div>
+# Zero Data Retention {#zero-data-retention}
 
-> Disponibilité du Zero Data Retention selon les produits Exa.
+> Disponibilité du Zero Data Retention dans les produits Exa.
 
-Le Zero Data Retention (ZDR) est disponible avec les offres Enterprise et s&#39;active au niveau de chaque team. Contactez [sales@exa.ai](mailto:sales@exa.ai) pour en savoir plus.
+Le Zero Data Retention (ZDR) est disponible sur les plans Enterprise et s&#39;active par équipe. Contactez [sales@exa.ai](mailto:sales@exa.ai) pour en savoir plus.
 
 | Produit  | Disponibilité du ZDR      |
 | -------- | ------------------------- |

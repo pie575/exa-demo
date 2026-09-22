@@ -1,6 +1,6 @@
 ---
-title: "Tipe event"
-sidebarTitle: "Tipe"
+title: "Jenis event"
+sidebarTitle: "Types"
 description: "Pelajari event yang terjadi di dalam Webset API"
 timestamp: false
 searchable: false
@@ -10,48 +10,36 @@ Websets API menggunakan event untuk memberi tahu Anda tentang perubahan pada Web
 
 Event disimpan selama 60 hari sebelum dihapus secara otomatis.
 
-<div id="webset">
-  ## Webset
-</div>
+## Webset {#webset}
 
 * `webset.created` - Dikirim saat Webset baru dibuat.
-* `webset.deleted` - Dikirim saat sebuah Webset dihapus.
-* `webset.paused` - Dikirim saat operasi pada sebuah Webset dijeda.
-* `webset.idle` - Dikirim saat sebuah Webset tidak memiliki operasi yang sedang berjalan.
+* `webset.deleted` - Dikirim saat Webset dihapus.
+* `webset.paused` - Dikirim saat operasi pada Webset dijeda.
+* `webset.idle` - Dikirim saat Webset tidak memiliki operasi yang sedang berjalan.
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
-* `webset.search.created` - Dikirim saat Search baru dimulai.
-* `webset.search.updated` - Dikirim saat progres Search diperbarui.
-* `webset.search.completed` - Dikirim saat Search selesai menemukan semua item.
-* `webset.search.canceled` - Dikirim saat Search dibatalkan secara manual.
+* `webset.search.created` - Dikirim saat search baru dimulai.
+* `webset.search.updated` - Dikirim saat progres search diperbarui.
+* `webset.search.completed` - Dikirim saat search selesai menemukan semua item.
+* `webset.search.canceled` - Dikirim saat search dibatalkan secara manual.
 
-<div id="item">
-  ## Item
-</div>
+## Item {#item}
 
 * `webset.item.created` - Dikirim saat item baru ditambahkan ke Webset.
 * `webset.item.enriched` - Dikirim saat enrichment sebuah item selesai.
 
-<div id="import">
-  ## Import
-</div>
+## Impor {#import}
 
-* `import.created` - Dikirim saat import baru dimulai.
-* `import.completed` - Dikirim saat import telah selesai.
+* `import.created` - Dikirim saat impor baru dimulai.
+* `import.completed` - Dikirim saat impor selesai.
 
-<div id="export">
-  ## Ekspor
-</div>
+## Export {#export}
 
-* `webset.export.created` - Dikirim saat ekspor baru dimulai.
-* `webset.export.completed` - Dikirim saat ekspor selesai.
+* `webset.export.created` - Dikirim saat export baru dimulai.
+* `webset.export.completed` - Dikirim saat export selesai.
 
-<div id="monitor">
-  ## Monitor
-</div>
+## Monitor {#monitor}
 
 * `monitor.created` - Dikirim saat monitor baru dibuat.
 * `monitor.updated` - Dikirim saat konfigurasi monitor diperbarui.
@@ -63,12 +51,12 @@ Setiap event mencakup:
 
 * `id` yang unik
 * `type` event
-* Objek `data` yang berisi resource lengkap pemicu event tersebut
+* Objek `data` yang berisi sumber daya lengkap pemicu event tersebut
 * Timestamp `createdAt`
 
 Anda dapat menggunakan event ini untuk:
 
-* Melacak progres search dan Enrichment
+* Melacak progres search dan enrichment
 * Membangun dashboard real-time
 * Memicu workflow saat item baru ditemukan
-* Memantau status ekspor Anda
+* Memantau status export Anda

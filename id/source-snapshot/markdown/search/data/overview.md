@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="data-index">
-  # Indeks Data
-</div>
+# Data Index {#data-index}
 
-> Apa saja yang diindeks Exa dari web publik dan sumber data privat.
+> Apa saja yang diindeks Exa di seluruh public web dan sumber data privat.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -29,7 +25,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
       <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Buka di playground API" aria-label={`Buka "${query}" di playground API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2V5a2 2 0 0 1 2-2h6" />
           <path d="m21 3-9 9" />
           <path d="M15 3h6v6" />
         </svg>
@@ -37,7 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupan yang terus diperbarui. Cakupannya meliputi:
+Exa melakukan search public web dan sejumlah sumber data privat pilihan, dengan cakupan yang terus diperbarui. Cakupannya meliputi:
 
 <AccordionGroup>
   <Accordion title="Berita" icon="newspaper">
@@ -71,20 +67,20 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-    Dokumentasi API dan dokumentasi developer:
+    Dokumentasi API dan pengembang:
 
     <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-    Registry package, lengkap dengan detail versi dan rilis yang akurat:
+    Registri package, lengkap dengan detail versi dan rilis yang akurat:
 
     <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-    Direktori agent skill:
+    Direktori agent skills:
 
     <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
   </Accordion>
 
-  <Accordion title="Perusahaan & Individu" icon="users">
+  <Accordion title="Perusahaan & Orang" icon="users">
     <Card title="Panduan Perusahaan & Orang" icon="users" href="/id/docs/search/data/companies-people" cta="Baca panduan" arrow="true">
       Pelajari cara menemukan perusahaan, orang, dan hubungan di antara keduanya.
     </Card>
@@ -93,7 +89,7 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-    Professional profiles berdasarkan peran, skill, dan lokasi:
+    Profil profesional berdasarkan Role, skill, dan lokasi:
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
@@ -101,14 +97,14 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-    Riset perusahaan dan pemangku kepentingan dalam satu query:
+    Research perusahaan dan pemangku kepentingan dalam satu query:
 
     <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
   </Accordion>
 
   <Accordion title="Pasar Keuangan" icon="chart-line">
     <Card title="Panduan Pasar Keuangan" icon="chart-line" href="/id/docs/search/data/financial" cta="Baca panduan" arrow="true">
-      Jelajahi berbagai kasus penggunaan seputar kuotasi harga, filings, earnings call, dan riset pasar.
+      Jelajahi kasus penggunaan kuotasi harga, filings, earnings call, dan riset pasar.
     </Card>
 
     Harga, estimasi analis, dan laporan keuangan:
@@ -119,7 +115,7 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" />
 
-    Pendanaan yang telah diumumkan dan data lain yang dilaporkan ke publik:
+    Pendanaan yang diumumkan dan data lain yang dilaporkan secara publik:
 
     <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
@@ -129,11 +125,11 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
   </Accordion>
 
   <Accordion title="Publikasi Riset" icon="book-open">
-    <Card title="Panduan Publikasi Riset" icon="book-open" href="/id/docs/search/data/research" cta="Baca panduan" arrow="true">
-      Jelajahi kasus penggunaan riset untuk papers, paten, klinis, dan regulasi.
+    <Card title="Panduan Research Publications" icon="book-open" href="/id/docs/search/data/research" cta="Baca panduan" arrow="true">
+      Jelajahi kasus penggunaan research untuk paper, paten, klinis, dan regulasi.
     </Card>
 
-    Papers riset, paten, dan grants:
+    Paper research, paten, dan hibah:
 
     <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" />
 
@@ -141,17 +137,17 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-    Approvals regulasi dan kesehatan:
+    Persetujuan regulasi dan kesehatan:
 
     <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
   </Accordion>
 
   <Accordion title="Catatan Hukum & Publik" icon="scale">
-    <Card title="Panduan Hukum & Rekaman Publik" icon="scale" href="/id/docs/search/data/legal" cta="Baca panduan" arrow="true">
-      Jelajahi yurisprudensi, paten, sanksi, dan kasus penggunaan rekaman publik.
+    <Card title="Panduan Catatan Hukum & Publik" icon="scale" href="/id/docs/search/data/legal" cta="Baca panduan" arrow="true">
+      Jelajahi yurisprudensi, paten, sanksi, dan kasus penggunaan catatan publik.
     </Card>
 
-    Rekaman hukum dan pengadilan:
+    Catatan hukum dan pengadilan:
 
     <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
@@ -163,17 +159,17 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-    Sensus dan rekaman publik lainnya:
+    Sensus dan catatan publik lainnya:
 
     <PlaygroundQuery query="census tract population change in the Austin metro area" />
   </Accordion>
 
   <Accordion title="Olahraga, Cuaca & Lokasi" icon="map-pin">
     <Card title="Panduan Olahraga, Cuaca & Tempat" icon="map-pin" href="/id/docs/search/data/sports-weather-places" cta="Baca panduan" arrow="true">
-      Pelajari cara melakukan query untuk sports data langsung, prakiraan cuaca, dan informasi lokal.
+      Pelajari cara melakukan query data olahraga langsung, prakiraan cuaca, dan informasi lokal.
     </Card>
 
-    Skor langsung, klasemen, dan jadwal:
+    Skor langsung, klasemen, dan jadwal pertandingan:
 
     <PlaygroundQuery query="NBA scores last night" />
 
@@ -181,14 +177,14 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-    Bisnis lokal, tempat acara, dan properti:
+    Bisnis lokal, tempat usaha, dan properti:
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
   </Accordion>
 
   <Accordion title="Keamanan Siber" icon="shield">
     <Card title="Panduan keamanan siber" icon="shield" href="/id/docs/search/data/security" cta="Baca panduan" arrow="true">
-      Jelajahi kasus penggunaan terkait kerentanan, advisory, dan risiko vendor.
+      Jelajahi kasus penggunaan untuk kerentanan, advisory, dan risiko vendor.
     </Card>
 
     Advisory keamanan:
@@ -205,4 +201,4 @@ Exa mencari di web publik dan sejumlah sumber data privat pilihan, dengan cakupa
   </Accordion>
 </AccordionGroup>
 
-Panduan ini membahas pola data yang umum, tetapi Exa juga menelusuri web publik secara lebih luas, mencakup beragam situs, format, dan bahasa.
+Panduan ini membahas pola data yang umum, tetapi Exa juga melakukan search di public web yang lebih luas, mencakup banyak situs, format, dan bahasa.

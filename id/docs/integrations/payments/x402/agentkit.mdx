@@ -1,53 +1,43 @@
 ---
 title: "World AgentKit"
 sidebarTitle: "World AgentKit"
-description: "Biarkan AI agents yang didukung verified human mengakses Exa secara gratis lewat World AgentKit — tanpa perlu USDC."
+description: "Izinkan AI agent yang didukung verified human mengakses Exa secara gratis dengan World AgentKit — tanpa perlu USDC."
 icon: "/docs/images/sidebar-icons/world.svg"
 ---
 
-<div id="what-is-agentkit">
-  ## Apa itu AgentKit?
-</div>
+## Apa itu AgentKit? {#what-is-agentkit}
 
-[World AgentKit](https://docs.world.org/agents/agent-kit) adalah toolkit yang memungkinkan AI agents membuktikan bahwa mereka didukung oleh verified human yang nyata melalui [World ID](https://world.org). Ketika diintegrasikan dengan [x402](/id/docs/integrations/payments/x402/quickstart), AgentKit membuka jalur **free trial**: agent yang terdaftar di [AgentBook](https://docs.world.org/agents/agent-kit/integrate) milik World dapat mengakses endpoint `/search` dan `/contents` milik Exa tanpa membayar USDC.
+[World AgentKit](https://docs.world.org/agents/agent-kit) adalah toolkit yang memungkinkan AI agent membuktikan bahwa mereka didukung (backed) oleh manusia nyata yang terverifikasi melalui [World ID](https://world.org). Jika diintegrasikan dengan [x402](/id/docs/integrations/payments/x402/quickstart), toolkit ini membuka jalur **free trial**: agent yang terdaftar di [AgentBook](https://docs.world.org/agents/agent-kit/integrate) milik World dapat mengakses endpoint `/search` dan `/contents` milik Exa tanpa membayar USDC.
 
-Mekanisme ini berjalan berdampingan dengan x402 payment flow standar. Setiap verified human mendapatkan **100 permintaan gratis per bulan** untuk seluruh agent yang mereka dukung. Setelah kuota habis, agent kembali ke jalur payment USDC seperti biasa. Penghitung direset pada awal setiap bulan kalender (UTC).
+Mekanisme ini berjalan berdampingan dengan x402 payment flow standar. Setiap verified human mendapatkan **100 permintaan gratis per bulan** untuk seluruh agent yang mereka dukung. Setelah kuota habis, agent akan kembali ke jalur USDC payment biasa. Penghitung direset pada awal setiap bulan kalender (UTC).
 
 <Info>
-  Free trial AgentKit dan payment x402 sama-sama dilewati jika permintaan Anda menyertakan header `x-api-key` atau `Authorization: Bearer`. Alur API key billing biasa yang diutamakan.
+  AgentKit free trial dan x402 payment sama-sama dilewati jika permintaan Anda menyertakan header `x-api-key` atau `Authorization: Bearer`. Alur API key billing biasa memiliki prioritas.
 </Info>
 
-<div id="how-it-works">
-  ## Cara kerjanya
-</div>
+## Cara kerjanya {#how-it-works}
 
-Ketika sebuah klien mengakses `/search` atau `/contents` tanpa API key, Exa merespons dengan `402 Payment Required`. Respons tersebut menyertakan ekstensi `agentkit` pada header `PAYMENT-REQUIRED` yang berisi challenge [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum).
+Ketika sebuah client mengakses `/search` atau `/contents` tanpa API key, Exa merespons dengan `402 Payment Required`. Response tersebut menyertakan ekstensi `agentkit` pada header `PAYMENT-REQUIRED` yang berisi challenge [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum).
 
 Agent menandatangani challenge ini dengan wallet terdaftarnya, lalu Exa memverifikasi:
 
 1. **Pemeriksaan signature** — memvalidasi signature SIWE terhadap alamat wallet (mendukung EOA melalui EIP-191 maupun smart contract wallets melalui ERC-1271)
-2. **Pencarian AgentBook** — memetakan wallet ke `humanId` anonim melalui kontrak AgentBook di World Chain (`eip155:480`), untuk memastikan bahwa satu verified human yang unik telah mendelegasikan identitasnya kepada agent ini
-3. **Pemeriksaan usage** — jika human tersebut masih memiliki sisa free trial uses, akses diberikan; jika tidak, sistem beralih ke mewajibkan payment dalam USDC
+2. **Pencarian AgentBook** — memetakan wallet ke `humanId` anonim melalui kontrak AgentBook di World Chain (`eip155:480`), yang memastikan bahwa satu verified human unik telah mendelegasikan identitasnya kepada agent ini
+3. **Pemeriksaan penggunaan** — jika human tersebut masih memiliki sisa free trial uses, akses diberikan; jika tidak, sistem kembali mensyaratkan USDC payment
 
-<div id="quickstart">
-  ## Quickstart
-</div>
+## Quickstart {#quickstart}
 
-<div id="1-register-your-agent-in-agentbook">
-  ### 1. Daftarkan agent Anda di AgentBook
-</div>
+### 1. Daftarkan agent Anda di AgentBook {#1-register-your-agent-in-agentbook}
 
-Ini adalah penyiapan satu kali. Anda memerlukan [World App](https://world.org/download) dengan identitas yang sudah terverifikasi.
+Ini merupakan penyiapan sekali saja. Anda memerlukan [World App](https://world.org/download) dengan identitas terverifikasi.
 
 ```bash theme={null}
 npx @worldcoin/agentkit-cli register <your-agent-wallet-address>
 ```
 
-CLI memicu alur verification World App, lalu mengirimkan transaksi pendaftaran di World Chain. Setelah selesai, server mana pun yang menggunakan AgentKit dapat mencari wallet Anda dan memastikan bahwa wallet tersebut memang dimiliki oleh orang sungguhan.
+CLI akan memicu flow verifikasi World App, lalu mengirimkan transaksi registrasi di World Chain. Setelah selesai, server mana pun yang menggunakan AgentKit dapat mencari wallet Anda dan memastikan bahwa wallet tersebut didukung oleh orang sungguhan.
 
-<div id="2-send-a-request-get-the-challenge">
-  ### 2. Kirim permintaan (dapatkan challenge)
-</div>
+### 2. Kirim permintaan (dapatkan challenge) {#2-send-a-request-get-the-challenge}
 
 ```bash theme={null}
 curl -s -D - -X POST "https://api.exa.ai/search" \
@@ -55,7 +45,7 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
   -d '{"query": "fusion energy breakthroughs", "numResults": 5}'
 ```
 
-Respons `402` menyertakan ekstensi `agentkit` di dalam payload `PAYMENT-REQUIRED` yang sudah didekode:
+Response `402` menyertakan ekstensi `agentkit` di dalam payload `PAYMENT-REQUIRED` yang telah didekode:
 
 ```json theme={null}
 {
@@ -87,11 +77,9 @@ Respons `402` menyertakan ekstensi `agentkit` di dalam payload `PAYMENT-REQUIRED
 }
 ```
 
-<div id="3-sign-the-challenge-and-resubmit">
-  ### 3. Tanda tangani challenge dan kirim ulang
-</div>
+### 3. Tanda tangani challenge dan kirim ulang {#3-sign-the-challenge-and-resubmit}
 
-Susun [pesan SIWE](https://eips.ethereum.org/EIPS/eip-4361) dari field `info` (domain, uri, nonce, statement, dll.), tanda tangani dengan wallet agent terdaftar Anda menggunakan salah satu tipe `supportedChains`, lalu kirimkan melalui header `agentkit` (JSON yang dienkode base64):
+Susun [pesan SIWE](https://eips.ethereum.org/EIPS/eip-4361) dari field `info` (domain, uri, nonce, statement, dll.), tanda tangani dengan wallet agent Anda yang sudah terdaftar menggunakan salah satu tipe `supportedChains`, lalu kirim melalui header `agentkit` (JSON yang dienkode base64):
 
 ```bash theme={null}
 curl -X POST "https://api.exa.ai/search" \
@@ -102,85 +90,73 @@ curl -X POST "https://api.exa.ai/search" \
 
 Jika agent terverifikasi dan masih memiliki sisa free trial uses, Exa mengembalikan `200` beserta hasil search — tanpa perlu payment.
 
-<div id="using-the-agentkit-x402-skill">
-  ### Menggunakan skill x402 AgentKit
-</div>
+### Menggunakan skill AgentKit x402 {#using-the-agentkit-x402-skill}
 
-Alih-alih mengimplementasikan alur challenge-response secara manual, tambahkan [skill agentkit-x402](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md) ke agent AI Anda:
+Alih-alih mengimplementasikan flow challenge-response secara manual, tambahkan [skill agentkit-x402](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md) ke AI agent Anda:
 
 ```bash theme={null}
 npx skills add worldcoin/agentkit agentkit-x402
 ```
 
-Skill ini secara otomatis menangani seluruh alur ketika agent menerima respons `402` dengan ekstensi AgentKit.
+Skill ini secara otomatis menangani keseluruhan flow saat agent menerima response `402` dengan ekstensi AgentKit.
 
-<div id="free-trial-details">
-  ## Detail free trial
-</div>
+## Detail free trial {#free-trial-details}
 
 * Setiap verified human mendapatkan **100 permintaan gratis per bulan** untuk seluruh agent yang mereka dukung
-* Penghitung usage direset pada awal setiap bulan kalender (UTC)
-* Usage dilacak per human per endpoint (`/search` dan `/contents` dihitung terpisah)
+* Penghitung penggunaan direset pada awal setiap bulan kalender (UTC)
+* Penggunaan dilacak per human per endpoint (`/search` dan `/contents` dihitung terpisah)
 * Dua agent yang didukung oleh human yang sama berbagi penghitung yang sama
-* Setelah free trial uses habis untuk bulan tersebut, agent akan beralih kembali ke [x402 payment flow](/id/docs/integrations/payments/x402/quickstart) standar
+* Setelah free trial uses habis untuk bulan tersebut, agent kembali menggunakan [x402 payment flow](/id/docs/integrations/payments/x402/quickstart) standar
 * [Batas 10 hasil](/id/docs/integrations/payments/x402/quickstart#pricing) yang sama juga berlaku untuk permintaan free trial pada `/search`
-* Penghitung free trial saat ini belum ditampilkan dalam respons API — ketika kuota penggunaan habis, server merespons dengan `402` standar tanpa memberikan akses gratis
+* Penghitung free trial saat ini belum ditampilkan di response API — ketika penggunaan habis, server merespons dengan `402` standar tanpa memberikan akses gratis
 
-<div id="supported-endpoints">
-  ## Endpoint yang didukung
-</div>
+## Endpoint yang didukung {#supported-endpoints}
 
-| Endpoint    | Pembayaran x402 | Free Trial AgentKit |
-| ----------- | :-------------: | :-----------------: |
-| `/search`   |        Ya       |          Ya         |
-| `/contents` |        Ya       |          Ya         |
+| Endpoint    | x402 Payment | AgentKit Free Trial |
+| ----------- | :----------: | :-----------------: |
+| `/search`   |      Ya      |          Ya         |
+| `/contents` |      Ya      |          Ya         |
 
-Endpoint Exa lainnya tidak didukung melalui x402 maupun free trial AgentKit.
+Endpoint Exa lainnya tidak didukung melalui x402 maupun AgentKit free trial.
 
-<div id="network-details">
-  ## Detail jaringan
-</div>
+## Detail jaringan {#network-details}
 
-| Properti                  | Nilai                                               |
-| ------------------------- | --------------------------------------------------- |
-| Chain AgentBook           | World Chain                                         |
-| Chain ID (CAIP-2)         | `eip155:480`                                        |
-| Verification              | Kontrak AgentBook di World Chain                    |
-| Tipe wallet yang didukung | EOA (EIP-191) dan smart contract wallets (ERC-1271) |
+| Properti                  | Nilai                                              |
+| ------------------------- | -------------------------------------------------- |
+| Chain AgentBook           | World Chain                                        |
+| Chain ID (CAIP-2)         | `eip155:480`                                       |
+| Verifikasi                | Kontrak AgentBook di World Chain                   |
+| Tipe wallet yang didukung | EOA (EIP-191) dan smart contract wallet (ERC-1271) |
 
-<div id="faq">
-  ## FAQ
-</div>
+## FAQ {#faq}
 
 <AccordionGroup>
-  <Accordion title="Bisakah saya menggunakan payment x402 dan AgentKit sekaligus?">
-    Ya. Respons `PAYMENT-REQUIRED` memuat harga payment sekaligus challenge AgentKit. Klien Anda bebas memilih salah satu jalur. Jika free trial uses sudah habis, agent dapat beralih membayar dengan USDC.
+  <Accordion title="Bisakah saya menggunakan x402 payment dan AgentKit sekaligus?">
+    Bisa. Response `PAYMENT-REQUIRED` mencakup pricing payment sekaligus challenge AgentKit. Client Anda bisa memilih salah satu jalur. Jika free trial uses sudah habis, agent dapat beralih membayar dengan USDC.
   </Accordion>
 
   <Accordion title="Apa yang terjadi jika agent saya belum terdaftar di AgentBook?">
-    Verification AgentKit gagal tanpa pesan dan request diperlakukan sebagai `402` standar — agent Anda tetap bisa membayar dengan USDC melalui alur x402 biasa.
+    Verifikasi AgentKit gagal tanpa pesan error dan permintaan diperlakukan sebagai `402` biasa — agent Anda tetap dapat membayar dengan USDC melalui flow x402 normal.
   </Accordion>
 
-  <Accordion title="Apakah dua agent milik orang yang sama mendapat kuota free trial terpisah?">
-    Tidak. Usage dilacak per orang (melalui `humanId` anonim dari AgentBook), bukan per wallet. Dua agent yang bernaung di bawah World ID yang sama berbagi penghitung yang sama.
+  <Accordion title="Apakah dua agent yang didukung oleh manusia yang sama mendapat kuota free trial terpisah?">
+    Tidak. Penggunaan dilacak per manusia (melalui `humanId` anonim dari AgentBook), bukan per wallet. Dua agent yang didukung oleh World ID yang sama berbagi penghitung yang sama.
   </Accordion>
 
   <Accordion title="Jaringan blockchain apa saja yang terlibat?">
-    Payment USDC x402 standar dapat diselesaikan di **Base** (`eip155:8453`) atau **Solana mainnet** (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`). Verification AgentKit menggunakan **World Chain** (`eip155:480`) untuk pencarian AgentBook. Keduanya saling independen — AgentKit tidak memerlukan payment on-chain apa pun.
+    Payment USDC x402 standar dapat diselesaikan di **Base** (`eip155:8453`) atau **Solana mainnet** (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`). Verifikasi AgentKit menggunakan **World Chain** (`eip155:480`) untuk pencarian AgentBook. Keduanya berdiri sendiri — AgentKit tidak memerlukan payment on-chain apa pun.
   </Accordion>
 
-  <Accordion title="Tipe wallet apa saja yang didukung?">
-    Baik EOA (externally owned accounts) yang menggunakan signature EIP-191 maupun smart contract wallets (misalnya Coinbase Smart Wallet, Safe) yang menggunakan ERC-1271. Lihat [SDK reference World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference) untuk detailnya.
+  <Accordion title="Wallet types apa saja yang didukung?">
+    Keduanya didukung, yaitu EOA (externally owned accounts) yang menggunakan signature EIP-191 dan smart contract wallets (misalnya Coinbase Smart Wallet, Safe) yang menggunakan ERC-1271. Lihat [World AgentKit SDK referensi](https://docs.world.org/agents/agent-kit/sdk-reference) untuk detailnya.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Sumber Daya
-</div>
+## Sumber daya {#resources}
 
-* [Panduan payment x402](/id/docs/integrations/payments/x402/quickstart): payment flow USDC standar
+* [Panduan x402 payment](/id/docs/integrations/payments/x402/quickstart): payment flow USDC standar
 * [Dokumentasi World AgentKit](https://docs.world.org/agents/agent-kit): dokumentasi AgentKit lengkap
-* [Panduan integrasi World AgentKit](https://docs.world.org/agents/agent-kit/integrate): pendaftaran AgentBook
-* [SDK reference World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference): referensi API SDK
-* [Skill x402 AgentKit](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md): skill siap pakai untuk AI agents
+* [Panduan integrasi World AgentKit](https://docs.world.org/agents/agent-kit/integrate): registrasi AgentBook
+* [World AgentKit SDK referensi](https://docs.world.org/agents/agent-kit/sdk-reference): referensi API SDK
+* [AgentKit x402 skill](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md): skill siap pakai untuk AI agent
 * [Dokumentasi protokol x402](https://docs.x402.org): spesifikasi x402 lengkap

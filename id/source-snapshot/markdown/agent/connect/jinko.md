@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="jinko">
-  # Jinko
-</div>
+# Jinko {#jinko}
 
 > Pencarian penerbangan dan hotel dengan harga real-time.
 
-[Jinko](https://gojinko.com) adalah platform pencarian perjalanan yang menyediakan pencarian penerbangan dan
-hotel dengan harga real-time. Cari penawaran penerbangan langsung untuk rute dan
-tanggal tertentu, telusuri kamar hotel beserta tarifnya untuk suatu destinasi atau properti tertentu, serta
+[Jinko](https://gojinko.com) adalah platform pencarian perjalanan yang menyediakan
+pencarian penerbangan dan hotel dengan harga real-time. Cari penawaran penerbangan terkini untuk suatu rute dan
+tanggal, telusuri kamar hotel beserta tarifnya untuk suatu destinasi atau properti tertentu, serta
 jelajahi destinasi yang dapat dijangkau dari bandara keberangkatan Anda.
 
 Attach `jinko` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
 Jinko bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Mencari penawaran penerbangan real-time lengkap dengan tarif, bagasi, dan kebijakan perubahan untuk rute dan tanggal tertentu.
-* Menemukan hotel dengan tarif kamar real-time untuk suatu destinasi, atau mengecek ulang harga hotel tertentu.
+* Mencari penawaran penerbangan terkini lengkap dengan tarif, bagasi, dan kebijakan perubahan untuk rute dan tanggal tertentu.
+* Menemukan hotel dengan tarif kamar terkini untuk suatu destinasi, atau mengecek ulang hotel tertentu.
 * Menjelajahi destinasi dan tanggal fleksibel di berbagai rentang tanggal, kelas kabin, dan anggaran.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -38,9 +30,7 @@ Gunakan nilai ini pada `dataSources`:
 jinko
 ```
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
 Temukan destinasi pantai yang bisa dijangkau dari New York dengan tarif pulang-pergi di bawah $400 pada bulan Maret.
 
@@ -134,31 +124,27 @@ Temukan destinasi pantai yang bisa dijangkau dari New York dengan tarif pulang-p
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Similarweb](/id/docs/agent/connect/similarweb): telusuri situs perjalanan dan platform pemesanan di balik sebuah destinasi.
+* [Similarweb](/id/docs/agent/connect/similarweb): Research situs perjalanan dan platform pemesanan di balik sebuah destinasi.
 * [Particle](/id/docs/agent/connect/particle): ambil liputan terbaru dan ulasan perjalanan tentang suatu tempat.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah berikutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, Harga, dan katalog partner selengkapnya.
   </Card>
 
-  <Card title="Menggabungkan provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
-    Attach hingga lima partner ke satu run dan rancang kueri agar masing-masing terpicu.
+  <Card title="Gabungkan providers" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partner ke satu run dan susun query agar masing-masing terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara real-time, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru mendapatkan credits gratis.
+    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru mendapatkan credits gratis di awal.
   </Card>
 </Columns>

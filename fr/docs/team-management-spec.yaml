@@ -3,9 +3,9 @@ info:
   version: 1.0.0
   title: Team Management API
   description: API permettant de gérer les API keys au sein des équipes. Fournit
-    des opérations CRUD permettant de créer, lister, mettre à jour et supprimer
-    des API keys, avec des contrôles d’accès par équipe. L’API est activée pour
-    chaque équipe. Contactez support@exa.ai pour demander l’accès.
+    des opérations CRUD pour créer, lister, mettre à jour et supprimer des API
+    keys avec des contrôles d’accès basés sur les équipes. L’API est activée par
+    équipe. Contactez support@exa.ai pour demander l’accès.
 servers:
   - url: https://admin-api.exa.ai/team-management
 security:
@@ -184,7 +184,7 @@ paths:
           required: false
           schema:
             type: string
-          description: ID facultatif d’une API key pour récupérer une clé spécifique.
+          description: ID d’API key facultatif pour récupérer une clé spécifique.
       x-codeSamples:
         - lang: bash
           label: List all API keys
@@ -732,9 +732,9 @@ paths:
           schema:
             type: string
             format: date-time
-          description: Date de début de la période d’utilisation (format ISO 8601). Par
-            défaut, il y a 30 jours. Doit se situer dans les 6 derniers mois
-            (180 jours).
+          description: "Date de début de la période d’utilisation (format ISO 8601). Par
+            défaut : il y a 30 jours. Doit se situer dans les 6 derniers mois
+            (180 jours)."
           example: 2025-01-01T00:00:00Z
         - name: end_date
           in: query
@@ -742,8 +742,8 @@ paths:
           schema:
             type: string
             format: date-time
-          description: Date de fin de la période d’utilisation (format ISO 8601). Par
-            défaut, l’heure actuelle.
+          description: "Date de fin de la période d’utilisation (format ISO 8601). Par
+            défaut : l’heure actuelle."
           example: 2025-01-31T23:59:59Z
         - name: group_by
           in: query
@@ -754,9 +754,9 @@ paths:
               - hour
               - day
               - month
-          description: Granularité temporelle pour regrouper les résultats. Actuellement
-            réservée à de futures améliorations, elle ne modifie pas la
-            structure de la réponse. La valeur par défaut est 'day'.
+          description: Granularité temporelle pour le regroupement des résultats.
+            Actuellement réservée à de futures améliorations et ne modifie pas
+            la structure de la réponse. La valeur par défaut est 'day'.
           example: day
       x-codeSamples:
         - lang: bash
@@ -865,7 +865,7 @@ paths:
                           description: Identifiant unique du tarif
                         price_name:
                           type: string
-                          description: Nom du tarif (par exemple, "Neural Search", "Content Retrieval")
+                          description: Nom du tarif (p. ex., "Neural Search", "Content Retrieval")
                         quantity:
                           type: number
                           description: Quantité totale consommée

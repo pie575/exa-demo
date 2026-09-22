@@ -4,32 +4,30 @@ description: "Découvrez comment ajouter les capacités de retrieval d'Exa à vo
 icon: "/docs/images/sidebar-icons/crewai.svg"
 ---
 
-<Card title="Quickstart coding agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+<Card title="Quickstart agent de code" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
   Vous découvrez Exa ? Lancez-vous en moins d&#39;une minute.
 </Card>
 
 ***
 
 [CrewAI](https://crewai.com/) est un framework d&#39;orchestration d&#39;agents IA qui collaborent pour accomplir des tâches complexes.
-Dans ce guide, nous allons créer une crew de deux agents qui génère une newsletter à partir des résultats de search d&#39;Exa. Nous verrons comment :
+Dans ce guide, nous allons créer une crew de deux agents qui génèrent une newsletter à partir des résultats de search d&#39;Exa. Nous verrons comment :
 
-1. Créer un tool CrewAI personnalisé Exa-powered
-2. Configurer des agents et leur attribuer des roles précis qui s&#39;appuient sur le tool de search Exa-powered
-3. Réunir ces agents au sein d&#39;une crew chargée de rédiger une newsletter
+1. Créer un outil CrewAI personnalisé propulsé par Exa
+2. Configurer les agents et leur attribuer des rôles précis qui font appel à l&#39;outil de search propulsé par Exa
+3. Organiser les agents en une crew chargée de rédiger une newsletter
 
 <Note>
-  CrewAI propose également un [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool) intégré, utilisable tel quel sans écrire de wrapper personnalisé. Le tool personnalisé décrit ci-dessous est utile si vous voulez un contrôle total sur le formatage des résultats ; les deux approches sont valables.
+  CrewAI propose également un [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool) intégré, utilisable tel quel, sans écrire de wrapper personnalisé. L&#39;outil personnalisé présenté ci-dessous est utile si vous souhaitez un contrôle total sur le format des results ; les deux approches fonctionnent.
 </Note>
 
 ***
 
-<div id="get-started">
-  ## Démarrer
-</div>
+## Démarrer {#get-started}
 
 <Steps>
   <Step title="Prérequis et installation">
-    Installez les bibliothèques crewAI core, crewAI tools et le SDK Python d&#39;Exa.
+    Installez les bibliothèques crewAI core, crewAI tools et le SDK Python Exa.
 
     ```Python Python theme={null}
     pip install crewai 'crewai[tools]' exa_py
@@ -37,7 +35,7 @@ Dans ce guide, nous allons créer une crew de deux agents qui génère une newsl
   </Step>
 
   <Step title="Définir un outil personnalisé basé sur Exa dans crewAI">
-    Nous créons un [tool personnalisé](https://docs.crewai.com/concepts/tools) à l&#39;aide du [décorateur @tool](https://docs.crewai.com/concepts/tools#utilizing-the-tool-decorator) de crewAI. Dans ce tool, nous pouvons initialiser la classe Exa du [SDK Python Exa](https://github.com/exa-labs/exa-py), effectuer une request et renvoyer un résultat déjà analysé.
+    Nous mettons en place un [outil personnalisé](https://docs.crewai.com/concepts/tools) à l&#39;aide du [décorateur @tool ](https://docs.crewai.com/concepts/tools#utilizing-the-tool-decorator) de crewAI. Dans cet outil, nous pouvons initialiser la classe Exa du [SDK Python Exa](https://github.com/exa-labs/exa-py), effectuer une requête et renvoyer un résultat analysé.
 
     ```Python Python theme={null}
     from crewai_tools import tool
@@ -69,15 +67,15 @@ Dans ce guide, nous allons créer une crew de deux agents qui génère une newsl
         return parsedResult
     ```
 
-    <Note> Assurez-vous que vos clés API sont correctement initialisées. Pour cette démonstration, les variables d&#39;environnement se nomment `OPENAI_API_KEY` et `EXA_API_KEY`, respectivement pour les clés OpenAI et Exa. </Note>
+    <Note> Assurez-vous que vos API keys sont correctement initialisées. Pour cette démonstration, les variables d&#39;environnement se nomment respectivement `OPENAI_API_KEY` et `EXA_API_KEY` pour les clés OpenAI et Exa. </Note>
 
-    <Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de crédits gratuits.
+    <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
     </Card>
   </Step>
 
   <Step title="Configurer un agent crewAI">
-    Importez les modules crewAI nécessaires. Définissez ensuite `exa_tools` pour qu&#39;il référence la méthode de recherche personnalisée définie ci-dessus.
+    Importez les modules crewAI nécessaires. Définissez ensuite `exa_tools` pour référencer la méthode de recherche personnalisée définie ci-dessus.
 
     ```Python Python theme={null}
     from crewai import Task, Crew, Agent
@@ -85,9 +83,9 @@ Dans ce guide, nous allons créer une crew de deux agents qui génère une newsl
     exa_tools = search_and_get_contents_tool
     ```
 
-    Nous configurons ensuite [deux agents](https://docs.crewai.com/concepts/Agents/) que nous réunissons au sein d&#39;une [même équipe](https://docs.crewai.com/concepts/Crews/) :
+    Nous configurons ensuite[ deux agents](https://docs.crewai.com/concepts/Agents/) et les réunissons au sein d&#39;une même [crew](https://docs.crewai.com/concepts/Crews/) :
 
-    * L&#39;un pour effectuer des recherches avec Exa (en lui fournissant le tool personnalisé défini ci-dessus)
+    * L&#39;un pour effectuer la recherche avec Exa (en lui fournissant l&#39;outil personnalisé défini ci-dessus)
     * L&#39;autre pour rédiger une newsletter en output (à l&#39;aide d&#39;un LLM)
 
     ```Python Python theme={null}
@@ -122,8 +120,8 @@ Dans ce guide, nous allons créer une crew de deux agents qui génère une newsl
     ```
   </Step>
 
-  <Step title="Définir des tâches pour les agents">
-    Ensuite, nous allons définir des [tâches](https://docs.crewai.com/concepts/Tasks/) pour chaque agent, puis créer l&#39;équipe complète à partir de tous les composants mis en place ci-dessus.
+  <Step title="Définir les tâches des agents">
+    Ensuite, nous allons définir des [tâches](https://docs.crewai.com/concepts/Tasks/) pour chaque agent et créer la crew complète à partir de tous les composants mis en place ci-dessus.
 
     ```Python Python theme={null}
     research_task = Task(
@@ -157,8 +155,8 @@ Dans ce guide, nous allons créer une crew de deux agents qui génère une newsl
     ```
   </Step>
 
-  <Step title="Prise en main de l’équipe">
-    Enfin, nous lançons le crew en lui fournissant un sujet de recherche comme query d&#39;entrée.
+  <Step title="Lancement de l’équipe">
+    Enfin, nous lançons le crew en lui fournissant un sujet de recherche comme requête d&#39;entrée.
 
     ```Python Python theme={null}
     response = crew.kickoff(inputs={'topic': 'Latest AI research'})
@@ -166,6 +164,6 @@ Dans ce guide, nous allons créer une crew de deux agents qui génère une newsl
     print(response)
     ```
 
-    Le crew rédige la newsletter à partir du contenu renvoyé par le tool Exa search.
+    L&#39;équipe rédige la newsletter à partir du contenu renvoyé par l&#39;outil Exa search.
   </Step>
 </Steps>

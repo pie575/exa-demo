@@ -1,22 +1,22 @@
 ---
 openapi: "/es/docs/exa-spec.yaml POST /monitors/batch"
 timestamp: false
-title: "Acción por lotes sobre monitors"
-description: "Realiza una acción por lotes sobre los monitors que coincidan con
-  los filtros proporcionados.
+title: "Acción batch sobre monitors"
+description: "Realiza una acción batch sobre los monitors que coincidan con los
+  filtros proporcionados.
 
 
   Acciones admitidas:
 
-  - **delete**: elimina permanentemente los monitors coincidentes
+  - **delete**: elimina de forma permanente los monitors coincidentes
 
   - **pause**: pausa los monitors coincidentes
 
   - **unpause**: reanuda los monitors coincidentes
 
 
-  Usa `dry_run: true` (valor predeterminado) para ver qué monitors se verían
-  afectados antes de ejecutar la acción. Los resultados se paginan mediante el
-  parámetro `limit`; repite el bucle hasta que `has_more` sea `false` para
-  procesar todos los monitors coincidentes."
+  Usa `dry_run: true` (el valor por defecto) para previsualizar qué monitors se
+  verían afectados antes de ejecutar la acción. Los resultados se paginan
+  mediante el parámetro `limit`; repite el bucle hasta que `has_more` sea
+  `false` para procesar todos los monitors coincidentes."
 ---

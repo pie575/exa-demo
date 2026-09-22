@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="sports-weather-places">
-  # Olahraga, Cuaca &amp; Tempat
-</div>
+# Olahraga, Cuaca &amp; Tempat {#sports-weather-places}
 
-> Temukan data olahraga langsung, prakiraan cuaca, dan tempat-tempat lokal dengan Exa Search.
+> Temukan data olahraga langsung, prakiraan cuaca, dan tempat lokal dengan Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,110 +33,84 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk data olahraga langsung, prakiraan cuaca, dan informasi lokal tanpa perlu mengintegrasikan API terpisah untuk masing-masing. Ajukan pertanyaan dalam bahasa alami dengan menyebutkan team, tempat, dan rentang waktu yang Anda maksud.
+Gunakan Exa Search untuk data olahraga langsung, prakiraan cuaca, dan informasi lokal tanpa perlu mengintegrasikan API terpisah untuk masing-masing. Ajukan pertanyaan dalam bahasa alami yang menyebutkan tim, tempat, dan rentang waktu yang Anda maksud.
 
-<div id="write-better-queries">
-  ## Tulis query yang lebih baik
-</div>
+## Tulis query yang lebih baik {#write-better-queries}
 
-Sebutkan lokasi atau team secara spesifik dan sertakan tanggal bila jawabannya bisa berubah seiring waktu. Tambahkan kondisi atau atribut yang relevan dengan tugas Anda, alih-alih meminta informasi yang terlalu umum.
+Sebutkan lokasi atau tim secara spesifik dan sertakan tanggal bila jawabannya berubah seiring waktu. Tambahkan kondisi atau atribut yang relevan dengan tugas Anda, bukan meminta informasi yang terlalu umum.
 
 <Tabs>
   <Tab title="Olahraga" icon="trophy">
-    <div id="included">
-      ### Yang tercakup
-    </div>
+### Yang tercakup {#included}
 
-    Sports data yang tersedia:
+    Data olahraga yang tersedia:
 
-    * **Skor**: pertandingan suatu liga pada hari tertentu, termasuk team, skor, status, waktu mulai, dan tempat pertandingan
+    * **Skor**: pertandingan suatu liga pada hari tertentu, termasuk tim, skor, status, waktu mulai, dan tempat pertandingan
     * **Klasemen**: tabel liga terkini dengan pembagian konferensi atau divisi
-    * **Jadwal**: hasil pertandingan sebelumnya dan pertandingan mendatang untuk suatu liga atau team
+    * **Jadwal**: hasil pertandingan sebelumnya dan pertandingan mendatang untuk sebuah liga atau tim
 
     Cakupannya meliputi NBA, WNBA, NFL, MLB, NHL, MLS, bola basket dan football tingkat universitas, liga sepak bola utama Eropa dan kompetisi UEFA, kriket, F1, UFC, tenis, dan golf.
 
-    <div id="ask-for-the-league-team-and-time">
-      ### Sebutkan liga, team, dan waktunya
-    </div>
+### Sebutkan liga, tim, dan waktu {#ask-for-the-league-team-and-time}
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-    <div id="add-the-surrounding-story">
-      ### Tambahkan konteks beritanya
-    </div>
+### Tambahkan konteks beritanya {#add-the-surrounding-story}
 
-    Mintalah liputan yang Anda butuhkan sekaligus dengan data langsungnya.
+    Mintalah liputan yang Anda butuhkan bersama data langsung.
 
     <PlaygroundQuery query="NBA injury reports ahead of tonight's games" />
   </Tab>
 
   <Tab title="Cuaca" icon="cloud-sun">
-    <div id="included-2">
-      ### Yang tercakup
-    </div>
+### Yang tercakup {#included-2}
 
-    Prakiraan mencakup kondisi cuaca, suhu tertinggi dan terendah, curah hujan, angin, kelembapan, indeks UV, serta waktu matahari terbit dan terbenam menurut waktu setempat.
+    Prakiraan mencakup kondisi cuaca, suhu tertinggi dan terendah, curah hujan, angin, kelembapan, indeks UV, serta waktu matahari terbit dan terbenam dalam waktu setempat.
 
     Query tanpa tanggal akan mengembalikan prakiraan hari ini. Mintalah hari atau rentang tertentu untuk mendapatkan satu halaman per hari, hingga 16 hari ke depan atau 92 hari ke belakang.
 
-    <div id="name-the-place-and-day">
-      ### Sebutkan tempat dan harinya
-    </div>
+### Sebutkan tempat dan harinya {#name-the-place-and-day}
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-    <div id="ask-about-the-condition-that-affects-your-plan">
-      ### Tanyakan kondisi yang memengaruhi rencana Anda
-    </div>
+### Tanyakan kondisi yang memengaruhi rencana Anda {#ask-about-the-condition-that-affects-your-plan}
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-    <div id="combine-forecasts-with-reporting">
-      ### Gabungkan prakiraan dengan liputan berita
-    </div>
+### Gabungkan prakiraan dengan liputan berita {#combine-forecasts-with-reporting}
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="Tempat" icon="map-pin">
-    <div id="included-3">
-      ### Yang tercakup
-    </div>
+### Yang tercakup {#included-3}
 
-    * Profil bisnis lokal, lengkap dengan alamat, jam buka, fasilitas, dan ulasan
-    * Tempat acara, atraksi, dan titik menarik
-    * Daftar properti dan catatan kepemilikan
+    * Profil bisnis lokal, lengkap dengan alamat, jam operasional, fasilitas, dan ulasan
+    * Venue, atraksi, dan tempat menarik
+    * Listing properti dan catatan properti
     * Keputusan zonasi, izin, dan catatan perencanaan
 
-    <div id="describe-the-place-like-you-would-ask-a-local">
-      ### Gambarkan tempatnya seperti saat Anda bertanya pada warga setempat
-    </div>
+### Deskripsikan tempatnya seperti saat Anda bertanya kepada warga setempat {#describe-the-place-like-you-would-ask-a-local}
 
-    Gabungkan kategori, kawasan, dan atribut yang Anda anggap penting.
+    Gabungkan kategori, area, dan atribut yang Anda pentingkan.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-    <div id="name-the-record-type-and-geography">
-      ### Sebutkan jenis catatan dan wilayahnya
-    </div>
+### Sebutkan jenis catatan dan wilayahnya {#name-the-record-type-and-geography}
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-    <div id="compare-places-against-practical-constraints">
-      ### Bandingkan tempat berdasarkan kendala praktis
-    </div>
+### Bandingkan tempat berdasarkan kendala praktis {#compare-places-against-practical-constraints}
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-<div id="make-a-request">
-  ## Membuat permintaan
-</div>
+## Membuat permintaan {#make-a-request}
 
-Ketiga jenis data ini menggunakan endpoint Search yang sama.
+Ketiga tipe data ini menggunakan endpoint Search yang sama.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -178,12 +148,10 @@ Ketiga jenis data ini menggunakan endpoint Search yang sama.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Dapatkan data terstruktur dengan Exa Agent
-</div>
+## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang membutuhkan riset lintas banyak sumber, gunakan [task run Exa Agent](/id/docs/agent/quickstart). Jelaskan tempat, team, tanggal, criteria, dan field output yang Anda perlukan, lalu Agent akan mengembalikan hasil tervalidasi schema lengkap dengan citations.
+Untuk data terstruktur yang membutuhkan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan tempat, team, tanggal, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
-  Bandingkan berbagai tempat, susun ringkasan hari pertandingan, atau gabungkan detail lokal dan kondisi cuaca menjadi hasil yang terstruktur.
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Bandingkan tempat, susun ringkasan hari pertandingan, atau gabungkan detail lokal dan kondisi cuaca menjadi hasil terstruktur.
 </Card>

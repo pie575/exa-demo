@@ -4,25 +4,21 @@ description: "Cari katalog produk di berbagai merchant dan jaringan afiliasi."
 icon: "/docs/images/sidebar-icons/affiliatecom.svg"
 ---
 
-[Affiliate.com](https://affiliate.com) menggabungkan katalog produk dari berbagai
-merchant dan jaringan afiliasi ke dalam satu indeks yang dapat dicari, lengkap dengan
-harga terkini, merek, dan tautan langsung ke merchant.
+[Affiliate.com](https://affiliate.com) menggabungkan katalog produk dari
+berbagai merchant dan jaringan afiliasi ke dalam satu indeks yang dapat dicari,
+lengkap dengan Harga terkini, merek, dan tautan langsung ke merchant.
 
 Attach `affiliate` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
 Affiliate.com bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
 * Penemuan produk dan perbandingan harga antar merchant.
 * Mendukung asisten belanja dan konten panduan pembelian.
-* Menampilkan tautan afiliasi bersama hasil riset.
+* Menampilkan tautan afiliasi bersama hasil research.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -30,11 +26,9 @@ Gunakan nilai ini pada `dataSources`:
 affiliate
 ```
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
-Temukan headphone nirkabel dengan peredam bising seharga di bawah $300 dan bandingkan harganya.
+Temukan headphone nirkabel dengan peredam bising di bawah $300 dan bandingkan Harga.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -129,28 +123,24 @@ Temukan headphone nirkabel dengan peredam bising seharga di bawah $300 dan bandi
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Similarweb](/id/docs/agent/connect/similarweb): ukur jangkauan suatu merchant sebelum merekomendasikannya.
-* [Fiber.ai](/id/docs/agent/connect/fiber): telusuri perusahaan di balik suatu merchant atau merek.
+* [Similarweb](/id/docs/agent/connect/similarweb): mengukur jangkauan suatu merchant sebelum merekomendasikannya.
+* [Fiber.ai](/id/docs/agent/connect/fiber): melakukan Research terhadap perusahaan di balik suatu merchant atau merek.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, Harga, dan katalog partner selengkapnya.
   </Card>
 
-  <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
-    Attach hingga lima partner ke satu run dan rancang query agar masing-masing ikut terpicu.
+  <Card title="Gabungkan providers" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partner ke satu run dan susun query agar masing-masing terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">

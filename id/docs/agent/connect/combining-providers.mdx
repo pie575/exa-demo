@@ -1,15 +1,13 @@
 ---
-title: "Menggabungkan beberapa provider"
-description: "Gunakan beberapa data partners sekaligus dalam satu run Exa Agent."
+title: "Menggabungkan provider"
+description: "Gunakan beberapa data partner sekaligus dalam satu Exa Agent run."
 ---
 
-Meng-attach sebuah partner ke `dataSources` membuatnya tersedia bagi Exa Agent sebagai tool — ini **tidak** memaksa agent untuk memanggilnya. Dipanggil atau tidaknya sebuah partner bergantung pada `query` dan `outputSchema` Anda: sebutkan jenis hasil yang Anda inginkan dari tiap partner, maka Exa Agent akan memilih tool yang sesuai alih-alih menebak dari halaman web. Anda dapat meng-attach hingga lima partners per run; Exa Agent menentukan mana yang dipanggil pada setiap langkah, dengan Exa web search tersedia mendampinginya. Butuh lebih dari lima dalam satu run? [Hubungi kami](mailto:sales@exa.ai) untuk menaikkan limit.
+Melakukan attach partner ke `dataSources` membuatnya tersedia bagi Exa Agent sebagai tool — ini **tidak** memaksa agent untuk memanggilnya. Dipanggil atau tidaknya sebuah partner bergantung pada `query` dan `outputSchema` Anda: sebutkan jenis hasil yang Anda inginkan dari masing-masing partner, maka Exa Agent akan memakai tool yang sesuai alih-alih menebak dari halaman web. Anda dapat melakukan attach hingga lima partner per run; Exa Agent yang menentukan mana yang dipanggil di setiap langkah, dengan Exa web search tersedia berdampingan. Butuh lebih dari lima dalam satu run? [Hubungi kami](mailto:sales@exa.ai) untuk menaikkan batasnya.
 
-<div id="two-partners-in-one-run">
-  ## Dua partner dalam satu run
-</div>
+## Dua partner dalam satu run {#two-partners-in-one-run}
 
-Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan masing-masing pada bidang terkuatnya. Dua hanyalah contoh di sini — Anda bisa attach hingga lima partner ke `dataSources`, dan prinsipnya tetap sama: minta data dari masing-masing secara eksplisit. Run pengarahan investor ini menggabungkan [Financial Datasets](/id/docs/agent/connect/financialdatasets) untuk berita ticker dengan [Particle](/id/docs/agent/connect/particle) untuk komentar podcast. Query meminta data khas dari tiap partner, dan schema memisahkan output menjadi `financialNews` dan `podcastChatter`, sehingga Exa Agent memanggil **kedua** partner dalam run yang sama.
+Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan masing-masing pada bidang terkuatnya. Angka dua hanyalah contoh di sini — Anda bisa attach hingga lima partner ke `dataSources`, dan prinsipnya tetap sama: minta data dari masing-masing secara eksplisit. Run untuk penyusunan ringkasan investor ini menggabungkan [Financial Datasets](/id/docs/agent/connect/financialdatasets) untuk berita ticker dengan [Particle](/id/docs/agent/connect/particle) untuk komentar podcast. Query meminta data khas dari tiap partner, dan schema memisahkan output menjadi `financialNews` dan `podcastChatter`, sehingga Exa Agent memanggil **kedua** partner dalam run yang sama.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -166,5 +164,5 @@ Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan masing-mas
 </CodeGroup>
 
 <Tip>
-  Sebutkan secara eksplisit data dari masing-masing partner dalam *query* Anda — nyatakan jenis hasil yang Anda inginkan dari setiap partner (di sini: berita keuangan berdasarkan ticker vs. kutipan podcast yang diatribusikan ke pembicaranya). Jika permintaannya terlalu umum (&quot;berita terbaru&quot;), Exa Agent cenderung beralih ke web search alih-alih menggunakan partner. Menyelaraskan permintaan yang berbeda-beda tersebut pada field `outputSchema` Anda akan semakin memperkuatnya.
+  Nyatakan data setiap partner secara eksplisit dalam *query* Anda — sebutkan jenis hasil yang Anda inginkan dari masing-masing (di sini: berita finansial berdasarkan ticker vs. kutipan podcast yang disertai atribusi pembicara). Jika permintaan bersifat umum (&quot;berita terbaru&quot;), Exa Agent cenderung kembali ke web search alih-alih menggunakan partner. Mencerminkan permintaan yang berbeda-beda itu pada field `outputSchema` Anda akan semakin memperkuatnya.
 </Tip>

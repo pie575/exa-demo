@@ -1,47 +1,34 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="particle">
-  # Particle
-</div>
+# Particle {#particle}
 
-> 搜索播客文字稿，支持说话人归属与时间戳。
+> 搜索播客会议记录，支持说话人归属和时间戳。
 
-[Particle](https://particle.news) 的 Podcast Intelligence 收录了 10 万多档节目，
-并在节目播出后数分钟内完成全文转写、说话人分离与识别、打标签以及元数据补充，
-让口语对话变得可检索。每条结果都是带时间戳、标注说话人的文字稿片段。
+[Particle](https://particle.news) 的 Podcast Intelligence 收录了 10 万多档节目，在节目播出后数分钟内即完成全文转写、说话人分离与识别、内容标注，并以元数据加以丰富，让口语对话变得可搜索。每条结果都是带时间戳、标注说话人的会议记录片段。
 
-通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `particle` 附加到
-[Exa Agent](/zh/docs/agent/quickstart) 运行中，agent 便会在进行 Exa 网页 search 的同时查询 Particle。
+通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `particle` 附加到 [Exa Agent](/zh/docs/agent/quickstart) 运行，agent 就会在进行 Exa 网页搜索的同时查询 Particle。
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
 * 查找专家评论和可引用的精彩观点。
 * 媒体与品牌监测。
 * 叙事与舆情研究。
-* 发现播客并持续关注最新内容。
+* 发现播客并及时掌握最新内容。
 
-<div id="provider-id">
-  ## 数据提供方 ID
-</div>
+## 提供方 ID {#provider-id}
 
-在 `dataSources` 中使用此值：
+在 `dataSources` 中使用该值：
 
 ```text theme={null}
 particle
 ```
 
-<div id="example">
-  ## 示例
-</div>
+## 示例 {#example}
 
-了解播客主持人对 AI 监管的看法。
+查找播客主持人对 AI 监管的讨论内容。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -139,31 +126,27 @@ particle
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 搭配使用
-</div>
+## 搭配使用 {#pairs-well-with}
 
-* [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：将播客中的讨论与已发布的新闻相互印证。
-* [Fiber.ai](/zh/docs/agent/connect/fiber)：为讨论中提到的人物补充公司与联系人背景信息。
+* [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：将播客中的讨论与已发布的新闻交叉验证。
+* [Fiber.ai](/zh/docs/agent/connect/fiber)：为讨论中提及的人物接入公司与联系人上下文。
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 后续步骤 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="附加到运行中" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速入门" arrow="true">
-    Exa Connect 快速入门介绍了 `dataSources`、定价以及完整的合作伙伴目录。
+  <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">
+    Exa Connect 快速开始介绍了 `dataSources`、定价以及完整的合作伙伴目录。
   </Card>
 
-  <Card title="组合多个数据提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
-    在一次运行中最多附加五个合作伙伴，并设计好 query，让每个提供方都被触发。
+  <Card title="组合多个提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
+    在一次运行中最多接入五个合作伙伴，并设计好 query，让每一个都被触发。
   </Card>
 
   <Card title="了解 Exa Agent" icon="book-open" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">
-    创建运行、流式获取进度、设计输出结构，并控制投入程度与成本。
+    创建运行、流式获取进度、设计输出 schema，并控制 effort 与费用。
   </Card>
 
-  <Card title="获取 API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建 key" arrow="true">
-    在控制面板中创建一个 key，即可直接运行本页示例。新账户会获赠免费积分。
+  <Card title="获取 API 密钥" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建密钥" arrow="true">
+    在控制台中创建密钥，即可直接运行本页示例。新账户可获得免费积分。
   </Card>
 </Columns>

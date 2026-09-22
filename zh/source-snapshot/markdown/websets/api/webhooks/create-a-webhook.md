@@ -1,26 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可先通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="create-a-webhook">
-  # 创建 webhook
-</div>
+# 创建 webhook {#create-a-webhook}
 
 > 创建一个 Webhook，在所选事件发生时将其投递到你的 URL。
 
-响应中包含用于验证投递的签名密钥 `secret`；该值仅在创建时返回。
+响应中包含用于校验投递内容的签名 `secret`，该值仅在创建时返回。
 
 <Warning>
-  **不会跟随重定向。** Webhook 投递会直接发送到已注册的
-  URL。如果你的端点返回 3xx 重定向，该次投递将被视为失败。请始终注册最终目标 URL。
+  **不会跟随重定向。** Webhook 投递会直接发送到已注册的 URL。如果你的端点返回 3xx 重定向，本次投递将被视为失败。请始终注册最终的目标 URL。
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0
@@ -40,14 +33,12 @@ paths:
     post:
       tags:
         - Webhooks
-      summary: Create a Webhook
+      summary: 创建 Webhook
       description: >-
-        Creates a Webhook that delivers the selected events to your URL as they
-        occur.
+        创建一个 Webhook，在所选事件发生时将其推送到你的 URL。
 
 
-        The response includes the signing `secret` used to verify deliveries; it
-        is only returned on creation.
+        响应中包含用于验证投递的签名 `secret`；它仅在创建时返回。
       operationId: webhooks-create
       requestBody:
         required: true

@@ -1,8 +1,8 @@
 ---
-title: "Documents juridiques et publics"
-sidebarTitle: "Documents juridiques et publics"
+title: "Records juridiques et publics"
+sidebarTitle: "Records juridiques et publics"
 icon: "scale"
-description: "Trouvez des décisions de justice, des brevets, des sanctions, des marchés publics et d'autres documents publics avec Exa Search."
+description: "Trouvez des décisions de justice, des brevets, des sanctions, des marchés publics et d'autres records publics avec Exa Search."
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -31,76 +31,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Utilisez Exa Search pour accéder aux sources juridiques primaires et aux documents officiels gouvernementaux, ainsi qu&#39;aux commentaires qui les analysent.
+Utilisez Exa Search pour accéder aux sources juridiques primaires et aux records gouvernementaux, ainsi qu&#39;aux commentaires rédigés à leur sujet.
 
-<div id="included">
-  ## Inclus
-</div>
+## Inclus {#included}
 
-* Décisions de justice des tribunaux américains, avec texte intégral, juridiction, numéro de rôle et métadonnées de citation
-* Brevets américains délivrés, avec abrégé, revendications, description, inventeurs et titulaires
-* Lois, règlements et directives des agences
-* Listes de sanctions et listes de surveillance
-* Marchés publics et documents relatifs aux achats publics
-* Données de recensement et autres documents statistiques publics
+* Décisions de justice américaines, avec texte intégral, juridiction, numéro de rôle et métadonnées de citation
+* Brevets américains délivrés, avec abrégé, revendications, description, inventeurs et cessionnaires
+* Lois, réglementations et guidance des agences
+* Listes de sanctions et watchlists
+* Marchés publics et records de passation de marchés
+* Données de recensement et autres records statistiques publics
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## Cas d&#39;usage {#use-it-for}
 
-* Recherche jurisprudentielle et RAG juridique
-* Veille réglementaire et politique
-* Recherches d&#39;antériorité et de liberté d&#39;exploitation
-* Contrôle de conformité et due diligence
-* Études de marché dans le secteur public
+* La recherche jurisprudentielle et le RAG juridique
+* La veille réglementaire et politique
+* Les recherches d&#39;antériorité et de liberté d&#39;exploitation
+* Le contrôle de conformité et la due diligence
+* Les études de marché dans le secteur public
 
-<div id="example-queries">
-  ## Exemples de requêtes
-</div>
+## Exemples de requêtes {#example-queries}
 
-<div id="find-case-law">
-  ### Trouver de la jurisprudence
-</div>
+### Trouver de la jurisprudence {#find-case-law}
 
 Décrivez la question juridique et la juridiction en langage courant plutôt que sous forme de citation.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Rechercher des brevets
-</div>
+### Rechercher des brevets {#search-patents}
 
 Décrivez ce que fait l&#39;invention, comme le ferait une revendication.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Filtrer selon les listes de sanctions
-</div>
+### Screening par rapport aux listes de sanctions {#screen-against-sanctions}
 
-Indiquez la liste et la catégorie d&#39;entités que vous filtrez.
+Indiquez la liste et la catégorie d&#39;entités que vous soumettez au screening.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Analyser les dépenses publiques
-</div>
+### Rechercher les dépenses publiques {#research-government-spending}
 
-Indiquez l&#39;organisme acheteur ou la catégorie de services, ainsi que la période concernée.
+Indiquez l&#39;organisme acheteur ou la catégorie de service ainsi que la période concernée.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Extraire des statistiques publiques
-</div>
+### Extraire des statistiques publiques {#pull-public-statistics}
 
 Précisez le jeu de données et la zone géographique.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Effectuer une requête
-</div>
+## Effectuer une requête {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -141,12 +123,10 @@ Précisez le jeu de données et la zone géographique.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtenir des données structurées avec Exa Agent
-</div>
+## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
 
-Pour des données structurées nécessitant une recherche dans plusieurs sources, utilisez une [tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les juridictions, les types d&#39;enregistrements, les critères et les champs de sortie dont vous avez besoin : Agent renvoie des résultats validés par schema, accompagnés de citations.
+Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les juridictions, les types de records, les critères et les fields d&#39;output dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 
 <Card title="Lancer une tâche Exa Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
-  Passez une entité au crible de différents types d&#39;enregistrements ou retracez une évolution réglementaire à travers les sources primaires et leur couverture médiatique.
+  Passez une entité au crible selon différents types de records ou retracez une évolution réglementaire à partir des sources primaires et de leur couverture médiatique.
 </Card>

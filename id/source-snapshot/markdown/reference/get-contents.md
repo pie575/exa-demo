@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="contents">
-  # Contents
-</div>
+# Contents {#contents}
 
-> Dapatkan page contents lengkap, summaries, dan metadata untuk daftar URL.
+> Dapatkan contents halaman lengkap, ringkasan, dan metadata untuk sekumpulan URL.
 
-Mengembalikan hasil instan dari cache kami, dengan live crawling otomatis sebagai fallback untuk halaman yang belum ada di cache.
+Mengembalikan hasil secara instan dari cache kami, dengan crawling langsung otomatis sebagai cadangan untuk halaman yang belum di-cache.
 
 ***
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+  Buat key di dashboard. Akun baru mendapatkan credits gratis di awal.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0

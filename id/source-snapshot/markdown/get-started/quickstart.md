@@ -1,20 +1,14 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="developer-quickstart">
-  # Quickstart developer
-</div>
+# Quickstart developer {#developer-quickstart}
 
 > Dapatkan API key, lalu gunakan Exa dari kode Anda atau dari agent Anda.
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  <div id="1-get-an-api-key">
-    ## 1. Dapatkan API key
-  </div>
+  ## 1. Dapatkan API key {#1-get-an-api-key}
 
   <Steps>
     <Step title="Kunjungi Exa Dashboard">
@@ -23,7 +17,7 @@
       </Card>
     </Step>
 
-    <Step title="Setel key sebagai environment variable">
+    <Step title="Atur key sebagai variabel lingkungan">
       <Tabs>
         <Tab title="macOS/Linux">
           ```bash theme={null}
@@ -42,38 +36,34 @@
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="2-choose-how-youll-use-exa">
-    ## 2. Pilih cara Anda menggunakan Exa
-  </div>
+  ## 2. Pilih cara Anda menggunakan Exa {#2-choose-how-youll-use-exa}
 
-  Ada dua cara memakai Exa di aplikasi Anda: panggil API langsung dari kode Anda, atau hubungkan agent yang sudah Anda pakai.
+  Ada dua cara memakai Exa di aplikasi Anda: memanggil API dari kode Anda sendiri, atau menghubungkan agent yang sudah Anda pakai.
 
   <Columns cols={2}>
-    <Card title="Panggil API" icon="code" href="#3-install-an-sdk" cta="Pasang SDK">
-      Gunakan Search, Contents, dan Exa Agent dari kode Anda sendiri. Pasang SDK
-      di bawah ini lalu kirim permintaan pertama Anda.
+    <Card title="Panggil API" icon="code" href="#3-install-an-sdk" cta="Instal SDK">
+      Gunakan Search, Contents, dan Exa Agent dari kode Anda sendiri. Instal SDK
+      di bawah ini dan kirim permintaan pertama Anda.
     </Card>
 
     <Card title="Hubungkan agent Anda" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Siapkan Exa MCP">
-      Hubungkan ChatGPT, Claude, Codex, atau Cursor ke tool search dan riset
+      Hubungkan ChatGPT, Claude, Codex, atau Cursor ke tool search dan Research
       milik Exa. Tidak perlu API key.
     </Card>
   </Columns>
 
   Membangun dengan API? Pilih titik awal Anda:
 
-  | Mulai dengan                            | Gunakan untuk                                                                                       |
-  | --------------------------------------- | --------------------------------------------------------------------------------------------------- |
-  | [Search](/id/docs/search/quickstart)       | Menemukan halaman web yang relevan &amp; mengembalikan konten tersintesis dalam kurang dari 2 detik |
-  | [Deep Search](/id/docs/search/deep-search) | Search berkualitas lebih tinggi, tempat LLM secara iteratif menemukan hasil yang lebih baik         |
-  | [Agent](/id/docs/agent/quickstart)         | Riset asinkron jangka panjang, list building, enrichment, atau laporan                              |
-  | [Contents](/id/docs/contents/quickstart)   | Mengekstrak page content saat Anda sudah memiliki URL-nya                                           |
+  | Mulai dengan                            | Gunakan untuk                                                                                             |
+  | --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+  | [Search](/id/docs/search/quickstart)       | Menemukan halaman web yang relevan &amp; mengembalikan konten tersintesis dalam waktu kurang dari 2 detik |
+  | [Deep Search](/id/docs/search/deep-search) | Search berkualitas lebih tinggi, di mana LLM secara iteratif menemukan hasil yang lebih baik              |
+  | [Agent](/id/docs/agent/quickstart)         | Research asinkron jangka panjang, list building, enrichment, atau laporan                                 |
+  | [Contents](/id/docs/contents/quickstart)   | Mengekstrak konten halaman saat Anda sudah punya URL-nya                                                  |
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="3-install-an-sdk">
-    ## 3. Pasang SDK
-  </div>
+  ## 3. Instal SDK {#3-install-an-sdk}
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -87,9 +77,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="4-make-your-first-request">
-    ## 4. Buat permintaan pertama Anda
-  </div>
+  ## 4. Kirim permintaan pertama Anda {#4-make-your-first-request}
 
   <CodeGroup>
     ```python Python theme={null}
@@ -132,9 +120,7 @@
     ```
   </CodeGroup>
 
-  <div id="next-steps">
-    ## Langkah berikutnya
-  </div>
+  ## Langkah selanjutnya {#next-steps}
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
@@ -142,7 +128,7 @@
     </Card>
 
     <Card title="Agent API" icon="bot" href="/id/docs/agent/quickstart" cta="Baca panduan" arrow="true">
-      Bangun workflow riset jangka panjang, penyusunan daftar, dan enrichment.
+      Bangun workflow Research jangka panjang, list building, dan enrichment.
     </Card>
 
     <Card title="Contents API" icon="file-text" href="/id/docs/contents/quickstart" cta="Baca panduan" arrow="true">
@@ -150,8 +136,8 @@
     </Card>
 
     <Card title="Exa MCP" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Baca panduan" arrow="true">
-      Hubungkan klien MCP mana pun ke web search, pengambilan halaman, dan tool
-      Exa Agent dari Exa.
+      Hubungkan MCP client mana pun ke web search, pengambilan halaman, dan tool
+      Exa Agent milik Exa.
     </Card>
   </Columns>
 </div>

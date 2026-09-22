@@ -1,20 +1,21 @@
 ---
 title: "Answer"
-description: "Dapatkan jawaban LLM atas sebuah pertanyaan yang didasarkan pada
-  hasil Exa search. `/answer` menjalankan Exa search dan menggunakan LLM untuk
-  menghasilkan salah satu dari:
+description: "Dapatkan jawaban dari LLM untuk sebuah pertanyaan yang didasarkan
+  pada hasil Exa search. `/answer` menjalankan Exa search dan menggunakan LLM
+  untuk menghasilkan salah satu dari:
 
   1. Jawaban langsung untuk kueri spesifik. (misalnya \"Apa ibu kota Prancis?\"
   akan mengembalikan \"Paris\")
 
-  2. Ringkasan terperinci dengan citations untuk kueri terbuka (misalnya
-  \"Bagaimana kondisi ai di bidang kesehatan?\" akan mengembalikan ringkasan
-  dengan citations ke sumber-sumber yang relevan)
+  2. Ringkasan mendetail dengan sitasi untuk kueri terbuka (misalnya \"Bagaimana
+  kondisi ai di bidang kesehatan?\" akan mengembalikan ringkasan dengan sitasi
+  ke sources yang relevan)
 
 
-  Respons mencakup jawaban yang dihasilkan sekaligus sumber yang digunakan untuk
-  membuatnya. Endpoint ini juga mendukung Streaming (dengan `stream=True`), yang
-  akan mengembalikan token seiring token dihasilkan.
+  Response mencakup jawaban yang dihasilkan sekaligus sources yang digunakan
+  untuk menyusunnya. endpoint ini juga mendukung streaming (dengan
+  `stream=True`), yang akan mengembalikan token seiring token tersebut
+  dihasilkan.
 
 
   Sebagai alternatif, Anda dapat menggunakan [antarmuka chat

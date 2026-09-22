@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="update-a-monitor">
-  # 更新 monitor
-</div>
+# 更新 monitor {#update-a-monitor}
 
-> 更新现有的 monitor。所有字段均为可选。对于 `search`，可以只发送包含待修改字段的部分对象。将 `trigger` 设为 `null` 即可移除调度计划。
+> 更新现有的 monitor。所有 field 均为可选。对于 `search`，可以只发送包含待修改 field 的部分对象。将 `trigger` 设为 `null` 即可移除 schedule。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 제공되는 모든 페이지를 확인하세요.
+> 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-<div id="get-a-monitor">
-  # monitor 조회
-</div>
+# monitor 조회 {#get-a-monitor}
 
-> ID로 특정 monitor를 조회합니다.
+> ID로 특정 monitor 하나를 조회합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0

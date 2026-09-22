@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="browserbase">
-  # Browserbase
-</div>
+# Browserbase {#browserbase}
 
 > Combinez la recherche d&#39;entreprises Exa avec l&#39;automatisation de navigateur Browserbase pour vos workflows de candidature.
 
 Utilisez Exa pour trouver des entreprises et leurs pages carrières, puis Browserbase et Stagehand pour inspecter ces pages et interagir avec elles.
 
-<div id="install">
-  ## Installation
-</div>
+## Installation {#install}
 
 Installez les packages utilisés par le template Browserbase Exa :
 
@@ -23,9 +17,7 @@ Installez les packages utilisés par le template Browserbase Exa :
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## Configurer les variables d&#39;environnement
-</div>
+## Configurer les variables d&#39;environnement {#configure-environment-variables}
 
 Définissez les API keys utilisées par Exa et Browserbase :
 
@@ -34,11 +26,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## Rechercher et interagir avec une page
-</div>
+## Rechercher et interagir avec une page {#search-and-interact-with-a-page}
 
-L&#39;exemple suivant reprend le workflow du template : rechercher des entreprises, trouver une page carrières, l&#39;ouvrir dans une session Browserbase, extraire la description du poste, puis laisser un agent Stagehand interagir avec la page.
+L&#39;exemple suivant reprend le workflow du template : rechercher des entreprises, trouver une page carrières, l&#39;ouvrir dans une session Browserbase, extraire la description du poste et laisser un agent Stagehand interagir avec la page.
 
 ```typescript quickstart.ts theme={null}
 import "dotenv/config";

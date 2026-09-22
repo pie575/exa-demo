@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="get-a-batch">
-  # Mendapatkan batch
-</div>
+# Mengambil batch {#get-a-batch}
 
-> Mengambil batch berdasarkan ID.
+> Ambil batch berdasarkan ID.
 
-Gunakan endpoint ini untuk mem-poll batch hingga statusnya menjadi `completed`, `cancelled`, atau `expired`. Ketika batch selesai, `resultsUrl` berisi URL presigned berumur pendek untuk file hasil JSONL; ambil ulang batch tersebut untuk mendapatkan URL baru.
+Gunakan endpoint ini untuk mem-poll batch hingga statusnya menjadi `completed`, `cancelled`, atau `expired`. Saat batch selesai, `resultsUrl` berisi URL presigned berumur pendek untuk file hasil JSONL; ambil ulang batch tersebut untuk mendapatkan URL baru.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0

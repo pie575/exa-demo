@@ -1,61 +1,51 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="elevenlabs">
-  # ElevenLabs
-</div>
+# ElevenLabs {#elevenlabs}
 
 > Ajoutez Exa web search aux agents vocaux ElevenLabs.
 
 ***
 
-Les agents vocaux ElevenLabs peuvent effectuer une recherche sur le web en pleine conversation en utilisant Exa comme **webhook tool**. Lorsque l&#39;agent estime qu&#39;il a besoin d&#39;informations à jour, ElevenLabs envoie une requête HTTP POST directement à l&#39;endpoint `/search` d&#39;Exa — sans serveur ni middleware de votre côté.
+Les agents vocaux ElevenLabs peuvent effectuer des recherches sur le web en pleine conversation en utilisant Exa comme **outil webhook**. Lorsque l&#39;agent estime avoir besoin d&#39;informations à jour, ElevenLabs envoie une requête HTTP POST directement à l&#39;endpoint `/search` d&#39;Exa, sans serveur ni middleware de votre côté.
 
 Il existe deux façons de connecter Exa à ElevenLabs :
 
-| Approche                             | Configuration                               | Flexibilité                                                                        |
-| ------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------------------- |
-| **Webhook tool** (recommandé)        | Configuration via l&#39;API ou le dashboard | Contrôle total sur les paramètres de recherche, les content options et les headers |
-| **Built-in Exa integration** (alpha) | En un clic dans le dashboard ElevenLabs     | Plus simple, mais configuration limitée                                            |
+| Approche                             | Configuration                                     | Flexibilité                                                                        |
+| ------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Outil webhook** (recommandé)       | Configuration via l&#39;API ou le tableau de bord | Contrôle total sur les paramètres de search, les options de contenu et les headers |
+| **Built-in Exa integration** (alpha) | En un clic dans le tableau de bord ElevenLabs     | Plus simple, mais configuration limitée                                            |
 
-Ce guide présente l&#39;approche par webhook tool, qui vous donne un contrôle total sur la façon dont Exa est appelé. Vous pouvez également configurer l&#39;intégration depuis le [dashboard ElevenLabs](https://elevenlabs.io/app/conversational-ai).
+Ce guide couvre l&#39;approche par outil webhook, qui vous laisse un contrôle total sur la manière dont Exa est appelé. Vous pouvez également configurer l&#39;integration depuis le [tableau de bord ElevenLabs](https://elevenlabs.io/app/conversational-ai).
 
-<div id="how-it-works">
-  ## Fonctionnement
-</div>
+## Fonctionnement {#how-it-works}
 
-1. L&#39;utilisateur parle au agent vocal
-2. Le LLM décide d&#39;appeler `web_search` en se basant sur la description du tool
+1. L&#39;utilisateur parle à l&#39;agent vocal
+2. Le LLM décide d&#39;appeler `web_search` en fonction de la description de l&#39;outil
 3. ElevenLabs envoie une requête POST à `https://api.exa.ai/search` avec les headers et le corps que vous avez configurés
-4. Les paramètres déterminés par le LLM (la `query` de la search) sont fusionnés avec vos valeurs constantes (`type`, `numResults`, `contents`)
-5. Les résultats d&#39;Exa sont renvoyés au LLM, qui répond de manière conversationnelle
+4. Les paramètres déterminés par le LLM (la requête `query`) sont fusionnés avec vos valeurs constantes (`type`, `numResults`, `contents`)
+5. Les résultats Exa sont renvoyés au LLM, qui répond de manière conversationnelle
 
-Aucun serveur, aucune URL de callback, aucun listener. C&#39;est ElevenLabs qui joue le rôle de client HTTP et appelle Exa directement. Les tool calls ont un délai d&#39;expiration de 20 secondes.
+Pas de serveur, pas d&#39;URL de callback, pas de listener. ElevenLabs est le client HTTP qui appelle Exa directement. Les appels d&#39;outil ont un délai d&#39;expiration de 20 secondes.
 
-<div id="prerequisites">
-  ## Prérequis
-</div>
+## Prérequis {#prerequisites}
 
 * Une [API key Exa](https://dashboard.exa.ai/api-keys)
 * Une [API key ElevenLabs](https://elevenlabs.io/app/settings/api-keys)
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="get-started">
-  ## Get started
-</div>
+## Get started {#get-started}
 
 <Steps>
-  <Step title="Créer le webhook tool">
-    Utilisez l&#39;[API Create Tool](https://elevenlabs.io/docs/api-reference/tools/create) d&#39;ElevenLabs pour enregistrer un webhook tool pointant vers l&#39;endpoint search d&#39;Exa.
+  <Step title="Créer l'outil webhook">
+    Utilisez l&#39;[API Create Tool](https://elevenlabs.io/docs/api-reference/tools/create) d&#39;ElevenLabs pour enregistrer un outil webhook qui pointe vers l&#39;endpoint de recherche d&#39;Exa.
 
-    Le concept clé : les propriétés dotées de `constant_value` sont fixes (envoyées à chaque requête), tandis que celles dotées de `description` sont déterminées par le LLM à l&#39;exécution.
+    Le concept clé : les propriétés dotées de `constant_value` sont fixes (envoyées à chaque requête), tandis que celles dotées de `description` sont déterminées par le LLM au moment de l&#39;exécution.
 
     ```bash bash theme={null}
     curl -s -X POST "https://api.elevenlabs.io/v1/convai/tools" \
@@ -106,22 +96,22 @@ Aucun serveur, aucune URL de callback, aucun listener. C&#39;est ElevenLabs qui 
       }'
     ```
 
-    Vous obtenez ainsi un tool où :
+    Vous obtenez ainsi un outil où :
 
     * `query` — le LLM le remplit en fonction du contexte de la conversation
-    * `type: "instant"` — utilise le search mode le plus rapide d&#39;Exa (~150 ms)
-    * `numResults: 5` — renvoie 5 résultats par search
-    * `contents.highlights: true` — renvoie des extraits highlights économes en tokens (idéal pour la latence vocale)
+    * `type: "instant"` — utilise le mode de recherche le plus rapide d&#39;Exa (~150 ms)
+    * `numResults: 5` — renvoie 5 résultats par recherche
+    * `contents.highlights: true` — renvoie des extraits highlights économes en jetons (idéal pour la latence vocale)
 
-    Conservez l&#39;`id` renvoyé : il vous servira à relier le tool à un agent.
+    Conservez l&#39;`id` renvoyé : vous en aurez besoin pour relier l&#39;outil à un agent.
 
     <Note>
-      Si vous disposez déjà d&#39;un agent, vous pouvez sauter l&#39;étape 2 et ajouter le tool à cet agent depuis le dashboard ElevenLabs, sous **Agent &gt; Tools**, ou via l&#39;[API Update Agent](https://elevenlabs.io/docs/api-reference/agents/update). Le tool reste sans effet tant qu&#39;il n&#39;est pas attaché à un agent.
+      Si vous avez déjà un agent, vous pouvez sauter l&#39;étape 2 et ajouter l&#39;outil à cet agent depuis le tableau de bord ElevenLabs, sous **Agent &gt; Tools**, ou via l&#39;[API Update Agent](https://elevenlabs.io/docs/api-reference/agents/update). L&#39;outil restera sans effet tant qu&#39;il n&#39;est pas attaché à un agent.
     </Note>
   </Step>
 
-  <Step title="Créer un agent avec le tool">
-    Créez un agent conversationnel et attachez-y le webhook tool via son ID.
+  <Step title="Créer un agent avec l'outil">
+    Créez un agent conversationnel et attachez-lui l&#39;outil webhook à l&#39;aide de son ID.
 
     ```bash bash theme={null}
     curl -s -X POST "https://api.elevenlabs.io/v1/convai/agents/create" \
@@ -141,7 +131,7 @@ Aucun serveur, aucune URL de callback, aucun listener. C&#39;est ElevenLabs qui 
       }'
     ```
 
-    La réponse contient un `agent_id`. Ouvrez l&#39;agent dans le dashboard ElevenLabs pour le tester :
+    La réponse contient un `agent_id`. Ouvrez l&#39;agent dans le tableau de bord ElevenLabs pour le tester :
 
     ```text theme={null}
     https://elevenlabs.io/app/conversational-ai/agents/YOUR_AGENT_ID
@@ -149,7 +139,7 @@ Aucun serveur, aucune URL de callback, aucun listener. C&#39;est ElevenLabs qui 
   </Step>
 
   <Step title="Intégrer le widget">
-    Ajoutez l&#39;agent à n&#39;importe quelle page web en deux lignes de HTML :
+    Ajoutez l&#39;agent à n&#39;importe quelle page web avec deux lignes de HTML :
 
     ```html html theme={null}
     <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai>
@@ -158,11 +148,9 @@ Aucun serveur, aucune URL de callback, aucun listener. C&#39;est ElevenLabs qui 
   </Step>
 </Steps>
 
-<div id="full-python-example">
-  ## Exemple Python complet
-</div>
+## Exemple complet en Python {#full-python-example}
 
-Ce script crée le webhook tool et l&#39;agent en une seule exécution :
+Ce script crée à la fois l&#39;outil webhook et l&#39;agent en une seule exécution :
 
 ```python python theme={null}
 import os
@@ -173,7 +161,7 @@ EXA_API_KEY = os.environ["EXA_API_KEY"]
 BASE = "https://api.elevenlabs.io/v1/convai"
 HEADERS = {"xi-api-key": ELEVENLABS_API_KEY, "Content-Type": "application/json"}
 
-# 1. Créer le webhook tool
+# 1. Créer l'outil webhook
 tool_resp = requests.post(f"{BASE}/tools", headers=HEADERS, json={
     "tool_config": {
         "type": "webhook",
@@ -254,15 +242,11 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-<div id="customizing-search-parameters">
-  ## Personnaliser les paramètres de recherche
-</div>
+## Personnaliser les paramètres de recherche {#customizing-search-parameters}
 
-Le schema du corps du webhook tool correspond directement à [l&#39;API Search d&#39;Exa](/fr/docs/reference/search). Voici les configurations courantes :
+Le schéma du corps de l&#39;outil webhook correspond directement à [la Search API d&#39;Exa](/fr/docs/reference/search). Voici les configurations les plus courantes :
 
-<div id="search-type">
-  ### Search type
-</div>
+### Type de recherche {#search-type}
 
 Contrôlez le compromis vitesse/qualité avec la constante `type` :
 
@@ -271,11 +255,9 @@ Contrôlez le compromis vitesse/qualité avec la constante `type` :
 | `instant` | ~150 ms | Conversations vocales (recommandé) |
 | `auto`    | ~1 s    | Usage général                      |
 
-Pour les agents vocaux, commencez par `instant`. Utilisez `auto` si vous préférez laisser Exa sélectionner le search mode le plus adapté à chaque query.
+Pour les agents vocaux, commencez par `instant`. Utilisez `auto` si vous préférez laisser Exa choisir le mode de recherche le plus adapté à chaque requête.
 
-<div id="content-options">
-  ### Content options
-</div>
+### Options de contenu {#content-options}
 
 Choisissez la manière dont les résultats sont renvoyés via l&#39;objet `contents` :
 
@@ -293,15 +275,13 @@ Choisissez la manière dont les résultats sont renvoyés via l&#39;objet `conte
 }
 ```
 
-* **`highlights`** — Extraits économes en tokens. À utiliser lorsque vous souhaitez obtenir des passages pertinents sans saturer le contexte du LLM. Passez `true` pour bénéficier de la valeur par défaut la plus qualitative.
-* **`text`** — Page complète en markdown. À utiliser lorsque l&#39;agent a besoin de l&#39;intégralité du contenu de la page. Définissez `maxCharacters` pour en limiter la longueur.
-* **`summary`** — Résumé de chaque page généré par un LLM. Latence plus élevée, mais contenu synthétisé.
+* **`highlights`** — Extraits économes en jetons. À utiliser lorsque vous souhaitez obtenir des passages pertinents sans saturer le context du LLM. Passez `true` pour la valeur par défaut de meilleure qualité.
+* **`text`** — Markdown complet de la page. À utiliser lorsque l&#39;agent a besoin de l&#39;intégralité du contenu de la page. Définissez `maxCharacters` pour en limiter la longueur.
+* **`summary`** — Résumé de chaque page généré par un LLM. Latence plus élevée, mais fournit un contenu synthétisé.
 
-Pour les agents vocaux, `highlights: true` est la valeur par défaut recommandée : elle offre un bon équilibre entre pertinence et rapidité de réponse.
+Pour les agents vocaux, `highlights: true` est la valeur par défaut recommandée : elle offre un bon équilibre entre relevance et rapidité de réponse.
 
-<div id="filtering-results">
-  ### Filtrer les résultats
-</div>
+### Filtrage des résultats {#filtering-results}
 
 Ajoutez des filtres de domaine ou de date sous forme de constantes :
 
@@ -323,36 +303,30 @@ Ajoutez des filtres de domaine ou de date sous forme de constantes :
 }
 ```
 
-<div id="number-of-results">
-  ### Nombre de résultats
-</div>
+### Nombre de résultats {#number-of-results}
 
-Ajustez `numResults` selon votre cas d&#39;usage. Pour la voix, 3 à 5 résultats permettent de conserver des réponses rapides. Pour les agents orientés recherche, 10 résultats ou plus offrent une couverture plus large.
+Ajustez `numResults` selon votre cas d&#39;usage. Pour la voix, 3 à 5 résultats suffisent à garder des réponses rapides. Pour les agents orientés recherche, 10 résultats ou plus offrent une couverture plus large.
 
-<div id="schema-reference">
-  ## Référence du schema
-</div>
+## Référence du schéma {#schema-reference}
 
-Les webhook tools ElevenLabs utilisent un schema JSON comportant les types de propriétés suivants :
+Les outils webhook d&#39;ElevenLabs utilisent un schéma JSON avec ces types de propriétés :
 
-* **`constant_value`** — Valeur fixe envoyée à chaque requête. Le LLM ne la voit jamais et ne la modifie jamais. Compatible avec les chaînes, les nombres et les booléens.
-* **`description`** — Le LLM détermine la valeur à l&#39;exécution à partir de cette description. À utiliser pour les parameters dynamiques comme `query`.
+* **`constant_value`** — Valeur fixe envoyée à chaque requête. Le LLM ne la voit jamais et ne la modifie pas. Fonctionne pour les chaînes, les nombres et les booléens.
+* **`description`** — Le LLM détermine la valeur à l&#39;exécution à partir de cette description. À utiliser pour les paramètres dynamiques comme `query`.
 * **Objets imbriqués** — Utilisez `type: "object"` avec `properties` pour construire des structures imbriquées comme `contents.highlights`.
 
-Chaque parameter dispose d&#39;un sélecteur de mode dans le dashboard — **Fixed** ou **LLM** :
+Chaque paramètre dispose d&#39;un sélecteur de mode dans le tableau de bord — **Fixed** ou **LLM** :
 
 <Frame>
-  <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/elevenlabs/parameters.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=618ca64cac86308c571a8268f48342a5" alt="Configuration des paramètres du webhook tool ElevenLabs montrant les sélecteurs de mode Fixed et LLM" width="1692" height="898" data-path="images/integrations/elevenlabs/parameters.png" />
+  <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/elevenlabs/parameters.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=618ca64cac86308c571a8268f48342a5" alt="Configuration des paramètres d'un outil webhook ElevenLabs montrant les sélecteurs de mode Fixed et LLM" width="1692" height="898" data-path="images/integrations/elevenlabs/parameters.png" />
 </Frame>
 
-Les parameters définis sur **Fixed** (marqués par `constant_value` dans l&#39;API) sont envoyés tels quels à chaque requête. Ceux définis sur **LLM** (marqués par `description`) laissent le modèle choisir la valeur à l&#39;exécution. Gardez le plus de parameters possible en mode Fixed : chaque parameter déterminé par le LLM ajoute une étape d&#39;appel d&#39;outil, ce qui augmente la latence de la réponse.
+Les paramètres définis sur **Fixed** (marqués par `constant_value` dans l&#39;API) sont envoyés tels quels à chaque requête. Les paramètres définis sur **LLM** (marqués par `description`) laissent le modèle choisir la valeur à l&#39;exécution. Gardez le plus de paramètres possible en Fixed — chaque paramètre déterminé par le LLM ajoute une étape d&#39;appel d&#39;outil qui augmente la latence de réponse.
 
-Pour le schema complet des webhook tools ElevenLabs, consultez la [documentation des server tools ElevenLabs](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
+Pour le schéma complet des outils webhook ElevenLabs, consultez la [documentation des outils serveur ElevenLabs](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
 
-<div id="built-in-exa-integration-alpha">
-  ## Built-in Exa integration (alpha)
-</div>
+## Built-in Exa integration (alpha) {#built-in-exa-integration-alpha}
 
-ElevenLabs propose également une Built-in Exa integration, disponible dans le dashboard de l&#39;agent sous **Tools &gt; Integrations**. Elle est plus simple à configurer, mais la personnalisation des paramètres de recherche y est plus délicate qu&#39;avec l&#39;approche par webhook tool.
+ElevenLabs propose également une integration Exa native, disponible dans le tableau de bord de l&#39;agent sous **Tools &gt; Integrations**. Sa mise en place est plus simple, mais la personnalisation des paramètres de recherche y est plus délicate qu&#39;avec l&#39;approche par outil webhook.
 
-Pour un contrôle total sur le search type, les content options et le filtrage, il est recommandé d&#39;opter pour l&#39;approche par webhook tool décrite ci-dessus.
+Pour un contrôle total sur le type de recherche, les options de contenu et le filtrage, nous recommandons l&#39;approche par outil webhook décrite ci-dessus.

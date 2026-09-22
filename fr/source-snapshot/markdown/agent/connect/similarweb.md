@@ -1,37 +1,29 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="similarweb">
-  # Similarweb
-</div>
+# Similarweb {#similarweb}
 
-> Obtenez des estimations de trafic de sites web, des classements mondiaux et l&#39;identification des concurrents.
+> Obtenez des estimations de trafic des sites web, des classements mondiaux et découvrez les concurrents.
 
 [Similarweb](https://www.similarweb.com) est une source de référence en matière
-de veille des marchés numériques. La plateforme modélise le trafic et l&#39;engagement de millions de sites web et
-d&#39;applications : visites estimées, sources de trafic, données démographiques de l&#39;audience et
+d&#39;intelligence de marché numérique. La plateforme modélise le trafic et l&#39;engagement de millions de sites web et
+d&#39;applications : visites estimées, sources de trafic, données démographiques d&#39;audience et
 paysage concurrentiel autour de n&#39;importe quel domaine.
 
 Attachez `similarweb` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
-Similarweb en parallèle de la web search Exa.
+Similarweb en parallèle d&#39;Exa web search.
 
-<div id="use-it-for">
-  ## À utiliser pour
-</div>
+## À utiliser pour {#use-it-for}
 
-* Comparer le trafic web et l&#39;engagement d&#39;une entreprise à ceux de ses concurrents.
+* Comparer le trafic web et l&#39;engagement d&#39;une entreprise à ceux de ses concurrents directs.
 * Cartographier les concurrents d&#39;un domaine et les sites dont l&#39;audience se recoupe.
-* Évaluer la taille des marchés et sélectionner les entreprises selon leur empreinte numérique.
-* Enrichir vos analyses d&#39;entreprises et de catégories avec des données comportementales réelles.
+* Évaluer la taille des marchés et filtrer les entreprises selon leur empreinte numérique.
+* Enrichir la recherche sur les entreprises et les catégories avec des données comportementales réelles.
 
-<div id="provider-id">
-  ## ID du provider
-</div>
+## Provider ID {#provider-id}
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -39,39 +31,35 @@ Utilisez cette valeur dans `dataSources` :
 similarweb
 ```
 
-<div id="pricing">
-  ## Pricing
-</div>
+## Tarification {#pricing}
 
 Similarweb facture en crédits de données à `$0.30 / credit`, et chaque appel est facturé
-selon les crédits que Similarweb déclare pour celui-ci. Les crédits varient en fonction des données renvoyées —
-environ un crédit par point de donnée (métrique × ligne × mois) — si bien que le prix d&#39;un appel
-dépend de ses paramètres :
+selon les crédits que Similarweb déclare pour celui-ci. Les crédits varient selon les données renvoyées —
+environ un crédit par point de donnée (métrique × ligne × mois) — le prix d&#39;un appel
+est donc déterminé par ses paramètres :
 
-| Tool                  | Crédits                                                                       |
-| --------------------- | ----------------------------------------------------------------------------- |
-| Traffic and rank      | jusqu&#39;à 7 par mois demandé (1 à 2 mois)                                   |
-| Similar sites         | 3 par site renvoyé (1 à 5 sites)                                              |
-| Traffic sources       | 10                                                                            |
-| Top referrers         | 3 par référent renvoyé (1 à 5)                                                |
-| Top countries         | 3 par pays renvoyé (1 à 5)                                                    |
-| Top pages             | 2 par page renvoyée (1 à 7)                                                   |
-| Top keywords          | 1 à 10 (environ 1 pour 100 points de données de mots-clés ; 50 mots-clés ≈ 7) |
-| Keyword overview      | 1 à 2                                                                         |
-| Audience demographics | 8                                                                             |
-| Audience overlap      | 2 par combinaison de domaines (2 à 3 domaines : 6 à 14)                       |
-| Technologies          | 10                                                                            |
-| Top sites by category | 1 par site renvoyé (1 à 10)                                                   |
+| Outil                                    | Crédits                                                                       |
+| ---------------------------------------- | ----------------------------------------------------------------------------- |
+| Trafic et classement                     | jusqu&#39;à 7 par mois demandé (1 à 2 mois)                                   |
+| Sites similaires                         | 3 par site renvoyé (1 à 5 sites)                                              |
+| Sources de trafic                        | 10                                                                            |
+| Principaux référents                     | 3 par référent renvoyé (1 à 5)                                                |
+| Principaux pays                          | 3 par pays renvoyé (1 à 5)                                                    |
+| Principales pages                        | 2 par page renvoyée (1 à 7)                                                   |
+| Principaux mots-clés                     | 1 à 10 (environ 1 pour 100 points de données de mots-clés ; 50 mots-clés ≈ 7) |
+| Aperçu des mots-clés                     | 1 à 2                                                                         |
+| Données démographiques de l&#39;audience | 8                                                                             |
+| Recoupement d&#39;audience               | 2 par combinaison de domaines (2 à 3 domaines : 6 à 14)                       |
+| Technologies                             | 10                                                                            |
+| Principaux sites par catégorie           | 1 par site renvoyé (1 à 10)                                                   |
 
 Les appels qui ne renvoient aucune donnée (domaine inconnu ou à faible trafic, mot-clé sans
-volume de recherche) sont gratuits. `numResults` et `months` déterminent le nombre de points de données que vous
-payez : gardez-les donc aussi bas que la tâche le permet.
+volume de recherche) sont gratuits. `numResults` et `months` déterminent le nombre de points de données qui vous
+sont facturés : limitez-les au strict nécessaire pour la tâche.
 
-<div id="example">
-  ## Exemple
-</div>
+## Exemple {#example}
 
-Trouvez 10 entreprises SaaS B2B en forte croissance ainsi que leur trafic web estimé.
+Trouvez 10 entreprises SaaS B2B à forte croissance ainsi que leur trafic web estimé.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -163,31 +151,27 @@ Trouvez 10 entreprises SaaS B2B en forte croissance ainsi que leur trafic web es
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## S&#39;associe bien avec
-</div>
+## S&#39;associe bien avec {#pairs-well-with}
 
-* [Fiber.ai](/fr/docs/agent/connect/fiber) : transformez les concurrents identifiés en fiches d&#39;entreprise enrichies.
-* [Affiliate.com](/fr/docs/agent/connect/affiliatecom) : évaluez la portée d&#39;un merchant avant de recommander ses produits.
+* [Fiber.ai](/fr/docs/agent/connect/fiber) : transformez les concurrents identifiés en records d&#39;entreprises enrichis.
+* [Affiliate.com](/fr/docs/agent/connect/affiliatecom) : évaluez la portée d&#39;un marchand avant de recommander ses produits.
 
-<div id="next-steps">
-  ## Prochaines étapes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
-    Le quickstart Exa Connect couvre `dataSources`, la tarification et l&#39;ensemble du catalogue de partners.
+    Le quickstart Exa Connect couvre `dataSources`, la tarification et le catalogue complet des partners.
   </Card>
 
   <Card title="Combiner des providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
-    Attachez jusqu&#39;à cinq partners à un même run et formulez la query de façon à ce que chacun se déclenche.
+    Attachez jusqu&#39;à cinq partners à un même run et formulez la requête de façon à ce que chacun soit sollicité.
   </Card>
 
   <Card title="Découvrir Exa Agent" icon="book-open" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
-    Créez des runs, suivez la progression en direct, concevez des schemas de sortie et maîtrisez l&#39;effort et le coût.
+    Créez des runs, suivez la progression en stream, concevez des schémas d&#39;output et maîtrisez l&#39;effort et le coût.
   </Card>
 
-  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une key" arrow="true">
-    Créez une key dans le dashboard et exécutez tel quel l&#39;exemple de cette page. Les nouveaux comptes bénéficient de credits gratuits.
+  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une clé" arrow="true">
+    Créez une clé dans le tableau de bord et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes démarrent avec des crédits gratuits.
   </Card>
 </Columns>

@@ -2,7 +2,7 @@
 title: "Noticias"
 sidebarTitle: "Noticias"
 icon: "newspaper"
-description: "Encuentra la actualidad informativa, cobertura del sector y temas emergentes con Exa Search."
+description: "Encuentra información de actualidad, cobertura del sector y noticias emergentes con Exa Search."
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -31,56 +31,42 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para acceder a reportajes de grandes publicaciones, prensa especializada y medios de nicho. Los artículos nuevos se pueden buscar a los pocos minutos de publicarse. Combina una query en lenguaje natural con filtros de fecha cuando la ventana de publicación sea un requisito ineludible.
+Usa Exa Search para encontrar coberturas de grandes medios, prensa especializada y publicaciones de nicho. Los artículos nuevos se pueden buscar a los pocos minutos de publicarse. Combina una consulta en lenguaje natural con filtros de fecha cuando la ventana de publicación sea un requisito estricto.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Investigación de mercado e inversiones
+* Investigación de mercados e inversiones
 * Ciberseguridad e inteligencia de amenazas
-* Monitorización de empresas, productos y competidores
+* Monitoreo de empresas, productos y competidores
 * Informes sectoriales e investigación de la actualidad
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### Seguir una noticia política en desarrollo
-</div>
+### Seguir una noticia de política en desarrollo {#follow-a-developing-policy-story}
 
 Indica el tema, el tipo de fuente y la ventana de publicación para que los resultados se centren en la fase actual de la noticia.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### Encontrar análisis de profesionales
-</div>
+### Encontrar análisis de profesionales {#find-practitioner-analysis}
 
-Indica el tipo de fuente cuando quieras obtener análisis de profesionales del sector y no cobertura periodística general.
+Indica el tipo de fuente cuando quieras obtener análisis de profesionales del sector en lugar de cobertura periodística general.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### Descubre debates en un formato específico
-</div>
+### Descubre debates en un formato específico {#discover-discussions-in-a-specific-format}
 
-Incluye el formato y el tema en la query. De este modo, la search sigue abierta a páginas de episodios y transcripciones de toda la web.
+Incluye el formato y el tema en la consulta. De este modo, la búsqueda sigue abierta a páginas de episodios y transcripts de toda la web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### Investigar noticias adversas
-</div>
+### Investigar prensa negativa {#research-adverse-media}
 
-Describe tanto la señal negativa como el tipo de entidad que investigas. Evita reducir la query al nombre de la empresa seguido de la palabra «noticias».
+Describe tanto la señal negativa como el tipo de entidad que estás investigando. Evita reducir la consulta al nombre de una empresa seguido de la palabra «noticias».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## Realiza una solicitud
-</div>
+## Realizar una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,11 +107,9 @@ Describe tanto la señal negativa como el tipo de entidad que investigas. Evita 
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para obtener datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las noticias, los campos y el periodo de tiempo que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las noticias, los campos y la ventana temporal que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
 <Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
   Crea un resumen de noticias con fuentes, compara coberturas o extrae datos normalizados de una noticia en desarrollo.

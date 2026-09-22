@@ -1,61 +1,55 @@
 ---
 title: "Financial Datasets"
-description: "Data keuangan dan pasar terstruktur untuk 27.000+ ticker AS: harga, fundamental, laporan laba, SEC filings, kepemilikan, dan penyaringan saham."
+description: "Data keuangan dan pasar terstruktur untuk 27.000+ ticker AS: harga, fundamental, laba, SEC filings, kepemilikan, dan screening saham."
 icon: "/docs/images/sidebar-icons/financialdatasets.svg"
 ---
 
 [Financial Datasets](https://financialdatasets.ai) menyediakan data perusahaan
-dan pasar yang siap diproses mesin untuk AI agents. Melalui
+dan pasar siap pakai mesin untuk AI agents. Melalui
 [Exa Connect](/id/docs/agent/connect/overview), agent dapat mengambil
 harga real-time dan historis, fakta perusahaan, laporan keuangan dan
-metrik valuasi, laba, kepemilikan insider dan institutional ownership, SEC filings
-beserta bagian-bagiannya, berita perusahaan, serta menyaring pasar AS berdasarkan
-kriteria fundamental.
+metrik valuasi, laba, kepemilikan insider dan institusional, SEC filings
+beserta bagian-bagiannya, berita perusahaan, serta melakukan screening pasar AS
+berdasarkan kriteria fundamental.
 
 Attach `financial_datasets` ke sebuah run [Exa Agent](/id/docs/agent/quickstart),
-maka agent akan melakukan kueri ke Financial Datasets berdampingan dengan Exa web search.
+maka agent akan melakukan query ke Financial Datasets bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Menyusun ringkasan riset perusahaan yang terstruktur.
+* Menyusun snapshot research perusahaan yang terstruktur.
 * Menganalisis kinerja keuangan, valuasi, dan tren historis.
-* Membaca SEC filings dan mengekstrak bagian seperti faktor risiko serta MD&amp;A.
-* Menelaah transaksi insider dan institutional ownership.
-* Menyaring pasar AS berdasarkan kriteria fundamental.
+* Membaca SEC filings dan mengekstrak bagian seperti faktor risiko dan MD&amp;A.
+* Menelaah transaksi insider dan kepemilikan institusional.
+* Melakukan screening pasar AS berdasarkan kriteria fundamental.
 * Memantau berita perusahaan dan perkembangan yang relevan.
 
-<div id="data-available">
-  ## Data yang tersedia
-</div>
+## Data yang tersedia {#data-available}
 
 Setiap dataset berikut tersedia di bawah provider `financial_datasets`;
 agent akan memilih yang paling sesuai dengan tugasnya:
 
-| Dataset                 | Apa yang dikembalikan                                                                                   |
+| Dataset                 | Yang dikembalikan                                                                                       |
 | ----------------------- | ------------------------------------------------------------------------------------------------------- |
 | Beneficial ownership    | Pemilik manfaat 5%+ dari Schedule 13D/13G, termasuk kepemilikan aktivis dan pasif.                      |
 | Company facts           | Nama, sektor, industri, bursa, lokasi, SEC CIK, klasifikasi SIC.                                        |
-| berita perusahaan       | Artikel berita terbaru untuk sebuah ticker.                                                             |
-| laba                    | Pendapatan kuartalan dan EPS beserta perubahan YoY serta kejutan beat/miss.                             |
+| Company news            | Artikel berita terbaru untuk sebuah ticker.                                                             |
+| Earnings                | Laba kuartalan dan EPS beserta perubahan YoY serta kejutan beat/miss.                                  |
 | Financial metrics       | Kapitalisasi pasar, EV, P/E, P/B, P/S, EV/EBITDA, PEG, margin, ROE/ROA/ROIC, pertumbuhan, EPS.          |
-| laporan keuangan        | Laporan laba rugi, neraca, dan arus kas dari SEC filings.                                               |
-| Historical stock prices | Bar OHLCV dalam suatu rentang tanggal dengan granularitas hari/minggu/bulan/tahun.                      |
-| Index-fund holdings     | Konstituen ETF/reksa dana indeks berdasarkan bobot, atau dana yang memegang sekuritas tertentu.         |
-| Insider ownership       | Kepemilikan insider dari SEC Form 3 dan 5 (saham yang dimiliki pejabat, direktur, dan pemilik 10%).     |
-| Insider trades          | Transaksi insider SEC Form 4 (nama, peran, jenis, jumlah saham, nilai).                                 |
+| Financial statements    | Laporan laba rugi, neraca, dan arus kas dari SEC filings.                                               |
+| Historical stock prices | Bar OHLCV dalam rentang tanggal dengan granularitas hari/minggu/bulan/tahun.                            |
+| Index-fund holdings     | Konstituen ETF/reksa dana indeks berdasarkan bobot, atau dana yang memegang suatu sekuritas.            |
+| Insider ownership       | Kepemilikan insider dari SEC Form 3 dan 5 (saham yang dimiliki pejabat, direktur, pemilik 10%).         |
+| Insider trades          | Transaksi insider SEC Form 4 (nama, role, jenis, jumlah saham, nilai).                                  |
 | Institutional ownership | Pemegang institusional 13F, jumlah saham, dan nilai yang dilaporkan.                                    |
-| Interest rates          | Suku bunga kebijakan bank sentral terkini dan historis (Fed, ECB, BOJ, dan lainnya).                    |
+| Interest rates          | Suku bunga kebijakan bank sentral saat ini dan historis (Fed, ECB, BOJ, dan lainnya).                   |
 | SEC filing items        | Teks hasil ekstraksi dari item 10-K/10-Q/8-K tertentu (mis. faktor risiko, MD&amp;A).                   |
-| SEC filings             | Metadata filings dan tautan langsung ke EDGAR, dengan opsi penyaringan berdasarkan jenis formulir.      |
+| SEC filings             | Metadata filing dan tautan langsung EDGAR, dapat difilter berdasarkan jenis formulir.                   |
 | Segmented financials    | Pendapatan, laba operasi, dan pos lainnya yang dirinci berdasarkan produk, segmen bisnis, dan geografi. |
 | Stock price snapshot    | Harga real-time saat ini, perubahan harian, dan waktu kuotasi harga.                                    |
-| Stock screener          | Perusahaan yang memenuhi kriteria fundamental.                                                   |
+| Stock screener          | Perusahaan yang cocok dengan kriteria filter fundamental.                                               |
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -63,11 +57,9 @@ Gunakan nilai ini pada `dataSources`:
 financial_datasets
 ```
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
-Bangun ringkasan riset perusahaan yang terstruktur untuk NVIDIA.
+Bangun snapshot research perusahaan yang terstruktur untuk NVIDIA.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -285,32 +277,28 @@ Bangun ringkasan riset perusahaan yang terstruktur untuk NVIDIA.
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Particle](/id/docs/agent/connect/particle): bandingkan liputan yang telah dipublikasikan dengan komentar di podcast.
-* [Baselayer](/id/docs/agent/connect/baselayer): verifikasi entitas sebenarnya di balik sebuah ticker.
+* [Particle](/id/docs/agent/connect/particle): bandingkan liputan yang dipublikasikan dengan komentar di podcast.
+* [Baselayer](/id/docs/agent/connect/baselayer): verifikasi entitas yang berada di balik sebuah ticker.
 * [Fiber.ai](/id/docs/agent/connect/fiber): enrich perusahaan publik dengan perusahaan sejenis di pasar privat dan kontak jajaran pimpinan.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, pricing, dan katalog partner lengkap.
   </Card>
 
-  <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
-    Attach hingga lima partner ke satu run dan rancang kueri agar masing-masing terpicu.
+  <Card title="Gabungkan providers" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partners ke satu run dan rancang query agar masing-masing terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
+    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru mendapat credits gratis.
   </Card>
 </Columns>

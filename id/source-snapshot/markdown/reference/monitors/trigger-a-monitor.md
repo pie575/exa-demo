@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="trigger-a-monitor">
-  # Memicu monitor
-</div>
+# Memicu monitor {#trigger-a-monitor}
 
-> Memicu run secara langsung, terlepas dari jadwal yang ada. Berlaku untuk monitor dengan status `active` atau `paused`.
+> Memicu run segera, terlepas dari jadwalnya. Berfungsi untuk monitor dengan status `active` atau `paused`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/{id}/trigger
 openapi: 3.1.0

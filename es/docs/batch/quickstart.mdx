@@ -1,25 +1,23 @@
 ---
 title: "Batch API"
 sidebarTitle: "Batch"
-description: "Ejecuta solicitudes a la API de Exa de forma asíncrona en batches."
+description: "Ejecuta solicitudes de la API de Exa de forma asíncrona en batches."
 boost: 4
 ---
 
 <Info>
-  La Batch API está disponible para clientes Enterprise una vez que Exa la habilita para tu equipo. Escribe a [sales@exa.ai](mailto:sales@exa.ai) para hablar sobre el acceso y la habilitación Enterprise.
+  La Batch API está disponible para clientes Enterprise una vez que Exa la habilita para tu equipo. Escribe a [sales@exa.ai](mailto:sales@exa.ai) para hablar sobre el acceso y la habilitación de Enterprise.
 </Info>
 
-La Batch API te permite enviar muchas solicitudes a la API de Exa a la vez y recuperar sus resultados más adelante en un archivo JSONL. En lugar de enviar miles de solicitudes individuales y gestionar por tu cuenta los límites de tasa y los reintentos, envías un único batch, consultas su estado y descargas todos los resultados en un solo archivo.
+La Batch API te permite enviar muchas solicitudes de la API de Exa a la vez y recuperar sus resultados más tarde en un archivo JSONL. En lugar de enviar miles de solicitudes individuales y gestionar por tu cuenta los límites de tasa y los reintentos, envías un solo batch, sondeas su estado y descargas todos los resultados en un único archivo.
 
-Úsala para enrichment sin conexión, cargas retroactivas o cualquier otro trabajo que no requiera una respuesta inmediata. Los esquemas completos de solicitud y respuesta están en la [referencia de la API](/es/docs/reference/batches/create-a-batch).
+Úsala para enrichment sin conexión, cargas de datos históricos o cualquier otro trabajo que no requiera una respuesta inmediata. Los esquemas completos de solicitud y respuesta están en la [API reference](/es/docs/reference/batches/create-a-batch).
 
 <Note>
   La Batch API está en beta. Incluye el encabezado `Exa-Beta: batches-2026-06-06` en cada solicitud.
 </Note>
 
-<div id="supported-requests">
-  ## Solicitudes admitidas
-</div>
+## Solicitudes admitidas {#supported-requests}
 
 Cada elemento del batch debe ser una solicitud `POST` a una de estas rutas:
 
@@ -28,11 +26,9 @@ Cada elemento del batch debe ser una solicitud `POST` a una de estas rutas:
 | `/search`     | Ejecutar solicitudes de Exa Search de forma asíncrona |
 | `/agent/runs` | Ejecutar solicitudes de Exa Agent de forma asíncrona  |
 
-Cada elemento necesita un `customId` único dentro del batch. Ese mismo `customId` se devuelve en el archivo de resultados para que puedas relacionar las filas de salida con tus datos de entrada.
+Cada elemento necesita un `customId` único dentro del batch. Ese mismo `customId` se devuelve en el archivo de resultados para que puedas asociar las filas del output con tus datos de entrada.
 
-<div id="create-a-batch">
-  ## Crear un batch
-</div>
+## Crear un batch {#create-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -90,11 +86,9 @@ La respuesta contiene el ID del batch y su estado inicial:
   ```
 </Accordion>
 
-<div id="check-status">
-  ## Consultar el estado
-</div>
+## Consultar el estado {#check-status}
 
-Consulta el batch periódicamente hasta que alcance un estado final:
+Sondea el batch hasta que alcance un estado terminal:
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -106,23 +100,21 @@ Consulta el batch periódicamente hasta que alcance un estado final:
 
 Los estados de un batch son:
 
-| Estado        | Significado                                                            |
-| ------------- | ---------------------------------------------------------------------- |
-| `in_progress` | El batch se está ejecutando                                             |
-| `completed`   | Todas las solicitudes han terminado y los resultados están disponibles |
-| `cancelling`  | Se solicitó la cancelación y el trabajo en curso se está finalizando   |
-| `cancelled`   | El batch se canceló                                                     |
-| `expired`     | Los resultados ya no están disponibles                                 |
+| Estado        | Significado                                                                     |
+| ------------- | ------------------------------------------------------------------------------- |
+| `in_progress` | El batch está en ejecución                                                      |
+| `completed`   | Todas las solicitudes finalizaron y los resultados están disponibles            |
+| `cancelling`  | Se solicitó la cancelación y el trabajo en curso se está terminando de procesar |
+| `cancelled`   | El batch se canceló                                                             |
+| `expired`     | Los resultados ya no están disponibles                                          |
 
-Cuando el batch se completa, `resultsUrl` contiene una URL de descarga del archivo JSONL de resultados y `expiresAt` se fija al final del periodo de retención de los resultados.
+Cuando el batch se completa, `resultsUrl` contiene una URL de descarga del archivo JSONL de resultados y `expiresAt` se fija al final de la ventana de retención de resultados.
 
 <Warning>
-  `resultsUrl` es una URL prefirmada de corta duración. Vuelve a consultar el batch para obtener una URL nueva cada vez que necesites descargar los resultados otra vez.
+  `resultsUrl` es una URL prefirmada de corta duración. Vuelve a consultar el batch para obtener una URL nueva cada vez que necesites descargar los resultados de nuevo.
 </Warning>
 
-<div id="list-batches">
-  ## Listar batches
-</div>
+## Listar batches {#list-batches}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -132,9 +124,9 @@ Cuando el batch se completa, `resultsUrl` contiene una URL de descarga del archi
   ```
 </CodeGroup>
 
-La respuesta está paginada mediante cursor: `data` contiene hasta `limit` batches y, cuando `hasMore` es `true`, pasa `nextCursor` como parámetro de consulta `cursor` para obtener la siguiente página.
+La respuesta se pagina mediante cursor: `data` contiene hasta `limit` batches y, cuando `hasMore` es `true`, debes pasar `nextCursor` como parámetro de consulta `cursor` para obtener la página siguiente.
 
-Pasa `status=completed` para listar únicamente los batches completados:
+Pasa `status=completed` para listar solo los batches completados:
 
 ```bash theme={null}
 curl -s "https://api.exa.ai/batches?status=completed" \
@@ -142,7 +134,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   -H "Exa-Beta: batches-2026-06-06"
 ```
 
-`completed` es el único valor admitido; cualquier otro valor devuelve un error. Los listados de elementos completados se ordenan por fecha de vencimiento y usan su propio cursor, así que envía siempre `status=completed` en cada página: los cursores de completados y los no filtrados no son intercambiables.
+`completed` es el único valor admitido; cualquier otro valor devuelve un error. Los listados completados se ordenan por fecha de expiración y usan su propio cursor, así que envía `status=completed` en todas las páginas: los cursores de completados y los sin filtrar no son intercambiables.
 
 ```json theme={null}
 {
@@ -153,9 +145,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-<div id="download-results">
-  ## Descargar resultados
-</div>
+## Descargar resultados {#download-results}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -163,16 +153,14 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   ```
 </CodeGroup>
 
-Cada línea del JSONL contiene el `customId` original y una `response` o un `error`:
+Cada línea del JSONL contiene el `customId` original y, o bien una `response`, o bien un `error`:
 
 ```json theme={null}
 { "customId": "row-1", "response": { "statusCode": 200, "body": { "results": [] } } }
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-<div id="cancel-a-batch">
-  ## Cancelar un batch
-</div>
+## Cancelar un batch {#cancel-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,9 +170,7 @@ Cada línea del JSONL contiene el `customId` original y una `response` o un `err
   ```
 </CodeGroup>
 
-<div id="delete-a-batch">
-  ## Eliminar un batch
-</div>
+## Eliminar un batch {#delete-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -194,8 +180,6 @@ Cada línea del JSONL contiene el `customId` original y una `response` o un `err
   ```
 </CodeGroup>
 
-<div id="access">
-  ## Acceso
-</div>
+## Acceso {#access}
 
 Para habilitar la Batch API en un equipo, escribe a [sales@exa.ai](mailto:sales@exa.ai).

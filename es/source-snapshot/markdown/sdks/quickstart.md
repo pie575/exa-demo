@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="sdk-quickstart">
-  # Inicio rápido con los SDK
-</div>
+# Quickstart de los SDK {#sdk-quickstart}
 
 > Instala y usa los SDK de Exa para Python y JavaScript
 
 Los SDK oficiales de Exa. Busca en la web, obtén el contenido de las páginas y consigue respuestas con citas.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
-<div id="install">
-  ## Instalación
-</div>
+## Instalación {#install}
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -41,9 +35,7 @@ Los SDK oficiales de Exa. Busca en la web, obtén el contenido de las páginas y
 
 El SDK de Python requiere Python 3.9 o superior.
 
-<div id="authentication">
-  ## Autenticación
-</div>
+## Autenticación {#authentication}
 
 Define tu API key como variable de entorno:
 
@@ -61,9 +53,7 @@ Define tu API key como variable de entorno:
   </Tab>
 </Tabs>
 
-<div id="getting-started">
-  ## Primeros pasos
-</div>
+## Primeros pasos {#getting-started}
 
 Inicializa el cliente y ejecuta tu primera búsqueda:
 
@@ -102,41 +92,37 @@ Inicializa el cliente y ejecuta tu primera búsqueda:
 </CodeGroup>
 
 <Note>
-  Ambos clientes leen tu key desde la variable de entorno `EXA_API_KEY`. Si prefieres indicarla de forma explícita,
+  Ambos clientes leen tu key de la variable de entorno `EXA_API_KEY`. Si prefieres definirla de forma explícita,
   pásala en línea: `Exa(api_key="your-api-key")` o `new Exa("your-api-key")`.
 </Note>
 
-<div id="recommended-defaults">
-  ## Valores predeterminados recomendados
-</div>
+## Valores predeterminados recomendados {#recommended-defaults}
 
 | Decisión            | Valor predeterminado recomendado                                                                  |
 | ------------------- | ------------------------------------------------------------------------------------------------- |
 | Punto de partida    | Usa `search`                                                                                      |
 | Tipo de búsqueda    | Mantén `auto` salvo que la latencia o las necesidades de síntesis exijan otro tipo                |
 | Contenido de página | Empieza con `highlights: true`                                                                    |
-| URLs conocidas      | Usa `get_contents` / `getContents`                                                                |
-| Actualidad          | Define `max_age_hours` / `maxAgeHours` solo cuando el contenido desactualizado resulte inservible |
+| URL conocidas       | Usa `get_contents` / `getContents`                                                                |
+| Frescura            | Define `max_age_hours` / `maxAgeHours` solo cuando el contenido desactualizado resulte inservible |
 
 <Warning>
   Los dos tipos de solicitud admiten las mismas opciones de contenido, pero en lugares distintos:
 
-  | Método                         | Dónde se indica la opción de contenido                                           |
+  | Método                         | Ubicación de la opción de contenido                                              |
   | ------------------------------ | -------------------------------------------------------------------------------- |
   | `search`                       | Dentro de `contents`, como en `exa.search(query, contents={"highlights": True})` |
   | `get_contents` / `getContents` | Directamente en la solicitud, como en `exa.get_contents(urls, highlights=True)`  |
 </Warning>
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
 Search encuentra páginas relevantes y devuelve su contenido en una sola llamada.
 
 <Tip>
   Usa `highlights: true` para respuestas de IA, RAG y vistas previas de búsqueda. Exa ajusta los
-  extractos de cada resultado según su relevancia; define `max_characters` / `maxCharacters` solo si tu aplicación
-  requiere un límite fijo.
+  extractos de cada resultado según su relevancia; define `max_characters` / `maxCharacters` solo cuando tu aplicación
+  requiera un límite fijo.
 </Tip>
 
 Filtros, rangos de fechas y número de resultados:
@@ -164,9 +150,7 @@ Filtros, rangos de fechas y número de resultados:
   ```
 </CodeGroup>
 
-<div id="output-schema">
-  ### Esquema de salida
-</div>
+### Esquema de salida {#output-schema}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -212,20 +196,17 @@ Filtros, rangos de fechas y número de resultados:
 </CodeGroup>
 
 <Note>
-  `output_schema` / `outputSchema` funciona con todos los tipos de search y devuelve el valor sintetizado
+  `output_schema` / `outputSchema` funciona con todos los tipos de búsqueda y devuelve el valor sintetizado
   en `output.content`. Usa `system_prompt` / `systemPrompt` para indicar preferencias de fuentes o énfasis.
-  El grounding se devuelve automáticamente en `output.grounding`, por lo que no debes duplicar las citas ni la
+  El grounding se devuelve automáticamente en `output.grounding`, así que no dupliques las citas ni la
   confianza en tu esquema.
 </Note>
 
-Los modos deep son recomendables cuando la salida requiere investigar a través de varias búsquedas. Usa `deep-lite` para investigaciones ligeras o `deep` para búsquedas de varios pasos y una síntesis más sólida. Consulta la [guía de Search](/es/docs/search/quickstart) para ver todas las opciones de la solicitud.
+Se recomiendan los modos deep cuando el output requiere investigación en varias búsquedas. Usa `deep-lite` para investigación ligera o `deep` para búsquedas de varios pasos y una síntesis más sólida. Consulta la [guía de Search](/es/docs/search/quickstart) para ver todas las opciones de solicitud.
 
-<div id="contents">
-  ## Contents
-</div>
+## Contents {#contents}
 
-Extrae highlights, texto completo o resúmenes de URLs que ya conoces. Empieza con highlights y
-añade una query para centrarlos en la información que necesitas.
+Extrae highlights, texto completo o resúmenes de URLs que ya conoces. Empieza con los highlights y añade una consulta para enfocarlos en la información que necesitas.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -244,11 +225,9 @@ añade una query para centrarlos en la información que necesitas.
   ```
 </CodeGroup>
 
-Usa el texto completo cuando necesites más contexto o la estructura del documento. Consulta la [guía de Contents](/es/docs/contents/quickstart) para conocer los formatos de salida, los controles de actualidad y el rastreo de subpáginas.
+Usa el texto completo cuando necesites más contexto o la estructura del documento. Consulta la [guía de Contents](/es/docs/contents/quickstart) para ver los formatos del output, los controles de frescura y el rastreo de subpáginas.
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 Obtén respuestas a preguntas con citas.
 
@@ -273,12 +252,10 @@ Obtén respuestas a preguntas con citas.
   ```
 </CodeGroup>
 
-<div id="async-and-types">
-  ## Async y tipos
-</div>
+## Asincronía y tipos {#async-and-types}
 
 Python expone `AsyncExa` para operaciones asíncronas, y el SDK de JavaScript incluye tipos de TypeScript para
-todos los métodos.
+cada método.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -298,26 +275,22 @@ todos los métodos.
   ```
 </CodeGroup>
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
 Python: [código fuente de exa-py](https://github.com/exa-labs/exa-py) y [paquete en PyPI](https://pypi.org/project/exa-py/). JavaScript: [código fuente de exa-js](https://github.com/exa-labs/exa-js) y [paquete en npm](https://www.npmjs.com/package/exa-js).
 
-<div id="continue">
-  ## Continuar
-</div>
+## Continuar {#continue}
 
 <Columns cols={3}>
   <Card title="Guía de Search" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
-    Vuelve a la guía principal de Search para ver patrones de solicitud, filtros y modos más avanzados.
+    Vuelve a la guía principal de Search para ver patrones de solicitud, filtros y modos más profundos.
   </Card>
 
-  <Card title="Referencia de Search" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir referencia" arrow="true">
+  <Card title="Referencia de búsqueda" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir referencia" arrow="true">
     Consulta el esquema completo de solicitud y respuesta de `/search`.
   </Card>
 
   <Card title="Guía de Contents" icon="file-text" href="/es/docs/contents/quickstart" cta="Abrir guía" arrow="true">
-    Usa Contents cuando ya conoces las URL y quieres extraer el contenido directamente.
+    Usa Contents cuando ya conozcas las URL y quieras una extracción directa.
   </Card>
 </Columns>

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="create-a-batch">
-  # 创建批处理
-</div>
+# 创建批次 {#create-a-batch}
 
 > 提交一批 Exa API 请求以异步运行。
 
-`requests` 中的每一项都是对 `/search` 或 `/agent/runs` 的一次 `POST` 请求，并带有在该批次内唯一的 `customId`。结果文件中会返回相同的 `customId`，便于你将输出行对应回输入数据。端到端的完整工作流程请参阅 [Batch API 指南](/zh/docs/batch/quickstart)。
+`requests` 中的每一项都是发往 `/search` 或 `/agent/runs` 的一个 `POST` 请求，并带有在批次内唯一的 `customId`。结果文件中会返回相同的 `customId`，便于你将输出行对应回输入数据。端到端的完整工作流请参阅 [Batch API 指南](/zh/docs/batch/quickstart)。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在仪表板中创建一个 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches
 openapi: 3.1.0

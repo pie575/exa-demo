@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-all-items-for-a-webset">
-  # Menampilkan daftar semua item untuk sebuah webset
-</div>
+# Menampilkan semua item untuk sebuah webset {#list-all-items-for-a-webset}
 
 > Mengembalikan daftar Item Webset.
 
 Anda dapat melakukan paginasi pada Item menggunakan parameter `cursor`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items
 openapi: 3.1.0
@@ -376,50 +370,50 @@ components:
               nullable: true
             employees:
               type: integer
-              description: The number of employees of the company
+              description: Jumlah karyawan perusahaan
               nullable: true
             industry:
               type: string
-              description: The industry of the company
+              description: Industri perusahaan
               nullable: true
             about:
               type: string
-              description: A short description of the company
+              description: Deskripsi singkat tentang perusahaan
               nullable: true
             logoUrl:
               format: uri
               type: string
-              description: The logo URL of the company
+              description: URL logo perusahaan
               nullable: true
             foundedYear:
               type: number
-              description: The year the company was founded
+              description: Tahun perusahaan didirikan
               nullable: true
             headquarters:
               properties:
                 address:
                   type: string
-                  description: The street address of the headquarters
+                  description: Alamat jalan kantor pusat
                   nullable: true
                 city:
                   type: string
-                  description: The city of the headquarters
+                  description: Kota kantor pusat
                   nullable: true
                 state:
                   type: string
-                  description: The state or region of the headquarters
+                  description: Negara bagian atau wilayah kantor pusat
                   nullable: true
                 postalCode:
                   type: string
-                  description: The postal code of the headquarters
+                  description: Kode pos kantor pusat
                   nullable: true
                 country:
                   type: string
-                  description: The country of the headquarters
+                  description: Negara kantor pusat
                   nullable: true
                 countryCode:
                   type: string
-                  description: The ISO country code of the headquarters
+                  description: Kode negara ISO kantor pusat
                   nullable: true
               required:
                 - address
@@ -430,31 +424,31 @@ components:
                 - countryCode
               type: object
               title: WebsetItemCompanyHeadquarters
-              description: The structured headquarters address of the company
+              description: Alamat kantor pusat terstruktur perusahaan
               nullable: true
             financials:
               properties:
                 revenueAnnual:
                   type: number
-                  description: The annual revenue of the company (USD)
+                  description: Pendapatan tahunan perusahaan (USD)
                   nullable: true
                 fundingTotal:
                   type: number
-                  description: The total funding raised by the company (USD)
+                  description: Total pendanaan yang dihimpun perusahaan (USD)
                   nullable: true
                 fundingLatestRound:
                   properties:
                     name:
                       type: string
-                      description: The name of the funding round (e.g. Series A)
+                      description: Nama putaran pendanaan (mis. Seri A)
                       nullable: true
                     date:
                       type: string
-                      description: The date of the funding round
+                      description: Tanggal putaran pendanaan
                       nullable: true
                     amount:
                       type: number
-                      description: The amount raised in the funding round (USD)
+                      description: Jumlah yang dihimpun dalam putaran pendanaan (USD)
                       nullable: true
                   required:
                     - name
@@ -462,7 +456,7 @@ components:
                     - amount
                   type: object
                   title: WebsetItemCompanyFundingRound
-                  description: The latest funding round
+                  description: Putaran pendanaan terbaru
                   nullable: true
               required:
                 - revenueAnnual
@@ -470,24 +464,24 @@ components:
                 - fundingLatestRound
               type: object
               title: WebsetItemCompanyFinancials
-              description: Financial information about the company
+              description: Informasi keuangan tentang perusahaan
               nullable: true
             webTraffic:
               properties:
                 visitsMonthly:
                   type: number
-                  description: The estimated monthly website visits
+                  description: Perkiraan kunjungan situs web bulanan
                   nullable: true
                 uniqueVisitors:
                   type: number
-                  description: The estimated monthly unique visitors
+                  description: Perkiraan pengunjung unik bulanan
                   nullable: true
               required:
                 - visitsMonthly
                 - uniqueVisitors
               type: object
               title: WebsetItemCompanyWebTraffic
-              description: Web traffic metrics for the company
+              description: Metrik lalu lintas web perusahaan
               nullable: true
           required:
             - name
@@ -518,28 +512,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the article
+          description: URL artikel
           type: string
         description:
-          description: Short description of the relevance of the article
+          description: Deskripsi singkat tentang relevansi artikel
           type: string
         content:
           type: string
-          description: The text content for the article
+          description: Konten teks artikel
           nullable: true
         article:
           properties:
             title:
               type: string
-              description: The title of the article
+              description: Judul artikel
               nullable: true
             author:
               type: string
-              description: The author(s) of the article
+              description: Penulis artikel
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the article was published
+              description: Tanggal dan waktu artikel diterbitkan
               nullable: true
           required:
             - title
@@ -563,28 +557,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the research paper
+          description: URL makalah penelitian
           type: string
         description:
-          description: Short description of the relevance of the research paper
+          description: Deskripsi singkat tentang relevansi makalah penelitian
           type: string
         content:
           type: string
-          description: The text content of the research paper
+          description: Konten teks makalah penelitian
           nullable: true
         researchPaper:
           properties:
             title:
               type: string
-              description: The title of the research paper
+              description: Judul makalah penelitian
               nullable: true
             author:
               type: string
-              description: The author(s) of the research paper
+              description: Penulis makalah penelitian
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the research paper was published
+              description: Tanggal dan waktu makalah penelitian diterbitkan
               nullable: true
           required:
             - title
@@ -608,28 +602,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the Item
+          description: URL Item
           type: string
         description:
-          description: Short description of the Item
+          description: Deskripsi singkat tentang Item
           type: string
         content:
           type: string
-          description: The text content of the Item
+          description: Konten teks Item
           nullable: true
         custom:
           properties:
             title:
               type: string
-              description: The title of the website
+              description: Judul situs web
               nullable: true
             author:
               type: string
-              description: The author(s) of the website
+              description: Penulis situs web
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the website was published
+              description: Tanggal dan waktu situs web diterbitkan
               nullable: true
           required:
             - title
@@ -652,34 +646,34 @@ components:
     WebsetItemEvaluation:
       properties:
         criterion:
-          description: The description of the criterion
+          description: Deskripsi kriteria
           type: string
         reasoning:
-          description: The reasoning for the result of the evaluation
+          description: Alasan untuk hasil evaluasi
           type: string
         satisfied:
           enum:
             - 'yes'
             - 'no'
             - unclear
-          description: The satisfaction of the criterion
+          description: Pemenuhan kriteria
           type: string
         references:
           default: []
-          description: The references used to generate the result.
+          description: Referensi yang digunakan untuk menghasilkan hasil.
           items:
             properties:
               title:
                 type: string
-                description: The title of the reference
+                description: Judul referensi
                 nullable: true
               snippet:
                 type: string
-                description: The relevant snippet of the reference content
+                description: Cuplikan relevan dari konten referensi
                 nullable: true
               url:
                 format: uri
-                description: The URL of the reference
+                description: URL referensi
                 type: string
             required:
               - title
@@ -703,7 +697,7 @@ components:
             - pending
             - completed
             - canceled
-          description: The status of the enrichment result.
+          description: Status hasil pengayaan.
           type: string
         format:
           $ref: '#/components/schemas/WebsetEnrichmentFormat'
@@ -711,36 +705,36 @@ components:
           items:
             type: string
           type: array
-          description: The result of the enrichment.
+          description: Hasil pengayaan.
           nullable: true
         reasoning:
           type: string
-          description: The reasoning for the result when an Agent is used.
+          description: Alasan untuk hasil ketika Agent digunakan.
           nullable: true
         references:
           items:
             properties:
               title:
                 type: string
-                description: The title of the reference
+                description: Judul referensi
                 nullable: true
               snippet:
                 type: string
-                description: The relevant snippet of the reference content
+                description: Cuplikan relevan dari konten referensi
                 nullable: true
               url:
                 format: uri
-                description: The URL of the reference
+                description: URL referensi
                 type: string
             required:
               - title
               - snippet
               - url
             type: object
-          description: Referensi yang digunakan untuk menghasilkan hasil.
+          description: The references used to generate the result.
           type: array
         enrichmentId:
-          description: Id Enrichment yang menghasilkan hasil tersebut
+          description: The id of the Enrichment that generated the result
           type: string
       required:
         - object
@@ -767,12 +761,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Kirim Exa API key Anda melalui header x-api-key. Anda juga dapat
-        melakukan autentikasi dengan Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Kirim Exa API key Anda melalui header x-api-key. Anda juga dapat
-        melakukan autentikasi dengan Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

@@ -1,45 +1,37 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="highlights">
-  # Highlights
-</div>
+# Kutipan {#highlights}
 
-> Kembalikan excerpt yang relevan dengan query dari hasil Exa Search sekaligus mengendalikan konteks size dan latensi.
+> Dapatkan kutipan yang relevan dengan query dari hasil Exa Search sambil mengendalikan ukuran konteks dan latency.
 
-Highlights mengembalikan cuplikan ekstraktif dari setiap hasil yang relevan dengan query Anda. Gunakan highlights saat aplikasi Anda membutuhkan evidence dari sebuah halaman tanpa harus menanggung biaya token untuk teks lengkap.
+Kutipan mengembalikan potongan teks ekstraktif dari setiap hasil yang relevan dengan query Anda. Gunakan kutipan saat aplikasi Anda membutuhkan bukti dari halaman tanpa menanggung biaya token untuk teks penuh.
 
-Setiap hasil mengembalikan cuplikan terpilihnya pada `results[].highlights`.
+Setiap hasil mengembalikan potongan teks terpilih pada `results[].highlights`.
 
-<div id="why-highlights-instead-of-full-text">
-  ## Mengapa highlights alih-alih teks lengkap
-</div>
+## Mengapa kutipan alih-alih teks penuh {#why-highlights-instead-of-full-text}
 
-Highlights dihasilkan oleh model extraction internal Exa. Model ini membaca setiap hasil terhadap query Anda pada setiap permintaan dan hanya mengembalikan bagian teks yang menjawabnya. Anda hanya memakai sebagian kecil token dari teks halaman lengkap, dengan kualitas jawaban akhir yang setara atau lebih baik.
+Kutipan dihasilkan oleh model extraction internal Exa. Model ini membaca setiap hasil berdasarkan query Anda pada setiap permintaan dan hanya mengembalikan potongan teks yang menjawabnya. Anda memakai token jauh lebih sedikit dibandingkan teks halaman penuh, dengan kualitas jawaban akhir yang setara atau lebih baik.
 
-| Evaluasi                         | Hasil                                                                                                                                         |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Akurasi (SimpleQA)               | 500 karakter highlights menyamai akurasi 8.000 karakter pertama teks halaman, dengan token 16x lebih sedikit                                  |
-| Kualitas pada budget lebih besar | 4.000 karakter highlights mengungguli 32.000 karakter teks lengkap                                                                            |
-| Dokumen teknis panjang           | Pada budget 500 karakter, highlights mencapai akurasi 60% pada referensi API, dokumentasi SDK, spesifikasi, dan papers; teks lengkap hanya 6% |
-| Usage token search               | Highlights memangkas token search rata-rata hingga 5x                                                                                         |
+| Evaluasi                         | Hasil                                                                                                                                            |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Akurasi (SimpleQA)               | 500 karakter kutipan menyamai akurasi 8.000 karakter pertama teks halaman, dengan token 16x lebih sedikit                                        |
+| Kualitas pada budget lebih besar | 4.000 karakter kutipan mengungguli 32.000 karakter teks penuh                                                                                    |
+| Dokumen teknis panjang           | Pada budget 500 karakter, kutipan mencapai akurasi 60% pada API reference, dokumentasi SDK, spesifikasi, dan paper; teks penuh hanya mencapai 6% |
+| Penggunaan token search          | Kutipan memangkas token search rata-rata 5x                                                                                                      |
 
-Penghematan ini paling terasa pada loop agent, di mana setiap putaran hasil search harus berebut konteks dengan jejak penalaran.
+Penghematan ini paling terasa dalam loop agent, ketika setiap putaran hasil search harus berebut konteks dengan jejak penalaran.
 
 <Tip>
   Baca [Exa Highlights: Quality, Token-Efficient Search](https://exa.ai/blog/highlights-for-agents)
   untuk metodologi dan hasil lengkapnya.
 </Tip>
 
-<div id="add-highlights-to-search">
-  ## Menambahkan highlights ke Search
-</div>
+## Menambahkan kutipan ke Search {#add-highlights-to-search}
 
-Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendasikan. Exa menentukan sendiri seberapa banyak teks yang dikembalikan dari setiap hasil berdasarkan relevansinya dengan query Anda, jadi tidak ada character budget yang perlu disetel. Atur `maxCharacters` hanya jika aplikasi Anda memerlukan limit tetap per halaman.
+Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendasikan. Exa yang menentukan seberapa banyak teks dikembalikan dari setiap hasil berdasarkan relevance-nya terhadap query Anda, sehingga tidak ada character budget yang perlu disetel. Atur `maxCharacters` hanya jika aplikasi Anda memerlukan batas tetap per halaman.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -69,19 +61,17 @@ Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendas
   ```
 </CodeGroup>
 
-<div id="dynamic-highlights">
-  ## Dynamic Highlights
-</div>
+## Dynamic Highlights {#dynamic-highlights}
 
-Dynamic Highlights menyesuaikan seberapa banyak teks yang diambil dari setiap hasil berdasarkan apa yang paling berguna untuk query Anda. Fitur ini bisa mengambil lebih banyak dari sumber yang kuat dan lebih sedikit dari sumber yang repetitif atau tidak relevan, sehingga total token yang dikembalikan berkurang.
+Dynamic Highlights menyesuaikan seberapa banyak teks yang diambil dari setiap hasil berdasarkan apa yang paling berguna untuk query Anda. Fitur ini dapat mengambil lebih banyak dari sources yang kuat dan lebih sedikit dari sources yang repetitif atau tidak relevan, sehingga mengurangi total token yang dikembalikan.
 
-Gunakan fitur ini ketika beberapa hasil akan dialirkan ke agent atau jendela konteks yang sama. Tetap gunakan `highlights: true` biasa jika setiap halaman memerlukan excerpt tersendiri atau limit per halaman yang dapat diprediksi.
+Gunakan fitur ini ketika beberapa hasil akan masuk ke agent atau jendela konteks yang sama. Tetap gunakan `highlights: true` biasa jika setiap halaman memerlukan kutipannya sendiri atau batas per halaman yang dapat diprediksi.
 
-Dalam evaluasi Exa, Dynamic Highlights memangkas token rata-rata 95% dibandingkan page content penuh. Pada character budget 12.000 karakter, fitur ini mengungguli highlights biasa dengan peningkatan efisiensi token rata-rata 40% dan kenaikan kualitas 3,8%. Di dalam Exa Agent, fitur ini memangkas total usage token agent sebesar 30% dengan rata-rata kenaikan kualitas 2,1% pada benchmark seperti BrowseComp dan WideSearch.
+Dalam evaluasi Exa, Dynamic Highlights memangkas token rata-rata 95% dibandingkan konten halaman penuh. Pada anggaran 12.000 karakter, fitur ini mengungguli kutipan biasa dengan peningkatan efisiensi token rata-rata 40% dan kenaikan kualitas 3,8%. Di dalam Exa Agent, fitur ini memangkas total penggunaan token agent sebesar 30% dengan rata-rata kenaikan kualitas 2,1% pada benchmark seperti BrowseComp dan WideSearch.
 
 <Tip>
   Baca [Dynamic Highlights](https://exa.ai/blog/dynamic-highlights) untuk hasil evaluasi dan
-  rancangan di balik pemilihan highlight lintas hasil.
+  desain di balik pemilihan kutipan lintas hasil.
 </Tip>
 
 Aktifkan dengan `dynamic: true`:
@@ -134,24 +124,22 @@ Aktifkan dengan `dynamic: true`:
 </CodeGroup>
 
 <Info>
-  Dynamic Highlights masih berupa pratinjau riset dan memerlukan header permintaan
+  Dynamic Highlights adalah pratinjau riset dan memerlukan header permintaan
   `Exa-Beta: dynamic-highlights-2026-08-28`. SDK akan mengirimkannya saat Anda meneruskan
   `betas=[DYNAMIC_HIGHLIGHTS_BETA]` (Python) atau `betas: [DYNAMIC_HIGHLIGHTS_BETA]` (JavaScript).
 
-  Respons menggunakan struktur
-  `results[].highlights` yang sama dengan highlights biasa.
+  Response menggunakan bentuk
+  `results[].highlights` yang sama dengan kutipan biasa.
 </Info>
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Panduan Search API" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">
-    Buat Search request dan pilih bentuk output yang tepat.
+    Susun permintaan Search dan pilih bentuk output yang tepat.
   </Card>
 
   <Card title="Praktik terbaik search" icon="sparkles" href="/id/docs/search/best-practices" cta="Baca panduan" arrow="true">
-    Optimalkan kualitas retrieval, latensi, freshness, dan konteks size.
+    Atur kualitas retrieval, latency, kebaruan, dan context size.
   </Card>
 </Columns>

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-a-batch">
-  # Obtener un lote
-</div>
+# Obtener un batch {#get-a-batch}
 
-> Recupera un lote por ID.
+> Recupera un batch por ID.
 
-Usa este endpoint para sondear un lote hasta que alcance el estado `completed`, `cancelled` o `expired`. Cuando el lote finaliza, `resultsUrl` contiene una URL prefirmada de corta duración para el archivo JSONL de resultados; vuelve a solicitar el lote para obtener una URL nueva.
+Usa este endpoint para sondear un batch hasta que alcance el estado `completed`, `cancelled` o `expired`. Cuando el batch se completa, `resultsUrl` contiene una URL prefirmada de corta duración para el archivo JSONL de resultados; vuelve a consultar el batch para obtener una URL nueva.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas comienzan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0
@@ -279,12 +273,12 @@ components:
         application/json:
           example:
             requestId: f2a4c6e8b0d2f4a6c8e0b2d4f6a8c0e2
-            error: Invalid API key
+            error: Clave de API no válida
             tag: INVALID_API_KEY
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: The requested resource does not exist.
+      description: El recurso solicitado no existe.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -292,12 +286,12 @@ components:
         application/json:
           example:
             requestId: 3b1d5f7a9c0e2b4d6f8a0c2e4b6d8f0a
-            error: Not found
+            error: No encontrado
             tag: NOT_FOUND
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: Se produjo un error inesperado al procesar la solicitud.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -306,8 +300,8 @@ components:
           example:
             requestId: 9b1d3f5e7a0c2e4b6d8f0a2c4e6b8d0f
             error: >-
-              Sorry, we encountered an error while processing your request.
-              Please try again later
+              Lo sentimos, se produjo un error al procesar tu solicitud.
+              Vuelve a intentarlo más tarde
             tag: DEFAULT_ERROR
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -317,12 +311,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Pasa tu clave de API de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Pasa tu clave de API de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
 ```

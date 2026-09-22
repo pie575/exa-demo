@@ -1,44 +1,38 @@
 ---
 title: "Exa Agent"
-sidebarTitle: "Quickstart"
-description: "运行深度研究、列表构建和 enrichment 工作流，返回结构化输出。"
+sidebarTitle: "快速开始"
+description: "运行深度研究、列表构建和增强工作流，返回结构化输出。"
 boost: 6
 ---
 
-Exa Agent 是一个异步、按用量计费的端点，适用于列表构建、enrichment 和深度研究等高算力任务。它能处理复杂推理，并可返回大量结构化输出字段。
+Exa Agent 是一个异步、按用量计费的端点，适用于列表构建、增强和深度研究等高算力任务。它能够处理复杂推理，并返回大量结构化输出 field。
 
-可以把它看作一个上下文 agent：你描述想要的数据以及期望的返回结构，Exa Agent 会编排达成目标所需的工具调用。单次运行可以从不同角度并行发起多次 search，抓取并提炼结果背后的页面内容，把列表构建拆分为并行执行的子任务，依据你的 criteria 逐一验证候选项，补充联系人信息，并查询你接入的任意 [Exa Connect](/zh/docs/agent/connect/overview) 数据合作伙伴。最终你拿到的是一份整合好的、带 grounding 的结构化结果，无需自己逐个编排 `/search` 和 `/contents` 调用。
+可以把它看作一个上下文 agent：你描述需要的数据以及返回的结构形态，Exa Agent 会自动编排达成目标所需的工具调用。单次运行可以从不同角度发散出多次 search、读取并提炼这些结果背后的页面、把列表构建拆分为并行执行的子任务、依据你的 criteria 逐一验证候选项、增强联系人信息，并 query 你所接入的任意 [Exa Connect](/zh/docs/agent/connect/overview) 数据合作伙伴。最终你会得到一份汇总好的上下文，以单一、有据可依的结构化结果返回，无需自己逐个编排 `/search` 和 `/contents` 调用。
 
-每次运行可以返回自然语言答案、经 schema 校验的 JSON、字段级 grounding、元数据以及成本明细。你可以在之后获取已完成的运行、列出历史运行、重放事件，或从上一次运行继续。
+每次运行都可以返回自然语言答案、经 schema 校验的 JSON、字段级 grounding、元数据以及费用明细。你可以在之后检索已完成的运行、列出历史运行、重放事件，或从上一次运行继续。
 
 <Tip>
-  更习惯用 MCP？[Exa MCP](/zh/docs/get-started/exa-mcp#exa-agent) 中已提供 Exa Agent 和 [Exa Connect](/zh/docs/agent/connect/overview)。启用 `tools=agent_run`，即可在 Claude、Cursor 等 MCP 客户端中运行多步研究、列表构建、enrichment 并获得结构化输出。
+  更喜欢用 MCP？Exa Agent 和 [Exa Connect](/zh/docs/agent/connect/overview) 已在 [Exa MCP](/zh/docs/get-started/exa-mcp#exa-agent) 中提供。启用 `tools=agent_run`，即可从 Claude、Cursor 等 MCP 客户端运行多步研究、列表构建、增强和结构化输出。
 </Tip>
 
-<div id="when-to-use-exa-agent">
-  ## 何时使用 Exa Agent
-</div>
+## 何时使用 Exa Agent {#when-to-use-exa-agent}
 
-当工作流所需的不止一次 search 或内容提取调用，或者你原本得自己编写一套由搜索、页面读取和验证步骤组成的循环来汇集数据时，就适合使用 Exa Agent：
+当工作流不止需要一次 search 或提取调用，或者你原本得自己写一套由 search、页面读取和 verification 步骤组成的 loop 来汇集数据时，就可以使用 Exa Agent：
 
-* 基于开放式 criteria 构建列表，并对每条结果做数据增强
-* 跨多个字段研究实体，并附带引用来源
-* 执行多跳任务，例如&quot;先找到公司，再找到其决策者&quot;
+* 基于开放式 criteria 构建列表，并增强每条结果
+* 跨众多 field 研究实体，并附上引用来源
+* 运行多跳任务，例如“先找到公司，再找到其决策者”
 * 从长时间运行的网络研究任务中产出结构化 JSON
-* 将网络研究与高级数据合作伙伴整合到一个有据可依的答案中
-* 以&quot;再找 10 条结果&quot;这样的后续请求，从上一次运行继续执行
+* 在同一个有据可依的答案中，将网络研究与高级数据合作伙伴结合起来
+* 通过 follow-up 请求在上一次运行的基础上继续，例如“再找 10 条结果”
 
-Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延迟的 search，并由你自己编排调用，建议从 [Search API](/zh/docs/search/quickstart) 入手。
+Exa Agent 在设计上就是异步的，延迟也更高。如果只需一次低延迟 search、并由你自己编排调用，建议从 [Search API](/zh/docs/search/quickstart) 入手。
 
-<div id="quickstart">
-  ## 快速开始
-</div>
+## 快速开始 {#quickstart}
 
-本示例会启动一次运行，生成一份符合你所设条件 (criteria) 的人员结构化列表，并以 JSON 形式返回在 `output.structured` 中。
+本示例会启动一个运行，构建一份符合你 criteria 的人员结构化列表，并在 `output.structured` 中返回 JSON。
 
-<div id="1-install-the-exa-sdk">
-  ### 1. 安装 Exa SDK
-</div>
+### 1. 安装 Exa SDK {#1-install-the-exa-sdk}
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -50,9 +44,7 @@ Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延�
   ```
 </CodeGroup>
 
-<div id="2-set-your-api-key">
-  ### 2. 设置 API key
-</div>
+### 2. 设置 API 密钥 {#2-set-your-api-key}
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -68,9 +60,7 @@ Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延�
   </Tab>
 </Tabs>
 
-<div id="3-create-a-run">
-  ### 3. 创建运行
-</div>
+### 3. 创建运行 {#3-create-a-run}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -167,11 +157,9 @@ Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延�
   ```
 </CodeGroup>
 
-创建运行时加上 `Accept: text/event-stream`，即可在运行排队、启动和完成时接收服务器发送事件 (SSE) 。更多细节请参阅[流式事件](#stream-events)。
+创建运行时加上 `Accept: text/event-stream`，即可在运行排队、启动和完成时接收服务器发送事件。更多详情请参阅 [流式事件](#stream-events)。
 
-<div id="4-poll-for-completion">
-  ### 4. 轮询等待完成
-</div>
+### 4. 轮询运行完成情况 {#4-poll-for-completion}
 
 如果不使用流式事件，请保存返回的 `id`，并轮询该运行，直到其进入终止状态。
 
@@ -226,20 +214,18 @@ Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延�
 
 * `output.text`：自然语言形式的回答
 * `output.structured`：提供 `outputSchema` 时返回的已校验 JSON
-* `output.grounding`：文本或结构化字段的引用来源 (若有输出)
-* `costDollars`：本次运行的费用明细
+* `output.grounding`：文本或结构化 field 的引用来源 (触发时提供)
+* `costDollars`：该次运行的费用明细
 
 <Note>
-  Exa Agent 也可通过兼容 OpenAI 的 Responses API 调用。将 OpenAI SDK 指向
-  `https://api.exa.ai`，设置 `model: "exa-agent"`，并选择同步、流式或后台执行方式。参见 [OpenAI SDK
+  Exa Agent 也可通过兼容 OpenAI 的 Responses API 使用。将 OpenAI SDK 指向
+  `https://api.exa.ai`，设置 `model: "exa-agent"`，并选择同步、流式传输或后台执行方式。参见 [OpenAI SDK
   兼容性](/zh/docs/integrations/openai-sdk#agent-via-responses-api)。
 </Note>
 
-<div id="verify-and-enrich-a-specific-entity">
-  ## 验证并 enrich 特定实体
-</div>
+## 验证并增强特定实体 {#verify-and-enrich-a-specific-entity}
 
-除了构建列表之外，还可以使用 Exa Agent 检查单个已知实体、对照权威来源核实某项说法，并返回结构化的 enrichment 结果。本示例检查某家公司的官网是否有可公开访问的定价页面，若有定价信息，则将其补充到结果中。该 schema 仅要求提供 `domain` 和 `verdict`，其余字段均为可选的 enrichment。
+除了列表构建，你还可以用 Exa Agent 检查单个已知实体、对照权威来源核实某项说法，并返回结构化的增强数据。下面的示例会检查某家公司的官网是否有可公开访问的定价页面，并在能获取到定价细节时对结果进行增强。该 schema 仅要求 `domain` 和 `verdict`，其余字段均为可选的增强内容。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -410,14 +396,14 @@ Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延�
 </CodeGroup>
 
 <Note>
-  用于验证类工作流的 schema 应当考虑不确定性。将可能无法验证的字段设为可空，并从 `required` 中移除，这样 Agent 就能返回 `null`，而不是编造一个值。`verdict` 枚举区分了检查失败 (`cannot_verify`) 和确实存在反面证据 (`absent`) ：站点无法访问并不能说明该页面不存在。
+  用于验证工作流的 schema 应当考虑不确定性。将可能无法验证的 field
+  设为可空，并从 `required` 中移除，这样 agent 就能返回 `null`，而不是编造一个值。`verdict`
+  枚举区分了检查失败 (`cannot_verify`) 与真正的否定证据 (`absent`) ：站点无法访问，并不能证明该页面不存在。
 </Note>
 
-<div id="stream-events">
-  ## 流式事件
-</div>
+## 流式事件 {#stream-events}
 
-流式传输会保持创建请求处于打开状态，并持续发送服务器发送事件 (SSE)，直到运行结束。有关事件类型和 payload，请参见[事件格式](#event-format)。
+流式传输会保持创建请求处于打开状态，并持续发送 Server-Sent Events (SSE)，直到运行完成。事件类型和负载详见[事件格式](#event-format)。
 
 在 Python 中设置 `stream=True`，在 JavaScript 中设置 `stream: true`，或在 HTTP 请求中发送 `Accept: text/event-stream`：
 
@@ -460,11 +446,9 @@ Exa Agent 在设计上延迟较高且为异步模式。如果只需一次低延�
   ```
 </CodeGroup>
 
-<div id="event-format">
-  ### 事件格式
-</div>
+### 事件格式 {#event-format}
 
-每个 SSE 帧都包含事件 ID、事件名称和 JSON payload：
+每个 SSE 帧包含事件 ID、事件名称和 JSON 负载：
 
 ```text theme={null}
 id: 1
@@ -472,29 +456,25 @@ event: agent_run.created
 data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:52.051Z"}
 ```
 
-流中还可能包含注释行，例如 `: keep-alive`。SSE 客户端会自动忽略注释；自定义解析器也应做同样的处理。
+流中还可能包含注释行，例如 `: keep-alive`。SSE 客户端会自动忽略注释，自定义解析器也应如此处理。
 
-<div id="event-types">
-  ### 事件类型
-</div>
+### 事件类型 {#event-types}
 
-| 事件                    | `data` payload                        | 使用方式                                                                                   |
-| --------------------- | ------------------------------------- | -------------------------------------------------------------------------------------- |
-| `agent_run.created`   | `{ id, status: "queued", createdAt }` | 请求一被接受就保存运行 ID。                                                                        |
-| `agent_run.started`   | `{ id, status: "running" }`           | 将该运行标记为处理中。                                                                            |
-| `agent_run.completed` | 已完成的 Agent 运行对象                       | 从 `data.output.text` 或 `data.output.structured` 读取最终答案，从 `data.output.grounding` 读取引用。 |
-| `agent_run.failed`    | `{ id, status: "failed", error }`     | 展示 `error.code` 和 `error.message`；此时没有已完成的输出。                                          |
-| `agent_run.cancelled` | `{ id, status: "cancelled", ... }`    | 停止消费该流，并按已取消状态处理该运行。                                                                   |
+| 事件                    | `data` 负载                             | 使用方式                                                                                     |
+| --------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `agent_run.created`   | `{ id, status: "queued", createdAt }` | 请求一被接受就保存运行 ID。                                                                          |
+| `agent_run.started`   | `{ id, status: "running" }`           | 将该运行标记为正在处理中。                                                                            |
+| `agent_run.completed` | 已完成的 Agent 运行对象                       | 从 `data.output.text` 或 `data.output.structured` 读取最终答案，从 `data.output.grounding` 读取引用来源。 |
+| `agent_run.failed`    | `{ id, status: "failed", error }`     | 展示 `error.code` 和 `error.message`；此时没有已完成的输出。                                            |
+| `agent_run.cancelled` | `{ id, status: "cancelled", ... }`    | 停止消费该 stream，并按已取消状态处理该运行。                                                               |
 
-属于同一研究步骤的事件会带有 `callId`，它对应工具进度事件中的 `item.call_id`。可用它把 search 轨迹、来源和工具进度归到一组。部分 search 轨迹描述是异步生成的，可能晚于其所描述的来源或工具事件到达，因此不要仅凭到达顺序来做关联。
+属于同一研究步骤的事件会带有 `callId`，它与工具进度事件中的 `item.call_id` 相对应。可借助它把搜索轨迹、来源和工具进度归到一组。部分搜索轨迹描述是异步生成的，可能晚于其所描述的来源或工具事件到达，因此不要仅凭到达顺序来做关联。
 
-请把 `agent_run.source.added` 视为实时预览，而非完整的引用列表。运行终态的 `output.grounding` 才是权威的 grounding 输出。
+请把 `agent_run.source.added` 看作实时预览，而非完整的引用来源列表。终态运行的 `output.grounding` 才是权威的 grounding 输出。
 
-<div id="replay-stored-events">
-  ### 重放已存储的事件
-</div>
+### 重放已存储的事件 {#replay-stored-events}
 
-对于非 ZDR 运行，[`GET /agent/runs/{id}/events`](/zh/docs/reference/agent-api/list-run-events) 会以分页 JSON 的形式返回已存储的事件。发送 `Accept: text/event-stream` 可将已存储的事件以 SSE 形式重放，发送 `Last-Event-ID` 则可跳过客户端已处理过的事件：
+对于非 ZDR 运行，[`GET /agent/runs/{id}/events`](/zh/docs/reference/agent-api/list-run-events) 会以分页 JSON 的形式返回已存储的事件。发送 `Accept: text/event-stream` 可将已存储的事件以 SSE 形式重放，发送 `Last-Event-ID` 可跳过客户端已处理的事件：
 
 ```bash cURL theme={null}
 curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
@@ -503,19 +483,17 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   -H "Authorization: Bearer $EXA_API_KEY"
 ```
 
-重放端点会发送请求时已存储的事件，随后关闭连接；它不会持续跟踪仍在运行的运行。ZDR 运行不保留事件，因此无法重放。
+重放端点只会发送请求时已存储的事件，随后关闭连接，不会继续跟踪仍在进行的运行。ZDR 运行不保留事件，因此无法重放。
 
-为保证向前兼容，请忽略应用无法识别的事件名称，并持续处理，直到收到终止事件。
+为保持向前兼容，请忽略应用无法识别的事件名称，并持续处理直至收到终止事件。
 
-<div id="return-structured-json">
-  ## 返回结构化 JSON
-</div>
+## 返回结构化 JSON {#return-structured-json}
 
-使用 `outputSchema` 可在 `output.structured` 中返回经过 schema 校验的 JSON。
+使用 `outputSchema` 在 `output.structured` 中返回经过 schema 校验的 JSON。
 
 `outputSchema` 支持 [JSON Schema 规范](https://json-schema.org/)。
 
-若要获取联系方式，请在 `outputSchema` 中描述所需的联系字段，并采用标准的 JSON Schema 写法：电子邮箱用 `{ "type": "string", "format": "email" }`，电话号码用 `{ "type": "string", "format": "phone" }`，URL 用 `{ "type": "string", "format": "uri" }`。尽可能用 `maxItems` 限定列表长度，这样联系方式 enrichment 的成本上限才是可预测的。
+若要获取联系方式，请在 `outputSchema` 中描述所需的联系 field。使用标准的 JSON Schema 写法，例如用 `{ "type": "string", "format": "email" }` 表示电子邮箱地址，`{ "type": "string", "format": "phone" }` 表示电话号码，`{ "type": "string", "format": "uri" }` 表示 URL。尽可能用 `maxItems` 限制列表长度，使联系方式增强的最高费用可预测。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -613,19 +591,15 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="process-input-rows">
-  ## 处理输入行
-</div>
+## 处理输入行 {#process-input-rows}
 
-当你已有一组数据需要做 enrichment 时，可以使用 `input.data`。你可以为每个数据实体补充更多字段，也可以基于导入的数据发现更多实体，或者两者同时进行。
+当你已有一组数据并希望对其进行增强时，可使用 `input.data`。你可以为每个数据实体添加更多 field，也可以基于导入的数据挖掘出更多实体，或者两者兼顾。
 
-完整的行 enrichment 示例，请参阅 [Agent 示例](/zh/docs/agent/examples#enrich-input-rows-code)。
+完整的行增强示例请参见 [Agent 示例](/zh/docs/agent/examples#enrich-input-rows-code)。
 
-<div id="process-exclusions">
-  ## 处理排除项
-</div>
+## 处理 exclusions {#process-exclusions}
 
-使用 `input.exclusion` 可以让某些条目不出现在运行结果中。在下面的示例中，我们想找出最可爱的 10 种动物，但把山羊和熊猫排除在本次运行之外，因为我们已经知道它们有多可爱了。
+使用 `input.exclusion` 可将特定条目排除在运行结果之外。在下面的示例中，我们要查找最可爱的 10 种动物，但把山羊和熊猫排除在本次运行之外，因为我们已经知道它们有多可爱了。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -679,11 +653,9 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="connect-data-sources">
-  ## 连接数据源
-</div>
+## 连接数据源 {#connect-data-sources}
 
-索引在每次运行中都已默认可用。`dataSources` 仅用于接入 [Exa Connect](/zh/docs/agent/connect/overview) 合作方，每个条目对应选择一个 `provider`。当 `outputSchema` 中的某个属性指定了特定来源 (例如“来自 Similarweb”) 时，Exa Agent 会调用相应的 provider 工具，而不是从网页内容中猜测结果。
+索引在每次运行中都默认可用。`dataSources` 仅用于接入 [Exa Connect](/zh/docs/agent/connect/overview) 合作伙伴，每个条目指定一个 `provider`。当 `outputSchema` 中的某个属性指定了特定来源 (例如 &quot;from Similarweb&quot;) 时，Exa Agent 会调用对应的提供方工具，而不是从网页内容中推测。
 
 ```json theme={null}
 {
@@ -696,11 +668,9 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 请参阅 [Exa Connect](/zh/docs/agent/connect/overview)，查看完整的数据合作伙伴列表及各自的示例。
 
-<div id="continue-from-a-previous-run">
-  ## 从上一次运行继续
-</div>
+## 从上一次运行继续 {#continue-from-a-previous-run}
 
-使用 `previousRunId` 可以针对上一次的响应进行追问。每次追问都会启动一次新的运行，并拥有各自的 ID。`previousRunId` 只是将上下文带入新的运行，不会被用作新运行的 ID。
+使用 `previousRunId` 对上一次的响应进行追问。每次追问都会启动一次新的运行，并具有各自的 ID。`previousRunId` 只是将上下文带入新的运行，不会被用作新运行的 ID。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -739,9 +709,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="find-a-run-id">
-  ## 查找运行 ID
-</div>
+## 查找运行 ID {#find-a-run-id}
 
 列出最近的运行并查看其状态：
 
@@ -779,30 +747,26 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="pricing">
-  ## 定价
-</div>
+## 定价 {#pricing}
 
-费用按用量计算，并按组成部分计价：
+费用按用量计算，并按组件分别计价：
 
-| 组成部分                | 价格                |
+| 组件                  | 价格                |
 | ------------------- | ----------------- |
 | Agent Compute Units | `1 ACU = $0.10`   |
 | Search 工具调用         | `$0.005 / search` |
 
 <Note>
-  联系方式 Enrichment 独立于上述核心计价项：邮箱联系方式 Enrichment 为 `$0.02 / email`，电话号码联系方式 Enrichment 为 `$0.07 / phone number`。
+  联系方式增强不包含在上述核心定价组件中：邮箱联系方式增强为 `$0.02 / email`，电话号码联系方式增强为 `$0.07 / phone number`。
 </Note>
 
-`usage.agentComputeUnits` 用于衡量整次运行的模型计算量。复杂查询 (尤其是 `input.data` 字段较大的查询) 需要更多推理步骤和工具调用，因而消耗更多 ACU。
+`usage.agentComputeUnits` 用于衡量整个运行过程中的模型计算量。复杂查询，尤其是 `input.data` field 较大的查询，需要更多推理步骤和工具调用，因而消耗更多 ACU。
 
-并发与速率限制请参阅 [Agent 限制](/zh/docs/admin/billing#agent-limits)。
+有关并发和速率限制，请参阅 [Agent limits](/zh/docs/admin/billing#agent-limits)。
 
-<div id="effort">
-  ### Effort
-</div>
+### Effort {#effort}
 
-使用 `effort` 为每次运行选择成本与推理等级。支持的取值为 `minimal`、`low`、`medium`、`high`、`xhigh`、`auto` 和 `max`，默认值为 `auto`。固定 effort 的每次请求价格是可预知的，而 `auto` 与测试版的 `max` 按用量计费：
+使用 `effort` 为每次运行选择费用与推理级别。支持的取值包括 `minimal`、`low`、`medium`、`high`、`xhigh`、`auto` 和 `max`；默认值为 `auto`。固定 effort 的单次请求价格是可预测的，而 `auto` 和 beta 版 `max` 按用量计费：
 
 | Effort    | 价格                         |
 | --------- | -------------------------- |
@@ -815,37 +779,33 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 | `max`     | **Beta**，按用量计费；默认上限为 `$20` |
 
 <Info>
-  Agent Max 是最高的 effort 等级，适用于完整性和全面性比延迟或成本更重要的场景，例如大规模列表构建、
-  多来源深度研究，以及难以验证的 criteria。该功能处于公开测试阶段：使用
-  `effort: "max"` 的请求必须包含 `Exa-Beta: agent-max-effort-2026-07-27`。该
-  header 接受以逗号分隔的 beta 令牌列表。
+  Agent Max 是最高的 effort 级别，适用于完整性与全面性比延迟或费用更重要的场景，
+  例如大规模列表构建、多来源深度研究，以及难以验证的 criteria。该功能处于公开 beta 阶段：
+  带有 `effort: "max"` 的请求必须包含 `Exa-Beta: agent-max-effort-2026-07-27`。
+  该 header 接受以逗号分隔的 beta token 列表。
 </Info>
 
-`budget.maxCostDollars` 是针对 `auto` 和 `max` 的可选单次运行费用上限，取值范围为 `$1`–`$100`；当前发布版本的最大值为 `$100`，但服务端可能配置更低的最大值。默认上限在 `auto` 下为 `$5`，在 `max` 下为 `$20`。它是上限而非固定价格：提前完成的运行费用更低。固定 effort 不接受该预算参数。
+`budget.maxCostDollars` 是针对 `auto` 和 `max` 的可选单次运行费用上限，取值范围为 `$1`–`$100`；当前发布版本的最大值为 `$100`，但 server 可能配置更低的最大值。`auto` 的默认上限为 `$5`，`max` 为 `$20`。它是上限而非固定价格：提前结束的运行费用更低。固定 effort 不接受 budget。
 
-<div id="choosing-an-effort-mode">
-  ### 选择 effort 模式
-</div>
+### 选择 effort 模式 {#choosing-an-effort-mode}
 
-如果希望标准研究任务的单次请求费用可预期，固定 effort 模式是不错的选择。对于范围不定的任务 (例如列表构建，实体数量可能因请求而异) ，请使用 `auto`。
+固定的 effort 模式适合标准研究场景,单次请求的定价可预测。对于范围不固定的任务(例如列表构建,每次请求涉及的实体数量可能不同),请使用 `auto`。
 
-| Effort    | 适用场景                    | 建议的 schema 复杂度       | 运行时预期           |
-| --------- | ----------------------- | -------------------- | --------------- |
-| `minimal` | 成本最低的查找、范围极窄的事实性任务、简短回答 | 一到两个字段，浅层 schema     | 最便宜，覆盖最不全面      |
-| `low`     | 简单查找、范围较窄的事实性任务、简短回答    | 少量字段，浅层 schema       | 快速、轻量的研究        |
-| `medium`  | 大多数标准研究任务的默认起点          | 中等字段数量，简单的嵌套对象       | 质量与运行时间较为均衡     |
-| `high`    | 较难的研究、更多引用、更严格的完整性要求    | 较大的 schema 或更细致的字段   | 更慢，但更彻底         |
-| `xhigh`   | 完整性比成本/延迟更重要的高价值任务      | 复杂 schema、字段众多、验证难度大 | 最慢的固定 effort 模式 |
-| `auto`    | 范围不定的工作、列表构建、任务难度未知     | 灵活；适用于实体数量或工作量未知的情况  | 不固定             |
-| `max`     | 最高强度的研究 (beta)          | 复杂 schema、字段众多、验证难度大 | 运行时间最长          |
+| Effort    | 适用场景                     | 建议的 schema 复杂度             | 运行时间预期        |
+| --------- | ------------------------ | -------------------------- | ------------- |
+| `minimal` | 成本最低的查找、范围极窄的事实性任务、简短答案  | 一到两个 field,schema 层级浅      | 最便宜,覆盖最不全面    |
+| `low`     | 简单查找、范围较窄的事实性任务、简短答案     | 少量 field,schema 层级浅        | 快速,研究较轻量      |
+| `medium`  | 大多数标准研究任务的默认起点           | field 数量适中,包含简单的嵌套对象       | 质量与运行时间均衡     |
+| `high`    | 难度更高的研究、更多引用来源、更严格的完整性要求 | 较大的 schema 或更细致的 field     | 较慢,更彻底        |
+| `xhigh`   | 完整性比费用/延迟更重要的高价值任务       | 复杂 schema、大量 field、难以验证的内容 | 固定 effort 中最慢 |
+| `auto`    | 范围不固定的任务、列表构建、难度未知的任务    | 灵活;在实体数量或所需工作量未知时很有用       | 不固定           |
+| `max`     | 投入程度最高的研究(beta)          | 复杂 schema、大量 field、难以验证的内容 | 运行时间最长        |
 
-标准的单实体研究建议从 `medium` 起步。当成本和延迟比完整性更重要时，降至 `low` 或 `minimal`。当输出 schema 更大、字段需要验证，或任务需要更深入的推理时，提升到 `high` 或 `xhigh`。如果事先无法确定范围，例如列表构建或可能返回大量实体的工作流，请使用 `auto`。
+标准的单实体研究建议从 `medium` 开始。当费用和延迟比完整性更重要时,降到 `low` 或 `minimal`。当输出 schema 较大、field 需要验证,或任务需要更深入的推理时,提升到 `high` 或 `xhigh`。如果事先无法确定范围,例如列表构建或可能返回大量实体的工作流,请使用 `auto`。
 
-运行时间会因查询难度、schema 复杂度以及外部来源的可用性而异。请将 effort 模式视为质量、成本与运行时间之间的权衡，而非严格的延迟保证。
+运行时间会因 query 难度、schema 复杂度以及外部 source 的可用性而异。请将 effort 模式视为质量、费用与运行时间之间的取舍,而非严格的延迟保证。
 
-<div id="run-with-max-effort">
-  ### 以 max effort 运行
-</div>
+### 以 max effort 运行 {#run-with-max-effort}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -887,39 +847,35 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-上述 SDK 示例要求 `exa-py` 或 `exa-js` 版本支持 Agent Max。
+SDK 示例需要使用支持 Agent Max 的 `exa-py` 或 `exa-js` 版本。
 
-<div id="zero-data-retention">
-  ## 零数据留存
-</div>
+## Zero Data Retention {#zero-data-retention}
 
-Exa Agent 支持[零数据留存](/zh/docs/admin/security/zero-data-retention) (ZDR) 。ZDR 以团队为单位启用，如需为你的账户开通，请[联系我们](mailto:sales@exa.ai)。
+Exa Agent 支持 [Zero Data Retention](/zh/docs/admin/security/zero-data-retention) (ZDR) 。ZDR 以团队为单位启用，如需为您的账户启用，请[联系我们](mailto:sales@exa.ai)。
 
-团队启用 ZDR 后：
+当您的团队启用 ZDR 后：
 
-* 创建运行时使用流式传输 (`Accept: text/event-stream`) 实时消费输出，或在留存窗口内轮询异步运行。
+* 使用流式传输 (`Accept: text/event-stream`) 创建运行以实时获取输出，或在保留窗口内轮询异步运行。
 * 运行数据在运行执行期间可用，并在其进入终止状态后最多保留 10 分钟。超出该窗口后，将无法再获取该运行。
 * `previousRunId` 不可用。
 * Exa Connect 的 `dataSources` 不可用；包含该参数的请求会返回 `400` 错误。
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 后续步骤 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="索引中有哪些内容" icon="search" href="/zh/docs/search/data/overview" cta="查看指南" arrow="true">
-    探索公开网络上的新闻、代码、公司和人物数据源。
+  <Card title="索引里有什么" icon="search" href="/zh/docs/search/data/overview" cta="打开指南" arrow="true">
+    探索公开网络中的新闻、代码、公司和人物来源。
   </Card>
 
-  <Card title="Exa Connect" icon="database" href="/zh/docs/agent/connect/overview" cta="查看指南" arrow="true">
-    为一次运行接入高级合作伙伴数据库。
+  <Card title="Exa Connect" icon="database" href="/zh/docs/agent/connect/overview" cta="打开指南" arrow="true">
+    为运行附加高级合作伙伴数据库。
   </Card>
 
-  <Card title="Agent 最佳实践" icon="lightbulb" href="/zh/docs/agent/best-practices" cta="查看指南" arrow="true">
+  <Card title="agent 最佳实践" icon="lightbulb" href="/zh/docs/agent/best-practices" cta="打开指南" arrow="true">
     使用 Exa Agent 的最佳实践。
   </Card>
 
-  <Card title="Agent 示例" icon="code" href="/zh/docs/agent/examples" cta="查看指南" arrow="true">
+  <Card title="agent 示例" icon="code" href="/zh/docs/agent/examples" cta="打开指南" arrow="true">
     使用 Exa Agent 的示例。
   </Card>
 </Columns>

@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="delete-a-run">
-  # Menghapus run
-</div>
+# Menghapus run {#delete-a-run}
 
 > Menghapus Agent run yang tersimpan.
 
@@ -17,9 +13,7 @@ Menghapus run akan mengeluarkan run tersebut dari riwayat Agent run team Anda.
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /agent/runs/{id}
 openapi: 3.1.0
@@ -197,12 +191,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Kirim kunci API Exa Anda di header x-api-key. Anda juga dapat melakukan autentikasi
+        dengan Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Kirim kunci API Exa Anda di header x-api-key. Anda juga dapat melakukan autentikasi
+        dengan Authorization: Bearer <key>.
 ```

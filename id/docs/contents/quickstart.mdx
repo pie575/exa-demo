@@ -1,24 +1,22 @@
 ---
 title: "Contents API"
 sidebarTitle: "Contents"
-description: "Ekstrak teks, highlights, dan ringkasan dari URL mana pun."
+description: "Ekstrak teks, kutipan, dan ringkasan dari URL mana pun."
 boost: 4
 ---
 
-Exa Contents mengembalikan page content yang bersih dari URL, serta menangani halaman yang dirender dengan JavaScript, PDF, dan tata letak kompleks secara otomatis.
+Exa Contents mengembalikan konten halaman yang bersih dari URL, serta menangani halaman yang dirender dengan JavaScript, PDF, dan tata letak kompleks secara otomatis.
 
-Semua fitur contents juga tersedia di [Exa Search](/id/docs/search/quickstart) untuk URL yang dikembalikan, tanpa biaya tambahan hingga 10 hasil per search (setelah itu $1/1000 halaman). Untuk kasus penggunaan tool web search, kami menyarankan penggunaan Search dengan cara ini alih-alih Contents.
+Semua fitur contents juga tersedia di [Exa Search](/id/docs/search/quickstart) untuk URL yang dikembalikan, tanpa biaya tambahan hingga 10 hasil per search (setelah itu $1/1000 halaman). Kami menyarankan penggunaan Search dengan cara ini alih-alih Contents untuk kasus penggunaan tool web search.
 
 <Tip>
-  Untuk hasil search yang dijadikan konteks AI, gunakan `contents: { highlights: true }` pada `/search` —
-  Exa menyesuaikan panjang excerpt setiap hasil dengan relevansinya. Lihat [Highlights](/id/docs/search/highlights).
+  Untuk hasil search yang menjadi konteks AI, gunakan `contents: { highlights: true }` pada `/search` —
+  Exa menyesuaikan panjang kutipan setiap hasil dengan relevance-nya. Lihat [kutipan](/id/docs/search/highlights).
 </Tip>
 
-<div id="make-your-first-request">
-  ## Buat permintaan pertama Anda
-</div>
+## Buat permintaan pertama Anda {#make-your-first-request}
 
-Kirimkan satu atau beberapa URL atau ID dokumen, lalu minta highlights untuk bagian yang relevan dengan tugas Anda. Pada permintaan HTTP, cantumkan di `ids`:
+Berikan satu atau beberapa URL atau ID dokumen dan minta kutipan untuk bagian yang relevan dengan tugas Anda. Pada permintaan HTTP, sertakan di `ids`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -64,7 +62,7 @@ Kirimkan satu atau beberapa URL atau ID dokumen, lalu minta highlights untuk bag
   ```
 </CodeGroup>
 
-<Accordion title="Contoh respons">
+<Accordion title="Contoh response">
   ```json theme={null}
   {
     "requestId": "e492118ccdedcba5088bfc4357a8a125",
@@ -92,18 +90,18 @@ Kirimkan satu atau beberapa URL atau ID dokumen, lalu minta highlights untuk bag
   ```
 </Accordion>
 
-Setiap item dalam `results` memuat metadata halaman dan tampilan konten yang Anda minta. Periksa `statuses` untuk melihat keberhasilan atau kegagalan setiap URL.
+Setiap item dalam `results` memuat metadata halaman dan content view yang Anda minta. Periksa `statuses` untuk melihat keberhasilan atau kegagalan setiap URL.
 
 <h2 id="dynamic-highlights">
   Bentuk output
 </h2>
 
 <Tabs>
-  <Tab title="Highlights">
-    Highlights mengembalikan cuplikan relevan yang diambil langsung dari halaman. Mulailah dari sini untuk agent, RAG, dan
-    penelusuran fakta karena highlights membuat konteks tetap lebih ringkas dibandingkan teks lengkap.
+  <Tab title="Kutipan">
+    Kutipan mengembalikan bagian teks relevan yang disalin dari halaman. Mulailah dari sini untuk agent, RAG, dan
+    pencarian fakta karena kutipan membuat konteks tetap lebih ringkas dibandingkan teks penuh.
 
-    Setel `highlights: true` untuk mengaktifkan highlights. Parameter `query` tambahan disarankan saat menggunakan Contents agar extraction konten dari halaman lebih terfokus:
+    Atur `highlights: true` untuk mengaktifkan kutipan. Parameter `query` tambahan disarankan saat menggunakan Contents agar extraction konten dari halaman lebih terfokus:
 
     <CodeGroup>
       ```python Python theme={null}
@@ -137,15 +135,15 @@ Setiap item dalam `results` memuat metadata halaman dan tampilan konten yang And
       ```
     </CodeGroup>
 
-    Lihat [Highlights](/id/docs/search/highlights) untuk Dynamic Highlights dan panduan mengalokasikan konteks
-    ke beberapa halaman.
+    Lihat [kutipan](/id/docs/search/highlights) untuk Dynamic kutipan dan instruksi tentang cara mengalokasikan konteks
+    di beberapa halaman.
   </Tab>
 
-  <Tab title="Teks lengkap">
-    Teks lengkap mengembalikan isi halaman yang sudah bersih dalam format markdown. Gunakan opsi ini saat tugas bergantung pada konteks yang luas,
-    struktur dokumen, atau detail yang mungkin tidak tercakup oleh highlights.
+  <Tab title="Teks penuh">
+    Teks penuh mengembalikan isi halaman yang sudah bersih dalam format markdown. Gunakan ini bila tugas bergantung pada konteks yang luas,
+    struktur dokumen, atau detail yang mungkin tidak tercakup oleh kutipan.
 
-    Halaman lengkap bisa berukuran besar, jadi gunakan `maxCharacters` jika Anda membutuhkan limit:
+    Halaman penuh bisa berukuran besar, jadi gunakan `maxCharacters` bila Anda memerlukan batas:
 
     <CodeGroup>
       ```python Python theme={null}
@@ -180,9 +178,9 @@ Setiap item dalam `results` memuat metadata halaman dan tampilan konten yang And
     </CodeGroup>
   </Tab>
 
-  <Tab title="Summary">
-    Summary melakukan satu panggilan model bahasa untuk setiap halaman. Gunakan opsi ini saat Anda membutuhkan ikhtisar hasil generasi atau
-    field yang diekstrak ke dalam sebuah JSON schema.
+  <Tab title="Ringkasan">
+    Ringkasan memanggil model bahasa untuk setiap halaman. Gunakan ini bila Anda membutuhkan gambaran umum yang dihasilkan model atau
+    fields yang diekstraksi ke dalam JSON schema.
 
     <CodeGroup>
       ```python Python theme={null}
@@ -216,8 +214,8 @@ Setiap item dalam `results` memuat metadata halaman dan tampilan konten yang And
       ```
     </CodeGroup>
 
-    Untuk mengekstrak field alih-alih teks prosa, berikan sebuah JSON schema pada `summary.schema`. Summary akan
-    dikembalikan sebagai string JSON yang sesuai dengan schema tersebut; parse string tersebut untuk membaca field-nya:
+    Untuk mengekstraksi fields alih-alih teks prosa, berikan JSON schema pada `summary.schema`. Ringkasan akan
+    dikembalikan sebagai string JSON yang sesuai dengan schema tersebut; parse string tersebut untuk membaca fields-nya:
 
     ```json theme={null}
     {
@@ -240,24 +238,22 @@ Setiap item dalam `results` memuat metadata halaman dan tampilan konten yang And
   </Tab>
 </Tabs>
 
-Pilih satu tampilan konten per permintaan. Meminta highlights, text, dan summary sekaligus akan mengembalikan sekaligus menagih setiap tampilan secara terpisah.
+Pilih satu content view per permintaan. Meminta kutipan, teks, dan ringkasan sekaligus akan mengembalikan sekaligus menagih setiap view secara terpisah.
 
-<div id="content-freshness">
-  ## Content freshness
-</div>
+## Kebaruan konten {#content-freshness}
 
-`maxAgeHours` mengontrol seberapa baru page content yang diekstraksi harus.
+`maxAgeHours` mengontrol seberapa baru konten halaman yang diekstrak harus.
 
-| Nilai                  | Perilaku                                                                                   |
-| ---------------------- | ------------------------------------------------------------------------------------------ |
-| Dihilangkan            | Gunakan konten cache bila tersedia dan ambil halaman saat diperlukan                       |
-| Bilangan bulat positif | Gunakan konten cache jika lebih baru dari jumlah jam tersebut, jika tidak ambil halamannya |
-| `0`                    | Selalu ambil konten terbaru                                                                |
-| `-1`                   | Hanya gunakan konten cache                                                                 |
+| Nilai                  | Perilaku                                                                                |
+| ---------------------- | --------------------------------------------------------------------------------------- |
+| Tidak diisi            | Gunakan konten cache bila tersedia dan ambil halaman bila diperlukan                    |
+| Bilangan bulat positif | Gunakan konten cache jika lebih baru dari jumlah jam tersebut, jika tidak ambil halaman |
+| `0`                    | Selalu ambil konten terbaru                                                             |
+| `-1`                   | Hanya gunakan konten cache                                                              |
 
-Sebagian besar permintaan sebaiknya tidak menyertakan field ini. Setel field ini bila page content yang usang tidak dapat dipakai, misalnya untuk harga, ketersediaan, atau halaman yang sering diperbarui. Padukan `maxAgeHours` yang rendah dengan `livecrawlTimeout` (milidetik) untuk membatasi durasi pengambilan konten terbaru.
+Sebagian besar permintaan sebaiknya tidak mengisi field ini. Isi field ini bila konten halaman yang basi akan tidak berguna, misalnya untuk harga, ketersediaan, atau halaman yang sering diperbarui. Padukan `maxAgeHours` yang rendah dengan `livecrawlTimeout` (milidetik) untuk membatasi berapa lama pengambilan konten terbaru boleh berlangsung.
 
-<Accordion title="Migrasi dari parameter livecrawl yang sudah usang">
+<Accordion title="Bermigrasi dari parameter livecrawl yang usang">
   Parameter string `livecrawl` (`"always"`, `"preferred"`, `"fallback"`, `"never"`) sudah
   usang dan digantikan oleh `maxAgeHours`:
 
@@ -265,13 +261,11 @@ Sebagian besar permintaan sebaiknya tidak menyertakan field ini. Setel field ini
   | ---------------------- | ------------------------------------------------------------------------- |
   | `"always"`             | `maxAgeHours: 0`                                                          |
   | `"never"`              | `maxAgeHours: -1`                                                         |
-  | `"fallback"`           | Hilangkan `maxAgeHours`                                                   |
+  | `"fallback"`           | Jangan isi `maxAgeHours`                                                  |
   | `"preferred"`          | Tidak ada padanan langsung; gunakan nilai rendah seperti `maxAgeHours: 1` |
 </Accordion>
 
-<div id="crawl-subpages">
-  ## Crawl subhalaman
-</div>
+## Crawl subhalaman {#crawl-subpages}
 
 Setel `subpages` untuk menelusuri tautan dari setiap URL awal. Tambahkan `subpageTarget` jika Anda ingin Exa memprioritaskan bagian situs tertentu:
 
@@ -309,25 +303,21 @@ Setel `subpages` untuk menelusuri tautan dari setiap URL awal. Tambahkan `subpag
   ```
 </CodeGroup>
 
-<div id="images-and-favicons">
-  ## Gambar dan favicon
-</div>
+## Gambar dan favicon {#images-and-favicons}
 
-Atur `extras.imageLinks` ke jumlah URL gambar yang Anda inginkan dari setiap halaman. Hasil juga menyertakan
-`favicon` situs dan satu URL `image` yang representatif jika tersedia. Pada `/search`, opsi ini
+Setel `extras.imageLinks` ke jumlah URL gambar yang Anda inginkan dari setiap halaman. Hasil juga menyertakan
+`favicon` situs dan URL `image` yang representatif bila tersedia. Pada `/search`, opsi ini
 berada di `contents.extras.imageLinks`.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Referensi API" icon="square-terminal" href="/id/docs/reference/get-contents" cta="Buka referensi" arrow="true">
-    Lihat setiap parameter permintaan dan field respons.
+  <Card title="API referensi" icon="square-terminal" href="/id/docs/reference/get-contents" cta="Buka referensi" arrow="true">
+    Lihat setiap parameter permintaan dan field response.
   </Card>
 
-  <Card title="Highlights" icon="highlighter" href="/id/docs/search/highlights" cta="Baca panduan" arrow="true">
-    Bandingkan highlights biasa dengan Dynamic Highlights untuk konteks agent dan RAG.
+  <Card title="kutipan" icon="highlighter" href="/id/docs/search/highlights" cta="Baca panduan" arrow="true">
+    Bandingkan kutipan biasa dan Dynamic kutipan untuk konteks agent dan RAG.
   </Card>
 
   <Card title="Search API" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">

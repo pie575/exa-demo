@@ -1,23 +1,21 @@
 ---
-title: "Quickstart untuk developer"
+title: "Quickstart developer"
 sidebarTitle: "Quickstart"
 description: "Dapatkan API key, lalu gunakan Exa dari kode Anda atau dari agent Anda."
 boost: 3
 ---
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  <div id="1-get-an-api-key">
-    ## 1. Dapatkan API key
-  </div>
+  ## 1. Dapatkan API key {#1-get-an-api-key}
 
   <Steps>
     <Step title="Kunjungi Exa Dashboard">
       <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-        Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
+        Buat key di dashboard. Akun baru langsung mendapat credits gratis.
       </Card>
     </Step>
 
-    <Step title="Setel key sebagai variabel lingkungan">
+    <Step title="Atur key sebagai variabel lingkungan">
       <Tabs>
         <Tab title="macOS/Linux">
           ```bash theme={null}
@@ -36,20 +34,18 @@ boost: 3
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="2-choose-how-youll-use-exa">
-    ## 2. Pilih cara Anda menggunakan Exa
-  </div>
+  ## 2. Pilih cara Anda menggunakan Exa {#2-choose-how-youll-use-exa}
 
-  Ada dua cara memakai Exa di aplikasi Anda: memanggil API langsung dari kode Anda, atau menghubungkan agent yang sudah Anda gunakan.
+  Ada dua cara memakai Exa di aplikasi Anda: memanggil API langsung dari kode Anda sendiri, atau menghubungkan agent yang sudah Anda pakai.
 
   <Columns cols={2}>
-    <Card title="Panggil API" icon="code" href="#3-install-an-sdk" cta="Pasang SDK">
-      Gunakan Search, Contents, dan Exa Agent dari kode Anda sendiri. Pasang SDK
-      di bawah ini, lalu kirim permintaan pertama Anda.
+    <Card title="Panggil API" icon="code" href="#3-install-an-sdk" cta="Instal SDK">
+      Gunakan Search, Contents, dan Exa Agent dari kode Anda sendiri. Instal SDK
+      di bawah ini lalu kirim permintaan pertama Anda.
     </Card>
 
     <Card title="Hubungkan agent Anda" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Siapkan Exa MCP">
-      Hubungkan ChatGPT, Claude, Codex, atau Cursor ke tool search dan riset
+      Hubungkan ChatGPT, Claude, Codex, atau Cursor ke tool search dan research
       milik Exa. Tanpa perlu API key.
     </Card>
   </Columns>
@@ -59,15 +55,13 @@ boost: 3
   | Mulai dengan                            | Gunakan untuk                                                                                             |
   | --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
   | [Search](/id/docs/search/quickstart)       | Menemukan halaman web yang relevan &amp; mengembalikan konten tersintesis dalam waktu kurang dari 2 detik |
-  | [Deep Search](/id/docs/search/deep-search) | Search berkualitas lebih tinggi, di mana LLM secara iteratif mencari hasil yang lebih baik                |
-  | [Agent](/id/docs/agent/quickstart)         | Riset asinkron jangka panjang, list building, enrichment, atau laporan                                    |
-  | [Contents](/id/docs/contents/quickstart)   | Mengekstrak page content saat Anda sudah punya URL-nya                                                    |
+  | [Deep Search](/id/docs/search/deep-search) | Search berkualitas lebih tinggi, di mana LLM secara iteratif menemukan hasil yang lebih baik              |
+  | [Agent](/id/docs/agent/quickstart)         | Research asinkron berjangka panjang, list building, enrichment, atau laporan                              |
+  | [Contents](/id/docs/contents/quickstart)   | Mengekstrak konten halaman saat Anda sudah punya URL-nya                                                  |
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="3-install-an-sdk">
-    ## 3. Pasang SDK
-  </div>
+  ## 3. Instal SDK {#3-install-an-sdk}
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -81,9 +75,7 @@ boost: 3
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="4-make-your-first-request">
-    ## 4. Buat permintaan pertama Anda
-  </div>
+  ## 4. Kirim permintaan pertama Anda {#4-make-your-first-request}
 
   <CodeGroup>
     ```python Python theme={null}
@@ -126,9 +118,7 @@ boost: 3
     ```
   </CodeGroup>
 
-  <div id="next-steps">
-    ## Langkah berikutnya
-  </div>
+  ## Langkah selanjutnya {#next-steps}
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
@@ -136,7 +126,7 @@ boost: 3
     </Card>
 
     <Card title="Agent API" icon="bot" href="/id/docs/agent/quickstart" cta="Baca panduan" arrow="true">
-      Bangun workflow riset jangka panjang, penyusunan daftar, dan enrichment.
+      Bangun workflow Research jangka panjang, list building, dan enrichment.
     </Card>
 
     <Card title="Contents API" icon="file-text" href="/id/docs/contents/quickstart" cta="Baca panduan" arrow="true">
@@ -144,8 +134,8 @@ boost: 3
     </Card>
 
     <Card title="Exa MCP" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Baca panduan" arrow="true">
-      Hubungkan klien MCP apa pun ke tools web search, pengambilan halaman, dan Exa
-      Agent dari Exa.
+      Hubungkan MCP client apa pun ke web search, pengambilan halaman, dan tool Exa Agent
+      milik Exa.
     </Card>
   </Columns>
 </div>

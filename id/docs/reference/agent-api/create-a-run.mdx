@@ -1,17 +1,17 @@
 ---
 title: "Membuat run"
-description: "Membuat Agent run asinkron. Respons langsung mengembalikan objek
-  run kecuali Anda meminta server-sent events."
+description: "Buat Agent run asinkron. Response langsung mengembalikan objek run
+  kecuali Anda meminta server-sent events."
 openapi: "/id/docs/exa-spec.yaml POST /agent/runs"
 timestamp: false
 ---
 
-Buat run dengan `query` dalam bahasa alami. Tambahkan `outputSchema` untuk JSON terstruktur yang tervalidasi, `input.data` untuk baris yang akan diproses, `input.exclusion` untuk record atau entitas yang ingin dihindari, atau `previousRunId` untuk melanjutkan dari run yang sudah selesai.
+Buat run dengan `query` dalam bahasa alami. Tambahkan `outputSchema` untuk JSON terstruktur yang tervalidasi, `input.data` untuk baris yang akan diproses, `input.exclusion` untuk catatan atau entitas yang ingin dihindari, atau `previousRunId` untuk melanjutkan dari run yang sudah selesai.
 
-Setel `Accept: text/event-stream` untuk melakukan streaming event run saat run dibuat, dimulai, dan selesai.
+Setel `Accept: text/event-stream` untuk melakukan stream event run saat run dibuat, dimulai, dan selesai.
 
 <Note>
-  **Connect:** Kirimkan `dataSources` untuk memberi agent akses ke data provider pihak ketiga selama run berlangsung. Lihat [panduan Connect](/id/docs/agent/quickstart#connect-data-sources) untuk detailnya.
+  **Connect:** Kirim `dataSources` untuk memberi agent akses ke data provider pihak ketiga selama run berlangsung. Lihat [panduan Connect](/id/docs/agent/quickstart#connect-data-sources) untuk detailnya.
 </Note>
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">

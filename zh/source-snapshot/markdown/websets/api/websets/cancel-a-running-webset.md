@@ -1,26 +1,20 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="cancel-a-running-webset">
-  # 取消正在运行的 webset
-</div>
+# 取消正在运行的 webset {#cancel-a-running-webset}
 
 > 取消对某个 Webset 正在执行的所有操作。
 
-所有正在进行的 enrichment 或 search 都会停止，该 Webset 将被标记为 `idle`。
+任何 enrichment 或 search 都会被停止，该 Webset 将被标记为 `idle`。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}/cancel
 openapi: 3.1.0
 info:
-  title: Exa 公共 API
+  title: Exa Public API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -35,28 +29,29 @@ paths:
     post:
       tags:
         - Websets
-      summary: 取消正在运行的 Webset
+      summary: Cancel a running Webset
       description: >-
-        取消在某个 Webset 上执行的所有操作。
+        Cancels all operations being performed on a Webset.
 
 
-        任何扩充（enrichment）或搜索都将被停止，并且该 Webset 将被标记为 `idle`。
+        Any enrichment or search will be stopped and the Webset will be marked
+        as `idle`.
       operationId: websets-cancel
       parameters:
         - in: path
           name: id
           schema:
             type: string
-          description: 该 Webset 的 id 或 externalId
+          description: The id or externalId of the Webset
           required: true
       responses:
         '200':
-          description: Webset 已取消
+          description: Webset canceled
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: 该请求的唯一标识符。
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -71,7 +66,7 @@ components:
     Webset:
       properties:
         id:
-          description: 该 webset 的唯一标识符
+          description: The unique identifier for the webset
           type: string
         object:
           const: webset
@@ -83,41 +78,42 @@ components:
             - pending
             - running
             - paused
-          description: 该 webset 的状态
+          description: The status of the webset
           title: WebsetStatus
           type: string
         externalId:
           type: string
-          description: 该 webset 的外部标识符
+          description: The external identifier for the webset
           nullable: true
         title:
           type: string
-          description: 该 webset 的标题
+          description: The title of the webset
           nullable: true
         searches:
           items:
             $ref: '#/components/schemas/WebsetSearch'
-          description: 已在该 webset 上执行的搜索。
+          description: The searches that have been performed on the webset.
           type: array
         imports:
           items:
             $ref: '#/components/schemas/Import'
-          description: 已在该 webset 上执行的导入。
+          description: Imports that have been performed on the webset.
           type: array
         enrichments:
           items:
             $ref: '#/components/schemas/WebsetEnrichment'
-          description: 要应用于 Webset Items 的 Enrichments。
+          description: The Enrichments to apply to the Webset Items.
           type: array
         monitors:
           items:
             $ref: '#/components/schemas/Monitor'
-          description: 该 Webset 的 Monitors。
+          description: The Monitors for the Webset.
           type: array
         excludes:
           description: >-
-            适用于此 Webset 内所有操作的 Excludes 来源（已有的 imports 或
-            websets）。在这些来源中找到的任何结果都将在所有搜索和导入操作中被忽略。
+            The Excludes sources (existing imports or websets) that apply to all
+            operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
           items:
             properties:
               source:
@@ -134,7 +130,7 @@ components:
           type: array
         metadata:
           default: {}
-          description: 你希望与该对象关联的一组键值对。
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -143,15 +139,15 @@ components:
           type: object
         dashboardUrl:
           format: uri
-          description: 在 Exa 仪表板中查看该 webset 的 URL
+          description: The URL to view the webset in the Exa dashboard
           type: string
         createdAt:
           format: date-time
-          description: 该 webset 的创建日期和时间
+          description: The date and time the webset was created
           type: string
         updatedAt:
           format: date-time
-          description: 该 webset 的更新日期和时间
+          description: The date and time the webset was updated
           type: string
       required:
         - id
@@ -170,14 +166,14 @@ components:
     WebsetSearch:
       properties:
         id:
-          description: 该搜索的唯一标识符
+          description: The unique identifier for the search
           type: string
         object:
           const: webset_search
           default: webset_search
           type: string
         websetId:
-          description: 该搜索所属 Webset 的唯一标识符
+          description: The unique identifier for the Webset this search belongs to
           type: string
         status:
           enum:
@@ -186,21 +182,22 @@ components:
             - running
             - completed
             - canceled
-          description: 该搜索的状态
+          description: The status of the search
           title: WebsetSearchStatus
           type: string
         query:
           minLength: 1
           maxLength: 5000
-          description: 用于创建该搜索的查询。
+          description: The query used to create the search.
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
           description: >-
-            该搜索将为其返回结果的实体。
+            The entity the search will return results for.
 
 
-            如果在创建时未提供实体，我们将根据查询自动选择最合适的实体。
+            When no entity is provided during creation, we will automatically
+            select the best entity based on the query.
           nullable: true
         criteria:
           items:
@@ -208,43 +205,51 @@ components:
               description:
                 minLength: 1
                 maxLength: 1000
-                description: 该标准的描述
+                description: The description of the criterion
                 type: string
               successRate:
                 minimum: 0
                 maximum: 100
                 description: >-
-                  介于 0 和 100 之间的值，表示满足该标准的结果所占的百分比。
+                  Value between 0 and 100 representing the percentage of results
+                  that meet the criterion.
                 type: number
             required:
               - description
               - successRate
             type: object
           description: >-
-            该搜索用于评估结果的标准。如果未提供，我们将自动为你生成。
+            The criteria the search will use to evaluate the results. If not
+            provided, we will automatically generate them for you.
           type: array
         count:
           minimum: 1
           description: >-
-            该搜索将尝试找到的结果数量。实际结果数量可能少于此数字，具体取决于搜索的复杂度。
+            The number of results the search will attempt to find. The actual
+            number of results may be less than this number depending on the
+            search complexity.
           type: number
         maxPeoplePerCompany:
           minimum: 1
           type: integer
           description: >-
-            针对来自同一当前雇主公司的匹配人员所请求的软性上限；若未请求上限则为 null。
+            The soft cap requested for matching people from the same current
+            employer company, or null when no cap was requested.
           nullable: true
         behavior:
           $ref: '#/components/schemas/WebsetSearchBehavior'
           default: override
           description: >-
-            该搜索被添加到 Webset 时的行为。
+            The behavior of the search when it is added to a Webset.
 
 
-            - `override`：该搜索将替换 Webset 中已有的 Items，并根据新标准对其进行评估。任何不符合新标准的
-            Items 都将被丢弃。
+            - `override`: the search will replace the existing Items found in
+            the Webset and evaluate them against the new criteria. Any Items
+            that don't match the new criteria will be discarded.
 
-            - `append`：该搜索会将新找到的 Items 添加到现有 Webset 中。任何不符合新标准的 Items 都将被丢弃。
+            - `append`: the search will add the new Items found to the existing
+            Webset. Any Items that don't match the new criteria will be
+            discarded.
         exclude:
           items:
             properties:
@@ -260,7 +265,8 @@ components:
               - id
             type: object
           description: >-
-            用于在搜索过程中忽略某些结果的来源（已有的 imports 或 websets）。
+            Sources (existing imports or websets) used to omit certain results
+            to be found during the search.
           type: array
         scope:
           items:
@@ -276,7 +282,8 @@ components:
                 properties:
                   definition:
                     description: >-
-                      你希望找到的实体与所提供来源中包含的实体之间的关系是什么。
+                      What the relationship of the entities you hope to find is
+                      relative to the entities contained in the provided source.
                     type: string
                   limit:
                     minimum: 1
@@ -291,7 +298,8 @@ components:
               - id
             type: object
           description: >-
-            搜索的范围。默认情况下没有范围限制 —— 即在整个网络中搜索。
+            The scope of the search. By default, there is no scope - thus
+            searching the web.
 
 
             If provided during creation, the search will only be performed on

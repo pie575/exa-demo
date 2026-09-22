@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可先通过该文件了解所有可用页面。
 
-<div id="list-webhooks">
-  # 列出 webhook
-</div>
+# 列出 webhooks {#list-webhooks}
 
-> 返回你所在团队的活跃 Webhook。
+> 返回你所在团队处于活跃状态的 Webhooks。
 
 你可以使用 `cursor` 参数对结果进行分页。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks
 openapi: 3.1.0

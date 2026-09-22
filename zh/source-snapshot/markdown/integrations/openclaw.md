@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="openclaw">
-  # OpenClaw
-</div>
+# OpenClaw {#openclaw}
 
-> 借助 Exa 为 OpenClaw 提供实时网页搜索与页面内容。
+> 使用 Exa 为 OpenClaw 提供实时网页搜索和页面内容。
 
-[OpenClaw](https://openclaw.ai/) 原生支持将 Exa 作为 `web_search` 提供方。选定后，每个 OpenClaw agent 都可通过内置的 web 工具使用 Exa 的搜索模式、日期筛选和内容提取功能。
+[OpenClaw](https://openclaw.ai/) 原生支持将 Exa 作为 `web_search` 提供方。选定后，每个 OpenClaw agent 都可以通过内置的 web 工具使用 Exa 的搜索模式、日期筛选和内容提取功能。
 
-<div id="set-up-exa">
-  ## 设置 Exa
-</div>
+## 设置 Exa {#set-up-exa}
 
 <Steps>
   <Step title="安装 Exa 插件">
@@ -25,20 +19,20 @@
     ```
   </Step>
 
-  <Step title="获取 Exa API key">
-    <Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      在控制台中创建一个 key。新账户可获赠免费积分。
+  <Step title="获取 Exa API 密钥">
+    <Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      在控制台中创建密钥。新账户会赠送免费积分。
     </Card>
   </Step>
 
-  <Step title="保存 key">
-    如果采用网关安装方式，请将 key 添加到 `~/.openclaw/.env`：
+  <Step title="保存密钥">
+    如果是网关安装方式，请将密钥添加到 `~/.openclaw/.env`：
 
     ```bash ~/.openclaw/.env theme={null}
     EXA_API_KEY=your-exa-api-key
     ```
 
-    修改环境变量后，请重启网关。
+    修改环境变量后请重启网关。
   </Step>
 
   <Step title="选择 Exa 作为网页搜索">
@@ -48,13 +42,11 @@
     openclaw configure --section web
     ```
 
-    选择 **Exa** 作为网页搜索提供方。OpenClaw 会把该选择记录在自身配置中，并从 `EXA_API_KEY` 读取凭据。
+    选择 **Exa** 作为网页搜索提供方。OpenClaw 会将所选提供方保存在其配置中，并从 `EXA_API_KEY` 读取凭据。
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## 手动配置
-</div>
+## 手动配置 {#configure-manually}
 
 你可以直接在 OpenClaw 的 JSON5 配置中选择 Exa：
 
@@ -70,7 +62,7 @@
 }
 ```
 
-若要将 key 存储在配置中，而不是网关环境变量中：
+若要将密钥存储在配置中，而不是网关环境中：
 
 ```json5 theme={null}
 {
@@ -89,23 +81,21 @@
 ```
 
 <Note>
-  建议使用 `EXA_API_KEY` 或 OpenClaw SecretRef，而不要将 API key 直接写入配置文件。
+  建议使用 `EXA_API_KEY` 或 OpenClaw SecretRef，不要将 API 密钥直接提交到配置文件中。
 </Note>
 
-<div id="what-agents-can-request">
-  ## agent 可以请求哪些内容
-</div>
+## agent 可以请求哪些内容 {#what-agents-can-request}
 
 OpenClaw 通过 `web_search` 提供 Exa 能力。
 
 | 参数                           | 用途                                                                      |
 | ---------------------------- | ----------------------------------------------------------------------- |
-| `query`                      | 网页搜索查询词。                                                                |
-| `count`                      | 返回结果数量，最多 100 条，并受所选搜索类型的上限限制。                                          |
+| `query`                      | 网页搜索的 query。                                                            |
+| `count`                      | 结果数量，最多 100 条，并受所选搜索类型的上限约束。                                            |
 | `type`                       | Exa 搜索模式，包括 `auto`、`neural`、`fast`、`instant`、`deep` 和 `deep-reasoning`。 |
-| `freshness`                  | 将结果限制在最近一天、一周、一个月或一年内。                                                  |
+| `freshness`                  | 将结果限定在最近一天、一周、一个月或一年内。                                                  |
 | `date_after` / `date_before` | 以 `YYYY-MM-DD` 为边界限定结果范围。                                               |
-| `contents`                   | 随每条结果返回全文、highlights 或摘要。                                               |
+| `contents`                   | 随每条结果返回 full text、highlights 或摘要。                                       |
 
 若省略 `contents`，OpenClaw 默认请求 highlights。当 agent 需要完整页面或摘要时，可以指定不同的内容形式：
 
@@ -121,29 +111,25 @@ await web_search({
 });
 ```
 
-OpenClaw 默认会将网页搜索结果缓存 15 分钟。若每次请求都必须获取最新结果，请修改 `tools.web.search.cacheTtlMinutes`，或将其设为 `0`。
+OpenClaw 默认将网页搜索结果缓存 15 分钟。如果每个请求都必须获取最新结果，请修改 `tools.web.search.cacheTtlMinutes` 或将其设为 `0`。
 
-<div id="troubleshooting">
-  ## 故障排查
-</div>
+## 故障排查 {#troubleshooting}
 
 <AccordionGroup>
-  <Accordion title="OpenClaw 中没有出现 Exa 提供方">
+  <Accordion title="OpenClaw 中没有显示 Exa 提供方">
     安装 `@openclaw/exa-plugin`，重启网关，然后重新运行 `openclaw configure --section web`。
   </Accordion>
 
-  <Accordion title="OpenClaw 提示缺少 Exa key">
-    请确认网关进程 (而不只是你的交互式 shell) 能读取到 `EXA_API_KEY`。若采用网关安装方式，请将其写入 `~/.openclaw/.env` 并重启网关。
+  <Accordion title="OpenClaw 提示缺少 Exa 密钥">
+    请确认网关进程 (而不只是你的交互式 shell) 能读取到 `EXA_API_KEY`。如果采用网关方式安装，请将其写入 `~/.openclaw/.env` 并重启网关。
   </Accordion>
 
   <Accordion title="搜索结果不是最新的">
-    OpenClaw 会独立于 Exa 缓存结果。请调低 `tools.web.search.cacheTtlMinutes` 或将其设为 `0`，并在请求页面内容时使用 Exa 的内容新鲜度选项。
+    OpenClaw 会独立于 Exa 缓存结果。请调低 `tools.web.search.cacheTtlMinutes` 或将其设为 `0`，然后在请求页面内容时使用 Exa 的内容新鲜度选项。
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## 资源
-</div>
+## 资源 {#resources}
 
 <Columns cols={3}>
   <Card title="OpenClaw Exa 提供方" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="阅读指南" arrow="true">
@@ -151,10 +137,10 @@ OpenClaw 默认会将网页搜索结果缓存 15 分钟。若每次请求都必�
   </Card>
 
   <Card title="Exa Search" icon="search" href="/zh/docs/search/quickstart" cta="阅读指南" arrow="true">
-    对比 Exa 搜索模式与响应格式。
+    对比 Exa 的搜索模式与响应格式。
   </Card>
 
   <Card title="内容新鲜度" icon="clock" href="/zh/docs/contents/quickstart#content-freshness" cta="阅读指南" arrow="true">
-    控制已索引内容与实时抓取的页面内容。
+    控制索引内容与实时抓取的页面内容。
   </Card>
 </Columns>

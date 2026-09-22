@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-a-search">
-  # Obtener un Search
-</div>
+# Obtener una búsqueda {#get-a-search}
 
-> Obtiene un Search por id
+> Obtiene una Search por id
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/searches/{id}
 openapi: 3.1.0
@@ -207,8 +201,8 @@ components:
             searching the web.
 
 
-            If provided during creation, the search will only be performed on
-            the sources provided.
+            Si se proporciona durante la creación, la búsqueda solo se realizará en
+            las fuentes proporcionadas.
           type: array
         progress:
           properties:

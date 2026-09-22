@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="create-a-search">
-  # 创建 Search
-</div>
+# 创建 Search {#create-a-search}
 
 > 为 Webset 创建一个新的 Search。
 
-默认行为是复用之前的 Search 结果，并按照新的 criteria 对其进行评估。
+默认行为是复用此前的 Search 结果，并按照新的 criteria 对其进行评估。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches
 openapi: 3.1.0

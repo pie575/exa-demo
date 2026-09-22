@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="delete-a-run">
-  # Eliminar una ejecución
-</div>
+# Eliminar un run {#delete-a-run}
 
-> Elimina una ejecución de Agent almacenada.
+> Elimina un Agent run almacenado.
 
-Al eliminar una ejecución, esta se quita del historial de ejecuciones de Agent de tu equipo.
+Al eliminar un run, este se borra del historial de Agent runs de tu equipo.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas comienzan con credits gratis.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /agent/runs/{id}
 openapi: 3.1.0

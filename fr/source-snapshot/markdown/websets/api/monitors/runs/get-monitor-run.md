@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="get-a-monitor-run">
-  # Récupérer une exécution de monitor
-</div>
+# Récupérer un run de monitor {#get-a-monitor-run}
 
-> Récupère une exécution de monitor spécifique.
+> Récupère un run de monitor spécifique.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{monitor}/runs/{id}
 openapi: 3.1.0
@@ -33,15 +27,15 @@ paths:
     get:
       tags:
         - Monitors Runs
-      summary: Récupérer une exécution de monitor
-      description: Récupère une exécution de monitor spécifique.
+      summary: Get Run de monitor
+      description: Gets a specific run de monitor.
       operationId: monitors-runs-get
       parameters:
         - in: path
           name: monitor
           schema:
             type: string
-          description: L'id du Monitor dont on souhaite récupérer l'exécution
+          description: The id of the Monitor to get the run for
           required: true
         - in: path
           name: id
@@ -50,12 +44,12 @@ paths:
           required: true
       responses:
         '200':
-          description: Détails de l'exécution du monitor
+          description: Run de monitor details
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Identifiant unique de la requête.
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -70,15 +64,15 @@ components:
     MonitorRun:
       properties:
         id:
-          description: L'identifiant unique de l'exécution du Monitor
+          description: The unique identifier for the Run de monitor
           type: string
         object:
           enum:
             - monitor_run
-          description: Le type d'objet
+          description: The type of object
           type: string
         monitorId:
-          description: Le monitor auquel l'exécution est associée
+          description: The monitor that the run is associated with
           type: string
         status:
           enum:
@@ -87,41 +81,41 @@ components:
             - completed
             - canceled
             - failed
-          description: Le status de l'exécution du Monitor
+          description: The status of the Run de monitor
           type: string
         completedAt:
           format: date-time
           type: string
-          description: Date à laquelle l'exécution s'est terminée
+          description: When the run completed
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: Date à laquelle l'exécution a échoué
+          description: When the run failed
           nullable: true
         failedReason:
           type: string
-          description: La raison de l'échec de l'exécution
+          description: The reason the run failed
           nullable: true
         canceledAt:
           format: date-time
           type: string
-          description: Date à laquelle l'exécution a été annulée
+          description: When the run was canceled
           nullable: true
         createdAt:
           type: string
           format: date-time
-          description: Date de création de l'exécution
+          description: When the run was created
         updatedAt:
           type: string
           format: date-time
-          description: Date de dernière mise à jour de l'exécution
+          description: When the run was last updated
         type:
           type: string
           enum:
             - search
             - refresh
-          description: Le type de l'exécution du Monitor
+          description: The type of the Run de monitor
       required:
         - id
         - object
@@ -141,13 +135,13 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Transmettez votre Exa API key dans le header x-api-key. Vous pouvez
-        également vous authentifier avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Transmettez votre Exa API key dans le header x-api-key. Vous pouvez
-        également vous authentifier avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 
 ```

@@ -1,6 +1,6 @@
 ---
 title: "Status Page"
-description: "Ketersediaan secara real-time, incident aktif, dan uptime history layanan Exa."
+description: "Ketersediaan layanan secara real-time, incident aktif, dan riwayat uptime untuk layanan Exa."
 keywords: ["status", "uptime", "incident", "outage", "degraded", "maintenance"]
 ---
 
@@ -162,28 +162,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa memublikasikan ketersediaan layanan di [status.exa.ai](https://status.exa.ai): status terkini Search API, Websets, dan Exa MCP, incident aktif beserta pembaruannya, serta uptime history selama 90 hari terakhir.
+Exa memublikasikan ketersediaan layanan di [status.exa.ai](https://status.exa.ai): status terkini Search API, Websets, dan Exa MCP, incident aktif beserta pembaruannya seiring perkembangan, serta riwayat uptime selama 90 hari terakhir.
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## Berlangganan pembaruan
-</div>
+## Berlangganan pembaruan {#subscribe-to-updates}
 
 Berlangganan di status page untuk menerima notifikasi saat sebuah incident dibuka, diperbarui, atau diselesaikan. Notifikasi dikirim melalui email, Slack, Google Chat, atau webhook.
 
-<div id="get-help">
-  ## Dapatkan bantuan
-</div>
+## Dapatkan bantuan {#get-help}
 
 Jika permintaan terus gagal padahal semua sistem dilaporkan beroperasi normal, penyebabnya kemungkinan besar ada di tingkat permintaan — periksa [Error codes](/id/docs/admin/error-codes) terlebih dahulu.
 
 <Columns cols={2}>
   <Card title="Dukungan email" icon="mail" href="mailto:hello@exa.ai" cta="Kirim email ke dukungan" arrow="true">
-    Sertakan status respons, error body, dan `requestId` agar diagnosis bisa dilakukan secepat mungkin.
+    Kirimkan status response, error body, dan `requestId` agar diagnosis bisa dilakukan secepat mungkin.
   </Card>
 
-  <Card title="Dukungan Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Hubungi tim penjualan" arrow="true">
-    SLA uptime dan dukungan tersedia pada paket Enterprise.
+  <Card title="Dukungan Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Hubungi tim sales" arrow="true">
+    SLA uptime dan dukungan tersedia pada plan Enterprise.
   </Card>
 </Columns>

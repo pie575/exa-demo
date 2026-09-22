@@ -1,31 +1,25 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="create-a-run">
-  # Membuat run
-</div>
+# Membuat run {#create-a-run}
 
-> Membuat Agent run asinkron. Respons langsung mengembalikan objek run kecuali Anda meminta server-sent events.
+> Membuat Agent run asinkron. Response langsung mengembalikan objek run kecuali Anda meminta server-sent events.
 
-Buat run dengan `query` dalam bahasa alami. Tambahkan `outputSchema` untuk JSON terstruktur yang tervalidasi, `input.data` untuk baris yang akan diproses, `input.exclusion` untuk record atau entitas yang harus dihindari, atau `previousRunId` untuk melanjutkan dari run yang sudah selesai.
+Buat run dengan `query` dalam bahasa alami. Tambahkan `outputSchema` untuk JSON terstruktur yang tervalidasi, `input.data` untuk baris yang akan diproses, `input.exclusion` untuk catatan atau entitas yang ingin dihindari, atau `previousRunId` untuk melanjutkan dari run yang sudah selesai.
 
-Setel `Accept: text/event-stream` untuk melakukan streaming event run saat run dibuat, dijalankan, dan diselesaikan.
+Setel `Accept: text/event-stream` untuk melakukan stream event run saat run dibuat, dimulai, dan selesai.
 
 <Note>
-  **Connect:** Kirimkan `dataSources` untuk memberi agent akses ke data provider pihak ketiga selama run berlangsung. Lihat [panduan Connect](/id/docs/agent/quickstart#connect-data-sources) untuk detailnya.
+  **Connect:** Berikan `dataSources` untuk memberi agent akses ke data provider pihak ketiga selama run berlangsung. Lihat [panduan Connect](/id/docs/agent/quickstart#connect-data-sources) untuk detailnya.
 </Note>
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0

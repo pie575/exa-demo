@@ -5,43 +5,41 @@ icon: "/docs/images/sidebar-icons/langchain.svg"
 ---
 
 <Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+  Baru mengenal Exa? Memulai dalam waktu kurang dari satu menit.
 </Card>
 
 ***
 
-LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM dengan data, API, dan tool lainnya. Gunakan integrasi Exa dengan LangChain untuk melakukan RAG:
+LangChain adalah framework untuk membangun aplikasi yang memadukan LLM dengan data, API, dan tool lainnya. Gunakan integrasi Exa dengan LangChain untuk melakukan RAG:
 
 1. Siapkan integrasi Exa dengan LangChain dan gunakan Exa untuk mengambil konten yang relevan
-2. Hubungkan konten ini ke toolchain yang menggunakan LLM dari OpenAI untuk proses generasi
+2. Hubungkan konten ini ke toolchain yang memakai LLM dari OpenAI untuk proses generasi
 
-<Info> Lihat tutorial YouTube dari tim LangChain untuk penyiapan yang sangat mirip [di sini](https://www.youtube.com/watch?v=dA1cHGACXCo). </Info>
+<Info> Lihat tutorial YouTube dari tim LangChain dengan konfigurasi yang sangat mirip [di sini](https://www.youtube.com/watch?v=dA1cHGACXCo). </Info>
 
 <Info> Lihat referensi lengkap dari LangChain [di sini](https://python.langchain.com/docs/integrations/providers/exa%5Fsearch/). </Info>
 
 ***
 
-<div id="get-started">
-  ## Memulai
-</div>
+## Memulai {#get-started}
 
 <Steps>
   <Step title="Prasyarat dan instalasi">
-    Instal pustaka inti OpenAI dan Exa LangChain
+    Instal library inti OpenAI dan Exa LangChain
 
     ```Bash Bash theme={null}
     pip install langchain-openai langchain-exa
     ```
 
-    <Note> Pastikan API key sudah diinisialisasi dengan benar. Untuk pustaka LangChain, nama variabel lingkungannya adalah `OPENAI_API_KEY` dan `EXA_API_KEY`, masing-masing untuk key OpenAI dan Exa. </Note>
+    <Note> Pastikan API key sudah diinisialisasi dengan benar. Untuk library LangChain, nama variabel lingkungannya adalah `OPENAI_API_KEY` dan `EXA_API_KEY`, masing-masing untuk key OpenAI dan Exa. </Note>
 
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
+      Buat key di dashboard. Akun baru mendapatkan credits gratis.
     </Card>
   </Step>
 
-  <Step title="Gunakan Exa Search untuk menjalankan LangChain Tool">
-    Siapkan tool Retriever menggunakan `ExaSearchRetriever`. Ini adalah retriever yang terhubung ke Exa Search untuk menemukan dokumen yang relevan melalui pencarian semantik. Pertama, impor library yang diperlukan lalu buat instance ExaSearchRetriever.
+  <Step title="Gunakan Exa Search untuk menjalankan Tool LangChain">
+    Siapkan tool Retriever menggunakan `ExaSearchRetriever`. Ini adalah retriever yang terhubung ke Exa Search untuk menemukan dokumen relevan melalui pencarian semantik. Pertama, impor library yang diperlukan lalu buat instance ExaSearchRetriever.
 
     ```Python Python theme={null}
     # muat variabel lingkungan
@@ -52,16 +50,16 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     from langchain_core.prompts import PromptTemplate
     from langchain_core.runnables import RunnableLambda
 
-    # Definisikan retriever kita agar menggunakan Exa Search, mengambil 3 hasil dan mengurai highlights dari tiap hasil
+    # Definisikan retriever kita agar menggunakan Exa Search, mengambil 3 hasil dan mengurai kutipan dari tiap hasil
     retriever = ExaSearchRetriever(api_key=os.getenv("EXA_API_KEY"), k=3, highlights=True)
     ```
   </Step>
 
-  <Step title="Buat template prompt (opsional)">
-    Kami menggunakan [PromptTemplate](https://python.langchain.com/v0.1/docs/modules/model%5Fio/prompts/quick%5Fstart/#prompttemplate) dari LangChain untuk mendefinisikan template placeholder yang mengurai URL dan Highlights dari retriever Exa.
+  <Step title="Buat templat prompt (opsional)">
+    Kami menggunakan [PromptTemplate](https://python.langchain.com/v0.1/docs/modules/model%5Fio/prompts/quick%5Fstart/#prompttemplate) dari LangChain untuk mendefinisikan templat placeholder guna mengurai URL dan kutipan dari retriever Exa.
 
     ```Python Python theme={null}
-    # Mendefinisikan templat prompt dokumen menggunakan tag serupa XML
+    # Mendefinisikan templat prompt dokumen menggunakan tag mirip XML
     document_prompt = PromptTemplate.from_template("""
     <source>
         <url>{url}</url>
@@ -71,11 +69,11 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     ```
   </Step>
 
-  <Step title="Parsing URL dan konten dari hasil Exa">
+  <Step title="Ekstrak URL dan konten dari hasil Exa">
     Kami menggunakan [Runnable Lambda](https://api.python.langchain.com/en/latest/runnables/langchain%5Fcore.runnables.base.RunnableLambda.html) untuk mengekstrak atribut URL dan Highlights dari hasil Exa Search, lalu meneruskannya ke templat prompt di atas
 
     ```Python Python theme={null}
-    # Buat Runnable Lambda yang mengurai atribut highlights dan URL dari retriever lalu meneruskannya ke document prompt di atas
+    # Buat Runnable Lambda yang mengurai atribut kutipan dan URL dari retriever lalu meneruskannya ke document prompt di atas
     document_chain = RunnableLambda(
         lambda document: {
             "highlights": document.metadata["highlights"],
@@ -85,17 +83,17 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     ```
   </Step>
 
-  <Step title="Gabungkan hasil pencarian dan konten Exa untuk retrieval">
+  <Step title="Gabungkan hasil dan konten Exa untuk retrieval">
     Lengkapi rantai retrieval dengan merangkai retriever Exa, parser, dan sebuah fungsi lambda singkat - langkah ini krusial agar hasilnya diteruskan sebagai satu string utuh yang menjadi konteks bagi LLM pada langkah berikutnya.
 
     ```Python Python theme={null}
-    # Definisikan retrieval chain - hasil Exa search => ambil atributnya dan parse menjadi XML => gabungkan menjadi satu string untuk dipakai sebagai konteks di langkah berikutnya
+    # Definisikan rantai retrieval - hasil Exa search => ambil atribut dan parse menjadi XML => gabungkan jadi satu string untuk dipakai sebagai konteks di langkah berikutnya
     retrieval_chain = retriever | document_chain.map() | (lambda docs: "\n".join([i.text for i in docs]))
     ```
   </Step>
 
-  <Step title="Siapkan komponen toolchain lainnya, termasuk OpenAI untuk menghasilkan konten">
-    Pada langkah ini, kita mendefinisikan system prompt dengan input template Query dan Context yang masing-masing diambil dari pengguna dan Exa Search. Pertama, sekali lagi impor library dan komponen yang relevan dari library LangChain
+  <Step title="Siapkan seluruh toolchain lainnya, termasuk OpenAI untuk menghasilkan konten">
+    Pada langkah ini, kita mendefinisikan system prompt dengan input templat Query dan Context yang masing-masing diambil dari pengguna dan Exa Search. Pertama, sekali lagi impor library dan komponen yang relevan dari library LangChain
 
     ```Python Python theme={null}
     from langchain_core.runnables import RunnablePassthrough, RunnableParallel
@@ -104,10 +102,10 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     from langchain_core.output_parsers import StrOutputParser
     ```
 
-    Selanjutnya kita mendefinisikan prompt generasi - templat prompt yang digunakan bersama konteks dari Exa untuk menjalankan RAG.
+    Kemudian kita mendefinisikan prompt generasi - templat prompt yang digunakan bersama konteks dari Exa untuk menjalankan RAG.
 
     ```Python Python theme={null}
-    # Definisikan template prompt inti
+    # Definisikan templat prompt inti
     generation_prompt = ChatPromptTemplate.from_messages([
         ("system", "You are an expert research assistant. You use xml-formatted context to research people's questions."),
         ("human", """
@@ -122,7 +120,7 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     ])
     ```
 
-    Kami menetapkan [LLM untuk generasi ke OpenAI](https://python.langchain.com/v0.1/docs/integrations/chat/openai/), lalu menghubungkan semuanya dengan koneksi paralel [RunnableParallel](https://python.langchain.com/v0.1/docs/expression%5Flanguage/primitives/parallel/). Prompt generasi, yang berisi query dan konteks, kemudian diteruskan ke LLM dan [diurai agar representasi output lebih baik](https://api.python.langchain.com/en/latest/output%5Fparsers/langchain%5Fcore.output%5Fparsers.string.StrOutputParser.html).
+    Kami menetapkan [LLM generasi ke OpenAI](https://python.langchain.com/v0.1/docs/integrations/chat/openai/), lalu menghubungkan semuanya dengan koneksi paralel [RunnableParallel](https://python.langchain.com/v0.1/docs/expression%5Flanguage/primitives/parallel/). Prompt generasi, yang berisi query dan konteks, kemudian diteruskan ke LLM dan [diurai agar representasi output lebih baik](https://api.python.langchain.com/en/latest/output%5Fparsers/langchain%5Fcore.output%5Fparsers.string.StrOutputParser.html).
 
     ```Python Python theme={null}
     # Gunakan OpenAI untuk generasi
@@ -139,7 +137,7 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     ```
   </Step>
 
-  <Step title="Menjalankan rangkaian alat RAG lengkap">
+  <Step title="Menjalankan seluruh rangkaian tool RAG">
     Mari kita [invoke](https://python.langchain.com/v0.1/docs/expression%5Flanguage/interface/#invoke) chain tersebut:
 
     ```Python Python theme={null}
@@ -148,7 +146,7 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     print(result)
     ```
 
-    Lalu lihat output-nya (newline sudah diuraikan):
+    Lalu lihat output-nya (baris baru sudah diuraikan):
 
     ```Stdout Stdout theme={null}
     'Based on the provided context, the latest research on climate change innovation reveals several important findings:
@@ -162,8 +160,8 @@ LangChain adalah framework untuk membangun aplikasi yang menggabungkan LLM denga
     ```
   </Step>
 
-  <Step title="Secara opsional, streaming output dari rangkaian">
-    Secara opsional, Anda dapat melakukan streaming output dari chain tersebut.
+  <Step title="Secara opsional, stream output chain">
+    Secara opsional, Anda dapat melakukan stream pada output dari chain tersebut.
 
     ```Python Python theme={null}
     for chunk in chain.stream("Latest research on climate change innovation"):

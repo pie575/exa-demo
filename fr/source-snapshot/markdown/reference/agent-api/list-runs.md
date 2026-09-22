@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="list-agent-runs">
-  # Lister les runs d&#39;Agent
-</div>
+# Lister les runs Agent {#list-agent-runs}
 
-> Récupérez une liste paginée des runs d&#39;Agent de votre team.
+> Récupérez une liste paginée des runs Agent de votre équipe.
 
-Les runs sont renvoyés du plus récent au plus ancien. Utilisez `limit` pour définir la taille de page et `cursor` avec la valeur `nextCursor` de la response précédente pour récupérer la page suivante.
+Les runs sont renvoyés du plus récent au plus ancien. Utilisez `limit` pour définir la taille des pages et `cursor` avec la valeur `nextCursor` de la réponse précédente pour récupérer la page suivante.
 
-<Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de crédits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs
 openapi: 3.1.0
@@ -324,7 +318,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AgentGrounding'
-          description: Citations au niveau des champs émises par le run.
+          description: Field-level citations emitted by the run.
       required:
         - text
         - structured
@@ -381,7 +375,7 @@ components:
         - phoneNumbers
       additionalProperties: false
     JsonValue:
-      description: Toute valeur JSON.
+      description: Any JSON value.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -406,12 +400,11 @@ components:
         - auto
         - max
       description: >-
-        Préférence de coût et d'effort de raisonnement pour le run. `auto`
-        laisse Exa choisir l'effort approprié. `max` est le niveau d'effort le
-        plus élevé, en bêta publique, destiné aux travaux où l'exhaustivité et
-        la rigueur priment sur la latence ou le coût, notamment le list
-        building à grande échelle, la recherche approfondie multi-sources et
-        les criteria difficiles à vérifier.
+        Cost and reasoning effort preference for the run. `auto` lets Exa choose
+        the appropriate effort. `max` is the highest-effort public beta tier for
+        work where completeness and thoroughness matter more than latency or
+        cost, including large list building, deep multi-source research, and
+        criteria that are hard to verify.
       default: auto
     AgentDataSourceOutput:
       type: object
@@ -419,8 +412,8 @@ components:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            Data provider Exa Connect à activer pour le run. Tous les tools du
-            provider sont disponibles par défaut.
+            Exa Connect data provider to enable for the run. All provider tools
+            are available by default.
           example: fiber
       required:
         - provider
@@ -431,22 +424,20 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            Montant maximal que ce run peut dépenser, en dollars américains.
-            Accepte de 1 $ à 100 $ et s'applique uniquement à `auto` et `max` ;
-            en cas d'omission, le plafond par défaut est de 5 $ pour `auto` et
-            de 20 $ pour `max`.
+            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
+            applies only to `auto` and `max`; when omitted, the default cap is
+            $5 for `auto` and $20 for `max`.
           example: 10
       additionalProperties: false
       description: >-
-        Limite de dépense facultative par run pour les efforts facturés à
-        l'usage `auto` et `max`. Les runs qui se terminent plus tôt peuvent
-        coûter moins que cette limite.
+        Optional per-run spending limit for the metered `auto` and `max`
+        efforts. Runs that finish early may cost less than the limit.
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: Field de sortie étayé par les citations.
+          description: Output field the citations support.
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -459,7 +450,7 @@ components:
                 - low
                 - medium
                 - high
-              description: Fiabilité de ce field telle qu'indiquée par le modèle.
+              description: Model-reported reliability for this field.
             - type: 'null'
       required:
         - field
@@ -473,10 +464,9 @@ components:
         type: integer
         minimum: 0
       description: >-
-        Nombre de tool calls par provider pour les sources de données Exa
-        Connect utilisées pendant le run. Les clés sont les noms des providers
-        (par ex. `fiber`, `similarweb`). Seuls les providers dont l'usage est
-        non nul sont inclus.
+        Per-provider tool call counts for Exa Connect data sources used during
+        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
+        providers with non-zero usage are included.
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -485,10 +475,9 @@ components:
         type: number
         minimum: 0
       description: >-
-        Coût en dollars par provider pour les sources de données Exa Connect
-        utilisées pendant le run. Les clés sont les noms des providers (par ex.
-        `fiber`, `similarweb`). Seuls les providers dont l'usage est non nul
-        sont inclus.
+        Per-provider cost in dollars for Exa Connect data sources used during
+        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
+        providers with non-zero usage are included.
     AgentDataSourceProvider:
       type: string
       enum:
@@ -500,7 +489,7 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Identifiant d'un data provider Exa Connect.
+      description: Identifier of an Exa Connect data provider.
     AgentCitation:
       type: object
       properties:
@@ -510,15 +499,15 @@ components:
           description: Source URL.
         title:
           type: string
-          description: Titre de la source.
+          description: Source title.
       required:
         - url
       additionalProperties: false
   headers:
     XRequestId:
       description: >-
-        Identifiant unique de la requête. Correspond au field `requestId`
-        renvoyé dans les corps de réponse qui en contiennent un.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -528,12 +517,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Transmettez votre Exa API key dans le header x-api-key. Vous pouvez
-        aussi vous authentifier avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Transmettez votre Exa API key dans le header x-api-key. Vous pouvez
-        aussi vous authentifier avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

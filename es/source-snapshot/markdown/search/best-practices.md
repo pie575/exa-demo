@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="search-best-practices">
-  # Buenas prácticas de búsqueda
-</div>
+# Buenas prácticas de búsqueda {#search-best-practices}
 
-> Optimiza la calidad de recuperación, la latencia, el contexto y la síntesis en integraciones de la Search API en producción.
+> Ajusta la calidad de la recuperación, la latencia, el contexto y la síntesis en integraciones de la Search API en producción.
 
-Esta guía da por hecho que ya tienes una [solicitud a la Search API](/es/docs/search/quickstart) funcionando. Aquí verás cómo mejorar esa solicitud siguiendo las buenas prácticas recomendadas por Exa.
+Esta guía parte de que ya tienes una [solicitud a la Search API](/es/docs/search/quickstart) funcionando. Explica cómo mejorarla siguiendo las buenas prácticas recomendadas por Exa.
 
-<div id="start-with-the-smallest-useful-request">
-  ## Empieza con la solicitud útil más pequeña
-</div>
+## Comienza con la solicitud más pequeña que resulte útil {#start-with-the-smallest-useful-request}
 
-El mejor punto de partida es una query en lenguaje natural con `highlights: true`. Exa dimensiona los extractos de cada resultado según su relevancia, así que no hay ningún presupuesto de caracteres que ajustar:
+El mejor punto de partida es una consulta en lenguaje natural con `highlights: true`. Exa ajusta los extractos de cada resultado según su relevancia, así que no hay ningún presupuesto de caracteres que ajustar:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -45,44 +39,40 @@ El mejor punto de partida es una query en lenguaje natural con `highlights: true
   ```
 </CodeGroup>
 
-Así obtienes páginas ordenadas por relevancia y, para cada una, un contexto eficiente en tokens y pertinente a la query.
+Así obtienes páginas ordenadas por relevancia y, en cada una, contexto eficiente en tokens y pertinente a la consulta.
 
 Añade más parámetros solo cuando los necesites:
 
-| Parámetro                  | Añádelo cuando                                                                               |
-| -------------------------- | -------------------------------------------------------------------------------------------- |
-| `type`                     | Necesites ajustarte a un presupuesto de latencia o a un requisito de profundidad             |
-| `numResults`               | Quieras menos páginas para una ventana de contexto reducida, o más para ampliar la cobertura |
-| `outputSchema`             | Sintetices los resultados o los estructures en JSON                                          |
-| `maxAgeHours`              | El contenido de la página en caché pueda estar desactualizado                                |
-| `highlights.maxCharacters` | Tu aplicación requiera un límite fijo de extracto por página                                 |
-| Filtros de dominio o fecha | Los resultados fuera de la restricción resultarían inservibles                               |
+| Parámetro                  | Añádelo cuando                                                                                  |
+| -------------------------- | ----------------------------------------------------------------------------------------------- |
+| `type`                     | Debas ajustarte a un límite de latencia o a un requisito de profundidad                         |
+| `numResults`               | Quieras menos páginas para una ventana de contexto más pequeña, o más para ampliar la cobertura |
+| `outputSchema`             | Sintetices los resultados o los estructures en JSON                                             |
+| `maxAgeHours`              | El contenido de la página en caché pueda estar demasiado desactualizado                         |
+| `highlights.maxCharacters` | Tu aplicación requiera un límite fijo de extractos por página                                   |
+| Filtros de dominio o fecha | Los resultados fuera de la restricción resulten inservibles                                     |
 
-<div id="search-vs-deep-search">
-  ## Search vs. Deep Search
-</div>
+## Search vs. Deep Search {#search-vs-deep-search}
 
-La búsqueda estándar recupera y ordena páginas para una query. Deep Search ejecuta un proceso de investigación que puede
-buscar de forma iterativa, analizar lo que encontró, refinar la búsqueda y sintetizar un resultado fundamentado.
+La búsqueda estándar recupera y ordena páginas para una consulta. Deep Search ejecuta un proceso de investigación que puede
+buscar de forma iterativa, revisar lo que encontró, refinar la búsqueda y sintetizar un resultado fundamentado.
 
-| Necesidad                                                                                                                                           | Empieza con                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| Páginas ordenadas por relevancia para una query bien formulada                                                                                      | `auto` o `fast`                     |
-| Búsquedas difíciles, síntesis a partir de muchos resultados o salidas estructuradas que no se pueden completar con una sola search (3 o más campos) | `deep`                              |
-| Investigación de larga duración, construcción de listas o enrichment de varios pasos                                                                | [Exa Agent](/es/docs/agent/quickstart) |
+| Necesidad                                                                                                                                    | Empieza con                         |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| Páginas ordenadas por relevancia para una consulta bien formulada                                                                            | `auto` o `fast`                     |
+| Búsquedas difíciles, síntesis de muchos resultados o salidas estructuradas que no se pueden completar con una sola búsqueda (3 o más campos) | `deep`                              |
+| Investigación de larga duración, creación de listas o enrichment de varios pasos                                                             | [Exa Agent](/es/docs/agent/quickstart) |
 
-Se recomienda usar los modos deep de forma predeterminada con `outputSchema`. Consulta la [guía de Deep Search](/es/docs/search/deep-search) para ver instrucciones y ejemplos completos.
+Se recomienda usar los modos deep por defecto al trabajar con `outputSchema`. Consulta la [guía de Deep Search](/es/docs/search/deep-search) para ver instrucciones y ejemplos completos.
 
-<div id="improve-retrieval-quality">
-  ## Mejora la calidad de la recuperación
-</div>
+## Mejora la calidad de la recuperación {#improve-retrieval-quality}
 
-Cuando los resultados necesiten mejoras, cambia una sola parte de la solicitud cada vez.
+Cuando los resultados necesiten mejorar, cambia una parte de la solicitud a la vez.
 
 <Steps>
-  <Step title="Aclara la query">
-    Describe las páginas que buscas, no un montón de palabras clave. Incluye el tema y cualquier tipo de fuente,
-    período de tiempo u otro detalle que cambie lo que se considera un resultado relevante.
+  <Step title="Aclara la consulta">
+    Describe las páginas que buscas, no una lista suelta de palabras clave. Incluye el tema y cualquier tipo de fuente,
+    periodo u otro detalle que cambie lo que se considera un resultado relevante.
 
     ```text theme={null}
     Benchmark papers evaluating long-context retrieval methods on legal documents
@@ -90,7 +80,7 @@ Cuando los resultados necesiten mejoras, cambia una sola parte de la solicitud c
   </Step>
 
   <Step title="Lee la respuesta por capas">
-    Fíjate en los títulos, las URL, las fechas de publicación y los highlights antes de cambiar la solicitud.
+    Revisa los títulos, las URL, las fechas de publicación y los highlights antes de cambiar la solicitud.
 
     ```json theme={null}
     {
@@ -107,42 +97,40 @@ Cuando los resultados necesiten mejoras, cambia una sola parte de la solicitud c
     }
     ```
 
-    El título y la URL indican el tipo de fuente que recuperó Exa, `publishedDate` indica
-    su actualidad y el highlight muestra la evidencia que coincidió con la query. Refina la query para
-    recuperar otras páginas, añade filtros de fecha para acotar el período de tiempo u obtén el texto completo cuando
+    El título y la URL muestran el tipo de fuente que recuperó Exa, `publishedDate` indica
+    su actualidad y el highlight muestra la evidencia que coincidió con la consulta. Refina la consulta para
+    recuperar otras páginas, añade filtros de fecha para acotar el periodo u obtén el texto completo cuando
     necesites más contexto de un resultado útil.
   </Step>
 
   <Step title="Añade solo restricciones estrictas">
-    Usa `includeDomains`, `excludeDomains` y los filtros de fecha de publicación únicamente cuando un resultado que
-    incumpla la restricción resulte inservible. Expresa las preferencias de recuperación en la query y, al
-    sintetizar, coloca las instrucciones de respuesta en `systemPrompt`.
+    Usa `includeDomains`, `excludeDomains` y los filtros de fecha de publicación solo cuando un resultado que
+    incumpla la restricción resulte inservible. Coloca las preferencias de recuperación en la consulta y, al
+    sintetizar, las instrucciones de respuesta en `systemPrompt`.
   </Step>
 
-  <Step title="Cambia el modo de search en último lugar">
-    Usa un modo más rápido si tienes un requisito de latencia, o un modo profundo cuando el propio proceso de recuperación
-    requiera iteración y razonamiento. Cambiar de modo no arregla una query mal especificada.
+  <Step title="Cambia el modo de búsqueda al final">
+    Usa un modo más rápido si tienes un requisito de latencia, o un modo deep cuando el propio proceso de recuperación
+    requiera iteración y razonamiento. Cambiar de modo no arregla una consulta mal especificada.
   </Step>
 </Steps>
 
-Mantén un pequeño conjunto de queries representativas mientras ajustas. Compara la relevancia de los resultados y el éxito de las tareas posteriores en todo el conjunto, en lugar de optimizar para un solo ejemplo. Registra `requestId`, `searchTime` y `costDollars` para que las regresiones sean reproducibles.
+Mantén un conjunto reducido de consultas representativas mientras ajustas. Compara la relevancia de los resultados y el éxito de la tarea posterior en todo el conjunto en lugar de optimizar para un solo ejemplo. Registra `requestId`, `searchTime` y `costDollars` para que las regresiones sean reproducibles.
 
-<div id="budget-latency-and-context">
-  ## Presupuesta la latencia y el contexto
-</div>
+## Presupuesta la latencia y el contexto {#budget-latency-and-context}
 
 Cada control consume un recurso distinto:
 
-| Control                   | Qué añade                                                      |
-| ------------------------- | -------------------------------------------------------------- |
-| Más resultados            | Más páginas, datos de respuesta y contexto posterior           |
-| Texto completo            | Mayor contexto de la página y un payload más grande            |
-| `summary`                 | Una llamada adicional al modelo de lenguaje por resultado      |
-| `outputSchema`            | Síntesis a partir de los resultados recuperados                |
-| `contents.maxAgeHours: 0` | Una descarga nueva de la página en lugar de contenido en caché |
-| Tipos de search profunda  | Búsqueda iterativa, síntesis y razonamiento                    |
+| Control                   | Qué añade                                                    |
+| ------------------------- | ------------------------------------------------------------ |
+| Más resultados            | Más páginas, datos de respuesta y contexto posterior         |
+| Texto completo            | Mayor contexto de la página y un payload más grande          |
+| `summary`                 | Una llamada adicional al modelo de lenguaje por resultado    |
+| `outputSchema`            | Síntesis sobre los resultados recuperados                    |
+| `contents.maxAgeHours: 0` | Una descarga nueva de la página en vez de contenido en caché |
+| Tipos de búsqueda deep    | Búsqueda iterativa, síntesis y razonamiento                  |
 
-Para una ruta en tiempo real en la que el contenido en caché resulte aceptable, combina el modo de menor latencia con highlights y contenido solo desde caché:
+Para una ruta en tiempo real donde el contenido en caché sea aceptable, combina el modo de menor latencia con highlights y contenido solo desde caché:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -181,48 +169,42 @@ Para una ruta en tiempo real en la que el contenido en caché resulte aceptable,
   ```
 </CodeGroup>
 
-No apliques esta receta cuando la actualidad de la página sea parte de la corrección. Empieza con `auto` y la frescura predeterminada, salvo que el producto tenga un objetivo de latencia medido.
+No uses esta receta cuando la frescura de la página forme parte de la exactitud. Empieza con `auto` y la frescura por defecto salvo que el producto tenga un objetivo de latencia medido.
 
-Para que Exa reparta un único presupuesto de contexto entre todo el conjunto de resultados —más de las fuentes sólidas y menos de las redundantes—, consulta la [vista previa de investigación de Dynamic Highlights](/es/docs/search/highlights#dynamic-highlights).
+Para que Exa reparta un único presupuesto de contexto en todo el conjunto de resultados — más en las fuentes sólidas, menos en las redundantes — consulta la [vista previa de investigación de Dynamic Highlights](/es/docs/search/highlights#dynamic-highlights).
 
-<div id="tips-for-common-use-cases">
-  ## Consejos para casos de uso comunes
-</div>
+## Consejos para casos de uso comunes {#tips-for-common-use-cases}
 
-| Si necesitas                                 | Usa                                                                            | Evita                                                                 |
-| -------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
-| Publicaciones más recientes                  | Incluir la ventana temporal en la query o usar filtros de fecha de publicación | `maxAgeHours`                                                         |
-| Contenido actualizado de páginas que cambian | `contents.maxAgeHours`                                                         | Filtros de fecha de publicación                                       |
-| Un tipo de fuente preferido                  | La redacción de la query; `systemPrompt` al sintetizar                         | Una lista de dominios permitidos estricta                             |
-| Resultados solo de fuentes aprobadas         | `includeDomains`                                                               | Repetir `site:` en la query                                           |
-| Una salida estructurada pequeña              | `outputSchema` con Search estándar                                             | Elegir Deep solo porque la salida es JSON                             |
-| Una salida investigada con varios elementos  | `deep` con `outputSchema`, o [Exa Agent](/es/docs/agent/quickstart)               | Esperar que una sola pasada de recuperación reúna todos los elementos |
-| Más contexto de unas pocas páginas           | Search con highlights y luego llamar a Contents                                | Texto completo para cada resultado                                    |
-| Menor latencia                               | Medir `fast` o `instant` con contenido compacto                                | Añadir controles de frescura o síntesis por defecto                   |
+| Si necesitas                                 | Usa                                                                               | Evita                                                                 |
+| -------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Publicaciones más recientes                  | Incluir la ventana temporal en la consulta o usar filtros de fecha de publicación | `maxAgeHours`                                                         |
+| Contenido actualizado de páginas que cambian | `contents.maxAgeHours`                                                            | Filtros de fecha de publicación                                       |
+| Un tipo de fuente preferido                  | La redacción de la consulta; `systemPrompt` al sintetizar                         | Una lista blanca estricta de dominios                                 |
+| Resultados solo de fuentes aprobadas         | `includeDomains`                                                                  | Repetir `site:` en la consulta                                        |
+| Un output estructurado pequeño               | `outputSchema` con Search estándar                                                | Elegir Deep solo porque el output es JSON                             |
+| Un output investigado con varios elementos   | `deep` con `outputSchema`, o [Exa Agent](/es/docs/agent/quickstart)                  | Esperar que una sola pasada de recuperación reúna todos los elementos |
+| Más contexto de unas pocas páginas           | Search con highlights y luego llamar a Contents                                   | Texto completo para cada resultado                                    |
+| Menor latencia                               | Medir `fast` o `instant` con contenido compacto                                   | Añadir controles de frescura o síntesis por defecto                   |
 
-<div id="when-to-use-another-endpoint">
-  ## Cuándo usar otro endpoint
-</div>
+## Cuándo usar otro endpoint {#when-to-use-another-endpoint}
 
 Usa un endpoint distinto de Exa cuando la tarea cambie de naturaleza:
 
 | Tarea                                                            | Usa                                   |
 | ---------------------------------------------------------------- | ------------------------------------- |
 | Investigación de larga duración, creación de listas o enrichment | [Exa Agent](/es/docs/agent/quickstart)   |
-| Ya conoces las URLs                                              | [Contents](/es/docs/contents/quickstart) |
-| Ejecutar una search de forma programada                          | [Monitors](/es/docs/monitors/quickstart) |
+| Ya se conocen las URL                                            | [Contents](/es/docs/contents/quickstart) |
+| Ejecutar una búsqueda de forma programada                        | [Monitors](/es/docs/monitors/quickstart) |
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
   <Card title="Referencia de la Search API" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir referencia" arrow="true">
     Todos los parámetros de solicitud y campos de respuesta.
   </Card>
 
-  <Card title="Inicio rápido de Search" icon="search" href="/es/docs/search/quickstart" cta="Ver guía" arrow="true">
-    Estructuras básicas de solicitud, filtros, salida y frescura.
+  <Card title="Quickstart de búsqueda" icon="search" href="/es/docs/search/quickstart" cta="Ver guía" arrow="true">
+    Estructuras básicas de solicitud, filtros, output y frescura.
   </Card>
 
   <Card title="Contents API" icon="file-text" href="/es/docs/contents/quickstart" cta="Abrir guía" arrow="true">

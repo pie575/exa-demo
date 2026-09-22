@@ -1,42 +1,34 @@
 ---
 title: "team 정보 조회"
-description: "concurrency usage와 limits를 포함한 team 정보를 조회합니다."
+description: "concurrency 사용량과 limits 등 team에 대한 정보를 조회합니다."
 openapi: "/ko/docs/exa-spec.yaml GET /v0/teams/me"
 timestamp: false
 ---
 
-<div id="overview">
-  ## 개요
-</div>
+## 개요 {#overview}
 
-Get Team Info endpoint는 인증된 team의 정보를 반환하며, 여기에는 해당 team의 현재 concurrency usage와 설정된 limits가 포함됩니다. Websets API usage를 모니터링하고 rate limits를 파악하는 데 유용합니다.
+Get Team Info 엔드포인트는 인증된 team의 현재 concurrency 사용량과 설정된 limits를 비롯해 해당 team에 대한 정보를 반환합니다. Websets API 사용량을 모니터링하고 속도 제한을 파악하는 데 유용합니다.
 
-<div id="response">
-  ## 응답
-</div>
+## Response {#response}
 
-응답에는 다음 항목이 포함됩니다:
+response에는 다음 항목이 포함됩니다:
 
 * **object**: 항상 &quot;team&quot;
 * **id**: team의 고유 식별자
 * **name**: team 이름
-* **concurrency**: 활성 요청 및 대기 중인 요청을 나타내는 현재 usage
+* **concurrency**: 활성 요청과 대기 중인 요청을 나타내는 현재 사용량
 * **limits**: team의 concurrency limits
 
-<div id="concurrency-fields">
-  ### Concurrency 필드
-</div>
+### Concurrency Fields {#concurrency-fields}
 
-`concurrency` 객체는 현재 요청 상태를 나타냅니다:
+`concurrency` 객체는 현재 요청 상태를 보여줍니다:
 
 * **active**: 현재 처리 중인 요청 수
 * **queued**: 처리 대기 중인 요청 수
 
-<div id="limits-fields">
-  ### Limits 필드
-</div>
+### Limits Fields {#limits-fields}
 
-`limits` 객체에는 team에 설정된 limits가 표시됩니다:
+`limits` 객체는 team에 설정된 limits를 보여줍니다:
 
 * **maxConcurrent**: 동시에 처리할 수 있는 최대 요청 수 (null이면 무제한)
 * **maxQueued**: 큐에서 대기할 수 있는 최대 요청 수 (null이면 무제한)

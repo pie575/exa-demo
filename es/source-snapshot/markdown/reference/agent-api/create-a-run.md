@@ -1,31 +1,25 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="create-a-run">
-  # Crear una ejecución
-</div>
+# Crear un run {#create-a-run}
 
-> Crea una ejecución asíncrona de Agent. La respuesta devuelve el objeto de la ejecución de inmediato, salvo que solicites eventos enviados por el servidor (SSE).
+> Crea un run asíncrono de Agent. La respuesta devuelve el objeto del run de inmediato, salvo que solicites server-sent events.
 
-Crea una ejecución con una `query` en lenguaje natural. Añade `outputSchema` para obtener JSON estructurado y validado, `input.data` para las filas que se van a procesar, `input.exclusion` para los registros o entidades que se deben excluir, o `previousRunId` para continuar a partir de una ejecución completada.
+Crea un run con una `query` en lenguaje natural. Añade `outputSchema` para obtener JSON estructurado y validado, `input.data` para las filas que se procesarán, `input.exclusion` para los registros o entidades que quieras evitar, o `previousRunId` para continuar a partir de un run completado.
 
-Establece `Accept: text/event-stream` para recibir los eventos en streaming a medida que la ejecución se crea, se inicia y se completa.
+Establece `Accept: text/event-stream` para recibir en streaming los eventos del run a medida que este se crea, se inicia y se completa.
 
 <Note>
-  **Connect:** Pasa `dataSources` para darle al agente acceso a proveedores de datos externos durante la ejecución. Consulta la [guía de Connect](/es/docs/agent/quickstart#connect-data-sources) para más detalles.
+  **Connect:** Pasa `dataSources` para darle al agente acceso a proveedores de datos externos durante el run. Consulta la [guía de Connect](/es/docs/agent/quickstart#connect-data-sources) para más detalles.
 </Note>
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas empiezan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0
@@ -815,18 +809,18 @@ components:
         url:
           type: string
           format: uri
-          description: URL de la fuente.
+          description: Source URL.
         title:
           type: string
-          description: Título de la fuente.
+          description: Source title.
       required:
         - url
       additionalProperties: false
   headers:
     XRequestId:
       description: >-
-        Identificador único de la solicitud. Coincide con el campo `requestId`
-        que se devuelve en los cuerpos de respuesta que lo incluyen.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -836,12 +830,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Envía tu Exa API key en el encabezado x-api-key. También puedes
-        autenticarte con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Envía tu Exa API key en el encabezado x-api-key. También puedes
-        autenticarte con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

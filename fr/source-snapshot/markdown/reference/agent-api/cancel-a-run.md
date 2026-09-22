@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="cancel-a-run">
-  # Annuler un run
-</div>
+# Annuler un run {#cancel-a-run}
 
-> Annulez un run d&#39;Agent en file d&#39;attente ou en cours d&#39;exécution.
+> Annulez un Agent run en file d&#39;attente ou en cours d&#39;exécution.
 
-Si le run est encore actif, il passe immédiatement à `cancelled` et s&#39;arrête sans renvoyer de résultats. Le run se termine avec le status `cancelled` et `stopReason: cancelled`. L&#39;usage accumulé avant l&#39;annulation vous est facturé. Si le run a déjà atteint un status terminal (completed, failed ou cancelled), l&#39;endpoint renvoie le run existant sans modification.
+Si le run est encore actif, il passe immédiatement à l&#39;état `cancelled` et s&#39;arrête sans renvoyer de résultats. Le run se termine alors avec le statut `cancelled` et `stopReason: cancelled`. L&#39;utilisation accumulée avant l&#39;annulation vous est facturée. Si le run a déjà atteint un statut terminal (completed, failed ou cancelled), l&#39;endpoint renvoie le run existant tel quel.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0

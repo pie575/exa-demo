@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="delete-an-item">
-  # Eliminar un item
-</div>
+# Eliminar un item {#delete-an-item}
 
 > Elimina un Item del Webset.
 
 Esto cancelará cualquier proceso de enrichment asociado.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}
 openapi: 3.1.0
@@ -39,29 +33,29 @@ paths:
       description: |-
         Deletes an Item from the Webset.
 
-        Esto cancelará cualquier proceso de enriquecimiento para él.
+        This will cancel any enrichment process for it.
       operationId: websets-items-delete
       parameters:
         - in: path
           name: webset
           schema:
             type: string
-          description: El id o externalId del Webset
+          description: The id or externalId of the Webset
           required: true
         - in: path
           name: id
           schema:
             type: string
-          description: El id del elemento del Webset
+          description: The id of the Webset item
           required: true
       responses:
         '200':
-          description: Elemento del Webset eliminado
+          description: Webset Item deleted
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Identificador único de la solicitud.
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -76,7 +70,7 @@ components:
     WebsetItem:
       properties:
         id:
-          description: El identificador único del elemento del Webset
+          description: The unique identifier for the Webset Item
           type: string
         object:
           const: webset_item
@@ -86,28 +80,26 @@ components:
           enum:
             - search
             - import
-          description: La fuente del elemento
+          description: The source of the Item
           type: string
         sourceId:
-          description: El identificador único de la fuente
+          description: The unique identifier for the source
           type: string
         sourceEntityId:
           description: >-
-            El identificador original usado para resolver este elemento (p. ej.,
-            correo electrónico, nombre o URL). Solo es relevante cuando la
-            fuente es import.
+            The original identifier used to resolve this item (e.g., email,
+            name, or URL). Only relevant when the source is import.
           type: string
         scopeId:
           description: >-
-            La importación que originó este elemento, cuando el elemento
-            proviene de una búsqueda con alcance y con evaluate habilitado en
-            la importación.
+            The import that sourced this item, when the item came from a scoped
+            search with evaluate enabled on the import.
           type: string
         websetId:
-          description: El identificador único del Webset al que pertenece este elemento.
+          description: The unique identifier for the Webset this Item belongs to.
           type: string
         properties:
-          description: Las propiedades del elemento
+          description: The properties of the Item
           oneOf:
             - $ref: '#/components/schemas/WebsetItemPersonProperties'
             - $ref: '#/components/schemas/WebsetItemCompanyProperties'
@@ -117,21 +109,21 @@ components:
         evaluations:
           items:
             $ref: '#/components/schemas/WebsetItemEvaluation'
-          description: Las evaluaciones de criterios del elemento
+          description: The criteria evaluations of the item
           type: array
         enrichments:
           items:
             $ref: '#/components/schemas/EnrichmentResult'
           type: array
-          description: Los resultados de enriquecimiento del elemento del Webset
+          description: The enrichments results of the Webset item
           nullable: true
         createdAt:
           format: date-time
-          description: La fecha y hora en que se creó el elemento
+          description: The date and time the item was created
           type: string
         updatedAt:
           format: date-time
-          description: La fecha y hora de la última actualización del elemento
+          description: The date and time the item was last updated
           type: string
       required:
         - id
@@ -149,32 +141,32 @@ components:
       properties:
         url:
           format: uri
-          description: La URL del perfil de la persona
+          description: The URL of the person profile
           type: string
         description:
-          description: Breve descripción de la relevancia de la persona
+          description: Short description of the relevance of the person
           type: string
         person:
           properties:
             name:
-              description: El nombre de la persona
+              description: The name of the person
               type: string
             location:
               type: string
-              description: La ubicación de la persona
+              description: The location of the person
               nullable: true
             position:
               type: string
-              description: El puesto de trabajo actual de la persona
+              description: The current work position of the person
               nullable: true
             company:
               properties:
                 name:
-                  description: El nombre de la empresa
+                  description: The name of the company
                   type: string
                 location:
                   type: string
-                  description: La ubicación en la que la persona trabaja en la empresa
+                  description: The location the person is working at the company
                   nullable: true
               required:
                 - name
@@ -185,49 +177,49 @@ components:
             pictureUrl:
               format: uri
               type: string
-              description: La URL de la imagen de la persona
+              description: The image URL of the person
               nullable: true
             workHistory:
               items:
                 properties:
                   title:
                     type: string
-                    description: Título o puesto de trabajo
+                    description: Job title or position
                     nullable: true
                   location:
                     type: string
-                    description: Ubicación de trabajo
+                    description: Work location
                     nullable: true
                   dates:
                     properties:
                       from:
                         type: string
-                        description: Fecha de inicio
+                        description: Start date
                         nullable: true
                       to:
                         type: string
-                        description: Fecha de finalización
+                        description: End date
                         nullable: true
                     required:
                       - from
                       - to
                     type: object
                     title: WebsetItemPersonDateRange
-                    description: Fechas de empleo
+                    description: Employment dates
                     nullable: true
                   company:
                     properties:
                       id:
                         type: string
-                        description: ID de entidad de la empresa
+                        description: Entity ID of the company
                         nullable: true
                       name:
                         type: string
-                        description: Nombre de la empresa
+                        description: Company name
                         nullable: true
                       linkedinUrl:
                         type: string
-                        description: URL de LinkedIn de la empresa
+                        description: LinkedIn URL of the company
                         nullable: true
                     required:
                       - id
@@ -243,45 +235,45 @@ components:
                   - company
                 title: WebsetItemPersonWorkHistoryEntry
                 type: object
-              description: El historial laboral de la persona
+              description: The work history of the person
               type: array
             educationHistory:
               items:
                 properties:
                   degree:
                     type: string
-                    description: Título obtenido
+                    description: Degree obtained
                     nullable: true
                   dates:
                     properties:
                       from:
                         type: string
-                        description: Fecha de inicio
+                        description: Start date
                         nullable: true
                       to:
                         type: string
-                        description: Fecha de finalización
+                        description: End date
                         nullable: true
                     required:
                       - from
                       - to
                     type: object
                     title: WebsetItemPersonDateRange
-                    description: Fechas de estudios
+                    description: Education dates
                     nullable: true
                   institution:
                     properties:
                       id:
                         type: string
-                        description: ID de entidad de la institución
+                        description: Entity ID of the institution
                         nullable: true
                       name:
                         type: string
-                        description: Nombre de la institución
+                        description: Institution name
                         nullable: true
                       linkedinUrl:
                         type: string
-                        description: URL de LinkedIn de la institución
+                        description: LinkedIn URL of the institution
                         nullable: true
                     required:
                       - id
@@ -296,7 +288,7 @@ components:
                   - institution
                 title: WebsetItemPersonEducationHistoryEntry
                 type: object
-              description: El historial educativo de la persona
+              description: The education history of the person
               type: array
           required:
             - name
@@ -323,62 +315,62 @@ components:
       properties:
         url:
           format: uri
-          description: La URL del sitio web de la empresa
+          description: The URL of the company website
           type: string
         description:
-          description: Breve descripción de la relevancia de la empresa
+          description: Short description of the relevance of the company
           type: string
         content:
           type: string
-          description: El contenido de texto del sitio web de la empresa
+          description: The text content of the company website
           nullable: true
         company:
           properties:
             name:
-              description: El nombre de la empresa
+              description: The name of the company
               type: string
             location:
               type: string
-              description: La ubicación principal de la empresa
+              description: The main location of the company
               nullable: true
             employees:
               type: integer
-              description: El número de empleados de la empresa
+              description: The number of employees of the company
               nullable: true
             industry:
               type: string
-              description: El sector de la empresa
+              description: The industry of the company
               nullable: true
             about:
               type: string
-              description: Una breve descripción de la empresa
+              description: A short description of the company
               nullable: true
             logoUrl:
               format: uri
               type: string
-              description: La URL del logotipo de la empresa
+              description: The logo URL of the company
               nullable: true
             foundedYear:
               type: number
-              description: El año en que se fundó la empresa
+              description: The year the company was founded
               nullable: true
             headquarters:
               properties:
                 address:
                   type: string
-                  description: La dirección de la sede
+                  description: The street address of the headquarters
                   nullable: true
                 city:
                   type: string
-                  description: La ciudad de la sede
+                  description: The city of the headquarters
                   nullable: true
                 state:
                   type: string
-                  description: El estado o región de la sede
+                  description: The state or region of the headquarters
                   nullable: true
                 postalCode:
                   type: string
-                  description: El código postal de la sede
+                  description: The postal code of the headquarters
                   nullable: true
                 country:
                   type: string

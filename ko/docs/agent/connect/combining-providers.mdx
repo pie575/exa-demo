@@ -1,15 +1,13 @@
 ---
-title: "제공자 조합하기"
-description: "하나의 Exa Agent 실행에서 여러 데이터 파트너를 함께 사용하세요."
+title: "제공업체 조합하기"
+description: "하나의 Exa Agent 실행에서 여러 data partners를 함께 사용하세요."
 ---
 
-파트너를 `dataSources`에 연결하면 해당 파트너를 Exa Agent가 도구로 사용할 수 있게 됩니다. 다만 에이전트가 반드시 그 도구를 호출하도록 강제하지는 **않습니다**. 파트너가 실제로 호출될지는 `질의`와 `outputSchema`에 달려 있습니다. 각 파트너에서 어떤 종류의 결과를 얻고 싶은지 명시하면, Exa Agent는 웹 페이지를 보고 추측하는 대신 그에 맞는 도구를 사용합니다. 실행당 최대 다섯 개의 파트너를 연결할 수 있으며, Exa Agent가 각 단계마다 호출할 파트너를 선택합니다. 이때 Exa web search도 함께 사용할 수 있습니다. 하나의 실행에서 다섯 개를 초과해야 한다면 [문의하기](mailto:sales@exa.ai)를 통해 한도 상향을 요청하세요.
+`dataSources`에 파트너를 attach하면 해당 파트너를 Exa Agent가 도구로 쓸 수 있게 됩니다. 다만 agent가 반드시 그 도구를 call하도록 강제하는 것은 **아닙니다**. 파트너가 실제로 호출될지는 `query`와 `outputSchema`에 달려 있습니다. 각 파트너에게서 어떤 종류의 결과를 원하는지 명시하면, Exa Agent는 웹 페이지에서 추측하는 대신 그에 맞는 도구를 사용합니다. 실행당 최대 다섯 개의 파트너를 attach할 수 있으며, 각 단계에서 어떤 도구를 call할지는 Exa Agent가 선택하고 Exa web search도 함께 사용할 수 있습니다. 단일 실행에 다섯 개 이상이 필요하신가요? [문의해 주세요](mailto:sales@exa.ai). limit을 상향해 드립니다.
 
-<div id="two-partners-in-one-run">
-  ## 한 번의 실행에서 두 파트너 활용하기
-</div>
+## 한 번의 실행에서 두 파트너 사용하기 {#two-partners-in-one-run}
 
-여러 파트너를 함께 나열하면 Exa Agent가 각 파트너의 강점에 맞게 활용합니다. 여기서 두 개는 예시일 뿐이며, `dataSources`에는 최대 다섯 개의 파트너를 붙일 수 있습니다. 파트너 수와 관계없이 각 파트너의 데이터를 명시적으로 요청한다는 원칙은 동일합니다. 아래 투자자 브리핑 실행은 티커 뉴스를 가져오는 [Financial Datasets](/ko/docs/agent/connect/financialdatasets)와 팟캐스트 논평을 가져오는 [Particle](/ko/docs/agent/connect/particle)을 함께 사용합니다. 질의에서 각 파트너의 고유한 데이터를 요청하고 schema에서 출력을 `financialNews`와 `podcastChatter`로 나누기 때문에, Exa Agent는 같은 실행에서 **두** 파트너를 모두 호출합니다.
+여러 파트너를 함께 나열하면 Exa Agent가 각 파트너의 강점에 맞춰 활용합니다. 여기서 두 개는 예시일 뿐이며, `dataSources`에 최대 다섯 개까지 파트너를 attach할 수 있고 원칙은 동일합니다. 즉, 각 파트너의 데이터를 명시적으로 요청하면 됩니다. 이 투자자 브리핑 실행은 ticker 뉴스를 위한 [Financial Datasets](/ko/docs/agent/connect/financialdatasets)와 팟캐스트 논평을 위한 [Particle](/ko/docs/agent/connect/particle)을 결합합니다. 질의에서 각 파트너의 고유한 데이터를 요청하고 schema가 output을 `financialNews`와 `podcastChatter`로 나누기 때문에, Exa Agent는 같은 실행에서 **두** 파트너를 모두 call합니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -166,5 +164,5 @@ description: "하나의 Exa Agent 실행에서 여러 데이터 파트너를 함
 </CodeGroup>
 
 <Tip>
-  각 파트너의 데이터를 *질의*에 명시하세요. 즉, 각 파트너에서 어떤 종류의 결과를 얻고 싶은지 구체적으로 밝혀야 합니다(여기서는 ticker 기반 금융 뉴스와 발화자가 명시된 팟캐스트 quote). 요청이 &quot;최신 뉴스&quot;처럼 두루뭉술하면 Exa Agent는 파트너 대신 web search로 돌아가는 경향이 있습니다. 이렇게 구분된 요청을 `outputSchema` 필드에도 그대로 반영하면 효과가 더욱 커집니다.
+  각 파트너의 데이터를 *질의*에 명시하세요. 파트너별로 어떤 종류의 result를 원하는지 구체적으로 지정하는 것입니다(여기서는 ticker 금융 뉴스 vs. 발언자가 명시된 팟캐스트 quote). 요청이 &quot;최신 뉴스&quot;처럼 두루뭉술하면 Exa Agent는 파트너 대신 web search로 되돌아가는 경향이 있습니다. 이렇게 구분된 요구사항을 `outputSchema` field에도 똑같이 반영해 주면 효과가 더 확실해집니다.
 </Tip>

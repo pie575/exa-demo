@@ -1,87 +1,69 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="get-api-key-usage">
-  # 获取 API key 用量情况
-</div>
+# 获取 API 密钥用量 {#get-api-key-usage}
 
-> 检索特定 API key 的用量分析与计费数据。
+> 获取指定 API 密钥的用量分析与计费数据。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
 <Info>
-  Team Management API 需按团队单独启用，并使用服务账户 API key 进行身份验证。为你的团队启用该功能后，即可在 [API keys 页面](https://dashboard.exa.ai/api-keys)的 **Service keys** 标签页中创建此 key。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+  Team Management API 需按团队启用。该 API 使用服务账户 API 密钥进行身份验证；在为你的团队启用该功能后，可在 [API 密钥页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页中创建此密钥。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
 </Info>
 
-<div id="overview">
-  ## 概述
-</div>
+## 概览 {#overview}
 
-获取 API key 用量端点可用于查询指定 API key 在给定时间段内的详细计费与用量分析数据。该端点返回 Exa 计费系统中的成本数据，可作为该 API key 实际账单内容的权威依据。
+Get API Key Usage 端点可用于获取指定 API 密钥在某一时间段内的详细计费与用量分析数据。该端点返回 Exa 计费系统中的费用数据，让你准确掌握该 API 密钥的实际计费情况。
 
-<div id="path-parameters">
-  ## 路径参数
-</div>
+## 路径参数 {#path-parameters}
 
-* **id**：要查询用量的 API key 唯一标识符
+* **id**：要查询用量的 API 密钥的唯一标识符
 
-<div id="query-parameters">
-  ## 查询参数
-</div>
+## 查询参数 {#query-parameters}
 
-* **start&#95;date** (可选) ：用量统计周期的开始日期，采用 ISO 8601 格式 (例如 `2025-01-01T00:00:00Z` 或 `2025-01-01`) 。默认为 30 天前。必须在最近 6 个月 (180 天) 以内。
-* **end&#95;date** (可选) ：用量统计周期的结束日期，采用 ISO 8601 格式。默认为当前时间。
+* **start&#95;date** (可选) ：用量周期的开始日期，采用 ISO 8601 格式 (例如 `2025-01-01T00:00:00Z` 或 `2025-01-01`) 。默认为 30 天前，且必须在最近 6 个月 (180 天) 之内。
+* **end&#95;date** (可选) ：用量周期的结束日期，采用 ISO 8601 格式。默认为当前时间。
 * **group&#95;by** (可选) ：结果分组的时间粒度 (`hour`、`day` 或 `month`) 。目前为后续功能扩展预留，不会改变响应结构。默认为 `day`。
 
-<div id="response">
-  ## 响应
-</div>
+## 响应 {#response}
 
-返回详细的用量与计费信息，包括：
+返回详细的用量和计费信息，包括：
 
-* **id**：该 API key 的唯一标识符
-* **api&#95;key&#95;id**：该 API key 的唯一标识符
-* **api&#95;key&#95;name**：该 API key 的描述性名称 (如已设置) 
-* **team&#95;id**：该 key 所属的团队 ID
+* **id**：API 密钥的唯一标识符
+* **api&#95;key&#95;id**：API 密钥的唯一标识符
+* **api&#95;key&#95;name**：API 密钥的描述性名称 (如已设置)
+* **team&#95;id**：该密钥所属的团队 ID
 * **period**：包含用量周期起止日期的对象
-* **total&#95;cost&#95;usd**：指定周期内的总成本 (美元) 
-* **cost&#95;breakdown**：按价格类型划分的成本明细数组，每项包含：
+* **total&#95;cost&#95;usd**：指定周期内的总费用 (美元)
+* **cost&#95;breakdown**：按价格类型划分的费用明细数组，每项包含：
   * **price&#95;id**：价格的唯一标识符
   * **price&#95;name**：价格名称 (例如 &quot;Neural Search&quot;、&quot;Content Retrieval&quot;) 
   * **quantity**：消耗的总数量
-  * **amount&#95;usd**：该价格类型对应的成本 (美元) 
+  * **amount&#95;usd**：该价格类型的费用 (美元)
 * **metadata**：包含报告生成时间戳的对象
 
-<div id="important-notes">
-  ## 重要说明
-</div>
+## 重要说明 {#important-notes}
 
 * **6 个月回溯限制**：计费系统有 6 个月 (180 天) 的回溯限制。`start_date` 早于 180 天的请求将返回 400 错误。
-* **无用量**：如果该 API key 在所请求的时间段内没有任何用量，`total_cost_usd` 将为 0，`cost_breakdown` 可能为空。
-* **团队归属**：用于认证的服务 API key 必须与所查询的 API key 属于同一团队，不允许跨团队访问。
-* **日期格式**：日期需使用 ISO 8601 格式，可带时间部分，也可不带 (例如 `2025-01-01` 或 `2025-01-01T00:00:00Z`) 。
+* **零用量**：如果该 API 密钥在所请求的时间段内没有任何用量，`total_cost_usd` 将为 0，且 `cost_breakdown` 可能为空。
+* **团队归属**：用于身份验证的服务 API 密钥必须与所查询的 API 密钥属于同一团队，不允许跨团队访问。
+* **日期格式**：日期可使用 ISO 8601 格式，可带时间部分，也可不带 (例如 `2025-01-01` 或 `2025-01-01T00:00:00Z`) 。
 
-<div id="use-cases">
-  ## 使用场景
-</div>
+## 使用场景 {#use-cases}
 
-此端点适用于：
+该端点适用于：
 
-* 构建 API key 级别的计费看板
-* 监控特定 API key 的用量与成本
+* 构建 API 密钥级别的账单面板
+* 监控特定 API 密钥的用量与费用
 * 基于用量阈值创建自动告警
-* 生成用于内部成本分摊的用量报告
-* 排查特定 API key 的计费问题
+* 生成用量报告以便内部成本分摊
+* 排查特定 API 密钥的计费问题
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}/usage
 openapi: 3.1.0

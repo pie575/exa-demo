@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件了解所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="sdk-quickstart">
-  # SDK 快速入门
-</div>
+# SDK 快速开始 {#sdk-quickstart}
 
 > 安装并使用 Exa 的 Python 和 JavaScript SDK
 
 Exa 官方 SDK。搜索网络、获取页面内容，并获得带引用来源的答案。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="install">
-  ## 安装
-</div>
+## 安装 {#install}
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -41,11 +35,9 @@ Exa 官方 SDK。搜索网络、获取页面内容，并获得带引用来源的
 
 Python SDK 需要 Python 3.9 及以上版本。
 
-<div id="authentication">
-  ## 身份验证
-</div>
+## 身份验证 {#authentication}
 
-将你的 API key 设置为环境变量：
+将你的 API 密钥设置为环境变量：
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -61,11 +53,9 @@ Python SDK 需要 Python 3.9 及以上版本。
   </Tab>
 </Tabs>
 
-<div id="getting-started">
-  ## 快速上手
-</div>
+## 开始使用 {#getting-started}
 
-初始化客户端并运行你的第一次搜索：
+初始化客户端并运行第一次搜索：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -102,43 +92,38 @@ Python SDK 需要 Python 3.9 及以上版本。
 </CodeGroup>
 
 <Note>
-  两个客户端都会从 `EXA_API_KEY` 环境变量中读取你的 key。若想显式指定，
-  也可以内联传入：`Exa(api_key="your-api-key")` 或 `new Exa("your-api-key")`。
+  两个客户端都会从 `EXA_API_KEY` 环境变量读取密钥。如需显式指定，可直接内联传入：`Exa(api_key="your-api-key")` 或 `new Exa("your-api-key")`。
 </Note>
 
-<div id="recommended-defaults">
-  ## 推荐默认值
-</div>
+## 推荐默认配置 {#recommended-defaults}
 
-| 决策     | 推荐默认值                                           |
-| ------ | ----------------------------------------------- |
-| 入门选择   | 使用 `search`                                     |
-| 搜索类型   | 保持 `auto`，除非延迟或内容综合需求要求改用其他类型                   |
-| 页面内容   | 先从 `highlights: true` 入手                        |
-| 已知 URL | 使用 `get_contents` / `getContents`               |
-| 时效性    | 仅当过时内容无法使用时，才设置 `max_age_hours` / `maxAgeHours` |
+| 决策项    | 推荐默认值                                              |
+| ------ | -------------------------------------------------- |
+| 起点     | 使用 `search`                                        |
+| 搜索类型   | 保持 `auto`，除非延迟或综合需求需要改用其他类型                        |
+| 页面内容   | 先使用 `highlights: true`                             |
+| 已知 URL | 使用 `get_contents` / `getContents`                  |
+| 新鲜度    | 仅当过时内容会导致结果不可用时才设置 `max_age_hours` / `maxAgeHours` |
 
 <Warning>
-  两种请求类型接受相同的内容选项，但传入位置不同：
+  这两种请求类型接受相同的 content options，只是设置位置不同：
 
-  | 方法                             | 内容选项传入位置                                                              |
+  | 方法                             | content option 设置位置                                                   |
   | ------------------------------ | --------------------------------------------------------------------- |
   | `search`                       | 放在 `contents` 内，例如 `exa.search(query, contents={"highlights": True})` |
-  | `get_contents` / `getContents` | 直接放在请求参数中，例如 `exa.get_contents(urls, highlights=True)`                |
+  | `get_contents` / `getContents` | 直接放在请求上，例如 `exa.get_contents(urls, highlights=True)`                  |
 </Warning>
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
-Search 只需一次调用即可查找相关页面并返回其 contents。
+Search 只需一次调用即可找到相关页面并返回其页面内容。
 
 <Tip>
-  在 AI 回答、RAG 和搜索预览等场景中，建议使用 `highlights: true`。Exa 会根据每条结果的相关性
-  自动调整摘录长度；只有当你的应用需要固定上限时，才设置 `max_characters` / `maxCharacters`。
+  在 AI 回答、RAG 和搜索预览场景中，建议使用 `highlights: true`。Exa 会根据每条结果的相关性
+  自动调整摘录长度；只有当你的应用需要固定的长度上限时，才需设置 `max_characters` / `maxCharacters`。
 </Tip>
 
-筛选条件、日期范围和结果数量：
+过滤条件、日期范围与结果数量：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -163,9 +148,7 @@ Search 只需一次调用即可查找相关页面并返回其 contents。
   ```
 </CodeGroup>
 
-<div id="output-schema">
-  ### 输出 schema
-</div>
+### 输出 schema {#output-schema}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -211,19 +194,16 @@ Search 只需一次调用即可查找相关页面并返回其 contents。
 </CodeGroup>
 
 <Note>
-  `output_schema` / `outputSchema` 适用于所有 search 类型，合成后的值会通过 `output.content` 返回。
-  如需指定来源偏好或强调重点，可使用 `system_prompt` / `systemPrompt`。
-  grounding 会自动在 `output.grounding` 中返回，因此无需在 schema 中重复定义引用来源或
-  置信度字段。
+  `output_schema` / `outputSchema` 适用于所有搜索类型，综合后的结果会在 `output.content` 中返回。
+  如需指定来源偏好或强调重点，请使用 `system_prompt` / `systemPrompt`。
+  grounding 会自动在 `output.grounding` 中返回，因此无需在 schema 中重复定义引用来源或 confidence。
 </Note>
 
-如果生成结果需要跨多次 search 做深入调研，建议使用 deep 系列模式：轻量调研用 `deep-lite`，需要多步 search 和更强综合能力时用 `deep`。完整的请求选项参见 [Search 指南](/zh/docs/search/quickstart)。
+当输出需要跨多次 search 进行研究时，建议使用 deep 模式：轻量级研究可使用 `deep-lite`，需要多步搜索和更强综合能力时可使用 `deep`。完整的请求选项请参阅 [Search 指南](/zh/docs/search/quickstart)。
 
-<div id="contents">
-  ## Contents
-</div>
+## Contents {#contents}
 
-从你已知的 URL 中提取 highlights、全文或摘要。建议先使用 highlights，并通过 query 让其聚焦到你需要的信息上。
+从你已知的 URL 中提取 highlights、full text 或摘要。可以先使用 highlights，再加上 query，让提取内容聚焦于你所需的信息。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -242,11 +222,9 @@ Search 只需一次调用即可查找相关页面并返回其 contents。
   ```
 </CodeGroup>
 
-如果需要更完整的上下文或文档结构，则使用全文。有关输出结构、时效性控制和子页面抓取，请参阅 [Contents 指南](/zh/docs/contents/quickstart)。
+如果需要更完整的上下文或文档结构，请使用 full text。关于输出结构、新鲜度控制和子页面抓取，请参阅 [Contents 指南](/zh/docs/contents/quickstart)。
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 获取问题的答案，并附带引用来源。
 
@@ -271,9 +249,7 @@ Search 只需一次调用即可查找相关页面并返回其 contents。
   ```
 </CodeGroup>
 
-<div id="async-and-types">
-  ## 异步与类型
-</div>
+## 异步与类型 {#async-and-types}
 
 Python 提供 `AsyncExa` 用于异步操作，JavaScript SDK 则为每个方法都提供了 TypeScript 类型。
 
@@ -295,19 +271,15 @@ Python 提供 `AsyncExa` 用于异步操作，JavaScript SDK 则为每个方法�
   ```
 </CodeGroup>
 
-<div id="resources">
-  ## 资源
-</div>
+## 资源 {#resources}
 
 Python：[exa-py 源码](https://github.com/exa-labs/exa-py) 和 [PyPI 包](https://pypi.org/project/exa-py/)。JavaScript：[exa-js 源码](https://github.com/exa-labs/exa-js) 和 [npm 包](https://www.npmjs.com/package/exa-js)。
 
-<div id="continue">
-  ## 继续探索
-</div>
+## 继续 {#continue}
 
 <Columns cols={3}>
   <Card title="Search 指南" icon="search" href="/zh/docs/search/quickstart" cta="打开指南" arrow="true">
-    返回 Search 主指南，了解请求写法、过滤条件和更进阶的检索模式。
+    返回 Search 主指南，了解请求写法、过滤条件以及更深入的搜索模式。
   </Card>
 
   <Card title="Search 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考" arrow="true">
@@ -315,6 +287,6 @@ Python：[exa-py 源码](https://github.com/exa-labs/exa-py) 和 [PyPI 包](http
   </Card>
 
   <Card title="Contents 指南" icon="file-text" href="/zh/docs/contents/quickstart" cta="打开指南" arrow="true">
-    已知 URL 并希望直接提取内容时，请使用 Contents。
+    如果已知 URL 并希望直接提取内容，请使用 Contents。
   </Card>
 </Columns>

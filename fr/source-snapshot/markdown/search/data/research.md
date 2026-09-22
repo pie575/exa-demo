@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="research-publications">
-  # Publications de recherche
-</div>
+# Publications de recherche {#research-publications}
 
-> Trouvez des papers, des brevets, des subventions de recherche, des essais cliniques et des approbations réglementaires avec Exa Search.
+> Trouvez des papers académiques, des brevets, des subventions, des essais cliniques et des approbations réglementaires avec Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans le playground d’API" aria-label={`Ouvrir « ${query} » dans le playground d’API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans le playground de l’API" aria-label={`Ouvrir « ${query} » dans le playground de l’API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,71 +33,55 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Utilisez Exa Search pour les publications de recherche et les records associés, y compris les titres, résumés, auteurs, lieux de publication, citations, pages d&#39;éditeurs, preprints et pages de repository.
+Utilisez Exa Search pour les publications de recherche et les records associés, y compris les titres, les résumés, les auteurs, les lieux de publication, les citations, les pages d&#39;éditeurs, les prépublications et les pages de repository.
 
 <Tip>
   Lisez [SOTA Search Over Academic Publications](https://exa.ai/blog/publications-search)
   pour en savoir plus sur la qualité de la recherche de publications.
 </Tip>
 
-<div id="included">
-  ## Inclus
-</div>
+## Inclus {#included}
 
-* Papers et preprints, y compris les fragments de full text lorsqu&#39;un full text analysé est disponible
+* Papers et prépublications, y compris des fragments de texte intégral lorsqu&#39;un texte intégral analysé est disponible
 * Brevets, avec résumés, revendications, inventeurs et titulaires
 * Subventions et annonces de financement
-* Essais cliniques, notices de médicaments et données d&#39;interaction
+* Essais cliniques, notices de médicaments et données d&#39;interactions
 * Approbations réglementaires et sanitaires
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## À utiliser pour {#use-it-for}
 
-* Revue de littérature et découverte de citations
-* Recherche d&#39;antériorité et cartographie des brevets
-* Recherche clinique et pharmaceutique
-* Découverte de subventions et d&#39;opportunités de financement
+* La revue de littérature et la recherche de citations
+* L&#39;analyse de l&#39;art antérieur et la cartographie des brevets
+* La recherche clinique et pharmaceutique
+* L&#39;identification de subventions et d&#39;opportunités de financement
 
-<div id="example-queries">
-  ## Exemples de requêtes
-</div>
+## Exemples de requêtes {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### Trouver des papers sur un sujet
-</div>
+### Trouver des papers sur un sujet {#find-papers-on-a-topic}
 
-Décrivez la méthode ou le résultat plutôt que d&#39;essayer de deviner les mots-clés du titre. La catégorie `publication` restreint les résultats aux papers.
+Décrivez la méthode ou le résultat obtenu plutôt que de deviner les mots-clés du titre. La catégorie `publication` restreint les résultats aux papers.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### Rechercher des preuves cliniques
-</div>
+### Rechercher des preuves cliniques {#search-clinical-evidence}
 
-Précisez la phase, l&#39;intervention et la population afin que les enregistrements d&#39;essais cliniques et les pages de résultats ressortent avant les contenus généralistes.
+Précisez la phase, l&#39;intervention et la population pour que les immatriculations d&#39;essais et les pages de résultats se classent avant la couverture générale.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### Suivre les approbations réglementaires
-</div>
+### Suivre les approbations réglementaires {#track-regulatory-approvals}
 
-Indiquez l&#39;autorité de régulation ainsi que le dispositif ou la classe de médicaments qui vous intéresse.
+Indiquez l&#39;organisme de réglementation ainsi que le dispositif ou la classe de médicaments que vous surveillez.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### Lancer une recherche d&#39;antériorité
-</div>
+### Lancer une recherche d&#39;antériorité {#run-a-prior-art-search}
 
-Décrivez l&#39;invention de façon fonctionnelle, comme le ferait une revendication de brevet, plutôt que d&#39;utiliser un nom de produit.
+Décrivez l&#39;invention de façon fonctionnelle, comme le ferait une revendication, plutôt que d&#39;utiliser un nom de produit.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## Envoyer une requête
-</div>
+## Envoyer une requête {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,12 +125,10 @@ Décrivez l&#39;invention de façon fonctionnelle, comme le ferait une revendica
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtenir des données structurées avec Exa Agent
-</div>
+## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
 
-Pour des données structurées qui nécessitent une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les publications, les critères d&#39;inclusion et les champs de sortie dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de citations.
+Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les publications, les critères d&#39;inclusion et les fields d&#39;output dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 
-<Card title="Lancer une tâche Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
-  Construisez une cartographie de la littérature, filtrez des papers selon des critères d&#39;inclusion ou regroupez des champs issus de plusieurs publications dans un seul tableau.
+<Card title="Lancer une tâche Exa Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
+  Établissez une cartographie de la littérature, filtrez des papers selon des critères d&#39;inclusion ou regroupez des fields issus de plusieurs publications dans un seul tableau.
 </Card>

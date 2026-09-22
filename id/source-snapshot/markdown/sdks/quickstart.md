@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="sdk-quickstart">
-  # Quickstart SDK
-</div>
+# Quickstart SDK {#sdk-quickstart}
 
 > Instal dan gunakan SDK Python dan JavaScript dari Exa
 
-SDK resmi Exa. Cari di web, ambil page contents, dan dapatkan jawaban lengkap dengan citations.
+SDK resmi Exa. Cari di web, ambil page contents, dan dapatkan jawaban lengkap dengan sitasi.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru langsung mendapat credits gratis.
 </Card>
 
-<div id="install">
-  ## Instalasi
-</div>
+## Instal {#install}
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -41,11 +35,9 @@ SDK resmi Exa. Cari di web, ambil page contents, dan dapatkan jawaban lengkap de
 
 SDK Python memerlukan Python 3.9+.
 
-<div id="authentication">
-  ## Autentikasi
-</div>
+## Autentikasi {#authentication}
 
-Atur API key Anda sebagai variabel lingkungan:
+Setel API key Anda sebagai variabel lingkungan:
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -61,11 +53,9 @@ Atur API key Anda sebagai variabel lingkungan:
   </Tab>
 </Tabs>
 
-<div id="getting-started">
-  ## Memulai
-</div>
+## Memulai {#getting-started}
 
-Inisialisasi klien dan jalankan search pertama Anda:
+Inisialisasi client dan jalankan search pertama Anda:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -102,41 +92,37 @@ Inisialisasi klien dan jalankan search pertama Anda:
 </CodeGroup>
 
 <Note>
-  Kedua klien membaca key Anda dari variabel lingkungan `EXA_API_KEY`. Jika ingin menetapkannya secara eksplisit,
+  Kedua client membaca key Anda dari variabel lingkungan `EXA_API_KEY`. Jika ingin menetapkannya secara eksplisit,
   berikan langsung secara inline: `Exa(api_key="your-api-key")` atau `new Exa("your-api-key")`.
 </Note>
 
-<div id="recommended-defaults">
-  ## Default yang direkomendasikan
-</div>
+## Default yang direkomendasikan {#recommended-defaults}
 
 | Keputusan                | Default yang direkomendasikan                                                      |
 | ------------------------ | ---------------------------------------------------------------------------------- |
 | Titik awal               | Gunakan `search`                                                                   |
-| Search type              | Pertahankan `auto` kecuali kebutuhan latensi atau synthesis mengharuskan tipe lain |
+| Search type              | Pertahankan `auto` kecuali kebutuhan latency atau synthesis mengharuskan tipe lain |
 | Page content             | Mulai dengan `highlights: true`                                                    |
 | URL yang sudah diketahui | Gunakan `get_contents` / `getContents`                                             |
-| Freshness                | Atur `max_age_hours` / `maxAgeHours` hanya jika konten usang tidak dapat dipakai   |
+| Kebaruan                 | Atur `max_age_hours` / `maxAgeHours` hanya jika konten usang tidak dapat digunakan |
 
 <Warning>
   Kedua tipe permintaan menerima content options yang sama, tetapi di tempat yang berbeda:
 
-  | Metode                         | Penempatan content option                                                       |
-  | ------------------------------ | ------------------------------------------------------------------------------- |
-  | `search`                       | Di dalam `contents`, seperti `exa.search(query, contents={"highlights": True})` |
-  | `get_contents` / `getContents` | Langsung pada permintaan, seperti `exa.get_contents(urls, highlights=True)`     |
+  | Metode                         | Penempatan content option                                                            |
+  | ------------------------------ | ------------------------------------------------------------------------------------ |
+  | `search`                       | Di dalam `contents`, seperti pada `exa.search(query, contents={"highlights": True})` |
+  | `get_contents` / `getContents` | Langsung pada permintaan, seperti pada `exa.get_contents(urls, highlights=True)`     |
 </Warning>
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
-Search menemukan halaman yang relevan dan mengembalikan contents-nya dalam satu call.
+Search menemukan halaman yang relevan dan mengembalikan contents-nya dalam satu panggilan.
 
 <Tip>
-  Gunakan `highlights: true` untuk jawaban AI, RAG, dan pratinjau hasil pencarian. Exa menyesuaikan
-  panjang excerpt setiap hasil dengan tingkat relevansinya; atur `max_characters` / `maxCharacters`
-  hanya jika aplikasi Anda memerlukan limit tetap.
+  Gunakan `highlights: true` untuk jawaban AI, RAG, dan pratinjau pencarian. Exa menyesuaikan
+  panjang kutipan setiap hasil dengan relevance-nya; atur `max_characters` / `maxCharacters` hanya jika aplikasi Anda
+  memerlukan batas tetap.
 </Tip>
 
 Filter, rentang tanggal, dan jumlah hasil:
@@ -164,9 +150,7 @@ Filter, rentang tanggal, dan jumlah hasil:
   ```
 </CodeGroup>
 
-<div id="output-schema">
-  ### Output schema
-</div>
+### Output schema {#output-schema}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -212,20 +196,18 @@ Filter, rentang tanggal, dan jumlah hasil:
 </CodeGroup>
 
 <Note>
-  `output_schema` / `outputSchema` dapat digunakan dengan semua search type dan mengembalikan nilai hasil synthesis
-  di `output.content`. Gunakan `system_prompt` / `systemPrompt` untuk menentukan preferensi sumber atau penekanan.
-  Grounding dikembalikan secara otomatis di `output.grounding`, jadi jangan menduplikasi citations atau
+  `output_schema` / `outputSchema` berfungsi pada semua search type dan mengembalikan nilai hasil synthesis
+  di `output.content`. Gunakan `system_prompt` / `systemPrompt` untuk source preferences atau penekanan tertentu.
+  Grounding dikembalikan secara otomatis di `output.grounding`, jadi jangan menduplikasi sitasi atau
   confidence di dalam schema Anda.
 </Note>
 
-Mode deep disarankan bila output memerlukan riset dari beberapa searches. Gunakan `deep-lite` untuk riset ringan atau `deep` untuk search multi-langkah dengan synthesis yang lebih kuat. Lihat [panduan Search](/id/docs/search/quickstart) untuk opsi permintaan selengkapnya.
+Mode deep disarankan bila output memerlukan Research lintas beberapa searches. Gunakan `deep-lite` untuk Research ringan atau `deep` untuk search multi-langkah dengan synthesis yang lebih kuat. Lihat [panduan Search](/id/docs/search/quickstart) untuk opsi permintaan selengkapnya.
 
-<div id="contents">
-  ## Contents
-</div>
+## Contents {#contents}
 
-Ekstrak highlights, teks lengkap, atau summaries dari URL yang sudah Anda ketahui. Mulailah dengan highlights, lalu
-tambahkan query untuk memfokuskannya pada informasi yang Anda butuhkan.
+Ekstrak kutipan, teks penuh, atau ringkasan dari URL yang sudah Anda ketahui. Mulailah dengan kutipan, lalu
+tambahkan query untuk mengarahkannya ke informasi yang Anda butuhkan.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -244,13 +226,11 @@ tambahkan query untuk memfokuskannya pada informasi yang Anda butuhkan.
   ```
 </CodeGroup>
 
-Gunakan teks lengkap jika Anda memerlukan konteks yang lebih luas atau struktur dokumen. Lihat [panduan Contents](/id/docs/contents/quickstart) untuk bentuk output, kontrol freshness, dan perayapan subhalaman.
+Gunakan teks penuh saat Anda memerlukan konteks yang lebih luas atau struktur dokumen. Lihat [panduan Contents](/id/docs/contents/quickstart) untuk bentuk output, kontrol kebaruan, dan penjelajahan subhalaman.
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
-Dapatkan jawaban atas pertanyaan lengkap dengan citations.
+Dapatkan jawaban atas pertanyaan lengkap dengan sitasi.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -273,9 +253,7 @@ Dapatkan jawaban atas pertanyaan lengkap dengan citations.
   ```
 </CodeGroup>
 
-<div id="async-and-types">
-  ## Async dan tipe
-</div>
+## Async dan tipe {#async-and-types}
 
 Python menyediakan `AsyncExa` untuk operasi async, dan SDK JavaScript menyertakan tipe TypeScript untuk
 setiap metode.
@@ -298,26 +276,22 @@ setiap metode.
   ```
 </CodeGroup>
 
-<div id="resources">
-  ## Sumber Daya
-</div>
+## Sumber Daya {#resources}
 
 Python: [kode sumber exa-py](https://github.com/exa-labs/exa-py) dan [package PyPI](https://pypi.org/project/exa-py/). JavaScript: [kode sumber exa-js](https://github.com/exa-labs/exa-js) dan [package npm](https://www.npmjs.com/package/exa-js).
 
-<div id="continue">
-  ## Lanjutkan
-</div>
+## Lanjutkan {#continue}
 
 <Columns cols={3}>
   <Card title="Panduan Search" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">
-    Kembali ke panduan Search utama untuk mempelajari pola permintaan, filter, dan mode deep.
+    Kembali ke panduan Search utama untuk mempelajari pola permintaan, filter, dan mode yang lebih mendalam.
   </Card>
 
   <Card title="Referensi Search" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
-    Langsung ke schema permintaan dan respons `/search` selengkapnya.
+    Langsung lihat schema permintaan dan response `/search` selengkapnya.
   </Card>
 
   <Card title="Panduan Contents" icon="file-text" href="/id/docs/contents/quickstart" cta="Buka panduan" arrow="true">
-    Gunakan Contents jika Anda sudah mengetahui URL-nya dan ingin melakukan extraction secara langsung.
+    Gunakan Contents jika Anda sudah mengetahui URL dan ingin melakukan extraction secara langsung.
   </Card>
 </Columns>

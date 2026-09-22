@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="status-page">
-  # Status Page
-</div>
+# Page de statut {#status-page}
 
-> Disponibilité en temps réel, incidents en cours et historique de disponibilité des services Exa.
+> Disponibilité en temps réel, incidents en cours et historique d&#39;uptime des services Exa.
 
 export const ExaStatus = () => {
   const [data, setData] = useState(null);
@@ -169,28 +165,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa publie la disponibilité de ses services sur [status.exa.ai](https://status.exa.ai) : l&#39;état actuel de la Search API, de Websets et d&#39;Exa MCP, les incidents en cours ainsi que leurs mises à jour au fil de l&#39;eau, et 90 jours d&#39;historique de disponibilité.
+Exa publie la disponibilité de ses services sur [status.exa.ai](https://status.exa.ai) : le statut actuel de la Search API, de Websets et d&#39;Exa MCP, les incidents en cours et leurs mises à jour au fil de l&#39;eau, ainsi que 90 jours d&#39;historique d&#39;uptime.
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## S&#39;abonner aux mises à jour
-</div>
+## S&#39;abonner aux mises à jour {#subscribe-to-updates}
 
-Abonnez-vous sur la status page pour être averti de l&#39;ouverture, de la mise à jour ou de la résolution d&#39;un incident. Les notifications sont envoyées par e-mail, Slack, Google Chat ou webhook.
+Abonnez-vous sur la page de statut pour être averti à l&#39;ouverture, à la mise à jour ou à la résolution d&#39;un incident. Les notifications sont envoyées par e-mail, Slack, Google Chat ou webhook.
 
-<div id="get-help">
-  ## Obtenir de l&#39;aide
-</div>
+## Obtenir de l&#39;aide {#get-help}
 
-Si les requêtes continuent d&#39;échouer alors que tous les systèmes sont signalés comme opérationnels, la cause se situe probablement au niveau de la requête — consultez d&#39;abord les [Error codes](/fr/docs/admin/error-codes).
+Si les requests continuent d&#39;échouer alors que tous les systèmes sont signalés comme opérationnels, la cause se situe probablement au niveau de la requête : consultez d&#39;abord les [codes d&#39;erreur](/fr/docs/admin/error-codes).
 
 <Columns cols={2}>
-  <Card title="Support par e-mail" icon="mail" href="mailto:hello@exa.ai" cta="Contacter le support" arrow="true">
-    Transmettez le statut de la réponse, l&#39;error body et le `requestId` pour un diagnostic aussi rapide que possible.
+  <Card title="Assistance par e-mail" icon="mail" href="mailto:hello@exa.ai" cta="Contacter l'assistance" arrow="true">
+    Transmettez le statut de la réponse, le corps de l&#39;erreur et le `requestId` pour un diagnostic plus rapide.
   </Card>
 
-  <Card title="Support Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Contacter le service commercial" arrow="true">
-    Des SLA d&#39;uptime et de support sont proposés avec les offres Enterprise.
+  <Card title="Assistance Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Contacter le service commercial" arrow="true">
+    Des SLA d&#39;uptime et d&#39;assistance sont proposés avec les plans Enterprise.
   </Card>
 </Columns>

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="cancel-a-batch">
-  # Annuler un batch
-</div>
+# Annuler un batch {#cancel-a-batch}
 
 > Annuler un batch en cours.
 
-Le batch cesse de planifier de nouvelles requests et achève le travail déjà lancé avant de passer à l&#39;état `cancelled`. Annuler un batch déjà à l&#39;état `cancelling` ou `cancelled` le renvoie inchangé ; un batch `completed` ou `expired` ne peut pas être annulé.
+Le batch cesse de planifier de nouvelles requêtes et termine les traitements en cours avant de passer à l&#39;état `cancelled`. Annuler un batch déjà `cancelling` ou `cancelled` le renvoie inchangé ; un batch `completed` ou `expired` ne peut pas être annulé.
 
-<Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches/{id}/cancel
 openapi: 3.1.0

@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="exa-in-codex-and-chatgpt">
-  # Exa en Codex y ChatGPT
-</div>
+# Exa en Codex y ChatGPT {#exa-in-codex-and-chatgpt}
 
 > Busca en la web, lee cualquier página e investiga con Exa directamente desde Codex y ChatGPT.
 
-Instala el plugin de Exa una sola vez para dar a Codex y ChatGPT acceso a la web en tiempo real mediante Exa. Busca información actualizada, consulta las fuentes que importan y realiza investigaciones más profundas sin salir de tu conversación ni de tu sesión de programación.
+Instala el plugin de Exa una sola vez para darle a Codex y ChatGPT acceso a la web en tiempo real a través de Exa. Busca información actualizada, lee las fuentes que importan y realiza investigaciones más profundas sin salir de tu conversación ni de tu sesión de programación.
 
-<div id="install-exa">
-  ## Instalar Exa
-</div>
+## Instalar Exa {#install-exa}
 
 <Steps>
   <Step title="Abre el plugin">
@@ -31,37 +25,33 @@ Instala el plugin de Exa una sola vez para dar a Codex y ChatGPT acceso a la web
   </Step>
 
   <Step title="Inicia una nueva sesión">
-    Las skills se cargan en los chats y las sesiones de CLI que inicies después de la instalación, así que abre una nueva y pide algo que requiera la web.
+    Las skills se cargan en los chats y sesiones de CLI que inicies después de la instalación, así que abre una nueva y pide algo que requiera la web.
   </Step>
 </Steps>
 
-Eso es todo. El plugin incluye tanto la integración MCP de Exa como las skills, así que no hace falta configurar MCP ni las skills por separado.
+Eso es todo. El plugin incluye tanto la integración MCP de Exa como las skills, así que no hace falta configurar MCP ni skills por separado.
 
-<div id="build-with-whats-on-the-web-right-now">
-  ## Desarrolla con lo que hay en la web ahora mismo
-</div>
+## Desarrolla con lo que hay en la web ahora mismo {#build-with-whats-on-the-web-right-now}
 
-Las bibliotecas, APIs y herramientas con las que desarrollas cambian a diario. Con Exa instalado, Codex puede buscar la documentación, issues, changelogs y ejemplos reales más recientes mientras trabaja.
+Las bibliotecas, APIs y herramientas con las que desarrollas cambian a diario. Con Exa instalado, Codex puede buscar la documentación, las incidencias, los registros de cambios y los ejemplos reales más recientes mientras trabaja.
 
-Desde tu propio repositorio:
+Desde tu propio repo:
 
 ```text theme={null}
 Estamos en Tailwind v3. Busca la guía de actualización a Tailwind v4, léela
-y luego migra este proyecto a la v4.
+y luego migra este proyecto a v4.
 ```
 
 Codex puede buscar con Exa, leer las fuentes relevantes y usar lo que encuentre para hacer el cambio en tu base de código.
 
 Lo mismo aplica siempre que la respuesta pueda estar en algún lugar fuera de tu repositorio:
 
-* «Busca este error en los issues y el changelog de `tokio-tungstenite` antes de intentar corregirlo.»
-* «Encuentra ejemplos reales de advisory locks de Postgres en Rust y recomienda el patrón que mejor encaje con este worker pool.»
+* «Busca este error en las incidencias y el registro de cambios de `tokio-tungstenite` antes de intentar corregirlo.»
+* «Encuentra ejemplos reales de advisory locks de Postgres en Rust y recomienda el patrón que mejor encaje con este pool de workers.»
 * «Lee la documentación actual de webhooks de Stripe y contrasta nuestra implementación con ella.»
 * «Busca la guía de migración más reciente de esta dependencia y luego actualízala.»
 
-<div id="search-read-and-research">
-  ## Buscar, leer e investigar
-</div>
+## Buscar, leer e investigar {#search-read-and-research}
 
 El plugin de Exa ofrece a Codex y ChatGPT tres formas de trabajar con la web.
 
@@ -71,7 +61,7 @@ El plugin de Exa ofrece a Codex y ChatGPT tres formas de trabajar con la web.
   </Card>
 
   <Card title="Leer" icon="file-text">
-    Lee la página que le indiques, ya sea documentación, un changelog, una incidencia o una entrada de blog.
+    Lee la página que le indiques, ya sea documentación, un registro de cambios, una incidencia o una entrada de blog.
   </Card>
 
   <Card title="Investigar" icon="compass">
@@ -79,38 +69,32 @@ El plugin de Exa ofrece a Codex y ChatGPT tres formas de trabajar con la web.
   </Card>
 </Columns>
 
-<div id="research-without-leaving-chatgpt">
-  ## Investiga sin salir de ChatGPT
-</div>
+## Investigación sin salir de ChatGPT {#research-without-leaving-chatgpt}
 
-Exa también funciona en ChatGPT. Haz una pregunta que requiera información actualizada y usa Exa para buscar e investigar en la web desde la misma conversación.
+Exa también funciona en ChatGPT. Haz una pregunta que requiera información actualizada y usa Exa para buscar e investigar en la web desde la propia conversación.
 
 ```text theme={null}
 Compara las ofertas gestionadas, las licencias y los precios de las principales
 bases de datos vectoriales de código abierto. Usa fuentes primarias actuales y cítalas.
 ```
 
-En lugar de depender únicamente de la información que ya está en el contexto, ChatGPT puede usar Exa para encontrar y leer las fuentes que la tarea requiera.
+En lugar de depender únicamente de la información que ya tiene en el contexto, ChatGPT puede usar Exa para encontrar y leer las fuentes que la tarea requiere.
 
-Úsalo para análisis de la competencia, investigación técnica, mapeo de mercados, investigación de empresas o cualquier otro caso en el que la respuesta esté repartida por la web.
+Úsalo para investigación de la competencia, investigación técnica, mapeo de mercados, investigación de empresas o cualquier otro caso en el que la respuesta esté repartida por la web.
 
-<div id="mcp-skills-together">
-  ## MCP + skills, juntos
-</div>
+## MCP + skills, juntos {#mcp-skills-together}
 
 Internamente, el plugin combina dos partes del stack de agentes de Exa.
 
-[Exa MCP](/es/docs/get-started/exa-mcp) ofrece a Codex y ChatGPT herramientas para acceder a Exa. Es el nexo entre el agent y las capacidades de search e investigación de Exa.
+[Exa MCP](/es/docs/get-started/exa-mcp) ofrece a Codex y ChatGPT herramientas para acceder a Exa. Es la conexión entre el agente y las capacidades de búsqueda e investigación de Exa.
 
-Las [Exa skills](/es/docs/get-started/agent-skills/overview) aportan al agent instrucciones adicionales para aprovechar esas capacidades en flujos de trabajo útiles, como la investigación web y [Exa Agent](/es/docs/agent/quickstart).
+Las [skills de Exa](/es/docs/get-started/agent-skills/overview) dan al agente instrucciones adicionales para aprovechar esas capacidades en flujos de trabajo útiles, como la investigación web y [Exa Agent](/es/docs/agent/quickstart).
 
-No hace falta configurar ninguno de los dos por separado al instalar el plugin.
+No hace falta que configures ninguno de los dos por separado al instalar el plugin.
 
-<div id="prefer-mcp-directly">
-  ## ¿Prefieres usar MCP directamente?
-</div>
+## ¿Prefieres usar MCP directamente? {#prefer-mcp-directly}
 
-El plugin es la forma recomendada de usar Exa con Codex y ChatGPT. Si estás configurando Codex manualmente o usas otro cliente MCP, puedes conectarte directamente al servidor MCP alojado de Exa:
+El plugin es la forma recomendada de usar Exa con Codex y ChatGPT. Si configuras Codex manualmente o usas otro MCP client, puedes conectarte directamente al MCP server alojado de Exa:
 
 ```bash theme={null}
 codex mcp add exa --url https://mcp.exa.ai/mcp
@@ -118,6 +102,6 @@ codex mcp add exa --url https://mcp.exa.ai/mcp
 
 Consulta [Exa MCP](/es/docs/get-started/exa-mcp) para conocer otros clientes, opciones de configuración y herramientas disponibles.
 
-<Card title="Instala Exa para ChatGPT y Codex" icon="download" horizontal href="https://chatgpt.com/plugins/exa?open_in_app">
+<Card title="Instalar Exa para ChatGPT y Codex" icon="download" horizontal href="https://chatgpt.com/plugins/exa?open_in_app">
   Añade el plugin de Exa desde el marketplace de ChatGPT.
 </Card>

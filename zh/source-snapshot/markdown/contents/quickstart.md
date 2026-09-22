@@ -1,28 +1,22 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="contents-api">
-  # Contents API
-</div>
+# Contents API {#contents-api}
 
-> 从任意 URL 中提取文本、highlights 和摘要。
+> 从任意 URL 提取文本、highlights 和摘要。
 
-Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript 渲染页面、PDF 和复杂版式。
+Exa Contents 从 URL 返回干净的页面内容，并自动处理 JavaScript 渲染页面、PDF 和复杂排版。
 
-所有 contents 功能同样适用于 [Exa Search](/zh/docs/search/quickstart) 返回的 URL，每次搜索前 10 条结果不额外收费 (超出部分为 $1/1000 页) 。对于网页搜索类工具场景，我们建议以这种方式使用 Search，而非 Contents。
+所有页面内容功能同样适用于 [Exa Search](/zh/docs/search/quickstart) 返回的 URL，每次搜索前 10 条结果不额外收费 (超出部分为 $1/1000 页) 。在网页搜索工具类场景中，我们建议以这种方式使用 Search，而不是 Contents。
 
 <Tip>
-  若要将搜索结果用作 AI 上下文，请在 `/search` 中请求 `contents: { highlights: true }` ——
-  Exa 会根据每条结果的相关性调整其摘录长度。参见 [Highlights](/zh/docs/search/highlights)。
+  若搜索结果用于为 AI 提供上下文，请在 `/search` 请求中加上 `contents: { highlights: true }`，
+  Exa 会根据每条结果的相关度确定其摘录长度。参见 [Highlights](/zh/docs/search/highlights)。
 </Tip>
 
-<div id="make-your-first-request">
-  ## 发起首次请求
-</div>
+## 发起首个请求 {#make-your-first-request}
 
 传入一个或多个 URL 或文档 ID，并针对与任务相关的部分请求 highlights。在 HTTP 请求中，通过 `ids` 传入：
 
@@ -70,7 +64,7 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
   ```
 </CodeGroup>
 
-<Accordion title="示例响应">
+<Accordion title="响应示例">
   ```json theme={null}
   {
     "requestId": "e492118ccdedcba5088bfc4357a8a125",
@@ -98,7 +92,7 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
   ```
 </Accordion>
 
-`results` 中的每一项都包含页面元数据以及你请求的内容视图。每个 URL 的成功或失败情况可在 `statuses` 中查看。
+`results` 中的每一项都包含页面元数据以及你所请求的内容视图。可通过 `statuses` 查看每个 URL 的成功或失败情况。
 
 <h2 id="dynamic-highlights">
   输出形态
@@ -106,9 +100,9 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
 
 <Tabs>
   <Tab title="Highlights">
-    Highlights 返回从页面中摘取的相关段落。用于 agent、RAG 和事实查证时建议优先选它，因为 highlights 占用的上下文比全文更少。
+    highlights 返回从页面中摘取的相关段落。agent、RAG 和事实查询场景建议优先使用它，因为 highlights 占用的上下文比 full text 更少。
 
-    设置 `highlights: true` 即可启用 highlights。使用 Contents 时，建议额外传入 `query` 参数，让内容提取更聚焦：
+    设置 `highlights: true` 即可启用 highlights。使用 Contents 时，建议额外传入 `query` 参数，让页面内容的提取更有针对性：
 
     <CodeGroup>
       ```python Python theme={null}
@@ -142,13 +136,13 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
       ```
     </CodeGroup>
 
-    动态 highlights 以及如何在多个页面之间分配上下文，请参见 [Highlights](/zh/docs/search/highlights)。
+    有关 Dynamic Highlights 以及如何在多个页面之间分配上下文，请参阅 [Highlights](/zh/docs/search/highlights)。
   </Tab>
 
-  <Tab title="全文">
-    全文以 markdown 形式返回整洁的页面正文。当任务依赖完整上下文、文档结构，或 highlights 可能遗漏的细节时，请使用全文。
+  <Tab title="Full text">
+    full text 以 markdown 形式返回干净的页面正文。如果任务依赖大范围上下文、文档结构，或 highlights 可能遗漏的细节，就使用它。
 
-    完整页面可能很大，需要限制长度时请使用 `maxCharacters`：
+    完整页面可能很大，需要限制长度时可使用 `maxCharacters`：
 
     <CodeGroup>
       ```python Python theme={null}
@@ -183,8 +177,8 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
     </CodeGroup>
   </Tab>
 
-  <Tab title="摘要">
-    summary 会为每个页面发起一次语言模型调用。当你需要模型生成的概览，或需要按 JSON schema 提取字段时，请使用它。
+  <Tab title="Summary">
+    summary 会为每个页面发起一次语言模型调用。当你需要模型生成的概览，或需要按 JSON schema 提取字段时，就使用它。
 
     <CodeGroup>
       ```python Python theme={null}
@@ -218,7 +212,7 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
       ```
     </CodeGroup>
 
-    如果想提取字段而不是成段文字，可在 `summary.schema` 中传入 JSON schema。summary 会以符合该 schema 的 JSON 字符串返回，解析后即可读取各字段：
+    若要提取字段而非成段文字，请在 `summary.schema` 中传入一个 JSON schema。summary 将以符合该 schema 的 JSON 字符串返回，解析后即可读取各字段：
 
     ```json theme={null}
     {
@@ -241,39 +235,35 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
   </Tab>
 </Tabs>
 
-每次请求只选用一种内容视图。若同时请求 highlights、text 和 summary，将分别返回每种视图并分别计费。
+每个请求只选用一种内容视图。若同时请求 highlights、text 和 summary，三者将分别返回并分别计费。
 
-<div id="content-freshness">
-  ## 内容新鲜度
-</div>
+## 内容新鲜度 {#content-freshness}
 
 `maxAgeHours` 用于控制提取的页面内容需要多新。
 
-| 值    | 行为                          |
-| ---- | --------------------------- |
-| 省略   | 有缓存内容时使用缓存，需要时再抓取页面         |
-| 正整数  | 若缓存内容的时间在该小时数以内则使用缓存，否则抓取页面 |
-| `0`  | 始终抓取最新内容                    |
-| `-1` | 仅使用缓存内容                     |
+| 值    | 行为                         |
+| ---- | -------------------------- |
+| 省略   | 有缓存内容时使用缓存，需要时抓取页面         |
+| 正整数  | 如果缓存内容在指定小时数以内则使用缓存，否则抓取页面 |
+| `0`  | 始终抓取最新内容                   |
+| `-1` | 仅使用缓存内容                    |
 
-大多数请求都应省略该字段。只有当陈旧的页面内容会导致结果不可用时才设置它，例如价格、库存情况或更新频繁的页面。可将较小的 `maxAgeHours` 与 `livecrawlTimeout` (毫秒) 搭配使用，以限制实时抓取的最长耗时。
+大多数请求应省略该 field。只有当过时的页面内容无法使用时才设置它，例如价格、库存或频繁更新的页面。可将较低的 `maxAgeHours` 与 `livecrawlTimeout` (毫秒) 搭配使用，以限制实时抓取的最长耗时。
 
 <Accordion title="从已弃用的 livecrawl 参数迁移">
-  字符串参数 `livecrawl` (`"always"`、`"preferred"`、`"fallback"`、`"never"`) 已弃用，请改用 `maxAgeHours`：
+  `livecrawl` 字符串参数 (`"always"`、`"preferred"`、`"fallback"`、`"never"`) 已弃用，请改用 `maxAgeHours`：
 
-  | 旧的 `livecrawl` 值 | 等价写法                                |
-  | ---------------- | ----------------------------------- |
-  | `"always"`       | `maxAgeHours: 0`                    |
-  | `"never"`        | `maxAgeHours: -1`                   |
-  | `"fallback"`     | 省略 `maxAgeHours`                    |
-  | `"preferred"`    | 无直接等价写法；请使用较小的值，例如 `maxAgeHours: 1` |
+  | 旧 `livecrawl` 值 | 等效写法                                |
+  | --------------- | ----------------------------------- |
+  | `"always"`      | `maxAgeHours: 0`                    |
+  | `"never"`       | `maxAgeHours: -1`                   |
+  | `"fallback"`    | 省略 `maxAgeHours`                    |
+  | `"preferred"`   | 无直接等效写法；请使用较小的值，例如 `maxAgeHours: 1` |
 </Accordion>
 
-<div id="crawl-subpages">
-  ## 抓取子页面
-</div>
+## 抓取子页面 {#crawl-subpages}
 
-设置 `subpages` 可从每个起始 URL 顺着链接继续抓取。若希望 Exa 优先抓取特定的站点板块，可加上 `subpageTarget`：
+设置 `subpages` 即可沿着每个起始 URL 中的链接继续抓取。若希望 Exa 优先抓取特定的站点板块，可添加 `subpageTarget`：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -309,19 +299,17 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
   ```
 </CodeGroup>
 
-<div id="images-and-favicons">
-  ## 图片与站点图标
-</div>
+## 图片与网站图标 {#images-and-favicons}
 
-将 `extras.imageLinks` 设置为你希望从每个页面获取的图片 URL 数量。结果中还会包含站点的 `favicon`，以及一个具有代表性的 `image` URL (如果有) 。在 `/search` 中，该选项位于 `contents.extras.imageLinks`。
+将 `extras.imageLinks` 设置为你希望从每个页面获取的图片 URL 数量。结果中还会包含
+站点的 `favicon`，以及一个具有代表性的 `image` URL (如果有) 。在 `/search` 中，该选项
+位于 `contents.extras.imageLinks`。
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 后续步骤 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="API 参考" icon="square-terminal" href="/zh/docs/reference/get-contents" cta="打开参考文档" arrow="true">
-    查看全部请求参数与响应字段。
+  <Card title="API 参考" icon="square-terminal" href="/zh/docs/reference/get-contents" cta="打开参考" arrow="true">
+    查看全部请求参数和响应 field。
   </Card>
 
   <Card title="Highlights" icon="highlighter" href="/zh/docs/search/highlights" cta="阅读指南" arrow="true">
@@ -329,10 +317,10 @@ Exa Contents 可从 URL 返回干净的页面内容，并自动处理 JavaScript
   </Card>
 
   <Card title="Search API" icon="search" href="/zh/docs/search/quickstart" cta="打开指南" arrow="true">
-    先找到相关页面，再提取其内容。
+    先找到相关页面，再提取其页面内容。
   </Card>
 
-  <Card title="SDK" icon="code" href="/zh/docs/sdks/quickstart" cta="查看 SDK" arrow="true">
-    在 Python 或 JavaScript 中使用 Exa。
+  <Card title="SDKs" icon="code" href="/zh/docs/sdks/quickstart" cta="查看 SDK" arrow="true">
+    通过 Python 或 JavaScript 使用 Exa。
   </Card>
 </Columns>

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="get-a-monitor">
-  # Mendapatkan monitor
-</div>
+# Mendapatkan monitor {#get-a-monitor}
 
 > Mengambil satu monitor berdasarkan ID-nya.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0
@@ -31,20 +25,20 @@ paths:
     get:
       tags:
         - Monitors
-      summary: Mendapatkan monitor
-      description: Mengambil satu monitor berdasarkan ID-nya.
+      summary: Get a monitor
+      description: Retrieves a single monitor by its ID.
       operationId: getMonitor
       parameters:
         - in: path
           name: id
           schema:
             type: string
-            description: ID monitor
+            description: The monitor ID
           required: true
-          description: ID monitor
+          description: The monitor ID
       responses:
         '200':
-          description: Monitor tersebut
+          description: The monitor
           headers:
             x-request-id:
               $ref: '#/components/headers/XRequestId'
@@ -64,8 +58,8 @@ components:
   headers:
     XRequestId:
       description: >-
-        Pengidentifikasi unik untuk permintaan ini. Sama dengan kolom
-        `requestId` yang dikembalikan pada body respons yang memuatnya.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -75,12 +69,12 @@ components:
       properties:
         id:
           type: string
-          description: Pengidentifikasi unik untuk monitor
+          description: The unique identifier for the monitor
         name:
           anyOf:
             - type: string
             - type: 'null'
-          description: Nama tampilan opsional
+          description: An optional display name
         status:
           type: string
           enum:
@@ -88,10 +82,10 @@ components:
             - paused
             - disabled
           description: >-
-            Status monitor. Monitor `active` berjalan sesuai jadwal dan dapat
-            dipicu secara manual. Monitor `paused` hanya dapat dipicu secara
-            manual. Monitor `disabled` dinonaktifkan otomatis setelah 10
-            kegagalan autentikasi berturut-turut.
+            The status of the monitor. `active` monitors run on schedule and can
+            be triggered manually. `paused` monitors can only be triggered
+            manually. `disabled` monitors are auto-disabled after 10 consecutive
+            authentication failures.
         search:
           $ref: '#/components/schemas/SearchMonitorSearchOutput'
         trigger:
@@ -99,8 +93,8 @@ components:
             - $ref: '#/components/schemas/SearchMonitorTriggerOutput'
             - type: 'null'
           description: >-
-            Jadwal berbasis interval untuk run otomatis. Null jika tidak ada
-            jadwal yang diatur.
+            The interval-based schedule for automatic runs. Null if no schedule
+            is set.
         outputSchema:
           $ref: '#/components/schemas/SearchMonitorOutputSchemaOutput'
         metadata:
@@ -110,16 +104,15 @@ components:
                 type: string
               additionalProperties:
                 type: string
-              description: Metadata pasangan kunci-nilai dari pemanggil untuk pelacakan Anda sendiri.
+              description: Caller-provided key-value metadata for your own tracking.
               example:
                 slack_channel_id: C123ABC
                 slack_thread_id: '1745444400.123456'
                 user_id: U123ABC
             - type: 'null'
           description: >-
-            Metadata pasangan kunci-nilai opsional untuk pelacakan Anda sendiri.
-            Dikirim kembali dalam pengiriman webhook sehingga Anda dapat
-            mengarahkan pembaruan ke sistem seperti Slack.
+            Optional key-value metadata for your own tracking. Echoed back in
+            webhook deliveries so you can route updates to systems like Slack.
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -131,16 +124,16 @@ components:
             - type: string
               format: date-time
             - type: 'null'
-          description: Kapan run terjadwal berikutnya akan berlangsung. Null jika tidak ada pemicu yang diatur.
+          description: When the next scheduled run will occur. Null if no trigger is set.
           format: date-time
         createdAt:
           type: string
           format: date-time
-          description: Kapan monitor dibuat
+          description: When the monitor was created
         updatedAt:
           type: string
           format: date-time
-          description: Kapan monitor terakhir diperbarui
+          description: When the monitor was last updated
       required:
         - id
         - name
@@ -160,25 +153,25 @@ components:
         query:
           type: string
           minLength: 1
-          description: String query untuk search.
+          description: The query string for the search.
           example: Latest developments in LLM capabilities
         numResults:
           type: integer
           minimum: 1
           maximum: 100
           description: >-
-            Jumlah hasil yang dikembalikan. Limit berbeda-beda menurut search
-            type. Limit publik maksimum adalah 100 hasil. Hubungi tim penjualan
-            (hello@exa.ai) untuk membahas limit yang lebih tinggi.
+            Number of results to return. Limits vary by search type. The maximum
+            public limit is 100 results. Contact sales (hello@exa.ai) to discuss
+            higher limits.
           example: 10
           default: 10
         includeDomains:
-          description: Batasi hasil search hanya pada domain-domain ini.
+          description: Restrict search results to these domains.
           type: array
           items:
             type: string
         excludeDomains:
-          description: Kecualikan domain-domain ini dari hasil search.
+          description: Exclude these domains from search results.
           type: array
           items:
             type: string
@@ -193,16 +186,15 @@ components:
         type:
           type: string
           const: interval
-          description: Jenis pemicu. Saat ini hanya `interval` yang didukung.
+          description: The type of trigger. Currently only `interval` is supported.
           default: interval
         period:
           type: string
           description: >-
-            String durasi yang menentukan seberapa sering monitor berjalan
-            (mis. "1h", "6h", "1d", "7d"). Hanya satu satuan. Interval minimum
-            adalah 1 jam. Jadwal mengacu pada waktu pembuatan monitor (mis.
-            monitor harian yang dibuat pukul 14.30 berjalan setiap hari sekitar
-            pukul 14.30).
+            A duration string specifying how often the monitor runs (e.g., "1h",
+            "6h", "1d", "7d"). Single-unit only. Minimum interval is 1 hour. The
+            schedule is anchored to the monitor's creation time (e.g., a daily
+            monitor created at 2:30 PM runs daily around 2:30 PM).
           example: 6h
       required:
         - type
@@ -214,11 +206,11 @@ components:
             - $ref: '#/components/schemas/OutputSchemaTextOutput'
             - $ref: '#/components/schemas/OutputSchemaObject'
           description: >-
-            JSON schema untuk output hasil synthesis. Tipe root yang didukung
-            adalah "text" dan "object". Jika diberikan, respons menyertakan
-            objek output yang isinya sesuai dengan schema ini. Berfungsi dengan
-            setiap search type dan menambah sekitar 2 detik latensi synthesis
-            di atas search type yang dipilih.
+            JSON schema for synthesized output. Supported root types are "text"
+            and "object". When provided, the response includes an output object
+            whose content matches this schema. Works with every search type and
+            adds about 2 seconds of synthesis latency on top of the selected
+            search type.
           type: object
           discriminator:
             propertyName: type
@@ -229,12 +221,11 @@ components:
                 $ref: '#/components/schemas/OutputSchemaObject'
         - type: 'null'
       description: >-
-        Mengontrol format output run. Default-nya `{ "type": "text" }` jika
-        tidak ditentukan. Jika `type` bernilai `"text"`, output berupa summary
-        teks biasa. Jika `type` bernilai `"object"`, output berupa JSON
-        terstruktur. Jika tidak ada `properties` yang ditentukan dengan tipe
-        `"object"`, schema akan disimpulkan secara otomatis; jika tidak, output
-        mengikuti schema yang diberikan.
+        Controls the format of the run output. Defaults to `{ "type": "text" }`
+        if not specified. When `type` is `"text"`, the output is a plain text
+        summary. When `type` is `"object"`, the output is structured JSON. If no
+        `properties` are specified with `"object"` type, a schema is inferred
+        automatically; otherwise the output adheres to the provided schema.
     SearchMonitorWebhookOutput:
       type: object
       properties:
@@ -242,8 +233,8 @@ components:
           type: string
           format: uri
           description: >-
-            URL HTTPS untuk menerima event webhook. Tidak boleh mengarah ke
-            localhost atau rentang IP privat.
+            The HTTPS URL to receive webhook events. Must not point to localhost
+            or private IP ranges.
         events:
           type: array
           items:
@@ -255,8 +246,8 @@ components:
               - monitor.run.created
               - monitor.run.completed
           description: >-
-            Event mana yang akan dilanggani. Default-nya semua event jika tidak
-            ditentukan.
+            Which events to subscribe to. Defaults to all events if not
+            specified.
       required:
         - url
       additionalProperties: false
@@ -265,20 +256,19 @@ components:
       properties:
         requestId:
           type: string
-          description: Pengidentifikasi unik untuk permintaan ini.
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Pesan yang mudah dibaca manusia yang menjelaskan error.
+          description: Human-readable message describing the error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            Tag error yang dapat dibaca mesin untuk mengidentifikasi kegagalan.
-            Kumpulan tag bersifat terbuka: tag baru dapat ditambahkan kapan
-            saja, jadi perlakukan tag yang tidak dikenali sebagai error generik
-            sesuai status HTTP respons. Tag yang diketahui dicantumkan sebagai
-            contoh.
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR

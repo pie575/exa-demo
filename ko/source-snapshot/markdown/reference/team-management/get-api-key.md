@@ -1,51 +1,39 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 제공되는 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="get-api-key">
-  # API key 조회
-</div>
+# API 키 조회 {#get-api-key}
 
-> ID로 특정 API key의 상세 정보를 조회합니다.
+> ID로 특정 API 키의 상세 정보를 조회합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
 <Info>
-  Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API key를 사용하며, 이 key는 해당 기능이 team에 활성화된 후 [API keys 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 액세스를 요청하려면 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
+  Team Management API는 team 단위로 활성화됩니다. 이 API는 서비스 계정 API 키로 인증하며, 해당 feature가 team에 활성화되면 [API 키 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 키를 생성할 수 있습니다. 접근 권한 요청은 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-<div id="overview">
-  ## 개요
-</div>
+## 개요 {#overview}
 
-Get API Key endpoint를 사용하면 고유 식별자로 특정 API key의 상세 정보를 조회할 수 있습니다.
+Get API Key 엔드포인트를 사용하면 고유 식별자로 특정 API 키의 상세 정보를 조회할 수 있습니다.
 
-<div id="path-parameters">
-  ## 경로 매개변수
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: 조회할 API key의 고유 식별자
+* **id**: 조회할 API 키의 고유 식별자
 
-<div id="response">
-  ## 응답
-</div>
+## Response {#response}
 
-다음을 포함한 API key 상세 정보를 반환합니다:
+다음을 포함해 API 키의 상세 정보를 반환합니다:
 
 * **id**: 고유 식별자
 * **name**: 설명용 이름
-* **rateLimit**: 분당 요청 수 기준 rate limit(설정된 경우)
-* **teamId**: 이 key가 속한 Team의 ID
-* **createdAt**: key가 생성된 시각
+* **rateLimit**: 분당 요청 수 기준 속도 제한(설정된 경우)
+* **teamId**: 이 키가 속한 team ID
+* **createdAt**: 키가 생성된 시각
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}
 openapi: 3.1.0

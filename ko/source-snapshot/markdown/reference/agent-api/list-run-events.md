@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-run-events">
-  # 실행 이벤트 목록 조회
-</div>
+# 실행 이벤트 목록 조회 {#list-run-events}
 
-> 저장된 Agent 실행 이벤트를 목록으로 조회하거나 server-sent events로 replay합니다.
+> 저장된 Agent 실행 이벤트를 조회하거나 server-sent events로 replay합니다.
 
-기본적으로 이 endpoint는 저장된 이벤트를 페이지네이션된 JSON 목록으로 반환합니다. 저장된 이벤트를 SSE로 replay하려면 `Accept: text/event-stream`을 설정하세요. JSON 페이지네이션에는 `cursor`를, SSE replay에는 `Last-Event-ID`를 사용하세요.
+기본적으로 이 엔드포인트는 저장된 이벤트를 페이지네이션된 JSON 목록으로 반환합니다. 저장된 이벤트를 SSE로 replay하려면 `Accept: text/event-stream`을 설정하세요. JSON 페이지네이션에는 `cursor`를, SSE replay에는 `Last-Event-ID`를 사용하세요.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

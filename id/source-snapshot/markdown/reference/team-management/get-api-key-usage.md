@@ -1,87 +1,69 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="get-api-key-usage">
-  # Get API key usage
-</div>
+# Get API key usage {#get-api-key-usage}
 
-> Ambil analitik usage dan data billing untuk API key tertentu.
+> Ambil analitik penggunaan dan data billing untuk API key tertentu.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru mendapat credits gratis.
+  Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
 <Info>
-  Team Management API diaktifkan per team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+  Team Management API diaktifkan per Team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah feature ini diaktifkan untuk Team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-<div id="overview">
-  ## Ikhtisar
-</div>
+## Ringkasan {#overview}
 
-Endpoint Get API Key Usage memungkinkan Anda mengambil analitik billing dan usage yang terperinci untuk sebuah API key tertentu dalam rentang waktu tertentu. Endpoint ini mengembalikan data cost dari sistem billing Exa, sehingga memberikan gambaran resmi tentang apa saja yang ditagihkan untuk API key tersebut.
+Endpoint Get API Key Usage memungkinkan Anda mengambil analitik billing dan penggunaan secara mendetail untuk API key tertentu dalam rentang periode waktu tertentu. Endpoint ini mengembalikan data biaya dari sistem billing Exa, sehingga memberikan gambaran resmi mengenai apa saja yang ditagihkan kepada Anda untuk API key tersebut.
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: Pengenal unik API key yang data usage-nya ingin diambil
+* **id**: Identifier unik dari API key yang ingin diambil data penggunaannya
 
-<div id="query-parameters">
-  ## Query Parameters
-</div>
+## Query Parameters {#query-parameters}
 
-* **start&#95;date** (opsional): Tanggal mulai periode usage dalam format ISO 8601 (misalnya, `2025-01-01T00:00:00Z` atau `2025-01-01`). Nilai bawaannya adalah 30 hari yang lalu. Harus berada dalam rentang 6 bulan terakhir (180 hari).
-* **end&#95;date** (opsional): Tanggal akhir periode usage dalam format ISO 8601. Nilai bawaannya adalah waktu saat ini.
-* **group&#95;by** (opsional): Granularitas waktu untuk pengelompokan hasil (`hour`, `day`, atau `month`). Saat ini dicadangkan untuk pengembangan di masa mendatang dan tidak mengubah bentuk respons. Nilai bawaannya adalah `day`.
+* **start&#95;date** (opsional): Tanggal mulai usage period dalam format ISO 8601 (misalnya, `2025-01-01T00:00:00Z` atau `2025-01-01`). Default-nya 30 hari yang lalu. Harus berada dalam rentang 6 bulan terakhir (180 hari).
+* **end&#95;date** (opsional): Tanggal akhir usage period dalam format ISO 8601. Default-nya waktu saat ini.
+* **group&#95;by** (opsional): Granularitas waktu untuk mengelompokkan hasil (`hour`, `day`, atau `month`). Saat ini dicadangkan untuk pengembangan di masa mendatang dan tidak mengubah bentuk response. Default-nya `day`.
 
-<div id="response">
-  ## Response
-</div>
+## Response {#response}
 
-Mengembalikan informasi usage dan billing secara terperinci, meliputi:
+Mengembalikan informasi penggunaan dan billing secara terperinci, meliputi:
 
-* **id**: Pengenal unik API key
-* **api&#95;key&#95;id**: Pengenal unik API key
+* **id**: Identifier unik API key
+* **api&#95;key&#95;id**: Identifier unik API key
 * **api&#95;key&#95;name**: Nama deskriptif API key (jika diatur)
 * **team&#95;id**: ID Team pemilik key ini
-* **period**: Objek berisi tanggal mulai dan tanggal akhir periode usage
-* **total&#95;cost&#95;usd**: Total cost dalam USD untuk periode yang ditentukan
-* **cost&#95;breakdown**: Array rincian cost berdasarkan tipe harga, masing-masing berisi:
-  * **price&#95;id**: Pengenal unik harga
+* **period**: Objek berisi tanggal mulai dan berakhir periode penggunaan
+* **total&#95;cost&#95;usd**: Total biaya dalam USD untuk periode yang ditentukan
+* **cost&#95;breakdown**: Array rincian biaya berdasarkan tipe harga, masing-masing berisi:
+  * **price&#95;id**: Identifier unik untuk harga tersebut
   * **price&#95;name**: Nama harga (misalnya, &quot;Neural Search&quot;, &quot;Content Retrieval&quot;)
   * **quantity**: Total kuantitas yang digunakan
-  * **amount&#95;usd**: Cost dalam USD untuk tipe harga ini
+  * **amount&#95;usd**: Biaya dalam USD untuk tipe harga ini
 * **metadata**: Objek berisi timestamp pembuatan laporan
 
-<div id="important-notes">
-  ## Catatan Penting
-</div>
+## Catatan Penting {#important-notes}
 
-* **Batas Lookback 6 Bulan**: Sistem billing memiliki batas lookback 6 bulan (180 hari). Permintaan dengan `start_date` lebih dari 180 hari yang lalu akan mengembalikan error 400.
-* **Usage Nol**: Jika API key tidak memiliki usage pada periode yang diminta, `total_cost_usd` akan bernilai 0 dan `cost_breakdown` bisa jadi kosong.
-* **Kepemilikan Team**: Service API key yang digunakan untuk autentikasi harus berada dalam team yang sama dengan API key yang diminta. Akses lintas team tidak diizinkan.
+* **Batas Penelusuran Mundur 6 Bulan**: Sistem billing memiliki batas penelusuran mundur 6 bulan (180 hari). Permintaan dengan `start_date` yang lebih lama dari 180 hari akan mengembalikan error 400.
+* **Penggunaan Nol**: Jika API key tidak memiliki penggunaan pada periode yang diminta, `total_cost_usd` akan bernilai 0 dan `cost_breakdown` bisa jadi kosong.
+* **Kepemilikan Team**: Service API key yang digunakan untuk autentikasi harus berada di team yang sama dengan API key yang diminta. Akses lintas team tidak diizinkan.
 * **Format Tanggal**: Tanggal dapat diberikan dalam format ISO 8601 dengan atau tanpa komponen waktu (misalnya, `2025-01-01` atau `2025-01-01T00:00:00Z`).
 
-<div id="use-cases">
-  ## Kasus Penggunaan
-</div>
+## Use Cases {#use-cases}
 
 Endpoint ini berguna untuk:
 
-* Membangun billing dashboard pada tingkat API key
-* Memantau usage dan cost untuk API key tertentu
-* Membuat peringatan otomatis berdasarkan ambang batas usage
-* Membuat laporan usage untuk alokasi cost internal
-* Menelusuri masalah billing untuk API key tertentu
+* Membangun dashboard billing di tingkat API key
+* Memantau penggunaan dan biaya untuk API key tertentu
+* Membuat peringatan otomatis berdasarkan ambang batas penggunaan
+* Membuat laporan penggunaan untuk alokasi biaya internal
+* Menelusuri pertanyaan seputar billing untuk API key tertentu
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}/usage
 openapi: 3.1.0

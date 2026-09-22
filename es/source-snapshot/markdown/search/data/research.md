@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="research-publications">
-  # Publicaciones de investigación
-</div>
+# Publicaciones de investigación {#research-publications}
 
 > Encuentra artículos académicos, patentes, subvenciones, ensayos clínicos y aprobaciones regulatorias con Exa Search.
 
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el entorno de pruebas de la API" aria-label={`Abrir "${query}" en el entorno de pruebas de la API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,71 +33,55 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para buscar publicaciones de investigación y registros relacionados, incluidos títulos, resúmenes, autores, medios de publicación, citas, páginas de editoriales, preprints y páginas de repositorios.
+Usa Exa Search para publicaciones de investigación y registros relacionados, incluidos títulos, resúmenes, autores, revistas o congresos, citas, páginas de editoriales, preprints y páginas de repositorios.
 
 <Tip>
   Lee [SOTA Search Over Academic Publications](https://exa.ai/blog/publications-search)
   para conocer más sobre la calidad de la búsqueda de publicaciones.
 </Tip>
 
-<div id="included">
-  ## Incluido
-</div>
+## Incluido {#included}
 
-* Artículos y preprints, incluidos fragmentos del texto completo cuando existe un texto completo procesado
-* Patentes, con resúmenes, reivindicaciones, inventores y titulares
+* Artículos y preprints, incluidos fragmentos de texto completo cuando se dispone de un texto completo procesado
+* Patentes, con resúmenes, reivindicaciones, inventores y cesionarios
 * Subvenciones y anuncios de financiación
-* Ensayos clínicos, fichas técnicas de medicamentos y datos de interacciones
+* Ensayos clínicos, fichas de medicamentos y datos de interacciones
 * Aprobaciones regulatorias y sanitarias
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Revisión bibliográfica y búsqueda de citas
-* Búsqueda de estado de la técnica y análisis del panorama de patentes
+* Revisión bibliográfica y descubrimiento de citas
+* Análisis del estado de la técnica y panorama de patentes
 * Investigación clínica y farmacéutica
-* Identificación de subvenciones y oportunidades de financiación
+* Descubrimiento de subvenciones y oportunidades de financiación
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### Encontrar artículos sobre un tema
-</div>
+### Encontrar artículos sobre un tema {#find-papers-on-a-topic}
 
-Describe el método o el hallazgo en lugar de intentar adivinar palabras clave del título. La categoría `publication` restringe los resultados a artículos.
+Describe el método o el hallazgo en lugar de adivinar palabras clave del título. La categoría `publication` restringe los resultados a artículos.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### Buscar evidencia clínica
-</div>
+### Buscar evidencia clínica {#search-clinical-evidence}
 
-Especifica la fase, la intervención y la población para que los registros de ensayos clínicos y las páginas de resultados se posicionen por encima de la cobertura general.
+Indica la fase, la intervención y la población para que los registrations de ensayos y las páginas de resultados queden por encima de la cobertura general.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### Hacer seguimiento de aprobaciones regulatorias
-</div>
+### Seguimiento de aprobaciones regulatorias {#track-regulatory-approvals}
 
-Indica el organismo regulador y el dispositivo o la clase de medicamento que te interesa seguir.
+Indica el organismo regulador y la clase de dispositivo o fármaco que quieres monitorear.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### Ejecuta una búsqueda de estado de la técnica
-</div>
+### Ejecuta una búsqueda de estado de la técnica {#run-a-prior-art-search}
 
 Describe la invención de forma funcional, tal como lo haría una reivindicación, en lugar de usar un nombre de producto.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## Haz una solicitud
-</div>
+## Haz una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,12 +125,10 @@ Describe la invención de forma funcional, tal como lo haría una reivindicació
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigar en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las publicaciones, los criterios de inclusión y los campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para obtener datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las publicaciones, los criteria de inclusión y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
 <Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Crea un mapa bibliográfico, filtra artículos según criterios de inclusión o reúne en una sola tabla los campos de varias publicaciones.
+  Crea un mapa de la literatura, filtra artículos según criteria de inclusión o reúne campos de varias publicaciones en una sola tabla.
 </Card>

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-a-websets-monitor">
-  # Obtener un monitor de Websets
-</div>
+# Obtener un monitor de Websets {#get-a-websets-monitor}
 
 > Obtiene un monitor específico.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{id}
 openapi: 3.1.0
@@ -33,24 +27,24 @@ paths:
     get:
       tags:
         - Monitors
-      summary: Get Monitor
-      description: Gets a specific monitor.
+      summary: Obtener Monitor
+      description: Obtiene un monitor específico.
       operationId: monitors-get
       parameters:
         - in: path
           name: id
           schema:
             type: string
-          description: The id of the Monitor
+          description: El id del Monitor
           required: true
       responses:
         '200':
-          description: Monitor details
+          description: Detalles del Monitor
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: Identificador único de la solicitud.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -65,36 +59,37 @@ components:
     Monitor:
       properties:
         id:
-          description: The unique identifier for the Monitor
+          description: El identificador único del Monitor
           type: string
         object:
           enum:
             - monitor
-          description: The type of object
+          description: El tipo de objeto
           type: string
         status:
           enum:
             - enabled
             - disabled
-          description: The status of the Monitor
+          description: El estado del Monitor
           type: string
         websetId:
-          description: The id of the Webset the Monitor belongs to
+          description: El id del Webset al que pertenece el Monitor
           type: string
         cadence:
           properties:
             cron:
               description: >-
-                Cron expression for monitor cadence (must be a valid Unix cron
-                with 5 fields). The schedule must trigger at most once per day.
+                Expresión cron para la cadencia del monitor (debe ser una
+                expresión cron de Unix válida con 5 campos). La programación
+                debe ejecutarse como máximo una vez al día.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: Zona horaria IANA (por ejemplo, "America/New_York")
               type: string
           required:
             - cron
-          description: How often the monitor will run
+          description: Con qué frecuencia se ejecutará el monitor
           type: object
         behavior:
           properties:
@@ -102,15 +97,15 @@ components:
               properties:
                 query:
                   description: >-
-                    The query to search for. By default, the query from the last
-                    search is used.
+                    La consulta a buscar. De forma predeterminada, se usa la
+                    consulta de la última búsqueda.
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    The criteria to search for. By default, the criteria from
-                    the last search is used.
+                    Los criteria a buscar. De forma predeterminada, se usan los
+                    criteria de la última búsqueda.
                   maxItems: 5
                   items:
                     properties:
@@ -126,15 +121,15 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    The entity to search for. By default, the entity from the
-                    last search/import is used.
+                    La entidad a buscar. De forma predeterminada, se usa la
+                    entidad de la última búsqueda/import.
                 count:
                   exclusiveMinimum: 0
-                  description: The maximum number of results to find
+                  description: El número máximo de resultados a encontrar
                   type: number
                 behavior:
                   default: append
-                  description: The behaviour of the Search when it is added to a Webset.
+                  description: El comportamiento del Search cuando se agrega a un Webset.
                   enum:
                     - override
                     - append
@@ -142,11 +137,12 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                Especifica los parámetros de búsqueda del Monitor.
 
 
-                By default, the search parameters (query, entity and criteria)
-                from the last search are used when no parameters are provided.
+                De forma predeterminada, cuando no se proporcionan parámetros se
+                usan los parámetros de búsqueda (consulta, entidad y criteria)
+                de la última búsqueda.
               type: object
             type:
               type: string
@@ -155,20 +151,20 @@ components:
           required:
             - type
             - config
-          description: Behavior to perform when monitor runs
+          description: Comportamiento a realizar cuando se ejecuta el monitor
           type: object
         lastRun:
           $ref: '#/components/schemas/MonitorRun'
           title: MonitorRun
-          description: The last run of the monitor
+          description: El último run del monitor
           nullable: true
         nextRunAt:
           format: date-time
           type: string
-          description: Date and time when the next run will occur in
+          description: Fecha y hora en que ocurrirá el próximo run
           nullable: true
         metadata:
-          description: Set of key-value pairs you want to associate with this object.
+          description: Conjunto de pares clave-valor que quieres asociar con este objeto.
           propertyNames:
             type: string
           additionalProperties:
@@ -178,11 +174,11 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: When the monitor was created
+          description: Cuándo se creó el monitor
         updatedAt:
           type: string
           format: date-time
-          description: When the monitor was last updated
+          description: Cuándo se actualizó por última vez el monitor
       required:
         - id
         - object
@@ -206,15 +202,15 @@ components:
     MonitorRun:
       properties:
         id:
-          description: The unique identifier for the Monitor Run
+          description: El identificador único del Monitor Run
           type: string
         object:
           enum:
             - monitor_run
-          description: The type of object
+          description: El tipo de objeto
           type: string
         monitorId:
-          description: The monitor that the run is associated with
+          description: El monitor con el que está asociado el run
           type: string
         status:
           enum:
@@ -223,41 +219,41 @@ components:
             - completed
             - canceled
             - failed
-          description: The status of the Monitor Run
+          description: El estado del Monitor Run
           type: string
         completedAt:
           format: date-time
           type: string
-          description: When the run completed
+          description: Cuándo se completó el run
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: When the run failed
+          description: Cuándo falló el run
           nullable: true
         failedReason:
           type: string
-          description: The reason the run failed
+          description: El motivo por el que falló el run
           nullable: true
         canceledAt:
           format: date-time
           type: string
-          description: When the run was canceled
+          description: Cuándo se canceló el run
           nullable: true
         createdAt:
           type: string
           format: date-time
-          description: When the run was created
+          description: Cuándo se creó el run
         updatedAt:
           type: string
           format: date-time
-          description: When the run was last updated
+          description: Cuándo se actualizó por última vez el run
         type:
           type: string
           enum:
             - search
             - refresh
-          description: The type of the Monitor Run
+          description: El tipo de Monitor Run
       required:
         - id
         - object
@@ -332,12 +328,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
 ```

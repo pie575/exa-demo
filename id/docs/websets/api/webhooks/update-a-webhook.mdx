@@ -2,12 +2,12 @@
 title: "Memperbarui webhook"
 openapi: "/id/docs/exa-spec.yaml PATCH /v0/webhooks/{id}"
 timestamp: false
-description: "Memperbarui URL tujuan, event yang dilanggan, atau metadata sebuah
-  Webhook. Field yang tidak disertakan akan dibiarkan tetap seperti semula."
+description: "Memperbarui URL tujuan, events yang dilangganan, atau metadata
+  sebuah Webhook. Field yang tidak disertakan tidak akan diubah."
 ---
 
 <Warning>
-  **Redirect tidak diikuti.** Jika Anda memperbarui URL, pastikan URL tersebut
-  merupakan tujuan akhir. Endpoint yang merespons dengan redirect 3xx akan
-  dianggap sebagai kegagalan pengiriman.
+  **Pengalihan tidak diikuti.** Jika Anda memperbarui URL, pastikan URL tersebut
+  merupakan tujuan akhir. Endpoint yang merespons dengan pengalihan 3xx akan dianggap
+  sebagai kegagalan pengiriman.
 </Warning>

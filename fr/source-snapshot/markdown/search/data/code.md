@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="code-docs">
-  # Code &amp; Docs
-</div>
+# Code &amp; Docs {#code-docs}
 
 > Trouvez du code, de la documentation technique et des conseils d&#39;implémentation avec Exa Search.
 
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans le playground de l’API" aria-label={`Ouvrir "${query}" dans le playground de l’API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans le playground de l’API" aria-label={`Ouvrir « ${query} » dans le playground de l’API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,61 +33,47 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Utilisez Exa Search pour trouver des dépôts, de la documentation technique, des informations sur les packages et des conseils d&#39;implémentation à l&#39;aide de requêtes en langage naturel.
+Utilisez Exa Search pour trouver des dépôts, de la documentation technique, des informations sur les packages et des conseils d&#39;implémentation à partir de requêtes en langage naturel.
 
 <Tip>
   Lisez [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode) pour découvrir comment Exa
-  évalue la retrieval pour les tâches de programmation.
+  évalue le retrieval pour les tâches de code.
 </Tip>
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## Cas d&#39;usage {#use-it-for}
 
-* Coding agents et outils de génération de code
-* Produits de recherche et de documentation pour développeurs
+* Agents de code et outils de génération de code
+* Produits de recherche pour développeurs et de documentation
 * Workflows de débogage, de migration et de configuration
 * Recherche technique dans les dépôts, la documentation et les registres de packages
 
-<div id="example-queries">
-  ## Exemples de requêtes
-</div>
+## Exemples de requêtes {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### Découvrir des bibliothèques par capability
-</div>
+### Découvrir des bibliothèques par capacité {#discover-libraries-by-capability}
 
-Décrivez la capability, l&#39;écosystème et les contraintes qui vous importent. Cette approche remonte des candidats en fonction de ce qu&#39;ils font, plutôt qu&#39;en s&#39;appuyant sur un nom de projet exact.
+Décrivez la capacité, l&#39;écosystème et les contraintes qui vous intéressent. Les candidats sont ainsi identifiés selon ce qu&#39;ils font, plutôt qu&#39;à partir d&#39;un nom de projet exact.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### Récupérer la documentation d&#39;implémentation
-</div>
+### Récupérer la documentation d&#39;implémentation {#retrieve-implementation-documentation}
 
 Indiquez le produit et l&#39;opération exacte. Search peut alors privilégier la documentation d&#39;API et les guides d&#39;implémentation plutôt que les discussions générales.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### Vérifier les changements propres à une version
-</div>
+### Vérifier les changements spécifiques à une version {#check-version-specific-changes}
 
-Précisez le canal de publication ou la version lorsque la compatibilité est en jeu. Cela réduit le nombre de résultats portant sur des versions antérieures.
+Précisez le canal de publication ou la version lorsque la compatibilité est en jeu. Cela limite les résultats portant sur des versions plus anciennes.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### Trouver des outils d&#39;agent réutilisables
-</div>
+### Trouver des outils d&#39;agent réutilisables {#find-reusable-agent-tooling}
 
-Indiquez le type d&#39;artefact et la tâche plutôt que de rechercher une expression trop générale comme « outils d&#39;IA ».
+Indiquez le type d&#39;artefact et la tâche plutôt que de rechercher une expression générale comme « outils d&#39;IA ».
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## Envoyer une requête
-</div>
+## Envoyer une requête {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -139,12 +121,10 @@ Indiquez le type d&#39;artefact et la tâche plutôt que de rechercher une expre
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtenir des données structurées avec Exa Agent
-</div>
+## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
 
-Pour des données structurées qui nécessitent une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les bibliothèques, les critères techniques et les champs de sortie dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
+Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les bibliothèques, les critères techniques et les output fields dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 
-<Card title="Lancer une tâche Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
-  Comparez des bibliothèques, enrichissez des enregistrements de repository ou produisez une liste structurée à partir de plusieurs signaux techniques.
+<Card title="Démarrer une tâche Exa Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
+  Comparez des bibliothèques, enrichissez des records de repository ou générez une liste structurée à partir de plusieurs signaux techniques.
 </Card>

@@ -1,26 +1,20 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可先通过该文件了解所有可用页面。
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="list-all-events">
-  # 列出所有事件
-</div>
+# 列出所有 events {#list-all-events}
 
-> 列出系统中发生的所有事件。
+> 列出系统中发生的所有 events。
 
 你可以使用 `cursor` 参数对结果进行分页。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0
 info:
-  title: Exa 公共 API
+  title: Exa Public API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -35,9 +29,9 @@ paths:
     get:
       tags:
         - Events
-      summary: 列出所有事件
+      summary: List all Events
       description: |-
-        列出系统中已发生的所有事件。
+        List all events that have occurred in the system.
 
         You can paginate through the results using the `cursor` parameter.
       operationId: events-list

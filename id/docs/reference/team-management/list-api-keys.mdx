@@ -1,6 +1,6 @@
 ---
 title: "Daftar API key"
-description: "Ambil semua API key milik team Anda beserta metadatanya."
+description: "Ambil semua API key milik team Anda beserta metadata-nya."
 openapi: "/id/docs/team-management-spec.yaml GET /api-keys"
 timestamp: false
 ---
@@ -10,22 +10,18 @@ timestamp: false
 </Card>
 
 <Info>
-  Team Management API diaktifkan per team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+  Team Management API diaktifkan per team. API ini diautentikasi menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah feature ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-<div id="overview">
-  ## Ikhtisar
-</div>
+## Ikhtisar {#overview}
 
-Endpoint List API Keys mengembalikan semua API key yang terkait dengan team Anda, mencakup ID key, nama, rate limit, dan timestamp pembuatan untuk setiap key.
+Endpoint Daftar API key mengembalikan semua API key yang terkait dengan team Anda, mencakup ID key, nama, rate limit, dan timestamp pembuatan untuk setiap key.
 
-<div id="response-format">
-  ## Format Respons
-</div>
+## Format Response {#response-format}
 
-Respons berisi array objek API key dengan informasi berikut:
+Response berisi array objek API key dengan informasi berikut:
 
-* **id**: Pengenal unik untuk API key
+* **id**: Identifier unik untuk API key
 * **name**: Nama yang mudah dibaca (jika diisi saat pembuatan)
-* **rateLimit**: Rate limit dalam jumlah permintaan per menit (jika disetel)
-* **createdAt**: Timestamp ISO 8601 waktu key dibuat
+* **rateLimit**: Rate limit dalam permintaan per menit (jika disetel)
+* **createdAt**: Timestamp ISO 8601 saat key dibuat

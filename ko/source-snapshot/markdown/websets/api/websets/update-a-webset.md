@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 확인하세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 파악하세요.
 
-<div id="update-a-webset">
-  # webset 업데이트
-</div>
+# webset 업데이트 {#update-a-webset}
 
-> Webset의 `title` 또는 `metadata`를 업데이트합니다. search, import, enrichment는 각각의 전용 endpoint를 통해 관리합니다.
+> Webset의 `title` 또는 `metadata`를 업데이트합니다. search, import, enrichment는 각각의 전용 엔드포인트를 통해 관리합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}
 openapi: 3.1.0

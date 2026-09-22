@@ -2,19 +2,19 @@
 openapi: "/ko/docs/exa-spec.yaml POST /monitors"
 timestamp: false
 title: "monitor 생성"
-description: "일정에 따라 Exa search를 반복 실행하는 새로운 Monitor를 생성합니다.
+description: "일정에 따라 Exa search를 반복 실행하는 새 Monitor를 생성합니다.
 
 
-  Monitor는 설정한 search 질의를 정해진 일정에 따라 자동으로 실행하고, 중복을 자동으로 제거한 결과를 webhook
-  endpoint로 전달합니다:
+  Monitor는 설정한 search 질의를 정해진 일정에 따라 자동으로 실행하고, 중복을 자동으로 제거한 결과를 웹훅 엔드포인트로
+  전달합니다:
 
 
-  - **날짜 기반 필터링**: 마지막 실행 이후의 콘텐츠만 가져옵니다
+  - **날짜 기반 필터링**으로 마지막 실행 이후의 content만 가져옵니다
 
 
-  - **의미 기반 중복 제거**: 이전 output을 추적해 새로운 내용만 노출합니다
+  - **의미 기반 중복 제거**로 이전 output을 추적해 새로운 변화만 보여줍니다
 
 
-  응답에는 생성 시점에 단 한 번만 반환되는 `webhookSecret`이 포함됩니다. webhook 서명 검증에 필요하므로 안전하게
+  response에는 생성 시점에 단 한 번만 반환되는 `webhookSecret`이 포함됩니다. 웹훅 서명 검증에 사용해야 하므로 안전하게
   보관하세요."
 ---

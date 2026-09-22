@@ -1,59 +1,53 @@
 ---
 title: "TrueFoundry"
-description: "Connectez Exa au MCP Gateway de TrueFoundry pour centraliser les contrôles d'accès, la gestion des tools et le suivi de l'usage."
+description: "Connectez Exa au MCP Gateway de TrueFoundry pour centraliser les contrôles d'accès, la gestion des outils et le suivi de l'utilisation."
 icon: "/docs/images/sidebar-icons/truefoundry.svg"
 ---
 
-[TrueFoundry AI Gateway](https://truefoundry.com/ai-gateway) est une couche proxy de niveau entreprise entre vos applications et les providers de LLM ou les MCP servers. Elle offre un accès unifié à plus de 1 000 LLM, avec une observabilité et une gouvernance centralisées.
+[TrueFoundry AI Gateway](https://truefoundry.com/ai-gateway) est une couche proxy de niveau entreprise entre vos applications et les fournisseurs de LLM ou les MCP servers. Elle offre un accès unifié à plus de 1 000 LLM, avec une observabilité et une gouvernance centralisées.
 
-TrueFoundry propose Exa comme serveur distant officiel dans son [MCP Gateway](https://www.truefoundry.com/mcp-gateway). Connectez le MCP server Exa pour donner à vos teams un endpoint géré unique dédié au web search, à la récupération de contenu et à l&#39;agentic research.
+TrueFoundry propose Exa comme serveur distant officiel dans son [MCP Gateway](https://www.truefoundry.com/mcp-gateway). Connectez l&#39;Exa MCP server pour offrir à vos équipes un endpoint unique et géré pour la recherche web, la récupération de contenu et la recherche agentique.
 
-<Frame caption="Exa dans le catalogue officiel de remote MCP servers de TrueFoundry">
-  <img src="/docs/images/integrations/truefoundry/catalog.png" alt="Le serveur Exa dans le catalogue officiel de remote MCP de TrueFoundry" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
+<Frame caption="Exa dans le catalogue officiel de MCP servers distants de TrueFoundry">
+  <img src="/docs/images/integrations/truefoundry/catalog.png" alt="Le serveur Exa dans le catalogue officiel de MCP distants de TrueFoundry" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-<div id="add-exa-to-truefoundry">
-  ## Ajouter Exa à TrueFoundry
-</div>
+## Ajouter Exa à TrueFoundry {#add-exa-to-truefoundry}
 
-1. Ouvrez **MCP Servers** dans la barre latérale de TrueFoundry et sélectionnez **Add new MCP Server**.
+1. Ouvrez **MCP Servers** dans la sidebar TrueFoundry et sélectionnez **Add new MCP Server**.
 2. Sélectionnez **Connect Official Remote MCP Servers**.
 
-<Frame caption="Choisir le catalogue officiel de serveurs MCP distants">
-  <img src="/docs/images/integrations/truefoundry/add-official-remote.png" alt="Sélecteur Add MCP Server de TrueFoundry avec l'option Connect Official Remote MCP Servers sélectionnée" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1572" height="1714" data-path="images/integrations/truefoundry/add-official-remote.png" />
+<Frame caption="Choisir le catalogue officiel des MCP servers distants">
+  <img src="/docs/images/integrations/truefoundry/add-official-remote.png" alt="Sélecteur Add MCP Server de TrueFoundry avec Connect Official Remote MCP Servers sélectionné" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1572" height="1714" data-path="images/integrations/truefoundry/add-official-remote.png" />
 </Frame>
 
-3. Recherchez **Exa** dans le catalogue et sélectionnez **+ Add**.
+3. Trouvez **Exa** dans le catalogue et sélectionnez **+ Add**.
 4. Vérifiez les informations pré-remplies du serveur :
 
-| Champ          | Valeur                                                                                                                                                          |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name           | `exa`                                                                                                                                                           |
-| Description    | Moteur de recherche conçu pour les IA par Exa                                                                                                                   |
-| URL            | `https://mcp.exa.ai/mcp`                                                                                                                                        |
-| Authentication | Facultative (le MCP server fonctionne sans authentification. Une Exa clé API n&#39;est nécessaire que si vous atteignez la rate limit de l&#39;offre gratuite.) |
+| Field          | Value                                                                                                                                                 |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name           | `exa`                                                                                                                                                 |
+| Description    | Moteur de recherche conçu pour les IA par Exa                                                                                                         |
+| URL            | `https://mcp.exa.ai/mcp`                                                                                                                              |
+| Authentication | Facultative (le MCP server fonctionne sans authentification. Une API key Exa n&#39;est nécessaire que si vous atteignez la limite de débit gratuite.) |
 
-5. Ajoutez les utilisateurs ou teams qui doivent gérer ou utiliser le serveur. Laissez **Auth Data** désactivé, puis sélectionnez **Update MCP Server**.
+5. Ajoutez les utilisateurs ou les équipes qui doivent gérer ou utiliser le serveur. Laissez **Auth Data** désactivé, puis sélectionnez **Update MCP Server**.
 
 <Frame caption="Configurer le serveur Exa et ses collaborateurs">
   <img src="/docs/images/integrations/truefoundry/register-form.png" alt="Formulaire d'enregistrement du MCP server Exa avec son nom, son URL, ses collaborateurs et ses paramètres d'authentification" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1568" height="1718" data-path="images/integrations/truefoundry/register-form.png" />
 </Frame>
 
 <Check>
-  Ouvrez l&#39;onglet **Tools** et vérifiez que les tools de search, de récupération de contenu et d&#39;agentic research d&#39;Exa sont bien disponibles.
+  Ouvrez l&#39;onglet **Tools** et vérifiez que les tools Exa de search, de récupération de contenu et de recherche agentique sont disponibles.
 </Check>
 
-<div id="configure-the-exa-server">
-  ## Configurer le serveur Exa
-</div>
+## Configurer le serveur Exa {#configure-the-exa-server}
 
-L&#39;URL préremplie expose l&#39;ensemble de tools par défaut d&#39;Exa. Ne la modifiez que si vous devez restreindre les outils disponibles ou utiliser votre propre clé API.
+L&#39;URL préremplie expose l&#39;ensemble d&#39;outils par défaut d&#39;Exa. Ne la modifiez que si vous devez restreindre les tools disponibles ou utiliser votre propre API key.
 
-<div id="choose-which-tools-are-available">
-  ### Choisir les tools disponibles
-</div>
+### Choisir les tools disponibles {#choose-which-tools-are-available}
 
-Passez une liste de noms de tools séparés par des virgules dans le query parameter `tools` :
+Transmettez une liste de noms de tools séparés par des virgules dans le paramètre de requête `tools` :
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_tools
@@ -73,69 +67,59 @@ collaborators:
 ```
 
 <Tip>
-  Vous trouverez les noms des tools disponibles dans la [documentation Exa MCP](/fr/docs/get-started/exa-mcp).
+  Vous trouverez les noms des tools disponibles dans la [Documentation Exa MCP](/fr/docs/get-started/exa-mcp).
 </Tip>
 
-<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
-  ### Utiliser votre clé API Exa pour dépasser le rate limit gratuit
-</div>
+### Utilisez votre API key Exa pour dépasser la limite de débit gratuite {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
 
-Si vous atteignez le rate limit gratuit, ajoutez votre clé API Exa à l&#39;URL du serveur :
+Si vous atteignez la limite de débit gratuite, ajoutez votre API key Exa à l&#39;URL du serveur :
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
 ```
 
-<Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de crédits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="connect-an-mcp-client">
-  ## Connecter un client MCP
-</div>
+## Connecter un client MCP {#connect-an-mcp-client}
 
-Ouvrez l&#39;onglet **How To Use** du serveur Exa et sélectionnez votre client. TrueFoundry génère l&#39;endpoint propre à votre tenant ainsi qu&#39;une configuration prête à coller pour Cursor, Claude Code, VS Code, Windsurf, Codex et les autres clients MCP.
+Ouvrez l&#39;onglet **How To Use** du serveur Exa et sélectionnez votre client. TrueFoundry génère l&#39;endpoint propre à votre tenant ainsi que la configuration prête à coller pour Cursor, Claude Code, VS Code, Windsurf, Codex et les autres clients MCP.
 
 <Frame caption="Copiez la configuration correspondant à votre client MCP">
-  <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="Instructions de configuration spécifiques à chaque client fournies par TrueFoundry pour le MCP server Exa" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
+  <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="Instructions de configuration spécifiques au client fournies par TrueFoundry pour le MCP server Exa" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-<div id="test-a-tool">
-  ## Tester un tool
-</div>
+## Tester un outil {#test-a-tool}
 
-Sélectionnez **Try** à côté d&#39;un tool Exa, renseignez ses paramètres d&#39;entrée, puis sélectionnez **Execute Tool**. Le playground affiche la response JSON, ce qui vous permet de vérifier le tool avant de l&#39;utiliser dans un agent.
+Sélectionnez **Try** à côté d&#39;un outil Exa, renseignez ses paramètres d&#39;entrée, puis sélectionnez **Execute Tool**. Le playground affiche la réponse JSON, ce qui vous permet de vérifier l&#39;outil avant de l&#39;utiliser dans un agent.
 
-<Frame caption="Exécuter un tool Exa dans le playground TrueFoundry">
-  <img src="/docs/images/integrations/truefoundry/tool-playground.png" alt="Test d'un tool Exa dans le playground de tools TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
+<Frame caption="Exécuter un outil Exa dans le playground TrueFoundry">
+  <img src="/docs/images/integrations/truefoundry/tool-playground.png" alt="Test d'un outil Exa dans le playground d'outils TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-<div id="manage-and-monitor-tools">
-  ## Gérer et surveiller les tools
-</div>
+## Gérer et surveiller les tools {#manage-and-monitor-tools}
 
-* Activez ou désactivez chaque tool individuellement pour contrôler ce que les clients MCP peuvent appeler
-* Utilisez les **Tool Metrics** pour analyser le trafic, la latence et les erreurs
+* Activez ou désactivez chaque tool pour contrôler ce que les clients MCP peuvent appeler
+* Utilisez les **Tool Metrics** pour suivre le trafic, la latence et les erreurs
 * Exportez les traces d&#39;invocation vers votre stack d&#39;observabilité via OpenTelemetry
 
 <Frame caption="Gérer les tools Exa exposés aux clients MCP">
-  <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="Tools Exa disponibles depuis le MCP server TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
+  <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="Exa tools available from the TrueFoundry MCP server" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-<div id="resources">
-  ## Ressources
-</div>
+## Ressources {#resources}
 
 <Columns cols={3}>
   <Card title="Guide de configuration TrueFoundry" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="Ouvrir le guide" arrow="true">
-    Consultez le guide de TrueFoundry sur son MCP server Exa.
+    Consultez le guide de TrueFoundry sur son Exa MCP server.
   </Card>
 
-  <Card title="Documentation MCP d'Exa" icon="search" href="/fr/docs/get-started/exa-mcp" cta="Ouvrir le guide" arrow="true">
+  <Card title="Documentation Exa MCP" icon="search" href="/fr/docs/get-started/exa-mcp" cta="Ouvrir le guide" arrow="true">
     Découvrez les tools, la configuration et des exemples d&#39;utilisation d&#39;Exa.
   </Card>
 
-  <Card title="Exa MCP Server" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Voir le code source" arrow="true">
+  <Card title="Exa MCP Server" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Voir la source" arrow="true">
     Consultez le code source du serveur et ses versions sur GitHub.
   </Card>
 </Columns>

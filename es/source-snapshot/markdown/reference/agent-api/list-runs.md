@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="list-agent-runs">
-  # Listar ejecuciones de Agent
-</div>
+# Listar runs de Agent {#list-agent-runs}
 
-> Recupera una lista paginada de ejecuciones de Agent de tu equipo.
+> Recupera una lista paginada de runs de Agent de tu equipo.
 
-Las ejecuciones se devuelven de la más reciente a la más antigua. Usa `limit` para controlar el tamaño de página y `cursor` junto con el `nextCursor` de la respuesta anterior para obtener la siguiente página.
+Los runs se devuelven del más reciente al más antiguo. Usa `limit` para controlar el tamaño de página y `cursor` junto con el `nextCursor` de la respuesta anterior para obtener la siguiente página.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas incluyen credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs
 openapi: 3.1.0

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-a-websets-monitor">
-  # Websets monitor 생성
-</div>
+# Websets monitor 생성 {#create-a-websets-monitor}
 
-> 새로운 `Monitor`를 생성하여 Websets를 항상 최신 데이터로 유지합니다.
+> 새로운 `Monitor`를 생성해 Websets를 최신 데이터로 계속 업데이트합니다.
 
-Monitor는 사용자가 정의한 일정에 따라 자동으로 실행되므로, 수동 개입 없이도 Websets를 최신 상태로 유지할 수 있습니다.
+monitor는 지정한 일정에 따라 자동으로 실행되어, 수동 개입 없이도 Websets를 항상 최신 상태로 유지합니다:
 
-* **새로운 콘텐츠 찾기**: `search` 작업을 실행하여 criteria에 맞는 새로운 item을 찾습니다
-* **기존 콘텐츠 업데이트**: `refresh` 작업을 실행하여 item의 contents와 enrichment를 업데이트합니다
-* **자동 스케줄링**: `cron` 표현식과 `timezone`을 설정하여 일정을 정밀하게 제어합니다
+* **새로운 콘텐츠 찾기**: `search` 작업을 실행해 criteria에 부합하는 새로운 item을 찾습니다
+* **기존 콘텐츠 업데이트**: `refresh` 작업을 실행해 item의 contents와 enrichment를 업데이트합니다
+* **자동 일정 관리**: `cron` 표현식과 `timezone`을 설정해 일정을 정밀하게 제어합니다
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0
@@ -39,24 +33,24 @@ paths:
     post:
       tags:
         - Monitors
-      summary: Create a Monitor
+      summary: Monitor 생성
       description: >-
-        Creates a new `Monitor` to continuously keep your Websets updated with
-        fresh data.
+        Websets를 새로운 데이터로 계속 업데이트하도록 새 `Monitor`를
+        생성합니다.
 
 
-        Monitors automatically run on your defined schedule to ensure your
-        Websets stay current without manual intervention:
+        Monitors는 정의한 일정에 따라 자동으로 실행되어 수동 개입 없이도
+        Websets를 최신 상태로 유지합니다:
 
 
-        - **Find new content**: Execute `search` operations to discover fresh
-        items matching your criteria
+        - **새 콘텐츠 찾기**: `search` 작업을 실행해 criteria에 부합하는
+        새로운 item을 찾습니다
 
-        - **Update existing content**: Run `refresh` operations to update items
-        contents and enrichments
+        - **기존 콘텐츠 업데이트**: `refresh` 작업을 실행해 item의 콘텐츠와
+        enrichment를 업데이트합니다
 
-        - **Automated scheduling**: Configure `cron` expressions and `timezone`
-        for precise scheduling control
+        - **자동 일정 관리**: `cron` 표현식과 `timezone`을 설정해 일정을
+        정밀하게 제어합니다
       operationId: monitors-create
       requestBody:
         required: true
@@ -66,12 +60,12 @@ paths:
               $ref: '#/components/schemas/CreateMonitorParameters'
       responses:
         '201':
-          description: Monitor created successfully
+          description: Monitor가 성공적으로 생성되었습니다
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: 요청의 고유 식별자입니다.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -86,22 +80,23 @@ components:
     CreateMonitorParameters:
       properties:
         websetId:
-          description: The id of the Webset
+          description: Webset의 id
           type: string
         cadence:
           properties:
             cron:
               description: >-
-                Cron expression for monitor cadence (must be a valid Unix cron
-                with 5 fields). The schedule must trigger at most once per day.
+                monitor 주기를 지정하는 cron 표현식입니다(5개 field로 구성된
+                유효한 Unix cron이어야 합니다). 일정은 하루에 최대 한 번만
+                실행되어야 합니다.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: IANA 시간대 (예: "America/New_York")
               type: string
           required:
             - cron
-          description: How often the monitor will run
+          description: monitor가 실행되는 빈도
           type: object
         behavior:
           properties:
@@ -109,15 +104,15 @@ components:
               properties:
                 query:
                   description: >-
-                    The query to search for. By default, the query from the last
-                    search is used.
+                    검색할 질의입니다. 기본적으로 마지막 search의 질의가
+                    사용됩니다.
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    The criteria to search for. By default, the criteria from
-                    the last search is used.
+                    검색에 사용할 criteria입니다. 기본적으로 마지막 search의
+                    criteria가 사용됩니다.
                   maxItems: 5
                   items:
                     properties:
@@ -133,15 +128,15 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    The entity to search for. By default, the entity from the
-                    last search/import is used.
+                    검색할 엔티티입니다. 기본적으로 마지막 search/import의
+                    엔티티가 사용됩니다.
                 count:
                   exclusiveMinimum: 0
-                  description: The maximum number of results to find
+                  description: 찾을 결과의 최대 개수
                   type: number
                 behavior:
                   default: append
-                  description: The behaviour of the Search when it is added to a Webset.
+                  description: search가 Webset에 추가될 때의 동작 방식입니다.
                   enum:
                     - override
                     - append
@@ -149,11 +144,11 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                Monitor에 사용할 search parameters를 지정합니다.
 
 
-                By default, the search parameters (query, entity and criteria)
-                from the last search are used when no parameters are provided.
+                parameters를 제공하지 않으면 기본적으로 마지막 search의
+                search parameters(질의, 엔티티, criteria)가 사용됩니다.
               type: object
             type:
               type: string
@@ -162,7 +157,7 @@ components:
           required:
             - type
             - config
-          description: Behavior to perform when monitor runs
+          description: monitor가 실행될 때 수행할 동작
           type: object
         metadata:
           propertyNames:
@@ -178,36 +173,37 @@ components:
     Monitor:
       properties:
         id:
-          description: The unique identifier for the Monitor
+          description: Monitor의 고유 식별자
           type: string
         object:
           enum:
             - monitor
-          description: The type of object
+          description: 객체의 유형
           type: string
         status:
           enum:
             - enabled
             - disabled
-          description: The status of the Monitor
+          description: Monitor의 상태
           type: string
         websetId:
-          description: The id of the Webset the Monitor belongs to
+          description: Monitor가 속한 Webset의 id
           type: string
         cadence:
           properties:
             cron:
               description: >-
-                Cron expression for monitor cadence (must be a valid Unix cron
-                with 5 fields). The schedule must trigger at most once per day.
+                monitor 주기를 지정하는 cron 표현식입니다(5개 field로 구성된
+                유효한 Unix cron이어야 합니다). 일정은 하루에 최대 한 번만
+                실행되어야 합니다.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: IANA 시간대 (예: "America/New_York")
               type: string
           required:
             - cron
-          description: How often the monitor will run
+          description: monitor가 실행되는 빈도
           type: object
         behavior:
           properties:
@@ -215,15 +211,15 @@ components:
               properties:
                 query:
                   description: >-
-                    The query to search for. By default, the query from the last
-                    search is used.
+                    검색할 질의입니다. 기본적으로 마지막 search의 질의가
+                    사용됩니다.
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    The criteria to search for. By default, the criteria from
-                    the last search is used.
+                    검색에 사용할 criteria입니다. 기본적으로 마지막 search의
+                    criteria가 사용됩니다.
                   maxItems: 5
                   items:
                     properties:
@@ -239,15 +235,15 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    The entity to search for. By default, the entity from the
-                    last search/import is used.
+                    검색할 엔티티입니다. 기본적으로 마지막 search/import의
+                    엔티티가 사용됩니다.
                 count:
                   exclusiveMinimum: 0
-                  description: The maximum number of results to find
+                  description: 찾을 결과의 최대 개수
                   type: number
                 behavior:
                   default: append
-                  description: The behaviour of the Search when it is added to a Webset.
+                  description: search가 Webset에 추가될 때의 동작 방식입니다.
                   enum:
                     - override
                     - append
@@ -255,7 +251,7 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                Monitor에 사용할 search parameters를 지정합니다.
 
 
                 By default, the search parameters (query, entity and criteria)

@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步浏览之前，可通过该文件查看所有可用页面。
 
-<div id="code-docs">
-  # 代码与文档
-</div>
+# 代码与文档 {#code-docs}
 
-> 使用 Exa Search 查找代码、技术文档和实现指引。
+> 使用 Exa Search 查找代码、技术文档和实现指导。
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API Playground 中打开" aria-label={`在 API Playground 中打开“${query}”`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API 演练场中打开" aria-label={`在 API 演练场中打开“${query}”`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,61 +33,47 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search，通过自然语言查询检索代码仓库、技术文档、软件包信息和实现指南。
+使用 Exa Search，通过自然语言查询检索代码仓库、技术文档、包信息以及实现方面的指引。
 
 <Tip>
-  阅读 [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode)，了解 Exa
-  如何评估编码任务中的检索效果。
+  阅读 [WebCode: Search Evals for 编码智能体](https://exa.ai/blog/webcode)，了解 Exa
+  如何评估编码任务中的 retrieval 效果。
 </Tip>
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
-* 编码 agent 与代码生成工具
-* 开发者搜索与文档类产品
+* 编码智能体与代码生成工具
+* 面向开发者的搜索和文档类产品
 * 调试、迁移与配置工作流
-* 跨代码仓库、文档和软件包仓库的技术调研
+* 跨代码仓库、文档和包注册表的技术研究
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## 示例查询 {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### 按功能发现库
-</div>
+### 按能力发现库 {#discover-libraries-by-capability}
 
-描述你关注的功能、生态系统和限制条件。这样即可根据库的实际用途来检索候选项，而无需依赖确切的项目名称。
+描述你关注的能力、生态系统和约束条件。这样可以根据库的实际功能来检索候选项，而无需依赖确切的项目名称。
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### 获取实现文档
-</div>
+### 检索实现文档 {#retrieve-implementation-documentation}
 
 指明产品名称和具体操作。这样 search 就能优先返回 API 文档和实现指南，而不是泛泛的讨论内容。
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### 查看特定版本的变更
-</div>
+### 检查特定版本的变更 {#check-version-specific-changes}
 
-当兼容性至关重要时，请在查询中注明发布渠道或版本号，以减少返回旧版本相关的结果。
+当兼容性很重要时，请在 query 中注明发布渠道或版本号，这样可以减少与旧版本相关的结果。
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### 查找可复用的 agent 工具
-</div>
+### 查找可复用的 agent 工具 {#find-reusable-agent-tooling}
 
-明确指出产物类型和任务，而不是用“AI 工具”这类宽泛的说法去搜索。
+请直接说明所需的产物类型和任务，而不要搜索“AI 工具”这类宽泛的说法。
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -139,11 +121,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果所需的结构化数据需要跨多个来源进行调研，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的库、技术标准和输出字段，Agent 就会返回经过 schema 校验的结果并附带引用来源。
+如果结构化数据需要跨多个来源开展研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的库、技术 criteria 和输出 fields，agent 即可返回经过 schema 校验的结果及引用来源。
 
 <Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
   对比各类库、丰富代码仓库记录，或基于多种技术信号生成结构化列表。

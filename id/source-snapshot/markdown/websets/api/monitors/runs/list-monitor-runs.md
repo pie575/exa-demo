@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-monitor-runs">
-  # Daftar run monitor
-</div>
+# Daftar run monitor {#list-monitor-runs}
 
 > Menampilkan semua run untuk Monitor.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{monitor}/runs
 openapi: 3.1.0
@@ -33,24 +27,24 @@ paths:
     get:
       tags:
         - Monitors Runs
-      summary: List Monitor Runs
-      description: Lists all runs for the Monitor.
+      summary: Daftar Run Monitor
+      description: Menampilkan semua run untuk Monitor.
       operationId: monitors-runs-list
       parameters:
         - in: path
           name: monitor
           schema:
             type: string
-          description: The id of the Monitor to list runs for
+          description: Id Monitor yang run-nya ingin ditampilkan
           required: true
       responses:
         '200':
-          description: List of monitor runs
+          description: Daftar run monitor
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: Identifier unik untuk permintaan.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -67,14 +61,14 @@ components:
         data:
           items:
             $ref: '#/components/schemas/MonitorRun'
-          description: The list of monitor runs
+          description: Daftar run monitor
           type: array
         hasMore:
-          description: Whether there are more results to paginate through
+          description: Apakah masih ada hasil lain untuk dipaginasi
           type: boolean
         nextCursor:
           type: string
-          description: The cursor to paginate through the next set of results
+          description: Cursor untuk memaginasi kumpulan hasil berikutnya
           nullable: true
       required:
         - data
@@ -84,15 +78,15 @@ components:
     MonitorRun:
       properties:
         id:
-          description: The unique identifier for the Monitor Run
+          description: Identifier unik untuk Run Monitor
           type: string
         object:
           enum:
             - monitor_run
-          description: The type of object
+          description: Tipe objek
           type: string
         monitorId:
-          description: The monitor that the run is associated with
+          description: Monitor yang terkait dengan run ini
           type: string
         status:
           enum:
@@ -101,41 +95,41 @@ components:
             - completed
             - canceled
             - failed
-          description: The status of the Monitor Run
+          description: Status Run Monitor
           type: string
         completedAt:
           format: date-time
           type: string
-          description: When the run completed
+          description: Waktu run selesai
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: When the run failed
+          description: Waktu run gagal
           nullable: true
         failedReason:
           type: string
-          description: The reason the run failed
+          description: Alasan run gagal
           nullable: true
         canceledAt:
           format: date-time
           type: string
-          description: When the run was canceled
+          description: Waktu run dibatalkan
           nullable: true
         createdAt:
           type: string
           format: date-time
-          description: When the run was created
+          description: Waktu run dibuat
         updatedAt:
           type: string
           format: date-time
-          description: When the run was last updated
+          description: Waktu run terakhir diperbarui
         type:
           type: string
           enum:
             - search
             - refresh
-          description: The type of the Monitor Run
+          description: Tipe Run Monitor
       required:
         - id
         - object
@@ -155,13 +149,13 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Kirimkan Exa API key Anda pada header x-api-key. Anda juga dapat
+        melakukan autentikasi dengan Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Kirimkan Exa API key Anda pada header x-api-key. Anda juga dapat
+        melakukan autentikasi dengan Authorization: Bearer <key>.
 
 ```

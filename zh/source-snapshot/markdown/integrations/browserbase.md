@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可先通过该文件查看所有可用页面。
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="browserbase">
-  # Browserbase
-</div>
+# Browserbase {#browserbase}
 
-> 将 Exa 的公司搜索与 Browserbase 浏览器自动化相结合，构建求职申请工作流。
+> 将 Exa 的公司搜索与 Browserbase 的浏览器自动化相结合，构建求职申请工作流。
 
-使用 Exa 查找公司及其招聘页面，然后借助 Browserbase 和 Stagehand 检查这些页面并与之交互。
+使用 Exa 查找公司及其招聘页面，再通过 Browserbase 和 Stagehand 检查这些页面并与之交互。
 
-<div id="install">
-  ## 安装
-</div>
+## 安装 {#install}
 
-安装 Browserbase Exa 模板所需的依赖包：
+安装 Browserbase Exa 模板所需的包：
 
 ```bash npm theme={null}
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## 配置环境变量
-</div>
+## 配置环境变量 {#configure-environment-variables}
 
-设置 Exa 和 Browserbase 使用的 API key：
+设置 Exa 和 Browserbase 使用的 API 密钥：
 
 ```bash .env theme={null}
 BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## 搜索并与页面交互
-</div>
+## 搜索并与页面交互 {#search-and-interact-with-a-page}
 
-以下示例遵循该模板的工作流程：搜索公司、找到招聘页面、在 Browserbase 会话中打开该页面、提取职位描述，并让 Stagehand agent 与页面交互。
+以下示例遵循该模板的工作流：搜索公司、找到招聘页面、在 Browserbase 会话中打开该页面、提取职位描述，并让 Stagehand agent 与页面交互。
 
 ```typescript quickstart.ts theme={null}
 import "dotenv/config";
@@ -110,4 +100,4 @@ try {
 }
 ```
 
-该模板包含提取职位详情、生成定制化回复以及填写申请表单的完整工作流。请参阅 [TypeScript 实现](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) 或 [Python 实现](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase)。
+该模板包含完整的工作流，可提取职位详情、生成定制化回复并填写申请表单。参见 [TypeScript 实现](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase)或 [Python 实现](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase)。

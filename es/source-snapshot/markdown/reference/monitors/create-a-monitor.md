@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="create-a-monitor">
-  # Crear un monitor
-</div>
+# Crear un monitor {#create-a-monitor}
 
-> Crea un nuevo Monitor para ejecutar búsquedas recurrentes de Exa de forma programada.
+> Crea un nuevo Monitor para ejecutar búsquedas recurrentes de Exa según una programación.
 
-Los monitors ejecutan automáticamente tu query de búsqueda según una programación periódica y entregan los resultados a tu endpoint de webhook con deduplicación automática:
+Los monitores ejecutan automáticamente tu consulta de búsqueda de forma periódica y entregan los resultados a tu endpoint de webhook con deduplicación automática:
 
-* **Filtrado por fecha**: solo obtiene el contenido publicado desde la última ejecución
+* El **filtrado por fecha** solo obtiene el contenido publicado desde la última ejecución
 
-* **Deduplicación semántica**: registra las salidas anteriores para mostrar únicamente las novedades
+* La **deduplicación semántica** hace seguimiento de los outputs anteriores para mostrar únicamente las novedades
 
-La respuesta incluye un `webhookSecret` que solo se devuelve una vez, en el momento de la creación. Guárdalo de forma segura para verificar la firma del webhook.
+La respuesta incluye un `webhookSecret` que solo se devuelve una vez, en el momento de la creación. Guárdalo de forma segura para la verificación de la firma del webhook.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

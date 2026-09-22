@@ -1,42 +1,36 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 请在此处获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="exa-mcp">
-  # Exa MCP
-</div>
+# Exa MCP {#exa-mcp}
 
-> 将 ChatGPT、Codex、Claude、Grok、Cursor 以及任何其他 MCP 客户端连接到 Exa 的网页搜索、页面抓取、Exa Agent 和 Exa Connect 工具。
+> 将 ChatGPT、Codex、Claude、Grok、Cursor 以及任何其他 MCP 客户端连接到 Exa 的网页搜索、页面抓取、Exa Agent 和 Exa Connect tools。
 
-借助 Exa MCP，用 Exa 的搜索能力增强 ChatGPT、Claude 及 MCP 兼容工具中内置的网页搜索，包括网页搜索、代码搜索、[Exa Agent](/zh/docs/agent/quickstart) 和 [Exa Connect](/zh/docs/agent/connect/overview)。
+使用 Exa MCP，用 Exa 的搜索能力增强 ChatGPT、Claude 及兼容 MCP 的工具中内置的网页搜索，包括网页搜索、代码搜索、[Exa Agent](/zh/docs/agent/quickstart) 和 [Exa Connect](/zh/docs/agent/connect/overview)。
 
-Exa 提供可在任意 MCP 客户端中使用的托管服务器：
+Exa 提供了可在任何 MCP 客户端中使用的托管 server：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp
 ```
 
-无需 API key 即可开始使用。Exa MCP 已开源，代码托管在 [GitHub](https://github.com/exa-labs/exa-mcp-server) 上。
+无需 API 密钥即可开始使用。Exa MCP 是开源项目，代码托管在 [GitHub](https://github.com/exa-labs/exa-mcp-server) 上。
 
-<div id="install">
-  ## 安装
-</div>
+## 安装 {#install}
 
 <div className="docs-tabs">
   <Tabs>
-    <Tab title="ChatGPT 和 Codex" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/chatgpt.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=877edee72e2a7a4f7b9c7c936c6d4316" width="24" height="24" data-path="images/mcp-clients/chatgpt.svg">
-      Exa 是 OpenAI 插件目录中的官方插件，包含托管的 MCP 服务器以及 Exa 的 `search` 和 `exa-agent` 技能。
+    <Tab title="ChatGPT & Codex" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/chatgpt.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=877edee72e2a7a4f7b9c7c936c6d4316" width="24" height="24" data-path="images/mcp-clients/chatgpt.svg">
+      Exa 是 OpenAI 插件目录中的官方插件，其中包含托管的 MCP server 以及 Exa 的 `search` 和 `exa-agent` skill。
 
       <Steps>
         <Step title="打开插件">
-          访问 [chatgpt.com/plugins/exa](https://chatgpt.com/plugins/exa?open_in_app)，即可在 OpenAI 插件目录中打开 **Exa**，ChatGPT 和 Codex 共用同一个插件目录。
+          访问 [chatgpt.com/plugins/exa](https://chatgpt.com/plugins/exa?open_in_app)，会在 OpenAI 的插件目录中打开 **Exa**；ChatGPT 和 Codex 共用同一个目录。
         </Step>
 
         <Step title="安装插件">
-          点击加号按钮进行安装。出现提示时登录 Exa，可以在安装过程中登录，也可以在 Codex 或 ChatGPT 首次调用时登录。
+          点击加号按钮进行安装。出现提示时登录 Exa，可以在安装过程中登录，也可以在 Codex 或 ChatGPT 首次使用时登录。
 
           <Frame caption="在 Codex 中打开 Plugins、添加 Exa 并授权访问">
             <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/chatgpt-codex/install-codex.gif?s=170c67f79603bc3a0dc470266a3f29f7" alt="Opening Plugins in Codex, viewing the Exa plugin, and authorizing access" style={{width: "100%", height: "auto"}} width="1100" height="825" data-path="images/integrations/chatgpt-codex/install-codex.gif" />
@@ -44,19 +38,17 @@ https://mcp.exa.ai/mcp
         </Step>
 
         <Step title="开启新会话">
-          技能只在安装之后启动的聊天和 CLI 会话中加载，因此请新开一个会话，并提出需要联网的问题。
+          skill 只会在安装完成后新建的聊天和 CLI 会话中加载，因此请新开一个会话，并提出需要联网的问题。
         </Step>
       </Steps>
 
-      这样就完成了。该插件已同时包含 Exa 的 MCP 集成和技能，无需再单独配置 MCP 或技能。
+      就是这么简单。该插件同时包含 Exa 的 MCP integration 和 skill，无需再单独配置 MCP 或 skill。
 
-      完整的设置与使用指南，请参阅 [Exa in Codex and ChatGPT](/zh/docs/integrations/chatgpt-codex)。
+      完整的设置和工作流指南请参阅 [Exa in Codex and ChatGPT](/zh/docs/integrations/chatgpt-codex)。
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-      <div id="claude-code-cli">
-        ### Claude Code CLI
-      </div>
+### Claude Code CLI {#claude-code-cli}
 
       <Steps>
         <Step title="安装插件">
@@ -70,15 +62,13 @@ https://mcp.exa.ai/mcp
         </Step>
 
         <Step title="使用 Exa">
-          启动一个新的 Claude Code 会话，提出需要联网才能解答的问题。
+          启动一个新的 Claude Code 会话，提出需要联网才能回答的问题。
         </Step>
       </Steps>
 
-      <div id="desktop-web-cowork">
-        ### 桌面版、网页版与 Cowork
-      </div>
+### Desktop、Web 与 Cowork {#desktop-web-cowork}
 
-      Claude 桌面版、网页版和 Cowork 都使用 Exa 的官方连接器。
+      Claude Desktop、Web 和 Cowork 均使用 Exa 的官方连接器。
 
       <Steps>
         <Step title="打开连接器目录">
@@ -89,7 +79,7 @@ https://mcp.exa.ai/mcp
           打开 Exa，选择 **Connect to Claude**，并在出现提示时授权访问。
 
           <Frame caption="在 Claude 中打开连接器目录、找到 Exa、连接并授权访问">
-            <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/claude-web-desktop/install-claude.gif?s=259e8d897252e7f8435b94dc6ceeae5d" alt="Opening the connector directory in Claude, finding Exa, connecting it, and authorizing access" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
+            <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/claude-web-desktop/install-claude.gif?s=259e8d897252e7f8435b94dc6ceeae5d" alt="在 Claude 中打开连接器目录、找到 Exa、连接并授权访问" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
           </Frame>
         </Step>
 
@@ -98,16 +88,16 @@ https://mcp.exa.ai/mcp
         </Step>
       </Steps>
 
-      完整的设置与使用流程指南，请参阅 [Exa in Claude Code, Web, and Desktop](/zh/docs/integrations/claude-web-desktop)。
+      完整的设置与工作流指南请参见 [Exa in Claude Code, Web, and Desktop](/zh/docs/integrations/claude-web-desktop)。
 
-      Claude Team 和 Enterprise 管理员也可以通过身份提供商为所有成员统一配置该连接器：参见 [Enterprise Managed Auth](/zh/docs/admin/mcp-enterprise-managed-auth)。
+      Claude Team 和 Enterprise 管理员也可以改为通过身份提供商为全体成员统一配置该连接器：参见 [Enterprise Managed Auth](/zh/docs/admin/mcp-enterprise-managed-auth)。
     </Tab>
 
     <Tab title="Grok Build" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/grok.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=52ce55e129bd951b5c96471cf21153e7" width="400" height="400" data-path="images/mcp-clients/grok.svg">
-      Exa 已上架 [Grok Build](https://docs.x.ai/build/overview) 市场。
+      Exa 已上架 [Grok Build](https://docs.x.ai/build/overview) 插件市场。
 
       <Steps>
-        <Step title="打开市场">
+        <Step title="打开插件市场">
           在 Grok Build 中运行 `/marketplace`。
         </Step>
 
@@ -123,8 +113,8 @@ https://mcp.exa.ai/mcp
       新账户注册即可获得免费积分。
     </Tab>
 
-    <Tab title="游标" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/cursor.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=2df7fb1b4be985ad431617e4dfe7a42f" width="24" height="24" data-path="images/mcp-clients/cursor.svg">
-      从 [Cursor 应用市场](https://cursor.com/marketplace/exa)安装 Exa MCP，或将其添加到 `~/.cursor/mcp.json`：
+    <Tab title="Cursor" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/cursor.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=2df7fb1b4be985ad431617e4dfe7a42f" width="24" height="24" data-path="images/mcp-clients/cursor.svg">
+      从 [Cursor 插件市场](https://cursor.com/marketplace/exa)安装 Exa MCP，或将其添加到 `~/.cursor/mcp.json`：
 
       ```json theme={null}
       {
@@ -165,7 +155,7 @@ https://mcp.exa.ai/mcp
       }
       ```
 
-      配置文件的位置以及 URL 键的名称因客户端而异：
+      配置存放的位置以及 URL 键的名称因客户端而异：
 
       | 客户端                                          | 添加位置                                                                                         | URL 键       |
       | -------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------- |
@@ -177,9 +167,9 @@ https://mcp.exa.ai/mcp
       | Zed                                          | Zed `settings.json` (在 `context_servers` 下)                                                  | `url`       |
       | Gemini CLI                                   | `~/.gemini/settings.json` (在 `mcpServers` 下)                                                 | `httpUrl`   |
       | Warp                                         | Settings → MCP Servers → Add MCP Server (顶层 `exa`)                                           | `url`       |
-      | v0 by Vercel                                 | Prompt Tools → Add MCP                                                                       | 直接粘贴该 URL   |
+      | v0 by Vercel                                 | Prompt Tools → Add MCP                                                                       | 直接粘贴 URL    |
 
-      如果你的客户端不支持远程 MCP 服务器，请使用 `mcp-remote` 桥接：
+      如果你的客户端不支持 remote MCP server，请使用 `mcp-remote` 桥接：
 
       ```json theme={null}
       {
@@ -192,7 +182,7 @@ https://mcp.exa.ai/mcp
       }
       ```
 
-      或者使用你的 [Exa API key](https://dashboard.exa.ai/api-keys) 运行本地 [npm 包](https://www.npmjs.com/package/exa-mcp-server)：
+      或者使用你的 [Exa API 密钥](https://dashboard.exa.ai/api-keys)运行本地 [npm 包](https://www.npmjs.com/package/exa-mcp-server)：
 
       ```json theme={null}
       {
@@ -211,165 +201,151 @@ https://mcp.exa.ai/mcp
   </Tabs>
 </div>
 
-<div id="authentication">
-  ## 认证
-</div>
+## 身份验证 {#authentication}
 
-Exa MCP 支持三种认证模式：
+Exa MCP 支持三种身份验证模式：
 
-| 模式      | 适用场景                        | 设置方式                                                             |
-| ------- | --------------------------- | ---------------------------------------------------------------- |
-| 无密钥     | 无需登录或 API key，免费使用 (有速率限制)  | 连接到 `https://mcp.exa.ai/mcp`                                     |
-| OAuth   | 交互式客户端、应用市场安装、生产环境使用        | 连接到 `https://mcp.exa.ai/mcp?login`，在浏览器中登录 Exa。用量计入你的 Exa 团队。    |
-| API key | 不支持 MCP OAuth 的客户端          | 连接到 `https://mcp.exa.ai/mcp`，并将 `x-api-key` header 设置为你的 API key |
+| 模式     | 适用场景                        | 设置方式                                                            |
+| ------ | --------------------------- | --------------------------------------------------------------- |
+| 无密钥    | 无需登录或 API 密钥的免费限速用量         | 连接到 `https://mcp.exa.ai/mcp`                                    |
+| OAuth  | 交互式客户端、插件市场安装、production 用量 | 连接到 `https://mcp.exa.ai/mcp?login`，在浏览器中登录 Exa。用量计入你的 Exa 团队。   |
+| API 密钥 | 不支持 MCP OAuth 的客户端          | 连接到 `https://mcp.exa.ai/mcp`，并将 `x-api-key` header 设置为你的 API 密钥 |
 
-<div id="sign-in-with-oauth">
-  ### 使用 OAuth 登录
-</div>
+### 使用 OAuth 登录 {#sign-in-with-oauth}
 
-ChatGPT、Claude 及其他应用市场的安装方式会在需要时提示你登录。在任何支持 MCP OAuth 的客户端中，你都可以通过连接以下地址来触发相同的登录流程：
+ChatGPT、Claude 以及其他通过插件市场安装的方式，会在需要时提示你登录。在任何支持 MCP OAuth 的客户端中，你都可以通过连接以下地址来发起相同的流程：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?login
 ```
 
-你的客户端会自动发现 Exa 的授权服务器，打开浏览器进行登录，并管理访问权限。
+你的客户端会自动发现 Exa 的授权 server，打开浏览器进行登录，并管理访问权限。
 
-<div id="use-an-api-key">
-  ### 使用 API key
-</div>
+### 使用 API 密钥 {#use-an-api-key}
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建一个 key。新账户会获赠免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-在 MCP 服务器配置中添加 `x-api-key` header：
+在 MCP server 配置中添加 `x-api-key` header：
 
 ```text theme={null}
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-<div id="available-tools">
-  ## 可用工具
-</div>
+## 可用tools {#available-tools}
 
-| 工具                        | 可用性                    | 用途                            |
-| ------------------------- | ---------------------- | ----------------------------- |
-| `web_search_exa`          | 默认启用                   | 搜索网页并返回相关且可直接使用的内容            |
-| `web_fetch_exa`           | 默认启用                   | 从一个或多个已知 URL 读取干净的正文内容        |
-| `web_search_advanced_exa` | 选择开启后可用                | 通过高级筛选条件和控制项配置网页搜索            |
-| `agent_run`               | 使用 OAuth 或 API key 时可用 | 执行多步研究、列表构建、Enrichment 及结构化输出 |
+| 工具                        | 可用性                  | 用途                    |
+| ------------------------- | -------------------- | --------------------- |
+| `web_search_exa`          | 默认启用                 | 搜索网页并返回相关、可直接使用的内容    |
+| `web_fetch_exa`           | 默认启用                 | 从一个或多个已知 URL 读取干净的内容  |
+| `web_search_advanced_exa` | 选择开启后可用              | 通过高级筛选和控制项配置网页搜索      |
+| `agent_run`               | 使用 OAuth 或 API 密钥时可用 | 执行多步骤研究、列表构建、增强和结构化输出 |
 
-使用 `tools` URL 参数来指定客户端可见的工具。例如，启用全部工具：
+使用 `tools` URL 参数来指定客户端可见的tools。例如，启用全部tools：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
 ```
 
 <Tip>
-  显式指定 `tools` 列表会覆盖默认配置，因此请列出所有需要启用的工具，包括网页搜索和抓取工具。
+  显式指定 `tools` 列表会覆盖默认配置，因此请列出所有需要启用的工具，包括网页搜索和抓取。
 </Tip>
 
-<div id="exa-agent">
-  ## Exa Agent
-</div>
+## Exa Agent {#exa-agent}
 
-当研究需要多次 search 才能完成时，请使用 [Exa Agent](/zh/docs/agent/quickstart)——例如构建列表、按 criteria 逐项核对，或返回结构化结果。
+如果研究任务需要多次 search，请使用 [Exa Agent](/zh/docs/agent/quickstart)，例如构建列表、按 criteria 逐项核查，或返回结构化结果。
 
-Agent 运行按用量计费，因此 `agent_run` 需要 OAuth 或 API key。以下 URL 会启动 OAuth，并在默认工具之外加入 Agent：
+Agent 运行按用量计费，因此 `agent_run` 需要 OAuth 或 API 密钥。以下 URL 会启动 OAuth，并在默认 tools 之外加入 Agent：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run
 ```
 
-如果你使用 API key，请省略 `login`，并按照 [Authentication](#authentication) 中的说明添加 key。
+如果你使用 API 密钥，请省略 `login`，并按照 [身份验证](#authentication) 中的说明添加密钥。
 
 <Steps>
   <Step title="描述你的需求">
-    用自然语言说明你要做的研究。你的助手会把请求连同 `query` 一起传给 `agent_run`，Exa Agent 会自行判断该搜索什么、阅读来源，并核对找到的内容是否符合请求。
+    用自然语言说明你需要的研究内容。你的助手会把请求以 `query` 的形式传给 `agent_run`，Exa Agent 会自行判断该搜索什么、阅读来源，并对照请求核查所发现的内容。
 
-    只有当你的应用需要以统一的 JSON 格式拿到研究结果时，才让 Agent 提供 `outputSchema`。你可以在系统提示词中把它提供给助手，也可以让助手替你生成一个。
+    只有当你的应用需要以统一的 JSON 格式获取研究结果时，才让 Agent 提供 `outputSchema`。你可以在 system prompt 中把它交给助手，也可以让助手为你生成一个。
   </Step>
 
   <Step title="获取结果">
-    研究完成后，工具调用会把完整的研究成果交给你的助手：
+    研究完成后，这次工具调用会把完整的研究成果交给你的助手：
 
-    * 撰写好的研究结论
+    * 书面研究结论
     * 支撑这些结论的来源
-    * 如果你提供了 `outputSchema`，还会有经过校验的 JSON
+    * 如果你提供了 `outputSchema`，还包括经过校验的 JSON
     * 用量与费用
 
-    你的助手会基于这份成果撰写回复，因此请告诉它你希望如何处理这些输出。你可以让它总结结论、进行对比、保存到文件，或是做任何其他处理。
+    你的助手会基于这份成果撰写回复，因此请告诉它你希望如何处理这些输出。你可以让它总结结论、进行对比、保存到文件，或是做任何其他事情。
   </Step>
 
   <Step title="需要更多时间时继续">
-    超出单次 MCP 调用时长的研究不会失败：工具会返回 `status: "running"` 和一个 `id`，运行则在 Exa 上继续进行。你的助手只需再次调用 `agent_run`，把该 `id` 作为 `runId` 传入，即可接续同一次运行。
+    超出单次 MCP 调用时长的研究不会失败：工具会返回 `status: "running"` 和一个 `id`，同时该运行会在 Exa 上继续进行。你的助手可以用该 `id` 作为 `runId` 再次调用 `agent_run`，从而接回同一次运行。
   </Step>
 </Steps>
 
 <Accordion title="可选控制项" icon="sliders-horizontal">
-  | 字段                | 用途                                                       |
-  | ----------------- | -------------------------------------------------------- |
-  | `systemPrompt`    | 为 Agent 提供额外的研究或结果判定指引                                   |
-  | `outputSchema`    | 以特定的 JSON 格式返回答案                                         |
-  | `input.data`      | 丰富你已有的行或实体数据                                             |
-  | `input.exclusion` | 跳过你已知的结果                                                 |
-  | `dataSources`     | 最多添加五个 [Exa Connect](/zh/docs/agent/connect/overview) 数据提供方 |
-  | `previousRunId`   | 在已完成的研究基础上发起新请求                                          |
-  | `effort`          | 选择 Agent 投入的研究力度                                         |
+  | Field             | 用途                                                     |
+  | ----------------- | ------------------------------------------------------ |
+  | `systemPrompt`    | 为 Agent 提供额外指引，用于研究或判定结果                               |
+  | `outputSchema`    | 以特定的 JSON 格式返回答案                                       |
+  | `input.data`      | 丰富你已有的行或实体                                             |
+  | `input.exclusion` | 跳过你已经知道的结果                                             |
+  | `dataSources`     | 添加最多五个 [Exa Connect](/zh/docs/agent/connect/overview) 提供方 |
+  | `previousRunId`   | 在已完成的研究基础上发起新请求                                        |
+  | `effort`          | 选择 Agent 研究的深入程度                                       |
 </Accordion>
 
 <Tip>
-  用 `runId` 继续等待当前正在进行的工作；用 `previousRunId` 基于已完成的工作发起新的追问。
+  用 `runId` 继续等待进行中的工作；用 `previousRunId` 基于已完成的工作提出新的 follow-up。
 </Tip>
 
-关于输出模式写法、effort 模式、数据源和定价，请参阅 [Exa Agent 指南](/zh/docs/agent/quickstart)。
+关于 output schema 模式、effort 模式、数据源和定价，请参阅 [Exa Agent 指南](/zh/docs/agent/quickstart)。
 
-<div id="advanced-search">
-  ## 高级搜索
-</div>
+## Advanced search {#advanced-search}
 
-当请求需要明确指定类别或域名过滤、日期范围、文本约束、地理定向、查询扩展、摘要、highlights、时效性控制或子页面抓取时，请使用 `web_search_advanced_exa`。普通搜索则继续使用 `web_search_exa`：它暴露给模型的工具面更小，所需配置也更少。
+当请求需要显式的类别或域名过滤、日期范围、文本约束、地理定位、query 扩展、摘要、highlights、新鲜度控制或子页面抓取时，请使用 `web_search_advanced_exa`。普通的 search 仍建议使用 `web_search_exa`，它暴露给模型的工具面更小，所需配置也更少。
 
-高级搜索无需认证，但已认证的连接会计入你自己的套餐和速率限制。可通过以下方式将其与默认工具一并启用：
+Advanced Search 无需认证，不过已认证的连接会使用你自己的 plan 和速率限制。可通过以下方式将其与默认 tools 一同启用：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa
 ```
 
-该 MCP 工具将常用的 [Search API](/zh/docs/reference/search) 参数以便于工具调用的字段形式暴露，例如 `includeDomains`、`startPublishedDate`、`enableHighlights` 和 `maxAgeHours`。具体字段名称请查看客户端中的工具 schema。
+MCP 工具把常用的 [Search API](/zh/docs/reference/search) 控制项暴露为便于工具调用的 field，例如 `includeDomains`、`startPublishedDate`、`enableHighlights` 和 `maxAgeHours`。具体的 field 名称请在你的客户端中查看 tool schema。
 
-<div id="troubleshooting">
-  ## 故障排查
-</div>
+## 故障排查 {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="速率限制错误 (429)">
-    当前连接使用的是 Exa 的免费速率限制。请通过 OAuth 登录或添加自己的 API key，然后重新连接，让请求适用于你所在团队的套餐和限制。
+    当前连接使用的是 Exa 的免费速率限制。请通过 OAuth 登录或添加自己的 API 密钥，然后重新连接，使请求按你所在团队的 plan 和限制计算。
 
-    <Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      在 控制台 中创建 key。新账户可获得免费积分。
+    <Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      在控制台中创建密钥。新账户会赠送免费积分。
     </Card>
   </Accordion>
 
-  <Accordion title="Agent 缺失或提示需要认证">
-    `agent_run` 默认未启用，且无法使用免费速率限制。请将其添加到 `tools` URL 参数中，然后使用 `?login` 连接或配置 API key。完整 URL 请参阅 [Exa Agent](#exa-agent)。
+  <Accordion title="缺少 agent 或提示需要认证">
+    `agent_run` 默认未启用，且无法使用免费速率限制。请将其添加到 `tools` URL 参数中，然后使用 `?login` 连接或配置 API 密钥。完整 URL 请参阅 [Exa Agent](#exa-agent)。
   </Accordion>
 
-  <Accordion title="OAuth 登录无法打开">
-    请确认你的客户端支持 MCP OAuth，并连接到 `https://mcp.exa.ai/mcp?login`。修改 URL 后需重启客户端。如果客户端无法完成 MCP OAuth，请改用 API key。
+  <Accordion title="OAuth 登录页面无法打开">
+    请确认你的客户端支持 MCP OAuth，并连接到 `https://mcp.exa.ai/mcp?login`。更改 URL 后请重启客户端。如果客户端无法完成 MCP OAuth，请改用 API 密钥。
   </Accordion>
 
-  <Accordion title="工具未显示">
-    显式指定 `tools` 参数会覆盖默认的工具列表。请检查所需的每个工具是否都已包含在 URL 中，然后重启 MCP 客户端，使其重新获取工具列表。
+  <Accordion title="tools 未显示">
+    显式指定 `tools` 参数会覆盖默认的工具列表。请检查所需的每个工具是否都已包含在 URL 中，然后重启 MCP 客户端，让它重新获取工具列表。
   </Accordion>
 
   <Accordion title="Claude desktop 无法连接">
-    使用内置连接器：选择 **+** (或 **Add connectors**) → **Connectors** 标签页 → 搜索 **Exa** → 选择 **+**。
+    使用内置连接器：选择 **+** (或 **Add connectors**) → **Connectors** 选项卡 → 搜索 **Exa** → 选择 **+**。
   </Accordion>
 
-  <Accordion title="找不到配置文件">
-    常见配置文件位置：
+  <Accordion title="找不到 Config 文件">
+    常见的配置文件位置：
 
     * Cursor：`~/.cursor/mcp.json`
     * fx：`~/.fx/mcp.json`
@@ -379,24 +355,22 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## 资源
-</div>
+## 资源 {#resources}
 
 <Columns cols={2}>
-  <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="查看源码" arrow="true">
+  <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="查看源文件" arrow="true">
     Exa MCP 源代码。
   </Card>
 
-  <Card title="npm" icon="package" href="https://www.npmjs.com/package/exa-mcp-server" cta="打开软件包" arrow="true">
-    通过 npm 包在本地运行 Exa MCP。
+  <Card title="npm" icon="package" href="https://www.npmjs.com/package/exa-mcp-server" cta="打开包" arrow="true">
+    使用 npm 包在本地运行 Exa MCP。
   </Card>
 
-  <Card title="Agent skills" icon="wrench" href="/zh/docs/get-started/agent-skills/overview" cta="浏览技能" arrow="true">
-    可与 Exa MCP 搭配使用的可移植技能。
+  <Card title="Agent skills" icon="wrench" href="/zh/docs/get-started/agent-skills/overview" cta="浏览 skills" arrow="true">
+    可与 Exa MCP 搭配使用的可移植 skill。
   </Card>
 
-  <Card title="在 Codex 和 ChatGPT 中使用 Exa" icon="messages-square" href="/zh/docs/integrations/chatgpt-codex" cta="打开指南" arrow="true">
-    Exa 插件的完整配置与使用指南。
+  <Card title="Codex 与 ChatGPT 中的 Exa" icon="messages-square" href="/zh/docs/integrations/chatgpt-codex" cta="打开指南" arrow="true">
+    Exa 插件的完整配置与工作流指南。
   </Card>
 </Columns>

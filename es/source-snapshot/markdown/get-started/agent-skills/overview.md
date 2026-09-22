@@ -1,63 +1,53 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-<div id="agent-skills">
-  # Agent Skills
-</div>
+# Skills de agente {#agent-skills}
 
 > Instala las skills de Exa en Claude Code, Codex y otros agentes de programación.
 
-Las skills de Exa enseñan a los agentes de programación a realizar búsquedas, recuperar contenido y desarrollar con las APIs de Exa. Encuéntralas en el repositorio de código abierto [exa-labs/agent-skills](https://github.com/exa-labs/agent-skills).
+Las skills de Exa enseñan a los agentes de programación a buscar, recuperar contenido y desarrollar con las APIs de Exa. Encuéntralas en el repositorio de código abierto [exa-labs/agent-skills](https://github.com/exa-labs/agent-skills).
 
-Cada skill contiene archivos markdown que siguen el estándar abierto [Agent Skills](https://agentskills.io), por lo que los mismos archivos se instalan en cualquier agent compatible.
+Cada skill contiene archivos markdown que siguen el estándar abierto [Skills de agente](https://agentskills.io), por lo que los mismos archivos se pueden instalar en cualquier agente compatible.
 
-<div id="install">
-  ## Instalación
-</div>
+## Instalación {#install}
 
-Instala todas las skills de Exa de una sola vez:
+Instala todas las skills de Exa a la vez:
 
 ```bash theme={null}
 npx skills add exa-labs/agent-skills
 ```
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas incluyen credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
 <Note>
-  Configura tu key como `EXA_API_KEY` en el entorno de tu agent.
+  Configura tu key como `EXA_API_KEY` en el entorno de tu agente.
 </Note>
 
-O abre una de las páginas de skills que aparecen más abajo y copia su setup prompt en tu agent. El prompt instala esa skill y verifica tu API key sin mostrarla.
+O abre una de las páginas de skills que aparecen abajo y copia su setup prompt en tu agente. El prompt instala esa skill y verifica tu API key sin mostrarla.
 
-<div id="skills">
-  ## Skills
-</div>
+## Skills {#skills}
 
 Cada página de skill incluye una descripción de una línea, un setup prompt que puedes copiar y un enlace al código fuente de `SKILL.md`.
 
 <Columns cols={3}>
-  <Card title="Desarrollar con Exa" icon="rocket" href="/es/docs/get-started/agent-skills/build-with-exa" cta="Abrir skill" arrow="true">
-    Crea aplicaciones y agents con toda la plataforma de API de Exa.
+  <Card title="Build with Exa" icon="rocket" href="/es/docs/get-started/agent-skills/build-with-exa" cta="Abrir skill" arrow="true">
+    Crea aplicaciones y agentes con toda la plataforma de API de Exa.
   </Card>
 
   <Card title="Exa Search" icon="search" href="/es/docs/get-started/agent-skills/exa-search" cta="Abrir skill" arrow="true">
-    Llama a Exa Search directamente con cURL o HTTP puro.
+    Llama a Exa Search directamente con cURL o HTTP sin procesar.
   </Card>
 
   <Card title="Exa Contents" icon="file-text" href="/es/docs/get-started/agent-skills/exa-contents" cta="Abrir skill" arrow="true">
-    Llama a Exa Contents directamente con cURL o HTTP puro.
+    Llama a Exa Contents directamente con cURL o HTTP sin procesar.
   </Card>
 </Columns>
 
-<div id="related">
-  ## Recursos relacionados
-</div>
+## Relacionado {#related}
 
 <Columns cols={2}>
   <Card title="Repositorio de skills" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Ver código fuente" arrow="true">

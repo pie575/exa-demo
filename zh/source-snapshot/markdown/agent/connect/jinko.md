@@ -1,31 +1,23 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="jinko">
-  # Jinko
-</div>
+# Jinko {#jinko}
 
 > 提供实时定价的航班与酒店搜索。
 
-[Jinko](https://gojinko.com) 是一个旅行搜索平台，提供带实时定价的航班与酒店搜索。你可以按航线和日期查询实时航班报价，针对某个目的地或指定酒店查询客房与房价，并探索从你的出发机场可直达的目的地。
+[Jinko](https://gojinko.com) 是一个旅行搜索平台，提供带实时定价的航班和酒店搜索。你可以按航线和日期搜索实时航班报价，为某个目的地或指定酒店查询房型与费率，还能探索从你的出发机场可以抵达的目的地。
 
-通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `jinko` 附加到 [Exa Agent](/zh/docs/agent/quickstart) 运行中，Agent 便会在进行 Exa 网页搜索的同时查询 Jinko。
+通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `jinko` 接入 [Exa Agent](/zh/docs/agent/quickstart) 运行，agent 便会在使用 Exa 网页搜索的同时查询 Jinko。
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
-* 按航线和日期搜索实时航班报价，包含票价、行李额和改签政策。
-* 查找目的地酒店的实时房价，或对指定酒店重新比价。
+* 搜索指定航线和日期的实时航班报价，包含票价、行李额和改签政策。
+* 查找目的地的酒店及其实时房间费率，或对特定酒店重新比价。
 * 在不同日期区间、舱位等级和预算范围内发掘目的地与灵活出行日期。
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## 提供方 ID {#provider-id}
 
 在 `dataSources` 中使用此值：
 
@@ -33,11 +25,9 @@
 jinko
 ```
 
-<div id="example">
-  ## 示例
-</div>
+## 示例 {#example}
 
-查找三月从纽约出发、往返票价低于 $400 的海滨目的地。
+查找 3 月可从纽约出发、往返票价低于 $400 的海滩目的地。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -129,31 +119,27 @@ jinko
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 推荐搭配
-</div>
+## 搭配使用效果更佳 {#pairs-well-with}
 
-* [Similarweb](/zh/docs/agent/connect/similarweb)：调研某个目的地背后的旅游网站和预订平台。
-* [Particle](/zh/docs/agent/connect/particle)：获取某地的近期报道和旅行评论。
+* [Similarweb](/zh/docs/agent/connect/similarweb)：研究某个目的地背后的旅游网站与预订平台。
+* [Particle](/zh/docs/agent/connect/particle)：获取某地的近期报道与旅行评论。
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 后续步骤 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="将其附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速入门" arrow="true">
-    Exa Connect 快速入门介绍了 `dataSources`、定价以及完整的合作伙伴目录。
+  <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">
+    Exa Connect 快速开始介绍了 `dataSources`、定价以及完整的合作伙伴目录。
   </Card>
 
-  <Card title="组合多个数据提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
-    在一次运行中最多附加五个合作伙伴，并设计好 query，确保每个提供方都会被触发。
+  <Card title="组合多个提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
+    在一次运行中最多接入五个合作伙伴，并精心设计 query，让每个合作伙伴都能被触发。
   </Card>
 
   <Card title="了解 Exa Agent" icon="book-open" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">
-    创建运行、流式获取进度、设计输出 schema，并控制投入程度与成本。
+    创建运行、流式获取进度、设计输出 schema，并控制 effort 与费用。
   </Card>
 
-  <Card title="获取 API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建 key" arrow="true">
-    在控制台中创建一个 key，即可直接运行本页示例。新账户均赠送免费额度。
+  <Card title="获取 API 密钥" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建密钥" arrow="true">
+    在控制台中创建密钥，即可直接运行本页示例。新账户可获得免费积分。
   </Card>
 </Columns>

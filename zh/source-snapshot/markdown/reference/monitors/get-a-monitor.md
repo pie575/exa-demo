@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="get-a-monitor">
-  # 获取 monitor
-</div>
+# 获取 monitor {#get-a-monitor}
 
-> 根据 ID 检索单个 monitor。
+> 根据 ID 获取单个 monitor。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0
@@ -31,20 +25,20 @@ paths:
     get:
       tags:
         - Monitors
-      summary: 获取单个 monitor
-      description: 根据 ID 获取单个 monitor。
+      summary: Get a monitor
+      description: Retrieves a single monitor by its ID.
       operationId: getMonitor
       parameters:
         - in: path
           name: id
           schema:
             type: string
-            description: monitor 的 ID
+            description: The monitor ID
           required: true
-          description: monitor 的 ID
+          description: The monitor ID
       responses:
         '200':
-          description: 该 monitor
+          description: The monitor
           headers:
             x-request-id:
               $ref: '#/components/headers/XRequestId'
@@ -64,7 +58,8 @@ components:
   headers:
     XRequestId:
       description: >-
-        请求的唯一标识符。与响应体中返回的 `requestId` 字段一致（如果响应体包含该字段）。
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -74,12 +69,12 @@ components:
       properties:
         id:
           type: string
-          description: monitor 的唯一标识符
+          description: The unique identifier for the monitor
         name:
           anyOf:
             - type: string
             - type: 'null'
-          description: 可选的显示名称
+          description: An optional display name
         status:
           type: string
           enum:
@@ -87,8 +82,10 @@ components:
             - paused
             - disabled
           description: >-
-            monitor 的状态。`active` 的 monitor 会按计划运行，也可手动触发；`paused` 的 monitor
-            只能手动触发；`disabled` 表示 monitor 在连续 10 次认证失败后被自动禁用。
+            The status of the monitor. `active` monitors run on schedule and can
+            be triggered manually. `paused` monitors can only be triggered
+            manually. `disabled` monitors are auto-disabled after 10 consecutive
+            authentication failures.
         search:
           $ref: '#/components/schemas/SearchMonitorSearchOutput'
         trigger:
@@ -96,7 +93,8 @@ components:
             - $ref: '#/components/schemas/SearchMonitorTriggerOutput'
             - type: 'null'
           description: >-
-            自动运行的间隔计划。若未设置计划，则为 null。
+            The interval-based schedule for automatic runs. Null if no schedule
+            is set.
         outputSchema:
           $ref: '#/components/schemas/SearchMonitorOutputSchemaOutput'
         metadata:
@@ -106,14 +104,15 @@ components:
                 type: string
               additionalProperties:
                 type: string
-              description: 由调用方提供的键值元数据，供你自行追踪使用。
+              description: Caller-provided key-value metadata for your own tracking.
               example:
                 slack_channel_id: C123ABC
                 slack_thread_id: '1745444400.123456'
                 user_id: U123ABC
             - type: 'null'
           description: >-
-            可选的键值元数据，供你自行追踪使用。会在 webhook 投递中原样回传，便于你将更新路由到 Slack 等系统。
+            Optional key-value metadata for your own tracking. Echoed back in
+            webhook deliveries so you can route updates to systems like Slack.
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -125,16 +124,16 @@ components:
             - type: string
               format: date-time
             - type: 'null'
-          description: 下一次计划运行的时间。若未设置触发器，则为 null。
+          description: When the next scheduled run will occur. Null if no trigger is set.
           format: date-time
         createdAt:
           type: string
           format: date-time
-          description: monitor 的创建时间
+          description: When the monitor was created
         updatedAt:
           type: string
           format: date-time
-          description: monitor 的最后更新时间
+          description: When the monitor was last updated
       required:
         - id
         - name
@@ -154,24 +153,25 @@ components:
         query:
           type: string
           minLength: 1
-          description: search 使用的查询字符串。
+          description: The query string for the search.
           example: Latest developments in LLM capabilities
         numResults:
           type: integer
           minimum: 1
           maximum: 100
           description: >-
-            返回的结果数量。限制因 search 类型而异，公开的最大限制为 100 条结果。如需更高限制，请联系销售
-            (hello@exa.ai) 洽谈。
+            Number of results to return. Limits vary by search type. The maximum
+            public limit is 100 results. Contact sales (hello@exa.ai) to discuss
+            higher limits.
           example: 10
           default: 10
         includeDomains:
-          description: 将 search 结果限定在这些域名内。
+          description: Restrict search results to these domains.
           type: array
           items:
             type: string
         excludeDomains:
-          description: 从 search 结果中排除这些域名。
+          description: Exclude these domains from search results.
           type: array
           items:
             type: string
@@ -186,13 +186,15 @@ components:
         type:
           type: string
           const: interval
-          description: 触发器类型。目前仅支持 `interval`。
+          description: The type of trigger. Currently only `interval` is supported.
           default: interval
         period:
           type: string
           description: >-
-            指定 monitor 运行频率的时长字符串（例如 "1h"、"6h"、"1d"、"7d"）。仅支持单一单位，最小间隔为 1
-            小时。计划以 monitor 的创建时间为基准（例如，在下午 2:30 创建的每日 monitor 每天约在下午 2:30 运行）。
+            A duration string specifying how often the monitor runs (e.g., "1h",
+            "6h", "1d", "7d"). Single-unit only. Minimum interval is 1 hour. The
+            schedule is anchored to the monitor's creation time (e.g., a daily
+            monitor created at 2:30 PM runs daily around 2:30 PM).
           example: 6h
       required:
         - type
@@ -204,8 +206,11 @@ components:
             - $ref: '#/components/schemas/OutputSchemaTextOutput'
             - $ref: '#/components/schemas/OutputSchemaObject'
           description: >-
-            用于合成输出的 JSON schema。支持的根类型为 "text" 和 "object"。提供后，响应中会包含一个内容符合该
-            schema 的 output 对象。适用于所有 search 类型，并在所选 search 类型的基础上增加约 2 秒的合成延迟。
+            JSON schema for synthesized output. Supported root types are "text"
+            and "object". When provided, the response includes an output object
+            whose content matches this schema. Works with every search type and
+            adds about 2 seconds of synthesis latency on top of the selected
+            search type.
           type: object
           discriminator:
             propertyName: type
@@ -216,9 +221,11 @@ components:
                 $ref: '#/components/schemas/OutputSchemaObject'
         - type: 'null'
       description: >-
-        控制运行输出的格式。未指定时默认为 `{ "type": "text" }`。当 `type` 为 `"text"`
-        时，输出为纯文本 summary；当 `type` 为 `"object"` 时，输出为结构化 JSON。若使用 `"object"`
-        类型但未指定 `properties`，则会自动推断 schema；否则输出将遵循所提供的 schema。
+        Controls the format of the run output. Defaults to `{ "type": "text" }`
+        if not specified. When `type` is `"text"`, the output is a plain text
+        summary. When `type` is `"object"`, the output is structured JSON. If no
+        `properties` are specified with `"object"` type, a schema is inferred
+        automatically; otherwise the output adheres to the provided schema.
     SearchMonitorWebhookOutput:
       type: object
       properties:
@@ -226,7 +233,8 @@ components:
           type: string
           format: uri
           description: >-
-            用于接收 webhook 事件的 HTTPS URL。不得指向 localhost 或私有 IP 段。
+            The HTTPS URL to receive webhook events. Must not point to localhost
+            or private IP ranges.
         events:
           type: array
           items:
@@ -238,7 +246,8 @@ components:
               - monitor.run.created
               - monitor.run.completed
           description: >-
-            要订阅的事件。未指定时默认订阅所有事件。
+            Which events to subscribe to. Defaults to all events if not
+            specified.
       required:
         - url
       additionalProperties: false
@@ -247,17 +256,19 @@ components:
       properties:
         requestId:
           type: string
-          description: 请求的唯一标识符。
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: 描述该错误的可读信息。
+          description: Human-readable message describing the error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            标识该故障的机器可读错误标签。标签集合是开放的：随时可能新增标签，因此请将无法识别的标签视为该响应 HTTP
-            状态对应的通用错误。已知标签在示例中列出。
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR

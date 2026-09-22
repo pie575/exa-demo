@@ -1,33 +1,25 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="monitors-api">
-  # Monitors API
-</div>
+# Monitors API {#monitors-api}
 
 > 定期运行 search，并通过 webhook 接收新发现的结果。
 
-Monitor 会按设定的周期运行 Exa search，并将结果投递到 webhook 端点。
+Monitors 会按照设定的 schedule 定期运行 Exa search，并将结果投递到 webhook 端点。
 
-使用 Monitor 可持续跟踪新闻、竞品动态、融资轮次、监管变化、研究成果发布，或任何随时间变化的主题。
+可以使用 Monitors 持续跟踪新闻、竞争对手动态、融资轮次、监管变化、研究文献，或任何随时间变化的主题。
 
-<div id="how-monitors-work">
-  ## Monitors 的工作原理
-</div>
+## Monitors 的工作方式 {#how-monitors-work}
 
-每次运行时，Exa 会执行配置好的 search，按时间进行过滤，剔除该 monitor 此前已返回过的结果或发现，然后将新的输出发送到你的 webhook。
+每次运行时，Exa 会执行已配置的 search，按时间进行过滤，剔除该 monitor 此前已返回过的结果或发现内容，再将新的输出发送到你的 webhook。
 
-每个 monitor 都有各自独立的运行历史，因此请围绕你希望持续跟踪的信号来编写 query，而不必自己去设置滚动的日期范围。
+每个 monitor 都有各自独立的运行历史，因此编写 query 时应围绕你想要持续追踪的信号，而不必自行添加不断变动的日期范围。
 
-<div id="create-your-first-monitor">
-  ## 创建你的第一个 monitor
-</div>
+## 创建你的第一个 monitor {#create-your-first-monitor}
 
-创建一个 monitor，指定 search query、运行间隔以及用于接收更新的 HTTPS 端点：
+创建 monitor 时，需指定搜索 query、interval，以及用于接收更新的 HTTPS 端点：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -126,24 +118,23 @@ Monitor 会按设定的周期运行 Exa search，并将结果投递到 webhook �
   ```
 </Accordion>
 
-创建 monitor 时请妥善保存 `webhookSecret`。它只返回一次，验证 webhook 签名时必须用到。
+创建 monitor 时请妥善保存 `webhookSecret`。它只返回一次，且是验证 webhook 签名的必要凭据。
 
-<div id="configure-the-output">
-  ## 配置输出
-</div>
+## 配置输出 {#configure-the-output}
 
-每次运行完成后，都会在 `output.results` 中返回新发现的页面。
+每次完成的运行都会在 `output.results` 中返回新发现的页面。
 
-Exa 还会将各个页面中的发现汇总到 `output.content` 中：
+Exa 还会将每个页面的发现内容归纳汇总到 `output.content` 中：
 
-| 输出形态       | 使用方式                 | 返回值                                 |
-| ---------- | -------------------- | ----------------------------------- |
-| 文本 summary | 默认                   | `output.content` 中的字符串              |
-| 结构化 JSON   | 添加 `outputSchema` 对象 | `output.content` 中符合该 schema 的 JSON |
+| 输出形式     | 使用方式                 | 返回值                                 |
+| -------- | -------------------- | ----------------------------------- |
+| 文本摘要     | 默认                   | `output.content` 中的字符串              |
+| 结构化 JSON | 添加 `outputSchema` 对象 | `output.content` 中符合该 schema 的 JSON |
 
-汇总字段的来源会自动在 `output.grounding` 中返回。
+归纳生成的 fields 所依据的 sources 会自动在 `output.grounding` 中返回。
 
-若下游代码需要固定的字段结构，请添加 `outputSchema`：
+当下游代码需要固定一致的 fields 时，请添加
+`outputSchema`：
 
 ```json theme={null}
 {
@@ -168,16 +159,12 @@ Exa 还会将各个页面中的发现汇总到 `output.content` 中：
 }
 ```
 
-不要将引用和置信度写入 schema。它们会单独在
+不要将引用来源和 confidence 写入 schema。它们会单独在
 `output.grounding` 中返回。
 
-<div id="add-page-content">
-  ## 添加页面内容
-</div>
+## 添加页面内容 {#add-page-content}
 
-`search` 接受与 [Exa Search](/zh/docs/search/quickstart) 相同的选项：用 `contents` 为每条结果附带
-highlights、全文或摘要，用 `includeDomains` 或 `excludeDomains`
-限定来源范围。
+`search` 接受与 [Exa Search](/zh/docs/search/quickstart) 相同的选项：用 `contents` 为每条结果附带 highlights、full text 或摘要，用 `includeDomains` 或 `excludeDomains` 限定来源范围。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -247,11 +234,9 @@ highlights、全文或摘要，用 `includeDomains` 或 `excludeDomains`
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## 测试你的 monitor
-</div>
+## 测试你的 monitor {#test-your-monitor}
 
-无需等到下一次计划运行时间，可立即触发一次运行，然后列出该 monitor 的运行记录：
+无需等待下一个计划时间，立即触发一次运行，然后列出该 monitor 的运行记录：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -281,40 +266,37 @@ highlights、全文或摘要，用 `includeDomains` 或 `excludeDomains`
 
 运行状态包括：
 
-| 状态          | 含义                       |
-| ----------- | ------------------------ |
-| `pending`   | 运行已排队等待                  |
-| `running`   | 运行正在执行                   |
-| `completed` | 运行已完成；可按 ID 获取以读取完整输出    |
-| `failed`    | 运行失败；`failReason` 说明失败原因 |
-| `cancelled` | 运行已取消                    |
+| 状态          | 含义                      |
+| ----------- | ----------------------- |
+| `pending`   | 运行已排队等待                 |
+| `running`   | 运行正在执行                  |
+| `completed` | 运行已完成；可按 ID 获取以读取其完整输出  |
+| `failed`    | 运行失败；`failReason` 会说明原因 |
+| `cancelled` | 运行已取消                   |
 
-在运行完成之前，`output` 为 null。
+运行完成之前，`output` 均为 null。
 
-<div id="schedule-runs">
-  ## 调度运行
-</div>
+## Schedule 运行 {#schedule-runs}
 
-最小间隔为一小时。请使用单一时长，例如 `1h`、`6h`、`1d` 或 `7d`。调度以 monitor 的创建时间为基准——在下午 2:30 创建的每日 monitor 会在每天下午 2:30 前后运行——但每次运行可能会延迟最多 30 分钟，因此请勿依赖精确的实际执行时间。
+最小 interval 为一小时。请使用单一时长，例如 `1h`、`6h`、`1d` 或 `7d`。schedule 以 monitor 的创建时间为基准：下午 2:30 创建的每日 monitor 会在每天下午 2:30 左右运行，但每次运行最多可能延迟 30 分钟，因此请勿依赖精确的时钟送达时间。
 
-省略 `trigger` 即可创建仅支持手动触发的 monitor。暂停已调度的 monitor 会停止自动运行，但手动触发仍然可用。
+省略 `trigger` 即可创建仅支持手动触发的 monitor。暂停已设置 schedule 的 monitor 会停止自动运行，但手动触发仍然可用。
 
 <Note>
-  Monitor 的运行不会重叠。如果上一次运行尚未结束，下一次调度运行就已启动，Exa 会取消上一次运行。
+  Monitor 的运行不会重叠。如果下一次按 schedule 安排的运行开始时上一次运行仍在进行，Exa 会取消上一次运行。
 </Note>
 
-<div id="receive-webhook-updates">
-  ## 接收 webhook 更新
-</div>
+## 接收 webhook 更新 {#receive-webhook-updates}
 
-如果你只关心已完成的运行，请订阅 `monitor.run.completed`。若省略 `events`，Exa
-还会发送 monitor 生命周期事件以及运行创建事件。
+如果你只需要已完成的运行，请订阅 `monitor.run.completed`。若省略 `events`，Exa
+还会发送 monitor 生命周期事件和运行创建事件。
 
-已完成运行的 payload 包含运行状态和输出。monitor 的可选 `metadata` 会在 webhook
-投递中原样返回，便于你将更新路由回对应的客户、工作区、频道或内部任务。
+已完成运行的负载包含运行状态和输出。可选的 monitor `metadata` 会在 webhook 投递中
+原样回传，便于你将更新路由回对应的客户、
+工作区、频道或内部作业。
 
-<Accordion title="已完成运行的 webhook payload">
-  以下示例中的输出和时间戳已作精简。
+<Accordion title="已完成运行的 webhook 负载">
+  下方的输出和时间戳已作缩略处理。
 
   ```json theme={null}
   {
@@ -357,13 +339,13 @@ highlights、全文或摘要，用 `includeDomains` 或 `excludeDomains`
 </Accordion>
 
 <Warning>
-  你的 webhook 必须使用 HTTPS，并且本身就是最终地址，因为系统不会跟随重定向。
+  你的 webhook 必须使用 HTTPS，并且必须是最终目标地址，因为系统不会跟随重定向。
   处理事件前请先验证 `Exa-Signature`。
 </Warning>
 
-每次投递都会包含一个 `Exa-Signature` header，格式为 `t=<timestamp>,v1=<signature>`。
-请构造 `<timestamp>.<raw-request-body>`，用一次性的 `webhookSecret` 计算其
-HMAC-SHA256 摘要，然后用常量时间比较将结果与 `v1` 比对。
+每次投递都会带有一个 `Exa-Signature` header，格式为 `t=<timestamp>,v1=<signature>`。
+请构造 `<timestamp>.<raw-request-body>`，使用一次性的
+`webhookSecret` 计算其 HMAC-SHA256 摘要，再以常量时间比较的方式将结果与 `v1` 进行比对。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -401,24 +383,22 @@ HMAC-SHA256 摘要，然后用常量时间比较将结果与 `v1` 比对。
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 后续步骤 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="创建 monitor" icon="bell" href="/zh/docs/reference/monitors/create-a-monitor" cta="查看参考文档" arrow="true">
-    了解 search、调度、输出、元数据和 webhook 的全部字段。
+  <Card title="创建 monitor" icon="bell" href="/zh/docs/reference/monitors/create-a-monitor" cta="打开参考文档" arrow="true">
+    了解 search、schedule、输出、元数据和 webhook 的全部 field。
   </Card>
 
-  <Card title="Monitor 运行" icon="clock" href="/zh/docs/reference/monitors/runs/get-a-run" cta="查看参考文档" arrow="true">
+  <Card title="Monitor 运行" icon="clock" href="/zh/docs/reference/monitors/runs/get-a-run" cta="打开参考文档" arrow="true">
     查看某次运行的状态、输出、grounding 和失败原因。
   </Card>
 
-  <Card title="Search 指南" icon="search" href="/zh/docs/search/quickstart" cta="查看指南" arrow="true">
-    配置查询、筛选条件、highlights、全文和时效性。
+  <Card title="Search 指南" icon="search" href="/zh/docs/search/quickstart" cta="打开指南" arrow="true">
+    配置查询、过滤条件、highlights、full text 和新鲜度。
   </Card>
 
   <Card title="Search 最佳实践" icon="sparkles" href="/zh/docs/search/best-practices" cta="阅读指南" arrow="true">
-    在保持输出聚焦的同时提升检索质量。
+    在保持输出聚焦的同时提升 retrieval 质量。
   </Card>
 </Columns>

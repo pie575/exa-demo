@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="grok-build">
-  # Grok Build
-</div>
+# Grok Build {#grok-build}
 
 > Gunakan Exa web search di Grok Build. Instal plugin Exa dari marketplace Grok Build dan masuk dengan akun Exa Anda.
 
-Exa tersedia sebagai plugin di marketplace [Grok Build](https://docs.x.ai/build/overview). Plugin ini memberikan Grok kemampuan web search real-time, pembacaan halaman, dan deep research skill.
+Exa tersedia sebagai plugin di marketplace [Grok Build](https://docs.x.ai/build/overview). Plugin ini memberi Grok kemampuan web search real-time, pembacaan halaman, serta deep research skill.
 
-<div id="installation">
-  ## Instalasi
-</div>
+## Instalasi {#installation}
 
 <Steps>
   <Step title="Instal Grok Build">
@@ -41,28 +35,24 @@ Exa tersedia sebagai plugin di marketplace [Grok Build](https://docs.x.ai/build/
   </Step>
 
   <Step title="Instal plugin Exa">
-    Cari **exa** di daftar, lalu tekan `i` untuk menginstalnya.
+    Cari **exa** dalam daftar, lalu tekan `i` untuk menginstalnya.
   </Step>
 
   <Step title="Masuk ke Exa">
-    Buka tab MCP server dengan `/mcp`, pilih **exa**, lalu tekan `i` untuk masuk. Peramban Anda akan membuka halaman masuk Exa. Akun baru mendapatkan credits gratis saat mendaftar.
+    Buka tab MCP server dengan `/mcp`, pilih **exa**, lalu tekan `i` untuk masuk. Peramban Anda akan membuka halaman masuk Exa. Akun baru mendapat credits gratis saat mendaftar.
   </Step>
 </Steps>
 
 Setelah exa berstatus **ready**, tanyakan apa pun kepada Grok yang memerlukan akses web.
 
-<div id="what-you-get">
-  ## Apa yang Anda dapatkan
-</div>
+## Apa yang Anda dapatkan {#what-you-get}
 
-* **web&#95;search&#95;exa**: web search real-time. Mendukung kueri bahasa alami dan filter kategori seperti berita, perusahaan, orang, makalah riset, dan GitHub.
+* **web&#95;search&#95;exa**: web search real-time. Mendukung kueri bahasa alami dan filter kategori seperti berita, perusahaan, orang, paper riset, dan GitHub.
 * **web&#95;fetch&#95;exa**: membaca URL apa pun dan mengembalikan page content dalam bentuk markdown yang bersih.
-* **exa-search skill**: sebuah deep research skill. Minta Grok mendalami suatu topik, dan ia akan menjalankan beberapa search, membaca sumber-sumber terbaik, lalu menjawab dengan citations.
+* **exa-search skill**: sebuah deep research skill. Minta Grok mendalami suatu topik, dan ia akan menjalankan beberapa searches, membaca sources terbaik, lalu menjawab dengan sitasi.
 
-<div id="example-prompts">
-  ## Contoh prompt
-</div>
+## Contoh prompt {#example-prompts}
 
 * &quot;Cari berita terbaru tentang xAI&quot;
 * &quot;Baca [https://exa.ai](https://exa.ai) lalu ringkas isinya&quot;
-* &quot;Lakukan penelusuran mendalam tentang mesin inferensi open source&quot;
+* &quot;Lakukan pendalaman tentang mesin inferensi open source&quot;

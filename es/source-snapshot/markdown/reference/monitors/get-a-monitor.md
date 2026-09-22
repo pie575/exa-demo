@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-a-monitor">
-  # Obtener un monitor
-</div>
+# Obtener un monitor {#get-a-monitor}
 
 > Recupera un único monitor por su ID.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0
@@ -31,20 +25,20 @@ paths:
     get:
       tags:
         - Monitors
-      summary: Obtener un monitor
-      description: Recupera un único monitor por su ID.
+      summary: Get a monitor
+      description: Retrieves a single monitor by its ID.
       operationId: getMonitor
       parameters:
         - in: path
           name: id
           schema:
             type: string
-            description: El ID del monitor
+            description: The monitor ID
           required: true
-          description: El ID del monitor
+          description: The monitor ID
       responses:
         '200':
-          description: El monitor
+          description: The monitor
           headers:
             x-request-id:
               $ref: '#/components/headers/XRequestId'
@@ -64,8 +58,8 @@ components:
   headers:
     XRequestId:
       description: >-
-        Identificador único de la solicitud. Coincide con el campo `requestId`
-        devuelto en los cuerpos de respuesta que lo incluyen.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -75,12 +69,12 @@ components:
       properties:
         id:
           type: string
-          description: El identificador único del monitor
+          description: The unique identifier for the monitor
         name:
           anyOf:
             - type: string
             - type: 'null'
-          description: Un nombre visible opcional
+          description: An optional display name
         status:
           type: string
           enum:
@@ -88,11 +82,10 @@ components:
             - paused
             - disabled
           description: >-
-            El estado del monitor. Los monitores `active` se ejecutan según su
-            programación y pueden activarse manualmente. Los monitores `paused`
-            solo pueden activarse manualmente. Los monitores `disabled` se
-            desactivan automáticamente tras 10 fallos de autenticación
-            consecutivos.
+            The status of the monitor. `active` monitors run on schedule and can
+            be triggered manually. `paused` monitors can only be triggered
+            manually. `disabled` monitors are auto-disabled after 10 consecutive
+            authentication failures.
         search:
           $ref: '#/components/schemas/SearchMonitorSearchOutput'
         trigger:
@@ -100,8 +93,8 @@ components:
             - $ref: '#/components/schemas/SearchMonitorTriggerOutput'
             - type: 'null'
           description: >-
-            La programación por intervalos para las ejecuciones automáticas. Null
-            si no se ha definido ninguna programación.
+            The interval-based schedule for automatic runs. Null if no schedule
+            is set.
         outputSchema:
           $ref: '#/components/schemas/SearchMonitorOutputSchemaOutput'
         metadata:
@@ -111,16 +104,15 @@ components:
                 type: string
               additionalProperties:
                 type: string
-              description: Metadatos clave-valor proporcionados por quien llama, para tu propio seguimiento.
+              description: Caller-provided key-value metadata for your own tracking.
               example:
                 slack_channel_id: C123ABC
                 slack_thread_id: '1745444400.123456'
                 user_id: U123ABC
             - type: 'null'
           description: >-
-            Metadatos clave-valor opcionales para tu propio seguimiento. Se
-            devuelven en las entregas de webhook para que puedas enrutar las
-            actualizaciones a sistemas como Slack.
+            Optional key-value metadata for your own tracking. Echoed back in
+            webhook deliveries so you can route updates to systems like Slack.
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -132,16 +124,16 @@ components:
             - type: string
               format: date-time
             - type: 'null'
-          description: Cuándo se producirá la próxima ejecución programada. Null si no se ha definido ningún disparador.
+          description: When the next scheduled run will occur. Null if no trigger is set.
           format: date-time
         createdAt:
           type: string
           format: date-time
-          description: Cuándo se creó el monitor
+          description: When the monitor was created
         updatedAt:
           type: string
           format: date-time
-          description: Cuándo se actualizó el monitor por última vez
+          description: When the monitor was last updated
       required:
         - id
         - name
@@ -161,25 +153,25 @@ components:
         query:
           type: string
           minLength: 1
-          description: La cadena de consulta de la search.
+          description: The query string for the search.
           example: Latest developments in LLM capabilities
         numResults:
           type: integer
           minimum: 1
           maximum: 100
           description: >-
-            Número de resultados a devolver. Los limits varían según el tipo de
-            search. El limit público máximo es de 100 resultados. Escribe a
-            ventas (hello@exa.ai) para hablar sobre limits más altos.
+            Number of results to return. Limits vary by search type. The maximum
+            public limit is 100 results. Contact sales (hello@exa.ai) to discuss
+            higher limits.
           example: 10
           default: 10
         includeDomains:
-          description: Restringe los resultados de search a estos dominios.
+          description: Restrict search results to these domains.
           type: array
           items:
             type: string
         excludeDomains:
-          description: Excluye estos dominios de los resultados de search.
+          description: Exclude these domains from search results.
           type: array
           items:
             type: string
@@ -194,16 +186,15 @@ components:
         type:
           type: string
           const: interval
-          description: El tipo de disparador. Actualmente solo se admite `interval`.
+          description: The type of trigger. Currently only `interval` is supported.
           default: interval
         period:
           type: string
           description: >-
-            Una cadena de duración que indica con qué frecuencia se ejecuta el
-            monitor (por ejemplo, "1h", "6h", "1d", "7d"). Solo una unidad. El
-            intervalo mínimo es de 1 hora. La programación se ancla a la hora de
-            creación del monitor (por ejemplo, un monitor diario creado a las
-            14:30 se ejecuta cada día alrededor de las 14:30).
+            A duration string specifying how often the monitor runs (e.g., "1h",
+            "6h", "1d", "7d"). Single-unit only. Minimum interval is 1 hour. The
+            schedule is anchored to the monitor's creation time (e.g., a daily
+            monitor created at 2:30 PM runs daily around 2:30 PM).
           example: 6h
       required:
         - type
@@ -215,11 +206,11 @@ components:
             - $ref: '#/components/schemas/OutputSchemaTextOutput'
             - $ref: '#/components/schemas/OutputSchemaObject'
           description: >-
-            Esquema JSON para la salida sintetizada. Los tipos raíz admitidos son
-            "text" y "object". Cuando se proporciona, la respuesta incluye un
-            objeto de salida cuyo contenido se ajusta a este esquema. Funciona
-            con todos los tipos de search y añade unos 2 segundos de latencia de
-            síntesis al tipo de search seleccionado.
+            JSON schema for synthesized output. Supported root types are "text"
+            and "object". When provided, the response includes an output object
+            whose content matches this schema. Works with every search type and
+            adds about 2 seconds of synthesis latency on top of the selected
+            search type.
           type: object
           discriminator:
             propertyName: type
@@ -230,13 +221,11 @@ components:
                 $ref: '#/components/schemas/OutputSchemaObject'
         - type: 'null'
       description: >-
-        Controla el formato de la salida de la ejecución. Si no se especifica,
-        el valor predeterminado es `{ "type": "text" }`. Cuando `type` es
-        `"text"`, la salida es un summary en texto plano. Cuando `type` es
-        `"object"`, la salida es JSON estructurado. Si no se especifican
-        `properties` con el tipo `"object"`, el esquema se infiere
-        automáticamente; en caso contrario, la salida se ajusta al esquema
-        proporcionado.
+        Controls the format of the run output. Defaults to `{ "type": "text" }`
+        if not specified. When `type` is `"text"`, the output is a plain text
+        summary. When `type` is `"object"`, the output is structured JSON. If no
+        `properties` are specified with `"object"` type, a schema is inferred
+        automatically; otherwise the output adheres to the provided schema.
     SearchMonitorWebhookOutput:
       type: object
       properties:
@@ -244,8 +233,8 @@ components:
           type: string
           format: uri
           description: >-
-            La URL HTTPS que recibirá los eventos de webhook. No debe apuntar a
-            localhost ni a rangos de IP privados.
+            The HTTPS URL to receive webhook events. Must not point to localhost
+            or private IP ranges.
         events:
           type: array
           items:
@@ -257,8 +246,8 @@ components:
               - monitor.run.created
               - monitor.run.completed
           description: >-
-            A qué eventos suscribirse. Si no se especifica, se suscribe a todos
-            los eventos.
+            Which events to subscribe to. Defaults to all events if not
+            specified.
       required:
         - url
       additionalProperties: false
@@ -267,20 +256,19 @@ components:
       properties:
         requestId:
           type: string
-          description: Identificador único de la solicitud.
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Mensaje legible por humanos que describe el error.
+          description: Human-readable message describing the error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            Etiqueta de error legible por máquina que identifica el fallo. El
-            conjunto de etiquetas es abierto: pueden añadirse nuevas en
-            cualquier momento, así que trata las etiquetas no reconocidas como
-            un error genérico del estado HTTP de la respuesta. Las etiquetas
-            conocidas se listan como ejemplos.
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR

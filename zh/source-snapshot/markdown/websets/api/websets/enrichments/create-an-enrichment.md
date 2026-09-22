@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="create-an-enrichment">
-  # 创建 Enrichment
-</div>
+# 创建增强 {#create-an-enrichment}
 
-> 为 Webset 创建一个 Enrichment。
+> 为 Webset 创建一个 增强。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/enrichments
 openapi: 3.1.0

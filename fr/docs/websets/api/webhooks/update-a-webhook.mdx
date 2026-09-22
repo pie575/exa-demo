@@ -2,12 +2,12 @@
 title: "Mettre à jour un webhook"
 openapi: "/fr/docs/exa-spec.yaml PATCH /v0/webhooks/{id}"
 timestamp: false
-description: "Met à jour l'URL cible, les événements souscrits ou les
-  métadonnées d'un Webhook. Les champs omis restent inchangés."
+description: "Met à jour l'URL cible, les events souscrits ou les métadonnées
+  d'un Webhook. Les fields omis restent inchangés."
 ---
 
 <Warning>
   **Les redirections ne sont pas suivies.** Si vous modifiez l&#39;URL, assurez-vous
-  qu&#39;il s&#39;agit bien de la destination finale. Les endpoints qui répondent par une
-  redirection 3xx seront considérés comme des échecs de livraison.
+  qu&#39;il s&#39;agit bien de la destination finale. Les endpoints qui répondent par
+  une redirection 3xx seront considérés comme des échecs de livraison.
 </Warning>

@@ -1,55 +1,41 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-team-info">
-  # Obtener información del equipo
-</div>
+# Obtener información del equipo {#get-team-info}
 
-> Consulta la información de tu equipo, incluidos el uso y los límites de concurrencia.
+> Consulta la información de tu equipo, incluidos el uso de concurrencia y sus límites.
 
-<div id="overview">
-  ## Descripción general
-</div>
+## Descripción general {#overview}
 
-El endpoint Get Team Info devuelve información sobre el equipo autenticado, incluidos el uso actual de concurrencia del equipo y los límites configurados. Resulta útil para supervisar el uso que haces de la API de Websets y conocer tus límites de tasa.
+El endpoint Get Team Info devuelve información sobre el equipo autenticado, incluidos su uso actual de concurrencia y sus límites configurados. Resulta útil para monitorear el uso que haces de la API de Websets y conocer tus límites de tasa.
 
-<div id="response">
-  ## Respuesta
-</div>
+## Respuesta {#response}
 
 La respuesta incluye:
 
 * **object**: Siempre &quot;team&quot;
 * **id**: El identificador único de tu equipo
 * **name**: El nombre de tu equipo
-* **concurrencia**: Uso actual, con las solicitudes activas y en cola
-* **límites**: Los límites de concurrencia de tu equipo
+* **concurrency**: Uso actual, con las solicitudes activas y en cola
+* **limits**: Los límites de concurrencia de tu equipo
 
-<div id="concurrency-fields">
-  ### Campos de concurrencia
-</div>
+### Campos de concurrencia {#concurrency-fields}
 
 El objeto `concurrency` muestra el estado actual de tus solicitudes:
 
-* **active**: número de solicitudes que se están procesando en este momento
-* **queued**: número de solicitudes en espera de procesarse
+* **active**: número de solicitudes que se están procesando actualmente
+* **queued**: número de solicitudes en espera de procesamiento
 
-<div id="limits-fields">
-  ### Campos de límites
-</div>
+### Campos de límite {#limits-fields}
 
 El objeto `limits` muestra los límites configurados de tu equipo:
 
-* **maxConcurrent**: número máximo de solicitudes que pueden procesarse de forma simultánea (null significa sin límite)
-* **maxQueued**: número máximo de solicitudes que pueden permanecer en espera en la cola (null significa sin límite)
+* **maxConcurrent**: Número máximo de solicitudes que se pueden procesar simultáneamente (null significa ilimitado)
+* **maxQueued**: Número máximo de solicitudes que pueden esperar en la cola (null significa ilimitado)
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0

@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="list-api-keys">
-  # Lister les API keys
-</div>
+# List API keys {#list-api-keys}
 
-> Récupérez toutes les API keys appartenant à votre team, avec leurs metadata.
+> Récupérez toutes les API keys appartenant à votre équipe, ainsi que leurs métadonnées.
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 <Info>
-  L&#39;API Team Management s&#39;active team par team. Elle s&#39;authentifie à l&#39;aide d&#39;une API key de compte de service, que vous créez depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre team. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
+  La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie à l&#39;aide d&#39;une API key de compte de service, que vous créez depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour demander l&#39;accès.
 </Info>
 
-<div id="overview">
-  ## Aperçu
-</div>
+## Aperçu {#overview}
 
-L&#39;endpoint List API Keys renvoie toutes les API keys associées à votre team. Pour chaque key, la réponse inclut l&#39;ID, le nom, la rate limit et le timestamp de création.
+L&#39;endpoint List API Keys renvoie toutes les API keys associées à votre équipe. Pour chaque clé, vous obtenez son identifiant, son nom, sa limite de débit et son horodatage de création.
 
-<div id="response-format">
-  ## Format de réponse
-</div>
+## Format de réponse {#response-format}
 
-La réponse contient un tableau d&#39;objets API key comprenant les informations suivantes :
+La réponse inclut un tableau d&#39;objets API key contenant les informations suivantes :
 
 * **id** : identifiant unique de l&#39;API key
 * **name** : nom lisible par un humain (s&#39;il a été fourni lors de la création)
-* **rateLimit** : rate limit en requêtes par minute (si définie)
+* **rateLimit** : limite de débit en requests par minute (si définie)
 * **createdAt** : horodatage ISO 8601 de la création de la clé
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

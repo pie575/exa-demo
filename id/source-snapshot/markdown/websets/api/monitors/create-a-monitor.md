@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="create-a-websets-monitor">
-  # Membuat monitor Websets
-</div>
+# Membuat monitor Websets {#create-a-websets-monitor}
 
-> Membuat `Monitor` baru untuk menjaga Websets Anda selalu diperbarui dengan data terbaru.
+> Membuat `Monitor` baru agar Websets Anda terus diperbarui dengan data terkini.
 
-Monitor berjalan otomatis sesuai jadwal yang Anda tentukan sehingga Websets Anda tetap mutakhir tanpa campur tangan manual:
+Monitors berjalan otomatis sesuai jadwal yang Anda tentukan sehingga Websets Anda tetap mutakhir tanpa campur tangan manual:
 
-* **Menemukan konten baru**: Menjalankan operasi `search` untuk menemukan item baru yang memenuhi criteria Anda
-* **Memperbarui konten yang ada**: Menjalankan operasi `refresh` untuk memperbarui contents dan enrichment item
+* **Temukan konten baru**: Jalankan operasi `search` untuk menemukan item baru yang sesuai kriteria Anda
+* **Perbarui konten yang ada**: Jalankan operasi `refresh` untuk memperbarui contents dan enrichments item
 * **Penjadwalan otomatis**: Konfigurasikan ekspresi `cron` dan `timezone` untuk kontrol penjadwalan yang presisi
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0

@@ -1,11 +1,11 @@
 ---
 title: "Membatalkan run"
-description: "Batalkan Agent run yang sedang dalam antrean atau berjalan."
+description: "Batalkan Agent run yang queued atau sedang berjalan."
 openapi: "/id/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
 timestamp: false
 ---
 
-Jika run masih aktif, run akan langsung beralih ke `cancelled` dan berhenti tanpa mengembalikan hasil apa pun. Run berakhir dengan status `cancelled` dan `stopReason: cancelled`. Anda tetap ditagih atas usage yang terpakai sebelum pembatalan. Jika run sudah mencapai status terminal (completed, failed, atau cancelled), endpoint akan mengembalikan run yang ada tanpa perubahan.
+Jika run masih aktif, run akan langsung beralih ke `cancelled` dan berhenti tanpa mengembalikan hasil apa pun. Run berakhir dengan status `cancelled` dan `stopReason: cancelled`. Anda tetap ditagih atas penggunaan yang terjadi sebelum pembatalan. Jika run sudah mencapai status terminal (completed, failed, atau cancelled), endpoint akan mengembalikan run yang ada tanpa perubahan.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.

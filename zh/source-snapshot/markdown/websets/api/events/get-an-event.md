@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="get-an-event">
-  # 获取事件
-</div>
+# 获取单个事件 {#get-an-event}
 
 > 根据 id 获取单个 Event。
 
 你可以通过创建 Webhook 来订阅 Event。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events/{id}
 openapi: 3.1.0
@@ -571,7 +565,9 @@ components:
           type: array
         excludes:
           description: >-
-            适用于此 Webset 内所有操作的 Excludes 来源（已有的 imports 或 websets）。在这些来源中找到的任何结果都将在所有搜索和导入操作中被忽略。
+            The Excludes sources (existing imports or websets) that apply to all
+            operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
           items:
             properties:
               source:

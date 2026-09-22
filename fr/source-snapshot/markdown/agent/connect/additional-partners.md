@@ -1,18 +1,14 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="additional-providers">
-  # Providers supplémentaires
-</div>
+# Fournisseurs supplémentaires {#additional-providers}
 
-> Les partners Exa Connect en dehors de l&#39;ensemble de providers en libre-service.
+> Les partners Exa Connect au-delà de l&#39;ensemble de fournisseurs en libre-service.
 
-En plus des providers en libre-service, Exa Connect prend en charge d&#39;autres data partners.
-Ceux-ci sont **disponibles sur demande** : [contactez notre équipe pour les activer sur
+En plus des fournisseurs en libre-service, Exa Connect prend en charge d&#39;autres data partners.
+Ces derniers sont **disponibles sur demande** : [contactez notre équipe pour les activer sur
 votre compte](mailto:sales@exa.ai).
 
 <div className="connect-request-tiles">
@@ -70,11 +66,11 @@ votre compte](mailto:sales@exa.ai).
 </div>
 
 <Columns cols={2}>
-  <Card title="Contactez notre équipe" icon="mail" href="mailto:sales@exa.ai" cta="Contacter le service commercial" arrow="true">
-    Indiquez-nous de quel partner votre Exa Agent a besoin et nous vous mettrons en relation.
+  <Card title="Parlez à notre équipe" icon="mail" href="mailto:sales@exa.ai" cta="Contacter le service commercial" arrow="true">
+    Dites-nous de quel partner votre Exa Agent a besoin et nous vous mettrons en relation.
   </Card>
 
-  <Card title="Devenir provider" icon="handshake" href="https://docs.google.com/forms/d/e/1FAIpQLSexTOC8ix28h8uumexJxFg4Mln4WPmm-D332RSbdB01DtnvnQ/viewform" cta="Postuler" arrow="true">
-    Vous avez des données à proposer ? Posez votre candidature pour rejoindre Exa Connect en tant que partner.
+  <Card title="Devenir fournisseur" icon="handshake" href="https://docs.google.com/forms/d/e/1FAIpQLSexTOC8ix28h8uumexJxFg4Mln4WPmm-D332RSbdB01DtnvnQ/viewform" cta="Postuler" arrow="true">
+    Vous avez des données à proposer ? Postulez pour rejoindre Exa Connect en tant que partner.
   </Card>
 </Columns>

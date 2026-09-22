@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="start-building-with-exa">
-  # Mulai membangun dengan Exa
-</div>
+# Mulai membangun dengan Exa {#start-building-with-exa}
 
-> Alat web search andal yang dirancang khusus untuk agent. Semuanya dioptimalkan agar Anda mendapatkan hasil yang akurat dan hemat token.
+> Tool web search andal yang dirancang khusus untuk agent. Semuanya dioptimalkan agar Anda mendapatkan hasil yang akurat dan hemat token.
 
 export const DocsImage = props => {
   const docsBase = () => {
@@ -33,31 +29,31 @@ export const ApiCards = ({only}) => {
   const cards = [{
     id: "search",
     title: "Search",
-    body: "Data real-time berbasis bukti dengan konten halaman hemat token",
+    body: "Data real-time berbasis bukti dengan konten halaman yang hemat token",
     href: "/search/quickstart",
     image: "/images/home/api-search.webp",
     alt: "Kotak pencarian Exa dengan hasil web berperingkat dan domain sumbernya"
   }, {
     id: "agent",
     title: "Agent",
-    body: "Agent asinkron untuk riset mendalam, pembuatan daftar, dan enrichment",
+    body: "Agent asinkron untuk deep research, list building, dan enrichment",
     href: "/agent/quickstart",
     image: "/images/home/api-agent.webp",
-    alt: "Spreadsheet berisi perusahaan yang diperkaya dengan kemitraan, kisah pelanggan, dan penggunaan cloud"
+    alt: "Spreadsheet perusahaan yang di-enrich dengan informasi kemitraan, kisah pelanggan, dan penggunaan cloud"
   }, {
     id: "search-deep",
     title: "Deep Search",
-    body: "Search yang menalar berdasarkan berbagai sumber dan menghasilkan output terstruktur",
+    body: "Search yang menalar lintas sources dan mengembalikan output terstruktur",
     href: "/search/deep-search",
     image: "/images/home/api-search-deep.webp",
-    alt: "Query Deep Search yang menghasilkan JSON terstruktur tentang perusahaan bioteknologi"
+    alt: "Query deep search yang mengembalikan JSON terstruktur tentang perusahaan bioteknologi"
   }, {
     id: "contents",
     title: "Contents",
-    body: "Teks lengkap, highlights, dan ringkasan dari URL apa pun",
+    body: "Teks penuh, kutipan, dan ringkasan dari URL apa pun",
     href: "/contents/quickstart",
     image: "/images/home/api-contents.webp",
-    alt: "Konten halaman Wikipedia Boeing yang diekstrak"
+    alt: "Konten halaman Wikipedia untuk Boeing yang diekstrak"
   }, {
     id: "monitors",
     title: "Monitors",
@@ -94,7 +90,7 @@ export const ApiCards = ({only}) => {
 
     <div className="docs-home-quickstart-actions">
       <a className="docs-home-button" href="/id/docs/get-started/quickstart">
-        Mulai
+        Memulai
       </a>
 
       <a className="docs-home-button" href="https://dashboard.exa.ai/api-keys" target="_blank" rel="noopener noreferrer">
@@ -104,7 +100,7 @@ export const ApiCards = ({only}) => {
           <path d="M4.66671 5.25C2.41539 5.25 0.583374 7.08202 0.583374 9.33333C0.583374 11.5847 2.41539 13.4167 4.66671 13.4167C6.91802 13.4167 8.75004 11.5847 8.75004 9.33333C8.75004 7.08202 6.91802 5.25 4.66671 5.25ZM4.08337 11.0833C3.43902 11.0833 2.91671 10.5609 2.91671 9.91667C2.91671 9.27243 3.43902 8.75 4.08337 8.75C4.72772 8.75 5.25004 9.27232 5.25004 9.91667C5.25004 10.561 4.72772 11.0833 4.08337 11.0833Z" fill="currentColor" />
         </svg>
 
-        Dapatkan API Key
+        Dapatkan API key
       </a>
     </div>
   </div>
@@ -164,9 +160,9 @@ export const ApiCards = ({only}) => {
       <div className="docs-home-apis" role="tablist" aria-label="API">
         <label htmlFor="docs-home-api-search">Cari di web</label>
         <label htmlFor="docs-home-api-contents">Ambil page contents</label>
-        <label htmlFor="docs-home-api-deep">Dapatkan structured output</label>
+        <label htmlFor="docs-home-api-deep">Dapatkan output terstruktur</label>
         <label htmlFor="docs-home-api-tools">Beri LLM kemampuan web search</label>
-        <label htmlFor="docs-home-api-agent">Susun daftar hasil riset</label>
+        <label htmlFor="docs-home-api-agent">Susun daftar hasil Research</label>
         <label htmlFor="docs-home-api-agent-research">Analisis topik yang kompleks</label>
       </div>
 
@@ -368,7 +364,7 @@ export const ApiCards = ({only}) => {
             -H "Authorization: Bearer $EXA_API_KEY" \
             -d "$SEARCH_BODY")"
 
-          # 3. Kirim hasilnya kembali ke model untuk jawaban akhir.
+          # 3. Kirim kembali hasilnya ke model untuk jawaban akhir.
           TOOL_MSG="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           assistant = json.load(sys.stdin)

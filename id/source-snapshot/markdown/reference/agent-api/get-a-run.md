@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="get-an-agent-run">
-  # Mendapatkan Agent run
-</div>
+# Get an Agent run {#get-an-agent-run}
 
 > Ambil Agent run berdasarkan ID.
 
-Gunakan endpoint ini untuk melakukan poll pada sebuah run hingga statusnya menjadi `completed`, `failed`, atau `cancelled`.
+Gunakan endpoint ini untuk melakukan poll terhadap run hingga statusnya menjadi `completed`, `failed`, atau `cancelled`.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}
 openapi: 3.1.0

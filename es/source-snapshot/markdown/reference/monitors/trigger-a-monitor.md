@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="trigger-a-monitor">
-  # Activar un monitor
-</div>
+# Activar un monitor {#trigger-a-monitor}
 
-> Inicia una ejecución de inmediato, independientemente de la programación. Funciona con monitores en estado `active` o `paused`.
+> Ejecuta un run de inmediato, sin importar el schedule. Funciona con monitors con estado `active` o `paused`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/{id}/trigger
 openapi: 3.1.0

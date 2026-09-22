@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="delete-a-monitor">
-  # Eliminar un monitor
-</div>
+# Eliminar un monitor {#delete-a-monitor}
 
 > Elimina un monitor. Esta acción no se puede deshacer.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /monitors/{id}
 openapi: 3.1.0

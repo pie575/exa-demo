@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="batch-api">
-  # Batch API
-</div>
+# Batch API {#batch-api}
 
 > Jalankan permintaan Exa API secara asinkron dalam batch.
 
@@ -15,30 +11,26 @@
   Batch API tersedia untuk pelanggan Enterprise setelah Exa mengaktifkannya untuk team Anda. Hubungi [sales@exa.ai](mailto:sales@exa.ai) untuk membahas akses dan pengaktifan Enterprise.
 </Info>
 
-Batch API memungkinkan Anda mengirim banyak permintaan Exa API sekaligus dan mengambil hasilnya kemudian dalam bentuk file JSONL. Alih-alih mengirim ribuan permintaan satu per satu serta mengelola sendiri rate limit dan percobaan ulang, Anda cukup mengirim satu batch, melakukan poll terhadap statusnya, lalu mengunduh seluruh hasilnya dalam satu file.
+Batch API memungkinkan Anda mengirim banyak permintaan Exa API sekaligus dan mengambil hasilnya kemudian dalam bentuk file JSONL. Alih-alih mengirim ribuan permintaan satu per satu serta mengelola sendiri rate limit dan percobaan ulang, Anda cukup mengirim satu batch, melakukan poll terhadap statusnya, lalu mengunduh semua hasil dalam satu file.
 
-Gunakan fitur ini untuk enrichment offline, backfill, atau pekerjaan lain yang tidak memerlukan respons langsung. Schema lengkap permintaan dan respons tersedia di [API reference](/id/docs/reference/batches/create-a-batch).
+Gunakan ini untuk enrichment offline, backfill, atau pekerjaan lain yang tidak memerlukan response seketika. Schema lengkap untuk permintaan dan response tersedia di [API reference](/id/docs/reference/batches/create-a-batch).
 
 <Note>
   Batch API masih dalam tahap beta. Sertakan header `Exa-Beta: batches-2026-06-06` pada setiap permintaan.
 </Note>
 
-<div id="supported-requests">
-  ## Permintaan yang didukung
-</div>
+## Permintaan yang didukung {#supported-requests}
 
-Setiap item batch harus berupa permintaan `POST` ke salah satu rute berikut:
+Setiap item batch harus berupa permintaan `POST` ke salah satu route berikut:
 
-| Rute          | Kasus penggunaan                                  |
+| Route         | Kasus penggunaan                                  |
 | ------------- | ------------------------------------------------- |
 | `/search`     | Menjalankan permintaan Exa search secara asinkron |
 | `/agent/runs` | Menjalankan permintaan Exa Agent secara asinkron  |
 
-Setiap item memerlukan `customId` yang unik dalam satu batch. `customId` yang sama akan dikembalikan pada file hasil sehingga Anda dapat memetakan baris output kembali ke data input Anda.
+Setiap item memerlukan `customId` yang unik dalam satu batch. `customId` yang sama dikembalikan pada file hasil sehingga Anda dapat memetakan baris output kembali ke data input Anda.
 
-<div id="create-a-batch">
-  ## Membuat batch
-</div>
+## Membuat batch {#create-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -72,9 +64,9 @@ Setiap item memerlukan `customId` yang unik dalam satu batch. `customId` yang sa
   ```
 </CodeGroup>
 
-Respons berisi ID batch dan status awalnya:
+Response berisi ID batch dan status awalnya:
 
-<Accordion title="Contoh respons">
+<Accordion title="Contoh response">
   ```json theme={null}
   {
     "id": "batch_01j7x9v0m2n4p6q8r0s2t4v6w8",
@@ -96,11 +88,9 @@ Respons berisi ID batch dan status awalnya:
   ```
 </Accordion>
 
-<div id="check-status">
-  ## Memeriksa status
-</div>
+## Cek status {#check-status}
 
-Lakukan poll pada batch hingga mencapai status terminal:
+Poll batch hingga mencapai status terminal:
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -112,23 +102,21 @@ Lakukan poll pada batch hingga mencapai status terminal:
 
 Status batch yang tersedia:
 
-| Status        | Arti                                                                      |
-| ------------- | ------------------------------------------------------------------------- |
-| `in_progress` | Batch sedang berjalan                                                     |
-| `completed`   | Semua permintaan telah selesai dan hasilnya tersedia                      |
-| `cancelling`  | Pembatalan telah diminta dan proses yang sedang berjalan mulai dihentikan |
-| `cancelled`   | Batch telah dibatalkan                                                    |
-| `expired`     | Hasil sudah tidak tersedia lagi                                           |
+| Status        | Arti                                                                          |
+| ------------- | ----------------------------------------------------------------------------- |
+| `in_progress` | Batch sedang berjalan                                                         |
+| `completed`   | Semua permintaan telah selesai dan hasil sudah tersedia                       |
+| `cancelling`  | Pembatalan telah diminta dan pekerjaan yang masih berjalan sedang dituntaskan |
+| `cancelled`   | Batch telah dibatalkan                                                        |
+| `expired`     | Hasil sudah tidak tersedia lagi                                               |
 
-Saat batch selesai, `resultsUrl` berisi URL unduhan untuk berkas hasil JSONL, dan `expiresAt` disetel ke akhir masa retensi hasil.
+Saat batch selesai, `resultsUrl` berisi URL unduhan untuk file hasil JSONL, dan `expiresAt` diatur ke akhir masa penyimpanan hasil.
 
 <Warning>
-  `resultsUrl` adalah URL presigned yang berumur pendek. Ambil ulang batch untuk mendapatkan URL baru setiap kali Anda perlu mengunduh hasilnya lagi.
+  `resultsUrl` adalah URL presigned yang berumur pendek. Ambil ulang batch untuk mendapatkan URL baru setiap kali Anda perlu mengunduh hasil kembali.
 </Warning>
 
-<div id="list-batches">
-  ## Daftar batch
-</div>
+## Daftar batch {#list-batches}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -138,9 +126,9 @@ Saat batch selesai, `resultsUrl` berisi URL unduhan untuk berkas hasil JSONL, da
   ```
 </CodeGroup>
 
-Respons menggunakan paginasi berbasis cursor: `data` memuat hingga `limit` batch, dan jika `hasMore` bernilai `true`, kirim `nextCursor` sebagai parameter query `cursor` untuk mengambil halaman berikutnya.
+Response ini menggunakan paginasi berbasis cursor: `data` berisi maksimal sebanyak `limit` batch, dan jika `hasMore` bernilai `true`, kirimkan `nextCursor` sebagai parameter query `cursor` untuk mengambil halaman berikutnya.
 
-Kirim `status=completed` untuk menampilkan hanya batch yang sudah selesai:
+Kirimkan `status=completed` untuk menampilkan hanya batch yang sudah selesai:
 
 ```bash theme={null}
 curl -s "https://api.exa.ai/batches?status=completed" \
@@ -148,7 +136,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   -H "Exa-Beta: batches-2026-06-06"
 ```
 
-`completed` adalah satu-satunya nilai yang didukung; nilai lain akan mengembalikan error. Daftar listing yang sudah completed diurutkan berdasarkan waktu kedaluwarsa dan memakai cursor tersendiri, jadi tetap kirimkan `status=completed` pada setiap halaman — cursor untuk completed dan cursor tanpa filter tidak dapat saling menggantikan.
+`completed` adalah satu-satunya nilai yang didukung; nilai lainnya akan mengembalikan error. Listing yang telah selesai diurutkan berdasarkan waktu kedaluwarsa dan menggunakan cursor tersendiri, jadi tetap kirimkan `status=completed` di setiap halaman — cursor untuk hasil `completed` dan cursor tanpa filter tidak bisa saling dipertukarkan.
 
 ```json theme={null}
 {
@@ -159,9 +147,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-<div id="download-results">
-  ## Unduh hasil
-</div>
+## Unduh hasil {#download-results}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -176,9 +162,7 @@ Setiap baris JSONL berisi `customId` asli beserta `response` atau `error`:
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-<div id="cancel-a-batch">
-  ## Membatalkan batch
-</div>
+## Membatalkan batch {#cancel-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -188,9 +172,7 @@ Setiap baris JSONL berisi `customId` asli beserta `response` atau `error`:
   ```
 </CodeGroup>
 
-<div id="delete-a-batch">
-  ## Menghapus batch
-</div>
+## Menghapus batch {#delete-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -200,8 +182,6 @@ Setiap baris JSONL berisi `customId` asli beserta `response` atau `error`:
   ```
 </CodeGroup>
 
-<div id="access">
-  ## Akses
-</div>
+## Akses {#access}
 
 Untuk mengaktifkan Batch API bagi sebuah team, hubungi [sales@exa.ai](mailto:sales@exa.ai).

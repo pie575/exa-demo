@@ -1,32 +1,26 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="llamaindex">
-  # LlamaIndex
-</div>
+# LlamaIndex {#llamaindex}
 
-> LlamaIndex Agent 애플리케이션에 Exa retrieval을 추가하는 방법을 알려주는 quickstart 가이드입니다.
+> LlamaIndex Agent 애플리케이션에 Exa 검색을 추가하는 방법을 소개하는 빠른 시작 가이드입니다.
 
 <Card title="코딩 에이전트 퀵스타트" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Exa를 처음 사용하시나요? 1분 안에 시작해 보세요.
+  Exa가 처음이신가요? 1분 안에 시작해 보세요.
 </Card>
 
 ***
 
-LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 구축하는 프레임워크입니다. 이 가이드에서는 Exa의 LlamaIndex 통합을 사용해 다음을 진행합니다:
+LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 구축하는 프레임워크입니다. 이 가이드에서는 Exa의 LlamaIndex 연동을 사용해 다음을 진행합니다.
 
 1. Exa의 Search and Retrieve Highlight Tool을 LlamaIndex retriever로 지정하기
-2. 응답 생성에 이 도구를 활용하는 OpenAI Agent 설정하기
+2. response 생성 과정에서 이 도구를 사용하는 OpenAI Agent 설정하기
 
 ***
 
-<div id="get-started">
-  ## 시작하기
-</div>
+## Get started {#get-started}
 
 <Steps>
   <Step title="사전 준비 및 설치">
@@ -36,10 +30,10 @@ LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 �
     pip install llama-index llama-index-core llama-index-tools-exa
     ```
 
-    또한 API key가 제대로 초기화되어 있는지 확인하세요. 아래 코드는 환경 변수 이름으로 `EXA_API_KEY`를 사용합니다.
+    또한 API 키가 제대로 초기화되었는지 확인하세요. 아래 코드는 환경 변수 이름으로 `EXA_API_KEY`를 사용합니다.
 
     <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+      dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
     </Card>
   </Step>
 
@@ -69,8 +63,8 @@ LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 �
     ```
   </Step>
 
-  <Step title="OpenAI agent 설정 및 Exa 기반 요청 실행">
-    위에서 추려낸 도구 목록을 전달해 [OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/)를 설정합니다.
+  <Step title="OpenAI agent 설정 및 Exa 기반 요청 보내기">
+    위에서 추려낸 도구 집합을 전달해 [OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/)를 설정합니다.
 
     ```Python Python theme={null}
     from llama_index.agent.openai import OpenAIAgent
@@ -89,16 +83,16 @@ LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 �
     )
     ```
 
-    agent는 전달받은 Exa 도구를 call한 뒤 그 결과를 바탕으로 답변합니다. 실제 output은 질의와 Exa가 반환하는 페이지의 게시 날짜에 따라 달라집니다.
+    agent는 전달받은 Exa 도구를 call한 뒤 그 결과를 바탕으로 답변합니다. 실제 output은 질의와 Exa가 반환하는 페이지의 발행일에 따라 달라집니다.
   </Step>
 </Steps>
 
 <Columns cols={2}>
   <Card title="Search API 가이드" icon="search" href="/ko/docs/search/quickstart" cta="가이드 읽기" arrow="true">
-    Exa search parameters와 응답 필드를 살펴보세요.
+    Exa search parameters와 response field를 살펴보세요.
   </Card>
 
-  <Card title="LlamaIndex 도구 레퍼런스" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="레퍼런스 열기" arrow="true">
-    LlamaIndex 도구와 agent configuration을 살펴보세요.
+  <Card title="LlamaIndex 도구 reference" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="reference 열기" arrow="true">
+    LlamaIndex 도구와 agent 구성을 살펴보세요.
   </Card>
 </Columns>

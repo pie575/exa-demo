@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件了解所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件查看所有可用页面。
 
-<div id="exa-search-api">
-  # Exa Search API
-</div>
+# Exa Search API {#exa-search-api}
 
-> 用自然语言搜索网络，一次请求即可获得干净、相关的页面内容。
+> 用自然语言搜索网页，一次请求即可获得干净、相关的页面内容。
 
-Exa Search 接收自然语言 query，返回经过排序的网页结果及干净的页面内容。
+Exa Search 接收自然语言 query，返回经过排序的网页结果，并附带干净的页面内容。
 
-<div id="make-your-first-request">
-  ## 发起第一个请求
-</div>
+## 发起首次请求 {#make-your-first-request}
 
-先用自然语言写一个 `query`，并加上 `contents: { highlights: true }`，它会按每条结果的相关度返回相应长度的摘录。其他字段用于控制 Exa 如何搜索、以及每条结果包含哪些内容；本页余下部分会介绍你实际会用到的那些字段。
+先传入一条自然语言 `query`，并设置 `contents: { highlights: true }`，后者会返回长度随各条结果相关度而定的摘录。其他 field 用于控制 Exa 如何搜索、以及每条结果包含哪些内容；本页余下部分会介绍你实际会用到的那些。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -67,10 +61,10 @@ Exa Search 接收自然语言 query，返回经过排序的网页结果及干净
   ```
 </CodeGroup>
 
-Search 默认最多返回 10 条结果。设置 `numResults` 可请求最多 100 条结果；如果相关页面不足，返回数量会更少。Search 不支持分页。
+search 默认最多返回 10 条结果。通过 `numResults` 最多可请求 100 条；若相关页面不足，返回数量会更少。search 不支持分页。
 
 <Accordion title="示例响应">
-  highlights 和下面的列表均已截短。
+  highlights 与下方列表均已精简。
 
   ```json theme={null}
   {
@@ -109,20 +103,18 @@ Search 默认最多返回 10 条结果。设置 `numResults` 可请求最多 100
   ```
 </Accordion>
 
-结果按相关性排序。每条结果都带有标题、URL、发布日期等元数据，以及你在 `contents` 中请求的内容。
+结果按相关度排序。每条结果都带有标题、URL、发布日期等元数据，以及你在 `contents` 中请求的内容。
 
-<div id="writing-queries">
-  ## 编写 query
-</div>
+## 编写查询 {#writing-queries}
 
-使用 Search API 时，`query` 是唯一必填字段。
+使用 Search API 时，`query` 是唯一必填的 field。
 
-请用自然语言编写 query，写明主题；必要时还可指明期望的来源类型和时间范围。
+用自然语言编写 query，写明主题；如有需要，还可以说明想要的来源类型和时间范围。
 
-query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足以让 Exa 理解意图并找到相关页面，而 `"news"` 则不行。如果对来源类型有要求，请在 query 中直接写明：
+query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 能让 Exa 充分理解意图，从而找到相关页面；而 `"news"` 则不能。如果来源类型很重要，请在 query 中明确指出：
 
 ```text theme={null}
-近期对比 RAG 系统中混合检索与语义检索的技术文章
+近期对比 RAG 系统中混合 retrieval 与语义 retrieval 的技术文章
 ```
 
 关于 Exa 索引包含哪些内容以及如何搜索这些内容类型，请参阅 [Exa 索引中有什么](/zh/docs/search/data/overview)。
@@ -131,36 +123,35 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   选择搜索类型
 </h2>
 
-`type` 用于选择搜索模式，每种模式在速度、搜索深度和综合能力之间各有侧重。`auto` 为默认值，适用于大多数搜索场景。
+`type` 用于选择搜索模式，每种模式在速度、搜索深度和综合能力之间各有侧重。`auto` 是默认值，适用于大多数 search。
 
-| 类型               | 适用场景                  |
-| ---------------- | --------------------- |
-| `auto`           | 希望在质量与速度之间获得最佳的默认平衡   |
-| `fast`           | 请求对延迟敏感               |
-| `instant`        | 请求处于实时链路上，例如自动补全或语音场景 |
-| `deep-lite`      | 任务需要轻量级的研究与综合         |
-| `deep`           | 任务需要多步搜索和更强的综合能力      |
-| `deep-reasoning` | 完整性和推理深度比延迟更重要        |
+| 类型               | 适用场景                   |
+| ---------------- | ---------------------- |
+| `auto`           | 希望在质量与速度之间取得最佳的默认平衡    |
+| `fast`           | 请求对延迟敏感                |
+| `instant`        | 请求处于实时链路上，例如自动补全或语音    |
+| `deep-lite`      | 任务需要轻量级的研究与综合          |
+| `deep`           | 任务需要多步 search 和更强的综合能力 |
+| `deep-reasoning` | 完整性和推理深度比延迟更重要         |
 
-深度模式执行的是一套研究流程，而非单次检索。有关该流程的工作原理以及如何使用其附加控制项，请参阅 [Deep Search](/zh/docs/search/deep-search)。
+Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该流程的工作方式及其附加控制项的使用，请参阅[深度搜索](/zh/docs/search/deep-search)。
 
 <Tip>
-  对于长时间运行的研究、列表构建和多跳 enrichment，建议使用 [Exa Agent](/zh/docs/agent/quickstart)，而不是 `deep-reasoning`。Agent 每次运行拥有更多算力，返回的结果有据可依且结构化。
+  如需长时间运行的研究、列表构建和多跳增强，请使用 [Exa Agent](/zh/docs/agent/quickstart)，而不是 `deep-reasoning`。Agent
+  在每次运行中拥有更多算力，并返回有据可依的结构化结果。
 </Tip>
 
-<div id="output-shapes">
-  ## 输出形态
-</div>
+## 输出形态 {#output-shapes}
 
-每条结果都包含标题、URL、发布日期等元数据。使用 `contents` 可额外获取页面的 highlights、全文或 summary。
+每条 result 都包含元数据，例如标题、URL 和发布日期。使用 `contents` 可以额外获取页面的 highlights、full text 或 summary。
 
 <Tabs>
   <Tab title="Highlights">
-    Highlights 返回与 query 最相关的摘录片段，为模型和智能体提供所需的证据，同时避免让页面中的无关内容占满上下文窗口。
+    Highlights 返回与你的 query 最相关的摘录，让模型和 agent 拿到所需的证据，同时不会让页面中无关的内容占满上下文窗口。
 
-    对大多数任务而言，推荐使用这种输出形态。
+    对大多数任务而言，这是推荐的输出形态。
 
-    先从最简单的 `highlights: true` 开始。Exa 会根据 query 从每条结果中选取适量的内容。
+    先从最简单的 `highlights: true` 开始，Exa 会根据 query 从每条 result 中选取适量内容。
 
     <CodeGroup>
       ```python Python theme={null}
@@ -188,13 +179,13 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
       ```
     </CodeGroup>
 
-    有关 Dynamic Highlights 以及何时启用它的说明，请参阅 [Highlights](/zh/docs/search/highlights)。
+    关于 Dynamic Highlights 以及何时启用它，参见 [Highlights](/zh/docs/search/highlights)。
   </Tab>
 
-  <Tab title="全文">
-    全文返回清理后的页面正文。当任务依赖更完整的上下文、文档结构，或依赖那些可能不在以 query 为中心的摘录范围内的细节时，请使用全文。
+  <Tab title="Full text">
+    Full text 返回清理后的页面正文。如果任务依赖更完整的上下文、文档结构，或依赖围绕 query 的摘录之外的细节，就应该使用它。
 
-    完整页面可能很大，请同时限制结果数量和每个页面返回的文本量。
+    完整页面可能很大，请同时限制 result 的数量和每个页面返回的文本量。
 
     <CodeGroup>
       ```python Python theme={null}
@@ -231,27 +222,25 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   </Tab>
 </Tabs>
 
-每次请求只选用一种内容视图。同时请求 highlights 和 text 会返回同一页面的两种视图，并按两份计费。`summary` 是第三种选择，但它会为每条结果额外带来一次语言模型调用。
+每个请求只选用一种内容视图。同时请求 highlights 和 text 会返回同一页面的两种视图，并按两份计费。`summary` 是第三种选择，但它会为每条 result 额外增加一次语言模型调用。
 
 <Warning>
-  `/search` 与 `/contents` 接受相同的内容选项，但放置位置不同：
+  `/search` 和 `/contents` 接受相同的 content options，但放置位置不同：
 
   * **`/search`** 将 `highlights`、`text` 和 `summary` 嵌套在 `contents` 对象内：
     `"contents": { "highlights": true }`
-  * **`/contents`** 没有 `contents` 外层包装。请求体本身就是这些内容选项，因此相同的字段与 `urls` 并列位于顶层：`"urls": [...], "highlights": true`
+  * **`/contents`** 没有 `contents` 这层包装。它的请求体本身就是 content options，因此相同的 fields 与 `urls` 并列位于顶层：`"urls": [...], "highlights": true`
 </Warning>
 
-<div id="output-schema">
-  ## Output schema
-</div>
+## 输出 schema {#output-schema}
 
-如果希望 Exa 对 search 结果进行综合归纳，可添加 `outputSchema`。它适用于所有搜索类型，并会在响应中添加一个 `output` 对象。
+如果希望 Exa 对搜索结果进行归纳合成，可添加 `outputSchema`。它适用于所有搜索类型，并会在响应中增加一个 `output` 对象。
 
-排序后的页面仍保留在 `results` 中；生成的内容返回在 `output.content` 中，字段级的来源与置信度信息则位于 `output.grounding` 中。
+排序后的页面仍保留在 `results` 中，生成的内容则返回在 `output.content` 中，字段级的来源和置信度位于 `output.grounding` 中。
 
 <Tabs>
-  <Tab title="自由文本">
-    使用 `type: "text"` 生成文字性内容。可添加 `description` 来指定输出的格式或长度。
+  <Tab title="自由格式文本">
+    使用 `type: "text"` 生成文字内容。添加 `description` 可指定其格式或长度。
 
     <CodeGroup>
       ```python Python theme={null}
@@ -292,7 +281,7 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   </Tab>
 
   <Tab title="结构化 JSON">
-    使用 `type: "object"` 返回符合你所定义的属性和必填项的 JSON。
+    使用 `type: "object"` 获取符合你所定义的属性和必填项的 JSON。
 
     <CodeGroup>
       ```python Python theme={null}
@@ -402,23 +391,20 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   </Tab>
 </Tabs>
 
-使用 `systemPrompt` 提供来源偏好、重点强调等指令；使用 `outputSchema` 定义响应结构。Python 中对应的是 `system_prompt` 和 `output_schema`。
+使用 `systemPrompt` 提供指令，例如来源偏好或需要强调的内容；使用 `outputSchema` 定义响应的结构。Python 中对应的是 `system_prompt` 和 `output_schema`。
 
 <Note>
-  请保持对象 schema 精简：最多支持 2 层嵌套和 10 个属性。不要在 schema 中添加引用或置信度字段；Exa 会自动在 `output.grounding` 中返回这些信息。
+  保持对象 schema 精简：最多支持 2 层嵌套和 10 个属性。请勿在 schema 中添加 citation 或 confidence
+  field；Exa 会在 `output.grounding` 中自动返回这些信息。
 </Note>
 
-<div id="filter-results">
-  ## 过滤结果
-</div>
+## 过滤结果 {#filter-results}
 
-过滤器是硬性约束：只有当范围之外的结果对你完全无用时才添加；较为宽松的来源偏好则应写在 query 文本中。完整的过滤器列表参见 [API 参考](/zh/docs/reference/search)。
+过滤器是硬性约束：只有当范围之外的 result 对你毫无用处时才添加过滤器；较宽松的来源偏好则应写进 query 文本中。完整的过滤器列表请参见 [API 参考](/zh/docs/reference/search)。
 
-<div id="include-domains-or-paths">
-  ### 包含域名或路径
-</div>
+### 包含域名或路径 {#include-domains-or-paths}
 
-`includeDomains` 可将结果限制在你信任的来源。它支持完整域名、路径前缀 (如 `anthropic.com/news`) 以及子域名通配符 (如 `*.substack.com`) 。
+`includeDomains` 可将结果限制在你信任的来源范围内。它支持完整域名、路径前缀 (如 `anthropic.com/news`) ，以及子域名通配符 (如 `*.substack.com`) 。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -448,13 +434,11 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   ```
 </CodeGroup>
 
-请将路径写在过滤条件中，而不是在 query 里再用一次 `site:` 运算符。
+请把路径写在过滤条件中，不要在 query 里用 `site:` 操作符再写一遍。
 
-<div id="exclude-domains-or-paths">
-  ### 排除域名或路径
-</div>
+### 排除域名或路径 {#exclude-domains-or-paths}
 
-`excludeDomains` 用于剔除来自特定域名或路径的结果，支持与 `includeDomains` 相同的路径前缀和子域名通配符。只有当这些来源会导致结果不可用时才使用它，不要用它来表达倾向性偏好。
+`excludeDomains` 会剔除来自特定域名或路径的结果。它支持与 `includeDomains` 相同的路径前缀和子域名通配符。只有当这些来源会让结果变得不可用时才使用它，不要用它来表达偏好。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -487,20 +471,18 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   ```
 </CodeGroup>
 
-<div id="content-freshness">
-  ## 内容新鲜度
-</div>
+## 内容新鲜度 {#content-freshness}
 
-`contents.maxAgeHours` 用于控制从每条结果中提取的内容需要多新，它不会按发布日期过滤结果。
+`contents.maxAgeHours` 用于控制从每个 result 中提取的内容必须有多新，它不会按 publication date 过滤 result。
 
-| 取值   | 行为                          |
+| 值    | 行为                          |
 | ---- | --------------------------- |
-| 省略   | 有缓存内容时使用缓存，必要时抓取页面          |
-| 正整数  | 若缓存内容比指定的小时数更新，则使用缓存；否则抓取页面 |
+| 省略   | 有缓存内容时使用缓存，必要时再抓取页面         |
+| 正整数  | 缓存内容的缓存时长小于该小时数时使用缓存，否则抓取页面 |
 | `0`  | 始终抓取最新内容                    |
 | `-1` | 仅使用缓存内容                     |
 
-大多数搜索都无需设置该字段。只有当陈旧的页面内容会失去价值时才设置它，比如价格、库存情况，或内容频繁变动的页面。
+大多数 search 都应省略该 field。仅当陈旧的页面内容无法使用时才设置它，例如价格、库存情况或变动频繁的页面。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -536,24 +518,22 @@ query 可以宽泛、带有探索性。`"Latest news on EU battery policy"` 足�
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 下一步 {#next-steps}
 
 <Columns cols={2}>
   <Card title="最佳实践" icon="sparkles" href="/zh/docs/search/best-practices" cta="阅读指南" arrow="true">
     token 预算、内容新鲜度、结构化输出与系统提示词。
   </Card>
 
-  <Card title="API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考文档" arrow="true">
-    涵盖全部请求参数与响应字段，并提供在线调试环境。
+  <Card title="API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考" arrow="true">
+    涵盖每个请求参数与响应 field，并配有在线调试环境。
   </Card>
 
   <Card title="Contents" icon="file-text" href="/zh/docs/contents/quickstart" cta="打开指南" arrow="true">
-    已有 URL，只需获取干净的正文、highlights 或摘要。
+    已经有 URL，只想获取干净的文本、highlights 或摘要。
   </Card>
 
   <Card title="Exa Agent" icon="bot" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">
-    需要长时间运行的研究、列表构建或 enrichment。
+    需要长时间运行的研究、列表构建或增强。
   </Card>
 </Columns>

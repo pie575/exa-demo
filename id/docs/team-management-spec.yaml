@@ -2,9 +2,9 @@ openapi: 3.1.0
 info:
   version: 1.0.0
   title: Team Management API
-  description: API untuk mengelola kunci API dalam tim. Menyediakan operasi CRUD
-    untuk membuat, mencantumkan, memperbarui, dan menghapus kunci API dengan
-    kontrol akses berbasis tim. API diaktifkan untuk setiap tim. Hubungi
+  description: API untuk mengelola API key dalam Team. Menyediakan operasi CRUD
+    untuk membuat, mencantumkan, memperbarui, dan menghapus API key dengan
+    kontrol akses berbasis Team. API ini diaktifkan untuk setiap Team. Hubungi
     support@exa.ai untuk meminta akses.
 servers:
   - url: https://admin-api.exa.ai/team-management
@@ -14,9 +14,9 @@ paths:
   /api-keys:
     post:
       operationId: create-api-key
-      summary: Buat kunci API
-      description: Membuat kunci API baru untuk tim yang terautentikasi. Anda dapat
-        menentukan nama, batas laju, dan anggaran untuk kunci API.
+      summary: Buat API key
+      description: Membuat API key baru untuk Team yang terautentikasi. Secara
+        opsional, tentukan nama, rate limit, dan anggaran untuk API key.
       x-codeSamples:
         - lang: bash
           label: Create API key with name and rate limit
@@ -86,24 +86,24 @@ paths:
               properties:
                 name:
                   type: string
-                  description: Nama opsional untuk kunci API
+                  description: Nama opsional untuk API key
                   example: Production API Key
                 rateLimit:
                   type: integer
-                  description: Batas laju opsional untuk kunci API (permintaan per detik)
+                  description: Rate limit opsional untuk API key (permintaan per detik)
                   example: 1000
                 budgetCents:
                   type:
                     - integer
                     - "null"
                   minimum: 0
-                  description: Anggaran pengeluaran opsional untuk kunci API, dalam sen. Tetapkan
-                    ke null untuk menghapus anggaran.
+                  description: Anggaran pengeluaran opsional untuk API key, dalam sen. Tetapkan ke
+                    null untuk menghapus anggaran.
                   example: 5000
               additionalProperties: false
       responses:
         "200":
-          description: Kunci API berhasil dibuat
+          description: API key berhasil dibuat
           content:
             application/json:
               schema:
@@ -115,37 +115,37 @@ paths:
                       id:
                         type: string
                         format: uuid
-                        description: ID unik untuk kunci API
+                        description: Identifier unik untuk API key
                       name:
                         type: string
-                        description: Nama kunci API
+                        description: Nama API key
                       rateLimit:
                         type:
                           - integer
                           - "null"
-                        description: Batas laju dalam permintaan per detik
+                        description: Rate limit dalam permintaan per detik
                       budgetCents:
                         type:
                           - integer
                           - "null"
-                        description: Anggaran pengeluaran untuk kunci API, dalam sen
+                        description: Anggaran pengeluaran untuk API key, dalam sen
                       isOverBudget:
                         type: boolean
-                        description: Apakah kunci API saat ini melampaui anggarannya
+                        description: Apakah API key saat ini melebihi anggarannya
                       teamId:
                         type: string
                         format: uuid
-                        description: ID tim pemilik kunci ini
+                        description: ID Team pemilik key ini
                       userId:
                         type: string
                         format: uuid
-                        description: ID pengguna yang membuat kunci ini
+                        description: ID pengguna yang membuat key ini
                       createdAt:
                         type: string
                         format: date-time
-                        description: Waktu pembuatan kunci
+                        description: Waktu key dibuat
         "400":
-          description: Permintaan Tidak Valid - Parameter tidak valid
+          description: Permintaan Tidak Valid - parameter tidak valid
           content:
             application/json:
               schema:
@@ -159,7 +159,7 @@ paths:
                       - "Unexpected parameters: invalidParam. Allowed: name,
                         rateLimit, budgetCents."
         "401":
-          description: Tidak Diotorisasi - Kunci layanan tidak valid atau tidak ada
+          description: Tidak Terautentikasi - key layanan tidak valid atau tidak ada
           content:
             application/json:
               schema:
@@ -174,16 +174,16 @@ paths:
         - apikey: []
     get:
       operationId: list-api-keys
-      summary: Daftar kunci API
-      description: Mengembalikan semua kunci API milik tim yang terautentikasi.
-        Mencakup ID, nama, dan batas laju untuk setiap kunci.
+      summary: Daftar API key
+      description: Mengembalikan semua API key milik Team yang terautentikasi.
+        Mencakup ID, nama, dan rate limit setiap key.
       parameters:
         - name: api_key_id
           in: query
           required: false
           schema:
             type: string
-          description: ID kunci API opsional untuk mengambil kunci tertentu.
+          description: ID API key opsional untuk mengambil key tertentu.
       x-codeSamples:
         - lang: bash
           label: List all API keys
@@ -222,7 +222,7 @@ paths:
             console.log(result);
       responses:
         "200":
-          description: Daftar kunci API berhasil diambil
+          description: Daftar API key berhasil diambil
           content:
             application/json:
               schema:
@@ -243,15 +243,15 @@ paths:
                               type:
                                 - integer
                                 - "null"
-                              description: Batas laju dalam permintaan per detik
+                              description: Rate limit dalam permintaan per detik
                             budgetCents:
                               type:
                                 - integer
                                 - "null"
-                              description: Anggaran pengeluaran untuk kunci API, dalam sen
+                              description: Anggaran pengeluaran untuk API key, dalam sen
                             isOverBudget:
                               type: boolean
-                              description: Apakah kunci API saat ini melampaui anggarannya
+                              description: Apakah API key saat ini melebihi anggarannya
                   - type: object
                     properties:
                       apiKey:
@@ -266,15 +266,15 @@ paths:
                             type:
                               - integer
                               - "null"
-                            description: Batas laju dalam permintaan per detik
+                            description: Rate limit dalam permintaan per detik
                           budgetCents:
                             type:
                               - integer
                               - "null"
-                            description: Anggaran pengeluaran untuk kunci API, dalam sen
+                            description: Anggaran pengeluaran untuk API key, dalam sen
                           isOverBudget:
                             type: boolean
-                            description: Apakah kunci API saat ini melampaui anggarannya
+                            description: Apakah API key saat ini melebihi anggarannya
                           teamId:
                             type: string
                             format: uuid
@@ -282,7 +282,7 @@ paths:
                             type: string
                             format: date-time
         "400":
-          description: Permintaan tidak valid - format ID kunci API tidak valid
+          description: Permintaan tidak valid - format ID API key tidak valid
           content:
             application/json:
               schema:
@@ -292,7 +292,7 @@ paths:
                     type: string
                     example: Invalid API key ID format.
         "401":
-          description: Tidak Diotorisasi - Kunci layanan tidak valid atau tidak ada
+          description: Tidak Terautentikasi - key layanan tidak valid atau tidak ada
           content:
             application/json:
               schema:
@@ -302,7 +302,7 @@ paths:
                     type: string
                     example: Unauthorized
         "403":
-          description: Dilarang - izin tidak memadai untuk mengakses kunci API ini
+          description: Dilarang - izin untuk mengakses API key ini tidak memadai
           content:
             application/json:
               schema:
@@ -312,7 +312,7 @@ paths:
                     type: string
                     example: Insufficient permissions to access this API key
         "404":
-          description: Tidak Ditemukan - kunci API atau tim tidak ditemukan
+          description: Tidak ditemukan - API key atau Team tidak ditemukan
           content:
             application/json:
               schema:
@@ -330,15 +330,15 @@ paths:
   /api-keys/{id}:
     get:
       operationId: get-api-key
-      summary: Ambil kunci API
-      description: Mengambil detail kunci API tertentu berdasarkan ID-nya.
+      summary: Dapatkan API key
+      description: Mengambil detail API key tertentu berdasarkan ID-nya.
       parameters:
         - name: id
           in: path
           required: true
           schema:
             type: string
-          description: ID unik kunci API.
+          description: Identifier unik API key.
       x-codeSamples:
         - lang: bash
           label: Get a specific API key
@@ -348,7 +348,7 @@ paths:
               -H 'x-api-key: YOUR-SERVICE-KEY'
       responses:
         "200":
-          description: Kunci API berhasil diambil
+          description: API key berhasil diambil
           content:
             application/json:
               schema:
@@ -366,15 +366,15 @@ paths:
                         type:
                           - integer
                           - "null"
-                        description: Batas laju dalam permintaan per detik
+                        description: Rate limit dalam permintaan per detik
                       budgetCents:
                         type:
                           - integer
                           - "null"
-                        description: Anggaran pengeluaran untuk kunci API, dalam sen
+                        description: Anggaran pengeluaran untuk API key, dalam sen
                       isOverBudget:
                         type: boolean
-                        description: Apakah kunci API saat ini melampaui anggarannya
+                        description: Apakah API key saat ini melebihi anggarannya
                       teamId:
                         type: string
                         format: uuid
@@ -382,7 +382,7 @@ paths:
                         type: string
                         format: date-time
         "400":
-          description: Permintaan tidak valid - format ID kunci API tidak valid
+          description: Permintaan tidak valid - format ID API key tidak valid
           content:
             application/json:
               schema:
@@ -392,7 +392,7 @@ paths:
                     type: string
                     example: Invalid API key ID format.
         "401":
-          description: Tidak Diotorisasi - Kunci layanan tidak valid atau tidak ada
+          description: Tidak Terautentikasi - key layanan tidak valid atau tidak ada
           content:
             application/json:
               schema:
@@ -402,7 +402,7 @@ paths:
                     type: string
                     example: Unauthorized
         "404":
-          description: Tidak Ditemukan - kunci API tidak ada
+          description: Tidak ditemukan - API key tidak ada
           content:
             application/json:
               schema:
@@ -417,16 +417,16 @@ paths:
         - apikey: []
     put:
       operationId: update-api-key
-      summary: Perbarui kunci API
-      description: Memperbarui nama dan/atau batas laju kunci API yang ada. Hanya
-        kunci API milik tim yang terautentikasi yang dapat diperbarui.
+      summary: Perbarui API key
+      description: Memperbarui nama dan/atau rate limit API key yang ada. Hanya API
+        key milik Team yang terautentikasi yang dapat diperbarui.
       parameters:
         - name: id
           in: path
           required: true
           schema:
             type: string
-          description: ID unik kunci API yang akan diperbarui.
+          description: Identifier unik API key yang akan diperbarui.
       x-codeSamples:
         - lang: bash
           label: Update API key name and rate limit
@@ -500,24 +500,24 @@ paths:
               properties:
                 name:
                   type: string
-                  description: Nama baru opsional untuk kunci API
+                  description: Nama baru opsional untuk API key
                   example: Updated Production Key
                 rateLimit:
                   type: integer
-                  description: Batas laju baru opsional untuk kunci API (permintaan per detik)
+                  description: Rate limit baru opsional untuk API key (permintaan per detik)
                   example: 2000
                 budgetCents:
                   type:
                     - integer
                     - "null"
                   minimum: 0
-                  description: Anggaran pengeluaran baru opsional untuk kunci API, dalam sen.
+                  description: Anggaran pengeluaran baru opsional untuk API key, dalam sen.
                     Tetapkan ke null untuk menghapus anggaran.
                   example: 5000
               additionalProperties: false
       responses:
         "200":
-          description: Kunci API berhasil diperbarui
+          description: API key berhasil diperbarui
           content:
             application/json:
               schema:
@@ -535,15 +535,15 @@ paths:
                         type:
                           - integer
                           - "null"
-                        description: Batas laju dalam permintaan per detik
+                        description: Rate limit dalam permintaan per detik
                       budgetCents:
                         type:
                           - integer
                           - "null"
-                        description: Anggaran pengeluaran untuk kunci API, dalam sen
+                        description: Anggaran pengeluaran untuk API key, dalam sen
                       isOverBudget:
                         type: boolean
-                        description: Apakah kunci API saat ini melampaui anggarannya
+                        description: Apakah API key saat ini melebihi anggarannya
                       teamId:
                         type: string
                         format: uuid
@@ -557,7 +557,7 @@ paths:
                         type: string
                         format: date-time
         "400":
-          description: Permintaan Tidak Valid - Parameter tidak valid
+          description: Permintaan Tidak Valid - parameter tidak valid
           content:
             application/json:
               schema:
@@ -569,7 +569,7 @@ paths:
                       - api_key_id is required
                       - Invalid API key ID format.
         "401":
-          description: Tidak Diotorisasi - Kunci layanan tidak valid atau tidak ada
+          description: Tidak Terautentikasi - key layanan tidak valid atau tidak ada
           content:
             application/json:
               schema:
@@ -579,7 +579,7 @@ paths:
                     type: string
                     example: Unauthorized
         "403":
-          description: Dilarang - kunci API milik tim lain
+          description: Dilarang - API key milik Team lain
           content:
             application/json:
               schema:
@@ -589,7 +589,7 @@ paths:
                     type: string
                     example: You do not have permission to access this API key
         "404":
-          description: Tidak Ditemukan - kunci API tidak ada
+          description: Tidak Ditemukan - API key tidak ada
           content:
             application/json:
               schema:
@@ -604,8 +604,8 @@ paths:
         - apikey: []
     delete:
       operationId: delete-api-key
-      summary: Hapus kunci API
-      description: Menghapus kunci API. Hanya kunci API milik tim yang terautentikasi
+      summary: Hapus API key
+      description: Menghapus API key. Hanya API key milik Team yang terautentikasi
         yang dapat dihapus.
       parameters:
         - name: id
@@ -613,7 +613,7 @@ paths:
           required: true
           schema:
             type: string
-          description: ID unik kunci API yang akan dihapus.
+          description: Identifier unik API key yang akan dihapus.
       x-codeSamples:
         - lang: bash
           label: Delete an API key
@@ -654,7 +654,7 @@ paths:
             console.log(result);
       responses:
         "200":
-          description: Kunci API berhasil dihapus
+          description: API key berhasil dihapus
           content:
             application/json:
               schema:
@@ -664,7 +664,7 @@ paths:
                     type: boolean
                     example: true
         "400":
-          description: Permintaan Tidak Valid - Parameter tidak valid
+          description: Permintaan Tidak Valid - parameter tidak valid
           content:
             application/json:
               schema:
@@ -676,7 +676,7 @@ paths:
                       - api_key_id is required
                       - Invalid API key ID format.
         "401":
-          description: Tidak Diotorisasi - Kunci layanan tidak valid atau tidak ada
+          description: Tidak Terautentikasi - key layanan tidak valid atau tidak ada
           content:
             application/json:
               schema:
@@ -686,7 +686,7 @@ paths:
                     type: string
                     example: Unauthorized
         "403":
-          description: Dilarang - kunci API milik tim lain
+          description: Dilarang - API key milik Team lain
           content:
             application/json:
               schema:
@@ -696,7 +696,7 @@ paths:
                     type: string
                     example: You do not have permission to access this API key
         "404":
-          description: Tidak Ditemukan - kunci API tidak ada
+          description: Tidak Ditemukan - API key tidak ada
           content:
             application/json:
               schema:
@@ -712,17 +712,17 @@ paths:
   /api-keys/{id}/usage:
     get:
       operationId: get-api-key-usage
-      summary: Ambil penggunaan kunci API
-      description: Mengambil analitik penggunaan dan data penagihan untuk kunci API
-        tertentu dalam periode waktu tertentu. Mengembalikan perincian biaya
-        berdasarkan jenis harga dari sistem penagihan.
+      summary: Dapatkan penggunaan API key
+      description: Mengambil analitik penggunaan dan data billing untuk API key
+        tertentu selama periode waktu tertentu. Mengembalikan perincian biaya
+        berdasarkan jenis harga dari sistem billing.
       parameters:
         - name: id
           in: path
           required: true
           schema:
             type: string
-          description: ID unik kunci API.
+          description: Identifier unik API key.
         - name: start_date
           in: query
           required: false
@@ -730,7 +730,8 @@ paths:
             type: string
             format: date-time
           description: Tanggal mulai periode penggunaan (format ISO 8601). Default-nya
-            adalah 30 hari lalu. Harus berada dalam 6 bulan terakhir (180 hari).
+            adalah 30 hari yang lalu. Harus berada dalam 6 bulan terakhir (180
+            hari).
           example: 2025-01-01T00:00:00Z
         - name: end_date
           in: query
@@ -752,7 +753,7 @@ paths:
               - month
           description: Granularitas waktu untuk mengelompokkan hasil. Saat ini dicadangkan
             untuk peningkatan di masa mendatang dan tidak mengubah struktur
-            respons. Default-nya adalah 'day'.
+            response. Default-nya adalah 'day'.
           example: day
       x-codeSamples:
         - lang: bash
@@ -821,20 +822,20 @@ paths:
                 properties:
                   id:
                     type: string
-                    description: ID unik kunci API.
+                    description: Identifier unik API key.
                   api_key_id:
                     type: string
                     format: uuid
-                    description: ID kunci API.
+                    description: ID API key.
                   api_key_name:
                     type:
                       - string
                       - "null"
-                    description: Nama kunci API
+                    description: Nama API key
                   team_id:
                     type: string
                     format: uuid
-                    description: ID tim pemilik kunci ini
+                    description: ID Team pemilik key ini
                   period:
                     type: object
                     properties:
@@ -858,7 +859,7 @@ paths:
                       properties:
                         price_id:
                           type: string
-                          description: ID unik harga
+                          description: Identifier unik untuk harga
                         price_name:
                           type: string
                           description: Nama harga (misalnya, "Neural Search", "Content Retrieval")
@@ -874,7 +875,7 @@ paths:
                       generated_at:
                         type: string
                         format: date-time
-                        description: Waktu pembuatan laporan ini
+                        description: Waktu laporan ini dibuat
               example:
                 id: key_abc123def456
                 api_key_id: 550e8400-e29b-41d4-a716-446655440000
@@ -896,7 +897,7 @@ paths:
                 metadata:
                   generated_at: 2025-02-01T10:30:00Z
         "400":
-          description: Permintaan Tidak Valid - Parameter tidak valid
+          description: Permintaan Tidak Valid - parameter tidak valid
           content:
             application/json:
               schema:
@@ -914,7 +915,7 @@ paths:
                       - "Invalid group_by parameter. Must be one of: hour, day,
                         month"
         "401":
-          description: Tidak Diotorisasi - Kunci layanan tidak valid atau tidak ada
+          description: Tidak Terautentikasi - key layanan tidak valid atau tidak ada
           content:
             application/json:
               schema:
@@ -924,7 +925,7 @@ paths:
                     type: string
                     example: Unauthorized
         "404":
-          description: Tidak Ditemukan - kunci API tidak ada
+          description: Tidak Ditemukan - API key tidak ada
           content:
             application/json:
               schema:
@@ -934,7 +935,7 @@ paths:
                     type: string
                     example: API key not found
         "500":
-          description: Kesalahan Server Internal - Gagal mengambil data penggunaan
+          description: Kesalahan Server Internal - gagal mengambil data penggunaan
           content:
             application/json:
               schema:
@@ -953,4 +954,4 @@ components:
       type: apiKey
       in: header
       name: x-api-key
-      description: Kunci API layanan untuk autentikasi tim
+      description: API key layanan untuk autentikasi Team

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="delete-a-monitor">
-  # 删除 monitor
-</div>
+# 删除 monitor {#delete-a-monitor}
 
-> 删除某个 monitor。此操作无法撤销。
+> 删除指定的 monitor。此操作无法撤销。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /monitors/{id}
 openapi: 3.1.0
@@ -566,21 +560,19 @@ components:
                 - type: integer
                   minimum: 0
                   maximum: 1000
-                  description: Number of code blocks to return for each result.
+                  description: 每个结果返回的代码块数量。
                   default: 0
                 - type: 'null'
           additionalProperties: false
-          description: Extra parameters to pass.
+          description: 要传递的额外参数。
         context:
           description: >-
-            Deprecated: Use highlights or text instead. Returns page contents as
-            a combined context string.
+            已弃用：请改用 highlights 或 text。以合并后的上下文字符串形式返回页面内容。
           deprecated: true
           oneOf:
             - type: boolean
               description: >-
-                Deprecated: Use highlights or text instead. Returns page
-                contents as a combined context string.
+                已弃用：请改用 highlights 或 text。以合并后的上下文字符串形式返回页面内容。
               example: true
               deprecated: true
             - type: object
@@ -590,16 +582,14 @@ components:
                   minimum: 1
                   maximum: 10000
                   description: >-
-                    Deprecated. Maximum character limit for the context string.
-                    Maximum supported value is 10000.
+                    已弃用。上下文字符串的最大字符数限制。支持的最大值为 10000。
                   example: 10000
               additionalProperties: false
               description: >-
-                Deprecated: Use highlights or text instead. Returns page
-                contents as a combined context string.
+                已弃用：请改用 highlights 或 text。以合并后的上下文字符串形式返回页面内容。
               deprecated: true
         livecrawl:
-          description: Crawl strategy for fetching page content
+          description: 获取页面内容的抓取策略
           oneOf:
             - type: string
               enum:
@@ -613,7 +603,7 @@ components:
           type: integer
           exclusiveMinimum: 0
           maximum: 90000
-          description: The timeout for livecrawling in milliseconds.
+          description: 实时抓取的超时时间（毫秒）。
           example: 1000
           default: 10000
         maxAgeHours:
@@ -621,29 +611,24 @@ components:
           minimum: -1
           maximum: 720
           description: >-
-            Maximum age of cached content in hours. Positive values use cached
-            content if it is less than this many hours old; 0 fetches fresh
-            content and is the supported way to apply text rendering options to
-            newly fetched pages; -1 always uses cache; omitted uses fallback
-            fetching when cached content is unavailable. Maximum supported value
-            is 720 hours.
+            缓存内容的最长有效期（小时）。正值表示当缓存内容的存在时间少于该小时数时使用缓存内容；0
+            表示获取最新内容，也是对新抓取页面应用文本渲染选项的受支持方式；-1 表示始终使用缓存；省略时，则在缓存内容不可用时使用回退抓取。支持的最大值为
+            720 小时。
           example: 24
         filterEmptyResults:
           type: boolean
-          description: Filter out results with no content
+          description: 过滤掉没有内容的结果
         subpages:
           type: integer
           minimum: 0
           maximum: 100
           description: >-
-            The number of subpages to crawl. The actual number crawled may be
-            limited by system constraints.
+            要抓取的子页面数量。实际抓取的数量可能受系统限制。
           example: 1
           default: 0
         subpageTarget:
           description: >-
-            Term to find specific subpages of search results. Can be a single
-            string or an array of strings.
+            用于查找搜索结果中特定子页面的关键词。可以是单个字符串或字符串数组。
           example: sources
           oneOf:
             - type: string
@@ -658,8 +643,7 @@ components:
                 maxLength: 100
       additionalProperties: false
       description: >-
-        Content extraction options applied to each search result. All fields are
-        optional.
+        应用于每个搜索结果的内容提取选项。所有字段均为可选。
     OutputSchemaTextOutput:
       type: object
       properties:
@@ -701,16 +685,16 @@ components:
         query:
           anyOf:
             - type: string
-              description: Custom query for the LLM-generated summary.
+              description: 用于生成 LLM 摘要的自定义查询。
               example: Main developments
             - type: 'null'
         maxTokens:
           type: integer
           minimum: 1
-          description: Maximum tokens for the generated summary.
+          description: 生成摘要的最大 token 数。
       additionalProperties: false
     JsonValue:
-      description: Any JSON value.
+      description: 任意 JSON 值。
       oneOf:
         - type: 'null'
         - type: boolean
@@ -726,7 +710,7 @@ components:
             $ref: '#/components/schemas/JsonValue'
   responses:
     BadRequestResponse:
-      description: The request body or query parameters failed validation.
+      description: 请求体或查询参数未通过验证。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -741,7 +725,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: API 密钥缺失或无效。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -754,7 +738,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: The requested resource does not exist.
+      description: 请求的资源不存在。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -767,7 +751,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: 处理请求时发生意外错误。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -787,12 +771,10 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 请求头中传入你的 Exa API 密钥。你也可以使用 Authorization: Bearer <key> 进行身份验证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 请求头中传入你的 Exa API 密钥。你也可以使用 Authorization: Bearer <key> 进行身份验证。
 ```

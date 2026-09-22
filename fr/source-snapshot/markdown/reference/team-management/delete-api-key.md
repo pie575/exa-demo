@@ -1,39 +1,29 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="delete-api-key">
-  # Supprimer une API key
-</div>
+# Supprimer une API key {#delete-api-key}
 
-> Supprimez définitivement une API key de votre team.
+> Supprimez définitivement une API key de votre équipe.
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 <Info>
-  L&#39;API Team Management s&#39;active team par team. Elle s&#39;authentifie à l&#39;aide d&#39;une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre team. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
+  La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie avec une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
 </Info>
 
-<div id="overview">
-  ## Vue d&#39;ensemble
-</div>
+## Aperçu {#overview}
 
-L&#39;endpoint Delete API Key supprime définitivement une API key de votre team.
+L&#39;endpoint Delete API Key supprime définitivement une API key de votre équipe.
 
-<div id="path-parameters">
-  ## Paramètres de chemin
-</div>
+## Paramètres de chemin {#path-parameters}
 
-* **id** : L&#39;identifiant unique de l&#39;API key à supprimer.
+* **id** : l&#39;identifiant unique de l&#39;API key à supprimer.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

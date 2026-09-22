@@ -1,37 +1,29 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="particle">
-  # Particle
-</div>
+# Particle {#particle}
 
-> Cari transcript podcast dengan atribusi pembicara dan timestamp.
+> Cari transkrip podcast dengan atribusi pembicara dan timestamp.
 
 Podcast Intelligence dari [Particle](https://particle.news) mengindeks lebih dari 100.000 acara,
-yang ditranskripsikan penuh, didiarisasi, diidentifikasi pembicaranya, dilabeli, dan diperkaya dengan metadata
+yang ditranskrip penuh, didiarisasi, diidentifikasi pembicaranya, dilabeli, dan di-enrich dengan metadata
 dalam hitungan menit setelah tayang, sehingga percakapan lisan menjadi dapat dicari. Setiap hasil berupa
-potongan transcript dengan atribusi pembicara dan timestamp.
+potongan transkrip dengan atribusi pembicara dan timestamp.
 
 Attach `particle` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
-[Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
-Particle sekaligus Exa web search.
+[Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan query ke
+Particle bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
 * Menemukan komentar pakar dan cuplikan pernyataan yang layak dikutip.
 * Pemantauan media dan merek.
-* Riset narasi dan sentimen.
+* Research narasi dan sentimen.
 * Menemukan podcast dan mengikuti perkembangannya.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -39,11 +31,9 @@ Gunakan nilai ini pada `dataSources`:
 particle
 ```
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
-Temukan apa yang dibicarakan para pembawa acara podcast tentang regulasi AI.
+Cari tahu apa yang dibicarakan para pembawa acara podcast tentang regulasi AI.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -141,31 +131,27 @@ Temukan apa yang dibicarakan para pembawa acara podcast tentang regulasi AI.
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Financial Datasets](/id/docs/agent/connect/financialdatasets): periksa silang perbincangan podcast dengan berita yang telah dipublikasikan.
+* [Financial Datasets](/id/docs/agent/connect/financialdatasets): periksa silang perbincangan di podcast dengan berita yang telah dipublikasikan.
 * [Fiber.ai](/id/docs/agent/connect/fiber): attach konteks perusahaan dan kontak pada orang-orang yang sedang dibahas.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah berikutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner lengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, pricing, dan katalog partner selengkapnya.
   </Card>
 
-  <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+  <Card title="Gabungkan providers" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
     Attach hingga lima partner ke satu run dan rancang query agar masing-masing terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
+    Buat key di dashboard lalu jalankan contoh pada halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
   </Card>
 </Columns>

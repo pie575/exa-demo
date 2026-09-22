@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="cancel-a-running-enrichment">
-  # Annuler un Enrichment en cours
-</div>
+# Annuler un enrichment en cours {#cancel-a-running-enrichment}
 
-> Tous les Enrichments en cours seront annulés. Il n&#39;est pas possible de reprendre un Enrichment après son annulation.
+> Tous les enrichments en cours seront annulés. Vous ne pouvez pas reprendre un Enrichment après son annulation.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/enrichments/{id}/cancel
 openapi: 3.1.0

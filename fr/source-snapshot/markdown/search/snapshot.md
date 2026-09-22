@@ -1,28 +1,22 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="exa-snapshot">
-  # Exa Snapshot
-</div>
+# Exa Snapshot {#exa-snapshot}
 
-> Épinglez Search et Contents à une stored version d&#39;une page à la datetime de votre choix.
+> Épinglez Search et Contents sur une stored version d&#39;une page à une datetime de votre choix.
 
 Exa Snapshot conserve des stored versions des pages explorées par Exa. Envoyez `snapshotAsOf` pour épingler la requête à une datetime.
 
-Utilisez cette fonctionnalité pour backtester des agents, exécuter des évaluations reproductibles et comparer des versions antérieures de documentations, de pages de tarifs, de politiques et de filings.
+Utilisez cette fonctionnalité pour backtester des agents, exécuter des évaluations reproductibles et comparer des versions antérieures de documentations, de pages de tarification, de politiques et de filings.
 
 <Info>
-  Exa Snapshot est disponible en pay as you go à 10 QPS, avec une fenêtre d&#39;index glissante de 5 mois.
-  Au-delà de 100 requêtes, [contactez l&#39;équipe commerciale](https://exa.ai/contact/sales) pour continuer.
+  Exa Snapshot est disponible en paiement à l&#39;usage à 10 QPS, avec une fenêtre d&#39;index glissante de 5 mois.
+  Au-delà de 100 requests, [contactez l&#39;équipe commerciale](https://exa.ai/contact/sales) pour continuer.
 </Info>
 
-<div id="search-at-a-datetime">
-  ## Recherche à une datetime
-</div>
+## Search à une datetime {#search-at-a-datetime}
 
 Sur `/search`, placez `snapshotAsOf` dans `contents`.
 
@@ -78,7 +72,7 @@ Sur `/search`, placez `snapshotAsOf` dans `contents`.
   ```
 </CodeGroup>
 
-Exa identifie les candidate URLs, puis ne conserve que les pages disposant d&#39;une stored version antérieure ou égale à `snapshotAsOf`.
+Exa identifie les candidate URLs, puis ne conserve que les pages ayant une stored version antérieure ou égale à `snapshotAsOf`.
 
 <Accordion title="Exemple de réponse">
   ```json theme={null}
@@ -111,11 +105,9 @@ Exa identifie les candidate URLs, puis ne conserve que les pages disposant d&#39
   ```
 </Accordion>
 
-<div id="pin-contents-to-a-datetime">
-  ## Figer les contents à une datetime
-</div>
+## Épingler le contenu à un datetime {#pin-contents-to-a-datetime}
 
-Ajoutez `snapshotAsOf` au premier niveau d&#39;une requête `/contents`.
+Ajoutez `snapshotAsOf` au niveau racine d&#39;une requête `/contents`.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -160,7 +152,7 @@ Ajoutez `snapshotAsOf` au premier niveau d&#39;une requête `/contents`.
   ```
 </CodeGroup>
 
-Exa renvoie la stored version la plus récente antérieure ou égale à cette datetime.
+Exa renvoie la stored version la plus récente antérieure ou égale à ce datetime.
 
 <Accordion title="Exemple de réponse">
   ```json theme={null}
@@ -188,61 +180,55 @@ Exa renvoie la stored version la plus récente antérieure ou égale à cette da
 </Accordion>
 
 <Tip>
-  Les ID sans version éligible sont omis de `results` et signalés dans `statuses` avec
+  Les identifiants sans eligible version sont omis de `results` et signalés dans `statuses` avec
   `"status": "error"` et `"tag": "CONTENT_NOT_CACHED"`.
 </Tip>
 
-<div id="how-snapshots-work">
-  ## Fonctionnement des snapshots
-</div>
+## Fonctionnement des snapshots {#how-snapshots-work}
 
-| Champ          | Emplacement | Signification                                                                               |
+| Field          | Emplacement | Signification                                                                               |
 | -------------- | ----------- | ------------------------------------------------------------------------------------------- |
 | `snapshotAsOf` | Requête     | Datetime limite. Exa renvoie la stored version la plus récente à cet instant ou antérieure. |
 
 Pour les deux endpoints :
 
-* Le page content renvoyé provient de cette stored version.
-* Le titre, l&#39;auteur, la date de publication, le texte, les highlights et les summaries sont générés uniquement à partir de cette version.
-* Les pages sans version éligible dans la fenêtre de 5 mois sont omises.
+* Le contenu de la page renvoyé provient de cette stored version.
+* Le titre, l&#39;auteur, la publication date, le texte, les highlights et les résumés sont générés uniquement à partir de cette version.
+* Les pages dépourvues d&#39;eligible version dans la fenêtre de 5 mois sont omises.
 
 <Note>
-  Sur Search, cette limite s&#39;applique au contenu, pas au classement. Exa continue d&#39;utiliser les signaux de
-  retrieval actuels pour découvrir les candidate URLs. Considérez les résultats comme des evidence délimitées par `snapshotAsOf`, et non comme une
+  Sur Search, la limite borne le contenu, pas le classement. Exa s&#39;appuie toujours sur les signaux de
+  retrieval actuels pour découvrir les candidate URLs. Considérez les résultats comme des preuves bornées par `snapshotAsOf`, et non comme une
   reconstruction exacte du classement qu&#39;une search aurait produit à ce moment-là.
 </Note>
 
-<div id="limits-and-compatibility">
-  ## Limites et compatibilité
-</div>
+## Limites et compatibilité {#limits-and-compatibility}
 
 <AccordionGroup>
-  <Accordion title="Accès, rate limit et profondeur d'historique">
-    Le Pay as you go inclut 10 QPS et un accès glissant à 5 mois d&#39;index. Un `snapshotAsOf` antérieur
-    à cette fenêtre est rejeté. Au-delà de 100 requêtes, [contactez le service commercial](https://exa.ai/contact/sales)
-    pour poursuivre.
+  <Accordion title="Accès, limite de débit et profondeur d'historique">
+    Le paiement à l&#39;usage inclut 10 QPS et un accès glissant à 5 mois d&#39;index. Une valeur `snapshotAsOf` antérieure
+    à cette fenêtre est rejetée. Au-delà de 100 requests, [contactez le service commercial](https://exa.ai/contact/sales)
+    pour continuer.
   </Accordion>
 
-  <Accordion title="Les requêtes historiques utilisent le contenu stocké">
+  <Accordion title="Les requests historiques utilisent le contenu stocké">
     Ne combinez pas `snapshotAsOf` avec des options susceptibles d&#39;accéder au web en direct ou de s&#39;étendre à d&#39;autres pages.
-    Omettez totalement `livecrawl`, `livecrawlTimeout`, `maxAgeHours` et `subpages` ; les requêtes qui définissent
-    l&#39;un de ces paramètres en même temps que `snapshotAsOf` sont rejetées avec `INVALID_REQUEST`.
+    Omettez entièrement `livecrawl`, `livecrawlTimeout`, `maxAgeHours` et `subpages` : toute request qui définit
+    l&#39;un de ces paramètres en plus de `snapshotAsOf` est rejetée avec `INVALID_REQUEST`.
   </Accordion>
 
-  <Accordion title="Search requêtes prises en charge">
+  <Accordion title="Requests Search prises en charge">
     Exa Snapshot sur Search prend en charge `auto`, `fast` et `instant`. Il ne prend en charge
     ni `deep-lite`, ni `deep`, ni `deep-reasoning`.
 
-    Exa Snapshot ne prend pas en charge le parameter `category` sur Search.
+    Exa Snapshot ne prend pas en charge le paramètre `category` sur Search.
   </Accordion>
 </AccordionGroup>
 
-<div id="common-uses">
-  ## Utilisations courantes
-</div>
+## Cas d&#39;usage courants {#common-uses}
 
-Utilisez Exa Snapshot lorsque la tâche dépend de ce qu&#39;Exa avait stocké à un datetime précis :
+Utilisez Exa Snapshot lorsque la tâche dépend de ce qu&#39;Exa avait stocké à une datetime précise :
 
-* Réaliser le backtest d&#39;un agent sans l&#39;exposer aux mises à jour ultérieures des pages.
-* Lancer une évaluation sur une limite de contenu reproductible.
-* Comparer des versions antérieures de documentations, de tarifs, de politiques ou de filings.
+* Backtester un agent sans l&#39;exposer aux mises à jour ultérieures des pages.
+* Exécuter une évaluation sur une limite de contenu reproductible.
+* Comparer des versions antérieures de documentation, de tarification, de politiques ou de filings.

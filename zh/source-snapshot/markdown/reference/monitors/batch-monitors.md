@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入查阅前，请先通过该文件了解所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，可通过该文件查看所有可用页面。
 
-<div id="batch-action-on-monitors">
-  # 对 monitor 执行批量操作
-</div>
+# 对 monitor 执行批量操作 {#batch-action-on-monitors}
 
 > 对符合所提供筛选条件的 monitor 执行批量操作。
 
@@ -17,11 +13,9 @@
 * **pause**：暂停匹配的 monitor
 * **unpause**：恢复匹配的 monitor
 
-使用 `dry_run: true` (默认值) 可在实际执行前预览哪些 monitor 会受到影响。结果通过 `limit` 参数分页返回；循环调用直至 `has_more` 为 `false`，即可处理全部匹配的 monitor。
+使用 `dry_run: true` (默认值) 可在执行操作前预览哪些 monitor 会受到影响。结果通过 `limit` 参数分页；请 loop 调用直到 `has_more` 为 `false`，以处理所有匹配的 monitor。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/batch
 openapi: 3.1.0
@@ -146,22 +140,23 @@ components:
             - delete
             - pause
             - unpause
-          description: 已执行的操作
+          description: The action that was performed
         affected:
           type: integer
-          description: 受该操作影响的监控器数量
+          description: The number of monitors affected by the action
         ids:
           type: array
           items:
             type: string
-          description: 受影响的监控器的 ID
+          description: The IDs of the monitors that were affected
         dry_run:
           type: boolean
-          description: 这是否为一次试运行
+          description: Whether this was a dry run
         has_more:
           type: boolean
           description: >-
-            是否还有更多匹配过滤条件的监控器。如果为 `true`，请重复该请求以处理下一批。
+            Whether there are more monitors matching the filter. If `true`,
+            repeat the request to process the next batch.
       required:
         - action
         - affected

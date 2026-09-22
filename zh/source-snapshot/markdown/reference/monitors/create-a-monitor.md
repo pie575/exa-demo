@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="create-a-monitor">
-  # 创建 monitor
-</div>
+# 创建 monitor {#create-a-monitor}
 
-> 创建一个新的 Monitor，按计划定期运行 Exa 搜索。
+> 创建一个新的 Monitor，按 schedule 定期运行 Exa search。
 
-Monitor 会按设定的周期自动执行你的搜索 query，并将结果投递到你的 webhook 端点，同时自动去重：
+Monitor 会按设定的周期自动执行你的 search query，并将结果推送到你的 webhook 端点，同时自动去重：
 
-* **基于日期的过滤**：仅获取自上次运行以来的新增内容
+* **基于日期的过滤**只获取自上次运行以来的内容
 
-* **语义去重**：追踪此前的输出，只呈现新的变化
+* **语义去重**会追踪以往的输出，只呈现新的动态
 
-响应中会包含 `webhookSecret`，该值仅在创建时返回一次。请妥善保存，以便用于 webhook 签名验证。
+响应中包含 `webhookSecret`，它仅在创建时返回一次。请妥善保存，用于 webhook 签名验证。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

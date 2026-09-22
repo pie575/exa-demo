@@ -2,17 +2,17 @@
 openapi: "/zh/docs/exa-spec.yaml POST /monitors"
 timestamp: false
 title: "创建 monitor"
-description: "创建一个新的 Monitor，按计划定期运行 Exa 搜索。
+description: "创建一个新的 Monitor，按 schedule 定期执行 Exa search。
 
 
-  Monitor 会按设定的周期自动执行你的搜索 query，并将结果推送到你的 webhook 端点，同时自动去重：
+  Monitor 会按设定的周期自动执行你的 search query，并将结果投递到你的 webhook 端点，同时自动去重：
 
 
-  - **基于日期的过滤**只获取上次运行之后的新增内容
+  - **基于日期的过滤**：仅获取自上次运行以来的内容
 
 
-  - **语义去重**会追踪此前的输出，只呈现新的进展
+  - **语义去重**：追踪此前的输出，只呈现新的动态
 
 
-  响应中包含 `webhookSecret`，该值仅在创建时返回一次。请妥善保存，以便用于 webhook 签名校验。"
+  响应中包含的 `webhookSecret` 仅在创建时返回一次，请妥善保存，用于 webhook 签名验证。"
 ---

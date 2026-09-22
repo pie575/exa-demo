@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 제공되는 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="cancel-a-running-search">
-  # 실행 중인 search 취소
-</div>
+# 실행 중인 search 취소 {#cancel-a-running-search}
 
-> 현재 실행 중인 search를 취소합니다.
+> 현재 실행 중인 Search를 취소합니다.
 
-`websets/:webset/cancel` endpoint를 사용하면 모든 search를 한 번에 취소할 수 있습니다.
+`websets/:webset/cancel` 엔드포인트를 사용하면 모든 search를 한 번에 취소할 수 있습니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0
@@ -152,16 +146,14 @@ components:
           $ref: '#/components/schemas/WebsetSearchBehavior'
           default: override
           description: >-
-            The behavior of the search when it is added to a Webset.
+            검색이 Webset에 추가될 때의 동작입니다.
 
 
-            - `override`: the search will replace the existing Items found in
-            the Webset and evaluate them against the new criteria. Any Items
-            that don't match the new criteria will be discarded.
+            - `override`: 검색이 Webset에서 발견된 기존 Item을 대체하고 새로운 기준에 따라 평가합니다. 새로운 기준에
+            맞지 않는 Item은 폐기됩니다.
 
-            - `append`: the search will add the new Items found to the existing
-            Webset. Any Items that don't match the new criteria will be
-            discarded.
+            - `append`: 검색이 발견한 새로운 Item을 기존 Webset에 추가합니다. 새로운 기준에 맞지 않는 Item은
+            폐기됩니다.
         exclude:
           items:
             properties:

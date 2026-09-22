@@ -1,19 +1,17 @@
 ---
 title: "Gumloop"
 sidebarTitle: "Gumloop"
-description: "Usa Exa search y contenido dentro de los flujos de Gumloop."
+description: "Usa Exa Search y contenido dentro de los flows de Gumloop."
 icon: "/docs/images/sidebar-icons/gumloop.svg"
 ---
 
 [Gumloop](https://www.gumloop.com/) incluye Exa como integración MCP nativa. Agrégala a un agente o a un Agent Node para buscar en la web, extraer páginas, encontrar fuentes relacionadas y generar respuestas respaldadas por citas dentro de un flujo de trabajo.
 
-<div id="add-exa-to-a-gumloop-agent">
-  ## Añadir Exa a un agente de Gumloop
-</div>
+## Añadir Exa a un agente de Gumloop {#add-exa-to-a-gumloop-agent}
 
 <Steps>
   <Step title="Abre el agente">
-    Abre la configuración de tu agente y selecciona **Add tools** → **Connect an app with MCP**.
+    Abre la configuración de tu agente y selecciona **Añadir herramientas** → **Connect an app with MCP**.
   </Step>
 
   <Step title="Conecta Exa">
@@ -21,7 +19,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
   </Step>
 
   <Step title="Elige las herramientas">
-    Abre la integración de Exa ya conectada y habilita solo las herramientas que el agente necesite. Así la selección de herramientas queda más clara y se evita que el agente invoque acciones que no vienen al caso.
+    Abre la integración de Exa ya conectada y activa solo las herramientas que necesite el agente. Así la selección de herramientas es más clara y se evita que el agente llame a acciones que no vienen al caso.
   </Step>
 
   <Step title="Prueba la conexión">
@@ -31,71 +29,61 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
     Find five recent articles about AI regulation and summarize the key changes with source links.
     ```
 
-    Revisa la ejecución para confirmar que el agente llamó a Exa y devolvió las fuentes citadas.
+    Revisa el run para confirmar que el agente llamó a Exa y devolvió fuentes citadas.
   </Step>
 </Steps>
 
-<div id="available-tools">
-  ## Herramientas disponibles
-</div>
+## Herramientas disponibles {#available-tools}
 
 | Herramienta              | Úsala para                                                               |
 | ------------------------ | ------------------------------------------------------------------------ |
 | **Search**               | Encontrar páginas relevantes con búsqueda neuronal o por palabras clave. |
-| **Get Contents**         | Extraer texto completo, resúmenes y metadatos de URLs conocidas.         |
+| **Get Contents**         | Extraer texto completo, resúmenes y metadatos de URL conocidas.          |
 | **Find Similar**         | Descubrir páginas relacionadas con una URL de origen.                    |
 | **Answer**               | Generar una respuesta fundamentada con citas.                            |
 | **Create Research Task** | Iniciar una investigación de mayor duración.                             |
 | **Get Research Task**    | Consultar el estado y el resultado de una tarea de investigación.        |
 
-Para un agente conversacional, habilita primero Search, Get Contents y Answer. Añade el resto de herramientas solo cuando el flujo de trabajo lo requiera.
+Para un agente conversacional, habilita primero Search, Get Contents y Answer. Añade las demás herramientas solo cuando el flujo de trabajo lo requiera.
 
-<div id="use-exa-in-a-workflow">
-  ## Usar Exa en un flujo de trabajo
-</div>
+## Usar Exa en un flujo de trabajo {#use-exa-in-a-workflow}
 
-<div id="agent-node">
-  ### Agent Node
-</div>
+### Agent Node {#agent-node}
 
-Añade un **Agent Node** a un flujo determinista de Gumloop y conéctale Exa como una de sus herramientas. El nodo puede decidir si realizar una search, recuperar páginas completas o encadenar varias llamadas a Exa antes de pasar su resultado al siguiente paso del flujo de trabajo.
+Añade un **Agent Node** a un flujo determinista de Gumloop y adjunta Exa como una de sus herramientas. El nodo puede decidir si buscar, recuperar páginas completas o encadenar varias llamadas a Exa antes de pasar su output al siguiente paso del flujo de trabajo.
 
-Esto resulta útil para:
+Esto funciona bien para:
 
-* enriquecer filas de un CRM o de hojas de cálculo con información web actualizada
-* monitorizar noticias y enviar un summary con fuentes a Slack o por correo electrónico
-* investigar empresas antes de derivar los registros a un flujo de trabajo de ventas
-* comparar productos y volcar el resultado en un documento
+* enriquecer filas de un CRM o de una hoja de cálculo con evidencia web actualizada
+* monitorizar noticias y enviar a Slack o por correo electrónico un resumen con sus fuentes
+* investigar empresas antes de enrutar registros a un flujo de trabajo de ventas
+* comparar productos y escribir el resultado en un documento
 
-<div id="reusable-custom-mcp-node">
-  ### Nodo MCP personalizado reutilizable
-</div>
+### Nodo MCP personalizado reutilizable {#reusable-custom-mcp-node}
 
-Para una única acción repetible, crea un nodo dedicado:
+Para una sola acción repetible, crea un nodo dedicado:
 
 1. Abre la biblioteca de nodos y busca Exa.
 2. Selecciona **Create a node with AI**.
-3. Describe una sola acción, por ejemplo `Search for funding announcements from the past seven days`.
-4. Prueba el nodo generado, verifica sus entradas y salidas y guárdalo.
+3. Describe una única acción, como `Search for funding announcements from the past seven days`.
+4. Prueba el nodo generado, verifica sus entradas y outputs y guárdalo.
 
 Usa un Agent Node cuando la tarea requiera planificación dinámica o varias herramientas. Usa un nodo MCP personalizado cuando la misma operación de Exa deba ejecutarse de forma predecible en cada item.
 
-<div id="prompt-patterns">
-  ## Patrones de prompts
-</div>
+## Patrones de prompts {#prompt-patterns}
 
 <AccordionGroup>
   <Accordion title="Buscar y resumir">
     ```text theme={null}
     Busca anuncios oficiales sobre [tema] publicados esta semana.
-    Devuelve la fecha, el editor, el resumen y la URL de origen de cada resultado.
+    Devuelve la fecha, el medio que lo publicó, el resumen y la URL de origen de cada resultado.
     ```
   </Accordion>
 
   <Accordion title="Enriquecer una empresa">
     ```text theme={null}
-    A partir de este nombre de empresa y dominio, encuentra la descripción de su producto,
-    el anuncio de financiación más reciente y dos fuentes de noticias recientes.
+    Dado el nombre y el dominio de esta empresa, encuentra la descripción de su producto,
+    su último anuncio de financiación y dos fuentes de noticias recientes.
     ```
   </Accordion>
 
@@ -106,17 +94,15 @@ Usa un Agent Node cuando la tarea requiera planificación dinámica o varias her
   </Accordion>
 </AccordionGroup>
 
-<div id="troubleshooting">
-  ## Solución de problemas
-</div>
+## Solución de problemas {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Exa no está disponible para el agente">
-    Vuelve a abrir las herramientas MCP del agente, confirma que Exa esté conectado y habilita la herramienta necesaria. Una integración conectada puede tener herramientas individuales deshabilitadas.
+    Vuelve a abrir las herramientas MCP del agente, confirma que Exa esté conectado y habilita la herramienta necesaria. Aunque una integración esté conectada, puede tener herramientas individuales deshabilitadas.
   </Accordion>
 
   <Accordion title="El agente elige la acción equivocada">
-    Indica de forma explícita en la solicitud si debe buscar, leer URLs conocidas, encontrar páginas similares o responder a partir de fuentes. Deshabilita las herramientas de Exa que el agente no necesite para ese flujo de trabajo.
+    Indica de forma explícita en la solicitud si debe buscar, leer URL conocidas, encontrar páginas similares o responder a partir de fuentes. Deshabilita las herramientas de Exa que el agente no necesite para ese flujo de trabajo.
   </Accordion>
 
   <Accordion title="Un flujo de trabajo necesita una única llamada predecible">
@@ -124,20 +110,18 @@ Usa un Agent Node cuando la tarea requiera planificación dinámica o varias her
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
 <Columns cols={3}>
-  <Card title="Integración de Exa con Gumloop" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Leer guía" arrow="true">
-    Consulta las herramientas actuales de Gumloop y el flujo de trabajo del Agent Node.
+  <Card title="Integración de Exa con Gumloop" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Leer la guía" arrow="true">
+    Revisa las herramientas actuales de Gumloop y el flujo de trabajo del Agent Node.
   </Card>
 
-  <Card title="Servidor MCP de Exa" icon="plug" href="/es/docs/get-started/exa-mcp" cta="Leer guía" arrow="true">
+  <Card title="Exa MCP server" icon="plug" href="/es/docs/get-started/exa-mcp" cta="Leer la guía" arrow="true">
     Conoce las herramientas de Exa disponibles a través de MCP.
   </Card>
 
-  <Card title="Exa Search" icon="search" href="/es/docs/search/quickstart" cta="Leer guía" arrow="true">
-    Aprende a definir tus consultas de búsqueda y el contenido devuelto.
+  <Card title="Exa Search" icon="search" href="/es/docs/search/quickstart" cta="Leer la guía" arrow="true">
+    Aprende a dar forma a tus consultas de búsqueda y al contenido devuelto.
   </Card>
 </Columns>

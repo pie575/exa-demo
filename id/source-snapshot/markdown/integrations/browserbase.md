@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="browserbase">
-  # Browserbase
-</div>
+# Browserbase {#browserbase}
 
-> Gabungkan search perusahaan Exa dengan otomatisasi browser Browserbase untuk workflow lamaran kerja.
+> Gabungkan Exa company search dengan otomatisasi browser Browserbase untuk workflow lamaran kerja.
 
-Gunakan Exa untuk menemukan perusahaan dan careers page-nya, lalu gunakan Browserbase dan Stagehand untuk memeriksa dan berinteraksi dengan halaman tersebut.
+Gunakan Exa untuk menemukan perusahaan dan careers page, lalu gunakan Browserbase dan Stagehand untuk memeriksa serta berinteraksi dengan halaman-halaman tersebut.
 
-<div id="install">
-  ## Instalasi
-</div>
+## Pasang {#install}
 
 Instal package yang digunakan oleh templat Browserbase Exa:
 
@@ -23,22 +17,18 @@ Instal package yang digunakan oleh templat Browserbase Exa:
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## Konfigurasikan variabel lingkungan
-</div>
+## Konfigurasi variabel lingkungan {#configure-environment-variables}
 
-Tetapkan API key yang digunakan oleh Exa dan Browserbase:
+Atur API key yang digunakan oleh Exa dan Browserbase:
 
 ```bash .env theme={null}
 BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## Mencari dan berinteraksi dengan halaman
-</div>
+## Mencari dan berinteraksi dengan halaman {#search-and-interact-with-a-page}
 
-Contoh berikut mengikuti workflow dari templat tersebut: mencari perusahaan, menemukan careers page, membukanya di sesi Browserbase, mengekstrak deskripsi pekerjaan, lalu membiarkan agent Stagehand berinteraksi dengan halaman tersebut.
+Contoh berikut mengikuti workflow templat: mencari perusahaan, menemukan careers page, membukanya di sesi Browserbase, mengekstrak deskripsi pekerjaan, dan membiarkan agent Stagehand berinteraksi dengan halaman tersebut.
 
 ```typescript quickstart.ts theme={null}
 import "dotenv/config";
@@ -110,4 +100,4 @@ try {
 }
 ```
 
-Templat ini mencakup workflow lengkap untuk mengekstrak detail lowongan, membuat respons yang disesuaikan, dan mengisi formulir lamaran. Lihat [implementasi TypeScript](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) atau [implementasi Python](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase).
+Templat ini mencakup workflow lengkap untuk mengekstrak detail pekerjaan, membuat response yang disesuaikan, dan mengisi formulir lamaran. Lihat [implementasi TypeScript](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) atau [implementasi Python](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase).

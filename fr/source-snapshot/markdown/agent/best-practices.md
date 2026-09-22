@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="agent-best-practices">
-  # Bonnes pratiques Agent
-</div>
+# Bonnes pratiques Agent {#agent-best-practices}
 
-> Optimisez la qualité des requêtes, les sorties structurées, l&#39;effort et le coût pour vos intégrations Exa Agent en production.
+> Optimisez la qualité des requêtes, la sortie structurée, l&#39;effort et le coût de vos intégrations Exa Agent en production.
 
-Utilisez ce guide après le [quickstart Exa Agent](/fr/docs/agent/quickstart) pour améliorer la qualité des requêtes, structurer les sorties et maîtriser le temps d&#39;exécution et le coût. Pour des requêtes complètes, commencez par les [exemples Agent](/fr/docs/agent/examples).
+Utilisez ce guide après le [Quickstart Agent](/fr/docs/agent/quickstart) pour améliorer la qualité des requêtes, structurer les sorties et maîtriser le temps d&#39;exécution et le coût. Pour des requêtes complètes, commencez par les [exemples Agent](/fr/docs/agent/examples).
 
-<div id="core-principles">
-  ## Principes fondamentaux
-</div>
+## Principes fondamentaux {#core-principles}
 
-Traitez `query` comme une spécification de tâche. Précisez ce qu&#39;Agent doit trouver, le périmètre du travail, les preuves attendues et ce qui constitue un résultat complet.
+Considérez `query` comme une spécification de tâche. Précisez ce que l&#39;Agent doit trouver, le scope du travail, les preuves requises et ce qui constitue un résultat complet.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -43,27 +37,25 @@ Traitez `query` comme une spécification de tâche. Précisez ce qu&#39;Agent do
   ```
 </CodeGroup>
 
-Sans `outputSchema`, Agent renvoie du texte rédigé dans `output.text` et les citations dans `output.grounding`. N&#39;ajoutez un autre champ que s&#39;il remplit un rôle précis :
+Sans `outputSchema`, l&#39;Agent renvoie du texte dans `output.text` et des citations dans `output.grounding`. N&#39;ajoutez un autre field que s&#39;il remplit un rôle précis :
 
-| Champ                   | À utiliser quand                                                                       |
-| ----------------------- | -------------------------------------------------------------------------------------- |
-| `outputSchema`          | Le code en aval a besoin de champs structurés                                          |
-| `input.data`            | Vous disposez déjà de lignes à enrichir                                                |
-| `input.exclusion`       | Certains enregistrements connus ne doivent pas être renvoyés                           |
-| `dataSources`           | Un champ doit provenir d&#39;un partenaire [Exa Connect](/fr/docs/agent/connect/overview) |
-| `previousRunId`         | La requête prolonge un run terminé                                                     |
-| `effort`                | Le coût ou la profondeur de recherche doit être défini explicitement                   |
-| `budget.maxCostDollars` | Un run `auto` ou `max` nécessite un plafond de coût strict                             |
+| Field                   | À utiliser quand                                                                    |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| `outputSchema`          | Le code en aval a besoin de fields structurés                                       |
+| `input.data`            | Vous disposez déjà de lignes à enrichir                                             |
+| `input.exclusion`       | Certains records connus ne doivent pas être renvoyés                                |
+| `dataSources`           | Un field doit provenir d&#39;un partner [Exa Connect](/fr/docs/agent/connect/overview) |
+| `previousRunId`         | La requête prolonge un run terminé                                                  |
+| `effort`                | Le coût ou la profondeur de recherche doit être défini explicitement                |
+| `budget.maxCostDollars` | Un run `auto` ou `max` nécessite un plafond de coût strict                          |
 
-Conservez les lignes, les exclusions et la forme de la réponse dans leurs champs dédiés plutôt que de les intégrer à `query`.
+Placez les lignes, les exclusions et la forme de la réponse dans leurs fields dédiés plutôt que de les intégrer à `query`.
 
-<div id="writing-list-building-and-enrichment-queries">
-  ## Rédiger des requêtes de list-building et d&#39;Enrichment
-</div>
+## Rédiger des requêtes de constitution de liste et d&#39;enrichment {#writing-list-building-and-enrichment-queries}
 
-Pour le list-building, définissez l&#39;entité, le nombre cible, les critères de qualification, les exclusions et le niveau d&#39;evidence exigé. Pour l&#39;Enrichment, placez les records existants dans `input.data` et décrivez uniquement les recherches que l&#39;Agent doit ajouter.
+Pour la constitution de listes, définissez l&#39;entité, le nombre cible, les critères de qualification, les exclusions et le niveau de preuve exigé. Pour l&#39;enrichment, placez les records existants dans `input.data` et décrivez uniquement la recherche qu&#39;Agent doit effectuer en complément.
 
-Demandez une justification lorsque la qualification repose sur un jugement. Ne donnez des exemples que si un critère admet plusieurs interprétations plausibles.
+Demandez une justification lorsque la qualification relève d&#39;un jugement. Ne donnez des exemples que lorsqu&#39;un critère se prête à plusieurs interprétations plausibles.
 
 <CodeGroup>
   ```text Query theme={null}
@@ -79,41 +71,37 @@ Demandez une justification lorsque la qualification repose sur un jugement. Ne d
   ```
 </CodeGroup>
 
-Consultez [Find all GTM members](/fr/docs/agent/examples#find-all-code) pour un exemple de requête de Discovery et [Enrich input rows](/fr/docs/agent/examples#enrich-input-rows-code) pour le modèle d&#39;Enrichment de lignes correspondant.
+Consultez [Find all GTM members](/fr/docs/agent/examples#find-all-code) pour un exemple de requête de discovery et [Enrich input rows](/fr/docs/agent/examples#enrich-input-rows-code) pour le modèle d&#39;enrichment de lignes correspondant.
 
-<div id="handle-asynchronous-runs">
-  ## Gérer les runs asynchrones
-</div>
+## Gérer les runs asynchrones {#handle-asynchronous-runs}
 
-Un run d&#39;Agent peut durer de quelques secondes à plusieurs minutes, le temps de rechercher, lire et raisonner. Concevez votre application autour de ce cycle de vie plutôt que de maintenir une requête applicative ouverte.
+Les Agent runs peuvent durer de quelques secondes à plusieurs minutes, le temps de rechercher, lire et raisonner. Concevez votre application autour de ce cycle de vie plutôt que de maintenir une requête applicative ouverte.
 
 <Steps>
   <Step title="Créer et conserver">
-    Créez le run et enregistrez l&#39;`id` renvoyé avec les metadata de votre requête. La réponse de création n&#39;est pas le résultat final.
+    Créez le run et enregistrez l&#39;`id` renvoyé avec les métadonnées de votre requête. La réponse de création n&#39;est pas le résultat final.
   </Step>
 
   <Step title="Attendre un état terminal">
-    Utilisez un utilitaire de polling du SDK, interrogez `GET /agent/runs/{id}` ou consommez le flux SSE. Continuez tant que le run est `queued` ou `running`.
+    Utilisez un utilitaire de polling du SDK, interrogez `GET /agent/runs/{id}` ou consommez le flux SSE. Poursuivez tant que le run est `queued` ou `running`.
   </Step>
 
   <Step title="Stocker le résultat">
-    Cessez d&#39;attendre dès l&#39;état `completed`, `failed` ou `cancelled`, puis conservez la réponse finale et le grounding.
+    Arrêtez d&#39;attendre aux états `completed`, `failed` ou `cancelled`, puis conservez la réponse terminale et le grounding.
   </Step>
 </Steps>
 
-Conserver l&#39;identifiant du run permet à votre application de repartir après un redémarrage, de se reconnecter à un flux et d&#39;analyser les échecs. Réduisez la latence en restreignant le scope, en limitant le nombre de résultats, en gardant un schema ciblé et en choisissant `minimal` ou `low` lorsque la rapidité prime sur l&#39;exhaustivité.
+Conserver l&#39;ID du run permet à votre application de reprendre après un redémarrage, de se reconnecter à un flux et d&#39;analyser les échecs. Réduisez la latence en restreignant le scope, en limitant le nombre de résultats, en gardant un schéma ciblé et en choisissant `minimal` ou `low` lorsque la rapidité prime sur l&#39;exhaustivité.
 
-Pour les batchs, mesurez des tâches représentatives avant d&#39;estimer la concurrency ou de placer Agent sur un parcours d&#39;interface synchrone. La durée d&#39;exécution varie selon le nombre d&#39;items, la complexité du schema, la disponibilité des sources et l&#39;effort.
+Pour les batchs, testez des tâches représentatives avant d&#39;estimer la concurrency ou de placer Agent sur un chemin d&#39;interface synchrone. La durée d&#39;exécution varie selon le nombre d&#39;items, la complexité du schéma, la disponibilité des sources et l&#39;effort.
 
-Pour les teams en Zero Data Retention, consommez le flux en direct ou interrogez l&#39;API dans la fenêtre de rétention. `previousRunId` et les `dataSources` Connect ne sont pas disponibles. Consultez [Zero Data Retention](/fr/docs/admin/security/zero-data-retention).
+Pour les équipes en Zero Data Retention, consommez le flux en direct ou interrogez l&#39;API pendant la fenêtre de rétention. `previousRunId` et les `dataSources` Connect ne sont pas disponibles. Voir [Zero Data Retention](/fr/docs/admin/security/zero-data-retention).
 
-<div id="write-custom-json-schemas-for-structured-output">
-  ## Rédiger des schémas JSON personnalisés pour la sortie structurée
-</div>
+## Rédiger des schémas JSON personnalisés pour la sortie structurée {#write-custom-json-schemas-for-structured-output}
 
-Utilisez `outputSchema` lorsque votre code en aval a besoin de champs exploitables par une machine, de valeurs normalisées, de lignes de table ou d&#39;enregistrements d&#39;enrichment. Si une réponse en prose suffit, omettez-le et lisez `output.text` : la sortie structurée demande un travail de mise en forme supplémentaire et peut augmenter la latence.
+Utilisez `outputSchema` lorsque le code en aval a besoin de fields exploitables par une machine, de valeurs normalisées, de lignes de tableau ou de records d&#39;enrichment. Si une réponse en prose suffit, omettez-le et lisez `output.text` ; la sortie structurée demande un travail de formatage supplémentaire et peut augmenter la latence.
 
-Gardez les instructions de recherche dans `query` et la forme de la réponse dans `outputSchema`. Utilisez des noms de propriétés et des descriptions explicites, choisissez les types utiles les plus restrictifs et bornez les tableaux avec `maxItems`.
+Gardez les instructions de recherche dans `query` et la forme de la réponse dans `outputSchema`. Utilisez des noms de propriétés et des descriptions explicites, choisissez les types utiles les plus restrictifs et bornez les arrays avec `maxItems`.
 
 <CodeGroup>
   ```json Output schema expandable theme={null}
@@ -153,56 +141,50 @@ Gardez les instructions de recherche dans `query` et la forme de la réponse dan
   ```
 </CodeGroup>
 
-Le respect du schema valide la forme, pas les faits. Agent peut renvoyer `null` lorsque l&#39;evidence ne permet pas de renseigner un field, même si le schema soumis le marque comme requis ou non nullable. `stopReason: schema_satisfied` signifie qu&#39;Agent considère la forme attendue comme complète, ces valeurs nulles étant admises ; cela ne garantit pas une validation stricte par rapport au schema soumis.
+La conformité au schéma valide la forme, pas les faits. Agent peut renvoyer `null` lorsque les preuves ne permettent pas de renseigner un field, même si le schéma soumis le marque comme requis ou non nullable. `stopReason: schema_satisfied` signifie qu&#39;Agent considère la forme attendue comme complète, ces valeurs nulles étant admises ; cela ne garantit pas une validation stricte vis-à-vis du schéma soumis.
 
-Ne redupliquez pas dans votre schema les citations ou les indices de confiance déjà fournis par Exa. N&#39;ajoutez un champ de justification que si chaque item doit expliquer pourquoi il est retenu, et conservez `output.grounding` avec le résultat structuré. Vérifiez les affirmations importantes auprès de leurs sources et testez les modifications de schema sur des entrées représentatives avant la mise en production.
+Ne dupliquez pas dans votre schéma les citations ou la confidence intégrées d&#39;Exa. N&#39;ajoutez un field de justification que si chaque item doit expliquer pourquoi il est éligible, et conservez `output.grounding` avec le résultat structuré. Vérifiez les affirmations importantes auprès de leurs sources et testez les modifications de schéma sur des entrées représentatives avant la mise en production.
 
-Parcourez les [exemples d&#39;Agent structurés](/fr/docs/agent/examples) pour comparer les schemas de list building, KYB, offres d&#39;emploi, exclusions et runs poursuivis.
+Parcourez les [exemples d&#39;Agent structurés](/fr/docs/agent/examples) pour comparer les schémas de constitution de listes, de KYB, d&#39;offres d&#39;emploi, d&#39;exclusions et de runs poursuivis.
 
-<div id="agent-vs-search">
-  ## Agent ou Search
-</div>
+## Agent ou Search {#agent-vs-search}
 
-| Besoin                                                                     | Commencez par                           |
-| -------------------------------------------------------------------------- | --------------------------------------- |
-| Des résultats web pour votre LLM                                           | [Search](/fr/docs/search/quickstart)       |
-| Recherche et synthèse rapides                                              | [Deep Search](/fr/docs/search/deep-search) |
-| list-building en asynchrone, recherche multi-étapes ou enrichment | [Agent](/fr/docs/agent/quickstart)         |
+| Besoin                                                                  | Commencer par                           |
+| ----------------------------------------------------------------------- | --------------------------------------- |
+| Des résultats web pour votre LLM                                        | [Search](/fr/docs/search/quickstart)       |
+| Une recherche et une synthèse rapides                                   | [Deep Search](/fr/docs/search/deep-search) |
+| Constitution de listes asynchrone, recherche multi-étapes ou enrichment | [Agent](/fr/docs/agent/quickstart)         |
 
-Utilisez Agent lorsque la tâche exige plusieurs étapes de récupération, une vérification entité par entité ou l&#39;enrichissement de données déjà connues. Utilisez Search lorsque vous avez besoin rapidement de pages et que votre application assurera le raisonnement restant.
+Utilisez Agent lorsque la tâche exige plusieurs étapes de retrieval, une vérification entité par entité ou un enrichment sur des records connus. Utilisez Search lorsque vous avez besoin de pages rapidement et que votre application prend en charge le reste du raisonnement.
 
-<div id="tips-for-common-use-cases">
-  ## Conseils pour les cas d&#39;usage courants
-</div>
+## Conseils pour les cas d&#39;usage courants {#tips-for-common-use-cases}
 
-| Si vous avez besoin de                                  | Utilisez                                                       | Évitez                                                                   |
-| ------------------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| Une liste documentée de taille inconnue                 | `auto` et un `outputSchema` borné                              | Un effort faible figé et un tableau non borné                            |
-| L&#39;enrichment de records dont vous disposez déjà | `input.data` et les champs à ajouter                           | Coller le tableau dans `query`                                           |
-| Une relance sur le dernier ensemble de résultats        | `previousRunId`                                                | Renvoyer l&#39;intégralité de la sortie précédente                       |
-| Des records qui ne doivent plus réapparaître            | `input.exclusion` et une déduplication en aval                 | Considérer les exclusions comme une garantie d&#39;identité stricte      |
-| Des données de provider premium                         | [Exa Connect](/fr/docs/agent/connect/overview) avec `dataSources` | Demander à Agent de déduire du web ouvert des champs propres au provider |
-| Un coût prévisible par requête                          | Un `effort` fixe                                               | `auto` ou `max` sans budget                                              |
-| L&#39;exhaustivité plutôt que la latence et le coût     | `xhigh` ou `max`                                               | Augmenter l&#39;effort avant d&#39;affiner la query                      |
+| Si vous avez besoin de                                  | Utilisez                                                       | Évitez                                                                      |
+| ------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Une liste issue d&#39;une recherche, de taille inconnue | `auto` et un `outputSchema` borné                              | Un effort fixe et faible associé à un array non borné                       |
+| L&#39;enrichment de records que vous possédez déjà      | `input.data` ainsi que les fields à ajouter                    | Coller le tableau dans `query`                                              |
+| Un follow-up sur le dernier ensemble de résultats       | `previousRunId`                                                | Renvoyer l&#39;intégralité de l&#39;output précédent                        |
+| Des records qui ne doivent plus réapparaître            | `input.exclusion` ainsi qu&#39;une déduplication en aval       | Considérer les exclusions comme une garantie d&#39;identité stricte         |
+| Des données de fournisseur premium                      | [Exa Connect](/fr/docs/agent/connect/overview) avec `dataSources` | Demander à Agent de déduire du web ouvert des fields propres au fournisseur |
+| Un coût prévisible par requête                          | Un `effort` fixe                                               | `auto` ou `max` sans budget                                                 |
+| L&#39;exhaustivité plutôt que la latence et le coût     | `xhigh` ou `max`                                               | Augmenter l&#39;effort avant d&#39;avoir affiné la requête                  |
 
-<div id="next-steps">
-  ## Étapes suivantes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
   <Card title="Quickstart Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
-    Créez un run, diffusez les événements, définissez l&#39;effort et exploitez la sortie structurée.
+    Créez un run, streamez les events, définissez l&#39;effort et lisez la sortie structurée.
   </Card>
 
   <Card title="Exemples Agent" icon="layers" href="/fr/docs/agent/examples" cta="Parcourir les exemples" arrow="true">
-    Copiez des requêtes complètes de list-building, d&#39;enrichment, de KYB, d&#39;exclusion et de follow-up.
+    Copiez des requêtes complètes de constitution de liste, d&#39;enrichment, de KYB, d&#39;exclusion et de follow-up.
   </Card>
 
   <Card title="Exa Connect" icon="database" href="/fr/docs/agent/connect/overview" cta="Parcourir les data partners" arrow="true">
-    Ajoutez des données premium sur les entreprises, les personnes, le trafic, la conformité, la finance et bien d&#39;autres providers.
+    Ajoutez des données premium de fournisseurs sur les entreprises, les personnes, le trafic, la conformité, la finance et bien d&#39;autres domaines.
   </Card>
 
-  <Card title="Bonnes pratiques Search" icon="sparkles" href="/fr/docs/search/best-practices" cta="Lire le guide" arrow="true">
-    Qualité de la retrieval, latence et synthèse lorsque Search suffit.
+  <Card title="Bonnes pratiques de search" icon="sparkles" href="/fr/docs/search/best-practices" cta="Lire le guide" arrow="true">
+    Qualité du retrieval, latence et synthèse lorsque Search suffit.
   </Card>
 </Columns>

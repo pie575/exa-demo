@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 색인은 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-<div id="get-a-batch">
-  # batch 조회
-</div>
+# batch 조회 {#get-a-batch}
 
 > ID로 batch를 조회합니다.
 
-이 endpoint로 batch가 `completed`, `cancelled`, `expired` 상태에 도달할 때까지 poll하세요. batch가 완료되면 `resultsUrl`에 JSONL 결과 파일의 단기 유효 presigned URL이 담깁니다. 새로운 URL이 필요하면 batch를 다시 조회하세요.
+이 엔드포인트로 batch가 `completed`, `cancelled`, `expired` 상태가 될 때까지 폴링하세요. batch가 완료되면 `resultsUrl`에 JSONL 결과 파일의 presigned URL이 담기며, 이 URL은 유효 기간이 짧습니다. 새 URL이 필요하면 batch를 다시 조회하세요.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits가 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0
@@ -37,8 +31,8 @@ paths:
     get:
       tags:
         - Batches
-      summary: Get a batch
-      description: Retrieve a single batch by ID.
+      summary: 배치 조회
+      description: ID로 단일 배치를 조회합니다.
       operationId: getBatch
       parameters:
         - in: path
@@ -46,10 +40,10 @@ paths:
           schema:
             type: string
             minLength: 1
-            description: Batch ID.
+            description: 배치 ID.
             example: batch_01j7x9v0m2n4p6q8r0s2t4v6w8
           required: true
-          description: Batch ID.
+          description: 배치 ID.
         - $ref: '#/components/parameters/BatchesBetaHeader'
       responses:
         '200':
@@ -93,14 +87,14 @@ components:
         type: string
         enum:
           - batches-2026-06-06
-        description: Required beta token for the Batch API.
+        description: Batch API에 필요한 베타 토큰입니다.
       required: true
-      description: Required beta token for the Batch API.
+      description: Batch API에 필요한 베타 토큰입니다.
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        요청의 고유 식별자입니다. 해당 값을 포함하는 응답 본문에서 반환되는 `requestId`
+        필드와 일치합니다.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -110,12 +104,12 @@ components:
       properties:
         id:
           type: string
-          description: Batch ID. New batch IDs are returned with the `batch_` prefix.
+          description: 배치 ID. 새 배치 ID는 `batch_` 접두사와 함께 반환됩니다.
           example: batch_01j7x9v0m2n4p6q8r0s2t4v6w8
         object:
           type: string
           const: batch
-          description: The object type, always `batch`.
+          description: 객체 유형이며, 항상 `batch`입니다.
         status:
           $ref: '#/components/schemas/BatchStatus'
         requestCounts:
@@ -123,13 +117,13 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: When the batch was created.
+          description: 배치가 생성된 시점입니다.
         expiresAt:
           anyOf:
             - type: string
               format: date-time
             - type: 'null'
-          description: When the batch expires, or `null` if it does not expire.
+          description: 배치가 만료되는 시점이며, 만료되지 않는 경우 `null`입니다.
           format: date-time
         endedAt:
           anyOf:
@@ -137,25 +131,24 @@ components:
               format: date-time
             - type: 'null'
           description: >-
-            When the batch reached a terminal status, or `null` while it is
-            still running.
+            배치가 종료 상태에 도달한 시점이며, 아직 실행 중인 경우 `null`입니다.
           format: date-time
         resultsUrl:
           anyOf:
             - type: string
             - type: 'null'
           description: >-
-            Short-lived presigned download URL for the batch results file
-            (JSONL), or `null` until the batch completes. This is a direct
-            object-store download link, not an API route; fetch it as-is and
-            re-fetch the batch to mint a fresh URL once it expires.
+            배치 결과 파일(JSONL)에 대한 단기 사전 서명된 다운로드 URL이며, 배치가
+            완료될 때까지는 `null`입니다. 이는 API 경로가 아닌 오브젝트 스토어
+            직접 다운로드 링크입니다. 그대로 요청하고, 만료되면 배치를 다시 조회하여
+            새 URL을 발급받으세요.
         metadata:
           type: object
           propertyNames:
             type: string
           additionalProperties:
             type: string
-          description: Caller-provided key-value metadata for your own tracking.
+          description: 자체 추적을 위해 호출자가 제공하는 키-값 메타데이터입니다.
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -179,22 +172,22 @@ components:
         - cancelling
         - cancelled
         - expired
-      description: Lifecycle status of the batch.
+      description: 배치의 수명 주기 상태입니다.
     BatchRequestCounts:
       type: object
       properties:
         total:
           type: integer
           minimum: 0
-          description: Total requests in the batch.
+          description: 배치의 전체 요청 수입니다.
         completed:
           type: integer
           minimum: 0
-          description: Requests that have completed successfully.
+          description: 성공적으로 완료된 요청 수입니다.
         failed:
           type: integer
           minimum: 0
-          description: Requests that have failed.
+          description: 실패한 요청 수입니다.
       required:
         - total
         - completed
@@ -205,19 +198,19 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: 요청의 고유 식별자입니다.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Human-readable message describing the error.
-          example: Invalid API key
+          description: 오류를 설명하는 사람이 읽을 수 있는 메시지입니다.
+          example: 유효하지 않은 API 키
         tag:
           type: string
           description: >-
-            Machine-readable error tag identifying the failure. The set of tags
-            is open-ended: new tags may be added at any time, so treat
-            unrecognized tags as a generic error of the response's HTTP status.
-            Known tags are listed as examples.
+            실패를 식별하는 기계 판독 가능한 오류 태그입니다. 태그 집합은
+            개방형입니다. 새로운 태그가 언제든 추가될 수 있으므로, 인식할 수 없는
+            태그는 해당 응답의 HTTP 상태에 대한 일반 오류로 처리하세요.
+            알려진 태그는 예시로 나열되어 있습니다.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -253,10 +246,10 @@ components:
         - error
         - tag
       additionalProperties: false
-      description: Standard error envelope returned by the Exa API for failed requests.
+      description: 실패한 요청에 대해 Exa API가 반환하는 표준 오류 엔벨로프입니다.
   responses:
     BadRequestResponse:
-      description: The request body or query parameters failed validation.
+      description: 요청 본문 또는 쿼리 매개변수의 유효성 검사에 실패했습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -265,13 +258,13 @@ components:
           example:
             requestId: 0a1b2c3d4e5f60718293a4b5c6d7e8f9
             error: >-
-              Invalid request body: query: Invalid input: expected string,
-              received undefined
+              유효하지 않은 요청 본문: query: 유효하지 않은 입력: 문자열이 필요하지만
+              undefined를 받았습니다
             tag: INVALID_REQUEST_BODY
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: API 키가 없거나 유효하지 않습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -279,12 +272,12 @@ components:
         application/json:
           example:
             requestId: f2a4c6e8b0d2f4a6c8e0b2d4f6a8c0e2
-            error: Invalid API key
+            error: 유효하지 않은 API 키
             tag: INVALID_API_KEY
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: The requested resource does not exist.
+      description: 요청한 리소스가 존재하지 않습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -292,12 +285,12 @@ components:
         application/json:
           example:
             requestId: 3b1d5f7a9c0e2b4d6f8a0c2e4b6d8f0a
-            error: Not found
+            error: 찾을 수 없음
             tag: NOT_FOUND
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: 요청을 처리하는 중 예기치 않은 오류가 발생했습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -306,8 +299,8 @@ components:
           example:
             requestId: 9b1d3f5e7a0c2e4b6d8f0a2c4e6b8d0f
             error: >-
-              Sorry, we encountered an error while processing your request.
-              Please try again later
+              죄송합니다. 요청을 처리하는 중 오류가 발생했습니다.
+              나중에 다시 시도해 주세요
             tag: DEFAULT_ERROR
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -317,12 +310,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>를 사용하여
+        인증할 수도 있습니다.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>를 사용하여
+        인증할 수도 있습니다.
 ```

@@ -5,51 +5,43 @@ description: "웹에서 검증되고 enrich된 데이터셋을 구축하세요."
 boost: 4
 ---
 
-<div id="what-are-websets">
-  ## Websets란?
-</div>
+## Websets란? {#what-are-websets}
 
-Webset은 자연어 질의와 목표 item 개수로 시작합니다. 모든 결과가 충족해야 할 criteria와, 승인된 item마다 채울 enrichment 필드를 추가하세요. 결과는 dashboard, API 또는 webhook을 통해 비동기적으로 전달됩니다.
+Webset은 자연어 질의와 목표 item 개수로 시작합니다. 모든 result가 충족해야 할 criteria와, 승인된 각 item에 채울 enrichment field를 추가하세요. 결과는 dashboard, API 또는 웹훅을 통해 비동기적으로 전달됩니다.
 
-코드 없이 [Dashboard](/ko/docs/websets/dashboard/get-started)에서 시각적으로 webset을 만들 수도
+[Dashboard](/ko/docs/websets/dashboard/get-started)에서 코드 없이 시각적으로 webset을 만들 수도
 있습니다.
 
 <Info>
-  리스트 구축이나 enrichment 워크플로우를 새로 시작하시나요? [Exa Agent](/ko/docs/agent/quickstart)를 사용하세요.
+  리스트 빌딩이나 enrichment 워크플로우를 새로 시작하시나요? [Exa Agent](/ko/docs/agent/quickstart)를 사용하세요.
   이 가이드는 기존 Websets 연동을 유지하거나 확장할 때 참고하세요.
-  Websets API를 사용하려면 유료 Websets 플랜이 필요하며, Search API credits와 Websets credits는 별개입니다.
+  Websets API는 유료 Websets plan이 필요하며, Search API credits와 Websets credits는 별개입니다.
 </Info>
 
-<div id="how-it-works">
-  ## 작동 방식
-</div>
+## 작동 방식 {#how-it-works}
 
-1. **search 정의:** 자연어 질의와 결과 개수를 지정하고, 필요에 따라 verification criteria와 enrichment를 추가합니다.
-2. **검색 및 검증:** Websets가 후보를 찾아 각 후보를 criteria에 비추어 검증합니다. criteria를 충족한 결과만 item이 됩니다.
-3. **enrichment 실행:** 검증된 각 item에 대해 Websets가 요청하신 추가 데이터, 예를 들어 CEO 이름, 투자 유치 금액, 연락처 정보 등을 검색합니다.
-4. **결과 수신:** 상태를 poll하거나 webhook으로 업데이트를 받을 수 있고, item이 추가되는 대로 dashboard에서 확인할 수도 있습니다.
+1. **search 정의하기:** 자연어 질의와 결과 개수를 지정하고, 필요하다면 verification criteria와 enrichment도 함께 설정합니다.
+2. **검색 및 검증:** Websets가 후보를 찾아 각각을 criteria에 비추어 확인합니다. 조건을 충족한 결과만 item이 됩니다.
+3. **enrichment 실행:** 검증된 각 item에 대해 Websets가 CEO 이름, 투자 금액, 연락처 정보 등 요청한 추가 데이터를 검색합니다.
+4. **결과 받기:** 상태를 폴링하거나, 웹훅으로 업데이트를 받거나, item이 쌓이는 대로 dashboard에서 확인하세요.
 
-<div id="key-capabilities">
-  ## 주요 기능
-</div>
+## 주요 기능 {#key-capabilities}
 
-| 기능                        | 설명                                                  |
-| ------------------------- | --------------------------------------------------- |
-| **Criteria verification** | 각 결과를 직접 정의한 criteria에 따라 검증하므로 관련 있는 결과만 얻을 수 있습니다 |
-| **Enrichments**           | 모든 결과에 대해 특정 데이터 항목(텍스트, 숫자, 날짜, 불리언)을 추출합니다        |
-| **Monitors**              | 반복 search를 예약해 webset을 자동으로 최신 상태로 유지합니다            |
-| **Webhooks**              | item이 추가되거나 enrich될 때 실시간 HTTP 콜백을 받습니다             |
-| **Imports**               | 직접 보유한 URL을 가져와 enrichment를 실행합니다                   |
+| Feature                   | 기능 설명                                             |
+| ------------------------- | ------------------------------------------------- |
+| **Criteria verification** | 각 result를 사용자가 정의한 규칙에 따라 검증하므로 관련 있는 일치 항목만 받습니다 |
+| **Enrichments**           | 모든 result에서 특정 데이터 항목(텍스트, 숫자, 날짜, 불리언)을 추출합니다    |
+| **Monitors**              | 반복 search를 예약해 webset을 자동으로 최신 상태로 유지합니다          |
+| **웹훅**              | item이 추가되거나 enrich될 때 실시간 HTTP 콜백을 받습니다           |
+| **Imports**               | 직접 보유한 URL을 가져와 enrichment를 실행합니다                 |
 
-<div id="human-quickstart">
-  ## 사람을 위한 Quickstart
-</div>
+## Human Quickstart {#human-quickstart}
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-SDK를 설치하세요:
+SDK 설치:
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -61,7 +53,7 @@ SDK를 설치하세요:
   ```
 </CodeGroup>
 
-그런 다음 첫 요청을 보내보세요:
+이제 첫 요청을 보내보세요:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -89,7 +81,7 @@ SDK를 설치하세요:
   print(f"Webset created with ID: {webset.id}")
   print(f"View your Webset at: {webset.dashboard_url}")
 
-  # Webset 처리가 완료될 때까지 대기
+  # Webset 처리가 끝날 때까지 대기
   webset = exa.websets.wait_until_idle(webset.id)
 
   # Webset Items 조회
@@ -146,13 +138,11 @@ SDK를 설치하세요:
 </CodeGroup>
 
 <Note>
-  제품별 지원 여부는 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)을 참고하세요.
+  제품별 제공 여부는 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)을 참고하세요.
 </Note>
 
-<div id="next">
-  ## 다음 단계
-</div>
+## 다음 단계 {#next}
 
-* [**Dashboard 가이드**](./dashboard/get-started) - Dashboard에서 Websets를 사용하는 단계별 가이드
-* [**작동 방식**](/ko/docs/websets/quickstart) - 이벤트 기반 아키텍처 심층 살펴보기
-* [**Websets API 레퍼런스**](./api/websets/create-a-webset) - 모든 endpoint에 대한 전체 API 레퍼런스
+* [**Dashboard 가이드**](./dashboard/get-started) - dashboard에서 Websets를 사용하는 단계별 가이드
+* [**작동 방식**](/ko/docs/websets/quickstart) - 이벤트 기반 아키텍처 자세히 알아보기
+* [**Websets API reference**](./api/websets/create-a-webset) - 모든 엔드포인트에 대한 전체 API reference

@@ -1,35 +1,31 @@
 ---
 title: "Fiber.ai"
-description: "Telusuri database B2B Fiber.ai untuk perusahaan, orang, dan profil LinkedIn."
+description: "Telusuri database B2B Fiber.ai untuk mencari perusahaan, orang, dan profil LinkedIn."
 icon: "/docs/images/sidebar-icons/fiber.svg"
 ---
 
-[Fiber.ai](https://fiber.ai) adalah platform data B2B dengan data terkini tentang 40 juta+
-perusahaan, 850 juta+ orang, dan 30 juta+ lowongan kerja. Telusuri data perusahaan, orang, dan
-lowongan kerja secara langsung, serta lengkapi data yang belum utuh dengan work email, personal email, dan
+[Fiber.ai](https://fiber.ai) adalah platform data B2B dengan data terkini tentang
+40 juta+ perusahaan, 850 juta+ orang, dan 30 juta+ lowongan kerja. Telusuri data perusahaan, orang, dan
+pekerjaan secara langsung, serta enrich catatan yang belum lengkap dengan work email, personal email, dan
 nomor telepon.
 
 Attach `fiber` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
 Fiber.ai bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Membersihkan CRM dengan menelusuri balik work email atau personal email ke
-  seseorang, atau memperkaya data perusahaan/orang yang belum lengkap.
-* Melacak sinyal LinkedIn secara real-time: perpindahan pekerjaan, promosi,
-  pekerjaan baru, perubahan jumlah karyawan, dan penggalangan dana.
-* Menemukan posting relevan di LinkedIn, X, Instagram, TikTok, Reddit, dan
-  YouTube, menarik komentar serta reaksinya, lalu memperkaya informasi kontak
-  para penulisnya.
-* Mencari di lebih dari 40 juta perusahaan dan 850 juta orang serta memperkaya
-  data prospect dengan work email, personal email, dan nomor telepon.
+* Membersihkan CRM dengan menelusuri balik work email atau personal email ke orangnya,
+  atau melakukan enrich pada catatan perusahaan/orang yang belum lengkap.
+* Melacak sinyal LinkedIn secara real-time: perpindahan kerja, promosi, pekerjaan baru,
+  perubahan jumlah karyawan, dan penggalangan dana.
+* Menemukan postingan relevan di LinkedIn, X, Instagram, TikTok, Reddit, dan
+  YouTube, mengambil komentar dan reaksinya, lalu melakukan enrich pada informasi
+  kontak penulisnya.
+* Mencari di lebih dari 40 juta perusahaan dan 850 juta orang serta melakukan enrich pada prospek dengan
+  work email, personal email, dan nomor telepon.
 
-<div id="provider-id">
-  ## ID Provider
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -37,12 +33,10 @@ Gunakan nilai ini pada `dataSources`:
 fiber
 ```
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
-Fiber.ai menagih dalam credits dengan tarif `$0.02 / credit`, dan setiap call dikenakan
-credits sesuai yang dilaporkan Fiber untuk call tersebut:
+Fiber.ai menagih dalam credits dengan tarif `$0.02 / credit`, dan setiap panggilan dikenakan biaya sebesar
+credits yang dilaporkan Fiber untuk panggilan tersebut:
 
 | Operasi                                 | Credits                           |
 | --------------------------------------- | --------------------------------- |
@@ -51,13 +45,11 @@ credits sesuai yang dilaporkan Fiber untuk call tersebut:
 | Pencarian orang / pencarian balik email | 2                                 |
 | Pengungkapan kontak                     | 2 (work email) – 5 (telepon)      |
 
-Call yang tidak menemukan kecocokan (atau yang biayanya dikembalikan Fiber) tidak dikenakan biaya. Pilihan
+Panggilan yang tidak menghasilkan kecocokan (atau yang biayanya dikembalikan oleh Fiber) tidak dikenakan biaya. Pilihan
 parameter memengaruhi harga: `numResults` pada pencarian perusahaan menentukan berapa banyak
-kandidat yang Anda bayar, dan jumlah hasil pada search menjadi penentu utama cost-nya.
+kandidat yang Anda bayar, dan jumlah hasil pada sebuah search menentukan sebagian besar biayanya.
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
 Bangun daftar prospek B2B berisi perusahaan fintech tahap Series A di New York dengan 50–200 karyawan.
 
@@ -154,32 +146,28 @@ Bangun daftar prospek B2B berisi perusahaan fintech tahap Series A di New York d
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Similarweb](/id/docs/agent/connect/similarweb): menilai kehadiran web sebuah prospek beserta para pesaingnya.
-* [Baselayer](/id/docs/agent/connect/baselayer): memverifikasi pengurus dan registrasi bisnis AS yang masuk daftar pendek.
+* [Similarweb](/id/docs/agent/connect/similarweb): menilai kehadiran web dan kompetitor sebuah prospek.
+* [Baselayer](/id/docs/agent/connect/baselayer): memverifikasi pejabat dan registrasi bisnis AS yang masuk daftar pendek.
 * [Particle](/id/docs/agent/connect/particle): mencari tahu apa yang dibicarakan podcast tentang suatu perusahaan atau eksekutif.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, Harga, dan katalog partner selengkapnya.
   </Card>
 
-  <Card title="Gabungkan provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
-    Attach hingga lima partner ke satu run dan susun query agar masing-masing terpicu.
+  <Card title="Gabungkan providers" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partner ke satu run dan susun query agar masing-masing ikut terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard lalu jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
+    Buat key di dashboard, lalu jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
   </Card>
 </Columns>

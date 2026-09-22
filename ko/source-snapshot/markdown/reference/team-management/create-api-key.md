@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-api-key">
-  # API key 생성
-</div>
+# API 키 생성 {#create-api-key}
 
-> 이름과 rate limit configuration을 선택적으로 지정하여 team의 새 API key를 생성합니다.
+> 이름과 속도 제한 구성을 선택적으로 지정하여 team의 새 API 키를 생성합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
 <Info>
-  Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API key를 사용하며, team에 해당 기능이 활성화되면 [API keys 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 key를 생성할 수 있습니다. 접근 권한 요청은 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
+  Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API 키를 사용하며, team에 해당 feature가 활성화되면 [API 키 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 이 키를 생성할 수 있습니다. 액세스 요청은 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-Create API Key endpoint를 사용하면 서비스 API key로 team의 새 API key를 프로그래밍 방식으로 생성할 수 있습니다.
+API 키 생성 엔드포인트를 사용하면 서비스 API 키로 team의 새 API 키를 프로그래밍 방식으로 생성할 수 있습니다.
 
-<div id="optional-parameters">
-  ## 선택 파라미터
-</div>
+## 선택적 Parameters {#optional-parameters}
 
-* **name**: API key의 용도를 쉽게 파악할 수 있도록 지정하는 설명용 이름
-* **rateLimit**: 이 API key에 허용되는 분당 최대 요청 수
+* **name**: API 키의 용도를 파악하는 데 도움이 되는 설명용 이름
+* **rateLimit**: 이 API 키에 허용되는 분당 최대 요청 수
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

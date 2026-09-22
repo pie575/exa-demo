@@ -1,26 +1,22 @@
 ---
 title: "Polymarket"
-description: "获取预测市场赔率、价格历史、订单簿和交易者持仓。"
+description: "获取预测市场的赔率、价格历史、订单簿和交易者持仓。"
 icon: "/docs/images/sidebar-icons/polymarket.svg"
 timestamp: false
 ---
 
-[Polymarket](https://polymarket.com) 是一个预测市场平台，其市场价格反映了大众对现实世界事件结果的隐含概率判断。[Exa Connect](/zh/docs/agent/connect/overview) 提供对 Polymarket 公开市场数据的只读访问。
+[Polymarket](https://polymarket.com) 是一个预测市场平台，其市场价格反映了大众对现实世界事件结果的隐含概率。[Exa Connect](/zh/docs/agent/connect/overview) 提供对 Polymarket 公开市场数据的只读访问。
 
-只需在 [Exa Agent](/zh/docs/agent/quickstart) 运行中附加 `polymarket`，agent 就会在 Exa 网页搜索之外同时查询 Polymarket。
+在 [Exa Agent](/zh/docs/agent/quickstart) 运行中附加 `polymarket`，agent 便会在 Exa 网页搜索之外同时查询 Polymarket。
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
-* 查找某个主题的预测市场及当前市场隐含赔率。
+* 查找某个主题的预测市场及当前的市场隐含赔率。
 * 对比某一结果的隐含概率随时间的变化。
 * 查看市场流动性、买卖盘深度以及持仓量最大的账户。
 * 查看某位交易者的当前持仓和近期链上活动。
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## 提供方 ID {#provider-id}
 
 在 `dataSources` 中使用此值：
 
@@ -28,29 +24,22 @@ timestamp: false
 polymarket
 ```
 
-<div id="pricing">
-  ## 定价
-</div>
+## 定价 {#pricing}
 
-Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具不收取任何费用：你只需支付标准的
-[Agent 运行费用](/zh/docs/agent/quickstart#pricing)。
+Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具不产生任何费用：你只需按标准的 [Agent 运行定价](/zh/docs/agent/quickstart#pricing)付费。
 
-<div id="data-available">
-  ## 可用数据
-</div>
+## 可用数据 {#data-available}
 
 | 数据      | 说明                              |
 | ------- | ------------------------------- |
-| 市场与事件   | 当前的预测市场和事件，包含隐含概率价格、成交量和流动性。    |
+| 市场与事件   | 当前的预测市场和事件，含隐含概率价格、成交量和流动性。     |
 | 价格历史    | 某一结果的隐含概率随时间的变化情况。              |
 | 订单簿     | 某一市场结果的实时买卖盘深度与价差。              |
 | 持仓者与交易者 | 某一市场的头部持仓者，以及某位交易者的当前持仓和近期链上活动。 |
 
-<div id="example">
-  ## 示例
-</div>
+## 示例 {#example}
 
-获取市场隐含赔率，以及过去一个月的变化趋势。
+获取美联储降息的市场隐含赔率，以及过去一个月内的变化趋势。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -116,32 +105,28 @@ Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具�
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 搭配使用
-</div>
+## 搭配使用 {#pairs-well-with}
 
 * [Exa 网页搜索](/zh/docs/search/quickstart)：为市场赔率补充报道和背景信息。
 * [Particle](/zh/docs/agent/connect/particle)：挖掘赔率变动背后的新闻报道。
 * [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：将市场隐含赔率与价格、基本面和宏观数据关联起来。
 
-<div id="next-steps">
-  ## 后续步骤
-</div>
+## 后续步骤 {#next-steps}
 
 <Columns cols={2}>
   <Card title="附加到运行中" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">
     Exa Connect 快速开始介绍了 `dataSources`、定价以及完整的合作伙伴目录。
   </Card>
 
-  <Card title="组合多个数据提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
-    在一次运行中最多附加五个合作伙伴，并设计好 query，让每一个都能被触发。
+  <Card title="组合多个提供方" icon="blend" href="/zh/docs/agent/connect/combining-providers" cta="阅读指南" arrow="true">
+    单次运行最多可接入五个合作伙伴，并通过设计 query 让每一个都被触发。
   </Card>
 
   <Card title="了解 Exa Agent" icon="book-open" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">
-    创建运行、流式获取进度、设计输出 schema，并控制投入程度与成本。
+    创建运行、流式获取进度、设计输出 schema，并控制 effort 与费用。
   </Card>
 
-  <Card title="获取 API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建 key" arrow="true">
-    在控制台中创建 key，即可原样运行本页示例。新账户会获赠免费积分。
+  <Card title="获取 API 密钥" icon="key" href="https://dashboard.exa.ai/api-keys" cta="创建密钥" arrow="true">
+    在控制台中创建密钥，即可直接运行本页示例。新账户附赠免费积分。
   </Card>
 </Columns>

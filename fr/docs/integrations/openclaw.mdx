@@ -1,15 +1,13 @@
 ---
 title: "OpenClaw"
 sidebarTitle: "OpenClaw"
-description: "Offrez à OpenClaw la recherche web en temps réel et le page content avec Exa."
+description: "Offrez à OpenClaw la recherche web en temps réel et les page contents avec Exa."
 icon: "/docs/images/sidebar-icons/openclaw.svg"
 ---
 
-[OpenClaw](https://openclaw.ai/) prend en charge Exa comme provider `web_search` natif. Une fois Exa sélectionné, chaque agent OpenClaw peut utiliser les search modes d&#39;Exa, les filtres de date et l&#39;extraction de contenu via le tool web intégré.
+[OpenClaw](https://openclaw.ai/) prend en charge Exa comme fournisseur `web_search` natif. Une fois Exa sélectionné, chaque agent OpenClaw peut utiliser les modes de recherche Exa, les filtres de date et l&#39;extraction de contenu via l&#39;outil web intégré.
 
-<div id="set-up-exa">
-  ## Configurer Exa
-</div>
+## Configurer Exa {#set-up-exa}
 
 <Steps>
   <Step title="Installer le plugin Exa">
@@ -21,12 +19,12 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
 
   <Step title="Obtenir une API key Exa">
     <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+      Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
     </Card>
   </Step>
 
-  <Step title="Enregistrer la clé">
-    Pour une installation via gateway, ajoutez la clé à `~/.openclaw/.env` :
+  <Step title="Stocker la clé">
+    Pour une installation avec gateway, ajoutez la clé dans `~/.openclaw/.env` :
 
     ```bash ~/.openclaw/.env theme={null}
     EXA_API_KEY=your-exa-api-key
@@ -42,13 +40,11 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
     openclaw configure --section web
     ```
 
-    Choisissez **Exa** comme provider de recherche web. OpenClaw enregistre ce choix de provider dans sa configuration et lit le credential depuis `EXA_API_KEY`.
+    Choisissez **Exa** comme fournisseur de recherche web. OpenClaw enregistre le fournisseur sélectionné dans sa configuration et lit les identifiants depuis `EXA_API_KEY`.
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Configuration manuelle
-</div>
+## Configuration manuelle {#configure-manually}
 
 Vous pouvez sélectionner Exa directement dans la configuration JSON5 d&#39;OpenClaw :
 
@@ -83,25 +79,23 @@ Pour stocker la clé dans la configuration plutôt que dans l&#39;environnement 
 ```
 
 <Note>
-  Privilégiez `EXA_API_KEY` ou un SecretRef OpenClaw plutôt que de committer une API key dans un fichier de configuration.
+  Privilégiez `EXA_API_KEY` ou une SecretRef OpenClaw plutôt que de committer une API key dans un fichier de configuration.
 </Note>
 
-<div id="what-agents-can-request">
-  ## Ce que les agents peuvent demander
-</div>
+## Ce que les agents peuvent demander {#what-agents-can-request}
 
 OpenClaw expose Exa via `web_search`.
 
-| Paramètre                    | Rôle                                                                                                  |
-| ---------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `query`                      | La requête de recherche web.                                                                          |
-| `count`                      | Nombre de résultats, jusqu&#39;à 100 et dans la limite du type de recherche sélectionné.              |
-| `type`                       | search mode d&#39;Exa : `auto`, `neural`, `fast`, `instant`, `deep` et `deep-reasoning`.              |
-| `freshness`                  | Limiter les résultats au dernier jour, à la dernière semaine, au dernier mois ou à la dernière année. |
-| `date_after` / `date_before` | Limiter les résultats avec des bornes au format `YYYY-MM-DD`.                                         |
-| `contents`                   | Renvoyer le texte intégral, les highlights ou les summaries avec chaque résultat.                     |
+| Paramètre                    | Utilité                                                                                                   |
+| ---------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `query`                      | La requête de recherche web.                                                                              |
+| `count`                      | Nombre de résultats, jusqu&#39;à 100 et dans la limite du type de recherche sélectionné.                  |
+| `type`                       | Mode de recherche Exa, dont `auto`, `neural`, `fast`, `instant`, `deep` et `deep-reasoning`.              |
+| `freshness`                  | Restreindre les résultats au dernier jour, à la dernière semaine, au dernier mois ou à la dernière année. |
+| `date_after` / `date_before` | Restreindre les résultats avec des bornes au format `YYYY-MM-DD`.                                         |
+| `contents`                   | Renvoyer le texte intégral, les highlights ou les résumés avec chaque résultat.                           |
 
-Si `contents` est omis, OpenClaw demande les highlights par défaut. L&#39;agent peut demander un autre format de contenu lorsqu&#39;il a besoin de pages complètes ou de summaries :
+Si `contents` est omis, OpenClaw demande les highlights par défaut. L&#39;agent peut demander une autre forme de contenu lorsqu&#39;il a besoin de pages complètes ou de résumés :
 
 ```javascript theme={null}
 await web_search({
@@ -115,40 +109,36 @@ await web_search({
 });
 ```
 
-Par défaut, OpenClaw met en cache les résultats de recherche web pendant 15 minutes. Modifiez `tools.web.search.cacheTtlMinutes` ou définissez cette valeur sur `0` si chaque requête doit renvoyer des résultats à jour.
+Par défaut, OpenClaw met en cache les résultats de recherche web pendant 15 minutes. Modifiez `tools.web.search.cacheTtlMinutes` ou définissez cette valeur sur `0` si chaque requête doit renvoyer des données à jour.
 
-<div id="troubleshooting">
-  ## Dépannage
-</div>
+## Dépannage {#troubleshooting}
 
 <AccordionGroup>
-  <Accordion title="OpenClaw n'affiche pas Exa comme provider">
+  <Accordion title="OpenClaw n'affiche pas Exa comme fournisseur">
     Installez `@openclaw/exa-plugin`, redémarrez le gateway, puis exécutez à nouveau `openclaw configure --section web`.
   </Accordion>
 
   <Accordion title="OpenClaw signale une clé Exa manquante">
-    Vérifiez que `EXA_API_KEY` est bien accessible au processus du gateway, et pas seulement à votre shell interactif. Dans le cas d&#39;une installation en gateway, placez-la dans `~/.openclaw/.env` puis redémarrez le gateway.
+    Vérifiez que `EXA_API_KEY` est accessible au processus du gateway, et pas seulement à votre shell interactif. Pour une installation en gateway, placez-la dans `~/.openclaw/.env` et redémarrez le gateway.
   </Accordion>
 
-  <Accordion title="Les résultats de search semblent obsolètes">
-    OpenClaw met les résultats en cache indépendamment d&#39;Exa. Réduisez `tools.web.search.cacheTtlMinutes` ou fixez-le à `0`, puis utilisez les options de content freshness d&#39;Exa lors de la récupération des page contents.
+  <Accordion title="Les résultats de recherche semblent obsolètes">
+    OpenClaw met les résultats en cache indépendamment d&#39;Exa. Réduisez `tools.web.search.cacheTtlMinutes` ou définissez-le à `0`, puis utilisez les options de fraîcheur du contenu d&#39;Exa lorsque vous demandez des page contents.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Ressources
-</div>
+## Ressources {#resources}
 
 <Columns cols={3}>
-  <Card title="Exa provider pour OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Lire le guide" arrow="true">
-    Consultez la configuration actuelle du plugin et les parameters du tool.
+  <Card title="Fournisseur Exa pour OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Lire le guide" arrow="true">
+    Consultez la configuration actuelle du plugin et les paramètres de l&#39;outil.
   </Card>
 
   <Card title="Exa Search" icon="search" href="/fr/docs/search/quickstart" cta="Lire le guide" arrow="true">
-    Comparez les search modes d&#39;Exa et les formats de réponse.
+    Comparez les modes de recherche Exa et les formats de réponse.
   </Card>
 
-  <Card title="Content freshness" icon="clock" href="/fr/docs/contents/quickstart#content-freshness" cta="Lire le guide" arrow="true">
-    Contrôlez les page contents issus de l&#39;index ou récupérés en direct.
+  <Card title="Fraîcheur du contenu" icon="clock" href="/fr/docs/contents/quickstart#content-freshness" cta="Lire le guide" arrow="true">
+    Maîtrisez les page contents indexés et récupérés en direct.
   </Card>
 </Columns>

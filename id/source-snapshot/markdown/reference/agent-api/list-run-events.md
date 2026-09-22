@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="list-run-events">
-  # List run events
-</div>
+# List run events {#list-run-events}
 
-> Menampilkan daftar event Agent run yang tersimpan atau me-replay-nya sebagai server-sent events.
+> Menampilkan daftar event Agent run yang tersimpan atau memutarnya kembali sebagai server-sent events.
 
-Secara default, endpoint ini mengembalikan daftar JSON berisi event tersimpan dengan paginasi. Setel `Accept: text/event-stream` untuk me-replay event tersimpan sebagai SSE. Untuk paginasi JSON, gunakan `cursor`. Untuk replay SSE, gunakan `Last-Event-ID`.
+Secara default, endpoint ini mengembalikan daftar JSON berhalaman berisi event yang tersimpan. Setel `Accept: text/event-stream` untuk melakukan replay event tersimpan sebagai SSE. Untuk paginasi JSON, gunakan `cursor`. Untuk replay SSE, gunakan `Last-Event-ID`.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

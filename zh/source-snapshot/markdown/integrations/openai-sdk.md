@@ -1,45 +1,37 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入查阅之前，可通过该文件了解所有可用页面。
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="openai-sdk-compatibility">
-  # OpenAI SDK 兼容性
-</div>
+# OpenAI SDK 兼容性 {#openai-sdk-compatibility}
 
-> 将 Exa 的端点作为 OpenAI 的直接替代品使用——同时支持 chat completions 和 responses API。
+> 将 Exa 的端点作为 OpenAI 的直接替代，同时支持 chat completions 和 responses API。
 
-<Card title="编码 agent 快速入门" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  初次使用 Exa？一分钟内即可上手。
+<Card title="编码智能体快速开始" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  第一次使用 Exa？一分钟内即可上手。
 </Card>
 
 ***
 
-<div id="overview">
-  ## 概览
-</div>
+## 概览 {#overview}
 
-Exa 提供与 OpenAI 兼容的端点，可配合 OpenAI SDK 使用：
+Exa 提供与 OpenAI 兼容的端点，可直接搭配 OpenAI SDK 使用：
 
-| 端点                  | OpenAI 接口            | 可用模型        | 适用场景                              |
-| ------------------- | -------------------- | ----------- | --------------------------------- |
-| `/chat/completions` | Chat Completions API | `exa`       | 传统聊天接口                            |
-| `/responses`        | Responses API        | `exa-agent` | Agent API (异步研究、Enrichment、列表构建)  |
+| 端点                  | OpenAI 接口            | 可用模型        | 适用场景                      |
+| ------------------- | -------------------- | ----------- | ------------------------- |
+| `/chat/completions` | Chat Completions API | `exa`       | 传统聊天接口                    |
+| `/responses`        | Responses API        | `exa-agent` | Agent API (异步研究、增强、列表构建)  |
 
 <Info>
-  `/chat/completions` 会路由到 [`/answer`](/zh/docs/reference/answer)，`/responses` 会路由到 [Agent API](/zh/docs/agent/quickstart)。详见下文的[通过 Responses API 使用 Agent](#agent-via-responses-api)。
+  `/chat/completions` 会路由到 [`/answer`](/zh/docs/reference/answer)，`/responses` 会路由到 [Agent API](/zh/docs/agent/quickstart)。详见下方的[通过 Responses API 使用 Agent](#agent-via-responses-api)。
 </Info>
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 要通过 chat completions 接口使用 Exa 的 `/answer` 端点：
 
-1. 将 base URL 替换为 `https://api.exa.ai`
-2. 将 API key 替换为你的 Exa API key
+1. 将基础 URL 替换为 `https://api.exa.ai`
+2. 将 API 密钥替换为你的 Exa API 密钥
 3. 将模型名称替换为 `exa`。
 
 <Info>
@@ -52,7 +44,7 @@ Exa 提供与 OpenAI 兼容的端点，可配合 OpenAI SDK 使用：
   from openai import OpenAI
 
   client = OpenAI(
-    base_url="https://api.exa.ai", # 使用 exa 作为 base url
+    base_url="https://api.exa.ai", # 使用 exa 作为基础 URL
     api_key=os.environ["EXA_API_KEY"],
   )
 
@@ -65,7 +57,7 @@ Exa 提供与 OpenAI 兼容的端点，可配合 OpenAI SDK 使用：
 
   # 使用 extra_body 向 /answer 端点传递额外参数
     extra_body={
-      "text": True # 包含来源的完整正文
+      "text": True # 包含来源的 full text
     }
   )
 
@@ -77,7 +69,7 @@ Exa 提供与 OpenAI 兼容的端点，可配合 OpenAI SDK 使用：
   import OpenAI from "openai";
 
   const openai = new OpenAI({
-    baseURL: "https://api.exa.ai", // 使用 exa 作为 base url
+    baseURL: "https://api.exa.ai", // 使用 exa 作为基础 URL
     apiKey: process.env.EXA_API_KEY,
   });
 
@@ -94,7 +86,7 @@ Exa 提供与 OpenAI 兼容的端点，可配合 OpenAI SDK 使用：
       store: true,
       stream: true,
       extra_body: {
-        text: true, // 包含来源的完整正文
+        text: true, // 包含来源的 full text
       },
     });
 
@@ -127,31 +119,27 @@ Exa 提供与 OpenAI 兼容的端点，可配合 OpenAI SDK 使用：
   ```
 </CodeGroup>
 
-<div id="agent-via-responses-api">
-  ## 通过 Responses API 使用 Agent
-</div>
+## 通过 Responses API 使用 Agent {#agent-via-responses-api}
 
-Exa 的 [`/responses`](https://api.exa.ai/responses) 端点以 OpenAI Responses 接口的形式提供 [Agent API](/zh/docs/agent/quickstart)，因此 OpenAI SDK 无需任何改动即可直接调用。设置 `model: "exa-agent"` 并选择一种执行模式：
+Exa 的 [`/responses`](https://api.exa.ai/responses) 端点通过 OpenAI Responses 接口对外提供 [Agent API](/zh/docs/agent/quickstart)，因此 OpenAI SDK 无需改动即可直接使用。设置 `model: "exa-agent"` 并选择一种执行模式：
 
-| 模式 | 请求                             | 行为                                                                   |
-| -- | ------------------------------ | -------------------------------------------------------------------- |
-| 同步 | 默认 (不带 `stream`/`background`)  | 请求会阻塞，并返回已完成的 `response` 对象。                                         |
-| 流式传输 | `stream: true`                 | 请求会随运行进展以 SSE 形式流式返回 OpenAI Responses 事件，并以 `response.completed` 结束。 |
-| 后台 | `background: true`             | 请求立即返回一个 `in_progress` 响应；轮询 `GET /responses/{id}` 获取结果。             |
+| 模式   | 请求                              | 行为                                                                    |
+| ---- | ------------------------------- | --------------------------------------------------------------------- |
+| 同步   | 默认 (不设置 `stream`/`background`)  | 请求会阻塞，并返回已完成的 `response` 对象。                                          |
+| 流式传输 | `stream: true`                  | 请求会随着运行的推进流式返回 OpenAI Responses 事件 (SSE) ，并以 `response.completed` 结束。 |
+| 后台   | `background: true`              | 请求立即返回状态为 `in_progress` 的响应；轮询 `GET /responses/{id}` 获取结果。            |
 
-设置 `reasoning.effort` (`minimal`、`low`、`medium`、`high`、`xhigh`、`auto`、`max`) 可在成本与深度之间权衡；如需取消某次运行，请调用 `POST /responses/{id}/cancel`。使用 `max` 时，请将 `Exa-Beta: agent-max-effort-2026-07-27` 设为客户端默认 header。[Agent 指南](/zh/docs/agent/quickstart) 介绍了该接口背后的运行模型、输出结构和 effort 定价。
+设置 `reasoning.effort` (`minimal`、`low`、`medium`、`high`、`xhigh`、`auto`、`max`) 可在费用与深度之间权衡，并可通过 `POST /responses/{id}/cancel` 取消运行。使用 `max` 时，需将 `Exa-Beta: agent-max-effort-2026-07-27` 设置为客户端默认 header。[Agent 指南](/zh/docs/agent/quickstart)介绍了支撑该接口的运行模型、输出结构以及 effort 定价。
 
 <Warning>
-  `reasoning.effort` 为 `high`、`xhigh` 和 `max` 的运行耗时过长，不适合同步请求，会返回 `400`。此类运行请使用 `stream: true` 或 `background: true`。`/responses` 没有 `budget` 字段；max 使用其默认的单次运行上限。
+  `reasoning.effort` 为 `high`、`xhigh` 和 `max` 的运行耗时过长，不适用于同步请求，会返回 `400`。这类运行请使用 `stream: true` 或 `background: true`。`/responses` 没有 `budget` field；max 使用其默认的单次运行上限。
 </Warning>
 
-使用 `previous_response_id` 可以接续一次已完成的 Responses 运行。
+使用 `previous_response_id` 可以继续一次已完成的 Responses 运行。
 
-<div id="synchronous">
-  ### 同步
-</div>
+### Synchronous {#synchronous}
 
-请求会一直阻塞，直到运行结束并返回处于终止状态的 `response` 对象。
+请求会一直阻塞，直到运行完成，并返回终态的 `response` 对象。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -205,11 +193,9 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点以 OpenAI Responses 
   ```
 </CodeGroup>
 
-<div id="streaming">
-  ### 流式传输
-</div>
+### 流式传输 {#streaming}
 
-设置 `stream: true` 即可通过 SSE 接收 Responses 流式事件。每个事件都带有单调递增的 `sequence_number`，并以 `response.completed` 作为结束标志；不会发送 `[DONE]` 结束标记。流中可能包含 `: keep-alive` 注释行，SSE 客户端会自动忽略。
+设置 `stream: true` 即可通过 SSE 接收 Responses 流式事件。事件带有单调递增的 `sequence_number`，并以 `response.completed` 结束，没有 `[DONE]` 结束标记。流中可能包含 `: keep-alive` 注释行，SSE 客户端会自动忽略。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -271,11 +257,9 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点以 OpenAI Responses 
   ```
 </CodeGroup>
 
-<div id="background">
-  ### 后台
-</div>
+### 后台 {#background}
 
-设置 `background: true` 即可在不保持连接的情况下启动运行，随后轮询 `GET /responses/{id}`，直到其进入终止状态。如需使用流式传输而非轮询，请参阅[流式传输](#streaming)。
+设置 `background: true` 可在不保持连接的情况下启动运行，然后轮询 `GET /responses/{id}`，直到其进入终止状态。如果想用流式传输代替轮询，请参阅[流式传输](#streaming)。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -330,7 +314,7 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点以 OpenAI Responses 
   ```
 
   ```bash cURL theme={null}
-  # 创建一个后台运行
+  # 创建一次后台运行
   curl -s -X POST 'https://api.exa.ai/responses' \
     -H "Authorization: Bearer $EXA_API_KEY" \
     -H 'Content-Type: application/json' \
@@ -340,17 +324,15 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点以 OpenAI Responses 
       "background": true
     }'
 
-  # 使用返回的 response ID 进行轮询
+  # 使用返回的响应 ID 进行轮询
   curl -s 'https://api.exa.ai/responses/resp_agent_run_...' \
     -H "Authorization: Bearer $EXA_API_KEY"
   ```
 </CodeGroup>
 
-<div id="chat-wrapper">
-  ## Chat 包装器
-</div>
+## Chat wrapper {#chat-wrapper}
 
-Exa 提供了一个 Python 包装器，可自动为任意 OpenAI chat completion 增加 RAG 能力。只需一行代码，就能把任意 OpenAI chat completion 变成由 Exa 驱动的 RAG 系统，自动完成搜索、分块和提示构建。
+Exa 提供了一个 Python wrapper，可自动为任意 OpenAI chat completion 增加 RAG 能力。只需一行代码，就能把任意 OpenAI chat completion 变成由 Exa 驱动的 RAG 系统，自动完成搜索、分块和 prompt 构建。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -375,9 +357,9 @@ Exa 提供了一个 Python 包装器，可自动为任意 OpenAI chat completion
   ```
 </CodeGroup>
 
-包装后的客户端用法与原生 OpenAI 客户端完全相同，唯一的区别是它会在需要时自动用相关搜索结果来改进 completion 的效果。
+包装后的客户端用法与原生 OpenAI 客户端完全相同，唯一区别是它会在需要时自动用相关搜索结果来提升 completion 的质量。
 
-该包装器支持 `exa.search()` 函数的所有参数。
+该 wrapper 支持 `exa.search()` 函数的所有参数。
 
 ```python theme={null}
 completion = exa_openai.chat.completions.create(

@@ -1,16 +1,16 @@
 ---
-title: "创建 import"
+title: "创建导入"
 openapi: "/zh/docs/exa-spec.yaml POST /v0/imports"
 timestamp: false
-description: "创建一个新的 import，将你的数据上传到 Websets。import 可用于：
+description: "创建一个新的导入，将你的数据上传到 Websets。导入可用于：
 
 
-  - **Enrich（增强）**：借助我们的 AI 驱动 enrichment 引擎，为你的数据补充更多信息
+  - **增强**：借助我们的 AI 增强引擎，为你的数据补充更多信息
 
-  - **Search（搜索）**：使用 Websets 的智能体式 search，通过自然语言筛选条件查询你的数据
+  - **Search**：通过 Websets 的 agent 式搜索，用自然语言筛选条件查询你的数据
 
-  - **Exclude（排除）**：避免重复或已知的结果出现在搜索结果中
+  - **排除**：避免重复或已知的结果出现在 search 结果中
 
 
-  import 创建后，你可以在 `uploadValidUntil`（默认 1 小时）之前将数据上传至返回的 `uploadUrl`。"
+  导入创建完成后，你可以在 `uploadValidUntil` 之前（默认 1 小时）将数据上传到返回的 `uploadUrl`。"
 ---

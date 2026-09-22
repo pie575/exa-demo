@@ -1,58 +1,46 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="websets">
-  # Websets
-</div>
+# Websets {#websets}
 
 > Créez des jeux de données vérifiés et enrichis à partir du web.
 
-<div id="what-are-websets">
-  ## Qu&#39;est-ce qu&#39;un Webset ?
-</div>
+## Qu&#39;est-ce qu&#39;un Webset ? {#what-are-websets}
 
-Un Webset part d&#39;une query en langage naturel et d&#39;un nombre d&#39;items cible. Ajoutez les criteria que chaque résultat doit respecter, ainsi que les fields d&#39;enrichment à renseigner pour chaque item accepté. Les résultats arrivent de façon asynchrone via le dashboard, l&#39;API ou les webhooks.
+Un Webset part d&#39;une requête en langage naturel et d&#39;un nombre d&#39;items cible. Ajoutez les critères que chaque résultat doit satisfaire, ainsi que les fields d&#39;enrichment à renseigner pour chaque item accepté. Les résultats arrivent de façon asynchrone via le tableau de bord, l&#39;API ou les webhooks.
 
-Vous pouvez aussi créer des websets visuellement depuis le [Dashboard](/fr/docs/websets/dashboard/get-started), sans écrire une seule ligne de
-code.
+Vous pouvez aussi créer des websets visuellement dans le [tableau de bord](/fr/docs/websets/dashboard/get-started), sans écrire
+la moindre ligne de code.
 
 <Info>
-  Vous démarrez un nouveau workflow de list-building ou d&#39;enrichment ? Utilisez [Exa Agent](/fr/docs/agent/quickstart).
-  Ce guide s&#39;adresse à la maintenance ou à l&#39;extension d&#39;une integration Websets existante.
-  L&#39;API Websets nécessite un forfait Websets payant ; les credits de la Search API et les credits Websets sont distincts.
+  Vous démarrez un nouveau workflow de constitution de liste ou d&#39;enrichment ? Utilisez [Exa Agent](/fr/docs/agent/quickstart).
+  Ce guide s&#39;adresse à ceux qui maintiennent ou étendent une integration Websets existante.
+  L&#39;API Websets nécessite un plan Websets payant ; les crédits Search API et les crédits Websets sont distincts.
 </Info>
 
-<div id="how-it-works">
-  ## Fonctionnement
-</div>
+## Fonctionnement {#how-it-works}
 
-1. **Définissez une search :** fournissez une query en langage naturel, un nombre de résultats, ainsi que des criteria de verification et des enrichments facultatifs.
-2. **Recherche et vérification :** Websets identifie des candidats et confronte chacun d&#39;eux à vos criteria. Seuls les résultats correspondants deviennent des items.
-3. **Exécution des enrichments :** pour chaque item vérifié, Websets recherche les données supplémentaires demandées, par exemple le nom d&#39;un PDG, un montant de financement ou des coordonnées.
-4. **Réception des résultats :** interrogez le status, utilisez des webhooks pour suivre les mises à jour ou consultez le dashboard à mesure que les items arrivent.
+1. **Définir une recherche :** fournissez une requête en langage naturel, un nombre de résultats, ainsi que des critères de vérification et des enrichments facultatifs.
+2. **Rechercher et vérifier :** Websets identifie des candidats et confronte chacun d&#39;eux à vos critères. Seuls les résultats correspondants deviennent des items.
+3. **Exécuter les enrichments :** pour chaque item vérifié, Websets recherche les données supplémentaires que vous avez demandées, comme le nom d&#39;un PDG, un montant de financement ou des coordonnées.
+4. **Recevoir les résultats :** interrogez le statut, utilisez des webhooks pour les mises à jour ou consultez le tableau de bord à mesure que les items arrivent.
 
-<div id="key-capabilities">
-  ## Capacités clés
-</div>
+## Capacités clés {#key-capabilities}
 
-| Fonctionnalité                | Rôle                                                                                                                     |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| **Vérification des criteria** | Chaque résultat est vérifié selon les règles que vous définissez, pour n&#39;obtenir que des correspondances pertinentes |
-| **Enrichments**               | Extraire des données précises (texte, nombres, dates, booléens) pour chaque résultat                                     |
-| **Monitors**                  | Planifier des recherches récurrentes pour tenir votre webset à jour automatiquement                                      |
-| **Webhooks**                  | Recevoir des rappels HTTP en temps réel à mesure que des items sont ajoutés ou enrichis                                  |
-| **Imports**                   | Importer vos propres URL et y exécuter des enrichments                                                                   |
+| Fonctionnalité                | Rôle                                                                                                                    |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Vérification des critères** | Chaque résultat est évalué selon les règles que vous définissez, pour n&#39;obtenir que des correspondances pertinentes |
+| **Enrichments**               | Extrayez des données précises (texte, nombres, dates, booléens) pour chaque résultat                                    |
+| **Monitors**                  | Planifiez des recherches récurrentes pour tenir votre webset à jour automatiquement                                     |
+| **Webhooks**                  | Recevez des rappels HTTP en temps réel à mesure que des items sont ajoutés ou enrichis                                  |
+| **Imports**                   | Importez vos propres URL et exécutez des enrichments dessus                                                             |
 
-<div id="human-quickstart">
-  ## Quickstart pour les humains
-</div>
+## Quickstart humain {#human-quickstart}
 
-<Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 Installez le SDK :
@@ -95,7 +83,7 @@ Effectuez ensuite votre première requête :
   print(f"Webset created with ID: {webset.id}")
   print(f"View your Webset at: {webset.dashboard_url}")
 
-  # Attendre que le Webset ait terminé son traitement
+  # Attendre que le Webset termine son traitement
   webset = exa.websets.wait_until_idle(webset.id)
 
   # Récupérer les Items du Webset
@@ -152,13 +140,11 @@ Effectuez ensuite votre première requête :
 </CodeGroup>
 
 <Note>
-  Consultez [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) pour connaître la disponibilité par produit.
+  Consultez [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) pour connaître la disponibilité du produit.
 </Note>
 
-<div id="next">
-  ## Pour aller plus loin
-</div>
+## Pour aller plus loin {#next}
 
-* [**Guide du dashboard**](./dashboard/get-started) - Guide pas à pas pour utiliser Websets dans le dashboard
-* [**Fonctionnement**](./api/how-it-works) - Plongée au cœur de l&#39;architecture événementielle
+* [**Guide du tableau de bord**](./dashboard/get-started) - Guide pas à pas pour utiliser Websets dans le tableau de bord
+* [**Fonctionnement**](./api/how-it-works) - Exploration détaillée de l&#39;architecture événementielle
 * [**Référence de l&#39;API Websets**](./api/websets/create-a-webset) - Référence complète de l&#39;API pour tous les endpoints

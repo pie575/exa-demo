@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入查阅之前，可通过该文件了解所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="preview-a-webset">
-  # 预览 webset
-</div>
+# 预览 webset {#preview-a-webset}
 
-> 在创建 webset 之前，预览 search 查询会被如何拆解。该端点执行的查询分析与创建 webset 时完全相同，便于你提前查看识别出的实体类型、生成的 search criteria 以及可用的 enrichment 列。
+> 在创建 webset 之前，预览搜索 query 将如何被拆解。该端点执行的 query 分析与创建 webset 时完全相同，可让你提前看到识别出的实体类型、生成的 search criteria 以及可用的增强 column。
 
-可借助该端点，让用户在正式创建完整 webset 之前了解自己的 search 会被如何解读。
+可借助该端点，让用户在正式创建完整 webset 之前，先了解自己的搜索会被如何解读。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0
@@ -764,12 +758,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 请求头中传入你的 Exa API 密钥。你也可以使用
+        Authorization: Bearer <key> 进行身份验证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 请求头中传入你的 Exa API 密钥。你也可以使用
+        Authorization: Bearer <key> 进行身份验证。
 ```

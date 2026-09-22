@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在进一步浏览之前，可通过该文件了解所有可用页面。
 
-<div id="get-a-websets-monitor">
-  # 获取 Websets monitor
-</div>
+# 获取 Websets monitor {#get-a-websets-monitor}
 
 > 获取指定的 monitor。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{id}
 openapi: 3.1.0
@@ -33,24 +27,24 @@ paths:
     get:
       tags:
         - Monitors
-      summary: Get Monitor
-      description: Gets a specific monitor.
+      summary: 获取监控器
+      description: 获取指定的监控器。
       operationId: monitors-get
       parameters:
         - in: path
           name: id
           schema:
             type: string
-          description: The id of the Monitor
+          description: 监控器的 id
           required: true
       responses:
         '200':
-          description: Monitor details
+          description: 监控器详情
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: 请求的唯一标识符。
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -65,36 +59,36 @@ components:
     Monitor:
       properties:
         id:
-          description: The unique identifier for the Monitor
+          description: 监控器的唯一标识符
           type: string
         object:
           enum:
             - monitor
-          description: The type of object
+          description: 对象类型
           type: string
         status:
           enum:
             - enabled
             - disabled
-          description: The status of the Monitor
+          description: 监控器的状态
           type: string
         websetId:
-          description: The id of the Webset the Monitor belongs to
+          description: 监控器所属 Webset 的 id
           type: string
         cadence:
           properties:
             cron:
               description: >-
-                Cron expression for monitor cadence (must be a valid Unix cron
-                with 5 fields). The schedule must trigger at most once per day.
+                监控器运行频率的 Cron 表达式（必须是包含 5 个字段的有效 Unix
+                cron）。该计划每天最多只能触发一次。
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: IANA 时区（例如 "America/New_York"）
               type: string
           required:
             - cron
-          description: How often the monitor will run
+          description: 监控器的运行频率
           type: object
         behavior:
           properties:
@@ -102,15 +96,13 @@ components:
               properties:
                 query:
                   description: >-
-                    The query to search for. By default, the query from the last
-                    search is used.
+                    要搜索的查询语句。默认情况下，将使用上一次搜索的查询语句。
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    The criteria to search for. By default, the criteria from
-                    the last search is used.
+                    要搜索的条件。默认情况下，将使用上一次搜索的条件。
                   maxItems: 5
                   items:
                     properties:
@@ -126,15 +118,14 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    The entity to search for. By default, the entity from the
-                    last search/import is used.
+                    要搜索的实体。默认情况下，将使用上一次搜索/导入的实体。
                 count:
                   exclusiveMinimum: 0
-                  description: The maximum number of results to find
+                  description: 要查找的最大结果数
                   type: number
                 behavior:
                   default: append
-                  description: The behaviour of the Search when it is added to a Webset.
+                  description: 该搜索被添加到 Webset 时的行为。
                   enum:
                     - override
                     - append
@@ -142,11 +133,10 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                指定监控器的搜索参数。
 
 
-                By default, the search parameters (query, entity and criteria)
-                from the last search are used when no parameters are provided.
+                默认情况下，若未提供任何参数，将使用上一次搜索的搜索参数（查询语句、实体和条件）。
               type: object
             type:
               type: string
@@ -155,20 +145,20 @@ components:
           required:
             - type
             - config
-          description: Behavior to perform when monitor runs
+          description: 监控器运行时执行的行为
           type: object
         lastRun:
           $ref: '#/components/schemas/MonitorRun'
           title: MonitorRun
-          description: The last run of the monitor
+          description: 监控器的上一次运行
           nullable: true
         nextRunAt:
           format: date-time
           type: string
-          description: Date and time when the next run will occur in
+          description: 下一次运行将发生的日期和时间
           nullable: true
         metadata:
-          description: Set of key-value pairs you want to associate with this object.
+          description: 您希望与此对象关联的一组键值对。
           propertyNames:
             type: string
           additionalProperties:
@@ -178,11 +168,11 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: When the monitor was created
+          description: 监控器的创建时间
         updatedAt:
           type: string
           format: date-time
-          description: When the monitor was last updated
+          description: 监控器的最后更新时间
       required:
         - id
         - object
@@ -206,15 +196,15 @@ components:
     MonitorRun:
       properties:
         id:
-          description: The unique identifier for the Monitor Run
+          description: 监控器运行的唯一标识符
           type: string
         object:
           enum:
             - monitor_run
-          description: The type of object
+          description: 对象类型
           type: string
         monitorId:
-          description: The monitor that the run is associated with
+          description: 该运行所关联的监控器
           type: string
         status:
           enum:
@@ -223,41 +213,41 @@ components:
             - completed
             - canceled
             - failed
-          description: The status of the Monitor Run
+          description: 监控器运行的状态
           type: string
         completedAt:
           format: date-time
           type: string
-          description: When the run completed
+          description: 运行完成的时间
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: When the run failed
+          description: 运行失败的时间
           nullable: true
         failedReason:
           type: string
-          description: The reason the run failed
+          description: 运行失败的原因
           nullable: true
         canceledAt:
           format: date-time
           type: string
-          description: When the run was canceled
+          description: 运行被取消的时间
           nullable: true
         createdAt:
           type: string
           format: date-time
-          description: When the run was created
+          description: 运行的创建时间
         updatedAt:
           type: string
           format: date-time
-          description: When the run was last updated
+          description: 运行的最后更新时间
         type:
           type: string
           enum:
             - search
             - refresh
-          description: The type of the Monitor Run
+          description: 监控器运行的类型
       required:
         - id
         - object
@@ -332,12 +322,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 标头中传入您的 Exa API 密钥。您也可以使用 Authorization: Bearer <key>
+        进行身份验证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 标头中传入您的 Exa API 密钥。您也可以使用 Authorization: Bearer <key>
+        进行身份验证。
 ```

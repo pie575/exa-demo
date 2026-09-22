@@ -1,7 +1,7 @@
 ---
 title: "Empieza a desarrollar con Exa"
 sidebarTitle: "Descripción general"
-description: "Una potente herramienta de búsqueda web diseñada para agentes. Todo está optimizado para darte resultados precisos y eficientes en el uso de tokens."
+description: "Una potente herramienta de búsqueda web diseñada para agentes. Todo está optimizado para ofrecerte resultados precisos con un uso eficiente de tokens."
 mode: "wide"
 timestamp: false
 hideFooterPagination: true
@@ -30,24 +30,24 @@ export const ApiCards = ({only}) => {
   const cards = [{
     id: "search",
     title: "Search",
-    body: "Datos fiables en tiempo real con contenido de páginas optimizado para tokens",
+    body: "Datos en tiempo real y fundamentados, con contenido de páginas eficiente en tokens",
     href: "/docs/search/quickstart",
     image: "/docs/images/home/api-search.webp",
     alt: "Cuadro de búsqueda de Exa con resultados web ordenados y sus dominios de origen"
   }, {
     id: "agent",
     title: "Agent",
-    body: "Agentes asíncronos para investigación exhaustiva, creación de listas y enriquecimiento",
+    body: "Agentes asíncronos para investigación profunda, creación de listas y enrichment",
     href: "/docs/agent/quickstart",
     image: "/docs/images/home/api-agent.webp",
-    alt: "Hoja de cálculo de empresas enriquecida con asociaciones, casos de clientes y uso de servicios en la nube"
+    alt: "Hoja de cálculo de empresas enriquecida con alianzas, casos de clientes y uso de la nube"
   }, {
     id: "search-deep",
     title: "Deep Search",
-    body: "Search que razona a partir de múltiples fuentes y devuelve resultados estructurados",
+    body: "Búsqueda que analiza fuentes y devuelve salida estructurada",
     href: "/docs/search/deep-search",
     image: "/docs/images/home/api-search-deep.webp",
-    alt: "Consulta de Deep Search que devuelve JSON estructurado sobre empresas biotecnológicas"
+    alt: "Consulta de deep search que devuelve JSON estructurado sobre empresas biotecnológicas"
   }, {
     id: "contents",
     title: "Contents",
@@ -57,11 +57,11 @@ export const ApiCards = ({only}) => {
     alt: "Contenido extraído de la página de Wikipedia de Boeing"
   }, {
     id: "monitors",
-    title: "Monitores",
+    title: "Monitors",
     body: "Búsquedas programadas que supervisan la web y envían nuevos resultados",
     href: "/docs/monitors/quickstart",
     image: "/docs/images/home/api-monitors.webp",
-    alt: "Monitor llamado «Lanzamientos y noticias de Anthropic» que se ejecuta todos los días",
+    alt: "Monitor llamado Anthropic Releases and News que se ejecuta a diario",
     hidden: true
   }];
   const visible = only ? only.map(id => cards.find(card => card.id === id)).filter(Boolean) : cards.filter(card => !card.hidden);
@@ -91,7 +91,7 @@ export const ApiCards = ({only}) => {
 
     <div className="docs-home-quickstart-actions">
       <a className="docs-home-button" href="/es/docs/get-started/quickstart">
-        Comenzar
+        Primeros pasos
       </a>
 
       <a className="docs-home-button" href="https://dashboard.exa.ai/api-keys" target="_blank" rel="noopener noreferrer">
@@ -159,12 +159,12 @@ export const ApiCards = ({only}) => {
       </div>
 
       <div className="docs-home-apis" role="tablist" aria-label="API">
-        <label htmlFor="docs-home-api-search">Busca en la web</label>
-        <label htmlFor="docs-home-api-contents">Obtén el contenido de una página</label>
-        <label htmlFor="docs-home-api-deep">Obtén resultados estructurados</label>
-        <label htmlFor="docs-home-api-tools">Dale búsqueda web a un LLM</label>
-        <label htmlFor="docs-home-api-agent">Crea una lista documentada</label>
-        <label htmlFor="docs-home-api-agent-research">Analiza un tema complejo</label>
+        <label htmlFor="docs-home-api-search">Buscar en la web</label>
+        <label htmlFor="docs-home-api-contents">Obtener el contenido de una página</label>
+        <label htmlFor="docs-home-api-deep">Obtener una salida estructurada</label>
+        <label htmlFor="docs-home-api-tools">Dar búsqueda web a un LLM</label>
+        <label htmlFor="docs-home-api-agent">Crear una lista documentada</label>
+        <label htmlFor="docs-home-api-agent-research">Analizar un tema complejo</label>
       </div>
 
       <div className="docs-home-pane">
@@ -342,7 +342,7 @@ export const ApiCards = ({only}) => {
 
         <div className="docs-home-code" data-pane="tools-curl">
           ```bash theme={null}
-          # 1. Ofrece al modelo una herramienta de search de Exa y deja que elija la query.
+          # 1. Ofrece al modelo una herramienta de Exa Search y deja que elija la consulta.
           USER_MSG='{ "role": "user", "content": "What'\''s the latest on AI chips?" }'
           TOOLS='[{ "type": "function", "function": {
             "name": "web_search",
@@ -355,7 +355,7 @@ export const ApiCards = ({only}) => {
             -d "{ \"model\": \"gpt-5.6\", \"messages\": [$USER_MSG], \"tools\": $TOOLS }" \
             | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["choices"][0]["message"]))')"
 
-          # 2. Ejecuta la llamada a la herramienta contra Exa.
+          # 2. Ejecuta la llamada a herramienta contra Exa.
           SEARCH_BODY="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           args = json.loads(json.load(sys.stdin)["tool_calls"][0]["function"]["arguments"])

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="get-a-webhook">
-  # Récupérer un webhook
-</div>
+# Récupérer un webhook {#get-a-webhook}
 
-> Renvoie un Webhook par son id, avec son status, les événements auxquels il est abonné, l&#39;URL cible et ses metadata. Le `secret` de signature n&#39;est pas renvoyé.
+> Renvoie un Webhook par son id, avec son statut, les events auxquels il est abonné, l&#39;URL cible et les métadonnées. Le `secret` de signature n&#39;est pas renvoyé.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}
 openapi: 3.1.0

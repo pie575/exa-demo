@@ -1,46 +1,34 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="update-api-key">
-  # Actualizar API key
-</div>
+# Actualizar API key {#update-api-key}
 
-> Actualiza el nombre y el límite de solicitudes de una API key existente.
+> Actualiza el nombre y el límite de tasa de una API key existente.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas comienzan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
 <Info>
-  La API de Team Management se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la función esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
+  La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la funcionalidad esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
 </Info>
 
-<div id="overview">
-  ## Descripción general
-</div>
+## Descripción general {#overview}
 
-El endpoint Update API Key te permite modificar una API key existente
+El endpoint Actualizar API key te permite modificar una API key existente
 
-<div id="path-parameters">
-  ## Parámetros de ruta
-</div>
+## Parámetros de ruta {#path-parameters}
 
-* **id**: El identificador único de la API key que se va a actualizar.
+* **id**: El identificador único de la API key que se desea actualizar.
 
-<div id="optional-parameters">
-  ## Parámetros opcionales
-</div>
+## Parámetros opcionales {#optional-parameters}
 
 * **name**: Nuevo nombre descriptivo para la API key
-* **rateLimit**: Nuevo límite de solicitudes por minuto
+* **rateLimit**: Nuevo límite de tasa en solicitudes por minuto
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

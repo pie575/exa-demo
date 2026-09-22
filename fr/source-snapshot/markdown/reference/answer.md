@@ -1,34 +1,28 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="answer">
-  # Answer
-</div>
+# Answer {#answer}
 
-> Obtenez la réponse d&#39;un LLM à une question, éclairée par les résultats de recherche Exa. `/answer` effectue une recherche Exa et utilise un LLM pour générer :
+> Obtenez la réponse d&#39;un LLM à une question, éclairée par les résultats d&#39;Exa search. `/answer` effectue une recherche Exa et utilise un LLM pour générer :
 
-1. Une réponse directe pour les requêtes précises (par exemple, « Quelle est la capitale de la France ? » renverra « Paris »).
-2. Un résumé détaillé accompagné de citations pour les requêtes ouvertes (par exemple, « Où en est l&#39;IA dans le secteur de la santé ? » renverra un résumé avec des citations vers les sources pertinentes).
+1. Une réponse directe pour les requêtes précises (par exemple, « Quelle est la capitale de la France ? » renverrait « Paris »).
+2. Un résumé détaillé avec citations pour les requêtes ouvertes (par exemple, « Quel est l&#39;état de l&#39;IA dans le secteur de la santé ? » renverrait un résumé assorti de citations vers les sources pertinentes).
 
-La réponse inclut à la fois le texte généré et les sources utilisées pour le produire. L&#39;endpoint prend également en charge le streaming (via `stream=True`), qui renvoie les tokens au fur et à mesure de leur génération.
+La réponse inclut à la fois la réponse générée et les sources utilisées pour la produire. L&#39;endpoint prend également en charge le streaming (via `stream=True`), qui renvoie les jetons au fur et à mesure de leur génération.
 
-Vous pouvez également utiliser l&#39;[interface de chat completions](https://exa.ai/docs/integrations/openai-sdk#answer) compatible avec OpenAI.
+Vous pouvez également utiliser l&#39;[interface chat completions](https://exa.ai/docs/integrations/openai-sdk#answer) compatible OpenAI.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>
 
 <Info>
-  `/answer` prend en charge le structured output via le paramètre `outputSchema`. Transmettez un objet [JSON Schema](https://json-schema.org/draft-07) et la réponse sera renvoyée sous forme de JSON structuré conforme à votre schema, plutôt que sous forme de simple chaîne de caractères.
+  `/answer` prend en charge la sortie structurée via le paramètre `outputSchema`. Transmettez un objet [JSON Schema](https://json-schema.org/draft-07) et la réponse sera renvoyée en JSON structuré conforme à votre schéma plutôt que sous forme de simple chaîne de caractères.
 </Info>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0

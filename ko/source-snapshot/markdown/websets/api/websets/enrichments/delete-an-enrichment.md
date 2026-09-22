@@ -1,24 +1,18 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="delete-an-enrichment">
-  # Enrichment 삭제
-</div>
+# enrichment 삭제 {#delete-an-enrichment}
 
 > Enrichment를 삭제하면 실행 중인 enrichment는 모두 취소되고, 해당 Enrichment가 생성한 기존 `enrichment_result`도 더 이상 사용할 수 없습니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0
 info:
-  title: Exa Public API
+  title: Exa 공개 API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -35,8 +29,8 @@ paths:
         - Enrichments
       summary: Enrichment 삭제
       description: >-
-        Enrichment를 삭제하면 실행 중인 enrichment는 모두 취소되고, 해당 Enrichment가
-        생성한 기존 `enrichment_result`는 더 이상 사용할 수 없습니다.
+        Enrichment를 삭제하면 실행 중인 모든 enrichment가 취소되며 이 Enrichment가 생성한 기존
+        `enrichment_result`는 더 이상 사용할 수 없습니다.
       operationId: websets-enrichments-delete
       parameters:
         - in: path
@@ -53,7 +47,7 @@ paths:
           required: true
       responses:
         '200':
-          description: Enrichment가 삭제됨
+          description: Enrichment가 삭제되었습니다
           headers:
             X-Request-Id:
               schema:
@@ -96,11 +90,11 @@ components:
             enrichment의 제목입니다.
 
 
-            description과 format을 기반으로 자동 생성됩니다.
+            이는 description과 format을 기반으로 자동 생성됩니다.
           nullable: true
         description:
           description: >-
-            enrichment를 생성할 때 제공된 enrichment 작업의 설명입니다.
+            enrichment 생성 시 제공된 enrichment 작업에 대한 설명입니다.
           type: string
         format:
           $ref: '#/components/schemas/WebsetEnrichmentFormat'
@@ -117,16 +111,16 @@ components:
             type: object
           type: array
           description: >-
-            format이 options인 경우, enrichment agent가 선택할 수 있는 옵션 목록입니다.
+            format이 options인 경우, enrichment 에이전트가 선택할 수 있는 여러 옵션입니다.
           title: WebsetEnrichmentOptions
           nullable: true
         instructions:
           type: string
           description: >-
-            enrichment Agent에 대한 지침입니다.
+            enrichment 에이전트를 위한 지침입니다.
 
 
-            description과 format을 기반으로 자동 생성됩니다.
+            이는 description과 format을 기반으로 자동 생성됩니다.
           nullable: true
         metadata:
           default: {}
@@ -174,13 +168,13 @@ components:
       name: x-api-key
       in: header
       description: >-
-        x-api-key 헤더에 Exa API key를 전달하세요. Authorization: Bearer <key>로도
-        인증할 수 있습니다.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>로도 인증할 수
+        있습니다.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        x-api-key 헤더에 Exa API key를 전달하세요. Authorization: Bearer <key>로도
-        인증할 수 있습니다.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>로도 인증할 수
+        있습니다.
 
 ```

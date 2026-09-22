@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-a-webset">
-  # Webset 생성
-</div>
+# Webset 생성 {#create-a-webset}
 
-> search, import, enrichment configuration을 선택적으로 포함하여 새 Webset을 생성합니다. Webset은 생성되는 즉시 자동으로 처리를 시작합니다.
+> 선택적인 search, import, enrichment 구성과 함께 새 Webset을 생성합니다. Webset은 생성되는 즉시 자동으로 처리를 시작합니다.
 
-`externalId`를 지정하면 직접 정의한 식별자로 Webset을 참조할 수 있어 통합이 더 쉬워집니다.
+`externalId`를 지정하면 직접 정의한 식별자로 Webset을 참조할 수 있어 연동이 더 쉬워집니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets
 openapi: 3.1.0
@@ -980,11 +974,11 @@ components:
               required:
                 - count
               description: >-
-                Monitor의 검색 매개변수를 지정합니다.
+                Specify the search parameters for the Monitor.
 
 
-                매개변수가 제공되지 않으면 기본적으로 마지막 검색의 검색
-                매개변수(query, entity, criteria)가 사용됩니다.
+                By default, the search parameters (query, entity and criteria)
+                from the last search are used when no parameters are provided.
               type: object
             type:
               type: string

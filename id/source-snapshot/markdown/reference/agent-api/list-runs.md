@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-agent-runs">
-  # Daftar Agent run
-</div>
+# List Agent runs {#list-agent-runs}
 
-> Ambil daftar Agent run untuk team Anda secara terpaginasi.
+> Ambil daftar Agent runs untuk team Anda secara paginasi.
 
-Run dikembalikan mulai dari yang terbaru hingga yang terlama. Gunakan `limit` untuk mengatur ukuran halaman dan `cursor` berisi nilai `nextCursor` dari respons sebelumnya untuk mengambil halaman berikutnya.
+Runs dikembalikan mulai dari yang terbaru hingga yang terlama. Gunakan `limit` untuk mengatur ukuran halaman dan `cursor` berisi `nextCursor` dari response sebelumnya untuk mengambil halaman berikutnya.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs
 openapi: 3.1.0

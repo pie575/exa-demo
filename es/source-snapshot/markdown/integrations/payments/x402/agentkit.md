@@ -1,47 +1,35 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="world-agentkit">
-  # World AgentKit
-</div>
+# World AgentKit {#world-agentkit}
 
-> Permite que los agentes de IA verificados y respaldados por humanos accedan a Exa gratis con World AgentKit: sin necesidad de USDC.
+> Permite que los agentes de IA respaldados por personas verificadas accedan a Exa gratis con World AgentKit, sin necesidad de USDC.
 
-<div id="what-is-agentkit">
-  ## ¿Qué es AgentKit?
-</div>
+## ¿Qué es AgentKit? {#what-is-agentkit}
 
 [World AgentKit](https://docs.world.org/agents/agent-kit) es un conjunto de herramientas que permite a los agentes de IA demostrar que están respaldados por una persona real y verificada mediante [World ID](https://world.org). Al integrarse con [x402](/es/docs/integrations/payments/x402/quickstart), habilita una vía de **prueba gratuita**: los agentes registrados en [AgentBook](https://docs.world.org/agents/agent-kit/integrate) de World pueden acceder a los endpoints `/search` y `/contents` de Exa sin pagar USDC.
 
-Esto funciona junto con el flujo de pago estándar de x402. Cada persona verificada dispone de **100 solicitudes gratuitas al mes** repartidas entre todos los agentes que respalda. Una vez agotadas, el agente recurre a la vía de pago habitual en USDC. Los contadores se reinician al comienzo de cada mes calendario (UTC).
+Esto funciona junto con el flujo de pago x402 estándar. Cada persona verificada dispone de **100 solicitudes gratuitas al mes** repartidas entre todos los agentes que respalda. Una vez agotadas, el agente vuelve a la vía de pago normal con USDC. Los contadores se reinician al inicio de cada mes natural (UTC).
 
 <Info>
-  Tanto la prueba gratuita de AgentKit como el pago con x402 se omiten si tu solicitud incluye un encabezado `x-api-key` o `Authorization: Bearer`. El flujo habitual de facturación por API key tiene prioridad.
+  Tanto la prueba gratuita de AgentKit como el pago x402 se omiten si tu solicitud incluye un encabezado `x-api-key` o `Authorization: Bearer`. El flujo normal de facturación por API key tiene prioridad.
 </Info>
 
-<div id="how-it-works">
-  ## Cómo funciona
-</div>
+## Cómo funciona {#how-it-works}
 
-Cuando un cliente llama a `/search` o `/contents` sin una API key, Exa responde con `402 Payment Required`. La respuesta incluye una extensión `agentkit` en el encabezado `PAYMENT-REQUIRED` con un desafío [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum).
+Cuando un cliente llama a `/search` o `/contents` sin una API key, Exa responde con `402 Payment Required`. La respuesta incluye una extensión `agentkit` en el encabezado `PAYMENT-REQUIRED` que contiene un desafío [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum).
 
 El agente firma este desafío con su wallet registrada y Exa verifica:
 
-1. **Verificación de firma** — valida la firma SIWE frente a la dirección de la wallet (admite tanto EOA mediante EIP-191 como wallets de contrato inteligente mediante ERC-1271)
-2. **Consulta en AgentBook** — resuelve la wallet a un `humanId` anónimo mediante el contrato AgentBook en World Chain (`eip155:480`), con lo que se confirma que un humano verificado y único delegó su identidad en este agente
-3. **Verificación de uso** — si al humano aún le quedan usos de prueba gratuitos, se concede el acceso; de lo contrario, se pasa a exigir el pago en USDC
+1. **Comprobación de la firma** — valida la firma SIWE frente a la dirección de la wallet (admite tanto EOA mediante EIP-191 como smart contract wallets mediante ERC-1271)
+2. **Consulta en AgentBook** — resuelve la wallet a un `humanId` anónimo mediante el contrato AgentBook en World Chain (`eip155:480`), lo que confirma que una única persona verificada delegó su identidad a este agente
+3. **Comprobación de uso** — si a la persona aún le quedan usos de prueba gratuita, se concede el acceso; de lo contrario, se exige un pago en USDC
 
-<div id="quickstart">
-  ## Inicio rápido
-</div>
+## Quickstart {#quickstart}
 
-<div id="1-register-your-agent-in-agentbook">
-  ### 1. Registra tu agente en AgentBook
-</div>
+### 1. Registra tu agente en AgentBook {#1-register-your-agent-in-agentbook}
 
 Esta configuración solo se hace una vez. Necesitas la [World App](https://world.org/download) con una identidad verificada.
 
@@ -49,11 +37,9 @@ Esta configuración solo se hace una vez. Necesitas la [World App](https://world
 npx @worldcoin/agentkit-cli register <your-agent-wallet-address>
 ```
 
-La CLI inicia un flujo de verificación en World App y luego envía una transacción de registro en World Chain. Una vez completado el proceso, cualquier servidor que use AgentKit puede consultar tu wallet y confirmar que está respaldada por una persona real.
+La CLI inicia un flujo de verificación en World App y luego envía una transacción de registro en World Chain. Una vez completado, cualquier server que use AgentKit puede consultar tu wallet y confirmar que está respaldada por una persona real.
 
-<div id="2-send-a-request-get-the-challenge">
-  ### 2. Enviar una solicitud (obtener el desafío)
-</div>
+### 2. Enviar una solicitud (obtener el desafío) {#2-send-a-request-get-the-challenge}
 
 ```bash theme={null}
 curl -s -D - -X POST "https://api.exa.ai/search" \
@@ -61,7 +47,7 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
   -d '{"query": "fusion energy breakthroughs", "numResults": 5}'
 ```
 
-La respuesta `402` incluye una extensión `agentkit` dentro del payload `PAYMENT-REQUIRED` decodificado:
+La respuesta `402` incluye una extensión `agentkit` dentro del payload decodificado de `PAYMENT-REQUIRED`:
 
 ```json theme={null}
 {
@@ -93,11 +79,9 @@ La respuesta `402` incluye una extensión `agentkit` dentro del payload `PAYMENT
 }
 ```
 
-<div id="3-sign-the-challenge-and-resubmit">
-  ### 3. Firma el desafío y vuelve a enviarlo
-</div>
+### 3. Firma el desafío y reenvía la solicitud {#3-sign-the-challenge-and-resubmit}
 
-Construye un [mensaje SIWE](https://eips.ethereum.org/EIPS/eip-4361) a partir de los campos de `info` (domain, uri, nonce, statement, etc.), fírmalo con la wallet del agente que registraste usando uno de los tipos de `supportedChains` y envíalo en el encabezado `agentkit` (JSON codificado en base64):
+Construye un [mensaje SIWE](https://eips.ethereum.org/EIPS/eip-4361) a partir de los campos de `info` (domain, uri, nonce, statement, etc.), fírmalo con la wallet registrada de tu agente usando uno de los tipos de `supportedChains` y envíalo en el encabezado `agentkit` (JSON codificado en base64):
 
 ```bash theme={null}
 curl -X POST "https://api.exa.ai/search" \
@@ -106,11 +90,9 @@ curl -X POST "https://api.exa.ai/search" \
   -d '{"query": "fusion energy breakthroughs", "numResults": 5}'
 ```
 
-Si el agente está verificado y aún le quedan usos de prueba gratuitos, Exa devuelve `200` con los resultados de búsqueda: no hace falta pagar.
+Si el agente está verificado y le quedan usos de prueba gratuita, Exa devuelve `200` con los resultados de búsqueda, sin necesidad de pago.
 
-<div id="using-the-agentkit-x402-skill">
-  ### Uso de la skill x402 de AgentKit
-</div>
+### Uso de la skill AgentKit x402 {#using-the-agentkit-x402-skill}
 
 En lugar de implementar manualmente el flujo de desafío-respuesta, añade la [skill agentkit-x402](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md) a tu agente de IA:
 
@@ -120,51 +102,43 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 Esta skill gestiona automáticamente el flujo completo cuando el agente recibe una respuesta `402` con una extensión de AgentKit.
 
-<div id="free-trial-details">
-  ## Detalles de la prueba gratuita
-</div>
+## Detalles de la prueba gratuita {#free-trial-details}
 
-* Cada humano verificado obtiene **100 solicitudes gratuitas al mes** entre todos los agentes que respalda
-* Los contadores de uso se reinician al comienzo de cada mes calendario (UTC)
-* El uso se contabiliza por humano y por endpoint (`/search` y `/contents` se cuentan por separado)
-* Dos agentes respaldados por el mismo humano comparten el mismo contador
-* Una vez agotados los usos gratuitos del mes, el agente vuelve al [flujo de pago x402](/es/docs/integrations/payments/x402/quickstart) estándar
+* Cada persona verificada obtiene **100 solicitudes gratuitas al mes** entre todos los agentes que respalda
+* Los contadores de uso se reinician al inicio de cada mes natural (UTC)
+* El uso se contabiliza por persona y por endpoint (`/search` y `/contents` se cuentan por separado)
+* Dos agentes respaldados por la misma persona comparten el mismo contador
+* Una vez agotados los usos de prueba gratuita del mes, el agente vuelve al [flujo de pago x402](/es/docs/integrations/payments/x402/quickstart) estándar
 * El mismo [límite de 10 resultados](/es/docs/integrations/payments/x402/quickstart#pricing) se aplica a las solicitudes de prueba gratuita en `/search`
-* Por ahora, el contador de la prueba gratuita no se expone en la respuesta de la API: cuando se agotan los usos, el servidor responde con un `402` estándar sin conceder acceso gratuito
+* Actualmente el contador de la prueba gratuita no se expone en la respuesta de la API: cuando se agotan los usos, el server responde con un `402` estándar sin conceder acceso gratuito
 
-<div id="supported-endpoints">
-  ## Endpoints compatibles
-</div>
+## Endpoints compatibles {#supported-endpoints}
 
 | Endpoint    | Pago x402 | Prueba gratuita de AgentKit |
 | ----------- | :-------: | :-------------------------: |
 | `/search`   |     Sí    |              Sí             |
 | `/contents` |     Sí    |              Sí             |
 
-Los demás endpoints de Exa no son compatibles con x402 ni con la prueba gratuita de AgentKit.
+El resto de endpoints de Exa no son compatibles con x402 ni con la prueba gratuita de AgentKit.
 
-<div id="network-details">
-  ## Detalles de la red
-</div>
+## Detalles de la red {#network-details}
 
-| Propiedad                   | Valor                                                      |
-| --------------------------- | ---------------------------------------------------------- |
-| Cadena de AgentBook         | World Chain                                                |
-| ID de cadena (CAIP-2)       | `eip155:480`                                               |
-| Verificación                | Contrato de AgentBook en World Chain                       |
-| Tipos de wallet compatibles | EOA (EIP-191) y wallets de contrato inteligente (ERC-1271) |
+| Propiedad                   | Valor                                             |
+| --------------------------- | ------------------------------------------------- |
+| Cadena de AgentBook         | World Chain                                       |
+| Chain ID (CAIP-2)           | `eip155:480`                                      |
+| Verificación                | Contrato AgentBook en World Chain                 |
+| Tipos de wallet compatibles | EOA (EIP-191) y smart contract wallets (ERC-1271) |
 
-<div id="faq">
-  ## Preguntas frecuentes
-</div>
+## Preguntas frecuentes {#faq}
 
 <AccordionGroup>
-  <Accordion title="¿Puedo usar a la vez el pago con x402 y AgentKit?">
-    Sí. La respuesta `PAYMENT-REQUIRED` incluye tanto los precios del pago como el desafío de AgentKit. Tu cliente puede optar por cualquiera de las dos vías. Si se agotan los usos de la prueba gratuita, el agente puede recurrir al pago con USDC.
+  <Accordion title="¿Puedo usar el pago x402 y AgentKit a la vez?">
+    Sí. La respuesta `PAYMENT-REQUIRED` incluye tanto el precio del pago como el desafío de AgentKit. Tu cliente puede elegir cualquiera de las dos vías. Si se agotan los usos de prueba gratuita, el agente puede recurrir al pago con USDC.
   </Accordion>
 
   <Accordion title="¿Qué ocurre si mi agente no está registrado en AgentBook?">
-    La verificación de AgentKit falla de forma silenciosa y la solicitud se trata como un `402` estándar: tu agente puede pagar igualmente con USDC mediante el flujo habitual de x402.
+    La verificación de AgentKit falla de forma silenciosa y la solicitud se trata como un `402` estándar: tu agente igualmente puede pagar con USDC mediante el flujo x402 habitual.
   </Accordion>
 
   <Accordion title="¿Dos agentes respaldados por la misma persona obtienen cuotas de prueba gratuita independientes?">
@@ -172,19 +146,17 @@ Los demás endpoints de Exa no son compatibles con x402 ni con la prueba gratuit
   </Accordion>
 
   <Accordion title="¿Qué redes blockchain intervienen?">
-    Los pagos estándar en USDC con x402 pueden liquidarse en **Base** (`eip155:8453`) o en **Solana mainnet** (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`). La verificación de AgentKit usa **World Chain** (`eip155:480`) para las consultas en AgentBook. Son independientes: AgentKit no requiere ningún pago on-chain.
+    Los pagos estándar de x402 en USDC pueden liquidarse en **Base** (`eip155:8453`) o en **Solana mainnet** (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`). La verificación de AgentKit usa **World Chain** (`eip155:480`) para las consultas en AgentBook. Son independientes: AgentKit no requiere ningún pago on-chain.
   </Accordion>
 
-  <Accordion title="¿Qué tipos de wallet se admiten?">
-    Tanto las EOA (cuentas de propiedad externa) que usan firmas EIP-191 como las wallets de contrato inteligente (p. ej., Coinbase Smart Wallet, Safe) que usan ERC-1271. Consulta la [referencia del SDK de World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference) para más detalles.
+  <Accordion title="¿Qué tipos de wallet son compatibles?">
+    Tanto las EOA (cuentas de propiedad externa) que usan firmas EIP-191 como las smart contract wallet (por ejemplo, Coinbase Smart Wallet, Safe) que usan ERC-1271. Consulta la [referencia del SDK de World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference) para más detalles.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
-* [Guía de pagos x402](/es/docs/integrations/payments/x402/quickstart): flujo de pago estándar con USDC
+* [Guía de pago con x402](/es/docs/integrations/payments/x402/quickstart): flujo de pago estándar con USDC
 * [Documentación de World AgentKit](https://docs.world.org/agents/agent-kit): documentación completa de AgentKit
 * [Guía de integración de World AgentKit](https://docs.world.org/agents/agent-kit/integrate): registro en AgentBook
 * [Referencia del SDK de World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference): referencia de la API del SDK

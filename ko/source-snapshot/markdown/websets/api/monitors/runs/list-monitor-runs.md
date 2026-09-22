@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-monitor-runs">
-  # Monitor 실행 목록 조회
-</div>
+# Monitor 실행 목록 조회 {#list-monitor-runs}
 
-> 해당 Monitor의 모든 실행을 조회합니다.
+> 해당 Monitor의 모든 실행을 나열합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{monitor}/runs
 openapi: 3.1.0
@@ -33,24 +27,24 @@ paths:
     get:
       tags:
         - Monitors Runs
-      summary: monitor 실행 목록 조회
-      description: 해당 monitor의 모든 실행을 조회합니다.
+      summary: List Monitor Runs
+      description: Lists all runs for the Monitor.
       operationId: monitors-runs-list
       parameters:
         - in: path
           name: monitor
           schema:
             type: string
-          description: 실행 목록을 조회할 monitor의 id
+          description: The id of the Monitor to list runs for
           required: true
       responses:
         '200':
-          description: monitor 실행 목록
+          description: List of monitor runs
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: 요청의 고유 식별자입니다.
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -67,14 +61,14 @@ components:
         data:
           items:
             $ref: '#/components/schemas/MonitorRun'
-          description: monitor 실행 목록
+          description: The list of monitor runs
           type: array
         hasMore:
-          description: 페이지를 넘겨 조회할 결과가 더 있는지 여부
+          description: Whether there are more results to paginate through
           type: boolean
         nextCursor:
           type: string
-          description: 다음 결과 묶음을 조회하기 위한 cursor
+          description: The cursor to paginate through the next set of results
           nullable: true
       required:
         - data
@@ -84,15 +78,15 @@ components:
     MonitorRun:
       properties:
         id:
-          description: monitor 실행의 고유 식별자
+          description: The unique identifier for the Monitor Run
           type: string
         object:
           enum:
             - monitor_run
-          description: 객체의 유형
+          description: The type of object
           type: string
         monitorId:
-          description: 해당 실행이 연결된 monitor
+          description: The monitor that the run is associated with
           type: string
         status:
           enum:
@@ -101,41 +95,41 @@ components:
             - completed
             - canceled
             - failed
-          description: monitor 실행의 상태
+          description: The status of the Monitor Run
           type: string
         completedAt:
           format: date-time
           type: string
-          description: 실행이 완료된 시점
+          description: When the run completed
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: 실행이 실패한 시점
+          description: When the run failed
           nullable: true
         failedReason:
           type: string
-          description: 실행이 실패한 이유
+          description: The reason the run failed
           nullable: true
         canceledAt:
           format: date-time
           type: string
-          description: 실행이 취소된 시점
+          description: When the run was canceled
           nullable: true
         createdAt:
           type: string
           format: date-time
-          description: 실행이 생성된 시점
+          description: When the run was created
         updatedAt:
           type: string
           format: date-time
-          description: 실행이 마지막으로 업데이트된 시점
+          description: When the run was last updated
         type:
           type: string
           enum:
             - search
             - refresh
-          description: monitor 실행의 유형
+          description: The type of the Monitor Run
       required:
         - id
         - object
@@ -155,13 +149,13 @@ components:
       name: x-api-key
       in: header
       description: >-
-        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key> 방식으로
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key> 방식으로
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 
 ```

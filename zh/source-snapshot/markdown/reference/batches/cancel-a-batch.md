@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 建议先通过该文件了解所有可用页面，再进一步查阅。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="cancel-a-batch">
-  # 取消批次
-</div>
+# 取消批次 {#cancel-a-batch}
 
 > 取消进行中的批次。
 
-批次会停止调度新请求，并在进入 `cancelled` 状态前处理完正在执行的工作。取消已处于 `cancelling` 或 `cancelled` 状态的批次时，将原样返回该批次；处于 `completed` 或 `expired` 状态的批次则无法取消。
+批次将停止调度新的请求，并在处理完进行中的工作后转为 `cancelled`。若批次已处于 `cancelling` 或 `cancelled` 状态，取消操作将原样返回该批次；状态为 `completed` 或 `expired` 的批次无法取消。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches/{id}/cancel
 openapi: 3.1.0
@@ -286,12 +280,12 @@ components:
         application/json:
           example:
             requestId: f2a4c6e8b0d2f4a6c8e0b2d4f6a8c0e2
-            error: Invalid API key
+            error: API 密钥无效
             tag: INVALID_API_KEY
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: The requested resource does not exist.
+      description: 请求的资源不存在。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -299,12 +293,12 @@ components:
         application/json:
           example:
             requestId: 3b1d5f7a9c0e2b4d6f8a0c2e4b6d8f0a
-            error: Not found
+            error: 未找到
             tag: NOT_FOUND
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     ConflictResponse:
-      description: The request conflicts with the current state of the resource.
+      description: 该请求与资源的当前状态冲突。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -312,12 +306,12 @@ components:
         application/json:
           example:
             requestId: 5d7f9b1c3e0a2c4e6b8d0f2a4c6e8b0d
-            error: Batch is not in a cancellable state
+            error: 批处理不处于可取消状态
             tag: INVALID_REQUEST
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: 处理请求时发生意外错误。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -326,8 +320,8 @@ components:
           example:
             requestId: 9b1d3f5e7a0c2e4b6d8f0a2c4e6b8d0f
             error: >-
-              Sorry, we encountered an error while processing your request.
-              Please try again later
+              抱歉，处理您的请求时遇到错误。
+              请稍后重试
             tag: DEFAULT_ERROR
           schema:
             $ref: '#/components/schemas/ErrorResponse'
@@ -337,12 +331,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 请求头中传递您的 Exa API 密钥。您也可以使用
+        Authorization: Bearer <key> 进行身份验证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key 请求头中传递您的 Exa API 密钥。您也可以使用
+        Authorization: Bearer <key> 进行身份验证。
 ```

@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在进一步探索之前，可通过该文件查看所有可用页面。
 
-<div id="delete-an-item">
-  # 删除项目
-</div>
+# 删除项目 {#delete-an-item}
 
-> 从 Webset 中删除一个 项目。
+> 从 Webset 中删除一个项目。
 
-此操作会取消该项正在进行的所有 enrichment 处理。
+此操作将取消该项目正在进行的所有增强处理。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}
 openapi: 3.1.0
@@ -380,11 +374,11 @@ components:
                   nullable: true
                 country:
                   type: string
-                  description: The country of the headquarters
+                  description: 总部所在国家
                   nullable: true
                 countryCode:
                   type: string
-                  description: The ISO country code of the headquarters
+                  description: 总部所在国家的 ISO 国家代码
                   nullable: true
               required:
                 - address
@@ -395,31 +389,31 @@ components:
                 - countryCode
               type: object
               title: WebsetItemCompanyHeadquarters
-              description: The structured headquarters address of the company
+              description: 公司总部的结构化地址
               nullable: true
             financials:
               properties:
                 revenueAnnual:
                   type: number
-                  description: The annual revenue of the company (USD)
+                  description: 公司的年营收（美元）
                   nullable: true
                 fundingTotal:
                   type: number
-                  description: The total funding raised by the company (USD)
+                  description: 公司累计融资总额（美元）
                   nullable: true
                 fundingLatestRound:
                   properties:
                     name:
                       type: string
-                      description: The name of the funding round (e.g. Series A)
+                      description: 融资轮次的名称（例如 Series A）
                       nullable: true
                     date:
                       type: string
-                      description: The date of the funding round
+                      description: 融资轮次的日期
                       nullable: true
                     amount:
                       type: number
-                      description: The amount raised in the funding round (USD)
+                      description: 该轮融资的金额（美元）
                       nullable: true
                   required:
                     - name
@@ -427,7 +421,7 @@ components:
                     - amount
                   type: object
                   title: WebsetItemCompanyFundingRound
-                  description: The latest funding round
+                  description: 最新一轮融资
                   nullable: true
               required:
                 - revenueAnnual
@@ -435,24 +429,24 @@ components:
                 - fundingLatestRound
               type: object
               title: WebsetItemCompanyFinancials
-              description: Financial information about the company
+              description: 公司的财务信息
               nullable: true
             webTraffic:
               properties:
                 visitsMonthly:
                   type: number
-                  description: The estimated monthly website visits
+                  description: 预估的每月网站访问量
                   nullable: true
                 uniqueVisitors:
                   type: number
-                  description: The estimated monthly unique visitors
+                  description: 预估的每月独立访客数
                   nullable: true
               required:
                 - visitsMonthly
                 - uniqueVisitors
               type: object
               title: WebsetItemCompanyWebTraffic
-              description: Web traffic metrics for the company
+              description: 公司的网站流量指标
               nullable: true
           required:
             - name
@@ -483,28 +477,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the article
+          description: 文章的 URL
           type: string
         description:
-          description: Short description of the relevance of the article
+          description: 该文章相关性的简短说明
           type: string
         content:
           type: string
-          description: The text content for the article
+          description: 文章的文本内容
           nullable: true
         article:
           properties:
             title:
               type: string
-              description: The title of the article
+              description: 文章的标题
               nullable: true
             author:
               type: string
-              description: The author(s) of the article
+              description: 文章的作者
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the article was published
+              description: 文章的发布日期和时间
               nullable: true
           required:
             - title
@@ -528,28 +522,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the research paper
+          description: 研究论文的 URL
           type: string
         description:
-          description: Short description of the relevance of the research paper
+          description: 该研究论文相关性的简短说明
           type: string
         content:
           type: string
-          description: The text content of the research paper
+          description: 研究论文的文本内容
           nullable: true
         researchPaper:
           properties:
             title:
               type: string
-              description: The title of the research paper
+              description: 研究论文的标题
               nullable: true
             author:
               type: string
-              description: The author(s) of the research paper
+              description: 研究论文的作者
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the research paper was published
+              description: 研究论文的发布日期和时间
               nullable: true
           required:
             - title
@@ -573,28 +567,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the Item
+          description: 该项目的 URL
           type: string
         description:
-          description: Short description of the Item
+          description: 该项目的简短说明
           type: string
         content:
           type: string
-          description: The text content of the Item
+          description: 该项目的文本内容
           nullable: true
         custom:
           properties:
             title:
               type: string
-              description: The title of the website
+              description: 网站的标题
               nullable: true
             author:
               type: string
-              description: The author(s) of the website
+              description: 网站的作者
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the website was published
+              description: 网站的发布日期和时间
               nullable: true
           required:
             - title
@@ -617,34 +611,34 @@ components:
     WebsetItemEvaluation:
       properties:
         criterion:
-          description: The description of the criterion
+          description: 该 criterion 的描述
           type: string
         reasoning:
-          description: The reasoning for the result of the evaluation
+          description: 该评估结果的推理过程
           type: string
         satisfied:
           enum:
             - 'yes'
             - 'no'
             - unclear
-          description: The satisfaction of the criterion
+          description: 是否满足该 criterion
           type: string
         references:
           default: []
-          description: The references used to generate the result.
+          description: 用于生成该结果的参考来源。
           items:
             properties:
               title:
                 type: string
-                description: The title of the reference
+                description: 参考来源的标题
                 nullable: true
               snippet:
                 type: string
-                description: The relevant snippet of the reference content
+                description: 参考来源内容中的相关片段
                 nullable: true
               url:
                 format: uri
-                description: The URL of the reference
+                description: 参考来源的 URL
                 type: string
             required:
               - title
@@ -668,7 +662,7 @@ components:
             - pending
             - completed
             - canceled
-          description: The status of the enrichment result.
+          description: 增强结果的状态。
           type: string
         format:
           $ref: '#/components/schemas/WebsetEnrichmentFormat'
@@ -676,36 +670,36 @@ components:
           items:
             type: string
           type: array
-          description: The result of the enrichment.
+          description: 增强的结果。
           nullable: true
         reasoning:
           type: string
-          description: The reasoning for the result when an Agent is used.
+          description: 使用 agent 时该结果的推理过程。
           nullable: true
         references:
           items:
             properties:
               title:
                 type: string
-                description: The title of the reference
+                description: 参考来源的标题
                 nullable: true
               snippet:
                 type: string
-                description: The relevant snippet of the reference content
+                description: 参考来源内容中的相关片段
                 nullable: true
               url:
                 format: uri
-                description: The URL of the reference
+                description: 参考来源的 URL
                 type: string
             required:
               - title
               - snippet
               - url
             type: object
-          description: The references used to generate the result.
+          description: 用于生成该结果的参考来源。
           type: array
         enrichmentId:
-          description: The id of the Enrichment that generated the result
+          description: 生成该结果的 Enrichment 的 id
           type: string
       required:
         - object
@@ -732,12 +726,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        请在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用
+        Authorization: Bearer <key> 进行认证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
+        请在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用
         使用 Authorization: Bearer <key>。
 ```

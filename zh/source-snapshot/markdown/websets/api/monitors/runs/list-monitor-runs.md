@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="list-monitor-runs">
-  # 列出 Monitor 运行记录
-</div>
+# 列出 monitor 运行 {#list-monitor-runs}
 
-> 列出该 Monitor 的所有运行记录。
+> 列出该 Monitor 的所有运行。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{monitor}/runs
 openapi: 3.1.0

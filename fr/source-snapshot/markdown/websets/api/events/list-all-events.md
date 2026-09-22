@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="list-all-events">
-  # Lister tous les événements
-</div>
+# Lister tous les events {#list-all-events}
 
-> Listez tous les événements survenus dans le système.
+> Liste tous les events survenus dans le système.
 
-Vous pouvez parcourir les résultats page par page à l&#39;aide du paramètre `cursor`.
+Vous pouvez paginer les résultats à l&#39;aide du paramètre `cursor`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0
@@ -900,8 +894,8 @@ components:
             searching the web.
 
 
-            Si elles sont fournies lors de la création, la recherche sera effectuée
-            uniquement sur les sources indiquées.
+            If provided during creation, the search will only be performed on
+            the sources provided.
           type: array
         progress:
           properties:
@@ -914,7 +908,7 @@ components:
             completion:
               minimum: 0
               maximum: 100
-              description: Le pourcentage d'avancement de la recherche
+              description: Le pourcentage d'avancement de la search
               type: number
             timeLeft:
               type: number
@@ -925,7 +919,7 @@ components:
             - analyzed
             - completion
             - timeLeft
-          description: L'avancement de la recherche
+          description: L'avancement de la search
           type: object
         recall:
           properties:
@@ -939,15 +933,15 @@ components:
                     - high
                     - medium
                     - low
-                  description: Le niveau de confiance dans l'estimation
+                  description: La confidence associée à l'estimation
                   type: string
                 bounds:
                   properties:
                     min:
-                      description: Le nombre total minimum estimé de correspondances potentielles
+                      description: Le nombre total minimal estimé de correspondances potentielles
                       type: number
                     max:
-                      description: Le nombre total maximum estimé de correspondances potentielles
+                      description: Le nombre total maximal estimé de correspondances potentielles
                       type: number
                   required:
                     - min
@@ -966,12 +960,12 @@ components:
             - reasoning
           type: object
           description: >-
-            Métriques de rappel de la recherche, null si elles ne sont pas
-            encore calculées ou demandées.
+            Métriques de rappel pour la search, null si elles n'ont pas encore été
+            calculées ou demandées.
           nullable: true
         metadata:
           default: {}
-          description: Ensemble de paires clé-valeur que vous souhaitez associer à cet objet.
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -981,19 +975,19 @@ components:
         canceledAt:
           format: date-time
           type: string
-          description: La date et l'heure d'annulation de la recherche
+          description: La date et l'heure d'annulation de la search
           nullable: true
         canceledReason:
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
-          description: La raison de l'annulation de la recherche
+          description: La raison de l'annulation de la search
           nullable: true
         createdAt:
           format: date-time
-          description: La date et l'heure de création de la recherche
+          description: La date et l'heure de création de la search
           type: string
         updatedAt:
           format: date-time
-          description: La date et l'heure de mise à jour de la recherche
+          description: La date et l'heure de mise à jour de la search
           type: string
       required:
         - id
@@ -1017,12 +1011,12 @@ components:
     Import:
       properties:
         id:
-          description: L'identifiant unique de l'Import
+          description: L'identifiant unique de l'import
           type: string
         object:
           enum:
             - import
-          description: Le type d'objet
+          description: The type of object
           type: string
         status:
           enum:
@@ -1031,7 +1025,7 @@ components:
             - completed
             - failed
             - canceled
-          description: Le statut de l'Import
+          description: Le statut de l'import
           type: string
         format:
           enum:
@@ -1041,7 +1035,7 @@ components:
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
-          description: Le type d'entité que contient l'import.
+          description: Le type d'entité contenu dans l'import.
           nullable: true
         title:
           description: Le titre de l'import
@@ -1050,7 +1044,7 @@ components:
           description: Le nombre d'entités dans l'import
           type: number
         metadata:
-          description: Ensemble de paires clé-valeur que vous souhaitez associer à cet objet.
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -1105,7 +1099,7 @@ components:
         object:
           enum:
             - monitor
-          description: Le type d'objet
+          description: The type of object
           type: string
         status:
           enum:
@@ -1121,12 +1115,12 @@ components:
             cron:
               description: >-
                 Expression cron définissant la cadence du monitor (doit être une
-                expression cron Unix valide à 5 champs). La planification doit se
+                expression cron Unix valide à 5 fields). Le schedule doit se
                 déclencher au plus une fois par jour.
               type: string
             timezone:
               default: Etc/UTC
-              description: IANA timezone (e.g., "America/New_York")
+              description: Fuseau horaire IANA (par exemple, "America/New_York")
               type: string
           required:
             - cron
@@ -1138,15 +1132,15 @@ components:
               properties:
                 query:
                   description: >-
-                    La query à rechercher. Par défaut, c'est la query de la
-                    dernière search qui est utilisée.
+                    La requête à rechercher. Par défaut, la requête de la
+                    dernière search est utilisée.
                   minLength: 2
                   maxLength: 10000
                   type: string
                 criteria:
                   description: >-
-                    Les critères à rechercher. Par défaut, ce sont les critères
-                    de la dernière search qui sont utilisés.
+                    Les critères de recherche. Par défaut, les critères de la
+                    dernière search sont utilisés.
                   maxItems: 5
                   items:
                     properties:
@@ -1162,11 +1156,11 @@ components:
                   $ref: '#/components/schemas/Entity'
                   title: Entity
                   description: >-
-                    L'entité à rechercher. Par défaut, c'est l'entité de la
-                    dernière search/du dernier import qui est utilisée.
+                    L'entité à rechercher. Par défaut, l'entité de la dernière
+                    search/du dernier import est utilisée.
                 count:
                   exclusiveMinimum: 0
-                  description: Le nombre maximum de résultats à trouver
+                  description: Le nombre maximal de résultats à trouver
                   type: number
                 behavior:
                   default: append
@@ -1178,7 +1172,7 @@ components:
               required:
                 - count
               description: >-
-                Spécifiez les search parameters du monitor.
+                Spécifiez les paramètres de recherche du monitor.
 
 
                 By default, the search parameters (query, entity and criteria)

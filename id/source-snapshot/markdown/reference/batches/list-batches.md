@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="list-batches">
-  # List batches
-</div>
+# Daftar batch {#list-batches}
 
-> Ambil daftar batch untuk team Anda secara terpaginasi.
+> Ambil daftar batch milik team Anda dengan paginasi.
 
-Batch dikembalikan dari yang terbaru ke yang terlama. Gunakan `limit` untuk mengatur ukuran halaman, dan `cursor` berisi nilai `nextCursor` dari respons sebelumnya untuk mengambil halaman berikutnya. Kirim `status=completed` agar hanya batch yang sudah selesai yang ditampilkan; daftar tersebut memakai cursor tersendiri, jadi tetap kirimkan `status=completed` pada setiap halaman.
+Batch dikembalikan dari yang terbaru ke yang terlama. Gunakan `limit` untuk mengatur ukuran halaman dan `cursor` berisi nilai `nextCursor` dari response sebelumnya untuk mengambil halaman berikutnya. Kirim `status=completed` untuk menampilkan hanya batch yang sudah selesai; daftar tersebut menggunakan cursor tersendiri, jadi tetap kirimkan `status=completed` di setiap halaman.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru mendapatkan credit gratis.
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches
 openapi: 3.1.0

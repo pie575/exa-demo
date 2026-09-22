@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-a-search">
-  # Search 생성
-</div>
+# search 생성 {#create-a-search}
 
-> Webset에 대한 새로운 Search를 생성합니다.
+> Webset에 대한 새로운 search를 생성합니다.
 
-기본적으로는 이전 Search 결과를 재사용하여 새로운 criteria로 평가합니다.
+기본 동작은 이전 search 결과를 재사용해 새로운 criteria로 평가하는 것입니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches
 openapi: 3.1.0
@@ -310,9 +304,8 @@ components:
             the Webset and evaluate them against the new criteria. Any Items
             that don't match the new criteria will be discarded.
 
-            - `append`: the search will add the new Items found to the existing
-            Webset. Any Items that don't match the new criteria will be
-            discarded.
+            - `append`: 검색은 새로 찾은 항목을 기존 Webset에 추가합니다. 새 기준과
+            일치하지 않는 항목은 모두 폐기됩니다.
         exclude:
           items:
             properties:
@@ -328,8 +321,8 @@ components:
               - id
             type: object
           description: >-
-            Sources (existing imports or websets) used to omit certain results
-            to be found during the search.
+            검색 중 특정 결과가 발견되지 않도록 제외하는 데 사용되는
+            소스(기존 임포트 또는 websets)입니다.
           type: array
         scope:
           items:
@@ -345,8 +338,8 @@ components:
                 properties:
                   definition:
                     description: >-
-                      What the relationship of the entities you hope to find is
-                      relative to the entities contained in the provided source.
+                      찾고자 하는 엔티티가 제공된 소스에 포함된 엔티티와
+                      어떤 관계에 있는지를 나타냅니다.
                     type: string
                   limit:
                     minimum: 1
@@ -361,58 +354,56 @@ components:
               - id
             type: object
           description: >-
-            The scope of the search. By default, there is no scope - thus
-            searching the web.
+            검색 범위입니다. 기본적으로 범위가 없으므로 웹 전체를 검색합니다.
 
 
-            If provided during creation, the search will only be performed on
-            the sources provided.
+            생성 시 제공되면 검색은 제공된 소스에서만 수행됩니다.
           type: array
         progress:
           properties:
             found:
-              description: The number of results found so far
+              description: 지금까지 발견된 결과 수
               type: number
             analyzed:
-              description: The number of results analyzed so far
+              description: 지금까지 분석된 결과 수
               type: number
             completion:
               minimum: 0
               maximum: 100
-              description: The completion percentage of the search
+              description: 검색의 완료 비율
               type: number
             timeLeft:
               type: number
-              description: The estimated time remaining in seconds, null if unknown
+              description: 남은 예상 시간(초), 알 수 없으면 null
               nullable: true
           required:
             - found
             - analyzed
             - completion
             - timeLeft
-          description: The progress of the search
+          description: 검색의 진행 상황
           type: object
         recall:
           properties:
             expected:
               properties:
                 total:
-                  description: The estimated total number of potential matches
+                  description: 잠재적 일치 항목의 추정 총 개수
                   type: number
                 confidence:
                   enum:
                     - high
                     - medium
                     - low
-                  description: The confidence in the estimate
+                  description: 추정치에 대한 신뢰도
                   type: string
                 bounds:
                   properties:
                     min:
-                      description: The minimum estimated total number of potential matches
+                      description: 잠재적 일치 항목의 최소 추정 총 개수
                       type: number
                     max:
-                      description: The maximum estimated total number of potential matches
+                      description: 잠재적 일치 항목의 최대 추정 총 개수
                       type: number
                   required:
                     - min
@@ -424,19 +415,19 @@ components:
                 - bounds
               type: object
             reasoning:
-              description: The reasoning for the estimate
+              description: 추정에 대한 근거
               type: string
           required:
             - expected
             - reasoning
           type: object
           description: >-
-            Recall metrics for the search, null if not yet computed or
-            requested.
+            검색에 대한 재현율 지표이며, 아직 계산되지 않았거나 요청되지 않은
+            경우 null입니다.
           nullable: true
         metadata:
           default: {}
-          description: Set of key-value pairs you want to associate with this object.
+          description: 이 객체에 연결하려는 키-값 쌍의 집합입니다.
           propertyNames:
             type: string
           additionalProperties:
@@ -446,19 +437,19 @@ components:
         canceledAt:
           format: date-time
           type: string
-          description: The date and time the search was canceled
+          description: 검색이 취소된 날짜 및 시간
           nullable: true
         canceledReason:
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
-          description: The reason the search was canceled
+          description: 검색이 취소된 이유
           nullable: true
         createdAt:
           format: date-time
-          description: The date and time the search was created
+          description: 검색이 생성된 날짜 및 시간
           type: string
         updatedAt:
           format: date-time
-          description: The date and time the search was updated
+          description: 검색이 업데이트된 날짜 및 시간
           type: string
       required:
         - id
@@ -491,7 +482,7 @@ components:
         description:
           minLength: 1
           maxLength: 1000
-          description: The description of the criterion
+          description: 기준에 대한 설명
           type: string
       required:
         - description
@@ -568,12 +559,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>
+        방식으로 인증할 수도 있습니다.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>
+        방식으로 인증할 수도 있습니다.
 ```

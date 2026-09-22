@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，请通过该文件了解所有可用页面。
 
-<div id="combining-providers">
-  # 组合多个提供方
-</div>
+# Combining providers {#combining-providers}
 
-> 在单次 Exa Agent 运行中同时使用多个数据合作方。
+> 在单次 Exa Agent 运行中同时使用多个数据合作伙伴。
 
-将某个合作方添加到 `dataSources` 后，它会作为一个工具提供给 Exa Agent —— 但这**并不会**强制 Agent 去调用它。合作方是否会被触发，取决于你的 `query` 和 `outputSchema`：只要明确说明你希望从每个合作方获得哪类结果，Exa Agent 就会调用对应的工具，而不是从网页中猜测。每次运行最多可添加五个合作方；Exa Agent 会在每一步自行决定调用哪一个，同时还可搭配使用 Exa 网页搜索。单次运行需要超过五个？请[联系我们](mailto:sales@exa.ai)提升上限。
+将合作伙伴附加到 `dataSources` 后，它便会作为工具提供给 Exa Agent，但这**并不会**强制 agent 去调用它。合作伙伴是否会被触发，取决于你的 `query` 和 `outputSchema`：明确说明你希望从每个合作伙伴获得哪类结果，Exa Agent 就会直接选用对应的工具，而不必从网页中猜测。每次运行最多可接入五个合作伙伴；Exa Agent 会为每一步选择要调用的工具，同时还可使用 Exa 网页搜索。单次运行需要超过五个？请[联系我们](mailto:sales@exa.ai)以提高该上限。
 
-<div id="two-partners-in-one-run">
-  ## 在一次运行中使用两个合作方
-</div>
+## 在一次运行中使用两个合作伙伴 {#two-partners-in-one-run}
 
-把多个合作方一起列出，Exa Agent 会各取所长地调用它们。这里的两个只是举例——`dataSources` 中最多可挂载五个合作方，原理相同：明确要求获取每一方的数据。下面这次投资简报运行结合了 [Financial Datasets](/zh/docs/agent/connect/financialdatasets) (获取股票代码新闻) 与 [Particle](/zh/docs/agent/connect/particle) (获取播客评论) 。该 query 明确要求提供各合作方的特色数据，schema 则将输出拆分为 `financialNews` 和 `podcastChatter`，因此 Exa Agent 会在同一次运行中同时调用**两个**合作方。
+同时列出多个合作伙伴，Exa Agent 会各取所长。这里的两个只是举例，你最多可以将五个合作伙伴附加到 `dataSources`，原理相同：明确要求获取每个合作伙伴的数据。下面这个投资简报运行结合了 [Financial Datasets](/zh/docs/agent/connect/financialdatasets) (获取股票代码相关新闻) 与 [Particle](/zh/docs/agent/connect/particle) (获取播客评论) 。query 明确要求获取每个合作伙伴的特色数据，schema 将输出拆分为 `financialNews` 和 `podcastChatter`，因此 Exa Agent 会在同一次运行中同时调用**两个**合作伙伴。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -174,5 +168,5 @@
 </CodeGroup>
 
 <Tip>
-  在 *query* 中明确写出每个合作方要提供的数据——说明你希望从各方获得哪类结果 (此处为：按股票代码的财经新闻，以及标注发言人的播客引述) 。如果请求过于笼统 (比如“最新新闻”) ，Exa Agent 往往会退回到网页搜索，而不去调用合作方。在 `outputSchema` 字段中同样体现这些不同的诉求，可以进一步强化这一效果。
+  在 *query* 中写明你需要每个合作伙伴提供什么数据——分别指明希望从各自拿到哪类 result (此处为：按股票代码的财经新闻 vs. 标注发言人的播客引述) 。如果请求写得过于笼统 (比如&quot;最新新闻&quot;) ，Exa Agent 往往会退而使用网页搜索，而不去调用合作伙伴。在 `outputSchema` 的 fields 中同样体现这些不同的诉求，能进一步强化这一效果。
 </Tip>

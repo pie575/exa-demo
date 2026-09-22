@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="search">
-  # Search
-</div>
+# Search {#search}
 
-> search endpoint를 사용하면 웹을 검색하고 그 결과에서 contents를 추출할 수 있습니다.
+> search 엔드포인트를 사용하면 웹을 검색하고 그 결과에서 contents를 추출할 수 있습니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /search
 openapi: 3.1.0
@@ -2420,7 +2414,7 @@ components:
               anyOf:
                 - type: integer
                 - type: 'null'
-              description: 이 출판물을 인용한 문헌 수(피인용 참조).
+              description: Number of works citing this publication (incoming references).
             authors:
               type: array
               items:
@@ -2430,32 +2424,32 @@ components:
                     anyOf:
                       - type: string
                       - type: 'null'
-                    description: 저자 표시 이름.
+                    description: Author display name.
                   id:
                     anyOf:
                       - type: string
                       - type: 'null'
-                    description: 확인된 인물 엔터티 식별자(있는 경우).
+                    description: Resolved person entity identifier, when available.
                 required:
                   - name
                   - id
                 additionalProperties: false
-              description: 순서가 지정된 저자 목록.
+              description: Ordered list of authors.
             referenceCount:
               anyOf:
                 - type: integer
                 - type: 'null'
-              description: 이 출판물이 인용한 문헌 수(인용 참조).
+              description: Number of works this publication cites (outgoing references).
             abstract:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: 출판물 초록 텍스트.
+              description: Publication abstract text.
             doi:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: DOI 식별자 자체(예: 10.1234/abcd).
+              description: Bare DOI identifier (e.g. 10.1234/abcd).
           required:
             - title
             - year
@@ -2468,7 +2462,7 @@ components:
             - abstract
             - doi
           additionalProperties: false
-          description: 출판물 전용 엔터티 필드.
+          description: Publication-specific entity fields.
       required:
         - id
         - type
@@ -2478,14 +2472,15 @@ components:
   headers:
     XRequestId:
       description: >-
-        요청의 고유 식별자. 해당 값을 포함하는 응답 본문에서 반환되는 `requestId`
-        필드와 동일합니다.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
     XExaQueued:
       description: >-
-        요청이 수락되기 전에 고객 rate limit 큐에서 대기했는지 여부.
+        Whether the request waited in the customer rate-limit queue before being
+        admitted.
       schema:
         type: string
         enum:
@@ -2493,13 +2488,13 @@ components:
           - 'false'
       example: 'false'
     XExaQueueMs:
-      description: 요청이 고객 rate limit 큐에서 대기한 총 시간(밀리초).
+      description: Total milliseconds the request waited in the customer rate-limit queue.
       schema:
         type: string
       example: '0'
   responses:
     BadRequestResponse:
-      description: 요청 본문 또는 질의 매개변수가 검증에 실패했습니다.
+      description: The request body or query parameters failed validation.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -2514,7 +2509,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: API key가 없거나 유효하지 않습니다.
+      description: The API key is missing or invalid.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -2527,7 +2522,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     TooManyRequestsResponse:
-      description: 이 API key, team 또는 네트워크의 rate limit을 초과했습니다.
+      description: A rate limit for this API key, team, or network was exceeded.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -2542,7 +2537,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: 요청을 처리하는 중 예기치 않은 오류가 발생했습니다.
+      description: An unexpected error occurred while processing the request.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -2558,8 +2553,8 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     ServiceUnavailableResponse:
       description: >-
-        Exa가 일시적으로 용량을 초과했거나 사용할 수 없습니다. 요청이 처리되지
-        않았으므로 지수 백오프를 적용해 재시도하세요.
+        Exa is temporarily over capacity or unavailable. The request was not
+        processed; retry with exponential backoff.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -2579,12 +2574,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key>
-        방식으로 인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key>
-        방식으로 인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

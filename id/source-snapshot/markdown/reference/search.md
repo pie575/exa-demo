@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="search">
-  # Search
-</div>
+# Search {#search}
 
-> Endpoint search memungkinkan Anda menelusuri web dan mengekstrak contents dari hasil penelusuran.
+> Endpoint search memungkinkan Anda mencari di web sekaligus mengekstrak contents dari hasil pencarian.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /search
 openapi: 3.1.0
@@ -1078,18 +1072,18 @@ components:
         context:
           type: string
           description: >-
-            Deprecated. Combined context string from search results. Use
-            highlights or text instead.
+            Usang. String konteks gabungan dari hasil pencarian. Gunakan
+            highlights atau text sebagai gantinya.
           deprecated: true
         costDollars:
           $ref: '#/components/schemas/CostDollarsOutput'
         searchTime:
           type: number
           description: >-
-            Server-side processing time in milliseconds, measured at the
-            gateway. Covers retrieval but may exclude later phases such as
-            structured output synthesis, so it can be lower than end-to-end
-            request latency.
+            Waktu pemrosesan di sisi server dalam milidetik, diukur pada
+            gateway. Mencakup retrieval tetapi bisa saja tidak mencakup fase
+            selanjutnya seperti synthesis structured output, sehingga nilainya
+            bisa lebih rendah daripada latency permintaan secara menyeluruh.
           example: 312.4
       required:
         - results
@@ -1099,7 +1093,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identifier unik untuk permintaan ini.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1130,10 +1124,10 @@ components:
                         url:
                           type: string
                           format: uri
-                          description: Source URL.
+                          description: URL sumber.
                         title:
                           type: string
-                          description: Source title.
+                          description: Judul sumber.
                         id:
                           type: string
                       required:
@@ -1161,7 +1155,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identifier unik untuk permintaan ini.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1174,7 +1168,7 @@ components:
               field:
                 type: string
                 description: >-
-                  Field path in output.content, for example content or
+                  Path field pada output.content, misalnya content atau
                   companies[0].funding.
               citations:
                 type: array
@@ -1184,28 +1178,28 @@ components:
                     url:
                       type: string
                       format: uri
-                      description: Source URL.
+                      description: URL sumber.
                     title:
                       type: string
-                      description: Source title.
+                      description: Judul sumber.
                   required:
                     - url
                     - title
                   additionalProperties: false
-                description: Sources supporting this output field.
+                description: Sources yang mendukung field output ini.
               confidence:
                 type: string
                 enum:
                   - low
                   - medium
                   - high
-                description: Model-reported reliability for this field.
+                description: Keandalan field ini menurut laporan model.
             required:
               - field
               - citations
               - confidence
             additionalProperties: false
-          description: Field-level grounding for synthesized output.
+          description: Grounding tingkat field untuk output hasil synthesis.
         citations:
           type: array
           items:
@@ -1214,10 +1208,10 @@ components:
               url:
                 type: string
                 format: uri
-                description: Source URL.
+                description: URL sumber.
               title:
                 type: string
-                description: Source title.
+                description: Judul sumber.
               id:
                 type: string
             required:
@@ -1249,10 +1243,10 @@ components:
                         url:
                           type: string
                           format: uri
-                          description: Source URL.
+                          description: URL sumber.
                         title:
                           type: string
-                          description: Source title.
+                          description: Judul sumber.
                         id:
                           type: string
                       required:
@@ -1280,7 +1274,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identifier unik untuk permintaan ini.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1298,7 +1292,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identifier unik untuk permintaan ini.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1315,7 +1309,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identifier unik untuk permintaan ini.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1327,10 +1321,10 @@ components:
         searchTime:
           type: number
           description: >-
-            Server-side processing time in milliseconds, measured at the
-            gateway. Covers retrieval but may exclude later phases such as
-            structured output synthesis, so it can be lower than end-to-end
-            request latency.
+            Waktu pemrosesan di sisi server dalam milidetik, diukur pada
+            gateway. Mencakup retrieval tetapi bisa saja tidak mencakup fase
+            selanjutnya seperti synthesis structured output, sehingga nilainya
+            bisa lebih rendah daripada latency permintaan secara menyeluruh.
           example: 312.4
         costDollars:
           $ref: '#/components/schemas/CostDollarsOutput'
@@ -1358,10 +1352,10 @@ components:
                         url:
                           type: string
                           format: uri
-                          description: Source URL.
+                          description: URL sumber.
                         title:
                           type: string
-                          description: Source title.
+                          description: Judul sumber.
                         id:
                           type: string
                       required:
@@ -1390,7 +1384,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identifier unik untuk permintaan ini.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1408,7 +1402,7 @@ components:
         - error
       additionalProperties: false
     JsonValue:
-      description: Any JSON value.
+      description: Nilai JSON apa pun.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -1427,7 +1421,7 @@ components:
       properties:
         title:
           type: string
-          description: The title of the search result.
+          description: Judul hasil pencarian.
           example: A Comprehensive Overview of Large Language Models
         url:
           type: string

@@ -1,39 +1,29 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在进一步探索之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="delete-api-key">
-  # 删除 API key
-</div>
+# 删除 API 密钥 {#delete-api-key}
 
-> 从你的团队中永久删除某个 API key。
+> 从团队中永久删除某个 API 密钥。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户会赠送免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
 <Info>
-  Team Management API 需按团队启用，并使用服务账户 API key 进行身份验证。该功能为你的团队启用后，可在 [API keys 页面](https://dashboard.exa.ai/api-keys)的 **Service keys** 标签页中创建此 key。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+  Team Management API 按团队启用，使用服务账户 API 密钥进行身份验证。为团队启用该功能后，即可在 [API 密钥页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页创建该密钥。如需申请使用权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
 </Info>
 
-<div id="overview">
-  ## 概览
-</div>
+## 概览 {#overview}
 
-删除 API key 接口会将指定的 API key 从你的团队中永久移除。
+Delete API Key 端点用于将某个 API 密钥从你的团队中永久删除。
 
-<div id="path-parameters">
-  ## 路径参数
-</div>
+## 路径参数 {#path-parameters}
 
-* **id**：要删除的 API key 的唯一标识符。
+* **id**：要删除的 API 密钥的唯一标识符。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

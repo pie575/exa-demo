@@ -1,17 +1,15 @@
 ---
 title: "Praktik Terbaik Search"
 sidebarTitle: "Praktik Terbaik"
-description: "Optimalkan kualitas retrieval, latensi, konteks, dan synthesis untuk integrasi Search API di lingkungan produksi."
-keywords: ["search api", "search quality", "rag", "retrieval", "latency", "structured output"]
+description: "Optimalkan kualitas retrieval, latency, konteks, dan synthesis untuk integrasi Search API di production."
+keywords: ["search api", "search quality", "rag", "retrieval", "latency", "output terstruktur"]
 ---
 
 Panduan ini mengasumsikan Anda sudah memiliki [permintaan Search API](/id/docs/search/quickstart) yang berfungsi, lalu membahas cara menyempurnakan permintaan tersebut sesuai praktik terbaik yang direkomendasikan Exa.
 
-<div id="start-with-the-smallest-useful-request">
-  ## Mulai dengan permintaan terkecil yang berguna
-</div>
+## Mulai dengan permintaan terkecil yang berguna {#start-with-the-smallest-useful-request}
 
-Baseline terbaik adalah query bahasa alami dengan `highlights: true`. Exa menyesuaikan panjang excerpt setiap hasil dengan tingkat relevansinya, jadi tidak ada character budget yang perlu disetel:
+Baseline terbaik adalah query bahasa alami dengan `highlights: true`. Exa menyesuaikan panjang kutipan setiap hasil dengan relevance-nya, jadi tidak ada character budget yang perlu disetel:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -39,52 +37,48 @@ Baseline terbaik adalah query bahasa alami dengan `highlights: true`. Exa menyes
   ```
 </CodeGroup>
 
-Dengan ini Anda mendapatkan halaman yang sudah diperingkat beserta konteks hemat token untuk setiap halaman, sesuai dengan query.
+Hasilnya, Anda mendapatkan halaman berperingkat beserta konteks per halaman yang hemat token dan relevan dengan query.
 
-Tambahkan parameter lain hanya jika diperlukan:
+Tambahkan parameter lain hanya bila diperlukan:
 
-| Parameter                  | Tambahkan saat                                                                                               |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `type`                     | Menyesuaikan dengan anggaran latensi atau kebutuhan kedalaman                                                |
-| `numResults`               | Lebih sedikit halaman untuk jendela konteks yang lebih kecil, atau lebih banyak untuk recall yang lebih luas |
-| `outputSchema`             | Menyintesis hasil atau menyusunnya menjadi JSON                                                              |
-| `maxAgeHours`              | Page content yang di-cache mungkin sudah terlalu usang                                                       |
-| `highlights.maxCharacters` | Aplikasi Anda memerlukan limit excerpt yang tetap per halaman                                                |
-| Filter domain atau tanggal | Hasil di luar batasan tersebut tidak akan berguna                                                            |
+| Parameter                  | Tambahkan saat                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `type`                     | Menyesuaikan dengan anggaran latency atau kebutuhan kedalaman                                          |
+| `numResults`               | Lebih sedikit halaman untuk jendela konteks yang kecil, atau lebih banyak untuk recall yang lebih luas |
+| `outputSchema`             | Menyintesis hasil atau menyusunnya menjadi JSON                                                        |
+| `maxAgeHours`              | Konten halaman di cache mungkin terlalu lama                                                           |
+| `highlights.maxCharacters` | Aplikasi Anda membutuhkan batas kutipan tetap per halaman                                              |
+| Filter domain atau tanggal | Hasil di luar batasan tersebut tidak akan berguna                                                      |
 
-<div id="search-vs-deep-search">
-  ## Search vs. Deep Search
-</div>
+## Search vs. Deep Search {#search-vs-deep-search}
 
-Search standar mengambil dan memeringkat halaman untuk sebuah query. Deep Search menjalankan proses riset yang dapat
-melakukan search secara iteratif, memeriksa hasil yang ditemukan, menyempurnakan search, dan menyintesis hasil yang grounded.
+Standard search mengambil dan memeringkat halaman untuk sebuah query. Deep Search menjalankan proses Research yang dapat
+melakukan search secara iteratif, memeriksa temuannya, menyempurnakan search, dan melakukan synthesis menjadi hasil yang grounded.
 
-| Kebutuhan                                                                                                                         | Mulai dengan                        |
-| --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
-| Halaman berperingkat untuk query yang sudah tersusun baik                                                                         | `auto` atau `fast`                  |
-| Search yang sulit, sintesis dari banyak hasil, atau structured output yang tidak bisa dipenuhi dengan satu search saja (3+ field) | `deep`                              |
-| Riset berdurasi panjang, list building, atau enrichment multi-hop                                                                 | [Exa Agent](/id/docs/agent/quickstart) |
+| Kebutuhan                                                                                                                              | Mulai dengan                        |
+| -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| Halaman berperingkat untuk query yang sudah dirumuskan dengan baik                                                                     | `auto` atau `fast`                  |
+| Search yang sulit, synthesis lintas banyak hasil, atau output terstruktur yang tidak bisa dipenuhi dengan satu kali search (3+ fields) | `deep`                              |
+| Long-running research, list building, atau enrichment multi-tahap                                                                      | [Exa Agent](/id/docs/agent/quickstart) |
 
 Mode deep direkomendasikan secara default saat menggunakan `outputSchema`. Baca [panduan Deep Search](/id/docs/search/deep-search) untuk instruksi dan contoh lengkap.
 
-<div id="improve-retrieval-quality">
-  ## Meningkatkan kualitas retrieval
-</div>
+## Meningkatkan kualitas retrieval {#improve-retrieval-quality}
 
-Ketika hasil perlu diperbaiki, ubah satu bagian permintaan pada satu waktu.
+Ketika hasil perlu diperbaiki, ubah satu bagian permintaan dalam satu waktu.
 
 <Steps>
   <Step title="Perjelas query">
-    Deskripsikan halaman yang Anda inginkan, bukan sekadar kumpulan kata kunci. Sertakan subjeknya beserta jenis sumber,
-    periode waktu, atau detail lain yang memengaruhi seperti apa hasil yang relevan.
+    Deskripsikan halaman yang Anda inginkan, bukan sekadar kumpulan kata kunci. Sertakan subjek beserta jenis sumber,
+    rentang waktu, atau detail lain yang memengaruhi seperti apa hasil yang relevan.
 
     ```text theme={null}
     Benchmark papers evaluating long-context retrieval methods on legal documents
     ```
   </Step>
 
-  <Step title="Baca respons secara berlapis">
-    Perhatikan judul, URL, tanggal publikasi, dan highlights sebelum mengubah permintaan.
+  <Step title="Baca response secara berlapis">
+    Perhatikan judul, URL, publication date, dan kutipan sebelum mengubah permintaan.
 
     ```json theme={null}
     {
@@ -102,41 +96,39 @@ Ketika hasil perlu diperbaiki, ubah satu bagian permintaan pada satu waktu.
     ```
 
     Judul dan URL menunjukkan jenis sumber yang diambil Exa, `publishedDate` menunjukkan
-    seberapa baru sumber tersebut, dan highlight menunjukkan evidence yang cocok dengan query. Perbaiki query untuk
-    mengambil halaman yang berbeda, tambahkan filter tanggal untuk mempersempit periode waktu, atau ambil teks lengkap jika
-    Anda butuh konteks lebih dari suatu hasil yang bermanfaat.
+    seberapa baru sumber tersebut, dan kutipan menunjukkan evidence yang cocok dengan query. Perbaiki query untuk
+    mengambil halaman yang berbeda, tambahkan filter tanggal untuk mempersempit rentang waktu, atau ambil teks penuh saat
+    Anda membutuhkan lebih banyak konteks dari suatu hasil yang berguna.
   </Step>
 
-  <Step title="Tambahkan hanya batasan yang mutlak">
-    Gunakan `includeDomains`, `excludeDomains`, dan publication-date filters hanya jika hasil yang
-    melanggar batasan tersebut memang tidak bisa dipakai. Letakkan preferensi retrieval di dalam query dan, saat
-    melakukan sintesis, letakkan instruksi respons di `systemPrompt`.
+  <Step title="Tambahkan hanya batasan mutlak">
+    Gunakan `includeDomains`, `excludeDomains`, dan filter tanggal publikasi hanya jika hasil yang
+    melanggar batasan tersebut memang tidak dapat dipakai. Tempatkan preferensi retrieval di dalam query dan, saat
+    melakukan sintesis, tempatkan instruksi response di `systemPrompt`.
   </Step>
 
   <Step title="Ubah search mode paling akhir">
-    Gunakan mode yang lebih cepat untuk kebutuhan latensi, atau mode deep ketika proses retrieval itu sendiri
-    membutuhkan iterasi dan penalaran. Mode yang berbeda tidak akan memperbaiki query yang kurang spesifik.
+    Gunakan mode yang lebih cepat untuk kebutuhan latency, atau mode deep ketika proses retrieval itu sendiri
+    memerlukan iterasi dan penalaran. Mode yang berbeda tidak akan memperbaiki query yang kurang spesifik.
   </Step>
 </Steps>
 
-Siapkan sekumpulan kecil query representatif selama penyetelan. Bandingkan relevansi hasil dan keberhasilan tugas turunan pada seluruh kumpulan tersebut, bukan mengoptimalkan satu contoh saja. Catat `requestId`, `searchTime`, dan `costDollars` agar regresi dapat direproduksi.
+Siapkan sekumpulan kecil query representatif selama proses penyetelan. Bandingkan relevance hasil dan keberhasilan tugas lanjutan pada seluruh kumpulan tersebut, alih-alih mengoptimalkan untuk satu contoh saja. Catat `requestId`, `searchTime`, dan `costDollars` agar regresi dapat direproduksi.
 
-<div id="budget-latency-and-context">
-  ## Mengatur anggaran latensi dan konteks
-</div>
+## Mengatur anggaran latency dan konteks {#budget-latency-and-context}
 
-Setiap kontrol menghabiskan sumber daya yang berbeda:
+Setiap kontrol mengonsumsi sumber daya yang berbeda:
 
-| Kontrol                   | Yang ditambahkan                                      |
-| ------------------------- | ----------------------------------------------------- |
-| Lebih banyak hasil        | Lebih banyak halaman, data respons, dan konteks hilir |
-| Teks lengkap              | Konteks halaman lebih luas dan payload lebih besar    |
-| `summary`                 | Satu panggilan model bahasa tambahan per hasil        |
-| `outputSchema`            | Synthesis atas seluruh hasil yang diambil             |
-| `contents.maxAgeHours: 0` | Pengambilan halaman baru alih-alih konten dari cache  |
-| Search type deep          | Search iteratif, synthesis, dan penalaran             |
+| Kontrol                   | Apa yang ditambahkan                                   |
+| ------------------------- | ------------------------------------------------------ |
+| Lebih banyak hasil        | Lebih banyak halaman, data response, dan konteks hilir |
+| teks penuh                | Konteks halaman lebih luas dan payload lebih besar     |
+| `summary`                 | Satu panggilan model bahasa tambahan per hasil         |
+| `outputSchema`            | Synthesis di seluruh hasil yang diambil                |
+| `contents.maxAgeHours: 0` | Pengambilan halaman baru alih-alih konten dari cache   |
+| Deep search types         | Search iteratif, synthesis, dan penalaran              |
 
-Untuk alur real-time yang masih bisa menerima konten dari cache, padukan mode berlatensi terendah dengan highlights dan konten khusus cache:
+Untuk alur real-time yang masih menoleransi konten dari cache, gabungkan mode dengan latency terendah dengan kutipan dan konten khusus cache:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -175,55 +167,49 @@ Untuk alur real-time yang masih bisa menerima konten dari cache, padukan mode be
   ```
 </CodeGroup>
 
-Jangan gunakan resep ini bila freshness halaman menentukan ketepatan hasil. Mulailah dari `auto` dan freshness bawaan, kecuali produk Anda punya target latensi yang terukur.
+Jangan pakai resep ini jika kebaruan halaman ikut menentukan benar tidaknya hasil. Mulailah dari `auto` dan kebaruan default kecuali produk Anda punya target latency yang terukur.
 
-Agar Exa mengalokasikan satu anggaran konteks untuk seluruh kumpulan hasil — lebih banyak dari sumber yang kuat, lebih sedikit dari yang redundan — lihat [pratinjau riset Dynamic Highlights](/id/docs/search/highlights#dynamic-highlights).
+Untuk membiarkan Exa mengalokasikan satu anggaran konteks ke seluruh kumpulan hasil — lebih banyak dari sources yang kuat, lebih sedikit dari yang redundan — lihat [Dynamic Highlights research preview](/id/docs/search/highlights#dynamic-highlights).
 
-<div id="tips-for-common-use-cases">
-  ## Tips untuk kasus penggunaan umum
-</div>
+## Tips untuk kasus penggunaan umum {#tips-for-common-use-cases}
 
-| Jika Anda membutuhkan                           | Gunakan                                                                  | Hindari                                                           |
-| ----------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------- |
-| Publikasi yang lebih baru                       | Cantumkan rentang waktu pada query atau gunakan publication-date filters | `maxAgeHours`                                                     |
-| Konten terbaru dari halaman yang sering berubah | `contents.maxAgeHours`                                                   | Publication-date filters                                          |
-| Jenis sumber tertentu yang diutamakan           | Susunan kata pada query; `systemPrompt` saat melakukan synthesis         | Daftar izin domain yang kaku                                      |
-| Hasil hanya dari sumber yang disetujui          | `includeDomains`                                                         | Mengulang `site:` di dalam query                                  |
-| Structured output berukuran kecil               | `outputSchema` dengan Search standar                                     | Memilih Deep hanya karena output-nya berupa JSON                  |
-| Output hasil riset dengan banyak item           | `deep` dengan `outputSchema`, atau [Exa Agent](/id/docs/agent/quickstart)   | Mengharapkan satu tahap retrieval dapat mengumpulkan seluruh item |
-| Konteks lebih banyak dari beberapa halaman      | Search dengan highlights, lalu call Contents                             | Teks lengkap untuk setiap hasil                                   |
-| Latensi lebih rendah                            | Ukur `fast` atau `instant` dengan konten ringkas                         | Menambahkan kontrol freshness atau synthesis secara default       |
+| Jika Anda membutuhkan                           | Gunakan                                                                  | Hindari                                                      |
+| ----------------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| Publikasi yang lebih baru                       | Cantumkan rentang waktu pada query atau gunakan filter tanggal publikasi | `maxAgeHours`                                                |
+| Konten terbaru dari halaman yang sering berubah | `contents.maxAgeHours`                                                   | Filter tanggal publikasi                                     |
+| Jenis source tertentu yang diinginkan           | Penyusunan kata pada query; `systemPrompt` saat melakukan synthesis      | Daftar domain yang diizinkan secara kaku                     |
+| Hasil hanya dari sources yang disetujui         | `includeDomains`                                                         | Mengulang `site:` di dalam query                             |
+| Output terstruktur berukuran kecil              | `outputSchema` dengan standard Search                                    | Memilih Deep hanya karena output-nya berupa JSON             |
+| Output hasil research dengan banyak item        | `deep` dengan `outputSchema`, atau [Exa Agent](/id/docs/agent/quickstart)   | Berharap satu kali retrieval dapat mengumpulkan seluruh item |
+| Lebih banyak konteks dari beberapa halaman      | Search dengan kutipan, lalu panggil Contents                             | Teks penuh untuk setiap hasil                                |
+| Latency lebih rendah                            | Ukur `fast` atau `instant` dengan konten ringkas                         | Menambahkan kontrol kebaruan atau synthesis secara default   |
 
-<div id="when-to-use-another-endpoint">
-  ## Kapan menggunakan endpoint lain
-</div>
+## Kapan menggunakan endpoint lain {#when-to-use-another-endpoint}
 
-Gunakan endpoint Exa yang berbeda ketika sifat tugasnya berubah:
+Gunakan endpoint Exa yang berbeda ketika karakter tugasnya berubah:
 
 | Tugas                                                   | Gunakan                               |
 | ------------------------------------------------------- | ------------------------------------- |
-| Riset berdurasi panjang, list building, atau enrichment | [Exa Agent](/id/docs/agent/quickstart)   |
+| Research jangka panjang, list building, atau enrichment | [Exa Agent](/id/docs/agent/quickstart)   |
 | URL sudah diketahui                                     | [Contents](/id/docs/contents/quickstart) |
-| Menjalankan search secara terjadwal                     | [Monitors](/id/docs/monitors/quickstart) |
+| Menjalankan search sesuai jadwal                        | [Monitors](/id/docs/monitors/quickstart) |
 
-<div id="next-steps">
-  ## Langkah berikutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Referensi Search API" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
-    Semua parameter permintaan dan field respons.
+  <Card title="Search API reference" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
+    Setiap parameter permintaan dan field response.
   </Card>
 
   <Card title="Quickstart Search" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
-    Bentuk dasar permintaan, filter, output, dan freshness.
+    Bentuk dasar permintaan, filter, output, dan kebaruan.
   </Card>
 
   <Card title="Contents API" icon="file-text" href="/id/docs/contents/quickstart" cta="Buka panduan" arrow="true">
-    Ekstrak highlights atau teks lengkap dari halaman yang sudah Anda ketahui.
+    Ekstrak kutipan atau teks penuh dari halaman yang sudah Anda ketahui.
   </Card>
 
   <Card title="Exa Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Riset berdurasi panjang, list building, dan enrichment.
+    Research jangka panjang, list building, dan enrichment.
   </Card>
 </Columns>

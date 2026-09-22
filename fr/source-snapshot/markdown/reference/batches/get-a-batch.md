@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="get-a-batch">
-  # Récupérer un batch
-</div>
+# Récupérer un batch {#get-a-batch}
 
 > Récupérer un batch par son ID.
 
-Utilisez cet endpoint pour interroger un batch jusqu&#39;à ce qu&#39;il atteigne l&#39;état `completed`, `cancelled` ou `expired`. Une fois le batch terminé, `resultsUrl` contient une URL présignée à durée de vie limitée pointant vers le fichier de résultats JSONL ; récupérez de nouveau le batch pour obtenir une nouvelle URL.
+Utilisez cet endpoint pour interroger un batch jusqu&#39;à ce qu&#39;il atteigne l&#39;état `completed`, `cancelled` ou `expired`. Une fois le batch terminé, `resultsUrl` contient une URL présignée à durée de vie limitée vers le fichier JSONL des résultats ; récupérez à nouveau le batch pour obtenir une nouvelle URL.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0

@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
-> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-<div id="create-a-search">
-  # Crear una Search
-</div>
+# Crear una búsqueda {#create-a-search}
 
 > Crea una nueva Search para el Webset.
 
-El comportamiento predeterminado es reutilizar los resultados de la Search anterior y evaluarlos según los nuevos criteria.
+El comportamiento por defecto es reutilizar los resultados de la Search anterior y evaluarlos según los nuevos criteria.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches
 openapi: 3.1.0
@@ -310,9 +304,9 @@ components:
             the Webset and evaluate them against the new criteria. Any Items
             that don't match the new criteria will be discarded.
 
-            - `append`: la búsqueda agregará los nuevos Items encontrados al
-            Webset existente. Cualquier Item que no coincida con los nuevos
-            criterios será descartado.
+            - `append`: the search will add the new Items found to the existing
+            Webset. Any Items that don't match the new criteria will be
+            discarded.
         exclude:
           items:
             properties:
@@ -328,8 +322,8 @@ components:
               - id
             type: object
           description: >-
-            Fuentes (imports o websets existentes) utilizadas para omitir
-            ciertos resultados durante la búsqueda.
+            Sources (existing imports or websets) used to omit certain results
+            to be found during the search.
           type: array
         scope:
           items:
@@ -345,9 +339,8 @@ components:
                 properties:
                   definition:
                     description: >-
-                      Cuál es la relación de las entidades que esperas
-                      encontrar respecto a las entidades contenidas en la
-                      fuente proporcionada.
+                      What the relationship of the entities you hope to find is
+                      relative to the entities contained in the provided source.
                     type: string
                   limit:
                     minimum: 1
@@ -362,58 +355,58 @@ components:
               - id
             type: object
           description: >-
-            El alcance de la búsqueda. De forma predeterminada, no hay alcance,
-            por lo que se busca en la web.
+            The scope of the search. By default, there is no scope - thus
+            searching the web.
 
 
-            Si se proporciona durante la creación, la búsqueda solo se
-            realizará en las fuentes proporcionadas.
+            If provided during creation, the search will only be performed on
+            the sources provided.
           type: array
         progress:
           properties:
             found:
-              description: El número de resultados encontrados hasta ahora
+              description: The number of results found so far
               type: number
             analyzed:
-              description: El número de resultados analizados hasta ahora
+              description: The number of results analyzed so far
               type: number
             completion:
               minimum: 0
               maximum: 100
-              description: El porcentaje de finalización de la búsqueda
+              description: The completion percentage of the search
               type: number
             timeLeft:
               type: number
-              description: El tiempo restante estimado en segundos, null si se desconoce
+              description: The estimated time remaining in seconds, null if unknown
               nullable: true
           required:
             - found
             - analyzed
             - completion
             - timeLeft
-          description: El progreso de la búsqueda
+          description: The progress of the search
           type: object
         recall:
           properties:
             expected:
               properties:
                 total:
-                  description: El número total estimado de coincidencias potenciales
+                  description: The estimated total number of potential matches
                   type: number
                 confidence:
                   enum:
                     - high
                     - medium
                     - low
-                  description: La confianza en la estimación
+                  description: The confidence in the estimate
                   type: string
                 bounds:
                   properties:
                     min:
-                      description: El número total mínimo estimado de coincidencias potenciales
+                      description: The minimum estimated total number of potential matches
                       type: number
                     max:
-                      description: El número total máximo estimado de coincidencias potenciales
+                      description: The maximum estimated total number of potential matches
                       type: number
                   required:
                     - min
@@ -425,19 +418,19 @@ components:
                 - bounds
               type: object
             reasoning:
-              description: El razonamiento detrás de la estimación
+              description: The reasoning for the estimate
               type: string
           required:
             - expected
             - reasoning
           type: object
           description: >-
-            Métricas de recall para la búsqueda, null si aún no se han
-            calculado o solicitado.
+            Recall metrics for the search, null if not yet computed or
+            requested.
           nullable: true
         metadata:
           default: {}
-          description: Conjunto de pares clave-valor que quieres asociar con este objeto.
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -447,19 +440,19 @@ components:
         canceledAt:
           format: date-time
           type: string
-          description: La fecha y hora en que se canceló la búsqueda
+          description: The date and time the search was canceled
           nullable: true
         canceledReason:
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
-          description: El motivo por el que se canceló la búsqueda
+          description: The reason the search was canceled
           nullable: true
         createdAt:
           format: date-time
-          description: La fecha y hora en que se creó la búsqueda
+          description: The date and time the search was created
           type: string
         updatedAt:
           format: date-time
-          description: La fecha y hora en que se actualizó la búsqueda
+          description: The date and time the search was updated
           type: string
       required:
         - id
@@ -492,7 +485,7 @@ components:
         description:
           minLength: 1
           maxLength: 1000
-          description: La descripción del criterio
+          description: The description of the criterion
           type: string
       required:
         - description
@@ -569,12 +562,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pasa tu clave de API de Exa en el encabezado x-api-key. También puedes
-        autenticarte con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pasa tu clave de API de Exa en el encabezado x-api-key. También puedes
-        autenticarte con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

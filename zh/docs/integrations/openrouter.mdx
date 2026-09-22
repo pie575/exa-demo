@@ -1,18 +1,16 @@
 ---
 title: "OpenRouter"
 sidebarTitle: "OpenRouter"
-description: "通过 openrouter:web_search 服务端工具，为任意 OpenRouter 模型接入 Exa 网页搜索作为事实依据。"
+description: "通过 openrouter:web_search server tool，为任意 OpenRouter 模型接入 Exa 网页搜索。"
 icon: "/docs/images/sidebar-icons/openrouter.svg"
-keywords: ["OpenRouter", "网页搜索", "服务端工具", "grounding", "url_citation"]
+keywords: ["OpenRouter", "web search", "server tool", "grounding", "url_citation"]
 ---
 
-Exa 是 [OpenRouter](https://openrouter.ai) 网页搜索背后的搜索引擎。OpenRouter 用一套 API 即可接入数百个模型，而 Exa 为这些模型提供实时的网页访问能力：不具备原生搜索能力的模型默认通过 Exa 获取事实依据，任何模型也都可以显式指定使用 Exa。无需 Exa API key。搜索由 OpenRouter 在服务端执行，费用从你的 OpenRouter 额度中扣除。
+Exa 是 [OpenRouter](https://openrouter.ai) 网页搜索背后的搜索引擎。OpenRouter 让你通过一个 API 调用数百个模型，而 Exa 为这些模型带来实时的网页访问能力：不具备原生搜索的模型默认通过 Exa 进行 grounding，任何模型也都可以显式指定使用 Exa。无需 Exa API 密钥。OpenRouter 在服务端执行这些 search，费用从你的 OpenRouter credits 中扣除。
 
-<div id="use-the-web-search-server-tool">
-  ## 使用网页搜索服务端工具
-</div>
+## 使用网页搜索 server tool {#use-the-web-search-server-tool}
 
-将 `openrouter:web_search` 添加到 `tools` 数组中，模型会自行决定何时搜索、搜索什么，以及是否在同一次请求中再次搜索。[服务端工具](https://openrouter.ai/docs/guides/features/server-tools/web-search)在 OpenRouter 上处于测试阶段，用于取代已弃用的 `web` 插件和 `:online` 模型变体；如果你正在使用其中任意一种，请参阅 OpenRouter 的[迁移指南](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin)。
+将 `openrouter:web_search` 添加到 `tools` 数组中，模型就会自行决定何时搜索、搜索什么，以及是否在同一次请求中再次搜索。[Server tools](https://openrouter.ai/docs/guides/features/server-tools/web-search) 在 OpenRouter 上处于 beta 阶段，用于替代已弃用的 `web` 插件和 `:online` 模型变体；如果你正在使用其中任意一种，请参阅 OpenRouter 的[迁移指南](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin)。
 
 <CodeGroup>
   ```javascript JavaScript theme={null}
@@ -70,7 +68,7 @@ Exa 是 [OpenRouter](https://openrouter.ai) 网页搜索背后的搜索引擎。
   ```
 </CodeGroup>
 
-在默认的 `engine: "auto"` 下，若模型自带原生搜索，OpenRouter 就使用该提供方的原生搜索，其余情况一律使用 Exa。设置 `engine: "exa"` 可让所有模型保持统一的搜索行为：
+在默认的 `engine: "auto"` 下，若模型自带原生搜索，OpenRouter 会使用该提供方的原生搜索，其余情况一律使用 Exa。设置 `engine: "exa"` 可让所有模型保持一致的搜索行为：
 
 ```json theme={null}
 {
@@ -88,34 +86,28 @@ Exa 是 [OpenRouter](https://openrouter.ai) 网页搜索背后的搜索引擎。
 
 | 参数                                   | 用途                                                                                                                          |
 | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `mode`                               | 在延迟与深度之间权衡：`instant`、`fast`、`auto` (默认) 、`deep-lite`、`deep` 或 `deep-reasoning`。这些模式对应 Exa 的[搜索类型](/zh/docs/search/quickstart)。 |
-| `max_results`                        | 限制每次 search 调用返回的结果数 (默认 5)                                                                                                 |
-| `max_uses`                           | 限制模型在单次请求中调用 search 的次数                                                                                                     |
-| `max_total_results`                  | 限制单次请求中所有 search 返回结果的总数                                                                                                    |
-| `max_characters`                     | 为 highlights 设定每条结果的精确字符预算                                                                                                  |
+| `mode`                               | 在延迟与深度之间取舍：`instant`、`fast`、`auto` (默认) 、`deep-lite`、`deep` 或 `deep-reasoning`。这些模式对应 Exa 的[搜索类型](/zh/docs/search/quickstart)。 |
+| `max_results`                        | 限制每次 search 调用返回的 result 数量 (默认 5)                                                                                          |
+| `max_uses`                           | 限制模型在单次请求中可 search 的次数                                                                                                      |
+| `max_total_results`                  | 限制单次请求中所有 search 累计返回的 result 数量                                                                                            |
+| `max_characters`                     | 为 highlights 设置每个 result 的精确字符预算                                                                                            |
 | `search_context_size`                | 改用预设预算：`low`、`medium` 或 `high`                                                                                              |
-| `allowed_domains`、`excluded_domains` | 过滤结果域名。Exa 支持在同一请求中同时使用这两个过滤条件。                                                                                             |
+| `allowed_domains`、`excluded_domains` | 过滤 result 的域名。Exa 支持在同一请求中同时使用这两个过滤条件。                                                                                      |
 
-<div id="how-results-come-back">
-  ## 结果如何返回
-</div>
+## 结果如何返回 {#how-results-come-back}
 
-OpenRouter 为每条结果请求的是 [Exa highlights](/zh/docs/search/highlights)，而非整页文本：即长度自适应的抽取式摘录，除非你设置了 `max_characters` 或 `search_context_size`，否则每条结果通常为 2,000 至 4,000 个字符。模型读取这些摘录，API 调用方则通过响应消息中标准化的 `url_citation` 注解获取它们。在同一条结果内，`[...]` 标记用于分隔取自页面不同部分的摘录。
+OpenRouter 为每个结果请求的是 [Exa highlights](/zh/docs/search/highlights)，而非整页文本：这些摘录式片段的长度会自适应调整，通常每个结果 2,000 到 4,000 个字符，除非你设置了 `max_characters` 或 `search_context_size`。模型会读取这些摘录，而 API 调用方则通过响应消息中标准化的 `url_citation` 注释获取它们。在同一个结果内，`[...]` 标记用于分隔取自页面不同位置的摘录。
 
-<div id="pricing">
-  ## 价格
-</div>
+## 定价 {#pricing}
 
-Exa 搜索会从你的 OpenRouter 额度中扣费，此外还需支付模型读取结果所消耗的 token 费用。`instant`、`fast` 和 `auto` 模式每次搜索 $0.007，`deep-lite` 和 `deep` 为 $0.012，`deep-reasoning` 为 $0.015。每次搜索最多包含 10 条结果，超出部分每条 $0.001。最新费率请参见 [OpenRouter 的网页搜索文档](https://openrouter.ai/docs/guides/features/server-tools/web-search)。
+Exa search 从你的 OpenRouter credits 中扣费，此外还会按模型读取结果所消耗的 token 计费。`instant`、`fast` 和 `auto` 模式每次 search 费用为 $0.007，`deep-lite` 和 `deep` 为 $0.012，`deep-reasoning` 为 $0.015。每次 search 最多包含 10 条结果，超出部分每条 $0.001。最新费率请参见 [OpenRouter 的网页搜索文档](https://openrouter.ai/docs/guides/features/server-tools/web-search)。
 
-响应中的 `usage` 对象会通过 `server_tool_use.web_search_requests` 报告模型执行了多少次搜索。
+响应中的 `usage` 对象会通过 `server_tool_use.web_search_requests` 字段报告模型执行了多少次 search。
 
-<div id="resources">
-  ## 资源
-</div>
+## 资源 {#resources}
 
 <Columns cols={2}>
-  <Card title="服务端工具文档" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="查看文档" arrow="true">
+  <Card title="Server tool 文档" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="打开文档" arrow="true">
     `openrouter:web_search` 的完整配置参考。
   </Card>
 

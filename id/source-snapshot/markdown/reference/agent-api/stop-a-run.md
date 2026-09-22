@@ -1,17 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="stop-a-run">
-  # Menghentikan run
-</div>
+# Menghentikan run {#stop-a-run}
 
-> Hentikan run Agent yang sedang berjalan secara halus dan simpan hasil yang sudah terkumpul.
+> Hentikan run Agent yang sedang berjalan secara mulus dan pertahankan hasil yang sudah terkumpul.
 
-Jika run masih aktif, agent akan merampungkan pekerjaannya dan menyelesaikan run lebih awal dengan hasil yang sudah terkumpul. Run berakhir dengan status `completed` dan `stopReason: stopped`. Anda ditagih atas usage yang terakumulasi sebelum penghentian. Jika run sudah mencapai status terminal (completed, failed, atau cancelled), endpoint akan mengembalikan run yang ada tanpa perubahan.
+Jika run masih aktif, agent akan merampungkan pekerjaannya dan menyelesaikan run lebih awal dengan hasil yang sudah terkumpul. Run berakhir dengan status `completed` dan `stopReason: stopped`. Anda ditagih atas penggunaan yang terakumulasi sebelum penghentian. Jika run sudah mencapai status terminal (completed, failed, atau cancelled), endpoint akan mengembalikan run yang ada tanpa perubahan.
 
 Untuk menghentikan run seketika tanpa mengembalikan hasil apa pun, gunakan [cancel](/id/docs/reference/agent-api/cancel-a-run).
 
@@ -24,9 +20,7 @@ Untuk menghentikan run seketika tanpa mengembalikan hasil apa pun, gunakan [canc
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0

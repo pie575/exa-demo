@@ -1,15 +1,13 @@
 ---
 title: "Gumloop"
 sidebarTitle: "Gumloop"
-description: "Gunakan Exa search dan contents di dalam alur Gumloop."
+description: "Gunakan Exa search dan contents di dalam flow Gumloop."
 icon: "/docs/images/sidebar-icons/gumloop.svg"
 ---
 
-[Gumloop](https://www.gumloop.com/) menyertakan Exa sebagai integrasi MCP bawaan. Tambahkan Exa ke agent atau Agent Node untuk menelusuri web, mengekstrak halaman, menemukan sumber terkait, dan menghasilkan jawaban yang disertai sitasi di dalam workflow.
+[Gumloop](https://www.gumloop.com/) menyertakan Exa sebagai integrasi MCP bawaan. Tambahkan Exa ke agent atau Agent Node untuk mencari di web, mengekstrak halaman, menemukan sources terkait, dan menghasilkan jawaban yang didukung sitasi di dalam workflow.
 
-<div id="add-exa-to-a-gumloop-agent">
-  ## Menambahkan Exa ke agent Gumloop
-</div>
+## Menambahkan Exa ke agent Gumloop {#add-exa-to-a-gumloop-agent}
 
 <Steps>
   <Step title="Buka agent">
@@ -20,8 +18,8 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
     Cari **Exa**, pilih integrasinya, lalu selesaikan alur autentikasi.
   </Step>
 
-  <Step title="Pilih tools">
-    Buka integrasi Exa yang sudah terhubung dan aktifkan hanya tools yang dibutuhkan agent. Dengan begitu, pemilihan tool menjadi lebih jelas dan agent tidak memanggil aksi yang tidak relevan.
+  <Step title="Pilih tool">
+    Buka integrasi Exa yang sudah terhubung dan aktifkan hanya tool yang diperlukan agent. Dengan begitu, pemilihan tool menjadi lebih jelas dan agent tidak memanggil aksi yang tidak relevan.
   </Step>
 
   <Step title="Uji koneksi">
@@ -31,58 +29,48 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
     Find five recent articles about AI regulation and summarize the key changes with source links.
     ```
 
-    Tinjau run tersebut untuk memastikan agent benar-benar memanggil Exa dan mengembalikan sumber beserta kutipannya.
+    Tinjau run tersebut untuk memastikan agent memanggil Exa dan mengembalikan sources yang dikutip.
   </Step>
 </Steps>
 
-<div id="available-tools">
-  ## Tool yang tersedia
-</div>
+## Tool yang tersedia {#available-tools}
 
-| Tool                     | Digunakan untuk                                                                  |
-| ------------------------ | -------------------------------------------------------------------------------- |
-| **Search**               | Menemukan halaman yang relevan dengan pencarian neural atau kata kunci.          |
-| **Get Contents**         | Mengekstrak teks lengkap, ringkasan, dan metadata dari URL yang sudah diketahui. |
-| **Find Similar**         | Menemukan halaman yang terkait dengan suatu source URL.                          |
-| **Answer**               | Menghasilkan grounded answer lengkap dengan citations.                           |
-| **Create Research Task** | Memulai riset yang berjalan lebih lama.                                          |
-| **Get Research Task**    | Mengambil status dan hasil suatu research task.                                  |
+| Tool                     | Digunakan untuk                                                                |
+| ------------------------ | ------------------------------------------------------------------------------ |
+| **Search**               | Menemukan halaman relevan dengan pencarian neural atau kata kunci.             |
+| **Get Contents**         | Mengekstrak teks penuh, ringkasan, dan metadata dari URL yang sudah diketahui. |
+| **Find Similar**         | Menemukan halaman yang terkait dengan suatu source URL.                        |
+| **Answer**               | Menghasilkan jawaban grounded beserta sitasi.                                  |
+| **Create Research Task** | Memulai Research yang berjalan lebih lama.                                     |
+| **Get Research Task**    | Mengambil status dan hasil dari suatu research task.                           |
 
 Untuk agent percakapan, aktifkan Search, Get Contents, dan Answer terlebih dahulu. Tambahkan tool lainnya hanya jika workflow memang membutuhkannya.
 
-<div id="use-exa-in-a-workflow">
-  ## Menggunakan Exa dalam workflow
-</div>
+## Menggunakan Exa dalam workflow {#use-exa-in-a-workflow}
 
-<div id="agent-node">
-  ### Agent Node
-</div>
+### Agent Node {#agent-node}
 
-Tambahkan **Agent Node** ke alur Gumloop yang deterministik dan attach Exa sebagai salah satu tool-nya. Node ini dapat menentukan apakah perlu melakukan search, mengambil halaman secara lengkap, atau merangkai beberapa call Exa sebelum meneruskan output-nya ke langkah workflow berikutnya.
+Tambahkan **Agent Node** ke flow Gumloop yang deterministik dan attach Exa sebagai salah satu tool-nya. Node ini dapat menentukan apakah perlu melakukan search, mengambil halaman secara utuh, atau merangkai beberapa panggilan Exa sebelum meneruskan output-nya ke langkah workflow berikutnya.
 
 Ini cocok untuk:
 
 * meng-enrich baris CRM atau spreadsheet dengan evidence web terkini
-* memantau berita dan mengirimkan summary beserta sumbernya ke Slack atau email
-* meneliti perusahaan sebelum mengarahkan data ke workflow penjualan
-* membandingkan produk dan menuliskan hasilnya ke sebuah dokumen
+* memantau berita dan mengirimkan ringkasan bersumber ke Slack atau email
+* melakukan research terhadap perusahaan sebelum mengarahkan catatan ke workflow penjualan
+* membandingkan produk dan menulis hasilnya ke sebuah dokumen
 
-<div id="reusable-custom-mcp-node">
-  ### custom MCP node yang dapat dipakai ulang
-</div>
+### Custom MCP node yang dapat dipakai ulang {#reusable-custom-mcp-node}
 
-Untuk satu aksi yang berulang, buatlah node khusus:
+Untuk satu tindakan yang berulang, buat node khusus:
 
 1. Buka pustaka node dan cari Exa.
 2. Pilih **Create a node with AI**.
-3. Deskripsikan satu aksi, misalnya `Search for funding announcements from the past seven days`.
+3. Jelaskan satu tindakan, misalnya `Search for funding announcements from the past seven days`.
 4. Uji node yang dihasilkan, periksa input dan output-nya, lalu simpan.
 
-Gunakan Agent Node jika tugas memerlukan perencanaan dinamis atau beberapa tool sekaligus. Gunakan custom MCP node jika operasi Exa yang sama perlu dijalankan secara konsisten pada setiap item.
+Gunakan Agent Node jika tugas memerlukan perencanaan dinamis atau beberapa tool. Gunakan custom MCP node jika operasi Exa yang sama harus dijalankan secara konsisten pada setiap item.
 
-<div id="prompt-patterns">
-  ## Pola prompt
-</div>
+## Pola prompt {#prompt-patterns}
 
 <AccordionGroup>
   <Accordion title="Cari dan ringkas">
@@ -92,52 +80,48 @@ Gunakan Agent Node jika tugas memerlukan perencanaan dinamis atau beberapa tool 
     ```
   </Accordion>
 
-  <Accordion title="Perkaya data perusahaan">
+  <Accordion title="Enrich sebuah perusahaan">
     ```text theme={null}
-    Berdasarkan nama dan domain perusahaan ini, temukan deskripsi produknya,
-    pengumuman pendanaan terbarunya, dan dua sumber berita terkini.
+    Berdasarkan nama perusahaan dan domain ini, temukan deskripsi produknya,
+    pengumuman pendanaan terbaru, dan dua sources berita terkini.
     ```
   </Accordion>
 
   <Accordion title="Baca halaman yang sudah diketahui">
     ```text theme={null}
-    Ambil contents lengkap dari URL ini dan ekstrak tingkatan harganya dalam bentuk JSON.
+    Ambil contents lengkap dari URL ini dan ekstrak tingkatan harga dalam format JSON.
     ```
   </Accordion>
 </AccordionGroup>
 
-<div id="troubleshooting">
-  ## Pemecahan Masalah
-</div>
+## Pemecahan Masalah {#troubleshooting}
 
 <AccordionGroup>
-  <Accordion title="Exa tidak tersedia untuk agent">
-    Buka kembali MCP tools milik agent, pastikan Exa sudah terhubung, lalu aktifkan tool yang diperlukan. Integrasi yang sudah terhubung tetap bisa memiliki tool tertentu dalam keadaan nonaktif.
+  <Accordion title="Exa tidak tersedia bagi agent">
+    Buka kembali tool MCP milik agent, pastikan Exa sudah terhubung, lalu aktifkan tool yang diperlukan. Integrasi yang sudah terhubung tetap bisa memiliki tool tertentu dalam keadaan nonaktif.
   </Accordion>
 
-  <Accordion title="Agent memilih tindakan yang salah">
-    Nyatakan secara eksplisit dalam permintaan apakah agent harus melakukan search, membaca URL yang sudah diketahui, mencari halaman serupa, atau menjawab berdasarkan sumber. Nonaktifkan Exa tools yang tidak diperlukan agent untuk workflow tersebut.
+  <Accordion title="Agent memilih aksi yang salah">
+    Nyatakan secara eksplisit dalam permintaan apakah agent harus melakukan search, membaca URL yang sudah diketahui, mencari halaman serupa, atau menjawab dari sources. Nonaktifkan Exa tools yang tidak dibutuhkan agent untuk workflow tersebut.
   </Accordion>
 
-  <Accordion title="Workflow membutuhkan satu call tunggal yang dapat diprediksi">
-    Ganti langkah agent serbaguna tersebut dengan custom MCP node Exa yang input dan tugasnya sudah ditetapkan.
+  <Accordion title="Workflow membutuhkan satu panggilan tunggal yang dapat diprediksi">
+    Ganti langkah agent serbaguna dengan MCP node Exa kustom yang input dan tugasnya sudah ditetapkan.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Sumber Daya
-</div>
+## Sumber Daya {#resources}
 
 <Columns cols={3}>
-  <Card title="Integrasi Exa Gumloop" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Baca panduan" arrow="true">
-    Tinjau tools Gumloop yang tersedia saat ini dan workflow Agent Node.
+  <Card title="Integrasi Gumloop Exa" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Baca panduan" arrow="true">
+    Tinjau tool Gumloop yang tersedia saat ini dan workflow Agent Node.
   </Card>
 
-  <Card title="MCP server Exa" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Baca panduan" arrow="true">
-    Pahami tools Exa yang tersedia melalui MCP.
+  <Card title="Exa MCP server" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Baca panduan" arrow="true">
+    Pahami Exa tools yang diekspos melalui MCP.
   </Card>
 
   <Card title="Exa Search" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
-    Pelajari cara menyusun kueri search dan contents yang dikembalikan.
+    Pelajari cara menyusun query search dan contents yang dikembalikan.
   </Card>
 </Columns>

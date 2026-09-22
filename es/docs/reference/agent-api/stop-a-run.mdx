@@ -1,20 +1,20 @@
 ---
-title: "Detener una ejecución"
-description: "Detén de forma controlada una ejecución de Agent en curso y
-  conserva los resultados obtenidos hasta el momento."
+title: "Detener un run"
+description: "Detén de forma controlada un Agent run en ejecución y conserva los
+  resultados obtenidos hasta ese momento."
 openapi: "/es/docs/exa-spec.yaml POST /agent/runs/{id}/stop"
 timestamp: false
 ---
 
-Si la ejecución sigue activa, el agente cierra su trabajo y la completa de forma anticipada con los resultados obtenidos hasta ese momento. La ejecución termina con estado `completed` y `stopReason: stopped`. Se te cobra el uso acumulado antes de la detención. Si la ejecución ya alcanzó un estado terminal (completed, failed o cancelled), el endpoint devuelve la ejecución existente sin cambios.
+Si el run sigue activo, el agente cierra el trabajo y finaliza el run anticipadamente con los resultados obtenidos hasta ese momento. El run termina con estado `completed` y `stopReason: stopped`. Se te factura el uso acumulado antes de la detención. Si el run ya alcanzó un estado terminal (completed, failed o cancelled), el endpoint devuelve el run existente sin cambios.
 
-Para terminar una ejecución de inmediato sin devolver ningún resultado, usa [cancel](/es/docs/reference/agent-api/cancel-a-run) en su lugar.
+Para terminar un run de inmediato sin devolver ningún resultado, usa [cancel](/es/docs/reference/agent-api/cancel-a-run) en su lugar.
 
 <Note>
-  Solo se admite en ejecuciones con esfuerzo `max`. Debes enviar `Exa-Beta: agent-max-effort-2026-07-27`
+  Solo se admite en runs con effort `max`. Se debe enviar `Exa-Beta: agent-max-effort-2026-07-27`
   como encabezado de la solicitud. El encabezado acepta una lista de tokens beta separados por comas.
 </Note>
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>

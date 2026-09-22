@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="research-publications">
-  # Publikasi Riset
-</div>
+# Publikasi Research {#research-publications}
 
-> Temukan makalah akademik, paten, hibah penelitian, uji klinis, dan persetujuan regulator dengan Exa Search.
+> Temukan paper akademik, paten, hibah, uji klinis, dan persetujuan regulasi dengan Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,71 +33,55 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk mencari publikasi riset dan catatan terkait, termasuk judul, abstrak, penulis, tempat publikasi, sitasi, halaman penerbit, preprint, dan halaman repository.
+Gunakan Exa Search untuk publikasi research dan catatan terkait, termasuk judul, abstrak, penulis, tempat publikasi, sitasi, halaman penerbit, pracetak, dan halaman repositori.
 
 <Tip>
   Baca [SOTA Search Over Academic Publications](https://exa.ai/blog/publications-search)
   untuk mempelajari lebih lanjut tentang kualitas pencarian publikasi.
 </Tip>
 
-<div id="included">
-  ## Termasuk
-</div>
+## Termasuk {#included}
 
-* Papers dan preprint, termasuk potongan teks lengkap jika tersedia teks lengkap hasil penguraian
-* Paten, beserta abstrak, klaim, inventor, dan pemegang hak
+* Paper dan pracetak, termasuk potongan teks penuh bila tersedia teks penuh hasil penguraian
+* Paten, beserta abstrak, klaim, penemu, dan pemegang hak
 * Hibah dan pengumuman pendanaan
 * Uji klinis, label obat, dan data interaksi
 * Persetujuan regulasi dan kesehatan
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Tinjauan pustaka dan penelusuran sitasi
-* Penelusuran prior art dan pemetaan lanskap paten
-* Riset klinis dan farmasi
-* Pencarian peluang hibah dan pendanaan
+* Tinjauan literatur dan penemuan sitasi
+* Pemetaan prior art dan lanskap paten
+* Research klinis dan farmasi
+* Penemuan hibah dan peluang pendanaan
 
-<div id="example-queries">
-  ## Contoh kueri
-</div>
+## Contoh kueri {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### Menemukan papers tentang suatu topik
-</div>
+### Mencari paper tentang suatu topik {#find-papers-on-a-topic}
 
-Jelaskan metode atau temuannya, jangan menebak-nebak kata kunci pada judul. Kategori `publication` membatasi hasil hanya pada papers.
+Deskripsikan metode atau temuannya, jangan menebak-nebak kata kunci pada judul. Kategori `publication` membatasi hasil hanya pada paper.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### Cari evidence klinis
-</div>
+### Cari evidence klinis {#search-clinical-evidence}
 
-Sebutkan fase, intervensi, dan populasinya agar registrations uji klinis dan halaman hasilnya muncul di peringkat lebih atas dibandingkan liputan umum.
+Sebutkan fase, intervensi, dan populasinya agar registrasi uji klinis dan halaman hasil berperingkat lebih tinggi daripada liputan umum.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### Melacak persetujuan regulator
-</div>
+### Melacak persetujuan regulasi {#track-regulatory-approvals}
 
 Sebutkan regulator serta kelas perangkat atau obat yang sedang Anda pantau.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### Jalankan pencarian prior art
-</div>
+### Jalankan pencarian prior art {#run-a-prior-art-search}
 
-Deskripsikan invensi secara fungsional, sebagaimana sebuah klaim dirumuskan, alih-alih menggunakan nama produk.
+Jelaskan invensi secara fungsional, seperti cara sebuah klaim ditulis, alih-alih menggunakan nama produk.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## Buat permintaan
-</div>
+## Membuat permintaan {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,12 +125,10 @@ Deskripsikan invensi secara fungsional, sebagaimana sebuah klaim dirumuskan, ali
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Mendapatkan data terstruktur dengan Exa Agent
-</div>
+## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang membutuhkan riset lintas banyak sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan publikasi, criteria inklusi, dan field output yang Anda perlukan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema lengkap dengan citations.
+Untuk data terstruktur yang membutuhkan research lintas berbagai sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan publikasi, kriteria inklusi, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
-  Bangun peta literatur, saring papers berdasarkan criteria inklusi, atau kumpulkan field dari beberapa publikasi ke dalam satu tabel.
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Susun peta literatur, saring paper berdasarkan kriteria inklusi, atau kumpulkan fields dari beberapa publikasi ke dalam satu tabel.
 </Card>

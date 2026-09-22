@@ -1,15 +1,13 @@
 ---
-title: "组合使用多个提供方"
-description: "在单次 Exa Agent 运行中同时使用多个数据合作方。"
+title: "组合使用提供方"
+description: "在单次 Exa Agent 运行中同时使用多个数据合作伙伴。"
 ---
 
-将某个合作方添加到 `dataSources` 后，它会作为一个工具提供给 Exa Agent——但这并**不会**强制 Agent 调用它。合作方是否会被调用，取决于你的 `query` 和 `outputSchema`：只要明确说明你希望从每个合作方获得哪类结果，Exa Agent 就会选用对应的工具，而不是靠网页内容去猜。每次运行最多可添加五个合作方；Exa Agent 会为每一步决定调用哪一个，同时还可搭配使用 Exa 网页搜索。单次运行需要超过五个？请[联系我们](mailto:sales@exa.ai)以提高上限。
+将某个合作伙伴附加到 `dataSources` 后，它会作为一个工具提供给 Exa Agent，但这**并不会**强制 agent 去调用它。合作伙伴是否会被调用，取决于你的 `query` 和 `outputSchema`：只要说明你希望从每个合作伙伴获得哪类结果，Exa Agent 就会选用对应的工具，而不是从网页中去猜。每次运行最多可接入五个合作伙伴；Exa Agent 会自行决定每一步调用哪一个，同时还可搭配使用 Exa 网页搜索。单次运行需要超过五个？请[联系我们](mailto:sales@exa.ai)提高上限。
 
-<div id="two-partners-in-one-run">
-  ## 在一次运行中使用两个合作方
-</div>
+## 在一次运行中使用两个合作伙伴 {#two-partners-in-one-run}
 
-同时列出多个合作方，Exa Agent 会各取所长地调用它们。这里的两个只是示例——你最多可以在 `dataSources` 中挂载五个合作方，原理相同：明确请求每一方的数据。这次投资简报运行将 [Financial Datasets](/zh/docs/agent/connect/financialdatasets) (获取个股新闻) 与 [Particle](/zh/docs/agent/connect/particle) (获取播客评论) 结合起来。query 分别请求各合作方的特色数据，schema 将输出拆分为 `financialNews` 和 `podcastChatter`，因此 Exa Agent 会在同一次运行中同时调用**两个**合作方。
+同时列出多个合作伙伴，Exa Agent 会在各自最擅长的领域调用它们。这里用两个只是举例，你最多可以向 `dataSources` 附加五个合作伙伴，原理相同：明确要求获取每一方的数据。下面这个投资者简报运行结合了 [Financial Datasets](/zh/docs/agent/connect/financialdatasets) (用于股票代码相关新闻) 与 [Particle](/zh/docs/agent/connect/particle) (用于播客评论) 。query 明确要求获取每个合作伙伴的特色数据，schema 将输出拆分为 `financialNews` 和 `podcastChatter`，因此 Exa Agent 会在同一次运行中同时调用**两个**合作伙伴。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -166,5 +164,5 @@ description: "在单次 Exa Agent 运行中同时使用多个数据合作方。"
 </CodeGroup>
 
 <Tip>
-  在 *query* 中明确说明每个合作方的数据——指明你希望从每一方获得哪类结果 (此处为：股票代码相关的财经新闻，以及标注了发言人的播客引述) 。如果请求过于笼统 (例如“最新新闻”) ，Exa Agent 往往会退回到网页搜索，而不去调用合作方。在 `outputSchema` 字段中同样体现这些各自不同的诉求，可以进一步强化这一效果。
+  在 *query* 中明确说明每个合作伙伴的数据需求：指明你希望从每一方获得哪类 result (此处为：股票代码相关的财经新闻，以及标注发言人的播客 quote) 。如果 request 过于笼统 (比如“最新新闻”) ，Exa Agent 往往会退回到网页搜索，而不是调用合作伙伴。在 `outputSchema` 的 fields 中同样体现这些不同的诉求，可以进一步强化效果。
 </Tip>

@@ -1,34 +1,25 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="monitors-api">
-  # API de Monitors
-</div>
+# Monitors API {#monitors-api}
 
-> Ejecuta búsquedas recurrentes y recibe los nuevos resultados encontrados mediante webhook.
+> Ejecuta búsquedas recurrentes y recibe los nuevos resultados descubiertos mediante un webhook.
 
-Los monitors ejecutan búsquedas de Exa con una periodicidad programada y envían los resultados a un endpoint de webhook.
+Los monitors ejecutan búsquedas de Exa de forma recurrente según una programación y entregan los resultados a un endpoint de webhook.
 
-Usa Monitors para hacer seguimiento de noticias, anuncios de la competencia, rondas de financiación, cambios regulatorios, publicaciones
-de investigación o cualquier otro tema que evolucione con el tiempo.
+Usa Monitors para hacer seguimiento de noticias, anuncios de competidores, rondas de financiación, cambios regulatorios, publicaciones de investigación o cualquier otro tema que cambie con el tiempo.
 
-<div id="how-monitors-work">
-  ## Cómo funcionan los monitors
-</div>
+## Cómo funcionan los Monitors {#how-monitors-work}
 
-En cada ejecución, Exa realiza el search configurado, filtra por fecha, descarta los resultados o hallazgos que el
-monitor ya devolvió y envía la nueva salida a tu webhook.
+En cada run, Exa ejecuta la búsqueda configurada, filtra por fecha, descarta los resultados o hallazgos que el
+monitor ya devolvió y envía el nuevo output a tu webhook.
 
-Cada monitor mantiene su propio historial de ejecuciones, así que formula la consulta en torno a la señal continua que quieres
+Cada monitor mantiene su propio historial de runs, así que formula la consulta en torno a la señal continua que quieres
 seguir, en lugar de añadir tú mismo un rango de fechas móvil.
 
-<div id="create-your-first-monitor">
-  ## Crea tu primer monitor
-</div>
+## Crea tu primer monitor {#create-your-first-monitor}
 
 Crea un monitor con una consulta de búsqueda, un intervalo y el endpoint HTTPS que recibirá
 las actualizaciones:
@@ -131,22 +122,20 @@ las actualizaciones:
 </Accordion>
 
 Guarda el `webhookSecret` al crear el monitor. Solo se devuelve una vez y es necesario para
-verificar las firmas de los webhooks.
+verificar las firmas de los webhook.
 
-<div id="configure-the-output">
-  ## Configura la salida
-</div>
+## Configura el output {#configure-the-output}
 
-Cada ejecución completada devuelve las páginas recién descubiertas en `output.results`.
+Cada run completado devuelve las páginas recién descubiertas en `output.results`.
 
 Exa también sintetiza los hallazgos de cada página en `output.content`:
 
-| Formato de salida | Cómo usarlo                    | Valor devuelto                                       |
+| Forma del output  | Cómo usarla                    | Valor devuelto                                       |
 | ----------------- | ------------------------------ | ---------------------------------------------------- |
-| Resumen de texto  | Predeterminado                 | Una cadena en `output.content`                       |
+| Resumen de texto  | Por defecto                    | Una cadena en `output.content`                       |
 | JSON estructurado | Añade un objeto `outputSchema` | JSON que coincide con el esquema en `output.content` |
 
-Las fuentes de los campos sintetizados se devuelven automáticamente en `output.grounding`.
+Los orígenes de los campos sintetizados se devuelven automáticamente en `output.grounding`.
 
 Añade `outputSchema` cuando el código posterior necesite campos
 consistentes:
@@ -174,15 +163,13 @@ consistentes:
 }
 ```
 
-No incluyas las citas ni la confianza en el esquema. Se devuelven por separado en
+Mantén las citas y la confianza fuera del esquema. Se devuelven por separado en
 `output.grounding`.
 
-<div id="add-page-content">
-  ## Añadir contenido de la página
-</div>
+## Añadir contenido de página {#add-page-content}
 
 `search` acepta las mismas opciones que [Exa Search](/es/docs/search/quickstart): usa `contents` para incluir
-highlights, texto completo o resúmenes en cada resultado, e `includeDomains` o `excludeDomains` para
+highlights, texto completo o resúmenes en cada resultado, y `includeDomains` o `excludeDomains` para
 limitar las fuentes.
 
 <CodeGroup>
@@ -253,11 +240,9 @@ limitar las fuentes.
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## Prueba tu monitor
-</div>
+## Prueba tu monitor {#test-your-monitor}
 
-Activa una ejecución de inmediato en lugar de esperar a la siguiente hora programada y luego lista sus ejecuciones:
+Lanza un run de inmediato en lugar de esperar a la próxima ejecución programada y luego lista sus runs:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -285,48 +270,39 @@ Activa una ejecución de inmediato en lugar de esperar a la siguiente hora progr
   ```
 </CodeGroup>
 
-Los estados de una ejecución son:
+Los estados de un run son:
 
-| Estado      | Significado                                                           |
-| ----------- | --------------------------------------------------------------------- |
-| `pending`   | La ejecución está en cola                                             |
-| `running`   | La ejecución está en curso                                            |
-| `completed` | La ejecución finalizó; recupérala por ID para leer su salida completa |
-| `failed`    | La ejecución falló; `failReason` indica el motivo                     |
-| `cancelled` | La ejecución se canceló                                               |
+| Estado      | Significado                                                  |
+| ----------- | ------------------------------------------------------------ |
+| `pending`   | El run está en cola                                          |
+| `running`   | El run se está ejecutando                                    |
+| `completed` | El run finalizó; obtenlo por ID para leer su output completo |
+| `failed`    | El run falló; `failReason` indica el motivo                  |
+| `cancelled` | El run se canceló                                            |
 
-`output` es null hasta que la ejecución se completa.
+`output` es null hasta que el run se completa.
 
-<div id="schedule-runs">
-  ## Programar ejecuciones
-</div>
+## Programar runs {#schedule-runs}
 
-El intervalo mínimo es de una hora. Usa una única duración como `1h`, `6h`, `1d` o `7d`. La
-programación se ancla a la hora de creación del monitor: un monitor diario creado a las 2:30 p. m. se ejecuta
-cada día alrededor de las 2:30 p. m., pero cada ejecución puede retrasarse hasta 30 minutos, así que no cuentes con una
-hora de entrega exacta.
+El intervalo mínimo es de una hora. Usa una única duración como `1h`, `6h`, `1d` o `7d`. La programación se ancla a la hora de creación del monitor — un monitor diario creado a las 2:30 PM se ejecuta cada día alrededor de las 2:30 PM — pero cada run puede retrasarse hasta 30 minutos, así que no dependas de una hora de entrega exacta.
 
-Omite `trigger` para crear un monitor exclusivamente manual. Pausar un monitor programado también detiene las ejecuciones
-automáticas, pero mantiene disponibles los disparos manuales.
+Omite `trigger` para crear un monitor de ejecución solo manual. Pausar un monitor programado también detiene los runs automáticos, pero conserva los disparos manuales.
 
 <Note>
-  Las ejecuciones de un monitor no se solapan. Si la siguiente ejecución programada comienza mientras la anterior
-  sigue en curso, Exa cancela la ejecución anterior.
+  Los runs de un monitor no se superponen. Si el siguiente run programado comienza mientras el anterior aún está en ejecución, Exa cancela el run anterior.
 </Note>
 
-<div id="receive-webhook-updates">
-  ## Recibir actualizaciones por webhook
-</div>
+## Recibir actualizaciones por webhook {#receive-webhook-updates}
 
-Suscríbete a `monitor.run.completed` cuando solo necesites las ejecuciones finalizadas. Si omites `events`, Exa
-envía además los eventos del ciclo de vida del monitor y los eventos de creación de ejecuciones.
+Suscríbete a `monitor.run.completed` cuando solo necesites los runs finalizados. Si omites `events`, Exa
+envía también eventos del ciclo de vida del monitor y eventos de creación de runs.
 
-El payload de ejecución completada incluye el estado y la salida de la ejecución. Los `metadata` opcionales del monitor se
-replican en las entregas del webhook, lo que te permite dirigir cada actualización al cliente,
+El payload del run completado incluye el estado y el output del run. Los `metadata` opcionales del monitor se
+reenvían en las entregas del webhook, lo que te permite dirigir cada actualización al cliente,
 espacio de trabajo, canal o trabajo interno correcto.
 
-<Accordion title="Payload del webhook de ejecución completada">
-  La salida y las marcas de tiempo aparecen abreviadas a continuación.
+<Accordion title="Payload de webhook de run completado">
+  El output y las marcas de tiempo aparecen abreviados a continuación.
 
   ```json theme={null}
   {
@@ -369,7 +345,7 @@ espacio de trabajo, canal o trabajo interno correcto.
 </Accordion>
 
 <Warning>
-  Tu webhook debe usar HTTPS y ser el destino final, ya que no se siguen las redirecciones.
+  Tu webhook debe usar HTTPS y ser el destino final, ya que no se siguen redirecciones.
   Verifica `Exa-Signature` antes de procesar el evento.
 </Warning>
 
@@ -413,24 +389,22 @@ Construye `<timestamp>.<raw-request-body>`, calcula su resumen HMAC-SHA256 con e
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
   <Card title="Crear un monitor" icon="bell" href="/es/docs/reference/monitors/create-a-monitor" cta="Abrir referencia" arrow="true">
-    Consulta todos los campos de search, programación, salida, metadatos y webhook.
+    Consulta todos los campos de búsqueda, schedule, output, metadatos y webhook.
   </Card>
 
-  <Card title="Ejecuciones de monitores" icon="clock" href="/es/docs/reference/monitors/runs/get-a-run" cta="Abrir referencia" arrow="true">
-    Revisa el estado, la salida, el grounding y el motivo del fallo de una ejecución.
+  <Card title="Runs de monitores" icon="clock" href="/es/docs/reference/monitors/runs/get-a-run" cta="Abrir referencia" arrow="true">
+    Inspecciona el estado, el output, el grounding y el motivo del fallo de un run.
   </Card>
 
-  <Card title="Guía de search" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
-    Configura consultas, filtros, highlights, texto completo y actualidad.
+  <Card title="Guía de búsqueda" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
+    Configura consultas, filtros, highlights, texto completo y frescura.
   </Card>
 
-  <Card title="Buenas prácticas de search" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer guía" arrow="true">
-    Mejora la calidad de la recuperación sin perder foco en la salida.
+  <Card title="Buenas prácticas de búsqueda" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer guía" arrow="true">
+    Mejora la calidad de la recuperación sin perder el foco en el output.
   </Card>
 </Columns>

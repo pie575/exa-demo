@@ -1,31 +1,26 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="jinko">
-  # Jinko
-</div>
+# Jinko {#jinko}
 
-> 실시간 가격 정보를 제공하는 항공편 및 호텔 검색.
+> 실시간 가격이 반영된 항공권 및 호텔 search.
 
-[Jinko](https://gojinko.com)는 실시간 가격 정보와 함께 항공편 및 호텔 검색을 제공하는 여행 검색 플랫폼입니다. 특정 노선과 날짜의 실시간 항공권 상품을 검색하고, 목적지나 특정 숙소의 호텔 객실과 요금을 살펴보며, 출발 공항에서 갈 수 있는 목적지를 탐색할 수 있습니다.
+[Jinko](https://gojinko.com)는 실시간 가격이 반영된 항공권 및 호텔 search를 제공하는
+여행 search 플랫폼입니다. 특정 노선과 날짜의 실시간 항공권 오퍼를 search하고, 목적지나 특정 숙소의
+호텔 객실과 객실 요금을 조회하며, 출발 공항에서 갈 수 있는 목적지를 둘러볼 수 있습니다.
 
-[Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에 `jinko`를 attach하면, agent가 Exa web search와 함께 Jinko에도 쿼리를 보냅니다.
+[Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에
+`jinko`를 attach하면, agent가 Exa web search와 함께 Jinko에도 질의합니다.
 
-<div id="use-it-for">
-  ## 활용 사례
-</div>
+## 활용 사례 {#use-it-for}
 
-* 특정 노선과 날짜의 항공 요금, 수하물 규정, 변경 규정이 포함된 실시간 항공권 검색
-* 목적지의 실시간 객실 요금이 포함된 호텔 찾기 또는 특정 호텔 재조회
-* 날짜 범위, 좌석 등급, 예산별 목적지 및 유연한 날짜 탐색
+* 특정 노선과 날짜의 운임, 수하물, 변경 규정이 포함된 실시간 항공권 오퍼 검색
+* 목적지의 실시간 객실 요금이 포함된 호텔 검색 또는 특정 호텔 재조회
+* 날짜 범위, 좌석 등급, 예산에 따른 목적지 및 유연한 날짜 탐색
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## 제공업체 ID {#provider-id}
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -33,11 +28,9 @@
 jinko
 ```
 
-<div id="example">
-  ## 예시
-</div>
+## 예시 {#example}
 
-3월에 뉴욕에서 왕복 $400 미만으로 다녀올 수 있는 해변 여행지를 찾아보세요.
+3월에 뉴욕에서 왕복 $400 미만으로 다녀올 수 있는 해변 여행지를 찾습니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -129,31 +122,27 @@ jinko
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 함께 사용하면 좋은 서비스
-</div>
+## 함께 사용하면 좋은 도구 {#pairs-well-with}
 
-* [Similarweb](/ko/docs/agent/connect/similarweb): 특정 여행지를 다루는 여행 사이트와 예약 플랫폼을 조사합니다.
-* [Particle](/ko/docs/agent/connect/particle): 특정 장소에 대한 최신 보도와 여행 관련 논평을 가져옵니다.
+* [Similarweb](/ko/docs/agent/connect/similarweb): 여행지를 뒷받침하는 여행 사이트와 예약 플랫폼을 리서치하세요.
+* [Particle](/ko/docs/agent/connect/particle): 특정 장소에 대한 최신 보도와 여행 관련 논평을 가져오세요.
 
-<div id="next-steps">
-  ## 다음 단계
-</div>
+## 다음 단계 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="실행에 연결하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">
-    Exa Connect Quickstart에서는 `dataSources`, 가격, 전체 partner 카탈로그를 다룹니다.
+  <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">
+    Exa Connect Quickstart에서 `dataSources`, 가격, 전체 파트너 카탈로그를 확인할 수 있습니다.
   </Card>
 
-  <Card title="여러 provider 조합하기" icon="blend" href="/ko/docs/agent/connect/combining-providers" cta="가이드 읽기" arrow="true">
-    하나의 실행에 최대 다섯 개의 partner를 연결하고, 각 partner가 모두 동작하도록 질의를 구성하세요.
+  <Card title="제공업체 조합하기" icon="blend" href="/ko/docs/agent/connect/combining-providers" cta="가이드 읽기" arrow="true">
+    하나의 실행에 최대 다섯 개의 파트너를 attach하고, 각 파트너가 호출되도록 질의를 구성하세요.
   </Card>
 
   <Card title="Exa Agent 익히기" icon="book-open" href="/ko/docs/agent/quickstart" cta="가이드 열기" arrow="true">
-    실행을 생성하고, 진행 상황을 스트리밍하고, 출력 schema를 설계하며, effort와 cost를 제어해 보세요.
+    실행을 생성하고, 진행 상황을 스트리밍하며, output schema를 설계하고, effort와 비용을 제어하세요.
   </Card>
 
-  <Card title="API key 발급받기" icon="key" href="https://dashboard.exa.ai/api-keys" cta="key 생성하기" arrow="true">
-    Dashboard에서 key를 생성한 뒤 이 페이지의 예제를 그대로 실행해 보세요. 신규 계정에는 무료 credits이 제공됩니다.
+  <Card title="API 키 발급받기" icon="key" href="https://dashboard.exa.ai/api-keys" cta="키 생성하기" arrow="true">
+    dashboard에서 키를 생성한 뒤 이 페이지의 예제를 그대로 실행해 보세요. 신규 계정에는 무료 credits이 제공됩니다.
   </Card>
 </Columns>

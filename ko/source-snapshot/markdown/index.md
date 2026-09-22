@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="start-building-with-exa">
-  # Exa로 개발 시작하기
-</div>
+# Exa로 개발 시작하기 {#start-building-with-exa}
 
-> agent를 위해 설계된 강력한 web search 도구입니다. 토큰 효율적이면서 정확한 결과를 얻을 수 있도록 모든 것이 최적화되어 있습니다.
+> agent를 위해 설계된 강력한 web search 도구. 토큰 효율적이고 정확한 결과를 얻을 수 있도록 모든 것이 최적화되어 있습니다.
 
 export const DocsImage = props => {
   const docsBase = () => {
@@ -32,39 +28,39 @@ export const ApiCards = ({only}) => {
   const base = docsBase();
   const cards = [{
     id: "search",
-    title: "Search",
-    body: "토큰 효율적인 페이지 콘텐츠를 포함한 실시간 근거 기반 데이터",
+    title: "search",
+    body: "토큰 효율적인 page contents를 제공하는 실시간 근거 기반 데이터",
     href: "/search/quickstart",
     image: "/images/home/api-search.webp",
-    alt: "순위가 매겨진 웹 결과와 해당 소스 도메인이 표시된 Exa 검색창"
+    alt: "순위가 매겨진 웹 결과와 해당 소스 도메인을 표시하는 Exa search 상자"
   }, {
     id: "agent",
     title: "Agent",
-    body: "심층 조사, 목록 구축 및 enrichment를 위한 비동기 에이전트",
+    body: "딥 리서치, 리스트 구축, enrichment를 위한 비동기 agent",
     href: "/agent/quickstart",
     image: "/images/home/api-agent.webp",
-    alt: "파트너십, 고객 사례 및 클라우드 사용량 정보로 enrich된 회사 스프레드시트"
+    alt: "파트너십, 고객 사례, 클라우드 사용량 정보로 보강된 회사 스프레드시트"
   }, {
     id: "search-deep",
     title: "Deep Search",
-    body: "여러 소스를 기반으로 추론하고 구조화된 출력을 반환하는 Search",
+    body: "여러 소스를 분석해 structured output을 반환하는 search",
     href: "/search/deep-search",
     image: "/images/home/api-search-deep.webp",
-    alt: "생명공학 기업에 관한 구조화된 JSON을 반환하는 Deep Search 질의"
+    alt: "바이오테크 기업에 대한 구조화된 JSON을 반환하는 deep search 질의"
   }, {
     id: "contents",
     title: "Contents",
-    body: "모든 URL의 전체 텍스트, 하이라이트 및 요약",
+    body: "모든 URL에서 추출한 전체 텍스트, highlights, summary",
     href: "/contents/quickstart",
     image: "/images/home/api-contents.webp",
-    alt: "Boeing의 Wikipedia 페이지에서 추출한 콘텐츠"
+    alt: "Boeing에 관한 Wikipedia에서 추출한 페이지 콘텐츠"
   }, {
     id: "monitors",
     title: "Monitors",
-    body: "웹을 모니터링하고 새 결과를 전송하는 예약 검색",
+    body: "일정에 따라 웹을 모니터링하고 새 결과를 푸시하는 search",
     href: "/monitors/quickstart",
     image: "/images/home/api-monitors.webp",
-    alt: "매일 실행되는 Anthropic Releases and News라는 이름의 monitor",
+    alt: "매일 실행되는 Anthropic Releases and News라는 Monitor",
     hidden: true
   }];
   const visible = only ? only.map(id => cards.find(card => card.id === id)).filter(Boolean) : cards.filter(card => !card.hidden);
@@ -88,8 +84,8 @@ export const ApiCards = ({only}) => {
     <DocsImage className="docs-home-quickstart-bg" src="/docs/images/home/quickstart-banner.webp" alt="" aria-hidden="true" />
 
     <div className="docs-home-quickstart-copy">
-      <span className="docs-home-quickstart-title">에이전트에 Exa 추가하기</span>
-      <p>1분이면 시작할 수 있습니다</p>
+      <span className="docs-home-quickstart-title">agent에 Exa 추가하기</span>
+      <p>1분 안에 시작할 수 있습니다</p>
     </div>
 
     <div className="docs-home-quickstart-actions">
@@ -162,11 +158,11 @@ export const ApiCards = ({only}) => {
       </div>
 
       <div className="docs-home-apis" role="tablist" aria-label="API">
-        <label htmlFor="docs-home-api-search">웹 검색하기</label>
-        <label htmlFor="docs-home-api-contents">페이지 콘텐츠 가져오기</label>
-        <label htmlFor="docs-home-api-deep">구조화된 출력 받기</label>
-        <label htmlFor="docs-home-api-tools">LLM에 웹 검색 기능 더하기</label>
-        <label htmlFor="docs-home-api-agent">조사 기반 목록 만들기</label>
+        <label htmlFor="docs-home-api-search">웹 search하기</label>
+        <label htmlFor="docs-home-api-contents">page contents 가져오기</label>
+        <label htmlFor="docs-home-api-deep">structured output 받기</label>
+        <label htmlFor="docs-home-api-tools">LLM에 web search 제공하기</label>
+        <label htmlFor="docs-home-api-agent">리서치 기반 목록 만들기</label>
         <label htmlFor="docs-home-api-agent-research">복잡한 주제 분석하기</label>
       </div>
 
@@ -345,7 +341,7 @@ export const ApiCards = ({only}) => {
 
         <div className="docs-home-code" data-pane="tools-curl">
           ```bash theme={null}
-          # 1. 모델에 Exa search 도구를 제공하고 질의를 직접 고르게 한다.
+          # 1. 모델에 Exa search 도구를 제공하고 질의는 모델이 직접 고르게 합니다.
           USER_MSG='{ "role": "user", "content": "What'\''s the latest on AI chips?" }'
           TOOLS='[{ "type": "function", "function": {
             "name": "web_search",
@@ -358,7 +354,7 @@ export const ApiCards = ({only}) => {
             -d "{ \"model\": \"gpt-5.6\", \"messages\": [$USER_MSG], \"tools\": $TOOLS }" \
             | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["choices"][0]["message"]))')"
 
-          # 2. 해당 도구 호출을 Exa에 대해 실행한다.
+          # 2. 도구 호출을 Exa에 대해 실행합니다.
           SEARCH_BODY="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           args = json.loads(json.load(sys.stdin)["tool_calls"][0]["function"]["arguments"])
@@ -368,7 +364,7 @@ export const ApiCards = ({only}) => {
             -H "Authorization: Bearer $EXA_API_KEY" \
             -d "$SEARCH_BODY")"
 
-          # 3. 최종 답변을 받기 위해 결과를 모델에 다시 넘긴다.
+          # 3. 최종 답변을 얻기 위해 결과를 모델에 다시 전달합니다.
           TOOL_MSG="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           assistant = json.load(sys.stdin)

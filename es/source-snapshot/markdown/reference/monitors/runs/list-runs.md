@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="list-runs">
-  # Listar ejecuciones
-</div>
+# Listar runs {#list-runs}
 
-> Lista todas las ejecuciones de un monitor con paginación basada en cursor. Las ejecuciones se devuelven en orden cronológico inverso.
+> Lista todos los runs de un monitor con paginación basada en cursor. Los runs se devuelven en orden cronológico inverso.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs
 openapi: 3.1.0
@@ -334,7 +328,7 @@ components:
             $ref: '#/components/schemas/JsonValue'
   responses:
     BadRequestResponse:
-      description: El cuerpo de la solicitud o los parámetros de consulta no superaron la validación.
+      description: El cuerpo de la solicitud o los parámetros de consulta no pasaron la validación.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -395,12 +389,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Envía tu Exa API key en el encabezado x-api-key. También puedes
-        autenticarte con Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes autenticarte
+        con Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Envía tu Exa API key en el encabezado x-api-key. También puedes
-        autenticarte con Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes autenticarte
+        con Authorization: Bearer <key>.
 ```

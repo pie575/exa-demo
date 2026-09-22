@@ -7,16 +7,14 @@ keywords: ["exa snapshot", "snapshotAsOf", "contenido histórico", "búsqueda ve
 
 Exa Snapshot conserva versiones almacenadas de las páginas que Exa ha rastreado. Envía `snapshotAsOf` para fijar la solicitud a una fecha y hora concretas.
 
-Úsalo para hacer backtesting de agentes, ejecutar evaluaciones reproducibles y comparar versiones anteriores de documentación, páginas de precios, políticas y presentaciones regulatorias.
+Úsalo para hacer backtest de agentes, ejecutar evaluaciones reproducibles y comparar versiones anteriores de documentación, páginas de precios, políticas e informes regulatorios.
 
 <Info>
-  Exa Snapshot está disponible con pago por uso a 10 QPS, con una ventana de índice móvil de 5 meses.
-  Tras 100 solicitudes, [habla con el equipo de ventas](https://exa.ai/contact/sales) para continuar.
+  Exa Snapshot está disponible en pago por uso a 10 QPS, con una ventana de índice móvil de 5 meses.
+  Después de 100 solicitudes, [habla con ventas](https://exa.ai/contact/sales) para continuar.
 </Info>
 
-<div id="search-at-a-datetime">
-  ## Búsqueda en una fecha y hora
-</div>
+## Búsqueda en una fecha y hora {#search-at-a-datetime}
 
 En `/search`, coloca `snapshotAsOf` dentro de `contents`.
 
@@ -72,7 +70,7 @@ En `/search`, coloca `snapshotAsOf` dentro de `contents`.
   ```
 </CodeGroup>
 
-Exa detecta las URL candidatas y luego conserva solo las páginas que tengan una versión almacenada en `snapshotAsOf` o antes de esa fecha.
+Exa detecta las URL candidatas y luego conserva únicamente las páginas que tengan una versión almacenada en `snapshotAsOf` o antes de esa fecha.
 
 <Accordion title="Ejemplo de respuesta">
   ```json theme={null}
@@ -105,11 +103,9 @@ Exa detecta las URL candidatas y luego conserva solo las páginas que tengan una
   ```
 </Accordion>
 
-<div id="pin-contents-to-a-datetime">
-  ## Fijar contents a una fecha y hora
-</div>
+## Fijar el contenido a una fecha y hora {#pin-contents-to-a-datetime}
 
-Añade `snapshotAsOf` en el nivel superior de una solicitud a `/contents`.
+Agrega `snapshotAsOf` en el nivel superior de una solicitud a `/contents`.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -154,7 +150,7 @@ Añade `snapshotAsOf` en el nivel superior de una solicitud a `/contents`.
   ```
 </CodeGroup>
 
-Exa devuelve la versión almacenada más reciente en esa fecha y hora o anterior.
+Exa devuelve la versión almacenada más reciente en esa fecha y hora o anterior a ella.
 
 <Accordion title="Ejemplo de respuesta">
   ```json theme={null}
@@ -182,45 +178,41 @@ Exa devuelve la versión almacenada más reciente en esa fecha y hora o anterior
 </Accordion>
 
 <Tip>
-  Los ID que no tengan ninguna versión válida se omiten de `results` y se reportan en `statuses` con
+  Los ID sin ninguna versión elegible se omiten de `results` y se informan en `statuses` con
   `"status": "error"` y `"tag": "CONTENT_NOT_CACHED"`.
 </Tip>
 
-<div id="how-snapshots-work">
-  ## Cómo funcionan las instantáneas
-</div>
+## Cómo funcionan las instantáneas {#how-snapshots-work}
 
-| Campo          | Dónde     | Significado                                                                                        |
-| -------------- | --------- | -------------------------------------------------------------------------------------------------- |
-| `snapshotAsOf` | Solicitud | Fecha y hora de corte. Exa devuelve la versión almacenada más reciente en ese instante o anterior. |
+| Campo          | Dónde     | Significado                                                                                           |
+| -------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `snapshotAsOf` | Solicitud | Fecha y hora límite. Exa devuelve la versión almacenada más reciente en ese instante o anterior a él. |
 
 Para ambos endpoints:
 
-* El contenido de página devuelto proviene de esa versión almacenada.
+* El contenido de la página devuelto proviene de esa versión almacenada.
 * El título, el autor, la fecha de publicación, el texto, los highlights y los resúmenes se generan únicamente a partir de esa versión.
-* Se omiten las páginas que no tengan una versión válida dentro de la ventana de 5 meses.
+* Se omiten las páginas que no tengan una versión elegible dentro de la ventana de 5 meses.
 
 <Note>
-  En Search, la fecha de corte limita el contenido, no el ranking. Exa sigue usando señales de recuperación
-  actuales para descubrir URLs candidatas. Usa los resultados como evidencia limitada por `snapshotAsOf`, y no como una
-  reconstrucción exacta del ranking que habría devuelto una search en ese momento.
+  En Search, el límite acota el contenido, no el ranking. Exa sigue usando señales de recuperación
+  actuales para descubrir URL candidatas. Usa los resultados como evidencia acotada por `snapshotAsOf`,
+  no como una reconstrucción exacta de lo que una búsqueda habría posicionado en ese momento.
 </Note>
 
-<div id="limits-and-compatibility">
-  ## Límites y compatibilidad
-</div>
+## Límites y compatibilidad {#limits-and-compatibility}
 
 <AccordionGroup>
   <Accordion title="Acceso, límite de tasa y ventana histórica">
-    El plan de pago por uso incluye 10 QPS y acceso a una ventana móvil de 5 meses del índice. Se rechaza cualquier `snapshotAsOf`
-    anterior a esa ventana. Después de 100 solicitudes, [habla con el equipo de ventas](https://exa.ai/contact/sales)
+    El pago por uso incluye 10 QPS y acceso al índice de los últimos 5 meses en ventana móvil. Un `snapshotAsOf` anterior
+    a esa ventana se rechaza. Después de 100 solicitudes, [habla con el equipo de ventas](https://exa.ai/contact/sales)
     para continuar.
   </Accordion>
 
   <Accordion title="Las solicitudes históricas usan contenido almacenado">
     No combines `snapshotAsOf` con opciones que puedan acceder a la web en vivo o extenderse a otras páginas.
     Omite por completo `livecrawl`, `livecrawlTimeout`, `maxAgeHours` y `subpages`; las solicitudes que incluyan
-    alguno de ellos junto con `snapshotAsOf` se rechazan con `INVALID_REQUEST`.
+    cualquiera de ellos junto con `snapshotAsOf` se rechazan con `INVALID_REQUEST`.
   </Accordion>
 
   <Accordion title="Solicitudes de Search compatibles">
@@ -231,12 +223,10 @@ Para ambos endpoints:
   </Accordion>
 </AccordionGroup>
 
-<div id="common-uses">
-  ## Usos habituales
-</div>
+## Usos habituales {#common-uses}
 
 Usa Exa Snapshot cuando la tarea dependa de lo que Exa tenía almacenado en una fecha y hora concretas:
 
-* Hacer backtesting de un agente sin exponerlo a actualizaciones posteriores de las páginas.
+* Hacer un backtest de un agente sin exponerlo a actualizaciones posteriores de las páginas.
 * Ejecutar una evaluación sobre un límite de contenido reproducible.
-* Comparar versiones anteriores de documentación, precios, políticas o presentaciones regulatorias.
+* Comparar versiones anteriores de documentación, precios, políticas o informes regulatorios.

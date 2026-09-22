@@ -15,19 +15,17 @@ LangChain est un framework permettant de créer des applications qui combinent d
 1. Configurez l&#39;intégration LangChain d&#39;Exa et utilisez Exa pour récupérer du contenu pertinent
 2. Reliez ce contenu à une chaîne d&#39;outils qui s&#39;appuie sur le LLM d&#39;OpenAI pour la génération
 
-<Info> Visionnez un tutoriel YouTube de l&#39;équipe LangChain présentant une configuration très similaire [ici](https://www.youtube.com/watch?v=dA1cHGACXCo). </Info>
+<Info> Regardez un tutoriel YouTube de l&#39;équipe LangChain présentant une configuration très similaire [ici](https://www.youtube.com/watch?v=dA1cHGACXCo). </Info>
 
 <Info> Consultez la référence complète de LangChain [ici](https://python.langchain.com/docs/integrations/providers/exa%5Fsearch/). </Info>
 
 ***
 
-<div id="get-started">
-  ## Démarrer
-</div>
+## Démarrer {#get-started}
 
 <Steps>
   <Step title="Prérequis et installation">
-    Installez les bibliothèques LangChain de base pour OpenAI et Exa
+    Installez les bibliothèques principales OpenAI et Exa LangChain
 
     ```Bash Bash theme={null}
     pip install langchain-openai langchain-exa
@@ -35,13 +33,13 @@ LangChain est un framework permettant de créer des applications qui combinent d
 
     <Note> Assurez-vous que les API keys sont correctement initialisées. Pour les bibliothèques LangChain, les noms des variables d&#39;environnement sont `OPENAI_API_KEY` et `EXA_API_KEY`, respectivement pour les clés OpenAI et Exa. </Note>
 
-    <Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+    <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
     </Card>
   </Step>
 
   <Step title="Utilisez Exa Search pour alimenter un outil LangChain">
-    Configurez un outil Retriever à l&#39;aide de `ExaSearchRetriever`. Il s&#39;agit d&#39;un retriever qui se connecte à Exa Search pour trouver des documents pertinents grâce à la recherche sémantique. Commencez par importer les bibliothèques nécessaires, puis instanciez ExaSearchRetriever.
+    Configurez un outil Retriever à l&#39;aide de `ExaSearchRetriever`. Ce retriever se connecte à Exa Search pour trouver des documents pertinents par recherche sémantique. Commencez par importer les bibliothèques nécessaires, puis instanciez ExaSearchRetriever.
 
     ```Python Python theme={null}
     # charger les variables d'environnement
@@ -52,16 +50,16 @@ LangChain est un framework permettant de créer des applications qui combinent d
     from langchain_core.prompts import PromptTemplate
     from langchain_core.runnables import RunnableLambda
 
-    # Définir notre retriever pour qu'il utilise Exa Search, récupère 3 résultats et extraie les highlights de chacun
+    # Définir notre retriever pour qu'il utilise Exa Search, récupère 3 résultats et extraie les highlights de chaque résultat
     retriever = ExaSearchRetriever(api_key=os.getenv("EXA_API_KEY"), k=3, highlights=True)
     ```
   </Step>
 
-  <Step title="Créez un modèle de prompt (facultatif)">
-    Nous utilisons un [PromptTemplate](https://python.langchain.com/v0.1/docs/modules/model%5Fio/prompts/quick%5Fstart/#prompttemplate) LangChain pour définir un template à espaces réservés qui extrait les URL et les highlights renvoyés par le retriever Exa.
+  <Step title="Créer un modèle de prompt (facultatif)">
+    Nous utilisons un [PromptTemplate](https://python.langchain.com/v0.1/docs/modules/model%5Fio/prompts/quick%5Fstart/#prompttemplate) LangChain pour définir un template avec des espaces réservés permettant d&#39;extraire les URL et les highlights renvoyés par le retriever Exa.
 
     ```Python Python theme={null}
-    # Définir un template de prompt de document à l'aide de balises de type XML
+    # Définir un template de prompt de document avec des balises de type XML
     document_prompt = PromptTemplate.from_template("""
     <source>
         <url>{url}</url>
@@ -72,7 +70,7 @@ LangChain est un framework permettant de créer des applications qui combinent d
   </Step>
 
   <Step title="Analysez l’URL et le contenu des résultats Exa">
-    Nous utilisons une [Runnable Lambda](https://api.python.langchain.com/en/latest/runnables/langchain%5Fcore.runnables.base.RunnableLambda.html) pour extraire les attributs URL et Highlights des résultats d&#39;Exa Search, puis les transmettre au template de prompt ci-dessus
+    Nous utilisons un [Runnable Lambda](https://api.python.langchain.com/en/latest/runnables/langchain%5Fcore.runnables.base.RunnableLambda.html) pour extraire les attributs URL et Highlights des résultats d&#39;Exa Search, puis les transmettre au template de prompt ci-dessus
 
     ```Python Python theme={null}
     # Crée un Runnable Lambda qui extrait les attributs highlights et URL renvoyés par le retriever et les transmet au prompt de document défini ci-dessus
@@ -85,17 +83,17 @@ LangChain est un framework permettant de créer des applications qui combinent d
     ```
   </Step>
 
-  <Step title="Combinez les résultats et le contenu d’Exa pour la récupération d’informations">
-    Complétez la chaîne de retrieval en assemblant le retriever Exa, le parser et une courte fonction lambda — cette étape est essentielle pour transmettre le résultat sous forme d&#39;une chaîne unique servant de context au LLM à l&#39;étape suivante.
+  <Step title="Associez les résultats et le contenu d’Exa pour la retrieval">
+    Complétez la chaîne de retrieval en assemblant le retriever Exa, le parser et une courte fonction lambda - cette étape est essentielle pour transmettre le résultat sous forme d&#39;une chaîne de caractères unique servant de context au LLM à l&#39;étape suivante.
 
     ```Python Python theme={null}
-    # Définir la chaîne de retrieval - résultats de recherche Exa => récupérer les attributs et les convertir en XML => concaténer en une seule chaîne à fournir comme context dans les étapes suivantes
+    # Définir la chaîne de retrieval - résultats d'Exa search => récupérer les attributs et les convertir en XML => tout regrouper en une seule chaîne de caractères servant de context aux étapes suivantes
     retrieval_chain = retriever | document_chain.map() | (lambda docs: "\n".join([i.text for i in docs]))
     ```
   </Step>
 
-  <Step title="Configurez le reste de la chaîne d’outils, notamment OpenAI pour la génération">
-    Dans cette étape, nous définissons le system prompt avec les entrées de template Query et Context, issues respectivement de l&#39;utilisateur et d&#39;Exa Search. Commencez par importer à nouveau les bibliothèques et composants nécessaires depuis les bibliothèques LangChain
+  <Step title="Configurez le reste de la chaîne d’outils, y compris OpenAI pour la génération.">
+    Dans cette étape, nous définissons le system prompt avec les entrées de template Query et Context, récupérées respectivement auprès de l&#39;utilisateur et d&#39;Exa Search. Pour commencer, importez une nouvelle fois les bibliothèques et composants nécessaires depuis les bibliothèques LangChain
 
     ```Python Python theme={null}
     from langchain_core.runnables import RunnablePassthrough, RunnableParallel
@@ -104,7 +102,7 @@ LangChain est un framework permettant de créer des applications qui combinent d
     from langchain_core.output_parsers import StrOutputParser
     ```
 
-    Nous définissons ensuite un prompt de génération — le template de prompt utilisé avec le contexte fourni par Exa pour effectuer du RAG.
+    Nous définissons ensuite un prompt de génération, c&#39;est-à-dire le template de prompt utilisé avec le context fourni par Exa pour effectuer le RAG.
 
     ```Python Python theme={null}
     # Définir le template de prompt principal
@@ -122,16 +120,16 @@ LangChain est un framework permettant de créer des applications qui combinent d
     ])
     ```
 
-    Nous définissons le [LLM de génération sur OpenAI](https://python.langchain.com/v0.1/docs/integrations/chat/openai/), puis nous relions le tout via une connexion parallèle [RunnableParallel](https://python.langchain.com/v0.1/docs/expression%5Flanguage/primitives/parallel/). Le prompt de génération, qui contient la query et le context, est ensuite transmis au LLM, puis [analysé afin d&#39;obtenir une meilleure représentation de l&#39;output](https://api.python.langchain.com/en/latest/output%5Fparsers/langchain%5Fcore.output%5Fparsers.string.StrOutputParser.html).
+    Nous définissons le [LLM de génération sur OpenAI](https://python.langchain.com/v0.1/docs/integrations/chat/openai/), puis nous relions le tout avec une connexion parallèle [RunnableParallel](https://python.langchain.com/v0.1/docs/expression%5Flanguage/primitives/parallel/). Le prompt de génération, qui contient la requête et le context, est ensuite transmis au LLM puis [analysé pour une meilleure représentation de l&#39;output](https://api.python.langchain.com/en/latest/output%5Fparsers/langchain%5Fcore.output%5Fparsers.string.StrOutputParser.html).
 
     ```Python Python theme={null}
-    # Utilisation d'OpenAI pour la génération
+    # Utiliser OpenAI pour la génération
     llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    # Analyse simple de la chaîne pour l'output
+    # Parsing simple de chaîne pour l'output
     output_parser = StrOutputParser()
 
-    # Connexion de la chaîne, avec une connexion parallèle pour la query de l'utilisateur et le context provenant de la chaîne de retriever Exa de l'étape 2.
+    # Connecter la chaîne, avec une connexion parallèle pour la requête de l'utilisateur et le context issu de la chaîne de retrieval Exa de l'étape 2.
     chain = RunnableParallel({
         "query": RunnablePassthrough(),
         "context": retrieval_chain,
@@ -148,13 +146,13 @@ LangChain est un framework permettant de créer des applications qui combinent d
     print(result)
     ```
 
-    Et regardez le résultat (sauts de ligne interprétés) :
+    Et regardons l&#39;output (sauts de ligne interprétés) :
 
     ```Stdout Stdout theme={null}
-    'D'après le contexte fourni, les recherches les plus récentes sur l'innovation face au changement climatique mettent en évidence plusieurs constats importants :
-    1. L'innovation en réponse au changement climatique : une étude a examiné la façon dont l'innovation réagit au changement climatique en analysant un ensemble de données de panel portant sur 70 pays. Elle a montré que le nombre d'innovations liées au changement climatique est corrélé positivement à l'augmentation des émissions de dioxyde de carbone issues des combustibles gazeux et liquides, principalement le gaz naturel et le pétrole. En revanche, il est corrélé négativement à la hausse des émissions de dioxyde de carbone provenant de la consommation de combustibles solides, principalement le charbon, ainsi qu'aux autres émissions de gaz à effet de serre. La recherche souligne également que l'investissement public n'influence pas toujours les décisions de développer et de breveter des technologies climatiques. Cette étude enrichit la littérature sur l'innovation environnementale en éclairant la manière dont l'innovation réagit à l'évolution des principaux facteurs du changement climatique.
-    2. Financement et attention portés aux technologies climatiques : entre 2010 et 2022, en dehors des États-Unis, de la Chine, de l'UE et de l'Inde, seuls 8 % de l'activité totale de capital-risque dans le climat provenaient du reste du monde. Cette concentration des financements et de l'attention sur certaines régions pourrait freiner la diffusion des solutions climatiques auprès des communautés à faibles revenus et des pays en développement, qui subissent déjà les effets du changement climatique sans disposer des ressources nécessaires pour y faire face efficacement.
-    3. Répartition des financements de la recherche : une étude de l'University of Sussex Business School a analysé les financements de la recherche sur le climat et l'énergie de 1990 à 2020. Elle a constaté que 36 % des fonds étaient consacrés à l'adaptation au changement climatique, tandis que 28 % portaient sur l'assainissement du système énergétique. D'autres parts significatives ont été allouées au transport et à la mobilité (13 %), à la géo-ingénierie (12 %) et à la décarbonation industrielle (11 %). L'essentiel des financements est allé à des chercheurs de pays occidentaux riches, qui ne sont pas nécessairement les plus vulnérables aux effets immédiats du changement climatique.
+    'D'après le contexte fourni, les recherches les plus récentes sur l'innovation face au changement climatique révèlent plusieurs conclusions importantes :
+    1. L'innovation en réponse au changement climatique : une étude a examiné la manière dont l'innovation répond au changement climatique en analysant un jeu de données de panel portant sur 70 pays. Elle a constaté que le nombre d'innovations liées au changement climatique est corrélé positivement à l'augmentation des émissions de dioxyde de carbone provenant des combustibles gazeux et liquides, principalement le gaz naturel et le pétrole. En revanche, il est corrélé négativement à l'augmentation des émissions de dioxyde de carbone issues de la consommation de combustibles solides, principalement le charbon, ainsi qu'aux autres émissions de gaz à effet de serre. La recherche souligne également que l'investissement public n'influence pas toujours les décisions de développer et de breveter des technologies climatiques. Cette étude enrichit la littérature sur l'innovation environnementale en éclairant la façon dont l'innovation réagit aux évolutions des grands facteurs du changement climatique.
+    2. Financement et attention portés aux technologies climatiques : sur la période 2010-2022, en dehors des États-Unis, de la Chine, de l'UE et de l'Inde, seuls 8 % de l'activité totale du capital-risque climatique provenaient du reste du monde. Cette concentration des financements et de l'attention sur certaines régions pourrait freiner la diffusion des solutions climatiques auprès des communautés à faibles revenus et des pays en développement, qui subissent déjà les effets du changement climatique sans disposer des ressources nécessaires pour y faire face efficacement.
+    3. Répartition des financements de la recherche : une étude de la University of Sussex Business School a analysé les financements de la recherche sur le climat et l'énergie entre 1990 et 2020. Elle a établi que 36 % des financements étaient consacrés à l'adaptation au changement climatique, tandis que 28 % portaient sur les moyens d'assainir le système énergétique. D'autres parts significatives allaient au transport et à la mobilité (13 %), à la géo-ingénierie (12 %) et à la décarbonation industrielle (11 %). La majeure partie des financements a bénéficié à des chercheurs de pays occidentaux riches, qui ne sont pas nécessairement les plus vulnérables aux effets immédiats du changement climatique.
     Sources :
     1. Étude sur la réponse de l'innovation au changement climatique : https://www.sciencedirect.com/science/article/pii/S0040162516302542
     2. Financement et attention portés aux technologies climatiques : https://www.sbs.ox.ac.uk/oxford-answers/climate-tech-opportunity-save-planet
@@ -162,8 +160,8 @@ LangChain est un framework permettant de créer des applications qui combinent d
     ```
   </Step>
 
-  <Step title="Diffusez éventuellement la sortie de la chaîne en flux continu">
-    Vous pouvez aussi, si vous le souhaitez, diffuser en streaming la sortie de la chaîne.
+  <Step title="Diffusez éventuellement l’output de la chaîne en continu">
+    Vous pouvez également diffuser en stream l&#39;output de la chaîne.
 
     ```Python Python theme={null}
     for chunk in chain.stream("Latest research on climate change innovation"):
@@ -178,6 +176,6 @@ LangChain est un framework permettant de créer des applications qui combinent d
     asyncio.run(run_async())
     ```
 
-    Produit l&#39;output en flux continu. [En savoir plus](https://python.langchain.com/v0.1/docs/expression%5Flanguage/streaming/) sur la méthode `.stream`, notamment sur la gestion des fragments et l&#39;analyse des outputs.
+    Renvoie les outputs en stream. [En savoir plus](https://python.langchain.com/v0.1/docs/expression%5Flanguage/streaming/) sur la méthode `.stream`, notamment la gestion des chunks et le parsing des outputs.
   </Step>
 </Steps>

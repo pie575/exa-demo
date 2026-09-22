@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 请通过以下地址获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可借助该文件了解所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="cybersecurity">
-  # 网络安全
-</div>
+# 网络安全 {#cybersecurity}
 
 > 使用 Exa Search 查找漏洞、安全公告、威胁情报报告和信任文档。
 
@@ -39,64 +35,48 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 使用 Exa Search，从安全团队日常关注的信息源中获取漏洞记录、厂商安全公告和威胁研究。
 
-<div id="included">
-  ## 包含内容
-</div>
+## 包含内容 {#included}
 
 * CVE 与 GHSA 漏洞记录
 * 厂商安全公告与补丁说明
-* 威胁情报报告与事件复盘
-* 信任中心页面、子处理方清单与合规文档
+* 威胁情报报告与安全事件复盘
+* 信任页面、子处理方清单与合规文档
 * 安全博客、会议演讲与研究成果
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
-* 漏洞分级与暴露面评估
+* 漏洞分级处置与暴露面评估
 * 威胁情报与攻击者追踪
-* 供应商风险与第三方安全审查
+* 厂商风险与第三方安全审查
 * 安全监控与告警
 
-<div id="example-queries">
-  ## 示例查询
-</div>
+## 查询示例 {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### 对某类漏洞进行分级排查
-</div>
+### 对某一类漏洞进行分级 {#triage-a-vulnerability-class}
 
 指明产品、版本范围和严重程度。
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### 查找厂商安全公告
-</div>
+### 查找厂商安全公告 {#find-vendor-advisories}
 
-描述漏洞的利用状态和产品类别，而不是某个具体的 CVE 编号。
+描述漏洞的利用状态和产品类别，而不是只给出某个 CVE ID。
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### 审查供应商的安全态势
-</div>
+### 评估厂商的安全态势 {#review-a-vendors-security-posture}
 
-指明文档类型和供应商类别。
+指明文档类型和厂商类别。
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### 调查攻击者
-</div>
+### 研究攻击者 {#research-an-adversary}
 
-指明你关注的组织或攻击行动，以及相关攻击手法或行业领域。
+写明攻击组织或攻击活动的名称，以及你关注的攻击手法或行业领域。
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -137,12 +117,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果结构化数据需要跨多个来源进行研究，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述所需的产品、威胁判定标准和输出字段，Agent 就会返回经过 schema 校验的结果，并附上引用来源。
+对于需要跨多个来源开展研究的结构化数据，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。描述你需要的产品、威胁 criteria 和输出 fields，agent 即会返回经 schema 校验的结果及引用来源。
 
 <Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
-  结合安全公告、数据泄露报道和信任中心页面审查供应商，或汇总标准化的漏洞数据。
+  结合安全公告、数据泄露报告和信任页面筛查某个厂商，或整理出归一化的漏洞数据。
 </Card>

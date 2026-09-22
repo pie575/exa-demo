@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="cancel-a-running-search">
-  # Membatalkan search yang sedang berjalan
-</div>
+# Membatalkan search yang sedang berjalan {#cancel-a-running-search}
 
 > Membatalkan Search yang sedang berjalan.
 
 Anda dapat membatalkan semua search sekaligus menggunakan endpoint `websets/:webset/cancel`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0
@@ -214,54 +208,54 @@ components:
             searching the web.
 
 
-            If provided during creation, the search will only be performed on
-            the sources provided.
+            Jika diberikan saat pembuatan, pencarian hanya akan dilakukan pada
+            sumber yang diberikan.
           type: array
         progress:
           properties:
             found:
-              description: The number of results found so far
+              description: Jumlah hasil yang ditemukan sejauh ini
               type: number
             analyzed:
-              description: The number of results analyzed so far
+              description: Jumlah hasil yang dianalisis sejauh ini
               type: number
             completion:
               minimum: 0
               maximum: 100
-              description: The completion percentage of the search
+              description: Persentase penyelesaian pencarian
               type: number
             timeLeft:
               type: number
-              description: The estimated time remaining in seconds, null if unknown
+              description: Perkiraan sisa waktu dalam detik, null jika tidak diketahui
               nullable: true
           required:
             - found
             - analyzed
             - completion
             - timeLeft
-          description: The progress of the search
+          description: Progres pencarian
           type: object
         recall:
           properties:
             expected:
               properties:
                 total:
-                  description: The estimated total number of potential matches
+                  description: Perkiraan jumlah total kecocokan potensial
                   type: number
                 confidence:
                   enum:
                     - high
                     - medium
                     - low
-                  description: The confidence in the estimate
+                  description: Tingkat keyakinan terhadap perkiraan
                   type: string
                 bounds:
                   properties:
                     min:
-                      description: The minimum estimated total number of potential matches
+                      description: Perkiraan jumlah total minimum kecocokan potensial
                       type: number
                     max:
-                      description: The maximum estimated total number of potential matches
+                      description: Perkiraan jumlah total maksimum kecocokan potensial
                       type: number
                   required:
                     - min
@@ -273,19 +267,19 @@ components:
                 - bounds
               type: object
             reasoning:
-              description: The reasoning for the estimate
+              description: Alasan di balik perkiraan tersebut
               type: string
           required:
             - expected
             - reasoning
           type: object
           description: >-
-            Recall metrics for the search, null if not yet computed or
-            requested.
+            Metrik recall untuk pencarian, null jika belum dihitung atau
+            diminta.
           nullable: true
         metadata:
           default: {}
-          description: Set of key-value pairs you want to associate with this object.
+          description: Kumpulan pasangan kunci-nilai yang ingin Anda kaitkan dengan objek ini.
           propertyNames:
             type: string
           additionalProperties:
@@ -295,19 +289,19 @@ components:
         canceledAt:
           format: date-time
           type: string
-          description: The date and time the search was canceled
+          description: Tanggal dan waktu pencarian dibatalkan
           nullable: true
         canceledReason:
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
-          description: The reason the search was canceled
+          description: Alasan pencarian dibatalkan
           nullable: true
         createdAt:
           format: date-time
-          description: The date and time the search was created
+          description: Tanggal dan waktu pencarian dibuat
           type: string
         updatedAt:
           format: date-time
-          description: The date and time the search was updated
+          description: Tanggal dan waktu pencarian diperbarui
           type: string
       required:
         - id
@@ -407,12 +401,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Berikan kunci API Exa Anda pada header x-api-key. Anda juga dapat
+        melakukan autentikasi dengan Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Berikan kunci API Exa Anda pada header x-api-key. Anda juga dapat
+        melakukan autentikasi dengan Authorization: Bearer <key>.
 ```

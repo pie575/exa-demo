@@ -6,12 +6,12 @@ description: "Crée un Webhook qui transmet les événements sélectionnés à v
   URL au fur et à mesure qu'ils se produisent.
 
 
-  La réponse contient le `secret` de signature servant à vérifier les livraisons
-  ; il n'est renvoyé qu'à la création."
+  La réponse inclut le `secret` de signature servant à vérifier les livraisons ;
+  il n'est renvoyé qu'à la création."
 ---
 
 <Warning>
-  **Les redirections ne sont pas suivies.** Les livraisons de webhooks sont envoyées directement à l&#39;URL
-  enregistrée. Si votre endpoint renvoie une redirection 3xx, la livraison
+  **Les redirections ne sont pas suivies.** Les livraisons de webhooks sont envoyées directement à
+  l&#39;URL enregistrée. Si votre endpoint répond par une redirection 3xx, la livraison
   est considérée comme un échec. Enregistrez toujours l&#39;URL de destination finale.
 </Warning>

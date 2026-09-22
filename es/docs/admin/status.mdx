@@ -1,7 +1,7 @@
 ---
 title: "Página de estado"
-description: "Disponibilidad en tiempo real, incidentes activos e historial de disponibilidad de los servicios de Exa."
-keywords: ["status", "uptime", "incident", "outage", "degraded", "maintenance"]
+description: "Disponibilidad en tiempo real, incidentes activos e historial de uptime de los servicios de Exa."
+keywords: ["estado", "uptime", "incidente", "caída", "degradado", "mantenimiento"]
 ---
 
 export const ExaStatus = () => {
@@ -162,28 +162,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa publica la disponibilidad del servicio en [status.exa.ai](https://status.exa.ai): el estado actual de la Search API, Websets y Exa MCP, los incidentes activos con actualizaciones a medida que evolucionan y 90 días de historial de disponibilidad.
+Exa publica la disponibilidad del servicio en [status.exa.ai](https://status.exa.ai): el estado actual de la Search API, Websets y Exa MCP, los incidentes activos con actualizaciones a medida que evolucionan y 90 días de historial de uptime.
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## Suscribirse a las actualizaciones
-</div>
+## Suscríbete a las actualizaciones {#subscribe-to-updates}
 
 Suscríbete en la página de estado para recibir notificaciones cuando se abra, actualice o resuelva un incidente. Las notificaciones se envían por correo electrónico, Slack, Google Chat o webhook.
 
-<div id="get-help">
-  ## Obtener ayuda
-</div>
+## Obtener ayuda {#get-help}
 
-Si las solicitudes siguen fallando aunque todos los sistemas figuren como operativos, lo más probable es que la causa esté en la propia solicitud: consulta primero los [Códigos de error](/es/docs/admin/error-codes).
+Si las solicitudes siguen fallando mientras todos los sistemas aparecen como operativos, lo más probable es que la causa esté en la propia solicitud: revisa primero los [códigos de error](/es/docs/admin/error-codes).
 
 <Columns cols={2}>
   <Card title="Soporte por correo" icon="mail" href="mailto:hello@exa.ai" cta="Escribir a soporte" arrow="true">
     Envía el estado de la respuesta, el cuerpo del error y el `requestId` para agilizar el diagnóstico.
   </Card>
 
-  <Card title="Soporte empresarial" icon="headset" href="https://exa.ai/contact/sales" cta="Contactar con ventas" arrow="true">
-    Los SLA de disponibilidad y soporte están disponibles en los planes Enterprise.
+  <Card title="Soporte Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Contactar con ventas" arrow="true">
+    Los SLA de uptime y de soporte están disponibles en los planes Enterprise.
   </Card>
 </Columns>

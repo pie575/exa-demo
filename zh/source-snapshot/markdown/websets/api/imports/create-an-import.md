@@ -1,30 +1,24 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="create-an-import">
-  # 创建导入
-</div>
+# 创建导入 {#create-an-import}
 
 > 创建一个新的导入，将你的数据上传到 Websets。导入可用于：
 
-* **Enrich**：借助我们基于 AI 的 enrichment 引擎，为数据补充更多信息
-* **Search**：使用 Websets 的智能体式 search，通过自然语言筛选条件查询数据
-* **Exclude**：避免重复或已知的结果出现在 search 结果中
+* **增强**：借助我们的 AI 增强引擎，为数据补充更多信息
+* **Search**：使用 Websets 的智能体式 search，通过自然语言筛选条件查询你的数据
+* **排除**：避免重复或已知的结果出现在 search 结果中
 
 导入创建完成后，你可以在 `uploadValidUntil` 之前 (默认 1 小时) 将数据上传到返回的 `uploadUrl`。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0
 info:
-  title: Exa 公共 API
+  title: Exa Public API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -39,20 +33,24 @@ paths:
     post:
       tags:
         - Imports
-      summary: 创建导入
+      summary: Create an Import
       description: >-
-        创建一个新的导入，将您的数据上传到 Websets。导入可用于：
+        Creates a new import to upload your data into Websets. Imports can be
+        used to:
 
 
-        - **Enrich（丰富）**：使用我们的 AI 驱动的丰富引擎，为您的数据补充更多信息
+        - **Enrich**: Enhance your data with additional information using our
+        AI-powered enrichment engine
 
-        - **Search（搜索）**：使用 Websets 的智能体搜索和自然语言过滤器查询您的数据
+        - **Search**: Query your data using Websets' agentic search with natural
+        language filters
 
-        - **Exclude（排除）**：防止重复或已知的结果出现在您的搜索中
+        - **Exclude**: Prevent duplicate or already known results from appearing
+        in your searches
 
 
-        导入创建后，您可以在 `uploadValidUntil`（默认 1 小时）之前将数据上传到返回的
-        `uploadUrl`。
+        Once the import is created, you can upload your data to the returned
+        `uploadUrl` until `uploadValidUntil` (by default 1 hour).
       operationId: imports-create
       requestBody:
         required: true
@@ -62,12 +60,12 @@ paths:
               $ref: '#/components/schemas/CreateImportParameters'
       responses:
         '201':
-          description: 导入创建成功
+          description: Import created successfully
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: 请求的唯一标识符。
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -86,22 +84,24 @@ components:
         - properties:
             size:
               maximum: 50000000
-              description: 文件大小（字节）。最大为 50 MB。
+              description: The size of the file in bytes. Maximum size is 50 MB.
               type: number
             count:
-              description: 要导入的记录数量
+              description: The number of records to import
               type: number
             title:
-              description: 导入的标题
+              description: The title of the import
               type: string
             format:
               enum:
                 - csv
               description: >-
-                当导入为 CSV 格式时，我们要求包含一列作为实体的关键标识符——目前为 URL。如果未提供，导入将无法处理。
+                When the import is in CSV format, we expect a column containing
+                the key identifier for the entity - for now URL. If not
+                provided, import will fail to be processed.
               type: string
             metadata:
-              description: 您希望与此对象关联的一组键值对。
+              description: Set of key-value pairs you want to associate with this object.
               propertyNames:
                 type: string
               additionalProperties:
@@ -110,7 +110,8 @@ components:
               type: object
             entity:
               description: >-
-                导入内容包含的实体类型（例如人物、公司等），并据此尝试进行解析。
+                What type of entity the import contains (e.g. People, Companies,
+                etc.), and thus should be attempted to be resolved as.
               oneOf:
                 - $ref: '#/components/schemas/CompanyEntity'
                 - $ref: '#/components/schemas/PersonEntity'
@@ -118,11 +119,13 @@ components:
                 - $ref: '#/components/schemas/ResearchPaperEntity'
                 - $ref: '#/components/schemas/CustomEntity'
             csv:
-              description: 当格式为 `csv` 时，这些是具体的导入参数。
+              description: When format is `csv`, these are the specific import parameters.
               properties:
                 identifier:
                   description: >-
-                    包含实体关键标识符的列（例如 URL、名称等）。如果未提供，我们将尝试从文件中推断。
+                    Column containing the key identifier for the entity (e.g.
+                    URL, Name, etc.). If not provided, we will try to infer it
+                    from the file.
                   minimum: 0
                   type: integer
               type: object
@@ -135,12 +138,12 @@ components:
     CreateImportResponse:
       properties:
         id:
-          description: 导入的唯一标识符
+          description: The unique identifier for the Import
           type: string
         object:
           enum:
             - import
-          description: 对象类型
+          description: The type of object
           type: string
         status:
           enum:
@@ -149,26 +152,26 @@ components:
             - completed
             - failed
             - canceled
-          description: 导入的状态
+          description: The status of the Import
           type: string
         format:
           enum:
             - csv
             - webset
-          description: 导入的格式。
+          description: The format of the import.
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
-          description: 导入内容包含的实体类型。
+          description: The type of entity the import contains.
           nullable: true
         title:
-          description: 导入的标题
+          description: The title of the import
           type: string
         count:
-          description: 导入中的实体数量
+          description: The number of entities in the import
           type: number
         metadata:
-          description: 您希望与此对象关联的一组键值对。
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -181,31 +184,32 @@ components:
             - invalid_file_content
             - missing_identifier
           type: string
-          description: 导入失败的原因
+          description: The reason the import failed
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: 导入失败的时间
+          description: When the import failed
           nullable: true
         failedMessage:
           type: string
-          description: 导入失败的可读信息
+          description: A human readable message of the import failure
           nullable: true
         createdAt:
           format: date-time
-          description: 导入创建的时间
+          description: When the import was created
           type: string
         updatedAt:
           format: date-time
-          description: 导入最后更新的时间
+          description: When the import was last updated
           type: string
         uploadUrl:
-          description: 用于上传文件的 URL
+          description: The URL to upload the file to
           type: string
         uploadValidUntil:
           description: >-
-            上传 URL 的有效截止日期和时间。上传 URL 的有效期为 1 小时。
+            The date and time until the upload URL is valid. The upload URL will
+            be valid for 1 hour.
           type: string
       required:
         - id
@@ -224,7 +228,8 @@ components:
         - uploadUrl
         - uploadValidUntil
       description: >-
-        成功导入的响应。包含上传 URL 和上传有效截止日期。
+        The response to a successful import. Includes the upload URL and the
+        upload valid until date.
       type: object
     CompanyEntity:
       properties:
@@ -234,7 +239,7 @@ components:
           default: company
       required:
         - type
-      title: 公司
+      title: Company
       type: object
     PersonEntity:
       properties:
@@ -244,7 +249,7 @@ components:
           default: person
       required:
         - type
-      title: 人物
+      title: Person
       type: object
     ArticleEntity:
       properties:
@@ -254,7 +259,7 @@ components:
           default: article
       required:
         - type
-      title: 文章
+      title: Article
       type: object
     ResearchPaperEntity:
       properties:
@@ -264,7 +269,7 @@ components:
           default: research_paper
       required:
         - type
-      title: 研究论文
+      title: Research Paper
       type: object
     CustomEntity:
       properties:
@@ -279,7 +284,7 @@ components:
       required:
         - type
         - description
-      title: 自定义
+      title: Custom
       type: object
     Entity:
       oneOf:
@@ -294,12 +299,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        在 x-api-key 请求头中传入您的 Exa API 密钥。您也可以使用 Authorization: Bearer <key>
-        进行身份验证。
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        在 x-api-key 请求头中传入您的 Exa API 密钥。您也可以使用 Authorization: Bearer <key>
-        进行身份验证。
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

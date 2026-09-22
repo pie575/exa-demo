@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 받아볼 수 있습니다.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-batches">
-  # batch 목록 조회
-</div>
+# Batch 목록 조회 {#list-batches}
 
 > team의 batch 목록을 페이지 단위로 조회합니다.
 
-batch는 최신순으로 반환됩니다. `limit`으로 페이지 크기를 지정하고, 이전 응답의 `nextCursor` 값을 `cursor`에 전달해 다음 페이지를 가져오세요. 완료된 batch만 조회하려면 `status=completed`를 전달하세요. 완료된 batch 목록은 별도의 cursor를 사용하므로, 모든 페이지 요청마다 `status=completed`를 계속 함께 보내야 합니다.
+Batch는 최신순으로 반환됩니다. `limit`으로 페이지 크기를 조절하고, 이전 response의 `nextCursor` 값을 `cursor`에 전달해 다음 페이지를 가져오세요. `status=completed`를 전달하면 완료된 batch만 조회됩니다. 완료된 batch 목록은 별도의 cursor를 사용하므로, 페이지를 요청할 때마다 `status=completed`를 계속 함께 보내야 합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches
 openapi: 3.1.0
@@ -287,11 +281,11 @@ components:
         completed:
           type: integer
           minimum: 0
-          description: Requests that have completed successfully.
+          description: 성공적으로 완료된 요청 수입니다.
         failed:
           type: integer
           minimum: 0
-          description: Requests that have failed.
+          description: 실패한 요청 수입니다.
       required:
         - total
         - completed
@@ -299,7 +293,7 @@ components:
       additionalProperties: false
   responses:
     BadRequestResponse:
-      description: The request body or query parameters failed validation.
+      description: 요청 body 또는 query parameters가 유효성 검사를 통과하지 못했습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -314,7 +308,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: API 키가 없거나 유효하지 않습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -327,7 +321,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: 요청을 처리하는 중 예기치 않은 오류가 발생했습니다.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -347,12 +341,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key>로
+        인증할 수도 있습니다.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key>로
+        인증할 수도 있습니다.
 ```

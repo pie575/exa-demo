@@ -1,30 +1,24 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="delete-a-batch">
-  # Supprimer un batch
-</div>
+# Supprimer un batch {#delete-a-batch}
 
 > Supprimez un batch ayant un statut terminal.
 
-La suppression d&#39;un batch le retire de l&#39;historique des batchs de votre team. Seuls les batchs ayant un statut terminal peuvent être supprimés.
+La suppression d&#39;un batch le retire de l&#39;historique des batchs de votre équipe. Seuls les batchs ayant un statut terminal peuvent être supprimés.
 
-<Card title="Obtenez votre clé API Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une clé dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /batches/{id}
 openapi: 3.1.0
 info:
-  title: API publique Exa
+  title: Exa Public API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -37,8 +31,8 @@ paths:
     delete:
       tags:
         - Batches
-      summary: Supprimer un lot
-      description: Supprimer de manière réversible un lot dans un statut terminal.
+      summary: Delete a batch
+      description: Soft-delete a batch in a terminal status.
       operationId: deleteBatch
       parameters:
         - in: path
@@ -46,10 +40,10 @@ paths:
           schema:
             type: string
             minLength: 1
-            description: Identifiant du lot.
+            description: Batch ID.
             example: batch_01j7x9v0m2n4p6q8r0s2t4v6w8
           required: true
-          description: Identifiant du lot.
+          description: Batch ID.
         - $ref: '#/components/parameters/BatchesBetaHeader'
       responses:
         '200':
@@ -84,14 +78,14 @@ components:
         type: string
         enum:
           - batches-2026-06-06
-        description: Jeton bêta requis pour l'API Batch.
+        description: Required beta token for the Batch API.
       required: true
-      description: Jeton bêta requis pour l'API Batch.
+      description: Required beta token for the Batch API.
   headers:
     XRequestId:
       description: >-
-        Identifiant unique de la requête. Correspond au champ `requestId`
-        renvoyé dans les corps de réponse qui en comportent un.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -101,15 +95,15 @@ components:
       properties:
         id:
           type: string
-          description: Identifiant du lot supprimé.
+          description: ID of the deleted batch.
         object:
           type: string
           const: batch.deleted
-          description: Le type d'objet, toujours `batch.deleted`.
+          description: The object type, always `batch.deleted`.
         deleted:
           type: boolean
           const: true
-          description: Toujours `true` en cas de suppression réussie.
+          description: Always `true` for a successful delete.
       required:
         - id
         - object
@@ -120,19 +114,19 @@ components:
       properties:
         requestId:
           type: string
-          description: Identifiant unique de la requête.
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Message lisible par un humain décrivant l'erreur.
+          description: Human-readable message describing the error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            Étiquette d'erreur lisible par machine identifiant l'échec. L'ensemble
-            des étiquettes est ouvert : de nouvelles étiquettes peuvent être ajoutées à tout moment,
-            traitez donc les étiquettes non reconnues comme une erreur générique du statut HTTP de la réponse.
-            Les étiquettes connues sont répertoriées à titre d'exemples.
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -168,10 +162,10 @@ components:
         - error
         - tag
       additionalProperties: false
-      description: Enveloppe d'erreur standard renvoyée par l'API Exa pour les requêtes en échec.
+      description: Standard error envelope returned by the Exa API for failed requests.
   responses:
     BadRequestResponse:
-      description: Le corps de la requête ou les paramètres de requête n'ont pas passé la validation.
+      description: The request body or query parameters failed validation.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -186,7 +180,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: La clé API est manquante ou invalide.
+      description: The API key is missing or invalid.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -199,7 +193,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: La ressource demandée n'existe pas.
+      description: The requested resource does not exist.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -212,7 +206,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     ConflictResponse:
-      description: La requête entre en conflit avec l'état actuel de la ressource.
+      description: The request conflicts with the current state of the resource.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -225,7 +219,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: Une erreur inattendue s'est produite lors du traitement de la requête.
+      description: An unexpected error occurred while processing the request.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -245,12 +239,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Transmettez votre clé API Exa dans l'en-tête x-api-key. Vous pouvez également vous authentifier
-        avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Transmettez votre clé API Exa dans l'en-tête x-api-key. Vous pouvez également vous authentifier
-        avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-<div id="cybersecurity">
-  # Ciberseguridad
-</div>
+# Ciberseguridad {#cybersecurity}
 
 > Encuentra vulnerabilidades, avisos de seguridad, informes de amenazas y documentación de confianza con Exa Search.
 
@@ -37,66 +33,50 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para obtener registros de vulnerabilidades, avisos de proveedores e investigación sobre amenazas de las fuentes que los equipos de seguridad ya consultan.
+Usa Exa Search para obtener registros de vulnerabilidades, avisos de vendors e investigación sobre amenazas desde las fuentes que los equipos de seguridad ya consultan.
 
-<div id="included">
-  ## Incluido
-</div>
+## Incluido {#included}
 
 * Registros de vulnerabilidades CVE y GHSA
-* Avisos de seguridad de proveedores y notas de parches
+* Avisos de seguridad de vendors y notas de parches
 * Informes de inteligencia de amenazas y análisis de incidentes
-* Páginas de confianza (trust pages), listas de subprocesadores y documentación de cumplimiento
-* Blogs de seguridad, charlas en conferencias e investigación
+* Páginas de confianza, listas de subprocesadores y documentación de cumplimiento
+* Blogs de seguridad, charlas de conferencias e investigación
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
 * Triaje de vulnerabilidades y evaluación de la exposición
 * Inteligencia de amenazas y seguimiento de adversarios
-* Riesgo de proveedores y revisiones de seguridad de terceros
-* Monitorización de seguridad y alertas
+* Riesgo de vendors y revisiones de seguridad de terceros
+* Monitoreo y alertas de seguridad
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### Triar una clase de vulnerabilidad
-</div>
+### Clasificar una categoría de vulnerabilidades {#triage-a-vulnerability-class}
 
 Indica el producto, el rango de versiones y la gravedad.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### Encontrar avisos de proveedores
-</div>
+### Encontrar avisos de vendors {#find-vendor-advisories}
 
 Describe el estado de explotación y la clase de producto en lugar de un solo ID de CVE.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### Revisar la postura de seguridad de un proveedor
-</div>
+### Revisar la postura de seguridad de un vendor {#review-a-vendors-security-posture}
 
-Indica el tipo de documento y la categoría de proveedor.
+Indica el tipo de documento y la categoría del vendor.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### Investigar a un adversario
-</div>
+### Investigar a un adversario {#research-an-adversary}
 
 Indica el grupo o la campaña y la técnica o el sector que te interesa.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## Haz una solicitud
-</div>
+## Realizar una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -137,12 +117,10 @@ Indica el grupo o la campaña y la técnica o el sector que te interesa.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtener datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los productos, los criteria de amenazas y los campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los productos, los criteria de amenazas y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
-<Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Evalúa a un proveedor a partir de avisos de seguridad, reportes de filtraciones de datos y páginas de confianza, o reúne datos de vulnerabilidades normalizados.
+<Card title="Iniciar una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
+  Evalúa a un vendor a partir de avisos, reportes de brechas y páginas de confianza, o reúne datos normalizados de vulnerabilidades.
 </Card>

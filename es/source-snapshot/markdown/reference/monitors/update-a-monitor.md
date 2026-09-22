@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
-> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="update-a-monitor">
-  # Actualizar un monitor
-</div>
+# Actualizar un monitor {#update-a-monitor}
 
-> Actualiza un monitor existente. Todos los campos son opcionales. En el caso de `search`, puedes enviar un objeto parcial que contenga solo los campos que quieras modificar. Establece `trigger` en `null` para eliminar la programación.
+> Actualiza un monitor existente. Todos los campos son opcionales. Para `search`, puedes enviar un objeto parcial que contenga solo los campos que quieras modificar. Establece `trigger` en `null` para eliminar la programación.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0
@@ -1148,13 +1142,12 @@ components:
           minimum: -1
           maximum: 720
           description: >-
-            Antigüedad máxima del contenido en caché en horas. Los valores
-            positivos usan el contenido en caché si tiene menos de esa cantidad
-            de horas; 0 obtiene contenido nuevo y es la forma admitida de
-            aplicar opciones de renderizado de texto a las páginas recién
-            obtenidas; -1 siempre usa la caché; si se omite, se usa la obtención
-            alternativa cuando el contenido en caché no está disponible. El
-            valor máximo admitido es 720 horas.
+            Maximum age of cached content in hours. Positive values use cached
+            content if it is less than this many hours old; 0 fetches fresh
+            content and is the supported way to apply text rendering options to
+            newly fetched pages; -1 always uses cache; omitted uses fallback
+            fetching when cached content is unavailable. Maximum supported value
+            is 720 hours.
           example: 24
         filterEmptyResults:
           type: boolean

@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-<div id="combining-providers">
-  # Combining providers
-</div>
+# Combining providers {#combining-providers}
 
 > 하나의 Exa Agent 실행에서 여러 data partners를 함께 사용하세요.
 
-`dataSources`에 partner를 attach하면 해당 partner를 Exa Agent가 도구로 사용할 수 있게 됩니다. 다만 agent가 반드시 그 도구를 call하도록 **강제하지는 않습니다**. partner가 실제로 호출될지는 `질의`와 `outputSchema`에 달려 있습니다. 각 partner로부터 어떤 종류의 결과를 얻고 싶은지 명시하면, Exa Agent는 웹 페이지에서 추측하는 대신 그에 맞는 도구를 사용합니다. 실행 하나당 최대 다섯 개의 partner를 attach할 수 있으며, 각 단계에서 어떤 도구를 call할지는 Exa Agent가 선택하고 Exa web search도 함께 사용할 수 있습니다. 단일 실행에서 다섯 개를 초과해야 하나요? limit 상향은 [문의해 주세요](mailto:sales@exa.ai).
+`dataSources`에 파트너를 attach하면 해당 파트너가 Exa Agent에 도구로 제공됩니다. 다만 agent가 반드시 그 파트너를 call하도록 강제하는 것은 **아닙니다**. 파트너가 실제로 호출될지는 `query`와 `outputSchema`에 따라 달라집니다. 각 파트너에게서 어떤 종류의 결과를 원하는지 명시하면, Exa Agent는 웹 페이지에서 추측하는 대신 해당 도구를 사용합니다. 실행당 최대 다섯 개의 파트너를 attach할 수 있으며, Exa Agent가 단계마다 어떤 파트너를 call할지 선택하고, Exa web search도 함께 사용할 수 있습니다. 한 번의 실행에 다섯 개 이상이 필요하신가요? limit 상향은 [문의해 주세요](mailto:sales@exa.ai).
 
-<div id="two-partners-in-one-run">
-  ## 하나의 실행에서 두 partner 사용하기
-</div>
+## 한 번의 실행에서 두 파트너 사용하기 {#two-partners-in-one-run}
 
-여러 partner를 함께 나열하면 Exa Agent가 각 partner의 강점이 발휘되는 부분을 알아서 활용합니다. 여기서 두 개는 예시일 뿐이며, `dataSources`에 최대 다섯 개의 partner를 attach할 수 있고 원칙은 동일합니다. 즉, 각 partner의 데이터를 명시적으로 요청하면 됩니다. 아래 투자자 브리핑 실행은 ticker 뉴스를 위한 [Financial Datasets](/ko/docs/agent/connect/financialdatasets)와 팟캐스트 논평을 위한 [Particle](/ko/docs/agent/connect/particle)을 함께 사용합니다. 질의에서 각 partner의 고유한 데이터를 요청하고 schema에서 output을 `financialNews`와 `podcastChatter`로 나누므로, Exa Agent는 하나의 실행에서 **두** partner를 모두 call합니다.
+여러 파트너를 함께 나열하면 Exa Agent가 각 파트너의 강점이 발휘되는 부분을 골라 활용합니다. 여기서 두 개는 예시일 뿐이며, `dataSources`에 최대 다섯 개의 파트너를 attach할 수 있고 동일한 원칙이 적용됩니다. 각 파트너의 데이터를 명시적으로 요청하세요. 이 투자자 브리핑 실행에서는 ticker 뉴스를 담당하는 [Financial Datasets](/ko/docs/agent/connect/financialdatasets)와 팟캐스트 논평을 담당하는 [Particle](/ko/docs/agent/connect/particle)을 함께 사용합니다. 질의에서 각 파트너의 고유한 데이터를 요청하고 schema가 output을 `financialNews`와 `podcastChatter`로 나누기 때문에, Exa Agent는 같은 실행에서 **두** 파트너를 모두 call합니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -174,5 +168,5 @@
 </CodeGroup>
 
 <Tip>
-  각 partner의 데이터를 *질의*에 명시하세요. 즉, 각 partner에서 어떤 종류의 결과를 원하는지 구체적으로 밝히는 것입니다(여기서는 ticker 기반 금융 뉴스와 발언자가 명시된 팟캐스트 quote). 요청이 &quot;최신 뉴스&quot;처럼 두루뭉술하면 Exa Agent는 partner 대신 web search로 돌아가는 경향이 있습니다. 이렇게 구분한 요구 사항을 `outputSchema` 필드에도 그대로 반영하면 효과가 한층 강화됩니다.
+  각 파트너의 데이터를 *질의*에 명시적으로 밝히세요. 파트너별로 어떤 종류의 결과를 원하는지 구체적으로 지정하면 됩니다(여기서는 ticker 금융 뉴스와 발언자가 명시된 팟캐스트 quote). 요청이 &quot;최신 뉴스&quot;처럼 두루뭉술하면 Exa Agent는 파트너 대신 web search로 되돌아가는 경향이 있습니다. 이렇게 구분한 요구 사항을 `outputSchema` field에도 그대로 반영하면 효과가 더 확실해집니다.
 </Tip>

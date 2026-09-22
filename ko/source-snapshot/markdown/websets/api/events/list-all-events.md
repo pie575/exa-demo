@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-all-events">
-  # 모든 이벤트 조회
-</div>
+# 모든 events 조회 {#list-all-events}
 
-> 시스템에서 발생한 모든 이벤트를 조회합니다.
+> 시스템에서 발생한 모든 events를 조회합니다.
 
-`cursor` 매개변수를 사용해 결과를 페이지 단위로 조회할 수 있습니다.
+`cursor` 매개변수로 결과를 페이지 단위로 조회할 수 있습니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0
@@ -39,7 +33,7 @@ paths:
       description: |-
         List all events that have occurred in the system.
 
-        `cursor` 매개변수를 사용하여 결과를 페이지네이션할 수 있습니다.
+        You can paginate through the results using the `cursor` parameter.
       operationId: events-list
       parameters:
         - in: query
@@ -48,7 +42,7 @@ paths:
             minLength: 1
             type: string
           required: false
-          description: 결과를 페이지네이션하기 위한 커서
+          description: The cursor to paginate through the results
         - in: query
           name: limit
           schema:
@@ -57,7 +51,7 @@ paths:
             maximum: 200
             type: integer
           required: false
-          description: 반환할 결과의 개수
+          description: The number of results to return
         - in: query
           name: types
           schema:
@@ -85,7 +79,7 @@ paths:
               type: string
             type: array
           required: false
-          description: 필터링할 이벤트 유형
+          description: The types of events to filter by
         - in: query
           name: createdBefore
           schema:
@@ -93,8 +87,8 @@ paths:
             format: date-time
           required: false
           description: >-
-            이 타임스탬프 이전 또는 해당 시점(포함)에 생성된 이벤트를 필터링합니다.
-            유효한 ISO 8601 날짜/시간 문자열이어야 합니다. 모든 시간은 UTC 기준입니다.
+            Filter events created before or at this timestamp (inclusive). Must
+            be a valid ISO 8601 datetime string. All times are in UTC.
         - in: query
           name: createdAfter
           schema:
@@ -102,16 +96,16 @@ paths:
             format: date-time
           required: false
           description: >-
-            이 타임스탬프 이후 또는 해당 시점(포함)에 생성된 이벤트를 필터링합니다.
-            유효한 ISO 8601 날짜/시간 문자열이어야 합니다. 모든 시간은 UTC 기준입니다.
+            Filter events created after or at this timestamp (inclusive). Must
+            be a valid ISO 8601 datetime string. All times are in UTC.
       responses:
         '200':
-          description: 이벤트 목록
+          description: List of events
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: 요청에 대한 고유 식별자입니다.
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -130,14 +124,14 @@ components:
             $ref: '#/components/schemas/Event'
             discriminator:
               propertyName: type
-          description: 이벤트 목록
+          description: The list of events
           type: array
         hasMore:
-          description: 페이지네이션할 추가 결과가 있는지 여부
+          description: Whether there are more results to paginate through
           type: boolean
         nextCursor:
           type: string
-          description: 다음 결과 집합을 페이지네이션하기 위한 커서
+          description: The cursor to paginate through the next set of results
           nullable: true
       required:
         - data
@@ -151,7 +145,7 @@ components:
       oneOf:
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -161,7 +155,7 @@ components:
               $ref: '#/components/schemas/Webset'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -177,7 +171,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -187,7 +181,7 @@ components:
               $ref: '#/components/schemas/Webset'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -203,7 +197,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -213,7 +207,7 @@ components:
               $ref: '#/components/schemas/Webset'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -229,7 +223,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -239,7 +233,7 @@ components:
               $ref: '#/components/schemas/Webset'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -255,7 +249,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -265,7 +259,7 @@ components:
               $ref: '#/components/schemas/WebsetItem'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -281,7 +275,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -291,7 +285,7 @@ components:
               $ref: '#/components/schemas/WebsetItem'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -307,7 +301,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -317,7 +311,7 @@ components:
               $ref: '#/components/schemas/WebsetSearch'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -333,7 +327,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -343,7 +337,7 @@ components:
               $ref: '#/components/schemas/WebsetSearch'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -359,7 +353,7 @@ components:
           type: object
         - properties:
             id:
-              description: 이벤트의 고유 식별자
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -369,7 +363,7 @@ components:
               $ref: '#/components/schemas/WebsetSearch'
             createdAt:
               format: date-time
-              description: 이벤트가 생성된 날짜와 시간
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -794,8 +788,8 @@ components:
             The entity the search will return results for.
 
 
-            생성 시 entity를 지정하지 않으면 질의를 기반으로 최적의 entity가 자동으로
-            선택됩니다.
+            When no entity is provided during creation, we will automatically
+            select the best entity based on the query.
           nullable: true
         criteria:
           items:
@@ -803,49 +797,51 @@ components:
               description:
                 minLength: 1
                 maxLength: 1000
-                description: 해당 기준에 대한 설명
+                description: The description of the criterion
                 type: string
               successRate:
                 minimum: 0
                 maximum: 100
                 description: >-
-                  해당 기준을 충족하는 결과의 비율을 나타내는 0에서 100 사이의
-                  값입니다.
+                  Value between 0 and 100 representing the percentage of results
+                  that meet the criterion.
                 type: number
             required:
               - description
               - successRate
             type: object
           description: >-
-            search가 결과를 평가할 때 사용할 criteria입니다. 지정하지 않으면
-            자동으로 생성됩니다.
+            The criteria the search will use to evaluate the results. If not
+            provided, we will automatically generate them for you.
           type: array
         count:
           minimum: 1
           description: >-
-            search가 찾으려고 시도할 결과 개수입니다. search의 복잡도에 따라
-            실제 결과 수는 이보다 적을 수 있습니다.
+            The number of results the search will attempt to find. The actual
+            number of results may be less than this number depending on the
+            search complexity.
           type: number
         maxPeoplePerCompany:
           minimum: 1
           type: integer
           description: >-
-            동일한 현재 재직 회사에서 매칭되는 인물 수에 대해 요청된 소프트
-            상한값이며, 상한을 요청하지 않은 경우 null입니다.
+            The soft cap requested for matching people from the same current
+            employer company, or null when no cap was requested.
           nullable: true
         behavior:
           $ref: '#/components/schemas/WebsetSearchBehavior'
           default: override
           description: >-
-            Webset에 추가될 때의 search 동작 방식입니다.
+            The behavior of the search when it is added to a Webset.
 
 
-            - `override`: search가 Webset에서 찾은 기존 Item을 대체하고 새로운
-            criteria로 평가합니다. 새로운 criteria에 부합하지 않는 Item은
-            폐기됩니다.
+            - `override`: the search will replace the existing Items found in
+            the Webset and evaluate them against the new criteria. Any Items
+            that don't match the new criteria will be discarded.
 
-            - `append`: search가 새로 찾은 Item을 기존 Webset에 추가합니다.
-            새로운 criteria에 부합하지 않는 Item은 폐기됩니다.
+            - `append`: the search will add the new Items found to the existing
+            Webset. Any Items that don't match the new criteria will be
+            discarded.
         exclude:
           items:
             properties:
@@ -861,8 +857,8 @@ components:
               - id
             type: object
           description: >-
-            search 중 특정 결과가 검색되지 않도록 제외하는 데 사용되는 소스(기존
-            import 또는 webset)입니다.
+            Sources (existing imports or websets) used to omit certain results
+            to be found during the search.
           type: array
         scope:
           items:
@@ -878,8 +874,8 @@ components:
                 properties:
                   definition:
                     description: >-
-                      찾고자 하는 entity가 제공된 소스에 포함된 entity와 어떤
-                      관계에 있는지를 나타냅니다.
+                      What the relationship of the entities you hope to find is
+                      relative to the entities contained in the provided source.
                     type: string
                   limit:
                     minimum: 1
@@ -894,8 +890,8 @@ components:
               - id
             type: object
           description: >-
-            search의 scope입니다. 기본값은 scope 없음이며, 이 경우 웹 전체를
-            검색합니다.
+            The scope of the search. By default, there is no scope - thus
+            searching the web.
 
 
             If provided during creation, the search will only be performed on

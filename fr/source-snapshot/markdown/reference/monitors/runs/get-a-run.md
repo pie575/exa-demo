@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="get-a-run">
-  # Récupérer un run
-</div>
+# Récupérer un run {#get-a-run}
 
-> Récupère un run à partir de son ID, avec l&#39;output complet si le run est terminé.
+> Récupère un run unique via son ID, avec l&#39;output complet si le run est terminé.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs/{runId}
 openapi: 3.1.0
@@ -323,7 +317,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: L'API key est manquante ou invalide.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -336,7 +330,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: The requested resource does not exist.
+      description: La ressource demandée n'existe pas.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -349,7 +343,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: Une erreur inattendue s'est produite lors du traitement de la requête.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -369,12 +363,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez également vous authentifier
+        avec Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez également vous authentifier
+        avec Authorization: Bearer <key>.
 ```

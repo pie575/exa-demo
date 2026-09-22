@@ -1,45 +1,37 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="highlights">
-  # Highlights
-</div>
+# Highlights {#highlights}
 
-> Devuelve extractos relevantes para la query a partir de los resultados de Exa Search, controlando el tamaño del contexto y la latencia.
+> Devuelve extractos relevantes para la consulta a partir de los resultados de Exa Search, controlando el tamaño del contexto y la latencia.
 
-Los highlights devuelven pasajes extraídos de cada resultado que resultan relevantes para tu query. Úsalos cuando tu aplicación necesite evidencia de la página sin asumir el costo en tokens del texto completo.
+Los highlights devuelven pasajes extraídos de cada resultado que son relevantes para tu consulta. Úsalos cuando tu aplicación necesite evidencia de la página sin el costo en tokens del texto completo.
 
 Cada resultado devuelve los pasajes seleccionados en `results[].highlights`.
 
-<div id="why-highlights-instead-of-full-text">
-  ## Por qué highlights en lugar del texto completo
-</div>
+## Por qué highlights en lugar de texto completo {#why-highlights-instead-of-full-text}
 
-Los highlights provienen del modelo de extracción propio de Exa. En cada solicitud, el modelo analiza cada resultado a la luz de tu query y devuelve únicamente los pasajes que la responden. Te quedas con una fracción de los tokens del texto completo de la página, con una calidad de respuesta igual o mejor.
+Los highlights provienen del modelo de extraction propio de Exa. El modelo analiza cada result frente a tu consulta en cada solicitud y devuelve solo los pasajes que la responden. Así conservas una fracción de los tokens del texto completo de la página con una calidad de respuesta igual o mejor en las etapas posteriores.
 
-| Evaluación                       | Resultado                                                                                                                                                                                        |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Precisión (SimpleQA)             | 500 caracteres de highlights igualan la precisión de los primeros 8.000 caracteres del texto de la página, con 16 veces menos tokens                                                             |
-| Calidad con presupuestos mayores | 4.000 caracteres de highlights superan a 32.000 caracteres de texto completo                                                                                                                     |
-| Documentos técnicos extensos     | Con un presupuesto de 500 caracteres, los highlights alcanzan un 60% de precisión en referencias de API, documentación de SDK, especificaciones y artículos; el texto completo se queda en un 6% |
-| Uso de tokens en búsquedas       | Los highlights reducen los tokens de búsqueda 5 veces en promedio                                                                                                                                |
+| Evaluación                       | Resultado                                                                                                                                                                              |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Precisión (SimpleQA)             | 500 caracteres de highlights igualan la precisión de los primeros 8.000 caracteres del texto de la página, con 16 veces menos tokens                                                   |
+| Calidad con presupuestos mayores | 4.000 caracteres de highlights superan a 32.000 caracteres de texto completo                                                                                                           |
+| Documentos técnicos extensos     | Con un presupuesto de 500 caracteres, los highlights alcanzan un 60% de precisión en API references, documentación de SDK, especificaciones y artículos; el texto completo llega al 6% |
+| Uso de tokens de búsqueda        | Los highlights reducen los tokens de búsqueda 5 veces en promedio                                                                                                                      |
 
-El ahorro se nota sobre todo en bucles de agentes, donde cada ronda de resultados de búsqueda compite por el contexto con las trazas de razonamiento.
+El ahorro se nota sobre todo en los bucles de agentes, donde cada ronda de resultados de búsqueda compite por el contexto con las trazas de razonamiento.
 
 <Tip>
   Lee [Exa Highlights: Quality, Token-Efficient Search](https://exa.ai/blog/highlights-for-agents)
   para conocer la metodología y los resultados completos.
 </Tip>
 
-<div id="add-highlights-to-search">
-  ## Añadir highlights a Search
-</div>
+## Añadir highlights a Search {#add-highlights-to-search}
 
-Usa `highlights: true` dentro de `contents` como valor predeterminado recomendado. Exa decide cuánto texto devolver de cada resultado en función de su relevancia respecto a tu query, así que no hay ningún presupuesto de caracteres que ajustar. Define `maxCharacters` solo si tu aplicación necesita un límite fijo por página.
+Usa `highlights: true` dentro de `contents` como valor predeterminado recomendado. Exa decide cuánto texto devolver de cada resultado según su relevancia para tu consulta, por lo que no hay ningún presupuesto de caracteres que ajustar. Configura `maxCharacters` solo si tu aplicación necesita un límite fijo por página.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -69,19 +61,17 @@ Usa `highlights: true` dentro de `contents` como valor predeterminado recomendad
   ```
 </CodeGroup>
 
-<div id="dynamic-highlights">
-  ## Dynamic Highlights
-</div>
+## Dynamic Highlights {#dynamic-highlights}
 
-Dynamic Highlights ajusta la cantidad de texto que selecciona de cada resultado según lo que resulte más útil para tu query. Puede extraer más de las fuentes sólidas y menos de las repetitivas o irrelevantes, lo que reduce el total de tokens devueltos.
+Dynamic Highlights ajusta cuánto texto selecciona de cada resultado según lo que resulte más útil para tu consulta. Puede extraer más de las fuentes sólidas y menos de las repetitivas o irrelevantes, reduciendo el total de tokens devueltos.
 
-Úsalo cuando varios resultados alimenten el mismo agente o la misma ventana de contexto. Mantén el `highlights: true` habitual cuando cada página necesite su propio extracto o un límite predecible por página.
+Úsalo cuando varios resultados alimenten el mismo agente o la misma ventana de contexto. Mantén los highlights normales con `highlights: true` cuando cada página necesite su propio extracto o un límite predecible por página.
 
-En las evaluaciones de Exa, Dynamic Highlights redujo los tokens un 95 % en promedio frente al contenido completo de la página. Con un presupuesto de 12.000 caracteres superó a los highlights habituales, con una mejora media del 40 % en eficiencia de tokens y un aumento del 3,8 % en calidad. Dentro de Exa Agent, redujo el uso total de tokens del agente un 30 %, con una ganancia media de calidad del 2,1 % en pruebas comparativas como BrowseComp y WideSearch.
+En las evaluaciones de Exa, Dynamic Highlights redujo los tokens un 95% en promedio frente al contenido completo de la página. Con un presupuesto de caracteres de 12.000, superó a los highlights normales con una ganancia promedio del 40% en eficiencia de tokens y un aumento del 3,8% en calidad. Dentro de Exa Agent, redujo el uso total de tokens del agente un 30%, con una mejora promedio de calidad del 2,1% en pruebas comparativas como BrowseComp y WideSearch.
 
 <Tip>
   Lee [Dynamic Highlights](https://exa.ai/blog/dynamic-highlights) para conocer los resultados de la evaluación y
-  el diseño detrás de la selección de highlights entre varios resultados.
+  el diseño detrás de la selección de highlights entre resultados.
 </Tip>
 
 Actívalo con `dynamic: true`:
@@ -139,19 +129,17 @@ Actívalo con `dynamic: true`:
   `betas=[DYNAMIC_HIGHLIGHTS_BETA]` (Python) o `betas: [DYNAMIC_HIGHLIGHTS_BETA]` (JavaScript).
 
   La respuesta usa la misma
-  estructura `results[].highlights` que los highlights habituales.
+  estructura `results[].highlights` que los highlights normales.
 </Info>
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
   <Card title="Guía de la Search API" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
-    Crea una solicitud de Search y elige el formato de salida adecuado.
+    Crea una solicitud de Search y elige el formato de output adecuado.
   </Card>
 
-  <Card title="Mejores prácticas de Search" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer guía" arrow="true">
-    Ajusta la calidad de la recuperación, la latencia, la actualidad y el tamaño del contexto.
+  <Card title="Buenas prácticas de búsqueda" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer guía" arrow="true">
+    Ajusta la calidad de la recuperación, la latencia, la frescura y el tamaño del contexto.
   </Card>
 </Columns>

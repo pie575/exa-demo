@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="polymarket">
-  # Polymarket
-</div>
+# Polymarket {#polymarket}
 
-> Dapatkan peluang prediction market, riwayat harga, order books, dan posisi trader.
+> Dapatkan odds prediction market, price history, order books, dan posisi trader.
 
 [Polymarket](https://polymarket.com) adalah platform prediction market di mana
-harga pasar mencerminkan implied probability publik terhadap
-berbagai peristiwa di dunia nyata. [Exa Connect](/id/docs/agent/connect/overview) menyediakan
+harga pasar mencerminkan implied probability dari khalayak terhadap
+hasil di dunia nyata. [Exa Connect](/id/docs/agent/connect/overview) menyediakan
 akses baca-saja ke data pasar publik Polymarket.
 
 Attach `polymarket` ke sebuah run [Exa Agent](/id/docs/agent/quickstart), maka
-agent akan melakukan kueri ke Polymarket sekaligus menjalankan Exa web search.
+agent akan melakukan kueri ke Polymarket sekaligus Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Menemukan prediction markets dan market-implied odds terkini untuk suatu topik.
+* Menemukan prediction market dan market-implied odds terkini untuk suatu topik.
 * Membandingkan perubahan implied probability suatu hasil dari waktu ke waktu.
-* Memeriksa likuiditas pasar, kedalaman bid/ask, dan pemegang posisi terbesar.
-* Meninjau posisi terkini seorang trader beserta aktivitas on-chain terbarunya.
+* Memeriksa likuiditas market, depth bid/ask, dan pemegang posisi terbesar.
+* Meninjau posisi terkini seorang trader dan aktivitas on-chain terbarunya.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -38,30 +30,24 @@ Gunakan nilai ini pada `dataSources`:
 polymarket
 ```
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
-API baca Polymarket tidak memerlukan autentikasi dan gratis, sehingga pemanggilan tool Polymarket
+API baca Polymarket bersifat unauthenticated dan gratis, sehingga tool call Polymarket
 tidak dikenakan biaya: Anda hanya membayar
 [harga Agent run](/id/docs/agent/quickstart#pricing) standar.
 
-<div id="data-available">
-  ## Data yang tersedia
-</div>
+## Data yang tersedia {#data-available}
 
-| Data                | Deskripsi                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Market dan event    | Prediction markets dan event yang sedang berjalan, lengkap dengan harga implied probability, volume, dan likuiditas. |
-| Riwayat harga       | Pergerakan implied probability suatu outcome dari waktu ke waktu.                                                    |
-| Order books         | Kedalaman bid/ask dan spread secara real-time untuk suatu outcome market.                                            |
-| Pemegang dan trader | Pemegang posisi terbesar pada suatu market, plus posisi terkini seorang trader dan aktivitas on-chain terbarunya.    |
+| Data                | Deskripsi                                                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Market dan events   | Prediction market dan events saat ini, lengkap dengan harga implied probability, volume, dan likuiditas.            |
+| Price history       | Pergerakan implied probability suatu outcome dari waktu ke waktu.                                                   |
+| Order books         | Depth bid/ask dan spread secara langsung untuk sebuah outcome market.                                               |
+| Pemegang dan trader | Pemegang posisi terbesar pada sebuah market, serta posisi terkini seorang trader dan aktivitas on-chain terbarunya. |
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
-Dapatkan market-implied odds pemangkasan suku bunga The Fed beserta pergerakannya selama sebulan terakhir.
+Dapatkan market-implied odds untuk pemangkasan suku bunga The Fed beserta pergerakannya selama sebulan terakhir.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -127,32 +113,28 @@ Dapatkan market-implied odds pemangkasan suku bunga The Fed beserta pergerakanny
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Exa web search](/id/docs/search/quickstart): tambahkan pemberitaan dan konteks latar untuk peluang pasar.
-* [Particle](/id/docs/agent/connect/particle): tarik liputan berita di balik pergerakan peluang.
-* [Financial Datasets](/id/docs/agent/connect/financialdatasets): hubungkan market-implied odds dengan harga, fundamental, dan data makro.
+* [Exa web search](/id/docs/search/quickstart): tambahkan pemberitaan dan konteks latar pada odds pasar.
+* [Particle](/id/docs/agent/connect/particle): tarik liputan berita di balik pergerakan odds.
+* [Financial Datasets](/id/docs/agent/connect/financialdatasets): hubungkan market-implied odds dengan harga, data fundamental, dan data makro.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, Harga, dan katalog partner lengkapnya.
   </Card>
 
-  <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
-    Attach hingga lima partner ke satu run dan rancang query agar masing-masing ikut terpicu.
+  <Card title="Gabungkan providers" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partner ke satu run dan rancang query agar masing-masing terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard lalu jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
+    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru mendapatkan credits gratis.
   </Card>
 </Columns>

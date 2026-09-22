@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="fiberai">
-  # Fiber.ai
-</div>
+# Fiber.ai {#fiberai}
 
 > Busca empresas, personas y perfiles de LinkedIn en la base de datos B2B de Fiber.ai.
 
 [Fiber.ai](https://fiber.ai) es una plataforma de datos B2B con información actualizada de más de 40 M de
-empresas, más de 850 M de personas y más de 30 M de ofertas de empleo. Consulta datos en tiempo real de empresas, personas y
-empleos, y enriquece los registros incompletos con correos laborales, correos personales y
+empresas, más de 850 M de personas y más de 30 M de empleos. Busca datos en tiempo real de empresas, personas y
+empleos, y enriquece registros incompletos con correos laborales, correos personales y
 números de teléfono.
 
-Adjunta `fiber` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
-[Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
-Fiber.ai junto con la búsqueda web de Exa.
+Adjunta `fiber` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
+[Exa Connect](/es/docs/agent/connect/overview), y el agente consultará
+Fiber.ai junto con Exa web search.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Depurar un CRM mediante la búsqueda inversa de un correo laboral o personal
-  para identificar a la persona, o enriquecer un registro parcial de
-  empresa/persona.
-* Hacer seguimiento de señales de LinkedIn en tiempo real: cambios de puesto,
-  ascensos, nuevos empleos, variaciones en la plantilla y rondas de
-  financiación.
+* Limpiar un CRM mediante la búsqueda inversa de un correo laboral o personal
+  para identificar a una persona, o enriquecer un registro parcial de empresa o persona.
+* Hacer seguimiento de señales de LinkedIn en tiempo real: cambios de puesto, ascensos, nuevos
+  empleos, cambios en la plantilla y rondas de financiación.
 * Encontrar publicaciones relevantes en LinkedIn, X, Instagram, TikTok, Reddit y
-  YouTube, extraer sus comentarios y reacciones, y después enriquecer la
-  información de contacto de los autores.
-* Buscar entre más de 40 M de empresas y más de 850 M de personas, y enriquecer
-  los prospectos con correo laboral, correo personal y números de teléfono.
+  YouTube, extraer sus comentarios y reacciones, y luego enriquecer los datos de
+  contacto de los autores.
+* Buscar entre más de 40 millones de empresas y más de 850 millones de personas, y enriquecer prospectos con
+  correo laboral, correo personal y números de teléfono.
 
-<div id="provider-id">
-  ## ID del proveedor
-</div>
+## ID del proveedor {#provider-id}
 
 Usa este valor en `dataSources`:
 
@@ -46,12 +36,10 @@ Usa este valor en `dataSources`:
 fiber
 ```
 
-<div id="pricing">
-  ## Precios
-</div>
+## Precios {#pricing}
 
-Fiber.ai factura en créditos a `$0.02 / credit`, y cada llamada se cobra según
-los créditos que Fiber reporte para ella:
+Fiber.ai factura en créditos a `$0.02 / credit`, y cada llamada se cobra según los
+créditos que Fiber reporta para ella:
 
 | Operación                                        | Créditos                          |
 | ------------------------------------------------ | --------------------------------- |
@@ -60,15 +48,13 @@ los créditos que Fiber reporte para ella:
 | Búsqueda de persona / búsqueda inversa de correo | 2                                 |
 | Revelación de contacto                           | 2 (correo laboral) – 5 (teléfono) |
 
-Las llamadas que no devuelven ninguna coincidencia (o cuyo cargo Fiber reembolsa) son gratuitas. Los
-parámetros que elijas afectan el precio: el `numResults` de una búsqueda de empresa determina por cuántos
-candidatos pagas, y la cantidad de resultados de una search concentra la mayor parte de su costo.
+Las llamadas que no devuelven ninguna coincidencia (o cuyo cargo Fiber reembolsa) son gratuitas. Las
+opciones de parámetros modifican el precio: el `numResults` de una búsqueda de empresa define por cuántos
+candidatos pagas, y la cantidad de resultados de una búsqueda determina la mayor parte de su costo.
 
-<div id="example">
-  ## Ejemplo
-</div>
+## Ejemplo {#example}
 
-Crea una lista de prospección B2B de empresas fintech en Serie A ubicadas en Nueva York que tengan entre 50 y 200 empleados.
+Crea una lista de prospección B2B de empresas fintech en ronda Serie A ubicadas en Nueva York y con entre 50 y 200 empleados.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -163,32 +149,28 @@ Crea una lista de prospección B2B de empresas fintech en Serie A ubicadas en Nu
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Combina bien con
-</div>
+## Combina bien con {#pairs-well-with}
 
-* [Similarweb](/es/docs/agent/connect/similarweb): mide la presencia web de un prospecto y la de sus competidores.
-* [Baselayer](/es/docs/agent/connect/baselayer): verifica directivos y registros de las empresas estadounidenses preseleccionadas.
+* [Similarweb](/es/docs/agent/connect/similarweb): evalúa la presencia web y los competidores de un prospecto.
+* [Baselayer](/es/docs/agent/connect/baselayer): verifica directivos y registrations de empresas estadounidenses preseleccionadas.
 * [Particle](/es/docs/agent/connect/particle): descubre qué dicen los pódcast sobre una empresa o un directivo.
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir guía rápida" arrow="true">
-    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de socios.
+  <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">
+    El quickstart de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
   </Card>
 
-  <Card title="Combinar proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
-    Adjunta hasta cinco socios a una misma ejecución y formula la query de modo que todos se activen.
+  <Card title="Combina proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
+    Adjunta hasta cinco partners a un mismo run y formula la consulta para que se active cada uno de ellos.
   </Card>
 
-  <Card title="Aprende Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir guía" arrow="true">
-    Crea ejecuciones, transmite el progreso, diseña esquemas de salida y controla el esfuerzo y el costo.
+  <Card title="Aprende Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+    Crea runs, sigue el progreso en stream, diseña esquemas de output y controla el effort y el costo.
   </Card>
 
   <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
-    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas incluyen créditos gratuitos.
+    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con créditos gratuitos.
   </Card>
 </Columns>

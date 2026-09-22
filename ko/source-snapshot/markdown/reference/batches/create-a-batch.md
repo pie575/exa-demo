@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-<div id="create-a-batch">
-  # batch 생성
-</div>
+# Create a batch {#create-a-batch}
 
-> 비동기로 실행할 Exa API 요청 batch를 제출합니다.
+> Exa API 요청 batch를 제출하여 비동기로 실행합니다.
 
-`requests`의 각 항목은 batch 내에서 고유한 `customId`를 가지는 `/search` 또는 `/agent/runs`에 대한 `POST` 요청입니다. 결과 파일에도 동일한 `customId`가 반환되므로 output 행을 입력 데이터와 매핑할 수 있습니다. 전체 워크플로우는 [Batch API 가이드](/ko/docs/batch/quickstart)를 참고하세요.
+`requests`의 각 항목은 batch 내에서 고유한 `customId`를 포함한 `/search` 또는 `/agent/runs` 대상 `POST` 요청입니다. 결과 파일에도 동일한 `customId`가 반환되므로 output 행을 원래 입력 데이터와 매핑할 수 있습니다. 전체 워크플로우는 [Batch API 가이드](/ko/docs/batch/quickstart)를 참고하세요.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches
 openapi: 3.1.0

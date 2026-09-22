@@ -1,43 +1,35 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="fiberai">
-  # Fiber.ai
-</div>
+# Fiber.ai {#fiberai}
 
 > Interrogez la base de données B2B de Fiber.ai pour trouver des entreprises, des personnes et des profils LinkedIn.
 
 [Fiber.ai](https://fiber.ai) est une plateforme de données B2B qui propose des données à jour sur plus de 40 M
-d&#39;entreprises, 850 M de personnes et 30 M d&#39;offres d&#39;emploi. Recherchez des données en temps réel sur les entreprises, les personnes et les
-emplois, et enrichissez les fiches incomplètes avec des adresses e-mail professionnelles, des adresses e-mail personnelles et
+d&#39;entreprises, 850 M de personnes et 30 M d&#39;offres d&#39;emploi. Recherchez en temps réel des données sur les entreprises, les personnes et les
+emplois, et enrichissez les records incomplets avec des e-mails professionnels, des e-mails personnels et
 des numéros de téléphone.
 
 Attachez `fiber` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Fiber.ai en parallèle d&#39;Exa web search.
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## À utiliser pour {#use-it-for}
 
-* Nettoyer un CRM en remontant d&#39;un email professionnel ou personnel jusqu&#39;à une
-  personne, ou en enrichissant une fiche entreprise/personne incomplète.
+* Nettoyer un CRM en identifiant une personne à partir d&#39;un e-mail professionnel
+  ou personnel, ou en enrichissant un record entreprise/personne incomplet.
 * Suivre les signaux LinkedIn en temps réel : changements de poste, promotions,
-  nouveaux emplois, évolutions d&#39;effectifs et levées de fonds.
-* Trouver des publications pertinentes sur LinkedIn, X, Instagram, TikTok, Reddit
-  et YouTube, en extraire les commentaires et réactions, puis enrichir les
+  nouveaux emplois, évolutions des effectifs et levées de fonds.
+* Trouver les publications pertinentes sur LinkedIn, X, Instagram, TikTok, Reddit
+  et YouTube, en récupérer les commentaires et les réactions, puis enrichir les
   coordonnées de leurs auteurs.
-* Effectuer des recherches parmi plus de 40 M d&#39;entreprises et 850 M de personnes,
-  et enrichir les prospects avec leur email professionnel, leur email personnel et
-  leurs numéros de téléphone.
+* Effectuer des recherches parmi plus de 40 M d&#39;entreprises et 850 M de personnes
+  et enrichir les prospects avec leur e-mail professionnel, leur e-mail personnel
+  et leurs numéros de téléphone.
 
-<div id="provider-id">
-  ## ID du provider
-</div>
+## Identifiant du fournisseur {#provider-id}
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -45,26 +37,25 @@ Utilisez cette valeur dans `dataSources` :
 fiber
 ```
 
-<div id="pricing">
-  ## Pricing
-</div>
+## Tarification {#pricing}
 
-Fiber.ai facture en credits au tarif de `$0.02 / credit`, et chaque call est facturé selon les credits que Fiber déclare pour celui-ci :
+Fiber.ai facture en crédits au tarif de `$0.02 / credit`, et chaque appel est facturé selon les
+crédits que Fiber déclare pour celui-ci :
 
-| Opération                                               | Credits                        |
-| ------------------------------------------------------- | ------------------------------ |
-| Search                                                  | 2 + 1 par résultat renvoyé     |
-| Recherche d&#39;entreprise                              | ~2 par candidat renvoyé        |
-| Recherche de personne / recherche inversée d&#39;e-mail | 2                              |
-| Révélation de contact                                   | 2 (work email) – 5 (téléphone) |
+| Opération                                               | Crédits                                  |
+| ------------------------------------------------------- | ---------------------------------------- |
+| Search                                                  | 2 + 1 par résultat renvoyé               |
+| Recherche d&#39;entreprise                              | ~2 par candidat renvoyé                  |
+| Recherche de personne / recherche inversée d&#39;e-mail | 2                                        |
+| Révélation de contact                                   | 2 (e-mail professionnel) – 5 (téléphone) |
 
-Les calls qui ne renvoient aucune correspondance (ou dont Fiber rembourse les frais) sont gratuits. Les choix de parameters influent sur le prix : le `numResults` d&#39;une recherche d&#39;entreprise détermine le nombre de candidats que vous payez, et le nombre de résultats d&#39;une search représente l&#39;essentiel de son cost.
+Les appels qui ne renvoient aucune correspondance (ou dont Fiber rembourse les frais) sont gratuits. Le choix des
+paramètres influe sur le prix : le `numResults` d&#39;une recherche d&#39;entreprise détermine le nombre de
+candidats qui vous sont facturés, et le nombre de résultats d&#39;une recherche représente l&#39;essentiel de son coût.
 
-<div id="example">
-  ## Exemple
-</div>
+## Exemple {#example}
 
-Constituez une liste de prospection B2B de fintechs en série A basées à New York et comptant de 50 à 200 employés.
+Constituez une liste de prospection B2B regroupant les entreprises fintech en série A situées à New York et comptant de 50 à 200 employés.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -159,32 +150,28 @@ Constituez une liste de prospection B2B de fintechs en série A basées à New Y
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## À combiner avec
-</div>
+## À combiner avec {#pairs-well-with}
 
-* [Similarweb](/fr/docs/agent/connect/similarweb) : évaluez la présence web d&#39;un prospect et de ses concurrents.
-* [Baselayer](/fr/docs/agent/connect/baselayer) : vérifiez les dirigeants et les immatriculations des entreprises américaines présélectionnées.
-* [Particle](/fr/docs/agent/connect/particle) : découvrez ce que les podcasts disent d&#39;une entreprise ou d&#39;un dirigeant.
+* [Similarweb](/fr/docs/agent/connect/similarweb) : évaluer la présence web d&#39;un prospect et de ses concurrents.
+* [Baselayer](/fr/docs/agent/connect/baselayer) : vérifier les dirigeants et les immatriculations des entreprises américaines présélectionnées.
+* [Particle](/fr/docs/agent/connect/particle) : découvrir ce que disent les podcasts à propos d&#39;une entreprise ou d&#39;un dirigeant.
 
-<div id="next-steps">
-  ## Étapes suivantes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
-    Le quickstart Exa Connect couvre `dataSources`, la tarification et le catalogue complet des partners.
+    Le quickstart Exa Connect présente `dataSources`, la tarification et le catalogue complet des partners.
   </Card>
 
   <Card title="Combiner des providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
-    Attachez jusqu&#39;à cinq partners à un même run et formulez la query de façon à ce que chacun soit sollicité.
+    Attachez jusqu&#39;à cinq partners à un même run et formulez la requête de façon à ce que chacun se déclenche.
   </Card>
 
   <Card title="Découvrir Exa Agent" icon="book-open" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
-    Créez des runs, suivez la progression en streaming, concevez des schemas de sortie et maîtrisez l&#39;effort et le coût.
+    Créez des runs, suivez la progression en stream, concevez des schémas d&#39;output et maîtrisez l&#39;effort et le coût.
   </Card>
 
-  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une key" arrow="true">
-    Créez une key dans le dashboard et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes bénéficient de credits gratuits.
+  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une clé" arrow="true">
+    Créez une clé dans le tableau de bord et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes démarrent avec des crédits gratuits.
   </Card>
 </Columns>

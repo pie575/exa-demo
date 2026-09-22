@@ -1,23 +1,19 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="examples">
-  # Contoh
-</div>
+# Contoh {#examples}
 
-> Contoh Exa Agent tingkat produksi untuk list building, intelijen KYB, lowongan kerja, dan structured output.
+> Contoh Exa Agent tingkat production untuk list building, intelijen KYB, lowongan kerja, dan output terstruktur.
 
-Contoh-contoh ini memperlihatkan pola workflow produksi untuk Exa Agent, mencakup list building, intelijen KYB, lowongan kerja, dan structured output.
+Contoh-contoh ini menunjukkan pola workflow production untuk Exa Agent, termasuk list building, intelijen KYB, lowongan kerja, dan output terstruktur.
 
 <h2 id="find-all-code">
   Temukan semua anggota GTM di Exa.ai
 </h2>
 
-Gunakan prompt pencarian ketika Agent yang harus menemukan barisnya. Sebutkan secara eksplisit company disambiguation dan wajibkan evidence status kerja terkini agar perusahaan bernama serupa tidak ikut masuk ke hasil.
+Gunakan prompt discovery ketika Agent yang harus menemukan barisnya. Jelaskan secara eksplisit soal company disambiguation dan wajibkan evidence status kerja saat ini agar perusahaan dengan nama serupa tidak ikut masuk ke hasil.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -143,7 +139,7 @@ Gunakan prompt pencarian ketika Agent yang harus menemukan barisnya. Sebutkan se
   Intelijen KYC / KYB
 </h2>
 
-Gunakan Agent ketika peninjauan partner atau vendor membutuhkan intelijen web publik, bukan sekadar satu halaman profil. Mintalah verifikasi identitas, konteks bisnis, sinyal publik, aktivitas investasi, dan catatan risiko yang eksplisit dalam satu objek terstruktur.
+Gunakan Agent saat peninjauan partner atau vendor membutuhkan intelijen dari public web, bukan sekadar satu halaman profil. Mintalah verifikasi identitas, konteks bisnis, sinyal publik, aktivitas investasi, dan catatan risiko secara eksplisit dalam satu objek terstruktur.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -413,7 +409,7 @@ Gunakan Agent ketika peninjauan partner atau vendor membutuhkan intelijen web pu
   Lowongan pekerjaan
 </h2>
 
-Gunakan Agent ketika lowongan yang tersedia tersebar di berbagai halaman perusahaan, agregator, dan direktori startup. Contoh ini membatasi sumber hanya pada papan lowongan kerja Exa yang dihosting di Ashby dan tetap memerlukan company disambiguation.
+Gunakan Agent saat lowongan posisi tersebar di halaman perusahaan, agregator, dan direktori startup. Contoh ini membatasi sumber hanya pada papan lowongan kerja Exa yang dihosting di Ashby, dan tetap membutuhkan disambiguasi perusahaan.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -554,7 +550,7 @@ Gunakan Agent ketika lowongan yang tersedia tersebar di berbagai halaman perusah
   Enrich baris input
 </h2>
 
-Gunakan `input.data` ketika sistem Anda sudah memiliki datanya dan Agent bertugas meneliti atau meng-enrich setiap record. Pola ini menjaga identitas baris tetap berada di input terstruktur, bukan terkubur di dalam prompt.
+Gunakan `input.data` saat sistem Anda sudah memiliki catatannya dan Agent perlu melakukan research atau enrich pada setiap catatan. Pola ini mempertahankan identitas baris di dalam input terstruktur, alih-alih menyembunyikannya di dalam prompt.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -691,10 +687,10 @@ Gunakan `input.data` ketika sistem Anda sudah memiliki datanya dan Agent bertuga
 </CodeGroup>
 
 <h2 id="bounded-contact-fields-code">
-  Enrich baris dengan field kontak yang dibatasi
+  Enrich baris dengan contact field yang dibatasi
 </h2>
 
-Workflow yang berorientasi kontak dapat memicu biaya contact enrichment tersendiri. Versi dokumentasi yang dianonimkan ini memperlihatkan bentuk datanya tanpa menampilkan nama, email, nomor telepon, maupun URL profil pribadi.
+Workflow yang berorientasi kontak dapat memicu biaya contact enrichment tersendiri. Versi dokumentasi yang dianonimkan ini menunjukkan bentuk datanya tanpa memublikasikan nama pribadi, email, nomor telepon, atau URL profil.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -804,11 +800,11 @@ Workflow yang berorientasi kontak dapat memicu biaya contact enrichment tersendi
 </CodeGroup>
 
 <h2 id="exclude-known-records-code">
-  Kecualikan record yang sudah diketahui
+  Kecualikan catatan yang sudah diketahui
 </h2>
 
-Gunakan `input.exclusion` bila Agent perlu menghindari record yang sudah ditinjau, ditampilkan, atau ditolak oleh produk Anda.
-Pratinjau sheet memakai nama perusahaan sintetis sebagai hasilnya, sehingga pola pengecualian tetap terlihat tanpa memberi kesan bahwa baris-baris tersebut berasal dari run produksi sungguhan.
+Gunakan `input.exclusion` saat Agent perlu menghindari catatan yang sudah ditinjau, ditampilkan, atau ditolak oleh produk Anda.
+Pratinjau lembar kerja memakai nama perusahaan sintetis pada hasilnya agar pola exclusion tetap terlihat tanpa menyiratkan bahwa baris tersebut berasal dari run production yang sesungguhnya.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -924,8 +920,8 @@ Pratinjau sheet memakai nama perusahaan sintetis sebagai hasilnya, sehingga pola
   Melanjutkan workflow yang sudah selesai
 </h2>
 
-Gunakan `previousRunId` jika permintaan berikutnya perlu melanjutkan konteks dari run yang sudah selesai.
-Pratinjau sheet menggunakan nama perusahaan sintetis pada hasilnya untuk menggambarkan pola kelanjutan tanpa menampilkan run sebelumnya yang sebenarnya.
+Gunakan `previousRunId` jika permintaan berikutnya perlu memanfaatkan konteks dari run yang sudah selesai.
+Pratinjau lembar kerja memakai nama perusahaan sintetis pada hasil yang dikembalikan untuk menggambarkan pola kelanjutan tanpa menampilkan run sebelumnya yang sebenarnya.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1027,11 +1023,9 @@ Pratinjau sheet menggunakan nama perusahaan sintetis pada hasilnya untuk menggam
   ```
 </CodeGroup>
 
-<div id="broad-list-building-with-agent-max">
-  ## List building berskala luas dengan Agent Max
-</div>
+## List building berskala luas dengan Agent Max {#broad-list-building-with-agent-max}
 
-Gunakan `effort: "max"` untuk pekerjaan yang lebih mengutamakan kelengkapan dan ketelitian daripada latensi atau cost, termasuk list building berskala besar, riset mendalam dari banyak sumber, dan criteria yang sulit diverifikasi. Agent Max masih dalam tahap public beta: sertakan `Exa-Beta: agent-max-effort-2026-07-27` pada request. Header ini menerima daftar token beta yang dipisahkan dengan koma.
+Gunakan `effort: "max"` untuk pekerjaan yang lebih mengutamakan kelengkapan dan ketelitian daripada latency atau biaya, termasuk list building berskala besar, Research mendalam dari banyak source, dan kriteria yang sulit diverifikasi. Agent Max masih dalam tahap public beta: kirimkan `Exa-Beta: agent-max-effort-2026-07-27` bersama permintaan. Header ini menerima daftar token beta yang dipisahkan koma.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1073,11 +1067,9 @@ Gunakan `effort: "max"` untuk pekerjaan yang lebih mengutamakan kelengkapan dan 
   ```
 </CodeGroup>
 
-<div id="attach-a-data-partner-with-exa-connect">
-  ## Attach data partner dengan Exa Connect
-</div>
+## Attach data partner dengan Exa Connect {#attach-a-data-partner-with-exa-connect}
 
-Gunakan `dataSources` agar Exa Agent dapat menarik data dari data partner premium selama sebuah run. Di sini, setiap perusahaan diperkaya dengan data trafik dari Similarweb dan data pendanaan dari Harmonic, dipadukan dengan riset web. Lihat [Exa Connect](/id/docs/agent/connect/overview) untuk daftar lengkap partner.
+Gunakan `dataSources` agar Exa Agent bisa mengambil data dari data partner premium selama satu run. Di sini, setiap perusahaan di-enrich dengan trafik dari Similarweb dan pendanaan dari Harmonic, dipadukan dengan Research web. Lihat [Exa Connect](/id/docs/agent/connect/overview) untuk daftar lengkap partner.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1200,13 +1192,11 @@ Gunakan `dataSources` agar Exa Agent dapat menarik data dari data partner premiu
   ```
 </CodeGroup>
 
-<div id="production-checklist">
-  ## Checklist produksi
-</div>
+## Checklist production {#production-checklist}
 
-* Berikan Agent `query` spesifik yang menyebutkan unit pekerjaan dan kualitas sumber yang diinginkan.
-* Gunakan `input.data` untuk record yang sudah diketahui, alih-alih menuliskan barisnya langsung di dalam prompt.
-* Gunakan `input.exclusion` untuk record yang tidak boleh dikembalikan lagi.
-* Tambahkan `outputSchema` setiap kali hasilnya dipakai oleh kode di tahap berikutnya.
-* Gunakan `maxItems` pada array saat Anda membutuhkan scope dan cost yang dapat diprediksi.
-* Simpan `id` run yang dikembalikan agar Anda dapat melakukan poll, me-replay event, memeriksa cost, atau melanjutkan run tersebut di kemudian hari.
+* Berikan Agent `query` yang spesifik, yang menyebutkan unit pekerjaan dan kualitas source yang diinginkan.
+* Gunakan `input.data` untuk catatan yang sudah diketahui, bukan menyisipkan barisnya ke dalam prompt.
+* Gunakan `input.exclusion` untuk catatan yang tidak boleh dikembalikan lagi.
+* Tambahkan `outputSchema` setiap kali hasilnya dipakai oleh kode di sisi hilir.
+* Gunakan `maxItems` pada array saat Anda memerlukan scope dan cost yang dapat diprediksi.
+* Simpan `id` run yang dikembalikan agar Anda dapat melakukan poll, me-replay events, memeriksa cost, atau melanjutkan dari run tersebut nanti.

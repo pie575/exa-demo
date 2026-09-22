@@ -1,46 +1,34 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 자세히 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-<div id="update-api-key">
-  # API key 수정
-</div>
+# API 키 업데이트 {#update-api-key}
 
-> 기존 API key의 이름과 rate limit을 수정합니다.
+> 기존 API 키의 이름과 속도 제한을 업데이트합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
 <Info>
-  Team Management API는 team 단위로 활성화됩니다. 이 API는 서비스 계정 API key로 인증하며, 해당 기능이 team에 활성화되면 [API keys 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 key를 생성할 수 있습니다. 접근 권한이 필요하면 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
+  Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API 키를 사용하며, 이 키는 해당 기능이 team에 활성화된 후 [API keys 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 액세스 요청은 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-<div id="overview">
-  ## 개요
-</div>
+## 개요 {#overview}
 
-Update API Key endpoint를 사용하면 기존 API key를 수정할 수 있습니다
+API 키 업데이트 엔드포인트를 사용하면 기존 API 키를 수정할 수 있습니다
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: 업데이트할 API key의 고유 식별자입니다.
+* **id**: 업데이트할 API 키의 고유 식별자입니다.
 
-<div id="optional-parameters">
-  ## 선택 파라미터
-</div>
+## 선택적 Parameters {#optional-parameters}
 
-* **name**: API key를 설명하는 새 이름
-* **rateLimit**: 새 rate limit(분당 요청 수)
+* **name**: API 키에 사용할 새 설명 이름
+* **rateLimit**: 새 속도 제한(분당 요청 수)
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-an-import">
-  # import 생성
-</div>
+# import 생성 {#create-an-import}
 
-> Websets에 데이터를 업로드할 새 import를 생성합니다. import는 다음과 같은 용도로 사용할 수 있습니다:
+> 데이터를 Websets에 업로드하기 위한 새로운 import를 생성합니다. import는 다음과 같은 용도로 사용할 수 있습니다:
 
-* **Enrich**: AI 기반 enrichment 엔진으로 데이터에 추가 정보를 더합니다
-* **Search**: Websets의 에이전트형 search와 자연어 필터로 데이터를 질의합니다
-* **Exclude**: 중복되거나 이미 알고 있는 결과가 search 결과에 나타나지 않도록 합니다
+* **Enrich**: AI 기반 enrichment 엔진으로 데이터에 추가 정보를 보강합니다
+* **Search**: Websets의 에이전틱 search와 자연어 필터로 데이터를 질의합니다
+* **Exclude**: 중복되거나 이미 알고 있는 result가 search 결과에 나타나지 않도록 합니다
 
-import가 생성되면 `uploadValidUntil`(기본값 1시간)까지 반환된 `uploadUrl`로 데이터를 업로드할 수 있습니다.
+import가 생성되면 `uploadValidUntil`(기본값 1시간)까지 반환된 `uploadUrl`에 데이터를 업로드할 수 있습니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

@@ -5,14 +5,14 @@ openapi: "/zh/docs/exa-spec.yaml POST /agent/runs"
 timestamp: false
 ---
 
-用自然语言 `query` 创建一个运行。可添加 `outputSchema` 以获得经过校验的结构化 JSON，用 `input.data` 提供待处理的数据行，用 `input.exclusion` 指定要排除的记录或实体，或用 `previousRunId` 从已完成的运行继续。
+使用自然语言 `query` 创建运行。可添加 `outputSchema` 以获得经过校验的结构化 JSON、`input.data` 以指定待处理的数据行、`input.exclusion` 以指定需要排除的记录或实体，也可使用 `previousRunId` 从已完成的运行继续。
 
-设置 `Accept: text/event-stream`，即可在运行创建、启动和完成时以流式方式接收运行事件。
+设置 `Accept: text/event-stream`，即可在运行创建、启动和完成的过程中流式接收运行事件。
 
 <Note>
   **Connect：** 传入 `dataSources`，让 agent 在运行期间访问第三方数据提供方。详见 [Connect 指南](/zh/docs/agent/quickstart#connect-data-sources)。
 </Note>
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制面板中创建 key。新账户可获得免费额度。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
