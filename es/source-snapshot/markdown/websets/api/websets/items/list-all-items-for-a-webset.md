@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
-> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="list-all-items-for-a-webset">
-  # Listar todos los items de un webset
-</div>
+# Listar todos los items de un webset {#list-all-items-for-a-webset}
 
 > Devuelve una lista de Items del Webset.
 
 Puedes paginar los Items mediante el parámetro `cursor`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items
 openapi: 3.1.0

@@ -1,23 +1,21 @@
 ---
 title: "fx oleh Vercel Labs"
-sidebarTitle: "Fx oleh Vercel"
+sidebarTitle: "Fx by Vercel"
 description: "Tambahkan Exa web search ke fx, coding agent native dari Vercel Labs, dengan Exa MCP server terkelola."
 icon: "/docs/images/sidebar-icons/vercel.svg"
 keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
 ---
 
-[fx](https://fx.sh) adalah coding agent dan CLI native dari Vercel Labs, sekaligus klien MCP. Tambahkan MCP server terkelola dari Exa untuk membekalinya dengan web search real-time dan kemampuan membaca halaman.
+[fx](https://fx.sh) adalah coding agent native sekaligus CLI dari Vercel Labs, dan juga MCP client. Tambahkan Exa MCP server terkelola untuk membekalinya dengan web search real-time dan kemampuan membaca halaman.
 
 <Frame>
-  <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="Menginstal fx, menambahkan Exa MCP server dengan /mcp add, dan menjalankan Exa web search secara langsung" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
+  <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="Memasang fx, menambahkan Exa MCP server dengan /mcp add, dan menjalankan Exa web search secara langsung" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-<div id="installation">
-  ## Instalasi
-</div>
+## Instalasi {#installation}
 
 <Steps>
-  <Step title="Instal fx">
+  <Step title="Pasang fx">
     ```bash theme={null}
     curl -fsSL https://fx.sh/setup.sh | bash
     ```
@@ -26,13 +24,13 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   </Step>
 
   <Step title="Tambahkan Exa">
-    Jalankan fx dengan perintah `fx`, lalu tambahkan MCP server Exa dari shell interaktif:
+    Jalankan fx dengan perintah `fx`, lalu tambahkan Exa MCP server dari shell interaktif:
 
     ```text theme={null}
     /mcp add --transport http exa https://mcp.exa.ai/mcp
     ```
 
-    fx akan menyimpan server ke `~/.fx/mcp.json` dan memuat ulang MCP.
+    fx menyimpan server ke `~/.fx/mcp.json` dan memuat ulang MCP.
   </Step>
 
   <Step title="Verifikasi koneksi">
@@ -42,9 +40,7 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   </Step>
 </Steps>
 
-<div id="configure-by-hand">
-  ## Konfigurasi secara manual
-</div>
+## Konfigurasi secara manual {#configure-by-hand}
 
 fx hanya membaca MCP server dari `~/.fx/mcp.json`, jadi Anda juga bisa menambahkan Exa langsung di sana:
 
@@ -61,10 +57,10 @@ fx hanya membaca MCP server dari `~/.fx/mcp.json`, jadi Anda juga bisa menambahk
 
 Jalankan `/mcp reload` untuk menerapkan perubahan tanpa memulai ulang fx.
 
-Paket gratis cukup untuk penggunaan ringan. Untuk menaikkan rate limit, buat API key dan tambahkan ke konfigurasi:
+Paket gratis sudah cukup untuk penggunaan ringan. Untuk menaikkan rate limit, buat API key dan tambahkan ke config:
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru mendapatkan credit gratis.
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
 ```json ~/.fx/mcp.json theme={null}
@@ -81,14 +77,12 @@ Paket gratis cukup untuk penggunaan ringan. Untuk menaikkan rate limit, buat API
 }
 ```
 
-`header_env` memetakan nama header ke sebuah variabel lingkungan, sehingga key tidak perlu disimpan di file konfigurasi.
+`header_env` memetakan nama header ke sebuah variabel lingkungan, sehingga key tidak perlu disimpan di dalam file config.
 
-<div id="tool-discovery">
-  ## Penemuan tool
-</div>
+## Tool discovery {#tool-discovery}
 
-fx menemukan tool MCP secara lazy: tool dari server baru dimuat ke konteks model ketika ada giliran yang membutuhkannya, sehingga menambahkan Exa tidak menimbulkan biaya pada giliran yang tidak melakukan search di web.
+fx menemukan tool MCP secara lazy: tool dari server tidak dimuat ke konteks model sampai ada giliran yang membutuhkannya, sehingga menambahkan Exa tidak menimbulkan biaya pada giliran yang tidak melakukan search di web.
 
 <Card title="Exa MCP" icon="plug" href="/id/docs/get-started/exa-mcp" cta="Buka panduan" arrow="true">
-  Tinjau tool yang tersedia, opsi konfigurasi, dan klien lainnya.
+  Tinjau tool yang tersedia, opsi konfigurasi, dan client lainnya.
 </Card>

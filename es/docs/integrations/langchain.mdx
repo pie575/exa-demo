@@ -4,26 +4,24 @@ description: "Cómo usar la integración de Exa con LangChain para hacer RAG."
 icon: "/docs/images/sidebar-icons/langchain.svg"
 ---
 
-<Card title="Inicio rápido del agente de programación" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  ¿Es tu primera vez con Exa? Empieza en menos de un minuto.
+<Card title="Quickstart de agentes de programación" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  ¿Es tu primera vez con Exa? Da tus primeros pasos en menos de un minuto.
 </Card>
 
 ***
 
-LangChain es un framework para crear aplicaciones que combinan LLMs con datos, APIs y otras herramientas. Usa la integración de Exa con LangChain para hacer RAG:
+LangChain es un framework para crear aplicaciones que combinan LLM con datos, APIs y otras herramientas. Usa la integración de Exa con LangChain para hacer RAG:
 
 1. Configura la integración de Exa con LangChain y usa Exa para recuperar contenido relevante
 2. Conecta ese contenido a una cadena de herramientas que use el LLM de OpenAI para la generación
 
 <Info> Mira [aquí](https://www.youtube.com/watch?v=dA1cHGACXCo) un tutorial en YouTube del equipo de LangChain con una configuración muy similar. </Info>
 
-<Info> Consulta [aquí](https://python.langchain.com/docs/integrations/providers/exa%5Fsearch/) la referencia completa de LangChain. </Info>
+<Info> Consulta la referencia completa de LangChain [aquí](https://python.langchain.com/docs/integrations/providers/exa%5Fsearch/). </Info>
 
 ***
 
-<div id="get-started">
-  ## Primeros pasos
-</div>
+## Primeros pasos {#get-started}
 
 <Steps>
   <Step title="Requisitos previos e instalación">
@@ -33,15 +31,15 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     pip install langchain-openai langchain-exa
     ```
 
-    <Note> Asegúrate de que las API keys estén inicializadas correctamente. En las librerías de LangChain, los nombres de las variables de entorno son `OPENAI_API_KEY` y `EXA_API_KEY` para las keys de OpenAI y Exa, respectivamente. </Note>
+    <Note> Asegúrate de que las API keys estén inicializadas correctamente. En las bibliotecas de LangChain, los nombres de las variables de entorno son `OPENAI_API_KEY` y `EXA_API_KEY` para las keys de OpenAI y de Exa, respectivamente. </Note>
 
-    <Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Crea una key en el dashboard. Las cuentas nuevas incluyen credits gratuitos.
+    <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
     </Card>
   </Step>
 
   <Step title="Usa Exa Search con una herramienta de LangChain">
-    Configura una herramienta Retriever con `ExaSearchRetriever`. Es un recuperador que se conecta a Exa Search para encontrar documentos relevantes mediante búsqueda semántica. Primero, importa las bibliotecas necesarias e instancia el ExaSearchRetriever.
+    Configura una herramienta Retriever con `ExaSearchRetriever`. Es un retriever que se conecta a Exa Search para encontrar documentos relevantes mediante búsqueda semántica. Primero, importa las bibliotecas necesarias e instancia el ExaSearchRetriever.
 
     ```Python Python theme={null}
     # carga las variables de entorno
@@ -52,7 +50,7 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     from langchain_core.prompts import PromptTemplate
     from langchain_core.runnables import RunnableLambda
 
-    # Definimos nuestro retriever para usar Exa Search, obteniendo 3 resultados y extrayendo los highlights de cada uno
+    # Definimos nuestro retriever para que use Exa Search, obteniendo 3 resultados y extrayendo los highlights de cada resultado
     retriever = ExaSearchRetriever(api_key=os.getenv("EXA_API_KEY"), k=3, highlights=True)
     ```
   </Step>
@@ -61,7 +59,7 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     Usamos un [PromptTemplate](https://python.langchain.com/v0.1/docs/modules/model%5Fio/prompts/quick%5Fstart/#prompttemplate) de LangChain para definir una plantilla con marcadores de posición que permita extraer las URL y los highlights del retriever de Exa.
 
     ```Python Python theme={null}
-    # Definimos una plantilla de prompt para documentos con etiquetas tipo XML
+    # Define una plantilla de prompt de documento con etiquetas tipo XML
     document_prompt = PromptTemplate.from_template("""
     <source>
         <url>{url}</url>
@@ -71,11 +69,11 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     ```
   </Step>
 
-  <Step title="Procesa la URL y el contenido de los resultados de Exa">
+  <Step title="Analiza la URL y el contenido de los resultados de Exa">
     Usamos un [Runnable Lambda](https://api.python.langchain.com/en/latest/runnables/langchain%5Fcore.runnables.base.RunnableLambda.html) para extraer los atributos URL y Highlights de los resultados de Exa Search y luego pasarlos a la plantilla de prompt anterior
 
     ```Python Python theme={null}
-    # Crea un Runnable Lambda que extrae los atributos highlights y URL del retriever y los pasa a nuestro prompt de documento anterior
+    # Crea un Runnable Lambda que extrae los atributos highlights y URL del retriever y los pasa al prompt de documento definido arriba
     document_chain = RunnableLambda(
         lambda document: {
             "highlights": document.metadata["highlights"],
@@ -85,17 +83,17 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     ```
   </Step>
 
-  <Step title="Combina los resultados y el contenido de Exa para su recuperación">
-    Completa la cadena de recuperación combinando el retriever de Exa, el parser y una breve función lambda: esto es fundamental para pasar el resultado como una única cadena de texto que sirva de contexto al LLM en el siguiente paso.
+  <Step title="Combina resultados y contenido de Exa para la recuperación">
+    Completa la cadena de recuperación uniendo el retriever de Exa, el parser y una breve función lambda; esto es fundamental para pasar el resultado como una única cadena de texto que sirva de contexto al LLM en el siguiente paso.
 
     ```Python Python theme={null}
-    # Define la cadena de recuperación: resultados de Exa search => extrae los atributos y conviértelos a XML => únelos en una sola cadena para usarla como contexto en los siguientes pasos
+    # Define la cadena de recuperación - resultados de Exa Search => extrae los atributos y conviértelos a XML => únelos en una sola cadena para usarla como contexto en los siguientes pasos
     retrieval_chain = retriever | document_chain.map() | (lambda docs: "\n".join([i.text for i in docs]))
     ```
   </Step>
 
   <Step title="Configura el resto de las herramientas, incluido OpenAI para la generación">
-    En este paso, definimos el prompt del sistema con las entradas de plantilla Query y Context, que se obtendrán del usuario y de Exa Search respectivamente. Primero, importa de nuevo las bibliotecas y componentes necesarios de las bibliotecas de LangChain
+    En este paso definimos el prompt de sistema con las entradas de plantilla Query y Context, que se obtendrán del usuario y de Exa Search respectivamente. Primero, importa de nuevo las bibliotecas y componentes necesarios de las bibliotecas de LangChain
 
     ```Python Python theme={null}
     from langchain_core.runnables import RunnablePassthrough, RunnableParallel
@@ -104,10 +102,10 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     from langchain_core.output_parsers import StrOutputParser
     ```
 
-    Luego definimos un prompt de generación: la plantilla de prompt que se usa con el contexto de Exa para realizar RAG.
+    Luego definimos un prompt de generación: la plantilla de prompt que se usa junto con el contexto de Exa para realizar RAG.
 
     ```Python Python theme={null}
-    # Define la plantilla principal del prompt
+    # Definir la plantilla principal del prompt
     generation_prompt = ChatPromptTemplate.from_messages([
         ("system", "You are an expert research assistant. You use xml-formatted context to research people's questions."),
         ("human", """
@@ -122,16 +120,16 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     ])
     ```
 
-    Configuramos el [LLM de generación como OpenAI](https://python.langchain.com/v0.1/docs/integrations/chat/openai/) y luego conectamos todo mediante una conexión en paralelo [RunnableParallel](https://python.langchain.com/v0.1/docs/expression%5Flanguage/primitives/parallel/). El prompt de generación, que contiene la query y el contexto, se pasa entonces al LLM y se [parsea para obtener una mejor representación de la salida](https://api.python.langchain.com/en/latest/output%5Fparsers/langchain%5Fcore.output%5Fparsers.string.StrOutputParser.html).
+    Definimos el [LLM de generación como OpenAI](https://python.langchain.com/v0.1/docs/integrations/chat/openai/) y luego conectamos todo mediante una conexión paralela [RunnableParallel](https://python.langchain.com/v0.1/docs/expression%5Flanguage/primitives/parallel/). El prompt de generación, que contiene la consulta y el contexto, se pasa después al LLM y se [parsea para obtener una mejor representación del output](https://api.python.langchain.com/en/latest/output%5Fparsers/langchain%5Fcore.output%5Fparsers.string.StrOutputParser.html).
 
     ```Python Python theme={null}
     # Usar OpenAI para la generación
     llm = ChatOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-    # Parseo simple de cadenas para la salida
+    # Parseo simple de cadenas para el output
     output_parser = StrOutputParser()
 
-    # Conectar la cadena, incluida la conexión paralela para la query del usuario y el contexto de la cadena de recuperación de Exa del paso 2.
+    # Conectar la cadena, con una conexión paralela para la consulta del usuario y el contexto de la cadena de recuperación de Exa del paso 2.
     chain = RunnableParallel({
         "query": RunnablePassthrough(),
         "context": retrieval_chain,
@@ -139,7 +137,7 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     ```
   </Step>
 
-  <Step title="Ejecutar toda la cadena de herramientas de RAG">
+  <Step title="Ejecutar toda la cadena de herramientas RAG">
     Vamos a [invocar](https://python.langchain.com/v0.1/docs/expression%5Flanguage/interface/#invoke) la cadena:
 
     ```Python Python theme={null}
@@ -148,22 +146,22 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     print(result)
     ```
 
-    Y echa un vistazo al resultado (con los saltos de línea procesados):
+    Y echa un vistazo al output (con los saltos de línea procesados):
 
     ```Stdout Stdout theme={null}
-    'Según el contexto proporcionado, las investigaciones más recientes sobre innovación frente al cambio climático revelan varios hallazgos importantes:
-    1. Innovación como respuesta al cambio climático: un estudio analizó cómo responde la innovación al cambio climático a partir de un conjunto de datos de panel de 70 países. El estudio concluyó que el número de innovaciones relacionadas con el cambio climático se correlaciona positivamente con el aumento de las emisiones de dióxido de carbono procedentes de combustibles gaseosos y líquidos, principalmente gases naturales y petróleo. Sin embargo, se correlaciona negativamente con el aumento de las emisiones de dióxido de carbono derivadas del consumo de combustibles sólidos, sobre todo carbón, y de otras emisiones de gases de efecto invernadero. La investigación también destacó que la inversión pública no siempre influye en las decisiones de desarrollar y patentar tecnologías climáticas. Este estudio contribuye a la literatura sobre innovación ambiental al aportar información sobre cómo reacciona la innovación ante cambios en los principales factores del cambio climático.
-    2. Financiación y atención hacia la tecnología climática: entre 2010 y 2022, fuera de Estados Unidos, China, la UE e India, solo el 8 % de la actividad total de capital de riesgo en clima provino del resto del mundo. Esta concentración de financiación y atención en regiones concretas podría estar limitando el alcance de las soluciones de tecnología climática en comunidades de bajos ingresos y países en desarrollo, que ya sufren los efectos del cambio climático pero carecen de los recursos necesarios para afrontarlos con eficacia.
-    3. Asignación de fondos de investigación: un estudio de la University of Sussex Business School analizó la financiación destinada a la investigación sobre clima y energía entre 1990 y 2020. La investigación halló que el 36 % de los fondos se destinó a la adaptación climática, mientras que el 28 % se dedicó a estudiar cómo limpiar el sistema energético. Otras partidas significativas se asignaron a transporte y movilidad (13 %), geoingeniería (12 %) y descarbonización industrial (11 %). La mayor parte de la financiación fue a parar a investigadores de países occidentales ricos, que quizá no sean los más vulnerables a los efectos inmediatos del cambio climático.
+    'Según el contexto proporcionado, la investigación más reciente sobre la innovación frente al cambio climático revela varios hallazgos importantes:
+    1. La innovación como respuesta al cambio climático: un estudio analizó cómo responde la innovación al cambio climático a partir de un conjunto de datos de panel de 70 países. El estudio concluyó que el número de innovaciones relacionadas con el cambio climático se correlaciona positivamente con el aumento de las emisiones de dióxido de carbono procedentes de combustibles gaseosos y líquidos, principalmente gases naturales y petróleo. Sin embargo, se correlaciona negativamente con los aumentos de las emisiones de dióxido de carbono derivadas del consumo de combustibles sólidos, principalmente carbón, y de otros gases de efecto invernadero. La investigación también destacó que la inversión pública no siempre influye en las decisiones de desarrollar y patentar tecnologías climáticas. Este estudio contribuye a la literatura sobre innovación ambiental al aportar conocimientos sobre cómo reacciona la innovación ante los cambios en los principales factores del cambio climático.
+    2. Financiación y atención a la tecnología climática: durante el periodo 2010-2022, fuera de Estados Unidos, China, la Unión Europea e India, solo el 8 % de la actividad total de capital de riesgo climático provino del resto del mundo. Esta concentración de financiación y atención en regiones específicas podría estar limitando el alcance de las soluciones de tecnología climática a las comunidades de bajos ingresos y a los países en desarrollo, que ya sufren los efectos del cambio climático pero carecen de los recursos necesarios para afrontarlos de forma eficaz.
+    3. Asignación de la financiación a la investigación: un estudio de la University of Sussex Business School analizó la financiación destinada a la investigación climática y energética entre 1990 y 2020. La investigación concluyó que el 36 % de la financiación se asignó a la adaptación climática, mientras que el 28 % se destinó a estudiar cómo descarbonizar el sistema energético. Otras partidas significativas se dirigieron al transporte y la movilidad (13 %), la geoingeniería (12 %) y la descarbonización industrial (11 %). La mayor parte de la financiación fue a parar a investigadores de países occidentales ricos, que quizá no sean los más vulnerables a los impactos inmediatos del cambio climático.
     Fuentes:
     1. Estudio sobre la respuesta de la innovación al cambio climático: https://www.sciencedirect.com/science/article/pii/S0040162516302542
-    2. Financiación y atención hacia la tecnología climática: https://www.sbs.ox.ac.uk/oxford-answers/climate-tech-opportunity-save-planet
-    3. Asignación de fondos para la investigación sobre clima y energía: https://www.protocol.com/bulletins/climate-research-funding-adaptation'
+    2. Financiación y atención a la tecnología climática: https://www.sbs.ox.ac.uk/oxford-answers/climate-tech-opportunity-save-planet
+    3. Asignación de financiación para la investigación climática y energética: https://www.protocol.com/bulletins/climate-research-funding-adaptation'
     ```
   </Step>
 
-  <Step title="Opcionalmente, transmite en tiempo real la salida de la cadena">
-    Opcionalmente, puedes transmitir en streaming la salida de la cadena.
+  <Step title="Opcionalmente, transmite en streaming el output de la cadena">
+    De forma opcional, puedes hacer stream del output de la cadena.
 
     ```Python Python theme={null}
     for chunk in chain.stream("Latest research on climate change innovation"):
@@ -178,6 +176,6 @@ LangChain es un framework para crear aplicaciones que combinan LLMs con datos, A
     asyncio.run(run_async())
     ```
 
-    Devuelve la salida en forma de flujo. [Más información](https://python.langchain.com/v0.1/docs/expression%5Flanguage/streaming/) sobre el método `.stream`, incluido el manejo de fragmentos y el análisis de las salidas.
+    Genera el output en modo stream. [Más información](https://python.langchain.com/v0.1/docs/expression%5Flanguage/streaming/) sobre el método `.stream`, incluido el manejo de fragmentos y el parseo del output.
   </Step>
 </Steps>

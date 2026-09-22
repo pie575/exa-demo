@@ -1,39 +1,33 @@
 ---
-title: "Exa di Slack"
-description: "Pasang Exa di Slack dan tag @Exa di channel atau thread mana pun untuk jawaban riset bersumber, list building, dan enrichment."
+title: "Exa in Slack"
+description: "Instal Exa in Slack dan tag @Exa di channel atau thread mana pun untuk jawaban Research, list building, dan Enrichment yang disertai kutipan sumber."
 icon: "/docs/images/sidebar-icons/exa-slack.svg"
 ---
 
-Hadirkan Exa ke Slack Team Anda. Tag **@Exa** di channel atau thread mana pun dengan pertanyaan riset, tugas list building, atau permintaan enrichment. Exa akan mencari di web, membaca sumbernya, dan membalas langsung di thread dengan jawaban yang disertai kutipan sumber.
+Hadirkan Exa di Slack tim Anda. Tag **@Exa** di channel atau thread mana pun dengan pertanyaan Research, tugas list building, atau permintaan Enrichment. Exa akan menelusuri web, membaca sources, lalu membalas langsung di thread dengan jawaban yang disertai kutipan sumber.
 
-<div id="get-started">
-  ## Memulai
-</div>
+## Memulai {#get-started}
 
-<div id="installation">
-  ### Instalasi
-</div>
+### Instalasi {#installation}
 
 1. Buka [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack), lalu klik **Install**.
 
 <img src="/docs/images/integrations/exa-slack/dashboard-install.png" alt="Halaman Exa in Slack di dashboard Exa, dengan tombol Install" width="3414" height="900" data-path="images/integrations/exa-slack/dashboard-install.png" />
 
-2. Alur OAuth Slack akan terbuka. Pilih workspace tempat Anda ingin memasang Exa, lalu klik **Allow**.
+2. Alur OAuth Slack akan terbuka. Pilih workspace tempat Anda ingin memakai Exa, lalu klik **Allow**.
 
-<img src="/docs/images/integrations/exa-slack/oauth-approval.png" alt="Layar persetujuan OAuth Slack untuk Exa app, menampilkan pemberitahuan &#x22;App is not approved by Slack&#x22;, pemilih workspace, izin yang diminta, dan tombol Allow" width="1820" height="1180" data-path="images/integrations/exa-slack/oauth-approval.png" />
+<img src="/docs/images/integrations/exa-slack/oauth-approval.png" alt="Layar persetujuan OAuth Slack untuk aplikasi Exa, menampilkan pemberitahuan &#x22;App is not approved by Slack&#x22;, pemilih workspace, permissions yang diminta, dan tombol Allow" width="1820" height="1180" data-path="images/integrations/exa-slack/oauth-approval.png" />
 
 <Note>
   Pemberitahuan merah **&quot;App is not approved by Slack&quot;** memang wajar muncul dan aman diabaikan. Itu hanya berarti
-  Exa belum tersedia di Slack Marketplace publik, bukan karena ada yang bermasalah.
+  Exa belum terdaftar di Slack Marketplace publik, bukan berarti ada masalah.
 </Note>
 
-3. Setelah terpasang, undang @Exa ke sebuah channel (atau kirimi DM langsung) dan mulailah mengajukan pertanyaan.
+3. Setelah terpasang, undang @Exa ke sebuah channel (atau kirim DM langsung) dan mulai ajukan pertanyaan.
 
-<div id="how-to-use-exa-from-slack">
-  ## Cara menggunakan Exa dari Slack
-</div>
+## Cara menggunakan Exa dari Slack {#how-to-use-exa-from-slack}
 
-Di channel mana pun yang sudah ditambahkan Exa, mention @Exa beserta pertanyaan Anda:
+Di channel mana pun yang sudah ditambahkan Exa, sebut @Exa beserta pertanyaan Anda:
 
 ```text theme={null}
 @Exa find all Series A fintech startups in SF
@@ -41,116 +35,95 @@ Di channel mana pun yang sudah ditambahkan Exa, mention @Exa beserta pertanyaan 
 
 Exa membalas pertanyaan Anda di dalam thread.
 
-<div id="follow-ups">
-  ### Follow-ups
-</div>
+### Follow-up {#follow-ups}
 
-Setelah Exa menjawab di sebuah thread, cukup balas di thread tersebut untuk melanjutkan percakapan. Tidak perlu menyebut @Exa lagi. Exa mengingat percakapan sebelumnya, sehingga follow-up akan melanjutkan jawaban sebelumnya. Siapa pun di dalam thread bisa mengirim follow-up.
+Setelah Exa menjawab di sebuah thread, cukup balas di thread tersebut untuk melanjutkan percakapan. Anda tidak perlu menyebut @Exa lagi. Exa mengingat percakapan, sehingga follow-up akan mengacu pada jawaban sebelumnya. Siapa pun di thread tersebut bisa mengirim follow-up.
 
-<div id="direct-messages">
-  ### Direct messages
-</div>
+### Pesan langsung {#direct-messages}
 
-Anda juga bisa mengirim pesan langsung ke Exa melalui DM. Di sana Anda sama sekali tidak perlu melakukan mention. Setiap pesan yang Anda kirim akan memulai permintaan baru, yang dijawab dalam thread di bawah pesan tersebut. Balas di thread tersebut untuk melanjutkan percakapan itu.
+Anda juga bisa mengirim pesan langsung ke Exa lewat DM. Di sana Anda tidak perlu menyebut Exa sama sekali. Setiap pesan yang Anda kirim akan memulai permintaan baru, yang dijawab dalam thread di bawah pesan tersebut. Balas di thread itu untuk melanjutkan percakapan tersebut.
 
-<div id="cancelling-a-run">
-  ### Membatalkan run
-</div>
+### Membatalkan run {#cancelling-a-run}
 
-Saat run sedang berjalan, balas di thread dan minta Exa untuk menghentikan run tersebut. Tidak perlu mention.
+Selagi run sedang berjalan, balas di thread dan minta Exa untuk menghentikan run tersebut. Tidak perlu menyebut Exa.
 
 ```text theme={null}
-Hentikan run saat ini
+Stop the current run
 ```
 
-<div id="exa-connect-providers">
-  ### Provider Exa Connect
-</div>
+### Provider Exa Connect {#exa-connect-providers}
 
-Exa secara otomatis menyertakan data provider [Exa Connect](/id/docs/agent/connect/overview) jika relevan dengan pertanyaan Anda. Untuk menggunakan provider tertentu, sebutkan provider tersebut di dalam pesan Anda:
+Exa secara otomatis menyertakan data provider [Exa Connect](/id/docs/agent/connect/overview) jika relevan dengan pertanyaan Anda. Untuk menggunakan provider tertentu, sebutkan provider tersebut dalam pesan Anda:
 
 ```text theme={null}
 @Exa find me all AI infrastructure startups that raised funding this quarter using Fiber.ai
 ```
 
-Untuk melihat daftar semua data provider yang tersedia, cukup tanyakan ke Exa.
+Untuk melihat daftar semua data provider yang tersedia, cukup tanyakan kepada Exa.
 
-<div id="examples">
-  ## Contoh
-</div>
+## Contoh {#examples}
 
-<div id="news-and-current-events">
-  ### Berita dan peristiwa terkini
-</div>
+### Berita dan peristiwa terkini {#news-and-current-events}
 
 Dapatkan informasi terbaru tentang apa pun.
 
-<img src="/docs/images/integrations/exa-slack/thread-answer.png" alt="Exa menjawab pertanyaan tentang berita terbaru mengenai suatu topik di thread Slack, dengan hasil berisi tanggal dalam bentuk tabel" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
+<img src="/docs/images/integrations/exa-slack/thread-answer.png" alt="Exa menjawab pertanyaan tentang berita terbaru mengenai suatu topik dalam thread Slack, dengan hasil bertanggal dalam sebuah tabel" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-<div id="large-list-building">
-  ### List building skala besar
-</div>
+### List building skala besar {#large-list-building}
 
 Awali permintaan dengan `!max` untuk list building yang menyeluruh.
 
-<img src="/docs/images/integrations/exa-slack/max-list-building.png" alt="Exa menjalankan permintaan list building !max dalam thread Slack dan menampilkan tabel hasil" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
+<img src="/docs/images/integrations/exa-slack/max-list-building.png" alt="Exa menjalankan permintaan list building !max di dalam thread Slack dan mengembalikan tabel hasil" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-<div id="keywords">
-  ## Kata Kunci
-</div>
+## Keywords {#keywords}
 
-Gunakan kata kunci ini di thread yang diikuti Exa. Perintah bisa ditulis setelah mention `@Exa` atau langsung di awal pesan:
+Gunakan ini di dalam thread yang diikuti Exa. Perintah bisa ditulis setelah sebutan `@Exa` atau langsung
+di awal pesan:
 
-| Kata Kunci        | Fungsi                                                                                                                |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `!max <message>`  | Menjalankan permintaan ini dengan effort maksimal, dirancang untuk menyusun daftar yang sangat besar.                 |
-| `mute`            | Membuat Exa berhenti merespons balasan tanpa mention di thread. Mention @Exa secara eksplisit tetap berfungsi.        |
-| `unmute`          | Mengaktifkan kembali follow-ups di thread setelah `mute`.                                                             |
-| `sleep`           | Menghentikan Exa sepenuhnya di thread. Mention @Exa untuk membangunkannya.                                            |
-| `aside <message>` | Mengirim komentar sampingan yang diabaikan Exa, berguna untuk berdiskusi dengan rekan tim di thread yang diikuti Exa. |
-| `help`            | Menampilkan petunjuk penggunaan.                                                                                      |
+| Keyword           | Fungsi                                                                                                                      |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `!max <message>`  | Menjalankan permintaan ini dengan effort maksimum, dirancang untuk membuat daftar yang sangat besar.                        |
+| `mute`            | Menghentikan Exa merespons balasan tanpa sebutan di dalam thread. Sebutan @Exa yang eksplisit tetap berfungsi.              |
+| `unmute`          | Melanjutkan kembali follow-up thread setelah `mute`.                                                                        |
+| `sleep`           | Menghentikan Exa sepenuhnya di thread tersebut. Sebut @Exa untuk membangunkannya.                                           |
+| `aside <message>` | Mengirim komentar sampingan yang diabaikan Exa, berguna untuk berbicara dengan rekan tim di thread yang sedang diikuti Exa. |
+| `help`            | Menampilkan petunjuk penggunaan.                                                                                            |
 
-<div id="permissions">
-  ## Izin
-</div>
+## Permissions {#permissions}
 
-Exa app untuk Slack meminta scope berikut:
+Aplikasi Exa untuk Slack meminta scope berikut:
 
-| Izin                   | Akses Slack                                                           | Mengapa Exa membutuhkannya                                                                                            |
-| ---------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `app_mentions:read`    | Melihat pesan yang langsung menyebut @Exa                             | Memulai permintaan saat seseorang menyebut Exa di channel atau thread                                                 |
-| `assistant:write`      | Bertindak sebagai App Agent di Slack                                  | Menggunakan pengalaman agent Slack dan mengalirkan jawaban ke direct messages serta thread channel                    |
-| `channels:history`     | Melihat pesan di channel publik tempat Exa ditambahkan                | Menerima balasan thread di channel publik agar follow-ups tetap berjalan tanpa perlu menyebut ulang                   |
-| `channels:read`        | Melihat informasi dasar tentang channel publik                        | Menemukan channel publik yang sudah memuat Exa saat memilih tujuan sinkronisasi sesi web                              |
-| `chat:write`           | Mengirim pesan sebagai Exa app                                        | Mengirim thread root, jawaban, pembaruan progres, konfirmasi, dan pesan hasil sinkronisasi web                        |
-| `chat:write.customize` | Menyesuaikan nama dan avatar pesan yang ditulis aplikasi              | Menampilkan nama dan foto profil peserta web pada pesan yang disinkronkan dari aplikasi web                           |
-| `files:read`           | Melihat file yang dibagikan di percakapan tempat Exa ditambahkan      | Membaca file yang dilampirkan pada pertanyaan                                                                         |
-| `files:write`          | Mengunggah, mengedit, dan menghapus file sebagai Exa app              | Melampirkan file hasil, seperti tabel yang diekspor, ke jawaban                                                       |
-| `groups:history`       | Melihat pesan di channel privat tempat Exa ditambahkan                | Menerima balasan thread di channel privat agar follow-ups tetap berjalan tanpa perlu menyebut ulang                   |
-| `groups:read`          | Melihat informasi dasar tentang channel privat tempat Exa ditambahkan | Menemukan channel privat yang memenuhi syarat dan memverifikasi keanggotaan saat memilih tujuan sinkronisasi sesi web |
-| `im:history`           | Melihat pesan di direct messages dengan Exa                           | Menerima permintaan DM dan balasan lanjutan                                                                           |
-| `im:write`             | Memulai direct messages                                               | Membuka DM Exa milik pengguna terverifikasi saat mereka memilihnya sebagai tujuan sinkronisasi sesi web               |
-| `users:read`           | Melihat orang dan profil dasar Slack mereka                           | Mencocokkan penyebutan dengan nama dan menggunakan foto profil Slack peserta web pada pesan yang disinkronkan         |
-| `users:read.email`     | Melihat alamat email anggota workspace                                | Mencocokkan akun Slack dan Exa untuk atribusi team serta gambar profil pesan web yang disesuaikan                     |
+| Permission             | Akses Slack                                                            | Alasan Exa membutuhkannya                                                                                              |
+| ---------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `app_mentions:read`    | Melihat pesan yang langsung menyebut @Exa                              | Memulai permintaan saat seseorang menyebut Exa di channel atau thread                                                  |
+| `assistant:write`      | Bertindak sebagai App Agent di Slack                                   | Memakai pengalaman agent Slack dan melakukan stream jawaban ke DM dan thread channel                                   |
+| `channels:history`     | Melihat pesan di public channel tempat Exa ditambahkan                 | Menerima balasan thread di public channel agar follow-up tetap berjalan tanpa perlu disebut lagi                       |
+| `channels:read`        | Melihat informasi dasar tentang public channel                         | Menemukan public channel yang sudah berisi Exa saat memilih tempat menyinkronkan sesi web                              |
+| `chat:write`           | Mengirim pesan sebagai aplikasi Exa                                    | Mengirim pesan awal thread, jawaban, pembaruan progres, konfirmasi, dan pesan tersinkron dari web                      |
+| `chat:write.customize` | Menyesuaikan nama dan avatar pesan yang dibuat aplikasi                | Menampilkan nama dan foto profil peserta web pada pesan yang disinkronkan dari aplikasi web                            |
+| `files:read`           | Melihat file yang dibagikan di percakapan tempat Exa ditambahkan       | Membaca file yang dilampirkan pada pertanyaan                                                                          |
+| `files:write`          | Mengunggah, mengedit, dan menghapus file sebagai aplikasi Exa          | Melampirkan file hasil, seperti tabel yang di-export, ke jawaban                                                       |
+| `groups:history`       | Melihat pesan di private channel tempat Exa ditambahkan                | Menerima balasan thread di private channel agar follow-up tetap berjalan tanpa perlu disebut lagi                      |
+| `groups:read`          | Melihat informasi dasar tentang private channel tempat Exa ditambahkan | Menemukan private channel yang memenuhi syarat dan memverifikasi keanggotaan saat memilih tujuan sinkronisasi sesi web |
+| `im:history`           | Melihat pesan dalam pesan langsung dengan Exa                          | Menerima permintaan DM dan balasan follow-up                                                                           |
+| `im:write`             | Memulai pesan langsung                                                 | Membuka DM Exa milik pengguna terverifikasi saat mereka memilihnya sebagai tujuan sinkronisasi sesi web                |
+| `users:read`           | Melihat orang dan profil dasar Slack mereka                            | Mengaitkan sebutan dengan nama dan memakai foto profil Slack peserta web pada pesan tersinkron                         |
+| `users:read.email`     | Melihat alamat email anggota workspace                                 | Mencocokkan akun Slack dan Exa untuk atribusi team serta gambar profil pesan web yang disesuaikan                      |
 
 <Note>
-  `channels:read`, `groups:read`, dan `im:write` memungkinkan penemuan tujuan untuk sinkronisasi dari web ke Slack.
-  Instalasi yang sudah ada dapat terus menggunakan thread Slack mereka saat ini tanpa scope tersebut, tetapi
+  `channels:read`, `groups:read`, dan `im:write` mengaktifkan penemuan tujuan untuk sinkronisasi web ke Slack.
+  Instalasi yang sudah ada dapat terus memakai thread Slack mereka saat ini tanpa scope ini, tetapi
   harus menghubungkan ulang sebelum memakai tujuan terkait. `chat:write.customize` bersifat opsional saat
-  runtime: tanpa scope ini, pesan hasil sinkronisasi web tetap memakai identitas standar Exa app dan mencantumkan
-  nama peserta di isi pesan.
+  runtime: tanpanya, pesan tersinkron dari web tetap memakai identitas standar aplikasi Exa dan mencantumkan
+  nama peserta di body pesan.
 </Note>
 
-Exa hanya menerima pesan dari channel tempat ia diundang secara eksplisit dan dari direct messages miliknya sendiri.
+Exa hanya menerima pesan dari channel tempat ia diundang secara eksplisit dan dari DM miliknya sendiri.
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
 Run yang dijalankan dari Slack ditagihkan ke team Exa Anda. Lihat [harga](https://exa.ai/pricing) untuk detailnya.
 
-<div id="privacy">
-  ## Privasi
-</div>
+## Privasi {#privacy}
 
 Untuk detail mengenai cara Exa menangani data Anda, lihat [kebijakan privasi Exa](https://exa.ai/privacy-policy).

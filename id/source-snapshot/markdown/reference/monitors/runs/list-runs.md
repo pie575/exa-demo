@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-runs">
-  # Daftar runs
-</div>
+# List runs {#list-runs}
 
-> Menampilkan semua runs untuk sebuah monitor dengan paginasi berbasis cursor. Runs dikembalikan dalam urutan kronologis terbalik.
+> Menampilkan daftar semua runs untuk sebuah monitor dengan paginasi berbasis cursor. Runs dikembalikan dalam urutan kronologis terbalik.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs
 openapi: 3.1.0

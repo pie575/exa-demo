@@ -2,7 +2,7 @@
 title: "Deportes, clima y lugares"
 sidebarTitle: "Deportes, clima y lugares"
 icon: "map-pin"
-description: "Encuentra datos deportivos en vivo, pronósticos del tiempo y lugares locales con Exa Search."
+description: "Encuentra datos deportivos en vivo, pronósticos del tiempo y lugares cercanos con Exa Search."
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -20,7 +20,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el entorno de pruebas de la API" aria-label={`Abrir "${query}" en el entorno de pruebas de la API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -33,106 +33,80 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Usa Exa Search para obtener datos deportivos en vivo, pronósticos del tiempo e información local sin tener que integrar una API distinta para cada caso. Haz una pregunta en lenguaje natural que incluya el equipo, el lugar y el intervalo de tiempo que te interesan.
 
-<div id="write-better-queries">
-  ## Escribe mejores queries
-</div>
+## Escribe mejores consultas {#write-better-queries}
 
-Indica la ubicación o el equipo con precisión e incluye una fecha siempre que la respuesta cambie con el tiempo. Añade la condición o el atributo que sea relevante para tu tarea en lugar de pedir información genérica.
+Nombra la ubicación o el equipo con precisión e incluye una fecha siempre que la respuesta cambie con el tiempo. Añade la condición o el atributo que importa para tu tarea en lugar de pedir información general.
 
 <Tabs>
   <Tab title="Deportes" icon="trophy">
-    <div id="included">
-      ### Incluido
-    </div>
+### Incluido {#included}
 
     Datos deportivos disponibles:
 
-    * **Marcadores**: partidos de una liga en un día determinado, con equipos, marcadores, estado, hora de inicio y sede
-    * **Clasificaciones**: tablas de liga actuales, con desglose por conferencia o división
-    * **Calendarios**: resultados pasados y próximos partidos de una liga o equipo
+    * **Marcadores**: partidos de una liga en un día, con equipos, resultados, estado, hora de inicio y sede
+    * **Clasificaciones**: tablas actuales de la liga desglosadas por conferencia o división
+    * **Calendarios**: resultados anteriores y próximos partidos de una liga o equipo
 
-    La cobertura incluye la NBA, WNBA, NFL, MLB, NHL, MLS, baloncesto y fútbol americano universitario, las principales ligas europeas de fútbol y competiciones de la UEFA, críquet, F1, UFC, tenis y golf.
+    La cobertura incluye la NBA, la WNBA, la NFL, la MLB, la NHL, la MLS, baloncesto y fútbol americano universitarios, las principales ligas europeas de fútbol y competiciones de la UEFA, críquet, F1, UFC, tenis y golf.
 
-    <div id="ask-for-the-league-team-and-time">
-      ### Indica la liga, el equipo y el momento
-    </div>
+### Pide la liga, el equipo y el momento {#ask-for-the-league-team-and-time}
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-    <div id="add-the-surrounding-story">
-      ### Añade el contexto informativo
-    </div>
+### Añade el contexto informativo {#add-the-surrounding-story}
 
-    Pide la cobertura periodística que necesites junto con los datos en vivo.
+    Pide la cobertura periodística que necesitas junto con los datos en vivo.
 
     <PlaygroundQuery query="NBA injury reports ahead of tonight's games" />
   </Tab>
 
   <Tab title="Clima" icon="cloud-sun">
-    <div id="included-2">
-      ### Incluido
-    </div>
+### Incluido {#included-2}
 
     Los pronósticos incluyen condiciones, temperaturas máximas y mínimas, precipitación, viento, humedad, índice UV, y amanecer y atardecer en la hora local del lugar.
 
-    Una query sin fecha devuelve el pronóstico de hoy. Pide un día o un rango concreto para obtener una página por día, hasta 16 días hacia adelante o 92 días hacia atrás.
+    Una consulta sin fecha devuelve el pronóstico de hoy. Pide un día o un rango concreto para obtener una página por día, hasta 16 días hacia adelante o 92 días hacia atrás.
 
-    <div id="name-the-place-and-day">
-      ### Indica el lugar y el día
-    </div>
+### Nombra el lugar y el día {#name-the-place-and-day}
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-    <div id="ask-about-the-condition-that-affects-your-plan">
-      ### Pregunta por la condición que afecta a tu plan
-    </div>
+### Pregunta por la condición que afecta a tus planes {#ask-about-the-condition-that-affects-your-plan}
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-    <div id="combine-forecasts-with-reporting">
-      ### Combina pronósticos con cobertura informativa
-    </div>
+### Combina pronósticos con cobertura periodística {#combine-forecasts-with-reporting}
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="Lugares" icon="map-pin">
-    <div id="included-3">
-      ### Incluido
-    </div>
+### Incluido {#included-3}
 
     * Perfiles de negocios locales, con direcciones, horarios, servicios y reseñas
     * Locales, atracciones y puntos de interés
     * Anuncios inmobiliarios y registros de propiedades
     * Decisiones de zonificación, permisos y registros de planificación urbana
 
-    <div id="describe-the-place-like-you-would-ask-a-local">
-      ### Describe el lugar como se lo preguntarías a alguien del barrio
-    </div>
+### Describe el lugar como se lo preguntarías a alguien del lugar {#describe-the-place-like-you-would-ask-a-local}
 
-    Combina la categoría, el barrio y los atributos que te interesan.
+    Combina la categoría, el barrio y los atributos que importan.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-    <div id="name-the-record-type-and-geography">
-      ### Indica el tipo de registro y la zona geográfica
-    </div>
+### Indica el tipo de registro y la zona geográfica {#name-the-record-type-and-geography}
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-    <div id="compare-places-against-practical-constraints">
-      ### Compara lugares según restricciones prácticas
-    </div>
+### Compara lugares según restricciones prácticas {#compare-places-against-practical-constraints}
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-<div id="make-a-request">
-  ## Haz una solicitud
-</div>
+## Hacer una solicitud {#make-a-request}
 
 Los tres tipos de datos usan el mismo endpoint de Search.
 
@@ -172,12 +146,10 @@ Los tres tipos de datos usan el mismo endpoint de Search.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtener datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los lugares, equipos, fechas, criteria y campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los lugares, equipos, fechas, criteria y campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
-<Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Compara lugares, arma un resumen previo al partido o reúne detalles locales y condiciones en resultados estructurados.
+<Card title="Iniciar una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
+  Compara lugares, prepara un resumen para el día del partido o reúne detalles locales y condiciones en resultados estructurados.
 </Card>

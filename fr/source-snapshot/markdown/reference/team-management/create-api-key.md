@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-api-key">
-  # Créer une API key
-</div>
+# Créer une API key {#create-api-key}
 
-> Créez une nouvelle API key pour votre team, avec un nom et une configuration de rate limit facultatifs.
+> Créez une nouvelle API key pour votre équipe, avec un nom et une configuration de limite de débit facultatifs.
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 <Info>
-  L&#39;API Team Management s&#39;active team par team. Elle s&#39;authentifie avec une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre team. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
+  La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie avec une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour demander l&#39;accès.
 </Info>
 
-L&#39;endpoint Create API Key vous permet de générer par programmation de nouvelles API keys pour votre team à l&#39;aide de votre API key de service.
+L&#39;endpoint Create API Key vous permet de générer par programmation de nouvelles API keys pour votre équipe à l&#39;aide de votre API key de service.
 
-<div id="optional-parameters">
-  ## Paramètres optionnels
-</div>
+## Paramètres optionnels {#optional-parameters}
 
-* **name** : un nom descriptif pour l&#39;API key, afin d&#39;identifier facilement son usage
+* **name** : un nom descriptif pour l&#39;API key, afin d&#39;en identifier l&#39;usage
 * **rateLimit** : nombre maximal de requêtes par minute autorisé pour cette API key
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0
@@ -38,10 +30,10 @@ info:
   version: 1.0.0
   title: Team Management API
   description: >-
-    API for managing API keys within teams. Provides CRUD operations for
-    creating, listing, updating, and deleting API keys with team-based access
-    controls. The API is enabled per team. Contact support@exa.ai to request
-    access.
+    API de gestion des API keys au sein des équipes. Fournit des opérations CRUD
+    pour créer, lister, mettre à jour et supprimer des API keys, avec des
+    contrôles d'accès par équipe. L'API s'active équipe par équipe. Contactez
+    support@exa.ai pour en demander l'accès.
 servers:
   - url: https://admin-api.exa.ai/team-management
 security:
@@ -51,10 +43,11 @@ paths:
     post:
       tags:
         - Team Management
-      summary: Create API key
+      summary: Créer une API key
       description: >-
-        Creates a new API key for the authenticated team. Optionally specify a
-        name, rate limit, and budget for the API key.
+        Crée une nouvelle API key pour l'équipe authentifiée. Vous pouvez
+        éventuellement définir un nom, une limite de débit et un budget pour
+        l'API key.
       operationId: create-api-key
       requestBody:
         required: true
@@ -65,11 +58,11 @@ paths:
               properties:
                 name:
                   type: string
-                  description: Optional name for the API key
+                  description: Nom facultatif de l'API key
                   example: Production API Key
                 rateLimit:
                   type: integer
-                  description: Optional rate limit for the API key (requests per second)
+                  description: Limite de débit facultative de l'API key (requests par seconde)
                   example: 1000
                 budgetCents:
                   type:
@@ -77,13 +70,13 @@ paths:
                     - 'null'
                   minimum: 0
                   description: >-
-                    Optional spending budget for the API key, in cents. Set to
-                    null to remove the budget.
+                    Budget de dépenses facultatif de l'API key, en centimes.
+                    Définissez-le à null pour supprimer le budget.
                   example: 5000
               additionalProperties: false
       responses:
         '200':
-          description: API key created successfully
+          description: API key créée avec succès
           content:
             application/json:
               schema:
@@ -95,37 +88,37 @@ paths:
                       id:
                         type: string
                         format: uuid
-                        description: Unique identifier for the API key
+                        description: Identifiant unique de l'API key
                       name:
                         type: string
-                        description: Name of the API key
+                        description: Nom de l'API key
                       rateLimit:
                         type:
                           - integer
                           - 'null'
-                        description: Rate limit in requests per second
+                        description: Limite de débit en requests par seconde
                       budgetCents:
                         type:
                           - integer
                           - 'null'
-                        description: Spending budget for the API key, in cents
+                        description: Budget de dépenses de l'API key, en centimes
                       isOverBudget:
                         type: boolean
-                        description: Whether the API key is currently over its budget
+                        description: Indique si l'API key dépasse actuellement son budget
                       teamId:
                         type: string
                         format: uuid
-                        description: Team ID this key belongs to
+                        description: ID de la Team à laquelle appartient cette clé
                       userId:
                         type: string
                         format: uuid
-                        description: User ID who created this key
+                        description: ID de l'utilisateur ayant créé cette clé
                       createdAt:
                         type: string
                         format: date-time
-                        description: When the key was created
+                        description: Date de création de la clé
         '400':
-          description: Bad Request - Invalid parameters
+          description: Bad Request - Paramètres invalides
           content:
             application/json:
               schema:
@@ -140,7 +133,7 @@ paths:
                         Unexpected parameters: invalidParam. Allowed: name,
                         rateLimit, budgetCents.
         '401':
-          description: Unauthorized - Invalid or missing service key
+          description: Unauthorized - Clé de service invalide ou manquante
           content:
             application/json:
               schema:
@@ -153,7 +146,7 @@ paths:
         - apikey: []
       x-codeSamples:
         - lang: bash
-          label: Create API key with name and rate limit
+          label: Créer une API key avec un nom et une limite de débit
           source: |
             curl -X POST 'https://admin-api.exa.ai/team-management/api-keys' \
               -H 'x-api-key: YOUR-SERVICE-KEY' \
@@ -163,7 +156,7 @@ paths:
                 "rateLimit": 1000
               }'
         - lang: python
-          label: Create API key with name and rate limit
+          label: Créer une API key avec un nom et une limite de débit
           source: |
             import requests
 
@@ -185,7 +178,7 @@ paths:
 
             print(response.json())
         - lang: javascript
-          label: Create API key with name and rate limit
+          label: Créer une API key avec un nom et une limite de débit
           source: >
             const response = await
             fetch('https://admin-api.exa.ai/team-management/api-keys', {
@@ -205,7 +198,7 @@ paths:
 
             console.log(result);
         - lang: bash
-          label: Create API key without optional parameters
+          label: Créer une API key sans paramètres facultatifs
           source: |
             curl -X POST 'https://admin-api.exa.ai/team-management/api-keys' \
               -H 'x-api-key: YOUR-SERVICE-KEY' \
@@ -217,5 +210,5 @@ components:
       type: apiKey
       in: header
       name: x-api-key
-      description: Service API key for team authentication
+      description: API key de service pour l'authentification de l'équipe
 ```

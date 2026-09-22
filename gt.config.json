@@ -92,13 +92,15 @@
         "./**/GOVERNANCE.md",
         "./**/AGENTS.md",
         "./**/OWNERS.md",
-        "./**/MAINTAINERS.md"
+        "./**/MAINTAINERS.md",
+        "./ru/**",
+        "./node_modules/**",
+        "./**/node_modules/**"
       ]
     }
   },
   "locales": [
     "es",
-    "ru",
     "zh",
     "ko",
     "id",

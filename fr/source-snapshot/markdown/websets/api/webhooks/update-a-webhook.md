@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="update-a-webhook">
-  # Mettre à jour un webhook
-</div>
+# Mettre à jour un webhook {#update-a-webhook}
 
-> Met à jour l&#39;URL cible, les événements souscrits ou les metadata d&#39;un Webhook. Les fields omis restent inchangés.
+> Met à jour l&#39;URL cible, les events souscrits ou les métadonnées d&#39;un Webhook. Les field omis restent inchangés.
 
 <Warning>
   **Les redirections ne sont pas suivies.** Si vous modifiez l&#39;URL, assurez-vous
@@ -17,9 +13,7 @@
   redirection 3xx seront considérés comme des échecs de livraison.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

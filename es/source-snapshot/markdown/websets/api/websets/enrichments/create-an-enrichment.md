@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="create-an-enrichment">
-  # Crear un enrichment
-</div>
+# Crear un enrichment {#create-an-enrichment}
 
 > Crea un Enrichment para un Webset.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/enrichments
 openapi: 3.1.0

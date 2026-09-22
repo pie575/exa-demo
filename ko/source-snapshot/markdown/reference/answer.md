@@ -1,34 +1,28 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="answer">
-  # Answer
-</div>
+# Answer {#answer}
 
 > Exa search 결과를 바탕으로 질문에 대한 LLM 답변을 받아보세요. `/answer`는 Exa search를 수행한 뒤 LLM을 사용해 다음 중 하나를 생성합니다:
 
-1. 구체적인 질의에 대한 직접적인 답변 (예: &quot;프랑스의 수도는 어디인가요?&quot;라고 물으면 &quot;파리&quot;를 반환)
-2. 개방형 질의에 대한 citations가 포함된 상세한 요약 (예: &quot;의료 분야의 AI 현황은 어떤가요?&quot;라고 물으면 관련 출처의 citations가 포함된 요약을 반환)
+1. 구체적인 질의에 대한 직접적인 답변 (예: &quot;프랑스의 수도는 어디인가요?&quot;에는 &quot;파리&quot;를 반환)
+2. 개방형 질의에 대해 citations가 포함된 상세 summary (예: &quot;의료 분야의 AI 현황은 어떤가요?&quot;에는 관련 소스에 대한 citations가 포함된 summary를 반환)
 
-응답에는 생성된 답변과 답변 생성에 사용된 출처가 함께 포함됩니다. 이 endpoint는 streaming(`stream=True`)도 지원하며, 이 경우 토큰이 생성되는 대로 반환됩니다.
+response에는 생성된 답변과 답변 작성에 사용된 소스가 함께 포함됩니다. 이 엔드포인트는 스트리밍(`stream=True`)도 지원하며, 이 경우 토큰이 생성되는 대로 반환됩니다.
 
 또는 OpenAI 호환 [chat completions 인터페이스](https://exa.ai/docs/integrations/openai-sdk#answer)를 사용할 수도 있습니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
 <Info>
-  `/answer`는 `outputSchema` 파라미터를 통해 structured output을 지원합니다. [JSON Schema](https://json-schema.org/draft-07) 객체를 전달하면 답변이 일반 문자열이 아니라 해당 schema에 맞는 구조화된 JSON으로 반환됩니다.
+  `/answer`는 `outputSchema` 매개변수를 통해 structured output을 지원합니다. [JSON Schema](https://json-schema.org/draft-07) 객체를 전달하면 답변이 일반 문자열 대신 지정한 schema에 맞는 구조화된 JSON으로 반환됩니다.
 </Info>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0

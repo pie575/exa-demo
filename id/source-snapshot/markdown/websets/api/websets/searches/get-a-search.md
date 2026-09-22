@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="get-a-search">
-  # Mendapatkan search
-</div>
+# Mendapatkan search {#get-a-search}
 
 > Mendapatkan Search berdasarkan id
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/searches/{id}
 openapi: 3.1.0

@@ -1,28 +1,22 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="openai-tool-calling">
-  # OpenAI Tool Calling
-</div>
+# OpenAI Tool Calling {#openai-tool-calling}
 
-> Gunakan tool calling OpenAI untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
+> Gunakan OpenAI tool calling untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
 
 <Info>
-  OpenAI merekomendasikan Responses API untuk semua proyek baru. Lihat bagian [Responses API](#responses-api) di bawah ini.
+  OpenAI merekomendasikan Responses API untuk semua proyek baru. Lihat bagian [Responses API](#responses-api) di bawah.
 </Info>
 
-[Tool calling](https://platform.openai.com/docs/guides/function-calling?lang=python) dari OpenAI memungkinkan model memanggil fungsi yang Anda definisikan di dalam kode Anda. SDK Exa sudah menyertakan tool web search dan pembacaan halaman yang siap pakai untuk OpenAI, sehingga Anda tidak perlu menulis sendiri schema tool, mem-parsing tool call, maupun memformat hasil Exa secara manual.
+[Tool calling](https://platform.openai.com/docs/guides/function-calling?lang=python) dari OpenAI memungkinkan model memanggil fungsi yang Anda definisikan dalam kode Anda. SDK Exa sudah menyertakan tool web search dan pembacaan halaman yang siap pakai untuk OpenAI, sehingga Anda tidak perlu menulis tool schema sendiri, mengurai tool call, atau memformat hasil Exa secara manual.
 
-<div id="get-started">
-  ## Get started
-</div>
+## Memulai {#get-started}
 
 <Steps>
-  <Step title="Pasang SDK">
+  <Step title="Instal SDK">
     <CodeGroup>
       ```bash Python theme={null}
       pip install openai exa_py
@@ -35,24 +29,24 @@
   </Step>
 
   <Step title="Siapkan API key Anda">
-    Atur variabel lingkungan `EXA_API_KEY` dan `OPENAI_API_KEY`. Kunjungi [dashboard OpenAI](https://platform.openai.com/api-keys) dan [Exa dashboard](https://dashboard.exa.ai/api-keys) untuk membuat API key Anda.
+    Setel variabel lingkungan `EXA_API_KEY` dan `OPENAI_API_KEY`. Kunjungi [dashboard OpenAI](https://platform.openai.com/api-keys) dan [Exa Dashboard](https://dashboard.exa.ai/api-keys) untuk membuat API key Anda.
 
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
       Buat key di dashboard. Akun baru mendapatkan credits gratis.
     </Card>
   </Step>
 
-  <Step title="Tambahkan tool Exa ke tool loop Anda">
-    Kirimkan tool pada daftar `tools` di request, lalu serahkan pesan assistant ke `handle_tool_calls`. Fungsi ini menjalankan setiap tool call Exa dalam pesan tersebut dan mengembalikan pesan `role: "tool"` yang sesuai, siap ditambahkan ke percakapan.
+  <Step title="Tambahkan Exa tools ke tool loop Anda">
+    Sertakan tool pada daftar `tools` di permintaan, lalu teruskan pesan assistant ke `handle_tool_calls`. Fungsi ini menjalankan setiap Exa tool call dalam pesan dan mengembalikan pesan `role: "tool"` yang sesuai, siap ditambahkan ke percakapan.
 
-    `web_search` melakukan search di web untuk halaman yang belum dilihat model; `get_contents` membaca halaman yang URL-nya sudah dimiliki, baik dari search sebelumnya maupun dari pengguna. Daftarkan salah satu atau keduanya.
+    `web_search` menelusuri web untuk mencari halaman yang belum dilihat model; `get_contents` membaca halaman yang URL-nya sudah diketahui, baik dari search sebelumnya maupun dari pengguna. Daftarkan salah satu atau keduanya.
 
     <CodeGroup>
       ```python Python theme={null}
       from exa_py import Exa
       from openai import OpenAI
 
-      exa = Exa()  # membaca EXA_API_KEY dari environment
+      exa = Exa()  # membaca EXA_API_KEY dari lingkungan
       openai_client = OpenAI()
 
       messages = [{"role": "user", "content": "What's the latest on AI chips?"}]
@@ -80,7 +74,7 @@
       import Exa from "exa-js";
       import { OpenAI } from "openai";
 
-      const exa = new Exa(); // membaca EXA_API_KEY dari environment
+      const exa = new Exa(); // membaca EXA_API_KEY dari lingkungan
       const openai = new OpenAI();
 
       const messages = [
@@ -106,17 +100,15 @@
       ```
     </CodeGroup>
 
-    Contoh ini hanya satu putaran agar ringkas. Agent sungguhan selalu menyertakan `tools` pada setiap request dan mengulang langkah handler sampai model membalas tanpa tool call — dari situlah hasil search berlanjut menjadi pembacaan halaman berikutnya.
+    Contoh ini hanya satu putaran agar ringkas. Agent sungguhan selalu menyertakan `tools` pada setiap permintaan dan mengulangi langkah handler sampai model membalas tanpa tool call — dari situlah sebuah hasil search berlanjut menjadi pembacaan halaman follow-up.
 
-    Memanggil factory tanpa argumen akan memberikan nilai default yang direkomendasikan Exa: `type="auto"` dengan `contents={"highlights": True}` untuk search. Highlights mengembalikan excerpt yang relevan dengan query — bukan membatasi teks halaman hingga 10.000 karakter. Factory contents mengembalikan teks halaman; limit 10.000 karakter pada SDK hanya berlaku untuk `text`, dan hanya jika Anda tidak menyertakan `max_characters`.
+    Memanggil factory tanpa argumen akan memakai default yang direkomendasikan Exa: `type="auto"` dengan `contents={"highlights": True}` untuk search. Kutipan mengembalikan cuplikan yang relevan dengan query, bukan membatasi teks halaman hingga 10.000 karakter. Factory contents mengembalikan teks halaman; batas 10.000 karakter pada SDK hanya berlaku untuk `text`, dan hanya jika Anda tidak menyertakan `max_characters`.
   </Step>
 </Steps>
 
-<div id="responses-api">
-  ## Responses API
-</div>
+## Responses API {#responses-api}
 
-Untuk OpenAI Responses API, gunakan factory `responses` dengan helper `handle_tool_calls` yang sama. Handler akan mengembalikan item `function_call_output` untuk permintaan lanjutan.
+Untuk OpenAI Responses API, gunakan factory `responses` dengan helper `handle_tool_calls` yang sama. Handler akan mengembalikan item `function_call_output` untuk follow-up permintaan.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -146,11 +138,9 @@ Untuk OpenAI Responses API, gunakan factory `responses` dengan helper `handle_to
   Chat Completions dan Responses API menggunakan bentuk tool yang berbeda dan saling menolak bentuk milik satu sama lain, jadi gunakan factory yang sesuai dengan endpoint yang Anda panggil.
 </Note>
 
-<div id="configuring-the-tools">
-  ## Mengonfigurasi tool
-</div>
+## Mengonfigurasi tool {#configuring-the-tools}
 
-Argumen kata kunci adalah opsi Exa biasa yang diteruskan saat tool dijalankan — opsi search ke `exa.search()`, opsi contents ke `exa.get_contents()`:
+Argumen keyword adalah options Exa biasa yang diteruskan saat tool dijalankan — options search ke `exa.search()`, options contents ke `exa.get_contents()`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -168,21 +158,17 @@ Argumen kata kunci adalah opsi Exa biasa yang diteruskan saat tool dijalankan �
   ```
 </CodeGroup>
 
-Model memilih `query` untuk search dan `urls` yang akan dibaca; selebihnya sudah terikat sejak Anda membuat tool, sehingga model tidak bisa mengubah apa yang di-crawl atau diekstraksi.
+Model memilih `query` untuk search dan `urls` yang akan dibaca; selebihnya sudah terikat saat Anda membuat tool, sehingga model tidak dapat mengubah apa yang di-crawl atau diekstraksi.
 
-Sebaliknya, `name` (bernilai bawaan `"web_search"` dan `"get_contents"`) dan `description` menimpa definisi tool yang dilihat model. Gunakan `name` kustom untuk menjalankan beberapa tool Exa dengan konfigurasi berbeda secara berdampingan, atau untuk menghindari bentrok dengan tool lain yang memakai nama tersebut.
+Sebaliknya, `name` (dengan default `"web_search"` dan `"get_contents"`) serta `description` menimpa definisi tool yang dilihat model. Gunakan `name` khusus untuk menjalankan beberapa tool Exa dengan konfigurasi berbeda secara berdampingan, atau untuk menghindari bentrok dengan tool lain yang memakai nama tersebut.
 
-<div id="mixing-in-your-own-tools">
-  ## Menggabungkan tool Anda sendiri
-</div>
+## Menggabungkan tool Anda sendiri {#mixing-in-your-own-tools}
 
-Handler menjawab setiap tool call dalam pesan: call yang menyebut tool yang tidak dapat dikenali akan menghasilkan output `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga permintaan lanjutan tidak pernah melewatkan respons tool yang diperlukan. Jika Anda menjalankan tool Anda sendiri berdampingan dengan tool Exa, ganti output error tersebut dengan hasil Anda sendiri sebelum permintaan berikutnya.
+Handler menjawab setiap tool call dalam pesan: call yang menyebut tool yang tidak dapat dikenali akan menghasilkan output `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga permintaan follow-up tidak pernah melewatkan tool response yang diperlukan. Jika Anda menjalankan tool Anda sendiri bersama tool milik Exa, gantilah output error tersebut dengan hasil Anda sendiri sebelum permintaan berikutnya.
 
-<div id="writing-the-loop-by-hand">
-  ## Menulis loop secara manual
-</div>
+## Menulis loop secara manual {#writing-the-loop-by-hand}
 
-Jika Anda lebih suka menangani sendiri schema dan eksekusi tool-nya, definisikan tool tersebut dan proses pemanggilannya secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` memberikan spesifikasi tool yang netral terhadap provider (lengkap dengan method `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
+Jika Anda lebih suka menangani sendiri tool schema dan eksekusinya, definisikan tool tersebut dan proses call-nya secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` memberikan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
 
 ```python Python theme={null}
 import json
@@ -224,4 +210,4 @@ def process_tool_calls(tool_calls, messages):
     return messages
 ```
 
-Lihat [Quickstart SDK](/id/docs/sdks/quickstart) untuk opsi search dan contents di Python dan TypeScript.
+Lihat [Quickstart SDK](/id/docs/sdks/quickstart) untuk options search dan contents di Python dan TypeScript.

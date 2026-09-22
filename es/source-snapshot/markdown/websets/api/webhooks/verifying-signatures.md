@@ -1,26 +1,20 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="verifying-signatures">
-  # Verificación de firmas
-</div>
+# Verificación de firmas {#verifying-signatures}
 
 > Aprende a verificar de forma segura las firmas de los webhooks para confirmar que las solicitudes provienen de Exa
 
-Cuando recibas un webhook de Exa, conviene verificar que proviene de nosotros para garantizar la integridad y autenticidad de los datos. Exa firma todos los payloads de los webhooks con una clave secreta única para tu endpoint de webhook.
+Cuando recibas un webhook de Exa, conviene verificar que proviene de nosotros para garantizar la integridad y autenticidad de los datos. Exa firma todos los payloads de webhook con una key secreta única para tu endpoint de webhook.
 
-<div id="how-webhook-signatures-work">
-  ## Cómo funcionan las firmas de webhook
-</div>
+## Cómo funcionan las firmas de webhooks {#how-webhook-signatures-work}
 
 Exa utiliza HMAC SHA256 para firmar los payloads de los webhooks. La firma se incluye en el encabezado `Exa-Signature`, que contiene:
 
-* Una marca de tiempo (`t=`) que indica cuándo se envió el webhook
-* Una o más firmas (`v1=`) calculadas a partir de la marca de tiempo y el payload
+* Un timestamp (`t=`) que indica cuándo se envió el webhook
+* Una o más firmas (`v1=`) calculadas a partir del timestamp y el payload
 
 El formato de la firma es el siguiente:
 
@@ -28,15 +22,13 @@ El formato de la firma es el siguiente:
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## Proceso de verificación
-</div>
+## Proceso de verificación {#verification-process}
 
 Para verificar la firma de un webhook:
 
-1. Extrae la marca de tiempo y las firmas del encabezado `Exa-Signature`
-2. Crea el payload firmado concatenando la marca de tiempo, un punto y el cuerpo sin procesar de la solicitud
-3. Calcula la firma esperada con HMAC SHA256 y el secreto de tu webhook
+1. Extrae el timestamp y las firmas del encabezado `Exa-Signature`
+2. Crea el payload firmado concatenando el timestamp, un punto y el cuerpo sin procesar de la solicitud
+3. Calcula la firma esperada con HMAC SHA256 y tu secreto de webhook
 4. Compara la firma calculada con las firmas proporcionadas
 
 <CodeGroup>
@@ -58,7 +50,7 @@ Para verificar la firma de un webhook:
           bool: True if signature is valid, False otherwise
       """
       try:
-          # Analizar la cabecera de firma
+          # Analizar el encabezado de la firma
           pairs = [pair.split('=', 1) for pair in signature_header.split(',')]
           timestamp = None
           signatures = []
@@ -72,12 +64,12 @@ Para verificar la firma de un webhook:
           if not timestamp or not signatures:
               return False
 
-          # Opcional: comprobar si la marca de tiempo es reciente (menos de 5 minutos)
+          # Opcional: comprobar si el timestamp es reciente (menos de 5 minutos)
           current_time = int(time.time())
           if abs(current_time - int(timestamp)) > 300:
               print("Warning: Webhook timestamp is more than 5 minutes old")
 
-          # Crear la carga útil firmada
+          # Crear el payload firmado
           signed_payload = f"{timestamp}.{payload}"
 
           # Calcular la firma esperada
@@ -102,7 +94,7 @@ Para verificar la firma de un webhook:
 
   @app.route('/webhook', methods=['POST'])
   def handle_webhook():
-      # Obtener la carga útil sin procesar y la firma
+      # Obtener el payload sin procesar y la firma
       payload = request.get_data(as_text=True)
       signature_header = request.headers.get('Exa-Signature', '')
       webhook_secret = os.environ.get('WEBHOOK_SECRET')
@@ -125,10 +117,10 @@ Para verificar la firma de un webhook:
       /**
        * Verifica la firma del payload de un webhook.
        *
-       * @param {string} payload - El cuerpo sin procesar de la solicitud, como cadena
+       * @param {string} payload - El cuerpo sin procesar de la solicitud como cadena
        * @param {string} signatureHeader - El valor del encabezado Exa-Signature
-       * @param {string} webhookSecret - Tu secreto del webhook
-       * @returns {boolean} true si la firma es válida; false en caso contrario
+       * @param {string} webhookSecret - Tu secreto de webhook
+       * @returns {boolean} true si la firma es válida, false en caso contrario
        */
       try {
           // Analiza el encabezado de la firma
@@ -142,7 +134,7 @@ Para verificar la firma de un webhook:
               return false;
           }
 
-          // Opcional: comprueba si la marca de tiempo es reciente (menos de 5 minutos)
+          // Opcional: comprueba si el timestamp es reciente (menos de 5 minutos)
           const currentTime = Math.floor(Date.now() / 1000);
           if (Math.abs(currentTime - parseInt(timestamp)) > 300) {
               console.warn('Warning: Webhook timestamp is more than 5 minutes old');
@@ -209,16 +201,16 @@ Para verificar la firma de un webhook:
   public class WebhookTest {
 
       /**
-      * Verifica la firma del payload de un webhook.
+      * Verifica la firma de un payload de webhook.
       *
-      * @param payload El cuerpo sin procesar de la solicitud, como cadena
-      * @param signatureHeader El valor de la cabecera Exa-Signature
-      * @param webhookSecret Tu secreto del webhook
-      * @return true si la firma es válida; false en caso contrario
+      * @param payload El cuerpo sin procesar de la solicitud como cadena
+      * @param signatureHeader El valor del encabezado Exa-Signature
+      * @param webhookSecret Tu secreto de webhook
+      * @return true si la firma es válida, false en caso contrario
       */
       public static boolean verifyWebhookSignature(String payload, String signatureHeader, String webhookSecret) {
           try {
-              // Analiza la cabecera de la firma
+              // Analiza el encabezado de la firma
               String[] pairs = signatureHeader.split(",");
               String timestamp = null;
               List<String> signatures = new ArrayList<>();
@@ -241,7 +233,7 @@ Para verificar la firma de un webhook:
                   return false;
               }
 
-              // Opcional: comprueba si la marca de tiempo es reciente (menos de 5 minutos)
+              // Opcional: comprueba si el timestamp es reciente (dentro de los últimos 5 minutos)
               long currentTime = Instant.now().getEpochSecond();
               long webhookTime = Long.parseLong(timestamp);
               if (Math.abs(currentTime - webhookTime) > 300) {
@@ -254,7 +246,7 @@ Para verificar la firma de un webhook:
               // Calcula la firma esperada
               String expectedSignature = computeHmacSha256(signedPayload, webhookSecret);
 
-              // Compara con las firmas proporcionadas mediante una comparación de tiempo constante
+              // Compara con las firmas recibidas usando una comparación segura frente a ataques de temporización
               return signatures.stream().anyMatch(sig -> timingSafeEquals(expectedSignature, sig));
 
           } catch (Exception e) {
@@ -287,7 +279,7 @@ Para verificar la firma de un webhook:
       }
 
       /**
-      * Comparación de cadenas en tiempo constante para evitar ataques de temporización.
+      * Comparación de cadenas segura frente a ataques de temporización.
       */
       private static boolean timingSafeEquals(String a, String b) {
           if (a.length() != b.length()) {
@@ -326,25 +318,25 @@ Para verificar la firma de un webhook:
 
               System.out.println("🧪 Running Tests...");
 
-              // Prueba de verificación
+              // Prueba la verificación
               boolean isValid = verifyWebhookSignature(testPayload, testHeader, testSecret);
               System.out.println("   ✓ Valid signature verification: " + (isValid ? "✅ PASSED" : "❌ FAILED"));
 
-              // Prueba con una firma no válida
+              // Prueba con una firma inválida
               String invalidHeader = "t=" + testTimestamp + ",v1=invalid_signature";
               boolean isInvalid = verifyWebhookSignature(testPayload, invalidHeader, testSecret);
               System.out.println("   ✓ Invalid signature rejection: " + (!isInvalid ? "✅ PASSED" : "❌ FAILED"));
 
-              // Prueba sin marca de tiempo
+              // Prueba sin timestamp
               String noTimestampHeader = "v1=" + testSignature;
               boolean noTimestamp = verifyWebhookSignature(testPayload, noTimestampHeader, testSecret);
               System.out.println("   ✓ Missing timestamp rejection: " + (!noTimestamp ? "✅ PASSED" : "❌ FAILED"));
 
-              // Prueba con una cabecera vacía
+              // Prueba con un encabezado vacío
               boolean emptyHeader = verifyWebhookSignature(testPayload, "", testSecret);
               System.out.println("   ✓ Empty header rejection: " + (!emptyHeader ? "✅ PASSED" : "❌ FAILED"));
 
-              // Prueba con una cabecera mal formada
+              // Prueba con un encabezado mal formado
               boolean malformedHeader = verifyWebhookSignature(testPayload, "invalid-header-format", testSecret);
               System.out.println("   ✓ Malformed header rejection: " + (!malformedHeader ? "✅ PASSED" : "❌ FAILED"));
 
@@ -373,19 +365,17 @@ Para verificar la firma de un webhook:
 
 <br />
 
-<div id="security-best-practices">
-  ## Buenas prácticas de seguridad
-</div>
+## Buenas prácticas de seguridad {#security-best-practices}
 
-Seguir estas prácticas te ayudará a garantizar que tu implementación de webhooks sea segura y robusta:
+Seguir estas prácticas te ayudará a que tu implementación de webhooks sea segura y robusta:
 
-* **Verifica siempre las firmas** - Nunca proceses los datos de un webhook sin verificar antes la firma. Así evitas que un atacante envíe webhooks falsos a tu endpoint.
+* **Verifica siempre las firmas** - Nunca proceses los datos de un webhook sin verificar antes la firma. Esto impide que un atacante envíe webhooks falsos a tu endpoint.
 
 * **Usa comparaciones de tiempo constante** - Al comparar firmas, usa funciones como `hmac.compare_digest()` en Python o `crypto.timingSafeEqual()` en Node.js para prevenir ataques de temporización.
 
-* **Comprueba la vigencia de la marca de tiempo** - Plantéate rechazar los webhooks cuya marca de tiempo sea demasiado antigua (por ejemplo, de más de 5 minutos) para prevenir ataques de repetición.
+* **Comprueba la frescura del timestamp** - Plantéate rechazar los webhooks cuyo timestamp sea demasiado antiguo (por ejemplo, de más de 5 minutos) para prevenir ataques de reproducción.
 
-* **Almacena los secretos de forma segura** - Guarda los secretos de tus webhooks en variables de entorno o en un sistema seguro de gestión de secretos. Nunca los escribas directamente en el código de tu aplicación. **Importante**: el secreto del webhook solo se devuelve al [crear un webhook](/es/docs/websets/api/webhooks/create-a-webhook), así que asegúrate de guardarlo en un lugar seguro, ya que no se puede recuperar después.
+* **Almacena los secretos de forma segura** - Guarda los secretos de tus webhooks en variables de entorno o en un sistema seguro de gestión de secretos. Nunca los escribas directamente en el código de tu aplicación. **Importante**: el secreto del webhook solo se devuelve cuando [creas un webhook](/es/docs/websets/api/webhooks/create-a-webhook), así que asegúrate de guardarlo en un lugar seguro, ya que no podrá recuperarse después.
 
 * **Usa HTTPS** - Utiliza siempre endpoints HTTPS para tus webhooks, de modo que los datos viajen cifrados.
 
@@ -395,26 +385,20 @@ Seguir estas prácticas te ayudará a garantizar que tu implementación de webho
 
 <br />
 
-<div id="troubleshooting">
-  ## Solución de problemas
-</div>
+## Solución de problemas {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### Errores de firma no válida
-</div>
+### Errores de firma inválida {#invalid-signature-errors}
 
-Si la verificación de la firma falla:
+Si la verificación de firma falla:
 
-1. **Revisa el payload sin procesar**: asegúrate de usar el cuerpo sin procesar de la solicitud, no un objeto JSON ya analizado
-2. **Verifica el secreto**: comprueba que usas el secreto correcto, el que se generó al crear el webhook
-3. **Revisa el análisis del encabezado**: asegúrate de extraer correctamente la marca de tiempo y las firmas del encabezado
-4. **Problemas de codificación**: mantén una codificación UTF-8 coherente durante todo el proceso de verificación
+1. **Revisa el payload sin procesar**: asegúrate de usar el cuerpo de la solicitud sin procesar, no un objeto JSON ya analizado
+2. **Verifica el secreto**: asegúrate de usar el secreto de webhook correcto, el que se generó al crear el webhook
+3. **Revisa el análisis del encabezado**: asegúrate de extraer correctamente el timestamp y las firmas del encabezado
+4. **Problemas de codificación**: asegúrate de mantener una codificación UTF-8 uniforme durante todo el proceso de verificación
 
-<div id="testing-signatures-locally">
-  ### Probar firmas localmente
-</div>
+### Probar firmas en local {#testing-signatures-locally}
 
-Puedes probar tu lógica de verificación de firmas con el secreto del webhook y un payload de ejemplo:
+Puedes probar tu lógica de verificación de firmas usando el secreto del webhook y un payload de ejemplo:
 
 ```python Python theme={null}
 # Prueba con un payload y una firma conocidos
@@ -422,7 +406,7 @@ test_payload = '{"type":"webset.created","data":{"id":"ws_test"}}'
 test_timestamp = "1234567890"
 test_secret = "your_webhook_secret"
 
-# Crear la firma de prueba
+# Crea la firma de prueba
 import hmac
 import hashlib
 
@@ -435,7 +419,7 @@ test_signature = hmac.new(
 
 test_header = f"t={test_timestamp},v1={test_signature}"
 
-# Comprobar que funciona
+# Verifica que funcione
 is_valid = verify_webhook_signature(test_payload, test_header, test_secret)
 print(f"Test signature valid: {is_valid}")  # Debería imprimir True
 ```
@@ -444,10 +428,8 @@ print(f"Test signature valid: {is_valid}")  # Debería imprimir True
 
 <br />
 
-<div id="whats-next">
-  ## ¿Qué sigue?
-</div>
+## ¿Qué sigue? {#whats-next}
 
 * Conoce los [eventos de webhook](/es/docs/websets/api/events/types) y sus payloads
-* Configura [los reintentos y el monitoreo de webhooks](/es/docs/websets/api/webhooks/attempts/list-webhook-attempts)
+* Configura los [reintentos y la supervisión de webhooks](/es/docs/websets/api/webhooks/attempts/list-webhook-attempts)
 * Explora los [endpoints de gestión de webhooks](/es/docs/websets/api/webhooks/create-a-webhook)

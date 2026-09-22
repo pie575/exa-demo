@@ -1,24 +1,18 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="delete-an-import">
-  # import 삭제
-</div>
+# import 삭제 {#delete-an-import}
 
 > import를 삭제합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/imports/{id}
 openapi: 3.1.0
 info:
-  title: Exa 공개 API
+  title: Exa Public API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -33,24 +27,24 @@ paths:
     delete:
       tags:
         - Imports
-      summary: 가져오기 삭제
-      description: 가져오기를 삭제합니다.
+      summary: Delete Import
+      description: Deletes a import.
       operationId: imports-delete
       parameters:
         - in: path
           name: id
           schema:
             type: string
-          description: Import의 id
+          description: The id of the Import
           required: true
       responses:
         '200':
-          description: 가져오기가 성공적으로 삭제되었습니다
+          description: Import deleted successfully
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: 요청의 고유 식별자입니다.
+              description: Unique identifier for the request.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -65,12 +59,12 @@ components:
     Import:
       properties:
         id:
-          description: Import의 고유 식별자
+          description: The unique identifier for the Import
           type: string
         object:
           enum:
             - import
-          description: 객체의 유형
+          description: The type of object
           type: string
         status:
           enum:
@@ -79,26 +73,26 @@ components:
             - completed
             - failed
             - canceled
-          description: Import의 상태
+          description: The status of the Import
           type: string
         format:
           enum:
             - csv
             - webset
-          description: 가져오기의 형식입니다.
+          description: The format of the import.
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
-          description: 가져오기에 포함된 엔티티의 유형입니다.
+          description: The type of entity the import contains.
           nullable: true
         title:
-          description: 가져오기의 제목
+          description: The title of the import
           type: string
         count:
-          description: 가져오기에 포함된 엔티티 수
+          description: The number of entities in the import
           type: number
         metadata:
-          description: 이 객체와 연결하려는 키-값 쌍의 집합입니다.
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -111,24 +105,24 @@ components:
             - invalid_file_content
             - missing_identifier
           type: string
-          description: 가져오기가 실패한 이유
+          description: The reason the import failed
           nullable: true
         failedAt:
           format: date-time
           type: string
-          description: 가져오기가 실패한 시점
+          description: When the import failed
           nullable: true
         failedMessage:
           type: string
-          description: 가져오기 실패에 대한 사람이 읽을 수 있는 메시지
+          description: A human readable message of the import failure
           nullable: true
         createdAt:
           format: date-time
-          description: 가져오기가 생성된 시점
+          description: When the import was created
           type: string
         updatedAt:
           format: date-time
-          description: 가져오기가 마지막으로 업데이트된 시점
+          description: When the import was last updated
           type: string
       required:
         - id
@@ -160,7 +154,7 @@ components:
           default: company
       required:
         - type
-      title: 회사
+      title: Company
       type: object
     PersonEntity:
       properties:
@@ -170,7 +164,7 @@ components:
           default: person
       required:
         - type
-      title: 인물
+      title: Person
       type: object
     ArticleEntity:
       properties:
@@ -180,7 +174,7 @@ components:
           default: article
       required:
         - type
-      title: 기사
+      title: Article
       type: object
     ResearchPaperEntity:
       properties:
@@ -190,7 +184,7 @@ components:
           default: research_paper
       required:
         - type
-      title: 연구 논문
+      title: Research Paper
       type: object
     CustomEntity:
       properties:
@@ -205,7 +199,7 @@ components:
       required:
         - type
         - description
-      title: 사용자 지정
+      title: Custom
       type: object
   securitySchemes:
     apiKey:
@@ -213,12 +207,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>를 사용하여
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>를 사용하여
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

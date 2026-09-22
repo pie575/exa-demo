@@ -1,12 +1,12 @@
 ---
 title: "Récupérer un batch"
-description: "Récupérez un batch par son ID."
+description: "Récupérer un batch par ID."
 openapi: "/fr/docs/exa-spec.yaml GET /batches/{id}"
 timestamp: false
 ---
 
-Utilisez cet endpoint pour interroger un batch jusqu&#39;à ce qu&#39;il atteigne l&#39;état `completed`, `cancelled` ou `expired`. Une fois le batch terminé, `resultsUrl` contient une URL présignée de courte durée pointant vers le fichier de résultats JSONL ; récupérez à nouveau le batch pour obtenir une nouvelle URL.
+Utilisez cet endpoint pour interroger un batch jusqu&#39;à ce qu&#39;il atteigne l&#39;état `completed`, `cancelled` ou `expired`. Une fois le batch terminé, `resultsUrl` contient une URL présignée à courte durée de validité vers le fichier de résultats JSONL ; récupérez à nouveau le batch pour obtenir une nouvelle URL.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>

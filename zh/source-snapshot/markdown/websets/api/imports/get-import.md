@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="get-an-import">
-  # 获取 import
-</div>
+# 获取导入 {#get-an-import}
 
-> 获取指定的 import。
+> 获取指定的导入。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/imports/{id}
 openapi: 3.1.0

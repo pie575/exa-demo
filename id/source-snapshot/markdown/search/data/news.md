@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="news">
-  # Berita
-</div>
+# Berita {#news}
 
 > Temukan pemberitaan terkini, liputan industri, dan isu yang sedang berkembang dengan Exa Search.
 
@@ -37,56 +33,42 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk mencari pemberitaan dari media besar, pers industri, dan kanal niche. Artikel baru sudah bisa dicari dalam hitungan menit setelah terbit. Padukan query berbahasa alami dengan filter tanggal jika publication window merupakan syarat mutlak.
+Gunakan Exa Search untuk pemberitaan dari media besar, pers industri, dan media niche. Artikel baru bisa ditemukan lewat pencarian dalam hitungan menit setelah terbit. Padukan query berbahasa alami dengan filter tanggal jika rentang waktu publikasi menjadi syarat mutlak.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Riset pasar dan investasi
+* Research pasar dan investasi
 * Keamanan siber dan threat intelligence
-* Pemantauan perusahaan, produk, dan pesaing
-* Ringkasan industri dan riset peristiwa terkini
+* Pemantauan perusahaan, produk, dan kompetitor
+* Briefing industri dan research peristiwa terkini
 
-<div id="example-queries">
-  ## Contoh kueri
-</div>
+## Contoh kueri {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### Ikuti perkembangan berita kebijakan
-</div>
+### Mengikuti perkembangan berita kebijakan {#follow-a-developing-policy-story}
 
-Sebutkan topik, jenis sumber, dan publication window agar hasilnya berfokus pada fase terkini dari berita tersebut.
+Sebutkan topik, jenis sumber, dan rentang waktu publikasi agar hasil berfokus pada perkembangan terbaru dari berita tersebut.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### Menemukan analisis praktisi
-</div>
+### Menemukan analisis dari praktisi {#find-practitioner-analysis}
 
 Sebutkan jenis sumbernya jika Anda menginginkan analisis dari praktisi, bukan liputan berita umum.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### Temukan diskusi dalam format tertentu
-</div>
+### Temukan diskusi dalam format tertentu {#discover-discussions-in-a-specific-format}
 
-Sertakan format dan topiknya dalam query. Dengan begitu, search tetap terbuka terhadap halaman episode maupun transcript di seluruh web.
+Sertakan format dan topiknya dalam query. Dengan begitu, pencarian tetap mencakup halaman episode dan transkrip di seluruh web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### Meneliti pemberitaan negatif
-</div>
+### Research pemberitaan negatif {#research-adverse-media}
 
-Jelaskan sinyal negatifnya sekaligus kelas entitas yang sedang Anda selidiki. Hindari memangkas query menjadi sekadar nama perusahaan ditambah kata “berita”.
+Jelaskan sinyal negatifnya sekaligus kelas entitas yang sedang Anda selidiki. Hindari menyingkat query menjadi sekadar nama perusahaan ditambah kata &quot;news&quot;.
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## Buat permintaan
-</div>
+## Membuat permintaan {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -127,12 +109,10 @@ Jelaskan sinyal negatifnya sekaligus kelas entitas yang sedang Anda selidiki. Hi
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Mendapatkan data terstruktur dengan Exa Agent
-</div>
+## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang memerlukan riset lintas sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan berita, field, dan rentang waktu yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta citations.
+Untuk data terstruktur yang memerlukan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan berita, fields, dan rentang waktu yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi sesuai schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
-  Susun ringkasan berita bersumber jelas, bandingkan pemberitaan, atau ekstrak fakta yang ternormalisasi dari berita yang sedang berkembang.
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Susun ringkasan berita bersumber jelas, bandingkan liputan, atau ekstrak fakta yang ternormalisasi dari peristiwa yang sedang berkembang.
 </Card>

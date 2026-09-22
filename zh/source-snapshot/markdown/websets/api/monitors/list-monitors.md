@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在进一步探索之前，可通过该文件查看所有可用页面。
 
-<div id="list-websets-monitors">
-  # 列出 Websets monitor
-</div>
+# 列出 Websets monitors {#list-websets-monitors}
 
 > 列出该 Webset 的所有 monitor。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors
 openapi: 3.1.0

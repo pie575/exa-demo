@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件了解所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步浏览之前，可通过该文件查看所有可用页面。
 
-<div id="list-runs">
-  # 列出运行记录
-</div>
+# 列出运行 {#list-runs}
 
-> 列出某个 monitor 的所有运行记录，支持基于 cursor 的分页。运行记录按时间倒序返回。
+> 列出某个 monitor 的所有运行，支持基于 cursor 的分页。运行按时间倒序返回。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs
 openapi: 3.1.0
@@ -334,7 +328,7 @@ components:
             $ref: '#/components/schemas/JsonValue'
   responses:
     BadRequestResponse:
-      description: The request body or query parameters failed validation.
+      description: 请求体或查询参数未通过校验。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -349,7 +343,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: API 密钥缺失或无效。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -362,7 +356,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     NotFoundResponse:
-      description: The requested resource does not exist.
+      description: 请求的资源不存在。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -375,7 +369,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: 处理请求时发生意外错误。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -395,12 +389,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用 Authorization: Bearer <key>
+        进行身份验证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用 Authorization: Bearer <key>
+        进行身份验证。
 ```

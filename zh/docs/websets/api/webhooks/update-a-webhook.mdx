@@ -2,10 +2,9 @@
 title: "更新 webhook"
 openapi: "/zh/docs/exa-spec.yaml PATCH /v0/webhooks/{id}"
 timestamp: false
-description: "更新 Webhook 的目标 URL、订阅事件或元数据。未传入的字段保持不变。"
+description: "更新 Webhook 的目标 URL、订阅的事件或元数据。未传入的字段保持不变。"
 ---
 
 <Warning>
-  **不会跟随重定向。** 如果你更新 URL，请确保它是最终目标地址。返回 3xx
-  重定向的端点将被视为投递失败。
+  **不会跟随重定向。** 如果你更新 URL，请确保它是最终的目标地址。返回 3xx 重定向的端点将被视为投递失败。
 </Warning>

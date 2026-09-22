@@ -1,13 +1,13 @@
 ---
 title: "HIPAA"
-description: "지원 대상인 캐시된 retrieval 요청에 HIPAA 준수 모드를 사용하세요."
+description: "적격한 캐시된 retrieval 요청에 HIPAA 준수 모드를 사용하세요."
 ---
 
 <Info>
-  HIPAA 준수 모드는 Exa가 해당 팀에 대해 활성화한 이후 Enterprise 고객이 사용할 수 있습니다. Enterprise 이용, BAA 요건, 활성화에 대한 문의는 [sales@exa.ai](mailto:sales@exa.ai)로 연락해 주세요.
+  HIPAA 준수 기능은 Exa가 해당 team에 대해 활성화한 후 Enterprise 고객에게 제공됩니다. Enterprise 이용, BAA 요건 및 활성화에 대한 문의는 [sales@exa.ai](mailto:sales@exa.ai)로 연락해 주세요.
 </Info>
 
-HIPAA 모드는 최상위 `compliance` 필드를 통해 요청 단위로 제어합니다:
+HIPAA 모드는 최상위 `compliance` field를 통해 요청 단위로 제어됩니다:
 
 ```json theme={null}
 {
@@ -15,40 +15,34 @@ HIPAA 모드는 최상위 `compliance` 필드를 통해 요청 단위로 제어�
 }
 ```
 
-이 필드가 사용 자격이 있는 팀의 요청에 포함되면, Exa는 HIPAA 규정 준수 통제를 적용하여 해당 요청을 처리합니다. 팀에 이 기능이 활성화되어 있지 않으면 API는 `403 FEATURE_DISABLED`를 반환합니다.
+자격을 갖춘 team에 이 field가 지정되면 Exa는 HIPAA 준수 통제를 적용해 요청을 처리합니다. team이 활성화되어 있지 않으면 API는 `403 FEATURE_DISABLED`를 반환합니다.
 
-HIPAA 모드는 해당 요청에 대해 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)을 적용합니다. 즉, Exa는 PHI를 보관하지 않습니다.
+HIPAA 모드는 해당 요청에 대해 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)을 포함하며, Exa는 PHI를 저장하지 않습니다.
 
-<div id="supported-endpoints">
-  ## 지원되는 endpoint
-</div>
+## 지원 엔드포인트 {#supported-endpoints}
 
-`compliance` 필드는 다음 endpoint에서 인식됩니다:
+`compliance` field는 다음 엔드포인트에서 인식됩니다:
 
 * [`/search`](/ko/docs/reference/search)
 * [`/contents`](/ko/docs/reference/get-contents)
 
-그 외의 endpoint에서는 이 필드가 거부됩니다.
+그 외 엔드포인트에서는 이 field가 거부됩니다.
 
-<div id="requirements">
-  ## 요구 사항
-</div>
+## 요구 사항 {#requirements}
 
 HIPAA 모드는 캐시된 retrieval만 지원합니다. 호환되는 요청은 다음과 같습니다.
 
 * `/search`에서 `type`을 `instant` 또는 `fast`로 설정
 * `text` 또는 `highlights` 요청(`summary`는 불가)
-* 캐시 전용 콘텐츠 사용: freshness 필드를 생략하거나 `/contents`에서 `maxAgeHours: -1` 설정
+* 캐시 전용 content 사용: freshness field를 생략하거나 `/contents`에서 `maxAgeHours: -1` 설정
 
 호환되지 않는 요청은 `400 INVALID_REQUEST_BODY`를 반환하며, 다음과 같은 경우가 해당됩니다.
 
 * `/contents`의 `summary` 또는 `/search`의 `contents.summary`
-* `maxAgeHours: 0`이나 양수 `maxAgeHours`처럼 실시간 fetch가 필요한 freshness 설정
-* `type`을 생략하거나 `instant` 또는 `fast` 이외의 타입을 사용하는 search request
+* `maxAgeHours: 0` 또는 양수 `maxAgeHours`처럼 실시간 fetch가 필요한 freshness 설정
+* `type`을 생략하거나 `instant`, `fast` 이외의 타입을 사용하는 search 요청
 
-<div id="example">
-  ## 예시
-</div>
+## 예시 {#example}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -64,8 +58,6 @@ HIPAA 모드는 캐시된 retrieval만 지원합니다. 호환되는 요청은 �
   ```
 </CodeGroup>
 
-<div id="access">
-  ## 액세스
-</div>
+## 액세스 {#access}
 
-Team에 HIPAA 모드를 활성화하려면 [sales@exa.ai](mailto:sales@exa.ai)로 문의하세요. Exa 보안 문서는 [Trust Center](https://trust.exa.ai)에서 확인하세요.
+team에서 HIPAA 모드를 활성화하려면 [sales@exa.ai](mailto:sales@exa.ai)로 문의하세요. Exa 보안 문서는 [Trust Center](https://trust.exa.ai)에서 확인할 수 있습니다.

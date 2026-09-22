@@ -1,37 +1,31 @@
 ---
 title: "Snowflake"
-description: "Snowflake 저장 프로시저와 Cortex Agent에서 Exa search와 콘텐츠 retrieval을 사용하세요."
+description: "Snowflake 저장 프로시저와 Cortex Agent에서 Exa search와 콘텐츠 검색을 활용하세요."
 icon: "/docs/images/sidebar-icons/snowflake.svg"
 ---
 
-Snowflake에서 Exa의 Search API를 직접 호출해, SQL을 벗어나지 않고도 실시간 웹 인텔리전스로 데이터를 enrich하세요.
+Exa의 Search API를 Snowflake에서 바로 호출해, SQL을 벗어나지 않고도 실시간 웹 정보로 데이터를 보강하세요.
 
-이 통합은 Snowflake의 [External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) 기능을 사용해 저장 프로시저에서 Exa API를 안전하게 호출하며, 다음 두 가지 주요 워크플로우를 지원합니다:
+이 연동은 Snowflake의 [External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) 기능을 활용해 저장 프로시저에서 Exa API를 안전하게 호출하며, 다음 두 가지 주요 워크플로우를 지원합니다.
 
 1. **Cortex Agent 도구** — Snowflake Cortex Agent가 웹을 search하고 page contents를 가져올 수 있도록 합니다
-2. **Data enrichment** — CEO/창업자 정보, 최신 뉴스 등의 웹 데이터로 테이블을 batch 방식으로 enrich합니다
+2. **데이터 보강** — CEO/창업자 정보, 최신 뉴스 등 웹 데이터로 표를 batch 단위로 enrich합니다
 
-<div id="prerequisites">
-  ## 사전 준비 사항
-</div>
+## 사전 준비 사항 {#prerequisites}
 
 1. Exa API key
-2. `ACCOUNTADMIN` 역할(External Access Integration 생성에 필요)
-3. External Access를 지원하는 Snowflake 계정(유료 계정)
+2. `ACCOUNTADMIN` role (External Access Integration 생성에 필요)
+3. External Access를 지원하는 Snowflake 계정 (유료 계정)
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  대시보드에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 새 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="setup">
-  ## 설정
-</div>
+## 설정 {#setup}
 
-Snowflake 워크시트에서 다음 SQL을 실행하세요. `<<YOUR_EXA_API_KEY>>`는 실제 API 키로 바꿔야 합니다.
+Snowflake 워크시트에서 다음 SQL을 실행하세요. `<<YOUR_EXA_API_KEY>>`는 실제 키로 바꿔주세요.
 
-<div id="roles-and-database">
-  ### 역할 및 데이터베이스
-</div>
+### Roles 및 데이터베이스 {#roles-and-database}
 
 ```sql theme={null}
 USE ROLE ACCOUNTADMIN;
@@ -49,9 +43,7 @@ GRANT USAGE ON DATABASE exa_integration TO ROLE exa_agent_role;
 GRANT USAGE ON SCHEMA exa_integration.tools TO ROLE exa_agent_role;
 ```
 
-<div id="warehouse">
-  ### 웨어하우스
-</div>
+### 웨어하우스 {#warehouse}
 
 ```sql theme={null}
 CREATE WAREHOUSE IF NOT EXISTS exa_agent_wh
@@ -64,9 +56,7 @@ WITH
 GRANT USAGE, OPERATE ON WAREHOUSE exa_agent_wh TO ROLE exa_agent_role;
 ```
 
-<div id="network-rule-secret-and-external-access">
-  ### 네트워크 규칙, 시크릿 및 외부 액세스
-</div>
+### Network rule, secret 및 외부 액세스 {#network-rule-secret-and-external-access}
 
 ```sql theme={null}
 CREATE OR REPLACE NETWORK RULE exa_integration.tools.exa_api_rule
@@ -86,21 +76,17 @@ CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION exa_api_access
 GRANT USAGE ON INTEGRATION exa_api_access TO ROLE exa_agent_role;
 ```
 
-이 작업으로 다음이 생성됩니다:
+이렇게 하면 다음이 생성됩니다:
 
-* `api.exa.ai:443`으로의 아웃바운드만 허용하는 **network rule**
-* API key를 저장하는 **secret** (암호화되어 SQL에서는 보이지 않음)
-* 해당 rule과 secret을 하나로 묶는 **external access integration**
+* `api.exa.ai:443`으로의 아웃바운드 트래픽만 허용하는 **network rule**
+* API 키를 저장하는 **secret** (암호화되어 SQL에서는 보이지 않음)
+* network rule과 secret을 하나로 묶는 **external access integration**
 
-<div id="stored-procedures">
-  ## 저장 프로시저
-</div>
+## 저장 프로시저 {#stored-procedures}
 
-<div id="exa_search">
-  ### EXA_SEARCH
-</div>
+### EXA_SEARCH {#exa_search}
 
-Exa의 Search API를 사용해 웹을 검색합니다. 제목, URL, 점수가 포함된 결과를 반환하며, 선택적으로 텍스트/highlights/summaries도 함께 반환할 수 있습니다.
+Exa의 search API를 사용해 웹을 검색합니다. 제목, URL, score를 포함한 결과를 반환하며, 선택적으로 텍스트/highlights/summary도 함께 반환합니다.
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -203,9 +189,7 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="parameters">
-  #### 매개변수
-</div>
+#### Parameters {#parameters}
 
 | 매개변수                   | 타입        | 기본값      | 설명                                                                              |
 | ---------------------- | --------- | -------- | ------------------------------------------------------------------------------- |
@@ -213,18 +197,16 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 | `num_results`          | `INTEGER` | `10`     | 결과 개수(1–100)                                                                    |
 | `search_type`          | `STRING`  | `'auto'` | 권장 값: `auto`, `instant`, `fast`, `deep-lite`, `deep`, `deep-reasoning`          |
 | `category`             | `STRING`  | `NULL`   | `company`, `publication`, `news`, `personal_site`, `financial_report`, `people` |
-| `include_domains`      | `STRING`  | `NULL`   | 검색 대상으로 한정할 도메인(쉼표로 구분)                                                         |
+| `include_domains`      | `STRING`  | `NULL`   | 검색 대상으로 제한할 도메인(쉼표로 구분)                                                         |
 | `exclude_domains`      | `STRING`  | `NULL`   | 제외할 도메인(쉼표로 구분)                                                                 |
 | `start_published_date` | `STRING`  | `NULL`   | ISO 8601 날짜 하한                                                                  |
 | `end_published_date`   | `STRING`  | `NULL`   | ISO 8601 날짜 상한                                                                  |
 | `include_text`         | `STRING`  | `NULL`   | 결과에 반드시 포함되어야 하는 문구                                                             |
-| `get_contents`         | `BOOLEAN` | `TRUE`   | text, highlights, summaries 가져오기                                                |
+| `get_contents`         | `BOOLEAN` | `TRUE`   | 텍스트, highlights, summary 가져오기                                                   |
 
-<div id="exa_get_contents">
-  ### EXA_GET_CONTENTS
-</div>
+### EXA_GET_CONTENTS {#exa_get_contents}
 
-특정 URL의 page contents(텍스트, highlights, summaries)를 가져옵니다.
+특정 URL의 page contents(텍스트, highlights, summary)를 가져옵니다.
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -304,13 +286,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="usage-examples">
-  ## 사용 예시
-</div>
+## 사용 예시 {#usage-examples}
 
-<div id="basic-search">
-  ### 기본 search
-</div>
+### 기본 search {#basic-search}
 
 ```sql theme={null}
 USE WAREHOUSE exa_agent_wh;
@@ -326,9 +304,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="get-contents-for-specific-urls">
-  ### 특정 URL의 contents 가져오기
-</div>
+### 특정 URL의 contents 가져오기 {#get-contents-for-specific-urls}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -339,9 +315,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 );
 ```
 
-<div id="company-research">
-  ### 기업 리서치
-</div>
+### 기업 리서치 {#company-research}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -351,15 +325,11 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="data-enrichment">
-  ## Data enrichment
-</div>
+## 데이터 보강 {#data-enrichment}
 
-Exa는 플랫폼을 벗어나지 않고도 Snowflake 테이블을 CEO/창업자 정보, 최신 뉴스 등 실시간 웹 데이터로 enrich할 수 있습니다.
+Exa는 CEO/창업자 정보, 최신 뉴스 등 실시간 웹 데이터로 Snowflake 표를 보강할 수 있으며, 이 모든 작업을 플랫폼을 벗어나지 않고 수행할 수 있습니다.
 
-<div id="create-a-prospect-table">
-  ### prospect 테이블 생성하기
-</div>
+### 잠재 고객 표 만들기 {#create-a-prospect-table}
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_enrichment;
@@ -391,9 +361,7 @@ VALUES
     ('Vercel', 'https://vercel.com', 'Developer Platform', 600);
 ```
 
-<div id="enrich-with-ceofounder-info">
-  ### CEO/창업자 정보로 보강하기
-</div>
+### CEO/창업자 정보로 enrich하기 {#enrich-with-ceofounder-info}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_leaders(
@@ -495,9 +463,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="enrich-with-latest-news">
-  ### 최신 뉴스로 보강하기
-</div>
+### 최신 뉴스로 enrich하기 {#enrich-with-latest-news}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_news(
@@ -579,30 +545,24 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="run-enrichment">
-  ### Enrichment 실행
-</div>
+### enrichment 실행하기 {#run-enrichment}
 
 ```sql theme={null}
--- 단일 회사 Enrich
+-- 단일 회사 enrich 실행
 CALL exa_enrichment.demo.enrich_company_leaders('Stripe');
 CALL exa_enrichment.demo.enrich_company_news('Stripe');
 
--- Enrich된 결과 조회
+-- enrich된 결과 조회
 SELECT company_name, ceo_name, ceo_title,
        latest_news_headline, latest_news_url, latest_news_date
 FROM exa_enrichment.demo.prospect_companies;
 ```
 
-<div id="parallelizing-exa-requests">
-  ## Exa 요청 병렬 처리
-</div>
+## Exa 요청 병렬 처리 {#parallelizing-exa-requests}
 
-대규모 테이블을 enrich할 때 행마다 Exa를 순차적으로 호출하면 속도가 느립니다. 단일 저장 프로시저 안에서 Python의 `concurrent.futures`를 사용해 요청을 병렬화하면 여러 Exa API 호출을 한 번에 보낼 수 있습니다.
+대규모 표를 enrich할 때 행마다 Exa를 순차적으로 호출하면 속도가 느립니다. 단일 저장 프로시저 안에서 Python의 `concurrent.futures`를 사용해 요청을 병렬화하면 여러 Exa API 호출을 한 번에 보낼 수 있습니다.
 
-<div id="concurrent-enrichment-procedure">
-  ### 동시 Enrichment 처리 절차
-</div>
+### 동시 enrichment 처리 절차 {#concurrent-enrichment-procedure}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_all_parallel(
@@ -674,21 +634,17 @@ def main(session, max_workers):
 $$;
 ```
 
-<div id="choosing-parallelism">
-  ### 병렬 처리 수준 선택
-</div>
+### 병렬 처리 수준 선택 {#choosing-parallelism}
 
-| `max_workers` | 사용 사례                                                         |
-| ------------- | ------------------------------------------------------------- |
-| `5`           | 보수적 — rate limits에 여유 있게 안전한 수준                               |
-| `10`          | 대부분의 enrichment 작업에 적합한 기본값                                   |
-| `20–50`       | 높은 [rate limit](/ko/docs/admin/billing#rate-limits) 등급의 대규모 데이터셋 |
+| `max_workers` | 사용 사례                                                    |
+| ------------- | -------------------------------------------------------- |
+| `5`           | 보수적 — 속도 제한에 충분히 여유가 있음                                  |
+| `10`          | 대부분의 enrichment 작업에 적합한 기본값                              |
+| `20–50`       | 높은 [속도 제한](/ko/docs/admin/billing#rate-limits) 등급의 대규모 데이터셋 |
 
-<div id="snowflake-task-scheduling">
-  ### Snowflake 태스크 스케줄링
-</div>
+### Snowflake 작업 스케줄링 {#snowflake-task-scheduling}
 
-주기적으로 실행되는 enrichment 작업이라면 프로시저를 [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro)로 감싸세요:
+주기적으로 실행되는 enrichment 작업이라면, 프로시저를 [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro)로 감싸세요:
 
 ```sql theme={null}
 CREATE OR REPLACE TASK exa_enrichment.demo.daily_enrichment
@@ -700,13 +656,11 @@ AS
 ALTER TASK exa_enrichment.demo.daily_enrichment RESUME;
 ```
 
-이 설정은 매일 오전 8시(PT)에 병렬 enrichment를 실행합니다. 처리량과 rate limits에 맞게 cron 스케줄과 `max_workers`를 조정하세요.
+이렇게 하면 매일 오전 8시(PT)에 병렬 enrichment가 실행됩니다. 처리량과 속도 제한에 맞게 cron 일정과 `max_workers`를 조정하세요.
 
-<div id="cortex-agent-integration">
-  ## Cortex Agent 통합
-</div>
+## Cortex Agent 연동 {#cortex-agent-integration}
 
-Exa 저장 프로시저를 [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)의 도구로 등록하여, 대화형으로 웹을 검색할 수 있는 기능을 부여할 수도 있습니다.
+Exa 저장 프로시저를 [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)의 도구로 등록하면, 대화형으로 웹을 검색하는 기능을 부여할 수도 있습니다.
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_agents;
@@ -830,34 +784,30 @@ CREATE OR REPLACE AGENT exa_web_search_agent
 
 생성이 완료되면 Snowflake Intelligence를 열고 agent에게 다음과 같이 질문해 보세요:
 
-* &quot;최신 AI agent 프레임워크를 웹에서 검색해줘&quot;
-* &quot;retrieval augmented generation에 대한 연구 논문을 찾아줘&quot;
-* &quot;주목할 만한 AI 기업은 어디야?&quot;
+* &quot;Search the web for recent AI agent frameworks&quot;
+* &quot;Find research papers about retrieval augmented generation&quot;
+* &quot;What are the top AI companies to watch?&quot;
 
-<div id="security">
-  ## 보안
-</div>
+## 보안 {#security}
 
-이 통합은 Snowflake의 기본 제공 보안 기능을 사용합니다:
+이 연동은 Snowflake의 내장 보안 기능을 사용합니다:
 
-| 계층                              | 세부 사항                                        |
-| ------------------------------- | -------------------------------------------- |
-| **역할**                          | 프로시저 및 데이터에 대한 범위 제한 접근을 위한 `exa_agent_role` |
-| **Network Rule**                | 아웃바운드 트래픽을 `api.exa.ai:443`으로만 제한            |
-| **Secret**                      | API key를 암호화하여 저장하며 SQL 쿼리에서는 보이지 않음         |
-| **External Access Integration** | network rule과 secret을 하나로 묶어 바인딩             |
+| 계층                              | 상세 내용                                       |
+| ------------------------------- | ------------------------------------------- |
+| **Roles**                       | 프로시저와 데이터에 대한 범위 제한 접근을 위한 `exa_agent_role` |
+| **Network Rule**                | 아웃바운드 트래픽을 `api.exa.ai:443`으로만 제한           |
+| **Secret**                      | API 키를 암호화하여 저장하며 SQL 쿼리에 노출되지 않음           |
+| **External Access Integration** | network rule과 secret을 함께 묶어 연결              |
 
-추가 사용자에게 접근 권한을 부여하려면:
+추가 사용자에게 접근 권한 부여하기:
 
 ```sql theme={null}
 GRANT ROLE exa_agent_role TO USER analyst_user;
 ```
 
-<div id="more-resources">
-  ## 추가 자료
-</div>
+## 추가 자료 {#more-resources}
 
 * [Exa API 문서](/ko/docs/search/quickstart)
-* [Exa Dashboard](https://dashboard.exa.ai) — API key 발급받기
+* [Exa Dashboard](https://dashboard.exa.ai) — API 키 발급받기
 * [Snowflake External Access 문서](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)
 * [Snowflake Cortex Agents 문서](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)

@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="combining-providers">
-  # Menggabungkan provider
-</div>
+# Menggabungkan provider {#combining-providers}
 
-> Gunakan beberapa data partners sekaligus dalam satu run Exa Agent.
+> Gunakan beberapa data partner sekaligus dalam satu run Exa Agent.
 
-Melampirkan partner ke `dataSources` membuatnya tersedia bagi Exa Agent sebagai tool — hal ini **tidak** memaksa agent untuk memanggilnya. Dipanggil atau tidaknya sebuah partner bergantung pada `query` dan `outputSchema` Anda: sebutkan jenis hasil yang Anda inginkan dari setiap partner, dan Exa Agent akan memakai tool yang sesuai alih-alih menebak dari halaman web. Anda dapat melampirkan hingga lima partner per run; Exa Agent yang menentukan mana yang dipanggil di setiap langkah, dengan Exa web search tersedia berdampingan. Butuh lebih dari lima dalam satu run? [Hubungi kami](mailto:sales@exa.ai) untuk menaikkan limit.
+Meng-attach partner ke `dataSources` membuatnya tersedia bagi Exa Agent sebagai tool — ini **tidak** memaksa agent untuk memanggilnya. Dipanggil atau tidaknya suatu partner bergantung pada `query` dan `outputSchema` Anda: sebutkan jenis hasil yang Anda inginkan dari masing-masing partner, maka Exa Agent akan memakai tool yang sesuai alih-alih menebak dari halaman web. Anda dapat meng-attach hingga lima partner per run; Exa Agent yang menentukan mana yang dipanggil di setiap langkah, dengan Exa web search tersedia berdampingan. Butuh lebih dari lima untuk satu run? [Hubungi kami](mailto:sales@exa.ai) untuk menaikkan batasnya.
 
-<div id="two-partners-in-one-run">
-  ## Dua partner dalam satu run
-</div>
+## Dua partner dalam satu run {#two-partners-in-one-run}
 
-Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan masing-masing pada bidang yang paling kuat. Dua hanyalah contoh di sini — Anda bisa attach hingga lima partner ke `dataSources`, dan prinsipnya tetap sama: minta data dari masing-masing secara eksplisit. Run ringkasan untuk investor ini menggabungkan [Financial Datasets](/id/docs/agent/connect/financialdatasets) untuk berita ticker dengan [Particle](/id/docs/agent/connect/particle) untuk komentar podcast. Query meminta data khas dari tiap partner, dan schema memisahkan output menjadi `financialNews` dan `podcastChatter`, sehingga Exa Agent memanggil **kedua** partner dalam run yang sama.
+Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan keunggulan masing-masing. Dua hanyalah contoh di sini — Anda bisa attach hingga lima partner ke `dataSources`, dan prinsipnya tetap sama: minta data dari masing-masing secara eksplisit. Run pengarahan investor ini menggabungkan [Financial Datasets](/id/docs/agent/connect/financialdatasets) untuk berita ticker dengan [Particle](/id/docs/agent/connect/particle) untuk komentar podcast. Query meminta data khas dari tiap partner dan schema memisahkan output menjadi `financialNews` dan `podcastChatter`, sehingga Exa Agent memanggil **kedua** partner dalam run yang sama.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -174,5 +168,5 @@ Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan masing-mas
 </CodeGroup>
 
 <Tip>
-  Sebutkan secara eksplisit data dari setiap partner dalam *query* Anda — nyatakan jenis hasil yang Anda inginkan dari masing-masing (di sini: berita keuangan berdasarkan ticker vs. kutipan podcast yang disertai nama pembicara). Jika permintaannya terlalu umum (&quot;berita terbaru&quot;), Exa Agent cenderung beralih ke web search alih-alih ke partner. Menuangkan kembali permintaan yang berbeda itu pada field `outputSchema` Anda akan semakin memperkuatnya.
+  Sebutkan secara eksplisit data dari setiap partner dalam *query* Anda — nyatakan jenis hasil yang Anda inginkan dari masing-masing (di sini: berita keuangan berdasarkan ticker vs. kutipan podcast dengan atribusi pembicara). Jika permintaan bersifat umum (&quot;berita terbaru&quot;), Exa Agent cenderung kembali menggunakan web search alih-alih partner. Menyelaraskan permintaan yang berbeda itu pada field `outputSchema` Anda akan semakin memperkuatnya.
 </Tip>

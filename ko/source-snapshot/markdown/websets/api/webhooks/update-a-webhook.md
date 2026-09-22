@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="update-a-webhook">
-  # webhook 업데이트
-</div>
+# 웹훅 업데이트 {#update-a-webhook}
 
-> Webhook의 대상 URL, 구독 이벤트 또는 메타데이터를 업데이트합니다. 생략된 필드는 기존 값이 그대로 유지됩니다.
+> 웹훅의 대상 URL, 구독 중인 events, metadata를 업데이트합니다. 생략된 fields는 변경되지 않습니다.
 
 <Warning>
-  **리디렉션은 따라가지 않습니다.** URL을 업데이트할 때는 해당 URL이 최종
-  목적지인지 확인하세요. 3xx 리디렉션으로 응답하는 endpoint는
-  전송 실패로 처리됩니다.
+  **리다이렉트는 따라가지 않습니다.** URL을 업데이트할 때는 해당 주소가 최종
+  목적지인지 확인하세요. 3xx 리다이렉트로 응답하는 엔드포인트는 전송 실패로
+  처리됩니다.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

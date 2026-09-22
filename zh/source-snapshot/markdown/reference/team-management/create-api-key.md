@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="create-api-key">
-  # 创建 API key
-</div>
+# 创建 API 密钥 {#create-api-key}
 
-> 为你的团队创建新的 API key，可选配置名称和速率限制。
+> 为你的团队创建新的 API 密钥，可选配置名称和速率限制。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户会获赠免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户会赠送免费积分。
 </Card>
 
 <Info>
-  Team Management API 需按团队单独启用。它使用服务账户 API key 进行身份验证；在你的团队启用该功能后，可在 [API keys 页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页中创建该 key。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+  Team Management API 需按团队启用。它使用服务账户 API 密钥进行认证；在为你的团队启用该功能后，可在 [API 密钥页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页中创建该密钥。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
 </Info>
 
-创建 API Key 接口可让你使用服务 API key 以编程方式为团队生成新的 API key。
+通过创建 API 密钥端点，你可以使用服务 API 密钥，以编程方式为团队生成新的 API 密钥。
 
-<div id="optional-parameters">
-  ## 可选参数
-</div>
+## 可选参数 {#optional-parameters}
 
-* **name**：为该 API key 设置的描述性名称，便于识别其用途
-* **rateLimit**：该 API key 每分钟允许的最大请求数
+* **name**：API 密钥的描述性名称，便于识别其用途
+* **rateLimit**：该 API 密钥每分钟允许的最大请求数
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

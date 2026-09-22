@@ -6,70 +6,58 @@ openapi: "/es/docs/team-management-spec.yaml GET /api-keys/{id}/usage"
 timestamp: false
 ---
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas incluyen credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
 <Info>
-  La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la función esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
+  La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la funcionalidad esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
 </Info>
 
-<div id="overview">
-  ## Descripción general
-</div>
+## Descripción general {#overview}
 
-El endpoint Get API Key Usage permite obtener analíticas detalladas de facturación y uso de una API key concreta durante un periodo determinado. Este endpoint devuelve los datos de costos del sistema de facturación de Exa, lo que ofrece una visión fiable de lo que se te factura por esa API key.
+El endpoint Get API Key Usage te permite obtener análisis detallados de facturación y uso de una API key específica durante un periodo determinado. Este endpoint devuelve datos de costo del sistema de facturación de Exa, lo que ofrece una visión fiable de lo que se te factura por esa API key.
 
-<div id="path-parameters">
-  ## Parámetros de ruta
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: El identificador único de la API key cuyo uso se quiere consultar
+* **id**: El identificador único de la API key cuyo uso se desea consultar
 
-<div id="query-parameters">
-  ## Parámetros de consulta
-</div>
+## Parámetros de consulta {#query-parameters}
 
-* **start&#95;date** (opcional): Fecha de inicio del periodo de uso en formato ISO 8601 (por ejemplo, `2025-01-01T00:00:00Z` o `2025-01-01`). Valor predeterminado: hace 30 días. Debe estar dentro de los últimos 6 meses (180 días).
-* **end&#95;date** (opcional): Fecha de fin del periodo de uso en formato ISO 8601. Valor predeterminado: la hora actual.
-* **group&#95;by** (opcional): Granularidad temporal para agrupar los resultados (`hour`, `day` o `month`). Actualmente está reservado para mejoras futuras y no modifica la estructura de la respuesta. Valor predeterminado: `day`.
+* **start&#95;date** (opcional): fecha de inicio del periodo de uso en formato ISO 8601 (por ejemplo, `2025-01-01T00:00:00Z` o `2025-01-01`). Por defecto, hace 30 días. Debe estar comprendida dentro de los últimos 6 meses (180 días).
+* **end&#95;date** (opcional): fecha de fin del periodo de uso en formato ISO 8601. Por defecto, la hora actual.
+* **group&#95;by** (opcional): granularidad temporal para agrupar los resultados (`hour`, `day` o `month`). Actualmente está reservado para mejoras futuras y no altera la estructura de la respuesta. Por defecto, `day`.
 
-<div id="response">
-  ## Respuesta
-</div>
+## Respuesta {#response}
 
-Devuelve información detallada de uso y facturación, que incluye:
+Devuelve información detallada de uso y facturación que incluye:
 
 * **id**: Identificador único de la API key
 * **api&#95;key&#95;id**: Identificador único de la API key
 * **api&#95;key&#95;name**: Nombre descriptivo de la API key (si se ha definido)
 * **team&#95;id**: ID del equipo al que pertenece esta key
-* **period**: Objeto con las fechas de inicio y fin del período de uso
-* **total&#95;cost&#95;usd**: Costo total en USD del período especificado
-* **cost&#95;breakdown**: Arreglo de desgloses de costos por tipo de precio, cada uno con:
+* **period**: Objeto con las fechas de inicio y fin del periodo de uso
+* **total&#95;cost&#95;usd**: Costo total en USD del periodo especificado
+* **cost&#95;breakdown**: Arreglo de desgloses de costo por tipo de precio, cada uno con:
   * **price&#95;id**: Identificador único del precio
   * **price&#95;name**: Nombre del precio (por ejemplo, «Neural Search», «Content Retrieval»)
   * **quantity**: Cantidad total consumida
   * **amount&#95;usd**: Costo en USD de este tipo de precio
-* **metadata**: Objeto con la marca de tiempo de generación del informe
+* **metadata**: Objeto con el timestamp de generación del reporte
 
-<div id="important-notes">
-  ## Notas importantes
-</div>
+## Notas importantes {#important-notes}
 
-* **Límite de consulta retroactiva de 6 meses**: el sistema de facturación tiene un límite de consulta retroactiva de 6 meses (180 días). Las solicitudes con un `start_date` anterior a 180 días devolverán un error 400.
-* **Sin uso**: si la API key no registra uso en el período solicitado, `total_cost_usd` será 0 y `cost_breakdown` podría estar vacío.
+* **Límite de consulta retroactiva de 6 meses**: el sistema de facturación tiene un límite de consulta retroactiva de 6 meses (180 días). Las solicitudes cuyo `start_date` sea anterior a 180 días devolverán un error 400.
+* **Sin uso**: si la API key no registra uso en el periodo solicitado, `total_cost_usd` será 0 y `cost_breakdown` podría estar vacío.
 * **Pertenencia al equipo**: la API key de servicio utilizada para la autenticación debe pertenecer al mismo equipo que la API key consultada. No se permite el acceso entre equipos.
-* **Formatos de fecha**: las fechas se pueden proporcionar en formato ISO 8601, con o sin componentes de hora (por ejemplo, `2025-01-01` o `2025-01-01T00:00:00Z`).
+* **Formatos de fecha**: las fechas pueden indicarse en formato ISO 8601 con o sin componentes de hora (por ejemplo, `2025-01-01` o `2025-01-01T00:00:00Z`).
 
-<div id="use-cases">
-  ## Casos de uso
-</div>
+## Casos de uso {#use-cases}
 
 Este endpoint resulta útil para:
 
 * Crear paneles de facturación a nivel de API key
-* Supervisar el uso y los costos de API keys específicas
-* Configurar alertas automáticas según umbrales de uso
+* Monitorear el uso y los costos de API keys específicas
+* Crear alertas automatizadas basadas en umbrales de uso
 * Generar informes de uso para la asignación interna de costos
 * Resolver dudas de facturación de API keys específicas

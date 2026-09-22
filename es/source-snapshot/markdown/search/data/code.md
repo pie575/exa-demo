@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="code-docs">
-  # Código y documentación
-</div>
+# Código y documentación {#code-docs}
 
-> Encuentra código, documentación técnica y orientación para la implementación con Exa Search.
+> Encuentra código, documentación técnica y guías de implementación con Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -40,58 +36,44 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 Usa Exa Search para encontrar repositorios, documentación técnica, información de paquetes y guías de implementación mediante consultas en lenguaje natural.
 
 <Tip>
-  Lee [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode) para conocer cómo Exa
-  evalúa la recuperación de información en tareas de programación.
+  Lee [WebCode: Search Evals for agentes de programación](https://exa.ai/blog/webcode) para conocer cómo Exa
+  evalúa la recuperación en tareas de programación.
 </Tip>
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
 * Agentes de programación y herramientas de generación de código
 * Productos de búsqueda y documentación para desarrolladores
 * Flujos de trabajo de depuración, migración y configuración
 * Investigación técnica en repositorios, documentación y registros de paquetes
 
-<div id="example-queries">
-  ## Ejemplos de consultas
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### Descubre bibliotecas por capacidad
-</div>
+### Descubrir bibliotecas por capacidad {#discover-libraries-by-capability}
 
-Describe la capacidad, el ecosistema y las restricciones que te importan. Así se obtienen candidatos según lo que hacen, en lugar de depender del nombre exacto del proyecto.
+Describe la capacidad, el ecosistema y las restricciones que te interesan. Así se obtienen candidatos según lo que hacen, en lugar de depender del nombre exacto del proyecto.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### Recuperar documentación de implementación
-</div>
+### Obtener documentación de implementación {#retrieve-implementation-documentation}
 
-Indica el producto y la operación exacta. Así, Search puede priorizar la documentación de la API y las guías de implementación frente a los debates generales.
+Indica el producto y la operación exacta. Así, la búsqueda puede priorizar la documentación de la API y las guías de implementación frente a los debates generales.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### Consultar cambios específicos de una versión
-</div>
+### Consultar cambios específicos de una versión {#check-version-specific-changes}
 
-Incluye el canal de publicación o la versión cuando la compatibilidad sea importante. Así se reducen los resultados sobre versiones anteriores.
+Incluye el canal de lanzamiento o la versión cuando la compatibilidad sea importante. Así se reducen los resultados sobre versiones anteriores.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### Encontrar herramientas de agentes reutilizables
-</div>
+### Encontrar herramientas de agente reutilizables {#find-reusable-agent-tooling}
 
 Indica el tipo de artefacto y la tarea en lugar de buscar una frase genérica como «herramientas de IA».
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## Haz una solicitud
-</div>
+## Haz una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -139,11 +121,9 @@ Indica el tipo de artefacto y la tarea en lugar de buscar una frase genérica co
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigar en varias fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las bibliotecas, los criterios técnicos y los campos de salida que necesitas, y Agent devolverá resultados validados con el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las bibliotecas, los criteria técnicos y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
 <Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
   Compara bibliotecas, enriquece registros de repositorios o genera una lista estructurada a partir de múltiples señales técnicas.

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-an-import">
-  # Créer un import
-</div>
+# Créer un import {#create-an-import}
 
 > Crée un nouvel import pour charger vos données dans Websets. Les imports peuvent servir à :
 
 * **Enrich** : enrichir vos données avec des informations supplémentaires grâce à notre moteur d&#39;enrichment propulsé par l&#39;IA
 * **Search** : interroger vos données avec la recherche agentique de Websets et des filtres en langage naturel
-* **Exclude** : éviter que des résultats en double ou déjà connus n&#39;apparaissent dans vos searches
+* **Exclude** : empêcher les résultats en double ou déjà connus d&#39;apparaître dans vos recherches
 
 Une fois l&#39;import créé, vous pouvez charger vos données vers l&#39;`uploadUrl` renvoyée jusqu&#39;à `uploadValidUntil` (1 heure par défaut).
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，请通过该文件查看所有可用页面。
 
-<div id="list-agent-runs">
-  # 列出 Agent 运行
-</div>
+# 列出 Agent 运行 {#list-agent-runs}
 
-> 获取团队的 Agent 运行分页列表。
+> 获取你所在团队的 Agent 运行分页列表。
 
-运行按从新到旧的顺序返回。使用 `limit` 控制每页数量，并将上一次响应中的 `nextCursor` 传入 `cursor` 以获取下一页。
+运行按从新到旧的顺序返回。使用 `limit` 控制每页数量，并将上一次响应中的 `nextCursor` 传给 `cursor` 以获取下一页。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs
 openapi: 3.1.0

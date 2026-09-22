@@ -1,37 +1,29 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="similarweb">
-  # Similarweb
-</div>
+# Similarweb {#similarweb}
 
-> Dapatkan estimasi trafik situs web, peringkat global, dan penemuan kompetitor.
+> Dapatkan estimasi trafik situs web, peringkat global, dan discovery kompetitor.
 
-[Similarweb](https://www.similarweb.com) adalah salah satu sumber terkemuka
-intelijen pasar digital. Similarweb memodelkan trafik dan engagement jutaan situs web serta
-aplikasi, mencakup estimasi kunjungan, sumber trafik, demografi audiens, dan
-lanskap kompetitif di sekitar domain mana pun.
+[Similarweb](https://www.similarweb.com) adalah salah satu sumber utama
+intelijen pasar digital. Similarweb memodelkan trafik dan engagement jutaan situs web dan
+aplikasi, mencakup estimasi kunjungan, sumber trafik, audience demographics, serta
+kumpulan kompetitor di sekitar suatu domain.
 
 Attach `similarweb` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
-[Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
+[Exa Connect](/id/docs/agent/connect/overview), lalu agent akan melakukan kueri ke
 Similarweb bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Membandingkan trafik web dan engagement suatu perusahaan dengan para pesaingnya.
-* Memetakan kompetitor suatu domain serta situs-situs dengan audiens yang beririsan.
-* Memperkirakan ukuran pasar dan menyaring perusahaan berdasarkan jejak digitalnya.
-* Memperkaya riset perusahaan dan kategori dengan data perilaku nyata.
+* Membandingkan trafik web dan engagement sebuah perusahaan dengan kompetitor sejenisnya.
+* Memetakan kompetitor sebuah domain dan situs-situs dengan audiens yang beririsan.
+* Mengukur ukuran pasar dan menyaring perusahaan berdasarkan jejak digitalnya.
+* Memperkaya Research perusahaan dan kategori dengan data perilaku nyata.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -39,40 +31,35 @@ Gunakan nilai ini pada `dataSources`:
 similarweb
 ```
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
-Similarweb menagih dalam data credit dengan tarif `$0.30 / credit`, dan setiap call
-dikenakan credit sebanyak yang dilaporkan Similarweb untuk call tersebut. Jumlah credit
-sebanding dengan banyaknya data yang dikembalikan — kira-kira satu credit per titik data
-(metrik × baris × bulan) — sehingga harga sebuah call ditentukan oleh parameternya:
+Similarweb menagih dalam data credits seharga `$0.30 / credit`, dan setiap call dikenakan
+credits sesuai yang dilaporkan Similarweb untuk call tersebut. Credits meningkat seiring banyaknya data yang dikembalikan —
+kira-kira satu credit per titik data (metrik × baris × bulan) — jadi harga sebuah call
+ditentukan oleh parameters-nya:
 
-| Tool                  | Credit                                                           |
-| --------------------- | ---------------------------------------------------------------- |
-| Traffic and rank      | hingga 7 per bulan yang diminta (1–2 bulan)                      |
-| Similar sites         | 3 per situs yang dikembalikan (1–5 situs)                        |
-| Traffic sources       | 10                                                               |
-| Top referrers         | 3 per referrer yang dikembalikan (1–5)                           |
-| Top countries         | 3 per negara yang dikembalikan (1–5)                             |
-| Top pages             | 2 per halaman yang dikembalikan (1–7)                            |
-| Top keywords          | 1–10 (sekitar 1 per 100 titik data kata kunci; 50 kata kunci ~7) |
-| Keyword overview      | 1–2                                                              |
-| Audience demographics | 8                                                                |
-| Audience overlap      | 2 per kombinasi domain (2–3 domain: 6–14)                        |
-| Technologies          | 10                                                               |
-| Top sites by category | 1 per situs yang dikembalikan (1–10)                             |
+| Tool                       | Credits                                                          |
+| -------------------------- | ---------------------------------------------------------------- |
+| Trafik dan peringkat       | hingga 7 per bulan yang diminta (1–2 bulan)                      |
+| Situs serupa               | 3 per situs yang dikembalikan (1–5 situs)                        |
+| Sumber trafik              | 10                                                               |
+| Perujuk teratas            | 3 per perujuk yang dikembalikan (1–5)                            |
+| Negara teratas             | 3 per negara yang dikembalikan (1–5)                             |
+| Halaman teratas            | 2 per halaman yang dikembalikan (1–7)                            |
+| Kata kunci teratas         | 1–10 (sekitar 1 per 100 titik data kata kunci; 50 kata kunci ~7) |
+| Ikhtisar kata kunci        | 1–2                                                              |
+| Demografi audiens          | 8                                                                |
+| Tumpang tindih audiens     | 2 per kombinasi domain (2–3 domain: 6–14)                        |
+| Teknologi                  | 10                                                               |
+| Situs teratas per kategori | 1 per situs yang dikembalikan (1–10)                             |
 
-Call yang tidak mengembalikan data (domain yang tidak dikenal atau berlalu lintas
-rendah, kata kunci tanpa volume pencarian) tidak dikenakan biaya. `numResults` dan
-`months` menentukan berapa banyak titik data yang Anda bayar, jadi setel sekecil
-mungkin sesuai kebutuhan tugas Anda.
+Calls yang tidak mengembalikan data (domain tidak dikenal atau bertrafik rendah, kata kunci tanpa
+volume pencarian) tidak dikenakan biaya. `numResults` dan `months` menentukan berapa banyak titik data yang Anda
+bayar, jadi buat nilainya sekecil mungkin sesuai kebutuhan tugas.
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
-Temukan 10 perusahaan SaaS B2B yang bertumbuh pesat beserta estimasi trafik web mereka.
+Temukan 10 perusahaan SaaS B2B yang tumbuh pesat beserta perkiraan trafik web mereka.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -164,20 +151,16 @@ Temukan 10 perusahaan SaaS B2B yang bertumbuh pesat beserta estimasi trafik web 
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Fiber.ai](/id/docs/agent/connect/fiber): ubah kompetitor yang ditemukan menjadi data perusahaan yang diperkaya.
+* [Fiber.ai](/id/docs/agent/connect/fiber): ubah kompetitor yang ditemukan menjadi catatan perusahaan yang ter-enrich.
 * [Affiliate.com](/id/docs/agent/connect/affiliatecom): ukur jangkauan sebuah merchant sebelum merekomendasikan produknya.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner lengkap.
+    Quickstart Exa Connect membahas `dataSources`, Harga, dan katalog partner lengkapnya.
   </Card>
 
   <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
@@ -185,10 +168,10 @@ Temukan 10 perusahaan SaaS B2B yang bertumbuh pesat beserta estimasi trafik web 
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat run, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru mendapat credits gratis.
+    Buat key di dashboard lalu jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
   </Card>
 </Columns>

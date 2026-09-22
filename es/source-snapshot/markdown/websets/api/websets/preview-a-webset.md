@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para conocer todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="preview-a-webset">
-  # Previsualizar un webset
-</div>
+# Previsualizar un webset {#preview-a-webset}
 
-> Previsualiza cómo se descompondrá una consulta de búsqueda antes de crear un webset. Este endpoint realiza el mismo análisis de consulta que se ejecuta durante la creación del webset, lo que te permite ver de antemano el tipo de entidad detectado, los criteria de búsqueda generados y las columnas de enrichment disponibles.
+> Previsualiza cómo se descompondrá una consulta de búsqueda antes de crear un webset. Este endpoint realiza el mismo análisis de la consulta que se hace durante la creación de un webset, lo que te permite ver de antemano el tipo de entidad detectado, los criteria de búsqueda generados y las columnas de enrichment disponibles.
 
-Úsalo para que los usuarios entiendan cómo se interpretará su search antes de lanzar la creación completa de un webset.
+Úsalo para que los usuarios comprendan cómo se interpretará su búsqueda antes de crear un webset completo.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0
@@ -764,12 +758,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Envíe su clave de API de Exa en el encabezado x-api-key. También puede autenticarse
-        con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Envíe su clave de API de Exa en el encabezado x-api-key. También puede autenticarse
-        con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

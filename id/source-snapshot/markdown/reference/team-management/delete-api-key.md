@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="delete-api-key">
-  # Hapus API key
-</div>
+# Delete API key {#delete-api-key}
 
 > Hapus API key secara permanen dari team Anda.
 
@@ -16,24 +12,18 @@
 </Card>
 
 <Info>
-  Team Management API diaktifkan per team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+  Team Management API diaktifkan per team. Autentikasi dilakukan dengan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah feature ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-<div id="overview">
-  ## Overview
-</div>
+## Ikhtisar {#overview}
 
 Endpoint Delete API Key menghapus API key secara permanen dari team Anda.
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: Pengenal unik API key yang akan dihapus.
+* **id**: Identifier unik dari API key yang akan dihapus.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

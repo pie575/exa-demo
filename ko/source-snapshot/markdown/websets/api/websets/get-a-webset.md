@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="get-a-webset">
-  # Webset 조회
-</div>
+# webset 가져오기 {#get-a-webset}
 
-> `id` 또는 `externalId`로 Webset을 반환하며, 상태와 searches, imports, enrichments, monitors가 함께 포함됩니다.
+> `id` 또는 `externalId`로 Webset을 반환하며, 상태와 search, import, enrichment, monitor 정보를 함께 제공합니다.
 
-응답에 처음 100개까지의 items를 포함하려면 `expand=items`를 전달하세요.
+response에 첫 100개까지의 item을 포함하려면 `expand=items`를 전달하세요.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0
@@ -1563,12 +1557,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        x-api-key 헤더로 Exa API key를 전달하세요. Authorization: Bearer <key>를 사용해
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        x-api-key 헤더로 Exa API key를 전달하세요. Authorization: Bearer <key>를 사용해
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

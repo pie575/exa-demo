@@ -1,23 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para conocer todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="examples">
-  # Ejemplos
-</div>
+# Ejemplos {#examples}
 
 > Ejemplos de Exa Agent en producción para creación de listas, inteligencia KYB, ofertas de empleo y salidas estructuradas.
 
-Estos ejemplos muestran patrones de flujos de trabajo en producción con Exa Agent, como la creación de listas, la inteligencia KYB, las ofertas de empleo y las salidas estructuradas.
+Estos ejemplos muestran patrones de flujos de trabajo en producción para Exa Agent, incluidas la creación de listas, la inteligencia KYB, las ofertas de empleo y las salidas estructuradas.
 
 <h2 id="find-all-code">
   Encontrar a todos los miembros de GTM en Exa.ai
 </h2>
 
-Usa un prompt de descubrimiento cuando quieras que Agent encuentre las filas. Sé explícito con la desambiguación de empresas y exige pruebas de empleo actual para que no se cuelen en el resultado empresas con nombres similares.
+Usa un prompt de descubrimiento cuando quieras que Agent encuentre las filas. Sé explícito con la desambiguación de empresas y exige evidencia de empleo actual para que no se cuelen en el resultado empresas con nombres parecidos.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -143,7 +139,7 @@ Usa un prompt de descubrimiento cuando quieras que Agent encuentre las filas. S�
   Inteligencia KYC / KYB
 </h2>
 
-Usa Agent cuando la revisión de un partner o proveedor requiera inteligencia pública de la web y no solo una página de perfil. Pide verificación de identidad, contexto empresarial, señales públicas, actividad inversora y notas de riesgo explícitas en un único objeto estructurado.
+Usa Agent cuando la revisión de un partner o un vendor requiera inteligencia de la web pública y no solo una página de perfil. Pide verificación de identidad, contexto del negocio, señales públicas, actividad inversora y notas de riesgo explícitas en un único objeto estructurado.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -413,7 +409,7 @@ Usa Agent cuando la revisión de un partner o proveedor requiera inteligencia p�
   Ofertas de empleo
 </h2>
 
-Usa Agent cuando las vacantes estén repartidas entre páginas de empresas, agregadores y directorios de startups. Este ejemplo limita la fuente al portal de empleo de Exa alojado en Ashby y, aun así, requiere desambiguar la empresa.
+Usa Agent cuando las vacantes estén repartidas entre páginas de empresas, agregadores y directorios de startups. Este ejemplo limita el origen al portal de empleo de Exa alojado en Ashby y aun así requiere desambiguar la empresa.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -554,7 +550,7 @@ Usa Agent cuando las vacantes estén repartidas entre páginas de empresas, agre
   Enriquecer filas de entrada
 </h2>
 
-Usa `input.data` cuando tu sistema ya tenga los registros y Agent deba investigar o enriquecer cada uno. Este patrón mantiene la identidad de cada fila en la entrada estructurada en lugar de esconderla dentro del prompt.
+Usa `input.data` cuando tu sistema ya tenga los registros y Agent deba investigar o enriquecer cada uno. Este patrón mantiene la identidad de cada fila en la entrada estructurada, en lugar de diluirla dentro del prompt.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -694,7 +690,7 @@ Usa `input.data` cuando tu sistema ya tenga los registros y Agent deba investiga
   Enriquecer filas con campos de contacto acotados
 </h2>
 
-Los flujos de trabajo orientados a contactos pueden generar cargos aparte por Enrichment de contactos. Esta versión anonimizada de la documentación muestra la estructura sin publicar nombres de personas, correos electrónicos, números de teléfono ni URLs de perfiles.
+Los flujos de trabajo orientados a contactos pueden generar cargos independientes por contact enrichment. Esta versión anonimizada de la documentación muestra la estructura sin publicar nombres de personas, correos electrónicos, números de teléfono ni URL de perfiles.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -807,8 +803,8 @@ Los flujos de trabajo orientados a contactos pueden generar cargos aparte por En
   Excluir registros conocidos
 </h2>
 
-Usa `input.exclusion` cuando el Agent deba evitar registros que tu producto ya haya revisado, mostrado o descartado.
-La vista previa de la hoja usa nombres de empresas sintéticos en los resultados, de modo que el patrón de exclusión se aprecie sin dar a entender que esas filas provienen de una ejecución real en producción.
+Usa `input.exclusion` cuando quieras que Agent evite registros que tu producto ya revisó, mostró o rechazó.
+La vista previa de la hoja usa nombres de empresas sintéticos en los resultados, de modo que el patrón de exclusion queda visible sin dar a entender que esas filas provienen de un run en producción.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -924,8 +920,8 @@ La vista previa de la hoja usa nombres de empresas sintéticos en los resultados
   Continuar un flujo de trabajo completado
 </h2>
 
-Usa `previousRunId` cuando la siguiente solicitud deba partir del contexto de una ejecución ya completada.
-La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el patrón de continuación sin exponer una ejecución previa real.
+Usa `previousRunId` cuando la siguiente solicitud deba partir del contexto de un run completado.
+La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el patrón de continuación sin exponer un run anterior real.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -933,7 +929,7 @@ La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el pa
 
   exa = Exa()
   run = exa.agent.runs.create(
-      query="From the companies you found, narrow the list to those hiring platform engineers in San Francisco. Add the hiring page URL for each match.",
+      query="De las empresas que encontraste, reduce la lista a las que están contratando ingenieros de plataforma en San Francisco. Agrega la URL de la página de empleo de cada coincidencia.",
       previous_run_id="agent_run_01j...",
       output_schema={
           "type": "object",
@@ -967,7 +963,7 @@ La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el pa
   const exa = new Exa();
   const run = await exa.agent.runs.create({
     previousRunId: "agent_run_01j...",
-    query: "From the companies you found, narrow the list to those hiring platform engineers in San Francisco. Add the hiring page URL for each match.",
+    query: "De las empresas que encontraste, reduce la lista a las que están contratando ingenieros de plataforma en San Francisco. Agrega la URL de la página de empleo de cada coincidencia.",
     outputSchema: {
       type: "object",
       required: ["companies"],
@@ -1000,7 +996,7 @@ La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el pa
     -H "x-api-key: $EXA_API_KEY" \
     -d '{
     "previousRunId": "agent_run_01j...",
-    "query": "From the companies you found, narrow the list to those hiring platform engineers in San Francisco. Add the hiring page URL for each match.",
+    "query": "De las empresas que encontraste, reduce la lista a las que están contratando ingenieros de plataforma en San Francisco. Agrega la URL de la página de empleo de cada coincidencia.",
     "outputSchema": {
       "type": "object",
       "required": ["companies"],
@@ -1027,11 +1023,9 @@ La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el pa
   ```
 </CodeGroup>
 
-<div id="broad-list-building-with-agent-max">
-  ## Creación de listas amplias con Agent Max
-</div>
+## Creación de listas amplias con Agent Max {#broad-list-building-with-agent-max}
 
-Usa `effort: "max"` en tareas donde la exhaustividad y la minuciosidad importan más que la latencia o el costo, como la creación de listas extensas, la investigación profunda en múltiples fuentes y los criteria difíciles de verificar. Agent Max está en beta pública: envía `Exa-Beta: agent-max-effort-2026-07-27` con la solicitud. El encabezado acepta una lista de tokens beta separados por comas.
+Usa `effort: "max"` para tareas en las que la exhaustividad y la minuciosidad importan más que la latencia o el costo, como la creación de listas extensas, la investigación profunda en múltiples fuentes y los criterios difíciles de verificar. Agent Max está en beta pública: envía `Exa-Beta: agent-max-effort-2026-07-27` con la solicitud. El encabezado acepta una lista de tokens beta separados por comas.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1073,11 +1067,9 @@ Usa `effort: "max"` en tareas donde la exhaustividad y la minuciosidad importan 
   ```
 </CodeGroup>
 
-<div id="attach-a-data-partner-with-exa-connect">
-  ## Adjuntar un partner de datos con Exa Connect
-</div>
+## Adjuntar un data partner con Exa Connect {#attach-a-data-partner-with-exa-connect}
 
-Usa `dataSources` para que Exa Agent obtenga datos de un partner de datos premium durante una ejecución. En este ejemplo, cada empresa se enriquece con el tráfico de Similarweb y la financiación de Harmonic, combinados con investigación web. Consulta [Exa Connect](/es/docs/agent/connect/overview) para ver la lista completa de partners.
+Usa `dataSources` para que Exa Agent obtenga datos de un data partner premium durante un run. En este ejemplo, enriquece cada empresa con el tráfico de Similarweb y la financiación de Harmonic, combinados con investigación web. Consulta [Exa Connect](/es/docs/agent/connect/overview) para ver la lista completa de partners.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1200,13 +1192,11 @@ Usa `dataSources` para que Exa Agent obtenga datos de un partner de datos premiu
   ```
 </CodeGroup>
 
-<div id="production-checklist">
-  ## Lista de verificación para producción
-</div>
+## Lista de verificación para producción {#production-checklist}
 
-* Dale al Agent una `query` específica que indique la unidad de trabajo y la calidad de fuentes deseada.
+* Dale a Agent una `query` específica que indique la unidad de trabajo y la calidad de fuentes deseada.
 * Usa `input.data` para los registros conocidos en lugar de incrustar filas en el prompt.
 * Usa `input.exclusion` para los registros que no deban devolverse de nuevo.
-* Añade `outputSchema` siempre que el código posterior consuma el resultado.
-* Usa `maxItems` en los arrays cuando necesites un scope y un costo predecibles.
-* Guarda el `id` de la ejecución devuelto para poder consultar su estado, reproducir eventos, inspeccionar costos o retomar la ejecución más adelante.
+* Agrega `outputSchema` siempre que el código posterior consuma el resultado.
+* Usa `maxItems` en los arreglos cuando necesites un scope y un costo predecibles.
+* Guarda el `id` del run devuelto para poder sondear, reproducir eventos, inspeccionar costos o retomar el run más adelante.

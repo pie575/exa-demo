@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="update-an-import">
-  # 更新 import
-</div>
+# 更新导入 {#update-an-import}
 
-> 更新 import 的 configuration。
+> 更新导入配置。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/imports/{id}
 openapi: 3.1.0

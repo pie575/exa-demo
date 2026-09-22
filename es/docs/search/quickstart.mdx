@@ -1,16 +1,14 @@
 ---
 title: "Exa Search API"
-sidebarTitle: "Inicio rápido"
-description: "Busca en la web en lenguaje natural y obtén contenido de páginas limpio y relevante en una sola solicitud."
+sidebarTitle: "Quickstart"
+description: "Busca en la web en lenguaje natural y obtén contenido de página limpio y relevante en una sola solicitud."
 keywords: ["search api", "web search", "semantic search", "retrieval", "rag", "highlights"]
 boost: 6
 ---
 
-Exa Search recibe una query en lenguaje natural y devuelve resultados web ordenados por relevancia con contenido de página limpio.
+Exa Search recibe una consulta en lenguaje natural y devuelve resultados web ordenados por relevancia con contenido de página limpio.
 
-<div id="make-your-first-request">
-  ## Haz tu primera solicitud
-</div>
+## Haz tu primera solicitud {#make-your-first-request}
 
 Empieza con una `query` en lenguaje natural y `contents: { highlights: true }`, que devuelve extractos cuyo tamaño se ajusta a la relevancia de cada resultado. Otros campos controlan cómo busca Exa y qué incluye cada resultado; el resto de esta página cubre los que realmente vas a usar.
 
@@ -62,9 +60,9 @@ Empieza con una `query` en lenguaje natural y `contents: { highlights: true }`, 
   ```
 </CodeGroup>
 
-Search devuelve hasta 10 resultados de forma predeterminada. Define `numResults` para solicitar hasta 100 resultados; puede que se devuelvan menos si hay menos páginas relevantes disponibles. Search no admite paginación.
+Search devuelve hasta 10 resultados de forma predeterminada. Usa `numResults` para solicitar hasta 100 resultados; pueden devolverse menos si hay menos páginas relevantes disponibles. Search no admite paginación.
 
-<Accordion title="Respuesta de ejemplo">
+<Accordion title="Ejemplo de respuesta">
   Los highlights y la lista siguiente están abreviados.
 
   ```json theme={null}
@@ -104,17 +102,15 @@ Search devuelve hasta 10 resultados de forma predeterminada. Define `numResults`
   ```
 </Accordion>
 
-Los resultados se ordenan por relevancia. Cada uno incluye metadatos como título, URL y fecha de publicación, además de lo que hayas solicitado en `contents`.
+Los resultados se ordenan por relevancia. Cada uno incluye metadatos como el título, la URL y la fecha de publicación, además de todo lo que hayas solicitado en `contents`.
 
-<div id="writing-queries">
-  ## Cómo escribir queries
-</div>
+## Cómo escribir consultas {#writing-queries}
 
-El campo `query` es el único obligatorio al usar la Search API.
+El campo `query` es el único campo obligatorio al usar la Search API.
 
-Escribe las queries en lenguaje natural. Incluye el tema y, cuando resulte útil, el tipo de fuente y el periodo de tiempo que te interesa.
+Escribe las consultas en lenguaje natural. Incluye el tema y, cuando resulte útil, el tipo de fuente y el periodo que te interesa.
 
-Las queries pueden ser amplias y exploratorias. `"Latest news on EU battery policy"` le da a Exa suficiente contexto sobre tu intención para encontrar páginas relevantes; `"news"` no. Cuando el tipo de fuente sea importante, indícalo en la query:
+Las consultas pueden ser amplias y exploratorias. `"Latest news on EU battery policy"` le da a Exa suficiente contexto de intención para descubrir páginas relevantes; `"news"` no. Cuando el tipo de fuente sea importante, indícalo en la consulta:
 
 ```text theme={null}
 Artículos técnicos recientes que comparan la recuperación híbrida y la semántica en sistemas RAG
@@ -126,39 +122,37 @@ Consulta [Qué incluye el índice de Exa](/es/docs/search/data/overview) para sa
   Elige un tipo de búsqueda
 </h2>
 
-`type` selecciona un modo de búsqueda, cada uno ajustado a un equilibrio distinto entre velocidad, profundidad de búsqueda y síntesis. `auto` es el valor predeterminado y funciona para la mayoría de las búsquedas.
+`type` selecciona un modo de búsqueda, cada uno ajustado a un equilibrio distinto entre velocidad, profundidad de búsqueda y síntesis. `auto` es el valor por defecto y funciona bien para la mayoría de las búsquedas.
 
 | Tipo             | Úsalo cuando                                                                   |
 | ---------------- | ------------------------------------------------------------------------------ |
-| `auto`           | Quieres el mejor equilibrio predeterminado entre calidad y velocidad           |
+| `auto`           | Quieres el mejor equilibrio por defecto entre calidad y velocidad              |
 | `fast`           | La solicitud es sensible a la latencia                                         |
 | `instant`        | La solicitud está en una ruta en tiempo real, como autocompletado o voz        |
 | `deep-lite`      | La tarea requiere investigación y síntesis ligeras                             |
 | `deep`           | La tarea requiere búsqueda de varios pasos y una síntesis más sólida           |
 | `deep-reasoning` | La exhaustividad y la profundidad de razonamiento importan más que la latencia |
 
-Los modos deep ejecutan un proceso de investigación en lugar de una única pasada de recuperación. Consulta [Deep Search](/es/docs/search/deep-search) para ver cómo funciona ese proceso y cómo usar sus controles adicionales.
+Los modos deep ejecutan un proceso de investigación en lugar de una única pasada de recuperación. Consulta [Deep Search](/es/docs/search/deep-search) para saber cómo funciona ese proceso y cómo usar sus controles adicionales.
 
 <Tip>
-  En lugar de `deep-reasoning`, usa [Exa Agent](/es/docs/agent/quickstart) para investigaciones de larga duración, creación
-  de listas y enrichment de varios saltos. Agent dispone de más cómputo por ejecución y devuelve resultados
-  estructurados y fundamentados.
+  En lugar de `deep-reasoning`, usa [Exa Agent](/es/docs/agent/quickstart) para investigación de larga duración,
+  creación de listas y enrichment de varios saltos. Agent cuenta con más cómputo por run y devuelve resultados
+  fundamentados y estructurados.
 </Tip>
 
-<div id="output-shapes">
-  ## Formatos de salida
-</div>
+## Formatos de salida {#output-shapes}
 
-Cada resultado incluye metadatos como el título, la URL y la fecha de publicación. Usa `contents` para añadir highlights, el texto completo o un summary de la página.
+Cada resultado incluye metadatos como su título, URL y fecha de publicación. Usa `contents` para añadir highlights, texto completo o un resumen de la página.
 
 <Tabs>
   <Tab title="Highlights">
-    Los highlights devuelven los extractos más relevantes para tu query. Aportan a los modelos y agentes
-    la evidencia que necesitan sin llenar la ventana de contexto con partes irrelevantes de cada página.
+    Los highlights devuelven los extractos más relevantes para tu consulta. Aportan a los modelos y agentes la
+    evidencia que necesitan sin saturar la ventana de contexto con partes irrelevantes de cada página.
 
-    Es el formato de salida recomendado para la mayoría de las tareas.
+    Este es el formato de salida recomendado para la mayoría de las tareas.
 
-    Empieza con un simple `highlights: true`. Exa usa la query para seleccionar una cantidad adecuada de
+    Empieza con un simple `highlights: true`. Exa usa la consulta para seleccionar la cantidad adecuada de
     contenido de cada resultado.
 
     <CodeGroup>
@@ -187,14 +181,14 @@ Cada resultado incluye metadatos como el título, la URL y la fecha de publicaci
       ```
     </CodeGroup>
 
-    Consulta [Highlights](/es/docs/search/highlights) para conocer los Dynamic Highlights y cuándo conviene activarlos.
+    Consulta [Highlights](/es/docs/search/highlights) para conocer Dynamic Highlights y cuándo conviene activarlo.
   </Tab>
 
   <Tab title="Texto completo">
     El texto completo devuelve el cuerpo limpio de la página. Úsalo cuando la tarea dependa de un contexto más amplio, de la
-    estructura del documento o de detalles que puedan quedar fuera de los extractos centrados en la query.
+    estructura del documento o de detalles que puedan quedar fuera de los extractos centrados en la consulta.
 
-    Las páginas completas pueden ser extensas. Limita tanto el número de resultados como el texto devuelto por página.
+    Las páginas completas pueden ser muy extensas. Limita tanto el número de resultados como el texto devuelto por página.
 
     <CodeGroup>
       ```python Python theme={null}
@@ -231,24 +225,22 @@ Cada resultado incluye metadatos como el título, la URL y la fecha de publicaci
   </Tab>
 </Tabs>
 
-Elige una sola vista de contenido por solicitud. Pedir highlights y texto a la vez devuelve —y factura— dos vistas de la misma página. `summary` es una tercera opción, pero añade una llamada a un modelo de lenguaje por cada resultado.
+Elige una sola vista de contenido por solicitud. Pedir highlights y texto a la vez devuelve y factura dos vistas de la misma página. `summary` es una tercera opción, pero añade una llamada a un modelo de lenguaje por cada resultado.
 
 <Warning>
   `/search` y `/contents` aceptan las mismas opciones de contenido, pero en lugares distintos:
 
   * **`/search`** anida `highlights`, `text` y `summary` dentro del objeto `contents`:
     `"contents": { "highlights": true }`
-  * **`/contents`** no tiene el envoltorio `contents`. Su cuerpo son las propias opciones de contenido, así que esos
-    mismos campos van en el nivel superior, junto a `urls`: `"urls": [...], "highlights": true`
+  * **`/contents`** no tiene un wrapper `contents`. Su cuerpo son las propias opciones de contenido, así que los
+    mismos campos van en el nivel superior junto a `urls`: `"urls": [...], "highlights": true`
 </Warning>
 
-<div id="output-schema">
-  ## Esquema de salida
-</div>
+## Esquema de salida {#output-schema}
 
-Agrega `outputSchema` cuando quieras que Exa sintetice los resultados de la búsqueda. Funciona con todos los tipos de búsqueda y añade un objeto `output` a la respuesta.
+Añade `outputSchema` cuando quieras que Exa sintetice los resultados de búsqueda. Funciona con cualquier tipo de búsqueda y añade un objeto `output` a la respuesta.
 
-Las páginas clasificadas permanecen en `results`. El valor generado se devuelve en `output.content`, con las fuentes a nivel de campo y la confianza en `output.grounding`.
+Las páginas ordenadas por relevancia siguen estando en `results`. El valor generado se devuelve en `output.content`, con las fuentes y la confianza a nivel de campo en `output.grounding`.
 
 <Tabs>
   <Tab title="Texto libre">
@@ -406,19 +398,14 @@ Las páginas clasificadas permanecen en `results`. El valor generado se devuelve
 Usa `systemPrompt` para instrucciones como preferencias de fuentes o énfasis; usa `outputSchema` para definir la estructura de la respuesta. En Python se usan `system_prompt` y `output_schema`.
 
 <Note>
-  Mantén los esquemas de objetos pequeños: admiten hasta 2 niveles de anidamiento y 10 propiedades. No agregues
-  campos de citas ni de confianza al esquema; Exa los devuelve automáticamente en `output.grounding`.
+  Mantén los esquemas de objetos pequeños: admiten hasta 2 niveles de anidamiento y 10 propiedades. No agregues campos de cita ni de confianza al esquema; Exa los devuelve automáticamente en `output.grounding`.
 </Note>
 
-<div id="filter-results">
-  ## Filtrar resultados
-</div>
+## Filtrar resultados {#filter-results}
 
-Los filtros son restricciones estrictas: añade uno cuando un resultado que quede fuera te resultaría inservible, y expresa las preferencias de fuentes más flexibles en el texto de la query. La [referencia de la API](/es/docs/reference/search) incluye el conjunto completo.
+Los filtros son restricciones estrictas: añade uno cuando un resultado que quede fuera no te sirva de nada, y deja las preferencias de fuentes más flexibles en el texto de la consulta. La [referencia de la API](/es/docs/reference/search) incluye el conjunto completo.
 
-<div id="include-domains-or-paths">
-  ### Incluir dominios o rutas
-</div>
+### Incluir dominios o rutas {#include-domains-or-paths}
 
 `includeDomains` restringe los resultados a las fuentes en las que confías. Acepta dominios completos, prefijos de ruta como `anthropic.com/news` y comodines de subdominio como `*.substack.com`.
 
@@ -450,13 +437,11 @@ Los filtros son restricciones estrictas: añade uno cuando un resultado que qued
   ```
 </CodeGroup>
 
-Indica la ruta en el filtro en lugar de repetirla como operador `site:` dentro de la query.
+Indica la ruta en el filtro en lugar de repetirla como operador `site:` en la consulta.
 
-<div id="exclude-domains-or-paths">
-  ### Excluir dominios o rutas
-</div>
+### Excluir dominios o rutas {#exclude-domains-or-paths}
 
-`excludeDomains` elimina los resultados de dominios o rutas específicos. Admite los mismos prefijos de ruta y comodines de subdominio que `includeDomains`. Úsalo cuando esas fuentes vuelvan inservible un resultado, no para expresar una preferencia.
+`excludeDomains` elimina resultados de dominios o rutas específicos. Admite los mismos prefijos de ruta y comodines de subdominio que `includeDomains`. Úsalo cuando esas fuentes vuelvan inservible un resultado, no para expresar una preferencia.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -489,20 +474,18 @@ Indica la ruta en el filtro en lugar de repetirla como operador `site:` dentro d
   ```
 </CodeGroup>
 
-<div id="content-freshness">
-  ## Actualidad del contenido
-</div>
+## Frescura del contenido {#content-freshness}
 
 `contents.maxAgeHours` controla qué tan reciente debe ser el contenido extraído de cada resultado. No filtra los resultados por fecha de publicación.
 
-| Valor           | Comportamiento                                                                                         |
-| --------------- | ------------------------------------------------------------------------------------------------------ |
-| Omitir          | Usa el contenido en caché cuando esté disponible y descarga la página cuando sea necesario             |
-| Entero positivo | Usa el contenido en caché si tiene menos horas de antigüedad que este valor; si no, descarga la página |
-| `0`             | Siempre descarga contenido nuevo                                                                       |
-| `-1`            | Usa únicamente el contenido en caché                                                                   |
+| Valor           | Comportamiento                                                                                                   |
+| --------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Omitir          | Usa el contenido en caché cuando esté disponible y descarga la página cuando haga falta                          |
+| Entero positivo | Usa el contenido en caché si tiene menos horas de antigüedad que este valor; de lo contrario, descarga la página |
+| `0`             | Siempre descarga contenido fresco                                                                                |
+| `-1`            | Usa únicamente el contenido en caché                                                                             |
 
-La mayoría de las búsquedas deberían omitir este campo. Configúralo cuando el contenido desactualizado de una página resulte inservible, como en precios, disponibilidad o páginas que cambian con frecuencia.
+La mayoría de las búsquedas deberían omitir este campo. Configúralo cuando un contenido desactualizado resulte inservible, como en precios, disponibilidad o páginas que cambian con frecuencia.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -538,24 +521,22 @@ La mayoría de las búsquedas deberían omitir este campo. Configúralo cuando e
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
   <Card title="Buenas prácticas" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer la guía" arrow="true">
-    Presupuestos de tokens, actualidad del contenido, salida estructurada e instrucciones de sistema.
+    Presupuestos de tokens, frescura del contenido, salida estructurada y prompts de sistema.
   </Card>
 
-  <Card title="Referencia de la API" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir la referencia" arrow="true">
-    Todos los parámetros de solicitud y campos de respuesta, con un entorno de pruebas interactivo.
+  <Card title="Referencia de la API" icon="square-terminal" href="/es/docs/reference/search" cta="Abrir referencia" arrow="true">
+    Todos los parámetros de solicitud y campos de respuesta, con un playground interactivo.
   </Card>
 
-  <Card title="Contents" icon="file-text" href="/es/docs/contents/quickstart" cta="Abrir la guía" arrow="true">
-    Ya tienes las URLs y quieres texto limpio, highlights o resúmenes.
+  <Card title="Contents" icon="file-text" href="/es/docs/contents/quickstart" cta="Abrir guía" arrow="true">
+    Ya tienes las URL y quieres texto limpio, highlights o resúmenes.
   </Card>
 
-  <Card title="Exa Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
+  <Card title="Exa Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir guía" arrow="true">
     Necesitas investigación de larga duración, creación de listas o enrichment.
   </Card>
 </Columns>

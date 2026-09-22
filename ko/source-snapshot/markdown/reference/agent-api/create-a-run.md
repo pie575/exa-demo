@@ -1,31 +1,25 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-a-run">
-  # 실행 생성
-</div>
+# 실행 생성 {#create-a-run}
 
-> 비동기 Agent 실행을 생성합니다. server-sent events를 요청하지 않는 한, 응답은 즉시 실행 객체를 반환합니다.
+> 비동기 Agent 실행을 생성합니다. server-sent events를 요청하지 않는 한 response로 실행 객체가 즉시 반환됩니다.
 
-자연어 `query`로 실행을 생성하세요. 검증된 구조화 JSON을 받으려면 `outputSchema`를, 처리할 행이 있으면 `input.data`를, 제외할 레코드나 엔티티가 있으면 `input.exclusion`을, 완료된 실행에 이어서 진행하려면 `previousRunId`를 추가하세요.
+자연어 `query`로 실행을 생성하세요. 검증된 구조화된 JSON이 필요하면 `outputSchema`를, 처리할 행을 전달하려면 `input.data`를, 제외할 records나 엔티티를 지정하려면 `input.exclusion`을, 완료된 실행에서 이어가려면 `previousRunId`를 추가하세요.
 
-`Accept: text/event-stream`을 설정하면 실행이 생성, 시작, 완료되는 과정을 실행 이벤트로 스트리밍할 수 있습니다.
+실행이 생성, 시작, 완료되는 과정의 실행 이벤트를 스트리밍하려면 `Accept: text/event-stream`을 설정하세요.
 
 <Note>
-  **Connect:** `dataSources`를 전달하면 실행 중에 에이전트가 서드파티 data provider에 접근할 수 있습니다. 자세한 내용은 [Connect 가이드](/ko/docs/agent/quickstart#connect-data-sources)를 참고하세요.
+  **Connect:** `dataSources`를 전달하면 실행 중에 agent가 서드파티 데이터 제공업체에 접근할 수 있습니다. 자세한 내용은 [Connect 가이드](/ko/docs/agent/quickstart#connect-data-sources)를 참고하세요.
 </Note>
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0
@@ -518,13 +512,13 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            이 실행이 지출할 수 있는 최대 금액(미국 달러)입니다. $1–$100까지 허용되며
-            `auto`와 `max`에만 적용됩니다. 생략하면 기본 상한은 `auto`의 경우
-            $5, `max`의 경우 $20입니다.
+            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
+            applies only to `auto` and `max`; when omitted, the default cap is
+            $5 for `auto` and $20 for `max`.
           example: 10
       description: >-
-        사용량 기반으로 과금되는 `auto` 및 `max` effort에 적용되는 선택적 실행별 지출
-        한도입니다. 일찍 종료된 실행은 한도보다 비용이 적게 들 수 있습니다.
+        Optional per-run spending limit for the metered `auto` and `max`
+        efforts. Runs that finish early may cost less than the limit.
     AgentRunStatus:
       type: string
       enum:
@@ -547,15 +541,16 @@ components:
         query:
           type: string
           minLength: 1
-          description: 요청에 대한 자연어 질문 또는 지시문입니다.
+          description: Natural-language question or instructions for the request.
           example: >-
             What are the most important AI infrastructure funding rounds
             announced this week?
         systemPrompt:
           type: string
           description: >-
-            생성 출력이나 agent 동작을 유도하는 추가 지시문입니다. 출처 선호,
-            신규성 제약, 중복 제약 또는 기타 동작 지침을 지정할 때 사용합니다.
+            Additional instructions that guide generated output or agent
+            behavior. Use this for source preferences, novelty constraints,
+            duplication constraints, or other behavior guidance.
           example: Prefer official sources and avoid duplicate results.
         effort:
           $ref: '#/components/schemas/AgentEffort'
@@ -570,8 +565,8 @@ components:
                   type: string
                 additionalProperties:
                   $ref: '#/components/schemas/JsonValue'
-                description: JSON 객체 레코드입니다.
-              description: agent가 처리하거나 enrich할 레코드입니다.
+                description: A JSON object record.
+              description: Records the agent should process or enrich.
             exclusion:
               type: array
               items:
@@ -580,8 +575,8 @@ components:
                   type: string
                 additionalProperties:
                   $ref: '#/components/schemas/JsonValue'
-                description: JSON 객체 레코드입니다.
-              description: agent가 반환하지 않아야 할 레코드 또는 엔터티입니다.
+                description: A JSON object record.
+              description: Records or entities the agent should avoid returning.
           additionalProperties: false
         outputSchema:
           anyOf:
@@ -591,10 +586,10 @@ components:
               additionalProperties:
                 $ref: '#/components/schemas/JsonValue'
               description: >-
-                `output.structured`에 담기는 검증된 structured output을 위한 JSON
-                Schema입니다. evidence로 뒷받침되지 않는 필드는 `null`로 반환될 수
-                있습니다. `$schema`를 통해 draft-07, 2019-09, 2020-12를
-                지원합니다.
+                JSON Schema for validated structured output in
+                `output.structured`. Fields unsupported by evidence may be
+                returned as `null`. Supports draft-07, 2019-09, and 2020-12 via
+                `$schema`.
             - type: 'null'
         previousRunId:
           $ref: '#/components/schemas/AgentRunId'
@@ -604,7 +599,7 @@ components:
             type: string
           additionalProperties:
             type: string
-          description: 자체 추적 용도로 호출자가 제공하는 키-값 메타데이터입니다.
+          description: Caller-provided key-value metadata for your own tracking.
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -613,30 +608,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AgentDataSourceOutput'
-          description: 해당 실행에 구성된 Exa Connect data provider입니다.
+          description: Exa Connect data providers configured for the run.
         budget:
           $ref: '#/components/schemas/AgentBudgetOutput'
       additionalProperties:
         $ref: '#/components/schemas/JsonValue'
-      description: 실행과 함께 저장되는 정규화된 요청 필드입니다.
+      description: Canonicalized request fields stored with the run.
     AgentRunOutput:
       type: object
       properties:
         text:
           type: string
-          description: 자연어 답변 또는 summary입니다.
+          description: Natural-language answer or summary.
         structured:
           anyOf:
             - $ref: '#/components/schemas/JsonValue'
             - type: 'null'
           description: >-
-            `outputSchema`에 맞춰 구성된 JSON입니다. evidence로 뒷받침되지 않는
-            필드는 `null`일 수 있으며, schema를 제공하지 않은 경우 `null`입니다.
+            JSON shaped by `outputSchema`; fields unsupported by evidence may be
+            `null`. `null` when no schema was provided.
         grounding:
           type: array
           items:
             $ref: '#/components/schemas/AgentGrounding'
-          description: 실행이 생성한 필드 수준 citations입니다.
+          description: Field-level citations emitted by the run.
       required:
         - text
         - structured
@@ -735,15 +730,15 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Exa Connect data provider의 식별자입니다.
+      description: Identifier of an Exa Connect data provider.
     AgentDataSourceOutput:
       type: object
       properties:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            해당 실행에서 활성화할 Exa Connect data provider입니다. 모든 provider
-            도구는 기본적으로 사용할 수 있습니다.
+            Exa Connect data provider to enable for the run. All provider tools
+            are available by default.
           example: fiber
       required:
         - provider
@@ -754,20 +749,20 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            이 실행이 지출할 수 있는 최대 금액(미국 달러)입니다. $1–$100까지 허용되며
-            `auto`와 `max`에만 적용됩니다. 생략하면 기본 상한은 `auto`의 경우
-            $5, `max`의 경우 $20입니다.
+            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
+            applies only to `auto` and `max`; when omitted, the default cap is
+            $5 for `auto` and $20 for `max`.
           example: 10
       additionalProperties: false
       description: >-
-        사용량 기반으로 과금되는 `auto` 및 `max` effort에 적용되는 선택적 실행별 지출
-        한도입니다. 일찍 종료된 실행은 한도보다 비용이 적게 들 수 있습니다.
+        Optional per-run spending limit for the metered `auto` and `max`
+        efforts. Runs that finish early may cost less than the limit.
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: 해당 citations가 뒷받침하는 출력 필드입니다.
+          description: Output field the citations support.
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -780,7 +775,7 @@ components:
                 - low
                 - medium
                 - high
-              description: 이 필드에 대해 모델이 보고한 신뢰도입니다.
+              description: Model-reported reliability for this field.
             - type: 'null'
       required:
         - field
@@ -794,9 +789,9 @@ components:
         type: integer
         minimum: 0
       description: >-
-        실행 중 사용된 Exa Connect 데이터 소스의 provider별 도구 호출 횟수입니다.
-        키는 provider 이름입니다(예: `fiber`, `similarweb`). usage가 0이 아닌
-        provider만 포함됩니다.
+        Per-provider tool call counts for Exa Connect data sources used during
+        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
+        providers with non-zero usage are included.
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -805,9 +800,9 @@ components:
         type: number
         minimum: 0
       description: >-
-        실행 중 사용된 Exa Connect 데이터 소스의 provider별 비용(달러)입니다.
-        키는 provider 이름입니다(예: `fiber`, `similarweb`). usage가 0이 아닌
-        provider만 포함됩니다.
+        Per-provider cost in dollars for Exa Connect data sources used during
+        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
+        providers with non-zero usage are included.
     AgentCitation:
       type: object
       properties:

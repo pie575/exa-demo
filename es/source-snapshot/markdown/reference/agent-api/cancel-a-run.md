@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="cancel-a-run">
-  # Cancelar una ejecución
-</div>
+# Cancelar un run {#cancel-a-run}
 
-> Cancela una ejecución de Agent en cola o en curso.
+> Cancela un run de Agent en cola o en ejecución.
 
-Si la ejecución sigue activa, pasa a `cancelled` de inmediato y termina sin devolver ningún resultado. La ejecución finaliza con el estado `cancelled` y `stopReason: cancelled`. Se te factura el uso acumulado antes de la cancelación. Si la ejecución ya alcanzó un estado terminal (completed, failed o cancelled), el endpoint devuelve la ejecución existente sin cambios.
+Si el run sigue activo, pasa a `cancelled` de inmediato y termina sin devolver ningún resultado. El run finaliza con estado `cancelled` y `stopReason: cancelled`. Se te factura el uso acumulado antes de la cancelación. Si el run ya alcanzó un estado terminal (completado, fallido o cancelado), el endpoint devuelve el run existente sin cambios.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas incluyen credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0
@@ -382,14 +376,15 @@ components:
         - auto
         - max
       description: >-
-        Cost and reasoning effort preference for the run. `auto` lets Exa choose
-        the appropriate effort. `max` is the highest-effort public beta tier for
-        work where completeness and thoroughness matter more than latency or
-        cost, including large list building, deep multi-source research, and
-        criteria that are hard to verify.
+        Preferencia de costo y esfuerzo de razonamiento para el run. `auto`
+        permite que Exa elija el esfuerzo adecuado. `max` es el nivel de mayor
+        esfuerzo en beta pública, pensado para trabajos en los que la
+        exhaustividad importa más que la latencia o el costo, como la creación
+        de listas extensas, la investigación profunda con múltiples fuentes y
+        criteria difíciles de verificar.
       default: auto
     JsonValue:
-      description: Any JSON value.
+      description: Cualquier valor JSON.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -409,8 +404,9 @@ components:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            Exa Connect data provider to enable for the run. All provider tools
-            are available by default.
+            Proveedor de datos de Exa Connect que se habilitará para el run. De
+            forma predeterminada, todas las herramientas del proveedor están
+            disponibles.
           example: fiber
       required:
         - provider
@@ -421,20 +417,20 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
-            applies only to `auto` and `max`; when omitted, the default cap is
-            $5 for `auto` and $20 for `max`.
+            Monto máximo que este run puede gastar en dólares estadounidenses.
+            Acepta entre $1 y $100 y solo aplica a `auto` y `max`; si se omite,
+            el tope predeterminado es de $5 para `auto` y $20 para `max`.
           example: 10
       additionalProperties: false
       description: >-
-        Optional per-run spending limit for the metered `auto` and `max`
-        efforts. Runs that finish early may cost less than the limit.
+        Límite de gasto opcional por run para los esfuerzos medidos `auto` y
+        `max`. Los runs que terminan antes pueden costar menos que el límite.
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: Output field the citations support.
+          description: Campo de salida que respaldan las citas.
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -447,7 +443,7 @@ components:
                 - low
                 - medium
                 - high
-              description: Model-reported reliability for this field.
+              description: Fiabilidad de este campo informada por el modelo.
             - type: 'null'
       required:
         - field
@@ -461,9 +457,10 @@ components:
         type: integer
         minimum: 0
       description: >-
-        Per-provider tool call counts for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        Cantidad de llamadas a herramientas por proveedor para las fuentes de
+        datos de Exa Connect usadas durante el run. Las claves son nombres de
+        proveedores (por ejemplo, `fiber`, `similarweb`). Solo se incluyen los
+        proveedores con uso distinto de cero.
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -472,9 +469,10 @@ components:
         type: number
         minimum: 0
       description: >-
-        Per-provider cost in dollars for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        Costo en dólares por proveedor para las fuentes de datos de Exa Connect
+        usadas durante el run. Las claves son nombres de proveedores (por
+        ejemplo, `fiber`, `similarweb`). Solo se incluyen los proveedores con
+        uso distinto de cero.
     AgentDataSourceProvider:
       type: string
       enum:
@@ -486,25 +484,25 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Identifier of an Exa Connect data provider.
+      description: Identificador de un proveedor de datos de Exa Connect.
     AgentCitation:
       type: object
       properties:
         url:
           type: string
           format: uri
-          description: Source URL.
+          description: URL de origen.
         title:
           type: string
-          description: Source title.
+          description: Título de la fuente.
       required:
         - url
       additionalProperties: false
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        Identificador único de la solicitud. Coincide con el campo `requestId`
+        devuelto en los cuerpos de respuesta que lo incluyen.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -514,12 +512,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
 ```

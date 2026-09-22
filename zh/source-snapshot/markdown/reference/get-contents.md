@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在进一步浏览之前，可通过该文件了解所有可用页面。
 
-<div id="contents">
-  # Contents
-</div>
+# Contents {#contents}
 
 > 获取一组 URL 的完整页面内容、摘要和元数据。
 
-从我们的缓存中即时返回结果；对于未缓存的页面，将自动回退到实时抓取。
+从缓存中即时返回结果；对于未缓存的页面，会自动回退到实时抓取。
 
 ***
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0
@@ -1159,7 +1153,7 @@ components:
                       anyOf:
                         - type: string
                         - type: 'null'
-                      description: 公司总部所在国家/地区。
+                      description: Company headquarters country.
                   required:
                     - address
                     - city
@@ -1167,7 +1161,7 @@ components:
                     - country
                   additionalProperties: false
                 - type: 'null'
-              description: 公司总部信息。
+              description: Company headquarters information.
             financials:
               anyOf:
                 - type: object
@@ -1176,12 +1170,12 @@ components:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: 预估年营收（美元）。
+                      description: Estimated annual revenue in USD.
                     fundingTotal:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: 累计融资总额（美元）。
+                      description: Total funding raised in USD.
                     fundingLatestRound:
                       anyOf:
                         - type: object
@@ -1190,31 +1184,31 @@ components:
                               anyOf:
                                 - type: string
                                 - type: 'null'
-                              description: 融资轮次名称。
+                              description: Funding round name.
                             date:
                               anyOf:
                                 - type: string
                                 - type: 'null'
-                              description: 融资轮次日期。
+                              description: Funding round date.
                             amount:
                               anyOf:
                                 - type: number
                                 - type: 'null'
-                              description: 融资轮次金额（美元）。
+                              description: Funding round amount in USD.
                           required:
                             - name
                             - date
                             - amount
                           additionalProperties: false
                         - type: 'null'
-                      description: 最近一轮融资（如有）。
+                      description: Most recent funding round, when available.
                   required:
                     - revenueAnnual
                     - fundingTotal
                     - fundingLatestRound
                   additionalProperties: false
                 - type: 'null'
-              description: 公司财务信息。
+              description: Company financial information.
             webTraffic:
               anyOf:
                 - type: object
@@ -1223,18 +1217,19 @@ components:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: 预估网站月访问量。
+                      description: Estimated monthly website visits.
                     countryRank:
                       anyOf:
                         - type: integer
                         - type: 'null'
                       description: >-
-                        在公司主要所在国家/地区内的预估网站流量排名。
+                        Estimated website traffic rank within the company's
+                        primary country.
                     avgDurationSeconds:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: 预估平均访问时长（秒）。
+                      description: Estimated average visit duration, in seconds.
                     history:
                       type: array
                       items:
@@ -1242,19 +1237,19 @@ components:
                         properties:
                           value:
                             type: number
-                            description: 该时间段的预估月访问量。
+                            description: Estimated monthly visits for this period.
                           dateFrom:
                             type: string
-                            description: 该数值的起始月份，格式为 YYYY-MM。
+                            description: Start month for this value, formatted as YYYY-MM.
                           dateTo:
                             type: string
-                            description: 该数值的结束月份，格式为 YYYY-MM。
+                            description: End month for this value, formatted as YYYY-MM.
                         required:
                           - value
                           - dateFrom
                           - dateTo
                         additionalProperties: false
-                      description: 历史网站月访问量。
+                      description: Historical monthly website visits.
                   required:
                     - visitsMonthly
                     - countryRank
@@ -1262,7 +1257,7 @@ components:
                     - history
                   additionalProperties: false
                 - type: 'null'
-              description: 公司网站流量信息。
+              description: Company web traffic information.
             research:
               anyOf:
                 - type: object
@@ -1271,17 +1266,17 @@ components:
                       anyOf:
                         - type: integer
                         - type: 'null'
-                      description: 含该机构署名作者的成果数量。
+                      description: Number of works with an affiliated author.
                     citationCount:
                       anyOf:
                         - type: integer
                         - type: 'null'
-                      description: 累计被引次数。
+                      description: Lifetime citation count.
                     areas:
                       type: array
                       items:
                         type: string
-                      description: 按活跃度从高到低排序的研究领域。
+                      description: Ranked research areas, most active first.
                     notableWorks:
                       type: array
                       items:
@@ -1291,33 +1286,34 @@ components:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 出版物标题。
+                            description: Publication title.
                           year:
                             anyOf:
                               - type: integer
                               - type: 'null'
-                            description: 出版年份。
+                            description: Publication year.
                           venue:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 发表刊物或会议。
+                            description: Publication venue.
                           citationCount:
                             anyOf:
                               - type: integer
                               - type: 'null'
-                            description: 引用该出版物的成果数量。
+                            description: Number of works citing this publication.
                           doi:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 数字对象唯一标识符（DOI）。
+                            description: Digital Object Identifier.
                           id:
                             anyOf:
                               - type: string
                               - type: 'null'
                             description: >-
-                              已解析的出版物实体标识符（如有）。
+                              Resolved publication entity identifier, when
+                              available.
                           type:
                             anyOf:
                               - type: string
@@ -1331,7 +1327,7 @@ components:
                                   - report
                                   - review
                               - type: 'null'
-                            description: 出版物类型。
+                            description: Publication type.
                         required:
                           - title
                           - year
@@ -1341,7 +1337,7 @@ components:
                           - id
                           - type
                         additionalProperties: false
-                      description: 被引次数最高的代表性成果。
+                      description: Most-cited notable works.
                     topResearchers:
                       type: array
                       items:
@@ -1355,36 +1351,38 @@ components:
                                     anyOf:
                                       - type: string
                                       - type: 'null'
-                                    description: 所引用人物的姓名。
+                                    description: Referenced person name.
                                   id:
                                     anyOf:
                                       - type: string
                                       - type: 'null'
-                                    description: 所引用人物的实体标识符。
+                                    description: Referenced person entity identifier.
                                 required:
                                   - name
                                   - id
                                 additionalProperties: false
                               - type: 'null'
-                            description: 所引用的研究人员。
+                            description: Referenced researcher.
                           worksCount:
                             anyOf:
                               - type: integer
                               - type: 'null'
-                            description: 在该机构完成的成果数量。
+                            description: Number of works produced at the organization.
                           citationCount:
                             anyOf:
                               - type: integer
                               - type: 'null'
                             description: >-
-                              在该机构完成的成果的被引次数。
+                              Number of citations for works produced at the
+                              organization.
                         required:
                           - person
                           - worksCount
                           - citationCount
                         additionalProperties: false
                       description: >-
-                        按在该机构完成的成果数量排序的研究人员。
+                        Researchers ordered by works produced at the
+                        organization.
                   required:
                     - worksCount
                     - citationCount
@@ -1393,7 +1391,7 @@ components:
                     - topResearchers
                   additionalProperties: false
                 - type: 'null'
-              description: 公司研究信息。
+              description: Company research information.
           required:
             - name
             - foundedYear
@@ -1404,7 +1402,7 @@ components:
             - webTraffic
             - research
           additionalProperties: false
-          description: 公司类实体的专属字段。
+          description: Company-specific entity fields.
       required:
         - id
         - type
@@ -1416,15 +1414,15 @@ components:
       properties:
         id:
           type: string
-          description: 稳定的人物实体标识符。
+          description: Stable person entity identifier.
         type:
           type: string
           const: person
-          description: 实体类型判别字段。
+          description: Entity discriminator.
         version:
           type: integer
           minimum: 1
-          description: 实体模式版本。
+          description: Entity schema version.
         properties:
           type: object
           properties:
@@ -1432,22 +1430,22 @@ components:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: 人物姓名。
+              description: Person name.
             firstName:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: 人物名字。
+              description: Person first name.
             lastName:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: 人物姓氏。
+              description: Person last name.
             location:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: 人物所在地。
+              description: Person location.
             workHistory:
               type: array
               items:
@@ -1457,12 +1455,12 @@ components:
                     anyOf:
                       - type: string
                       - type: 'null'
-                    description: 职位名称。
+                    description: Role title.
                   location:
                     anyOf:
                       - type: string
                       - type: 'null'
-                    description: 任职地点。
+                    description: Role location.
                   dates:
                     anyOf:
                       - type: object
@@ -1471,18 +1469,18 @@ components:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 日期范围的开始日期。
+                            description: Start date for the date range.
                           to:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 日期范围的结束日期。
+                            description: End date for the date range.
                         required:
                           - from
                           - to
                         additionalProperties: false
                       - type: 'null'
-                    description: 任职日期范围。
+                    description: Role date range.
                   company:
                     anyOf:
                       - type: object
@@ -1491,12 +1489,12 @@ components:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 所引用公司的标识符。
+                            description: Referenced company identifier.
                           name:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: 所引用公司的名称。
+                            description: Referenced company name.
                         required:
                           - id
                           - name

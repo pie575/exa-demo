@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-all-events">
-  # Daftar semua event
-</div>
+# Menampilkan semua events {#list-all-events}
 
-> Menampilkan daftar semua event yang telah terjadi di sistem.
+> Menampilkan semua events yang telah terjadi di sistem.
 
-Anda dapat menelusuri hasil secara bertahap (paginasi) menggunakan parameter `cursor`.
+Anda dapat melakukan paginasi hasil menggunakan parameter `cursor`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0
@@ -35,9 +29,9 @@ paths:
     get:
       tags:
         - Events
-      summary: Daftar semua Event
+      summary: List all Events
       description: |-
-        Menampilkan semua event yang telah terjadi di sistem.
+        List all events that have occurred in the system.
 
         You can paginate through the results using the `cursor` parameter.
       operationId: events-list

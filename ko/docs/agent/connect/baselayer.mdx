@@ -1,59 +1,57 @@
 ---
 title: "Baselayer"
-description: "미국 기업을 검증하고 임원, 등록 정보, 리스크 점수 등 KYB 데이터를 조회하세요."
+description: "미국 기업을 verification하고 KYB 데이터를 조회하세요: 임원, 등록 정보, 리스크 score."
 icon: "/docs/images/sidebar-icons/baselayer.svg"
 ---
 
-[Baselayer](https://baselayer.com)는 공신력 있는 등록 및 리스크 데이터를 기준으로 미국 법인을 검증하는 KYB(Know Your Business) 플랫폼입니다. 상호와 주소로 기업을 식별해 임원, 주별 등록 정보, 법인 구조, 검증 상태 등 전체 프로필을 반환합니다.
+[Baselayer](https://baselayer.com)는 공신력 있는 등록 및 리스크 데이터를 기준으로
+미국 법인을 검증하는 KYB(Know Your Business) 플랫폼입니다.
+상호명과 주소로 기업을 식별하고 임원, 주별 등록 정보, 법인 구조,
+verification 상태 등 전체 프로필을 반환합니다.
 
-[Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에 `baselayer`를 연결하면 agent가 Exa web search와 함께 Baselayer를 질의합니다.
+[Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에
+`baselayer`를 attach하면 agent가 Exa web search와 함께 Baselayer를 조회합니다.
 
-<div id="use-it-for">
-  ## 활용 사례
-</div>
+## 활용 사례 {#use-it-for}
 
-* KYB 온보딩 및 공급업체·고객 검증
-* 임원, 등록 정보, 법인 구조에 대한 실사
-* 기업의 리스크 및 감시 목록 해당 여부 스크리닝
+* KYB 온보딩 및 벤더/고객 verification.
+* 임원, 등록 정보, 법인 구조에 대한 실사.
+* 기업의 위험 요소 및 워치리스트 등재 여부 screening.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## 제공업체 ID {#provider-id}
 
-`dataSources`에 다음 값을 사용하세요:
+`dataSources`에 이 값을 사용하세요:
 
 ```text theme={null}
 baselayer
 ```
 
-<div id="pricing">
-  ## 가격
-</div>
+## Pricing {#pricing}
 
-Baselayer는 주문 단위로 과금하며, 요금은 작업 종류와 파라미터에 따라 달라집니다:
+Baselayer는 주문 단위로 과금하며, 요금은 작업 종류와 그 parameters에 따라
+달라집니다.
 
-| 작업                                  | 가격                                          |
-| ----------------------------------- | ------------------------------------------- |
-| 기업 search                           | `$1.00 / search`                            |
-| 기업 조회 / 임원 / 등록 정보 / 임원 역조회 | 무료 (이전 search 결과 읽기)                        |
-| 유치권 search                          | `$2.00 / state searched`                    |
-| 소송 search                           | `$1.00 / category (litigation, bankruptcy)` |
-| Watchlist 스크리닝                      | `$0.10 – $0.25 / list requested`            |
-| 산업 분류                               | `$0.35 / call`                              |
-| 웹사이트 분석                             | `$0.35 / call`                              |
-| 웹 존재감                               | `$0.15 – $0.35 / selected analysis`         |
-| 해외 기업 search                        | `$4.00 / search`                            |
+| 작업                               | 가격                                          |
+| -------------------------------- | ------------------------------------------- |
+| 비즈니스 search                      | `$1.00 / search`                            |
+| 비즈니스 조회 / 임원 / 등록 정보 / 임원 역방향 조회 | 무료 (이전 search 결과 조회)                        |
+| 유치권 search                       | `$2.00 / state searched`                    |
+| 소송 search                        | `$1.00 / category (litigation, bankruptcy)` |
+| 워치리스트 스크리닝                       | `$0.10 – $0.25 / list requested`            |
+| 산업 분류                            | `$0.35 / call`                              |
+| 웹사이트 분석                          | `$0.35 / call`                              |
+| 웹 존재감                            | `$0.15 – $0.35 / selected analysis`         |
+| 해외 비즈니스 search                   | `$4.00 / search`                            |
 
-파라미터 선택에 따라 가격이 달라집니다. 두 개 주를 대상으로 한 유치권 search는 $4.00,
-지원되는 여섯 개 목록 전체에 대한 watchlist 스크리닝은 $1.35이며, 웹 존재감
-call은 선택한 분석 항목의 가격을 합산한 금액입니다(아무것도 선택하지 않으면 Baselayer의
-기본 세트인 NAICS 예측과 웹사이트 분석의 합계).
+매개변수를 어떻게 선택하느냐에 따라 가격이 달라집니다. 두 개 state를 대상으로 한
+유치권 search는 $4.00, 지원되는 여섯 개 목록 전체를 대상으로 한 워치리스트
+스크리닝은 $1.35이며, 웹 존재감 call은 선택한 분석 항목의 합계(아무것도
+선택하지 않으면 Baselayer의 기본 세트인 NAICS 예측과 웹사이트 분석의 합계)로
+계산됩니다.
 
-<div id="example">
-  ## 예시
-</div>
+## 예시 {#example}
 
-기업을 검증하고 해당 기업의 임원 및 등록 정보를 조회합니다.
+사업체를 검증하고 임원 및 사업자 등록 정보를 조회합니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -166,32 +164,28 @@ call은 선택한 분석 항목의 가격을 합산한 금액입니다(아무것
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 함께 사용하면 좋은 항목
-</div>
+## 함께 사용하기 좋은 도구 {#pairs-well-with}
 
-* [Fiber.ai](/ko/docs/agent/connect/fiber): 검증된 기업에 기업 속성 정보, 임직원 수, 연락처를 더해 enrich합니다.
+* [Fiber.ai](/ko/docs/agent/connect/fiber): 검증된 기업에 기업 기본 정보, 임직원 수, 연락처를 enrich합니다.
 * [Financial Datasets](/ko/docs/agent/connect/financialdatasets): 상장 기업의 최신 뉴스 보도를 추가합니다.
-* [Similarweb](/ko/docs/agent/connect/similarweb): 검증된 기업의 웹 트래픽과 경쟁사를 벤치마킹합니다.
+* [Similarweb](/ko/docs/agent/connect/similarweb): 검증된 기업의 웹 traffic과 competitor를 벤치마킹합니다.
 
-<div id="next-steps">
-  ## 다음 단계
-</div>
+## 다음 단계 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="실행에 연결하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">
-    Exa Connect Quickstart에서 `dataSources`, 가격, 전체 파트너 카탈로그를 다룹니다.
+  <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">
+    Exa Connect Quickstart에서 `dataSources`, 가격, 전체 파트너 카탈로그를 확인할 수 있습니다.
   </Card>
 
-  <Card title="여러 제공자 조합하기" icon="blend" href="/ko/docs/agent/connect/combining-providers" cta="가이드 읽기" arrow="true">
-    하나의 실행에 최대 다섯 개의 파트너를 연결하고, 각 파트너가 모두 동작하도록 질의를 구성하세요.
+  <Card title="제공업체 조합하기" icon="blend" href="/ko/docs/agent/connect/combining-providers" cta="가이드 읽기" arrow="true">
+    하나의 실행에 최대 다섯 개의 파트너를 attach하고, 각 파트너가 호출되도록 질의를 구성하세요.
   </Card>
 
   <Card title="Exa Agent 익히기" icon="book-open" href="/ko/docs/agent/quickstart" cta="가이드 열기" arrow="true">
-    실행 생성, 진행 상황 스트리밍, 출력 스키마 설계, effort와 비용 제어 방법을 알아보세요.
+    실행을 생성하고, 진행 상황을 스트리밍하고, output schema를 설계하고, effort와 비용을 제어해 보세요.
   </Card>
 
-  <Card title="API key 발급받기" icon="key" href="https://dashboard.exa.ai/api-keys" cta="key 생성" arrow="true">
-    Dashboard에서 key를 생성하면 이 페이지의 예제를 그대로 실행할 수 있습니다. 신규 계정에는 무료 credits이 제공됩니다.
+  <Card title="API 키 발급받기" icon="key" href="https://dashboard.exa.ai/api-keys" cta="키 생성하기" arrow="true">
+    dashboard에서 키를 생성하고 이 페이지의 예제를 그대로 실행해 보세요. 신규 계정에는 무료 credits이 제공됩니다.
   </Card>
 </Columns>

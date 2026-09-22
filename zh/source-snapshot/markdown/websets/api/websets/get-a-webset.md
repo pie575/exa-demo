@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="get-a-webset">
-  # 获取 webset
-</div>
+# 获取 webset {#get-a-webset}
 
-> 通过 `id` 或 `externalId` 返回一个 Webset，包含其状态、searches、imports、enrichments 和 monitors。
+> 通过 `id` 或 `externalId` 返回一个 Webset，包含其状态、search、导入、增强和 monitor。
 
-传入 `expand=items`，可在响应中包含最多前 100 个 items。
+传入 `expand=items`，可在响应中包含最多前 100 个项目。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0
@@ -782,8 +776,7 @@ components:
                 Specify the search parameters for the Monitor.
 
 
-                By default, the search parameters (query, entity and criteria)
-                from the last search are used when no parameters are provided.
+                默认情况下，当未提供参数时，将使用上次搜索的搜索参数（查询、实体和条件）。
               type: object
             type:
               type: string
@@ -792,20 +785,20 @@ components:
           required:
             - type
             - config
-          description: Behavior to perform when monitor runs
+          description: 监控器运行时要执行的行为
           type: object
         lastRun:
           $ref: '#/components/schemas/MonitorRun'
           title: MonitorRun
-          description: The last run of the monitor
+          description: 监控器的最近一次运行
           nullable: true
         nextRunAt:
           format: date-time
           type: string
-          description: Date and time when the next run will occur in
+          description: 下一次运行将发生的日期和时间
           nullable: true
         metadata:
-          description: Set of key-value pairs you want to associate with this object.
+          description: 你希望与此对象关联的一组键值对。
           propertyNames:
             type: string
           additionalProperties:
@@ -815,11 +808,11 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: When the monitor was created
+          description: 监控器的创建时间
         updatedAt:
           type: string
           format: date-time
-          description: When the monitor was last updated
+          description: 监控器的最后更新时间
       required:
         - id
         - object
@@ -837,32 +830,32 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the person profile
+          description: 该人物资料的 URL
           type: string
         description:
-          description: Short description of the relevance of the person
+          description: 该人物相关性的简短描述
           type: string
         person:
           properties:
             name:
-              description: The name of the person
+              description: 该人物的姓名
               type: string
             location:
               type: string
-              description: The location of the person
+              description: 该人物所在地
               nullable: true
             position:
               type: string
-              description: The current work position of the person
+              description: 该人物当前的工作职位
               nullable: true
             company:
               properties:
                 name:
-                  description: The name of the company
+                  description: 公司名称
                   type: string
                 location:
                   type: string
-                  description: The location the person is working at the company
+                  description: 该人物在该公司工作的地点
                   nullable: true
               required:
                 - name
@@ -873,49 +866,49 @@ components:
             pictureUrl:
               format: uri
               type: string
-              description: The image URL of the person
+              description: 该人物的图片 URL
               nullable: true
             workHistory:
               items:
                 properties:
                   title:
                     type: string
-                    description: Job title or position
+                    description: 职位名称或职务
                     nullable: true
                   location:
                     type: string
-                    description: Work location
+                    description: 工作地点
                     nullable: true
                   dates:
                     properties:
                       from:
                         type: string
-                        description: Start date
+                        description: 开始日期
                         nullable: true
                       to:
                         type: string
-                        description: End date
+                        description: 结束日期
                         nullable: true
                     required:
                       - from
                       - to
                     type: object
                     title: WebsetItemPersonDateRange
-                    description: Employment dates
+                    description: 任职日期
                     nullable: true
                   company:
                     properties:
                       id:
                         type: string
-                        description: Entity ID of the company
+                        description: 公司的实体 ID
                         nullable: true
                       name:
                         type: string
-                        description: Company name
+                        description: 公司名称
                         nullable: true
                       linkedinUrl:
                         type: string
-                        description: LinkedIn URL of the company
+                        description: 公司的 LinkedIn URL
                         nullable: true
                     required:
                       - id
@@ -931,45 +924,45 @@ components:
                   - company
                 title: WebsetItemPersonWorkHistoryEntry
                 type: object
-              description: The work history of the person
+              description: 该人物的工作经历
               type: array
             educationHistory:
               items:
                 properties:
                   degree:
                     type: string
-                    description: Degree obtained
+                    description: 获得的学位
                     nullable: true
                   dates:
                     properties:
                       from:
                         type: string
-                        description: Start date
+                        description: 开始日期
                         nullable: true
                       to:
                         type: string
-                        description: End date
+                        description: 结束日期
                         nullable: true
                     required:
                       - from
                       - to
                     type: object
                     title: WebsetItemPersonDateRange
-                    description: Education dates
+                    description: 教育日期
                     nullable: true
                   institution:
                     properties:
                       id:
                         type: string
-                        description: Entity ID of the institution
+                        description: 院校的实体 ID
                         nullable: true
                       name:
                         type: string
-                        description: Institution name
+                        description: 院校名称
                         nullable: true
                       linkedinUrl:
                         type: string
-                        description: LinkedIn URL of the institution
+                        description: 院校的 LinkedIn URL
                         nullable: true
                     required:
                       - id
@@ -984,7 +977,7 @@ components:
                   - institution
                 title: WebsetItemPersonEducationHistoryEntry
                 type: object
-              description: The education history of the person
+              description: 该人物的教育经历
               type: array
           required:
             - name
@@ -1011,70 +1004,70 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the company website
+          description: 公司网站的 URL
           type: string
         description:
-          description: Short description of the relevance of the company
+          description: 该公司相关性的简短描述
           type: string
         content:
           type: string
-          description: The text content of the company website
+          description: 公司网站的文本内容
           nullable: true
         company:
           properties:
             name:
-              description: The name of the company
+              description: 公司名称
               type: string
             location:
               type: string
-              description: The main location of the company
+              description: 公司的主要所在地
               nullable: true
             employees:
               type: integer
-              description: The number of employees of the company
+              description: 公司的员工人数
               nullable: true
             industry:
               type: string
-              description: The industry of the company
+              description: 公司所属行业
               nullable: true
             about:
               type: string
-              description: A short description of the company
+              description: 公司的简短描述
               nullable: true
             logoUrl:
               format: uri
               type: string
-              description: The logo URL of the company
+              description: 公司的徽标 URL
               nullable: true
             foundedYear:
               type: number
-              description: The year the company was founded
+              description: 公司成立年份
               nullable: true
             headquarters:
               properties:
                 address:
                   type: string
-                  description: The street address of the headquarters
+                  description: 总部的街道地址
                   nullable: true
                 city:
                   type: string
-                  description: The city of the headquarters
+                  description: 总部所在城市
                   nullable: true
                 state:
                   type: string
-                  description: The state or region of the headquarters
+                  description: 总部所在州或地区
                   nullable: true
                 postalCode:
                   type: string
-                  description: The postal code of the headquarters
+                  description: 总部的邮政编码
                   nullable: true
                 country:
                   type: string
-                  description: The country of the headquarters
+                  description: 总部所在国家
                   nullable: true
                 countryCode:
                   type: string
-                  description: The ISO country code of the headquarters
+                  description: 总部的 ISO 国家代码
                   nullable: true
               required:
                 - address
@@ -1085,31 +1078,31 @@ components:
                 - countryCode
               type: object
               title: WebsetItemCompanyHeadquarters
-              description: The structured headquarters address of the company
+              description: 公司总部的结构化地址
               nullable: true
             financials:
               properties:
                 revenueAnnual:
                   type: number
-                  description: The annual revenue of the company (USD)
+                  description: 公司的年收入（美元）
                   nullable: true
                 fundingTotal:
                   type: number
-                  description: The total funding raised by the company (USD)
+                  description: 公司融资总额（美元）
                   nullable: true
                 fundingLatestRound:
                   properties:
                     name:
                       type: string
-                      description: The name of the funding round (e.g. Series A)
+                      description: 融资轮次名称（例如 A 轮）
                       nullable: true
                     date:
                       type: string
-                      description: The date of the funding round
+                      description: 融资轮次的日期
                       nullable: true
                     amount:
                       type: number
-                      description: The amount raised in the funding round (USD)
+                      description: 该轮融资金额（美元）
                       nullable: true
                   required:
                     - name
@@ -1117,7 +1110,7 @@ components:
                     - amount
                   type: object
                   title: WebsetItemCompanyFundingRound
-                  description: The latest funding round
+                  description: 最新一轮融资
                   nullable: true
               required:
                 - revenueAnnual
@@ -1125,17 +1118,17 @@ components:
                 - fundingLatestRound
               type: object
               title: WebsetItemCompanyFinancials
-              description: Financial information about the company
+              description: 公司的财务信息
               nullable: true
             webTraffic:
               properties:
                 visitsMonthly:
                   type: number
-                  description: The estimated monthly website visits
+                  description: 估算的每月网站访问量
                   nullable: true
                 uniqueVisitors:
                   type: number
-                  description: The estimated monthly unique visitors
+                  description: 估算的每月独立访客数
                   nullable: true
               required:
                 - visitsMonthly

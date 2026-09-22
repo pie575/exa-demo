@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="cancel-a-batch">
-  # Membatalkan batch
-</div>
+# Batalkan batch {#cancel-a-batch}
 
 > Batalkan batch yang sedang berjalan.
 
@@ -17,9 +13,7 @@ Batch akan berhenti menjadwalkan permintaan baru dan menuntaskan pekerjaan yang 
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches/{id}/cancel
 openapi: 3.1.0

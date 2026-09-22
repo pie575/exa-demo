@@ -1,55 +1,41 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="get-team-info">
-  # Obtenir les informations de l&#39;équipe
-</div>
+# Obtenir les informations de l&#39;équipe {#get-team-info}
 
-> Récupérez les informations relatives à votre équipe, notamment l&#39;utilisation de la concurrency et les limites.
+> Récupérez les informations sur votre équipe, notamment l&#39;utilisation de la concurrency et les limites associées.
 
-<div id="overview">
-  ## Aperçu
-</div>
+## Aperçu {#overview}
 
-L&#39;endpoint Obtenir les informations de l'équipe renvoie des informations sur l&#39;équipe authentifiée, notamment sa concurrency usage actuelle et sa limite configurée. Utile pour suivre votre usage de l&#39;API Websets et comprendre vos limites de débit.
+L&#39;endpoint Get Team Info renvoie des informations sur l&#39;équipe authentifiée, notamment sa concurrency utilisation actuelle et ses limites configurées. Pratique pour suivre votre utilisation de l&#39;API Websets et comprendre vos limites de débit.
 
-<div id="response">
-  ## Réponse
-</div>
+## Réponse {#response}
 
 La réponse comprend :
 
-* **object** : toujours « équipe »
+* **object** : toujours « team »
 * **id** : l&#39;identifiant unique de votre équipe
 * **name** : le nom de votre équipe
-* **concurrency** : l&#39;usage actuel, indiquant les requests actives et en file d&#39;attente
+* **concurrency** : l&#39;utilisation actuelle, indiquant les requests actives et en file d&#39;attente
 * **limits** : les limites de concurrency de votre équipe
 
-<div id="concurrency-fields">
-  ### Champs de concurrency
-</div>
+### Fields de concurrency {#concurrency-fields}
 
 L&#39;objet `concurrency` indique l&#39;état actuel de vos requests :
 
 * **active** : nombre de requests en cours de traitement
 * **en file d'attente** : nombre de requests en attente de traitement
 
-<div id="limits-fields">
-  ### Champs Limits
-</div>
+### Fields de l&#39;objet limits {#limits-fields}
 
-L&#39;objet `limits` présente les limites configurées pour votre équipe :
+L&#39;objet `limits` affiche les limites configurées pour votre équipe :
 
 * **maxConcurrent** : nombre maximal de requests pouvant être traitées simultanément (null signifie illimité)
-* **maxQueued** : nombre maximal de requests pouvant être mises en file d&#39;attente (null signifie illimité)
+* **maxQueued** : nombre maximal de requests pouvant patienter dans la file d&#39;attente (null signifie illimité)
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0
@@ -67,14 +53,14 @@ paths:
     get:
       tags:
         - Teams
-      summary: Obtenir les informations de l'équipe
+      summary: Get team info
       description: >-
-        Renvoie les informations sur l'équipe authentifiée, y compris
-        l'utilisation actuelle de la concurrency et les limites.
+        Returns information about the authenticated team, including current
+        concurrency usage and limits.
       operationId: teams-me-get
       responses:
         '200':
-          description: Informations de l'équipe récupérées avec succès
+          description: Team information retrieved successfully
           headers:
             x-request-id:
               $ref: '#/components/headers/XRequestId'
@@ -86,8 +72,8 @@ components:
   headers:
     XRequestId:
       description: >-
-        Identifiant unique de la requête. Correspond au champ `requestId`
-        renvoyé dans les corps de réponse qui en contiennent un.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -98,27 +84,27 @@ components:
         object:
           type: string
           const: team
-          description: Le type d'objet, toujours `"team"`.
+          description: The object type, always `"team"`.
         id:
           type: string
-          description: Identifiant unique de l'équipe.
+          description: Unique identifier for the team.
         name:
           type: string
-          description: Nom de l'équipe.
+          description: Name of the team.
         concurrency:
           type: object
           properties:
             active:
               type: integer
-              description: Nombre de requests en cours de traitement.
+              description: Number of requests currently being processed.
             queued:
               type: integer
-              description: Nombre de requests actuellement en file d'attente.
+              description: Number of requests currently queued.
           required:
             - active
             - queued
           additionalProperties: false
-          description: Utilisation actuelle de la concurrency.
+          description: Current concurrency usage.
         limits:
           type: object
           properties:
@@ -127,18 +113,18 @@ components:
                 - type: integer
                 - type: 'null'
               description: >-
-                Nombre maximal de requests concurrentes autorisées. Null
-                signifie illimité.
+                Maximum number of concurrent requests allowed. Null means
+                unlimited.
             maxQueued:
               anyOf:
                 - type: integer
                 - type: 'null'
-              description: Nombre maximal de requests en file d'attente autorisées. Null signifie illimité.
+              description: Maximum number of queued requests allowed. Null means unlimited.
           required:
             - maxConcurrent
             - maxQueued
           additionalProperties: false
-          description: Limites de concurrency de l'équipe.
+          description: Concurrency limits for the team.
       required:
         - object
         - id
@@ -152,13 +138,13 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Transmettez votre clé API Exa dans le header x-api-key. Vous pouvez
-        également vous authentifier avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Transmettez votre clé API Exa dans le header x-api-key. Vous pouvez
-        également vous authentifier avec Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 
 ```

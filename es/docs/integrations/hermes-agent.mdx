@@ -7,14 +7,12 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) incluye Exa como backend nativo para sus herramientas `web_search` y `web_extract`, invocables por el modelo. Usa Exa para ambas capacidades o combínalo con otro proveedor web de Hermes.
 
-<div id="connect-your-exa-account">
-  ## Conecta tu cuenta de Exa
-</div>
+## Conecta tu cuenta de Exa {#connect-your-exa-account}
 
 <Steps>
-  <Step title="Obtén una Exa API key">
-    <Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+  <Step title="Obtén una API key de Exa">
+    <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
     </Card>
   </Step>
 
@@ -25,25 +23,23 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
     hermes tools
     ```
 
-    Abre **Web Search &amp; Extract**, elige Exa y selecciona la opción basada en API key. Cuando se te solicite, introduce tu Exa API key. Hermes guarda los secretos en `~/.hermes/.env` y la selección de proveedor en `~/.hermes/config.yaml`.
+    Abre **Web Search &amp; Extract**, elige Exa y selecciona la opción autenticada con API key. Cuando se te solicite, introduce tu API key de Exa. Hermes guarda los secretos en `~/.hermes/.env` y la selección de proveedor en `~/.hermes/config.yaml`.
   </Step>
 
   <Step title="Prueba el acceso web">
-    Inicia Hermes y pídele que haga una search y luego lea uno de los resultados:
+    Inicia Hermes y pídele que haga una búsqueda y luego lea uno de los resultados:
 
     ```text theme={null}
-    Search the web for the latest Exa product updates, then read the most relevant result.
+    Busca en la web las últimas novedades del producto Exa y luego lee el resultado más relevante.
     ```
 
     Hermes debería llamar a `web_search` y, después, a `web_extract` cuando necesite la página en sí.
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Configuración manual
-</div>
+## Configurar manualmente {#configure-manually}
 
-Añade tu key al archivo de entorno de Hermes:
+Agrega tu key al archivo de entorno de Hermes:
 
 ```bash ~/.hermes/.env theme={null}
 EXA_API_KEY=your-exa-api-key
@@ -64,26 +60,22 @@ web:
   backend: "exa"
 ```
 
-La configuración específica de cada capacidad tiene prioridad sobre `web.backend`. Esto te permite usar Exa solo para búsqueda o solo para extracción cuando combinas proveedores.
+La configuración por capacidad tiene prioridad sobre `web.backend`. Esto te permite usar Exa solo para búsqueda o solo para extracción al combinar proveedores.
 
-<div id="tools-hermes-gets">
-  ## Herramientas que obtiene Hermes
-</div>
+## Herramientas que obtiene Hermes {#tools-hermes-gets}
 
 | Herramienta   | Comportamiento de Exa                                                                              |
 | ------------- | -------------------------------------------------------------------------------------------------- |
 | `web_search`  | Busca con Exa y devuelve páginas ordenadas por relevancia con títulos, URLs y fragmentos de texto. |
 | `web_extract` | Recupera contenido legible de una o varias URLs mediante Exa Contents.                             |
 
-Hermes trunca las páginas extensas que extrae según el presupuesto de caracteres configurado y guarda el texto completo en disco. Cambia el valor predeterminado con `web.extract_char_limit` o deja que el agente solicite un `char_limit` mayor para una llamada concreta.
+Hermes trunca las páginas extraídas extensas según el presupuesto de caracteres configurado y guarda el texto completo en disco. Cambia el valor predeterminado con `web.extract_char_limit` o deja que el agente solicite un `char_limit` mayor para una llamada concreta.
 
 <Note>
-  Hermes puede usar Exa mediante su grupo de proveedores gratuitos sin credenciales, es decir, sin una API key. Ese grupo tiene límites de tasa y puede rotar entre proveedores. Configura `EXA_API_KEY` y selecciona la opción de Exa respaldada por API key cuando necesites que las solicitudes usen siempre tu cuenta de Exa.
+  Hermes puede usar Exa a través de su grupo de proveedores gratuitos sin clave, sin necesidad de una API key. Ese grupo tiene límites de tasa y puede rotar entre proveedores. Configura `EXA_API_KEY` y selecciona la opción de Exa autenticada con API key cuando necesites que las solicitudes usen siempre tu cuenta de Exa.
 </Note>
 
-<div id="troubleshooting">
-  ## Solución de problemas
-</div>
+## Solución de problemas {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Hermes no selecciona Exa">
@@ -91,21 +83,19 @@ Hermes trunca las páginas extensas que extrae según el presupuesto de caracter
   </Accordion>
 
   <Accordion title="Hermes indica que falta EXA_API_KEY">
-    Agrega la key a `~/.hermes/.env` y luego reinicia Hermes para que recargue el entorno.
+    Añade la key a `~/.hermes/.env` y luego reinicia Hermes para que recargue el entorno.
   </Accordion>
 
   <Accordion title="La búsqueda funciona, pero la extracción usa otro proveedor">
-    Hermes permite configurar la búsqueda y la extracción de forma independiente. Asigna el valor `exa` tanto a `web.search_backend` como a `web.extract_backend`.
+    Hermes puede configurar la búsqueda y la extracción de forma independiente. Establece tanto `web.search_backend` como `web.extract_backend` en `exa`.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
 <Columns cols={3}>
   <Card title="Herramientas web de Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Leer la guía" arrow="true">
-    Consulta la selección de proveedores, el almacenamiento en caché y el comportamiento de extracción de Hermes.
+    Consulta la selección de proveedor, el almacenamiento en caché y el comportamiento de extracción de Hermes.
   </Card>
 
   <Card title="Exa Search" icon="search" href="/es/docs/search/quickstart" cta="Leer la guía" arrow="true">
@@ -113,6 +103,6 @@ Hermes trunca las páginas extensas que extrae según el presupuesto de caracter
   </Card>
 
   <Card title="Exa Contents" icon="file-text" href="/es/docs/contents/quickstart" cta="Leer la guía" arrow="true">
-    Conoce la API de extracción que hay detrás de `web_extract`.
+    Comprende la API de extracción que hay detrás de `web_extract`.
   </Card>
 </Columns>

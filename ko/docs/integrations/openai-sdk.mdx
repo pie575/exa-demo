@@ -1,43 +1,39 @@
 ---
 title: "OpenAI SDK 호환성"
 sidebarTitle: "OpenAI SDK"
-description: "Exa의 endpoint를 OpenAI의 드롭인 대체재로 사용하세요. chat completions API와 responses API를 모두 지원합니다."
+description: "Exa의 엔드포인트를 OpenAI를 대체하는 용도로 그대로 사용하세요. chat completions와 responses API를 모두 지원합니다."
 icon: "/docs/images/sidebar-icons/openai.svg"
 ---
 
-<Card title="코딩 에이전트 Quickstart" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Exa를 처음 사용하시나요? 1분 안에 시작해 보세요.
+<Card title="코딩 agent 퀵스타트" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Exa가 처음이신가요? 1분이면 시작할 수 있습니다.
 </Card>
 
 ***
 
-<div id="overview">
-  ## 개요
-</div>
+## 개요 {#overview}
 
-Exa는 OpenAI SDK와 함께 사용할 수 있는 OpenAI 호환 endpoint를 제공합니다:
+Exa는 OpenAI SDK에서 그대로 사용할 수 있는 OpenAI 호환 엔드포인트를 제공합니다:
 
-| Endpoint            | OpenAI 인터페이스         | 사용 가능한 모델   | 사용 사례                                   |
+| 엔드포인트               | OpenAI 인터페이스         | 사용 가능한 모델   | 사용 사례                                   |
 | ------------------- | -------------------- | ----------- | --------------------------------------- |
-| `/chat/completions` | Chat Completions API | `exa`       | 기존 방식의 채팅 인터페이스                         |
-| `/responses`        | Responses API        | `exa-agent` | Agent API (비동기 리서치, enrichment, 리스트 구축) |
+| `/chat/completions` | Chat Completions API | `exa`       | 일반적인 채팅 인터페이스                           |
+| `/responses`        | Responses API        | `exa-agent` | Agent API (비동기 리서치, enrichment, 리스트 빌딩) |
 
 <Info>
   `/chat/completions`는 [`/answer`](/ko/docs/reference/answer)로, `/responses`는 [Agent API](/ko/docs/agent/quickstart)로 라우팅됩니다. 아래 [Responses API를 통한 Agent](#agent-via-responses-api)를 참고하세요.
 </Info>
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
-chat completions 인터페이스를 통해 Exa의 `/answer` endpoint를 사용하려면:
+chat completions 인터페이스를 통해 Exa의 `/answer` 엔드포인트를 사용하려면:
 
-1. base URL을 `https://api.exa.ai`로 교체하세요
-2. API key를 본인의 Exa API key로 교체하세요
-3. 모델 이름을 `exa`로 교체하세요.
+1. base URL을 `https://api.exa.ai`로 변경하세요
+2. API 키를 Exa API key로 변경하세요
+3. 모델 이름을 `exa`로 변경하세요.
 
 <Info>
-  전체 [`/answer`](/ko/docs/reference/answer) endpoint 레퍼런스를 확인하세요. 맞춤 라우팅 동작이 필요하다면 [hello@exa.ai](mailto:hello@exa.ai)로 문의해 주세요.
+  자세한 내용은 [`/answer`](/ko/docs/reference/answer) 엔드포인트 reference 전체를 참고하세요. 사용자 지정 라우팅 동작이 필요하면 [hello@exa.ai](mailto:hello@exa.ai)로 문의하세요.
 </Info>
 
 <CodeGroup>
@@ -46,7 +42,7 @@ chat completions 인터페이스를 통해 Exa의 `/answer` endpoint를 사용�
   from openai import OpenAI
 
   client = OpenAI(
-    base_url="https://api.exa.ai", # base url로 exa 사용
+    base_url="https://api.exa.ai", # base url로 exa를 사용
     api_key=os.environ["EXA_API_KEY"],
   )
 
@@ -57,13 +53,13 @@ chat completions 인터페이스를 통해 Exa의 `/answer` endpoint를 사용�
     {"role": "user", "content": "What are the latest developments in quantum computing?"}
   ],
 
-  # extra_body로 /answer endpoint에 추가 파라미터 전달
+  # extra_body를 사용해 /answer 엔드포인트에 추가 parameters를 전달
     extra_body={
       "text": True # 소스의 전체 텍스트 포함
     }
   )
 
-  print(completion.choices[0].message.content)  # 응답 내용 출력
+  print(completion.choices[0].message.content)  # response 콘텐츠 출력
   print(completion.choices[0].message.citations)  # citations 출력
   ```
 
@@ -71,7 +67,7 @@ chat completions 인터페이스를 통해 Exa의 `/answer` endpoint를 사용�
   import OpenAI from "openai";
 
   const openai = new OpenAI({
-    baseURL: "https://api.exa.ai", // base url로 exa 사용
+    baseURL: "https://api.exa.ai", // base url로 exa를 사용
     apiKey: process.env.EXA_API_KEY,
   });
 
@@ -121,31 +117,27 @@ chat completions 인터페이스를 통해 Exa의 `/answer` endpoint를 사용�
   ```
 </CodeGroup>
 
-<div id="agent-via-responses-api">
-  ## Responses API를 통한 Agent
-</div>
+## Responses API를 통한 Agent {#agent-via-responses-api}
 
-Exa의 [`/responses`](https://api.exa.ai/responses) endpoint는 [Agent API](/ko/docs/agent/quickstart)를 OpenAI Responses 인터페이스로 제공하므로, OpenAI SDK를 수정 없이 그대로 사용할 수 있습니다. `model: "exa-agent"`를 설정한 뒤 실행 모드를 선택하세요:
+Exa의 [`/responses`](https://api.exa.ai/responses) 엔드포인트는 [Agent API](/ko/docs/agent/quickstart)를 OpenAI Responses 인터페이스 형태로 제공하므로, OpenAI SDK를 수정 없이 그대로 사용할 수 있습니다. `model: "exa-agent"`를 설정하고 실행 모드를 선택하세요:
 
-| 모드         | 요청                             | 동작                                                                          |
-| ---------- | ------------------------------ | --------------------------------------------------------------------------- |
-| 동기         | 기본값 (`stream`/`background` 없음) | 요청이 블로킹되며 완료된 `response` 객체를 반환합니다.                                         |
-| Streaming  | `stream: true`                 | 실행이 진행되는 동안 OpenAI Responses 이벤트(SSE)를 스트리밍하고, `response.completed`로 종료됩니다. |
-| Background | `background: true`             | 요청이 `in_progress` 응답과 함께 즉시 반환됩니다. 결과는 `GET /responses/{id}`를 poll하여 확인하세요. |
+| 모드    | 요청                             | 동작                                                                          |
+| ----- | ------------------------------ | --------------------------------------------------------------------------- |
+| 동기    | 기본값 (`stream`/`background` 없음) | 요청이 블로킹되며 완료된 `response` 객체를 반환합니다.                                         |
+| 스트리밍  | `stream: true`                 | 실행이 진행되는 동안 OpenAI Responses 이벤트(SSE)를 스트리밍하며, `response.completed`로 종료됩니다. |
+| 백그라운드 | `background: true`             | 요청이 즉시 `in_progress` response를 반환합니다. 결과는 `GET /responses/{id}`를 폴링해 확인하세요. |
 
-`reasoning.effort`(`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`)를 설정해 cost와 깊이를 조절할 수 있고, `POST /responses/{id}/cancel`로 실행을 취소할 수 있습니다. `max`를 사용하려면 클라이언트 기본 header로 `Exa-Beta: agent-max-effort-2026-07-27`을 설정하세요. 이 인터페이스의 기반이 되는 실행 모델, 출력 형태, effort 요금은 [Agent 가이드](/ko/docs/agent/quickstart)에서 다룹니다.
+`reasoning.effort`(`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`)를 설정해 비용과 깊이를 조절하고, `POST /responses/{id}/cancel`로 실행을 취소할 수 있습니다. `max`를 사용하려면 `Exa-Beta: agent-max-effort-2026-07-27`을 client 기본 header로 설정하세요. 이 인터페이스의 기반이 되는 실행 모델, output 형태, effort 가격은 [Agent 가이드](/ko/docs/agent/quickstart)에서 다룹니다.
 
 <Warning>
-  `reasoning.effort`가 `high`, `xhigh`, `max`인 실행은 동기 요청으로 처리하기에는 너무 오래 걸려 `400`을 반환합니다. 이러한 실행에는 `stream: true` 또는 `background: true`를 사용하세요. `/responses`에는 `budget` 필드가 없으며, max는 실행당 기본 상한을 사용합니다.
+  `reasoning.effort`가 `high`, `xhigh`, `max`인 실행은 동기 요청으로 처리하기에는 너무 오래 걸려 `400`을 반환합니다. 이러한 실행에는 `stream: true` 또는 `background: true`를 사용하세요. `/responses`에는 `budget` field가 없으며, max는 실행당 기본 상한을 사용합니다.
 </Warning>
 
 완료된 Responses 실행을 이어가려면 `previous_response_id`를 사용하세요.
 
-<div id="synchronous">
-  ### 동기 방식
-</div>
+### 동기 {#synchronous}
 
-실행이 완료될 때까지 요청이 블로킹되며, 최종 상태의 `response` 객체를 반환합니다.
+요청은 실행이 완료될 때까지 대기(블로킹)하며, 최종 상태의 `response` 객체를 반환합니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -199,11 +191,9 @@ Exa의 [`/responses`](https://api.exa.ai/responses) endpoint는 [Agent API](/ko/
   ```
 </CodeGroup>
 
-<div id="streaming">
-  ### Streaming
-</div>
+### 스트리밍 {#streaming}
 
-SSE로 Responses 스트림 이벤트를 받으려면 `stream: true`로 설정하세요. 각 이벤트에는 단조 증가하는 `sequence_number`가 포함되며, 스트림은 `response.completed`로 종료됩니다. `[DONE]` 센티널은 없습니다. 스트림에 `: keep-alive` 주석 줄이 포함될 수 있는데, SSE 클라이언트는 이를 무시합니다.
+`stream: true`로 설정하면 SSE를 통해 Responses 스트리밍 이벤트를 받습니다. 각 이벤트에는 단조 증가하는 `sequence_number`가 포함되며, 마지막은 `response.completed`로 끝납니다. `[DONE]` 센티널은 없습니다. 스트리밍에는 `: keep-alive` 주석 줄이 포함될 수 있으며, SSE client는 이를 무시합니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -265,11 +255,9 @@ SSE로 Responses 스트림 이벤트를 받으려면 `stream: true`로 설정하
   ```
 </CodeGroup>
 
-<div id="background">
-  ### Background
-</div>
+### 백그라운드 {#background}
 
-`background: true`로 설정하면 연결을 열어 둔 채 대기하지 않고 실행을 시작할 수 있습니다. 이후 `GET /responses/{id}`를 poll하여 종료 상태에 도달했는지 확인하세요. poll 대신 스트리밍을 사용하려면 [Streaming](#streaming)을 참고하세요.
+`background: true`로 설정하면 연결을 유지하지 않은 채 실행을 시작할 수 있습니다. 이후 종료 상태에 도달할 때까지 `GET /responses/{id}`를 폴링하세요. 폴링 대신 스트리밍을 사용하려면 [스트리밍](#streaming)을 참고하세요.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -288,7 +276,7 @@ SSE로 Responses 스트림 이벤트를 받으려면 `stream: true`로 설정하
       background=True,
   )
 
-  # 완료될 때까지 poll
+  # 완료될 때까지 폴링
   while response.status in ("queued", "in_progress"):
       time.sleep(5)
       response = client.responses.retrieve(response.id)
@@ -311,7 +299,7 @@ SSE로 Responses 스트림 이벤트를 받으려면 `stream: true`로 설정하
       background: true,
     });
 
-    // 완료될 때까지 poll
+    // 완료될 때까지 폴링
     while (response.status === "queued" || response.status === "in_progress") {
       await new Promise((r) => setTimeout(r, 5000));
       response = await openai.responses.retrieve(response.id);
@@ -334,15 +322,13 @@ SSE로 Responses 스트림 이벤트를 받으려면 `stream: true`로 설정하
       "background": true
     }'
 
-  # 반환된 응답 ID로 poll
+  # 반환된 response ID로 폴링
   curl -s 'https://api.exa.ai/responses/resp_agent_run_...' \
     -H "Authorization: Bearer $EXA_API_KEY"
   ```
 </CodeGroup>
 
-<div id="chat-wrapper">
-  ## Chat wrapper
-</div>
+## Chat 래퍼 {#chat-wrapper}
 
 Exa는 모든 OpenAI chat completion에 RAG 기능을 자동으로 더해주는 Python 래퍼를 제공합니다. 코드 한 줄이면 어떤 OpenAI chat completion이든 search, 청킹, prompt 구성을 자동으로 처리하는 Exa 기반 RAG 시스템으로 바꿀 수 있습니다.
 
@@ -352,14 +338,14 @@ Exa는 모든 OpenAI chat completion에 RAG 기능을 자동으로 더해주는 
   from openai import OpenAI
   from exa_py import Exa
 
-  # 클라이언트 초기화
+  # client 초기화
   openai = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
   exa = Exa(api_key=os.environ["EXA_API_KEY"])
 
-  # OpenAI 클라이언트 래핑
+  # OpenAI client 래핑
   exa_openai = exa.wrap(openai)
 
-  # 일반 OpenAI 클라이언트와 동일하게 사용
+  # 일반 OpenAI client와 동일하게 사용
   completion = exa_openai.chat.completions.create(
       model="gpt-5.6-sol",
       messages=[{"role": "user", "content": "What is the latest climate tech news?"}]
@@ -369,9 +355,9 @@ Exa는 모든 OpenAI chat completion에 RAG 기능을 자동으로 더해주는 
   ```
 </CodeGroup>
 
-래핑된 클라이언트는 네이티브 OpenAI 클라이언트와 완전히 동일하게 동작하며, 필요한 경우 관련 search 결과로 completion을 자동으로 보강한다는 점만 다릅니다.
+래핑된 client는 기본 OpenAI client와 완전히 동일하게 동작하며, 필요한 경우 관련 search 결과를 활용해 completion을 자동으로 개선한다는 점만 다릅니다.
 
-이 래퍼는 `exa.search()` 함수의 모든 파라미터를 지원합니다.
+이 래퍼는 `exa.search()` 함수의 모든 parameters를 지원합니다.
 
 ```python theme={null}
 completion = exa_openai.chat.completions.create(

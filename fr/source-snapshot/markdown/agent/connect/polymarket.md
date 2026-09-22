@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="polymarket">
-  # Polymarket
-</div>
+# Polymarket {#polymarket}
 
-> Obtenez les cotes des marchés prédictifs, l&#39;historique des prix, les carnets d&#39;ordres et les positions des traders.
+> Obtenez les odds des marchés de prédiction, l&#39;historique des prix, les carnets d&#39;ordres et les positions des traders.
 
-[Polymarket](https://polymarket.com) est une plateforme de marchés prédictifs où
-les prix du marché reflètent la probabilité implicite attribuée par la foule à des
-événements réels. [Exa Connect](/fr/docs/agent/connect/overview) offre
-un accès en lecture seule aux données publiques des marchés Polymarket.
+[Polymarket](https://polymarket.com) est une plateforme de marchés de prédiction où
+les prix reflètent la probabilité implicite, estimée par la foule, d&#39;événements
+réels. [Exa Connect](/fr/docs/agent/connect/overview) offre
+un accès en lecture seule aux données publiques des marchés de Polymarket.
 
 Attachez `polymarket` à un run [Exa Agent](/fr/docs/agent/quickstart) : l&#39;agent
 interroge alors Polymarket en parallèle d&#39;Exa web search.
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## À utiliser pour {#use-it-for}
 
-* Trouver des marchés prédictifs et les market-implied odds actuelles pour un sujet donné.
-* Comparer l&#39;évolution de la probabilité implicite d&#39;un résultat au fil du temps.
-* Examiner la liquidité d&#39;un marché, la profondeur du carnet d&#39;ordres et les principaux détenteurs de positions.
+* Trouver des marchés prédictifs et les market-implied odds actuelles sur un sujet.
+* Comparer l&#39;évolution dans le temps de la probabilité implicite d&#39;un résultat.
+* Examiner la liquidité d&#39;un marché, la profondeur à l&#39;achat/à la vente et les principaux détenteurs de positions.
 * Consulter les positions actuelles d&#39;un trader et son activité on-chain récente.
 
-<div id="provider-id">
-  ## ID du provider
-</div>
+## ID du fournisseur {#provider-id}
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -38,29 +30,24 @@ Utilisez cette valeur dans `dataSources` :
 polymarket
 ```
 
-<div id="pricing">
-  ## Pricing
-</div>
+## Tarification {#pricing}
 
-Les API de lecture de Polymarket sont gratuites et ne nécessitent aucune authentification : les tool calls Polymarket ne coûtent donc rien, vous ne payez que le
-[tarif standard d&#39;un Agent run](/fr/docs/agent/quickstart#pricing).
+Les API de lecture de Polymarket sont gratuites et ne nécessitent aucune authentification : les appels d&#39;outil Polymarket
+ne coûtent donc rien. Vous ne payez que la
+[tarification standard des Agent runs](/fr/docs/agent/quickstart#pricing).
 
-<div id="data-available">
-  ## Données disponibles
-</div>
+## Données disponibles {#data-available}
 
-| Données               | Description                                                                                                                             |
+| Donnée                | Description                                                                                                                             |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| Marchés et événements | Marchés prédictifs et événements en cours, avec les prix en probabilité implicite, le volume et la liquidité.                           |
-| Historique des prix   | Évolution de la probabilité implicite d&#39;un résultat au fil du temps.                                                                |
-| Carnets d&#39;ordres  | Profondeur achat/vente et spread en temps réel pour un résultat de marché.                                                              |
+| Marchés et événements | Marchés prédictifs et événements en cours, avec prix exprimés en probabilité implicite, volume et liquidité.                            |
+| Historique des prix   | Évolution dans le temps de la probabilité implicite d&#39;un résultat.                                                                  |
+| Carnets d&#39;ordres  | Profondeur et écart achat/vente en temps réel pour le résultat d&#39;un marché.                                                         |
 | Détenteurs et traders | Principaux détenteurs de positions sur un marché, ainsi que les positions actuelles et l&#39;activité on-chain récente d&#39;un trader. |
 
-<div id="example">
-  ## Exemple
-</div>
+## Exemple {#example}
 
-Obtenez les market-implied odds d&#39;une baisse des taux de la Fed et leur évolution au cours du mois écoulé.
+Obtenez les market-implied odds d&#39;une baisse des taux de la Fed ainsi que leur évolution au cours du mois écoulé.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -126,32 +113,28 @@ Obtenez les market-implied odds d&#39;une baisse des taux de la Fed et leur évo
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## S&#39;utilise bien avec
-</div>
+## S&#39;utilise bien avec {#pairs-well-with}
 
-* [Exa web search](/fr/docs/search/quickstart) : ajoutez des articles de presse et du contexte de fond aux cotes de marché.
-* [Particle](/fr/docs/agent/connect/particle) : récupérez la couverture médiatique à l&#39;origine d&#39;une variation des cotes.
+* [Exa web search](/fr/docs/search/quickstart) : ajoutez des articles et du contexte de fond aux odds d&#39;un market.
+* [Particle](/fr/docs/agent/connect/particle) : récupérez la couverture médiatique à l&#39;origine d&#39;une variation des odds.
 * [Financial Datasets](/fr/docs/agent/connect/financialdatasets) : reliez les market-implied odds aux prix, aux fondamentaux et aux données macroéconomiques.
 
-<div id="next-steps">
-  ## Étapes suivantes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
-    Le quickstart Exa Connect couvre `dataSources`, la tarification et l&#39;ensemble du catalogue de partners.
+    Le quickstart Exa Connect couvre `dataSources`, la tarification et le catalogue complet des partners.
   </Card>
 
   <Card title="Combiner des providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
-    Attachez jusqu&#39;à cinq partners à un même run et formulez la query de façon à ce que chacun soit déclenché.
+    Attachez jusqu&#39;à cinq partners à un même run et formulez la requête de façon à ce que chacun soit sollicité.
   </Card>
 
   <Card title="Découvrir Exa Agent" icon="book-open" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
-    Créez des runs, suivez leur progression en streaming, concevez des schemas de sortie et maîtrisez l&#39;effort et le coût.
+    Créez des runs, suivez la progression en stream, concevez des schémas d&#39;output et maîtrisez l&#39;effort et le coût.
   </Card>
 
-  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une key" arrow="true">
-    Créez une key dans le dashboard et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes bénéficient de credits gratuits.
+  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une clé" arrow="true">
+    Créez une clé dans le tableau de bord et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes bénéficient de crédits gratuits.
   </Card>
 </Columns>

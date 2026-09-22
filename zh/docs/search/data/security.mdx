@@ -31,66 +31,50 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search，从安全团队日常关注的信息源中获取漏洞记录、厂商安全公告和威胁研究。
+使用 Exa Search，从安全团队日常关注的来源中获取漏洞记录、厂商安全公告和威胁研究。
 
-<div id="included">
-  ## 包含内容
-</div>
+## 涵盖范围 {#included}
 
-* CVE 和 GHSA 漏洞记录
+* CVE 与 GHSA 漏洞记录
 * 厂商安全公告与补丁说明
-* 威胁情报报告与事件复盘
-* 信任页面、子处理方列表与合规文档
+* 威胁情报报告与安全事件复盘
+* 信任页面、子处理者清单与合规文档
 * 安全博客、会议演讲与研究成果
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
 * 漏洞分级与暴露面评估
 * 威胁情报与攻击者追踪
 * 厂商风险与第三方安全审查
 * 安全监控与告警
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## query示例 {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### 研判某类漏洞
-</div>
+### 分类处理某一类漏洞 {#triage-a-vulnerability-class}
 
-指明产品、版本范围和严重等级。
+指明产品、版本范围和严重程度。
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### 查找厂商安全公告
-</div>
+### 查找厂商安全公告 {#find-vendor-advisories}
 
-描述漏洞的被利用状态和产品类别，而不是某个具体的 CVE 编号。
+描述漏洞的利用状态和产品类别，而不是单个 CVE ID。
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### 评估厂商的安全态势
-</div>
+### 评估厂商的安全状况 {#review-a-vendors-security-posture}
 
 指明文档类型和厂商类别。
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### 研究攻击者
-</div>
+### 研究攻击方 {#research-an-adversary}
 
-指明攻击组织或攻击行动的名称，以及你关注的攻击手法或行业领域。
+写明团伙或行动的名称，以及你关注的技术手法或行业领域。
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -131,12 +115,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果结构化数据需要跨多个来源进行研究，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。描述你需要的产品、威胁 criteria 和输出字段，Agent 即可返回经过 schema 校验的结果，并附带引用来源。
+如果结构化数据需要跨多个来源进行研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。描述你需要的产品、威胁 criteria 和输出 fields，agent 会返回经 schema 校验的结果及引用来源。
 
 <Card title="启动一个 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
-  跨安全公告、泄露报告和信任中心页面筛查某个厂商，或汇总归一化的漏洞数据。
+  跨安全公告、数据泄露报告和信任页面筛查某个厂商，或整理出归一化的 漏洞 数据。
 </Card>

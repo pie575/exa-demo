@@ -1,69 +1,58 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="financial-datasets">
-  # Financial Datasets
-</div>
+# Financial Datasets {#financial-datasets}
 
-> Datos financieros y de mercado estructurados para más de 27 000 tickers de EE. UU.: precios, fundamentales, resultados, presentaciones ante la SEC, participación accionaria y filtrado de acciones.
+> Datos financieros y de mercado estructurados para más de 27.000 tickers de EE. UU.: precios, fundamentales, resultados, documentos presentados ante la SEC, participación accionarial y cribado de acciones.
 
-[Financial Datasets](https://financialdatasets.ai) ofrece datos de empresas
-y de mercado listos para su consumo por agentes de IA. A través de
+[Financial Datasets](https://financialdatasets.ai) ofrece datos de empresas y
+de mercado listos para su uso por agentes de IA. A través de
 [Exa Connect](/es/docs/agent/connect/overview), los agentes pueden obtener
 precios en tiempo real e históricos, datos de empresas, estados financieros y
-métricas de valoración, resultados trimestrales, participación de personas con información privilegiada e
-inversores institucionales, presentaciones ante la SEC y sus secciones, noticias de
-empresas, además de filtrar el mercado estadounidense según criterios
-fundamentales.
+métricas de valoración, resultados, propiedad de directivos e institucional,
+documentos presentados ante la SEC y sus secciones, noticias de empresas, además
+de cribar el mercado estadounidense con criteria fundamentales.
 
-Adjunta `financial_datasets` a una ejecución de [Exa Agent](/es/docs/agent/quickstart)
-y el agente consultará Financial Datasets junto con la búsqueda web de Exa.
+Adjunta `financial_datasets` a un run de [Exa Agent](/es/docs/agent/quickstart)
+y el agente consultará Financial Datasets junto con Exa web search.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Crear informes estructurados de investigación sobre empresas.
-* Analizar el desempeño financiero, la valoración y las tendencias históricas.
-* Leer presentaciones ante la SEC y extraer secciones como factores de riesgo y MD&amp;A.
-* Examinar operaciones de personas con información privilegiada y la propiedad institucional.
-* Filtrar el mercado estadounidense según criterios fundamentales.
+* Crear instantáneas estructuradas de investigación de empresas.
+* Analizar el rendimiento financiero, la valoración y las tendencias históricas.
+* Leer documentos presentados ante la SEC y extraer secciones como los factores de riesgo y el MD&amp;A.
+* Examinar las transacciones de directivos y la participación institucional.
+* Cribar el mercado estadounidense según criteria fundamentales.
 * Monitorear noticias de empresas y novedades relevantes.
 
-<div id="data-available">
-  ## Datos disponibles
-</div>
+## Datos disponibles {#data-available}
 
-Cada uno de los siguientes conjuntos de datos está disponible bajo el proveedor
+Cada uno de los siguientes conjuntos de datos está disponible en el proveedor
 `financial_datasets`; el agente selecciona el que mejor se ajuste a la tarea:
 
-| Conjunto de datos                       | Qué devuelve                                                                                                                                     |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Titularidad real                        | Titulares reales con el 5 % o más según los Schedules 13D/13G, incluidas participaciones activistas y pasivas.                                   |
-| Datos de la empresa                     | Nombre, sector, industria, bolsa, ubicación, CIK de la SEC, clasificación SIC.                                                                   |
-| Noticias de la empresa                  | Artículos de noticias recientes sobre un ticker.                                                                                                 |
-| Resultados                              | Ingresos trimestrales y BPA con variación interanual y sorpresas al alza o a la baja.                                                            |
-| Métricas financieras                    | Capitalización de mercado, EV, P/E, P/B, P/S, EV/EBITDA, PEG, márgenes, ROE/ROA/ROIC, crecimiento, BPA.                                          |
-| Estados financieros                     | Cuenta de resultados, balance y flujo de caja a partir de presentaciones ante la SEC.                                                            |
-| Precios históricos de acciones          | Barras OHLCV en un rango de fechas con granularidad diaria, semanal, mensual o anual.                                                            |
-| Carteras de fondos indexados            | Componentes de ETF/fondos indexados por ponderación, o los fondos que poseen un valor determinado.                                               |
-| Participación de personas con información privilegiada    | Participaciones de personas con información privilegiada según los formularios 3 y 5 de la SEC (acciones en manos de directivos, consejeros y titulares del 10 %). |
-| Operaciones de personas con información privilegiada      | Operaciones de personas con información privilegiada del formulario 4 de la SEC (nombre, cargo, tipo, acciones, valor).                                            |
-| Participación institucional             | Titulares institucionales 13F, acciones y valor declarado.                                                                                       |
-| Tipos de interés                        | Tipos de referencia actuales e históricos de los bancos centrales (Fed, BCE, BOJ, entre otros).                                                  |
-| Apartados de presentaciones ante la SEC | Texto extraído de apartados concretos de 10-K/10-Q/8-K (por ejemplo, factores de riesgo, MD&amp;A).                                              |
-| Presentaciones ante la SEC              | Metadatos de las presentaciones y enlaces directos a EDGAR, con filtrado opcional por tipo de formulario.                                        |
-| Financieros segmentados                 | Ingresos, resultado operativo y otras partidas desglosadas por producto, segmento de negocio y geografía.                                        |
-| Instantánea del precio de la acción     | Precio actual en tiempo real, variación del día y hora de la cotización.                                                                         |
-| Filtro de acciones                      | Empresas que cumplen criterios de filtrado fundamentales.                                                                                        |
+| Conjunto de datos                               | Qué devuelve                                                                                                                           |
+| ----------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Propiedad beneficiaria                          | Propietarios beneficiarios con el 5% o más, según los Schedules 13D/13G, incluidas participaciones activistas y pasivas.               |
+| Datos de la empresa                             | Nombre, sector, industria, mercado, ubicación, CIK de la SEC, clasificación SIC.                                                       |
+| Noticias de empresas                            | Artículos de noticias recientes sobre un ticker.                                                                                       |
+| Resultados                                      | Ingresos y BPA trimestrales con variación interanual y sorpresas por encima o por debajo de lo previsto.                               |
+| Métricas financieras                            | Capitalización bursátil, EV, P/E, P/B, P/S, EV/EBITDA, PEG, márgenes, ROE/ROA/ROIC, crecimiento, BPA.                                  |
+| Estados financieros                             | Cuenta de resultados, balance y flujo de caja a partir de documentos presentados ante la SEC.                                          |
+| Precios históricos de acciones                  | Barras OHLCV en un rango de fechas con granularidad diaria, semanal, mensual o anual.                                                  |
+| Participaciones de fondos indexados             | Componentes de ETF y fondos indexados por peso, o los fondos que poseen un valor determinado.                                          |
+| Propiedad de directivos                         | Participaciones de directivos según los formularios 3 y 5 de la SEC (acciones en manos de directivos, consejeros y titulares del 10%). |
+| Operaciones de directivos                       | Transacciones de directivos del formulario 4 de la SEC (nombre, cargo, tipo, acciones, valor).                                         |
+| Participación institucional                     | Titulares institucionales 13F, acciones y valor declarado.                                                                             |
+| Tipos de interés                                | Tipos de política monetaria actuales e históricos de bancos centrales (Fed, BCE, BOJ y otros).                                         |
+| Apartados de documentos presentados ante la SEC | Texto extraído de apartados concretos de los 10-K/10-Q/8-K (por ejemplo, factores de riesgo, MD&amp;A).                                |
+| Documentos presentados ante la SEC              | Metadatos de los documentos y enlaces directos a EDGAR, con filtrado opcional por tipo de formulario.                                  |
+| Finanzas segmentadas                            | Ingresos, resultado operativo y otras partidas desglosadas por producto, segmento de negocio y geografía.                              |
+| Instantánea del precio de la acción             | Precio actual en tiempo real, variación del día y hora de la cotización.                                                               |
+| Buscador de acciones                            | Empresas que cumplen criteria de filtrado fundamentales.                                                                              |
 
-<div id="provider-id">
-  ## ID del proveedor
-</div>
+## ID del proveedor {#provider-id}
 
 Usa este valor en `dataSources`:
 
@@ -71,11 +60,9 @@ Usa este valor en `dataSources`:
 financial_datasets
 ```
 
-<div id="example">
-  ## Ejemplo
-</div>
+## Ejemplo {#example}
 
-Crea una instantánea estructurada con información de investigación sobre la empresa NVIDIA.
+Crea una instantánea estructurada con la investigación sobre la empresa NVIDIA.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -293,32 +280,28 @@ Crea una instantánea estructurada con información de investigación sobre la e
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Combina bien con
-</div>
+## Combina bien con {#pairs-well-with}
 
-* [Particle](/es/docs/agent/connect/particle): compara la cobertura publicada con los comentarios de los pódcast.
+* [Particle](/es/docs/agent/connect/particle): compara la cobertura publicada con los comentarios de pódcast.
 * [Baselayer](/es/docs/agent/connect/baselayer): verifica la entidad que hay detrás de un ticker.
-* [Fiber.ai](/es/docs/agent/connect/fiber): enriquece la información de una empresa cotizada con empresas comparables del mercado privado y contactos de su equipo directivo.
+* [Fiber.ai](/es/docs/agent/connect/fiber): enriquece una empresa cotizada con pares del mercado privado y contactos de su equipo directivo.
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir la guía rápida" arrow="true">
-    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de socios.
+  <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">
+    El quickstart de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
   </Card>
 
-  <Card title="Combina proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
-    Adjunta hasta cinco socios a una misma ejecución y formula la query de modo que cada uno se active.
+  <Card title="Combina proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer guía" arrow="true">
+    Adjunta hasta cinco partners a un mismo run y formula la consulta de modo que cada uno se active.
   </Card>
 
-  <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
-    Crea ejecuciones, transmite el progreso en streaming, diseña esquemas de salida y controla el esfuerzo y el costo.
+  <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir guía" arrow="true">
+    Crea runs, transmite el progreso en tiempo real, diseña esquemas de output y controla el effort y el costo.
   </Card>
 
-  <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
-    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas empiezan con credits gratuitos.
+  <Card title="Consigue una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
+    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas incluyen créditos gratuitos.
   </Card>
 </Columns>

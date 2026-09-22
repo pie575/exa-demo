@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="start-building-with-exa">
-  # Commencez à développer avec Exa
-</div>
+# Commencez à développer avec Exa {#start-building-with-exa}
 
-> Un puissant outil de recherche web conçu pour les agents. Tout est optimisé pour vous fournir des résultats précis et économes en tokens.
+> Un outil de recherche web puissant conçu pour les agents. Tout est optimisé pour vous fournir des résultats précis et économes en jetons.
 
 export const DocsImage = props => {
   const docsBase = () => {
@@ -33,38 +29,38 @@ export const ApiCards = ({only}) => {
   const cards = [{
     id: "search",
     title: "Search",
-    body: "Données en temps réel, étayées par des sources, et contenu de pages optimisé pour réduire les jetons",
+    body: "Données en temps réel fondées sur des preuves, avec un contenu de page économe en jetons",
     href: "/search/quickstart",
     image: "/images/home/api-search.webp",
-    alt: "Champ de recherche Exa avec des résultats Web classés et leurs domaines sources"
+    alt: "Champ de recherche Exa avec des résultats web classés et leurs domaines sources"
   }, {
     id: "agent",
     title: "Agent",
-    body: "Agents asynchrones pour la recherche approfondie, la création de listes et l'enrichissement",
+    body: "Agents asynchrones pour la recherche approfondie, la constitution de listes et l'enrichissement",
     href: "/agent/quickstart",
     image: "/images/home/api-agent.webp",
-    alt: "Feuille de calcul d'entreprises enrichie de partenariats, de témoignages clients et d'utilisation du cloud"
+    alt: "Feuille de calcul d'entreprises enrichie de données sur les partenariats, les témoignages clients et l'utilisation du cloud"
   }, {
     id: "search-deep",
     title: "Deep Search",
-    body: "Recherche qui analyse plusieurs sources et renvoie une sortie structurée",
+    body: "Search qui analyse plusieurs sources et renvoie une sortie structurée",
     href: "/search/deep-search",
     image: "/images/home/api-search-deep.webp",
-    alt: "Requête de recherche approfondie renvoyant du JSON structuré sur des entreprises de biotechnologie"
+    alt: "Requête Deep Search renvoyant du JSON structuré sur des entreprises de biotechnologie"
   }, {
     id: "contents",
     title: "Contents",
-    body: "Texte intégral, extraits pertinents et résumés depuis n'importe quelle URL",
+    body: "Texte intégral, highlights et résumés depuis n'importe quelle URL",
     href: "/contents/quickstart",
     image: "/images/home/api-contents.webp",
     alt: "Contenu extrait d'une page Wikipédia sur Boeing"
   }, {
     id: "monitors",
     title: "Monitors",
-    body: "Recherches planifiées qui surveillent le Web et transmettent les nouveaux résultats",
+    body: "Recherches planifiées qui surveillent le web et transmettent les nouveaux résultats",
     href: "/monitors/quickstart",
     image: "/images/home/api-monitors.webp",
-    alt: "Monitor nommé Anthropic Releases and News s'exécutant chaque jour",
+    alt: "Monitor nommé Anthropic Releases and News exécuté chaque jour",
     hidden: true
   }];
   const visible = only ? only.map(id => cards.find(card => card.id === id)).filter(Boolean) : cards.filter(card => !card.hidden);
@@ -89,12 +85,12 @@ export const ApiCards = ({only}) => {
 
     <div className="docs-home-quickstart-copy">
       <span className="docs-home-quickstart-title">Ajoutez Exa à votre agent</span>
-      <p>Démarrez en moins d&#39;une minute</p>
+      <p>Lancez-vous en moins d&#39;une minute</p>
     </div>
 
     <div className="docs-home-quickstart-actions">
       <a className="docs-home-button" href="/fr/docs/get-started/quickstart">
-        Démarrer
+        Commencer
       </a>
 
       <a className="docs-home-button" href="https://dashboard.exa.ai/api-keys" target="_blank" rel="noopener noreferrer">
@@ -163,9 +159,9 @@ export const ApiCards = ({only}) => {
 
       <div className="docs-home-apis" role="tablist" aria-label="API">
         <label htmlFor="docs-home-api-search">Rechercher sur le web</label>
-        <label htmlFor="docs-home-api-contents">Récupérer le contenu d&#39;une page</label>
+        <label htmlFor="docs-home-api-contents">Récupérer le page contents</label>
         <label htmlFor="docs-home-api-deep">Obtenir une sortie structurée</label>
-        <label htmlFor="docs-home-api-tools">Doter un LLM de la recherche web</label>
+        <label htmlFor="docs-home-api-tools">Doter un LLM de recherche web</label>
         <label htmlFor="docs-home-api-agent">Créer une liste documentée</label>
         <label htmlFor="docs-home-api-agent-research">Analyser un sujet complexe</label>
       </div>
@@ -345,7 +341,7 @@ export const ApiCards = ({only}) => {
 
         <div className="docs-home-code" data-pane="tools-curl">
           ```bash theme={null}
-          # 1. Proposer au modèle un tool Exa search et le laisser choisir la query.
+          # 1. Proposer au modèle un outil Exa search et le laisser choisir la requête.
           USER_MSG='{ "role": "user", "content": "What'\''s the latest on AI chips?" }'
           TOOLS='[{ "type": "function", "function": {
             "name": "web_search",
@@ -358,7 +354,7 @@ export const ApiCards = ({only}) => {
             -d "{ \"model\": \"gpt-5.6\", \"messages\": [$USER_MSG], \"tools\": $TOOLS }" \
             | python3 -c 'import json,sys; print(json.dumps(json.load(sys.stdin)["choices"][0]["message"]))')"
 
-          # 2. Exécuter le tool call auprès d'Exa.
+          # 2. Exécuter l'appel d'outil auprès d'Exa.
           SEARCH_BODY="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           args = json.loads(json.load(sys.stdin)["tool_calls"][0]["function"]["arguments"])
@@ -368,7 +364,7 @@ export const ApiCards = ({only}) => {
             -H "Authorization: Bearer $EXA_API_KEY" \
             -d "$SEARCH_BODY")"
 
-          # 3. Transmettre les résultats au modèle pour obtenir la réponse finale.
+          # 3. Renvoyer les résultats au modèle pour obtenir la réponse finale.
           TOOL_MSG="$(echo "$ASSISTANT" | python3 -c '
           import json, sys
           assistant = json.load(sys.stdin)

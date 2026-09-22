@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="legal-public-records">
-  # Registros legales y públicos
-</div>
+# Registros legales y públicos {#legal-public-records}
 
-> Encuentra resoluciones judiciales, patentes, sanciones, contratos públicos y otros registros públicos con Exa Search.
+> Encuentra sentencias judiciales, patentes, sanctions, contratos públicos y otros registros públicos con Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el playground de la API" aria-label={`Abrir "${query}" en el playground de la API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Abrir en el entorno de pruebas de la API" aria-label={`Abrir "${query}" en el entorno de pruebas de la API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,76 +33,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para acceder a fuentes jurídicas primarias y registros públicos, junto con los comentarios escritos sobre ellos.
+Usa Exa Search para acceder a fuentes jurídicas primarias y registros públicos oficiales, junto con los análisis y comentarios escritos sobre ellos.
 
-<div id="included">
-  ## Incluido
-</div>
+## Incluido {#included}
 
-* Sentencias de tribunales de EE. UU., con texto completo y metadatos de tribunal, expediente y cita
+* Sentencias judiciales de EE. UU., con texto completo y metadatos de tribunal, expediente y cita
 * Patentes concedidas en EE. UU., con resumen, reivindicaciones, descripción, inventores y cesionarios
-* Leyes, reglamentos y directrices de organismos públicos
-* Listas de sanciones y listas de vigilancia
-* Contratos públicos y registros de licitaciones
+* Leyes, reglamentos y guidance de agencias
+* Listas de sanctions y watchlists
+* Contratos públicos y registros de contratación
 * Datos censales y otros registros estadísticos públicos
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
 * Investigación de jurisprudencia y RAG jurídico
 * Seguimiento regulatorio y de políticas públicas
-* Búsquedas de estado de la técnica y libertad de operación
-* Filtros de cumplimiento normativo y debida diligencia
+* Búsquedas de estado de la técnica y de libertad de operación
+* Cribado de cumplimiento normativo y debida diligencia
 * Estudios de mercado del sector público
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="find-case-law">
-  ### Encontrar jurisprudencia
-</div>
+### Encontrar jurisprudencia {#find-case-law}
 
-Describe la cuestión jurídica y la jurisdicción en lenguaje sencillo en lugar de citar una referencia.
+Describe la cuestión jurídica y la jurisdicción en lenguaje natural en lugar de usar una cita.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Buscar patentes
-</div>
+### Buscar patentes {#search-patents}
 
-Describe lo que hace la invención, tal como lo haría una reivindicación.
+Describe qué hace la invención, tal como lo haría una reivindicación.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Cribado contra listas de sanciones
-</div>
+### Cribar contra sanctions {#screen-against-sanctions}
 
-Indica el nombre de la lista y el tipo de entidad que estás revisando.
+Indica el nombre de la lista y la clase de entidad que estás cribando.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Investigar el gasto público
-</div>
+### Investigar el gasto público {#research-government-spending}
 
 Indica la agencia compradora o la categoría de servicio y el periodo de tiempo.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Obtener estadísticas públicas
-</div>
+### Extraer estadísticas públicas {#pull-public-statistics}
 
 Indica el conjunto de datos y la zona geográfica.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Realiza una solicitud
-</div>
+## Realizar una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -147,12 +125,10 @@ Indica el conjunto de datos y la zona geográfica.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtén datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criterios y los campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criteria y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
 <Card title="Inicia una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Analiza una entidad en distintos tipos de registro o rastrea un cambio regulatorio a través de fuentes primarias y su cobertura.
+  Analiza una entidad en distintos tipos de registro o sigue el rastro de un cambio normativo a través de fuentes primarias y su cobertura.
 </Card>

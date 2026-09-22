@@ -1,59 +1,53 @@
 ---
 title: "Exa Connect"
 sidebarTitle: "Overview"
-description: "Berikan Exa Agent Anda akses langsung ke data partners premium, berdampingan dengan Exa web search, dalam satu run."
+description: "Berikan Exa Agent Anda akses langsung ke data partners premium, bersama web search Exa, dalam satu run."
 boost: 5
 ---
 
 Exa Connect mengintegrasikan data partners premium ke dalam loop Exa Agent. Attach sebuah
-provider ke sebuah run, lalu Exa Agent akan melakukan kueri ke basis data partner tersebut berdampingan dengan web
-search, sebelum menggabungkan hasilnya menjadi satu jawaban terstruktur yang grounded.
+provider ke sebuah run, dan Exa Agent akan melakukan query ke database partner tersebut bersama web
+search, lalu menggabungkan hasilnya menjadi satu jawaban terstruktur yang grounded.
 
-Baru mengenal agent runs? Mulailah dari [panduan Exa Agent](/id/docs/agent/quickstart),
+Baru mengenal agent run? Mulai dari [panduan Exa Agent](/id/docs/agent/quickstart),
 lalu kembali ke sini untuk attach data partners.
 
 <Tip>
-  Exa Agent sudah melakukan search ke seluruh [data index](/id/docs/search/data/overview), yaitu sumber
-  berita, kode, perusahaan, dan orang yang sama seperti pada Search API. Exa Connect menambahkan
-  basis data partner premium di atasnya.
+  Exa Agent sudah melakukan search pada seluruh [data index](/id/docs/search/data/overview), yaitu
+  sources berita, kode, perusahaan, dan orang yang sama seperti Search API. Exa Connect menambahkan
+  database partner premium di atasnya.
 </Tip>
 
 <Tip>
-  Lebih suka MCP? Exa Agent dan [Exa Connect](/id/docs/agent/connect/overview) tersedia di [Exa MCP](/id/docs/get-started/exa-mcp#exa-agent). Aktifkan `tools=agent_run` untuk menjalankan riset multi-langkah, pembuatan daftar, enrichment, dan structured output dari Claude, Cursor, dan klien MCP lainnya.
+  Lebih suka MCP? Exa Agent dan [Exa Connect](/id/docs/agent/connect/overview) tersedia di [Exa MCP](/id/docs/get-started/exa-mcp#exa-agent). Aktifkan `tools=agent_run` untuk menjalankan Research multi-langkah, list building, enrichment, dan output terstruktur dari Claude, Cursor, dan MCP clients lainnya.
 </Tip>
 
-<div id="why-exa-connect">
-  ## Mengapa Exa Connect
-</div>
+## Mengapa Exa Connect {#why-exa-connect}
 
-* **Data premium tanpa integrasi terpisah.** Akses data partner tanpa
-  menandatangani kontrak atau menyiapkan SDK. Anda cukup memanggil satu API Exa.
-* **Exa yang mengurus hal-hal teknisnya.** Kami mengelola autentikasi provider, pemilihan tool,
+* **Data premium tanpa integrasi terpisah.** Akses data partner tanpa perlu
+  menandatangani kontrak atau memasang SDK. Anda cukup memanggil satu API Exa.
+* **Exa yang mengurus pekerjaan teknisnya.** Kami mengelola autentikasi provider, pemilihan tool,
   percobaan ulang, dan pemeringkatan hasil.
 * **Exa Agent yang memilih sumbernya.** Ketika `outputSchema` Anda meminta
-  &quot;kunjungan bulanan dari Similarweb&quot; atau &quot;pejabat terverifikasi&quot;, Exa Agent memanggil
+  &quot;kunjungan bulanan dari Similarweb&quot; atau &quot;pejabat terverifikasi&quot;, Exa Agent akan memanggil
   tool partner yang sesuai, bukan menebak-nebak dari sebuah halaman web.
 * **Data indeks dan partner dalam satu run.** Connect berjalan di atas indeks Exa.
-  Exa Agent memanfaatkan setiap sumber di bidang terkuatnya dan mencantumkan sitasi hasilnya.
+  Exa Agent memanfaatkan setiap sumber pada sisi terkuatnya dan mencantumkan sitasi hasilnya.
 
-<div id="how-it-works">
-  ## Cara kerjanya
-</div>
+## Cara kerjanya {#how-it-works}
 
 1. **Attach** satu atau beberapa provider melalui array `dataSources` pada
    [`POST /agent/runs`](/id/docs/reference/agent-api/create-a-run).
 2. Exa Agent **memilih tool yang tepat** untuk setiap langkah berdasarkan query dan
    `outputSchema` Anda: data partner atau Exa web search.
-3. Hasil dari partner **dipadukan dengan riset web** menjadi structured output Anda,
-   lengkap dengan sumbernya.
+3. Hasil dari partner **digabungkan dengan Research web** menjadi output terstruktur Anda,
+   lengkap dengan sources yang terlampir.
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
 <Note>
-  Harga Exa Connect bersifat tambahan di luar [harga Agent run standar](/id/docs/agent/quickstart#pricing).
-  Anda tetap membayar biaya komputasi Agent dan search seperti biasa, ditambah biaya provider call untuk setiap tool call Exa Connect.
+  Harga Exa Connect bersifat tambahan di atas [harga Agent run standar](/id/docs/agent/quickstart#pricing).
+  Anda membayar biaya komputasi dan search Agent seperti biasa, ditambah biaya pemanggilan provider untuk setiap pemanggilan tool Exa Connect.
 </Note>
 
 | Provider                                             | Harga                                         |
@@ -67,28 +61,27 @@ lalu kembali ke sini untuk attach data partners.
 | Financial Datasets                                   | `$0.01 / call`                                |
 | Jinko                                                | `$0.005 / call`                               |
 
-Fiber.ai menagih dalam credit, bukan per call, karena biayanya sendiri berbeda-beda
-tiap call: satu search dikenakan 2 credit ditambah 1 credit untuk setiap hasil yang
-dikembalikan; pencarian perusahaan atau orang ditagih per kandidat yang
-dikembalikan (jadi menaikkan `numResults` pada pencarian perusahaan untuk
-memperjelas nama yang ambigu akan lebih mahal); dan pengungkapan kontak dikenakan 2–5
-credit, tergantung apakah Anda meminta work email, personal email, atau nomor
-telepon. Anda ditagih sebanyak credit yang dilaporkan Fiber untuk setiap call;
-call yang tidak menemukan kecocokan tidak dikenakan biaya. Lihat [harga Fiber.ai](/id/docs/agent/connect/fiber#pricing).
+Fiber.ai menagih dalam credits, bukan per pemanggilan, karena biayanya sendiri berbeda-beda
+tiap pemanggilan: satu search berbiaya 2 credits ditambah 1 per hasil yang dikembalikan; pencarian
+perusahaan atau orang ditagih per kandidat yang dikembalikan (sehingga menaikkan
+`numResults` pada pencarian perusahaan untuk memilah nama yang ambigu akan lebih mahal); dan satu contact
+reveal memakan 2–5 credits, tergantung apakah Anda meminta work email, personal email,
+atau nomor telepon. Anda dikenakan credits yang dilaporkan Fiber untuk setiap pemanggilan; pemanggilan yang
+tidak menghasilkan kecocokan tidak dikenakan biaya. Lihat [harga Fiber.ai](/id/docs/agent/connect/fiber#pricing).
 
-Similarweb menagih dalam data credit (kira-kira satu per metrik × baris × bulan),
-sehingga harga sebuah call mengikuti nilai `numResults`/`months` — 1 hingga 15 credit
-per call. Anda ditagih sebanyak credit yang dilaporkan Similarweb untuk setiap
-call; call yang tidak mengembalikan data tidak dikenakan biaya. Lihat [harga Similarweb](/id/docs/agent/connect/similarweb#pricing).
+Similarweb menagih dalam data credits (kira-kira satu per metrik × baris × bulan), sehingga harga
+sebuah pemanggilan mengikuti nilai `numResults`/`months` — 1 hingga 15 credits per pemanggilan. Anda
+dikenakan credits yang dilaporkan Similarweb untuk setiap pemanggilan; pemanggilan yang tidak mengembalikan
+data tidak dikenakan biaya. Lihat [harga Similarweb](/id/docs/agent/connect/similarweb#pricing).
 
-Baselayer menagih per order, dan tarifnya bergantung pada jenis operasinya: KYB
-business search seharga $1.00, UCC lien search $2.00 per negara bagian yang
-dicari, pencarian dokumen litigasi/kepailitan $1.00 per kategori, penyaringan
-watchlist $0.10–$0.25 per daftar yang diminta, klasifikasi industri dan
-analisis situs web masing-masing $0.35, kehadiran web dihitung dari total
-analisis yang dipilih (masing-masing $0.15–$0.35), dan international business
-search $4.00. Pembacaan lanjutan atas business search sebelumnya (business
-lookup, officers, registrations, officer reverse lookup) tidak dikenakan biaya. Lihat [harga Baselayer](/id/docs/agent/connect/baselayer#pricing).
+Baselayer menagih per order, dan tarifnya bergantung pada operasinya: KYB
+business search seharga $1.00, UCC lien search seharga $2.00 per negara bagian yang dicari,
+pencarian dokumen litigasi/kebangkrutan seharga $1.00 per kategori, watchlist screening
+seharga $0.10–$0.25 per daftar yang diminta, klasifikasi industri dan analisis situs web
+masing-masing $0.35, web presence dihitung dari total analisis yang dipilih
+(masing-masing $0.15–$0.35), dan international business search seharga $4.00. Pembacaan follow-up
+atas business search sebelumnya (business lookup, pejabat, registrasi,
+officer reverse lookup) tidak dikenakan biaya. Lihat [harga Baselayer](/id/docs/agent/connect/baselayer#pricing).
 
 <CodeGroup>
   ```python Python theme={null}
@@ -168,63 +161,57 @@ lookup, officers, registrations, officer reverse lookup) tidak dikenakan biaya. 
   ```
 </CodeGroup>
 
-<div id="data-partners">
-  ## Data partners
-</div>
+## Data partners {#data-partners}
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
     <Card title="Fiber.ai" icon="/docs/images/agent/connect/fiber.svg" href="/id/docs/agent/connect/fiber" width="400" height="400" data-path="images/agent/connect/fiber.svg">
-      **GTM &amp; rekrutmen.** Basis data B2B berisi perusahaan dan orang untuk menemukan prospek
-      serta riset kontak.
+      **GTM &amp; rekrutmen.** database B2B berisi perusahaan dan orang untuk menemukan prospek
+      dan riset kontak.
     </Card>
 
     <Card title="Similarweb" icon="/docs/images/agent/connect/similarweb.svg" href="/id/docs/agent/connect/similarweb" width="400" height="371" data-path="images/agent/connect/similarweb.svg">
-      **Analitik web.** Estimasi trafik, peringkat global, dan penemuan
-      kompetitor untuk domain mana pun.
+      **Analitik web.** Estimasi trafik, peringkat global, dan penemuan kompetitor
+      untuk domain apa pun.
     </Card>
 
     <Card title="Baselayer" icon="/docs/images/agent/connect/baselayer.svg" href="/id/docs/agent/connect/baselayer" width="400" height="247" data-path="images/agent/connect/baselayer.svg">
-      **Kepatuhan &amp; KYB.** Verifikasi bisnis di AS: pejabat, registrations, dan sinyal
+      **Kepatuhan &amp; KYB.** Verifikasi bisnis AS: pejabat, registrasi, dan sinyal
       risiko.
     </Card>
 
     <Card title="Polymarket" icon="/docs/images/agent/connect/polymarket.svg" href="/id/docs/agent/connect/polymarket" width="168" height="168" data-path="images/agent/connect/polymarket.svg">
-      **Prediction markets.** Peluang prediction market, riwayat harga, dan posisi
+      **Prediction markets.** Odds prediction market, riwayat harga, dan posisi
       trader dari Polymarket.
     </Card>
 
     <Card title="Affiliate.com" icon="/docs/images/agent/connect/affiliatecom.svg" href="/id/docs/agent/connect/affiliatecom" width="400" height="400" data-path="images/agent/connect/affiliatecom.svg">
-      **Perdagangan.** Pencarian katalog produk dengan harga, merek, dan tautan merchant.
+      **Commerce.** Pencarian katalog produk dengan harga, merek, dan tautan merchant.
     </Card>
 
     <Card title="Particle" icon="/docs/images/agent/connect/particle.svg" href="/id/docs/agent/connect/particle" width="400" height="400" data-path="images/agent/connect/particle.svg">
-      **Intelijen media.** Cari transcript podcast lengkap dengan atribusi pembicara
+      **Media intelligence.** Cari transkrip podcast lengkap dengan atribusi pembicara
       dan timestamp.
     </Card>
 
     <Card title="Financial Datasets" icon="/docs/images/agent/connect/financialdatasets.svg" href="/id/docs/agent/connect/financialdatasets" width="401" height="400" data-path="images/agent/connect/financialdatasets.svg">
-      **Keuangan.** Harga, fundamental, laba, SEC filings, kepemilikan, dan
-      penyaringan saham untuk lebih dari 27.000 ticker AS.
+      **Keuangan.** Harga, fundamental, earnings, SEC filings, kepemilikan, dan
+      screening saham untuk 27.000+ ticker AS.
     </Card>
 
     <Card title="Jinko" icon="/docs/images/agent/connect/jinko.svg" href="/id/docs/agent/connect/jinko" width="400" height="395" data-path="images/agent/connect/jinko.svg">
-      **Perjalanan.** Pencarian penerbangan dan hotel dengan harga real-time.
+      **Travel.** Pencarian penerbangan dan hotel dengan harga real-time.
     </Card>
   </Columns>
 </div>
 
-Butuh sumber yang belum tercantum di atas? Lihat [Provider tambahan](/id/docs/agent/connect/additional-partners) kami, yang bisa diaktifkan atas permintaan dengan menghubungi tim kami.
+Butuh source yang belum tercantum di atas? Lihat [Provider tambahan](/id/docs/agent/connect/additional-partners) kami, yang tersedia atas permintaan dengan menghubungi tim kami.
 
-<div id="usage">
-  ## Penggunaan
-</div>
+## Penggunaan {#usage}
 
-<div id="combining-providers">
-  ### Menggabungkan provider
-</div>
+### Menggabungkan provider {#combining-providers}
 
-Attach partner sebanyak yang dibutuhkan tugas Anda. Exa Agent akan memanggil masing-masing partner pada bidang yang paling dikuasainya dan memadukan hasilnya dengan web search menjadi satu jawaban terstruktur:
+Attach sebanyak apa pun partner yang dibutuhkan tugas Anda. Exa Agent memanggil masing-masing partner di bidang yang paling dikuasainya dan memadukan hasilnya dengan web search menjadi satu jawaban terstruktur:
 
 ```json theme={null}
 {

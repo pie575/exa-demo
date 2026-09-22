@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="update-a-monitor">
-  # monitor 업데이트
-</div>
+# monitor 업데이트 {#update-a-monitor}
 
-> 기존 monitor를 업데이트합니다. 모든 필드는 선택 사항입니다. `search`의 경우 변경하려는 필드만 담은 부분 객체를 전송할 수 있습니다. 일정을 제거하려면 `trigger`를 `null`로 설정하세요.
+> 기존 monitor를 업데이트합니다. 모든 field는 선택 사항입니다. `search`의 경우 변경하려는 field만 포함한 부분 객체를 보낼 수 있습니다. 일정을 제거하려면 `trigger`를 `null`로 설정하세요.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0

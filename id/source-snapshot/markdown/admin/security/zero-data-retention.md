@@ -1,17 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="zero-data-retention">
-  # Zero Data Retention
-</div>
+# Zero Data Retention {#zero-data-retention}
 
 > Ketersediaan Zero Data Retention di seluruh produk Exa.
 
-Zero Data Retention (ZDR) tersedia pada paket Enterprise dan diaktifkan per team. Hubungi [sales@exa.ai](mailto:sales@exa.ai) untuk informasi lebih lanjut.
+Zero Data Retention (ZDR) tersedia pada plan Enterprise dan diaktifkan per team. Hubungi [sales@exa.ai](mailto:sales@exa.ai) untuk detailnya.
 
 | Produk   | Ketersediaan ZDR |
 | -------- | ---------------- |

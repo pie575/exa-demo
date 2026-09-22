@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="news">
-  # Actualités
-</div>
+# Actualités {#news}
 
-> Trouvez des reportages récents, des analyses sectorielles et des sujets émergents avec Exa Search.
+> Trouvez des reportages récents, des articles sectoriels et des sujets émergents avec Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,56 +33,42 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Utilisez Exa Search pour les articles de fond des grands médias, de la presse spécialisée et des publications de niche. Les nouveaux articles deviennent consultables quelques minutes après leur publication. Associez une query en langage naturel à des filtres de date lorsque la publication window est une exigence stricte.
+Utilisez Exa Search pour les reportages des grands médias, de la presse spécialisée et des publications de niche. Les nouveaux articles deviennent consultables quelques minutes après leur publication. Combinez une requête en langage naturel avec des filtres de date lorsque la fenêtre de publication est une exigence stricte.
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## À utiliser pour {#use-it-for}
 
-* Études de marché et recherche en investissement
-* Cybersécurité et threat intelligence
-* Veille sur les entreprises, les produits et les concurrents
-* Notes de synthèse sectorielles et recherche sur l&#39;actualité
+* La recherche sur les marchés et les investissements
+* La cybersécurité et le renseignement sur les menaces
+* La surveillance des entreprises, des produits et des concurrents
+* Les briefings sectoriels et la recherche sur l&#39;actualité
 
-<div id="example-queries">
-  ## Exemples de requêtes
-</div>
+## Exemples de requêtes {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### Suivre l&#39;évolution d&#39;un dossier politique
-</div>
+### Suivre l&#39;évolution d&#39;un dossier politique {#follow-a-developing-policy-story}
 
-Précisez le sujet, le source type et la publication window pour que les résultats se concentrent sur la phase actuelle du dossier.
+Précisez le sujet, le type de source et la fenêtre de publication afin que les résultats portent sur la phase actuelle du dossier.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### Trouver des analyses de praticiens
-</div>
+### Trouver des analyses de professionnels du domaine {#find-practitioner-analysis}
 
-Précisez le source type lorsque vous recherchez des analyses de praticiens plutôt qu&#39;une couverture médiatique générale.
+Précisez le type de source lorsque vous recherchez des analyses de professionnels du domaine plutôt qu&#39;une couverture médiatique généraliste.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### Découvrir des discussions dans un format précis
-</div>
+### Découvrir des discussions dans un format spécifique {#discover-discussions-in-a-specific-format}
 
-Indiquez le format et le sujet dans la query. La search reste ainsi ouverte aux pages d&#39;épisodes et aux transcripts publiés sur le web.
+Indiquez le format et le sujet dans la requête. La recherche reste ainsi ouverte aux pages d&#39;épisodes et aux transcriptions publiées sur le web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### Rechercher la couverture médiatique défavorable
-</div>
+### Rechercher la presse défavorable {#research-adverse-media}
 
-Décrivez à la fois le signal négatif et la catégorie d&#39;entités que vous étudiez. Évitez de réduire la query au nom d&#39;une entreprise suivi du mot « actualités ».
+Décrivez à la fois le signal négatif et la catégorie d&#39;entité sur laquelle porte votre enquête. Évitez de réduire la requête à un nom d&#39;entreprise suivi du mot « actualités ».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## Envoyer une requête
-</div>
+## Envoyer une requête {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -127,12 +109,10 @@ Décrivez à la fois le signal négatif et la catégorie d&#39;entités que vous
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtenir des données structurées avec Exa Agent
-</div>
+## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
 
-Pour des données structurées qui nécessitent une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les sujets, les champs et la fenêtre temporelle dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
+Pour des données structurées qui nécessitent une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les sujets, les fields et la période qui vous intéressent : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 
-<Card title="Lancer une tâche Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
-  Composez une synthèse d&#39;actualité sourcée, comparez les couvertures médiatiques ou extrayez des faits normalisés d&#39;un sujet en cours d&#39;évolution.
+<Card title="Démarrer une tâche Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
+  Rédigez une synthèse d&#39;actualité sourcée, comparez les couvertures médiatiques ou extrayez des faits normalisés d&#39;un sujet en cours.
 </Card>

@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="list-api-keys">
-  # 列出 API key
-</div>
+# List API keys {#list-api-keys}
 
-> 获取团队下所有 API key 及其元数据。
+> 获取你所在团队的所有 API 密钥及其元数据。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户会获赠免费积分。
 </Card>
 
 <Info>
-  Team Management API 需按团队单独启用，并使用服务账户 API key 进行认证。为你的团队启用该功能后，即可在 [API keys 页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页中创建该 key。如需申请使用权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
+  Team Management API 需按团队单独启用，并使用服务账户 API 密钥进行身份验证。该功能为你的团队启用后，可在 [API 密钥页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页中创建此类密钥。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
 </Info>
 
-<div id="overview">
-  ## 概述
-</div>
+## 概览 {#overview}
 
-List API Keys 端点会返回与你的团队关联的所有 API key，其中包含每个 key 的 key ID、名称、速率限制和创建时间戳。
+List API Keys 端点会返回与你的团队关联的所有 API 密钥，包括每个密钥的 ID、名称、速率限制和创建时间戳。
 
-<div id="response-format">
-  ## 响应格式
-</div>
+## 响应格式 {#response-format}
 
-响应包含一个 API key 对象数组，每个对象包含以下信息：
+响应中包含一个 API 密钥对象数组，每个对象包含以下信息：
 
-* **id**：该 API key 的唯一标识符
-* **name**：便于识别的名称 (如果在创建时提供) 
-* **rateLimit**：速率限制，以每分钟请求数计 (如果已设置) 
-* **createdAt**：该 key 创建时间的 ISO 8601 时间戳
+* **id**：API 密钥的唯一标识符
+* **name**：便于识别的名称 (如果创建时提供)
+* **rateLimit**：速率限制，单位为每分钟请求数 (如果已设置)
+* **createdAt**：密钥创建时间的 ISO 8601 时间戳
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

@@ -1,30 +1,24 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="exa-for-google-sheets">
-  # Exa untuk Google Sheets
-</div>
+# Exa untuk Google Sheets {#exa-for-google-sheets}
 
 > Gunakan Exa Agent dan formula Exa langsung di Google Sheets.
 
 <Warning>
-  **Beberapa akun Google:** Add-on harus dijalankan dengan akun Google pertama (default) pada profil browser Anda. Jika Anda login ke beberapa akun sekaligus, Anda mungkin tidak dapat menyimpan atau memuat API key Anda. Untuk mengatasinya, buka Sheets di jendela samaran (incognito) dengan hanya satu akun, atau keluar dari akun lainnya agar akun yang Anda inginkan menjadi akun default. [Pelajari lebih lanjut](https://developers.google.com/apps-script/guides/projects#fix_issues_with_multiple_google_accounts).
+  **Beberapa akun Google:** Add-on harus dijalankan dengan akun Google pertama (default) di profil browser Anda. Jika Anda login ke beberapa akun sekaligus, Anda mungkin tidak dapat menyimpan atau memuat API key Anda. Untuk mengatasinya, buka Sheets di jendela penyamaran dengan satu akun saja, atau keluar dari akun lainnya agar akun yang Anda inginkan menjadi default. [Pelajari selengkapnya](https://developers.google.com/apps-script/guides/projects#fix_issues_with_multiple_google_accounts).
 </Warning>
 
-Gunakan Exa di dalam Google Sheets untuk meneliti web, membuat tabel, dan melengkapi data yang kosong.
+Gunakan Exa langsung di Google Sheets untuk melakukan research di web, membuat tabel, dan melengkapi data yang kosong.
 
-Add-on ini menawarkan dua cara kerja:
+Add-on ini menyediakan dua cara kerja:
 
 * **Exa Agent** untuk tabel utuh dan tugas lintas sel
 * **`=EXA(...)`** untuk satu jawaban dalam satu sel
 
-<div id="install">
-  ## Instalasi
-</div>
+## Instal {#install}
 
 <Steps>
   <Step title="Instal add-on">
@@ -41,7 +35,7 @@ Add-on ini menawarkan dua cara kerja:
 
   <Step title="Tambahkan API key Anda">
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Buat key di dashboard. Akun baru langsung mendapat credits gratis.
+      Buat key di dashboard. Akun baru mendapatkan credits gratis.
     </Card>
 
     Tempelkan key tersebut di sidebar.
@@ -52,22 +46,18 @@ Add-on ini menawarkan dua cara kerja:
   </Step>
 </Steps>
 
-<div id="exa-agent">
-  ## Exa Agent
-</div>
+## Exa Agent {#exa-agent}
 
 Exa Agent memungkinkan Anda menggunakan Exa di banyak sel sekaligus dalam Google Sheets.
 
-Gunakan fitur ini saat Anda ingin:
+Gunakan saat Anda ingin:
 
 * membuat tabel lengkap dari satu prompt
 * mengisi sel yang kosong pada tabel yang sudah ada
 * melanjutkan tabel dengan menambahkan baris baru
-* memperkaya daftar dengan data dari web
+* meng-enrich daftar dengan data dari web
 
-<div id="generate-a-table">
-  ### Membuat tabel
-</div>
+### Membuat tabel {#generate-a-table}
 
 Gunakan **Generate table** saat Anda ingin Exa membuat tabel baru.
 
@@ -80,25 +70,23 @@ Gunakan **Generate table** saat Anda ingin Exa membuat tabel baru.
 Contoh prompt:
 
 ```text theme={null}
-Cari 40 perusahaan AI teratas dan tampilkan nama perusahaan, URL situs web, CEO, tanggal pendirian, kantor pusat, dan deskripsi singkat.
+Temukan 40 perusahaan AI teratas dan tampilkan nama perusahaan, URL situs web, CEO, tanggal berdiri, kantor pusat, dan deskripsi singkat.
 ```
 
-Exa menelusuri web dan menuliskan tabel ke dalam sheet Anda.
+Exa melakukan Research di web dan menulis tabel ke dalam sheet Anda.
 
-Secara default, tabel dimulai dari sel yang dipilih. Anda dapat memilih sel awal lain di **More options**.
+Secara default, tabel dimulai dari sel yang dipilih. Anda bisa memilih sel awal lain di **More options**.
 
-<div id="fill-cells">
-  ### Fill cells
-</div>
+### Fill cells {#fill-cells}
 
-Gunakan **Fill cells** jika Anda sudah punya tabel dan ingin Exa mengisi data yang kosong.
+Gunakan **Fill cells** jika Anda sudah punya tabel dan ingin Exa mengisi data yang masih kosong.
 
-1. Pilih sel kosong di sheet Anda.
+1. Pilih sel-sel kosong di sheet Anda.
 2. Buka **Exa Agent**.
 3. Pilih **Fill cells**.
 4. Klik **Fill selected cells**.
 
-Exa akan membaca tabel di sekitar sel yang Anda pilih dan mengisi bagian yang kosong.
+Exa membaca tabel di sekitar pilihan Anda lalu mengisi bagian yang kosong.
 
 Pilih sel kosong pada tabel yang sudah memiliki header yang jelas sebelum menggunakan **Fill cells**.
 
@@ -111,21 +99,17 @@ Contoh:
 
 Pilih sel kosong pada baris Apple, lalu klik **Fill selected cells**. Exa memakai nama perusahaan dan baris-baris di sekitarnya sebagai konteks.
 
-<div id="continue-rows">
-  ### Melanjutkan baris
-</div>
+### Melanjutkan baris {#continue-rows}
 
-Anda juga dapat memilih baris kosong di bawah tabel.
+Anda juga dapat memilih baris kosong di bawah sebuah tabel.
 
-Jika tabel Anda berakhir pada peringkat 55 dan Anda memilih dua baris kosong berikutnya, Exa dapat melanjutkan tabel dengan peringkat 56 dan 57.
+Jika tabel Anda berakhir di peringkat 55 dan Anda memilih dua baris kosong berikutnya, Exa dapat melanjutkan tabel dengan peringkat 56 dan 57.
 
-Exa menjadikan baris yang sudah ada sebagai contoh, mempertahankan kolom yang sama, dan menghindari pengulangan item yang sudah ada di tabel.
+Exa memakai baris yang sudah ada sebagai contoh, mempertahankan kolom yang sama, dan menghindari pengulangan item yang sudah ada di tabel.
 
-<div id="exa">
-  ## `=EXA(...)`
-</div>
+## `=EXA(...)` {#exa}
 
-Gunakan `=EXA(...)` bila Anda ingin satu jawaban dalam satu sel. Fungsi ini melakukan search di web, membaca hasil teratas, lalu mengembalikan jawaban yang ringkas.
+Gunakan `=EXA(...)` saat Anda ingin satu jawaban dalam satu sel. Fungsi ini melakukan search di web, membaca hasil teratas, lalu mengembalikan jawaban yang ringkas.
 
 ```text theme={null}
 =EXA("what you want", cell)
@@ -145,15 +129,13 @@ Contoh:
 =EXA("Return the Amazon rating of this product", A2)
 ```
 
-Argumen kedua adalah konteks. Anda dapat menarik formula ke bawah dalam satu kolom untuk menjalankannya di banyak baris.
+Argumen kedua adalah konteks. Anda dapat menyeret formula ke bawah dalam satu kolom untuk menjalankannya di banyak baris.
 
 Gunakan `=EXA(...)` untuk jawaban sederhana dalam satu sel. Gunakan **Exa Agent** jika Anda ingin membuat atau mengisi seluruh tabel.
 
-<div id="exa_answer">
-  ## `=EXA_ANSWER(...)`
-</div>
+## `=EXA_ANSWER(...)` {#exa_answer}
 
-Jawaban AI tingkat lanjut dengan kendali penuh atas format output. Gunakan ini saat Anda memerlukan system prompt, output JSON terstruktur, citations, atau search type tertentu.
+Jawaban AI tingkat lanjut dengan kendali penuh atas format output. Gunakan ini saat Anda memerlukan system prompt, output JSON terstruktur, sitasi, atau search type tertentu.
 
 ```text theme={null}
 =EXA_ANSWER(prompt, [prefix], [suffix], [includeCitations], [systemPrompt], [outputSchema], [returnRawJson], [type])
@@ -164,9 +146,9 @@ Jawaban AI tingkat lanjut dengan kendali penuh atas format output. Gunakan ini s
 | `prompt`           | Ya    | —        | Pertanyaan atau prompt utama.                                                                           |
 | `prefix`           | Tidak | `""`     | Teks yang ditambahkan sebelum prompt.                                                                   |
 | `suffix`           | Tidak | `""`     | Teks yang ditambahkan setelah prompt.                                                                   |
-| `includeCitations` | Tidak | `FALSE`  | Jika `TRUE`, menambahkan citations sumber bernomor.                                                     |
-| `systemPrompt`     | Tidak | `""`     | Instruksi sistem untuk mengatur format output (mis. `"only return a number"`).                          |
-| `outputSchema`     | Tidak | `""`     | JSON schema untuk structured output. [Buat schema di sini](https://dashboard.exa.ai/playground/answer). |
+| `includeCitations` | Tidak | `FALSE`  | Jika `TRUE`, menambahkan sitasi sumber bernomor.                                                        |
+| `systemPrompt`     | Tidak | `""`     | Instruksi sistem untuk mengatur format keluaran (mis. `"only return a number"`).                        |
+| `outputSchema`     | Tidak | `""`     | JSON schema untuk output terstruktur. [Buat schema di sini](https://dashboard.exa.ai/playground/answer). |
 | `returnRawJson`    | Tidak | `FALSE`  | Jika `TRUE` dan `outputSchema` diisi, mengembalikan JSON lengkap alih-alih mengekstrak nilainya.        |
 | `type`             | Tidak | `"deep"` | Search type: `"auto"`, `"neural"`, `"fast"`, atau `"deep"`.                                             |
 
@@ -178,28 +160,26 @@ Contoh:
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-<div id="exa_search">
-  ## `=EXA_SEARCH(...)`
-</div>
+## `=EXA_SEARCH(...)` {#exa_search}
 
-Melakukan search di web dan mengembalikan daftar URL dalam bentuk vertikal. Mendukung pemfilteran domain, pemfilteran kategori, highlights konten, dan output hasil sintesis melalui `outputSchema`.
+Mencari di web dan mengembalikan daftar URL secara vertikal. Mendukung pemfilteran domain, pemfilteran kategori, kutipan konten, dan output tersintesis melalui `outputSchema`.
 
 ```text theme={null}
 =EXA_SEARCH(query, [numResults], [searchType], [prefix], [suffix], [includeDomainsStr], [excludeDomainsStr], [category], [highlightsMaxChars], [outputSchemaJson])
 ```
 
-| Parameter            | Wajib | Default  | Deskripsi                                                                                                                                                          |
-| -------------------- | ----- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `query`              | Ya    | —        | Query pencarian.                                                                                                                                                   |
-| `numResults`         | Tidak | `1`      | Jumlah hasil (1–10).                                                                                                                                               |
-| `searchType`         | Tidak | `"auto"` | `"auto"`, `"neural"`, atau `"keyword"`.                                                                                                                            |
-| `prefix`             | Tidak | `""`     | Teks yang ditambahkan sebelum query.                                                                                                                               |
-| `suffix`             | Tidak | `""`     | Teks yang ditambahkan setelah query.                                                                                                                               |
-| `includeDomainsStr`  | Tidak | `""`     | Domain yang disertakan, dipisahkan koma (mis. `"linkedin.com,crunchbase.com"`).                                                                                    |
-| `excludeDomainsStr`  | Tidak | `""`     | Domain yang dikecualikan, dipisahkan koma.                                                                                                                         |
-| `category`           | Tidak | `""`     | Filter berdasarkan tipe: `"company"`, `"publication"`, `"news"`, `"personal site"`, `"financial report"`, `"people"`.                                              |
-| `highlightsMaxChars` | Tidak | `0`      | Jika &gt; 0, meminta highlights konten dengan batas karakter ini per hasil.                                                                                        |
-| `outputSchemaJson`   | Tidak | `""`     | String JSON untuk `outputSchema` (mis. `"{""type"":""text"",""description"":""summarize""}"`). Jika diisi, mengembalikan teks output hasil sintesis alih-alih URL. |
+| Parameter            | Wajib | Default  | Deskripsi                                                                                                                                                            |
+| -------------------- | ----- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `query`              | Ya    | —        | Query pencarian.                                                                                                                                                     |
+| `numResults`         | Tidak | `1`      | Jumlah hasil (1–10).                                                                                                                                                 |
+| `searchType`         | Tidak | `"auto"` | `"auto"`, `"neural"`, atau `"keyword"`.                                                                                                                              |
+| `prefix`             | Tidak | `""`     | Teks yang ditambahkan sebelum query.                                                                                                                                 |
+| `suffix`             | Tidak | `""`     | Teks yang ditambahkan setelah query.                                                                                                                                 |
+| `includeDomainsStr`  | Tidak | `""`     | Domain yang disertakan, dipisahkan koma (misalnya, `"linkedin.com,crunchbase.com"`).                                                                                 |
+| `excludeDomainsStr`  | Tidak | `""`     | Domain yang dikecualikan, dipisahkan koma.                                                                                                                           |
+| `category`           | Tidak | `""`     | Filter berdasarkan tipe: `"company"`, `"publication"`, `"news"`, `"personal site"`, `"financial report"`, `"people"`.                                                |
+| `highlightsMaxChars` | Tidak | `0`      | Jika &gt; 0, meminta kutipan konten dengan batas karakter ini per hasil.                                                                                             |
+| `outputSchemaJson`   | Tidak | `""`     | String JSON untuk `outputSchema` (misalnya, `"{""type"":""text"",""description"":""summarize""}"`). Jika diisi, mengembalikan teks output hasil sintesis, bukan URL. |
 
 Contoh:
 
@@ -208,9 +188,7 @@ Contoh:
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-<div id="exa_contents">
-  ## `=EXA_CONTENTS(...)`
-</div>
+## `=EXA_CONTENTS(...)` {#exa_contents}
 
 Mengekstrak konten teks dari sebuah URL.
 
@@ -222,11 +200,9 @@ Mengekstrak konten teks dari sebuah URL.
 | --------- | ----- | ------------------------------------------------ |
 | `url`     | Ya    | URL lengkap (harus diawali `http` atau `https`). |
 
-<div id="exa_findsimilar">
-  ## `=EXA_FINDSIMILAR(...)`
-</div>
+## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
 
-Mencari URL yang mirip dengan URL acuan, dengan filter domain dan teks opsional.
+Mencari URL yang mirip dengan URL referensi, dengan filter domain dan teks yang bersifat opsional.
 
 ```text theme={null}
 =EXA_FINDSIMILAR(url, [numResults], [includeDomainsStr], [excludeDomainsStr], [includeTextStr], [excludeTextStr])
@@ -234,29 +210,25 @@ Mencari URL yang mirip dengan URL acuan, dengan filter domain dan teks opsional.
 
 | Parameter           | Wajib | Default | Deskripsi                                  |
 | ------------------- | ----- | ------- | ------------------------------------------ |
-| `url`               | Ya    | —       | URL acuan.                                 |
+| `url`               | Ya    | —       | URL referensi.                             |
 | `numResults`        | Tidak | `1`     | Jumlah hasil (1–10).                       |
 | `includeDomainsStr` | Tidak | `""`    | Domain yang disertakan, dipisahkan koma.   |
 | `excludeDomainsStr` | Tidak | `""`    | Domain yang dikecualikan, dipisahkan koma. |
 | `includeTextStr`    | Tidak | `""`    | Frasa yang harus muncul dalam hasil.       |
 | `excludeTextStr`    | Tidak | `""`    | Frasa yang tidak boleh muncul dalam hasil. |
 
-<div id="batch">
-  ## Batch
-</div>
+## Batch {#batch}
 
-Gunakan **Batch** saat Anda ingin mengerjakan banyak sel formula Exa sekaligus.
+Gunakan **Batch** saat Anda ingin mengelola banyak sel formula Exa sekaligus.
 
 Batch dapat:
 
-* memperbarui sel terpilih yang berisi formula Exa
+* menyegarkan sel terpilih yang berisi formula Exa
 * mengubah formula Exa terpilih menjadi nilai biasa
 
-Ubah formula menjadi nilai jika Anda ingin mempertahankan hasil saat ini dan mencegah formula berjalan kembali.
+Ubah formula menjadi nilai jika Anda ingin mempertahankan hasil saat ini dan mencegah formula dijalankan kembali.
 
-<div id="when-to-use-what">
-  ## Kapan menggunakan apa
-</div>
+## Kapan menggunakan apa {#when-to-use-what}
 
 | Tugas                                                           | Gunakan                    |
 | --------------------------------------------------------------- | -------------------------- |
@@ -264,26 +236,22 @@ Ubah formula menjadi nilai jika Anda ingin mempertahankan hasil saat ini dan men
 | Mengisi sel kosong pada tabel                                   | Exa Agent → Fill cells     |
 | Melanjutkan tabel dengan baris baru                             | Exa Agent → Fill cells     |
 | Mendapatkan satu nilai pada satu sel                            | `=EXA(...)`                |
-| Mendapatkan jawaban dengan system prompt atau structured output | `=EXA_ANSWER(...)`         |
-| Melakukan search dan mendapatkan daftar URL                     | `=EXA_SEARCH(...)`         |
+| Mendapatkan jawaban dengan system prompt atau output terstruktur | `=EXA_ANSWER(...)`         |
+| Mencari dan mendapatkan daftar URL                              | `=EXA_SEARCH(...)`         |
 | Mengekstrak teks dari sebuah URL                                | `=EXA_CONTENTS(...)`       |
-| Mencari halaman yang mirip dengan sebuah URL                    | `=EXA_FINDSIMILAR(...)`    |
+| Menemukan halaman yang serupa dengan sebuah URL                 | `=EXA_FINDSIMILAR(...)`    |
 | Menyegarkan banyak formula Exa sekaligus                        | Batch                      |
 | Menyimpan hasil formula sebagai teks biasa                      | Batch → Convert to values  |
 
-<div id="notes">
-  ## Catatan
-</div>
+## Catatan {#notes}
 
-* Permintaan API Exa dihitung dalam kuota usage Anda. Gunakan **Batch → Convert to values** untuk membekukan hasil agar formula tidak dihitung ulang.
+* Permintaan Exa API diperhitungkan dalam kuota penggunaan Anda. Gunakan **Batch → Convert to values** untuk membekukan hasil agar formula tidak menghitung ulang.
 * Add-on ini otomatis mencoba ulang hingga 3 kali dengan exponential backoff saat terkena rate limit (HTTP 429).
-* Mulailah dengan batch kecil (10–20 baris) sebelum menskalakannya hingga ratusan baris.
+* Mulailah dengan batch kecil (10–20 baris) sebelum menskalakan ke ratusan baris.
 
-<div id="links">
-  ## Tautan
-</div>
+## Tautan {#links}
 
-* [Pasang Exa AI untuk Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
-* [Dapatkan API key Exa](https://dashboard.exa.ai/api-keys)
-* [Repository GitHub](https://github.com/exa-labs/exa-for-sheets)
+* [Instal Exa AI for Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
+* [Dapatkan Exa API key](https://dashboard.exa.ai/api-keys)
+* [Repositori GitHub](https://github.com/exa-labs/exa-for-sheets)
 * [Kebijakan Privasi](https://exa.ai/exa-for-sheets/privacy-policy)

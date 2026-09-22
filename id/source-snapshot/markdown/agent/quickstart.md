@@ -1,50 +1,40 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="exa-agent">
-  # Exa Agent
-</div>
+# Exa Agent {#exa-agent}
 
-> Jalankan workflow deep research, list building, dan enrichment yang mengembalikan structured output.
+> Jalankan workflow deep research, list building, dan enrichment yang mengembalikan terstruktur output.
 
-Exa Agent adalah endpoint asinkron berbasis usage untuk tugas berkomputasi tinggi seperti list building, enrichment, dan deep research. Endpoint ini menangani penalaran kompleks dan dapat mengembalikan banyak field structured output.
+Exa Agent adalah endpoint asinkron berbasis penggunaan untuk tugas dengan komputasi berat seperti list building, enrichment, dan deep research. Endpoint ini menangani penalaran kompleks dan dapat mengembalikan banyak field terstruktur output.
 
-Anggap saja sebagai agent konteks: Anda mendeskripsikan data yang Anda inginkan beserta bentuk hasil yang diharapkan, lalu Exa Agent mengatur panggilan tool yang dibutuhkan untuk mewujudkannya. Satu run dapat memecah pekerjaan menjadi banyak search dari berbagai sudut pandang, membaca dan meringkas halaman di baliknya, membagi list building menjadi subtugas yang berjalan paralel, memverifikasi setiap kandidat terhadap criteria Anda, meng-enrich kontak, serta melakukan query ke data partners [Exa Connect](/id/docs/agent/connect/overview) mana pun yang Anda attach. Anda menerima seluruh konteks yang sudah dirangkai sebagai satu hasil terstruktur yang grounded, tanpa perlu mengatur sendiri setiap panggilan `/search` dan `/contents`.
+Anggap saja sebagai agent konteks: Anda menjelaskan data yang Anda inginkan beserta bentuk hasil yang diharapkan, lalu Exa Agent mengorkestrasi tool call yang diperlukan untuk mendapatkannya. Satu run dapat menyebar menjadi banyak search dari berbagai sudut pandang, membaca dan meringkas halaman di baliknya, memecah list building menjadi subtugas yang berjalan paralel, memverifikasi setiap kandidat terhadap kriteria Anda, meng-enrich kontak, serta melakukan query ke data partners [Exa Connect](/id/docs/agent/connect/overview) mana pun yang Anda attach. Konteks yang sudah dirangkai dikembalikan sebagai satu hasil terstruktur dan grounded, tanpa perlu mengorkestrasi sendiri setiap panggilan `/search` dan `/contents`.
 
-Setiap run dapat mengembalikan jawaban dalam bahasa alami, JSON yang tervalidasi terhadap schema, grounding di tingkat field, metadata, dan rincian cost. Anda dapat mengambil run yang telah selesai di kemudian hari, menampilkan daftar runs sebelumnya, melakukan replay event, atau melanjutkan dari run sebelumnya.
+Setiap run dapat mengembalikan jawaban dalam bahasa alami, JSON yang tervalidasi schema, grounding di tingkat field, metadata, dan rincian cost. Anda dapat mengambil run yang telah selesai di kemudian hari, menampilkan daftar run sebelumnya, melakukan replay events, atau melanjutkan dari run sebelumnya.
 
 <Tip>
-  Lebih suka MCP? Exa Agent dan [Exa Connect](/id/docs/agent/connect/overview) tersedia di [Exa MCP](/id/docs/get-started/exa-mcp#exa-agent). Aktifkan `tools=agent_run` untuk menjalankan riset multi-langkah, list building, enrichment, dan structured output dari Claude, Cursor, dan klien MCP lainnya.
+  Lebih suka MCP? Exa Agent dan [Exa Connect](/id/docs/agent/connect/overview) tersedia di [Exa MCP](/id/docs/get-started/exa-mcp#exa-agent). Aktifkan `tools=agent_run` untuk menjalankan research multi-langkah, list building, enrichment, dan terstruktur output dari Claude, Cursor, dan MCP clients lainnya.
 </Tip>
 
-<div id="when-to-use-exa-agent">
-  ## Kapan menggunakan Exa Agent
-</div>
+## Kapan menggunakan Exa Agent {#when-to-use-exa-agent}
 
-Gunakan Exa Agent ketika sebuah workflow membutuhkan lebih dari satu panggilan search atau extraction, atau ketika Anda harus menulis sendiri loop berisi search, pembacaan halaman, dan langkah verification untuk menyusun data:
+Gunakan Exa Agent ketika sebuah workflow membutuhkan lebih dari satu search atau extraction call, atau ketika Anda harus menulis sendiri loop berisi searches, pembacaan halaman, dan langkah verifikasi untuk menyusun data:
 
-* Membangun daftar dari criteria yang bersifat terbuka, lalu melakukan enrich pada setiap hasil
-* Meneliti entitas di banyak bidang lengkap dengan citations
-* Menjalankan tugas multi-langkah seperti &quot;temukan perusahaan, lalu temukan pengambil keputusannya&quot;
-* Menghasilkan JSON terstruktur dari tugas riset web yang berjalan lama
-* Menggabungkan riset web dengan data partners premium dalam satu grounded answer
-* Melanjutkan run sebelumnya dengan permintaan lanjutan seperti &quot;temukan 10 hasil lagi&quot;
+* Membangun daftar dari kriteria terbuka, lalu enrich setiap hasil
+* Meneliti entitas pada banyak fields lengkap dengan sitasi
+* Menjalankan tugas multi-hop seperti &quot;temukan perusahaan, lalu temukan pengambil keputusannya&quot;
+* Menghasilkan JSON terstruktur dari tugas Research web yang berjalan lama
+* Menggabungkan Research web dengan data partners premium dalam satu grounded answer
+* Melanjutkan run sebelumnya dengan follow-up permintaan seperti &quot;temukan 10 hasil lagi&quot;
 
-Exa Agent memang dirancang asinkron dan berlatensi lebih tinggi. Untuk satu search berlatensi rendah yang panggilannya Anda atur sendiri, mulailah dengan [Search API](/id/docs/search/quickstart).
+Exa Agent memang dirancang bersifat async dengan latency yang lebih tinggi. Untuk satu search dengan latency rendah di mana Anda mengorkestrasi calls sendiri, mulailah dengan [Search API](/id/docs/search/quickstart).
 
-<div id="quickstart">
-  ## Quickstart
-</div>
+## Quickstart {#quickstart}
 
-Contoh ini memulai run yang menyusun daftar terstruktur berisi orang-orang yang memenuhi criteria Anda. Hasilnya dikembalikan dalam format JSON di `output.structured`.
+Contoh ini memulai sebuah run yang menyusun daftar orang terstruktur sesuai kriteria Anda. Hasilnya dikembalikan dalam bentuk JSON di `output.structured`.
 
-<div id="1-install-the-exa-sdk">
-  ### 1. Instal SDK Exa
-</div>
+### 1. Instal SDK Exa {#1-install-the-exa-sdk}
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -56,9 +46,7 @@ Contoh ini memulai run yang menyusun daftar terstruktur berisi orang-orang yang 
   ```
 </CodeGroup>
 
-<div id="2-set-your-api-key">
-  ### 2. Atur API key Anda
-</div>
+### 2. Atur API key Anda {#2-set-your-api-key}
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -74,9 +62,7 @@ Contoh ini memulai run yang menyusun daftar terstruktur berisi orang-orang yang 
   </Tab>
 </Tabs>
 
-<div id="3-create-a-run">
-  ### 3. Buat run
-</div>
+### 3. Buat run {#3-create-a-run}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -173,13 +159,11 @@ Contoh ini memulai run yang menyusun daftar terstruktur berisi orang-orang yang 
   ```
 </CodeGroup>
 
-Tambahkan `Accept: text/event-stream` saat membuat run untuk menerima server-sent events ketika run diantrekan, dimulai, dan selesai. Lihat [Stream events](#stream-events) untuk detail selengkapnya.
+Tambahkan `Accept: text/event-stream` saat membuat run untuk menerima server-sent events ketika run masuk antrean (queued), dimulai, dan selesai. Lihat [Stream events](#stream-events) untuk detail selengkapnya.
 
-<div id="4-poll-for-completion">
-  ### 4. Poll hingga selesai
-</div>
+### 4. Poll hingga selesai {#4-poll-for-completion}
 
-Jika Anda tidak melakukan streaming event, simpan `id` yang dikembalikan lalu poll run tersebut hingga mencapai status terminal.
+Jika Anda tidak melakukan streaming events, simpan `id` yang dikembalikan lalu poll run tersebut hingga mencapai status terminal.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -228,25 +212,23 @@ Jika Anda tidak melakukan streaming event, simpan `id` yang dikembalikan lalu po
   ```
 </CodeGroup>
 
-Run yang sudah selesai berisi:
+Runs yang telah selesai berisi:
 
 * `output.text`: jawaban dalam bahasa alami
-* `output.structured`: JSON tervalidasi jika Anda menyediakan `outputSchema`
-* `output.grounding`: citations untuk teks atau field terstruktur, bila tersedia
+* `output.structured`: JSON tervalidasi bila Anda menyediakan `outputSchema`
+* `output.grounding`: sitasi untuk teks atau fields terstruktur, bila dihasilkan
 * `costDollars`: rincian cost dari run tersebut
 
 <Note>
   Exa Agent juga tersedia melalui Responses API yang kompatibel dengan OpenAI. Arahkan
-  OpenAI SDK ke `https://api.exa.ai`, gunakan `model: "exa-agent"`, lalu pilih
-  eksekusi sinkron, streaming, atau background. Lihat [kompatibilitas OpenAI
-  SDK](/id/docs/integrations/openai-sdk#agent-via-responses-api).
+  SDK OpenAI ke `https://api.exa.ai`, gunakan `model: "exa-agent"`, lalu pilih
+  eksekusi synchronous, streaming, atau background. Lihat [kompatibilitas SDK
+  OpenAI](/id/docs/integrations/openai-sdk#agent-via-responses-api).
 </Note>
 
-<div id="verify-and-enrich-a-specific-entity">
-  ## Memverifikasi dan meng-enrich entitas tertentu
-</div>
+## Verifikasi dan enrich entitas tertentu {#verify-and-enrich-a-specific-entity}
 
-Selain list building, gunakan Exa Agent untuk memeriksa satu entitas yang sudah diketahui, memverifikasi suatu klaim terhadap sumber otoritatif, dan mengembalikan enrichment terstruktur. Contoh ini mengecek apakah situs web resmi sebuah perusahaan memiliki halaman harga yang dapat diakses publik, lalu meng-enrich hasilnya dengan detail harga jika tersedia. Schema hanya mewajibkan `domain` dan `verdict`; selebihnya adalah enrichment opsional.
+Selain list building, gunakan Exa Agent untuk menelaah satu entitas yang sudah diketahui, memverifikasi sebuah klaim terhadap sources tepercaya, dan mengembalikan enrichment terstruktur. Contoh ini memeriksa apakah situs web resmi sebuah perusahaan memiliki halaman pricing yang dapat diakses publik, lalu meng-enrich hasil dengan detail pricing bila tersedia. Schema hanya mewajibkan `domain` dan `verdict`; selebihnya merupakan enrichment opsional.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -417,19 +399,17 @@ Selain list building, gunakan Exa Agent untuk memeriksa satu entitas yang sudah 
 </CodeGroup>
 
 <Note>
-  Schema untuk workflow verification sebaiknya memperhitungkan ketidakpastian. Buat
-  field yang mungkin tidak dapat diverifikasi menjadi nullable dan jangan sertakan dalam `required`,
+  Schema untuk workflow verifikasi sebaiknya memperhitungkan ketidakpastian. Jadikan
+  field yang mungkin tidak dapat diverifikasi bersifat nullable dan jangan sertakan dalam `required`,
   sehingga agent dapat mengembalikan `null` alih-alih mengarang nilai. Enum `verdict`
-  membedakan pemeriksaan yang gagal (`cannot_verify`) dari evidence negatif
-  yang sesungguhnya (`absent`): situs yang tidak dapat diakses bukan berarti
+  membedakan pemeriksaan yang gagal (`cannot_verify`) dari bukti negatif
+  yang sebenarnya (`absent`): situs yang tidak dapat dijangkau bukan bukti bahwa
   halaman tersebut tidak ada.
 </Note>
 
-<div id="stream-events">
-  ## Stream events
-</div>
+## Stream events {#stream-events}
 
-Streaming membuat permintaan create tetap terbuka dan mengirimkan Server-Sent Events (SSE) sampai run selesai. Lihat [Format event](#event-format) untuk mengetahui jenis event dan payload-nya.
+Streaming membuat permintaan create tetap terbuka dan mengirimkan Server-Sent Events (SSE) sampai run selesai. Lihat [Event format](#event-format) untuk jenis event dan payload-nya.
 
 Setel `stream=True` di Python, `stream: true` di JavaScript, atau kirim `Accept: text/event-stream` melalui HTTP:
 
@@ -472,9 +452,7 @@ Setel `stream=True` di Python, `stream: true` di JavaScript, atau kirim `Accept:
   ```
 </CodeGroup>
 
-<div id="event-format">
-  ### Format event
-</div>
+### Format event {#event-format}
 
 Setiap frame SSE berisi ID event, nama event, dan payload JSON:
 
@@ -484,29 +462,25 @@ event: agent_run.created
 data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:52.051Z"}
 ```
 
-Stream juga dapat berisi baris komentar seperti `: keep-alive`. Klien SSE mengabaikan komentar secara otomatis; parser kustom sebaiknya melakukan hal yang sama.
+Stream juga dapat berisi baris komentar seperti `: keep-alive`. Client SSE mengabaikan komentar secara otomatis; parser kustom sebaiknya melakukan hal yang sama.
 
-<div id="event-types">
-  ### Tipe event
-</div>
+### Jenis event {#event-types}
 
-| Event                 | Payload `data`                        | Cara menggunakannya                                                                                                   |
-| --------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `agent_run.created`   | `{ id, status: "queued", createdAt }` | Simpan ID run segera setelah permintaan diterima.                                                                     |
-| `agent_run.started`   | `{ id, status: "running" }`           | Tandai run sebagai sedang diproses.                                                                                   |
-| `agent_run.completed` | Objek Agent run yang telah selesai    | Baca jawaban akhir dari `data.output.text` atau `data.output.structured`, dan citations dari `data.output.grounding`. |
-| `agent_run.failed`    | `{ id, status: "failed", error }`     | Tampilkan `error.code` dan `error.message`; tidak ada output akhir yang tersedia.                                     |
-| `agent_run.cancelled` | `{ id, status: "cancelled", ... }`    | Hentikan pembacaan stream dan tangani run sebagai dibatalkan.                                                         |
+| Event                 | `data` payload                        | Cara menggunakannya                                                                                                |
+| --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `agent_run.created`   | `{ id, status: "queued", createdAt }` | Simpan ID run segera setelah permintaan diterima.                                                                  |
+| `agent_run.started`   | `{ id, status: "running" }`           | Tandai run sebagai sedang diproses.                                                                                |
+| `agent_run.completed` | Objek Agent run yang telah selesai    | Baca jawaban akhir dari `data.output.text` atau `data.output.structured`, dan sitasi dari `data.output.grounding`. |
+| `agent_run.failed`    | `{ id, status: "failed", error }`     | Tampilkan `error.code` dan `error.message`; tidak ada output akhir yang tersedia.                                  |
+| `agent_run.cancelled` | `{ id, status: "cancelled", ... }`    | Hentikan pembacaan stream dan tangani run sebagai dibatalkan.                                                      |
 
-Event yang terkait dengan langkah riset yang sama menyertakan `callId`, yang sesuai dengan `item.call_id` pada event progres tool. Gunakan nilai ini untuk mengelompokkan jejak search, sumber, dan progres tool. Sebagian deskripsi jejak search dihasilkan secara asinkron dan bisa tiba setelah event sumber atau tool yang dideskripsikannya, jadi jangan mengorelasikannya hanya berdasarkan urutan kedatangan.
+Event yang terkait dengan langkah research yang sama menyertakan `callId`, yang sesuai dengan `item.call_id` pada event progres tool. Gunakan nilai ini untuk mengelompokkan jejak search, sources, dan progres tool. Sebagian deskripsi jejak search dihasilkan secara asinkron dan bisa tiba setelah event source atau tool yang dijelaskannya, jadi jangan mengaitkannya hanya berdasarkan urutan kedatangan.
 
-Perlakukan `agent_run.source.added` sebagai pratinjau langsung, bukan sebagai daftar citations yang lengkap. `output.grounding` dari run terminal adalah output grounding yang otoritatif.
+Perlakukan `agent_run.source.added` sebagai pratinjau langsung, bukan daftar sitasi yang lengkap. `output.grounding` pada run terminal adalah output grounding yang otoritatif.
 
-<div id="replay-stored-events">
-  ### Replay event tersimpan
-</div>
+### Replay event tersimpan {#replay-stored-events}
 
-Untuk run non-ZDR, [`GET /agent/runs/{id}/events`](/id/docs/reference/agent-api/list-run-events) mengembalikan event tersimpan dalam bentuk JSON berpaginasi. Kirim `Accept: text/event-stream` untuk me-replay event tersimpan sebagai SSE, dan `Last-Event-ID` untuk melewati event yang sudah diproses oleh klien Anda:
+Untuk run non-ZDR, [`GET /agent/runs/{id}/events`](/id/docs/reference/agent-api/list-run-events) mengembalikan event tersimpan dalam bentuk JSON berhalaman. Kirim `Accept: text/event-stream` untuk melakukan replay event tersimpan sebagai SSE, dan `Last-Event-ID` untuk melewati event yang sudah diproses oleh client Anda:
 
 ```bash cURL theme={null}
 curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
@@ -515,19 +489,17 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   -H "Authorization: Bearer $EXA_API_KEY"
 ```
 
-Endpoint replay mengirimkan event yang tersimpan pada saat permintaan dibuat, lalu menutup koneksi; endpoint ini tidak terus mengikuti run yang sedang berjalan. Run ZDR tidak menyimpan event sehingga tidak dapat di-replay.
+Endpoint replay mengirimkan events yang tersimpan pada saat permintaan dibuat, lalu menutup koneksi; endpoint ini tidak terus mengikuti run yang sedang berjalan. Run ZDR tidak menyimpan events sehingga tidak dapat di-replay.
 
 Demi kompatibilitas ke depan, abaikan nama event yang tidak dikenali aplikasi Anda dan lanjutkan hingga event terminal diterima.
 
-<div id="return-structured-json">
-  ## Mengembalikan JSON terstruktur
-</div>
+## Mengembalikan JSON terstruktur {#return-structured-json}
 
-Gunakan `outputSchema` untuk mengembalikan JSON yang tervalidasi terhadap schema pada `output.structured`.
+Gunakan `outputSchema` untuk mengembalikan JSON yang tervalidasi terhadap schema di `output.structured`.
 
 `outputSchema` mendukung [spesifikasi JSON Schema](https://json-schema.org/).
 
-Untuk meminta informasi kontak, deskripsikan field kontak yang diinginkan pada `outputSchema`. Gunakan bentuk JSON Schema standar seperti `{ "type": "string", "format": "email" }` untuk alamat email, `{ "type": "string", "format": "phone" }` untuk nomor telepon, dan `{ "type": "string", "format": "uri" }` untuk URL. Batasi ukuran daftar dengan `maxItems` jika memungkinkan agar biaya maksimum contact enrichment dapat diprediksi.
+Untuk meminta informasi kontak, jelaskan field kontak yang diinginkan di `outputSchema`. Gunakan bentuk JSON Schema standar seperti `{ "type": "string", "format": "email" }` untuk alamat email, `{ "type": "string", "format": "phone" }` untuk nomor telepon, dan `{ "type": "string", "format": "uri" }` untuk URL. Batasi ukuran daftar dengan `maxItems` bila memungkinkan agar biaya maksimum contact-enrichment dapat diperkirakan.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -625,19 +597,15 @@ Untuk meminta informasi kontak, deskripsikan field kontak yang diinginkan pada `
   ```
 </CodeGroup>
 
-<div id="process-input-rows">
-  ## Memproses baris input
-</div>
+## Memproses baris input {#process-input-rows}
 
-Gunakan `input.data` ketika Anda sudah memiliki kumpulan data yang ingin di-enrich. Anda dapat menambahkan lebih banyak field pada setiap entitas data, memunculkan entitas tambahan berdasarkan data yang Anda masukkan, atau keduanya.
+Gunakan `input.data` jika Anda sudah memiliki kumpulan data yang ingin di-enrich. Anda dapat menambahkan lebih banyak field ke setiap entitas data, memunculkan entitas tambahan berdasarkan data yang Anda masukkan, atau keduanya.
 
 Untuk contoh lengkap enrichment baris, lihat [Contoh Agent](/id/docs/agent/examples#enrich-input-rows-code).
 
-<div id="process-exclusions">
-  ## Memproses pengecualian
-</div>
+## Memproses pengecualian {#process-exclusions}
 
-Gunakan `input.exclusion` untuk mencegah entri tertentu muncul dalam run. Pada contoh di bawah ini, kita ingin mencari 10 hewan paling menggemaskan, tetapi kambing dan panda kita kecualikan dari run karena kita sudah tahu betapa menggemaskannya mereka.
+Gunakan `input.exclusion` untuk mencegah entri tertentu muncul dalam run. Pada contoh di bawah ini, kita ingin mencari 10 hewan paling menggemaskan, tetapi kambing dan panda dikecualikan dari run karena kita sudah tahu betapa menggemaskannya mereka.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -691,11 +659,9 @@ Gunakan `input.exclusion` untuk mencegah entri tertentu muncul dalam run. Pada c
   ```
 </CodeGroup>
 
-<div id="connect-data-sources">
-  ## Hubungkan sumber data
-</div>
+## Hubungkan sumber data {#connect-data-sources}
 
-Indeks sudah tersedia di setiap run. Gunakan `dataSources` hanya untuk meng-attach partner [Exa Connect](/id/docs/agent/connect/overview). Setiap entri memilih satu `provider`. Ketika sebuah properti di `outputSchema` Anda merujuk ke sumber tertentu (mis. &quot;dari Similarweb&quot;), Exa Agent akan memanggil tool provider yang sesuai alih-alih menebak dari halaman web.
+Indeks sudah tersedia di setiap run. Gunakan `dataSources` hanya untuk melakukan attach partner [Exa Connect](/id/docs/agent/connect/overview). Setiap entri memilih satu `provider`. Jika sebuah properti dalam `outputSchema` Anda merujuk ke sumber tertentu (misalnya, &quot;dari Similarweb&quot;), Exa Agent akan memanggil tool provider yang sesuai alih-alih menebak dari halaman web.
 
 ```json theme={null}
 {
@@ -708,11 +674,9 @@ Indeks sudah tersedia di setiap run. Gunakan `dataSources` hanya untuk meng-atta
 
 Lihat [Exa Connect](/id/docs/agent/connect/overview) untuk daftar lengkap data partners, lengkap dengan contoh untuk masing-masing.
 
-<div id="continue-from-a-previous-run">
-  ## Melanjutkan dari run sebelumnya
-</div>
+## Melanjutkan dari run sebelumnya {#continue-from-a-previous-run}
 
-Gunakan `previousRunId` untuk mengajukan follow-ups terhadap respons sebelumnya. Setiap follow-up akan memulai run baru dengan ID tersendiri. `previousRunId` membawa konteks ke run baru; ID ini tidak dipakai ulang sebagai ID run baru tersebut.
+Gunakan `previousRunId` untuk mengajukan follow-up terhadap response sebelumnya. Setiap follow-up memulai run baru dengan ID tersendiri. `previousRunId` membawa konteks ke run baru; ID tersebut tidak dipakai ulang sebagai ID run baru.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -751,9 +715,7 @@ Gunakan `previousRunId` untuk mengajukan follow-ups terhadap respons sebelumnya.
   ```
 </CodeGroup>
 
-<div id="find-a-run-id">
-  ## Menemukan ID run
-</div>
+## Menemukan ID run {#find-a-run-id}
 
 Tampilkan daftar run terbaru dan periksa statusnya:
 
@@ -791,75 +753,67 @@ Tampilkan daftar run terbaru dan periksa statusnya:
   ```
 </CodeGroup>
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
-Biaya dihitung berdasarkan usage dan ditetapkan per komponen:
+Biaya bersifat berbasis penggunaan dan dihitung per komponen:
 
-| Komponen                | Harga             |
-| ----------------------- | ----------------- |
-| Agent Compute Unit      | `1 ACU = $0.10`   |
-| Pemanggilan tool search | `$0.005 / search` |
+| Komponen           | Harga             |
+| ------------------ | ----------------- |
+| Agent Compute Unit | `1 ACU = $0.10`   |
+| Tool call search   | `$0.005 / search` |
 
 <Note>
-  Contact enrichment terpisah dari komponen harga inti di atas: contact enrichment email dikenakan `$0.02 / email`, dan contact enrichment nomor telepon dikenakan `$0.07 / phone number`.
+  Contact enrichment terpisah dari komponen harga inti di atas: contact enrichment email seharga `$0.02 / email`, dan contact enrichment nomor telepon seharga `$0.07 / phone number`.
 </Note>
 
-`usage.agentComputeUnits` mengukur komputasi model sepanjang run. Kueri yang kompleks, terutama yang memiliki field `input.data` berukuran besar, memerlukan lebih banyak langkah penalaran dan pemanggilan tool sehingga mengonsumsi lebih banyak ACU.
+`usage.agentComputeUnits` mengukur komputasi model selama keseluruhan run. Kueri yang kompleks, terutama yang memiliki field `input.data` berukuran besar, memerlukan lebih banyak langkah penalaran dan tool call sehingga mengonsumsi lebih banyak ACU.
 
-Lihat [limit Agent](/id/docs/admin/billing#agent-limits) untuk concurrency dan rate limit.
+Lihat [batas Agent](/id/docs/admin/billing#agent-limits) untuk konkurensi dan rate limit.
 
-<div id="effort">
-  ### Effort
-</div>
+### Effort {#effort}
 
-Gunakan `effort` untuk memilih tingkat biaya dan penalaran pada setiap run. Nilai yang didukung adalah `minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, dan `max`; nilai defaultnya adalah `auto`. Effort tetap memiliki harga per permintaan yang dapat diprediksi, sedangkan `auto` dan `max` (beta) ditagih berdasarkan pemakaian:
+Gunakan `effort` untuk memilih tingkat biaya dan penalaran pada setiap run. Nilai yang didukung adalah `minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, dan `max`; nilai default-nya adalah `auto`. Effort tetap memiliki harga per permintaan yang dapat diprediksi, sedangkan `auto` dan `max` (beta) dihitung berdasarkan penggunaan:
 
-| Effort    | Harga                                                       |
-| --------- | ----------------------------------------------------------- |
-| `minimal` | `$0.012 / request`                                          |
-| `low`     | `$0.025 / request`                                          |
-| `medium`  | `$0.10 / request`                                           |
-| `high`    | `$0.50 / request`                                           |
-| `xhigh`   | `$1.00 / request`                                           |
-| `auto`    | Berdasarkan pemakaian; hingga batas default `$5`            |
-| `max`     | **Beta**, berdasarkan pemakaian; hingga batas default `$20` |
+| Effort    | Harga                                         |
+| --------- | --------------------------------------------- |
+| `minimal` | `$0.012 / permintaan`                         |
+| `low`     | `$0.025 / permintaan`                         |
+| `medium`  | `$0.10 / permintaan`                          |
+| `high`    | `$0.50 / permintaan`                          |
+| `xhigh`   | `$1.00 / permintaan`                          |
+| `auto`    | Terukur; hingga batas default `$5`            |
+| `max`     | **Beta**, terukur; hingga batas default `$20` |
 
 <Info>
   Agent Max adalah tingkat effort tertinggi untuk pekerjaan yang lebih mengutamakan
-  kelengkapan dan ketelitian dibandingkan latensi atau biaya, termasuk list building
-  berskala besar, riset mendalam lintas banyak sumber, dan criteria yang sulit
+  kelengkapan dan ketelitian daripada latency atau biaya, termasuk list building
+  berskala besar, Research mendalam dari banyak sumber, dan kriteria yang sulit
   diverifikasi. Fitur ini berada dalam beta publik: permintaan dengan `effort: "max"`
-  harus menyertakan `Exa-Beta: agent-max-effort-2026-07-27`. Header ini menerima
+  harus menyertakan `Exa-Beta: agent-max-effort-2026-07-27`. Header tersebut menerima
   daftar token beta yang dipisahkan koma.
 </Info>
 
-`budget.maxCostDollars` adalah batas atas opsional per run untuk `auto` dan `max`. Nilai yang diterima adalah `$1`–`$100`; maksimum yang tersedia adalah `$100`, meskipun server dapat menetapkan maksimum yang lebih rendah. Batas default-nya adalah `$5` untuk `auto` dan `$20` untuk `max`. Ini adalah batas atas, bukan harga tetap: run yang selesai lebih cepat akan lebih murah. Budget tidak berlaku untuk effort tetap.
+`budget.maxCostDollars` adalah batas atas opsional per run untuk `auto` dan `max`. Nilainya menerima `$1`–`$100`; maksimum yang dirilis adalah `$100`, meskipun server dapat mengatur nilai maksimum yang lebih rendah. Batas default-nya adalah `$5` untuk `auto` dan `$20` untuk `max`. Ini adalah batas atas, bukan harga tetap: run yang selesai lebih cepat akan berbiaya lebih murah. Budget tidak diterima untuk effort tetap.
 
-<div id="choosing-an-effort-mode">
-  ### Memilih mode effort
-</div>
+### Memilih mode effort {#choosing-an-effort-mode}
 
-Mode effort tetap cocok digunakan ketika Anda menginginkan biaya per permintaan yang dapat diprediksi untuk riset standar. Gunakan `auto` untuk pekerjaan dengan scope yang bervariasi seperti list building, saat jumlah entitas bisa berbeda-beda di tiap permintaan.
+Mode effort tetap cocok ketika Anda menginginkan harga per permintaan yang dapat diprediksi untuk Research standar. Gunakan `auto` untuk pekerjaan dengan scope yang bervariasi seperti list building, di mana jumlah entitas bisa berbeda dari satu permintaan ke permintaan lainnya.
 
-| Effort    | Paling cocok untuk                                                                             | Kompleksitas schema yang disarankan                                       | Perkiraan runtime                     |
-| --------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------- |
-| `minimal` | Pencarian berbiaya paling rendah, tugas faktual yang sangat sempit, jawaban singkat            | Satu atau dua field, schema dangkal                                       | Paling murah, paling tidak menyeluruh |
-| `low`     | Pencarian sederhana, tugas faktual sempit, jawaban singkat                                     | Beberapa field, schema dangkal                                            | Cepat, riset ringan                   |
-| `medium`  | Titik awal default untuk sebagian besar tugas riset standar                                    | Jumlah field sedang, objek bersarang sederhana                            | Kualitas/runtime seimbang             |
-| `high`    | Riset yang lebih sulit, lebih banyak citations, kelengkapan lebih ketat                        | Schema lebih besar atau field yang lebih bernuansa                        | Lebih lambat, lebih menyeluruh        |
-| `xhigh`   | Tugas bernilai tinggi saat kelengkapan lebih penting daripada cost/latensi                     | Schema kompleks, banyak field, verification yang sulit                    | Effort tetap paling lambat            |
-| `auto`    | Pekerjaan dengan scope bervariasi, list building, tingkat kesulitan tugas yang tidak diketahui | Fleksibel; berguna ketika jumlah entitas atau beban kerja belum diketahui | Bervariasi                            |
-| `max`     | Riset dengan effort tertinggi (beta)                                                           | Schema kompleks, banyak field, verification yang sulit                    | Berjalan paling lama                  |
+| Effort    | Paling cocok untuk                                                                             | Kompleksitas schema yang disarankan                                       | Ekspektasi runtime                |
+| --------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | --------------------------------- |
+| `minimal` | Pencarian berbiaya paling rendah, tugas faktual yang sangat sempit, jawaban singkat            | Satu atau dua field, schema dangkal                                       | Termurah, paling tidak menyeluruh |
+| `low`     | Pencarian sederhana, tugas faktual yang sempit, jawaban singkat                                | Beberapa field, schema dangkal                                            | Cepat, Research ringan            |
+| `medium`  | Titik awal default untuk sebagian besar tugas Research standar                                 | Jumlah field sedang, objek bersarang sederhana                            | Kualitas/runtime seimbang         |
+| `high`    | Research yang lebih sulit, lebih banyak sitasi, kelengkapan yang lebih ketat                   | Schema lebih besar atau field yang lebih bernuansa                        | Lebih lambat, lebih menyeluruh    |
+| `xhigh`   | Tugas bernilai tinggi yang kelengkapannya lebih penting daripada biaya/latency                 | Schema kompleks, banyak field, verifikasi sulit                           | Effort tetap paling lambat        |
+| `auto`    | Pekerjaan dengan scope bervariasi, list building, tingkat kesulitan tugas yang tidak diketahui | Fleksibel; berguna ketika jumlah entitas atau beban kerja belum diketahui | Bervariasi                        |
+| `max`     | Research dengan effort tertinggi (beta)                                                        | Schema kompleks, banyak field, verifikasi sulit                           | Berjalan paling lama              |
 
-Mulailah dengan `medium` untuk riset entitas tunggal yang standar. Turunkan ke `low` atau `minimal` bila cost dan latensi lebih penting daripada kelengkapan. Naikkan ke `high` atau `xhigh` bila schema output lebih besar, field memerlukan verification, atau tugas membutuhkan penalaran yang lebih mendalam. Gunakan `auto` bila Anda belum mengetahui scope-nya sejak awal, misalnya pada list building atau workflow yang berpotensi mengembalikan banyak entitas.
+Mulailah dengan `medium` untuk Research entitas tunggal yang standar. Turunkan ke `low` atau `minimal` ketika biaya dan latency lebih penting daripada kelengkapan. Naikkan ke `high` atau `xhigh` ketika schema output lebih besar, field perlu diverifikasi, atau tugas memerlukan penalaran yang lebih mendalam. Gunakan `auto` ketika Anda belum mengetahui scope-nya sejak awal, misalnya pada list building atau workflow yang mungkin mengembalikan banyak entitas.
 
-Runtime bervariasi tergantung tingkat kesulitan query, kompleksitas schema, dan ketersediaan sumber eksternal. Anggap mode effort sebagai pertukaran antara kualitas/cost/runtime, bukan jaminan latensi yang ketat.
+Runtime bervariasi tergantung tingkat kesulitan query, kompleksitas schema, dan ketersediaan sumber eksternal. Perlakukan mode effort sebagai tradeoff antara kualitas/biaya/runtime, bukan sebagai jaminan latency yang pasti.
 
-<div id="run-with-max-effort">
-  ### Menjalankan run dengan effort max
-</div>
+### Menjalankan run dengan effort max {#run-with-max-effort}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -903,26 +857,22 @@ Runtime bervariasi tergantung tingkat kesulitan query, kompleksitas schema, dan 
 
 Contoh SDK ini memerlukan versi `exa-py` atau `exa-js` yang mendukung Agent Max.
 
-<div id="zero-data-retention">
-  ## Zero Data Retention
-</div>
+## Zero Data Retention {#zero-data-retention}
 
 Exa Agent mendukung [Zero Data Retention](/id/docs/admin/security/zero-data-retention) (ZDR). ZDR diaktifkan per Team. [Hubungi kami](mailto:sales@exa.ai) untuk mengaktifkannya pada akun Anda.
 
-Jika ZDR aktif untuk Team Anda:
+Ketika ZDR aktif untuk Team Anda:
 
-* Buat runs dengan Streaming (`Accept: text/event-stream`) untuk menerima output secara langsung, atau lakukan poll pada runs asinkron dalam rentang waktu retensi.
-* Data run tersedia selama run berjalan dan hingga 10 menit setelah run mencapai status terminal. Setelah melewati rentang waktu tersebut, run tidak dapat diambil lagi.
+* Buat runs dengan streaming (`Accept: text/event-stream`) untuk menerima output secara langsung, atau lakukan poll pada runs asinkron dalam rentang waktu retensi.
+* Data run tersedia selama run berjalan dan hingga 10 menit setelah run mencapai status terminal. Setelah rentang waktu tersebut, run tidak dapat diambil lagi.
 * `previousRunId` tidak tersedia.
 * `dataSources` Exa Connect tidak tersedia; permintaan yang menyertakannya akan mengembalikan error `400`.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah berikutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Apa saja yang ada di indeks" icon="search" href="/id/docs/search/data/overview" cta="Buka panduan" arrow="true">
-    Jelajahi sumber berita, kode, perusahaan, dan orang di seluruh web publik.
+    Jelajahi sources berita, kode, perusahaan, dan orang di seluruh public web.
   </Card>
 
   <Card title="Exa Connect" icon="database" href="/id/docs/agent/connect/overview" cta="Buka panduan" arrow="true">
@@ -930,7 +880,7 @@ Jika ZDR aktif untuk Team Anda:
   </Card>
 
   <Card title="Praktik terbaik Agent" icon="lightbulb" href="/id/docs/agent/best-practices" cta="Buka panduan" arrow="true">
-    Praktik terbaik dalam menggunakan Exa Agent.
+    Praktik terbaik penggunaan Exa Agent.
   </Card>
 
   <Card title="Contoh Agent" icon="code" href="/id/docs/agent/examples" cta="Buka panduan" arrow="true">

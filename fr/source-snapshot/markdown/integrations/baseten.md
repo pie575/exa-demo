@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="baseten">
-  # Baseten
-</div>
+# Baseten {#baseten}
 
-> Ancrez les modèles open source des Model APIs de Baseten avec Exa web search via les Hosted Tools de Baseten.
+> Fondez sur des preuves les modèles open source des Baseten Model APIs grâce à Exa web search via les Baseten Hosted Tools.
 
-Exa est un fournisseur de web search dans les [Hosted Tools de Baseten](https://www.baseten.co/blog/introducing-baseten-hosted-tools/). Les Model APIs de Baseten donnent accès à des modèles open source, et les Hosted Tools permettent à ces modèles d&#39;effectuer des recherches sur le web sans que vous ayez à mettre en place une boucle d&#39;outils : vous ajoutez un sélecteur d&#39;outil Exa à une requête standard, Baseten exécute conjointement le modèle et les recherches Exa dans une boucle côté serveur, et vous obtenez une réponse grounded au sein de cette même réponse. Aucune API key Exa n&#39;est nécessaire. Baseten répercute le coût d&#39;Exa sur votre facture Baseten, sans marge.
+Exa est un fournisseur de recherche web dans [Baseten Hosted Tools](https://www.baseten.co/blog/introducing-baseten-hosted-tools/). Les Baseten Model APIs exposent des modèles open source, et les Hosted Tools permettent à ces modèles de faire des recherches sur le web sans que vous ayez à mettre en place un tool loop : vous ajoutez un selector d&#39;outil Exa à une requête standard, Baseten exécute le modèle et les recherches Exa conjointement dans un loop côté serveur, et vous obtenez une réponse fondée sur des preuves au sein de cette même réponse. Aucune API key Exa n&#39;est nécessaire. Baseten répercute le coût d&#39;Exa sur votre facture Baseten sans marge supplémentaire.
 
-<div id="use-the-exa-web-search-tools">
-  ## Utiliser les outils Exa web search
-</div>
+## Utiliser les tools Exa web search {#use-the-exa-web-search-tools}
 
-Définissez le header `x-baseten-server-tools: true` et ajoutez un ou plusieurs sélecteurs Exa à votre tableau `tools`. Seul le `type` est nécessaire : Baseten développe automatiquement le tool schema, et le modèle décide quand effectuer une search, quoi rechercher et quelles pages lire. Les server-side tools fonctionnent avec les endpoints [Chat Completions](https://docs.baseten.co/reference/inference-api/chat-completions), [Messages](https://docs.baseten.co/reference/inference-api/messages) et Responses de Baseten, en mode bufferisé ou streaming.
+Définissez le header `x-baseten-server-tools: true`, puis ajoutez un ou plusieurs selectors Exa à votre array `tools`. Seul le `type` est nécessaire : Baseten développe automatiquement le schéma d&#39;outil, et le modèle décide quand chercher, quoi chercher et quelles pages lire. Les server-side tools fonctionnent avec les endpoints [Chat Completions](https://docs.baseten.co/reference/inference-api/chat-completions), [Messages](https://docs.baseten.co/reference/inference-api/messages) et Responses de Baseten, en mode bufferisé ou streaming.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -87,45 +81,39 @@ Définissez le header `x-baseten-server-tools: true` et ajoutez un ou plusieurs 
   ```
 </CodeGroup>
 
-Trois outils Exa sont disponibles. Donnez au modèle la search et le fetch lorsqu&#39;il doit d&#39;abord trouver des sources, puis lire les pages qu&#39;il retient.
+Trois tools Exa sont disponibles. Donnez au modèle search et fetch lorsqu&#39;il doit d&#39;abord découvrir des sources, puis lire les pages qu&#39;il retient.
 
-| Sélecteur                               | Ce que le modèle obtient                                                                         |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `baseten__exa__web_search_exa`          | [Exa search](/fr/docs/search/quickstart) : résultats pertinents avec le page content pour une query |
-| `baseten__exa__web_search_advanced_exa` | Search avec filtres de domaine, exploration des sous-pages et summary facultatif par résultat    |
-| `baseten__exa__web_fetch_exa`           | [Page contents complet](/fr/docs/contents/quickstart) pour une URL déjà connue du modèle            |
+| Selector                                | Ce que le modèle obtient                                                                           |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `baseten__exa__web_search_exa`          | [Exa search](/fr/docs/search/quickstart) : résultats pertinents avec le page content pour une requête |
+| `baseten__exa__web_search_advanced_exa` | Search avec filtres de domaines, crawl des sous-pages et un résumé optionnel par résultat          |
+| `baseten__exa__web_fetch_exa`           | [Page contents complet](/fr/docs/contents/quickstart) pour une URL dont le modèle dispose déjà        |
 
-Les sélecteurs ne prennent aucun field supplémentaire : le modèle renseigne les arguments de l&#39;outil à partir du schema d&#39;Exa. Servez-vous du system prompt pour orienter la politique de search : quand lancer une search, s&#39;il faut récupérer les sources primaires et comment citer. Utilisez `baseten.tool_settings` pour borner la boucle :
+Les selectors ne prennent aucun field supplémentaire : le modèle renseigne les arguments de l&#39;outil à partir du schéma Exa. Servez-vous du system prompt pour orienter la stratégie de recherche : quand chercher, s&#39;il faut récupérer des primary sources et comment citer. Utilisez `baseten.tool_settings` pour borner la loop :
 
-| Paramètre                      | À utiliser pour                                                                                                                                                                 |
-| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `max_react_iterations`         | Limiter les itérations du modèle par requête (12 par défaut, plage de 2 à 20). La dernière itération est réservée à la réponse : `N` autorise donc `N - 1` tours de tool calls. |
-| `max_tool_calls_per_iteration` | Limiter les appels de server-side tools dans une même itération (10 par défaut, plage de 1 à 10)                                                                                |
+| Paramètre                      | À utiliser pour                                                                                                                                                                             |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `max_react_iterations`         | Limiter les itérations du modèle par requête (12 par défaut, plage de 2 à 20). La dernière itération est réservée à la réponse : `N` autorise donc `N - 1` tours d&#39;appels d&#39;outils. |
+| `max_tool_calls_per_iteration` | Limiter les appels de server-side tools au sein d&#39;une itération (10 par défaut, plage de 1 à 10)                                                                                        |
 
-<div id="how-results-come-back">
-  ## Comment les résultats sont renvoyés
-</div>
+## Comment les résultats sont renvoyés {#how-results-come-back}
 
-La réponse finale arrive via le champ habituel de l&#39;endpoint. Les appels Exa terminés sont consignés selon le protocole : blocs `tool_use` et `tool_result` sur Messages, éléments `mcp_call` sur Responses, et `baseten.iterations[].continuation_messages` sur Chat Completions. Les requêtes en streaming reçoivent chaque appel de search et chaque résultat sous forme de server-sent events pendant l&#39;exécution de la boucle, ce qui permet d&#39;afficher la progression avant l&#39;arrivée de la réponse. Le tableau `baseten.request.server_tool_calls[]` indique l&#39;issue de chaque appel Exa de la requête.
+La réponse finale arrive via le field habituel de l&#39;endpoint. Les appels Exa terminés sont consignés selon le protocole : blocs `tool_use` et `tool_result` sur Messages, items `mcp_call` sur Responses et `baseten.iterations[].continuation_messages` sur Chat Completions. Les requests en streaming reçoivent chaque appel de search et chaque résultat sous forme de server-sent events pendant l&#39;exécution de la loop, ce qui permet d&#39;afficher la progression avant l&#39;arrivée de la réponse. L&#39;array `baseten.request.server_tool_calls[]` indique l&#39;issue de chaque appel Exa de la requête.
 
-<div id="pricing">
-  ## Tarification
-</div>
+## Tarification {#pricing}
 
-Les appels Exa sont facturés sur votre compte Baseten au tarif d&#39;Exa, sans majoration, en plus du coût des tokens du modèle : environ 0,007 $ par recherche et 0,001 $ par URL récupérée. Exa communique le montant de chaque appel à l&#39;exécution ; les appels individuels peuvent donc s&#39;écarter de ces valeurs. Les appels d&#39;outils facturés apparaissent dans les paramètres de l&#39;espace de travail Baseten, sous Billing → Usage, regroupés par fournisseur. Consultez le [tableau tarifaire de Baseten](https://docs.baseten.co/inference/model-apis/web-search#pricing) pour connaître les tarifs en vigueur.
+Les appels Exa sont facturés sur votre compte Baseten au tarif d&#39;Exa, sans majoration, en plus des coûts en jetons du modèle : environ $0,007 par search et $0,001 par URL récupérée. Exa communique le montant de chaque appel à l&#39;exécution, si bien que certains appels peuvent s&#39;écarter de ces valeurs. Les appels d&#39;outils facturés apparaissent dans les paramètres de l&#39;espace de travail Baseten, sous Billing → Usage, regroupés par fournisseur. Consultez le [tableau de tarification de Baseten](https://docs.baseten.co/inference/model-apis/web-search#pricing) pour connaître les tarifs en vigueur.
 
-Les Hosted Tools sont en accès anticipé sur Baseten, avec une limite de 25 requêtes par minute et par organisation. Essayez Exa search dans le [playground Baseten](https://app.baseten.co/model-apis/zai-org/GLM-5.3-Fast/playground), ou contactez Baseten pour relever cette limite en vue de charges de travail en production.
+Les Hosted Tools sont en accès anticipé sur Baseten, avec une limite de 25 requests par minute et par organization. Essayez Exa search dans le [playground Baseten](https://app.baseten.co/model-apis/zai-org/GLM-5.3-Fast/playground), ou contactez Baseten pour relever cette limite pour vos charges de travail en production.
 
-<div id="resources">
-  ## Ressources
-</div>
+## Ressources {#resources}
 
 <Columns cols={2}>
-  <Card title="Documentation web search de Baseten" icon="wrench" href="https://docs.baseten.co/inference/model-apis/web-search" cta="Ouvrir la documentation" arrow="true">
-    Exemples exécutables Messages, Responses et Chat Completions utilisant des server-side tools.
+  <Card title="Documentation recherche web de Baseten" icon="wrench" href="https://docs.baseten.co/inference/model-apis/web-search" cta="Ouvrir la documentation" arrow="true">
+    Exemples exécutables Messages, Responses et Chat Completions avec des server-side tools.
   </Card>
 
   <Card title="Référence des server-side tools" icon="book-open" href="https://docs.baseten.co/reference/inference-api/server-side-tool-execution" cta="Ouvrir la référence" arrow="true">
-    Catalogue de tools, paramètres de boucle, formats `tool_choice` et structures de réponse.
+    Catalogue d&#39;outils, paramètres de loop, formats `tool_choice` et structures de réponse.
   </Card>
 </Columns>

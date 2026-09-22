@@ -3,11 +3,11 @@ title: "Actualizar un webhook"
 openapi: "/es/docs/exa-spec.yaml PATCH /v0/webhooks/{id}"
 timestamp: false
 description: "Actualiza la URL de destino, los eventos suscritos o los metadatos
-  de un Webhook. Los campos omitidos se mantienen sin cambios."
+  de un webhook. Los campos omitidos permanecen sin cambios."
 ---
 
 <Warning>
   **No se siguen las redirecciones.** Si actualizas la URL, asegúrate de que sea
   el destino final. Los endpoints que respondan con una redirección 3xx se
-  considerarán entregas fallidas.
+  tratarán como entregas fallidas.
 </Warning>

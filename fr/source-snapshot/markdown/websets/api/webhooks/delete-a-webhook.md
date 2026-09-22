@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="delete-a-webhook">
-  # Supprimer un webhook
-</div>
+# Supprimer un webhook {#delete-a-webhook}
 
-> Supprime un Webhook. Son statut devient `inactive`, ce qui interrompt les futurs envois de webhook vers son URL.
+> Supprime un Webhook. Son statut devient `inactive`, ce qui met fin aux futurs envois de webhooks vers son URL.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/webhooks/{id}
 openapi: 3.1.0

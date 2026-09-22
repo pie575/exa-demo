@@ -1,24 +1,18 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可先通过该文件查看所有可用页面。
+> 在深入浏览之前，可通过该文件查看所有可用页面。
 
-<div id="update-a-webhook">
-  # 更新 webhook
-</div>
+# 更新 webhook {#update-a-webhook}
 
-> 更新 Webhook 的目标 URL、订阅事件或元数据。未传入的字段保持不变。
+> 更新 Webhook 的目标 URL、订阅的 events 或元数据。未提供的 fields 保持不变。
 
 <Warning>
-  **不会跟随重定向。** 如果你更新 URL，请确保其为最终目标地址。返回 3xx
-  重定向的端点会被视为投递失败。
+  **不会跟随重定向。** 如果你更新 URL，请确保它是最终目标地址。返回 3xx
+  重定向的端点将被视为投递失败。
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

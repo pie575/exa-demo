@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="update-a-webset">
-  # Memperbarui webset
-</div>
+# Memperbarui webset {#update-a-webset}
 
-> Memperbarui `title` atau `metadata` sebuah Webset. Search, import, dan enrichment dikelola melalui endpoint-nya masing-masing.
+> Memperbarui `title` atau `metadata` sebuah Webset. Searches, imports, dan enrichments dikelola melalui endpoint-nya masing-masing.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}
 openapi: 3.1.0

@@ -1,20 +1,16 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="answer">
-  # Answer
-</div>
+# Answer {#answer}
 
-> Dapatkan jawaban LLM atas sebuah pertanyaan yang berdasarkan hasil Exa search. `/answer` menjalankan Exa search dan menggunakan LLM untuk menghasilkan salah satu dari:
+> Dapatkan jawaban LLM atas sebuah pertanyaan berdasarkan hasil Exa search. `/answer` menjalankan Exa search dan menggunakan LLM untuk menghasilkan salah satu dari:
 
-1. Jawaban langsung untuk kueri spesifik. (misalnya &quot;Apa ibu kota Prancis?&quot; akan mengembalikan &quot;Paris&quot;)
-2. Ringkasan mendetail dengan citations untuk kueri terbuka (misalnya &quot;Bagaimana kondisi ai di bidang kesehatan?&quot; akan mengembalikan ringkasan dengan citations ke sumber-sumber yang relevan)
+1. Jawaban langsung untuk kueri yang spesifik (misalnya &quot;Apa ibu kota Prancis?&quot; akan mengembalikan &quot;Paris&quot;)
+2. Ringkasan mendetail dengan sitasi untuk kueri yang bersifat terbuka (misalnya &quot;Bagaimana kondisi ai di bidang kesehatan?&quot; akan mengembalikan ringkasan beserta sitasi ke sources yang relevan)
 
-Respons mencakup jawaban yang dihasilkan sekaligus sumber yang digunakan untuk menyusunnya. Endpoint ini juga mendukung streaming (dengan `stream=True`), yang akan mengembalikan token seiring token tersebut dihasilkan.
+Response mencakup jawaban yang dihasilkan sekaligus sources yang dipakai untuk menyusunnya. Endpoint ini juga mendukung streaming (dengan `stream=True`), yang akan mengembalikan token seiring token tersebut dihasilkan.
 
 Sebagai alternatif, Anda dapat menggunakan [antarmuka chat completions](https://exa.ai/docs/integrations/openai-sdk#answer) yang kompatibel dengan OpenAI.
 
@@ -26,9 +22,7 @@ Sebagai alternatif, Anda dapat menggunakan [antarmuka chat completions](https://
   `/answer` mendukung structured output melalui parameter `outputSchema`. Berikan objek [JSON Schema](https://json-schema.org/draft-07) dan jawaban akan dikembalikan sebagai JSON terstruktur yang sesuai dengan schema Anda, bukan sebagai string biasa.
 </Info>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0

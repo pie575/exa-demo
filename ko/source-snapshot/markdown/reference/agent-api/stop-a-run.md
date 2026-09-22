@@ -1,32 +1,26 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 본격적으로 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="stop-a-run">
-  # 실행 중지
-</div>
+# 실행 중지 {#stop-a-run}
 
-> 진행 중인 Agent 실행을 정상적으로 중지하고 지금까지 수집한 결과를 유지합니다.
+> 진행 중인 Agent 실행을 안전하게 중지하고 지금까지 수집한 결과를 그대로 유지합니다.
 
-실행이 아직 활성 상태라면 agent가 작업을 마무리하고 지금까지 수집한 결과와 함께 실행을 조기에 완료합니다. 해당 실행은 상태가 `completed`, `stopReason: stopped`인 상태로 종료됩니다. 중지 전까지 누적된 usage에 대해서는 요금이 청구됩니다. 실행이 이미 종료 상태(completed, failed, cancelled)에 도달한 경우에는 이 endpoint가 기존 실행을 변경 없이 그대로 반환합니다.
+실행이 아직 활성 상태라면 agent가 작업을 마무리하고 지금까지 수집한 결과와 함께 실행을 조기에 완료합니다. 실행은 상태 `completed`, `stopReason: stopped`로 종료됩니다. 중지 이전까지 누적된 사용량에 대해서는 요금이 청구됩니다. 실행이 이미 종료 상태(completed, failed, cancelled)에 도달한 경우 엔드포인트는 기존 실행을 변경 없이 반환합니다.
 
 결과를 반환하지 않고 실행을 즉시 종료하려면 [cancel](/ko/docs/reference/agent-api/cancel-a-run)을 사용하세요.
 
 <Note>
-  `max` effort 실행에서만 지원됩니다. 요청 header로 `Exa-Beta: agent-max-effort-2026-07-27`를
-  전달해야 합니다. 이 header에는 쉼표로 구분된 베타 토큰 목록을 지정할 수 있습니다.
+  `max` effort 실행에서만 지원됩니다. `Exa-Beta: agent-max-effort-2026-07-27`을 요청 header로
+  전달해야 합니다. 이 header는 쉼표로 구분된 베타 토큰 목록을 허용합니다.
 </Note>
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0
@@ -391,13 +385,14 @@ components:
         - auto
         - max
       description: >-
-        해당 실행의 비용 및 추론 effort 설정입니다. `auto`로 설정하면 Exa가 적절한
-        effort를 선택합니다. `max`는 대규모 list building, 여러 소스를 활용한 deep
-        리서치, 검증하기 어려운 criteria 등 지연 시간이나 비용보다 완전성과 철저함이
-        더 중요한 작업을 위한 최고 effort 공개 베타 등급입니다.
+        Cost and reasoning effort preference for the run. `auto` lets Exa choose
+        the appropriate effort. `max` is the highest-effort public beta tier for
+        work where completeness and thoroughness matter more than latency or
+        cost, including large list building, deep multi-source research, and
+        criteria that are hard to verify.
       default: auto
     JsonValue:
-      description: 임의의 JSON 값입니다.
+      description: Any JSON value.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -417,8 +412,8 @@ components:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            해당 실행에서 활성화할 Exa Connect data provider입니다. 모든 provider
-            도구는 기본적으로 사용할 수 있습니다.
+            Exa Connect data provider to enable for the run. All provider tools
+            are available by default.
           example: fiber
       required:
         - provider
@@ -429,20 +424,20 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            해당 실행이 지출할 수 있는 최대 금액(미국 달러)입니다. $1~$100까지
-            허용되며 `auto`와 `max`에만 적용됩니다. 생략하면 기본 상한은 `auto`의
-            경우 $5, `max`의 경우 $20입니다.
+            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
+            applies only to `auto` and `max`; when omitted, the default cap is
+            $5 for `auto` and $20 for `max`.
           example: 10
       additionalProperties: false
       description: >-
-        종량제로 과금되는 `auto` 및 `max` effort에 적용되는 선택적 실행별 지출 limit입니다.
-        일찍 완료된 실행은 limit보다 적은 비용이 발생할 수 있습니다.
+        Optional per-run spending limit for the metered `auto` and `max`
+        efforts. Runs that finish early may cost less than the limit.
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: citations가 뒷받침하는 출력 필드입니다.
+          description: Output field the citations support.
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -455,7 +450,7 @@ components:
                 - low
                 - medium
                 - high
-              description: 이 필드에 대해 모델이 보고한 신뢰도입니다.
+              description: Model-reported reliability for this field.
             - type: 'null'
       required:
         - field
@@ -469,9 +464,9 @@ components:
         type: integer
         minimum: 0
       description: >-
-        해당 실행 중 사용된 Exa Connect 데이터 소스의 provider별 도구 call 횟수입니다.
-        키는 provider 이름입니다(예: `fiber`, `similarweb`). usage가 0이 아닌
-        provider만 포함됩니다.
+        Per-provider tool call counts for Exa Connect data sources used during
+        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
+        providers with non-zero usage are included.
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -480,9 +475,9 @@ components:
         type: number
         minimum: 0
       description: >-
-        해당 실행 중 사용된 Exa Connect 데이터 소스의 provider별 비용(달러)입니다.
-        키는 provider 이름입니다(예: `fiber`, `similarweb`). usage가 0이 아닌
-        provider만 포함됩니다.
+        Per-provider cost in dollars for Exa Connect data sources used during
+        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
+        providers with non-zero usage are included.
     AgentDataSourceProvider:
       type: string
       enum:
@@ -494,17 +489,17 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Exa Connect data provider의 식별자입니다.
+      description: Identifier of an Exa Connect data provider.
     AgentCitation:
       type: object
       properties:
         url:
           type: string
           format: uri
-          description: source URL입니다.
+          description: Source URL.
         title:
           type: string
-          description: 소스 제목입니다.
+          description: Source title.
       required:
         - url
       additionalProperties: false
@@ -514,15 +509,17 @@ components:
       name: Exa-Beta
       schema:
         description: >-
-          실험적 기능을 사용하도록 설정하기 위한 쉼표로 구분된 베타 기능 토큰입니다.
+          Comma-separated beta feature tokens for opting into experimental
+          features.
         type: string
       description: >-
-        실험적 기능을 사용하도록 설정하기 위한 쉼표로 구분된 베타 기능 토큰입니다.
+        Comma-separated beta feature tokens for opting into experimental
+        features.
   headers:
     XRequestId:
       description: >-
-        요청의 고유 식별자입니다. 해당 값을 포함하는 응답 본문에서 반환되는
-        `requestId` 필드와 일치합니다.
+        Unique identifier for the request. Matches the `requestId` field
+        returned in response bodies that carry one.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -532,12 +529,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key>로
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        x-api-key header에 Exa API key를 전달하세요. Authorization: Bearer <key>로
-        인증할 수도 있습니다.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

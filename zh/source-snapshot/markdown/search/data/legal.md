@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，请先通过该文件了解所有可用页面。
 
-<div id="legal-public-records">
-  # 法律与公共记录
-</div>
+# 法律与公共记录 {#legal-public-records}
 
-> 使用 Exa Search 查找法院判决意见、专利、制裁名单、政府合同以及其他公共记录。
+> 使用 Exa Search 查找法院判决意见、专利、制裁名单、政府合同及其他公共记录。
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,76 +33,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search 检索一手法律文献和政府记录，以及针对这些内容撰写的评述。
+使用 Exa Search 检索一手法律来源和政府记录，以及针对它们撰写的评述内容。
 
-<div id="included">
-  ## 包含内容
-</div>
+## 包含内容 {#included}
 
-* 美国法院判决意见，含全文、法院、案卷号及引用信息等元数据
+* 美国法院判决意见，含全文、法院、案卷号及引用来源元数据
 * 已授权的美国专利，含摘要、权利要求、说明书、发明人及受让人
 * 法律、法规及监管机构指引
-* 制裁名单与监控名单
+* 制裁名单与 Watchlist
 * 政府合同与采购记录
 * 人口普查数据及其他公共统计记录
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
 * 判例法研究与法律 RAG
-* 法规与政策监测
-* 现有技术检索与自由实施(FTO)检索
+* 监管与政策监测
+* 现有技术检索与自由实施调查
 * 合规筛查与尽职调查
 * 公共部门市场研究
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## 查询示例 {#example-queries}
 
-<div id="find-case-law">
-  ### 查找判例法
-</div>
+### 查找判例法 {#find-case-law}
 
-用通俗语言描述法律问题和司法管辖区，而不是直接给出案例引证。
+用通俗语言描述法律问题和司法辖区，而不是直接给出引用来源。
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### 检索专利
-</div>
+### 检索专利 {#search-patents}
 
-像撰写权利要求那样，描述这项发明的功能。
+像撰写权利要求那样描述该发明的功能。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### 制裁名单筛查
-</div>
+### 针对制裁名单进行筛查 {#screen-against-sanctions}
 
-指明要筛查的名单以及实体类别。
+指明你要筛查的名单以及实体类别。
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### 研究政府支出
-</div>
+### 研究政府支出 {#research-government-spending}
 
 指明采购机构或服务类别，以及时间范围。
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### 提取公开统计数据
-</div>
+### 获取公共统计数据 {#pull-public-statistics}
 
 指明数据集和地理范围。
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -147,12 +125,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果结构化数据需要跨多个来源进行研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述所需的司法管辖区、记录类型、criteria 和输出字段，Agent 即可返回经 schema 校验的结果，并附带引用来源。
+若所需的结构化数据需要跨多个来源进行研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的司法辖区、记录类型、criteria 和输出 fields，agent 即可返回经 schema 校验的结果及引用来源。
 
 <Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
-  跨记录类型筛查某一实体，或通过一手来源与相关报道追溯某项监管变更。
+  跨多种记录类型筛查某个实体，或借助 primary sources 与相关报道追踪监管变更。
 </Card>

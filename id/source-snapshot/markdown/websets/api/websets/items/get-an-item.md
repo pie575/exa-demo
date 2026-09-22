@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="get-an-item">
-  # Mendapatkan item
-</div>
+# Mendapatkan item {#get-an-item}
 
 > Mengembalikan sebuah Webset Item.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items/{id}
 openapi: 3.1.0
@@ -406,7 +400,7 @@ components:
                   properties:
                     name:
                       type: string
-                      description: Nama putaran pendanaan (mis. Seri A)
+                      description: Nama putaran pendanaan (mis. Series A)
                       nullable: true
                     date:
                       type: string
@@ -436,11 +430,11 @@ components:
               properties:
                 visitsMonthly:
                   type: number
-                  description: Perkiraan jumlah kunjungan situs web per bulan
+                  description: Perkiraan kunjungan situs web per bulan
                   nullable: true
                 uniqueVisitors:
                   type: number
-                  description: Perkiraan jumlah pengunjung unik per bulan
+                  description: Perkiraan pengunjung unik per bulan
                   nullable: true
               required:
                 - visitsMonthly
@@ -481,7 +475,7 @@ components:
           description: URL artikel
           type: string
         description:
-          description: Deskripsi singkat tentang relevansi artikel
+          description: Deskripsi singkat tentang relevance artikel
           type: string
         content:
           type: string
@@ -499,7 +493,7 @@ components:
               nullable: true
             publishedAt:
               type: string
-              description: Tanggal dan waktu artikel diterbitkan
+              description: Tanggal dan waktu artikel dipublikasikan
               nullable: true
           required:
             - title
@@ -526,7 +520,7 @@ components:
           description: URL makalah penelitian
           type: string
         description:
-          description: Deskripsi singkat tentang relevansi makalah penelitian
+          description: Deskripsi singkat tentang relevance makalah penelitian
           type: string
         content:
           type: string
@@ -544,7 +538,7 @@ components:
               nullable: true
             publishedAt:
               type: string
-              description: Tanggal dan waktu makalah penelitian diterbitkan
+              description: Tanggal dan waktu makalah penelitian dipublikasikan
               nullable: true
           required:
             - title
@@ -589,7 +583,7 @@ components:
               nullable: true
             publishedAt:
               type: string
-              description: Tanggal dan waktu situs web diterbitkan
+              description: Tanggal dan waktu situs web dipublikasikan
               nullable: true
           required:
             - title
@@ -622,7 +616,7 @@ components:
             - 'yes'
             - 'no'
             - unclear
-          description: Tingkat pemenuhan kriteria
+          description: Pemenuhan kriteria
           type: string
         references:
           default: []
@@ -675,7 +669,7 @@ components:
           nullable: true
         reasoning:
           type: string
-          description: Alasan di balik hasil saat Agent digunakan.
+          description: Alasan di balik hasil ketika Agent digunakan.
           nullable: true
         references:
           items:
@@ -727,12 +721,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Kirim Exa API key Anda melalui header x-api-key. Anda juga dapat
-        melakukan autentikasi dengan Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Kirim Exa API key Anda melalui header x-api-key. Anda juga dapat
-        melakukan autentikasi dengan Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

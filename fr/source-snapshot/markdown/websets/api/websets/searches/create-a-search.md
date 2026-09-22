@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
-> Utilisez ce fichier pour connaître toutes les pages disponibles avant d&#39;aller plus loin.
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-a-search">
-  # Créer une Search
-</div>
+# Créer un Search {#create-a-search}
 
-> Crée une nouvelle Search pour le Webset.
+> Crée un nouveau Search pour le Webset.
 
-Par défaut, les résultats de la Search précédente sont réutilisés et évalués selon les nouveaux criteria.
+Par défaut, les résultats du Search précédent sont réutilisés et évalués au regard des nouveaux critères.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches
 openapi: 3.1.0
@@ -361,12 +355,12 @@ components:
               - id
             type: object
           description: >-
-            La portée de la recherche. Par défaut, il n'y a aucune portée - la
-            recherche s'effectue donc sur le web.
+            The scope of the search. By default, there is no scope - thus
+            searching the web.
 
 
-            Si elle est fournie lors de la création, la recherche sera
-            uniquement effectuée sur les sources fournies.
+            If provided during creation, the search will only be performed on
+            the sources provided.
           type: array
         progress:
           properties:

@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="get-an-event">
-  # 이벤트 가져오기
-</div>
+# 이벤트 조회 {#get-an-event}
 
-> ID로 단일 Event를 가져옵니다.
+> id로 단일 Event를 조회합니다.
 
 Webhook을 생성하면 Event를 구독할 수 있습니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events/{id}
 openapi: 3.1.0
@@ -718,12 +712,12 @@ components:
         query:
           minLength: 1
           maxLength: 5000
-          description: The query used to create the search.
+          description: search를 생성하는 데 사용된 질의입니다.
           type: string
         entity:
           $ref: '#/components/schemas/Entity'
           description: >-
-            The entity the search will return results for.
+            search가 결과를 반환할 대상 엔티티입니다.
 
 
             When no entity is provided during creation, we will automatically

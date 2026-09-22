@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入查阅之前，可先通过该文件了解所有可用页面。
 
-<div id="snowflake">
-  # Snowflake
-</div>
+# Snowflake {#snowflake}
 
-> 在 Snowflake 存储过程和 Cortex Agent 中使用 Exa 的搜索与内容检索能力。
+> 在 Snowflake 存储过程和 Cortex Agents 中使用 Exa 的 search 和内容检索能力。
 
-直接从 Snowflake 调用 Exa 的 Search API，无需离开 SQL，即可用实时的网络信息丰富你的数据。
+直接在 Snowflake 中调用 Exa 的 Search API，无需离开 SQL 即可用实时网络情报增强你的数据。
 
-该集成利用 Snowflake 的 [External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) 功能，从存储过程中安全调用 Exa API，可支持两类主要工作流：
+该 integration 利用 Snowflake 的 [External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) feature，从存储过程中安全地调用 Exa API，支持两种主要工作流：
 
-1. **Cortex Agent 工具** —— 让 Snowflake Cortex Agent 具备搜索网页并获取页面内容的能力
-2. **数据 enrichment** —— 批量为数据表补充 CEO/创始人信息、最新新闻及其他网络数据
+1. **Cortex Agent tools** —— 让 Snowflake Cortex Agent 具备搜索网页并获取页面内容的能力
+2. **数据增强** —— 批量为表格补充 CEO/创始人信息、最新新闻及其他网络数据
 
-<div id="prerequisites">
-  ## 前置条件
-</div>
+## 前置条件 {#prerequisites}
 
-1. 一个 Exa API key
-2. `ACCOUNTADMIN` 角色 (创建 External Access Integrations 所必需)
+1. 一个 Exa API 密钥
+2. `ACCOUNTADMIN` 角色 (创建 External Access Integration 所必需)
 3. 支持 External Access 的 Snowflake 账户 (付费账户)
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户会赠送免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="setup">
-  ## 设置
-</div>
+## 设置 {#setup}
 
-在 Snowflake 工作表中运行以下 SQL，并将 `<<YOUR_EXA_API_KEY>>` 替换为你的实际 key。
+在 Snowflake 工作表中运行以下 SQL。将 `<<YOUR_EXA_API_KEY>>` 替换为你的实际密钥。
 
-<div id="roles-and-database">
-  ### 角色与数据库
-</div>
+### 角色与数据库 {#roles-and-database}
 
 ```sql theme={null}
 USE ROLE ACCOUNTADMIN;
@@ -56,9 +46,7 @@ GRANT USAGE ON DATABASE exa_integration TO ROLE exa_agent_role;
 GRANT USAGE ON SCHEMA exa_integration.tools TO ROLE exa_agent_role;
 ```
 
-<div id="warehouse">
-  ### 数仓 (Warehouse)
-</div>
+### 仓库 (Warehouse) {#warehouse}
 
 ```sql theme={null}
 CREATE WAREHOUSE IF NOT EXISTS exa_agent_wh
@@ -71,9 +59,7 @@ WITH
 GRANT USAGE, OPERATE ON WAREHOUSE exa_agent_wh TO ROLE exa_agent_role;
 ```
 
-<div id="network-rule-secret-and-external-access">
-  ### 网络规则、密钥与外部访问
-</div>
+### 网络规则、secret 与 External Access {#network-rule-secret-and-external-access}
 
 ```sql theme={null}
 CREATE OR REPLACE NETWORK RULE exa_integration.tools.exa_api_rule
@@ -96,18 +82,14 @@ GRANT USAGE ON INTEGRATION exa_api_access TO ROLE exa_agent_role;
 这将创建：
 
 * 一条**网络规则**，仅允许出站访问 `api.exa.ai:443`
-* 一个**密钥对象**，用于存储你的 API key (加密存储，在 SQL 中不可见)
-* 一个**外部访问集成**，将该规则与密钥对象绑定在一起
+* 一个 **secret**，用于存储你的 API 密钥 (加密存储，在 SQL 中不可见)
+* 一个 **external access integration**，将该网络规则与 secret 绑定在一起
 
-<div id="stored-procedures">
-  ## 存储过程
-</div>
+## 存储过程 {#stored-procedures}
 
-<div id="exa_search">
-  ### EXA_SEARCH
-</div>
+### EXA_SEARCH {#exa_search}
 
-使用 Exa 的 Search API 搜索网页。返回的结果包含标题、URL 和相关性分数，还可选择性地包含正文、highlights 或摘要。
+使用 Exa 的 Search API 搜索网页。返回的结果包含标题、URL 和 score，并可选返回 text/highlights/摘要。
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -210,26 +192,22 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="parameters">
-  #### 参数
-</div>
+#### 参数 {#parameters}
 
 | 参数                     | 类型        | 默认值      | 说明                                                                         |
 | ---------------------- | --------- | -------- | -------------------------------------------------------------------------- |
-| `query`                | `STRING`  | 必填       | 搜索查询                                                                       |
+| `query`                | `STRING`  | 必填       | 搜索 query                                                                   |
 | `num_results`          | `INTEGER` | `10`     | 结果数量 (1–100)                                                               |
-| `search_type`          | `STRING`  | `'auto'` | 推荐取值：`auto`、`instant`、`fast`、`deep-lite`、`deep` 或 `deep-reasoning`         |
+| `search_type`          | `STRING`  | `'auto'` | 推荐值：`auto`、`instant`、`fast`、`deep-lite`、`deep` 或 `deep-reasoning`          |
 | `category`             | `STRING`  | `NULL`   | `company`、`publication`、`news`、`personal_site`、`financial_report`、`people` |
-| `include_domains`      | `STRING`  | `NULL`   | 限定搜索范围的域名，以逗号分隔                                                            |
+| `include_domains`      | `STRING`  | `NULL`   | 限定检索的域名，以逗号分隔                                                              |
 | `exclude_domains`      | `STRING`  | `NULL`   | 需排除的域名，以逗号分隔                                                               |
 | `start_published_date` | `STRING`  | `NULL`   | ISO 8601 日期下限                                                              |
 | `end_published_date`   | `STRING`  | `NULL`   | ISO 8601 日期上限                                                              |
 | `include_text`         | `STRING`  | `NULL`   | 结果中必须出现的短语                                                                 |
-| `get_contents`         | `BOOLEAN` | `TRUE`   | 获取正文、highlights 和摘要                                                        |
+| `get_contents`         | `BOOLEAN` | `TRUE`   | 获取文本、highlights 和摘要                                                        |
 
-<div id="exa_get_contents">
-  ### EXA_GET_CONTENTS
-</div>
+### EXA_GET_CONTENTS {#exa_get_contents}
 
 获取指定 URL 的页面内容 (文本、highlights、摘要) 。
 
@@ -311,13 +289,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="usage-examples">
-  ## 使用示例
-</div>
+## 使用示例 {#usage-examples}
 
-<div id="basic-search">
-  ### 基础搜索
-</div>
+### 基础搜索 {#basic-search}
 
 ```sql theme={null}
 USE WAREHOUSE exa_agent_wh;
@@ -333,9 +307,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="get-contents-for-specific-urls">
-  ### 获取指定 URL 的 页面内容
-</div>
+### 获取指定 URL 的页面内容 {#get-contents-for-specific-urls}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -346,9 +318,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 );
 ```
 
-<div id="company-research">
-  ### 公司调研
-</div>
+### 公司研究 {#company-research}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -358,15 +328,11 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="data-enrichment">
-  ## 数据 Enrichment
-</div>
+## 数据增强 {#data-enrichment}
 
-Exa 可以用实时网络数据对 Snowflake 表进行 enrichment——CEO/创始人信息、最新新闻等等——全程无需离开平台。
+Exa 可以用实时网络数据增强 Snowflake 表格——CEO/创始人信息、最新动态等等——全程无需离开平台。
 
-<div id="create-a-prospect-table">
-  ### 创建潜在客户表
-</div>
+### 创建潜在客户表格 {#create-a-prospect-table}
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_enrichment;
@@ -398,9 +364,7 @@ VALUES
     ('Vercel', 'https://vercel.com', 'Developer Platform', 600);
 ```
 
-<div id="enrich-with-ceofounder-info">
-  ### 用 CEO/创始人信息进行 Enrichment
-</div>
+### 增强 CEO/创始人信息 {#enrich-with-ceofounder-info}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_leaders(
@@ -502,9 +466,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="enrich-with-latest-news">
-  ### 使用最新新闻进行 Enrichment
-</div>
+### 使用最新新闻增强数据 {#enrich-with-latest-news}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_news(
@@ -586,30 +548,24 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="run-enrichment">
-  ### 运行 Enrichment
-</div>
+### 运行增强 {#run-enrichment}
 
 ```sql theme={null}
--- 对单个公司执行 Enrichment
+-- 增强单个公司的数据
 CALL exa_enrichment.demo.enrich_company_leaders('Stripe');
 CALL exa_enrichment.demo.enrich_company_news('Stripe');
 
--- 查看 Enrichment 结果
+-- 查看丰富后的结果
 SELECT company_name, ceo_name, ceo_title,
        latest_news_headline, latest_news_url, latest_news_date
 FROM exa_enrichment.demo.prospect_companies;
 ```
 
-<div id="parallelizing-exa-requests">
-  ## 并行化 Exa 请求
-</div>
+## 并行化 Exa 请求 {#parallelizing-exa-requests}
 
-在对大型表做 Enrichment 时，逐行串行调用 Exa 速度很慢。你可以在单个存储过程中使用 Python 的 `concurrent.futures` 并行发起请求，同时发送多个 Exa API 调用。
+在增强大型表格时，逐行顺序调用 Exa 速度很慢。你可以在单个存储过程中使用 Python 的 `concurrent.futures` 并行发送请求，同时发起多个 Exa API 调用。
 
-<div id="concurrent-enrichment-procedure">
-  ### 并发 Enrichment 存储过程
-</div>
+### 并发增强存储过程 {#concurrent-enrichment-procedure}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_all_parallel(
@@ -681,21 +637,17 @@ def main(session, max_workers):
 $$;
 ```
 
-<div id="choosing-parallelism">
-  ### 选择并行度
-</div>
+### 选择并行度 {#choosing-parallelism}
 
-| `max_workers` | 适用场景                                                |
-| ------------- | --------------------------------------------------- |
-| `5`           | 保守设置 — 远在速率限制范围之内                                   |
-| `10`          | 适用于大多数 Enrichment 任务的推荐默认值                          |
-| `20–50`       | 速率限制[等级](/zh/docs/admin/billing#rate-limits)较高时处理大型数据集 |
+| `max_workers` | 适用场景                                                      |
+| ------------- | --------------------------------------------------------- |
+| `5`           | 保守 —— 远在速率限制之内                                            |
+| `10`          | 适合大多数增强任务的默认值                                             |
+| `20–50`       | 速率限制等级较高时的大型数据集，参见[速率限制](/zh/docs/admin/billing#rate-limits) |
 
-<div id="snowflake-task-scheduling">
-  ### Snowflake 任务调度
-</div>
+### Snowflake 任务调度 {#snowflake-task-scheduling}
 
-对于周期性的 enrichment 作业，可以将该存储过程封装为 [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro)：
+对于周期性的增强作业，可将该存储过程封装到 [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro) 中：
 
 ```sql theme={null}
 CREATE OR REPLACE TASK exa_enrichment.demo.daily_enrichment
@@ -707,13 +659,11 @@ AS
 ALTER TASK exa_enrichment.demo.daily_enrichment RESUME;
 ```
 
-这会在每天太平洋时间上午 8 点运行并行 enrichment。请根据你的数据量和速率限制调整 cron 调度和 `max_workers`。
+这会在每天太平洋时间上午 8 点运行并行增强。请根据你的数据量和速率限制调整 cron schedule 和 `max_workers`。
 
-<div id="cortex-agent-integration">
-  ## Cortex Agent 集成
-</div>
+## Cortex Agent integration {#cortex-agent-integration}
 
-你还可以将 Exa 存储过程注册为 [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents) 的工具，让它能够通过对话方式搜索网络。
+你还可以将 Exa 存储过程注册为 [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents) 的 tools，让它能够以对话的方式搜索网络。
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_agents;
@@ -835,24 +785,22 @@ CREATE OR REPLACE AGENT exa_web_search_agent
     $$;
 ```
 
-创建完成后，打开 Snowflake Intelligence，尝试向你的 Agent 提问：
+创建完成后，打开 Snowflake Intelligence，试着向你的 agent 提问：
 
 * &quot;Search the web for recent AI agent frameworks&quot;
 * &quot;Find research papers about retrieval augmented generation&quot;
 * &quot;What are the top AI companies to watch?&quot;
 
-<div id="security">
-  ## 安全性
-</div>
+## 安全 {#security}
 
-该集成使用 Snowflake 内置的安全特性：
+该 integration 使用 Snowflake 内置的安全特性：
 
-| 层级         | 详情                                |
-| ---------- | --------------------------------- |
-| **角色**     | `exa_agent_role`，用于限定范围地访问存储过程和数据 |
-| **网络规则**   | 出站流量仅限 `api.exa.ai:443`           |
-| **Secret** | API key 加密存储，在 SQL 查询中不可见         |
-| **外部访问集成** | 将网络规则与 Secret 绑定在一起               |
+| 层                               | 详情                                |
+| ------------------------------- | --------------------------------- |
+| **角色**                          | `exa_agent_role`，用于限定范围地访问存储过程和数据 |
+| **网络规则**                        | 出站流量仅允许访问 `api.exa.ai:443`        |
+| **Secret**                      | API 密钥加密存储，在 SQL 查询中不可见           |
+| **External Access Integration** | 将网络规则与 secret 绑定在一起               |
 
 为其他用户授予访问权限：
 
@@ -860,11 +808,9 @@ CREATE OR REPLACE AGENT exa_web_search_agent
 GRANT ROLE exa_agent_role TO USER analyst_user;
 ```
 
-<div id="more-resources">
-  ## 更多资源
-</div>
+## 更多资源 {#more-resources}
 
 * [Exa API 文档](/zh/docs/search/quickstart)
-* [Exa Dashboard](https://dashboard.exa.ai) — 获取你的 API key
-* [Snowflake 外部访问文档](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)
+* [Exa Dashboard](https://dashboard.exa.ai) — 获取你的 API 密钥
+* [Snowflake External Access 文档](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)
 * [Snowflake Cortex Agents 文档](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)

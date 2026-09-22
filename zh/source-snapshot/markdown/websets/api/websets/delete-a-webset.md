@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="delete-a-webset">
-  # 删除 webset
-</div>
+# 删除 webset {#delete-a-webset}
 
 > 删除一个 Webset。
 
-删除后，该 Webset 及其所有 Items 将不再可用。
+删除后，该 Webset 及其所有项目都将不再可用。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{id}
 openapi: 3.1.0

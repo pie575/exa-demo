@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 본격적으로 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="cancel-a-run">
-  # 실행 취소
-</div>
+# 실행 취소 {#cancel-a-run}
 
 > 대기 중이거나 진행 중인 Agent 실행을 취소합니다.
 
-실행이 아직 활성 상태라면 즉시 `cancelled` 상태로 전환되어 결과를 반환하지 않고 종료됩니다. 실행은 `cancelled` 상태와 `stopReason: cancelled`로 종료됩니다. 취소 전까지 발생한 사용량에 대해서는 요금이 청구됩니다. 실행이 이미 종료 상태(completed, failed, cancelled)에 도달한 경우에는 endpoint가 기존 실행을 변경 없이 그대로 반환합니다.
+실행이 아직 활성 상태라면 즉시 `cancelled` 상태로 전환되고, 결과를 반환하지 않은 채 종료됩니다. 해당 실행은 `cancelled` 상태와 `stopReason: cancelled`로 종료됩니다. 취소 전까지 발생한 사용량에 대해서는 요금이 청구됩니다. 실행이 이미 종료 상태(completed, failed, cancelled)에 도달한 경우, 엔드포인트는 기존 실행을 변경 없이 그대로 반환합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credit이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0

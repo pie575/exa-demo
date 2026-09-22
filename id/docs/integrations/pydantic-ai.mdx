@@ -1,49 +1,47 @@
 ---
 title: "Pydantic AI"
-description: "Bekali agent Pydantic AI dengan tools riset web yang didukung Exa search API."
+description: "Lengkapi agent Pydantic AI dengan tool Research web yang didukung Exa search API."
 icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
 ---
 
 <Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+  Baru mengenal Exa? Memulai dalam waktu kurang dari satu menit.
 </Card>
 
 ***
 
-[Pydantic AI](https://pydantic.dev/docs/ai/) adalah framework agent berbasis Python dari tim di balik Pydantic. [Harness](https://pydantic.dev/docs/ai/harness/exa-search/)-nya menyertakan integrasi resmi Exa dalam bentuk dua capability yang dapat dikomposisikan:
+[Pydantic AI](https://pydantic.dev/docs/ai/) adalah framework agent Python dari tim di balik Pydantic. [Harness](https://pydantic.dev/docs/ai/harness/exa-search/) miliknya menyertakan integrasi Exa resmi dalam bentuk dua capability yang dapat dikomposisikan:
 
-* **`ExaSearch`**: tools riset web yang didukung Exa Search API: `web_search` (hasil teratas beserta excerpt yang paling relevan, ditambah ringkasan teks hasil sintesis yang opsional), `get_page` (retrieval halaman penuh untuk URL tertentu), dan `deep_search` yang bersifat opt-in (jawaban hasil sintesis berikut sitasi dalam satu call).
-* **`ExaAgent`**: mendelegasikan riset berdurasi panjang ke [Exa Agent API](/id/docs/agent/quickstart) sebagai deferred tool call.
+* **`ExaSearch`**: tool Research web yang didukung Exa Search API: `web_search` (hasil teratas beserta kutipan paling relevan, ditambah ringkasan teks hasil sintesis yang bersifat opsional), `get_page` (retrieval satu halaman penuh untuk URL tertentu), dan `deep_search` yang bersifat opt-in (jawaban tersintesis lengkap dengan sitasi dalam satu panggilan).
+* **`ExaAgent`**: mendelegasikan Research jangka panjang ke [Exa Agent API](/id/docs/agent/quickstart) sebagai deferred tool calls.
 
-Sebuah capability menggabungkan tools, anggaran output per tool, dan instruksi riset singkat di system prompt, sehingga Anda tidak perlu menyambungkan sendiri search API ke pengambil halaman maupun menyusun prompt agar agent meneliti secara metodis.
+Sebuah capability menyatukan tool, anggaran output per tool, dan instruksi Research singkat di system prompt, sehingga Anda tidak perlu menyambungkan sendiri search API ke pengambil halaman lalu menyusun prompt agar agent melakukan Research secara metodis.
 
 <Info> Lihat referensi lengkap dari Pydantic [di sini](https://pydantic.dev/docs/ai/harness/exa-search/). </Info>
 
 <Card title="Baca artikel Pydantic tentang membangun Research Agent dengan Exa" icon="/docs/images/integrations/pydantic-ai/logo.svg" horizontal href="https://pydantic.dev/articles/harness-exa" width="120" height="120" data-path="images/integrations/pydantic-ai/logo.svg">
-  Panduan langkah demi langkah tentang tiga research agent siap salin-tempel yang dibangun di atas Pydantic AI dan Exa.
+  Panduan langkah demi langkah tentang tiga Research agent siap salin-tempel yang dibangun di atas Pydantic AI dan Exa.
 </Card>
 
 ***
 
-<div id="get-started">
-  ## Get Started
-</div>
+## Memulai {#get-started}
 
 <Steps>
   <Step title="Prasyarat dan instalasi">
-    Instal harness dengan ekstra Exa dan atur variabel lingkungan `EXA_API_KEY` Anda.
+    Instal harness dengan extra Exa dan atur variabel lingkungan `EXA_API_KEY` Anda.
 
     ```Bash Bash theme={null}
     uv add "pydantic-ai-harness[exa]"
     ```
 
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Buat key di dashboard. Akun baru mendapatkan credits gratis.
+      Buat key di dashboard. Akun baru mendapatkan free credits.
     </Card>
   </Step>
 
   <Step title="Tambahkan ExaSearch ke sebuah agent">
-    Berikan `ExaSearch` ke sebuah `Agent` melalui parameter `capabilities`. Secara default, autentikasi diambil dari `EXA_API_KEY`.
+    Berikan `ExaSearch` ke sebuah `Agent` melalui parameter `capabilities`. Autentikasi diambil dari `EXA_API_KEY` secara default.
 
     ```Python Python theme={null}
     from pydantic_ai import Agent
@@ -57,16 +55,16 @@ Sebuah capability menggabungkan tools, anggaran output per tool, dan instruksi r
 
     `ExaSearch` menambahkan dua tool ke agent:
 
-    | Tool         | Tujuan                                                                                                                                     |
-    | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-    | `web_search` | Melakukan search di web dan mengembalikan `num_results` halaman teratas, masing-masing dengan judul, URL, dan excerpt yang paling relevan. |
-    | `get_page`   | Mengambil teks lengkap dari satu URL tertentu — hasil `web_search` yang menjanjikan, atau URL yang diberikan pengguna.                     |
+    | Tool         | Tujuan                                                                                                                            |
+    | ------------ | --------------------------------------------------------------------------------------------------------------------------------- |
+    | `web_search` | Mencari di web dan mengembalikan `num_results` halaman teratas, masing-masing dengan judul, URL, dan kutipan yang paling relevan. |
+    | `get_page`   | Mengambil teks penuh dari satu URL tertentu — hasil `web_search` yang menjanjikan, atau URL yang diberikan pengguna.              |
 
-    `web_search` mengembalikan excerpt singkat (highlights Exa) alih-alih teks halaman secara utuh, sehingga menelusuri banyak sumber tetap murah; agent lalu membaca halaman pilihannya dengan `get_page`. URL atau pertanyaan yang tidak mengembalikan konten, rate limit, atau kegagalan sementara akan diteruskan ke model sebagai `ModelRetry` agar run dapat pulih; kegagalan autentikasi (401/403) diteruskan sebagai kesalahan configuration.
+    `web_search` mengembalikan kutipan singkat (Exa highlights), bukan teks penuh halaman, sehingga menelusuri banyak sources tetap murah; agent lalu membaca halaman pilihannya dengan `get_page`. URL atau pertanyaan yang tidak mengembalikan konten, rate limit, atau kegagalan sementara akan diteruskan ke model sebagai `ModelRetry` agar run bisa pulih; kegagalan autentikasi (401/403) diteruskan sebagai error konfigurasi.
   </Step>
 
   <Step title="Aktifkan deep search (opsional)">
-    `deep_search` menjalankan [deep search](/id/docs/search/quickstart) multi-langkah milik Exa (`type='deep'`): Exa memperluas pertanyaan menjadi beberapa kueri, menjalankan searches, dan mengembalikan jawaban yang grounded pada citations dalam satu tool call. Cara ini menghabiskan lebih banyak waktu dan kedalaman search dibanding `web_search`, sehingga secara default dinonaktifkan. Aktifkan secara eksplisit:
+    `deep_search` menjalankan [deep search](/id/docs/search/quickstart) multi-langkah milik Exa (`type='deep'`): Exa memecah pertanyaan menjadi beberapa kueri, melakukan pencarian, lalu mengembalikan jawaban yang didukung sitasi dalam satu tool call. Cara ini memerlukan lebih banyak waktu dan kedalaman pencarian dibanding `web_search`, sehingga secara default dinonaktifkan. Aktifkan secara eksplisit:
 
     ```Python Python theme={null}
     from pydantic_ai_harness.exa import ExaSearch
@@ -74,40 +72,36 @@ Sebuah capability menggabungkan tools, anggaran output per tool, dan instruksi r
     agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch(include_deep_search=True)])
     ```
 
-    Saat diaktifkan, instruksi capability meminta model memperlakukan `deep_search` sebagai eskalasi dari `web_search`, bukan penggantinya.
+    Saat diaktifkan, instruksi capability memberi tahu model agar memperlakukan `deep_search` sebagai eskalasi dari `web_search`, bukan penggantinya.
   </Step>
 </Steps>
 
 ***
 
-<div id="configuration">
-  ## Konfigurasi
-</div>
+## Konfigurasi {#configuration}
 
-Setiap field `ExaSearch` beserta nilai default-nya:
+Setiap field pada `ExaSearch` beserta nilai default-nya:
 
 ```Python Python theme={null}
 from pydantic_ai_harness.exa import ExaSearch
 
 ExaSearch(
-    num_results=5,             # jumlah hasil per call web_search (1 sampai 100)
+    num_results=5,             # jumlah hasil per pemanggilan web_search (1 sampai 100)
     max_text_chars=10_000,     # batas teks get_page, dalam karakter (1 sampai 10.000)
     text_summary=False,        # web_search juga mengembalikan ringkasan teks hasil sintesis
     include_deep_search=False, # sekaligus menyediakan tool deep_search
-    include_domains=[],        # hanya cari di domain ini (daftar izin)
-    exclude_domains=[],        # jangan pernah cari di domain ini (daftar larangan)
+    include_domains=[],        # hanya cari pada domain ini (daftar izin)
+    exclude_domains=[],        # jangan pernah cari pada domain ini (daftar larangan)
     guidance=None,             # None = instruksi default, '' = tanpa instruksi, str = kustom
-    client=None,               # ExaClient -- None akan membangun exa_py.AsyncExa dari EXA_API_KEY
+    client=None,               # ExaClient -- None membuat exa_py.AsyncExa dari EXA_API_KEY
 )
 ```
 
-`include_domains` dan `exclude_domains` berlaku untuk `web_search` dan `deep_search`, serta bersifat saling eksklusif. Limit di luar rentang yang diizinkan dan penyetelan kedua daftar domain sekaligus akan memicu error saat konstruksi.
+`include_domains` dan `exclude_domains` berlaku untuk `web_search` dan `deep_search`, serta saling eksklusif. Batas di luar rentang dan pengisian kedua daftar domain sekaligus akan memunculkan error saat konstruksi.
 
-<div id="text-summary">
-  ### Text summary
-</div>
+### Ringkasan teks {#text-summary}
 
-Atur `text_summary` agar setiap call `web_search` juga meminta summary teks biasa hasil sintesis dari hasilnya. Berikan `True` untuk summary tanpa batasan, atau string yang mendeskripsikan format yang diinginkan:
+Atur `text_summary` agar setiap pemanggilan `web_search` juga meminta ringkasan teks biasa yang disintesis dari hasil. Berikan `True` untuk ringkasan tanpa batasan, atau string yang menjelaskan format yang diinginkan:
 
 ```Python Python theme={null}
 from pydantic_ai_harness.exa import ExaSearch
@@ -115,13 +109,11 @@ from pydantic_ai_harness.exa import ExaSearch
 ExaSearch(text_summary='One concise sentence with the requested facts.')
 ```
 
-Bentuk nilai kembalian tool tidak berubah: ketika Exa mengembalikan summary, summary tersebut disisipkan di bagian awal sebagai baris `Summary:`.
+Bentuk nilai balik tool tidak berubah: ketika Exa mengembalikan ringkasan, ringkasan tersebut disisipkan di awal sebagai baris `Summary:`.
 
-<div id="structured-citations">
-  ### Citations terstruktur
-</div>
+### Sitasi terstruktur {#structured-citations}
 
-Setiap tool mengembalikan `ToolReturn`: `return_value` berisi teks terbaca yang dilihat model (termasuk blok `Sources:`), sedangkan `metadata` berisi sumber dalam bentuk record `ExaSource` terstruktur (`{'url': ..., 'title': ...}`) pada key `'sources'`. Metadata tidak pernah dikirim ke model, jadi untuk menampilkan citations tidak diperlukan parsing teks:
+Setiap tool mengembalikan `ToolReturn`: `return_value` berisi teks terbaca yang dilihat model (termasuk blok `Sources:`), sedangkan `metadata` berisi sources dalam bentuk catatan `ExaSource` terstruktur (`{'url': ..., 'title': ...}`) di bawah key `'sources'`. Metadata tidak pernah dikirim ke model, jadi menampilkan sitasi tidak memerlukan penguraian teks:
 
 ```Python Python theme={null}
 from pydantic_ai.messages import ModelRequest, ToolReturnPart
@@ -134,11 +126,9 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-<div id="custom-client">
-  ### Client kustom
-</div>
+### Custom client {#custom-client}
 
-Client default adalah `exa_py.AsyncExa`, yang dikonfigurasi dari `EXA_API_KEY`. Berikan objek apa pun yang memenuhi protokol `ExaClient` untuk mengatur autentikasi atau base URL secara eksplisit, atau untuk menggantinya dengan objek tiruan saat pengujian:
+Client default-nya adalah `exa_py.AsyncExa`, yang dikonfigurasi dari `EXA_API_KEY`. Berikan objek apa pun yang memenuhi protokol `ExaClient` untuk mengatur autentikasi atau base URL secara eksplisit, atau untuk menggantinya dengan objek tiruan saat pengujian:
 
 ```Python Python theme={null}
 from exa_py import AsyncExa
@@ -149,11 +139,9 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-<div id="exa-agent-runs">
-  ## Exa agent runs
-</div>
+## Exa agent run {#exa-agent-runs}
 
-[Exa Agent API](/id/docs/agent/quickstart) menjalankan tugas riset terbuka secara asinkron. Capability `ExaAgent` memetakan siklus hidup tersebut ke [deferred tool calls](https://pydantic.dev/docs/ai/deferred-tools/) milik Pydantic AI: tool `exa_agent` membuat run lalu menundanya (defer), sambil membawa ID run Exa di metadata deferred call tersebut.
+[Exa Agent API](/id/docs/agent/quickstart) menjalankan tugas research terbuka secara asinkron. Capability `ExaAgent` memetakan siklus hidup tersebut ke [deferred tool calls](https://pydantic.dev/docs/ai/deferred-tools/) milik Pydantic AI: tool `exa_agent` membuat run lalu menundanya, sambil membawa ID run Exa di dalam metadata deferred call tersebut.
 
 ```Python Python theme={null}
 from pydantic_ai import Agent
@@ -162,7 +150,7 @@ from pydantic_ai_harness.exa import ExaAgent
 agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaAgent()])
 ```
 
-Secara default (`execution='inline'`), capability menyelesaikan sendiri deferred call-nya di dalam agent run dengan melakukan polling terhadap run Exa hingga selesai, sehingga tool berperilaku layaknya tool biasa (meski lambat). Dengan `execution='external'`, call tersebut diteruskan ke atas sebagai output `DeferredToolRequests` untuk diselesaikan oleh aplikasi host di luar alur.
+Secara default (`execution='inline'`), capability menyelesaikan sendiri deferred call miliknya di dalam agent run dengan melakukan polling terhadap run Exa hingga selesai, sehingga tool berperilaku seperti tool biasa (meski lambat). Dengan `execution='external'`, call tersebut akan diteruskan ke atas sebagai output `DeferredToolRequests` agar aplikasi host dapat menyelesaikannya di luar alur.
 
 Setiap field pada `ExaAgent` beserta nilai default-nya:
 
@@ -171,10 +159,10 @@ from pydantic_ai_harness.exa import ExaAgent
 
 ExaAgent(
     effort=None,          # 'low' | 'medium' | 'high' | 'xhigh' | 'auto' -- None = default API
-    execution='inline',   # 'inline' melakukan poll sampai selesai; 'external' memunculkan DeferredToolRequests
+    execution='inline',   # 'inline' melakukan polling hingga selesai; 'external' memunculkan DeferredToolRequests
     output_schema=None,   # kelas BaseModel atau schema dict untuk structured output
     system_prompt=None,   # diteruskan ke Exa agent run
-    poll_interval=1000,   # ms antar poll saat diselesaikan secara inline
+    poll_interval=1000,   # ms antar polling saat diselesaikan secara inline
     timeout_ms=3_600_000, # ms untuk menunggu sebuah run saat diselesaikan secara inline
     guidance=None,        # None = instruksi default, '' = tidak ada, str = kustom
     runs=None,            # ExaAgentRuns -- None membangun AsyncExa().agent.runs dari EXA_API_KEY
@@ -183,11 +171,9 @@ ExaAgent(
 
 ***
 
-<div id="agent-spec-yamljson">
-  ## Agent spec (YAML/JSON)
-</div>
+## Agent spec (YAML/JSON) {#agent-spec-yamljson}
 
-Kedua capabilities tersebut dapat digunakan dengan [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec) dari Pydantic AI, sehingga Anda bisa mendeklarasikannya dalam file konfigurasi, bukan di Python:
+Kedua capabilities ini dapat digunakan dengan [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec) dari Pydantic AI, sehingga Anda bisa mendeklarasikannya dalam file konfigurasi alih-alih di Python:
 
 ```yaml agent.yaml theme={null}
 model: anthropic:claude-sonnet-4-6
@@ -206,15 +192,13 @@ from pydantic_ai_harness.exa import ExaAgent, ExaSearch
 agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAgent])
 ```
 
-Teruskan `custom_capability_types` agar pemuat spec mengetahui cara menginstansiasi capability tersebut. Instance yang dimuat dari spec selalu membangun Client default dari `EXA_API_KEY`.
+Berikan `custom_capability_types` agar spec loader tahu cara membuat instansiasi capability tersebut. Instance yang dimuat dari spec selalu membangun client default dari `EXA_API_KEY`.
 
 ***
 
-<div id="next">
-  ## Selanjutnya
-</div>
+## Selanjutnya {#next}
 
-* [**Search API**](/id/docs/search/quickstart) - Pencarian semantik dengan highlights, summaries, dan deep search
-* [**Agent API**](/id/docs/agent/quickstart) - Runs riset asinkron yang bersifat terbuka
-* [**Penyiapan MCP**](/id/docs/get-started/exa-mcp) - MCP server milik Exa yang dihosting
+* [**Search API**](/id/docs/search/quickstart) - Pencarian semantik dengan kutipan, ringkasan, dan deep search
+* [**Agent API**](/id/docs/agent/quickstart) - Research runs asinkron tanpa batasan topik
+* [**Penyiapan MCP**](/id/docs/get-started/exa-mcp) - MCP server yang dihosting Exa
 * [**SDK**](/id/docs/sdks/quickstart) - Dokumentasi SDK Python dan JavaScript

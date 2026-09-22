@@ -1,23 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="examples">
-  # Exemples
-</div>
+# Exemples {#examples}
 
-> Exemples Exa Agent en production pour le list building, la veille KYB, les offres d&#39;emploi et les structured outputs.
+> Exemples Exa Agent en production pour la constitution de listes, la veille KYB, les offres d&#39;emploi et les sorties structurées.
 
-Ces exemples présentent des modèles de workflow en production pour Exa Agent : list building, veille KYB, offres d&#39;emploi et structured outputs.
+Ces exemples illustrent des modèles de workflow en production pour Exa Agent, notamment la constitution de listes, la veille KYB, les offres d&#39;emploi et les sorties structurées.
 
 <h2 id="find-all-code">
   Trouver tous les membres GTM chez Exa.ai
 </h2>
 
-Utilisez un prompt de découverte lorsque c&#39;est à Agent de trouver les lignes. Soyez explicite quant à la company disambiguation et exigez des evidence d&#39;emploi en cours, afin que des entreprises aux noms similaires ne viennent pas polluer le résultat.
+Utilisez un prompt de découverte lorsque Agent doit trouver les lignes lui-même. Soyez explicite sur la désambiguïsation de l&#39;entreprise et exigez une preuve d&#39;emploi en cours afin d&#39;éviter que des entreprises aux noms similaires ne se glissent dans le résultat.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -143,7 +139,7 @@ Utilisez un prompt de découverte lorsque c&#39;est à Agent de trouver les lign
   Renseignement KYC / KYB
 </h2>
 
-Utilisez Agent lorsque l&#39;évaluation d&#39;un partenaire ou d&#39;un fournisseur exige des renseignements publics issus du web, et pas seulement une simple page de profil. Demandez la vérification d&#39;identité, le contexte d&#39;entreprise, les signaux publics, l&#39;activité d&#39;investissement et des notes de risque explicites au sein d&#39;un même objet structuré.
+Utilisez Agent lorsque l&#39;évaluation d&#39;un partner ou d&#39;un vendor exige des renseignements issus du web public, et pas seulement une simple page de profil. Demandez la vérification d&#39;identité, le context commercial, les signaux publics, l&#39;activité d&#39;investissement et des notes de risque explicites, le tout dans un seul objet structuré.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -413,7 +409,7 @@ Utilisez Agent lorsque l&#39;évaluation d&#39;un partenaire ou d&#39;un fournis
   Offres d&#39;emploi
 </h2>
 
-Utilisez Agent lorsque les postes ouverts sont dispersés entre les pages d&#39;entreprises, les agrégateurs et les annuaires de startups. Cet exemple limite la source au site d&#39;offres d&#39;emploi d&#39;Exa hébergé sur Ashby, tout en nécessitant malgré tout une company disambiguation.
+Utilisez Agent lorsque les postes à pourvoir sont répartis entre les pages d&#39;entreprises, les agrégateurs et les annuaires de startups. Cet exemple limite la source au portail d&#39;emploi d&#39;Exa hébergé sur Ashby et nécessite malgré tout une désambiguïsation de l&#39;entreprise.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -554,7 +550,7 @@ Utilisez Agent lorsque les postes ouverts sont dispersés entre les pages d&#39;
   Enrichir les lignes d&#39;entrée
 </h2>
 
-Utilisez `input.data` lorsque votre système dispose déjà des records et qu&#39;Agent doit effectuer des recherches sur chacun d&#39;eux ou les enrichir. Ce schéma conserve l&#39;identité des lignes dans l&#39;entrée structurée au lieu de la noyer dans le prompt.
+Utilisez `input.data` lorsque votre système dispose déjà des records et qu&#39;Agent doit effectuer une recherche ou un enrichissement sur chacun d&#39;eux. Cette approche conserve l&#39;identité des lignes dans l&#39;entrée structurée au lieu de la noyer dans le prompt.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -691,10 +687,10 @@ Utilisez `input.data` lorsque votre système dispose déjà des records et qu&#3
 </CodeGroup>
 
 <h2 id="bounded-contact-fields-code">
-  Enrichir les lignes avec des champs de contact bornés
+  Enrichir les lignes avec des fields de contact bornés
 </h2>
 
-Les workflows orientés contacts peuvent déclencher des frais distincts de contact enrichment. Cette version anonymisée de la documentation illustre la structure sans publier de noms, d&#39;adresses e-mail, de numéros de téléphone ni d&#39;URL de profil réels.
+Les workflows orientés contact peuvent déclencher des frais d&#39;enrichissement de contact distincts. Cette version anonymisée de la documentation en illustre la structure sans publier de noms, d&#39;adresses e-mail, de numéros de téléphone ou d&#39;URL de profil réels.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -807,8 +803,8 @@ Les workflows orientés contacts peuvent déclencher des frais distincts de cont
   Exclure les records connus
 </h2>
 
-Utilisez `input.exclusion` lorsque Agent doit écarter les records que votre produit a déjà examinés, affichés ou rejetés.
-L&#39;aperçu de la feuille utilise des noms d&#39;entreprises fictifs : le schéma d&#39;exclusion reste ainsi visible sans laisser croire que ces lignes proviennent d&#39;un run réel en production.
+Utilisez `input.exclusion` lorsque Agent doit écarter des records que votre produit a déjà examinés, affichés ou rejetés.
+L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs : le schéma d&#39;exclusion reste ainsi visible sans laisser croire que ces lignes proviennent d&#39;un run en production.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -924,8 +920,8 @@ L&#39;aperçu de la feuille utilise des noms d&#39;entreprises fictifs : le sch�
   Poursuivre un workflow terminé
 </h2>
 
-Utilisez `previousRunId` lorsque la requête suivante doit s&#39;appuyer sur le contexte d&#39;un run terminé.
-L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs pour illustrer le principe de continuation sans exposer un run antérieur réel.
+Utilisez `previousRunId` lorsque la requête suivante doit s&#39;appuyer sur le context d&#39;un run terminé.
+L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs pour illustrer le schéma de continuation sans exposer un run antérieur réel.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -933,7 +929,7 @@ L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs 
 
   exa = Exa()
   run = exa.agent.runs.create(
-      query="Parmi les entreprises que tu as trouvées, ne conserve que celles qui recrutent des ingénieurs plateforme à San Francisco. Ajoute l'URL de la page de recrutement pour chaque correspondance.",
+      query="Parmi les entreprises que tu as trouvées, ne garde que celles qui recrutent des ingénieurs plateforme à San Francisco. Ajoute l'URL de la page de recrutement pour chaque correspondance.",
       previous_run_id="agent_run_01j...",
       output_schema={
           "type": "object",
@@ -967,7 +963,7 @@ L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs 
   const exa = new Exa();
   const run = await exa.agent.runs.create({
     previousRunId: "agent_run_01j...",
-    query: "Parmi les entreprises que tu as trouvées, ne conserve que celles qui recrutent des ingénieurs plateforme à San Francisco. Ajoute l'URL de la page de recrutement pour chaque correspondance.",
+    query: "Parmi les entreprises que tu as trouvées, ne garde que celles qui recrutent des ingénieurs plateforme à San Francisco. Ajoute l'URL de la page de recrutement pour chaque correspondance.",
     outputSchema: {
       type: "object",
       required: ["companies"],
@@ -1000,7 +996,7 @@ L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs 
     -H "x-api-key: $EXA_API_KEY" \
     -d '{
     "previousRunId": "agent_run_01j...",
-    "query": "Parmi les entreprises que tu as trouvées, ne conserve que celles qui recrutent des ingénieurs plateforme à San Francisco. Ajoute pour chaque correspondance le lien vers la page de recrutement.",
+    "query": "Parmi les entreprises que tu as trouvées, ne garde que celles qui recrutent des ingénieurs plateforme à San Francisco. Ajoute pour chaque correspondance le lien vers la page de recrutement.",
     "outputSchema": {
       "type": "object",
       "required": ["companies"],
@@ -1027,11 +1023,9 @@ L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs 
   ```
 </CodeGroup>
 
-<div id="broad-list-building-with-agent-max">
-  ## List building à grande échelle avec Agent Max
-</div>
+## Constitution de listes à grande échelle avec Agent Max {#broad-list-building-with-agent-max}
 
-Utilisez `effort: "max"` pour les tâches où l&#39;exhaustivité et la rigueur importent plus que la latence ou le coût : list building à grande échelle, recherche approfondie multi-sources et criteria difficiles à vérifier. Agent Max est en bêta publique : envoyez `Exa-Beta: agent-max-effort-2026-07-27` avec la requête. Ce header accepte une liste de jetons bêta séparés par des virgules.
+Utilisez `effort: "max"` pour les tâches où l&#39;exhaustivité et la rigueur priment sur la latence ou le coût : constitution de listes volumineuses, recherche approfondie multi-sources et critères difficiles à vérifier. Agent Max est en bêta publique : envoyez `Exa-Beta: agent-max-effort-2026-07-27` avec la requête. Le header accepte une liste de jetons bêta séparés par des virgules.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1073,11 +1067,9 @@ Utilisez `effort: "max"` pour les tâches où l&#39;exhaustivité et la rigueur 
   ```
 </CodeGroup>
 
-<div id="attach-a-data-partner-with-exa-connect">
-  ## Attacher un data partner avec Exa Connect
-</div>
+## Attacher un data partner avec Exa Connect {#attach-a-data-partner-with-exa-connect}
 
-Utilisez `dataSources` pour permettre à Exa Agent de puiser dans les données d&#39;un data partner premium pendant un run. Ici, chaque entreprise est enrichie avec le traffic issu de Similarweb et les levées de fonds issues de Harmonic, le tout combiné à une recherche web. Consultez [Exa Connect](/fr/docs/agent/connect/overview) pour la liste complète des partners.
+Utilisez `dataSources` pour permettre à Exa Agent d&#39;exploiter les données d&#39;un partner premium pendant un run. Ici, chaque entreprise est enrichie avec le trafic issu de Similarweb et les levées de fonds issues de Harmonic, le tout combiné à de la recherche web. Consultez [Exa Connect](/fr/docs/agent/connect/overview) pour la liste complète des partners.
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1200,13 +1192,11 @@ Utilisez `dataSources` pour permettre à Exa Agent de puiser dans les données d
   ```
 </CodeGroup>
 
-<div id="production-checklist">
-  ## Checklist de mise en production
-</div>
+## Checklist de mise en production {#production-checklist}
 
-* Donnez à l&#39;Agent une `query` précise qui nomme l&#39;unité de travail et la qualité de source souhaitée.
-* Utilisez `input.data` pour les records connus plutôt que d&#39;intégrer des lignes dans le prompt.
-* Utilisez `input.exclusion` pour les records qui ne doivent pas être renvoyés à nouveau.
-* Ajoutez `outputSchema` dès que du code en aval exploite le résultat.
-* Utilisez `maxItems` sur les tableaux lorsque vous avez besoin d&#39;une portée et d&#39;un coût prévisibles.
-* Conservez l&#39;`id` du run renvoyé afin de pouvoir interroger son état, rejouer les événements, inspecter les coûts ou reprendre le run plus tard.
+* Donnez à l&#39;Agent une `query` précise qui nomme l&#39;unité de travail et la qualité de sources attendue.
+* Utilisez `input.data` pour les records connus plutôt que d&#39;intégrer les lignes dans le prompt.
+* Utilisez `input.exclusion` pour les records qui ne doivent plus être renvoyés.
+* Ajoutez `outputSchema` dès qu&#39;un code en aval consomme le résultat.
+* Utilisez `maxItems` sur les arrays lorsque vous avez besoin d&#39;un scope et d&#39;un coût prévisibles.
+* Conservez l&#39;`id` du run renvoyé afin de pouvoir le poller, rejouer les events, inspecter les coûts ou reprendre le run plus tard.

@@ -6,17 +6,13 @@ icon: "/docs/images/sidebar-icons/vercel.svg"
 
 Utilisez le package `@exalabs/ai-sdk` pour ajouter Exa web search aux applications développées avec l&#39;AI SDK par Vercel. Il vous suffit de fournir une API key Exa : l&#39;outil `webSearch()` se charge des requêtes de recherche pour votre modèle.
 
-<div id="install">
-  ## Installation
-</div>
+## Installation {#install}
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-<div id="quick-start">
-  ## Démarrage rapide
-</div>
+## Démarrage rapide {#quick-start}
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -37,27 +33,23 @@ console.log(text);
 ```
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key depuis le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 <Info>
-  Définissez votre key dans `EXA_API_KEY` avant d&#39;exécuter l&#39;exemple. Le package lit automatiquement cette variable d&#39;environnement.
+  Définissez votre clé dans `EXA_API_KEY` avant d&#39;exécuter l&#39;exemple. Le package lit automatiquement cette variable d&#39;environnement.
 </Info>
 
-<div id="defaults">
-  ## Valeurs par défaut
-</div>
+## Valeurs par défaut {#defaults}
 
-`webSearch()` utilise ces valeurs par défaut :
+`webSearch()` utilise les valeurs par défaut suivantes :
 
 * `type` : `auto`
 * `numResults` : `10`
 * `contents.text` : `3000` caractères par résultat
-* `maxAgeHours` : la valeur de repli par défaut du cache ; définissez cette option si vous avez besoin d&#39;une fraîcheur plus stricte
+* `maxAgeHours` : le repli sur le cache par défaut ; définissez cette option si vous avez besoin d&#39;une fraîcheur plus stricte
 
-<div id="configure-search">
-  ## Configurer la recherche
-</div>
+## Configurer la recherche {#configure-search}
 
 Utilisez les options ci-dessous pour ajuster la recherche et l&#39;extraction de contenu :
 
@@ -83,38 +75,32 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="search-options">
-  ### Options de recherche
-</div>
+### Options de recherche {#search-options}
 
 | Option                                    | Description                                                                                               |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `type`                                    | Mode de recherche : `auto`, `fast`, `instant`, `deep-lite`, `deep` ou `deep-reasoning`.                   |
 | `category`                                | Catégorie de contenu : `company`, `publication`, `news`, `personal site`, `people` ou `financial report`. |
 | `numResults`                              | Nombre de résultats à renvoyer.                                                                           |
-| `includeDomains` / `excludeDomains`       | Inclure ou exclure des domaines spécifiques.                                                              |
+| `includeDomains` / `excludeDomains`       | Inclure ou exclure certains domaines.                                                                     |
 | `startPublishedDate` / `endPublishedDate` | Filtrer les résultats par date de publication au format ISO 8601.                                         |
-| `includeText` / `excludeText`             | Exiger ou exclure du texte dans les résultats.                                                            |
-| `userLocation`                            | Code pays à deux lettres pour une recherche tenant compte de la localisation.                             |
+| `includeText` / `excludeText`             | Exiger ou exclure un texte dans les résultats.                                                            |
+| `userLocation`                            | Code pays à deux lettres pour une recherche adaptée à la localisation.                                    |
 
-<div id="content-options">
-  ### Options de contenu
-</div>
+### Options de contenu {#content-options}
 
-| Option                                                 | Description                                                                                                            |
-| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `contents.text`                                        | Renvoie le texte extrait. Prend en charge `maxCharacters` et `includeHtmlTags`.                                        |
-| `contents.summary`                                     | Renvoie un résumé généré par IA. Prend en charge une `query`.                                                          |
-| `contents.maxAgeHours`                                 | Utilise le contenu mis en cache uniquement s&#39;il respecte l&#39;ancienneté indiquée ; sinon, effectue un livecrawl. |
-| `contents.livecrawlTimeout`                            | Définit le délai d&#39;expiration du livecrawl.                                                                        |
-| `contents.subpages` / `contents.subpageTarget`         | Explore les sous-pages et cible éventuellement une sous-page.                                                          |
-| `contents.extras.links` / `contents.extras.imageLinks` | Renvoie les liens ou les liens d&#39;images des résultats.                                                             |
+| Option                                                 | Description                                                                                                      |
+| ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `contents.text`                                        | Renvoie le texte extrait. Prend en charge `maxCharacters` et `includeHtmlTags`.                                  |
+| `contents.summary`                                     | Renvoie un résumé généré par IA. Prend en charge une `query`.                                                    |
+| `contents.maxAgeHours`                                 | N&#39;utilise le contenu en cache que s&#39;il respecte l&#39;ancienneté indiquée ; sinon, recourt au livecrawl. |
+| `contents.livecrawlTimeout`                            | Définit le délai d&#39;expiration du livecrawl.                                                                  |
+| `contents.subpages` / `contents.subpageTarget`         | Explore les sous-pages et cible éventuellement une sous-page.                                                    |
+| `contents.extras.links` / `contents.extras.imageLinks` | Renvoie les liens ou les liens d&#39;images issus des résultats.                                                 |
 
-<div id="typescript-support">
-  ## Prise en charge de TypeScript
-</div>
+## Prise en charge de TypeScript {#typescript-support}
 
-Le package inclut les types TypeScript :
+Le package inclut des types TypeScript :
 
 ```typescript types.ts theme={null}
 import { webSearch, ExaSearchConfig, ExaSearchResult } from '@exalabs/ai-sdk';
@@ -127,9 +113,7 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-<div id="related-pages">
-  ## Pages associées
-</div>
+## Pages associées {#related-pages}
 
 <Columns cols={2}>
   <Card title="Utiliser Vercel AI Gateway" icon="cloud" href="/fr/docs/integrations/vercel/ai-gateway" cta="Ouvrir le guide" arrow="true">
@@ -141,4 +125,4 @@ const search = webSearch(config);
   </Card>
 </Columns>
 
-Vous pouvez également retrouver le package sur [npm](https://www.npmjs.com/package/@exalabs/ai-sdk) et consulter le [guide de web search du Vercel AI SDK](https://ai-sdk.dev/cookbook/node/web-search-agent#exa).
+Le package est également disponible sur [npm](https://www.npmjs.com/package/@exalabs/ai-sdk), et vous pouvez consulter le [guide de recherche web du Vercel AI SDK](https://ai-sdk.dev/cookbook/node/web-search-agent#exa).

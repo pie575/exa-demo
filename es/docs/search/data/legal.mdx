@@ -2,7 +2,7 @@
 title: "Registros legales y públicos"
 sidebarTitle: "Registros legales y públicos"
 icon: "scale"
-description: "Encuentra sentencias judiciales, patentes, sanciones, contratos públicos y otros registros públicos con Exa Search."
+description: "Encuentra sentencias judiciales, patentes, sanctions, contratos públicos y otros registros públicos con Exa Search."
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -31,76 +31,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Usa Exa Search para acceder a fuentes jurídicas primarias y registros gubernamentales, junto con los comentarios escritos sobre ellos.
+Usa Exa Search para encontrar fuentes jurídicas primarias y registros gubernamentales, junto con los comentarios escritos sobre ellos.
 
-<div id="included">
-  ## Incluido
-</div>
+## Incluido {#included}
 
-* Sentencias de tribunales de EE. UU., con texto completo y metadatos de tribunal, expediente y cita
-* Patentes concedidas en EE. UU., con resumen, reivindicaciones, descripción, inventores y titulares
-* Leyes, reglamentos y directrices de organismos públicos
-* Listas de sanciones y listas de vigilancia
-* Contratos públicos y registros de contratación
+* Sentencias judiciales de EE. UU., con texto completo y metadatos de tribunal, número de expediente y cita
+* Patentes concedidas en EE. UU., con resumen, reivindicaciones, descripción, inventores y cesionarios
+* Leyes, reglamentos y guidance de organismos
+* Listas de sanctions y watchlists
+* Contratos públicos y registros de licitaciones
 * Datos censales y otros registros estadísticos públicos
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Investigación jurisprudencial y RAG legal
-* Seguimiento normativo y de políticas públicas
+* Investigación de jurisprudencia y RAG legal
+* Monitoreo regulatorio y de políticas públicas
 * Búsquedas de estado de la técnica y de libertad de operación
 * Cribado de cumplimiento normativo y diligencia debida
 * Estudios de mercado del sector público
 
-<div id="example-queries">
-  ## Consultas de ejemplo
-</div>
+## Consultas de ejemplo {#example-queries}
 
-<div id="find-case-law">
-  ### Encontrar jurisprudencia
-</div>
+### Encontrar jurisprudencia {#find-case-law}
 
-Describe la cuestión jurídica y la jurisdicción en lenguaje sencillo, en lugar de citar una referencia.
+Describe la cuestión jurídica y la jurisdicción en lenguaje sencillo en lugar de usar una cita.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Buscar patentes
-</div>
+### Buscar patentes {#search-patents}
 
-Describe lo que hace la invención, tal como lo haría una reivindicación.
+Describe qué hace la invención, tal como lo haría una reivindicación.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Filtrar contra listas de sanciones
-</div>
+### Cribar contra sanctions {#screen-against-sanctions}
 
-Indica la lista y el tipo de entidad que estás revisando.
+Indica el nombre de la lista y la clase de entidad que estás cribando.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Investigar el gasto público
-</div>
+### Investigar el gasto público {#research-government-spending}
 
-Indica la agencia compradora o la categoría de servicio y el período de tiempo.
+Indica la agencia compradora o la categoría de servicio y el periodo de tiempo.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Obtener estadísticas públicas
-</div>
+### Obtener estadísticas públicas {#pull-public-statistics}
 
-Indica el conjunto de datos y la zona geográfica.
+Indica el conjunto de datos y el área geográfica.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Realizar una solicitud
-</div>
+## Realiza una solicitud {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -141,12 +123,10 @@ Indica el conjunto de datos y la zona geográfica.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtener datos estructurados con Exa Agent
-</div>
+## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
 
-Para datos estructurados que requieren investigación en múltiples fuentes, usa una [ejecución de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criteria y los campos de salida que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
+Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criteria y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 
 <Card title="Iniciar una tarea de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir la guía de Agent" arrow="true">
-  Analiza una entidad en distintos tipos de registro o rastrea un cambio normativo a través de fuentes primarias y su cobertura.
+  Evalúa una entidad en distintos tipos de registro o rastrea un cambio regulatorio a través de fuentes primarias y su cobertura.
 </Card>

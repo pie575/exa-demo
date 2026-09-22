@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="delete-a-batch">
-  # 删除批处理任务
-</div>
+# 删除批次 {#delete-a-batch}
 
-> 删除处于终止状态的批处理任务。
+> 删除处于终止状态的批次。
 
-删除后，该批处理任务将从团队的批处理历史记录中移除。只有处于终止状态的批处理任务才能删除。
+删除批次会将其从团队的批次历史记录中移除。只有处于终止状态的批次才能删除。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户可获得免费额度。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /batches/{id}
 openapi: 3.1.0

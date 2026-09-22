@@ -1,30 +1,26 @@
 ---
-title: "Monitors API"
+title: "API Monitors"
 sidebarTitle: "Monitors"
-description: "Jalankan pencarian berkala dan terima hasil temuan baru melalui webhook."
+description: "Jalankan pencarian berulang dan terima hasil yang baru ditemukan melalui webhook."
 boost: 4
 ---
 
-Monitor menjalankan Exa search sesuai jadwal berkala dan mengirimkan hasilnya ke endpoint webhook.
+Monitors menjalankan Exa search sesuai jadwal berulang dan mengirimkan hasilnya ke endpoint webhook.
 
 Gunakan Monitors untuk memantau berita, pengumuman kompetitor, putaran pendanaan, perubahan regulasi, publikasi
-riset, atau topik apa pun lainnya yang berubah seiring waktu.
+research, atau topik apa pun yang berubah seiring waktu.
 
-<div id="how-monitors-work">
-  ## Cara kerja Monitors
-</div>
+## Cara kerja Monitors {#how-monitors-work}
 
-Pada setiap run, Exa menjalankan search yang telah dikonfigurasi, memfilter berdasarkan waktu, menyingkirkan hasil atau temuan yang sudah pernah dikembalikan
-monitor, lalu mengirimkan output baru ke webhook Anda.
+Pada setiap run, Exa menjalankan search yang telah dikonfigurasi, memfilter berdasarkan waktu, membuang hasil atau temuan yang
+sudah pernah dikembalikan monitor, lalu mengirimkan output baru ke webhook Anda.
 
-Setiap monitor menyimpan riwayat run-nya sendiri, jadi susunlah query berdasarkan sinyal berkelanjutan yang ingin Anda
-pantau, alih-alih menambahkan sendiri rentang tanggal yang terus bergeser.
+Setiap monitor memiliki riwayat run-nya sendiri, jadi susunlah query berdasarkan sinyal berkelanjutan yang ingin Anda
+lacak, bukan dengan menambahkan rentang tanggal yang bergeser sendiri.
 
-<div id="create-your-first-monitor">
-  ## Buat monitor pertama Anda
-</div>
+## Buat monitor pertama Anda {#create-your-first-monitor}
 
-Buat monitor dengan query search, interval, dan endpoint HTTPS yang akan menerima
+Buat monitor dengan query pencarian, interval, dan endpoint HTTPS yang akan menerima
 pembaruan:
 
 <CodeGroup>
@@ -97,7 +93,7 @@ pembaruan:
   ```
 </CodeGroup>
 
-<Accordion title="Contoh respons">
+<Accordion title="Contoh response">
   ```json theme={null}
   {
     "id": "01k4d9w6y3h7p2m8n5q1r0s4tv",
@@ -124,26 +120,24 @@ pembaruan:
   ```
 </Accordion>
 
-Simpan `webhookSecret` saat membuat monitor. Nilai ini hanya dikembalikan satu kali dan dibutuhkan untuk
-memverifikasi tanda tangan webhook.
+Simpan `webhookSecret` saat Anda membuat monitor. Nilai ini hanya dikembalikan sekali dan dibutuhkan untuk
+memverifikasi signature webhook.
 
-<div id="configure-the-output">
-  ## Mengonfigurasi output
-</div>
+## Mengonfigurasi output {#configure-the-output}
 
 Setiap run yang selesai mengembalikan halaman yang baru ditemukan di `output.results`.
 
-Exa juga mensintesis temuan dari setiap halaman ke dalam `output.content`:
+Exa juga menyintesis temuan dari setiap halaman ke dalam `output.content`:
 
-| Bentuk output    | Cara penggunaan                | Nilai yang dikembalikan                            |
+| Bentuk output    | Cara menggunakan               | Nilai yang dikembalikan                            |
 | ---------------- | ------------------------------ | -------------------------------------------------- |
-| Text summary     | Default                        | String di `output.content`                         |
+| Ringkasan teks   | Default                        | String di `output.content`                         |
 | JSON terstruktur | Tambahkan objek `outputSchema` | JSON yang sesuai dengan schema di `output.content` |
 
-Sumber untuk field hasil sintesis dikembalikan secara otomatis di `output.grounding`.
+Sources untuk fields hasil sintesis dikembalikan secara otomatis di `output.grounding`.
 
-Tambahkan `outputSchema` jika kode selanjutnya membutuhkan
-field yang konsisten:
+Tambahkan `outputSchema` jika kode downstream memerlukan
+fields yang konsisten:
 
 ```json theme={null}
 {
@@ -168,16 +162,14 @@ field yang konsisten:
 }
 ```
 
-Jangan sertakan citations dan confidence di dalam schema. Keduanya dikembalikan secara terpisah di
+Jangan sertakan sitasi dan confidence di dalam schema. Keduanya dikembalikan secara terpisah di
 `output.grounding`.
 
-<div id="add-page-content">
-  ## Menambahkan page content
-</div>
+## Menambahkan page content {#add-page-content}
 
 `search` menerima opsi yang sama seperti [Exa Search](/id/docs/search/quickstart): gunakan `contents` untuk menyertakan
-highlights, teks lengkap, atau summaries pada setiap hasil, serta `includeDomains` atau `excludeDomains` untuk
-membatasi sumber.
+kutipan, teks penuh, atau ringkasan pada setiap hasil, serta `includeDomains` atau `excludeDomains` untuk
+membatasi sources.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -247,9 +239,7 @@ membatasi sumber.
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## Uji monitor Anda
-</div>
+## Uji monitor Anda {#test-your-monitor}
 
 Picu run secara langsung tanpa menunggu jadwal berikutnya, lalu tampilkan daftar runs-nya:
 
@@ -283,43 +273,39 @@ Status run yang tersedia:
 
 | Status      | Arti                                                              |
 | ----------- | ----------------------------------------------------------------- |
-| `pending`   | Run berada dalam antrean                                          |
+| `pending`   | Run sedang mengantre                                              |
 | `running`   | Run sedang berjalan                                               |
 | `completed` | Run selesai; ambil berdasarkan ID untuk membaca output lengkapnya |
 | `failed`    | Run gagal; `failReason` menjelaskan penyebabnya                   |
 | `cancelled` | Run dibatalkan                                                    |
 
-`output` bernilai null sampai run selesai.
+`output` bernilai null hingga run selesai.
 
-<div id="schedule-runs">
-  ## Menjadwalkan run
-</div>
+## Menjadwalkan run {#schedule-runs}
 
-Interval minimum adalah satu jam. Gunakan satu nilai durasi seperti `1h`, `6h`, `1d`, atau `7d`. Jadwal
+Interval minimum adalah satu jam. Gunakan satu durasi saja seperti `1h`, `6h`, `1d`, atau `7d`. Jadwal
 mengacu pada waktu pembuatan monitor — monitor harian yang dibuat pukul 14.30 akan berjalan
 setiap hari sekitar pukul 14.30 — tetapi setiap run bisa tertunda hingga 30 menit, jadi jangan mengandalkan
 waktu eksekusi yang persis sesuai jam.
 
 Hilangkan `trigger` untuk membuat monitor yang hanya dijalankan secara manual. Menjeda monitor terjadwal juga menghentikan
-run otomatis, sementara pemicu manual tetap dipertahankan.
+run otomatis, tetapi pemicu manual tetap berfungsi.
 
 <Note>
   Run monitor tidak saling tumpang tindih. Jika run terjadwal berikutnya dimulai saat run sebelumnya masih
   berjalan, Exa akan membatalkan run sebelumnya.
 </Note>
 
-<div id="receive-webhook-updates">
-  ## Menerima pembaruan webhook
-</div>
+## Menerima pembaruan webhook {#receive-webhook-updates}
 
-Berlangganan ke `monitor.run.completed` jika Anda hanya memerlukan run yang sudah selesai. Jika `events` tidak disertakan, Exa
-juga akan mengirimkan event siklus hidup monitor serta event run-created.
+Berlangganan `monitor.run.completed` jika Anda hanya memerlukan run yang sudah selesai. Jika `events` tidak disertakan, Exa
+juga akan mengirimkan event siklus hidup monitor dan event run-created.
 
 Payload run yang selesai berisi status dan output run tersebut. `metadata` monitor yang bersifat opsional akan
-ikut dikirim kembali dalam pengiriman webhook, sehingga Anda dapat meneruskan pembaruan ke pelanggan,
-workspace, channel, atau job internal yang tepat.
+dikirim ulang dalam deliveries webhook, sehingga Anda bisa meneruskan pembaruan ke pelanggan,
+workspace, kanal, atau job internal yang tepat.
 
-<Accordion title="Payload webhook untuk run yang selesai">
+<Accordion title="Payload webhook run yang selesai">
   Output dan timestamp di bawah ini dipersingkat.
 
   ```json theme={null}
@@ -363,13 +349,13 @@ workspace, channel, atau job internal yang tepat.
 </Accordion>
 
 <Warning>
-  Webhook Anda harus menggunakan HTTPS dan menjadi tujuan akhir, karena redirect tidak diikuti.
+  Webhook Anda harus menggunakan HTTPS dan menjadi tujuan akhir karena redirect tidak diikuti.
   Verifikasi `Exa-Signature` sebelum memproses event.
 </Warning>
 
-Setiap pengiriman menyertakan header `Exa-Signature` dengan format `t=<timestamp>,v1=<signature>`.
-Susun `<timestamp>.<raw-request-body>`, hitung digest HMAC-SHA256-nya menggunakan
-`webhookSecret` sekali pakai, lalu bandingkan hasilnya dengan `v1` memakai perbandingan waktu konstan.
+Setiap delivery menyertakan header `Exa-Signature` dengan format `t=<timestamp>,v1=<signature>`.
+Susun `<timestamp>.<raw-request-body>`, hitung digest HMAC-SHA256-nya dengan
+`webhookSecret` sekali pakai, lalu bandingkan hasilnya dengan `v1` menggunakan perbandingan waktu konstan.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -407,24 +393,22 @@ Susun `<timestamp>.<raw-request-body>`, hitung digest HMAC-SHA256-nya menggunaka
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Membuat monitor" icon="bell" href="/id/docs/reference/monitors/create-a-monitor" cta="Buka referensi" arrow="true">
-    Lihat semua field search, jadwal, output, metadata, dan webhook.
+    Lihat semua field search, schedule, output, metadata, dan webhook.
   </Card>
 
-  <Card title="run monitor" icon="clock" href="/id/docs/reference/monitors/runs/get-a-run" cta="Buka referensi" arrow="true">
+  <Card title="Run monitor" icon="clock" href="/id/docs/reference/monitors/runs/get-a-run" cta="Buka referensi" arrow="true">
     Periksa status, output, grounding, dan penyebab kegagalan sebuah run.
   </Card>
 
   <Card title="Panduan search" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">
-    Atur query, filter, highlights, teks lengkap, dan freshness.
+    Atur query, filter, kutipan, teks penuh, dan kebaruan.
   </Card>
 
   <Card title="Praktik terbaik search" icon="sparkles" href="/id/docs/search/best-practices" cta="Baca panduan" arrow="true">
-    Tingkatkan kualitas retrieval sekaligus menjaga output tetap terfokus.
+    Tingkatkan kualitas retrieval sambil menjaga output tetap fokus.
   </Card>
 </Columns>

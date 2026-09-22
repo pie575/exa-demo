@@ -1,35 +1,27 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
-> Utilisez ce fichier pour identifier toutes les pages disponibles avant d&#39;aller plus loin.
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="affiliatecom">
-  # Affiliate.com
-</div>
+# Affiliate.com {#affiliatecom}
 
 > Recherchez dans les catalogues de produits des marchands et des réseaux d&#39;affiliation.
 
 [Affiliate.com](https://affiliate.com) regroupe les catalogues de produits des
-marchands et des réseaux d&#39;affiliation au sein d&#39;un index unique interrogeable,
-avec des prix en temps réel, des marques et des liens directs vers les marchands.
+marchands et des réseaux d&#39;affiliation dans un index unique interrogeable, avec
+de la tarification en temps réel, les marques et des liens directs vers les marchands.
 
-Attachez `affiliate` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) via
+Attachez `affiliate` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
-Affiliate.com en parallèle de la web search d&#39;Exa.
+Affiliate.com en parallèle d&#39;Exa web search.
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## Cas d&#39;usage {#use-it-for}
 
-* Découverte de produits et comparaison de prix entre marchands.
-* Alimenter des assistants d&#39;achat et des guides d&#39;achat.
-* Afficher des liens d&#39;affiliation à côté des résultats de recherche.
+* Découverte de produits et comparaison des prix entre marchands.
+* Alimenter des assistants d&#39;achat et des contenus de guides d&#39;achat.
+* Faire apparaître des liens d&#39;affiliation aux côtés des résultats de recherche.
 
-<div id="provider-id">
-  ## ID du provider
-</div>
+## ID du fournisseur {#provider-id}
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -37,11 +29,9 @@ Utilisez cette valeur dans `dataSources` :
 affiliate
 ```
 
-<div id="example">
-  ## Exemple
-</div>
+## Exemple {#example}
 
-Trouvez des casques sans fil à réduction de bruit à moins de 300 $ et comparez les prix.
+Trouver des casques sans fil à réduction de bruit à moins de $300 et comparer la tarification.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -136,16 +126,12 @@ Trouvez des casques sans fil à réduction de bruit à moins de 300 $ et compare
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Fonctionne bien avec
-</div>
+## À combiner avec {#pairs-well-with}
 
 * [Similarweb](/fr/docs/agent/connect/similarweb) : évaluez l&#39;audience d&#39;un marchand avant de le recommander.
-* [Fiber.ai](/fr/docs/agent/connect/fiber) : renseignez-vous sur l&#39;entreprise derrière un marchand ou une marque.
+* [Fiber.ai](/fr/docs/agent/connect/fiber) : recherchez des informations sur l&#39;entreprise derrière un marchand ou une marque.
 
-<div id="next-steps">
-  ## Étapes suivantes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
@@ -153,14 +139,14 @@ Trouvez des casques sans fil à réduction de bruit à moins de 300 $ et compare
   </Card>
 
   <Card title="Combiner des providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
-    Attachez jusqu&#39;à cinq partners à un même run et formulez la query de façon à ce que chacun soit sollicité.
+    Attachez jusqu&#39;à cinq partners à un même run et formulez la requête de façon à ce que chacun soit sollicité.
   </Card>
 
   <Card title="Découvrir Exa Agent" icon="book-open" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
-    Créez des runs, suivez la progression en streaming, concevez des schemas de sortie et maîtrisez l&#39;effort et le coût.
+    Créez des runs, suivez la progression en stream, concevez des schémas d&#39;output et maîtrisez l&#39;effort et le coût.
   </Card>
 
-  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une key" arrow="true">
-    Créez une key dans le dashboard et exécutez tel quel l&#39;exemple de cette page. Les nouveaux comptes bénéficient de credits gratuits.
+  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une clé" arrow="true">
+    Créez une clé dans le tableau de bord et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes démarrent avec des crédits gratuits.
   </Card>
 </Columns>

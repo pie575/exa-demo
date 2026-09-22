@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="preview-a-webset">
-  # webset 미리보기
-</div>
+# webset 미리보기 {#preview-a-webset}
 
-> webset을 생성하기 전에 search query가 어떻게 분해되는지 미리 확인합니다. 이 endpoint는 webset 생성 시 수행되는 것과 동일한 query 분석을 실행하므로, 감지된 엔티티 유형, 생성된 search criteria, 사용 가능한 enrichment 열을 미리 확인할 수 있습니다.
+> webset을 생성하기 전에 검색 질의가 어떻게 분해되는지 미리 확인합니다. 이 엔드포인트는 webset 생성 시 수행되는 질의 분석과 동일한 분석을 실행하므로, 감지된 엔티티 유형, 생성된 search criteria, 사용 가능한 enrichment 열을 미리 확인할 수 있습니다.
 
-이를 활용하면 사용자가 실제로 webset을 생성하기 전에 자신의 search가 어떻게 해석될지 파악하도록 도울 수 있습니다.
+사용자가 전체 webset 생성을 진행하기 전에 자신의 검색이 어떻게 해석될지 파악하도록 돕는 데 활용하세요.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0
@@ -468,67 +462,67 @@ components:
           description: The URL of the company website
           type: string
         description:
-          description: Short description of the relevance of the company
+          description: 회사와의 관련성에 대한 간단한 설명
           type: string
         content:
           type: string
-          description: The text content of the company website
+          description: 회사 웹사이트의 텍스트 콘텐츠
           nullable: true
         company:
           properties:
             name:
-              description: The name of the company
+              description: 회사의 이름
               type: string
             location:
               type: string
-              description: The main location of the company
+              description: 회사의 주요 위치
               nullable: true
             employees:
               type: integer
-              description: The number of employees of the company
+              description: 회사의 직원 수
               nullable: true
             industry:
               type: string
-              description: The industry of the company
+              description: 회사의 산업 분야
               nullable: true
             about:
               type: string
-              description: A short description of the company
+              description: 회사에 대한 간단한 설명
               nullable: true
             logoUrl:
               format: uri
               type: string
-              description: The logo URL of the company
+              description: 회사의 로고 URL
               nullable: true
             foundedYear:
               type: number
-              description: The year the company was founded
+              description: 회사가 설립된 연도
               nullable: true
             headquarters:
               properties:
                 address:
                   type: string
-                  description: The street address of the headquarters
+                  description: 본사의 도로명 주소
                   nullable: true
                 city:
                   type: string
-                  description: The city of the headquarters
+                  description: 본사가 위치한 도시
                   nullable: true
                 state:
                   type: string
-                  description: The state or region of the headquarters
+                  description: 본사가 위치한 주 또는 지역
                   nullable: true
                 postalCode:
                   type: string
-                  description: The postal code of the headquarters
+                  description: 본사의 우편번호
                   nullable: true
                 country:
                   type: string
-                  description: The country of the headquarters
+                  description: 본사가 위치한 국가
                   nullable: true
                 countryCode:
                   type: string
-                  description: The ISO country code of the headquarters
+                  description: 본사의 ISO 국가 코드
                   nullable: true
               required:
                 - address
@@ -539,31 +533,31 @@ components:
                 - countryCode
               type: object
               title: WebsetItemCompanyHeadquarters
-              description: The structured headquarters address of the company
+              description: 회사의 구조화된 본사 주소
               nullable: true
             financials:
               properties:
                 revenueAnnual:
                   type: number
-                  description: The annual revenue of the company (USD)
+                  description: 회사의 연간 매출 (USD)
                   nullable: true
                 fundingTotal:
                   type: number
-                  description: The total funding raised by the company (USD)
+                  description: 회사가 조달한 총 투자금 (USD)
                   nullable: true
                 fundingLatestRound:
                   properties:
                     name:
                       type: string
-                      description: The name of the funding round (e.g. Series A)
+                      description: 투자 라운드의 이름 (예: 시리즈 A)
                       nullable: true
                     date:
                       type: string
-                      description: The date of the funding round
+                      description: 투자 라운드의 날짜
                       nullable: true
                     amount:
                       type: number
-                      description: The amount raised in the funding round (USD)
+                      description: 해당 투자 라운드에서 조달한 금액 (USD)
                       nullable: true
                   required:
                     - name
@@ -571,7 +565,7 @@ components:
                     - amount
                   type: object
                   title: WebsetItemCompanyFundingRound
-                  description: The latest funding round
+                  description: 최신 투자 라운드
                   nullable: true
               required:
                 - revenueAnnual
@@ -579,24 +573,24 @@ components:
                 - fundingLatestRound
               type: object
               title: WebsetItemCompanyFinancials
-              description: Financial information about the company
+              description: 회사에 대한 재무 정보
               nullable: true
             webTraffic:
               properties:
                 visitsMonthly:
                   type: number
-                  description: The estimated monthly website visits
+                  description: 예상 월간 웹사이트 방문 수
                   nullable: true
                 uniqueVisitors:
                   type: number
-                  description: The estimated monthly unique visitors
+                  description: 예상 월간 순 방문자 수
                   nullable: true
               required:
                 - visitsMonthly
                 - uniqueVisitors
               type: object
               title: WebsetItemCompanyWebTraffic
-              description: Web traffic metrics for the company
+              description: 회사의 웹 트래픽 지표
               nullable: true
           required:
             - name
@@ -627,28 +621,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the article
+          description: 기사의 URL
           type: string
         description:
-          description: Short description of the relevance of the article
+          description: 기사와의 관련성에 대한 간단한 설명
           type: string
         content:
           type: string
-          description: The text content for the article
+          description: 기사의 텍스트 콘텐츠
           nullable: true
         article:
           properties:
             title:
               type: string
-              description: The title of the article
+              description: 기사의 제목
               nullable: true
             author:
               type: string
-              description: The author(s) of the article
+              description: 기사의 저자
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the article was published
+              description: 기사가 게시된 날짜와 시간
               nullable: true
           required:
             - title
@@ -672,28 +666,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the research paper
+          description: 연구 논문의 URL
           type: string
         description:
-          description: Short description of the relevance of the research paper
+          description: 연구 논문과의 관련성에 대한 간단한 설명
           type: string
         content:
           type: string
-          description: The text content of the research paper
+          description: 연구 논문의 텍스트 콘텐츠
           nullable: true
         researchPaper:
           properties:
             title:
               type: string
-              description: The title of the research paper
+              description: 연구 논문의 제목
               nullable: true
             author:
               type: string
-              description: The author(s) of the research paper
+              description: 연구 논문의 저자
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the research paper was published
+              description: 연구 논문이 게시된 날짜와 시간
               nullable: true
           required:
             - title
@@ -717,28 +711,28 @@ components:
       properties:
         url:
           format: uri
-          description: The URL of the Item
+          description: 항목의 URL
           type: string
         description:
-          description: Short description of the Item
+          description: 항목에 대한 간단한 설명
           type: string
         content:
           type: string
-          description: The text content of the Item
+          description: 항목의 텍스트 콘텐츠
           nullable: true
         custom:
           properties:
             title:
               type: string
-              description: The title of the website
+              description: 웹사이트의 제목
               nullable: true
             author:
               type: string
-              description: The author(s) of the website
+              description: 웹사이트의 저자
               nullable: true
             publishedAt:
               type: string
-              description: The date and time the website was published
+              description: 웹사이트가 게시된 날짜와 시간
               nullable: true
           required:
             - title
@@ -764,12 +758,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key> 를 사용하여
+        인증할 수도 있습니다.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key> 를 사용하여
+        인증할 수도 있습니다.
 ```

@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-<div id="search">
-  # Search
-</div>
+# Search {#search}
 
-> El endpoint de search te permite buscar en la web y extraer los contents de los resultados.
+> El endpoint de búsqueda te permite buscar en la web y extraer el contenido de los resultados.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /search
 openapi: 3.1.0
@@ -1078,18 +1072,18 @@ components:
         context:
           type: string
           description: >-
-            Deprecated. Combined context string from search results. Use
-            highlights or text instead.
+            Deprecado. Cadena de contexto combinada a partir de los resultados
+            de búsqueda. Use highlights o text en su lugar.
           deprecated: true
         costDollars:
           $ref: '#/components/schemas/CostDollarsOutput'
         searchTime:
           type: number
           description: >-
-            Server-side processing time in milliseconds, measured at the
-            gateway. Covers retrieval but may exclude later phases such as
-            structured output synthesis, so it can be lower than end-to-end
-            request latency.
+            Tiempo de procesamiento en el servidor, en milisegundos, medido en
+            el gateway. Incluye la recuperación, pero puede excluir fases
+            posteriores como la síntesis de la salida estructurada, por lo que
+            puede ser menor que la latencia total de la solicitud.
           example: 312.4
       required:
         - results
@@ -1099,7 +1093,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1130,10 +1124,10 @@ components:
                         url:
                           type: string
                           format: uri
-                          description: Source URL.
+                          description: URL de la fuente.
                         title:
                           type: string
-                          description: Source title.
+                          description: Título de la fuente.
                         id:
                           type: string
                       required:
@@ -1161,7 +1155,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1174,7 +1168,7 @@ components:
               field:
                 type: string
                 description: >-
-                  Field path in output.content, for example content or
+                  Ruta del campo en output.content, por ejemplo content o
                   companies[0].funding.
               citations:
                 type: array
@@ -1184,28 +1178,28 @@ components:
                     url:
                       type: string
                       format: uri
-                      description: Source URL.
+                      description: URL de la fuente.
                     title:
                       type: string
-                      description: Source title.
+                      description: Título de la fuente.
                   required:
                     - url
                     - title
                   additionalProperties: false
-                description: Sources supporting this output field.
+                description: Fuentes que respaldan este campo de salida.
               confidence:
                 type: string
                 enum:
                   - low
                   - medium
                   - high
-                description: Model-reported reliability for this field.
+                description: Fiabilidad de este campo según el modelo.
             required:
               - field
               - citations
               - confidence
             additionalProperties: false
-          description: Field-level grounding for synthesized output.
+          description: Grounding a nivel de campo para la salida sintetizada.
         citations:
           type: array
           items:
@@ -1214,10 +1208,10 @@ components:
               url:
                 type: string
                 format: uri
-                description: Source URL.
+                description: URL de la fuente.
               title:
                 type: string
-                description: Source title.
+                description: Título de la fuente.
               id:
                 type: string
             required:
@@ -1249,10 +1243,10 @@ components:
                         url:
                           type: string
                           format: uri
-                          description: Source URL.
+                          description: URL de la fuente.
                         title:
                           type: string
-                          description: Source title.
+                          description: Título de la fuente.
                         id:
                           type: string
                       required:
@@ -1280,7 +1274,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1298,7 +1292,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1315,7 +1309,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1327,10 +1321,10 @@ components:
         searchTime:
           type: number
           description: >-
-            Server-side processing time in milliseconds, measured at the
-            gateway. Covers retrieval but may exclude later phases such as
-            structured output synthesis, so it can be lower than end-to-end
-            request latency.
+            Tiempo de procesamiento en el servidor, en milisegundos, medido en
+            el gateway. Incluye la recuperación, pero puede excluir fases
+            posteriores como la síntesis de la salida estructurada, por lo que
+            puede ser menor que la latencia total de la solicitud.
           example: 312.4
         costDollars:
           $ref: '#/components/schemas/CostDollarsOutput'
@@ -1358,10 +1352,10 @@ components:
                         url:
                           type: string
                           format: uri
-                          description: Source URL.
+                          description: URL de la fuente.
                         title:
                           type: string
-                          description: Source title.
+                          description: Título de la fuente.
                         id:
                           type: string
                       required:
@@ -1390,7 +1384,7 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: Identificador único de la solicitud.
           example: b5947044c4b78efa9552a7c89b306d95
         type:
           type: string
@@ -1408,7 +1402,7 @@ components:
         - error
       additionalProperties: false
     JsonValue:
-      description: Any JSON value.
+      description: Cualquier valor JSON.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -1427,7 +1421,7 @@ components:
       properties:
         title:
           type: string
-          description: The title of the search result.
+          description: El título del resultado de búsqueda.
           example: A Comprehensive Overview of Large Language Models
         url:
           type: string

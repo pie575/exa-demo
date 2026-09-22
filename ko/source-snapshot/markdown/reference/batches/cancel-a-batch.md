@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-<div id="cancel-a-batch">
-  # batch 취소
-</div>
+# batch 취소 {#cancel-a-batch}
 
 > 진행 중인 batch를 취소합니다.
 
-batch는 새 요청 스케줄링을 중단하고, 진행 중인 작업을 모두 처리한 뒤 `cancelled` 상태로 전환됩니다. 이미 `cancelling` 또는 `cancelled` 상태인 batch를 취소하면 변경 없이 그대로 반환되며, `completed` 또는 `expired` 상태인 batch는 취소할 수 없습니다.
+batch는 새로운 요청 스케줄링을 중단하고, 처리 중인 작업을 모두 완료한 뒤 `cancelled` 상태로 전환됩니다. 이미 `cancelling` 또는 `cancelled` 상태인 batch를 취소하면 변경 없이 그대로 반환되며, `completed` 또는 `expired` 상태인 batch는 취소할 수 없습니다.
 
-<Card title="Exa API 키 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  대시보드에서 키를 생성하세요. 신규 계정에는 무료 크레딧이 제공됩니다.
+<Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches/{id}/cancel
 openapi: 3.1.0

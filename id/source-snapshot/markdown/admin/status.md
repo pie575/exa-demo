@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="status-page">
-  # Status Page
-</div>
+# Status Page {#status-page}
 
-> Ketersediaan secara langsung, incident yang sedang berlangsung, dan uptime history layanan Exa.
+> Ketersediaan real-time, incident aktif, dan riwayat uptime layanan Exa.
 
 export const ExaStatus = () => {
   const [data, setData] = useState(null);
@@ -169,28 +165,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa memublikasikan ketersediaan layanan di [status.exa.ai](https://status.exa.ai): status terkini Search API, Websets, dan Exa MCP, incident yang sedang berlangsung beserta pembaruannya, serta uptime history selama 90 hari terakhir.
+Exa memublikasikan ketersediaan layanan di [status.exa.ai](https://status.exa.ai): status terkini Search API, Websets, dan Exa MCP, incident aktif beserta pembaruannya seiring perkembangan penanganan, serta riwayat uptime selama 90 hari terakhir.
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## Berlangganan pembaruan
-</div>
+## Berlangganan pembaruan {#subscribe-to-updates}
 
-Berlangganan di status page untuk menerima notifikasi saat sebuah incident dibuka, diperbarui, atau diselesaikan. Notifikasi dikirim melalui email, Slack, Google Chat, atau webhook.
+Berlangganan di status page untuk mendapatkan notifikasi ketika sebuah incident dibuka, diperbarui, atau diselesaikan. Notifikasi dikirim melalui email, Slack, Google Chat, atau webhook.
 
-<div id="get-help">
-  ## Dapatkan bantuan
-</div>
+## Dapatkan bantuan {#get-help}
 
 Jika permintaan terus gagal padahal semua sistem dilaporkan beroperasi normal, penyebabnya kemungkinan ada di tingkat permintaan — periksa [Error codes](/id/docs/admin/error-codes) terlebih dahulu.
 
 <Columns cols={2}>
   <Card title="Dukungan email" icon="mail" href="mailto:hello@exa.ai" cta="Kirim email ke dukungan" arrow="true">
-    Sertakan status respons, error body, dan `requestId` agar diagnosis bisa dilakukan secepat mungkin.
+    Sertakan status response, error body, dan `requestId` agar diagnosis bisa dilakukan secepat mungkin.
   </Card>
 
-  <Card title="Dukungan Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Hubungi tim penjualan" arrow="true">
-    SLA uptime dan dukungan tersedia pada paket Enterprise.
+  <Card title="Dukungan Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Hubungi tim sales" arrow="true">
+    SLA uptime dan dukungan tersedia pada plan Enterprise.
   </Card>
 </Columns>

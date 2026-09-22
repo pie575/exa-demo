@@ -1,61 +1,53 @@
 ---
 title: "Cookbook d'enrichment GTM avec Tempo MPP"
 sidebarTitle: "Enrichment GTM avec MPP"
-description: "Créez un workflow d'enrichment GTM facturé à la requête Exa search et contents avec Tempo MPP — sans API key."
+description: "Créez un workflow d'enrichment GTM facturé à la requête Exa search et contenu avec Tempo MPP, sans API key."
 icon: "/docs/images/sidebar-icons/tempo.svg"
 ---
 
 Utilisez ce cookbook pour créer un agent ou un pipeline d&#39;enrichment GTM
 reposant sur les endpoints `/search` et `/contents` d&#39;Exa, facturés à la requête
-via le Machine Payments Protocol (MPP). MPP prend en charge plusieurs moyens de
-paiement ; les exemples présentés ici utilisent des stablecoins sur
-[Tempo](https://tempo.xyz). Pas d&#39;abonnement mensuel, pas d&#39;API key ni de
-tarification par siège : approvisionnez un wallet en USDC.e et payez au fur et
-à mesure que vous enrichissez vos leads ou vos entreprises.
+via le Machine Payments Protocol (MPP). MPP prend en charge plusieurs méthodes
+de paiement ; les exemples ci-dessous utilisent des stablecoins sur
+[Tempo](https://tempo.xyz). Pas d&#39;abonnement mensuel, pas d&#39;API key et pas de
+tarification par siège : approvisionnez un wallet en USDC.e et payez au fur et à
+mesure que vous enrichissez vos leads ou vos entreprises.
 
 <Info>
-  MPP est actuellement pris en charge uniquement sur les endpoints `/search` et `/contents` d&#39;Exa.
-  L&#39;API Agent (`/agent/runs`) et `/answer` nécessitent une Exa API key et passent
-  par le flux de facturation standard par API key.
+  MPP n&#39;est actuellement pris en charge que sur les endpoints `/search` et `/contents` d&#39;Exa.
+  L&#39;API Agent (`/agent/runs`) et `/answer` nécessitent une API key Exa et passent
+  par le flux standard de facturation par API key.
 </Info>
 
-<div id="what-youll-build">
-  ## Ce que vous allez construire
-</div>
+## Ce que vous allez construire {#what-youll-build}
 
-Un pipeline d&#39;enrichment léger qui, à partir d&#39;une liste de noms d&#39;entreprises ou
-de descriptions cibles :
+Un pipeline d&#39;enrichment léger qui, à partir d&#39;une liste de noms d&#39;entreprises ou de
+descriptions cibles :
 
 1. Utilise `/search` d&#39;Exa avec `type: "deep"` et `outputSchema` pour trouver la
-   page officielle de l&#39;entreprise et en extraire les metadata essentielles.
-2. Utilise `contents.highlights` sur le résultat renvoyé pour récupérer des extraits
-   sources sur les levées de fonds, le siège social, les effectifs et le produit.
-3. Produit un enregistrement d&#39;enrichment au format CSV ou JSON pour chaque entrée.
+   page officielle de l&#39;entreprise et en extraire les métadonnées clés.
+2. Utilise `contents.highlights` sur le result renvoyé pour récupérer des extraits sources
+   sur le financement, le siège social, les effectifs et le produit.
+3. Produit un record d&#39;enrichment en CSV ou JSON pour chaque entrée.
 
-Ce modèle convient à l&#39;enrichment de listes de prospects, à la recherche sur les
-comptes et à la personnalisation des campagnes sortantes. Comme il repose sur
-des appels `/search` + `/contents` distincts, chaque étape peut être payée avec MPP.
+Ce modèle convient à l&#39;enrichment de listes de prospects, à la recherche sur les comptes et à la
+personnalisation des campagnes sortantes. Comme il repose sur des appels `/search` + `/contents`
+distincts, chaque étape peut être payée avec MPP.
 
-<div id="prerequisites">
-  ## Prérequis
-</div>
+## Prérequis {#prerequisites}
 
 * Un wallet compatible Tempo approvisionné en **USDC.e** sur le mainnet Tempo.
-* Un moyen sûr de charger la private key du wallet à l&#39;exécution (voir ci-dessous ; ne committez jamais
-  la key et ne l&#39;exposez pas dans le code source).
+* Un moyen sûr de charger la private key du wallet au moment de l&#39;exécution (voir ci-dessous ; ne jamais committer
+  la clé ni l&#39;exposer dans le code source).
 * `mppx` (TypeScript) ou `pympp` (Python) installé.
 
 <Info>
-  Pour une configuration en ligne de commande qui ne nécessite pas de private key brute, utilisez la [CLI Tempo Wallet](/fr/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). `tempo wallet login` crée ou connecte un wallet et peut inclure des MPP Credits gratuits pour les nouvelles inscriptions.
+  Pour une configuration en ligne de commande ne nécessitant pas de private key brute, utilisez la [Tempo Wallet CLI](/fr/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). `tempo wallet login` crée ou connecte un wallet et peut inclure des MPP Credits gratuits pour les nouvelles inscriptions.
 </Info>
 
-<div id="mpp-setup">
-  ## Configuration de MPP
-</div>
+## Configuration de MPP {#mpp-setup}
 
-<div id="install-the-client">
-  ### Installer le client
-</div>
+### Installer le client {#install-the-client}
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -67,9 +59,7 @@ des appels `/search` + `/contents` distincts, chaque étape peut être payée av
   ```
 </CodeGroup>
 
-<div id="load-your-private-key-safely">
-  ### Charger votre private key en toute sécurité
-</div>
+### Charger votre private key en toute sécurité {#load-your-private-key-safely}
 
 Ne codez jamais une private key en dur. Les exemples ci-dessous lisent `WALLET_PRIVATE_KEY` depuis
 votre environnement d&#39;exécution, uniquement pour le développement local. En production, chargez-la depuis
@@ -87,9 +77,7 @@ un secrets manager tel que 1Password, AWS Secrets Manager ou HashiCorp Vault.
   ```
 </CodeGroup>
 
-<div id="make-a-paid-search-request">
-  ### Effectuer une requête payante
-</div>
+### Effectuer une search payante {#make-a-paid-search-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -157,9 +145,7 @@ un secrets manager tel que 1Password, AWS Secrets Manager ou HashiCorp Vault.
 En cas de succès, la réponse renvoie les résultats Exa ainsi qu&#39;un header `Payment-Receipt` contenant
 le hash de la transaction on-chain.
 
-<div id="make-a-paid-contents-request">
-  ### Effectuer une requête contents payante
-</div>
+### Effectuer une requête contents payante {#make-a-paid-contents-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -192,13 +178,9 @@ le hash de la transaction on-chain.
   ```
 </CodeGroup>
 
-<div id="gtm-enrichment-recipe">
-  ## Recette d&#39;Enrichment GTM
-</div>
+## Recette d&#39;enrichment GTM {#gtm-enrichment-recipe}
 
-<div id="enrich-a-list-of-companies">
-  ### Enrichir une liste d&#39;entreprises
-</div>
+### Enrichir une liste d&#39;entreprises {#enrich-a-list-of-companies}
 
 À partir d&#39;une liste de noms d&#39;entreprises, recherchez la page de chaque entreprise et extrayez-en
 des informations structurées.
@@ -325,12 +307,10 @@ des informations structurées.
   ```
 </CodeGroup>
 
-<div id="enrich-a-person-profile">
-  ### Enrichir le profil d&#39;une personne
-</div>
+### Enrichir le profil d&#39;une personne {#enrich-a-person-profile}
 
 Cette recette utilise `type: "deep"`, `contents.highlights` et `outputSchema` pour
-rechercher des informations sur une personne et renvoyer un profil structuré.
+faire des recherches sur une personne et renvoyer un profil structuré.
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -418,12 +398,10 @@ rechercher des informations sur une personne et renvoyer un profil structuré.
   `contents.highlights` ajoute $0,001 par résultat.
 </Note>
 
-<div id="structured-output">
-  ### Structured output
-</div>
+### Sortie structurée {#structured-output}
 
-Si vous souhaitez obtenir des champs JSON plutôt que du texte brut, utilisez `outputSchema` dans la
-requête de search. Exa renvoie un objet `output` conforme à votre schema.
+Si vous souhaitez des fields JSON plutôt que du texte brut, utilisez `outputSchema` dans la
+requête de search. Exa renvoie un objet `output` conforme à votre schéma.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -490,15 +468,13 @@ requête de search. Exa renvoie un objet `output` conforme à votre schema.
 
 <Note>
   `outputSchema` donne les meilleurs résultats avec les search types `deep-lite` ou `deep`. Il ajoute un
-  call LLM côté Exa : il est donc facturé comme `deep-lite`/`deep`.
+  appel LLM côté Exa, il est donc facturé comme `deep-lite`/`deep`.
 </Note>
 
-<div id="pricing-and-limits">
-  ## Tarification et limites
-</div>
+## Tarifs et limites {#pricing-and-limits}
 
-MPP applique la même tarification par requête que la facturation par API key. Les requêtes de search via MPP
-sont limitées à 10 résultats.
+MPP utilise la même tarification par requête que la facturation par API key. Les requêtes de recherche MPP
+sont plafonnées à 10 résultats.
 
 | Opération                                         | Prix                 |
 | ------------------------------------------------- | -------------------- |
@@ -510,52 +486,46 @@ sont limitées à 10 résultats.
 | `contents.summary`                                | 0,001 $ par résultat |
 
 Consultez [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) pour la référence complète,
-notamment les rate limits, les détails du réseau et les headers de paiement.
+notamment les limites de débit, les détails du réseau et les headers de paiement.
 
-<div id="production-tips">
-  ## Conseils pour la production
-</div>
+## Conseils pour la production {#production-tips}
 
-* **Approvisionnez le wallet uniquement en USDC.e.** Exa prend en charge les frais de réseau Tempo : le wallet n&#39;a donc pas besoin d&#39;un jeton de gas distinct.
-* **Gérez les réponses `402`.** Le SDK MPP effectue automatiquement de nouvelles tentatives, mais un client personnalisé doit réessayer en cas de `402` à l&#39;aide du challenge `WWW-Authenticate: Payment`.
-* **Mettez en cache les résultats de `/contents`.** Les contents sont facturés par URL. Mettez-les en cache par URL pour éviter de payer deux fois la même page d&#39;entreprise.
+* **Alimentez le wallet uniquement en USDC.e.** Exa prend en charge les frais de réseau Tempo : le wallet n&#39;a donc pas besoin d&#39;un jeton de gas distinct.
+* **Gérez les réponses `402`.** Le SDK MPP réessaie automatiquement, mais un client personnalisé doit réessayer en cas de `402` à l&#39;aide du challenge `WWW-Authenticate: Payment`.
+* **Mettez en cache les résultats de `/contents`.** Le contenu est facturé par URL. Utilisez l&#39;URL comme clé de cache pour éviter de payer deux fois la même page d&#39;entreprise.
 * **Attention au plafond de 10 résultats.** La search MPP limite `numResults` à 10.
-* **Ne commitez jamais de private keys.** Chargez `WALLET_PRIVATE_KEY` depuis un secrets manager, et non depuis votre gestionnaire de versions.
+* **Ne committez jamais de private keys.** Chargez `WALLET_PRIVATE_KEY` depuis un gestionnaire de secrets, et non depuis votre gestionnaire de versions.
 
-<div id="faq">
-  ## FAQ
-</div>
+## FAQ {#faq}
 
 <AccordionGroup>
   <Accordion title="Puis-je utiliser MPP avec l'API Exa Agent ?">
-    Non. Dans le code d&#39;Exa, MPP est relié uniquement à `/search` et `/contents`.
+    Non. Dans la base de code Exa, MPP est raccordé uniquement à `/search` et `/contents`.
     `/agent/runs` et `/answer` nécessitent une API key Exa et utilisent la
     facturation standard par API key.
   </Accordion>
 
   <Accordion title="Puis-je combiner MPP et une API key Exa dans la même requête ?">
-    Non. Si une requête contient `x-api-key` ou `Authorization: Bearer`, le flux
-    par API key est prioritaire et MPP est contourné.
+    Non. Si une requête inclut `x-api-key` ou `Authorization: Bearer`, le flux
+    par API key est prioritaire et MPP est ignoré.
   </Accordion>
 
-  <Accordion title="Que se passe-t-il si le règlement MPP échoue ?">
+  <Accordion title="Que se passe-t-il si le settlement MPP échoue ?">
     Exa renvoie `402` avec un nouveau challenge `WWW-Authenticate: Payment` et
-    aucun résultat. Votre client peut réessayer avec un nouveau paiement. Aucun
-    résultat n&#39;est renvoyé tant que le règlement n&#39;a pas abouti.
+    aucun résultat. Votre client peut réessayer avec un nouveau paiement. Aucun résultat n&#39;est renvoyé
+    tant que le settlement n&#39;a pas abouti.
   </Accordion>
 
   <Accordion title="Ai-je besoin d'un wallet Tempo distinct par environnement ?">
-    Vous pouvez réutiliser le même wallet, mais nous recommandons des wallets
-    distincts pour le développement et la production. Le QPS par wallet est de
-    10 requêtes/seconde, toutes requêtes issues de ce wallet confondues.
+    Vous pouvez réutiliser le même wallet, mais nous recommandons des wallets distincts pour
+    le développement et la production. Le QPS par wallet est de 10 requêtes/seconde, toutes
+    requests confondues provenant de ce wallet.
   </Accordion>
 </AccordionGroup>
 
-<div id="next-steps">
-  ## Étapes suivantes
-</div>
+## Étapes suivantes {#next-steps}
 
-* [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) : référence MPP complète
-* [Guide de l&#39;API Exa Search](/fr/docs/search/quickstart) : référence des paramètres de search
-* [Guide de l&#39;API Exa Contents](/fr/docs/contents/quickstart) : référence des paramètres de contents
-* [Documentation MPP de Tempo](https://mpp.dev/protocol) : détails du protocole et du SDK
+* [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) : référence complète de MPP
+* [Guide de l&#39;Exa Search API](/fr/docs/search/quickstart) : référence des paramètres de search
+* [Guide de l&#39;Exa Contents API](/fr/docs/contents/quickstart) : référence des paramètres de contenu
+* [Documentation Tempo MPP](https://mpp.dev/protocol) : détails du protocole et du SDK

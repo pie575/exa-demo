@@ -514,10 +514,6 @@
         "$ref": "./ko/docs.json"
       },
       {
-        "language": "ru",
-        "$ref": "./ru/docs.json"
-      },
-      {
         "language": "zh",
         "$ref": "./zh/docs.json"
       }

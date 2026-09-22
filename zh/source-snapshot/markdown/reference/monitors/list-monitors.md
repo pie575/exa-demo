@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可先通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="list-monitors">
-  # 列出 monitor
-</div>
+# 列出 monitor {#list-monitors}
 
-> 列出当前已认证团队的所有 monitor。支持按状态筛选，并支持基于 cursor 的分页。
+> 列出当前已认证团队的所有 monitor。支持按状态过滤，以及基于 cursor 的分页。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors
 openapi: 3.1.0
@@ -678,11 +672,12 @@ components:
           minimum: -1
           maximum: 720
           description: >-
-            缓存内容的最大存续时间（小时）。正值表示当缓存内容的存续时间
-            少于该小时数时使用缓存；0 表示获取最新内容，这是对
-            新获取的页面应用文本渲染选项的受支持方式；-1 表示始终使用缓存；
-            省略该参数时，在缓存内容不可用时使用回退抓取。支持的最大值
-            为 720 小时。
+            Maximum age of cached content in hours. Positive values use cached
+            content if it is less than this many hours old; 0 fetches fresh
+            content and is the supported way to apply text rendering options to
+            newly fetched pages; -1 always uses cache; omitted uses fallback
+            fetching when cached content is unavailable. Maximum supported value
+            is 720 hours.
           example: 24
         filterEmptyResults:
           type: boolean

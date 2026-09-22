@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para conocer todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-a-monitor-run">
-  # Obtener la ejecución de un monitor
-</div>
+# Obtener un monitor run {#get-a-monitor-run}
 
-> Obtiene una ejecución específica de un monitor.
+> Obtiene un monitor run específico.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{monitor}/runs/{id}
 openapi: 3.1.0

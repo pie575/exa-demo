@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
-> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="developer-quickstart">
-  # Guía rápida para desarrolladores
-</div>
+# Quickstart para desarrolladores {#developer-quickstart}
 
-> Consigue una API key y usa Exa desde tu código o desde tu agente.
+> Consigue una API key y luego usa Exa desde tu código o desde tu agente.
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  <div id="1-get-an-api-key">
-    ## 1. Consigue una API key
-  </div>
+  ## 1. Consigue una API key {#1-get-an-api-key}
 
   <Steps>
-    <Step title="Visita el panel de Exa">
-      <Card title="Consigue tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-        Crea una key en el panel. Las cuentas nuevas incluyen credits gratuitos.
+    <Step title="Visita el Exa Dashboard">
+      <Card title="Consigue tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+        Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
       </Card>
     </Step>
 
@@ -42,11 +36,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="2-choose-how-youll-use-exa">
-    ## 2. Elige cómo usarás Exa
-  </div>
+  ## 2. Elige cómo vas a usar Exa {#2-choose-how-youll-use-exa}
 
-  Exa se integra en tu aplicación de dos maneras: llamando a las APIs desde tu propio código o conectando un agente que ya uses.
+  Exa se integra en tu aplicación de dos formas: llamando a las APIs desde tu propio código o conectando un agente que ya uses.
 
   <Columns cols={2}>
     <Card title="Llamar a las APIs" icon="code" href="#3-install-an-sdk" cta="Instalar un SDK">
@@ -62,18 +54,16 @@
 
   ¿Vas a desarrollar con las APIs? Elige por dónde empezar:
 
-  | Empieza con                             | Úsalo para                                                                                   |
-  | --------------------------------------- | -------------------------------------------------------------------------------------------- |
-  | [Search](/es/docs/search/quickstart)       | Encontrar páginas web relevantes y devolver contenido sintetizado en menos de 2 s            |
-  | [Deep Search](/es/docs/search/deep-search) | Búsquedas de mayor calidad en las que un LLM encuentra mejores resultados de forma iterativa |
-  | [Agent](/es/docs/agent/quickstart)         | Investigación asíncrona de larga duración, list building, enrichment o informes              |
-  | [Contents](/es/docs/contents/quickstart)   | Extraer el contenido de una página cuando ya tienes la(s) URL(s)                             |
+  | Empieza con                             | Úsalo para                                                                                    |
+  | --------------------------------------- | --------------------------------------------------------------------------------------------- |
+  | [Search](/es/docs/search/quickstart)       | Encontrar páginas web relevantes y devolver contenido sintetizado en menos de 2 s             |
+  | [Deep Search](/es/docs/search/deep-search) | Búsquedas de mayor calidad, en las que un LLM encuentra mejores resultados de forma iterativa |
+  | [Agent](/es/docs/agent/quickstart)         | Investigación asíncrona de larga duración, creación de listas, enrichment o informes          |
+  | [Contents](/es/docs/contents/quickstart)   | Extraer el contenido de páginas cuando ya tienes las URL                                      |
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="3-install-an-sdk">
-    ## 3. Instala un SDK
-  </div>
+  ## 3. Instala un SDK {#3-install-an-sdk}
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -87,9 +77,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  <div id="4-make-your-first-request">
-    ## 4. Haz tu primera solicitud
-  </div>
+  ## 4. Realiza tu primera solicitud {#4-make-your-first-request}
 
   <CodeGroup>
     ```python Python theme={null}
@@ -132,25 +120,23 @@
     ```
   </CodeGroup>
 
-  <div id="next-steps">
-    ## Próximos pasos
-  </div>
+  ## Próximos pasos {#next-steps}
 
   <Columns cols={2}>
-    <Card title="Search API" icon="search" href="/es/docs/search/quickstart" cta="Leer guía" arrow="true">
+    <Card title="Search API" icon="search" href="/es/docs/search/quickstart" cta="Leer la guía" arrow="true">
       Encuentra páginas relevantes y obtén contenido limpio o salidas estructuradas.
     </Card>
 
-    <Card title="Agent API" icon="bot" href="/es/docs/agent/quickstart" cta="Leer guía" arrow="true">
-      Crea flujos de trabajo de larga duración para investigación, creación de listas y enrichment.
+    <Card title="Agent API" icon="bot" href="/es/docs/agent/quickstart" cta="Leer la guía" arrow="true">
+      Crea flujos de trabajo de investigación de larga duración, creación de listas y enrichment.
     </Card>
 
-    <Card title="Contents API" icon="file-text" href="/es/docs/contents/quickstart" cta="Leer guía" arrow="true">
+    <Card title="Contents API" icon="file-text" href="/es/docs/contents/quickstart" cta="Leer la guía" arrow="true">
       Extrae contenido limpio de páginas que ya conoces.
     </Card>
 
-    <Card title="Exa MCP" icon="plug" href="/es/docs/get-started/exa-mcp" cta="Leer guía" arrow="true">
-      Conecta cualquier cliente MCP a las herramientas de web search, obtención de páginas y Exa Agent
+    <Card title="Exa MCP" icon="plug" href="/es/docs/get-started/exa-mcp" cta="Leer la guía" arrow="true">
+      Conecta cualquier MCP client a las herramientas de búsqueda web, obtención de páginas y Exa Agent
       de Exa.
     </Card>
   </Columns>

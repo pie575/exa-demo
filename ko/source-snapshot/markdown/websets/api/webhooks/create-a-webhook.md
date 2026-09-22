@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-a-webhook">
-  # webhook 생성
-</div>
+# 웹훅 생성 {#create-a-webhook}
 
-> 선택한 이벤트가 발생하면 해당 이벤트를 지정한 URL로 전달하는 Webhook을 생성합니다.
+> 선택한 이벤트가 발생할 때마다 해당 이벤트를 지정한 URL로 전달하는 웹훅을 생성합니다.
 
-응답에는 전달 내용을 검증하는 데 사용하는 서명용 `secret`이 포함되며, 이 값은 생성 시에만 반환됩니다.
+response에는 전송 내용을 검증하는 데 사용하는 서명용 `secret`이 포함되며, 이 값은 생성 시에만 반환됩니다.
 
 <Warning>
-  **리디렉션은 따라가지 않습니다.** webhook 전달은 등록된 URL로 직접 전송됩니다.
-  endpoint가 3xx 리디렉션으로 응답하면 해당 전달은 실패로 처리됩니다. 항상 최종
-  목적지 URL을 등록하세요.
+  **리다이렉트는 따라가지 않습니다.** 웹훅은 등록된 URL로 직접 전송됩니다.
+  엔드포인트가 3xx 리다이렉트로 응답하면 해당 전송은 실패로 처리됩니다.
+  항상 최종 목적지 URL을 등록하세요.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

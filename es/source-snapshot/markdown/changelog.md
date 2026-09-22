@@ -1,347 +1,293 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="changelog">
-  # Changelog
-</div>
+# Registro de cambios {#changelog}
 
-> Novedades y anuncios de producto de Exa.
+> Actualizaciones de producto y anuncios de Exa.
 
-<Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (vista previa de investigación)" }}>
-  <div id="dynamic-highlights-research-preview">
-    ## Dynamic Highlights (vista previa de investigación)
-  </div>
+<Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
+  ## Dynamic Highlights (versión preliminar de investigación) {#dynamic-highlights-research-preview}
 
-  Dynamic Highlights selecciona extractos de todo el conjunto de resultados en lugar de tratar cada página por separado. Destina una mayor parte del presupuesto de contexto compartido a las fuentes útiles y reduce el contexto de aquellas que solo repiten información ya devuelta.
+  Dynamic Highlights selecciona extractos de todo el conjunto de resultados en lugar de tratar cada página por separado. Destina una mayor parte del presupuesto de contexto compartido a las fuentes útiles y menos contexto a las que solo repiten información ya devuelta.
 
-  * **RAG de un solo turno**: alrededor de un 49 % más de eficiencia en tokens y un 2,4 % más de calidad posterior con Exa Auto en evaluaciones de programación y de preguntas y respuestas generales.
+  * **RAG de un solo turno**: alrededor de un 49 % más de eficiencia de tokens y un 2,4 % más de calidad posterior con Exa Auto en evaluaciones de programación y de preguntas y respuestas generales.
   * **Agentes**: alrededor de un 30 % menos de tokens en trayectorias completas de agentes y un 1 % más de calidad en BrowseComp, WideSearch y evaluaciones internas de empresas y personas.
 
   Las solicitudes que establecen `dynamic: true` requieren el encabezado `Exa-Beta: dynamic-highlights-2026-08-28`.
 
-  [Lee la guía de Dynamic Highlights →](/es/docs/contents/quickstart)
+  [Leer la guía de Dynamic Highlights →](/es/docs/contents/quickstart)
 </Update>
 
-<Update label="July 23, 2026" rss={{ title: "Investigación de publicaciones" }}>
-  <div id="publication-research">
-    ## Investigación de publicaciones
-  </div>
+<Update label="July 23, 2026" rss={{ title: "Publication research" }}>
+  ## Investigación de publicaciones {#publication-research}
 
   Ampliamos y mejoramos notablemente la investigación sobre publicaciones académicas.
 
   * **350 M de publicaciones**: busca en un índice de 350 millones de publicaciones.
-  * **Resultados más completos de organizaciones y personas**: las búsquedas ahora devuelven tanto organizaciones como las personas afiliadas a ellas, cada una como un perfil detallado y enriquecido que abarca publicaciones, principales colaboradores, áreas de investigación y financiamiento.
+  * **Resultados más completos de organizaciones y personas**: las Searches ahora devuelven tanto organizaciones como las personas afiliadas a ellas, cada una como un perfil detallado y enriquecido que abarca publicaciones, principales colaboradores, áreas de investigación y financiamiento.
   * **Búsqueda agéntica de personas y organizaciones**: los agentes ya pueden buscar entre personas y organizaciones.
   * **Benchmark público de recuperación**: publicamos un benchmark público para la recuperación de publicaciones.
-  * **Nueva categoría de búsqueda `publication`**: consulta resultados académicos con `category: "publication"`, que sustituye a la categoría `research paper`.
-  * **Categorías obsoletas**: las categorías de búsqueda `pdf`, `github` y `tweet` quedarán obsoletas.
-  * **`startCrawlDate` / `endCrawlDate`**: estos parámetros obsoletos ahora se ignoran para todos los equipos, aunque se siguen aceptando por compatibilidad.
+  * **Nueva categoría de Search `publication`**: consulta resultados académicos con `category: "publication"`, que reemplaza a la categoría `research paper`.
+  * **Categorías deprecadas**: las categorías de Search `pdf`, `github` y `tweet` quedarán deprecadas.
+  * **`startCrawlDate` / `endCrawlDate`**: estos parámetros deprecados ahora se ignoran para todos los equipos, aunque se siguen aceptando por compatibilidad.
 
-  Consúltalo a través de la API con la [categoría de búsqueda](/es/docs/search/quickstart) `publication` o [pruébalo en el panel →](https://dashboard.exa.ai/playground/search?type=instant).
+  Consúltalo a través de la API con la [categoría de Search](/es/docs/search/quickstart) `publication`, o [pruébalo en el panel →](https://dashboard.exa.ai/playground/search?type=instant).
 </Update>
 
-<Update label="July 1, 2026" rss={{ title: "Exa Agent y Exa Connect en MCP" }}>
-  <div id="exa-agent-and-exa-connect-in-mcp">
-    ## Exa Agent y Exa Connect en MCP
-  </div>
+<Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
+  ## Exa Agent y Exa Connect en MCP {#exa-agent-and-exa-connect-in-mcp}
 
-  Exa Agent ya está disponible dentro de Exa MCP. Úsalo desde Claude, Cursor o cualquier otro cliente MCP cuando la tarea requiera más que una sola llamada de búsqueda.
+  Exa Agent ya está disponible dentro de Exa MCP. Úsalo desde Claude, Cursor o cualquier otro cliente MCP cuando la tarea requiera más que una sola llamada de Search.
 
-  Habilita la herramienta Agent con `https://mcp.exa.ai/mcp?tools=agent_run` y luego llama a `agent_run` para ejecutar el agente hasta el final y obtener su salida.
+  Habilita la herramienta Agent con `https://mcp.exa.ai/mcp?tools=agent_run` y luego llama a `agent_run` para ejecutar el agente hasta su finalización y devolver su output.
 
-  Las fuentes de datos de Exa Connect están disponibles a través del flujo de Agent, así que puedes adjuntar socios de datos premium cuando una ejecución necesite algo más que la búsqueda web.
+  Las fuentes de datos de Exa Connect están disponibles a través del flujo de Agent, así que puedes adjuntar data partners premium cuando un run necesite algo más que la Search web.
 
-  [Lee la guía de Exa MCP →](/es/docs/get-started/exa-mcp) · [Lee la guía de Exa Agent →](/es/docs/agent/quickstart) · [Tuit del anuncio →](https://x.com/ExaAILabs/status/2072389192458592672)
+  [Leer la guía de Exa MCP →](/es/docs/get-started/exa-mcp) · [Leer la guía de Exa Agent →](/es/docs/agent/quickstart) · [Tuit del anuncio →](https://x.com/ExaAILabs/status/2072389192458592672)
 </Update>
 
-<Update label="June 24, 2026" rss={{ title: "Presentamos Exa Connect" }}>
-  <div id="introducing-exa-connect">
-    ## Presentamos Exa Connect
-  </div>
+<Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
+  ## Presentamos Exa Connect {#introducing-exa-connect}
 
   Exa Connect le da a Exa Agent acceso en vivo a los datos públicos y privados del mundo. Se lanzó con Similarweb, Fiber.ai, Baselayer, Financial Datasets, Affiliate.com, Particle, Jinko y Additional Partners. Los adjuntas mediante `dataSources` en `POST /agent/runs`.
 
-  [Lee la guía de Exa Connect →](/es/docs/agent/connect/overview) · [Tuit del anuncio →](https://x.com/ExaAILabs/status/2069842203577651283)
+  [Leer la guía de Exa Connect →](/es/docs/agent/connect/overview) · [Tuit del anuncio →](https://x.com/ExaAILabs/status/2069842203577651283)
 </Update>
 
-<Update label="June 16, 2026" rss={{ title: "Presentamos Exa Agent" }}>
-  <div id="introducing-exa-agent">
-    ## Presentamos Exa Agent
-  </div>
+<Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
+  ## Presentamos Exa Agent {#introducing-exa-agent}
 
   Lanzamos una nueva clase de agentes de investigación web de frontera, accesibles a través de la API.
 
-  La API de Exa Agent admite parámetros como una consulta en lenguaje natural, el modo `effort`, `outputSchema` para salidas estructuradas e `input.data` para partir de un conjunto de datos existente.
+  La Exa Agent API admite parámetros como una consulta en lenguaje natural, el modo `effort`, `outputSchema` para salidas estructuradas e `input.data` para partir de un conjunto de datos existente.
 
-  [Lee la guía de la API de Exa Agent →](/es/docs/agent/quickstart)
+  [Leer la guía de la Exa Agent API →](/es/docs/agent/quickstart)
 </Update>
 
-<Update label="April 1, 2026" rss={{ title: "Aviso de obsolescencia de la API" }}>
-  <div id="api-deprecation-notice">
-    ## Aviso de obsolescencia de la API
-  </div>
+<Update label="April 1, 2026" rss={{ title: "Aviso de deprecación de la API" }}>
+  ## Aviso de deprecación de la API {#api-deprecation-notice}
 
   Retiramos algunos elementos heredados de la API de Exa:
 
-  * **Endpoint `/research`**: reemplazado por `/search` con `type: "deep-reasoning"`.
-  * **`resolvedSearchType` y `highlightScores` (campos de respuesta)**: devuelven `null` desde el 15 de abril y se eliminaron el 1 de mayo.
-  * **`startCrawlDate` / `endCrawlDate` (parámetros de solicitud obsoletos)**: se ignoran silenciosamente desde el 15 de abril.
+  * **endpoint `/research`**: reemplazado por `/search` con `type: "deep-reasoning"`.
+  * **`resolvedSearchType` y `highlightScores` (campos de respuesta)**: devolvieron `null` desde el 15 de abril y se eliminaron el 1 de mayo.
+  * **`startCrawlDate` / `endCrawlDate` (parámetros de solicitud deprecados)**: se ignoran silenciosamente desde el 15 de abril.
 
-  [Migrar a Deep search →](/es/docs/reference/search)
+  [Migra a Deep Search →](/es/docs/reference/search)
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "Presentamos Exa Monitors" }}>
-  <div id="introducing-exa-monitors">
-    ## Presentamos Exa Monitors
-  </div>
+  ## Presentamos Exa Monitors {#introducing-exa-monitors}
 
-  Los monitors ejecutan búsquedas de Exa de forma programada y envían los resultados a tu webhook, deduplicados respecto a ejecuciones anteriores para que solo recibas contenido nuevo.
+  Los monitors ejecutan Searches de Exa según un schedule y entregan los resultados a tu webhook, deduplicados respecto a runs anteriores para que solo recibas contenido nuevo.
 
-  * **Haz seguimiento de temas a lo largo del tiempo**: noticias de la competencia, rondas de financiación, cambios regulatorios, artículos de investigación.
+  * **Sigue temas a lo largo del tiempo**: noticias de competidores, rondas de financiación, cambios regulatorios, artículos de investigación.
   * **Resultados estructurados**: devuelve texto plano o JSON tipado mediante `outputSchema`.
-  * **Programación flexible**: ejecútalos por intervalos (mínimo 1 hora) o actívalos manualmente.
+  * **Programación flexible**: ejecútalos según un interval (mínimo 1 hora) o actívalos manualmente.
 
   [Lee la guía de la API de Monitors →](/es/docs/monitors/quickstart)
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Renovación de Exa Deep" }}>
-  <div id="exa-deep-revamp">
-    ## Renovación de Exa Deep
-  </div>
+  ## Renovación de Exa Deep {#exa-deep-revamp}
 
   Exa Deep es más rápido, más económico y ahora admite salidas estructuradas con grounding a nivel de campo.
 
-  * **Nuevo tipo `deep-reasoning`** para tareas que exigen más esfuerzo (12-50 s); `deep` se ejecuta en 4-12 s.
-  * **Precio un 20 % menor** para la búsqueda `deep` estándar.
-  * **Salidas estructuradas** mediante `outputSchema`, con `output.content` y `output.grounding` (citas a nivel de campo y confianza) en la respuesta.
+  * **Nuevo tipo `deep-reasoning`** para tareas de mayor effort (12-50 s); `deep` se ejecuta en 4-12 s.
+  * **Precio un 20% menor** para la Search `deep` normal.
+  * **Salidas estructuradas** mediante `outputSchema`, con `output.content` y `output.grounding` (citas y confidence a nivel de campo) en la respuesta.
 
-  Consulta la [actualización de precios de Exa](#exa-pricing-update) más abajo para ver los precios completos.
+  Consulta la [Actualización de precios de Exa](#exa-pricing-update) más abajo para ver los precios completos.
 
   [Lee la referencia de la Search API →](/es/docs/reference/search)
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Actualización de precios de Exa" }}>
-  <div id="exa-pricing-update">
-    ## Actualización de precios de Exa
-  </div>
+  ## Actualización de precios de Exa {#exa-pricing-update}
 
-  Simplificamos y bajamos los precios. Los contents de los primeros 10 resultados de búsqueda ahora se incluyen gratis, y los nuevos precios se aplican automáticamente sin que tengas que hacer nada.
+  Simplificamos y redujimos los precios. El contenido de los primeros 10 resultados de Search ahora se incluye gratis, y los nuevos precios se aplican automáticamente sin que tengas que hacer nada.
 
-  * **Search con contents**: $7 por cada 1k solicitudes (10 resultados, texto + highlights incluidos); $1 por cada 1k resultados adicionales.
-  * **Resúmenes**: $1 por cada 1k, tanto en search como en contents.
+  * **Search con contenido**: $7 por cada 1k solicitudes (10 resultados, texto + highlights incluidos); $1 por cada 1k resultados adicionales.
+  * **Resúmenes**: $1 por cada 1k, tanto en Search como en contenido.
   * **Exa Deep**: $12 por cada 1k solicitudes; **Deep (Reasoning)** $15 por cada 1k.
-  * **Endpoint de contents**: $1 por cada 1k páginas por tipo de contenido.
+  * **endpoint contenido**: $1 por cada 1k páginas por tipo de contenido.
 
   [Ver precios actuales →](https://exa.ai/pricing)
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "Presentamos Exa Instant Search" }}>
-  <div id="introducing-exa-instant-search">
-    ## Presentamos Exa Instant Search
-  </div>
+  ## Presentamos Exa Instant Search {#introducing-exa-instant-search}
 
-  Exa Instant es nuestro tipo de búsqueda más rápido: combina una mejor calidad de búsqueda neuronal con una latencia inferior a 150 ms. Actívalo con `type="instant"`.
+  Exa Instant es nuestro tipo de Search más rápido: combina una mejor calidad de Search neuronal con una latencia inferior a 150 ms. Actívalo con `type="instant"`.
 
-  * **Diseñado para tiempo real**: aplicaciones de chat, IA de voz, agentes de programación, autocompletado y sugerencias en vivo.
-  * **Calidad de vanguardia** con la latencia más baja que ofrecemos.
+  * **Pensado para tiempo real**: aplicaciones de chat, IA de voz, agentes de programación, autocompletado y sugerencias en vivo.
+  * **Calidad de última generación** con la menor latencia que ofrecemos.
 
   [Lee la guía de la Search API →](/es/docs/search/quickstart) · [Pruébalo en el panel →](https://dashboard.exa.ai/playground/search?type=instant)
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "Highlights, frescura del contenido y actualizaciones de MCP" }}>
-  <div id="highlights-content-freshness-and-mcp-updates">
-    ## Highlights, frescura del contenido y actualizaciones de MCP
-  </div>
+  ## Highlights, frescura del contenido y actualizaciones de MCP {#highlights-content-freshness-and-mcp-updates}
 
   Tres mejoras en la extracción y el acceso al contenido:
 
-  * **`maxCharacters` para highlights**: ahora es la forma recomendada de controlar la longitud de los highlights. `numSentences` y `highlightsPerUrl` quedan obsoletos.
-  * **`maxAgeHours` para la frescura del contenido**: control basado en la antigüedad que reemplaza al booleano `livecrawl` (`0` rastrea siempre, `-1` solo caché, `24` rastrea si tiene más de 24 h).
-  * **Nivel gratuito de Exa MCP**: pruébalo sin autenticación a 3 QPS y 150 llamadas/día; agrega una API key para acceso completo.
+  * **`maxCharacters` para highlights**: ahora es la forma recomendada de controlar la longitud de los highlights. `numSentences` y `highlightsPerUrl` quedan deprecados.
+  * **`maxAgeHours` para la frescura del contenido**: control basado en la antigüedad que sustituye al booleano `livecrawl` (`0` rastrea siempre, `-1` solo caché, `24` rastrea si tiene más de 24 h).
+  * **Nivel gratuito de Exa MCP**: pruébalo sin autenticación a 3 QPS y 150 llamadas al día; añade una API key para acceso completo.
 
-  [Documentación sobre frescura del contenido →](/es/docs/contents/quickstart#content-freshness) · [Exa MCP →](/es/docs/get-started/exa-mcp)
+  [Documentación de frescura del contenido →](/es/docs/contents/quickstart#content-freshness) · [Exa MCP →](/es/docs/get-started/exa-mcp)
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Presentamos Exa Company Search" }}>
-  <div id="introducing-exa-company-search">
-    ## Presentamos Exa Company Search
-  </div>
+  ## Presentamos Exa Company Search {#introducing-exa-company-search}
 
-  La búsqueda de empresas ahora utiliza un modelo de recuperación ajustado y una canalización de coincidencia de entidades. Usa `type="auto"`, `category="company"`.
+  La Search de empresas ahora usa un modelo de recuperación afinado y un pipeline de coincidencia de entidades. Usa `type="auto"`, `category="company"`.
 
   * **Precisión en todos los atributos**: sector, geografía, etapa de financiación y número de empleados.
-  * **Datos estructurados de entidades**: los resultados devuelven información tipada de la empresa (plantilla, sede, datos financieros, tráfico web).
-  * **Casos de uso**: prospección comercial, estudios de mercado y flujos de trabajo de cadena de suministro.
+  * **Datos de entidad estructurados**: los resultados devuelven información tipada de la empresa (plantilla, sede, finanzas, tráfico web).
+  * **Casos de uso**: prospección de ventas, investigación de mercado y flujos de trabajo de cadena de suministro.
 
-  [Consulta la documentación de Companies &amp; People Search →](/es/docs/search/data/companies-people) · [Lee el artículo del blog sobre los benchmarks →](https://exa.ai/blog/company-search-benchmarks)
+  [Lee la documentación de Companies &amp; People Search →](/es/docs/search/data/companies-people) · [Lee el blog del benchmark →](https://exa.ai/blog/company-search-benchmarks)
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Presentamos Exa People Search" }}>
-  <div id="introducing-exa-people-search">
-    ## Presentamos Exa People Search
-  </div>
+  ## Presentamos Exa People Search {#introducing-exa-people-search}
 
-  La búsqueda de personas ahora abarca más de 1000 millones de perfiles públicos mediante un sistema de recuperación híbrido. La categoría `linkedin` se sustituye por la nueva categoría `people`.
+  La Search de personas ahora abarca más de 1000 millones de perfiles públicos mediante un sistema de recuperación híbrido. La categoría `linkedin` se reemplaza por la nueva categoría `people`.
 
   * **Mayor cobertura**: perfiles de toda la web, no solo de LinkedIn.
-  * **Mejor precisión**: embeddings ajustados para queries de cargo, competencias y empresa.
-  * **Casos de uso**: ventas, selección de personal y estudios de mercado.
+  * **Mejor precisión**: embeddings afinados para consultas de cargo, habilidad y empresa.
+  * **Casos de uso**: ventas, reclutamiento e investigación de mercado.
 
-  [Consulta la documentación de Companies &amp; People Search →](/es/docs/search/data/companies-people) · [Lee el artículo del blog sobre los benchmarks →](https://exa.ai/blog/people-search-benchmark)
+  [Lee la documentación de Companies &amp; People Search →](/es/docs/search/data/companies-people) · [Lee el blog del benchmark →](https://exa.ai/blog/people-search-benchmark)
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "SDK de JS: highlights restaurados" }}>
-  <div id="js-sdk-highlights-restored">
-    ## SDK de JS: highlights restaurados
-  </div>
+  ## SDK de JS: highlights restaurados {#js-sdk-highlights-restored}
 
-  Los highlights vuelven al SDK de JavaScript a partir de `exa-js` v2.0.11 y devuelven las frases clave con sus puntuaciones de relevancia. Pasa `highlights: true` o `highlights: { maxCharacters, query }` en las llamadas a search y contents.
+  Los highlights vuelven al SDK de JavaScript a partir de `exa-js` v2.0.11 y devuelven las frases clave con sus puntuaciones de relevancia. Pasa `highlights: true` o `highlights: { maxCharacters, query }` en las llamadas de Search y de contenido.
 
-  [Consulta la documentación del SDK de JavaScript →](/es/docs/sdks/quickstart)
+  [Lee la documentación del SDK de JavaScript →](/es/docs/sdks/quickstart)
 </Update>
 
-<Update label="November 20, 2025" rss={{ title: "Nuevo tipo de búsqueda Deep" }}>
-  <div id="new-deep-search-type">
-    ## Nuevo tipo de búsqueda Deep
-  </div>
+<Update label="November 20, 2025" rss={{ title: "Nuevo tipo de Search Deep" }}>
+  ## Nuevo tipo de Search Deep {#new-deep-search-type}
 
-  Exa Deep encuentra mejores resultados ejecutando varias búsquedas a la vez y devolviendo contexto de alta calidad para cada resultado. Actívalo con `type="deep"`.
+  Exa Deep encuentra mejores resultados ejecutando varias Searches a la vez y devolviendo contexto de alta calidad para cada resultado. Actívalo con `type="deep"`.
 
-  * **Expansión de queries**: envía una query y generamos variaciones, o aporta las tuyas con `additionalQueries`.
-  * **Búsqueda en paralelo y ranking inteligente** entre tu query y todas las variaciones.
+  * **Expansión de consultas**: envía una consulta y generamos variaciones, o aporta las tuyas con `additionalQueries`.
+  * **Search en paralelo y ranking inteligente** sobre tu consulta y todas sus variaciones.
   * **Resúmenes detallados** de cada resultado.
 
-  [Consulta la referencia de la Search API →](/es/docs/reference/search)
+  [Lee la referencia de la Search API →](/es/docs/reference/search)
 </Update>
 
-<Update label="November 5, 2025" rss={{ title: "Añadido el filtrado por idioma" }}>
-  <div id="added-language-filtering">
-    ## Añadido el filtrado por idioma
-  </div>
+<Update label="November 5, 2025" rss={{ title: "Se añadió filtrado por idioma" }}>
+  ## Se añadió filtrado por idioma {#added-language-filtering}
 
-  Exa ahora detecta el idioma de tu query y devuelve resultados solo en ese idioma. Está activado por defecto para todos los usuarios, sin configuración adicional.
+  Exa ahora detecta el idioma de tu consulta y devuelve resultados solo en ese idioma. Está activado por defecto para todos los usuarios y no requiere configuración.
 
-  [Consulta la guía de la Search API →](/es/docs/search/quickstart)
+  [Lee la guía de la Search API →](/es/docs/search/quickstart)
 </Update>
 
-<Update label="October 28, 2025" rss={{ title: "Cambios en los SDK: highlights eliminados y contents devueltos por defecto" }}>
-  <div id="sdk-changes-highlights-removed-and-contents-returned-by-default">
-    ## Cambios en los SDK: highlights eliminados y contents devueltos por defecto
-  </div>
+<Update label="October 28, 2025" rss={{ title: "Cambios en los SDK: highlights eliminados y contenido devuelto por defecto" }}>
+  ## Cambios en los SDK: highlights eliminados y contenido devuelto por defecto {#sdk-changes-highlights-removed-and-contents-returned-by-default}
 
-  Una versión mayor del SDK con cambios incompatibles:
+  Una versión mayor de los SDK con cambios incompatibles:
 
-  * **Contents por defecto**: search ahora incluye el contenido de la página; desactívalo para búsquedas más rápidas.
-  * **Highlights eliminados de los SDK**: posteriormente restaurados en el SDK de JS; consulta [SDK de JS: highlights restaurados](#js-sdk-highlights-restored).
-  * **`use_autoprompt` obsoleto**: eliminado de todas las respuestas de la API.
+  * **Contenido por defecto**: la Search ahora incluye el contenido de la página; desactívalo para Searches más rápidas.
+  * **Highlights eliminados de los SDK**: después se restauraron en el SDK de JS; consulta [SDK de JS: highlights restaurados](#js-sdk-highlights-restored).
+  * **`use_autoprompt` deprecado**: eliminado de todas las respuestas de la API.
 
-  [Consulta la documentación del SDK de Python →](/es/docs/sdks/quickstart)
+  [Lee la documentación del SDK de Python →](/es/docs/sdks/quickstart)
 </Update>
 
-<Update label="August 4, 2025" rss={{ title: "Compatibilidad con filtros de rutas de dominio" }}>
-  <div id="domain-path-filter-support">
-    ## Compatibilidad con filtros de rutas de dominio
-  </div>
+<Update label="August 4, 2025" rss={{ title: "Compatibilidad con filtros por ruta de dominio" }}>
+  ## Compatibilidad con filtros por ruta de dominio {#domain-path-filter-support}
 
-  `includeDomains` y `excludeDomains` ahora admiten una segmentación más precisa:
+  `includeDomains` y `excludeDomains` ahora permiten una segmentación más precisa:
 
-  * **Filtrado por ruta específica**: p. ej., `exa.ai/blog` o `linkedin.com/company`.
-  * **Comodines de subdominio**: p. ej., `*.substack.com`.
+  * **Filtrado por ruta específica**: p. ej. `exa.ai/blog` o `linkedin.com/company`.
+  * **Comodines de subdominio**: p. ej. `*.substack.com`.
 
-  Resulta útil para acotar búsquedas a blogs, catálogos de productos o directorios.
+  Útil para acotar Searches a blogs, catálogos de productos o directorios.
 
-  [Consulta la referencia de la Search API →](/es/docs/reference/search)
+  [Lee la referencia de la Search API →](/es/docs/reference/search)
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "Compatibilidad con filtros de geolocalización" }}>
-  <div id="geolocation-filter-support">
-    ## Compatibilidad con filtros de geolocalización
-  </div>
+  ## Compatibilidad con filtros de geolocalización {#geolocation-filter-support}
 
-  El nuevo parámetro `userLocation` sesga los resultados hacia la región del usuario y se indica como un código de país [ISO 3166-1 alfa-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (p. ej., `"us"`, `"fr"`). Resulta útil para aplicaciones multirregionales, contenido en idiomas regionales y descubrimiento local.
+  El nuevo parámetro `userLocation` orienta los resultados hacia la región del usuario, indicada con un código de país [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (p. ej. `"us"`, `"fr"`). Útil para aplicaciones multirregionales, contenido en idiomas regionales y descubrimiento local.
 
-  [Consulta la referencia de la Search API →](/es/docs/reference/search)
+  [Lee la referencia de la Search API →](/es/docs/reference/search)
 </Update>
 
-<Update label="July 29, 2025" rss={{ title: "New Fast Search Type" }}>
-  <div id="new-fast-search-type">
-    ## Nuevo tipo de search: Fast
-  </div>
+<Update label="July 29, 2025" rss={{ title: "Nuevo tipo de Search Fast" }}>
+  ## Nuevo tipo de Search Fast {#new-fast-search-type}
 
-  Exa Fast usa modelos de search optimizados con una latencia p50 inferior a 425 ms. Actívalo con `type="fast"`.
+  Exa Fast usa modelos de Search optimizados con una latencia p50 inferior a 425 ms. Actívalo con `type="fast"`.
 
-  * **El mismo índice de Exa** de contenido de alta calidad que el search neuronal.
-  * **Compatibilidad total de parámetros** con los demás tipos de search.
-  * **Pensado para** grounding web rápido, flujos de trabajo con agentes y productos de baja latencia.
+  * **El mismo índice de Exa** con contenido de alta calidad que el Search neuronal.
+  * **Compatibilidad total de parámetros** con los demás tipos de Search.
+  * **Diseñado para** grounding web rápido, flujos de trabajo con agentes y productos de baja latencia.
 
-  [Consulta la guía de la Search API →](/es/docs/search/quickstart) · [Pruébalo en el panel →](https://dashboard.exa.ai/playground/search?q=blog%20post%20about%20AI\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22fast%22%2C%22livecrawl%22%3A%22never%22%7D)
+  [Lee la guía de la Search API →](/es/docs/search/quickstart) · [Pruébalo en el panel →](https://dashboard.exa.ai/playground/search?q=blog%20post%20about%20AI\&filters=%7B%22text%22%3A%22true%22%2C%22type%22%3A%22fast%22%2C%22livecrawl%22%3A%22never%22%7D)
 </Update>
 
-<Update label="July 21, 2025" rss={{ title: "Score Deprecation in Auto Search" }}>
-  <div id="score-deprecation-in-auto-search">
-    ## Obsolescencia de score en Auto search
-  </div>
+<Update label="July 21, 2025" rss={{ title: "Deprecación de score en Auto Search" }}>
+  ## Deprecación de score en Auto Search {#score-deprecation-in-auto-search}
 
-  La nueva arquitectura de Auto search ya no puede generar puntuaciones de relevancia significativas, por lo que el campo `score` se eliminará de los resultados de Auto search.
+  La nueva arquitectura de Auto Search ya no puede generar puntuaciones de relevancia significativas, por lo que el campo `score` se eliminará de los resultados de Auto Search.
 
-  * **Auto search**: ya no devuelve `score`; los resultados ya vienen ordenados por relevancia.
+  * **Auto Search**: ya no devuelve `score`; los resultados ya vienen ordenados por relevancia.
   * **Search neuronal**: las puntuaciones no cambian. Usa `type="neural"` si dependes de ellas.
 
-  [Consulta la referencia de la Search API →](/es/docs/reference/search)
+  [Lee la referencia de la Search API →](/es/docs/reference/search)
 </Update>
 
-<Update label="June 23, 2025" rss={{ title: "Markdown Contents as Default" }}>
-  <div id="markdown-contents-as-default">
-    ## Contents en markdown por defecto
-  </div>
+<Update label="June 23, 2025" rss={{ title: "Contenido en Markdown por defecto" }}>
+  ## Contenido en Markdown por defecto {#markdown-contents-as-default}
 
-  Todos los endpoints devuelven ahora markdown limpio por defecto, lo cual funciona mejor para LLM, RAG y el procesamiento de texto en general. No necesitas hacer nada.
+  Todos los endpoints ahora devuelven markdown limpio por defecto, lo cual es mejor para LLM, RAG y el procesamiento de texto en general. No necesitas hacer nada.
 
   * **`includeHtmlTags=false` (por defecto)**: el contenido se procesa como markdown limpio.
   * **`includeHtmlTags=true`**: HTML sin procesar, sin conversión a markdown.
 
-  En ambos casos se elimina el contenido de relleno, como anuncios y menús de navegación.
+  En ambos casos, se elimina el contenido accesorio, como anuncios y menús de navegación.
 
-  [Consulta la documentación de Contents →](/es/docs/contents/quickstart)
+  [Lee la documentación de Contents →](/es/docs/contents/quickstart)
 </Update>
 
-<Update label="June 7, 2025" rss={{ title: "New Livecrawl Option: Preferred" }}>
-  <div id="new-livecrawl-option-preferred">
-    ## Nueva opción de livecrawl: preferred
-  </div>
+<Update label="June 7, 2025" rss={{ title: "Nueva opción de livecrawl: preferred" }}>
+  ## Nueva opción de livecrawl: preferred {#new-livecrawl-option-preferred}
 
   <Warning>
-    Entrada histórica: el parámetro de cadena `livecrawl` ya está obsoleto. Para nuevas integraciones, usa `maxAgeHours` junto con `livecrawlTimeout`. Consulta [frescura del contenido](/es/docs/contents/quickstart#content-freshness).
+    Entrada histórica: el parámetro de cadena `livecrawl` está deprecado. Para nuevas integraciones, usa `maxAgeHours` junto con `livecrawlTimeout`. Consulta [Frescura del contenido](/es/docs/contents/quickstart#content-freshness).
   </Warning>
 
-  La opción obsoleta `livecrawl: "preferred"` intenta un rastreo nuevo, pero recurre al contenido en caché cuando el rastreo falla (a diferencia de `"always"`, que devuelve un error). Ideal para aplicaciones en producción que necesitan contenido actualizado sin que fallen por sitios no disponibles temporalmente.
+  La opción deprecada `livecrawl: "preferred"` intenta un rastreo nuevo, pero recurre al contenido en caché cuando el rastreo falla (a diferencia de `"always"`, que devuelve un error). Ideal para aplicaciones en producción que necesitan contenido fresco sin fallar ante sitios temporalmente no disponibles.
 
-  [Consulta la documentación sobre frescura del contenido →](/es/docs/contents/quickstart#content-freshness)
+  [Lee la documentación sobre frescura del contenido →](/es/docs/contents/quickstart#content-freshness)
 </Update>
 
-<Update label="May 22, 2025" rss={{ title: "Contents Endpoint Status Changes" }}>
-  <div id="contents-endpoint-status-changes">
-    ## Cambios de estado en el endpoint Contents
-  </div>
+<Update label="May 22, 2025" rss={{ title: "Cambios de estado en el endpoint Contents" }}>
+  ## Cambios de estado en el endpoint Contents {#contents-endpoint-status-changes}
 
-  `/contents` ahora devuelve un campo `statuses` por URL en lugar de un único error HTTP, de modo que puedes gestionar el resultado de cada URL de forma individual. El endpoint solo devuelve errores ante problemas internos.
+  `/contents` ahora devuelve un campo `statuses` por URL en lugar de un único error HTTP, de modo que puedes gestionar el resultado de cada URL de forma individual. El endpoint solo devuelve error ante incidencias internas.
 
   * **`status`**: `"success"` o `"error"` por URL.
-  * **`error.tag`**: por ejemplo, `CRAWL_NOT_FOUND`, `CRAWL_TIMEOUT`, `SOURCE_NOT_AVAILABLE`, con un `httpStatusCode`.
+  * **`error.tag`**: p. ej. `CRAWL_NOT_FOUND`, `CRAWL_TIMEOUT`, `SOURCE_NOT_AVAILABLE`, con un `httpStatusCode`.
 
-  [Consulta la referencia de códigos de error →](/es/docs/admin/error-codes)
+  [Lee la referencia de códigos de error →](/es/docs/admin/error-codes)
 </Update>
 
-<Update label="December 11, 2024" rss={{ title: "Auto search as Default" }}>
-  <div id="auto-search-as-default">
-    ## Auto search por defecto
-  </div>
+<Update label="December 11, 2024" rss={{ title: "Auto Search por defecto" }}>
+  ## Auto Search por defecto {#auto-search-as-default}
 
-  Auto search es ahora la opción por defecto y dirige automáticamente cada query al mejor método de search. No necesitas hacer nada; usa `type="neural"` para mantener el comportamiento anterior.
+  Auto Search es ahora la opción por defecto y dirige automáticamente cada consulta al mejor método de Search. No necesitas hacer nada; usa `type="neural"` para mantener el comportamiento anterior.
 
-  [Conoce los tipos de search de Exa →](/es/docs/search/quickstart)
+  [Conoce los tipos de Search de Exa →](/es/docs/search/quickstart)
 </Update>

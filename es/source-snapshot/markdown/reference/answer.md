@@ -1,34 +1,28 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="answer">
-  # Answer
-</div>
+# Answer {#answer}
 
-> Obtén la respuesta de un LLM a una pregunta fundamentada en los resultados de Exa Search. `/answer` realiza una Exa Search y usa un LLM para generar:
+> Obtén la respuesta de un LLM a una pregunta fundamentada en resultados de Exa Search. `/answer` realiza una búsqueda en Exa y usa un LLM para generar:
 
-1. Una respuesta directa para consultas específicas (p. ej., &quot;¿Cuál es la capital de Francia?&quot; devolvería &quot;París&quot;).
-2. Un resumen detallado con citas para consultas abiertas (p. ej., &quot;¿Cuál es el estado de la IA en el sector salud?&quot; devolvería un resumen con citas a fuentes relevantes).
+1. Una respuesta directa para consultas específicas (por ejemplo, &quot;¿Cuál es la capital de Francia?&quot; devolvería &quot;París&quot;).
+2. Un resumen detallado con citas para consultas abiertas (por ejemplo, &quot;¿Cuál es el estado de la IA en el sector salud?&quot; devolvería un resumen con citas a fuentes relevantes).
 
 La respuesta incluye tanto el texto generado como las fuentes utilizadas para crearlo. El endpoint también admite streaming (con `stream=True`), que devuelve los tokens a medida que se generan.
 
 Como alternativa, puedes usar la [interfaz de chat completions](https://exa.ai/docs/integrations/openai-sdk#answer) compatible con OpenAI.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
 <Info>
-  `/answer` admite salida estructurada mediante el parámetro `outputSchema`. Pasa un objeto [JSON Schema](https://json-schema.org/draft-07) y la respuesta se devolverá como JSON estructurado conforme a tu esquema, en lugar de como una simple cadena de texto.
+  `/answer` admite salida estructurada mediante el parámetro `outputSchema`. Pasa un objeto [JSON Schema](https://json-schema.org/draft-07) y la respuesta se devolverá como JSON estructurado acorde a tu esquema en lugar de una cadena de texto simple.
 </Info>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0
@@ -573,8 +567,8 @@ components:
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
     XExaQueued:
       description: >-
-        Whether the request waited in the customer rate-limit queue before being
-        admitted.
+        Indica si la solicitud esperó en la cola de límite de tasa del cliente
+        antes de ser admitida.
       schema:
         type: string
         enum:
@@ -582,13 +576,13 @@ components:
           - 'false'
       example: 'false'
     XExaQueueMs:
-      description: Total milliseconds the request waited in the customer rate-limit queue.
+      description: Total de milisegundos que la solicitud esperó en la cola de límite de tasa del cliente.
       schema:
         type: string
       example: '0'
   responses:
     BadRequestResponse:
-      description: The request body or query parameters failed validation.
+      description: El cuerpo de la solicitud o los parámetros de consulta no superaron la validación.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -603,7 +597,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: Falta la API key o no es válida.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -616,7 +610,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     PaymentRequiredResponse:
-      description: The team is out of credits or a spending budget has been exceeded.
+      description: El equipo se quedó sin créditos o se superó un presupuesto de gasto.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -631,7 +625,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     TooManyRequestsResponse:
-      description: A rate limit for this API key, team, or network was exceeded.
+      description: Se superó un límite de tasa para esta API key, equipo o red.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -646,7 +640,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: Ocurrió un error inesperado al procesar la solicitud.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -662,8 +656,8 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     ServiceUnavailableResponse:
       description: >-
-        Exa is temporarily over capacity or unavailable. The request was not
-        processed; retry with exponential backoff.
+        Exa está temporalmente por encima de su capacidad o no disponible. La
+        solicitud no se procesó; reinténtalo con exponential backoff.
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -683,12 +677,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Envía tu API key de Exa en el encabezado x-api-key. También puedes
+        autenticarte con Authorization: Bearer <key>.
 ```

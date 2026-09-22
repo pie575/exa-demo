@@ -1,35 +1,27 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="monitors-api">
-  # Monitors API
-</div>
+# Monitors API {#monitors-api}
 
-> 반복 search를 실행하고 새로 발견된 결과를 webhook으로 전달받으세요.
+> 반복 search를 실행하고 새로 발견된 결과를 웹훅으로 받아보세요.
 
-Monitor는 정해진 일정에 따라 Exa search를 반복 실행하고 결과를 webhook endpoint로 전달합니다.
+Monitors는 반복 일정에 따라 Exa search를 실행하고 그 결과를 웹훅 엔드포인트로 전달합니다.
 
-뉴스, 경쟁사 발표, 투자 라운드, 규제 변화, 연구 논문 등 시간에 따라 달라지는 주제를 추적하려면 Monitor를 활용하세요.
+뉴스, 경쟁사 발표, 투자 라운드, 규제 변화, 리서치 출판물 등 시간이 지나며 달라지는 주제를 추적할 때 Monitors를 활용하세요.
 
-<div id="how-monitors-work">
-  ## Monitor 작동 방식
-</div>
+## Monitors 작동 방식 {#how-monitors-work}
 
-Exa는 실행할 때마다 설정된 search를 수행하고, 시간 기준으로 필터링한 뒤, monitor가 이미 반환한
-결과나 발견 항목을 제외하고 새로운 output을 webhook으로 전송합니다.
+Exa는 실행할 때마다 설정된 search를 수행하고, 시간 기준으로 필터링한 뒤, monitor가 이미 반환한 결과나
+발견 항목을 제외하고 새로운 output을 웹훅으로 전송합니다.
 
-각 monitor는 자체 실행 이력을 관리하므로, 날짜 범위를 직접 옮겨 가며 지정하기보다는
-추적하려는 지속적인 신호를 중심으로 질의를 작성하세요.
+monitor마다 자체 실행 기록을 관리하므로, 날짜 범위를 직접 옮겨 가며 지정하기보다는 추적하려는
+지속적인 신호를 중심으로 질의를 작성하세요.
 
-<div id="create-your-first-monitor">
-  ## 첫 monitor 생성하기
-</div>
+## 첫 monitor 생성하기 {#create-your-first-monitor}
 
-search 질의, 실행 주기, 업데이트를 수신할 HTTPS endpoint를 지정해 monitor를 생성합니다:
+search 질의, 실행 주기, 그리고 업데이트를 받을 HTTPS 엔드포인트를 지정해 monitor를 생성합니다:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -128,24 +120,22 @@ search 질의, 실행 주기, 업데이트를 수신할 HTTPS endpoint를 지정
   ```
 </Accordion>
 
-monitor를 생성할 때 `webhookSecret`을 반드시 저장해 두세요. 이 값은 한 번만 반환되며, webhook signature 검증에 필요합니다.
+monitor를 생성할 때 `webhookSecret`을 반드시 저장해 두세요. 이 값은 한 번만 반환되며, 웹훅 signature 검증에 필요합니다.
 
-<div id="configure-the-output">
-  ## 출력 구성
-</div>
+## output 구성하기 {#configure-the-output}
 
 완료된 모든 실행은 새로 발견된 페이지를 `output.results`에 반환합니다.
 
 또한 Exa는 각 페이지에서 얻은 내용을 종합해 `output.content`에 담습니다:
 
-| 출력 형태     | 사용 방법                | 반환 값                                |
-| --------- | -------------------- | ----------------------------------- |
-| 텍스트 요약    | 기본값                  | `output.content`의 문자열               |
-| 구조화된 JSON | `outputSchema` 객체 추가 | `output.content`에 schema와 일치하는 JSON |
+| output 형태    | 사용 방법                | 반환 값                                |
+| ------------ | -------------------- | ----------------------------------- |
+| text summary | 기본값                  | `output.content`의 문자열               |
+| 구조화된 JSON    | 객체 `outputSchema` 추가 | `output.content`에 schema와 일치하는 JSON |
 
-종합된 필드의 출처는 `output.grounding`에 자동으로 반환됩니다.
+종합된 field의 소스는 `output.grounding`에 자동으로 반환됩니다.
 
-후속 코드에서 일관된 필드가 필요하다면 `outputSchema`를
+후속 코드에서 일관된 field가 필요하다면 `outputSchema`를
 추가하세요:
 
 ```json theme={null}
@@ -171,13 +161,11 @@ monitor를 생성할 때 `webhookSecret`을 반드시 저장해 두세요. 이 �
 }
 ```
 
-citations와 신뢰도 정보는 schema에 포함하지 마세요. 이 값들은 `output.grounding`으로 별도 반환됩니다.
+citations와 confidence는 schema에 포함하지 마세요. 이 값들은 `output.grounding`으로 별도 반환됩니다.
 
-<div id="add-page-content">
-  ## 페이지 콘텐츠 추가하기
-</div>
+## 페이지 콘텐츠 추가 {#add-page-content}
 
-`search`는 [Exa Search](/ko/docs/search/quickstart)와 동일한 옵션을 지원합니다. 각 결과에 highlights, 전체 텍스트, summaries를 함께 포함하려면 `contents`를 사용하고, 출처를 제한하려면 `includeDomains` 또는 `excludeDomains`를 사용하세요.
+`search`는 [Exa Search](/ko/docs/search/quickstart)와 동일한 옵션을 지원합니다. `contents`로 각 result에 highlights, 전체 텍스트, summary를 포함시키고, `includeDomains` 또는 `excludeDomains`로 소스를 제한할 수 있습니다.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -247,11 +235,9 @@ citations와 신뢰도 정보는 schema에 포함하지 마세요. 이 값들은
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## monitor 테스트하기
-</div>
+## monitor 테스트하기 {#test-your-monitor}
 
-다음 예약 시간까지 기다리지 말고 즉시 실행을 트리거한 뒤, 해당 실행 목록을 조회해 보세요:
+다음 예약 시간까지 기다리지 않고 즉시 실행을 트리거한 다음, 해당 실행 목록을 조회합니다:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -281,41 +267,37 @@ citations와 신뢰도 정보는 schema에 포함하지 마세요. 이 값들은
 
 실행 상태는 다음과 같습니다:
 
-| 상태          | 의미                                    |
-| ----------- | ------------------------------------- |
-| `pending`   | 실행이 대기열에 있음                           |
-| `running`   | 실행이 진행 중임                             |
-| `completed` | 실행이 완료됨. ID로 조회하면 전체 output을 확인할 수 있음 |
-| `failed`    | 실행이 실패함. `failReason`에 원인이 표시됨        |
-| `cancelled` | 실행이 취소됨                               |
+| 상태          | 의미                                 |
+| ----------- | ---------------------------------- |
+| `pending`   | 실행이 대기열에 있음                        |
+| `running`   | 실행이 진행 중임                          |
+| `completed` | 실행이 완료됨. ID로 조회하여 전체 output을 확인하세요 |
+| `failed`    | 실행이 실패함. `failReason`에 실패 이유가 표시됨  |
+| `cancelled` | 실행이 취소됨                            |
 
 `output`은 실행이 완료되기 전까지 null입니다.
 
-<div id="schedule-runs">
-  ## 실행 일정
-</div>
+## 실행 일정 {#schedule-runs}
 
-최소 간격은 1시간입니다. `1h`, `6h`, `1d`, `7d`처럼 단일 기간 값을 사용하세요. 일정은 monitor의 생성 시각을 기준으로 정해집니다. 오후 2시 30분에 생성된 일간 monitor는 매일 오후 2시 30분 무렵에 실행됩니다. 다만 각 실행은 최대 30분까지 지연될 수 있으므로 정확한 시각에 전달된다고 가정하지 마세요.
+최소 실행 주기는 1시간입니다. `1h`, `6h`, `1d`, `7d`처럼 단일 기간 값을 사용하세요. 일정은 monitor가 생성된 시각을 기준으로 정해집니다. 예를 들어 오후 2시 30분에 생성된 일간 monitor는 매일 오후 2시 30분경에 실행됩니다. 다만 각 실행은 최대 30분까지 지연될 수 있으므로, 정확한 시각에 결과가 전달된다고 가정해서는 안 됩니다.
 
-수동 실행만 가능한 monitor를 만들려면 `trigger`를 생략하세요. 일정이 설정된 monitor를 일시 중지하면 자동 실행은 중단되지만 수동 트리거는 그대로 사용할 수 있습니다.
+수동 실행 전용 monitor를 만들려면 `trigger`를 생략하세요. 예약된 monitor를 일시 중지하면 자동 실행은 중단되지만 수동 트리거는 그대로 사용할 수 있습니다.
 
 <Note>
-  monitor run은 서로 겹치지 않습니다. 이전 실행이 아직 진행 중인 상태에서 다음 예약 실행이 시작되면 Exa가 이전 실행을 취소합니다.
+  Monitor 실행은 서로 겹치지 않습니다. 이전 실행이 아직 진행 중인 상태에서 다음 예약 실행이 시작되면 Exa는 이전 실행을 취소합니다.
 </Note>
 
-<div id="receive-webhook-updates">
-  ## webhook 업데이트 수신
-</div>
+## 웹훅 업데이트 수신 {#receive-webhook-updates}
 
 완료된 실행만 필요하다면 `monitor.run.completed`를 구독하세요. `events`를 생략하면 Exa는
 monitor 수명 주기 이벤트와 실행 생성 이벤트까지 함께 전송합니다.
 
 완료된 실행 payload에는 실행 상태와 output이 포함됩니다. 선택 항목인 monitor `metadata`는
-webhook 전송 시 그대로 함께 전달되므로, 업데이트를 알맞은 고객, 워크스페이스, 채널 또는
-내부 작업으로 라우팅할 수 있습니다.
+웹훅 delivery에 그대로 실려 전달되므로, 업데이트를 알맞은 고객, 워크스페이스, 채널 또는 내부 작업으로
+라우팅하는 데 활용할 수 있습니다.
 
-<Accordion title="완료된 실행의 webhook payload">
-  아래 예시에서는 output과 timestamp를 축약했습니다.
+<Accordion title="완료된 실행 웹훅 payload">
+  아래 예시의 output과 timestamp는 축약되어 있습니다.
 
   ```json theme={null}
   {
@@ -358,13 +340,13 @@ webhook 전송 시 그대로 함께 전달되므로, 업데이트를 알맞은 �
 </Accordion>
 
 <Warning>
-  리다이렉트는 따라가지 않으므로, webhook은 반드시 HTTPS를 사용해야 하며 최종 목적지여야 합니다.
+  웹훅은 반드시 HTTPS를 사용해야 하며, 리다이렉트는 따라가지 않으므로 최종 목적지여야 합니다.
   이벤트를 처리하기 전에 `Exa-Signature`를 검증하세요.
 </Warning>
 
-모든 전송에는 `t=<timestamp>,v1=<signature>` 형식의 `Exa-Signature` header가 포함됩니다.
+모든 delivery에는 `t=<timestamp>,v1=<signature>` 형식의 `Exa-Signature` header가 포함됩니다.
 `<timestamp>.<raw-request-body>` 문자열을 만든 뒤 일회성 `webhookSecret`으로 HMAC-SHA256 다이제스트를
-계산하고, 그 결과를 `v1`과 상수 시간 비교 방식으로 대조하세요.
+계산하고, 그 결과를 상수 시간 비교로 `v1`과 대조하세요.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -402,24 +384,22 @@ webhook 전송 시 그대로 함께 전달되므로, 업데이트를 알맞은 �
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 다음 단계
-</div>
+## 다음 단계 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="monitor 생성하기" icon="bell" href="/ko/docs/reference/monitors/create-a-monitor" cta="레퍼런스 열기" arrow="true">
-    search, 일정, output, metadata, webhook 등 모든 필드를 확인하세요.
+  <Card title="Monitor 생성하기" icon="bell" href="/ko/docs/reference/monitors/create-a-monitor" cta="reference 열기" arrow="true">
+    search, 일정, output, metadata, 웹훅 등 모든 field를 확인하세요.
   </Card>
 
-  <Card title="monitor 실행" icon="clock" href="/ko/docs/reference/monitors/runs/get-a-run" cta="레퍼런스 열기" arrow="true">
-    실행의 상태, output, grounding, 실패 원인을 확인하세요.
+  <Card title="Monitor 실행" icon="clock" href="/ko/docs/reference/monitors/runs/get-a-run" cta="reference 열기" arrow="true">
+    실행의 상태, output, grounding, 실패 원인을 살펴보세요.
   </Card>
 
-  <Card title="search 가이드" icon="search" href="/ko/docs/search/quickstart" cta="가이드 열기" arrow="true">
-    질의, 필터, highlights, 전문, freshness를 설정하세요.
+  <Card title="Search 가이드" icon="search" href="/ko/docs/search/quickstart" cta="가이드 열기" arrow="true">
+    질의, 필터, highlights, 전체 텍스트, freshness를 설정하세요.
   </Card>
 
-  <Card title="search 모범 사례" icon="sparkles" href="/ko/docs/search/best-practices" cta="가이드 읽기" arrow="true">
-    output을 핵심에 집중시키면서 retrieval 품질을 높이세요.
+  <Card title="Search 모범 사례" icon="sparkles" href="/ko/docs/search/best-practices" cta="가이드 읽기" arrow="true">
+    output을 핵심에 집중시키면서 검색 품질을 높이세요.
   </Card>
 </Columns>

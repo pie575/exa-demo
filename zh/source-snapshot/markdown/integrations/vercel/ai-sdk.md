@@ -1,29 +1,21 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="ai-sdk-by-vercel">
-  # AI SDK by Vercel
-</div>
+# AI SDK by Vercel {#ai-sdk-by-vercel}
 
-> 使用 @exalabs/ai-sdk 包为 AI SDK 应用添加 Exa 网页搜索能力。
+> 使用 @exalabs/ai-sdk 包，为 AI SDK 应用添加 Exa 网页搜索能力。
 
-使用 `@exalabs/ai-sdk` 包，为基于 Vercel AI SDK 构建的应用添加 Exa 网页搜索能力。你只需提供 Exa API key，`webSearch()` 工具便会为你的模型处理搜索请求。
+使用 `@exalabs/ai-sdk` 包，可为基于 Vercel AI SDK 构建的应用添加 Exa 网页搜索。你只需提供 Exa API 密钥，`webSearch()` 工具便会为你的模型处理搜索请求。
 
-<div id="install">
-  ## 安装
-</div>
+## 安装 {#install}
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-<div id="quick-start">
-  ## 快速开始
-</div>
+## 快速开始 {#quick-start}
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -43,28 +35,24 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建一个 key。新账户会赠送免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户会获赠免费积分。
 </Card>
 
 <Info>
-  运行示例前，请将你的 key 设置到环境变量 `EXA_API_KEY` 中。该包会自动读取此环境变量。
+  运行示例前，请将密钥设置到环境变量 `EXA_API_KEY` 中。该包会自动读取此环境变量。
 </Info>
 
-<div id="defaults">
-  ## 默认值
-</div>
+## 默认值 {#defaults}
 
 `webSearch()` 使用以下默认值：
 
 * `type`：`auto`
 * `numResults`：`10`
 * `contents.text`：每条结果 `3000` 个字符
-* `maxAgeHours`：默认使用缓存回退值；如需更高的内容新鲜度，请设置该选项
+* `maxAgeHours`：采用默认的缓存回退值；如需更严格的新鲜度，请显式设置该选项
 
-<div id="configure-search">
-  ## 配置搜索
-</div>
+## 配置搜索 {#configure-search}
 
 使用以下选项调整搜索和内容提取：
 
@@ -90,9 +78,7 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="search-options">
-  ### 搜索选项
-</div>
+### 搜索选项 {#search-options}
 
 | 选项                                        | 说明                                                                                 |
 | ----------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -100,13 +86,11 @@ console.log(text);
 | `category`                                | 内容类别：`company`、`publication`、`news`、`personal site`、`people` 或 `financial report`。 |
 | `numResults`                              | 返回的结果数量。                                                                           |
 | `includeDomains` / `excludeDomains`       | 包含或排除指定域名。                                                                         |
-| `startPublishedDate` / `endPublishedDate` | 按发布日期筛选结果，采用 ISO 8601 格式。                                                          |
+| `startPublishedDate` / `endPublishedDate` | 按发布日期筛选结果，使用 ISO 8601 格式。                                                          |
 | `includeText` / `excludeText`             | 要求结果中包含或排除指定文本。                                                                    |
-| `userLocation`                            | 两位字母国家代码，用于地域感知搜索。                                                                 |
+| `userLocation`                            | 两位字母国家代码，用于位置感知搜索。                                                                 |
 
-<div id="content-options">
-  ### 内容选项
-</div>
+### Content options {#content-options}
 
 | 选项                                                     | 说明                                              |
 | ------------------------------------------------------ | ----------------------------------------------- |
@@ -117,11 +101,9 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | 抓取子页面，并可指定目标子页面。                                |
 | `contents.extras.links` / `contents.extras.imageLinks` | 返回结果中的链接或图片链接。                                  |
 
-<div id="typescript-support">
-  ## TypeScript 支持
-</div>
+## TypeScript 支持 {#typescript-support}
 
-该包自带 TypeScript 类型定义：
+该包内置了 TypeScript 类型定义：
 
 ```typescript types.ts theme={null}
 import { webSearch, ExaSearchConfig, ExaSearchResult } from '@exalabs/ai-sdk';
@@ -134,16 +116,14 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-<div id="related-pages">
-  ## 相关页面
-</div>
+## 相关页面 {#related-pages}
 
 <Columns cols={2}>
   <Card title="使用 Vercel AI Gateway" icon="cloud" href="/zh/docs/integrations/vercel/ai-gateway" cta="打开指南" arrow="true">
-    通过 Vercel 的 AI Gateway，无需 Exa API key 即可使用 Exa 网页搜索。
+    无需 Exa API 密钥，通过 Vercel 的 AI Gateway 使用 Exa 网页搜索。
   </Card>
 
-  <Card title="探索 AI SDK 包" icon="git-branch" href="https://github.com/exa-labs/ai-sdk" cta="查看源码" arrow="true">
+  <Card title="了解 AI SDK 包" icon="git-branch" href="https://github.com/exa-labs/ai-sdk" cta="查看源文件" arrow="true">
     在 GitHub 上查看源代码和包的详细信息。
   </Card>
 </Columns>

@@ -1,39 +1,29 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="delete-api-key">
-  # API key 삭제
-</div>
+# API 키 삭제 {#delete-api-key}
 
-> team에서 API key를 영구적으로 삭제합니다.
+> team에서 API 키를 영구적으로 삭제합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
 <Info>
-  Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API key를 사용하며, 이 key는 해당 기능이 team에 활성화된 후 [API keys 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 액세스를 요청하려면 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
+  Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API 키를 사용하며, 이 키는 해당 기능이 team에 활성화된 후 [API 키 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 액세스 권한을 요청하려면 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-<div id="overview">
-  ## 개요
-</div>
+## 개요 {#overview}
 
-Delete API Key endpoint는 team에서 API key를 영구적으로 제거합니다.
+API 키 삭제 엔드포인트는 team에서 API 키를 영구적으로 삭제합니다.
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: 삭제할 API key의 고유 식별자입니다.
+* **id**: 삭제할 API 키의 고유 식별자입니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

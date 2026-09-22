@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 더 자세히 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-<div id="contents">
-  # Contents
-</div>
+# Contents {#contents}
 
-> URL 목록에 대한 전체 page contents, summaries, 메타데이터를 가져옵니다.
+> URL 목록에 대한 전체 page contents, summary, metadata를 가져옵니다.
 
-캐시에 있는 결과를 즉시 반환하며, 캐시되지 않은 페이지는 자동 라이브 크롤링으로 대체됩니다.
+캐시에서 즉시 결과를 반환하며, 캐시되지 않은 페이지는 자동으로 실시간 크롤링하여 처리합니다.
 
 ***
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0
@@ -578,28 +572,28 @@ components:
         context:
           type: string
           description: >-
-            더 이상 사용되지 않습니다. search 결과를 결합한 컨텍스트 문자열입니다. 대신
-            highlights 또는 text를 사용하세요.
+            Deprecated. Combined context string from search results. Use
+            highlights or text instead.
           deprecated: true
         statuses:
-          description: 요청된 각 URL 또는 문서 ID에 대한 상태 정보입니다.
+          description: Status information for each requested URL or document ID.
           type: array
           items:
             type: object
             properties:
               id:
                 type: string
-                description: 요청된 URL 또는 문서 ID입니다.
+                description: The URL or document ID that was requested.
                 example: https://example.com
               status:
                 type: string
                 enum:
                   - success
                   - error
-                description: 콘텐츠 가져오기 작업의 상태입니다.
+                description: Status of the content fetch operation.
                 example: success
               source:
-                description: 반환된 콘텐츠의 출처입니다.
+                description: Where the returned content was sourced from.
                 type: string
                 enum:
                   - cached
@@ -609,7 +603,7 @@ components:
                   - type: object
                     properties:
                       tag:
-                        description: 구체적인 오류 유형입니다.
+                        description: Specific error type.
                         example: CRAWL_NOT_FOUND
                         type: string
                       httpStatusCode:
@@ -618,11 +612,11 @@ components:
                             minimum: 100
                             maximum: 599
                           - type: 'null'
-                        description: 이에 해당하는 HTTP 상태 코드입니다.
+                        description: The corresponding HTTP status code.
                         example: 404
                     additionalProperties: false
                   - type: 'null'
-                description: 오류 세부 정보로, status가 "error"일 때만 포함됩니다.
+                description: Error details, only present when status is "error".
             required:
               - id
               - status
@@ -632,9 +626,10 @@ components:
         searchTime:
           type: number
           description: >-
-            gateway에서 측정한 서버 측 처리 시간(밀리초)입니다. retrieval은 포함하지만
-            structured output synthesis 같은 이후 단계는 제외될 수 있어,
-            엔드투엔드 요청 지연 시간보다 짧을 수 있습니다.
+            Server-side processing time in milliseconds, measured at the
+            gateway. Covers retrieval but may exclude later phases such as
+            structured output synthesis, so it can be lower than end-to-end
+            request latency.
           example: 312.4
       additionalProperties: false
     ErrorResponse:
@@ -642,19 +637,19 @@ components:
       properties:
         requestId:
           type: string
-          description: 요청의 고유 식별자입니다.
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: 오류를 설명하는, 사람이 읽을 수 있는 메시지입니다.
+          description: Human-readable message describing the error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            실패 원인을 식별하는 기계 판독 가능한 오류 태그입니다. 태그 집합은 개방형이어서
-            새 태그가 언제든 추가될 수 있으므로, 인식할 수 없는 태그는 응답의
-            HTTP 상태에 해당하는 일반 오류로 처리하세요. 알려진 태그는 예시로
-            나열되어 있습니다.
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -690,25 +685,25 @@ components:
         - error
         - tag
       additionalProperties: false
-      description: 실패한 요청에 대해 Exa API가 반환하는 표준 오류 응답 구조입니다.
+      description: Standard error envelope returned by the Exa API for failed requests.
     X402PaymentChallenge:
       type: object
       properties:
         requestId:
           type: string
-          description: 요청의 고유 식별자입니다.
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: 오류를 설명하는, 사람이 읽을 수 있는 메시지입니다.
+          description: Human-readable message describing the error.
           example: Payment required to access this resource
         tag:
           type: string
           description: >-
-            실패 원인을 식별하는 기계 판독 가능한 오류 태그입니다. 태그 집합은 개방형이어서
-            새 태그가 언제든 추가될 수 있으므로, 인식할 수 없는 태그는 응답의
-            HTTP 상태에 해당하는 일반 오류로 처리하세요. 알려진 태그는 예시로
-            나열되어 있습니다.
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -741,26 +736,26 @@ components:
             - SNAPSHOT_TRIAL_CAP_EXCEEDED
         x402Version:
           type: number
-          description: 이 challenge를 구성하는 데 사용된 x402 프로토콜의 버전입니다.
+          description: Version of the x402 protocol used to build this challenge.
           example: 2
         resource:
           type: object
           properties:
             url:
               type: string
-              description: 요청 대상인 유료 리소스의 URL입니다.
+              description: URL of the priced resource being requested.
             description:
               type: string
-              description: 사람이 읽을 수 있는 리소스 설명입니다.
+              description: Human-readable resource description.
             mimeType:
               type: string
-              description: 유료 리소스의 MIME 타입입니다.
+              description: MIME type of the priced resource.
           required:
             - url
             - description
             - mimeType
           additionalProperties: false
-          description: 이 challenge가 적용되는 유료 리소스입니다.
+          description: The priced resource this challenge applies to.
         accepts:
           type: array
           items:
@@ -769,14 +764,14 @@ components:
               type: string
             additionalProperties: {}
             description: >-
-              허용되는 x402 payment 요구 사항입니다(scheme, network, amount,
-              payTo, asset, maxTimeoutSeconds 및 scheme별 `extra`
-              필드).
-          description: 서버가 허용하는 payment 요구 사항으로, 지원되는 결제 수단마다 하나씩 제공됩니다.
+              An accepted x402 payment requirement (scheme, network, amount,
+              payTo, asset, maxTimeoutSeconds, and scheme-specific `extra`
+              fields).
+          description: Payment requirements the server accepts, one per supported rail.
         extensions:
           description: >-
-            선택적인 x402 프로토콜 확장입니다(예: Bazaar 또는 AgentKit 탐색
-            메타데이터).
+            Optional x402 protocol extensions (e.g. Bazaar or AgentKit discovery
+            metadata).
           type: object
           propertyNames:
             type: string
@@ -790,10 +785,10 @@ components:
         - accepts
       additionalProperties: false
       description: >-
-        x402 payment challenge: 표준 오류 응답 구조에 x402 payment 메타데이터를
-        추가한 형태입니다.
+        x402 payment challenge: the standard error envelope extended with x402
+        payment metadata.
     JsonValue:
-      description: 임의의 JSON 값입니다.
+      description: Any JSON value.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -812,44 +807,44 @@ components:
       properties:
         title:
           type: string
-          description: search 결과의 제목입니다.
+          description: The title of the search result.
           example: A Comprehensive Overview of Large Language Models
         url:
           type: string
-          description: search 결과의 URL입니다.
+          description: The URL of the search result.
           example: https://arxiv.org/pdf/2307.06435.pdf
           format: uri
         publishedDate:
           description: >-
-            HTML 콘텐츠를 파싱해 추정한 생성 날짜입니다. 형식은
-            YYYY-MM-DD입니다.
+            An estimate of the creation date, from parsing HTML content. Format
+            is YYYY-MM-DD.
           example: '2023-11-16T01:36:32.547Z'
           format: date-time
           type: string
         author:
-          description: 확인 가능한 경우, 콘텐츠의 작성자입니다.
+          description: If available, the author of the content.
           example: Humza Naveed
           anyOf:
             - type: string
             - type: 'null'
         id:
           description: >-
-            문서의 임시 ID입니다. /contents endpoint에서 유용하게
-            사용됩니다.
+            The temporary ID for the document. Useful for the /contents
+            endpoint.
           example: https://arxiv.org/abs/2307.06435
           type: string
         image:
-          description: 확인 가능한 경우, search 결과와 연관된 이미지의 URL입니다.
+          description: The URL of an image associated with the search result, if available.
           example: https://arxiv.org/pdf/2307.06435.pdf/page_1.png
           format: uri
           type: string
         favicon:
-          description: search 결과 도메인의 파비콘 URL입니다.
+          description: The URL of the favicon for the search result's domain.
           example: https://arxiv.org/favicon.ico
           format: uri
           type: string
         text:
-          description: search 결과의 전체 콘텐츠 텍스트입니다.
+          description: The full content text of the search result.
           example: >-
             Abstract Large Language Models (LLMs) have recently demonstrated
             remarkable capabilities...

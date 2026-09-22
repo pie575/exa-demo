@@ -4,19 +4,17 @@ description: "중앙 집중식 접근 제어, 도구 관리, 사용량 모니터
 icon: "/docs/images/sidebar-icons/truefoundry.svg"
 ---
 
-[TrueFoundry AI Gateway](https://truefoundry.com/ai-gateway)는 애플리케이션과 LLM 제공자 또는 MCP 서버 사이에 위치하는 엔터프라이즈급 프록시 계층입니다. 중앙 집중식 관측 및 거버넌스를 갖춘 상태로 1,000개 이상의 LLM에 통합 접근할 수 있게 해줍니다.
+[TrueFoundry AI Gateway](https://truefoundry.com/ai-gateway)는 애플리케이션과 LLM 제공업체 또는 MCP 서버 사이에 위치하는 엔터프라이즈급 프록시 계층입니다. 중앙 집중식 observability와 거버넌스를 바탕으로 1,000개 이상의 LLM에 대한 통합 접근을 제공합니다.
 
-TrueFoundry는 [MCP Gateway](https://www.truefoundry.com/mcp-gateway)에서 Exa를 공식 원격 서버로 제공합니다. Exa MCP 서버를 연결하면 web search, 콘텐츠 가져오기, agentic research를 하나의 관리형 endpoint로 team에 제공할 수 있습니다.
+TrueFoundry는 [MCP Gateway](https://www.truefoundry.com/mcp-gateway)에서 Exa를 공식 원격 서버로 제공합니다. Exa MCP 서버를 연결하면 web search, 콘텐츠 가져오기, agentic research를 하나의 관리형 엔드포인트로 team에 제공할 수 있습니다.
 
 <Frame caption="TrueFoundry 공식 원격 MCP 서버 카탈로그의 Exa">
   <img src="/docs/images/integrations/truefoundry/catalog.png" alt="TrueFoundry의 공식 원격 MCP 카탈로그에 있는 Exa 서버" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-<div id="add-exa-to-truefoundry">
-  ## TrueFoundry에 Exa 추가하기
-</div>
+## TrueFoundry에 Exa 추가하기 {#add-exa-to-truefoundry}
 
-1. TrueFoundry 사이드바에서 **MCP Servers**를 열고 **Add new MCP Server**를 선택합니다.
+1. TrueFoundry sidebar에서 **MCP Servers**를 열고 **Add new MCP Server**를 선택합니다.
 2. **Connect Official Remote MCP Servers**를 선택합니다.
 
 <Frame caption="공식 원격 MCP 서버 카탈로그 선택">
@@ -26,32 +24,28 @@ TrueFoundry는 [MCP Gateway](https://www.truefoundry.com/mcp-gateway)에서 Exa�
 3. 카탈로그에서 **Exa**를 찾아 **+ Add**를 선택합니다.
 4. 미리 입력된 서버 정보를 확인합니다:
 
-| 필드             | 값                                                                         |
-| -------------- | ------------------------------------------------------------------------- |
-| Name           | `exa`                                                                     |
-| Description    | Exa가 AI를 위해 만든 검색 엔진                                                      |
-| URL            | `https://mcp.exa.ai/mcp`                                                  |
-| Authentication | 선택 사항 (MCP 서버는 인증 없이도 동작합니다. 무료 rate limit에 도달한 경우에만 Exa API key가 필요합니다.) |
+| Field          | 값                                                                               |
+| -------------- | ------------------------------------------------------------------------------- |
+| Name           | `exa`                                                                           |
+| Description    | Search Engine made for AIs by Exa                                               |
+| URL            | `https://mcp.exa.ai/mcp`                                                        |
+| Authentication | 선택 사항 (MCP 서버는 authentication 없이도 동작합니다. 무료 속도 제한에 도달했을 때만 Exa API key가 필요합니다.) |
 
-5. 서버를 관리하거나 사용할 사용자 또는 team을 추가합니다. **Auth Data**는 끈 상태로 두고 **Update MCP Server**를 선택합니다.
+5. 서버를 관리하거나 사용할 사용자 또는 teams를 추가합니다. **Auth Data**는 꺼둔 채로 **Update MCP Server**를 선택합니다.
 
-<Frame caption="Exa 서버 및 협업자 설정">
-  <img src="/docs/images/integrations/truefoundry/register-form.png" alt="이름, URL, 협업자, 인증 설정이 포함된 Exa MCP 서버 등록 양식" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1568" height="1718" data-path="images/integrations/truefoundry/register-form.png" />
+<Frame caption="Exa 서버와 협업자 구성">
+  <img src="/docs/images/integrations/truefoundry/register-form.png" alt="이름, URL, 협업자, authentication 설정이 포함된 Exa MCP 서버 등록 양식" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1568" height="1718" data-path="images/integrations/truefoundry/register-form.png" />
 </Frame>
 
 <Check>
   **Tools** 탭을 열어 Exa의 search, 콘텐츠 가져오기, agentic research 도구를 사용할 수 있는지 확인하세요.
 </Check>
 
-<div id="configure-the-exa-server">
-  ## Exa 서버 구성
-</div>
+## Exa 서버 구성 {#configure-the-exa-server}
 
-미리 입력된 URL은 Exa의 기본 도구 모음을 노출합니다. 사용 가능한 도구를 제한하거나 직접 발급한 API key를 사용해야 하는 경우에만 변경하세요.
+미리 입력된 URL은 Exa의 기본 도구 모음을 제공합니다. 사용 가능한 도구를 제한하거나 직접 발급한 API 키를 사용해야 하는 경우에만 변경하세요.
 
-<div id="choose-which-tools-are-available">
-  ### 사용할 도구 선택
-</div>
+### 사용할 도구 선택하기 {#choose-which-tools-are-available}
 
 `tools` 질의 매개변수에 쉼표로 구분한 도구 이름 목록을 전달하세요:
 
@@ -76,59 +70,49 @@ collaborators:
   사용 가능한 도구 이름은 [Exa MCP 문서](/ko/docs/get-started/exa-mcp)에서 확인할 수 있습니다.
 </Tip>
 
-<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
-  ### Exa API key로 무료 rate limit 우회하기
-</div>
+### Exa API key로 무료 속도 제한 우회하기 {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
 
-무료 rate limit에 도달하면 서버 URL에 Exa API key를 추가하세요:
+무료 속도 제한에 도달했다면 서버 URL에 Exa API key를 추가하세요:
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
 ```
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  대시보드에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="connect-an-mcp-client">
-  ## MCP 클라이언트 연결
-</div>
+## MCP 클라이언트 연결 {#connect-an-mcp-client}
 
-Exa 서버의 **How To Use** 탭을 열고 사용 중인 클라이언트를 선택하세요. TrueFoundry가 Cursor, Claude Code, VS Code, Windsurf, Codex 등 여러 MCP 클라이언트에 맞는 테넌트별 endpoint와 바로 붙여넣어 쓸 수 있는 구성을 생성해 줍니다.
+Exa 서버의 **How To Use** 탭을 열고 사용할 클라이언트를 선택하세요. TrueFoundry가 테넌트별 엔드포인트와 함께 Cursor, Claude Code, VS Code, Windsurf, Codex 등 여러 MCP 클라이언트에 바로 붙여 넣을 수 있는 구성을 생성해 줍니다.
 
-<Frame caption="사용 중인 MCP 클라이언트용 구성 복사">
-  <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="TrueFoundry's client-specific setup instructions for the Exa MCP server" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
+<Frame caption="MCP 클라이언트용 구성 복사하기">
+  <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="Exa MCP 서버에 대한 TrueFoundry의 클라이언트별 설정 안내" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-<div id="test-a-tool">
-  ## 도구 테스트하기
-</div>
+## 도구 테스트하기 {#test-a-tool}
 
-Exa 도구 옆의 **Try**를 선택하고 입력값을 입력한 다음 **Execute Tool**을 선택하세요. 플레이그라운드에 JSON 응답이 표시되므로 agent에서 사용하기 전에 도구를 검증할 수 있습니다.
+Exa 도구 옆의 **Try**를 선택하고 입력값을 입력한 다음 **Execute Tool**을 선택하세요. 플레이그라운드에 JSON response가 표시되므로 agent에서 사용하기 전에 도구를 검증할 수 있습니다.
 
 <Frame caption="TrueFoundry 플레이그라운드에서 Exa 도구 실행하기">
   <img src="/docs/images/integrations/truefoundry/tool-playground.png" alt="TrueFoundry 도구 플레이그라운드에서 Exa 도구 테스트하기" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-<div id="manage-and-monitor-tools">
-  ## 도구 관리 및 모니터링
-</div>
+## 도구 관리 및 모니터링 {#manage-and-monitor-tools}
 
-* 개별 도구를 켜고 끄며 MCP 클라이언트가 호출할 수 있는 도구를 제어하세요
-* **Tool Metrics**에서 트래픽, 지연 시간, 오류를 확인하세요
-* OpenTelemetry를 통해 호출 트레이스를 사용 중인 관측 스택으로 내보내세요
+* 개별 도구를 켜고 끄면서 MCP 클라이언트가 call할 수 있는 범위를 제어하세요
+* **Tool Metrics**에서 traffic, latency, 오류를 확인하세요
+* OpenTelemetry를 통해 호출 추적(trace) 데이터를 observability 스택으로 내보내세요
 
 <Frame caption="MCP 클라이언트에 노출되는 Exa 도구 관리">
   <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="TrueFoundry MCP 서버에서 사용할 수 있는 Exa 도구" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-<div id="resources">
-  ## 참고 자료
-</div>
+## 리소스 {#resources}
 
 <Columns cols={3}>
   <Card title="TrueFoundry 설정 가이드" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="가이드 열기" arrow="true">
-    Exa MCP 서버에 대한 TrueFoundry의 가이드를 확인하세요.
+    TrueFoundry의 Exa MCP 서버 가이드를 확인하세요.
   </Card>
 
   <Card title="Exa MCP 문서" icon="search" href="/ko/docs/get-started/exa-mcp" cta="가이드 열기" arrow="true">

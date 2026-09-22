@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
-> Utilisez ce fichier pour découvrir l&#39;ensemble des pages disponibles avant d&#39;aller plus loin.
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="list-monitors">
-  # Lister les monitors
-</div>
+# Lister les monitors {#list-monitors}
 
-> Liste tous les monitors de la team authentifiée. Prend en charge le filtrage par status et la pagination par cursor.
+> Liste tous les monitors de l&#39;équipe authentifiée. Prend en charge le filtrage par statut et la pagination par cursor.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors
 openapi: 3.1.0

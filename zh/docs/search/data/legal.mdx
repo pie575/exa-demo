@@ -2,7 +2,7 @@
 title: "法律与公共记录"
 sidebarTitle: "法律与公共记录"
 icon: "scale"
-description: "使用 Exa Search 查找法院判决意见、专利、制裁名单、政府合同等公共记录。"
+description: "使用 Exa Search 查找法院判决意见、专利、制裁名单、政府合同及其他公共记录。"
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -20,7 +20,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API Playground 中打开" aria-label={`在 API Playground 中打开“${query}”`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API Playground 中打开" aria-label={`在 API Playground 中打开 "${query}"`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -31,76 +31,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search 查找一手法律文献和政府记录，以及针对这些内容撰写的评注。
+使用 Exa Search 检索一手法律资料和政府记录，以及针对它们撰写的评述内容。
 
-<div id="included">
-  ## 包含内容
-</div>
+## 包含内容 {#included}
 
-* 美国法院判决意见，含全文、法院、案卷号及引证元数据
+* 美国法院判决意见，含全文、法院、案卷号及引用来源元数据
 * 已授权的美国专利，含摘要、权利要求、说明书、发明人及受让人
-* 法律、法规及行政机构指导文件
-* 制裁名单与监控名单
+* 成文法、法规及机构指引
+* 制裁名单与 Watchlist
 * 政府合同与采购记录
 * 人口普查数据及其他公共统计记录
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
 * 判例法研究与法律 RAG
 * 监管与政策监测
-* 现有技术检索与自由实施检索
+* 现有技术检索与自由实施 (FTO) 检索
 * 合规筛查与尽职调查
 * 公共部门市场研究
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## 查询示例 {#example-queries}
 
-<div id="find-case-law">
-  ### 查找判例法
-</div>
+### 查找判例法 {#find-case-law}
 
-用通俗的语言描述法律问题和司法辖区，而不是直接给出引注。
+用通俗语言描述法律问题和司法辖区，而不是直接给出引用来源。
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### 搜索专利
-</div>
+### 搜索专利 {#search-patents}
 
-用撰写权利要求的方式描述该发明的功能。
+用撰写权利要求的方式，描述这项发明的功能。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### 对照制裁名单进行筛查
-</div>
+### 对照制裁名单进行筛查 {#screen-against-sanctions}
 
-指明要筛查的名单和实体类别。
+指明你要筛查的名单和实体类别。
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### 调研政府支出
-</div>
+### 研究政府支出 {#research-government-spending}
 
 指明采购机构或服务类别，以及时间范围。
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### 提取公开统计数据
-</div>
+### 获取公开统计数据 {#pull-public-statistics}
 
 指明数据集和地理范围。
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -141,12 +123,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-若所需的结构化数据需要跨多个来源展开研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的司法辖区、记录类型、criteria 和输出字段，Agent 即会返回经 schema 校验并附带引用来源的结果。
+如果所需的结构化数据需要跨多个 source 展开研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的司法辖区、记录 类型、criteria 和输出 fields，agent 即会返回经过 schema 校验的结果，并附带引用来源。
 
 <Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
-  跨多种记录类型筛查某个实体，或通过一手来源与相关报道追踪某项监管变更。
+  跨记录 类型筛查某个实体，或借助 primary sources 与相关报道追踪某项监管变化。
 </Card>

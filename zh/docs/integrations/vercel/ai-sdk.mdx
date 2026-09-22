@@ -1,22 +1,18 @@
 ---
 title: "Vercel AI SDK"
-description: "使用 @exalabs/ai-sdk 软件包为 AI SDK 应用添加 Exa 网页搜索。"
+description: "使用 @exalabs/ai-sdk 包为 AI SDK 应用添加 Exa 网页搜索。"
 icon: "/docs/images/sidebar-icons/vercel.svg"
 ---
 
-使用 `@exalabs/ai-sdk` 软件包，即可为基于 Vercel AI SDK 构建的应用添加 Exa 网页搜索。你只需提供 Exa API key，`webSearch()` 工具便会为你的模型处理搜索请求。
+使用 `@exalabs/ai-sdk` 包，为基于 Vercel AI SDK 构建的应用添加 Exa 网页搜索。你只需提供 Exa API 密钥，`webSearch()` 工具即可为你的模型处理搜索请求。
 
-<div id="install">
-  ## 安装
-</div>
+## 安装 {#install}
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-<div id="quick-start">
-  ## 快速开始
-</div>
+## 快速开始 {#quick-start}
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -36,28 +32,24 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建一个 key。新账户会赠送免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户自带免费积分。
 </Card>
 
 <Info>
-  运行示例前，请将你的 key 设置到环境变量 `EXA_API_KEY` 中。该软件包会自动读取此环境变量。
+  运行示例前，请将密钥设置到环境变量 `EXA_API_KEY` 中。该包会自动读取此环境变量。
 </Info>
 
-<div id="defaults">
-  ## 默认值
-</div>
+## 默认值 {#defaults}
 
 `webSearch()` 使用以下默认值：
 
 * `type`：`auto`
 * `numResults`：`10`
 * `contents.text`：每条结果 `3000` 个字符
-* `maxAgeHours`：默认的缓存回退值；如需更高的内容新鲜度，请显式设置该选项
+* `maxAgeHours`：默认的缓存回退值；如需更严格的新鲜度，请设置该选项
 
-<div id="configure-search">
-  ## 配置搜索
-</div>
+## 配置搜索 {#configure-search}
 
 使用以下选项调整搜索和内容提取：
 
@@ -83,38 +75,32 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="search-options">
-  ### 搜索选项
-</div>
+### 搜索选项 {#search-options}
 
 | 选项                                        | 说明                                                                                 |
 | ----------------------------------------- | ---------------------------------------------------------------------------------- |
 | `type`                                    | 搜索模式：`auto`、`fast`、`instant`、`deep-lite`、`deep` 或 `deep-reasoning`。                |
 | `category`                                | 内容类别：`company`、`publication`、`news`、`personal site`、`people` 或 `financial report`。 |
 | `numResults`                              | 返回的结果数量。                                                                           |
-| `includeDomains` / `excludeDomains`       | 包含或排除特定域名。                                                                         |
+| `includeDomains` / `excludeDomains`       | 包含或排除指定域名。                                                                         |
 | `startPublishedDate` / `endPublishedDate` | 按发布日期筛选结果，使用 ISO 8601 格式。                                                          |
 | `includeText` / `excludeText`             | 要求结果中包含或排除指定文本。                                                                    |
-| `userLocation`                            | 两位字母国家代码，用于位置感知搜索。                                                                 |
+| `userLocation`                            | 两字母国家代码，用于地理位置感知搜索。                                                                |
 
-<div id="content-options">
-  ### 内容选项
-</div>
+### Content options {#content-options}
 
 | 选项                                                     | 说明                                              |
 | ------------------------------------------------------ | ----------------------------------------------- |
 | `contents.text`                                        | 返回提取的文本。支持 `maxCharacters` 和 `includeHtmlTags`。 |
 | `contents.summary`                                     | 返回 AI 生成的摘要。支持 `query`。                         |
-| `contents.maxAgeHours`                                 | 仅当缓存内容在指定时效范围内时才使用缓存，否则执行 livecrawl。            |
+| `contents.maxAgeHours`                                 | 仅当缓存内容在指定时效内时才使用缓存，否则使用 livecrawl。              |
 | `contents.livecrawlTimeout`                            | 设置 livecrawl 超时时间。                              |
 | `contents.subpages` / `contents.subpageTarget`         | 抓取子页面，并可指定目标子页面。                                |
-| `contents.extras.links` / `contents.extras.imageLinks` | 返回结果中的链接或图片链接。                                  |
+| `contents.extras.links` / `contents.extras.imageLinks` | 从结果中返回链接或图片链接。                                  |
 
-<div id="typescript-support">
-  ## TypeScript 支持
-</div>
+## TypeScript 支持 {#typescript-support}
 
-该软件包内置 TypeScript 类型定义：
+该包内置 TypeScript 类型定义：
 
 ```typescript types.ts theme={null}
 import { webSearch, ExaSearchConfig, ExaSearchResult } from '@exalabs/ai-sdk';
@@ -127,18 +113,16 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-<div id="related-pages">
-  ## 相关页面
-</div>
+## 相关页面 {#related-pages}
 
 <Columns cols={2}>
   <Card title="使用 Vercel AI Gateway" icon="cloud" href="/zh/docs/integrations/vercel/ai-gateway" cta="打开指南" arrow="true">
-    通过 Vercel 的 AI Gateway，无需 Exa API key 即可使用 Exa 网页搜索。
+    通过 Vercel 的 AI Gateway，无需 Exa API 密钥即可使用 Exa 网页搜索。
   </Card>
 
-  <Card title="探索 AI SDK 软件包" icon="git-branch" href="https://github.com/exa-labs/ai-sdk" cta="查看源码" arrow="true">
-    在 GitHub 上查看源代码和软件包的详细信息。
+  <Card title="了解 AI SDK 包" icon="git-branch" href="https://github.com/exa-labs/ai-sdk" cta="查看源文件" arrow="true">
+    在 GitHub 上查看源代码和包的详细信息。
   </Card>
 </Columns>
 
-你也可以在 [npm](https://www.npmjs.com/package/@exalabs/ai-sdk) 上找到该软件包，并阅读 [Vercel AI SDK 网页搜索指南](https://ai-sdk.dev/cookbook/node/web-search-agent#exa)。
+你也可以在 [npm](https://www.npmjs.com/package/@exalabs/ai-sdk) 上找到该包，并阅读 [Vercel AI SDK 网页搜索指南](https://ai-sdk.dev/cookbook/node/web-search-agent#exa)。

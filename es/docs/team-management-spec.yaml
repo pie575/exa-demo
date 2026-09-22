@@ -2,10 +2,10 @@ openapi: 3.1.0
 info:
   version: 1.0.0
   title: Team Management API
-  description: API para gestionar API keys en equipos. Proporciona operaciones
-    CRUD para crear, listar, actualizar y eliminar API keys con controles de
-    acceso por equipo. La API se habilita por equipo. Contacta con
-    support@exa.ai para solicitar acceso.
+  description: API para gestionar API keys dentro de los equipos. Proporciona
+    operaciones CRUD para crear, listar, actualizar y eliminar API keys con
+    controles de acceso basados en equipos. La API se habilita por equipo.
+    Contacta con support@exa.ai para solicitar acceso.
 servers:
   - url: https://admin-api.exa.ai/team-management
 security:
@@ -15,9 +15,9 @@ paths:
     post:
       operationId: create-api-key
       summary: Crear API key
-      description: Crea una nueva API key para el equipo autenticado. De forma
-        opcional, especifica un nombre, un límite de solicitudes y un
-        presupuesto para la API key.
+      description: Crea una nueva API key para el equipo autenticado. Opcionalmente,
+        especifica un nombre, un límite de tasa y un presupuesto para la API
+        key.
       x-codeSamples:
         - lang: bash
           label: Create API key with name and rate limit
@@ -87,12 +87,11 @@ paths:
               properties:
                 name:
                   type: string
-                  description: Nombre opcional de la API key
+                  description: Nombre opcional para la API key
                   example: Production API Key
                 rateLimit:
                   type: integer
-                  description: Límite de solicitudes opcional para la API key (solicitudes por
-                    segundo)
+                  description: Límite de tasa opcional para la API key (solicitudes por segundo)
                   example: 1000
                 budgetCents:
                   type:
@@ -125,7 +124,7 @@ paths:
                         type:
                           - integer
                           - "null"
-                        description: Límite de solicitudes por segundo
+                        description: Límite de tasa en solicitudes por segundo
                       budgetCents:
                         type:
                           - integer
@@ -145,7 +144,7 @@ paths:
                       createdAt:
                         type: string
                         format: date-time
-                        description: Fecha de creación de la key
+                        description: Cuándo se creó la key
         "400":
           description: "Solicitud incorrecta: parámetros no válidos"
           content:
@@ -177,15 +176,15 @@ paths:
     get:
       operationId: list-api-keys
       summary: Listar API keys
-      description: Devuelve todas las API keys del equipo autenticado. Incluye el ID,
-        el nombre y el límite de solicitudes de cada key.
+      description: Devuelve todas las API keys que pertenecen al equipo autenticado.
+        Incluye el ID, el nombre y el límite de tasa de cada key.
       parameters:
         - name: api_key_id
           in: query
           required: false
           schema:
             type: string
-          description: ID opcional de la API key para obtener una key específica.
+          description: ID de API key opcional para recuperar una key específica.
       x-codeSamples:
         - lang: bash
           label: List all API keys
@@ -224,7 +223,7 @@ paths:
             console.log(result);
       responses:
         "200":
-          description: Lista de API keys obtenida correctamente
+          description: Lista de API keys recuperada correctamente
           content:
             application/json:
               schema:
@@ -245,7 +244,7 @@ paths:
                               type:
                                 - integer
                                 - "null"
-                              description: Límite de solicitudes por segundo
+                              description: Límite de tasa en solicitudes por segundo
                             budgetCents:
                               type:
                                 - integer
@@ -268,7 +267,7 @@ paths:
                             type:
                               - integer
                               - "null"
-                            description: Límite de solicitudes por segundo
+                            description: Límite de tasa en solicitudes por segundo
                           budgetCents:
                             type:
                               - integer
@@ -333,7 +332,7 @@ paths:
     get:
       operationId: get-api-key
       summary: Obtener API key
-      description: Obtiene los detalles de una API key específica por su ID.
+      description: Recupera los detalles de una API key específica mediante su ID.
       parameters:
         - name: id
           in: path
@@ -350,7 +349,7 @@ paths:
               -H 'x-api-key: YOUR-SERVICE-KEY'
       responses:
         "200":
-          description: API key obtenida correctamente
+          description: API key recuperada correctamente
           content:
             application/json:
               schema:
@@ -368,7 +367,7 @@ paths:
                         type:
                           - integer
                           - "null"
-                        description: Límite de solicitudes por segundo
+                        description: Límite de tasa en solicitudes por segundo
                       budgetCents:
                         type:
                           - integer
@@ -420,8 +419,8 @@ paths:
     put:
       operationId: update-api-key
       summary: Actualizar API key
-      description: Actualiza el nombre o el límite de solicitudes de una API key
-        existente. Solo se pueden actualizar las API keys del equipo
+      description: Actualiza el nombre o el límite de tasa de una API key existente.
+        Solo se pueden actualizar las API keys que pertenezcan al equipo
         autenticado.
       parameters:
         - name: id
@@ -507,8 +506,8 @@ paths:
                   example: Updated Production Key
                 rateLimit:
                   type: integer
-                  description: Nuevo límite de solicitudes opcional para la API key (solicitudes
-                    por segundo)
+                  description: Nuevo límite de tasa opcional para la API key (solicitudes por
+                    segundo)
                   example: 2000
                 budgetCents:
                   type:
@@ -539,7 +538,7 @@ paths:
                         type:
                           - integer
                           - "null"
-                        description: Límite de solicitudes por segundo
+                        description: Límite de tasa en solicitudes por segundo
                       budgetCents:
                         type:
                           - integer
@@ -583,7 +582,7 @@ paths:
                     type: string
                     example: Unauthorized
         "403":
-          description: "Prohibido: la API key pertenece a otro equipo"
+          description: "Prohibido: la API key pertenece a un equipo diferente"
           content:
             application/json:
               schema:
@@ -609,8 +608,8 @@ paths:
     delete:
       operationId: delete-api-key
       summary: Eliminar API key
-      description: Elimina una API key. Solo se pueden eliminar las API keys del
-        equipo autenticado.
+      description: Elimina una API key. Solo se pueden eliminar las API keys que
+        pertenezcan al equipo autenticado.
       parameters:
         - name: id
           in: path
@@ -690,7 +689,7 @@ paths:
                     type: string
                     example: Unauthorized
         "403":
-          description: "Prohibido: la API key pertenece a otro equipo"
+          description: "Prohibido: la API key pertenece a un equipo diferente"
           content:
             application/json:
               schema:
@@ -716,10 +715,10 @@ paths:
   /api-keys/{id}/usage:
     get:
       operationId: get-api-key-usage
-      summary: Obtener el uso de la API key
-      description: Obtiene datos de uso y facturación de una API key específica
-        durante un período determinado. Devuelve un desglose de costes por tipo
-        de precio del sistema de facturación.
+      summary: Obtener uso de la API key
+      description: Recupera análisis de uso y datos de facturación de una API key
+        específica durante un periodo determinado. Devuelve el desglose de
+        costos por tipo de precio desde el sistema de facturación.
       parameters:
         - name: id
           in: path
@@ -733,9 +732,9 @@ paths:
           schema:
             type: string
             format: date-time
-          description: Fecha de inicio del período de uso (formato ISO 8601). El valor
-            predeterminado es hace 30 días. Debe estar dentro de los últimos 6
-            meses (180 días).
+          description: Fecha de inicio del periodo de uso (formato ISO 8601). De forma
+            predeterminada, corresponde a hace 30 días. Debe estar dentro de los
+            últimos 6 meses (180 días).
           example: 2025-01-01T00:00:00Z
         - name: end_date
           in: query
@@ -743,8 +742,8 @@ paths:
           schema:
             type: string
             format: date-time
-          description: Fecha de finalización del período de uso (formato ISO 8601). El
-            valor predeterminado es la hora actual.
+          description: Fecha de finalización del periodo de uso (formato ISO 8601). De
+            forma predeterminada, corresponde a la hora actual.
           example: 2025-01-31T23:59:59Z
         - name: group_by
           in: query
@@ -755,8 +754,8 @@ paths:
               - hour
               - day
               - month
-          description: Granularidad temporal para agrupar los resultados. Actualmente está
-            reservada para futuras mejoras y no modifica la estructura de la
+          description: Granularidad temporal para agrupar resultados. Actualmente está
+            reservada para futuras mejoras y no cambia la estructura de la
             respuesta. El valor predeterminado es 'day'.
           example: day
       x-codeSamples:
@@ -818,7 +817,7 @@ paths:
             console.log(result);
       responses:
         "200":
-          description: Datos de uso obtenidos correctamente
+          description: Datos de uso recuperados correctamente
           content:
             application/json:
               schema:
@@ -846,18 +845,18 @@ paths:
                       start:
                         type: string
                         format: date-time
-                        description: Inicio del período de uso
+                        description: Inicio del periodo de uso
                       end:
                         type: string
                         format: date-time
-                        description: Fin del período de uso
+                        description: Finalización del periodo de uso
                   total_cost_usd:
                     type: number
-                    description: Coste total en USD del período
+                    description: Costo total en USD para el periodo
                     example: 45.67
                   cost_breakdown:
                     type: array
-                    description: Desglose de costes por tipo de precio
+                    description: Desglose de costos por tipo de precio
                     items:
                       type: object
                       properties:
@@ -872,14 +871,14 @@ paths:
                           description: Cantidad total consumida
                         amount_usd:
                           type: number
-                          description: Coste en USD para este tipo de precio
+                          description: Costo en USD para este tipo de precio
                   metadata:
                     type: object
                     properties:
                       generated_at:
                         type: string
                         format: date-time
-                        description: Fecha de generación de este informe
+                        description: Cuándo se generó este informe
               example:
                 id: key_abc123def456
                 api_key_id: 550e8400-e29b-41d4-a716-446655440000

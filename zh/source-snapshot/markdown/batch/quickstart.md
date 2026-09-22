@@ -1,44 +1,36 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在进一步探索之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="batch-api">
-  # Batch API
-</div>
+# Batch API {#batch-api}
 
-> 以批量方式异步运行 Exa API 请求。
+> 以批次形式异步运行 Exa API 请求。
 
 <Info>
-  Batch API 仅面向企业客户开放，需由 Exa 为你的团队启用后方可使用。如需了解企业版访问与开通事宜，请联系 [sales@exa.ai](mailto:sales@exa.ai)。
+  Batch API 面向 Enterprise 客户开放，需由 Exa 为你的团队启用后方可使用。请联系 [sales@exa.ai](mailto:sales@exa.ai) 洽谈 Enterprise 访问与启用事宜。
 </Info>
 
-Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文件的形式获取结果。你无需发送数千个单独请求、自行管理速率限制和重试，只需提交一个批次、轮询其状态，即可在单个文件中下载全部结果。
+Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文件形式获取结果。你无需逐个发送数千个请求，也无需自行管理速率限制和重试，只需提交一个批次、轮询其状态，然后一次性下载包含全部结果的文件。
 
-它适用于离线 enrichment、数据回填，以及任何无需即时响应的任务。完整的请求与响应结构详见 [API 参考](/zh/docs/reference/batches/create-a-batch)。
+它适用于离线增强、数据回填，或任何无需即时响应的作业。完整的请求和响应 schema 请参见 [API 参考](/zh/docs/reference/batches/create-a-batch)。
 
 <Note>
   Batch API 目前处于 beta 阶段。请在每个请求中包含 `Exa-Beta: batches-2026-06-06` header。
 </Note>
 
-<div id="supported-requests">
-  ## 支持的请求
-</div>
+## 支持的请求 {#supported-requests}
 
-批次中的每个项目都必须是发往以下路由之一的 `POST` 请求：
+批次中的每个项目必须是发送到以下路由之一的 `POST` 请求：
 
-| 路由            | 使用场景               |
+| 路由            | 适用场景               |
 | ------------- | ------------------ |
 | `/search`     | 异步运行 Exa search 请求 |
 | `/agent/runs` | 异步运行 Exa Agent 请求  |
 
 每个项目都需要一个在批次内唯一的 `customId`。结果文件中会返回相同的 `customId`，便于你将输出行对应回输入数据。
 
-<div id="create-a-batch">
-  ## 创建批次
-</div>
+## 创建批次 {#create-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -74,7 +66,7 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
 
 响应中包含批次 ID 和初始状态：
 
-<Accordion title="示例响应">
+<Accordion title="响应示例">
   ```json theme={null}
   {
     "id": "batch_01j7x9v0m2n4p6q8r0s2t4v6w8",
@@ -96,11 +88,9 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
   ```
 </Accordion>
 
-<div id="check-status">
-  ## 查看状态
-</div>
+## 检查状态 {#check-status}
 
-轮询该批次任务，直到其进入终止状态：
+轮询该批次，直到其进入终止状态：
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -112,23 +102,21 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
 
 批次状态包括：
 
-| 状态            | 含义                 |
-| ------------- | ------------------ |
+| 状态            | 含义                |
+| ------------- | ----------------- |
 | `in_progress` | 批次正在运行            |
-| `completed`   | 所有请求均已完成，结果可供下载    |
-| `cancelling`  | 已发起取消，正在等待进行中的任务收尾 |
-| `cancelled`   | 批次已取消             |
-| `expired`     | 结果已不再可用            |
+| `completed`   | 所有请求均已完成，结果可供获取   |
+| `cancelling`  | 已发起取消，正在处理完进行中的任务 |
+| `cancelled`   | 该批次已取消            |
+| `expired`     | 结果已不再可用           |
 
-批次完成后，`resultsUrl` 会包含 JSONL 结果文件的下载链接，`expiresAt` 则为结果保留期的截止时间。
+批次完成后，`resultsUrl` 会包含 JSONL 结果文件的下载 URL，`expiresAt` 则为结果保留期的截止时间。
 
 <Warning>
-  `resultsUrl` 是有效期很短的预签名 URL。每次需要重新下载结果时，请重新获取该批次，以拿到新的 URL。
+  `resultsUrl` 是有效期很短的预签名 URL。每次需要重新下载结果时，请重新获取该批次以取得新的 URL。
 </Warning>
 
-<div id="list-batches">
-  ## 列出批次
-</div>
+## 列出批次 {#list-batches}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -148,7 +136,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   -H "Exa-Beta: batches-2026-06-06"
 ```
 
-`completed` 是唯一受支持的值；传入其他任何值都会返回错误。已完成的条目按到期时间排序，并使用独立的 cursor，因此每一页请求都需带上 `status=completed`——已完成列表的 cursor 与未过滤列表的 cursor 不可互换。
+`completed` 是唯一支持的值；传入其他任何值都会返回错误。已完成的列表按过期时间排序，并使用独立的 cursor，因此每一页请求都需带上 `status=completed`——已完成状态的 cursor 与未过滤的 cursor 不可互换。
 
 ```json theme={null}
 {
@@ -159,9 +147,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-<div id="download-results">
-  ## 下载结果
-</div>
+## 下载结果 {#download-results}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -169,16 +155,14 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   ```
 </CodeGroup>
 
-JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 之一：
+JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 二者之一：
 
 ```json theme={null}
 { "customId": "row-1", "response": { "statusCode": 200, "body": { "results": [] } } }
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-<div id="cancel-a-batch">
-  ## 取消批次任务
-</div>
+## 取消批次 {#cancel-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -188,9 +172,7 @@ JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 
   ```
 </CodeGroup>
 
-<div id="delete-a-batch">
-  ## 删除批次
-</div>
+## 删除批次 {#delete-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -200,8 +182,6 @@ JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 
   ```
 </CodeGroup>
 
-<div id="access">
-  ## 访问权限
-</div>
+## 访问权限 {#access}
 
 如需为团队启用 Batch API，请联系 [sales@exa.ai](mailto:sales@exa.ai)。

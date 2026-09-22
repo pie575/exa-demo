@@ -1,18 +1,14 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="additional-providers">
-  # Provider tambahan
-</div>
+# Provider tambahan {#additional-providers}
 
-> Partner Exa Connect di luar rangkaian provider self-serve.
+> Partner Exa Connect di luar kumpulan provider self-serve.
 
 Selain provider self-serve, Exa Connect mendukung data partner tambahan.
-Provider ini **tersedia atas permintaan**, [hubungi tim kami untuk mengaktifkannya bagi
+Provider ini **tersedia atas permintaan**, [hubungi tim kami untuk mengaktifkannya di
 akun Anda](mailto:sales@exa.ai).
 
 <div className="connect-request-tiles">
@@ -70,7 +66,7 @@ akun Anda](mailto:sales@exa.ai).
 </div>
 
 <Columns cols={2}>
-  <Card title="Hubungi tim kami" icon="mail" href="mailto:sales@exa.ai" cta="Hubungi sales" arrow="true">
+  <Card title="Bicara dengan tim kami" icon="mail" href="mailto:sales@exa.ai" cta="Hubungi tim sales" arrow="true">
     Beri tahu kami partner mana yang dibutuhkan Exa Agent Anda, dan kami akan menghubungkan Anda.
   </Card>
 

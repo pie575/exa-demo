@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="create-api-key">
-  # Membuat API key
-</div>
+# Membuat API key {#create-api-key}
 
 > Buat API key baru untuk team Anda dengan konfigurasi nama dan rate limit opsional.
 
@@ -16,21 +12,17 @@
 </Card>
 
 <Info>
-  Team Management API diaktifkan per team. API ini diautentikasi dengan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur tersebut diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+  Team Management API diaktifkan per team. API ini diautentikasi menggunakan API key service account, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
 Endpoint Create API Key memungkinkan Anda membuat API key baru untuk team Anda secara terprogram menggunakan service API key Anda.
 
-<div id="optional-parameters">
-  ## Parameter Opsional
-</div>
+## Parameter Opsional {#optional-parameters}
 
-* **name**: Nama deskriptif untuk API key guna membantu mengidentifikasi kegunaannya
+* **name**: Nama deskriptif untuk API key guna membantu mengidentifikasi tujuan penggunaannya
 * **rateLimit**: Jumlah maksimum permintaan per menit yang diizinkan untuk API key ini
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="cancel-a-batch">
-  # Cancelar un batch
-</div>
+# Cancelar un batch {#cancel-a-batch}
 
 > Cancela un batch en curso.
 
-El batch deja de programar nuevas solicitudes y termina el trabajo en curso antes de quedar en `cancelled`. Cancelar un batch que ya está en `cancelling` o `cancelled` lo devuelve sin cambios; un batch en estado `completed` o `expired` no se puede cancelar.
+El batch deja de programar nuevas solicitudes y termina el trabajo en curso antes de pasar a `cancelled`. Cancelar un batch que ya está en `cancelling` o `cancelled` lo devuelve sin cambios; un batch en estado `completed` o `expired` no se puede cancelar.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas empiezan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches/{id}/cancel
 openapi: 3.1.0

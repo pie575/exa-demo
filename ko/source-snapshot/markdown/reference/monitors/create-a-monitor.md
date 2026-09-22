@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="create-a-monitor">
-  # monitor 생성
-</div>
+# monitor 생성 {#create-a-monitor}
 
 > 일정에 따라 Exa search를 반복 실행하는 새 Monitor를 생성합니다.
 
-monitor는 설정한 search 질의를 반복 일정에 맞춰 자동으로 실행하고, 자동 중복 제거를 거친 결과를 webhook endpoint로 전달합니다:
+monitor는 설정한 검색 질의를 반복 일정에 따라 자동으로 실행하고, 자동 중복 제거를 거쳐 결과를 웹훅 엔드포인트로 전달합니다:
 
-* **날짜 기반 필터링**으로 마지막 실행 이후의 콘텐츠만 가져옵니다
+* **날짜 기반 filtering**으로 마지막 실행 이후의 content만 가져옵니다
 
-* **의미 기반 중복 제거**로 이전 output을 추적하여 새로운 내용만 보여줍니다
+* **의미 기반 중복 제거**로 이전 output을 추적하여 새로운 내용만 노출합니다
 
-응답에는 생성 시점에 단 한 번만 반환되는 `webhookSecret`이 포함됩니다. webhook 서명 검증에 필요하므로 안전하게 보관하세요.
+response에는 생성 시점에 단 한 번만 반환되는 `webhookSecret`이 포함됩니다. 웹훅 서명 검증에 사용되므로 안전하게 보관하세요.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

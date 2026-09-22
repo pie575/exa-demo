@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 자세히 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="delete-a-webset">
-  # webset 삭제
-</div>
+# Webset 삭제 {#delete-a-webset}
 
 > Webset을 삭제합니다.
 
 삭제된 후에는 해당 Webset과 그 안의 모든 Item을 더 이상 사용할 수 없습니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{id}
 openapi: 3.1.0

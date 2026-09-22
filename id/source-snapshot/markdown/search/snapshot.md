@@ -1,28 +1,22 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="exa-snapshot">
-  # Exa Snapshot
-</div>
+# Exa Snapshot {#exa-snapshot}
 
-> Sematkan Search dan Contents ke stored version suatu halaman pada datetime yang Anda pilih.
+> Sematkan Search dan Contents ke stored version sebuah halaman pada datetime yang Anda pilih.
 
 Exa Snapshot menyimpan stored version dari halaman-halaman yang telah di-crawl Exa. Kirim `snapshotAsOf` untuk menyematkan permintaan ke suatu datetime.
 
-Gunakan ini untuk melakukan backtest agent, menjalankan eval yang dapat direproduksi, serta membandingkan versi terdahulu dari dokumentasi, halaman harga, kebijakan, dan filings.
+Gunakan ini untuk melakukan backtest pada agent, menjalankan eval yang dapat direproduksi, serta membandingkan versi lama dari dokumentasi, halaman harga, kebijakan, dan filings.
 
 <Info>
   Exa Snapshot tersedia dengan model pay as you go pada 10 QPS, dengan jendela indeks bergulir selama 5 bulan.
   Setelah 100 permintaan, [hubungi tim sales](https://exa.ai/contact/sales) untuk melanjutkan.
 </Info>
 
-<div id="search-at-a-datetime">
-  ## Pencarian pada suatu datetime
-</div>
+## Search pada suatu datetime {#search-at-a-datetime}
 
 Pada `/search`, letakkan `snapshotAsOf` di dalam `contents`.
 
@@ -78,9 +72,9 @@ Pada `/search`, letakkan `snapshotAsOf` di dalam `contents`.
   ```
 </CodeGroup>
 
-Exa menemukan URL kandidat, lalu hanya mempertahankan halaman yang memiliki stored version pada atau sebelum `snapshotAsOf`.
+Exa mencari URL kandidat, lalu hanya mempertahankan halaman yang memiliki stored version pada atau sebelum `snapshotAsOf`.
 
-<Accordion title="Contoh respons">
+<Accordion title="Contoh response">
   ```json theme={null}
   {
     "requestId": "211fc1f57b87a792de082309ef3bce95",
@@ -111,11 +105,9 @@ Exa menemukan URL kandidat, lalu hanya mempertahankan halaman yang memiliki stor
   ```
 </Accordion>
 
-<div id="pin-contents-to-a-datetime">
-  ## Sematkan contents ke suatu datetime
-</div>
+## Mematok contents ke suatu datetime {#pin-contents-to-a-datetime}
 
-Tambahkan `snapshotAsOf` pada level teratas permintaan `/contents`.
+Tambahkan `snapshotAsOf` di level teratas pada permintaan `/contents`.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -162,7 +154,7 @@ Tambahkan `snapshotAsOf` pada level teratas permintaan `/contents`.
 
 Exa mengembalikan stored version terbaru pada atau sebelum datetime tersebut.
 
-<Accordion title="Contoh respons">
+<Accordion title="Contoh response">
   ```json theme={null}
   {
     "requestId": "c05151f7df9cd9d8785e0acf0935355d",
@@ -188,48 +180,44 @@ Exa mengembalikan stored version terbaru pada atau sebelum datetime tersebut.
 </Accordion>
 
 <Tip>
-  ID yang tidak memiliki versi yang memenuhi syarat tidak disertakan dalam `results` dan dilaporkan di `statuses` dengan
+  ID yang tidak memiliki eligible version tidak disertakan dalam `results` dan dilaporkan di `statuses` dengan
   `"status": "error"` dan `"tag": "CONTENT_NOT_CACHED"`.
 </Tip>
 
-<div id="how-snapshots-work">
-  ## Cara kerja snapshot
-</div>
+## Cara kerja snapshot {#how-snapshots-work}
 
-| Field          | Lokasi  | Arti                                                                                       |
-| -------------- | ------- | ------------------------------------------------------------------------------------------ |
-| `snapshotAsOf` | Request | Batas datetime. Exa mengembalikan stored version terbaru pada atau sebelum waktu tersebut. |
+| Field          | Lokasi     | Arti                                                                                             |
+| -------------- | ---------- | ------------------------------------------------------------------------------------------------ |
+| `snapshotAsOf` | Permintaan | Batas waktu datetime. Exa mengembalikan stored version terbaru pada atau sebelum waktu tersebut. |
 
 Untuk kedua endpoint:
 
-* Page content yang dikembalikan berasal dari stored version tersebut.
-* Judul, penulis, tanggal publikasi, teks, highlights, dan summaries hanya dihasilkan dari versi tersebut.
-* Halaman yang tidak memiliki versi yang memenuhi syarat dalam rentang 5 bulan tidak akan disertakan.
+* Page konten yang dikembalikan berasal dari stored version tersebut.
+* Judul, penulis, publication date, teks, kutipan, dan summaries hanya dihasilkan dari versi tersebut.
+* Halaman yang tidak memiliki eligible version dalam rentang 5 bulan akan diabaikan.
 
 <Note>
-  Pada Search, batas waktu ini membatasi konten, bukan peringkat. Exa tetap menggunakan sinyal retrieval terkini untuk
+  Pada Search, batas waktu membatasi konten, bukan pemeringkatan. Exa tetap memakai sinyal retrieval terkini untuk
   menemukan URL kandidat. Gunakan hasilnya sebagai evidence yang dibatasi oleh `snapshotAsOf`, bukan sebagai
-  rekonstruksi persis dari peringkat search pada saat itu.
+  rekonstruksi persis dari peringkat yang akan dihasilkan sebuah search pada saat itu.
 </Note>
 
-<div id="limits-and-compatibility">
-  ## Batasan dan kompatibilitas
-</div>
+## Batas dan kompatibilitas {#limits-and-compatibility}
 
 <AccordionGroup>
-  <Accordion title="Akses, rate limit, dan rentang riwayat">
-    Pay as you go mencakup 10 QPS dan akses indeks bergulir selama 5 bulan. Nilai `snapshotAsOf` yang lebih lama
-    dari rentang tersebut akan ditolak. Setelah 100 permintaan, [hubungi tim sales](https://exa.ai/contact/sales)
+  <Accordion title="Akses, rate limit, dan rentang lookback">
+    Pay as you go mencakup 10 QPS dan akses indeks bergulir selama 5 bulan. Nilai `snapshotAsOf` yang
+    lebih lama dari rentang tersebut akan ditolak. Setelah 100 permintaan, [hubungi tim sales](https://exa.ai/contact/sales)
     untuk melanjutkan.
   </Accordion>
 
   <Accordion title="Permintaan historis menggunakan konten tersimpan">
     Jangan gabungkan `snapshotAsOf` dengan opsi yang dapat mengakses web secara langsung atau meluas ke halaman lain.
     Hilangkan `livecrawl`, `livecrawlTimeout`, `maxAgeHours`, dan `subpages` sepenuhnya; permintaan yang menyetel
-    salah satu di antaranya bersama `snapshotAsOf` akan ditolak dengan `INVALID_REQUEST`.
+    salah satunya bersama `snapshotAsOf` akan ditolak dengan `INVALID_REQUEST`.
   </Accordion>
 
-  <Accordion title="Search request yang didukung">
+  <Accordion title="Permintaan Search yang didukung">
     Exa Snapshot pada Search mendukung `auto`, `fast`, dan `instant`, tetapi tidak mendukung
     `deep-lite`, `deep`, atau `deep-reasoning`.
 
@@ -237,12 +225,10 @@ Untuk kedua endpoint:
   </Accordion>
 </AccordionGroup>
 
-<div id="common-uses">
-  ## Penggunaan umum
-</div>
+## Penggunaan umum {#common-uses}
 
-Gunakan Exa Snapshot saat tugas Anda bergantung pada apa yang tersimpan di Exa pada datetime tertentu:
+Gunakan Exa Snapshot ketika tugas bergantung pada apa yang telah tersimpan di Exa pada datetime tertentu:
 
-* Melakukan backtest pada agent tanpa terpengaruh pembaruan halaman yang lebih baru.
-* Menjalankan evaluasi terhadap batas konten yang dapat direproduksi.
+* Melakukan backtest pada agent tanpa membuatnya terpapar pembaruan halaman yang lebih baru.
+* Menjalankan evaluasi terhadap batas konten yang dapat diulang secara konsisten.
 * Membandingkan versi lama dari dokumentasi, harga, kebijakan, atau filings.

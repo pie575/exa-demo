@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="get-a-webset">
-  # Mendapatkan webset
-</div>
+# Mendapatkan webset {#get-a-webset}
 
-> Mengembalikan Webset berdasarkan `id` atau `externalId`, termasuk status, searches, imports, enrichments, dan monitors miliknya.
+> Mengembalikan sebuah Webset berdasarkan `id` atau `externalId`, beserta status, searches, impor, enrichments, dan monitors miliknya.
 
-Kirim `expand=items` untuk menyertakan hingga 100 item pertama dalam respons.
+Kirimkan `expand=items` untuk menyertakan hingga 100 item pertama dalam response.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0
@@ -1563,12 +1557,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Kirimkan kunci API Exa Anda di header x-api-key. Anda juga dapat
+        melakukan autentikasi dengan Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Kirimkan kunci API Exa Anda di header x-api-key. Anda juga dapat
+        melakukan autentikasi dengan Authorization: Bearer <key>.
 ```

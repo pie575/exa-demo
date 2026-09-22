@@ -8,9 +8,7 @@ keywords: ["Claude", "Claude Code", "Claude Web", "Claude Desktop", "Exa MCP", "
 
 Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para dar a Claude acceso a información actualizada de la web. Claude puede buscar en lenguaje natural, leer las páginas relevantes y usar esas fuentes mientras trabaja.
 
-<div id="install-exa">
-  ## Instalar Exa
-</div>
+## Instalar Exa {#install-exa}
 
 <div className="docs-tabs">
   <Tabs>
@@ -36,7 +34,7 @@ Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para dar 
 
     <Tab title="Claude Code CLI" icon="/docs/images/mcp-clients/claude-code.svg" width="16" height="16" data-path="images/mcp-clients/claude-code.svg">
       <Steps>
-        <Step title="Instala el complemento">
+        <Step title="Instala el plugin">
           Instala Exa desde la terminal:
 
           ```bash theme={null}
@@ -47,10 +45,10 @@ Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para dar 
         </Step>
 
         <Step title="Inicia una sesión nueva">
-          Abre una sesión nueva de Claude Code para que se cargue el complemento y luego pide algo que requiera consultar la web.
+          Abre una sesión nueva de Claude Code para que se cargue el plugin y luego pide algo que requiera consultar la web.
 
-          <Frame caption="Abrir una sesión nueva de Claude Code y pedir algo que requiera consultar la web">
-            <img src="/docs/images/integrations/claude-web-desktop/claude-code.gif" alt="Abrir una sesión nueva de Claude Code y pedir algo que requiera consultar la web" style={{width: "100%", height: "auto"}} width="800" height="502" data-path="images/integrations/claude-web-desktop/claude-code.gif" />
+          <Frame caption="Abrir una sesión nueva de Claude Code y pedir algo que requiere consultar la web">
+            <img src="/docs/images/integrations/claude-web-desktop/claude-code.gif" alt="Abrir una sesión nueva de Claude Code y pedir algo que requiere consultar la web" style={{width: "100%", height: "auto"}} width="800" height="502" data-path="images/integrations/claude-web-desktop/claude-code.gif" />
           </Frame>
         </Step>
       </Steps>
@@ -58,77 +56,68 @@ Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para dar 
   </Tabs>
 </div>
 
-Ambas opciones ponen Exa a tu disposición sin necesidad de editar un archivo de configuración de MCP.
+Ambas opciones dejan Exa disponible sin necesidad de editar un archivo de configuración de MCP.
 
-<div id="work-with-whats-on-the-web-right-now">
-  ## Trabaja con lo que hay en la web ahora mismo
-</div>
+## Trabaja con lo que hay en la web ahora mismo {#work-with-whats-on-the-web-right-now}
 
-En Claude Code, Exa puede buscar documentación, issues, changelogs y ejemplos reales actualizados mientras trabajas en tu repositorio. Esa misma integración le aporta a Claude Web, Desktop y Cowork noticias de última hora, investigaciones, información de empresas, detalles de productos y otras fuentes que quizá aún no estén en el contexto.
+En Claude Code, Exa puede buscar documentación actualizada, incidencias, registros de cambios y ejemplos reales mientras trabajas en tu repositorio. Esa misma integración aporta a Claude Web, Desktop y Cowork noticias de actualidad, investigación, información de empresas, detalles de productos y otras fuentes que quizá no estén ya en el contexto.
 
 ```text theme={null}
 Estamos en Tailwind v3. Usa Exa para buscar y leer la guía oficial de
-actualización a Tailwind v4 y luego migra este proyecto a v4.
+actualización a Tailwind v4 y luego migra este proyecto a la v4.
 ```
 
 Claude Code puede usar lo que encuentra para aplicar el cambio en tu base de código. En otros clientes de Claude, puede usar esas mismas fuentes en respuestas, artefactos y tareas de Cowork.
 
 El mismo patrón funciona siempre que la respuesta dependa de fuentes web actuales o específicas:
 
-* «Encuentra las notas de la versión más reciente de esta dependencia y resume los cambios incompatibles».
-* «Busca investigación primaria reciente sobre el escalado en tiempo de inferencia y compara los métodos».
-* «Lee la documentación actual de webhooks de Stripe y explica el comportamiento de reintento recomendado».
-* «Encuentra las páginas oficiales de precios de estos productos y compara sus planes de nivel inicial».
+* &quot;Encuentra las últimas notas de versión de esta dependencia y resume los cambios incompatibles.&quot;
+* &quot;Busca investigación primaria reciente sobre escalado en tiempo de inferencia y compara los métodos.&quot;
+* &quot;Lee la documentación actual de webhooks de Stripe y explica el comportamiento de reintento recomendado.&quot;
+* &quot;Encuentra las páginas oficiales de precios de estos productos y compara sus planes de nivel inicial.&quot;
 
-<div id="search-read-and-research">
-  ## Buscar, leer e investigar
-</div>
+## Búsqueda, lectura e investigación {#search-read-and-research}
 
-La integración de Exa proporciona a Claude herramientas para buscar y leer la web, que puede combinar a lo largo de una tarea de investigación más extensa.
+La integración de Exa le da a Claude herramientas para buscar y leer en la web, que puede combinar a lo largo de una tarea de investigación más extensa.
 
 <Columns cols={3}>
-  <Card title="Buscar" icon="search">
+  <Card title="Búsqueda" icon="search">
     Busca en lenguaje natural y obtén el contenido relevante de las páginas, no solo una lista de enlaces.
   </Card>
 
-  <Card title="Leer" icon="file-text">
-    Lee la página que le indiques, ya sea documentación, investigaciones, registros de cambios, issues o artículos.
+  <Card title="Lectura" icon="file-text">
+    Lee la página que le indiques, incluida documentación, investigaciones, registros de cambios, incidencias y artículos.
   </Card>
 
-  <Card title="Investigar" icon="compass">
+  <Card title="Investigación" icon="compass">
     Ejecuta varias búsquedas, revisa las páginas útiles y combina la evidencia en una respuesta con fuentes.
   </Card>
 </Columns>
 
-<div id="research-without-leaving-claude">
-  ## Investiga sin salir de Claude
-</div>
+## Investiga sin salir de Claude {#research-without-leaving-claude}
 
-Pide el resultado que quieres e indícale a Claude qué tipo de fuentes te importan:
+Pide el resultado que quieras e indícale a Claude qué tipo de fuentes te interesan:
 
 ```text theme={null}
-Compara las ofertas gestionadas, las licencias y los precios de las principales
-bases de datos vectoriales de código abierto. Usa fuentes primarias actualizadas y cítalas.
+Compara las ofertas gestionadas, las licencias y los precios de las
+principales bases de datos vectoriales de código abierto. Usa fuentes
+primarias actuales y cítalas.
 ```
 
-Claude puede usar Exa durante toda la conversación para encontrar y leer las fuentes que la tarea requiera. Úsalo para investigación técnica, análisis competitivo, mapeo de mercado, investigación de empresas o cualquier pregunta cuya respuesta esté repartida por la web.
+Claude puede usar Exa durante toda la conversación para encontrar y leer las fuentes que requiera la tarea. Úsalo para investigación técnica, análisis competitivo, mapeo de mercado, investigación de empresas o cualquier pregunta cuya respuesta esté dispersa por la web.
 
-<div id="use-exa-in-cowork">
-  ## Usar Exa en Cowork
-</div>
+## Usa Exa en Cowork {#use-exa-in-cowork}
 
-El mismo conector está disponible en Cowork. Asigna a Claude una tarea que dependa de información externa y podrá buscar o leer páginas mientras trabaja con tus archivos y otras herramientas conectadas.
+El mismo conector está disponible en Cowork. Dale a Claude una tarea que dependa de información externa y podrá buscar o leer páginas mientras trabaja con tus archivos y otras herramientas conectadas.
 
 ```text theme={null}
 Revisa este informe competitivo, verifica con Exa cada afirmación sobre precios
-en las páginas actuales de los proveedores y actualiza el documento con las citas.
+frente a las páginas actuales de los vendors y actualiza el documento con citas.
 ```
 
-<div id="prefer-mcp-directly">
-  ## ¿Prefieres usar MCP directamente?
-</div>
+## ¿Prefieres usar MCP directamente? {#prefer-mcp-directly}
 
-Si configuras Claude manualmente o usas otro cliente MCP, puedes conectarte directamente al servidor MCP alojado de Exa:
+Si configuras Claude manualmente o usas otro cliente MCP, puedes conectarte directamente al MCP server alojado de Exa:
 
 ```bash theme={null}
 claude mcp add --transport http exa https://mcp.exa.ai/mcp
@@ -137,5 +126,5 @@ claude mcp add --transport http exa https://mcp.exa.ai/mcp
 Consulta [Exa MCP](/es/docs/get-started/exa-mcp) para conocer otros clientes, opciones de configuración y herramientas disponibles.
 
 <Card title="Abrir el conector de Exa" icon="external-link" horizontal href="https://claude.ai/connectors/exa">
-  Añade Exa desde el directorio de conectores de Claude.
+  Agrega Exa desde el directorio de conectores de Claude.
 </Card>

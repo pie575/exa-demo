@@ -1,41 +1,33 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="verifying-signatures">
-  # Memverifikasi signature
-</div>
+# Memverifikasi signature {#verifying-signatures}
 
 > Pelajari cara memverifikasi signature webhook secara aman untuk memastikan permintaan benar-benar berasal dari Exa
 
-Saat menerima webhook dari Exa, Anda sebaiknya memverifikasi bahwa webhook tersebut memang berasal dari kami demi menjaga integritas dan keaslian data. Exa menandatangani semua payload webhook dengan secret key yang unik untuk setiap endpoint webhook Anda.
+Saat menerima webhook dari Exa, sebaiknya Anda memverifikasi bahwa webhook tersebut memang berasal dari kami untuk memastikan integritas dan keaslian datanya. Exa menandatangani semua payload webhook dengan secret key yang unik untuk setiap endpoint webhook Anda.
 
-<div id="how-webhook-signatures-work">
-  ## Cara Kerja Signature Webhook
-</div>
+## Cara Kerja Signature Webhook {#how-webhook-signatures-work}
 
 Exa menggunakan HMAC SHA256 untuk menandatangani payload webhook. Signature disertakan dalam header `Exa-Signature`, yang berisi:
 
 * Timestamp (`t=`) yang menunjukkan kapan webhook dikirim
 * Satu atau beberapa signature (`v1=`) yang dihitung menggunakan timestamp dan payload
 
-Format signature-nya seperti ini:
+Berikut format signature-nya:
 
 ```text theme={null}
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## Proses Verifikasi
-</div>
+## Proses Verifikasi {#verification-process}
 
 Untuk memverifikasi signature webhook:
 
 1. Ekstrak timestamp dan signature dari header `Exa-Signature`
-2. Buat signed payload dengan menggabungkan timestamp, tanda titik, dan raw request body
+2. Buat signed payload dengan menggabungkan timestamp, sebuah titik, dan raw request body
 3. Hitung signature yang diharapkan menggunakan HMAC SHA256 dengan webhook secret Anda
 4. Bandingkan signature hasil perhitungan Anda dengan signature yang diberikan
 
@@ -58,7 +50,7 @@ Untuk memverifikasi signature webhook:
           bool: True if signature is valid, False otherwise
       """
       try:
-          # Parse header signature
+          # Parsing header signature
           pairs = [pair.split('=', 1) for pair in signature_header.split(',')]
           timestamp = None
           signatures = []
@@ -87,7 +79,7 @@ Untuk memverifikasi signature webhook:
               hashlib.sha256
           ).hexdigest()
 
-          # Bandingkan dengan signature yang dikirimkan
+          # Bandingkan dengan signature yang diberikan
           return any(hmac.compare_digest(expected_signature, sig) for sig in signatures)
 
       except Exception as e:
@@ -123,15 +115,15 @@ Untuk memverifikasi signature webhook:
 
   function verifyWebhookSignature(payload, signatureHeader, webhookSecret) {
       /**
-       * Verifikasi signature dari payload webhook.
+       * Memverifikasi signature dari payload webhook.
        *
-       * @param {string} payload - Body request mentah dalam bentuk string
+       * @param {string} payload - Raw request body dalam bentuk string
        * @param {string} signatureHeader - Nilai header Exa-Signature
        * @param {string} webhookSecret - Webhook secret Anda
        * @returns {boolean} True jika signature valid, false jika tidak
        */
       try {
-          // Parse header signature
+          // Parsing header signature
           const pairs = signatureHeader.split(',').map(pair => pair.split('='));
           const timestamp = pairs.find(([key]) => key === 't')?.[1];
           const signatures = pairs
@@ -148,16 +140,16 @@ Untuk memverifikasi signature webhook:
               console.warn('Warning: Webhook timestamp is more than 5 minutes old');
           }
 
-          // Buat payload yang ditandatangani
+          // Membuat payload yang ditandatangani
           const signedPayload = `${timestamp}.${payload}`;
 
-          // Hitung signature yang diharapkan
+          // Menghitung signature yang diharapkan
           const expectedSignature = crypto
               .createHmac('sha256', webhookSecret)
               .update(signedPayload)
               .digest('hex');
 
-          // Bandingkan dengan signature yang diterima menggunakan perbandingan timing-safe
+          // Membandingkan dengan signature yang diterima menggunakan perbandingan timing-safe
           return signatures.some(sig =>
               crypto.timingSafeEqual(
                   Buffer.from(expectedSignature, 'hex'),
@@ -188,7 +180,7 @@ Untuk memverifikasi signature webhook:
           return res.status(400).json({ error: 'Invalid signature' });
       }
 
-      // Proses webhook
+      // Memproses webhook
       const webhookData = JSON.parse(payload);
       console.log(`Received ${webhookData.type} event`);
 
@@ -209,16 +201,16 @@ Untuk memverifikasi signature webhook:
   public class WebhookTest {
 
       /**
-      * Memverifikasi signature dari payload webhook.
+      * Verifikasi signature dari payload webhook.
       *
-      * @param payload Body permintaan mentah dalam bentuk string
+      * @param payload Raw request body dalam bentuk string
       * @param signatureHeader Nilai header Exa-Signature
       * @param webhookSecret Webhook secret Anda
       * @return true jika signature valid, false jika tidak
       */
       public static boolean verifyWebhookSignature(String payload, String signatureHeader, String webhookSecret) {
           try {
-              // Uraikan header signature
+              // Parsing header signature
               String[] pairs = signatureHeader.split(",");
               String timestamp = null;
               List<String> signatures = new ArrayList<>();
@@ -248,13 +240,13 @@ Untuk memverifikasi signature webhook:
                   System.out.println("Warning: Webhook timestamp is more than 5 minutes old");
               }
 
-              // Buat payload yang ditandatangani
+              // Buat signed payload
               String signedPayload = timestamp + "." + payload;
 
               // Hitung signature yang diharapkan
               String expectedSignature = computeHmacSha256(signedPayload, webhookSecret);
 
-              // Bandingkan dengan signature yang diberikan memakai perbandingan timing-safe
+              // Bandingkan dengan signature yang diberikan menggunakan perbandingan timing-safe
               return signatures.stream().anyMatch(sig -> timingSafeEquals(expectedSignature, sig));
 
           } catch (Exception e) {
@@ -264,7 +256,7 @@ Untuk memverifikasi signature webhook:
       }
 
       /**
-      * Menghitung signature HMAC SHA256.
+      * Hitung signature HMAC SHA256.
       */
       private static String computeHmacSha256(String data, String key)
               throws NoSuchAlgorithmException, InvalidKeyException {
@@ -276,7 +268,7 @@ Untuk memverifikasi signature webhook:
       }
 
       /**
-      * Mengubah array byte menjadi string heksadesimal.
+      * Konversi array byte menjadi string heksadesimal.
       */
       private static String bytesToHex(byte[] bytes) {
           StringBuilder result = new StringBuilder();
@@ -311,7 +303,7 @@ Untuk memverifikasi signature webhook:
           String testTimestamp = String.valueOf(Instant.now().getEpochSecond());
 
           try {
-              // Buat signature uji
+              // Buat signature untuk pengujian
               String signedPayload = testTimestamp + "." + testPayload;
               String testSignature = computeHmacSha256(signedPayload, testSecret);
               String testHeader = "t=" + testTimestamp + ",v1=" + testSignature;
@@ -326,16 +318,16 @@ Untuk memverifikasi signature webhook:
 
               System.out.println("🧪 Running Tests...");
 
-              // Uji verification
+              // Uji verifikasi
               boolean isValid = verifyWebhookSignature(testPayload, testHeader, testSecret);
               System.out.println("   ✓ Valid signature verification: " + (isValid ? "✅ PASSED" : "❌ FAILED"));
 
-              // Uji dengan signature yang tidak valid
+              // Uji dengan signature tidak valid
               String invalidHeader = "t=" + testTimestamp + ",v1=invalid_signature";
               boolean isInvalid = verifyWebhookSignature(testPayload, invalidHeader, testSecret);
               System.out.println("   ✓ Invalid signature rejection: " + (!isInvalid ? "✅ PASSED" : "❌ FAILED"));
 
-              // Uji dengan timestamp yang tidak ada
+              // Uji tanpa timestamp
               String noTimestampHeader = "v1=" + testSignature;
               boolean noTimestamp = verifyWebhookSignature(testPayload, noTimestampHeader, testSecret);
               System.out.println("   ✓ Missing timestamp rejection: " + (!noTimestamp ? "✅ PASSED" : "❌ FAILED"));
@@ -344,7 +336,7 @@ Untuk memverifikasi signature webhook:
               boolean emptyHeader = verifyWebhookSignature(testPayload, "", testSecret);
               System.out.println("   ✓ Empty header rejection: " + (!emptyHeader ? "✅ PASSED" : "❌ FAILED"));
 
-              // Uji dengan header yang formatnya salah
+              // Uji dengan header berformat salah
               boolean malformedHeader = verifyWebhookSignature(testPayload, "invalid-header-format", testSecret);
               System.out.println("   ✓ Malformed header rejection: " + (!malformedHeader ? "✅ PASSED" : "❌ FAILED"));
 
@@ -354,7 +346,7 @@ Untuk memverifikasi signature webhook:
               if (isValid) {
                   System.out.println("🎉 === Processing Valid Webhook ===");
                   System.out.println("   Processing webhook payload: " + testPayload);
-                  // Di sini Anda akan menguraikan JSON dan menangani event webhook
+                  // Di sini Anda akan mem-parsing JSON dan menangani event webhook
                   System.out.println("   Webhook processed successfully!");
                   System.out.println();
                   System.out.println("🔒 Security verification complete! Your webhook signature verification is working correctly.");
@@ -373,48 +365,40 @@ Untuk memverifikasi signature webhook:
 
 <br />
 
-<div id="security-best-practices">
-  ## Praktik Terbaik Keamanan
-</div>
+## Praktik Terbaik Keamanan {#security-best-practices}
 
 Mengikuti praktik berikut akan membantu memastikan implementasi webhook Anda aman dan andal:
 
-* **Selalu Verifikasi Signature** - Jangan pernah memproses data webhook tanpa memverifikasi signature terlebih dahulu. Hal ini mencegah penyerang mengirim webhook palsu ke endpoint Anda.
+* **Selalu Verifikasi Signature** - Jangan pernah memproses data webhook tanpa memverifikasi signature terlebih dahulu. Ini mencegah penyerang mengirim webhook palsu ke endpoint Anda.
 
-* **Gunakan Perbandingan Timing-Safe** - Saat membandingkan signature, gunakan fungsi seperti `hmac.compare_digest()` di Python atau `crypto.timingSafeEqual()` di Node.js untuk mencegah serangan timing.
+* **Gunakan Perbandingan Timing-Safe** - Saat membandingkan signature, gunakan fungsi seperti `hmac.compare_digest()` di Python atau `crypto.timingSafeEqual()` di Node.js untuk mencegah timing attack.
 
-* **Periksa Kebaruan Timestamp** - Pertimbangkan untuk menolak webhook dengan timestamp yang sudah terlalu lama (misalnya, lebih dari 5 menit) guna mencegah serangan replay.
+* **Periksa Kebaruan Timestamp** - Pertimbangkan untuk menolak webhook dengan timestamp yang terlalu lama (misalnya, lebih dari 5 menit) untuk mencegah serangan replay.
 
-* **Simpan Secret dengan Aman** - Simpan webhook secret Anda di variabel lingkungan atau sistem manajemen secret yang aman. Jangan pernah menuliskannya secara hardcode di dalam aplikasi Anda. **Penting**: Webhook secret hanya dikembalikan saat Anda [membuat webhook](/id/docs/websets/api/webhooks/create-a-webhook) - pastikan Anda menyimpannya dengan aman karena nilainya tidak dapat diambil kembali di kemudian hari.
+* **Simpan Secret dengan Aman** - Simpan webhook secret Anda di variabel lingkungan atau sistem pengelolaan secret yang aman. Jangan pernah menuliskannya secara hardcode di aplikasi Anda. **Penting**: webhook secret hanya dikembalikan saat Anda [membuat webhook](/id/docs/websets/api/webhooks/create-a-webhook) - pastikan Anda menyimpannya dengan aman karena nilainya tidak dapat diambil lagi di kemudian hari.
 
-* **Gunakan HTTPS** - Selalu gunakan endpoint HTTPS untuk webhook Anda agar data terenkripsi saat transit.
+* **Gunakan HTTPS** - Selalu gunakan endpoint HTTPS untuk webhook Anda agar data terenkripsi selama pengiriman.
 
-* **Daftarkan URL Final** - Pengiriman webhook tidak mengikuti pengalihan HTTP (respons 3xx). Jika endpoint Anda melakukan pengalihan, pengiriman akan dianggap gagal. Selalu daftarkan URL yang langsung menangani payload.
+* **Daftarkan URL Final** - Deliveries webhook tidak mengikuti pengalihan HTTP (response 3xx). Jika endpoint Anda melakukan pengalihan, pengiriman akan dianggap gagal. Selalu daftarkan URL yang langsung menangani payload.
 
 ***
 
 <br />
 
-<div id="troubleshooting">
-  ## Pemecahan Masalah
-</div>
+## Pemecahan Masalah {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### Error Signature Tidak Valid
-</div>
+### Error Invalid Signature {#invalid-signature-errors}
 
 Jika verifikasi signature Anda gagal:
 
-1. **Periksa payload mentah**: Pastikan Anda menggunakan raw request body, bukan objek JSON yang sudah diurai
+1. **Periksa payload mentah**: Pastikan Anda menggunakan raw request body, bukan objek JSON yang sudah di-parse
 2. **Verifikasi secret**: Pastikan Anda menggunakan webhook secret yang benar, yaitu yang diberikan saat webhook dibuat
-3. **Periksa penguraian header**: Pastikan Anda mengekstrak timestamp dan signature dari header dengan benar
-4. **Masalah encoding**: Pastikan encoding UTF-8 konsisten di sepanjang proses verification
+3. **Periksa parsing header**: Pastikan Anda mengekstrak timestamp dan signature dari header dengan benar
+4. **Masalah encoding**: Pastikan encoding UTF-8 konsisten di sepanjang proses verifikasi
 
-<div id="testing-signatures-locally">
-  ### Menguji Signature Secara Lokal
-</div>
+### Menguji Signature Secara Lokal {#testing-signatures-locally}
 
-Anda dapat menguji logika verifikasi signature menggunakan webhook secret dan contoh payload:
+Anda dapat menguji logika verifikasi signature dengan menggunakan webhook secret dan contoh payload:
 
 ```python Python theme={null}
 # Uji dengan payload dan signature yang sudah diketahui
@@ -422,7 +406,7 @@ test_payload = '{"type":"webset.created","data":{"id":"ws_test"}}'
 test_timestamp = "1234567890"
 test_secret = "your_webhook_secret"
 
-# Buat signature uji
+# Buat signature untuk pengujian
 import hmac
 import hashlib
 
@@ -435,7 +419,7 @@ test_signature = hmac.new(
 
 test_header = f"t={test_timestamp},v1={test_signature}"
 
-# Verifikasi bahwa fungsinya berjalan
+# Pastikan berfungsi
 is_valid = verify_webhook_signature(test_payload, test_header, test_secret)
 print(f"Test signature valid: {is_valid}")  # Seharusnya mencetak True
 ```
@@ -444,10 +428,8 @@ print(f"Test signature valid: {is_valid}")  # Seharusnya mencetak True
 
 <br />
 
-<div id="whats-next">
-  ## Langkah Selanjutnya
-</div>
+## Selanjutnya {#whats-next}
 
-* Pelajari [event webhook](/id/docs/websets/api/events/types) dan payload-nya
+* Pelajari [events webhook](/id/docs/websets/api/events/types) dan payload-nya
 * Siapkan [percobaan ulang dan pemantauan webhook](/id/docs/websets/api/webhooks/attempts/list-webhook-attempts)
 * Jelajahi [endpoint pengelolaan webhook](/id/docs/websets/api/webhooks/create-a-webhook)

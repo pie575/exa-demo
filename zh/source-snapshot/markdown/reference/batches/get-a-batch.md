@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可先通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，可通过该文件查看所有可用页面。
 
-<div id="get-a-batch">
-  # 获取批次
-</div>
+# 获取批次 {#get-a-batch}
 
-> 按 ID 获取批次。
+> 按 ID 检索批次。
 
-使用此端点轮询批次，直到其状态变为 `completed`、`cancelled` 或 `expired`。批次完成后，`resultsUrl` 会包含指向 JSONL 结果文件的短期有效预签名 URL；重新获取该批次即可得到新的 URL。
+使用此端点轮询批次，直到其状态变为 `completed`、`cancelled` 或 `expired`。批次完成后，`resultsUrl` 中会包含一个指向 JSONL 结果文件的短期预签名 URL；重新获取该批次即可得到新的 URL。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户将获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0

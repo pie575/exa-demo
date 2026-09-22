@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-a-batch">
-  # Créer un batch
-</div>
+# Créer un batch {#create-a-batch}
 
 > Soumettez un batch de requests à l&#39;API Exa pour une exécution asynchrone.
 
-Chaque élément de `requests` correspond à un `POST` vers `/search` ou `/agent/runs` assorti d&#39;un `customId` unique au sein du batch. Ce même `customId` est renvoyé dans le fichier de résultats, ce qui vous permet de relier les lignes de sortie à vos données d&#39;entrée. Consultez le [guide de l&#39;API Batch](/fr/docs/batch/quickstart) pour le workflow de bout en bout.
+Chaque élément de `requests` est un `POST` vers `/search` ou `/agent/runs` avec un `customId` unique au sein du batch. Ce même `customId` est renvoyé dans le fichier de résultats, ce qui vous permet de relier les lignes d&#39;output à vos données d&#39;entrée. Consultez le [guide de l&#39;API Batch](/fr/docs/batch/quickstart) pour le workflow de bout en bout.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /batches
 openapi: 3.1.0

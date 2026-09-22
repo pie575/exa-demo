@@ -20,7 +20,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API 演练场中打开" aria-label={`在 API 演练场中打开“${query}”`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API Playground 中打开" aria-label={`在 API Playground 中打开“${query}”`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -31,56 +31,42 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search 检索主流媒体、行业刊物和垂直小众媒体的报道。新文章在发布后数分钟内即可被搜索到。若对发布时间范围有硬性要求，可将自然语言 query 与日期筛选条件结合使用。
+使用 Exa Search 检索主流媒体、行业媒体以及垂直细分媒体的报道。新文章发布后几分钟内即可被搜索到。若发布时间窗口是硬性要求，可将自然语言 query 与日期过滤条件结合使用。
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
 * 市场与投资研究
 * 网络安全与威胁情报
-* 公司、产品与竞品监控
+* 公司、产品与竞争对手监测
 * 行业简报与时事研究
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## 示例查询 {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### 追踪持续发酵的政策事件
-</div>
+### 追踪持续演进的政策报道 {#follow-a-developing-policy-story}
 
-指明主题、来源类型和发布时间范围，让结果聚焦于事件的当前进展。
+指明主题、来源类型和发布时间窗口，让结果聚焦于事件的当前阶段。
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### 查找从业者分析
-</div>
+### 查找从业者的分析 {#find-practitioner-analysis}
 
-如果你想要的是从业者的分析，而不是泛泛的新闻报道，请在查询中指明来源类型。
+如果你想要的是从业者的分析而非泛泛的新闻报道，请在 query 中指明来源类型。
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### 发现特定形式的讨论
-</div>
+### 发现特定形式的讨论内容 {#discover-discussions-in-a-specific-format}
 
-在 query 中同时写明形式和主题，这样 search 就能覆盖全网的单集页面和文字稿。
+在 query 中同时写明形式和主题，这样搜索就能覆盖全网的节目页面和会议记录。
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### 调研负面舆情
-</div>
+### 研究负面媒体报道 {#research-adverse-media}
 
-请同时描述负面信号和你要调查的实体类别，不要把 query 简化成公司名加“新闻”二字。
+请同时描述你要调查的负面信号和实体类别，不要把 query 简化为公司名称加上“新闻”二字。
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,11 +107,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果结构化数据需要跨多个来源进行调研，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述所需的报道、字段和时间范围，Agent 即可返回经过 schema 校验的结果，并附上引用来源。
+若所需的结构化数据需要跨多个来源进行研究，请使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。描述你需要的报道、field 和时间范围，agent 会返回经 schema 校验的结果及引用来源。
 
 <Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
   生成带来源的新闻简报、对比各方报道，或从持续发展的事件中提取规范化的事实。

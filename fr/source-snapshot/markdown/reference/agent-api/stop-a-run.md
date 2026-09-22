@@ -1,32 +1,26 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="stop-a-run">
-  # Arrêter un run
-</div>
+# Arrêter un run {#stop-a-run}
 
-> Arrêtez proprement un run Agent en cours et conservez les résultats déjà collectés.
+> Arrêtez proprement un run Agent en cours et conservez les résultats collectés jusque-là.
 
-Si le run est encore actif, l&#39;agent finalise son travail et achève le run par anticipation avec les résultats déjà collectés. Le run se termine avec le status `completed` et `stopReason: stopped`. L&#39;usage accumulé avant l&#39;arrêt vous est facturé. Si le run a déjà atteint un status terminal (completed, failed ou cancelled), l&#39;endpoint renvoie le run existant tel quel.
+Si le run est encore actif, l&#39;agent finalise son travail et termine le run de façon anticipée avec les résultats collectés jusque-là. Le run se termine avec le statut `completed` et `stopReason: stopped`. L&#39;utilisation accumulée avant l&#39;arrêt vous est facturée. Si le run a déjà atteint un statut terminal (completed, failed ou cancelled), l&#39;endpoint renvoie le run existant sans modification.
 
-Pour mettre fin immédiatement à un run sans renvoyer de résultats, utilisez plutôt [cancel](/fr/docs/reference/agent-api/cancel-a-run).
+Pour interrompre immédiatement un run sans renvoyer de résultats, utilisez plutôt [cancel](/fr/docs/reference/agent-api/cancel-a-run).
 
 <Note>
-  Pris en charge uniquement sur les runs d&#39;effort `max`. `Exa-Beta: agent-max-effort-2026-07-27` doit
-  être transmis en header de request. Le header accepte une liste de jetons bêta séparés par des virgules.
+  Pris en charge uniquement sur les runs avec effort `max`. `Exa-Beta: agent-max-effort-2026-07-27` doit être
+  transmis comme header de requête. Le header accepte une liste de jetons bêta séparés par des virgules.
 </Note>
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0
@@ -391,14 +385,15 @@ components:
         - auto
         - max
       description: >-
-        Cost and reasoning effort preference for the run. `auto` lets Exa choose
-        the appropriate effort. `max` is the highest-effort public beta tier for
-        work where completeness and thoroughness matter more than latency or
-        cost, including large list building, deep multi-source research, and
-        criteria that are hard to verify.
+        Préférence de coût et d'effort de raisonnement pour le run. `auto`
+        laisse Exa choisir l'effort approprié. `max` est le palier de bêta
+        publique offrant le plus d'effort, destiné aux travaux où l'exhaustivité
+        et la rigueur priment sur la latence ou le coût, notamment la
+        constitution de listes volumineuses, la recherche approfondie
+        multi-sources et les critères difficiles à vérifier.
       default: auto
     JsonValue:
-      description: Any JSON value.
+      description: N'importe quelle valeur JSON.
       oneOf:
         - type: 'null'
         - type: boolean
@@ -418,8 +413,8 @@ components:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            Exa Connect data provider to enable for the run. All provider tools
-            are available by default.
+            Fournisseur de données Exa Connect à activer pour le run. Tous les
+            tools du provider sont disponibles par défaut.
           example: fiber
       required:
         - provider
@@ -430,20 +425,22 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
-            applies only to `auto` and `max`; when omitted, the default cap is
-            $5 for `auto` and $20 for `max`.
+            Montant maximum que ce run peut dépenser, en dollars américains.
+            Accepte de 1 $ à 100 $ et s'applique uniquement à `auto` et `max` ;
+            en cas d'omission, le plafond par défaut est de 5 $ pour `auto` et
+            de 20 $ pour `max`.
           example: 10
       additionalProperties: false
       description: >-
-        Optional per-run spending limit for the metered `auto` and `max`
-        efforts. Runs that finish early may cost less than the limit.
+        Limite de dépense facultative par run pour les efforts facturés à
+        l'usage `auto` et `max`. Les runs qui se terminent plus tôt peuvent
+        coûter moins que cette limite.
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: Output field the citations support.
+          description: Field de sortie étayé par les citations.
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -456,7 +453,7 @@ components:
                 - low
                 - medium
                 - high
-              description: Model-reported reliability for this field.
+              description: Fiabilité de ce field telle que rapportée par le modèle.
             - type: 'null'
       required:
         - field
@@ -470,9 +467,10 @@ components:
         type: integer
         minimum: 0
       description: >-
-        Per-provider tool call counts for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        Nombre d'appels d'outils par provider pour les sources de données Exa
+        Connect utilisées pendant le run. Les clés sont les noms des providers
+        (p. ex. `fiber`, `similarweb`). Seuls les providers dont l'utilisation
+        est non nulle sont inclus.
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -481,9 +479,10 @@ components:
         type: number
         minimum: 0
       description: >-
-        Per-provider cost in dollars for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        Coût en dollars par provider pour les sources de données Exa Connect
+        utilisées pendant le run. Les clés sont les noms des providers (p. ex.
+        `fiber`, `similarweb`). Seuls les providers dont l'utilisation est non
+        nulle sont inclus.
     AgentDataSourceProvider:
       type: string
       enum:
@@ -495,17 +494,17 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Identifier of an Exa Connect data provider.
+      description: Identifiant d'un fournisseur de données Exa Connect.
     AgentCitation:
       type: object
       properties:
         url:
           type: string
           format: uri
-          description: Source URL.
+          description: URL de la source.
         title:
           type: string
-          description: Source title.
+          description: Titre de la source.
       required:
         - url
       additionalProperties: false
@@ -515,17 +514,17 @@ components:
       name: Exa-Beta
       schema:
         description: >-
-          Comma-separated beta feature tokens for opting into experimental
-          features.
+          Jetons de fonctionnalités bêta séparés par des virgules permettant
+          d'activer les fonctionnalités expérimentales.
         type: string
       description: >-
-        Comma-separated beta feature tokens for opting into experimental
-        features.
+        Jetons de fonctionnalités bêta séparés par des virgules permettant
+        d'activer les fonctionnalités expérimentales.
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        Identifiant unique de la requête. Correspond au field `requestId`
+        renvoyé dans les corps de réponse qui en contiennent un.
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -535,12 +534,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez
+        aussi vous authentifier avec Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez
+        aussi vous authentifier avec Authorization: Bearer <key>.
 ```

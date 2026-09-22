@@ -1,13 +1,13 @@
 ---
-title: "Lister les événements d'un run"
-description: "Listez les événements stockés d'un run Agent ou rejouez-les sous
-  forme de server-sent events."
+title: "Lister les events d'un run"
+description: "Listez les events stockés d'un Agent run ou rejouez-les sous forme
+  de server-sent events."
 openapi: "/fr/docs/exa-spec.yaml GET /agent/runs/{id}/events"
 timestamp: false
 ---
 
-Par défaut, cet endpoint renvoie une liste JSON paginée des événements stockés. Définissez `Accept: text/event-stream` pour rejouer les événements stockés en SSE. Pour la pagination JSON, utilisez `cursor`. Pour le replay SSE, utilisez `Last-Event-ID`.
+Par défaut, cet endpoint renvoie une liste JSON paginée des events stockés. Définissez `Accept: text/event-stream` pour rejouer les events stockés en SSE. Pour la pagination JSON, utilisez `cursor`. Pour le replay SSE, utilisez `Last-Event-ID`.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key depuis le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>

@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="batch-action-on-monitors">
-  # Acción por lotes sobre monitors
-</div>
+# Acción batch sobre monitores {#batch-action-on-monitors}
 
-> Ejecuta una acción por lotes sobre los monitors que coincidan con los filtros proporcionados.
+> Realiza una acción batch sobre los monitores que coincidan con los filtros proporcionados.
 
 Acciones admitidas:
 
-* **delete**: elimina de forma permanente los monitors coincidentes
-* **pause**: pausa los monitors coincidentes
-* **unpause**: reanuda los monitors coincidentes
+* **delete**: elimina de forma permanente los monitores coincidentes
+* **pause**: pausa los monitores coincidentes
+* **unpause**: reanuda los monitores coincidentes
 
-Usa `dry_run: true` (el valor predeterminado) para ver qué monitors se verían afectados antes de ejecutar la acción. Los resultados se paginan mediante el parámetro `limit`; repite el bucle hasta que `has_more` sea `false` para procesar todos los monitors coincidentes.
+Usa `dry_run: true` (el valor por defecto) para ver qué monitores se verían afectados antes de ejecutar la acción. Los resultados se paginan mediante el parámetro `limit`; repite el bucle hasta que `has_more` sea `false` para procesar todos los monitores coincidentes.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/batch
 openapi: 3.1.0

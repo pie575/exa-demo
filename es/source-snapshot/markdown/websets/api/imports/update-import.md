@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="update-an-import">
-  # Actualizar un import
-</div>
+# Actualizar un import {#update-an-import}
 
-> Actualiza la configuration de un import.
+> Actualiza la configuración de un import.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/imports/{id}
 openapi: 3.1.0

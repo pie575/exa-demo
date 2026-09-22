@@ -1,65 +1,59 @@
 ---
 title: "TrueFoundry"
-description: "将 Exa 接入 TrueFoundry MCP Gateway，实现集中式访问控制、工具管理和用量监控。"
+description: "将 Exa 接入 TrueFoundry MCP Gateway，实现集中式访问控制、工具管理与用量监控。"
 icon: "/docs/images/sidebar-icons/truefoundry.svg"
 ---
 
-[TrueFoundry AI Gateway](https://truefoundry.com/ai-gateway) 是一个位于你的应用与 LLM 提供商或 MCP 服务器之间的企业级代理层，可统一访问 1,000 多个 LLM，并提供集中化的可观测性与治理能力。
+[TrueFoundry AI Gateway](https://truefoundry.com/ai-gateway) 是一个位于你的应用与 LLM 提供方或 MCP server 之间的企业级代理层，可统一访问 1,000 多个 LLM，并提供集中式可观测性与治理能力。
 
-TrueFoundry 已在其 [MCP Gateway](https://www.truefoundry.com/mcp-gateway) 中将 Exa 列为官方远程服务器。接入 Exa MCP 服务器后，你的团队即可通过一个统一托管的端点完成网页搜索、内容抓取和智能体研究。
+TrueFoundry 已在其 [MCP Gateway](https://www.truefoundry.com/mcp-gateway) 中将 Exa 作为官方远程 server 提供。接入 Exa MCP server 后，你的团队只需一个托管端点即可完成网页搜索、内容抓取和 agentic research。
 
-<Frame caption="TrueFoundry 官方远程 MCP 服务器目录中的 Exa">
-  <img src="/docs/images/integrations/truefoundry/catalog.png" alt="TrueFoundry 官方远程 MCP 目录中的 Exa 服务器" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
+<Frame caption="TrueFoundry 官方远程 MCP server 目录中的 Exa">
+  <img src="/docs/images/integrations/truefoundry/catalog.png" alt="The Exa server in TrueFoundry's official remote MCP catalog" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-<div id="add-exa-to-truefoundry">
-  ## 将 Exa 添加到 TrueFoundry
-</div>
+## 将 Exa 添加到 TrueFoundry {#add-exa-to-truefoundry}
 
-1. 在 TrueFoundry 侧边栏中打开 **MCP Servers**，然后选择 **Add new MCP Server**。
+1. 在 TrueFoundry sidebar 中打开 **MCP Servers**，然后选择 **Add new MCP Server**。
 2. 选择 **Connect Official Remote MCP Servers**。
 
-<Frame caption="选择官方远程 MCP 服务器目录">
+<Frame caption="选择官方远程 MCP server 目录">
   <img src="/docs/images/integrations/truefoundry/add-official-remote.png" alt="TrueFoundry 的 Add MCP Server 选择器，已选中 Connect Official Remote MCP Servers" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1572" height="1714" data-path="images/integrations/truefoundry/add-official-remote.png" />
 </Frame>
 
 3. 在目录中找到 **Exa**，然后选择 **+ Add**。
-4. 确认已预填的服务器信息：
+4. 确认预填的 server 信息：
 
-| 字段             | 值                                                      |
+| Field          | Value                                                  |
 | -------------- | ------------------------------------------------------ |
 | Name           | `exa`                                                  |
 | Description    | Search Engine made for AIs by Exa                      |
 | URL            | `https://mcp.exa.ai/mcp`                               |
-| Authentication | 可选 (该 MCP 服务器无需身份验证即可使用。只有达到免费速率限制时，才需要 Exa API key。)  |
+| Authentication | 可选 (该 MCP server 无需认证即可使用，只有达到免费速率限制时才需要 Exa API 密钥。)  |
 
-5. 添加需要管理或使用该服务器的用户或团队。**Auth Data** 保持关闭，然后选择 **Update MCP Server**。
+5. 添加需要管理或使用该 server 的用户或团队。**Auth Data** 保持关闭，然后选择 **Update MCP Server**。
 
-<Frame caption="配置 Exa 服务器及其协作者">
-  <img src="/docs/images/integrations/truefoundry/register-form.png" alt="Exa MCP 服务器注册表单，包含名称、URL、协作者和身份验证设置" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1568" height="1718" data-path="images/integrations/truefoundry/register-form.png" />
+<Frame caption="配置 Exa server 及其协作者">
+  <img src="/docs/images/integrations/truefoundry/register-form.png" alt="Exa MCP server 注册登记表单，包含名称、URL、协作者和身份验证设置" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1568" height="1718" data-path="images/integrations/truefoundry/register-form.png" />
 </Frame>
 
 <Check>
-  打开 **Tools** 标签页，确认 Exa 的搜索、内容抓取和智能体研究工具均已可用。
+  打开 **Tools** 标签页，确认 Exa 的 search、内容抓取和 agentic research tools 均可用。
 </Check>
 
-<div id="configure-the-exa-server">
-  ## 配置 Exa 服务器
-</div>
+## 配置 Exa server {#configure-the-exa-server}
 
-预填的 URL 提供 Exa 的默认工具集。只有在需要限制可用工具或使用自己的 API key 时，才需要修改它。
+预填的 URL 提供的是 Exa 的默认工具集。只有在需要限制可用的 tools 或使用自己的 API 密钥时，才需要修改它。
 
-<div id="choose-which-tools-are-available">
-  ### 选择可用的工具
-</div>
+### 选择可用的 tools {#choose-which-tools-are-available}
 
-在 `tools` 查询参数中传入以逗号分隔的工具名称列表：
+在 `tools` query 参数中传入以逗号分隔的 tools 名称列表：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,agent_tools
 ```
 
-你可以在服务器表单中填写该 URL，也可以使用 **Apply using YAML**：
+你可以在 server 表单中填写该 URL，也可以使用 **Apply using YAML**：
 
 ```yaml theme={null}
 url: >-
@@ -73,69 +67,59 @@ collaborators:
 ```
 
 <Tip>
-  可用的工具名称请参见 [Exa MCP 文档](/zh/docs/get-started/exa-mcp)。
+  你可以在 [Exa MCP 文档](/zh/docs/get-started/exa-mcp)中查看可用的 tools 名称。
 </Tip>
 
-<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
-  ### 使用你的 Exa API key 突破免费速率限制
-</div>
+### 使用你的 Exa API 密钥突破免费速率限制 {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
 
-如果你已达到免费速率限制，请将你的 Exa API key 添加到服务器 URL 中：
+如果你达到了免费速率限制，请将 Exa API 密钥添加到 server URL 中：
 
 ```text theme={null}
 https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
 ```
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台创建一个 key。新账户可获赠免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="connect-an-mcp-client">
-  ## 连接 MCP 客户端
-</div>
+## 连接 MCP 客户端 {#connect-an-mcp-client}
 
-打开 Exa 服务器的 **How To Use** 标签页，选择你的客户端。TrueFoundry 会为 Cursor、Claude Code、VS Code、Windsurf、Codex 等 MCP 客户端生成租户专属的端点和可直接粘贴的配置。
+打开 Exa server 的 **How To Use** 标签页，选择你使用的客户端。TrueFoundry 会为 Cursor、Claude Code、VS Code、Windsurf、Codex 等 MCP 客户端生成租户专属的端点和可直接粘贴的配置。
 
 <Frame caption="复制适用于你的 MCP 客户端的配置">
-  <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="TrueFoundry 针对 Exa MCP 服务器的客户端专属设置说明" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
+  <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="TrueFoundry's client-specific setup instructions for the Exa MCP server" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-<div id="test-a-tool">
-  ## 测试工具
-</div>
+## 测试工具 {#test-a-tool}
 
-点击某个 Exa 工具旁的 **Try**，填入输入参数，然后点击 **Execute Tool**。Playground 会显示 JSON 响应，方便你在将该工具用于 Agent 之前先行验证。
+在某个 Exa 工具旁点击 **Try**，填写输入参数，然后点击 **Execute Tool**。playground 会显示 JSON 响应，方便你在 agent 中使用该工具前先行验证。
 
 <Frame caption="在 TrueFoundry playground 中运行 Exa 工具">
   <img src="/docs/images/integrations/truefoundry/tool-playground.png" alt="在 TrueFoundry 工具 playground 中测试 Exa 工具" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-<div id="manage-and-monitor-tools">
-  ## 管理与监控工具
-</div>
+## 管理与监控 tools {#manage-and-monitor-tools}
 
-* 逐个启用或禁用工具，控制 MCP 客户端可调用的范围
+* 逐个启用或停用 tools，控制 MCP 客户端可以调用哪些能力
 * 使用 **Tool Metrics** 查看流量、延迟和错误
-* 通过 OpenTelemetry 将调用追踪数据导出到你的可观测性平台
+* 通过 OpenTelemetry 将调用链路导出到你的可观测性系统
 
-<Frame caption="管理向 MCP 客户端开放的 Exa 工具">
-  <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="TrueFoundry MCP 服务器提供的 Exa 工具" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
+<Frame caption="管理向 MCP 客户端开放的 Exa tools">
+  <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="Exa tools available from the TrueFoundry MCP server" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-<div id="resources">
-  ## 资源
-</div>
+## 资源 {#resources}
 
 <Columns cols={3}>
   <Card title="TrueFoundry 设置指南" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="打开指南" arrow="true">
-    阅读 TrueFoundry 关于其 Exa MCP 服务器的指南。
+    阅读 TrueFoundry 关于其 Exa MCP server 的指南。
   </Card>
 
   <Card title="Exa MCP 文档" icon="search" href="/zh/docs/get-started/exa-mcp" cta="打开指南" arrow="true">
-    了解 Exa 的工具、配置和用法示例。
+    了解 Exa 的 tools、配置及使用示例。
   </Card>
 
-  <Card title="Exa MCP Server" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="查看源码" arrow="true">
-    在 GitHub 上查看服务器源码与发布版本。
+  <Card title="Exa MCP Server" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="查看源文件" arrow="true">
+    在 GitHub 上查看 server 源码和发布版本。
   </Card>
 </Columns>

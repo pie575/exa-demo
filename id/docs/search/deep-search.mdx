@@ -1,70 +1,64 @@
 ---
 title: "Deep Search"
 sidebarTitle: "Deep Search"
-description: "Gunakan search iteratif, penalaran, dan synthesis yang grounded untuk tugas riset yang kompleks."
+description: "Gunakan search iteratif, penalaran, dan synthesis yang grounded untuk tugas research yang kompleks."
 keywords: ["deep search", "deep-lite", "deep-reasoning", "structured output", "additional queries"]
 ---
 
-Deep Search adalah mode riset dari Search API. Mode ini menggunakan endpoint `/search` yang sama, tetapi proses retrieval-nya dapat menjalankan beberapa search sekaligus, memeriksa evidence, menyempurnakan pendekatannya, dan menyintesis hasil yang grounded.
+Deep Search adalah mode research pada Search API. Mode ini menggunakan endpoint `/search` yang sama, tetapi proses retrieval-nya dapat menjalankan beberapa search, memeriksa evidence, menyempurnakan pendekatannya, dan mensintesis hasil yang grounded.
 
-Gunakan Search standar bila Anda hanya perlu halaman yang sudah diperingkat untuk query yang terumuskan dengan baik. Gunakan Deep bila menemukan jawabannya menuntut riset.
+Gunakan standard Search jika Anda membutuhkan halaman berperingkat untuk query yang sudah dirumuskan dengan baik. Gunakan Deep jika untuk menemukan jawabannya diperlukan research.
 
-<div id="how-deep-search-works">
-  ## Cara kerja Deep Search
-</div>
+## Cara kerja Deep Search {#how-deep-search-works}
 
-Deep Search menambahkan loop riset sebelum respons akhir:
+Deep Search menambahkan research loop sebelum response akhir:
 
 <Steps>
   <Step title="Rencanakan pencarian">
-    Exa berangkat dari `query` Anda dan dapat memperluasnya menjadi beberapa search yang mencakup berbagai bagian
-    permintaan. Anda bisa memberikan variasi awal melalui `additionalQueries`.
+    Exa memulai dari `query` Anda dan dapat memperluasnya menjadi beberapa searches yang mencakup berbagai bagian
+    permintaan. Anda dapat memberikan variasi awal melalui `additionalQueries`.
   </Step>
 
   <Step title="Cari dan periksa">
-    Deep mencari evidence, membandingkan temuan dengan permintaan, lalu menentukan apa yang
-    sudah didukung dan apa yang masih kurang.
+    Deep mencari evidence, membandingkan temuan dengan permintaan, lalu menentukan bagian mana yang
+    sudah terdukung dan mana yang masih kurang.
   </Step>
 
-  <Step title="Sempurnakan">
+  <Step title="Perhalus">
     Ketika evidence belum lengkap atau saling bertentangan, Deep dapat menjalankan search yang lebih terarah alih-alih
     langsung mengembalikan halaman pertama yang tampak masuk akal.
   </Step>
 
-  <Step title="Pilih dan sintesiskan">
-    Deep memilih hasil yang berguna lalu menggunakan synthesis path yang sama seperti search type lainnya.
-    Jika Anda menyediakan `outputSchema`, respons akan menyertakan `output.content` terstruktur dan
-    kutipan di tingkat field pada `output.grounding`.
+  <Step title="Pilih dan sintesis">
+    Deep memilih hasil yang berguna lalu menggunakan synthesis path yang sama seperti search types lainnya.
+    Ketika Anda memberikan `outputSchema`, response akan menyertakan `output.content` yang terstruktur dan
+    sitasi tingkat field di `output.grounding`.
   </Step>
 </Steps>
 
-Proses ini sangat berguna untuk daftar dan structured output. Setiap item yang diminta bisa saja memerlukan search yang berbeda, dan Deep dapat mengumpulkan serta memeriksa hasil tersebut sebelum menyusun struktur akhir.
+Proses ini sangat berguna untuk daftar dan output terstruktur. Setiap item yang diminta bisa saja memerlukan search yang berbeda, dan Deep dapat mengumpulkan serta memeriksa hasil tersebut sebelum menyusun struktur akhir.
 
-<div id="choose-a-deep-mode">
-  ## Memilih mode Deep
-</div>
+## Memilih mode Deep {#choose-a-deep-mode}
 
-| Tipe             | Gunakan saat                                                                                 |
-| ---------------- | -------------------------------------------------------------------------------------------- |
-| `deep-lite`      | Anda butuh ekspansi query dan synthesis yang ringan                                          |
-| `deep`           | Tugas memerlukan search iteratif, pengumpulan evidence, atau beberapa item terstruktur       |
-| `deep-reasoning` | Tugas menuntut penalaran yang lebih cermat atas evidence yang sulit atau saling bertentangan |
+| Tipe             | Gunakan saat                                                                                    |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| `deep-lite`      | Anda butuh ekspansi query dan synthesis yang ringan                                             |
+| `deep`           | Tugas membutuhkan search iteratif, pengumpulan evidence, atau beberapa item terstruktur         |
+| `deep-reasoning` | Tugas membutuhkan penalaran yang lebih cermat atas evidence yang sulit atau saling bertentangan |
 
-Mulailah dengan `deep` untuk workflow riset. Beralih ke `deep-lite` bila tugasnya lebih sederhana dan latensi jadi pertimbangan.
+Mulailah dengan `deep` untuk workflow Research. Beralihlah ke `deep-lite` bila tugasnya lebih sederhana dan latency menjadi pertimbangan.
 
 <Tip>
-  Alih-alih `deep-reasoning`, gunakan [Exa Agent](/id/docs/agent/quickstart) untuk riset jangka panjang, penyusunan
-  daftar, dan enrichment multi-hop. Agent memiliki kapasitas komputasi lebih besar per run dan mengembalikan hasil terstruktur
-  yang grounded.
+  Alih-alih `deep-reasoning`, gunakan [Exa Agent](/id/docs/agent/quickstart) untuk Research jangka panjang, penyusunan
+  daftar, dan enrichment multi-langkah. Agent memiliki komputasi lebih besar per run dan mengembalikan hasil
+  terstruktur yang grounded.
 </Tip>
 
-Lihat [Pricing](/id/docs/admin/pricing#deep-search) untuk panduan cost dan latensi terkini.
+Lihat [Harga](/id/docs/admin/pricing#deep-search) untuk instruksi terkini mengenai biaya dan latency.
 
-<div id="make-a-deep-request">
-  ## Membuat permintaan Deep
-</div>
+## Membuat permintaan Deep {#make-a-deep-request}
 
-Atur `type` pada permintaan Search API biasa:
+Setel `type` pada permintaan Search API biasa:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -105,13 +99,11 @@ Atur `type` pada permintaan Search API biasa:
   ```
 </CodeGroup>
 
-Deep mengembalikan hasil search yang terpilih di dalam `results`. Tambahkan `outputSchema` jika Anda juga ingin mendapatkan jawaban hasil sintesis atau dataset terstruktur.
+Deep mengembalikan hasil pencarian terpilih di dalam `results`. Tambahkan `outputSchema` jika Anda juga ingin mendapatkan jawaban hasil sintesis atau himpunan data terstruktur.
 
-<div id="provide-starting-queries">
-  ## Sediakan query awal
-</div>
+## Sediakan query awal {#provide-starting-queries}
 
-Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additionalQueries` bila Anda sudah mengetahui terminologi, sudut pandang, atau submasalah tertentu yang perlu dicakup oleh riset tersebut:
+Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additionalQueries` bila Anda sudah mengetahui terminologi, sudut pandang, atau submasalah spesifik yang perlu dicakup oleh research:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -161,18 +153,16 @@ Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additio
 
 `query` utama selalu disertakan. Anda dapat memberikan hingga 10 query tambahan, dan daftar ini hanya tersedia untuk search types Deep.
 
-Jangan memberikan parafrase kecil hanya demi menambah volume search. Tambahkan query hanya jika masing-masing membawa arah pencarian yang benar-benar berbeda.
+Hindari parafrase kecil yang hanya menambah jumlah pencarian. Tambahkan query hanya jika masing-masing membuka arah pencarian yang benar-benar berbeda.
 
-<div id="guide-behavior-and-output-separately">
-  ## Arahkan perilaku dan output secara terpisah
-</div>
+## Arahkan perilaku dan output secara terpisah {#guide-behavior-and-output-separately}
 
 `systemPrompt` dan `outputSchema` memengaruhi bagian permintaan yang berbeda:
 
-* `systemPrompt` mengarahkan preferensi sumber, kebaruan, deduplikasi, dan perilaku riset Deep.
-* `outputSchema` menentukan bentuk akhir output dan memicu synthesis.
+* `systemPrompt` mengarahkan source preferences, kebaruan, deduplikasi, dan perilaku research Deep.
+* `outputSchema` menentukan bentuk akhir dan memicu synthesis.
 
-Query sebaiknya menjelaskan apa yang perlu diriset, sedangkan system prompt menjelaskan bagaimana riset itu dilakukan dan disajikan.
+Query sebaiknya menjelaskan apa yang perlu diteliti. System prompt sebaiknya menjelaskan bagaimana research tersebut dilakukan dan disajikan.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -263,13 +253,11 @@ Query sebaiknya menjelaskan apa yang perlu diriset, sedangkan system prompt menj
   ```
 </CodeGroup>
 
-Gunakan Deep bila Anda membutuhkan lebih dari dua item terstruktur atau bila setiap item harus memenuhi beberapa persyaratan sekaligus. Search type standar memakai synthesis path yang sama, tetapi tidak menjalankan riset iteratif seperti itu sebelum synthesis.
+Gunakan Deep jika Anda membutuhkan lebih dari dua item terstruktur atau jika setiap item harus memenuhi beberapa persyaratan sekaligus. Search type standar memakai synthesis path yang sama, tetapi tidak menjalankan research iteratif sebelum synthesis.
 
-<div id="read-the-grounded-response">
-  ## Membaca respons yang grounded
-</div>
+## Membaca response yang grounded {#read-the-grounded-response}
 
-Respons terstruktur memisahkan nilai yang dihasilkan dari evidence pendukungnya:
+Response terstruktur memisahkan nilai yang dihasilkan dari evidence pendukungnya:
 
 ```json theme={null}
 {
@@ -305,15 +293,13 @@ Respons terstruktur memisahkan nilai yang dihasilkan dari evidence pendukungnya:
 }
 ```
 
-Gunakan `output.content` sebagai hasil yang dihasilkan dan `output.grounding` untuk menampilkan atau memverifikasi sumber yang mendukung setiap field. Jangan menambahkan field kutipan atau confidence ke schema Anda sendiri; Exa mengembalikannya secara otomatis.
+Gunakan `output.content` sebagai hasil yang dihasilkan dan `output.grounding` untuk menampilkan atau memverifikasi sources yang mendukung setiap field. Jangan menambahkan field sitasi atau confidence ke schema Anda sendiri; Exa mengembalikannya secara otomatis.
 
-`numResults` menentukan berapa banyak halaman terpilih yang dikembalikan dalam `results`. Field ini tidak menentukan jumlah pencarian yang mungkin dilakukan Deep.
+`numResults` mengatur berapa banyak halaman terpilih yang dikembalikan dalam `results`. Parameter ini tidak menentukan jumlah searches yang mungkin dijalankan Deep.
 
-<div id="stream-the-synthesis">
-  ## Streaming hasil synthesis
-</div>
+## Stream the synthesis {#stream-the-synthesis}
 
-Setel `stream: true` bersama `outputSchema` untuk menerima output hasil synthesis melalui server-sent events:
+Setel `stream: true` bersama `outputSchema` untuk menerima output synthesis melalui server-sent events:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -385,20 +371,18 @@ Setel `stream: true` bersama `outputSchema` untuk menerima output hasil synthesi
   ```
 </CodeGroup>
 
-Proses event bertipe tersebut hingga `done`. Event terakhir berisi output final dan waktu search, beserta informasi cost jika tersedia.
+Proses typed events hingga `done`. Event terakhir berisi output final dan waktu search, beserta informasi cost jika tersedia.
 
-<div id="when-to-stay-with-standard-search">
-  ## Kapan tetap menggunakan Search standar
-</div>
+## Kapan tetap menggunakan standard Search {#when-to-stay-with-standard-search}
 
-Deep tidak diperlukan ketika satu kali retrieval sudah cukup untuk memenuhi permintaan:
+Deep tidak diperlukan jika satu kali retrieval sudah cukup untuk memenuhi permintaan:
 
-* Anda membutuhkan halaman yang relevan, bukan kesimpulan hasil riset.
-* Query sudah menunjuk sumber tertentu atau topik yang sempit.
+* Anda membutuhkan halaman yang relevan, bukan kesimpulan hasil research.
+* Query sudah menunjuk source tertentu atau topik yang sempit.
 * Aplikasi Anda melakukan penalarannya sendiri dan hanya membutuhkan retrieval.
-* Permintaan berjalan pada alur interaktif, autocomplete, atau suara.
+* Permintaan berjalan di jalur interaktif, autocomplete, atau suara.
 
-Gunakan `auto` untuk keseimbangan kualitas dan kecepatan secara default, atau `fast` dan `instant` bila ada kebutuhan latensi yang terukur.
+Gunakan `auto` untuk keseimbangan kualitas dan kecepatan secara default, atau `fast` dan `instant` untuk kebutuhan latency yang terukur.
 
 <Columns cols={2}>
   <Card title="Panduan Search API" icon="search" href="/id/docs/search/quickstart" cta="Tinjau Search" arrow="true">
@@ -406,14 +390,14 @@ Gunakan `auto` untuk keseimbangan kualitas dan kecepatan secara default, atau `f
   </Card>
 
   <Card title="Praktik terbaik Search" icon="sliders-horizontal" href="/id/docs/search/best-practices" cta="Setel retrieval" arrow="true">
-    Tingkatkan kualitas, konteks, latensi, dan integrasi agent.
+    Tingkatkan kualitas, konteks, latency, dan integrasi agent.
   </Card>
 
   <Card title="Search API reference" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
-    Lihat setiap parameter permintaan dan field respons.
+    Lihat setiap parameter permintaan dan field response.
   </Card>
 
   <Card title="Harga" icon="credit-card" href="/id/docs/admin/pricing#deep-search" cta="Bandingkan mode" arrow="true">
-    Tinjau cost dan latensi Deep Search saat ini.
+    Tinjau cost dan latency Deep Search saat ini.
   </Card>
 </Columns>

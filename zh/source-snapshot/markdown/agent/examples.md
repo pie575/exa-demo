@@ -1,23 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="examples">
-  # 示例
-</div>
+# 示例 {#examples}
 
-> 涵盖列表构建、KYB 情报、职位发布和结构化输出的 Exa Agent 生产级示例。
+> 适用于列表构建、KYB 情报、职位发布和结构化输出的 production Exa Agent 示例。
 
-以下示例展示了 Exa Agent 的生产级工作流模式，包括列表构建、KYB 情报、职位发布和结构化输出。
+这些示例展示了 Exa Agent 的 production 工作流模式，涵盖列表构建、KYB 情报、职位发布和结构化输出。
 
 <h2 id="find-all-code">
   查找 Exa.ai 的所有 GTM 成员
 </h2>
 
-当需要由 Agent 自行找出这些条目时，请使用发现型提示词。务必明确公司消歧规则，并要求提供在职证据，避免名称相似的公司混入结果。
+当需要由 agent 来找出这些行时，请使用发现型 prompt。要明确说明公司消歧要求，并要求提供当前在职的证据，避免名称相似的公司混入结果。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -143,7 +139,7 @@
   KYC / KYB 情报
 </h2>
 
-当合作伙伴或供应商尽调所需的不只是一个资料页面，而是全网公开情报时，就可以使用 Agent。你可以在一次请求中获得身份核验、业务背景、公开信号、投资动态以及明确的风险提示，并以单个结构化对象返回。
+当合作伙伴或厂商审查需要的不只是单个资料页面，而是公开网络情报时，就可以使用 agent。只需一次请求，即可在一个结构化对象中获得身份核验、业务背景、公开信号、投资动态以及明确的风险提示。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -413,7 +409,7 @@
   招聘职位
 </h2>
 
-当空缺职位分散在公司官网、聚合网站和创业公司名录中时，就可以使用 Agent。本示例将信息来源限定为 Exa 托管在 Ashby 上的招聘页面，但仍需对公司做消歧处理。
+当空缺职位分散在公司页面、聚合网站和创业公司目录中时，可以使用 Agent。本示例将来源限定为 Exa 托管在 Ashby 上的招聘页面，但仍然需要进行公司消歧。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -551,10 +547,10 @@
 </CodeGroup>
 
 <h2 id="enrich-input-rows-code">
-  丰富输入行数据
+  增强输入行
 </h2>
 
-如果你的系统中已有这些记录，只需让 Agent 逐条研究或补充信息，请使用 `input.data`。这种方式将行标识保留在结构化输入中，而不是把它塞进提示词里。
+如果你的系统已经有了这些记录，只需让 agent 对每一条做研究或丰富，就可以使用 `input.data`。这种方式把行标识保留在结构化输入中，而不是塞进 prompt 里。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -691,10 +687,10 @@
 </CodeGroup>
 
 <h2 id="bounded-contact-fields-code">
-  用有界的联系人字段丰富行数据
+  使用受限的联系方式字段增强行数据
 </h2>
 
-面向联系人的工作流可能会产生单独的联系人 enrichment 费用。此处的文档示例已做匿名化处理，只展示数据结构，不会公开真实姓名、邮箱、电话号码或个人主页链接。
+面向联系方式的工作流可能会触发单独的联系方式增强费用。这里的文档版本经过匿名化处理，只展示数据结构形态，不公开真实姓名、邮箱、电话号码或个人主页 URL。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -807,8 +803,8 @@
   排除已知记录
 </h2>
 
-如果希望 Agent 跳过你的产品中已经审阅、展示或拒绝过的记录，请使用 `input.exclusion`。
-表格预览中返回的公司名称均为合成数据，这样既能直观呈现排除机制，又不会让人误以为这些行来自真实的生产运行。
+当你希望 agent 避开产品中已经审阅、展示或拒绝过的记录时，可使用 `input.exclusion`。
+sheet preview 中返回的公司名称均为合成数据，这样既能看清 exclusion 的用法，又不会让人误以为这些行来自真实的 production 运行。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -924,8 +920,8 @@
   继续已完成的工作流
 </h2>
 
-如果下一个请求需要在某次已完成运行的上下文基础上继续，请使用 `previousRunId`。
-表格预览中的公司名称为虚构数据，仅用于演示这种延续模式，不会暴露真实的历史运行。
+如果下一个请求需要在已完成运行的上下文基础上继续，请使用 `previousRunId`。
+sheet preview 中的公司名称为虚构数据，用于演示这种延续模式，避免暴露真实的历史运行。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1027,11 +1023,9 @@
   ```
 </CodeGroup>
 
-<div id="broad-list-building-with-agent-max">
-  ## 使用 Agent Max 进行大范围列表构建
-</div>
+## 使用 Agent Max 进行大规模列表构建 {#broad-list-building-with-agent-max}
 
-当完整性和彻底性比延迟或成本更重要时，请使用 `effort: "max"`，适用于大规模列表构建、多来源深度调研，以及难以验证的 criteria。Agent Max 目前处于公开测试阶段：请在请求中附带 `Exa-Beta: agent-max-effort-2026-07-27`。该 header 支持以逗号分隔的 beta 令牌列表。
+如果任务更看重结果的完整与详尽，而非延迟或费用，例如大规模列表构建、跨多个来源的深度研究，以及难以验证的 criteria，请使用 `effort: "max"`。Agent Max 目前处于公开测试阶段：请在请求中发送 `Exa-Beta: agent-max-effort-2026-07-27`。该 header 接受以逗号分隔的 beta token 列表。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1073,11 +1067,9 @@
   ```
 </CodeGroup>
 
-<div id="attach-a-data-partner-with-exa-connect">
-  ## 使用 Exa Connect 接入数据合作伙伴
-</div>
+## 使用 Exa Connect 接入数据合作伙伴 {#attach-a-data-partner-with-exa-connect}
 
-通过 `dataSources`，可让 Exa Agent 在运行期间从优质数据合作伙伴获取数据。本例中，它结合网络调研，为每家公司补充来自 Similarweb 的流量数据和来自 Harmonic 的融资数据。完整的合作伙伴列表请参阅 [Exa Connect](/zh/docs/agent/connect/overview)。
+使用 `dataSources` 让 Exa Agent 在运行期间从高级数据合作伙伴获取数据。在这个例子中，它会结合网络研究，用 Similarweb 的流量数据和 Harmonic 的融资数据丰富每家公司的信息。完整的合作伙伴列表请参阅 [Exa Connect](/zh/docs/agent/connect/overview)。
 
 <CodeGroup>
   ```python Python expandable theme={null}
@@ -1200,13 +1192,11 @@
   ```
 </CodeGroup>
 
-<div id="production-checklist">
-  ## 生产环境检查清单
-</div>
+## Production 检查清单 {#production-checklist}
 
-* 为 Agent 提供明确的 `query`，说明工作单元以及期望的来源质量。
-* 对已知记录使用 `input.data`，而不是将数据行嵌入提示词中。
+* 为 agent 提供明确的 `query`，说明工作单元以及期望的来源质量。
+* 已知记录请通过 `input.data` 传入，不要把行数据写进 prompt。
 * 对不应再次返回的记录使用 `input.exclusion`。
-* 只要下游代码需要使用返回结果，就添加 `outputSchema`。
-* 需要可预期的范围和成本时，为数组设置 `maxItems`。
-* 保存返回的运行 `id`，以便后续轮询、重放事件、查看成本，或从该次运行继续。
+* 只要下游代码需要消费结果，就添加 `outputSchema`。
+* 需要可预测的范围和费用时，为数组设置 `maxItems`。
+* 保存返回的运行 `id`，以便后续轮询、重放事件、查看费用或从该次运行继续。

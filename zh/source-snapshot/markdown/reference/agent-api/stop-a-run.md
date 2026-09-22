@@ -1,32 +1,25 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="stop-a-run">
-  # 停止运行
-</div>
+# 停止运行 {#stop-a-run}
 
-> 优雅地停止正在进行的 Agent 运行，并保留已收集到的结果。
+> 优雅地停止正在进行的 Agent 运行，并保留截至目前收集到的结果。
 
-如果运行仍在进行中，agent 会收尾并提前完成该次运行，保留已收集到的结果。运行结束时状态为 `completed`，`stopReason: stopped`。停止前产生的用量仍会计费。如果运行已处于终止状态 (completed、failed 或 cancelled) ，该端点将原样返回已有的运行。
+如果运行仍在进行中，agent 会收尾并提前完成该运行，返回截至目前收集到的结果。运行结束时状态为 `completed`，且 `stopReason: stopped`。停止前产生的用量仍会计费。如果运行已处于终止状态 (completed、failed 或 cancelled) ，该端点会原样返回现有运行。
 
 若要立即终止运行且不返回任何结果，请改用 [cancel](/zh/docs/reference/agent-api/cancel-a-run)。
 
 <Note>
-  仅 `max` effort 的运行支持此操作。必须在请求 header 中传入
-  `Exa-Beta: agent-max-effort-2026-07-27`。该 header 接受以逗号分隔的 beta 令牌列表。
+  仅支持 `max` effort 的运行。必须将 `Exa-Beta: agent-max-effort-2026-07-27` 作为请求 header 传入。该 header 接受以逗号分隔的 beta token 列表。
 </Note>
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在仪表板中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户将获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0
@@ -391,14 +384,12 @@ components:
         - auto
         - max
       description: >-
-        Cost and reasoning effort preference for the run. `auto` lets Exa choose
-        the appropriate effort. `max` is the highest-effort public beta tier for
-        work where completeness and thoroughness matter more than latency or
-        cost, including large list building, deep multi-source research, and
-        criteria that are hard to verify.
+        本次运行的费用与推理 effort 偏好。`auto` 表示由 Exa 选择合适的 effort。`max` 是公测中
+        effort 最高的档位，适用于完整性和详尽程度比延迟或费用更重要的任务，包括大规模列表构建、
+        多来源深度研究，以及难以验证的 criteria。
       default: auto
     JsonValue:
-      description: Any JSON value.
+      description: 任意 JSON 值。
       oneOf:
         - type: 'null'
         - type: boolean
@@ -418,8 +409,7 @@ components:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            Exa Connect data provider to enable for the run. All provider tools
-            are available by default.
+            为本次运行启用的 Exa Connect 数据提供方。默认情况下所有提供方的 tools 均可用。
           example: fiber
       required:
         - provider
@@ -430,20 +420,18 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
-            applies only to `auto` and `max`; when omitted, the default cap is
-            $5 for `auto` and $20 for `max`.
+            本次运行可花费的最高金额（美元）。取值范围为 $1–$100，且仅适用于 `auto` 和 `max`；
+            若省略，`auto` 的默认上限为 $5，`max` 为 $20。
           example: 10
       additionalProperties: false
       description: >-
-        Optional per-run spending limit for the metered `auto` and `max`
-        efforts. Runs that finish early may cost less than the limit.
+        针对按量计费的 `auto` 和 `max` effort 的可选单次运行支出上限。提前结束的运行，费用可能低于该上限。
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: Output field the citations support.
+          description: 这些引用来源所支持的输出 field。
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -456,7 +444,7 @@ components:
                 - low
                 - medium
                 - high
-              description: Model-reported reliability for this field.
+              description: 模型报告的该 field 可靠性。
             - type: 'null'
       required:
         - field
@@ -470,9 +458,8 @@ components:
         type: integer
         minimum: 0
       description: >-
-        Per-provider tool call counts for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        本次运行中使用的 Exa Connect 数据源按提供方统计的工具调用次数。键为提供方名称（例如
+        `fiber`、`similarweb`）。仅包含用量非零的提供方。
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -481,9 +468,8 @@ components:
         type: number
         minimum: 0
       description: >-
-        Per-provider cost in dollars for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        本次运行中使用的 Exa Connect 数据源按提供方统计的费用（美元）。键为提供方名称（例如
+        `fiber`、`similarweb`）。仅包含用量非零的提供方。
     AgentDataSourceProvider:
       type: string
       enum:
@@ -495,17 +481,17 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Identifier of an Exa Connect data provider.
+      description: Exa Connect 数据提供方的标识符。
     AgentCitation:
       type: object
       properties:
         url:
           type: string
           format: uri
-          description: Source URL.
+          description: 来源 URL。
         title:
           type: string
-          description: Source title.
+          description: 来源标题。
       required:
         - url
       additionalProperties: false
@@ -515,17 +501,14 @@ components:
       name: Exa-Beta
       schema:
         description: >-
-          Comma-separated beta feature tokens for opting into experimental
-          features.
+          以逗号分隔的 beta 功能 token，用于启用实验性功能。
         type: string
       description: >-
-        Comma-separated beta feature tokens for opting into experimental
-        features.
+        以逗号分隔的 beta 功能 token，用于启用实验性功能。
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        请求的唯一标识符。与包含该值的响应体中返回的 `requestId` field 一致。
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -535,12 +518,10 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用 Authorization: Bearer <key> 进行认证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用 Authorization: Bearer <key> 进行认证。
 ```

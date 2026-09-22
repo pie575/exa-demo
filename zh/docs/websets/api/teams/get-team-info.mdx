@@ -1,42 +1,34 @@
 ---
 title: "获取团队信息"
-description: "检索团队的相关信息，包括并发使用情况和限制。"
+description: "获取你的团队信息，包括并发使用情况和限制。"
 openapi: "/zh/docs/exa-spec.yaml GET /v0/teams/me"
 timestamp: false
 ---
 
-<div id="overview">
-  ## 概览
-</div>
+## 概览 {#overview}
 
-Get Team Info 端点返回当前已认证团队的信息，包括该团队的并发使用情况和已配置的限制。你可以借此监控 Websets API 的使用情况并了解自己的速率限制。
+Get Team Info 端点返回已认证团队的相关信息，包括该团队当前的并发使用情况和已配置的限制。这有助于你监控 Websets API 的用量并了解自己的速率限制。
 
-<div id="response">
-  ## 响应
-</div>
+## 响应 {#response}
 
 响应包含：
 
 * **object**：始终为 &quot;team&quot;
 * **id**：团队的唯一标识符
 * **name**：团队名称
-* **concurrency**：当前用量，显示活跃请求数和排队请求数
+* **concurrency**：当前用量，显示进行中和排队中的请求数
 * **limits**：团队的并发限制
 
-<div id="concurrency-fields">
-  ### Concurrency 字段
-</div>
+### 并发 field {#concurrency-fields}
 
-`concurrency` 对象展示当前的请求状态：
+`concurrency` 对象展示了你当前的请求状态：
 
 * **active**：当前正在处理的请求数
-* **queued**：正在排队等待处理的请求数
+* **queued**：等待处理的请求数
 
-<div id="limits-fields">
-  ### 限制字段
-</div>
+### 限制 field {#limits-fields}
 
-`limits` 对象显示你的团队已配置的限制：
+`limits` 对象展示了你所在团队配置的限制：
 
-* **maxConcurrent**：可同时处理的最大请求数 (null 表示无限制) 
-* **maxQueued**：可在队列中等待的最大请求数 (null 表示无限制)
+* **maxConcurrent**：可同时处理的最大请求数 (null 表示不限)
+* **maxQueued**：可在队列中等待的最大请求数 (null 表示不限)

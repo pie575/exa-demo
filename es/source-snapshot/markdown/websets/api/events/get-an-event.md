@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="get-an-event">
-  # Obtener un evento
-</div>
+# Obtener un evento {#get-an-event}
 
 > Obtén un único Event por su id.
 
 Puedes suscribirte a los Events creando un Webhook.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events/{id}
 openapi: 3.1.0
@@ -395,7 +389,7 @@ components:
           type: object
         - properties:
             id:
-              description: El identificador único del evento
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -405,7 +399,7 @@ components:
               $ref: '#/components/schemas/Monitor'
             createdAt:
               format: date-time
-              description: La fecha y hora en que se creó el evento
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -421,7 +415,7 @@ components:
           type: object
         - properties:
             id:
-              description: El identificador único del evento
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -431,7 +425,7 @@ components:
               $ref: '#/components/schemas/Monitor'
             createdAt:
               format: date-time
-              description: La fecha y hora en que se creó el evento
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -447,7 +441,7 @@ components:
           type: object
         - properties:
             id:
-              description: El identificador único del evento
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -457,7 +451,7 @@ components:
               $ref: '#/components/schemas/Monitor'
             createdAt:
               format: date-time
-              description: La fecha y hora en que se creó el evento
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -473,7 +467,7 @@ components:
           type: object
         - properties:
             id:
-              description: El identificador único del evento
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -483,7 +477,7 @@ components:
               $ref: '#/components/schemas/MonitorRun'
             createdAt:
               format: date-time
-              description: La fecha y hora en que se creó el evento
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -499,7 +493,7 @@ components:
           type: object
         - properties:
             id:
-              description: El identificador único del evento
+              description: The unique identifier for the event
               type: string
             object:
               const: event
@@ -509,7 +503,7 @@ components:
               $ref: '#/components/schemas/MonitorRun'
             createdAt:
               format: date-time
-              description: La fecha y hora en que se creó el evento
+              description: The date and time the event was created
               type: string
             type:
               type: string
@@ -526,7 +520,7 @@ components:
     Webset:
       properties:
         id:
-          description: El identificador único del webset
+          description: The unique identifier for the webset
           type: string
         object:
           const: webset
@@ -538,43 +532,42 @@ components:
             - pending
             - running
             - paused
-          description: El estado del webset
+          description: The status of the webset
           title: WebsetStatus
           type: string
         externalId:
           type: string
-          description: El identificador externo del webset
+          description: The external identifier for the webset
           nullable: true
         title:
           type: string
-          description: El título del webset
+          description: The title of the webset
           nullable: true
         searches:
           items:
             $ref: '#/components/schemas/WebsetSearch'
-          description: Las búsquedas realizadas en el webset.
+          description: The searches that have been performed on the webset.
           type: array
         imports:
           items:
             $ref: '#/components/schemas/Import'
-          description: Imports realizados en el webset.
+          description: Imports that have been performed on the webset.
           type: array
         enrichments:
           items:
             $ref: '#/components/schemas/WebsetEnrichment'
-          description: Los Enrichments que se aplicarán a los Items del Webset.
+          description: The Enrichments to apply to the Webset Items.
           type: array
         monitors:
           items:
             $ref: '#/components/schemas/Monitor'
-          description: Los Monitors del Webset.
+          description: The Monitors for the Webset.
           type: array
         excludes:
           description: >-
-            Las fuentes de Excludes (imports o websets existentes) que se aplican
-            a todas las operaciones dentro de este Webset. Cualquier resultado
-            encontrado en esas fuentes se omitirá en todas las operaciones de
-            search e import.
+            The Excludes sources (existing imports or websets) that apply to all
+            operations within this Webset. Any results found within these
+            sources will be omitted across all search and import operations.
           items:
             properties:
               source:
@@ -591,7 +584,7 @@ components:
           type: array
         metadata:
           default: {}
-          description: Conjunto de pares clave-valor que quieras asociar con este objeto.
+          description: Set of key-value pairs you want to associate with this object.
           propertyNames:
             type: string
           additionalProperties:
@@ -600,15 +593,15 @@ components:
           type: object
         dashboardUrl:
           format: uri
-          description: La URL para ver el webset en el panel de Exa
+          description: The URL to view the webset in the Exa dashboard
           type: string
         createdAt:
           format: date-time
-          description: La fecha y hora en que se creó el webset
+          description: The date and time the webset was created
           type: string
         updatedAt:
           format: date-time
-          description: La fecha y hora en que se actualizó el webset
+          description: The date and time the webset was updated
           type: string
       required:
         - id
@@ -627,7 +620,7 @@ components:
     WebsetItem:
       properties:
         id:
-          description: El identificador único del Item del Webset
+          description: The unique identifier for the Webset Item
           type: string
         object:
           const: webset_item
@@ -637,27 +630,26 @@ components:
           enum:
             - search
             - import
-          description: La fuente del Item
+          description: The source of the Item
           type: string
         sourceId:
-          description: El identificador único de la fuente
+          description: The unique identifier for the source
           type: string
         sourceEntityId:
           description: >-
-            El identificador original utilizado para resolver este item (por
-            ejemplo, correo electrónico, nombre o URL). Solo es relevante cuando
-            la fuente es import.
+            The original identifier used to resolve this item (e.g., email,
+            name, or URL). Only relevant when the source is import.
           type: string
         scopeId:
           description: >-
-            El import del que proviene este item, cuando el item procede de una
-            search acotada con evaluate habilitado en el import.
+            The import that sourced this item, when the item came from a scoped
+            search with evaluate enabled on the import.
           type: string
         websetId:
-          description: El identificador único del Webset al que pertenece este Item.
+          description: The unique identifier for the Webset this Item belongs to.
           type: string
         properties:
-          description: Las propiedades del Item
+          description: The properties of the Item
           oneOf:
             - $ref: '#/components/schemas/WebsetItemPersonProperties'
             - $ref: '#/components/schemas/WebsetItemCompanyProperties'
@@ -667,21 +659,21 @@ components:
         evaluations:
           items:
             $ref: '#/components/schemas/WebsetItemEvaluation'
-          description: Las evaluaciones de criteria del item
+          description: The criteria evaluations of the item
           type: array
         enrichments:
           items:
             $ref: '#/components/schemas/EnrichmentResult'
           type: array
-          description: Los resultados de enrichments del item del Webset
+          description: The enrichments results of the Webset item
           nullable: true
         createdAt:
           format: date-time
-          description: La fecha y hora en que se creó el item
+          description: The date and time the item was created
           type: string
         updatedAt:
           format: date-time
-          description: La fecha y hora de la última actualización del item
+          description: The date and time the item was last updated
           type: string
       required:
         - id
@@ -698,14 +690,14 @@ components:
     WebsetSearch:
       properties:
         id:
-          description: El identificador único de la search
+          description: The unique identifier for the search
           type: string
         object:
           const: webset_search
           default: webset_search
           type: string
         websetId:
-          description: El identificador único del Webset al que pertenece esta search
+          description: The unique identifier for the Webset this search belongs to
           type: string
         status:
           enum:
@@ -714,7 +706,7 @@ components:
             - running
             - completed
             - canceled
-          description: El estado de la search
+          description: The status of the search
           title: WebsetSearchStatus
           type: string
         query:
@@ -1659,34 +1651,34 @@ components:
         - description
         - content
         - company
-      title: Empresa
+      title: Company
       type: object
     WebsetItemArticleProperties:
       properties:
         url:
           format: uri
-          description: La URL del artículo
+          description: The URL of the article
           type: string
         description:
-          description: Breve descripción de la relevancia del artículo
+          description: Short description of the relevance of the article
           type: string
         content:
           type: string
-          description: El contenido de texto del artículo
+          description: The text content for the article
           nullable: true
         article:
           properties:
             title:
               type: string
-              description: El título del artículo
+              description: The title of the article
               nullable: true
             author:
               type: string
-              description: El/los autor(es) del artículo
+              description: The author(s) of the article
               nullable: true
             publishedAt:
               type: string
-              description: La fecha y hora en que se publicó el artículo
+              description: The date and time the article was published
               nullable: true
           required:
             - title
@@ -1704,34 +1696,34 @@ components:
         - description
         - content
         - article
-      title: Artículo
+      title: Article
       type: object
     WebsetItemResearchPaperProperties:
       properties:
         url:
           format: uri
-          description: La URL del artículo de investigación
+          description: The URL of the research paper
           type: string
         description:
-          description: Breve descripción de la relevancia del artículo de investigación
+          description: Short description of the relevance of the research paper
           type: string
         content:
           type: string
-          description: El contenido de texto del artículo de investigación
+          description: The text content of the research paper
           nullable: true
         researchPaper:
           properties:
             title:
               type: string
-              description: El título del artículo de investigación
+              description: The title of the research paper
               nullable: true
             author:
               type: string
-              description: El/los autor(es) del artículo de investigación
+              description: The author(s) of the research paper
               nullable: true
             publishedAt:
               type: string
-              description: La fecha y hora en que se publicó el artículo de investigación
+              description: The date and time the research paper was published
               nullable: true
           required:
             - title
@@ -1749,34 +1741,34 @@ components:
         - description
         - content
         - researchPaper
-      title: Artículo de investigación
+      title: Research Paper
       type: object
     WebsetItemCustomProperties:
       properties:
         url:
           format: uri
-          description: La URL del Elemento
+          description: The URL of the Item
           type: string
         description:
-          description: Breve descripción del Elemento
+          description: Short description of the Item
           type: string
         content:
           type: string
-          description: El contenido de texto del Elemento
+          description: The text content of the Item
           nullable: true
         custom:
           properties:
             title:
               type: string
-              description: El título del sitio web
+              description: The title of the website
               nullable: true
             author:
               type: string
-              description: El/los autor(es) del sitio web
+              description: The author(s) of the website
               nullable: true
             publishedAt:
               type: string
-              description: La fecha y hora en que se publicó el sitio web
+              description: The date and time the website was published
               nullable: true
           required:
             - title
@@ -1794,39 +1786,39 @@ components:
         - description
         - content
         - custom
-      title: Personalizado
+      title: Custom
       type: object
     WebsetItemEvaluation:
       properties:
         criterion:
-          description: La descripción del criterio
+          description: The description of the criterion
           type: string
         reasoning:
-          description: El razonamiento del resultado de la evaluación
+          description: The reasoning for the result of the evaluation
           type: string
         satisfied:
           enum:
             - 'yes'
             - 'no'
             - unclear
-          description: El cumplimiento del criterio
+          description: The satisfaction of the criterion
           type: string
         references:
           default: []
-          description: Las referencias utilizadas para generar el resultado.
+          description: The references used to generate the result.
           items:
             properties:
               title:
                 type: string
-                description: El título de la referencia
+                description: The title of the reference
                 nullable: true
               snippet:
                 type: string
-                description: El fragmento relevante del contenido de la referencia
+                description: The relevant snippet of the reference content
                 nullable: true
               url:
                 format: uri
-                description: La URL de la referencia
+                description: The URL of the reference
                 type: string
             required:
               - title
@@ -1850,7 +1842,7 @@ components:
             - pending
             - completed
             - canceled
-          description: El estado del resultado del enriquecimiento.
+          description: The status of the enrichment result.
           type: string
         format:
           $ref: '#/components/schemas/WebsetEnrichmentFormat'
@@ -1858,36 +1850,36 @@ components:
           items:
             type: string
           type: array
-          description: El resultado del enriquecimiento.
+          description: The result of the enrichment.
           nullable: true
         reasoning:
           type: string
-          description: El razonamiento del resultado cuando se utiliza un Agente.
+          description: The reasoning for the result when an Agent is used.
           nullable: true
         references:
           items:
             properties:
               title:
                 type: string
-                description: El título de la referencia
+                description: The title of the reference
                 nullable: true
               snippet:
                 type: string
-                description: El fragmento relevante del contenido de la referencia
+                description: The relevant snippet of the reference content
                 nullable: true
               url:
                 format: uri
-                description: La URL de la referencia
+                description: The URL of the reference
                 type: string
             required:
               - title
               - snippet
               - url
             type: object
-          description: Las referencias utilizadas para generar el resultado.
+          description: The references used to generate the result.
           type: array
         enrichmentId:
-          description: El id del Enriquecimiento que generó el resultado
+          description: The id of the Enrichment that generated the result
           type: string
       required:
         - object
@@ -1934,7 +1926,7 @@ components:
           default: company
       required:
         - type
-      title: Empresa
+      title: Company
       type: object
     PersonEntity:
       properties:
@@ -1944,7 +1936,7 @@ components:
           default: person
       required:
         - type
-      title: Persona
+      title: Person
       type: object
     ArticleEntity:
       properties:
@@ -1954,7 +1946,7 @@ components:
           default: article
       required:
         - type
-      title: Artículo
+      title: Article
       type: object
     ResearchPaperEntity:
       properties:
@@ -1964,7 +1956,7 @@ components:
           default: research_paper
       required:
         - type
-      title: Artículo de investigación
+      title: Research Paper
       type: object
     CustomEntity:
       properties:
@@ -1979,7 +1971,7 @@ components:
       required:
         - type
         - description
-      title: Personalizado
+      title: Custom
       type: object
   securitySchemes:
     apiKey:
@@ -1987,12 +1979,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pase su clave de API de Exa en el encabezado x-api-key. También puede
-        autenticarse con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pase su clave de API de Exa en el encabezado x-api-key. También puede
-        autenticarse con Authorization: Bearer <key>.
+        Pass your Exa API key in the x-api-key header. You can also authenticate
+        with Authorization: Bearer <key>.
 ```

@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para conocer todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="update-a-webhook">
-  # Actualizar un webhook
-</div>
+# Actualizar un webhook {#update-a-webhook}
 
-> Actualiza la URL de destino, los eventos suscritos o los metadatos de un Webhook. Los campos omitidos se mantienen sin cambios.
+> Actualiza la URL de destino, los eventos suscritos o los metadatos de un Webhook. Los campos omitidos permanecen sin cambios.
 
 <Warning>
   **No se siguen las redirecciones.** Si actualizas la URL, asegúrate de que sea el
@@ -17,9 +13,7 @@
   entregas fallidas.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

@@ -5,8 +5,8 @@ openapi: "/ko/docs/exa-spec.yaml GET /agent/runs/{id}/events"
 timestamp: false
 ---
 
-기본적으로 이 endpoint는 저장된 이벤트를 페이지네이션된 JSON 목록으로 반환합니다. 저장된 이벤트를 SSE로 replay하려면 `Accept: text/event-stream`을 설정하세요. JSON 페이지네이션에는 `cursor`를, SSE replay에는 `Last-Event-ID`를 사용하세요.
+기본적으로 이 엔드포인트는 저장된 이벤트를 페이지네이션된 JSON 목록으로 반환합니다. 저장된 이벤트를 SSE로 replay하려면 `Accept: text/event-stream`을 설정하세요. JSON 페이지네이션에는 `cursor`를, SSE replay에는 `Last-Event-ID`를 사용하세요.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>

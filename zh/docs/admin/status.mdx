@@ -1,7 +1,7 @@
 ---
 title: "状态页"
-description: "查看 Exa 服务的实时可用性、当前故障事件及可用性历史记录。"
-keywords: ["status", "uptime", "incident", "outage", "degraded", "maintenance"]
+description: "Exa 服务的实时可用性、进行中的故障事件以及可用性历史记录。"
+keywords: ["状态", "可用性", "故障事件", "服务中断", "性能降级", "维护"]
 ---
 
 export const ExaStatus = () => {
@@ -162,28 +162,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa 在 [status.exa.ai](https://status.exa.ai) 发布服务可用性信息：Search API、Websets 和 Exa MCP 的实时状态、正在处理的故障事件及其进展更新，以及 90 天的可用性历史记录。
+Exa 在 [status.exa.ai](https://status.exa.ai) 发布服务可用性信息：Search API、Websets 和 Exa MCP 的当前状态、正在进行中的故障事件及其实时进展更新，以及 90 天的可用性历史记录。
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## 订阅更新
-</div>
+## 订阅更新 {#subscribe-to-updates}
 
-在状态页订阅后，当故障事件创建、更新或解决时，你会收到通知。通知可通过电子邮件、Slack、Google Chat 或 webhook 发送。
+在状态页上订阅后，故障事件创建、更新或解决时你都会收到通知。通知可通过电子邮件、Slack、Google Chat 或 webhook 发送。
 
-<div id="get-help">
-  ## 获取帮助
-</div>
+## 获取帮助 {#get-help}
 
-如果所有系统均显示运行正常，但请求仍持续失败，问题很可能出在请求本身——请先查看[错误代码](/zh/docs/admin/error-codes)。
+如果所有系统均显示运行正常，但请求仍持续失败，原因很可能出在请求本身，请先查看[错误码](/zh/docs/admin/error-codes)。
 
 <Columns cols={2}>
   <Card title="邮件支持" icon="mail" href="mailto:hello@exa.ai" cta="发送邮件" arrow="true">
     请附上响应状态、错误响应体和 `requestId`，以便我们最快定位问题。
   </Card>
 
-  <Card title="企业支持" icon="headset" href="https://exa.ai/contact/sales" cta="联系销售" arrow="true">
-    企业版套餐提供可用性与支持 SLA。
+  <Card title="Enterprise 支持" icon="headset" href="https://exa.ai/contact/sales" cta="联系销售" arrow="true">
+    Enterprise plan 提供 uptime 与支持 SLA。
   </Card>
 </Columns>

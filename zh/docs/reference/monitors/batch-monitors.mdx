@@ -14,6 +14,6 @@ description: "对符合所提供筛选条件的 monitor 执行批量操作。
   - **unpause**：取消暂停匹配的 monitor
 
 
-  使用 `dry_run: true`（默认值）可在实际执行操作前预览哪些 monitor 会受到影响。结果通过 `limit` 参数分页；可循环调用直到
-  `has_more` 为 `false`，以处理所有匹配的 monitor。"
+  使用 `dry_run: true`（默认值）可在执行操作前预览哪些 monitor 会受到影响。结果通过 `limit` 参数分页； 请持续 loop
+  直到 `has_more` 为 `false`，以处理所有匹配的 monitor。"
 ---

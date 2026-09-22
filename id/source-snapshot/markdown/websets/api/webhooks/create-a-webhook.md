@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="create-a-webhook">
-  # Membuat webhook
-</div>
+# Membuat webhook {#create-a-webhook}
 
-> Membuat Webhook yang mengirimkan event terpilih ke URL Anda begitu event tersebut terjadi.
+> Membuat Webhook yang mengirimkan events yang dipilih ke URL Anda begitu events tersebut terjadi.
 
-Respons menyertakan `secret` penandatanganan yang digunakan untuk memverifikasi pengiriman; nilai ini hanya dikembalikan saat pembuatan.
+Response menyertakan `secret` penandatanganan yang digunakan untuk memverifikasi deliveries; secret ini hanya dikembalikan saat pembuatan.
 
 <Warning>
-  **Redirect tidak diikuti.** Pengiriman webhook dikirim langsung ke URL yang
-  terdaftar. Jika endpoint Anda merespons dengan redirect 3xx, pengiriman
-  tersebut dianggap gagal. Selalu daftarkan URL tujuan akhir.
+  **Pengalihan tidak diikuti.** Deliveries webhook dikirim langsung ke URL yang
+  terdaftar. Jika endpoint Anda merespons dengan pengalihan 3xx, delivery
+  tersebut akan dianggap gagal. Selalu daftarkan URL tujuan akhir.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

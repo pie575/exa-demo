@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="legal-public-records">
-  # Hukum &amp; Catatan Publik
-</div>
+# Catatan Hukum &amp; Publik {#legal-public-records}
 
 > Temukan putusan pengadilan, paten, sanksi, kontrak pemerintah, dan catatan publik lainnya dengan Exa Search.
 
@@ -37,76 +33,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk menelusuri sumber hukum primer dan rekaman publik pemerintah sekaligus ulasan yang membahasnya.
+Gunakan Exa Search untuk sources hukum primer dan catatan pemerintah, sekaligus ulasan yang membahasnya.
 
-<div id="included">
-  ## Termasuk
-</div>
+## Termasuk {#included}
 
-* Putusan pengadilan AS, lengkap dengan teks penuh, pengadilan, nomor perkara, dan metadata sitasi
-* Paten AS yang telah dikabulkan, dengan abstrak, klaim, deskripsi, inventor, dan pemegang paten
-* Undang-undang, peraturan, dan panduan lembaga
+* Putusan pengadilan AS, dengan teks penuh, pengadilan, nomor perkara, dan metadata sitasi
+* Paten AS yang telah diberikan, dengan abstrak, klaim, deskripsi, penemu, dan pemegang hak
+* Undang-undang, peraturan, dan instruksi lembaga
 * Daftar sanksi dan watchlist
 * Kontrak pemerintah dan catatan pengadaan
 * Data sensus dan catatan statistik publik lainnya
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Riset yurisprudensi dan RAG hukum
+* Research yurisprudensi dan RAG hukum
 * Pemantauan regulasi dan kebijakan
-* Pencarian prior art dan freedom-to-operate
+* Penelusuran prior art dan freedom to operate
 * Penyaringan kepatuhan dan uji tuntas
-* Riset pasar sektor publik
+* Research pasar sektor publik
 
-<div id="example-queries">
-  ## Contoh kueri
-</div>
+## Contoh kueri {#example-queries}
 
-<div id="find-case-law">
-  ### Temukan yurisprudensi
-</div>
+### Menemukan yurisprudensi {#find-case-law}
 
-Jelaskan pertanyaan hukum dan jurisdiction dalam bahasa sehari-hari, bukan dalam bentuk sitasi perkara.
+Jelaskan pertanyaan hukum dan yurisdiksinya dengan bahasa sehari-hari, bukan dalam bentuk sitasi.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Search paten
-</div>
+### Search paten {#search-patents}
 
-Jelaskan cara kerja invensi tersebut, sebagaimana sebuah klaim dituliskan.
+Jelaskan apa yang dilakukan invensi tersebut, sebagaimana sebuah klaim dituliskan.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Penyaringan terhadap daftar sanksi
-</div>
+### Screening terhadap sanksi {#screen-against-sanctions}
 
-Sebutkan nama daftar dan kelas entitas yang Anda saring.
+Sebutkan nama daftar dan kelas entitas yang Anda screening.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Meneliti belanja pemerintah
-</div>
+### Research pengeluaran pemerintah {#research-government-spending}
 
 Sebutkan instansi pembeli atau kategori layanan beserta rentang waktunya.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Ambil statistik publik
-</div>
+### Ambil statistik publik {#pull-public-statistics}
 
 Sebutkan nama dataset dan wilayah geografisnya.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Membuat permintaan
-</div>
+## Membuat permintaan {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -147,12 +125,10 @@ Sebutkan nama dataset dan wilayah geografisnya.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Dapatkan data terstruktur dengan Exa Agent
-</div>
+## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang membutuhkan riset lintas sumber, gunakan [task run Exa Agent](/id/docs/agent/quickstart). Jelaskan jurisdiction, jenis dokumen, criteria, dan bidang output yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi schema beserta citations.
+Untuk data terstruktur yang memerlukan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan yurisdiksi, jenis catatan, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
-  Periksa suatu entitas di berbagai jenis dokumen atau telusuri perubahan regulasi melalui sumber primer dan pemberitaannya.
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Saring sebuah entitas di berbagai jenis catatan atau telusuri perubahan regulasi melalui primary sources dan pemberitaan.
 </Card>

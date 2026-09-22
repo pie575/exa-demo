@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-all-websets">
-  # List all websets
-</div>
+# List all websets {#list-all-websets}
 
 > Mengembalikan daftar Websets.
 
-Anda dapat menelusuri hasil per halaman menggunakan parameter `cursor`.
+Anda dapat menelusuri hasil secara bertahap (paginasi) menggunakan parameter `cursor`.
 
-Anda dapat menyaring hasil menggunakan parameter `search` untuk menemukan Websets berdasarkan ID, ID eksternal, atau judul.
+Anda dapat memfilter hasil menggunakan parameter `search` untuk mencari Websets berdasarkan ID, ID eksternal, atau judul.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets
 openapi: 3.1.0

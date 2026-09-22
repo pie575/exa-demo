@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="sports-weather-places">
-  # 스포츠, 날씨 및 장소
-</div>
+# 스포츠, 날씨 및 장소 {#sports-weather-places}
 
-> Exa Search로 실시간 스포츠 데이터, 날씨 예보, 주변 장소 정보를 찾아보세요.
+> Exa Search로 실시간 스포츠 데이터, 날씨 예보, 주변 장소를 찾아보세요.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,108 +33,82 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-실시간 스포츠 데이터, 날씨 예보, 지역 정보를 각각 별도의 API로 연동할 필요 없이 Exa Search 하나로 해결하세요. 원하는 team, 장소, 기간을 넣어 자연어로 질문하기만 하면 됩니다.
+실시간 스포츠 데이터, 날씨 예보, 지역 정보를 각각 별도의 API로 연동할 필요 없이 Exa Search 하나로 해결하세요. 원하는 팀, 장소, 기간을 담아 자연어로 질문하기만 하면 됩니다.
 
-<div id="write-better-queries">
-  ## 더 나은 질의 작성하기
-</div>
+## 더 나은 질의 작성하기 {#write-better-queries}
 
-지역이나 team 이름을 정확히 명시하고, 시간에 따라 답이 달라지는 경우에는 날짜를 포함하세요. 막연히 폭넓은 정보를 요청하지 말고, 작업에 중요한 조건이나 속성을 함께 적어주세요.
+지역이나 팀을 정확히 지정하고, 시점에 따라 답이 달라지는 경우에는 날짜를 함께 넣으세요. 두루뭉술한 정보를 요청하기보다 작업에 중요한 조건이나 속성을 덧붙이세요.
 
 <Tabs>
   <Tab title="스포츠" icon="trophy">
-    <div id="included">
-      ### 포함 내용
-    </div>
+### 포함 범위 {#included}
 
-    제공되는 스포츠 데이터:
+    이용 가능한 스포츠 데이터:
 
-    * **점수**: 특정 날짜의 리그 경기 정보로, team, 점수, 상태, 시작 시간, 경기장 포함
+    * **경기 점수**: 특정 날짜의 리그 경기 정보로, 팀, 점수, 상태, 시작 시간, 경기장을 포함합니다
     * **순위**: 컨퍼런스 또는 디비전별로 구분된 현재 리그 순위표
-    * **일정**: 리그 또는 team의 지난 경기 결과와 예정 경기
+    * **일정**: 리그 또는 팀의 지난 경기 결과와 예정된 경기
 
-    NBA, WNBA, NFL, MLB, NHL, MLS, 미국 대학 농구 및 미식축구, 주요 유럽 축구 리그와 UEFA 대회, 크리켓, F1, UFC, 테니스, 골프를 다룹니다.
+    NBA, WNBA, NFL, MLB, NHL, MLS, 대학 농구 및 미식축구, 주요 유럽 축구 리그와 UEFA 대회, 크리켓, F1, UFC, 테니스, 골프를 포함합니다.
 
-    <div id="ask-for-the-league-team-and-time">
-      ### 리그, team, 시점을 함께 요청하세요
-    </div>
+### 리그, 팀, 시점을 명시하세요 {#ask-for-the-league-team-and-time}
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-    <div id="add-the-surrounding-story">
-      ### 관련 소식까지 함께 요청하기
-    </div>
+### 관련 소식까지 함께 요청하세요 {#add-the-surrounding-story}
 
-    실시간 데이터와 함께 필요한 보도 내용도 요청하세요.
+    실시간 데이터와 함께 필요한 보도 내용을 요청하세요.
 
     <PlaygroundQuery query="NBA injury reports ahead of tonight's games" />
   </Tab>
 
   <Tab title="날씨" icon="cloud-sun">
-    <div id="included-2">
-      ### 포함 내용
-    </div>
+### 포함 범위 {#included-2}
 
-    예보에는 해당 지역의 현지 시간 기준으로 날씨 상태, 최고·최저 기온, 강수, 바람, 습도, 자외선 지수, 일출·일몰 시각이 포함됩니다.
+    예보에는 기상 상태, 최고 및 최저 기온, 강수량, 바람, 습도, 자외선 지수, 해당 지역 현지 시간 기준 일출 및 일몰 시각이 포함됩니다.
 
-    날짜를 지정하지 않으면 오늘의 예보가 반환됩니다. 특정 날짜나 기간을 요청하면 하루당 한 페이지씩 제공되며, 최대 16일 후까지 또는 92일 전까지 조회할 수 있습니다.
+    날짜를 지정하지 않은 질의는 오늘의 예보를 반환합니다. 특정 날짜나 기간을 요청하면 하루에 한 페이지씩 제공되며, 최대 16일 후까지 또는 92일 전까지 조회할 수 있습니다.
 
-    <div id="name-the-place-and-day">
-      ### 지역과 날짜를 명시하세요
-    </div>
+### 장소와 날짜를 명시하세요 {#name-the-place-and-day}
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-    <div id="ask-about-the-condition-that-affects-your-plan">
-      ### 계획에 영향을 주는 조건을 물어보세요
-    </div>
+### 계획에 영향을 주는 기상 조건을 물어보세요 {#ask-about-the-condition-that-affects-your-plan}
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-    <div id="combine-forecasts-with-reporting">
-      ### 예보와 보도 내용을 함께 활용하기
-    </div>
+### 예보와 보도를 함께 요청하세요 {#combine-forecasts-with-reporting}
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="장소" icon="map-pin">
-    <div id="included-3">
-      ### 포함 내용
-    </div>
+### 포함 범위 {#included-3}
 
-    * 주소, 영업시간, 편의시설, 리뷰가 포함된 지역 업체 정보
-    * 공연장, 명소, 관심 지점
-    * 부동산 매물 및 등기 기록
-    * 용도지역 결정, 인허가, 도시계획 기록
+    * 주소, 영업시간, 편의시설, 리뷰가 포함된 지역 업체 프로필
+    * 명소, 관광지, 주요 지점
+    * 부동산 매물 및 부동산 records
+    * 용도지역 결정, 인허가, 도시계획 records
 
-    <div id="describe-the-place-like-you-would-ask-a-local">
-      ### 현지인에게 묻듯이 장소를 설명하세요
-    </div>
+### 현지인에게 묻듯이 장소를 설명하세요 {#describe-the-place-like-you-would-ask-a-local}
 
     카테고리, 동네, 중요한 속성을 함께 조합하세요.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-    <div id="name-the-record-type-and-geography">
-      ### 기록 유형과 지역을 명시하세요
-    </div>
+### records 유형과 지역을 명시하세요 {#name-the-record-type-and-geography}
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-    <div id="compare-places-against-practical-constraints">
-      ### 실질적인 조건을 기준으로 장소를 비교하세요
-    </div>
+### 실질적인 조건을 기준으로 장소를 비교하세요 {#compare-places-against-practical-constraints}
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-<div id="make-a-request">
-  ## 요청 보내기
-</div>
+## 요청 보내기 {#make-a-request}
 
 세 가지 데이터 유형 모두 동일한 Search 엔드포인트를 사용합니다.
 
@@ -178,12 +148,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent로 구조화된 데이터 가져오기
-</div>
+## Exa Agent로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
 
-여러 소스에 걸친 조사가 필요한 구조화된 데이터라면 [Exa Agent 태스크 실행](/ko/docs/agent/quickstart)을 사용하세요. 필요한 장소, team, 날짜, criteria, output 필드를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
+여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent task run](/ko/docs/agent/quickstart)을 사용하세요. 필요한 장소, 팀, 날짜, criteria, output field를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 
-<Card title="Agent 태스크 시작하기" icon="bot" href="/ko/docs/agent/quickstart" cta="Agent 가이드 열기" arrow="true">
+<Card title="Agent task 시작하기" icon="bot" href="/ko/docs/agent/quickstart" cta="Agent 가이드 열기" arrow="true">
   장소를 비교하거나, 경기 당일 브리핑을 구성하거나, 지역 정보와 현재 상황을 결합해 구조화된 결과로 만들어 보세요.
 </Card>

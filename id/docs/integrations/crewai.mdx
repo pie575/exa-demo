@@ -5,17 +5,17 @@ icon: "/docs/images/sidebar-icons/crewai.svg"
 ---
 
 <Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+  Baru mengenal Exa? Memulai dalam waktu kurang dari satu menit.
 </Card>
 
 ***
 
 [CrewAI](https://crewai.com/) adalah framework untuk mengorkestrasi AI agent yang bekerja sama menyelesaikan tugas-tugas kompleks.
-Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilkan newsletter berdasarkan hasil search Exa. Kita akan membahas cara:
+Dalam panduan ini, kita akan membuat sebuah crew berisi dua agent yang menghasilkan newsletter berdasarkan hasil search Exa. Kita akan membahas cara:
 
-1. Membuat tool CrewAI kustom yang ditenagai Exa
-2. Menyiapkan agent dan memberi mereka peran spesifik yang memanfaatkan tool search berbasis Exa
-3. Menyusun agent tersebut ke dalam satu crew yang akan menulis newsletter
+1. Membuat tool CrewAI kustom berbasis Exa
+2. Menyiapkan agent dan memberi mereka Peran spesifik yang memanfaatkan tool search berbasis Exa
+3. Menyusun agent tersebut ke dalam sebuah crew yang akan menulis newsletter
 
 <Note>
   CrewAI juga menyediakan [`ExaSearchTool`](https://docs.crewai.com/en/tools/search-research/exasearchtool) bawaan yang bisa langsung Anda pakai tanpa perlu menulis wrapper kustom. Tool kustom di bawah ini berguna jika Anda ingin kendali penuh atas cara hasil diformat; kedua pendekatan sama-sama berfungsi.
@@ -23,21 +23,19 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
 
 ***
 
-<div id="get-started">
-  ## Memulai
-</div>
+## Memulai {#get-started}
 
 <Steps>
   <Step title="Prasyarat dan instalasi">
-    Instal pustaka crewAI core, crewAI tools, dan Exa Python SDK.
+    Pasang library crewAI core, crewAI tools, dan Exa Python SDK.
 
     ```Python Python theme={null}
     pip install crewai 'crewai[tools]' exa_py
     ```
   </Step>
 
-  <Step title="Mendefinisikan alat kustom berbasis Exa di crewAI">
-    Kita membuat sebuah [custom tool](https://docs.crewai.com/concepts/tools) menggunakan [@tool decorator ](https://docs.crewai.com/concepts/tools#utilizing-the-tool-decorator) dari crewAI. Di dalam tool tersebut, kita dapat menginisialisasi kelas Exa dari [Exa Python SDK](https://github.com/exa-labs/exa-py), mengirim request, lalu mengembalikan hasil yang sudah diurai.
+  <Step title="Mendefinisikan tool kustom berbasis Exa di crewAI">
+    Kita menyiapkan [tool kustom](https://docs.crewai.com/concepts/tools) menggunakan [@tool decorator ](https://docs.crewai.com/concepts/tools#utilizing-the-tool-decorator) dari crewAI. Di dalam tool tersebut, kita bisa menginisialisasi kelas Exa dari [Exa Python SDK](https://github.com/exa-labs/exa-py), mengirim permintaan, lalu mengembalikan hasil yang sudah diurai.
 
     ```Python Python theme={null}
     from crewai_tools import tool
@@ -72,12 +70,12 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
     <Note> Pastikan API key Anda sudah diinisialisasi dengan benar. Untuk demonstrasi ini, nama variabel lingkungannya adalah `OPENAI_API_KEY` dan `EXA_API_KEY`, masing-masing untuk key OpenAI dan Exa. </Note>
 
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Buat key di dashboard. Akun baru mendapatkan credit gratis.
+      Buat key di dashboard. Akun baru mendapatkan credits gratis.
     </Card>
   </Step>
 
-  <Step title="Menyiapkan agen crewAI">
-    Impor modul crewAI yang relevan. Kemudian, definisikan `exa_tools` agar merujuk ke metode search kustom yang telah kita buat di atas.
+  <Step title="Menyiapkan agent crewAI">
+    Impor modul crewAI yang relevan. Kemudian, definisikan `exa_tools` untuk merujuk ke metode search kustom yang telah kita definisikan di atas.
 
     ```Python Python theme={null}
     from crewai import Task, Crew, Agent
@@ -87,7 +85,7 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
 
     Selanjutnya kita menyiapkan[ dua agent](https://docs.crewai.com/concepts/Agents/) dan menempatkan keduanya dalam [satu crew](https://docs.crewai.com/concepts/Crews/):
 
-    * Satu untuk melakukan riset dengan Exa (memakai tool khusus yang didefinisikan di atas)
+    * Satu untuk melakukan research dengan Exa (memakai tool kustom yang didefinisikan di atas)
     * Satu lagi untuk menulis newsletter sebagai output (memakai LLM)
 
     ```Python Python theme={null}
@@ -123,7 +121,7 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
   </Step>
 
   <Step title="Menentukan tugas untuk agent">
-    Selanjutnya, kita akan mendefinisikan [tasks](https://docs.crewai.com/concepts/Tasks/) untuk masing-masing agent dan membentuk crew secara keseluruhan dengan memakai semua komponen yang sudah kita siapkan di atas.
+    Selanjutnya, kita akan mendefinisikan [task](https://docs.crewai.com/concepts/Tasks/) untuk setiap agent dan membangun crew secara keseluruhan dengan semua komponen yang sudah kita siapkan di atas.
 
     ```Python Python theme={null}
     research_task = Task(
@@ -157,8 +155,8 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
     ```
   </Step>
 
-  <Step title="Memulai dengan tim Anda">
-    Terakhir, kita menjalankan crew dengan memberikan topik riset sebagai query masukan.
+  <Step title="Memulai kerja tim">
+    Terakhir, kita menjalankan crew dengan memberikan topik Research sebagai query masukan.
 
     ```Python Python theme={null}
     response = crew.kickoff(inputs={'topic': 'Latest AI research'})
@@ -166,6 +164,6 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
     print(response)
     ```
 
-    Crew menulis buletin berdasarkan konten yang dikembalikan oleh tool Exa search.
+    Crew menulis newsletter berdasarkan konten yang dikembalikan oleh tool Exa search.
   </Step>
 </Steps>

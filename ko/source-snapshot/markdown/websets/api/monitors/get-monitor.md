@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 색인
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="get-a-websets-monitor">
-  # Websets monitor 조회
-</div>
+# Websets monitor 조회 {#get-a-websets-monitor}
 
 > 특정 monitor를 조회합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{id}
 openapi: 3.1.0
@@ -142,11 +136,11 @@ components:
               required:
                 - count
               description: >-
-                Specify the search parameters for the Monitor.
+                모니터의 검색 매개변수를 지정합니다.
 
 
-                By default, the search parameters (query, entity and criteria)
-                from the last search are used when no parameters are provided.
+                매개변수가 제공되지 않으면 기본적으로 마지막 검색의 검색 매개변수(쿼리, 엔티티, 기준)가
+                사용됩니다.
               type: object
             type:
               type: string

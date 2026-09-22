@@ -1,55 +1,41 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="get-team-info">
-  # Dapatkan info tim
-</div>
+# Get team info {#get-team-info}
 
-> Ambil informasi tentang Team Anda, termasuk concurrency usage dan limits.
+> Ambil informasi tentang team Anda, termasuk penggunaan dan batas konkurensi.
 
-<div id="overview">
-  ## Ikhtisar
-</div>
+## Overview {#overview}
 
-Endpoint Get Team Info mengembalikan informasi tentang team yang terautentikasi, termasuk concurrency usage team tersebut saat ini beserta limits yang dikonfigurasi. Hal ini berguna untuk memantau usage Websets API Anda dan memahami rate limits Anda.
+Endpoint Get Team Info mengembalikan informasi tentang team yang terautentikasi, termasuk penggunaan konkurensi team saat ini dan batas yang telah dikonfigurasi. Ini berguna untuk memantau penggunaan Websets API Anda dan memahami rate limit yang berlaku.
 
-<div id="response">
-  ## Respons
-</div>
+## Response {#response}
 
-Respons mencakup:
+Response mencakup:
 
 * **object**: Selalu &quot;team&quot;
-* **id**: Pengenal unik Team Anda
+* **id**: Identifier unik Team Anda
 * **name**: Nama Team Anda
-* **concurrency**: Usage saat ini yang menampilkan permintaan aktif dan yang berada dalam antrean
-* **limits**: Limit concurrency Team Anda
+* **concurrency**: Penggunaan saat ini, menampilkan permintaan yang aktif dan yang mengantre
+* **limits**: Batas konkurensi Team Anda
 
-<div id="concurrency-fields">
-  ### Field Concurrency
-</div>
+### Field Konkurensi {#concurrency-fields}
 
-Objek `concurrency` menunjukkan status permintaan Anda saat ini:
+Objek `concurrency` menampilkan status permintaan Anda saat ini:
 
 * **active**: Jumlah permintaan yang sedang diproses
 * **queued**: Jumlah permintaan yang menunggu untuk diproses
 
-<div id="limits-fields">
-  ### Field Limits
-</div>
+### Field Limits {#limits-fields}
 
-Objek `limits` menampilkan limit yang dikonfigurasi untuk team Anda:
+Objek `limits` menampilkan batas yang dikonfigurasi untuk team Anda:
 
 * **maxConcurrent**: Jumlah maksimum permintaan yang dapat diproses secara bersamaan (null berarti tidak terbatas)
 * **maxQueued**: Jumlah maksimum permintaan yang dapat menunggu dalam antrean (null berarti tidak terbatas)
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0

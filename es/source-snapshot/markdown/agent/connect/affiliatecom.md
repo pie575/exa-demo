@@ -1,35 +1,27 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-<div id="affiliatecom">
-  # Affiliate.com
-</div>
+# Affiliate.com {#affiliatecom}
 
-> Busca catálogos de productos de comercios y redes de afiliados.
+> Busca en catálogos de productos de comercios y redes de afiliados.
 
 [Affiliate.com](https://affiliate.com) reúne los catálogos de productos de
-comercios y redes de afiliados en un único índice consultable, con precios en
-tiempo real, marcas y enlaces directos a los comercios.
+comercios y redes de afiliados en un único índice consultable, con
+precios actualizados, marcas y enlaces directos a los comercios.
 
-Adjunta `affiliate` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
+Adjunta `affiliate` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
-Affiliate.com junto con la búsqueda web de Exa.
+Affiliate.com junto con Exa web search.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
-* Descubrir productos y comparar precios entre comercios.
+* Descubrimiento de productos y comparación de precios entre comercios.
 * Impulsar asistentes de compras y contenido de guías de compra.
-* Mostrar enlaces de afiliados junto a los resultados de investigación.
+* Mostrar enlaces de afiliados junto a la investigación.
 
-<div id="provider-id">
-  ## ID del proveedor
-</div>
+## ID del proveedor {#provider-id}
 
 Usa este valor en `dataSources`:
 
@@ -37,9 +29,7 @@ Usa este valor en `dataSources`:
 affiliate
 ```
 
-<div id="example">
-  ## Ejemplo
-</div>
+## Ejemplo {#example}
 
 Encuentra auriculares inalámbricos con cancelación de ruido por menos de $300 y compara precios.
 
@@ -136,31 +126,27 @@ Encuentra auriculares inalámbricos con cancelación de ruido por menos de $300 
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Combina bien con
-</div>
+## Combina bien con {#pairs-well-with}
 
 * [Similarweb](/es/docs/agent/connect/similarweb): mide el alcance de un comercio antes de recomendarlo.
-* [Fiber.ai](/es/docs/agent/connect/fiber): investiga la empresa que hay detrás de un comercio o una marca.
+* [Fiber.ai](/es/docs/agent/connect/fiber): investiga la empresa detrás de un comercio o una marca.
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir la guía rápida" arrow="true">
-    La guía rápida de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
+  <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">
+    El quickstart de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
   </Card>
 
   <Card title="Combina proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
-    Adjunta hasta cinco partners a una misma ejecución y formula la query de modo que todos se activen.
+    Adjunta hasta cinco partners a un mismo run y plantea la consulta de modo que cada uno se active.
   </Card>
 
   <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
-    Crea ejecuciones, sigue el progreso en streaming, diseña esquemas de salida y controla el esfuerzo y el costo.
+    Crea runs, transmite el progreso, diseña esquemas de output y controla el effort y el costo.
   </Card>
 
   <Card title="Consigue una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">
-    Crea una key en el panel y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas comienzan con credits gratuitos.
+    Crea una key en el dashboard y ejecuta el ejemplo de esta página tal cual. Las cuentas nuevas incluyen créditos gratis.
   </Card>
 </Columns>

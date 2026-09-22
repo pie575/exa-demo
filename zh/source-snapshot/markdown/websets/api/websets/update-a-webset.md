@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="update-a-webset">
-  # 更新 webset
-</div>
+# 更新 webset {#update-a-webset}
 
-> 更新 Webset 的 `title` 或 `metadata`。Search、import 和 enrichment 分别通过各自的端点进行管理。
+> 更新 Webset 的 `title` 或 `metadata`。Search、导入和增强需通过各自的端点进行管理。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}
 openapi: 3.1.0

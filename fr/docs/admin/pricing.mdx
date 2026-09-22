@@ -6,155 +6,141 @@ keywords: ["pricing", "cost", "rates", "credits", "billing", "agent compute unit
 
 ***
 
-Exa fonctionne au paiement à l&#39;usage. Ni abonnement, ni dépense minimale : vous approvisionnez votre compte en credits et êtes facturé à la requête, aux tarifs ci-dessous.
+Exa fonctionne à l&#39;usage. Aucun abonnement ni montant minimum : vous créditez votre compte et êtes facturé à la requête, aux tarifs ci-dessous.
 
 <Check>
-  **Commencez gratuitement.** Les nouveaux comptes reçoivent $20 de credits offerts (environ 2 800 searches) et l&#39;offre gratuite ajoute $10 de credits chaque mois. Obtenez une API key et lancez-vous.
+  **Commencez gratuitement.** Les nouveaux comptes reçoivent 20 $ de crédits offerts (environ 2 800 recherches), et l&#39;offre gratuite ajoute 10 $ de crédits chaque mois. Obtenez une API key et lancez-vous.
 
-  **Besoin de monter en charge ?** Pour de gros volumes, des custom indexes, des rate limits plus élevées, des SLA ou le Zero Data Retention, [contactez-nous](https://exa.ai/contact/sales) au sujet d&#39;un [plan Enterprise](#enterprise) avec remises sur volume.
+  **Vous montez en charge ?** Pour de gros volumes, des index personnalisés, des limites de débit plus élevées, des SLA ou le Zero Data Retention, [contactez-nous](https://exa.ai/contact/sales) au sujet d&#39;un [plan Enterprise](#enterprise) avec remises sur volume.
 </Check>
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits offerts.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits offerts.
 </Card>
 
-<div id="products">
-  ## Produits
-</div>
+## Produits {#products}
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/fr/docs/search/quickstart">
-    **$7** / 1 k requêtes
+    **$7** / 1k requests
 
-    Recherche en temps réel avec un contenu de page économe en tokens.
+    Recherche en temps réel avec des page contents économes en jetons.
   </Card>
 
   <Card title="Deep Search" icon="microscope" href="/fr/docs/search/deep-search">
-    **$12–15** / 1 k requêtes
+    **$12–15** / 1k requests
 
-    Recherche en plusieurs étapes, avec sorties structurées et citations.
+    Recherche en plusieurs étapes avec sorties structurées et citations.
   </Card>
 
   <Card title="Contents" icon="file-text" href="/fr/docs/contents/quickstart">
-    **$1** / 1 k pages
+    **$1** / 1k pages
 
     Texte intégral des pages, highlights et résumés pour des URL connues.
   </Card>
 
   <Card title="Answer" icon="message-circle" href="/fr/docs/reference/answer">
-    **$5** / 1 k requêtes
+    **$5** / 1k requests
 
-    Une réponse à une question générée par un LLM, avec citations.
+    Une réponse de LLM à une question, avec citations.
   </Card>
 
   <Card title="Monitors" icon="bell" href="/fr/docs/monitors/quickstart">
-    **$15** / 1 k requêtes
+    **$15** / 1k requests
 
     Recherches planifiées qui font remonter les nouveaux événements sur le web.
   </Card>
 
   <Card title="Agent" icon="bot" href="/fr/docs/agent/quickstart">
-    **$0,012–$1,00** / run à effort fixe, ou à l&#39;usage
+    **$0,012–$1,00** / run à effort fixe, ou à l&#39;utilisation
 
-    Deep research asynchrone, list building et enrichment.
+    Deep research asynchrone, constitution de listes et enrichment.
   </Card>
 </Columns>
 
-<div id="search-contents-answer-and-monitors">
-  ## Search, Contents, Answer et Monitors
-</div>
+## Search, Contents, Answer et Monitors {#search-contents-answer-and-monitors}
 
-Chaque endpoint a un prix de base par requête qui comprend jusqu&#39;à 10 résultats. Les résultats supplémentaires et les résumés de page générés par Exa sont facturés en plus.
+Chaque endpoint a un prix de base par requête qui inclut jusqu&#39;à 10 résultats. Les résultats supplémentaires et les résumés de page générés par Exa sont facturés en sus.
 
 | Endpoint    | Prix de base<br />(jusqu&#39;à 10 résultats) | Chaque résultat au-delà de 10 | Résumés de page par IA |
 | ----------- | -------------------------------------------- | ----------------------------- | ---------------------- |
-| `/search`   | 7 $ / 1k requêtes                            | 1 $ / 1k résultats            | 1 $ / 1k pages         |
-| `/answer`   | 5 $ / 1k requêtes                            | —                             | —                      |
-| `/monitors` | 15 $ / 1k requêtes                           | 1 $ / 1k résultats            | 1 $ / 1k pages         |
+| `/search`   | 7 $ / 1k requests                            | 1 $ / 1k résultats            | 1 $ / 1k pages         |
+| `/answer`   | 5 $ / 1k requests                            | —                             | —                      |
+| `/monitors` | 15 $ / 1k requests                           | 1 $ / 1k résultats            | 1 $ / 1k pages         |
 | `/contents` | 1 $ / 1k pages, par type de contenu          | —                             | 1 $ / 1k pages         |
 
-<div id="agent">
-  ## Agent
-</div>
+## Agent {#agent}
 
-Définissez un `effort` fixe sur [Agent](/fr/docs/agent/quickstart) pour obtenir un prix par requête prévisible. `auto` est le mode mesuré par défaut ; le mode bêta `max` est également mesuré et applique les mêmes tarifs d&#39;usage :
+Définissez un `effort` fixe sur [Agent](/fr/docs/agent/quickstart) pour obtenir un prix prévisible par requête. `auto` est le mode mesuré par défaut ; le mode bêta `max` est également mesuré et applique les mêmes tarifs d&#39;utilisation :
 
-| Effort    | Prix             |
-| --------- | ---------------- |
-| `minimal` | $0,012 / requête |
-| `low`     | $0,025 / requête |
-| `medium`  | $0,10 / requête  |
-| `high`    | $0,50 / requête  |
-| `xhigh`   | $1,00 / requête  |
+| Effort    | Prix              |
+| --------- | ----------------- |
+| `minimal` | 0,012 $ / requête |
+| `low`     | 0,025 $ / requête |
+| `medium`  | 0,10 $ / requête  |
+| `high`    | 0,50 $ / requête  |
+| `xhigh`   | 1,00 $ / requête  |
 
-Les runs mesurés facturent l&#39;usage réel, dans la limite de leur plafond par run. Le plafond par défaut est de $5 pour `auto` et de $20 pour le mode bêta `max` :
+Les runs mesurés facturent l&#39;utilisation réelle, dans la limite de leur plafond par run. Le plafond par défaut est de 5 $ pour `auto` et de 20 $ pour le mode bêta `max` :
 
-| Composant d&#39;usage                    | Prix                        |
-| ---------------------------------------- | --------------------------- |
-| Agent Compute Units                      | $0,10 / ACU                 |
-| Appels de tool de search                 | $0,005 / search             |
-| enrichissement de contact par e-mail     | $0,02 / e-mail              |
-| enrichissement de contact par téléphone  | $0,07 / numéro de téléphone |
+| Composant d&#39;utilisation         | Prix                         |
+| ----------------------------------- | ---------------------------- |
+| Agent Compute Units                 | 0,10 $ / ACU                 |
+| Appels d&#39;outil Search           | 0,005 $ / search             |
+| Enrichissement de contact e-mail    | 0,02 $ / e-mail              |
+| Enrichissement de contact téléphone | 0,07 $ / numéro de téléphone |
 
-<div id="connect-providers">
-  ### Connect providers
-</div>
+### Connect providers {#connect-providers}
 
 Les runs qui utilisent des sources de données [Exa Connect](/fr/docs/agent/connect/overview)
 facturent en plus chaque appel de provider — par exemple
-[Fiber.ai](/fr/docs/agent/connect/fiber#pricing) à $0,02 par credit et
-[Baselayer](/fr/docs/agent/connect/baselayer#pricing) de $0,15 à $4,00 par
+[Fiber.ai](/fr/docs/agent/connect/fiber#pricing) à $0.02 par credit et
+[Baselayer](/fr/docs/agent/connect/baselayer#pricing) à $0.15–$4.00 par
 commande selon l&#39;opération. Consultez la
-[tarification de Connect](/fr/docs/agent/connect/overview#pricing) pour connaître les
-tarifs de tous les providers.
+[tarification de Connect](/fr/docs/agent/connect/overview#pricing) pour
+connaître les tarifs de tous les providers.
 
-<div id="deep-search">
-  ## Deep Search
-</div>
+## Deep Search {#deep-search}
 
-Se définit avec `type` sur [`/search`](/fr/docs/search/deep-search). Les résultats supplémentaires et les résumés de pages par IA sont facturés au même tarif qu&#39;une recherche standard.
+Se définit avec `type` sur [`/search`](/fr/docs/search/deep-search). Les résultats supplémentaires et les résumés de page par IA coûtent le même prix qu&#39;une recherche standard.
 
 | Type             | Prix de base<br />(jusqu&#39;à 10 résultats) | Latence          | Idéal pour                                         |
 | ---------------- | -------------------------------------------- | ---------------- | -------------------------------------------------- |
-| `deep-lite`      | 12 $ / 1 k requêtes                          | ~4 secondes      | Synthèse légère                                    |
-| `deep`           | 12 $ / 1 k requêtes                          | 4 à 15 secondes  | Raisonnement multi-étapes avec sorties structurées |
-| `deep-reasoning` | 15 $ / 1 k requêtes                          | 12 à 40 secondes | Tâches de recherche plus complexes                 |
+| `deep-lite`      | 12 $ / 1k requests                           | ~4 secondes      | Synthèse légère                                    |
+| `deep`           | 12 $ / 1k requests                           | 4 à 15 secondes  | Raisonnement multi-étapes avec sorties structurées |
+| `deep-reasoning` | 15 $ / 1k requests                           | 12 à 40 secondes | Tâches de recherche plus complexes                 |
 
-<div id="enterprise">
-  ## Enterprise
-</div>
+## Enterprise {#enterprise}
 
-Pour les gros volumes, les jeux de données personnalisés et les exigences de sécurité renforcées.
+Pour les volumes élevés, les jeux de données personnalisés et les exigences de sécurité renforcées.
 
 <Columns cols={3}>
   <Card title="Recherche puissante" icon="gauge">
-    Jusqu&#39;à 1 000 résultats par search, requêtes au-delà de 25 résultats, rate limits (QPS) personnalisés, modération sur mesure et custom indexes.
+    Jusqu&#39;à 1 000 résultats par recherche, requests au-delà de 25 résultats, limites de débit (QPS) personnalisées, modération sur mesure et index personnalisés.
   </Card>
 
   <Card title="Support Enterprise" icon="headphones">
-    SLA et MSA, onboarding et support en 1:1, et [Zero Data Retention](/fr/docs/admin/security/zero-data-retention).
+    SLA et MSA, onboarding et support individuels, et [Zero Data Retention](/fr/docs/admin/security/zero-data-retention).
   </Card>
 
   <Card title="Tarification personnalisée" icon="tag">
-    Remises sur volume et facturation postpayée sur facture.
+    Remises sur volume et facturation sur facture postpayée.
   </Card>
 </Columns>
 
-<Card title="Contactez-nous" icon="mail" horizontal href="https://exa.ai/contact/sales">
+<Card title="Parlons-en" icon="mail" horizontal href="https://exa.ai/contact/sales">
   Obtenez un devis adapté à vos volumes et conditions Enterprise
 </Card>
 
-<div id="cost-glossary">
-  ## Glossaire des coûts
-</div>
+## Glossaire des coûts {#cost-glossary}
 
 <AccordionGroup>
-  <Accordion title="Requête">
-    Un appel d&#39;API vers un endpoint. Les prix sont indiqués pour 1 000 requêtes : un tarif de $7 / 1k revient donc à $0,007 par appel.
+  <Accordion title="Request">
+    Un appel d&#39;API vers un endpoint. Les prix sont indiqués pour 1 000 requests : un tarif de $7 / 1k revient donc à $0,007 par appel.
   </Accordion>
 
-  <Accordion title="Résultat">
-    Un résultat de recherche renvoyé dans une réponse. Le prix de base couvre les 10 premiers résultats d&#39;une requête ; chaque résultat au-delà de 10 ajoute $1 / 1k résultats. Demander `numResults: 20` coûte donc le prix de base plus 10 résultats supplémentaires.
+  <Accordion title="Result">
+    Un résultat de recherche renvoyé dans une réponse. Le prix de base couvre les 10 premiers résultats d&#39;une request ; chaque résultat au-delà de 10 ajoute $1 / 1k résultats. Demander `numResults: 20` coûte donc le prix de base plus 10 résultats supplémentaires.
   </Accordion>
 
   <Accordion title="Page et type de contenu">
@@ -166,22 +152,22 @@ Pour les gros volumes, les jeux de données personnalisés et les exigences de s
   </Accordion>
 
   <Accordion title="Agent Compute Unit (ACU)">
-    L&#39;unité de calcul de modèle consommée par un run d&#39;Agent, indiquée dans `usage.agentComputeUnits`. Les runs plus longs, un `input.data` plus volumineux et un plus grand nombre d&#39;étapes de raisonnement consomment davantage d&#39;ACU.
+    L&#39;unité de calcul de modèle consommée par un run d&#39;Agent, indiquée dans `usage.agentComputeUnits`. Les runs plus longs, des `input.data` plus volumineux et davantage d&#39;étapes de raisonnement consomment plus d&#39;ACU.
   </Accordion>
 
   <Accordion title="Effort">
-    Le paramètre Agent qui arbitre entre coût et latence d&#39;une part, et exhaustivité d&#39;autre part. `auto` facture à la consommation (ACU et tool calls) jusqu&#39;à un plafond par défaut de $5 ; `max` (bêta) applique les mêmes tarifs d&#39;usage jusqu&#39;à un plafond par défaut de $20. Les efforts fixes sont facturés à un prix forfaitaire par requête. Voir [Modes d&#39;effort de l&#39;Agent](/fr/docs/agent/quickstart#effort).
+    Le paramètre Agent qui arbitre entre coût et latence d&#39;un côté, et exhaustivité de l&#39;autre. `auto` facture à la consommation (ACU plus appels d&#39;outils) jusqu&#39;à un plafond par défaut de $5 ; `max` (bêta) applique les mêmes tarifs d&#39;utilisation jusqu&#39;à un plafond par défaut de $20. Les efforts fixes sont facturés à un prix forfaitaire par request. Voir [Modes d&#39;effort de l&#39;Agent](/fr/docs/agent/quickstart#effort).
   </Accordion>
 
   <Accordion title="Enrichissement de contact">
     Une recherche Agent qui renvoie une adresse e-mail ou un numéro de téléphone pour une personne ou une entreprise. Facturé par contact trouvé, en plus des autres coûts du run.
   </Accordion>
 
-  <Accordion title="Credits">
-    Solde prépayé en dollars sur votre compte. L&#39;usage décompte les credits aux tarifs ci-dessus.
+  <Accordion title="Crédits">
+    Solde prépayé en dollars sur votre compte. L&#39;utilisation décompte les crédits selon les tarifs ci-dessus.
   </Accordion>
 </AccordionGroup>
 
 <Card title="Facturation" icon="credit-card" horizontal href="/fr/docs/admin/billing">
-  Ajoutez des credits, configurez l&#39;auto recharge et retrouvez vos factures
+  Ajoutez des crédits, configurez l&#39;auto recharge et retrouvez vos factures
 </Card>

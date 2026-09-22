@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="browserbase">
-  # Browserbase
-</div>
+# Browserbase {#browserbase}
 
-> Combina la búsqueda de empresas de Exa con la automatización de navegador de Browserbase para flujos de trabajo de postulación a empleos.
+> Combina la búsqueda de empresas de Exa con la automatización del navegador de Browserbase para flujos de trabajo de postulación a empleos.
 
 Usa Exa para encontrar empresas y sus páginas de empleo, y luego usa Browserbase y Stagehand para inspeccionar esas páginas e interactuar con ellas.
 
-<div id="install">
-  ## Instalación
-</div>
+## Instalación {#install}
 
 Instala los paquetes que utiliza la plantilla de Browserbase para Exa:
 
@@ -23,9 +17,7 @@ Instala los paquetes que utiliza la plantilla de Browserbase para Exa:
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## Configurar las variables de entorno
-</div>
+## Configurar variables de entorno {#configure-environment-variables}
 
 Define las API keys que utilizan Exa y Browserbase:
 
@@ -34,11 +26,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## Buscar e interactuar con una página
-</div>
+## Búsqueda e interacción con una página {#search-and-interact-with-a-page}
 
-El siguiente ejemplo sigue el flujo de trabajo de la plantilla: buscar empresas, localizar una página de empleo, abrirla en una sesión de Browserbase, extraer la descripción del puesto y dejar que un agente de Stagehand interactúe con la página.
+El siguiente ejemplo sigue el flujo de trabajo de la plantilla: buscar empresas, encontrar una página de empleo, abrirla en una sesión de Browserbase, extraer la descripción del puesto y permitir que un agente de Stagehand interactúe con la página.
 
 ```typescript quickstart.ts theme={null}
 import "dotenv/config";
@@ -110,4 +100,4 @@ try {
 }
 ```
 
-La plantilla incluye el flujo de trabajo completo para extraer los detalles de las ofertas de empleo, generar respuestas personalizadas y completar formularios de solicitud. Consulta la [implementación en TypeScript](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) o la [implementación en Python](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase).
+La plantilla incluye el flujo de trabajo completo para extraer los detalles de las ofertas de empleo, generar respuestas personalizadas y rellenar formularios de solicitud. Consulta la [implementación en TypeScript](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) o la [implementación en Python](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase).

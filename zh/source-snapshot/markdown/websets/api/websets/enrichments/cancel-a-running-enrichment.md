@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入探索之前，可通过该文件查看所有可用页面。
 
-<div id="cancel-a-running-enrichment">
-  # 取消正在运行的 enrichment
-</div>
+# 取消正在运行的增强 {#cancel-a-running-enrichment}
 
-> 所有正在运行的 enrichment 都将被取消。Enrichment 一旦取消，便无法恢复。
+> 所有正在运行的增强都将被取消。增强一旦取消，将无法恢复。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/enrichments/{id}/cancel
 openapi: 3.1.0

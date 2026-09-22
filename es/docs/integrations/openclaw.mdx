@@ -7,9 +7,7 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
 
 [OpenClaw](https://openclaw.ai/) admite Exa como proveedor nativo de `web_search`. Una vez seleccionado, cualquier agente de OpenClaw puede usar los modos de búsqueda de Exa, los filtros por fecha y la extracción de contenido mediante la herramienta web integrada.
 
-<div id="set-up-exa">
-  ## Configurar Exa
-</div>
+## Configurar Exa {#set-up-exa}
 
 <Steps>
   <Step title="Instalar el plugin de Exa">
@@ -19,14 +17,14 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
     ```
   </Step>
 
-  <Step title="Obtener una Exa API key">
-    <Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+  <Step title="Obtener una API key de Exa">
+    <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
     </Card>
   </Step>
 
   <Step title="Guardar la key">
-    Si usas una instalación de gateway, añade la key a `~/.openclaw/.env`:
+    Para una instalación con gateway, añade la key a `~/.openclaw/.env`:
 
     ```bash ~/.openclaw/.env theme={null}
     EXA_API_KEY=your-exa-api-key
@@ -46,9 +44,7 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Configuración manual
-</div>
+## Configurar manualmente {#configure-manually}
 
 Puedes seleccionar Exa directamente en la configuración JSON5 de OpenClaw:
 
@@ -86,22 +82,20 @@ Para almacenar la key en la configuración en lugar de en el entorno del gateway
   Es preferible usar `EXA_API_KEY` o un SecretRef de OpenClaw en lugar de incluir una API key en un archivo de configuración.
 </Note>
 
-<div id="what-agents-can-request">
-  ## Qué pueden solicitar los agentes
-</div>
+## Qué pueden solicitar los agentes {#what-agents-can-request}
 
-OpenClaw expone Exa a través de `web_search`.
+OpenClaw expone Exa mediante `web_search`.
 
-| Parámetro                    | Propósito                                                                                |
-| ---------------------------- | ---------------------------------------------------------------------------------------- |
-| `query`                      | La consulta de búsqueda web.                                                             |
-| `count`                      | Número de resultados, hasta 100 y sujeto al límite del tipo de búsqueda seleccionado.    |
-| `type`                       | Modo de búsqueda de Exa: `auto`, `neural`, `fast`, `instant`, `deep` y `deep-reasoning`. |
-| `freshness`                  | Restringe los resultados al último día, semana, mes o año.                               |
-| `date_after` / `date_before` | Restringe los resultados con límites en formato `YYYY-MM-DD`.                            |
-| `contents`                   | Devuelve el texto completo, los highlights o los resúmenes con cada resultado.           |
+| Parámetro                    | Propósito                                                                                          |
+| ---------------------------- | -------------------------------------------------------------------------------------------------- |
+| `query`                      | La consulta de búsqueda web.                                                                       |
+| `count`                      | Número de resultados, hasta 100 y sujeto al límite del tipo de búsqueda seleccionado.              |
+| `type`                       | Modo de búsqueda de Exa, incluidos `auto`, `neural`, `fast`, `instant`, `deep` y `deep-reasoning`. |
+| `freshness`                  | Restringe los resultados al último día, semana, mes o año.                                         |
+| `date_after` / `date_before` | Restringe los resultados con límites en formato `YYYY-MM-DD`.                                      |
+| `contents`                   | Devuelve texto completo, highlights o resúmenes con cada resultado.                                |
 
-Si se omite `contents`, OpenClaw solicita highlights de forma predeterminada. El Agent puede pedir otro formato de contenido cuando necesite páginas completas o resúmenes:
+Si se omite `contents`, OpenClaw solicita highlights de forma predeterminada. El agente puede pedir otro tipo de contenido cuando necesita páginas completas o resúmenes:
 
 ```javascript theme={null}
 await web_search({
@@ -115,40 +109,36 @@ await web_search({
 });
 ```
 
-OpenClaw almacena en caché los resultados de búsqueda web durante 15 minutos de forma predeterminada. Modifica `tools.web.search.cacheTtlMinutes` o establécelo en `0` cuando cada solicitud deba devolver resultados actualizados.
+De forma predeterminada, OpenClaw almacena en caché los resultados de búsqueda web durante 15 minutos. Cambia `tools.web.search.cacheTtlMinutes` o establécelo en `0` cuando cada solicitud deba obtener datos actualizados.
 
-<div id="troubleshooting">
-  ## Solución de problemas
-</div>
+## Solución de problemas {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="OpenClaw no muestra Exa como proveedor">
     Instala `@openclaw/exa-plugin`, reinicia el gateway y vuelve a ejecutar `openclaw configure --section web`.
   </Accordion>
 
-  <Accordion title="OpenClaw informa que falta la clave de Exa">
-    Verifica que `EXA_API_KEY` esté disponible para el proceso del gateway, y no solo en tu shell interactiva. En una instalación con gateway, colócala en `~/.openclaw/.env` y reinicia el gateway.
+  <Accordion title="OpenClaw indica que falta la key de Exa">
+    Comprueba que `EXA_API_KEY` esté disponible para el proceso del gateway, no solo en tu shell interactivo. En una instalación de gateway, colócala en `~/.openclaw/.env` y reinicia el gateway.
   </Accordion>
 
   <Accordion title="Los resultados de búsqueda parecen desactualizados">
-    OpenClaw almacena en caché los resultados de forma independiente de Exa. Reduce `tools.web.search.cacheTtlMinutes` o ponlo en `0`, y luego usa las opciones de actualidad de contenido de Exa al solicitar el contenido de las páginas.
+    OpenClaw almacena en caché los resultados de forma independiente a Exa. Reduce `tools.web.search.cacheTtlMinutes` o establécelo en `0`, y luego usa las opciones de frescura del contenido de Exa al solicitar el contenido de las páginas.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
 <Columns cols={3}>
-  <Card title="Proveedor Exa de OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Leer guía" arrow="true">
+  <Card title="Exa provider de OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Leer la guía" arrow="true">
     Consulta la configuración actual del plugin y los parámetros de la herramienta.
   </Card>
 
-  <Card title="Exa Search" icon="search" href="/es/docs/search/quickstart" cta="Leer guía" arrow="true">
+  <Card title="Exa Search" icon="search" href="/es/docs/search/quickstart" cta="Leer la guía" arrow="true">
     Compara los modos de búsqueda de Exa y los formatos de respuesta.
   </Card>
 
-  <Card title="Actualidad del contenido" icon="clock" href="/es/docs/contents/quickstart#content-freshness" cta="Leer guía" arrow="true">
-    Controla el contenido de las páginas indexado y el recuperado en vivo.
+  <Card title="Frescura del contenido" icon="clock" href="/es/docs/contents/quickstart#content-freshness" cta="Leer la guía" arrow="true">
+    Controla el contenido indexado y el obtenido en tiempo real.
   </Card>
 </Columns>

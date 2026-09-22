@@ -1,13 +1,13 @@
 ---
 title: "Daftar event run"
 description: "Menampilkan daftar event Agent run yang tersimpan atau memutarnya
-  ulang sebagai server-sent events."
+  kembali sebagai server-sent events."
 openapi: "/id/docs/exa-spec.yaml GET /agent/runs/{id}/events"
 timestamp: false
 ---
 
-Secara default, endpoint ini mengembalikan daftar JSON berisi event tersimpan dengan paginasi. Atur `Accept: text/event-stream` untuk memutar ulang event tersimpan sebagai SSE. Untuk paginasi JSON, gunakan `cursor`. Untuk replay SSE, gunakan `Last-Event-ID`.
+Secara default, endpoint ini mengembalikan daftar JSON berhalaman berisi event yang tersimpan. Setel `Accept: text/event-stream` untuk melakukan replay event tersimpan sebagai SSE. Untuk paginasi JSON, gunakan `cursor`. Untuk replay SSE, gunakan `Last-Event-ID`.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru mendapatkan credits gratis.
+  Buat key di dashboard. Akun baru mendapatkan credits gratis di awal.
 </Card>

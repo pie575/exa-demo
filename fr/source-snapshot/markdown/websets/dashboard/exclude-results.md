@@ -1,45 +1,35 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="exclude-results">
-  # Exclude Results
-</div>
+# Exclude Results {#exclude-results}
 
-> Évitez les résultats en double dans vos nouvelles recherches en excluant les URL issues de Websets précédents ou de fichiers CSV.
+> Évitez les résultats en double dans vos nouvelles recherches en excluant les URL provenant de Websets précédents ou de fichiers CSV.
 
 <br />
 
-<div id="overview">
-  ## Aperçu
-</div>
+## Vue d&#39;ensemble {#overview}
 
-La fonctionnalité Exclude Results évite l&#39;apparition de doublons lors de la création de nouvelles searches. En indiquant les URL à exclure à partir de Websets précédents ou de fichiers CSV importés, vous pouvez vous concentrer sur la découverte de résultats inédits et uniques, qui viennent compléter vos données existantes.
+La fonctionnalité Exclude Results vous évite d&#39;obtenir des résultats en double lors de la création de nouvelles recherches. En indiquant les URL à exclure à partir de Websets précédents ou de fichiers CSV importés, vous pouvez vous concentrer sur la découverte de résultats inédits et uniques, qui viennent compléter vos données existantes.
 
 <br />
 
-<div id="how-it-works">
-  ## Fonctionnement
-</div>
+## Fonctionnement {#how-it-works}
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/exclude-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=b28ac0441991bc4543571ffc2a900963" alt="Options d'exclusion de résultats lors de la création d'un Webset" width="1466" height="857" data-path="images/websets/exclude-flow.png" />
 
-1. Commencez la création d&#39;un nouveau Webset
-2. Sous les critères, dans le panneau latéral, cliquez sur « Exclude Results »
-3. Sélectionnez d&#39;anciens Websets ou téléversez un CSV contenant les URL à exclure. Vous pouvez sélectionner plusieurs sources d&#39;exclusion.
+1. Commencez à créer un nouveau Webset
+2. Sous les critères, dans le panneau latéral, cliquez sur « Exclude »
+3. Sélectionnez des Websets précédents ou importez un CSV contenant les URL à exclure. Vous pouvez sélectionner plusieurs sources d&#39;exclusion.
 4. Lancez votre search : seuls les nouveaux résultats ne correspondant pas à vos exclusions seront renvoyés
 
-Le nombre maximal de résultats que vous pouvez exclure dépend de votre forfait.
+Le nombre maximal de résultats que vous pouvez exclure dépend de votre plan.
 
 <br />
 
-<div id="when-to-use-exclusions">
-  ## Quand utiliser les exclusions
-</div>
+## Quand utiliser les exclusions {#when-to-use-exclusions}
 
 * Trouver des prospects qui ne figurent pas déjà dans votre CRM
-* Poursuivre des recherches précédentes avec des critères affinés
+* Prolonger des recherches précédentes avec des critères affinés
 * Exclure des résultats que vous connaissez déjà

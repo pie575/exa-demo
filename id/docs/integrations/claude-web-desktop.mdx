@@ -1,35 +1,33 @@
 ---
 title: "Exa di Claude Code, Web, dan Desktop"
 sidebarTitle: "Claude Code, Web & Desktop"
-description: "Telusuri web dan baca halaman apa pun dengan Exa langsung dari Claude"
+description: "Cari di web dan baca halaman apa pun dengan Exa langsung dari Claude"
 icon: "/docs/images/sidebar-icons/anthropic.svg"
 keywords: ["Claude", "Claude Code", "Claude Web", "Claude Desktop", "Exa MCP", "web search"]
 ---
 
-Pasang Exa di Claude Code atau hubungkan ke Claude Web, Desktop, dan Cowork agar Claude memiliki akses ke informasi terkini dari web. Claude dapat mencari dengan bahasa alami, membaca halaman yang penting, dan memanfaatkan sumber-sumber tersebut selama bekerja.
+Instal Exa di Claude Code atau hubungkan ke Claude Web, Desktop, dan Cowork agar Claude memiliki akses ke informasi terkini dari web. Claude dapat mencari dengan bahasa alami, membaca halaman yang relevan, dan memanfaatkan sources tersebut sambil bekerja.
 
-<div id="install-exa">
-  ## Instal Exa
-</div>
+## Instal Exa {#install-exa}
 
 <div className="docs-tabs">
   <Tabs>
     <Tab title="Claude Web, Desktop & Cowork" icon="/docs/images/mcp-clients/claude.svg" width="24" height="24" data-path="images/mcp-clients/claude.svg">
       <Steps>
         <Step title="Buka direktori konektor">
-          Di obrolan Claude yang baru, klik tombol plus, pilih **Add connector**, lalu cari **Exa**.
+          Di chat Claude yang baru, klik tombol plus, pilih **Add connector**, lalu cari **Exa**.
         </Step>
 
         <Step title="Hubungkan Exa">
-          Buka Exa, pilih **Connect to Claude**, lalu berikan izin akses saat diminta.
+          Buka Exa, pilih **Connect to Claude**, lalu izinkan akses saat diminta.
 
-          <Frame caption="Membuka direktori konektor di Claude, menemukan Exa, menghubungkannya, dan memberikan izin akses">
-            <img src="/docs/images/integrations/claude-web-desktop/install-claude.gif" alt="Membuka direktori konektor di Claude, menemukan Exa, menghubungkannya, dan memberikan izin akses" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
+          <Frame caption="Membuka direktori konektor di Claude, menemukan Exa, menghubungkannya, dan mengizinkan akses">
+            <img src="/docs/images/integrations/claude-web-desktop/install-claude.gif" alt="Membuka direktori konektor di Claude, menemukan Exa, menghubungkannya, dan mengizinkan akses" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
           </Frame>
         </Step>
 
         <Step title="Gunakan Exa">
-          Mulai obrolan baru dan tanyakan sesuatu yang memerlukan informasi terkini dari web.
+          Mulai chat baru dan tanyakan sesuatu yang memerlukan informasi terkini dari web.
         </Step>
       </Steps>
     </Tab>
@@ -49,8 +47,8 @@ Pasang Exa di Claude Code atau hubungkan ke Claude Web, Desktop, dan Cowork agar
         <Step title="Mulai sesi baru">
           Buka sesi Claude Code yang baru agar plugin termuat, lalu tanyakan sesuatu yang memerlukan akses web.
 
-          <Frame caption="Membuka sesi Claude Code yang baru dan menanyakan sesuatu yang memerlukan akses web">
-            <img src="/docs/images/integrations/claude-web-desktop/claude-code.gif" alt="Membuka sesi Claude Code yang baru dan menanyakan sesuatu yang memerlukan akses web" style={{width: "100%", height: "auto"}} width="800" height="502" data-path="images/integrations/claude-web-desktop/claude-code.gif" />
+          <Frame caption="Membuka sesi Claude Code baru dan menanyakan sesuatu yang memerlukan akses web">
+            <img src="/docs/images/integrations/claude-web-desktop/claude-code.gif" alt="Membuka sesi Claude Code baru dan menanyakan sesuatu yang memerlukan akses web" style={{width: "100%", height: "auto"}} width="800" height="502" data-path="images/integrations/claude-web-desktop/claude-code.gif" />
           </Frame>
         </Step>
       </Steps>
@@ -58,83 +56,73 @@ Pasang Exa di Claude Code atau hubungkan ke Claude Web, Desktop, dan Cowork agar
   </Tabs>
 </div>
 
-Kedua opsi tersebut membuat Exa langsung tersedia tanpa perlu menyunting file konfigurasi MCP.
+Kedua opsi ini membuat Exa langsung tersedia tanpa perlu mengedit file konfigurasi MCP.
 
-<div id="work-with-whats-on-the-web-right-now">
-  ## Manfaatkan apa yang ada di web saat ini
-</div>
+## Manfaatkan apa yang ada di web saat ini {#work-with-whats-on-the-web-right-now}
 
-Di Claude Code, Exa dapat melakukan search terhadap dokumentasi terkini, issue, changelog, dan contoh nyata sambil Anda bekerja di repository. Integrasi yang sama memberi Claude Web, Desktop, dan Cowork akses ke berita terbaru, riset, informasi perusahaan, detail produk, serta sumber lain yang mungkin belum tersedia dalam konteks.
+Di Claude Code, Exa dapat mencari dokumentasi terkini, issues, changelog, dan contoh nyata sambil Anda bekerja di repositori Anda. Integrasi yang sama memberikan Claude Web, Desktop, dan Cowork berita terbaru, research, informasi perusahaan, detail produk, serta sources lain yang mungkin belum tersedia dalam konteks.
 
 ```text theme={null}
-Kami masih memakai Tailwind v3. Gunakan Exa untuk mencari dan membaca panduan
+Kami memakai Tailwind v3. Gunakan Exa untuk mencari dan membaca panduan
 upgrade resmi Tailwind v4, lalu migrasikan proyek ini ke v4.
 ```
 
-Claude Code dapat memanfaatkan apa yang ditemukannya untuk melakukan perubahan di basis kode Anda. Pada klien Claude lainnya, sumber yang sama bisa digunakan dalam jawaban, artifact, dan tugas Cowork.
+Claude Code dapat memanfaatkan temuannya untuk melakukan perubahan pada basis kode Anda. Di client Claude lainnya, sources yang sama bisa dipakai dalam jawaban, artifact, dan tugas Cowork.
 
-Pola yang sama berlaku setiap kali jawaban bergantung pada sumber web terkini atau sumber web tertentu:
+Pola yang sama berlaku setiap kali jawaban bergantung pada sources web terkini atau spesifik:
 
-* &quot;Temukan catatan rilis terbaru untuk dependensi ini dan rangkum perubahan yang bersifat breaking.&quot;
-* &quot;Cari riset primer terbaru tentang inference-time scaling dan bandingkan metodenya.&quot;
-* &quot;Baca dokumentasi webhook Stripe yang berlaku saat ini dan jelaskan perilaku retry yang direkomendasikan.&quot;
-* &quot;Temukan halaman harga resmi untuk produk-produk ini dan bandingkan paket dasarnya.&quot;
+* &quot;Temukan catatan rilis terbaru untuk dependensi ini dan rangkum perubahan yang merusak kompatibilitas.&quot;
+* &quot;Cari research primer terbaru tentang inference-time scaling dan bandingkan metodenya.&quot;
+* &quot;Baca dokumentasi webhook Stripe saat ini dan jelaskan perilaku retry yang direkomendasikan.&quot;
+* &quot;Temukan halaman harga resmi untuk produk-produk ini dan bandingkan plan tingkat dasarnya.&quot;
 
-<div id="search-read-and-research">
-  ## Search, baca, dan riset
-</div>
+## Search, read, dan research {#search-read-and-research}
 
-Integrasi Exa memberi Claude perangkat untuk melakukan search dan membaca web, yang bisa dipadukan dalam tugas riset yang lebih panjang.
+Integrasi Exa memberi Claude tool untuk melakukan search dan membaca konten web, yang dapat digabungkan untuk menyelesaikan tugas research yang lebih panjang.
 
 <Columns cols={3}>
   <Card title="Search" icon="search">
     Lakukan search dengan bahasa alami dan dapatkan page content yang relevan, bukan sekadar daftar tautan.
   </Card>
 
-  <Card title="Baca" icon="file-text">
-    Baca halaman yang Anda tentukan, mulai dari dokumentasi, riset, changelog, issue, hingga artikel.
+  <Card title="Read" icon="file-text">
+    Baca halaman yang Anda tentukan, termasuk dokumentasi, research, changelog, issue, dan artikel.
   </Card>
 
-  <Card title="Riset" icon="compass">
-    Jalankan beberapa search, telaah halaman yang relevan, lalu gabungkan evidence menjadi jawaban yang disertai sumber.
+  <Card title="Research" icon="compass">
+    Jalankan beberapa search, periksa halaman yang relevan, lalu gabungkan evidence menjadi response yang disertai sumber.
   </Card>
 </Columns>
 
-<div id="research-without-leaving-claude">
-  ## Riset tanpa perlu keluar dari Claude
-</div>
+## Research tanpa meninggalkan Claude {#research-without-leaving-claude}
 
-Mintalah hasil yang Anda inginkan dan beri tahu Claude jenis sumber apa yang penting:
+Mintalah hasil yang Anda inginkan dan beri tahu Claude jenis sources apa yang penting:
 
 ```text theme={null}
 Bandingkan layanan terkelola, lisensi, dan harga dari basis data vektor
-open source utama. Gunakan sumber primer terkini dan cantumkan sitasinya.
+open source utama. Gunakan sumber primer terkini dan sertakan kutipannya.
 ```
 
-Claude dapat menggunakan Exa sepanjang percakapan untuk menemukan dan membaca sumber yang diperlukan untuk suatu tugas. Gunakan ini untuk riset teknis, analisis kompetitif, pemetaan pasar, riset perusahaan, atau pertanyaan apa pun yang jawabannya tersebar di berbagai situs web.
+Claude dapat menggunakan Exa sepanjang percakapan untuk menemukan dan membaca sources yang diperlukan untuk suatu tugas. Gunakan ini untuk Research teknis, analisis kompetitif, pemetaan pasar, Research perusahaan, atau pertanyaan apa pun yang jawabannya tersebar di berbagai penjuru web.
 
-<div id="use-exa-in-cowork">
-  ## Menggunakan Exa di Cowork
-</div>
+## Menggunakan Exa di Cowork {#use-exa-in-cowork}
 
-Konektor yang sama juga tersedia di Cowork. Berikan Claude tugas yang membutuhkan informasi dari luar, dan Claude bisa melakukan search atau membaca halaman web sambil mengolah file Anda dan tool lain yang terhubung.
+Konektor yang sama tersedia di Cowork. Beri Claude tugas yang membutuhkan informasi dari luar, dan Claude bisa melakukan search atau membaca halaman sambil bekerja dengan file Anda serta tool lain yang terhubung.
 
 ```text theme={null}
-Tinjau ringkasan kompetitif ini, verifikasi setiap klaim harga dengan
-halaman vendor terkini menggunakan Exa, lalu perbarui dokumen dengan citations.
+Tinjau brief kompetitif ini, verifikasi setiap klaim harga terhadap
+halaman vendor terkini menggunakan Exa, lalu perbarui dokumen dengan sitasi.
 ```
 
-<div id="prefer-mcp-directly">
-  ## Lebih suka langsung memakai MCP?
-</div>
+## Lebih suka langsung pakai MCP? {#prefer-mcp-directly}
 
-Jika Anda mengonfigurasi Claude secara manual atau menggunakan klien MCP lain, Anda dapat terhubung langsung ke MCP server milik Exa:
+Jika Anda mengonfigurasi Claude secara manual atau menggunakan MCP client lain, Anda bisa langsung terhubung ke MCP server yang dihosting Exa:
 
 ```bash theme={null}
 claude mcp add --transport http exa https://mcp.exa.ai/mcp
 ```
 
-Lihat [Exa MCP](/id/docs/get-started/exa-mcp) untuk klien lainnya, opsi konfigurasi, dan tool yang tersedia.
+Lihat [Exa MCP](/id/docs/get-started/exa-mcp) untuk client lain, opsi konfigurasi, dan tool yang tersedia.
 
 <Card title="Buka konektor Exa" icon="external-link" horizontal href="https://claude.ai/connectors/exa">
   Tambahkan Exa di direktori konektor Claude.

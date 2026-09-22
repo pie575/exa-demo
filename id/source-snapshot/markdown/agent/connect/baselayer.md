@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="baselayer">
-  # Baselayer
-</div>
+# Baselayer {#baselayer}
 
 > Verifikasi bisnis AS dan ambil data KYB: pejabat, registrasi, skor risiko.
 
 [Baselayer](https://baselayer.com) adalah platform Know Your Business (KYB) yang
-memverifikasi entitas AS terhadap data registrasi dan risiko yang otoritatif. Platform ini
-mengidentifikasi sebuah bisnis berdasarkan nama dan alamat, lalu mengembalikan profil lengkapnya: pejabat,
-registrasi di tingkat negara bagian, struktur entitas, dan status verifikasi.
+memverifikasi entitas AS berdasarkan data registrasi dan risiko yang otoritatif. Platform ini
+mengidentifikasi sebuah bisnis dari nama dan alamatnya, lalu mengembalikan profil lengkap: pejabat,
+registrasi negara bagian, struktur entitas, dan status verifikasi.
 
 Attach `baselayer` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
-[Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
+[Exa Connect](/id/docs/agent/connect/overview), maka agent akan mengueri
 Baselayer bersamaan dengan Exa web search.
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Onboarding KYB dan verifikasi vendor/pelanggan.
-* Uji tuntas terhadap pejabat perusahaan, registrasi, dan struktur entitas.
-* Penyaringan risiko bisnis dan kecocokan dengan watchlist.
+* Onboarding KYB serta verifikasi vendor/pelanggan.
+* Uji tuntas terhadap pejabat, registrasi, dan struktur entitas.
+* Screening bisnis untuk mendeteksi risiko dan kecocokan watchlist.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -38,9 +30,7 @@ Gunakan nilai ini pada `dataSources`:
 baselayer
 ```
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
 Baselayer menagih per pesanan, dan tarifnya bergantung pada operasi serta
 parameternya:
@@ -48,8 +38,8 @@ parameternya:
 | Operasi                                                             | Harga                                       |
 | ------------------------------------------------------------------- | ------------------------------------------- |
 | Business search                                                     | `$1.00 / search`                            |
-| Business lookup / pejabat / registrasi / officer reverse lookup | Gratis (pembacaan dari search sebelumnya)   |
-| Lien search                                                         | `$2.00 / negara bagian searched`                    |
+| Business lookup / officers / registrations / officer reverse lookup | Gratis (pembacaan dari search sebelumnya)   |
+| Lien search                                                         | `$2.00 / state searched`                    |
 | Litigation search                                                   | `$1.00 / category (litigation, bankruptcy)` |
 | Watchlist screen                                                    | `$0.10 – $0.25 / list requested`            |
 | Industry classification                                             | `$0.35 / call`                              |
@@ -57,16 +47,14 @@ parameternya:
 | Web presence                                                        | `$0.15 – $0.35 / selected analysis`         |
 | International business search                                       | `$4.00 / search`                            |
 
-Pilihan parameter memengaruhi harga: lien search di dua negara bagian dikenakan biaya
-$4.00, watchlist screen untuk keenam watchlist yang didukung dikenakan biaya $1.35, dan biaya satu
-call web presence adalah total dari analisis yang Anda pilih (atau dari set
-bawaan Baselayer — prediksi NAICS dan website analysis — bila Anda tidak memilih apa pun).
+Pilihan parameter memengaruhi harga: lien search pada dua negara bagian berbiaya
+$4.00, watchlist screen untuk keenam daftar yang didukung berbiaya $1.35, dan
+satu panggilan web presence dihitung dari total analisis yang Anda pilih (atau dari
+kumpulan default Baselayer — prediksi NAICS dan website analysis — jika Anda tidak memilih satu pun).
 
-<div id="example">
-  ## Contoh
-</div>
+## Contoh {#example}
 
-Verifikasi sebuah bisnis dan ambil detail pejabat serta status registrasinya.
+Verifikasi sebuah bisnis dan ambil detail pejabat serta registrasinya.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -179,32 +167,28 @@ Verifikasi sebuah bisnis dan ambil detail pejabat serta status registrasinya.
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Cocok dipadukan dengan
-</div>
+## Cocok dipadukan dengan {#pairs-well-with}
 
-* [Fiber.ai](/id/docs/agent/connect/fiber): perkaya data bisnis terverifikasi dengan firmografi, jumlah karyawan, dan kontak.
+* [Fiber.ai](/id/docs/agent/connect/fiber): enrich bisnis terverifikasi dengan data firmografis, jumlah karyawan, dan kontak.
 * [Financial Datasets](/id/docs/agent/connect/financialdatasets): tambahkan liputan berita terbaru untuk entitas publik.
-* [Similarweb](/id/docs/agent/connect/similarweb): bandingkan trafik web dan kompetitor perusahaan yang telah terverifikasi.
+* [Similarweb](/id/docs/agent/connect/similarweb): bandingkan trafik web dan kompetitor perusahaan terverifikasi.
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah selanjutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">
-    Quickstart Exa Connect membahas `dataSources`, harga, dan katalog partner selengkapnya.
+    Quickstart Exa Connect membahas `dataSources`, Harga, dan katalog partner selengkapnya.
   </Card>
 
-  <Card title="Gabungkan provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
-    Attach hingga lima partner ke satu run dan susun query agar semuanya terpicu.
+  <Card title="Gabungkan beberapa provider" icon="blend" href="/id/docs/agent/connect/combining-providers" cta="Baca panduan" arrow="true">
+    Attach hingga lima partner ke satu run dan rancang query agar masing-masing terpicu.
   </Card>
 
   <Card title="Pelajari Exa Agent" icon="book-open" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Buat run, pantau progres secara streaming, rancang schema output, serta kendalikan effort dan cost.
+    Buat runs, stream progres, rancang schema output, serta kendalikan effort dan cost.
   </Card>
 
   <Card title="Dapatkan API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Buat key" arrow="true">
-    Buat key di dashboard dan jalankan contoh di halaman ini apa adanya. Akun baru langsung mendapat credits gratis.
+    Buat key di dashboard lalu jalankan contoh di halaman ini apa adanya. Akun baru mendapatkan credits gratis.
   </Card>
 </Columns>

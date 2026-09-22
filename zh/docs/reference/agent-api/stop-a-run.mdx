@@ -1,18 +1,18 @@
 ---
 title: "停止运行"
-description: "优雅地停止正在进行的 Agent 运行，并保留已收集到的结果。"
+description: "优雅地停止正在进行的 Agent 运行，并保留已获取的结果。"
 openapi: "/zh/docs/exa-spec.yaml POST /agent/runs/{id}/stop"
 timestamp: false
 ---
 
-如果运行仍在进行中，agent 会收尾并提前完成该次运行，保留已收集到的结果。运行结束后状态为 `completed`，且 `stopReason: stopped`。停止前累计的用量仍会计费。如果运行已处于终止状态 (completed、failed 或 cancelled) ，该端点会原样返回现有运行。
+如果运行仍在进行中，agent 会收尾并基于已获取的结果提前完成该运行。运行结束时状态为 `completed`，`stopReason` 为 `stopped`。停止前产生的用量仍会计费。如果运行已处于终态 (completed、failed 或 cancelled) ，该端点将原样返回现有运行。
 
 若要立即终止运行且不返回任何结果，请改用 [cancel](/zh/docs/reference/agent-api/cancel-a-run)。
 
 <Note>
-  仅支持 `max` effort 的运行。请求 header 中必须传入 `Exa-Beta: agent-max-effort-2026-07-27`。该 header 接受以逗号分隔的 beta 令牌列表。
+  仅支持 `max` effort 的运行。必须在请求 header 中传入 `Exa-Beta: agent-max-effort-2026-07-27`。该 header 接受以逗号分隔的 beta token 列表。
 </Note>
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建密钥。新账户可获得免费额度。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>

@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="cybersecurity">
-  # Keamanan Siber
-</div>
+# Keamanan Siber {#cybersecurity}
 
-> Temukan kerentanan, advisory keamanan, laporan ancaman, dan dokumentasi kepercayaan dengan Exa Search.
+> Temukan kerentanan, advisory, laporan ancaman, dan dokumentasi kepercayaan dengan Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,66 +33,50 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk menelusuri catatan kerentanan, advisory vendor, dan riset ancaman dari sumber-sumber yang memang sudah dibaca tim keamanan.
+Gunakan Exa Search untuk catatan kerentanan, advisory vendor, dan threat research dari sources yang memang sudah dibaca oleh Team keamanan.
 
-<div id="included">
-  ## Yang Termasuk
-</div>
+## Included {#included}
 
 * Catatan kerentanan CVE dan GHSA
-* Security advisory dari vendor dan catatan patch
-* Laporan threat intelligence dan ulasan incident
+* Advisory keamanan vendor dan catatan patch
+* Laporan threat intelligence dan uraian incident
 * Trust pages, daftar subprosesor, dan dokumentasi kepatuhan
-* Blog keamanan, presentasi konferensi, dan riset
+* Blog keamanan, presentasi konferensi, dan research
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
 * Triase kerentanan dan penilaian eksposur
 * Threat intelligence dan pelacakan pelaku ancaman
-* Risiko vendor dan tinjauan keamanan pihak ketiga
-* Pemantauan dan peringatan keamanan
+* Penilaian risiko vendor dan tinjauan keamanan pihak ketiga
+* Pemantauan dan pemberian peringatan keamanan
 
-<div id="example-queries">
-  ## Contoh kueri
-</div>
+## Contoh kueri {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### Melakukan triase pada satu kelas kerentanan
-</div>
+### Melakukan triase kelas kerentanan {#triage-a-vulnerability-class}
 
 Sebutkan produk, rentang versi, dan tingkat keparahannya.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### Menemukan advisory vendor
-</div>
+### Menemukan advisory vendor {#find-vendor-advisories}
 
 Jelaskan status eksploitasi dan kelas produknya, bukan satu ID CVE tertentu.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### Tinjau postur keamanan vendor
-</div>
+### Meninjau postur keamanan vendor {#review-a-vendors-security-posture}
 
-Sebutkan jenis dokumen dan kategori vendor.
+Sebutkan jenis dokumen dan kelas vendor.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### Meneliti pihak penyerang
-</div>
+### Research pelaku ancaman {#research-an-adversary}
 
-Sebutkan nama kelompok atau kampanyenya serta teknik atau sektor yang Anda minati.
+Sebutkan nama kelompok atau kampanyenya, serta teknik atau sektor yang ingin Anda dalami.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## Buat permintaan
-</div>
+## Kirim permintaan {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -137,12 +117,10 @@ Sebutkan nama kelompok atau kampanyenya serta teknik atau sektor yang Anda minat
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Mendapatkan data terstruktur dengan Exa Agent
-</div>
+## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang membutuhkan riset lintas berbagai sumber, gunakan [task run Exa Agent](/id/docs/agent/quickstart). Jelaskan produk, criteria ancaman, dan field output yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi schema beserta citations.
+Untuk data terstruktur yang membutuhkan research di berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan produk, kriteria ancaman, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
   Periksa vendor melalui advisory, laporan pelanggaran data, dan trust pages, atau susun data kerentanan yang sudah dinormalisasi.
 </Card>

@@ -1,18 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
-> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="additional-providers">
-  # 추가 제공업체
-</div>
+# 추가 제공업체 {#additional-providers}
 
-> 셀프서비스 제공업체 외의 Exa Connect 파트너입니다.
+> 셀프 서비스 제공업체 외에 이용할 수 있는 Exa Connect 파트너입니다.
 
-셀프서비스 제공업체 외에도 Exa Connect는 추가 데이터 파트너를 지원합니다.
-해당 파트너는 **요청 시 이용 가능**하며, [Exa team에 문의하여 계정에 활성화할 수 있습니다](mailto:sales@exa.ai).
+셀프 서비스 제공업체 외에도 Exa Connect는 추가 data partners를 지원합니다. 이들은 **요청 시 이용 가능**하며, [저희 team에 문의하여 계정에 활성화할 수 있습니다](mailto:sales@exa.ai).
 
 <div className="connect-request-tiles">
   <Columns cols={3}>
@@ -69,11 +64,11 @@
 </div>
 
 <Columns cols={2}>
-  <Card title="team에 문의하기" icon="mail" href="mailto:sales@exa.ai" cta="영업팀 문의" arrow="true">
+  <Card title="팀에 문의하기" icon="mail" href="mailto:sales@exa.ai" cta="영업팀 문의" arrow="true">
     Exa Agent에 필요한 파트너를 알려주시면 연결해 드리겠습니다.
   </Card>
 
   <Card title="제공업체 되기" icon="handshake" href="https://docs.google.com/forms/d/e/1FAIpQLSexTOC8ix28h8uumexJxFg4Mln4WPmm-D332RSbdB01DtnvnQ/viewform" cta="지원하기" arrow="true">
-    제공할 데이터가 있으신가요? Exa Connect에 파트너로 참여하려면 신청하세요.
+    제공할 데이터가 있으신가요? Exa Connect에 파트너로 참여하려면 지원해 주세요.
   </Card>
 </Columns>

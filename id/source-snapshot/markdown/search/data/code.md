@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="code-docs">
-  # Code &amp; Docs
-</div>
+# Kode &amp; Dokumentasi {#code-docs}
 
-> Temukan kode, dokumentasi teknis, dan panduan implementasi dengan Exa Search.
+> Temukan kode, dokumentasi teknis, dan instruksi implementasi dengan Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -37,61 +33,47 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk menemukan repositori, dokumentasi teknis, informasi package, dan panduan implementasi melalui kueri berbahasa alami.
+Gunakan Exa Search untuk mencari repositori, dokumentasi teknis, informasi package, dan instruksi implementasi dengan kueri berbahasa alami.
 
 <Tip>
   Baca [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode) untuk mempelajari cara Exa
-  mengevaluasi retrieval pada tugas-tugas pemrograman.
+  mengevaluasi retrieval pada tugas-tugas coding.
 </Tip>
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Coding agent dan alat pembuat kode
+* Coding agent dan tool pembuatan kode
 * Produk pencarian dan dokumentasi untuk developer
 * Workflow debugging, migrasi, dan konfigurasi
-* Riset teknis di berbagai repositori, dokumentasi, dan package registry
+* Research teknis di berbagai repositori, dokumentasi, dan package registry
 
-<div id="example-queries">
-  ## Contoh kueri
-</div>
+## Contoh kueri {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### Temukan library berdasarkan capability
-</div>
+### Temukan libraries berdasarkan capability {#discover-libraries-by-capability}
 
-Jelaskan capability, ekosistem, dan batasan yang Anda butuhkan. Cara ini menemukan kandidat berdasarkan fungsinya, bukan bergantung pada nama proyek yang tepat.
+Jelaskan capability, ekosistem, dan batasan yang Anda perlukan. Cara ini menghasilkan kandidat berdasarkan fungsinya, bukan berdasarkan nama proyek yang persis.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### Mengambil dokumentasi implementasi
-</div>
+### Mengambil dokumentasi implementasi {#retrieve-implementation-documentation}
 
-Sebutkan nama produk dan operasi spesifiknya. Dengan begitu, search dapat mengutamakan dokumentasi API dan panduan implementasi ketimbang pembahasan umum.
+Sebutkan nama produk dan operasi yang spesifik. Dengan begitu, Search dapat memprioritaskan dokumentasi API dan panduan implementasi dibandingkan pembahasan umum.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### Periksa perubahan khusus versi
-</div>
+### Periksa perubahan spesifik per versi {#check-version-specific-changes}
 
-Sertakan kanal rilis atau nomor versi saat kompatibilitas menjadi hal penting. Cara ini mengurangi hasil yang membahas rilis lama.
+Sertakan kanal rilis atau versi jika kompatibilitas menjadi hal penting. Hal ini mengurangi hasil yang terkait rilis lama.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### Menemukan perkakas agent yang dapat digunakan ulang
-</div>
+### Menemukan tooling agent yang dapat digunakan ulang {#find-reusable-agent-tooling}
 
-Sebutkan jenis artefak dan tugasnya, alih-alih mencari frasa yang terlalu umum seperti &quot;AI tools&quot;.
+Sebutkan jenis artefak dan tugasnya, jangan mencari frasa yang terlalu umum seperti &quot;AI tools&quot;.
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## Membuat permintaan
-</div>
+## Membuat permintaan {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -139,12 +121,10 @@ Sebutkan jenis artefak dan tugasnya, alih-alih mencari frasa yang terlalu umum s
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Mendapatkan data terstruktur dengan Exa Agent
-</div>
+## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang memerlukan riset lintas banyak sumber, gunakan [task run Exa Agent](/id/docs/agent/quickstart). Jelaskan library, kriteria teknis, dan field output yang Anda perlukan, lalu Agent akan mengembalikan hasil tervalidasi schema lengkap dengan citations.
+Untuk data terstruktur yang membutuhkan research lintas berbagai sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan libraries, kriteria teknis, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
-  Bandingkan library, perkaya record repositori, atau hasilkan daftar terstruktur dari berbagai sinyal teknis.
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+  Bandingkan libraries, enrich catatan repositori, atau hasilkan daftar terstruktur dari berbagai sinyal teknis.
 </Card>

@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-websets-monitors">
-  # Websets monitor 목록 조회
-</div>
+# Websets monitor 목록 조회 {#list-websets-monitors}
 
 > Webset의 모든 monitor를 조회합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors
 openapi: 3.1.0

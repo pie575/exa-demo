@@ -1,32 +1,26 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="stop-a-run">
-  # Detener una ejecución
-</div>
+# Detener un run {#stop-a-run}
 
-> Detén de forma controlada una ejecución de Agent en curso y conserva los resultados obtenidos hasta el momento.
+> Detén de forma controlada un run de Agent en ejecución y conserva los resultados obtenidos hasta ese momento.
 
-Si la ejecución sigue activa, el agente cierra su trabajo y la completa de forma anticipada con los resultados obtenidos hasta ese momento. La ejecución termina con el estado `completed` y `stopReason: stopped`. Se te cobra el uso acumulado antes de la detención. Si la ejecución ya alcanzó un estado terminal (completed, failed o cancelled), el endpoint devuelve la ejecución existente sin cambios.
+Si el run sigue activo, el agente cierra su trabajo y completa el run de forma anticipada con los resultados obtenidos hasta ese momento. El run termina con el estado `completed` y `stopReason: stopped`. Se te cobra por el uso acumulado antes de la detención. Si el run ya alcanzó un estado terminal (completed, failed o cancelled), el endpoint devuelve el run existente sin cambios.
 
-Para terminar una ejecución de inmediato sin devolver ningún resultado, usa [cancel](/es/docs/reference/agent-api/cancel-a-run) en su lugar.
+Para terminar un run de inmediato sin devolver ningún resultado, usa [cancel](/es/docs/reference/agent-api/cancel-a-run) en su lugar.
 
 <Note>
-  Solo se admite en ejecuciones con esfuerzo `max`. Se debe enviar `Exa-Beta: agent-max-effort-2026-07-27`
+  Solo es compatible con runs de effort `max`. Debes enviar `Exa-Beta: agent-max-effort-2026-07-27`
   como encabezado de la solicitud. El encabezado acepta una lista de tokens beta separados por comas.
 </Note>
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas comienzan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0

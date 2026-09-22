@@ -1,31 +1,25 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 完整的文档索引请访问：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="create-a-run">
-  # 创建运行
-</div>
+# 创建运行 {#create-a-run}
 
-> 创建一个异步的 Agent 运行。除非请求服务器发送事件 (SSE) ，否则响应会立即返回该运行对象。
+> 创建一个异步 Agent 运行。除非请求服务器发送事件，否则响应会立即返回运行对象。
 
-使用自然语言 `query` 创建运行。可添加 `outputSchema` 以获得经过校验的结构化 JSON，用 `input.data` 提供待处理的数据行，用 `input.exclusion` 指定需要排除的记录或实体，或用 `previousRunId` 从已完成的运行继续。
+使用自然语言 `query` 创建运行。可添加 `outputSchema` 以获得经过校验的结构化 JSON，用 `input.data` 传入待处理的数据行，用 `input.exclusion` 指定需要排除的记录或实体，或用 `previousRunId` 从已完成的运行继续。
 
-设置 `Accept: text/event-stream`，即可在运行创建、启动和完成的过程中流式接收运行事件。
+设置 `Accept: text/event-stream`，即可在运行创建、启动和完成时流式接收运行事件。
 
 <Note>
   **Connect：** 传入 `dataSources`，让 agent 在运行期间访问第三方数据提供方。详见 [Connect 指南](/zh/docs/agent/quickstart#connect-data-sources)。
 </Note>
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制面板中创建 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0
@@ -518,13 +512,11 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
-            applies only to `auto` and `max`; when omitted, the default cap is
-            $5 for `auto` and $20 for `max`.
+            本次运行可花费的最高金额（美元）。接受 $1–$100，且仅适用于 `auto` 和
+            `max`；省略时，默认上限为 `auto` $5、`max` $20。
           example: 10
       description: >-
-        Optional per-run spending limit for the metered `auto` and `max`
-        efforts. Runs that finish early may cost less than the limit.
+        针对计量计费的 `auto` 和 `max` 强度的可选单次运行花费上限。提前结束的运行花费可能低于该上限。
     AgentRunStatus:
       type: string
       enum:
@@ -547,17 +539,14 @@ components:
         query:
           type: string
           minLength: 1
-          description: Natural-language question or instructions for the request.
+          description: 本次请求的自然语言问题或指令。
           example: >-
-            What are the most important AI infrastructure funding rounds
-            announced this week?
+            本周宣布的最重要的 AI 基础设施融资轮有哪些？
         systemPrompt:
           type: string
           description: >-
-            Additional instructions that guide generated output or agent
-            behavior. Use this for source preferences, novelty constraints,
-            duplication constraints, or other behavior guidance.
-          example: Prefer official sources and avoid duplicate results.
+            用于指导生成输出或智能体行为的附加说明。可用于来源偏好、新颖性约束、去重约束或其他行为指导。
+          example: 优先使用官方来源并避免重复结果。
         effort:
           $ref: '#/components/schemas/AgentEffort'
         input:
@@ -571,8 +560,8 @@ components:
                   type: string
                 additionalProperties:
                   $ref: '#/components/schemas/JsonValue'
-                description: A JSON object record.
-              description: Records the agent should process or enrich.
+                description: 一条 JSON 对象记录。
+              description: 智能体应处理或增强的记录。
             exclusion:
               type: array
               items:
@@ -581,8 +570,8 @@ components:
                   type: string
                 additionalProperties:
                   $ref: '#/components/schemas/JsonValue'
-                description: A JSON object record.
-              description: Records or entities the agent should avoid returning.
+                description: 一条 JSON 对象记录。
+              description: 智能体应避免返回的记录或实体。
           additionalProperties: false
         outputSchema:
           anyOf:
@@ -592,10 +581,8 @@ components:
               additionalProperties:
                 $ref: '#/components/schemas/JsonValue'
               description: >-
-                JSON Schema for validated structured output in
-                `output.structured`. Fields unsupported by evidence may be
-                returned as `null`. Supports draft-07, 2019-09, and 2020-12 via
-                `$schema`.
+                用于校验 `output.structured` 中结构化输出的 JSON Schema。缺乏证据支持的字段可能返回
+                `null`。通过 `$schema` 支持 draft-07、2019-09 和 2020-12。
             - type: 'null'
         previousRunId:
           $ref: '#/components/schemas/AgentRunId'
@@ -605,7 +592,7 @@ components:
             type: string
           additionalProperties:
             type: string
-          description: Caller-provided key-value metadata for your own tracking.
+          description: 调用方提供的键值元数据，供你自行跟踪使用。
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -614,30 +601,30 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AgentDataSourceOutput'
-          description: Exa Connect data providers configured for the run.
+          description: 为本次运行配置的 Exa Connect 数据提供方。
         budget:
           $ref: '#/components/schemas/AgentBudgetOutput'
       additionalProperties:
         $ref: '#/components/schemas/JsonValue'
-      description: Canonicalized request fields stored with the run.
+      description: 与运行一并存储的规范化请求字段。
     AgentRunOutput:
       type: object
       properties:
         text:
           type: string
-          description: Natural-language answer or summary.
+          description: 自然语言答案或摘要。
         structured:
           anyOf:
             - $ref: '#/components/schemas/JsonValue'
             - type: 'null'
           description: >-
-            JSON shaped by `outputSchema`; fields unsupported by evidence may be
-            `null`. `null` when no schema was provided.
+            由 `outputSchema` 定义结构的 JSON；缺乏证据支持的字段可能为 `null`。未提供 schema 时为
+            `null`。
         grounding:
           type: array
           items:
             $ref: '#/components/schemas/AgentGrounding'
-          description: Field-level citations emitted by the run.
+          description: 本次运行输出的字段级引用。
       required:
         - text
         - structured
@@ -736,15 +723,14 @@ components:
         - particle
         - jinko
         - polymarket
-      description: Identifier of an Exa Connect data provider.
+      description: Exa Connect 数据提供方的标识符。
     AgentDataSourceOutput:
       type: object
       properties:
         provider:
           $ref: '#/components/schemas/AgentDataSourceProvider'
           description: >-
-            Exa Connect data provider to enable for the run. All provider tools
-            are available by default.
+            为本次运行启用的 Exa Connect 数据提供方。默认情况下所有提供方工具均可用。
           example: fiber
       required:
         - provider
@@ -755,20 +741,18 @@ components:
         maxCostDollars:
           type: number
           description: >-
-            Maximum amount this run can spend in US dollars. Accepts $1–$100 and
-            applies only to `auto` and `max`; when omitted, the default cap is
-            $5 for `auto` and $20 for `max`.
+            本次运行可花费的最高金额（美元）。接受 $1–$100，且仅适用于 `auto` 和
+            `max`；省略时，默认上限为 `auto` $5、`max` $20。
           example: 10
       additionalProperties: false
       description: >-
-        Optional per-run spending limit for the metered `auto` and `max`
-        efforts. Runs that finish early may cost less than the limit.
+        针对计量计费的 `auto` 和 `max` 强度的可选单次运行花费上限。提前结束的运行花费可能低于该上限。
     AgentGrounding:
       type: object
       properties:
         field:
           type: string
-          description: Output field the citations support.
+          description: 这些引用所支持的输出字段。
           example: structured.companies[0].sourceUrl
         citations:
           type: array
@@ -781,7 +765,7 @@ components:
                 - low
                 - medium
                 - high
-              description: Model-reported reliability for this field.
+              description: 模型给出的该字段可靠性评估。
             - type: 'null'
       required:
         - field
@@ -795,9 +779,7 @@ components:
         type: integer
         minimum: 0
       description: >-
-        Per-provider tool call counts for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        本次运行中使用的 Exa Connect 数据源按提供方统计的工具调用次数。键为提供方名称（例如 `fiber`、`similarweb`）。仅包含使用量非零的提供方。
     AgentDataSourceCost:
       type: object
       propertyNames:
@@ -806,9 +788,7 @@ components:
         type: number
         minimum: 0
       description: >-
-        Per-provider cost in dollars for Exa Connect data sources used during
-        the run. Keys are provider names (e.g. `fiber`, `similarweb`). Only
-        providers with non-zero usage are included.
+        本次运行中使用的 Exa Connect 数据源按提供方统计的费用（美元）。键为提供方名称（例如 `fiber`、`similarweb`）。仅包含使用量非零的提供方。
     AgentCitation:
       type: object
       properties:

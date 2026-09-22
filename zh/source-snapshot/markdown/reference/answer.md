@@ -1,39 +1,33 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="answer">
-  # Answer
-</div>
+# Answer {#answer}
 
-> 基于 Exa search 结果，获取 LLM 针对某个问题给出的回答。`/answer` 会执行一次 Exa search，并使用 LLM 生成以下两种结果之一：
+> 基于 Exa search 结果，获取由 LLM 生成的问题答案。`/answer` 会执行一次 Exa search，并使用 LLM 生成以下两种结果之一：
 
-1. 针对具体问题的直接回答。 (例如：&quot;法国的首都是哪里？&quot;会返回&quot;巴黎&quot;) 
-2. 针对开放式问题的带引用详细摘要 (例如：&quot;人工智能在医疗领域的现状如何？&quot;会返回一份附有相关来源引用的摘要) 
+1. 针对具体问题的直接答案 (例如，“法国的首都是哪里？”会返回“巴黎”)
+2. 针对开放式问题的详细总结及引用来源 (例如，“人工智能在医疗健康领域的现状如何？”会返回一份附有相关来源引用的总结)
 
-响应中同时包含生成的回答以及生成该回答所依据的来源。该端点还支持流式输出 (设置 `stream=True`) ，token 会随生成过程逐个返回。
+响应中既包含生成的答案，也包含生成答案所依据的来源。该端点还支持流式传输 (设置 `stream=True`) ，会在 token 生成的同时逐步返回。
 
 此外，你也可以使用兼容 OpenAI 的 [chat completions 接口](https://exa.ai/docs/integrations/openai-sdk#answer)。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建一个 key。新账户可获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
 <Info>
-  `/answer` 通过 `outputSchema` 参数支持结构化输出。传入一个 [JSON Schema](https://json-schema.org/draft-07) 对象后，回答将以符合该 schema 的结构化 JSON 返回，而不是纯字符串。
+  `/answer` 通过 `outputSchema` 参数支持结构化输出。传入一个 [JSON Schema](https://json-schema.org/draft-07) 对象后，答案将以符合该 schema 的结构化 JSON 返回，而不是普通字符串。
 </Info>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0
 info:
-  title: Exa Public API
+  title: Exa 公共 API
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -44,11 +38,9 @@ tags: []
 paths:
   /answer:
     post:
-      summary: Answer
+      summary: 回答
       description: >-
-        Performs a search based on the query and generates either a direct
-        answer or a detailed summary with citations, depending on the query
-        type.
+        根据查询执行搜索，并依据查询类型生成直接答案或带引用的详细摘要。
       operationId: answer
       requestBody:
         required: true
@@ -111,23 +103,21 @@ components:
         query:
           type: string
           minLength: 1
-          description: Natural-language question or instructions for the request.
+          description: 针对该请求的自然语言问题或指令。
           example: What is the latest valuation of SpaceX?
         stream:
           type: boolean
           description: >-
-            If true, the response is returned as a server-sent events (SSE)
-            stream.
+            如果为 true，响应将以服务器发送事件（SSE）流的形式返回。
           default: false
         text:
           type: boolean
-          title: Simple text retrieval
+          title: 简单文本检索
           description: >-
-            If true, returns full page text with default settings. If false,
-            disables text return.
+            如果为 true，则使用默认设置返回完整页面文本。如果为 false，则禁用文本返回。
           default: false
         model:
-          description: The model used to generate the answer.
+          description: 用于生成答案的模型。
           default: exa
           type: string
           enum:
@@ -138,14 +128,12 @@ components:
         systemPrompt:
           type: string
           description: >-
-            Additional instructions that guide generated output or agent
-            behavior. Use this for source preferences, novelty constraints,
-            duplication constraints, or other behavior guidance.
+            用于指导生成输出或智能体行为的附加指令。可用于来源偏好、新颖性约束、去重约束或其他行为指导。
           example: Prefer official sources and avoid duplicate results.
         userLocation:
           anyOf:
             - type: string
-              description: The two-letter ISO country code of the user, e.g. US.
+              description: 用户所在国家/地区的两位 ISO 代码，例如 US。
               example: US
             - type: 'null'
         outputSchema:
@@ -153,7 +141,7 @@ components:
           properties:
             type:
               type: string
-              description: The root schema type (typically "object").
+              description: 根 schema 类型（通常为 "object"）。
               example: object
             properties:
               type: object
@@ -162,28 +150,24 @@ components:
               additionalProperties:
                 $ref: '#/components/schemas/JsonValue'
               description: >-
-                An object where each key is a property name and each value is a
-                JSON Schema describing that property (with `type`,
-                `description`, etc).
+                一个对象，其中每个键是属性名，每个值是描述该属性的 JSON Schema（包含 `type`、`description` 等）。
             required:
               type: array
               items:
                 type: string
-              description: List of required property names.
+              description: 必需属性名称的列表。
             description:
               type: string
-              description: A description of the schema.
+              description: 该 schema 的描述。
             additionalProperties:
               type: boolean
-              description: Whether to allow properties not listed in `properties`.
+              description: 是否允许 `properties` 中未列出的属性。
               default: false
           additionalProperties:
             $ref: '#/components/schemas/JsonValue'
           description: >-
-            A [JSON Schema Draft 7](https://json-schema.org/draft-07)
-            specification for the desired answer structure. When provided, the
-            answer is returned as a structured object matching the schema
-            instead of a plain string.
+            用于描述所需答案结构的 [JSON Schema Draft 7](https://json-schema.org/draft-07)
+            规范。提供后，答案将以符合该 schema 的结构化对象返回，而不是纯字符串。
       required:
         - query
     AnswerResponse:
@@ -191,12 +175,11 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: 该请求的唯一标识符。
           example: b5947044c4b78efa9552a7c89b306d95
         answer:
           description: >-
-            The generated answer based on search results. Returns a string by
-            default, or a structured object matching the provided outputSchema.
+            基于搜索结果生成的答案。默认返回字符串，或返回与所提供 outputSchema 匹配的结构化对象。
           example: $350 billion.
           oneOf:
             - type: string
@@ -206,58 +189,54 @@ components:
               additionalProperties:
                 $ref: '#/components/schemas/JsonValue'
         citations:
-          description: Search results used to generate the answer.
+          description: 用于生成答案的搜索结果。
           type: array
           items:
             type: object
             properties:
               title:
                 type: string
-                description: The title of the search result.
+                description: 搜索结果的标题。
                 example: >-
                   SpaceX valued at $350bn as company agrees to buy shares from
                   ...
               url:
                 type: string
-                description: The URL of the search result.
+                description: 搜索结果的 URL。
                 example: >-
                   https://www.theguardian.com/science/2024/dec/11/spacex-valued-at-350bn-as-company-agrees-to-buy-shares-from-employees
                 format: uri
               publishedDate:
                 description: >-
-                  An estimate of the creation date, from parsing HTML content.
-                  Format is YYYY-MM-DD.
+                  通过解析 HTML 内容估算的创建日期。格式为 YYYY-MM-DD。
                 example: '2023-11-16T01:36:32.547Z'
                 format: date-time
                 type: string
               author:
-                description: If available, the author of the content.
+                description: 如果可用，则为内容的作者。
                 example: Humza Naveed
                 anyOf:
                   - type: string
                   - type: 'null'
               id:
                 description: >-
-                  The temporary ID for the document. Useful for the /contents
-                  endpoint.
+                  文档的临时 ID。可用于 /contents 端点。
                 example: https://arxiv.org/abs/2307.06435
                 type: string
               image:
                 description: >-
-                  The URL of an image associated with the search result, if
-                  available.
+                  与搜索结果关联的图片 URL（如果可用）。
                 example: https://arxiv.org/pdf/2307.06435.pdf/page_1.png
                 format: uri
                 type: string
               favicon:
-                description: The URL of the favicon for the search result's domain.
+                description: 搜索结果所属域名的 favicon URL。
                 example: https://arxiv.org/favicon.ico
                 format: uri
                 type: string
               text:
                 description: >-
-                  The full text content of each source. Only present when text
-                  contents are requested.
+                  每个来源的完整文本内容。仅在请求文本内容时出现。
                 example: >-
                   SpaceX valued at $350bn as company agrees to buy shares from
                   ...
@@ -273,8 +252,7 @@ components:
       additionalProperties: false
     AnswerStreamChunk:
       description: >-
-        Schema for each JSON payload emitted in an `/answer` server-sent event
-        stream. Each event is emitted as `data: <json>`.
+        `/answer` 服务器发送事件流中每个 JSON 负载的 schema。每个事件以 `data: <json>` 的形式发出。
       oneOf:
         - $ref: '#/components/schemas/AnswerStreamTextDeltaChunk'
         - $ref: '#/components/schemas/AnswerStreamCitationsChunkOutput'

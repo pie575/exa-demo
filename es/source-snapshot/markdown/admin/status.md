@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="status-page">
-  # Página de estado
-</div>
+# Página de estado {#status-page}
 
-> Disponibilidad en tiempo real, incidentes activos e historial de tiempo de actividad de los servicios de Exa.
+> Disponibilidad en tiempo real, incidentes activos e historial de uptime de los servicios de Exa.
 
 export const ExaStatus = () => {
   const [data, setData] = useState(null);
@@ -169,28 +165,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa publica la disponibilidad de sus servicios en [status.exa.ai](https://status.exa.ai): el estado actual de la Search API, Websets y Exa MCP, los incidentes activos con actualizaciones a medida que evolucionan y 90 días de historial de disponibilidad.
+Exa publica la disponibilidad de sus servicios en [status.exa.ai](https://status.exa.ai): el estado actual de la Search API, Websets y Exa MCP, los incidentes activos con actualizaciones a medida que evolucionan y 90 días de historial de uptime.
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## Suscríbete a las actualizaciones
-</div>
+## Suscríbete a las actualizaciones {#subscribe-to-updates}
 
-Suscríbete en la página de estado para recibir avisos cuando se abra, actualice o resuelva un incidente. Las notificaciones se envían por correo electrónico, Slack, Google Chat o webhook.
+Suscríbete en la página de estado para recibir notificaciones cuando se abra, se actualice o se resuelva un incidente. Las notificaciones se envían por correo electrónico, Slack, Google Chat o webhook.
 
-<div id="get-help">
-  ## Obtener ayuda
-</div>
+## Obtener ayuda {#get-help}
 
-Si las solicitudes siguen fallando aunque todos los sistemas figuren como operativos, lo más probable es que la causa esté en la propia solicitud: consulta primero los [Códigos de error](/es/docs/admin/error-codes).
+Si las solicitudes siguen fallando mientras todos los sistemas figuran como operativos, lo más probable es que la causa esté en la propia solicitud: consulta primero los [códigos de error](/es/docs/admin/error-codes).
 
 <Columns cols={2}>
   <Card title="Soporte por correo" icon="mail" href="mailto:hello@exa.ai" cta="Escribir a soporte" arrow="true">
     Envía el estado de la respuesta, el cuerpo del error y el `requestId` para agilizar el diagnóstico.
   </Card>
 
-  <Card title="Soporte empresarial" icon="headset" href="https://exa.ai/contact/sales" cta="Contactar con ventas" arrow="true">
-    Los SLA de disponibilidad y soporte están disponibles en los planes Enterprise.
+  <Card title="Soporte Enterprise" icon="headset" href="https://exa.ai/contact/sales" cta="Contactar con ventas" arrow="true">
+    Los SLA de uptime y de soporte están disponibles en los planes Enterprise.
   </Card>
 </Columns>

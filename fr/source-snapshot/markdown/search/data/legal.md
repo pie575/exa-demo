@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="legal-public-records">
-  # Documents juridiques et registres publics
-</div>
+# Documents juridiques et records publics {#legal-public-records}
 
-> Trouvez des décisions de justice, des brevets, des sanctions, des marchés publics et d&#39;autres registres publics grâce à Exa Search.
+> Trouvez des décisions de justice, des brevets, des sanctions, des marchés publics et d&#39;autres records publics avec Exa Search.
 
 export const PlaygroundQuery = ({query, category, filters}) => {
   const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
@@ -26,7 +22,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans le playground de l’API" aria-label={`Ouvrir "${query}" dans le playground de l’API`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="Ouvrir dans l’aire de test de l’API" aria-label={`Ouvrir "${query}" dans l’aire de test de l’API`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -37,76 +33,58 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Utilisez Exa Search pour accéder aux sources juridiques primaires et aux records publics, ainsi qu&#39;aux commentaires rédigés à leur sujet.
+Utilisez Exa Search pour accéder aux sources juridiques primaires et aux records gouvernementaux, ainsi qu&#39;aux commentaires qui les analysent.
 
-<div id="included">
-  ## Inclus
-</div>
+## Inclus {#included}
 
-* Décisions de justice américaines, avec texte intégral, juridiction, numéro de dossier et métadonnées de citation
+* Décisions de justice américaines, avec texte intégral, juridiction, numéro de rôle et métadonnées de citation
 * Brevets américains délivrés, avec abrégé, revendications, description, inventeurs et cessionnaires
-* Lois, réglementations et directives des agences
-* Listes de sanctions et listes de surveillance
-* Marchés publics et documents de passation de marchés
-* Données de recensement et autres documents statistiques publics
+* Lois, réglementations et guidance des agences
+* Listes de sanctions et watchlists
+* Marchés publics et records de passation de marchés
+* Données de recensement et autres records statistiques publics
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## Cas d&#39;usage {#use-it-for}
 
 * Recherche jurisprudentielle et RAG juridique
 * Veille réglementaire et politique
 * Recherches d&#39;antériorité et de liberté d&#39;exploitation
-* Contrôles de conformité et due diligence
+* Screening de conformité et due diligence
 * Études de marché dans le secteur public
 
-<div id="example-queries">
-  ## Exemples de requêtes
-</div>
+## Exemples de requêtes {#example-queries}
 
-<div id="find-case-law">
-  ### Trouver de la jurisprudence
-</div>
+### Trouver de la jurisprudence {#find-case-law}
 
-Décrivez la question juridique et la juridiction en langage courant plutôt que sous forme de citation.
+Décrivez la question juridique et la juridiction en langage courant plutôt que sous forme de citation juridique.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Rechercher des brevets
-</div>
+### Rechercher des brevets {#search-patents}
 
 Décrivez ce que fait l&#39;invention, comme le ferait une revendication.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Filtrer selon les listes de sanctions
-</div>
+### Effectuer un screening des sanctions {#screen-against-sanctions}
 
-Indiquez la liste et la catégorie d&#39;entités que vous filtrez.
+Indiquez la liste et la catégorie d&#39;entités que vous passez au crible.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Analyser les dépenses publiques
-</div>
+### Rechercher les dépenses publiques {#research-government-spending}
 
-Indiquez l&#39;organisme acheteur ou la catégorie de service ainsi que la période visée.
+Indiquez l&#39;organisme acheteur ou la catégorie de service ainsi que la période concernée.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Extraire des statistiques publiques
-</div>
+### Extraire des statistiques publiques {#pull-public-statistics}
 
-Indiquez le jeu de données et la zone géographique.
+Précisez le jeu de données et la zone géographique.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Envoyer une requête
-</div>
+## Envoyer une requête {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -147,12 +125,10 @@ Indiquez le jeu de données et la zone géographique.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Obtenir des données structurées avec Exa Agent
-</div>
+## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
 
-Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez une [tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les juridictions, les types d&#39;enregistrements, les criteria et les champs de sortie dont vous avez besoin : Agent renvoie des résultats validés par schema, accompagnés de citations.
+Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les juridictions, les types de records, les critères et les fields d&#39;output dont vous avez besoin : Agent renvoie des résultats validés par schéma, avec citations.
 
-<Card title="Lancer une tâche Exa Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
-  Passez une entité au crible de différents types d&#39;enregistrements ou retracez une évolution réglementaire à partir des sources primaires et de leur couverture médiatique.
+<Card title="Démarrer une tâche Exa Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide Agent" arrow="true">
+  Passez une entité au crible selon différents types de records ou retracez une évolution réglementaire à partir des sources primaires et de leur couverture médiatique.
 </Card>

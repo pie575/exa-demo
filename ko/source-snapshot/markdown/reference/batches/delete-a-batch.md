@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 받을 수 있습니다.
-> 더 자세히 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-<div id="delete-a-batch">
-  # batch 삭제
-</div>
+# batch 삭제 {#delete-a-batch}
 
 > 종료 상태의 batch를 삭제합니다.
 
 batch를 삭제하면 해당 batch가 team의 batch 기록에서 제거됩니다. 종료 상태의 batch만 삭제할 수 있습니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  dashboard에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /batches/{id}
 openapi: 3.1.0

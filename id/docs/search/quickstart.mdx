@@ -1,18 +1,16 @@
 ---
 title: "Exa Search API"
 sidebarTitle: "Quickstart"
-description: "Telusuri web dengan bahasa alami dan dapatkan konten halaman yang bersih dan relevan dalam satu permintaan."
+description: "Cari di web dengan bahasa alami dan dapatkan konten halaman yang bersih dan relevan dalam satu permintaan."
 keywords: ["search api", "web search", "semantic search", "retrieval", "rag", "highlights"]
 boost: 6
 ---
 
-Exa Search menerima query dalam bahasa alami dan mengembalikan hasil web terperingkat beserta konten halaman yang bersih.
+Exa Search menerima query dalam bahasa alami dan mengembalikan hasil web yang sudah diperingkat beserta konten halaman yang bersih.
 
-<div id="make-your-first-request">
-  ## Buat permintaan pertama Anda
-</div>
+## Buat permintaan pertama Anda {#make-your-first-request}
 
-Mulailah dengan `query` dalam bahasa alami dan `contents: { highlights: true }`, yang mengembalikan excerpt dengan panjang menyesuaikan relevansi tiap hasil. Field lainnya mengatur cara Exa melakukan search dan apa saja yang disertakan pada tiap hasil; bagian selanjutnya dari halaman ini membahas field yang akan benar-benar Anda gunakan.
+Mulailah dengan `query` dalam bahasa alami dan `contents: { highlights: true }`, yang mengembalikan kutipan dengan panjang menyesuaikan relevance tiap hasil. Field lain mengatur cara Exa melakukan search dan apa saja yang disertakan pada setiap hasil; bagian selanjutnya di halaman ini membahas field yang benar-benar akan Anda pakai.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -62,10 +60,10 @@ Mulailah dengan `query` dalam bahasa alami dan `contents: { highlights: true }`,
   ```
 </CodeGroup>
 
-Secara bawaan, Search mengembalikan maksimal 10 hasil. Setel `numResults` untuk meminta hingga 100 hasil; jumlah yang dikembalikan bisa lebih sedikit bila halaman relevan yang tersedia memang lebih sedikit. Search tidak mendukung penomoran halaman.
+Secara default, search mengembalikan maksimal 10 hasil. Atur `numResults` untuk meminta hingga 100 hasil; hasil yang dikembalikan bisa lebih sedikit bila halaman relevan yang tersedia memang lebih sedikit. Search tidak mendukung penomoran halaman.
 
-<Accordion title="Contoh respons">
-  Highlights dan daftar di bawah ini dipersingkat.
+<Accordion title="Contoh response">
+  Kutipan dan daftar di bawah ini dipersingkat.
 
   ```json theme={null}
   {
@@ -104,61 +102,57 @@ Secara bawaan, Search mengembalikan maksimal 10 hasil. Setel `numResults` untuk 
   ```
 </Accordion>
 
-Hasil diurutkan berdasarkan relevansi. Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasi, ditambah apa pun yang Anda minta melalui `contents`.
+Hasil diurutkan berdasarkan relevance. Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasi, ditambah apa pun yang Anda minta lewat `contents`.
 
-<div id="writing-queries">
-  ## Menulis query
-</div>
+## Menulis query {#writing-queries}
 
 Field `query` adalah satu-satunya field yang wajib diisi saat menggunakan Search API.
 
 Tulis query dalam bahasa alami. Sertakan subjeknya dan, bila perlu, jenis sumber serta rentang waktu yang Anda inginkan.
 
-Query boleh bersifat luas dan eksploratif. `"Latest news on EU battery policy"` memberi Exa maksud yang cukup jelas untuk menemukan halaman yang relevan; `"news"` tidak. Jika jenis sumber penting, sebutkan dalam query:
+Query boleh bersifat luas dan eksploratif. `"Latest news on EU battery policy"` memberi Exa maksud yang cukup jelas untuk menemukan halaman yang relevan, sedangkan `"news"` tidak. Jika jenis sumber penting, sebutkan dalam query:
 
 ```text theme={null}
 Artikel teknis terbaru yang membandingkan retrieval hibrida dan semantik untuk sistem RAG
 ```
 
-Lihat [Apa Saja yang Ada di Indeks Exa](/id/docs/search/data/overview) untuk mengetahui isi indeks Exa dan cara mencari jenis konten tersebut.
+Lihat [Apa yang Ada di Indeks Exa](/id/docs/search/data/overview) untuk mengetahui isi indeks Exa dan cara mencari tipe konten tersebut.
 
 <h2 id="search-types">
   Pilih search type
 </h2>
 
-`type` menentukan search mode, masing-masing disetel untuk keseimbangan yang berbeda antara kecepatan, kedalaman search, dan synthesis. `auto` adalah nilai default dan cocok untuk sebagian besar searches.
+`type` menentukan search mode, yang masing-masing disetel untuk keseimbangan kecepatan, kedalaman pencarian, dan synthesis yang berbeda. `auto` adalah default dan cocok untuk sebagian besar searches.
 
-| Type             | Gunakan saat                                                                 |
-| ---------------- | ---------------------------------------------------------------------------- |
-| `auto`           | Anda menginginkan keseimbangan default terbaik antara kualitas dan kecepatan |
-| `fast`           | Permintaan sensitif terhadap latensi                                         |
-| `instant`        | Permintaan berada di jalur real-time seperti autocomplete atau suara         |
-| `deep-lite`      | Tugas membutuhkan riset dan synthesis yang ringan                            |
-| `deep`           | Tugas memerlukan search multi-langkah dan synthesis yang lebih kuat          |
-| `deep-reasoning` | Kelengkapan dan kedalaman penalaran lebih penting daripada latensi           |
+| Type             | Gunakan saat                                                            |
+| ---------------- | ----------------------------------------------------------------------- |
+| `auto`           | Anda ingin keseimbangan default terbaik antara kualitas dan kecepatan   |
+| `fast`           | Permintaan sensitif terhadap latency                                    |
+| `instant`        | Permintaan berada di jalur real-time seperti autocomplete atau suara    |
+| `deep-lite`      | Tugas membutuhkan research dan synthesis ringan                         |
+| `deep`           | Tugas membutuhkan pencarian multi-langkah dan synthesis yang lebih kuat |
+| `deep-reasoning` | Kelengkapan dan kedalaman penalaran lebih penting daripada latency      |
 
-Mode deep menjalankan proses riset, bukan sekadar satu tahap retrieval. Lihat [Deep Search](/id/docs/search/deep-search) untuk memahami cara kerja proses tersebut dan cara menggunakan kontrol tambahannya.
+Mode deep menjalankan proses research, bukan sekadar satu tahap retrieval. Lihat [Deep Search](/id/docs/search/deep-search) untuk memahami cara kerja proses tersebut dan cara menggunakan kontrol tambahannya.
 
 <Tip>
-  Alih-alih `deep-reasoning`, gunakan [Exa Agent](/id/docs/agent/quickstart) untuk riset berdurasi panjang, penyusunan
-  daftar, dan enrichment multi-hop. Agent memiliki kapasitas komputasi lebih besar per run dan mengembalikan hasil terstruktur
-  yang grounded.
+  Alih-alih `deep-reasoning`, gunakan [Exa Agent](/id/docs/agent/quickstart) untuk research jangka panjang, penyusunan
+  daftar, dan enrichment multi-hop. Agent memiliki komputasi lebih besar per run dan mengembalikan hasil
+  terstruktur yang grounded.
 </Tip>
 
-<div id="output-shapes">
-  ## Bentuk output
-</div>
+## Bentuk output {#output-shapes}
 
-Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasinya. Gunakan `contents` untuk menambahkan highlights, teks lengkap, atau summary dari halaman tersebut.
+Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasinya. Gunakan `contents` untuk menambahkan kutipan, teks penuh, atau ringkasan dari halaman tersebut.
 
 <Tabs>
-  <Tab title="Highlights">
-    Highlights mengembalikan excerpt yang paling relevan dengan query Anda. Ini memberikan evidence yang dibutuhkan
-    model dan agent tanpa memenuhi jendela konteks dengan bagian halaman yang tidak relevan.
+  <Tab title="Kutipan">
+    Kutipan mengembalikan bagian teks yang paling relevan dengan query Anda. Kutipan memberi model dan agent
+    evidence yang dibutuhkan tanpa memenuhi jendela konteks dengan bagian halaman yang tidak relevan.
 
-    Ini adalah bentuk output yang direkomendasikan untuk sebagian besar tugas.
+    Ini adalah bentuk output yang disarankan untuk sebagian besar tugas.
 
-    Mulailah cukup dengan `highlights: true`. Exa akan memakai query tersebut untuk memilih jumlah konten
+    Mulailah cukup dengan `highlights: true`. Exa akan menggunakan query untuk memilih jumlah konten
     yang sesuai dari setiap hasil.
 
     <CodeGroup>
@@ -187,14 +181,14 @@ Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasinya. 
       ```
     </CodeGroup>
 
-    Lihat [Highlights](/id/docs/search/highlights) untuk Dynamic Highlights dan panduan kapan sebaiknya mengaktifkannya.
+    Lihat [Highlights](/id/docs/search/highlights) untuk Dynamic Highlights dan instruksi tentang kapan sebaiknya mengaktifkannya.
   </Tab>
 
-  <Tab title="Teks lengkap">
-    Teks lengkap mengembalikan isi halaman yang sudah bersih. Gunakan opsi ini bila tugas Anda bergantung pada konteks yang lebih luas, struktur
-    dokumen, atau detail yang mungkin tidak tercakup dalam excerpt yang berfokus pada query.
+  <Tab title="Teks penuh">
+    Teks penuh mengembalikan isi halaman yang sudah bersih. Gunakan ini bila tugas Anda bergantung pada konteks yang lebih luas,
+    struktur dokumen, atau detail yang mungkin berada di luar kutipan yang berfokus pada query.
 
-    Halaman utuh bisa berukuran besar. Batasi jumlah hasil sekaligus teks yang dikembalikan per halaman.
+    Halaman penuh bisa berukuran besar. Batasi jumlah hasil sekaligus teks yang dikembalikan per halaman.
 
     <CodeGroup>
       ```python Python theme={null}
@@ -231,24 +225,22 @@ Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasinya. 
   </Tab>
 </Tabs>
 
-Pilih satu tampilan konten per permintaan. Meminta highlights sekaligus text berarti mengembalikan sekaligus menagih dua tampilan dari halaman yang sama. `summary` adalah opsi ketiga, tetapi opsi ini menambahkan satu panggilan model bahasa untuk setiap hasil.
+Pilih satu tampilan konten per permintaan. Meminta kutipan dan teks sekaligus akan mengembalikan sekaligus menagih dua tampilan dari halaman yang sama. `summary` adalah opsi ketiga, tetapi opsi ini menambah satu pemanggilan model bahasa untuk setiap hasil.
 
 <Warning>
-  `/search` dan `/contents` menerima content options yang sama, tetapi di tempat yang berbeda:
+  `/search` dan `/contents` menerima opsi konten yang sama, tetapi di tempat yang berbeda:
 
   * **`/search`** menempatkan `highlights`, `text`, dan `summary` di dalam objek `contents`:
     `"contents": { "highlights": true }`
-  * **`/contents`** tidak memiliki pembungkus `contents`. Body-nya adalah content options itu sendiri, sehingga
-    field yang sama berada di tingkat teratas, bersebelahan dengan `urls`: `"urls": [...], "highlights": true`
+  * **`/contents`** tidak memiliki wrapper `contents`. Body-nya adalah opsi konten itu sendiri, sehingga
+    field yang sama berada di tingkat teratas bersama `urls`: `"urls": [...], "highlights": true`
 </Warning>
 
-<div id="output-schema">
-  ## Output schema
-</div>
+## Output schema {#output-schema}
 
-Tambahkan `outputSchema` jika Anda ingin Exa menyintesis hasil search. Field ini berfungsi pada semua search type dan menambahkan objek `output` ke dalam respons.
+Tambahkan `outputSchema` jika Anda ingin Exa mensintesis hasil search. Parameter ini berfungsi dengan semua search type dan menambahkan objek `output` ke response.
 
-Halaman hasil pemeringkatan tetap berada di `results`. Nilai yang dihasilkan dikembalikan dalam `output.content`, lengkap dengan sumber per field dan tingkat keyakinan di `output.grounding`.
+Halaman yang telah diberi peringkat tetap berada di `results`. Nilai yang dihasilkan dikembalikan dalam `output.content`, lengkap dengan sources dan confidence per field di `output.grounding`.
 
 <Tabs>
   <Tab title="Teks Bebas">
@@ -403,24 +395,20 @@ Halaman hasil pemeringkatan tetap berada di `results`. Nilai yang dihasilkan dik
   </Tab>
 </Tabs>
 
-Gunakan `systemPrompt` untuk instruksi seperti preferensi sumber atau penekanan; gunakan `outputSchema` untuk menentukan bentuk respons. Di Python, gunakan `system_prompt` dan `output_schema`.
+Gunakan `systemPrompt` untuk instruksi seperti source preferences atau penekanan; gunakan `outputSchema` untuk menentukan bentuk response. Di Python, gunakan `system_prompt` dan `output_schema`.
 
 <Note>
-  Jaga agar schema objek tetap sederhana: schema mendukung maksimal 2 tingkat nesting dan 10 properti. Jangan tambahkan
-  field sitasi atau confidence ke dalam schema; Exa mengembalikannya secara otomatis di `output.grounding`.
+  Jaga agar schema objek tetap sederhana: schema hanya mendukung hingga 2 tingkat nesting dan 10 properti. Jangan tambahkan
+  field citation atau confidence ke dalam schema; Exa mengembalikannya secara otomatis di `output.grounding`.
 </Note>
 
-<div id="filter-results">
-  ## Filter hasil
-</div>
+## Memfilter hasil {#filter-results}
 
-Filter bersifat sebagai batasan mutlak: tambahkan filter jika hasil di luar batasan itu tidak akan berguna bagi Anda, dan simpan preferensi sumber yang lebih longgar di dalam teks query saja. [Referensi API](/id/docs/reference/search) memuat daftar lengkapnya.
+Filter adalah batasan ketat: gunakan filter jika hasil di luar batasan tersebut memang tidak berguna bagi Anda, dan biarkan preferensi sumber yang lebih longgar tetap berada di dalam teks query. [API reference](/id/docs/reference/search) memuat daftar lengkapnya.
 
-<div id="include-domains-or-paths">
-  ### Menyertakan domain atau path
-</div>
+### Menyertakan domain atau path {#include-domains-or-paths}
 
-`includeDomains` membatasi hasil hanya pada sumber yang Anda percaya. Parameter ini menerima domain lengkap, prefiks path seperti `anthropic.com/news`, dan wildcard subdomain seperti `*.substack.com`.
+`includeDomains` membatasi hasil hanya pada sources yang Anda percaya. Parameter ini menerima domain lengkap, prefiks path seperti `anthropic.com/news`, dan wildcard subdomain seperti `*.substack.com`.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -450,13 +438,11 @@ Filter bersifat sebagai batasan mutlak: tambahkan filter jika hasil di luar bata
   ```
 </CodeGroup>
 
-Cantumkan path pada filter, jangan mengulanginya sebagai operator `site:` di dalam query.
+Cantumkan path di dalam filter, jangan mengulanginya sebagai operator `site:` di dalam query.
 
-<div id="exclude-domains-or-paths">
-  ### Kecualikan domain atau path
-</div>
+### Kecualikan domain atau path {#exclude-domains-or-paths}
 
-`excludeDomains` menghapus hasil dari domain atau path tertentu. Parameter ini mendukung prefiks path dan wildcard subdomain yang sama seperti `includeDomains`. Gunakan parameter ini ketika sumber tersebut membuat hasil menjadi tidak berguna, bukan sekadar untuk menyatakan preferensi.
+`excludeDomains` menghapus hasil dari domain atau path tertentu. Parameter ini mendukung prefiks path dan wildcard subdomain yang sama seperti `includeDomains`. Gunakan parameter ini ketika sources tersebut membuat hasil menjadi tidak berguna, bukan sekadar untuk menyatakan preferensi.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -489,20 +475,18 @@ Cantumkan path pada filter, jangan mengulanginya sebagai operator `site:` di dal
   ```
 </CodeGroup>
 
-<div id="content-freshness">
-  ## Content freshness
-</div>
+## Kebaruan konten {#content-freshness}
 
-`contents.maxAgeHours` mengatur seberapa baru konten yang diekstrak dari setiap hasil. field ini tidak memfilter hasil berdasarkan tanggal publikasi.
+`contents.maxAgeHours` mengatur seberapa baru konten yang diekstraksi dari setiap hasil harus dibuat. Field ini tidak memfilter hasil berdasarkan tanggal publikasi.
 
-| Nilai                  | Perilaku                                                                                |
-| ---------------------- | --------------------------------------------------------------------------------------- |
-| Dikosongkan            | Gunakan konten cache bila tersedia dan ambil halaman bila diperlukan                    |
-| Bilangan bulat positif | Gunakan konten cache jika usianya kurang dari jumlah jam ini; jika tidak, ambil halaman |
-| `0`                    | Selalu ambil konten terbaru                                                             |
-| `-1`                   | Hanya gunakan konten cache                                                              |
+| Nilai                  | Perilaku                                                                            |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| Dikosongkan            | Gunakan konten cache jika tersedia dan ambil halaman bila diperlukan                |
+| Bilangan bulat positif | Gunakan konten cache jika lebih baru dari jumlah jam ini; jika tidak, ambil halaman |
+| `0`                    | Selalu ambil konten terbaru                                                         |
+| `-1`                   | Hanya gunakan konten cache                                                          |
 
-Sebagian besar searches sebaiknya tidak menyertakan field ini. Setel field ini ketika page content yang usang tidak lagi berguna, misalnya untuk harga, ketersediaan, atau halaman yang sering berubah.
+Sebagian besar pencarian sebaiknya mengosongkan field ini. Setel field ini ketika konten halaman yang usang tidak dapat digunakan, misalnya untuk harga, ketersediaan, atau halaman yang sering berubah.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -538,24 +522,22 @@ Sebagian besar searches sebaiknya tidak menyertakan field ini. Setel field ini k
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## Langkah selanjutnya
-</div>
+## Langkah berikutnya {#next-steps}
 
 <Columns cols={2}>
   <Card title="Praktik terbaik" icon="sparkles" href="/id/docs/search/best-practices" cta="Baca panduan" arrow="true">
-    Anggaran token, content freshness, structured output, dan system prompt.
+    Anggaran token, kebaruan konten, output terstruktur, dan system prompt.
   </Card>
 
-  <Card title="Referensi API" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
-    Semua parameter permintaan dan field respons, lengkap dengan playground interaktif.
+  <Card title="API reference" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">
+    Setiap parameter permintaan dan field response, lengkap dengan playground interaktif.
   </Card>
 
   <Card title="Contents" icon="file-text" href="/id/docs/contents/quickstart" cta="Buka panduan" arrow="true">
-    Anda sudah punya URL-nya dan ingin mendapatkan teks bersih, highlights, atau summaries.
+    Anda sudah punya URL-nya dan ingin teks bersih, kutipan, atau ringkasan.
   </Card>
 
   <Card title="Exa Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">
-    Anda membutuhkan riset jangka panjang, list building, atau enrichment.
+    Anda perlu research jangka panjang, list building, atau enrichment.
   </Card>
 </Columns>

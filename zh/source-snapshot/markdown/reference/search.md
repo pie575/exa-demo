@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="search">
-  # Search
-</div>
+# Search {#search}
 
-> Search 端点可用于搜索网络，并从结果中提取 contents。
+> search 端点可用于搜索网络，并从结果中提取页面内容。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建一个 key。新账户会获赠免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /search
 openapi: 3.1.0

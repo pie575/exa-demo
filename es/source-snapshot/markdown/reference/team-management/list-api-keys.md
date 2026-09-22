@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
-> Consulta el índice completo de la documentación en: https://exa.ai/docs/llms.txt
+> Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="list-api-keys">
-  # Listar API keys
-</div>
+# List API keys {#list-api-keys}
 
 > Recupera todas las API keys de tu equipo junto con sus metadatos.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas empiezan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
 <Info>
-  La Team Management API se habilita equipo por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la función está habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
+  La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la funcionalidad esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
 </Info>
 
-<div id="overview">
-  ## Descripción general
-</div>
+## Descripción general {#overview}
 
-El endpoint List API Keys devuelve todas las API keys asociadas a tu equipo. Para cada key se incluyen el ID, el nombre, el límite de solicitudes y la marca de tiempo de creación.
+El endpoint List API Keys devuelve todas las API keys asociadas a tu equipo. Se incluye el ID, el nombre, el límite de tasa y la marca de tiempo de creación de cada key.
 
-<div id="response-format">
-  ## Formato de respuesta
-</div>
+## Formato de respuesta {#response-format}
 
-La respuesta incluye un array de objetos de API key con la siguiente información:
+La respuesta incluye un arreglo de objetos de API key con la siguiente información:
 
-* **id**: Identificador único de la API key
-* **name**: Nombre legible para personas (si se proporcionó al crearla)
-* **rateLimit**: Límite de solicitudes por minuto (si está definido)
-* **createdAt**: Marca de tiempo ISO 8601 de la creación de la key
+* **id**: identificador único de la API key
+* **name**: nombre legible (si se proporcionó al crearla)
+* **rateLimit**: límite de tasa en solicitudes por minuto (si está definido)
+* **createdAt**: timestamp ISO 8601 de la fecha de creación de la key
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

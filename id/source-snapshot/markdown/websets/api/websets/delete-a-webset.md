@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="delete-a-webset">
-  # Menghapus webset
-</div>
+# Menghapus webset {#delete-a-webset}
 
 > Menghapus sebuah Webset.
 
 Setelah dihapus, Webset beserta seluruh Item di dalamnya tidak akan tersedia lagi.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{id}
 openapi: 3.1.0

@@ -20,7 +20,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   const href = `${PLAYGROUND}?${params.join("&")}`;
   return <div className="playground-query not-prose">
       <code className="playground-query-text">{query}</code>
-      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API Playground 中打开" aria-label={`在 API Playground 中打开“${query}”`}>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="在 API 演练场中打开" aria-label={`在 API 演练场中打开“${query}”`}>
         {}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
@@ -31,71 +31,55 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search 检索学术论文及相关记录，包括标题、摘要、作者、发表会议或期刊、引用、出版商页面、预印本以及资源库页面。
+使用 Exa Search 检索研究文献及相关记录，包括标题、摘要、作者、发表会议或期刊、引用来源、出版商页面、预印本和代码仓库页面。
 
 <Tip>
   阅读 [SOTA Search Over Academic Publications](https://exa.ai/blog/publications-search)，
-  进一步了解论文搜索的质量。
+  进一步了解文献检索的质量表现。
 </Tip>
 
-<div id="included">
-  ## 涵盖内容
-</div>
+## 包含内容 {#included}
 
-* 论文与预印本，若已解析出全文，则包含全文分块
-* 专利，含摘要、权利要求、发明人与专利权人
-* 科研资助与经费公告
+* 论文与预印本，若有已解析的 full text，则包含全文分块
+* 专利，含摘要、权利要求、发明人和专利权人
+* 科研资助与资助公告
 * 临床试验、药品说明书及药物相互作用数据
-* 监管与卫生批准信息
+* 监管与卫生批准
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
-* 文献综述与引文发现
-* 现有技术检索与专利全景分析
-* 临床与药物研发研究
+* 文献综述与引用来源查找
+* 现有技术检索与专利布局分析
+* 临床与药物研究
 * 科研资助与经费机会发现
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## 查询示例 {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### 查找某一主题的论文
-</div>
+### 查找某一主题的论文 {#find-papers-on-a-topic}
 
-描述方法或研究结论，而不是猜测标题中的关键词。`publication` 类别可将结果限定为论文。
+描述方法或研究发现，而不要去猜测标题中的关键词。`publication` 类别会将结果限定为论文。
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### 检索临床证据
-</div>
+### 检索临床证据 {#search-clinical-evidence}
 
-写明试验分期、干预措施和受试人群，让试验注册信息和结果页面的排名高于泛泛的报道。
+写明试验分期、干预措施和受试人群，让试验注册登记和结果页面的排名高于泛泛的报道。
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### 跟踪监管审批
-</div>
+### 跟踪监管批准 {#track-regulatory-approvals}
 
-写明你关注的监管机构以及设备或药品类别。
+指明监管机构以及你关注的设备或药物类别。
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### 进行现有技术检索
-</div>
+### 运行一次现有技术检索 {#run-a-prior-art-search}
 
-像撰写权利要求那样从功能角度描述发明，而不要使用产品名称。
+像撰写权利要求那样，从功能角度描述该发明，而不要使用产品名称。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -139,12 +123,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果结构化数据需要跨多个来源进行研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需说明你需要的文献、纳入 criteria 和输出字段，Agent 即会返回经过 schema 校验的结果并附上引用来源。
+如果结构化数据需要跨多个来源进行研究才能获得，请使用 [Exa agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的文献、纳入 criteria 和输出 fields，agent 就会返回经过 schema 校验的结果及引用来源。
 
-<Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
-  构建文献图谱、按纳入 criteria 筛选论文，或将多篇文献中的字段汇总到一张表中。
+<Card title="启动一个 agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 agent 指南" arrow="true">
+  构建文献图谱、按纳入 criteria 筛选论文，或将多篇文献中的 fields 汇总到同一个表格中。
 </Card>

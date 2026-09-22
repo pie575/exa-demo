@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在进一步探索之前，请先通过该文件了解所有可用页面。
 
-<div id="delete-a-webhook">
-  # 删除 webhook
-</div>
+# 删除 webhook {#delete-a-webhook}
 
-> 删除一个 Webhook。其状态将变为 `inactive`，后续不再向其 URL 投递 webhook。
+> 删除一个 Webhook。其状态将变为 `inactive`，此后不再向其 URL 发送 webhook 投递。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/webhooks/{id}
 openapi: 3.1.0

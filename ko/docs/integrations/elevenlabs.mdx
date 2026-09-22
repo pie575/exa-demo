@@ -6,49 +6,43 @@ icon: "/docs/images/sidebar-icons/elevenlabs.svg"
 
 ***
 
-ElevenLabs voice agent는 Exa를 **webhook 도구**로 사용해 대화 도중에 웹을 search할 수 있습니다. agent가 최신 정보가 필요하다고 판단하면 ElevenLabs가 Exa의 `/search` endpoint로 직접 HTTP POST를 보내므로, 사용자 측에 별도의 서버나 미들웨어를 둘 필요가 없습니다.
+ElevenLabs voice agent는 Exa를 **webhook 도구**로 사용해 대화 중에 웹을 검색할 수 있습니다. agent가 최신 정보가 필요하다고 판단하면 ElevenLabs가 Exa의 `/search` 엔드포인트로 직접 HTTP POST를 보냅니다. 사용자 측에는 서버나 미들웨어가 필요하지 않습니다.
 
 Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
 
-| 방식                                | 설정                         | 유연성                                             |
-| --------------------------------- | -------------------------- | ----------------------------------------------- |
-| **Webhook 도구** (권장)             | API 또는 dashboard에서 구성      | search 파라미터, content options, header를 완전히 제어 가능 |
-| **Built-in Exa integration** (알파) | ElevenLabs dashboard에서 원클릭 | 더 간단하지만 configuration이 제한적                      |
+| 방식                                | 설정                         | 유연성                                              |
+| --------------------------------- | -------------------------- | ------------------------------------------------ |
+| **webhook 도구** (권장)               | API 또는 dashboard에서 구성      | search 매개변수, content options, header까지 완전히 제어 가능 |
+| **Built-in Exa integration** (알파) | ElevenLabs dashboard에서 원클릭 | 더 간단하지만 구성이 제한적                                  |
 
-이 가이드에서는 Exa를 call하는 방식을 완전히 제어할 수 있는 webhook 도구 방식을 다룹니다. [ElevenLabs dashboard](https://elevenlabs.io/app/conversational-ai)에서 통합을 구성할 수도 있습니다.
+이 가이드에서는 Exa 호출 방식을 완전히 제어할 수 있는 webhook 도구 방식을 다룹니다. [ElevenLabs dashboard](https://elevenlabs.io/app/conversational-ai)에서 연동을 구성할 수도 있습니다.
 
-<div id="how-it-works">
-  ## 작동 방식
-</div>
+## 작동 방식 {#how-it-works}
 
-1. 사용자가 voice agent에게 말을 겁니다
+1. 사용자가 voice agent에게 말합니다
 2. LLM이 도구 설명을 보고 `web_search`를 call하기로 결정합니다
-3. ElevenLabs가 설정한 header와 본문으로 `https://api.exa.ai/search`에 POST 요청을 보냅니다
-4. LLM이 결정한 파라미터(search `query`)가 지정한 고정 값(`type`, `numResults`, `contents`)과 병합됩니다
+3. ElevenLabs가 설정해 둔 header와 body로 `https://api.exa.ai/search`에 POST 요청을 보냅니다
+4. LLM이 결정한 파라미터(search `query`)가 지정해 둔 상수 값(`type`, `numResults`, `contents`)과 병합됩니다
 5. Exa 결과가 LLM으로 전달되고, LLM이 대화체로 응답합니다
 
-서버도, 콜백 URL도, 리스너도 필요 없습니다. ElevenLabs가 HTTP 클라이언트가 되어 Exa를 직접 호출합니다. 도구 call의 타임아웃은 20초입니다.
+서버도, 콜백 URL도, 리스너도 필요 없습니다. ElevenLabs가 HTTP client로서 Exa를 직접 call합니다. 도구 call의 타임아웃은 20초입니다.
 
-<div id="prerequisites">
-  ## 사전 준비 사항
-</div>
+## 사전 준비 사항 {#prerequisites}
 
 * [Exa API key](https://dashboard.exa.ai/api-keys)
-* [ElevenLabs API key](https://elevenlabs.io/app/settings/api-keys)
+* [ElevenLabs API 키](https://elevenlabs.io/app/settings/api-keys)
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  대시보드에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-<div id="get-started">
-  ## 시작하기
-</div>
+## 시작하기 {#get-started}
 
 <Steps>
   <Step title="webhook 도구 만들기">
-    ElevenLabs [Create Tool API](https://elevenlabs.io/docs/api-reference/tools/create)를 사용해 Exa의 search endpoint를 가리키는 webhook 도구를 등록하세요.
+    ElevenLabs의 [Create Tool API](https://elevenlabs.io/docs/api-reference/tools/create)를 사용해 Exa의 search 엔드포인트를 가리키는 webhook 도구를 등록하세요.
 
-    핵심은 이렇습니다. `constant_value`가 있는 속성은 값이 고정되어 모든 요청에 그대로 전송되고, `description`이 있는 속성은 실행 시점에 LLM이 값을 결정합니다.
+    핵심 개념: `constant_value`가 있는 속성은 값이 고정되어 모든 요청에 그대로 전송되고, `description`이 있는 속성은 런타임에 LLM이 값을 결정합니다.
 
     ```bash bash theme={null}
     curl -s -X POST "https://api.elevenlabs.io/v1/convai/tools" \
@@ -99,22 +93,22 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
       }'
     ```
 
-    이렇게 하면 다음과 같이 동작하는 도구가 생성됩니다.
+    이렇게 하면 다음과 같이 동작하는 도구가 생성됩니다:
 
-    * `query` — 대화 맥락에 따라 LLM이 채웁니다
-    * `type: "instant"` — Exa에서 가장 빠른 search mode를 사용합니다(~150ms)
-    * `numResults: 5` — search당 결과를 5개 반환합니다
-    * `contents.highlights: true` — 토큰 효율이 높은 highlights 스니펫을 반환합니다(음성 지연 시간 측면에서 가장 유리)
+    * `query` — 대화 컨텍스트를 바탕으로 LLM이 채웁니다
+    * `type: "instant"` — Exa에서 가장 빠른 search mode를 사용합니다 (~150ms)
+    * `numResults: 5` — search당 result 5개를 반환합니다
+    * `contents.highlights: true` — 토큰 효율이 높은 highlights 스니펫을 반환합니다 (음성 latency에 가장 적합)
 
-    반환된 `id`는 따로 저장해 두세요. agent에 도구를 연결할 때 필요합니다.
+    반환된 `id`는 저장해 두세요. 도구를 agent에 연결할 때 필요합니다.
 
     <Note>
-      이미 agent가 있다면 2단계를 건너뛰고, ElevenLabs dashboard의 **Agent &gt; Tools**에서 또는 [Update Agent API](https://elevenlabs.io/docs/api-reference/agents/update)를 통해 기존 agent에 도구를 추가하면 됩니다. 도구는 agent에 attach되기 전까지는 아무 동작도 하지 않습니다.
+      이미 agent가 있다면 2단계를 건너뛰고, ElevenLabs dashboard의 **Agent &gt; Tools**에서 또는 [Update Agent API](https://elevenlabs.io/docs/api-reference/agents/update)를 통해 기존 agent에 도구를 추가하면 됩니다. 도구는 agent에 attach되기 전까지 아무 동작도 하지 않습니다.
     </Note>
   </Step>
 
   <Step title="도구를 갖춘 agent 만들기">
-    대화형 agent를 만들고 webhook 도구를 ID로 attach하세요.
+    대화형 agent를 만들고 ID로 webhook 도구를 attach하세요.
 
     ```bash bash theme={null}
     curl -s -X POST "https://api.elevenlabs.io/v1/convai/agents/create" \
@@ -134,7 +128,7 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
       }'
     ```
 
-    응답에는 `agent_id`가 포함됩니다. ElevenLabs dashboard에서 해당 agent를 열어 테스트해 보세요.
+    response에는 `agent_id`가 포함됩니다. ElevenLabs dashboard에서 agent를 열어 테스트해 보세요:
 
     ```text theme={null}
     https://elevenlabs.io/app/conversational-ai/agents/YOUR_AGENT_ID
@@ -142,7 +136,7 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
   </Step>
 
   <Step title="위젯 임베드하기">
-    HTML 두 줄만 추가하면 어떤 웹페이지에든 agent를 넣을 수 있습니다.
+    HTML 두 줄만으로 어떤 웹페이지에든 agent를 추가할 수 있습니다:
 
     ```html html theme={null}
     <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai>
@@ -151,11 +145,9 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
   </Step>
 </Steps>
 
-<div id="full-python-example">
-  ## 전체 Python 예제
-</div>
+## 전체 Python 예제 {#full-python-example}
 
-이 스크립트는 webhook 도구과 agent를 한 번의 실행으로 모두 생성합니다:
+이 스크립트는 한 번의 실행으로 webhook 도구와 agent를 모두 생성합니다:
 
 ```python python theme={null}
 import os
@@ -247,30 +239,24 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-<div id="customizing-search-parameters">
-  ## search parameters 커스터마이징
-</div>
+## search parameters 커스터마이징 {#customizing-search-parameters}
 
-webhook 도구의 body schema는 [Exa의 Search API](/ko/docs/reference/search)에 그대로 매핑됩니다. 자주 사용되는 configuration은 다음과 같습니다:
+webhook 도구의 body schema는 [Exa의 Search API](/ko/docs/reference/search)와 직접 대응됩니다. 자주 사용하는 구성은 다음과 같습니다:
 
-<div id="search-type">
-  ### Search type
-</div>
+### Search type {#search-type}
 
-`type` 상수로 속도와 품질 간의 균형을 조절하세요:
+`type` 상수로 속도와 품질 간의 트레이드오프를 조절하세요:
 
-| Type      | 지연 시간  | 적합한 용도     |
-| --------- | ------ | ---------- |
-| `instant` | ~150ms | 음성 대화 (권장) |
-| `auto`    | ~1s    | 일반적인 용도    |
+| 타입        | Latency | 적합한 용도     |
+| --------- | ------- | ---------- |
+| `instant` | ~150ms  | 음성 대화 (권장) |
+| `auto`    | ~1s     | 일반적인 용도    |
 
-voice agent에서는 `instant`로 시작하세요. 각 질의마다 Exa가 현재 가장 적합한 search mode를 선택하도록 하려면 `auto`를 사용하세요.
+voice agent라면 `instant`로 시작하세요. 각 질의에 가장 적합한 search mode를 Exa가 그때그때 선택하도록 하려면 `auto`를 사용하세요.
 
-<div id="content-options">
-  ### content options
-</div>
+### Content options {#content-options}
 
-`contents` 객체를 통해 결과 반환 방식을 선택하세요:
+`contents` 객체를 통해 결과를 반환하는 방식을 선택하세요:
 
 ```json json theme={null}
 {
@@ -286,17 +272,15 @@ voice agent에서는 `instant`로 시작하세요. 각 질의마다 Exa가 현�
 }
 ```
 
-* **`highlights`** — 토큰 효율이 높은 발췌문입니다. LLM 컨텍스트를 과도하게 차지하지 않으면서 관련 있는 스니펫만 얻고 싶을 때 사용하세요. 최고 품질의 기본값을 쓰려면 `true`를 전달하세요.
-* **`text`** — 페이지 전체의 마크다운입니다. agent가 페이지 콘텐츠 전문이 필요할 때 사용하세요. 길이를 제한하려면 `maxCharacters`를 설정하세요.
-* **`summary`** — 각 페이지에 대해 LLM이 생성한 요약입니다. 지연 시간은 늘어나지만 내용을 종합해 제공합니다.
+* **`highlights`** — 토큰 효율적인 발췌문입니다. LLM 컨텍스트를 과도하게 차지하지 않으면서 관련 있는 스니펫만 얻고 싶을 때 사용하세요. 가장 품질이 높은 기본 동작을 원하면 `true`를 전달하세요.
+* **`text`** — 전체 페이지 마크다운입니다. agent에 전체 페이지 콘텐츠가 필요할 때 사용하세요. 길이를 제한하려면 `maxCharacters`를 설정하세요.
+* **`summary`** — 각 페이지에 대해 LLM이 생성한 요약입니다. latency는 더 높지만 종합된 콘텐츠를 제공합니다.
 
-voice agent에는 `highlights: true`가 권장 기본값입니다. 관련성과 응답 속도의 균형이 가장 좋습니다.
+voice agent에는 `highlights: true`를 기본값으로 권장합니다. 관련성과 응답 속도의 균형이 가장 잘 맞기 때문입니다.
 
-<div id="filtering-results">
-  ### 결과 필터링
-</div>
+### 결과 필터링 {#filtering-results}
 
-도메인 또는 날짜 필터를 상수로 추가합니다:
+도메인 또는 날짜 필터를 상수로 추가하세요:
 
 ```json json theme={null}
 {
@@ -316,36 +300,30 @@ voice agent에는 `highlights: true`가 권장 기본값입니다. 관련성과 
 }
 ```
 
-<div id="number-of-results">
-  ### 결과 개수
-</div>
+### 결과 개수 {#number-of-results}
 
-사용 사례에 맞춰 `numResults`를 조정하세요. 음성 애플리케이션이라면 결과 3~5개로 응답 속도를 빠르게 유지할 수 있고, 리서치 중심의 agent라면 10개 이상으로 설정해 더 폭넓은 범위를 다룰 수 있습니다.
+사용 사례에 맞춰 `numResults`를 조정하세요. 음성 서비스라면 결과 3~5개로 응답 속도를 빠르게 유지할 수 있고, 리서치 중심 agent라면 10개 이상으로 더 폭넓은 범위를 다룰 수 있습니다.
 
-<div id="schema-reference">
-  ## 스키마 레퍼런스
-</div>
+## Schema reference {#schema-reference}
 
-ElevenLabs webhook 도구는 다음과 같은 속성 유형으로 구성된 JSON 스키마를 사용합니다:
+ElevenLabs webhook 도구는 다음 속성 타입으로 구성된 JSON schema를 사용합니다:
 
 * **`constant_value`** — 모든 요청에 전송되는 고정 값입니다. LLM은 이 값을 보거나 수정할 수 없습니다. 문자열, 숫자, 불리언에 사용할 수 있습니다.
-* **`description`** — LLM이 이 설명을 바탕으로 런타임에 값을 결정합니다. `query`처럼 동적인 파라미터에 사용하세요.
-* **중첩 객체** — `contents.highlights`와 같은 중첩 구조를 만들려면 `type: "object"`와 `properties`를 사용하세요.
+* **`description`** — LLM이 이 설명을 바탕으로 런타임에 값을 결정합니다. `query`처럼 동적인 parameters에 사용하세요.
+* **중첩 객체** — `contents.highlights`와 같은 중첩 구조를 만들려면 `properties`와 함께 `type: "object"`를 사용하세요.
 
-각 파라미터는 dashboard에서 **Fixed** 또는 **LLM** 모드로 전환할 수 있습니다:
+각 매개변수는 dashboard에서 **Fixed** 또는 **LLM** 모드로 전환할 수 있습니다:
 
 <Frame>
-  <img src="/docs/images/integrations/elevenlabs/parameters.png" alt="Fixed와 LLM 모드 전환을 보여주는 ElevenLabs webhook 도구 파라미터 설정" width="1692" height="898" data-path="images/integrations/elevenlabs/parameters.png" />
+  <img src="/docs/images/integrations/elevenlabs/parameters.png" alt="Fixed와 LLM 모드 전환을 보여주는 ElevenLabs webhook 도구 매개변수 구성" width="1692" height="898" data-path="images/integrations/elevenlabs/parameters.png" />
 </Frame>
 
-**Fixed**로 설정된 파라미터(API에서는 `constant_value`로 표시)는 모든 요청에 그대로 전송됩니다. **LLM**으로 설정된 파라미터(`description`으로 표시)는 모델이 런타임에 값을 결정합니다. 파라미터는 가능한 한 Fixed로 유지하세요 — LLM이 값을 결정하는 파라미터가 하나씩 늘어날 때마다 도구 호출 단계가 추가되어 응답 지연이 커집니다.
+**Fixed**로 설정한 parameters(API에서는 `constant_value`로 표시)는 모든 요청에 그대로 전송됩니다. **LLM**으로 설정한 parameters(`description`으로 표시)는 모델이 런타임에 값을 결정합니다. 가능한 한 많은 parameters를 Fixed로 유지하세요. LLM이 값을 결정하는 매개변수마다 도구 호출 단계가 추가되어 response latency가 늘어납니다.
 
-ElevenLabs webhook 도구 스키마 전체는 [ElevenLabs 서버 도구 문서](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools)를 참고하세요.
+전체 ElevenLabs webhook tool schema는 [ElevenLabs server tools 문서](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools)를 참고하세요.
 
-<div id="built-in-exa-integration-alpha">
-  ## Built-in Exa integration (alpha)
-</div>
+## Built-in Exa integration (alpha) {#built-in-exa-integration-alpha}
 
-ElevenLabs는 agent 대시보드의 **Tools &gt; Integrations**에서 바로 사용할 수 있는 Built-in Exa integration도 제공합니다. 설정은 더 간단하지만, webhook 도구 방식에 비해 search parameters를 세밀하게 조정하기는 어렵습니다.
+ElevenLabs는 agent dashboard의 **Tools &gt; Integrations**에서 사용할 수 있는 내장 Exa 연동도 제공합니다. 설정은 더 간단하지만, webhook 도구 방식에 비해 search parameters를 원하는 대로 조정하기는 더 어렵습니다.
 
-search type, content options, 필터링까지 완전히 제어하려면 위에서 설명한 webhook 도구 방식을 사용하는 것이 좋습니다.
+search type, content options, filtering을 완전히 제어하려면 위에서 설명한 webhook 도구 방식을 권장합니다.

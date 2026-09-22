@@ -1,17 +1,13 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 进一步浏览前，可通过该文件了解所有可用页面。
+> 在深入浏览之前，可通过该文件查看所有可用页面。
 
-<div id="additional-providers">
-  # 更多数据提供方
-</div>
+# 更多提供方 {#additional-providers}
 
-> 自助开通提供方之外的 Exa Connect 合作伙伴。
+> 自助提供方之外的 Exa Connect 合作伙伴。
 
-除自助开通的提供方外，Exa Connect 还支持更多数据合作伙伴。这些提供方**需申请开通**，[请联系我们的团队为您的账户启用](mailto:sales@exa.ai)。
+除自助提供方外，Exa Connect 还支持更多数据合作伙伴。这些提供方**需申请开通**，[请联系我们的团队为您的账户启用](mailto:sales@exa.ai)。
 
 <div className="connect-request-tiles">
   <Columns cols={3}>
@@ -69,10 +65,10 @@
 
 <Columns cols={2}>
   <Card title="联系我们的团队" icon="mail" href="mailto:sales@exa.ai" cta="联系销售" arrow="true">
-    告诉我们您的 Exa Agent 需要哪家合作伙伴，我们会帮您接入。
+    告诉我们你的 Exa Agent 需要哪家合作伙伴，我们来帮你对接。
   </Card>
 
   <Card title="成为提供方" icon="handshake" href="https://docs.google.com/forms/d/e/1FAIpQLSexTOC8ix28h8uumexJxFg4Mln4WPmm-D332RSbdB01DtnvnQ/viewform" cta="申请" arrow="true">
-    有数据可以提供？欢迎申请成为 Exa Connect 合作伙伴。
+    有数据想要提供？欢迎申请以合作伙伴身份加入 Exa Connect。
   </Card>
 </Columns>

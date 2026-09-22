@@ -1,11 +1,12 @@
 ---
-title: "webhook 수정"
+title: "웹훅 업데이트"
 openapi: "/ko/docs/exa-spec.yaml PATCH /v0/webhooks/{id}"
 timestamp: false
-description: "Webhook의 대상 URL, 구독 이벤트 또는 메타데이터를 수정합니다. 생략한 필드는 그대로 유지됩니다."
+description: "Webhook의 대상 URL, 구독 중인 이벤트 또는 metadata를 업데이트합니다. 생략된 field는 변경되지 않습니다."
 ---
 
 <Warning>
-  **리디렉션은 따라가지 않습니다.** URL을 수정할 때는 최종 목적지 주소인지 확인하세요. 3xx 리디렉션으로
-  응답하는 endpoint는 전송 실패로 처리됩니다.
+  **리다이렉트는 따라가지 않습니다.** URL을 업데이트할 때는 최종
+  목적지 주소인지 확인하세요. 3xx 리다이렉트로 응답하는 엔드포인트는
+  전송 실패로 처리됩니다.
 </Warning>

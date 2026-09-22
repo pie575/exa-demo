@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="cancel-a-running-search">
-  # Annuler une recherche en cours
-</div>
+# Annuler une recherche en cours {#cancel-a-running-search}
 
 > Annule une Search en cours d&#39;exécution.
 
-Vous pouvez annuler toutes les searches en une seule fois via l&#39;endpoint `websets/:webset/cancel`.
+Vous pouvez annuler toutes les recherches en une seule fois via l&#39;endpoint `websets/:webset/cancel`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0
@@ -214,54 +208,54 @@ components:
             searching the web.
 
 
-            If provided during creation, the search will only be performed on
-            the sources provided.
+            Si fournies lors de la création, la recherche sera effectuée uniquement
+            sur les sources fournies.
           type: array
         progress:
           properties:
             found:
-              description: The number of results found so far
+              description: Le nombre de résultats trouvés jusqu'à présent
               type: number
             analyzed:
-              description: The number of results analyzed so far
+              description: Le nombre de résultats analysés jusqu'à présent
               type: number
             completion:
               minimum: 0
               maximum: 100
-              description: The completion percentage of the search
+              description: Le pourcentage d'avancement de la recherche
               type: number
             timeLeft:
               type: number
-              description: The estimated time remaining in seconds, null if unknown
+              description: Le temps restant estimé en secondes, null si inconnu
               nullable: true
           required:
             - found
             - analyzed
             - completion
             - timeLeft
-          description: The progress of the search
+          description: L'avancement de la recherche
           type: object
         recall:
           properties:
             expected:
               properties:
                 total:
-                  description: The estimated total number of potential matches
+                  description: Le nombre total estimé de correspondances potentielles
                   type: number
                 confidence:
                   enum:
                     - high
                     - medium
                     - low
-                  description: The confidence in the estimate
+                  description: Le niveau de confiance dans l'estimation
                   type: string
                 bounds:
                   properties:
                     min:
-                      description: The minimum estimated total number of potential matches
+                      description: Le nombre total minimal estimé de correspondances potentielles
                       type: number
                     max:
-                      description: The maximum estimated total number of potential matches
+                      description: Le nombre total maximal estimé de correspondances potentielles
                       type: number
                   required:
                     - min
@@ -273,19 +267,19 @@ components:
                 - bounds
               type: object
             reasoning:
-              description: The reasoning for the estimate
+              description: Le raisonnement justifiant l'estimation
               type: string
           required:
             - expected
             - reasoning
           type: object
           description: >-
-            Recall metrics for the search, null if not yet computed or
-            requested.
+            Métriques de rappel pour la recherche, null si elles ne sont pas
+            encore calculées ou demandées.
           nullable: true
         metadata:
           default: {}
-          description: Set of key-value pairs you want to associate with this object.
+          description: Ensemble de paires clé-valeur que vous souhaitez associer à cet objet.
           propertyNames:
             type: string
           additionalProperties:
@@ -295,19 +289,19 @@ components:
         canceledAt:
           format: date-time
           type: string
-          description: The date and time the search was canceled
+          description: La date et l'heure d'annulation de la recherche
           nullable: true
         canceledReason:
           $ref: '#/components/schemas/WebsetSearchCanceledReason'
-          description: The reason the search was canceled
+          description: La raison pour laquelle la recherche a été annulée
           nullable: true
         createdAt:
           format: date-time
-          description: The date and time the search was created
+          description: La date et l'heure de création de la recherche
           type: string
         updatedAt:
           format: date-time
-          description: The date and time the search was updated
+          description: La date et l'heure de mise à jour de la recherche
           type: string
       required:
         - id
@@ -354,7 +348,7 @@ components:
           default: company
       required:
         - type
-      title: Company
+      title: Entreprise
       type: object
     PersonEntity:
       properties:
@@ -364,7 +358,7 @@ components:
           default: person
       required:
         - type
-      title: Person
+      title: Personne
       type: object
     ArticleEntity:
       properties:
@@ -384,7 +378,7 @@ components:
           default: research_paper
       required:
         - type
-      title: Research Paper
+      title: Article de recherche
       type: object
     CustomEntity:
       properties:
@@ -399,7 +393,7 @@ components:
       required:
         - type
         - description
-      title: Custom
+      title: Personnalisé
       type: object
   securitySchemes:
     apiKey:
@@ -407,12 +401,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre clé API Exa dans l'en-tête x-api-key. Vous pouvez également
+        vous authentifier avec Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre clé API Exa dans l'en-tête x-api-key. Vous pouvez également
+        vous authentifier avec Authorization: Bearer <key>.
 ```

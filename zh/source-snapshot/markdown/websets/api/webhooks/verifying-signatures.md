@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入浏览之前，可通过该文件了解所有可用页面。
 
-<div id="verifying-signatures">
-  # 验证签名
-</div>
+# 验证签名 {#verifying-signatures}
 
 > 了解如何安全地验证 webhook 签名，以确保请求来自 Exa
 
-当你收到来自 Exa 的 webhook 时，应当验证它确实由我们发出，以保证数据的完整性和真实性。Exa 会使用每个 webhook 端点专属的密钥，对所有 webhook 负载进行签名。
+收到来自 Exa 的 webhook 时，你应当验证它确实来自我们，以保证数据的完整性和真实性。Exa 会使用与你的 webhook 端点一一对应的 secret 密钥，对所有 webhook 负载进行签名。
 
-<div id="how-webhook-signatures-work">
-  ## Webhook 签名的工作原理
-</div>
+## Webhook 签名的工作原理 {#how-webhook-signatures-work}
 
-Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Signature` 请求头中，该请求头包含：
+Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Signature` header 中，其中包含：
 
 * 一个时间戳 (`t=`) ，表示 webhook 的发送时间
 * 一个或多个签名 (`v1=`) ，由时间戳和负载计算得出
@@ -28,16 +22,14 @@ Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Sig
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## 验证流程
-</div>
+## 验证流程 {#verification-process}
 
 验证 webhook 签名的步骤如下：
 
-1. 从 `Exa-Signature` 请求头中提取时间戳和签名
-2. 将时间戳、一个英文句点和原始请求体拼接起来，构造出待签名负载
-3. 使用你的 webhook 密钥，通过 HMAC SHA256 计算出预期签名
-4. 将计算得到的签名与请求头中提供的签名进行比对
+1. 从 `Exa-Signature` header 中提取时间戳和签名
+2. 将时间戳、一个句点 (`.`) 和原始请求体拼接起来，构造出待签名负载
+3. 使用你的 webhook 密钥，通过 HMAC SHA256 计算预期签名
+4. 将计算出的签名与请求中提供的签名进行比对
 
 <CodeGroup>
   ```python Python theme={null}
@@ -58,7 +50,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
           bool: True if signature is valid, False otherwise
       """
       try:
-          # 解析签名请求头
+          # 解析签名 header
           pairs = [pair.split('=', 1) for pair in signature_header.split(',')]
           timestamp = None
           signatures = []
@@ -72,12 +64,12 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
           if not timestamp or not signatures:
               return False
 
-          # 可选：检查时间戳是否在有效期内（5 分钟以内）
+          # 可选：检查时间戳是否为近期（5 分钟以内）
           current_time = int(time.time())
           if abs(current_time - int(timestamp)) > 300:
               print("Warning: Webhook timestamp is more than 5 minutes old")
 
-          # 构造待签名内容
+          # 构造待签名的负载
           signed_payload = f"{timestamp}.{payload}"
 
           # 计算预期签名
@@ -111,7 +103,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
       if not verify_webhook_signature(payload, signature_header, webhook_secret):
           return jsonify({'error': 'Invalid signature'}), 400
 
-      # 处理 webhook
+      # 处理该 webhook
       webhook_data = request.get_json()
       print(f"Received {webhook_data['type']} event")
 
@@ -126,12 +118,12 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
        * 验证 webhook 负载的签名。
        *
        * @param {string} payload - 字符串形式的原始请求体
-       * @param {string} signatureHeader - Exa-Signature 请求头的值
+       * @param {string} signatureHeader - Exa-Signature header 的值
        * @param {string} webhookSecret - 你的 webhook 密钥
-       * @returns {boolean} 签名有效时返回 true，否则返回 false
+       * @returns {boolean} 签名有效返回 true，否则返回 false
        */
       try {
-          // 解析签名请求头
+          // 解析签名 header
           const pairs = signatureHeader.split(',').map(pair => pair.split('='));
           const timestamp = pairs.find(([key]) => key === 't')?.[1];
           const signatures = pairs
@@ -142,7 +134,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
               return false;
           }
 
-          // 可选：检查时间戳是否为近期（5 分钟以内）
+          // 可选：检查时间戳是否在近期（5 分钟以内）
           const currentTime = Math.floor(Date.now() / 1000);
           if (Math.abs(currentTime - parseInt(timestamp)) > 300) {
               console.warn('Warning: Webhook timestamp is more than 5 minutes old');
@@ -151,13 +143,13 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
           // 构造待签名的负载
           const signedPayload = `${timestamp}.${payload}`;
 
-          // 计算预期签名
+          // 计算预期的签名
           const expectedSignature = crypto
               .createHmac('sha256', webhookSecret)
               .update(signedPayload)
               .digest('hex');
 
-          // 使用恒定时间比较与传入的签名进行比对
+          // 使用时间安全比较，与传入的签名进行对比
           return signatures.some(sig =>
               crypto.timingSafeEqual(
                   Buffer.from(expectedSignature, 'hex'),
@@ -175,7 +167,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
   const express = require('express');
   const app = express();
 
-  // 重要：webhook 验证需使用原始请求体解析器
+  // 重要：验证 webhook 时需使用原始请求体解析器
   app.use('/webhook', express.raw({ type: 'application/json' }));
 
   app.post('/webhook', (req, res) => {
@@ -212,13 +204,13 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
       * 验证 webhook 负载的签名。
       *
       * @param payload 字符串形式的原始请求体
-      * @param signatureHeader Exa-Signature 请求头的值
+      * @param signatureHeader Exa-Signature header 的值
       * @param webhookSecret 你的 webhook 密钥
       * @return 签名有效返回 true，否则返回 false
       */
       public static boolean verifyWebhookSignature(String payload, String signatureHeader, String webhookSecret) {
           try {
-              // 解析签名请求头
+              // 解析签名 header
               String[] pairs = signatureHeader.split(",");
               String timestamp = null;
               List<String> signatures = new ArrayList<>();
@@ -254,7 +246,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
               // 计算预期签名
               String expectedSignature = computeHmacSha256(signedPayload, webhookSecret);
 
-              // 使用恒定时间比较与传入的签名进行对比
+              // 使用时序安全的比较方式与传入的签名比对
               return signatures.stream().anyMatch(sig -> timingSafeEquals(expectedSignature, sig));
 
           } catch (Exception e) {
@@ -287,7 +279,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
       }
 
       /**
-      * 恒定时间的字符串比较，用于防止时序攻击。
+      * 时序安全的字符串比较，用于防止时序攻击。
       */
       private static boolean timingSafeEquals(String a, String b) {
           if (a.length() != b.length()) {
@@ -311,7 +303,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
           String testTimestamp = String.valueOf(Instant.now().getEpochSecond());
 
           try {
-              // 创建测试签名
+              // 生成测试签名
               String signedPayload = testTimestamp + "." + testPayload;
               String testSignature = computeHmacSha256(signedPayload, testSecret);
               String testHeader = "t=" + testTimestamp + ",v1=" + testSignature;
@@ -340,11 +332,11 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
               boolean noTimestamp = verifyWebhookSignature(testPayload, noTimestampHeader, testSecret);
               System.out.println("   ✓ Missing timestamp rejection: " + (!noTimestamp ? "✅ PASSED" : "❌ FAILED"));
 
-              // 测试空请求头
+              // 测试空 header
               boolean emptyHeader = verifyWebhookSignature(testPayload, "", testSecret);
               System.out.println("   ✓ Empty header rejection: " + (!emptyHeader ? "✅ PASSED" : "❌ FAILED"));
 
-              // 测试格式错误的请求头
+              // 测试格式错误的 header
               boolean malformedHeader = verifyWebhookSignature(testPayload, "invalid-header-format", testSecret);
               System.out.println("   ✓ Malformed header rejection: " + (!malformedHeader ? "✅ PASSED" : "❌ FAILED"));
 
@@ -354,7 +346,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
               if (isValid) {
                   System.out.println("🎉 === Processing Valid Webhook ===");
                   System.out.println("   Processing webhook payload: " + testPayload);
-                  // 在此处解析 JSON 并处理 webhook 事件
+                  // 在这里解析 JSON 并处理 webhook 事件
                   System.out.println("   Webhook processed successfully!");
                   System.out.println();
                   System.out.println("🔒 Security verification complete! Your webhook signature verification is working correctly.");
@@ -373,21 +365,19 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-<div id="security-best-practices">
-  ## 安全最佳实践
-</div>
+## 安全最佳实践 {#security-best-practices}
 
-遵循以下做法有助于确保你的 webhook 实现安全可靠：
+遵循以下实践有助于确保你的 webhook 实现安全可靠：
 
-* **始终验证签名** —— 未验证签名前，切勿处理 webhook 数据。这可以防止攻击者向你的端点发送伪造的 webhook。
+* **务必验证签名** —— 未验证签名前，切勿处理 webhook 数据。这可以防止攻击者向你的端点发送伪造的 webhook。
 
-* **使用恒定时间比较** —— 比较签名时，请使用 Python 的 `hmac.compare_digest()` 或 Node.js 的 `crypto.timingSafeEqual()` 等函数，以防范时序攻击。
+* **使用时序安全的比较** —— 比较签名时，请使用 Python 的 `hmac.compare_digest()` 或 Node.js 的 `crypto.timingSafeEqual()` 等函数，以防止时序攻击。
 
-* **检查时间戳时效性** —— 建议拒绝时间戳过旧 (例如超过 5 分钟) 的 webhook，以防范重放攻击。
+* **检查时间戳新鲜度** —— 建议拒绝时间戳过旧 (例如超过 5 分钟) 的 webhook，以防止重放攻击。
 
-* **安全存储密钥** —— 将 webhook 密钥存储在环境变量或安全的密钥管理系统中，切勿在应用程序中硬编码。**重要提示**：webhook 密钥仅在你[创建 webhook](/zh/docs/websets/api/webhooks/create-a-webhook) 时返回一次，请务必妥善保存，之后将无法再次获取。
+* **安全存储 secret** —— 将 webhook 密钥存储在环境变量或安全的密钥管理系统中，切勿硬编码在应用程序里。**重要提示**：webhook 密钥仅在你[创建 webhook](/zh/docs/websets/api/webhooks/create-a-webhook) 时返回一次，请务必妥善保存，之后无法再次获取。
 
-* **使用 HTTPS** —— webhook 请务必使用 HTTPS 端点，以确保数据在传输过程中处于加密状态。
+* **使用 HTTPS** —— webhook 请始终使用 HTTPS 端点，以确保数据在传输过程中加密。
 
 * **注册最终 URL** —— webhook 投递不会跟随 HTTP 重定向 (3xx 响应) 。如果你的端点发生重定向，该次投递将被视为失败。请始终注册直接处理负载的 URL。
 
@@ -395,24 +385,18 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-<div id="troubleshooting">
-  ## 故障排查
-</div>
+## 故障排查 {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### 签名无效错误
-</div>
+### 签名无效错误 {#invalid-signature-errors}
 
-如果签名验证失败：
+如果遇到签名验证失败：
 
 1. **检查原始负载**：确认使用的是原始请求体，而不是解析后的 JSON 对象
 2. **核对密钥**：确认使用的是创建 webhook 时获得的正确 webhook 密钥
-3. **检查请求头解析**：确认已从请求头中正确提取时间戳和签名
-4. **编码问题**：确保整个验证过程中使用一致的 UTF-8 编码
+3. **检查 header 解析**：确认已正确从 header 中提取时间戳和签名
+4. **编码问题**：确保整个验证过程中始终使用一致的 UTF-8 编码
 
-<div id="testing-signatures-locally">
-  ### 在本地测试签名
-</div>
+### 在本地测试签名 {#testing-signatures-locally}
 
 你可以使用 webhook 密钥和示例负载来测试签名验证逻辑：
 
@@ -444,9 +428,7 @@ print(f"Test signature valid: {is_valid}")  # 应输出 True
 
 <br />
 
-<div id="whats-next">
-  ## 下一步
-</div>
+## 下一步 {#whats-next}
 
 * 了解 [webhook 事件](/zh/docs/websets/api/events/types)及其负载
 * 配置 [webhook 重试与监控](/zh/docs/websets/api/webhooks/attempts/list-webhook-attempts)

@@ -1,15 +1,11 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入探索之前，可通过该文件查看所有可用页面。
+> 在进一步探索之前，可通过该文件了解所有可用页面。
 
-<div id="status-page">
-  # 状态页
-</div>
+# 状态页 {#status-page}
 
-> Exa 服务的实时可用性、当前事件以及 uptime 历史记录。
+> Exa 服务的实时可用性、进行中的故障事件与可用性历史记录。
 
 export const ExaStatus = () => {
   const [data, setData] = useState(null);
@@ -169,28 +165,24 @@ export const ExaStatus = () => {
 
 ***
 
-Exa 在 [status.exa.ai](https://status.exa.ai) 发布服务可用性信息：包括 Search API、Websets 和 Exa MCP 的当前状态、进行中的事件及其最新进展，以及 90 天的 uptime 历史记录。
+Exa 在 [status.exa.ai](https://status.exa.ai) 发布服务可用性信息：Search API、Websets 和 Exa MCP 的当前状态、正在处理的故障事件及其实时进展更新，以及 90 天的可用性历史记录。
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## 订阅更新
-</div>
+## 订阅更新 {#subscribe-to-updates}
 
-在状态页上订阅，即可在事件创建、更新或解决时收到通知。通知支持通过电子邮件、Slack、Google Chat 或 webhook 发送。
+在状态页上订阅，即可在故障事件创建、更新或解决时收到通知。通知可通过电子邮件、Slack、Google Chat 或 webhook 发送。
 
-<div id="get-help">
-  ## 获取帮助
-</div>
+## 获取帮助 {#get-help}
 
-如果所有系统都显示运行正常，但请求仍持续失败，原因很可能出在请求层面——请先查看[错误码](/zh/docs/admin/error-codes)。
+如果所有系统均显示运行正常，但请求仍持续失败，问题很可能出在请求本身，请先查看[错误码](/zh/docs/admin/error-codes)。
 
 <Columns cols={2}>
   <Card title="邮件支持" icon="mail" href="mailto:hello@exa.ai" cta="发送邮件" arrow="true">
-    请附上响应状态、错误响应体和 `requestId`，以便我们最快定位问题。
+    请提供响应状态、错误响应体和 `requestId`，以便我们尽快定位问题。
   </Card>
 
-  <Card title="企业支持" icon="headset" href="https://exa.ai/contact/sales" cta="联系销售" arrow="true">
-    企业版方案提供 uptime 与支持 SLA。
+  <Card title="Enterprise 支持" icon="headset" href="https://exa.ai/contact/sales" cta="联系销售" arrow="true">
+    Enterprise plan 提供 uptime 与支持 SLA。
   </Card>
 </Columns>

@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="contents">
-  # Contents
-</div>
+# Contenido {#contents}
 
-> Obtén el contenido completo de las páginas, resúmenes y metadatos de una lista de URLs.
+> Obtén el contenido completo de las páginas, los resúmenes y los metadatos de una lista de URLs.
 
-Devuelve resultados instantáneos desde nuestra caché y realiza un rastreo en vivo automático como alternativa para las páginas que no están en caché.
+Devuelve resultados instantáneos desde nuestra caché, con rastreo en vivo automático como alternativa para las páginas que no están en caché.
 
 ***
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas incluyen credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0
@@ -1159,7 +1153,7 @@ components:
                       anyOf:
                         - type: string
                         - type: 'null'
-                      description: País de la sede de la empresa.
+                      description: Company headquarters country.
                   required:
                     - address
                     - city
@@ -1167,7 +1161,7 @@ components:
                     - country
                   additionalProperties: false
                 - type: 'null'
-              description: Información sobre la sede de la empresa.
+              description: Company headquarters information.
             financials:
               anyOf:
                 - type: object
@@ -1176,12 +1170,12 @@ components:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: Ingresos anuales estimados en USD.
+                      description: Estimated annual revenue in USD.
                     fundingTotal:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: Financiación total obtenida en USD.
+                      description: Total funding raised in USD.
                     fundingLatestRound:
                       anyOf:
                         - type: object
@@ -1190,31 +1184,31 @@ components:
                               anyOf:
                                 - type: string
                                 - type: 'null'
-                              description: Nombre de la ronda de financiación.
+                              description: Funding round name.
                             date:
                               anyOf:
                                 - type: string
                                 - type: 'null'
-                              description: Fecha de la ronda de financiación.
+                              description: Funding round date.
                             amount:
                               anyOf:
                                 - type: number
                                 - type: 'null'
-                              description: Importe de la ronda de financiación en USD.
+                              description: Funding round amount in USD.
                           required:
                             - name
                             - date
                             - amount
                           additionalProperties: false
                         - type: 'null'
-                      description: Ronda de financiación más reciente, si está disponible.
+                      description: Most recent funding round, when available.
                   required:
                     - revenueAnnual
                     - fundingTotal
                     - fundingLatestRound
                   additionalProperties: false
                 - type: 'null'
-              description: Información financiera de la empresa.
+              description: Company financial information.
             webTraffic:
               anyOf:
                 - type: object
@@ -1223,19 +1217,19 @@ components:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: Visitas mensuales estimadas al sitio web.
+                      description: Estimated monthly website visits.
                     countryRank:
                       anyOf:
                         - type: integer
                         - type: 'null'
                       description: >-
-                        Posición estimada de tráfico web dentro del país
-                        principal de la empresa.
+                        Estimated website traffic rank within the company's
+                        primary country.
                     avgDurationSeconds:
                       anyOf:
                         - type: number
                         - type: 'null'
-                      description: Duración media estimada de la visita, en segundos.
+                      description: Estimated average visit duration, in seconds.
                     history:
                       type: array
                       items:
@@ -1243,19 +1237,19 @@ components:
                         properties:
                           value:
                             type: number
-                            description: Visitas mensuales estimadas en este período.
+                            description: Estimated monthly visits for this period.
                           dateFrom:
                             type: string
-                            description: Mes inicial de este valor, con formato YYYY-MM.
+                            description: Start month for this value, formatted as YYYY-MM.
                           dateTo:
                             type: string
-                            description: Mes final de este valor, con formato YYYY-MM.
+                            description: End month for this value, formatted as YYYY-MM.
                         required:
                           - value
                           - dateFrom
                           - dateTo
                         additionalProperties: false
-                      description: Histórico de visitas mensuales al sitio web.
+                      description: Historical monthly website visits.
                   required:
                     - visitsMonthly
                     - countryRank
@@ -1263,7 +1257,7 @@ components:
                     - history
                   additionalProperties: false
                 - type: 'null'
-              description: Información sobre el tráfico web de la empresa.
+              description: Company web traffic information.
             research:
               anyOf:
                 - type: object
@@ -1272,17 +1266,17 @@ components:
                       anyOf:
                         - type: integer
                         - type: 'null'
-                      description: Número de trabajos con un autor afiliado.
+                      description: Number of works with an affiliated author.
                     citationCount:
                       anyOf:
                         - type: integer
                         - type: 'null'
-                      description: Número total de citas acumuladas.
+                      description: Lifetime citation count.
                     areas:
                       type: array
                       items:
                         type: string
-                      description: Áreas de investigación ordenadas, de más a menos activas.
+                      description: Ranked research areas, most active first.
                     notableWorks:
                       type: array
                       items:
@@ -1292,34 +1286,34 @@ components:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Título de la publicación.
+                            description: Publication title.
                           year:
                             anyOf:
                               - type: integer
                               - type: 'null'
-                            description: Año de publicación.
+                            description: Publication year.
                           venue:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Medio de publicación.
+                            description: Publication venue.
                           citationCount:
                             anyOf:
                               - type: integer
                               - type: 'null'
-                            description: Número de trabajos que citan esta publicación.
+                            description: Number of works citing this publication.
                           doi:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Identificador de objeto digital (DOI).
+                            description: Digital Object Identifier.
                           id:
                             anyOf:
                               - type: string
                               - type: 'null'
                             description: >-
-                              Identificador de entidad de la publicación
-                              resuelto, si está disponible.
+                              Resolved publication entity identifier, when
+                              available.
                           type:
                             anyOf:
                               - type: string
@@ -1333,7 +1327,7 @@ components:
                                   - report
                                   - review
                               - type: 'null'
-                            description: Tipo de publicación.
+                            description: Publication type.
                         required:
                           - title
                           - year
@@ -1343,7 +1337,7 @@ components:
                           - id
                           - type
                         additionalProperties: false
-                      description: Trabajos destacados más citados.
+                      description: Most-cited notable works.
                     topResearchers:
                       type: array
                       items:
@@ -1357,38 +1351,38 @@ components:
                                     anyOf:
                                       - type: string
                                       - type: 'null'
-                                    description: Nombre de la persona referenciada.
+                                    description: Referenced person name.
                                   id:
                                     anyOf:
                                       - type: string
                                       - type: 'null'
-                                    description: Identificador de entidad de la persona referenciada.
+                                    description: Referenced person entity identifier.
                                 required:
                                   - name
                                   - id
                                 additionalProperties: false
                               - type: 'null'
-                            description: Investigador referenciado.
+                            description: Referenced researcher.
                           worksCount:
                             anyOf:
                               - type: integer
                               - type: 'null'
-                            description: Número de trabajos producidos en la organización.
+                            description: Number of works produced at the organization.
                           citationCount:
                             anyOf:
                               - type: integer
                               - type: 'null'
                             description: >-
-                              Número de citas de los trabajos producidos en la
-                              organización.
+                              Number of citations for works produced at the
+                              organization.
                         required:
                           - person
                           - worksCount
                           - citationCount
                         additionalProperties: false
                       description: >-
-                        Investigadores ordenados por los trabajos producidos en
-                        la organización.
+                        Researchers ordered by works produced at the
+                        organization.
                   required:
                     - worksCount
                     - citationCount
@@ -1397,7 +1391,7 @@ components:
                     - topResearchers
                   additionalProperties: false
                 - type: 'null'
-              description: Información de investigación de la empresa.
+              description: Company research information.
           required:
             - name
             - foundedYear
@@ -1408,7 +1402,7 @@ components:
             - webTraffic
             - research
           additionalProperties: false
-          description: Campos de entidad específicos de la empresa.
+          description: Company-specific entity fields.
       required:
         - id
         - type
@@ -1420,15 +1414,15 @@ components:
       properties:
         id:
           type: string
-          description: Identificador estable de la entidad persona.
+          description: Stable person entity identifier.
         type:
           type: string
           const: person
-          description: Discriminador de la entidad.
+          description: Entity discriminator.
         version:
           type: integer
           minimum: 1
-          description: Versión del esquema de la entidad.
+          description: Entity schema version.
         properties:
           type: object
           properties:
@@ -1436,22 +1430,22 @@ components:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: Nombre de la persona.
+              description: Person name.
             firstName:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: Nombre de pila de la persona.
+              description: Person first name.
             lastName:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: Apellido de la persona.
+              description: Person last name.
             location:
               anyOf:
                 - type: string
                 - type: 'null'
-              description: Ubicación de la persona.
+              description: Person location.
             workHistory:
               type: array
               items:
@@ -1461,12 +1455,12 @@ components:
                     anyOf:
                       - type: string
                       - type: 'null'
-                    description: Título del puesto.
+                    description: Role title.
                   location:
                     anyOf:
                       - type: string
                       - type: 'null'
-                    description: Ubicación del puesto.
+                    description: Role location.
                   dates:
                     anyOf:
                       - type: object
@@ -1475,18 +1469,18 @@ components:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Fecha de inicio del intervalo de fechas.
+                            description: Start date for the date range.
                           to:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Fecha de fin del intervalo de fechas.
+                            description: End date for the date range.
                         required:
                           - from
                           - to
                         additionalProperties: false
                       - type: 'null'
-                    description: Intervalo de fechas del puesto.
+                    description: Role date range.
                   company:
                     anyOf:
                       - type: object
@@ -1495,12 +1489,12 @@ components:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Identificador de la empresa referenciada.
+                            description: Referenced company identifier.
                           name:
                             anyOf:
                               - type: string
                               - type: 'null'
-                            description: Nombre de la empresa referenciada.
+                            description: Referenced company name.
                         required:
                           - id
                           - name

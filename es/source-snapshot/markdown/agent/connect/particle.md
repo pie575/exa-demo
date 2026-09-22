@@ -1,37 +1,29 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="particle">
-  # Particle
-</div>
+# Particle {#particle}
 
-> Busca en transcripciones de pódcast con atribución de hablante y marcas de tiempo.
+> Busca en transcripts de pódcast con atribución de hablante y marcas de tiempo.
 
 Podcast Intelligence de [Particle](https://particle.news) indexa más de 100.000 programas,
-transcritos íntegramente, diarizados, con hablantes identificados, etiquetados y enriquecidos con metadatos
-a los pocos minutos de su emisión, lo que permite realizar búsquedas en conversaciones habladas. Cada resultado es una
-ventana de transcripción con atribución de hablante y marcas de tiempo.
+completamente transcritos, diarizados, con hablantes identificados, etiquetados y enriquecidos con metadatos
+a los pocos minutos de su emisión, de modo que las conversaciones habladas se vuelven buscables. Cada resultado es una
+ventana de transcript atribuida a un hablante y con marcas de tiempo.
 
-Adjunta `particle` a una ejecución de [Exa Agent](/es/docs/agent/quickstart) mediante
+Adjunta `particle` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
-Particle junto con la búsqueda web de Exa.
+Particle junto con Exa web search.
 
-<div id="use-it-for">
-  ## Úsalo para
-</div>
+## Úsalo para {#use-it-for}
 
 * Encontrar comentarios de expertos y frases citables.
 * Monitoreo de medios y marcas.
 * Investigación de narrativas y sentimiento.
 * Descubrir pódcasts y mantenerte al día con ellos.
 
-<div id="provider-id">
-  ## ID del proveedor
-</div>
+## ID del proveedor {#provider-id}
 
 Usa este valor en `dataSources`:
 
@@ -39,9 +31,7 @@ Usa este valor en `dataSources`:
 particle
 ```
 
-<div id="example">
-  ## Ejemplo
-</div>
+## Ejemplo {#example}
 
 Descubre qué dicen los presentadores de pódcast sobre la regulación de la IA.
 
@@ -141,28 +131,24 @@ Descubre qué dicen los presentadores de pódcast sobre la regulación de la IA.
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Combina bien con
-</div>
+## Combina bien con {#pairs-well-with}
 
 * [Financial Datasets](/es/docs/agent/connect/financialdatasets): contrasta lo que se comenta en los pódcast con las noticias publicadas.
-* [Fiber.ai](/es/docs/agent/connect/fiber): añade contexto de empresas y contactos sobre las personas mencionadas.
+* [Fiber.ai](/es/docs/agent/connect/fiber): adjunta contexto de empresas y contactos sobre las personas mencionadas.
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
-  <Card title="Adjúntalo a una ejecución" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir inicio rápido" arrow="true">
-    El inicio rápido de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
+  <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">
+    El quickstart de Exa Connect cubre `dataSources`, los precios y el catálogo completo de partners.
   </Card>
 
-  <Card title="Combinar proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer la guía" arrow="true">
-    Adjunta hasta cinco partners a una misma ejecución y formula la query para que todos se activen.
+  <Card title="Combina proveedores" icon="blend" href="/es/docs/agent/connect/combining-providers" cta="Leer guía" arrow="true">
+    Adjunta hasta cinco partners a un mismo run y formula la consulta para que se active cada uno.
   </Card>
 
-  <Card title="Aprende a usar Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir la guía" arrow="true">
-    Crea ejecuciones, transmite el progreso, diseña esquemas de salida y controla el esfuerzo y el costo.
+  <Card title="Aprende Exa Agent" icon="book-open" href="/es/docs/agent/quickstart" cta="Abrir guía" arrow="true">
+    Crea runs, transmite el progreso en streaming, diseña esquemas de output y controla el effort y el costo.
   </Card>
 
   <Card title="Obtén una API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Crear una key" arrow="true">

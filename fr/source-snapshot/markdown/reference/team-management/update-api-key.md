@@ -1,57 +1,45 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
-> Utilisez ce fichier pour découvrir l&#39;ensemble des pages disponibles avant d&#39;aller plus loin.
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="update-api-key">
-  # Mettre à jour une API key
-</div>
+# Mettre à jour une API key {#update-api-key}
 
 > Mettez à jour le nom et la limite de débit d&#39;une API key existante.
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key depuis le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 <Info>
-  L&#39;API Team Management s&#39;active team par team. Elle s&#39;authentifie à l&#39;aide d&#39;une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre team. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
+  La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie à l&#39;aide d&#39;une API key de compte de service, que vous créez depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
 </Info>
 
-<div id="overview">
-  ## Vue d&#39;ensemble
-</div>
+## Vue d&#39;ensemble {#overview}
 
 L&#39;endpoint Update API Key vous permet de modifier une API key existante
 
-<div id="path-parameters">
-  ## Paramètres de chemin
-</div>
+## Paramètres de chemin {#path-parameters}
 
-* **id** : L&#39;identifiant unique de l&#39;API key à mettre à jour.
+* **id** : l&#39;identifiant unique de l&#39;API key à mettre à jour.
 
-<div id="optional-parameters">
-  ## Paramètres optionnels
-</div>
+## Paramètres optionnels {#optional-parameters}
 
 * **name** : nouveau nom descriptif de l&#39;API key
 * **rateLimit** : nouvelle limite de débit, en requêtes par minute
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0
 info:
   version: 1.0.0
-  title: Team Management API
+  title: API de gestion d'équipe
   description: >-
-    API de gestion des API keys au sein des teams. Fournit des opérations CRUD
-    pour créer, lister, mettre à jour et supprimer des API keys, avec des
-    contrôles d'accès par team. L'API s'active team par team. Contactez
-    support@exa.ai pour en demander l'accès.
+    API permettant de gérer les clés API au sein des équipes. Fournit des
+    opérations CRUD pour créer, lister, mettre à jour et supprimer des clés API
+    avec des contrôles d'accès basés sur les équipes. L'API est activée par
+    équipe. Contactez support@exa.ai pour demander l'accès.
 servers:
   - url: https://admin-api.exa.ai/team-management
 security:
@@ -60,12 +48,12 @@ paths:
   /api-keys/{id}:
     put:
       tags:
-        - Team Management
-      summary: Mettre à jour une API key
+        - Gestion d'équipe
+      summary: Mettre à jour une clé API
       description: >-
-        Met à jour le nom et/ou la rate limit d'une API key existante. Seules
-        les API keys appartenant à la team authentifiée peuvent être mises à
-        jour.
+        Met à jour le nom et/ou la limite de débit d'une clé API existante.
+        Seules les clés API appartenant à l'équipe authentifiée peuvent être
+        mises à jour.
       operationId: update-api-key
       parameters:
         - name: id
@@ -73,7 +61,7 @@ paths:
           required: true
           schema:
             type: string
-          description: L'identifiant unique de l'API key à mettre à jour.
+          description: L'identifiant unique de la clé API à mettre à jour.
       requestBody:
         required: true
         content:
@@ -83,13 +71,13 @@ paths:
               properties:
                 name:
                   type: string
-                  description: Nouveau nom facultatif pour l'API key
+                  description: Nouveau nom facultatif pour la clé API
                   example: Updated Production Key
                 rateLimit:
                   type: integer
                   description: >-
-                    Nouvelle rate limit facultative pour l'API key (requêtes par
-                    seconde)
+                    Nouvelle limite de débit facultative pour la clé API
+                    (requêtes par seconde)
                   example: 2000
                 budgetCents:
                   type:
@@ -97,13 +85,13 @@ paths:
                     - 'null'
                   minimum: 0
                   description: >-
-                    Nouveau budget de dépenses facultatif pour l'API key, en
-                    cents. Définissez-le à null pour supprimer le budget.
+                    Nouveau budget de dépenses facultatif pour la clé API, en
+                    cents. Définissez-le sur null pour supprimer le budget.
                   example: 5000
               additionalProperties: false
       responses:
         '200':
-          description: API key mise à jour avec succès
+          description: Clé API mise à jour avec succès
           content:
             application/json:
               schema:
@@ -121,15 +109,15 @@ paths:
                         type:
                           - integer
                           - 'null'
-                        description: Rate limit en requêtes par seconde
+                        description: Limite de débit en requêtes par seconde
                       budgetCents:
                         type:
                           - integer
                           - 'null'
-                        description: Budget de dépenses pour l'API key, en cents
+                        description: Budget de dépenses pour la clé API, en cents
                       isOverBudget:
                         type: boolean
-                        description: Indique si l'API key dépasse actuellement son budget
+                        description: Indique si la clé API dépasse actuellement son budget
                       teamId:
                         type: string
                         format: uuid
@@ -143,7 +131,7 @@ paths:
                         type: string
                         format: date-time
         '400':
-          description: Bad Request - Paramètres invalides
+          description: Requête incorrecte - Paramètres invalides
           content:
             application/json:
               schema:
@@ -155,7 +143,7 @@ paths:
                       - api_key_id is required
                       - Invalid API key ID format.
         '401':
-          description: Unauthorized - Service key invalide ou manquante
+          description: Non autorisé - Clé de service invalide ou manquante
           content:
             application/json:
               schema:
@@ -165,7 +153,7 @@ paths:
                     type: string
                     example: Unauthorized
         '403':
-          description: Forbidden - L'API key appartient à une autre team
+          description: Interdit - La clé API appartient à une autre équipe
           content:
             application/json:
               schema:
@@ -175,7 +163,7 @@ paths:
                     type: string
                     example: You do not have permission to access this API key
         '404':
-          description: Not Found - L'API key n'existe pas
+          description: Introuvable - La clé API n'existe pas
           content:
             application/json:
               schema:
@@ -188,7 +176,7 @@ paths:
         - apikey: []
       x-codeSamples:
         - lang: bash
-          label: Mettre à jour le nom et la rate limit d'une API key
+          label: Mettre à jour le nom et la limite de débit de la clé API
           source: >
             curl -X PUT 'https://admin-api.exa.ai/team-management/api-keys/{id}'
             \
@@ -199,7 +187,7 @@ paths:
                 "rateLimit": 2000
               }'
         - lang: python
-          label: Mettre à jour le nom et la rate limit d'une API key
+          label: Mettre à jour le nom et la limite de débit de la clé API
           source: |
             import requests
 
@@ -221,7 +209,7 @@ paths:
 
             print(response.json())
         - lang: javascript
-          label: Mettre à jour le nom et la rate limit d'une API key
+          label: Mettre à jour le nom et la limite de débit de la clé API
           source: >
             const response = await
             fetch('https://admin-api.exa.ai/team-management/api-keys/{id}', {
@@ -256,5 +244,5 @@ components:
       type: apiKey
       in: header
       name: x-api-key
-      description: API key de service pour l'authentification de la team
+      description: Clé API de service pour l'authentification de l'équipe
 ```

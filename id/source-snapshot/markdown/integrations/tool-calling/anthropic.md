@@ -1,30 +1,24 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="anthropic-tool-calling">
-  # Anthropic Tool Calling
-</div>
+# Anthropic Tool Calling {#anthropic-tool-calling}
 
-> Manfaatkan tool use Claude untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
+> Gunakan tool use Claude untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
 
 <Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+  Baru mengenal Exa? Memulai dalam waktu kurang dari satu menit.
 </Card>
 
 ***
 
-[Tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) pada Claude memungkinkan model memanggil fungsi yang Anda definisikan di dalam kode. SDK Exa sudah menyertakan tool siap pakai untuk web search dan pembacaan halaman bagi Anthropic, sehingga Anda tidak perlu menulis sendiri schema tool, mengurai blok `tool_use`, atau memformat hasil Exa secara manual.
+[Tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) dari Claude memungkinkan model memanggil fungsi yang Anda definisikan dalam kode Anda. SDK Exa sudah menyertakan tool web search dan pembacaan halaman siap pakai untuk Anthropic, sehingga Anda tidak perlu menulis tool schema secara manual, mengurai blok `tool_use`, atau memformat hasil Exa sendiri.
 
-<div id="get-started">
-  ## Get started
-</div>
+## Memulai {#get-started}
 
 <Steps>
-  <Step title="Pasang SDK">
+  <Step title="Instal SDK">
     <CodeGroup>
       ```bash Python theme={null}
       pip install anthropic exa_py
@@ -37,17 +31,17 @@
   </Step>
 
   <Step title="Siapkan API key Anda">
-    Atur variabel lingkungan `EXA_API_KEY` dan `ANTHROPIC_API_KEY`. Kunjungi [konsol Anthropic](https://console.anthropic.com/settings/keys) dan [dashboard Exa](https://dashboard.exa.ai/api-keys) untuk membuat API key Anda.
+    Atur variabel lingkungan `EXA_API_KEY` dan `ANTHROPIC_API_KEY`. Kunjungi [console Anthropic](https://console.anthropic.com/settings/keys) dan [dashboard Exa](https://dashboard.exa.ai/api-keys) untuk membuat API key Anda.
 
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Buat key di dashboard. Akun baru mendapat credits gratis.
+      Buat key di dashboard. Akun baru mendapatkan credits gratis.
     </Card>
   </Step>
 
-  <Step title="Tambahkan tool Exa ke tool loop Anda">
-    Sertakan tool pada daftar `tools` di permintaan, lalu teruskan pesan assistant ke `handle_tool_use`. Fungsi ini menjalankan setiap blok `tool_use` dalam pesan dan mengembalikan blok `tool_result` yang sesuai, siap dikirim kembali pada pesan user berikutnya.
+  <Step title="Tambahkan Exa tools ke tool loop Anda">
+    Sertakan tool dalam daftar `tools` pada permintaan, lalu teruskan pesan assistant ke `handle_tool_use`. Fungsi ini menjalankan setiap blok `tool_use` dalam pesan tersebut dan mengembalikan blok `tool_result` yang sesuai, siap dikirim kembali pada pesan user berikutnya.
 
-    `web_search` melakukan search di web untuk halaman yang belum pernah dilihat model; `get_contents` membaca halaman yang URL-nya sudah tersedia, baik dari search sebelumnya maupun dari pengguna. Daftarkan salah satu atau keduanya.
+    `web_search` mencari halaman web yang belum pernah dilihat model; `get_contents` membaca halaman yang URL-nya sudah dimiliki model, baik dari search sebelumnya maupun dari pengguna. Daftarkan salah satu atau keduanya.
 
     <CodeGroup>
       ```python Python theme={null}
@@ -114,17 +108,15 @@
       ```
     </CodeGroup>
 
-    Contoh ini hanya satu putaran agar ringkas. Agent sungguhan tetap menyertakan `tools` pada setiap permintaan dan mengulang langkah handler sampai model membalas tanpa blok `tool_use` — begitulah hasil search berlanjut menjadi pembacaan halaman.
+    Contoh ini hanya satu putaran agar ringkas. Agent yang sesungguhnya tetap menyertakan `tools` pada setiap permintaan dan mengulangi langkah handler sampai model membalas tanpa blok `tool_use` — begitulah sebuah hasil search berlanjut menjadi pembacaan halaman follow-up.
 
-    Memanggil factory tanpa argumen akan memakai nilai bawaan yang direkomendasikan Exa: `type="auto"` dengan `contents={"highlights": True}` untuk search. Highlights mengembalikan excerpt yang relevan dengan query — bukan memotong teks halaman pada 10.000 karakter. Factory contents mengembalikan teks halaman; limit 10.000 karakter pada SDK hanya berlaku untuk `text`, dan hanya jika Anda tidak menyertakan `max_characters`.
+    Memanggil factory tanpa argumen akan memberikan default yang direkomendasikan Exa: `type="auto"` dengan `contents={"highlights": True}` untuk search. Kutipan mengembalikan potongan teks yang relevan dengan query — bukan memotong teks halaman pada 10.000 karakter. Factory contents mengembalikan teks halaman; batas 10.000 karakter pada SDK hanya berlaku untuk `text`, dan hanya jika Anda tidak menyertakan `max_characters`.
   </Step>
 </Steps>
 
-<div id="configuring-the-tools">
-  ## Mengonfigurasi tool
-</div>
+## Mengonfigurasi tool {#configuring-the-tools}
 
-Argumen keyword adalah opsi Exa biasa yang diteruskan saat tool dijalankan — opsi search ke `exa.search()`, opsi contents ke `exa.get_contents()`:
+Argumen keyword adalah options Exa biasa yang diteruskan saat tool dijalankan — options search ke `exa.search()`, options contents ke `exa.get_contents()`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -142,9 +134,9 @@ Argumen keyword adalah opsi Exa biasa yang diteruskan saat tool dijalankan — o
   ```
 </CodeGroup>
 
-Model memilih `query` untuk search dan `urls` yang akan dibaca; selebihnya sudah ditetapkan saat Anda membuat tool, sehingga model tidak bisa mengubah apa yang di-crawl atau diekstraksi.
+Model memilih `query` untuk search dan `urls` yang akan dibaca; sisanya sudah terikat saat Anda membuat tool, sehingga model tidak dapat mengubah apa yang di-crawl atau diekstraksi.
 
-Sementara itu, `name` (nilai bawaannya `"web_search"` dan `"get_contents"`) dan `description` menimpa definisi tool yang dilihat model. Anthropic mewajibkan nama tool bersifat unik, jadi dengan nama kustom, tool Exa bisa berjalan berdampingan dengan server tool bawaan Anthropic `web_search_20250305`, yang sudah memakai nama `web_search`:
+Sebaliknya, `name` (dengan default `"web_search"` dan `"get_contents"`) serta `description` menimpa definisi tool yang dilihat model. Anthropic mewajibkan nama tool bersifat unik, jadi nama kustom memungkinkan tool Exa berjalan berdampingan dengan server tool bawaan Anthropic `web_search_20250305`, yang sudah memakai nama `web_search`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -172,17 +164,13 @@ Sementara itu, `name` (nilai bawaannya `"web_search"` dan `"get_contents"`) dan 
   ```
 </CodeGroup>
 
-<div id="mixing-in-your-own-tools">
-  ## Menggabungkan tool Anda sendiri
-</div>
+## Menggabungkan tool Anda sendiri {#mixing-in-your-own-tools}
 
-`handle_tool_use` merespons setiap blok `tool_use` dalam pesan: blok yang menyebut tool yang tidak dikenalinya akan menghasilkan `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga permintaan lanjutan tidak pernah kehilangan hasil tool yang diperlukan. Jika Anda menjalankan tool sendiri bersama tool milik Exa, ganti hasil error tersebut dengan hasil Anda sebelum permintaan berikutnya.
+`handle_tool_use` merespons setiap blok `tool_use` dalam pesan: blok yang menyebut tool yang tidak dikenali akan mendapat hasil `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga follow-up permintaan tidak pernah kehilangan hasil tool yang diwajibkan. Jika Anda menjalankan tool sendiri bersama tool milik Exa, ganti hasil error tersebut dengan hasil Anda sebelum permintaan berikutnya.
 
-<div id="writing-the-loop-by-hand">
-  ## Menulis loop secara manual
-</div>
+## Menulis loop secara manual {#writing-the-loop-by-hand}
 
-Jika Anda lebih suka menangani sendiri schema dan eksekusi tool, definisikan tool tersebut dan proses blok `tool_use` secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` menyediakan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
+Jika Anda lebih suka menangani sendiri tool schema dan eksekusinya, definisikan tool tersebut dan proses blok `tool_use` secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` menyediakan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
 
 ```python Python theme={null}
 TOOLS = [
@@ -219,4 +207,4 @@ def process_tool_use(response):
     return results
 ```
 
-Lihat [Quickstart SDK](/id/docs/sdks/quickstart) untuk opsi search dan contents di Python dan TypeScript.
+Lihat [Quickstart SDK](/id/docs/sdks/quickstart) untuk options search dan contents di Python dan TypeScript.

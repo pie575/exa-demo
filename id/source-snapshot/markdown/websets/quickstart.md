@@ -1,58 +1,46 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="websets">
-  # Websets
-</div>
+# Websets {#websets}
 
-> Bangun dataset terverifikasi dan diperkaya dari web.
+> Bangun dataset terverifikasi dan ter-enrich dari web.
 
-<div id="what-are-websets">
-  ## Apa Itu Websets?
-</div>
+## Apa Itu Websets? {#what-are-websets}
 
-Sebuah Webset dimulai dari query berbahasa alami dan target jumlah item. Tambahkan criteria yang harus dipenuhi oleh setiap hasil serta field enrichment yang akan diisi untuk setiap item yang diterima. Hasil dikirimkan secara asinkron melalui dashboard, API, atau webhook.
+Sebuah Webset dimulai dari query berbahasa alami dan jumlah item yang ditargetkan. Tambahkan kriteria yang harus dipenuhi oleh setiap hasil serta field enrichment yang akan diisi untuk setiap item yang diterima. Hasil dikirimkan secara asinkron melalui dashboard, API, atau webhook.
 
-Anda juga dapat membangun webset secara visual di [Dashboard](/id/docs/websets/dashboard/get-started), tanpa perlu
-menulis kode.
+Anda juga bisa membangun webset secara visual di [Dashboard](/id/docs/websets/dashboard/get-started), tanpa perlu
+kode.
 
 <Info>
-  Baru akan memulai workflow pembuatan daftar atau enrichment? Gunakan [Exa Agent](/id/docs/agent/quickstart).
+  Baru memulai workflow list building atau enrichment? Gunakan [Exa Agent](/id/docs/agent/quickstart).
   Gunakan panduan ini untuk memelihara atau memperluas integrasi Websets yang sudah ada.
-  Websets API memerlukan paket Websets berbayar; credit Search API dan credit Websets bersifat terpisah.
+  API Websets memerlukan plan Websets berbayar; credits Search API dan credits Websets bersifat terpisah.
 </Info>
 
-<div id="how-it-works">
-  ## Cara Kerjanya
-</div>
+## Cara Kerjanya {#how-it-works}
 
-1. **Tentukan search:** Berikan query dalam bahasa alami, jumlah hasil, serta criteria verifikasi dan enrichment opsional.
-2. **Search dan verifikasi:** Websets mencari kandidat dan memeriksa setiap kandidat terhadap criteria Anda. Hanya hasil yang cocok yang menjadi item.
+1. **Tentukan search:** Berikan query dalam bahasa alami, jumlah hasil, serta kriteria verifikasi dan enrichment opsional.
+2. **Cari dan verifikasi:** Websets menemukan kandidat dan mencocokkan masing-masing dengan kriteria Anda. Hanya hasil yang cocok yang menjadi item.
 3. **Jalankan enrichment:** Untuk setiap item yang terverifikasi, Websets mencari data tambahan yang Anda minta, seperti nama CEO, jumlah pendanaan, atau informasi kontak.
-4. **Terima hasil:** Lakukan poll untuk status, gunakan webhook untuk pembaruan, atau periksa dashboard saat item mulai masuk.
+4. **Terima hasil:** Lakukan poll untuk mengetahui status, gunakan webhook untuk pembaruan, atau periksa dashboard saat item mulai berdatangan.
 
-<div id="key-capabilities">
-  ## Kapabilitas Utama
-</div>
+## Kemampuan Utama {#key-capabilities}
 
-| Fitur                   | Fungsinya                                                                                                         |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Verifikasi criteria** | Setiap hasil diperiksa terhadap aturan yang Anda tetapkan, sehingga Anda hanya mendapatkan kecocokan yang relevan |
-| **Enrichment**          | Mengekstrak poin data tertentu (teks, angka, tanggal, boolean) untuk setiap hasil                                 |
-| **Monitor**             | Menjadwalkan search berkala agar webset Anda selalu diperbarui secara otomatis                                    |
-| **Webhook**             | Menerima callback HTTP secara real-time saat item ditambahkan atau di-enrich                                      |
-| **Import**              | Memasukkan URL Anda sendiri dan menjalankan enrichment pada URL tersebut                                          |
+| Fitur                   | Fungsinya                                                                                                                   |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **Verifikasi kriteria** | Setiap hasil diperiksa berdasarkan aturan yang Anda tentukan, sehingga Anda hanya memperoleh hasil yang benar-benar relevan |
+| **Enrichments**         | Ekstrak data spesifik (teks, angka, tanggal, boolean) untuk setiap hasil                                                    |
+| **Monitors**            | Jadwalkan pencarian berulang agar webset Anda selalu diperbarui secara otomatis                                             |
+| **Webhooks**            | Terima callback HTTP secara real-time saat item ditambahkan atau di-enrich                                                  |
+| **Imports**             | Gunakan URL Anda sendiri dan jalankan enrichments di atasnya                                                                |
 
-<div id="human-quickstart">
-  ## Human Quickstart
-</div>
+## Human Quickstart {#human-quickstart}
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
+  Buat key di dashboard. Akun baru langsung mendapat credits gratis.
 </Card>
 
 Instal SDK:
@@ -95,10 +83,10 @@ Lalu kirim permintaan pertama Anda:
   print(f"Webset created with ID: {webset.id}")
   print(f"View your Webset at: {webset.dashboard_url}")
 
-  # Tunggu hingga Webset selesai diproses
+  # Tunggu sampai Webset selesai diproses
   webset = exa.websets.wait_until_idle(webset.id)
 
-  # Ambil Items dari Webset
+  # Ambil Item Webset
   items = exa.websets.items.list(webset_id=webset.id)
   for item in items.data:
       print(f"Item: {item.model_dump_json(indent=2)}")
@@ -152,12 +140,10 @@ Lalu kirim permintaan pertama Anda:
 </CodeGroup>
 
 <Note>
-  Lihat [Zero Data Retention](/id/docs/admin/security/zero-data-retention) untuk informasi ketersediaan produk.
+  Lihat [Zero Data Retention](/id/docs/admin/security/zero-data-retention) untuk ketersediaan produk.
 </Note>
 
-<div id="next">
-  ## Selanjutnya
-</div>
+## Selanjutnya {#next}
 
 * [**Panduan Dashboard**](./dashboard/get-started) - Panduan langkah demi langkah untuk menggunakan Websets di dashboard
 * [**Cara Kerjanya**](./api/how-it-works) - Pembahasan mendalam tentang arsitektur berbasis event

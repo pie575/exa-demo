@@ -1,47 +1,39 @@
 ---
 title: "OpenHuman"
-description: "Dale al agente de OpenHuman búsqueda web en vivo con Exa, ya sea gestionada o con tu propia Exa API key."
+description: "Dale al agente de OpenHuman búsqueda web en tiempo real con Exa, ya sea gestionada o con tu propia API key de Exa."
 icon: "/docs/images/sidebar-icons/openhuman.svg"
 ---
 
 [OpenHuman](https://tinyhumans.gitbook.io/openhuman) de TinyHumans es un asistente de IA de escritorio con una herramienta nativa de búsqueda web que el agente invoca por su cuenta. Exa es el proveedor de búsqueda detrás de esa herramienta.
 
-| Enfoque               | Configuración        | Se ejecuta en                                                           |
-| --------------------- | -------------------- | ----------------------------------------------------------------------- |
-| **OpenHuman Managed** | Ninguna              | El backend de OpenHuman, con la tecnología de Exa. Sin API key.         |
-| **Proveedor Exa**     | Pega una Exa API key | Tu máquina, directo a `https://api.exa.ai` con tu propia cuenta de Exa. |
+| Enfoque               | Configuración           | Se ejecuta en                                                           |
+| --------------------- | ----------------------- | ----------------------------------------------------------------------- |
+| **OpenHuman Managed** | Ninguna                 | El backend de OpenHuman, con la tecnología de Exa. Sin API key.         |
+| **Exa provider**      | Pega una API key de Exa | Tu máquina, directo a `https://api.exa.ai` con tu propia cuenta de Exa. |
 
-<div id="openhuman-managed">
-  ## OpenHuman Managed
-</div>
+## OpenHuman Managed {#openhuman-managed}
 
-La búsqueda gestionada es la opción predeterminada. Elige **Simple** durante la configuración inicial y el agent podrá buscar en la web de inmediato.
+La búsqueda gestionada es la opción predeterminada. Elige **Simple** durante la configuración inicial y el agente podrá buscar en la web de inmediato.
 
 <Frame caption="Elige Simple durante la configuración inicial para usar la búsqueda gestionada con tecnología de Exa">
-  <img src="/docs/images/integrations/openhuman/onboarding-runtime-choice.png" alt="Pantalla de configuración inicial de OpenHuman que pregunta cómo ejecutar OpenHuman, con la opción Simple seleccionada" style={{width: "700px", height: "auto", margin: "0 auto"}} width="1180" height="700" data-path="images/integrations/openhuman/onboarding-runtime-choice.png" />
+  <img src="/docs/images/integrations/openhuman/onboarding-runtime-choice.png" alt="La configuración inicial de OpenHuman pregunta cómo ejecutar OpenHuman, con la opción Simple seleccionada" style={{width: "700px", height: "auto", margin: "0 auto"}} width="1180" height="700" data-path="images/integrations/openhuman/onboarding-runtime-choice.png" />
 </Frame>
 
 <Tip>
-  **La opción gestionada es la forma más rápida de obtener resultados de Exa.** No tienes que crear, almacenar ni rotar ninguna key, no guardas credenciales en tu máquina y la búsqueda se factura en tu suscripción de OpenHuman.
+  **La opción gestionada es la forma más rápida de obtener resultados de Exa.** No hay ninguna key que crear, almacenar ni rotar, no hay credenciales en tu máquina y la búsqueda se factura en tu suscripción de OpenHuman.
 </Tip>
 
-<div id="exa-provider">
-  ## Proveedor Exa
-</div>
+## Exa provider {#exa-provider}
 
-Configura Exa directamente para ejecutar búsquedas con tu propia cuenta de Exa y proporcionar al agent las herramientas de search y de contenido de páginas de Exa.
+Configura Exa directamente para ejecutar búsquedas con tu propia cuenta de Exa y proporcionar al agente las herramientas de búsqueda y de contenido de páginas de Exa.
 
-<div id="get-your-exa-api-key">
-  ### Obtén tu API key de Exa
-</div>
+### Obtén tu API key de Exa {#get-your-exa-api-key}
 
 <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
-<div id="add-exa-in-openhuman">
-  ### Añadir Exa en OpenHuman
-</div>
+### Añadir Exa en OpenHuman {#add-exa-in-openhuman}
 
 1. Abre **Connections** y luego selecciona **Search engine** dentro de **API keys**.
 
@@ -57,7 +49,7 @@ Configura Exa directamente para ejecutar búsquedas con tu propia cuenta de Exa 
 
 3. Pega tu key en **Exa API key** y selecciona **Save**.
 
-<Frame caption="Guarda la Exa API key">
+<Frame caption="Guardar la API key de Exa">
   <img src="/docs/images/integrations/openhuman/enter-api-key.png" alt="El campo Exa API key en OpenHuman con una key introducida y el botón Save visible" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/enter-api-key.png" />
 </Frame>
 
@@ -65,22 +57,20 @@ Configura Exa directamente para ejecutar búsquedas con tu propia cuenta de Exa 
   <img src="/docs/images/integrations/openhuman/configured.png" alt="El panel Search engine de OpenHuman con Exa seleccionado y marcado como Configured" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-<div id="configuration">
-  ### Configuración
-</div>
+### Configuración {#configuration}
 
-El panel escribe en el archivo `config.toml` de OpenHuman. Si lo prefieres, define los mismos valores directamente en el archivo o en el entorno:
+El panel escribe en el `config.toml` de OpenHuman. Como alternativa, define los mismos valores en el archivo o en el entorno:
 
 <Tabs>
   <Tab title="config.toml">
     ```toml config.toml theme={null}
     [search]
-    engine = "exa"        # obligatorio
+    engine = "exa"        # requerido
     max_results = 5       # opcional, 1-20
     timeout_secs = 15     # opcional
 
     [search.exa]
-    api_key = "your-exa-api-key"   # obligatorio
+    api_key = "your-exa-api-key"   # requerido
     ```
   </Tab>
 
@@ -91,34 +81,30 @@ El panel escribe en el archivo `config.toml` de OpenHuman. Si lo prefieres, defi
     ```
 
     <Note>
-      Tanto `EXA_API_KEY` como `OPENHUMAN_EXA_API_KEY` sobrescriben `search.exa.api_key`. Si se definen ambas, `OPENHUMAN_EXA_API_KEY` tiene prioridad.
+      Tanto `EXA_API_KEY` como `OPENHUMAN_EXA_API_KEY` sobrescriben `search.exa.api_key`. Si ambas están definidas, `OPENHUMAN_EXA_API_KEY` tiene prioridad.
     </Note>
   </Tab>
 </Tabs>
 
-<div id="tools-the-agent-gets">
-  ### Herramientas que recibe el agent
-</div>
+### Herramientas que recibe el agente {#tools-the-agent-gets}
 
-| Herramienta        | Devuelve                                                                                    |
-| ------------------ | ------------------------------------------------------------------------------------------- |
-| `web_search_tool`  | Búsqueda web, proporcionada por Exa.                                                        |
-| `exa_search`       | Páginas ordenadas por relevancia con títulos, URLs, fechas de publicación y texto opcional. |
-| `exa_get_contents` | Contenido completo de las URLs indicadas, con resúmenes o highlights opcionales.            |
+| Herramienta        | Devuelve                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------ |
+| `web_search_tool`  | Búsqueda web, proporcionada por Exa.                                                       |
+| `exa_search`       | Páginas ordenadas por relevancia con títulos, URL, fechas de publicación y texto opcional. |
+| `exa_get_contents` | Contenido completo de las URL indicadas, con resúmenes o highlights opcionales.            |
 
-El agent establece los [parámetros de búsqueda](/es/docs/search/quickstart) de Exa en cada llamada, por lo que basta con instrucciones sencillas para controlar el modo de búsqueda, los dominios, las fechas y las categorías.
+El agente define los [parámetros de búsqueda](/es/docs/search/quickstart) de Exa en cada llamada, así que basta con instrucciones sencillas para orientar el modo de búsqueda, los dominios, las fechas y las categorías.
 
-<div id="troubleshooting">
-  ## Solución de problemas
-</div>
+## Solución de problemas {#troubleshooting}
 
 <AccordionGroup>
-  <Accordion title="Exa search no disponible: no hay ninguna API key configurada">
-    OpenHuman no encontró ninguna key en el panel **Search engine**, en las variables `EXA_API_KEY` y `OPENHUMAN_EXA_API_KEY`, ni en `search.exa.api_key`. Configúrala en alguno de esos lugares y reinicia OpenHuman si editaste `config.toml` mientras estaba en ejecución.
+  <Accordion title="Exa Search no disponible: no hay ninguna API key configurada">
+    OpenHuman no encontró ninguna key en el panel **Search engine**, ni en las variables `EXA_API_KEY` y `OPENHUMAN_EXA_API_KEY`, ni en `search.exa.api_key`. Defínela en alguno de esos lugares y reinicia OpenHuman si editaste `config.toml` mientras estaba en ejecución.
   </Accordion>
 
   <Accordion title="Exa rechazó la API key configurada (HTTP 401)">
-    La key no es válida o fue revocada. Verifícala en el [panel de Exa](https://dashboard.exa.ai/api-keys), luego usa **Clear** para borrar la key almacenada y guarda la correcta. Fíjate en los espacios en blanco al pegarla.
+    La key no es válida o fue revocada. Verifícala en el [Exa dashboard](https://dashboard.exa.ai/api-keys), luego usa **Clear** para borrar la key almacenada y guarda la correcta. Ten cuidado con los espacios en blanco al pegarla.
   </Accordion>
 
   <Accordion title="Exa devolvió un estado distinto de 2xx">
@@ -126,24 +112,22 @@ El agent establece los [parámetros de búsqueda](/es/docs/search/quickstart) de
   </Accordion>
 
   <Accordion title="OpenHuman Managed no aparece en la lista de motores">
-    Las sesiones exclusivamente locales no pueden usar la búsqueda gestionada. Configura el proveedor Exa con tu propia key.
+    Las sesiones exclusivamente locales no pueden usar búsqueda gestionada. Configura el Exa provider con tu propia key.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Recursos
-</div>
+## Recursos {#resources}
 
 <Columns cols={3}>
-  <Card title="Documentación de web search de OpenHuman" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="Abrir guía" arrow="true">
+  <Card title="Documentación de búsqueda web de OpenHuman" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="Abrir guía" arrow="true">
     Consulta la referencia propia de OpenHuman sobre sus motores de búsqueda.
   </Card>
 
-  <Card title="Search API de Exa" icon="search" href="/es/docs/search/quickstart" cta="Leer guía" arrow="true">
+  <Card title="Exa Search API" icon="search" href="/es/docs/search/quickstart" cta="Leer guía" arrow="true">
     Conoce los modos de búsqueda, los filtros y las opciones de contenido en los que se apoyan las herramientas de Exa.
   </Card>
 
   <Card title="Buenas prácticas de búsqueda" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer guía" arrow="true">
-    Obtén mejores resultados en cada query.
+    Obtén mejores resultados en cada consulta.
   </Card>
 </Columns>

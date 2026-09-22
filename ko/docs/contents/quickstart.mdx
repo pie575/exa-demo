@@ -1,24 +1,22 @@
 ---
 title: "Contents API"
 sidebarTitle: "Contents"
-description: "어떤 URL에서든 텍스트, highlights, 요약을 추출하세요."
+description: "모든 URL에서 텍스트, highlights, summary를 추출하세요."
 boost: 4
 ---
 
 Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScript로 렌더링되는 페이지, PDF, 복잡한 레이아웃도 자동으로 처리합니다.
 
-모든 contents 기능은 [Exa Search](/ko/docs/search/quickstart)에서 반환된 URL에도 그대로 사용할 수 있으며, search당 최대 10개 결과까지는 추가 비용이 없습니다(이후에는 1,000페이지당 $1). web search 도구 활용 사례라면 Contents 대신 이런 방식으로 Search를 사용하시길 권장합니다.
+모든 contents 기능은 [Exa Search](/ko/docs/search/quickstart)가 반환한 URL에 대해서도 사용할 수 있으며, search당 최대 10개 result까지는 추가 비용이 없습니다(이후에는 1000페이지당 $1). web search 도구 활용 사례라면 Contents 대신 이렇게 Search를 사용하는 것을 권장합니다.
 
 <Tip>
-  AI 컨텍스트로 넘길 search 결과라면 `/search`에서 `contents: { highlights: true }`를 요청하세요 —
-  Exa가 각 결과의 excerpt 길이를 관련도에 맞춰 조정합니다. [Highlights](/ko/docs/search/highlights)를 참고하세요.
+  AI 컨텍스트에 넣을 search result라면 `/search`에서 `contents: { highlights: true }`를 요청하세요.
+  Exa가 각 result의 발췌문 길이를 관련성에 맞춰 조정합니다. [Highlights](/ko/docs/search/highlights)를 참고하세요.
 </Tip>
 
-<div id="make-your-first-request">
-  ## 첫 요청 보내기
-</div>
+## 첫 요청 보내기 {#make-your-first-request}
 
-하나 이상의 URL 또는 문서 ID를 전달하고, 작업과 관련된 부분에 대해 highlights를 요청하세요. HTTP 요청에서는 `ids`에 지정합니다:
+하나 이상의 URL 또는 문서 ID를 전달하고, 작업과 관련된 부분에 대한 highlights를 요청하세요. HTTP 요청에서는 `ids`에 전달합니다:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -64,7 +62,7 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   ```
 </CodeGroup>
 
-<Accordion title="응답 예시">
+<Accordion title="response 예시">
   ```json theme={null}
   {
     "requestId": "e492118ccdedcba5088bfc4357a8a125",
@@ -92,7 +90,7 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   ```
 </Accordion>
 
-`results`의 각 항목에는 페이지 메타데이터와 요청한 콘텐츠 뷰가 담깁니다. 각 URL의 성공 또는 실패 여부는 `statuses`에서 확인하세요.
+`results`의 각 항목에는 페이지 metadata와 요청한 콘텐츠 뷰가 담겨 있습니다. 각 URL의 성공 또는 실패 여부는 `statuses`에서 확인하세요.
 
 <h2 id="dynamic-highlights">
   출력 형태
@@ -100,9 +98,9 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
 
 <Tabs>
   <Tab title="Highlights">
-    Highlights는 페이지에서 그대로 발췌한 관련 구절을 반환합니다. highlights는 전체 텍스트보다 컨텍스트를 작게 유지하므로, agent나 RAG, 사실 조회 작업이라면 여기서 시작하세요.
+    Highlights는 페이지에서 그대로 발췌한 관련 구절을 반환합니다. highlights는 전체 텍스트보다 컨텍스트를 작게 유지하므로, agent, RAG, 사실 조회 작업이라면 여기서 시작하세요.
 
-    highlights를 사용하려면 `highlights: true`로 설정하세요. Contents를 사용할 때는 페이지의 콘텐츠 extraction 범위를 좁히기 위해 `query` 파라미터를 함께 지정하는 것을 권장합니다:
+    highlights를 활성화하려면 `highlights: true`로 설정하세요. Contents를 사용할 때는 페이지의 content extraction 범위를 좁히기 위해 `query` 매개변수를 함께 지정하는 것을 권장합니다:
 
     <CodeGroup>
       ```python Python theme={null}
@@ -136,13 +134,13 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
       ```
     </CodeGroup>
 
-    Dynamic Highlights와 여러 페이지에 컨텍스트를 배분하는 방법은 [Highlights](/ko/docs/search/highlights)를 참고하세요.
+    Dynamic Highlights와 여러 페이지에 컨텍스트를 배분하는 방법에 대한 guidance는 [Highlights](/ko/docs/search/highlights)를 참고하세요.
   </Tab>
 
   <Tab title="전체 텍스트">
-    전체 텍스트는 정리된 페이지 본문을 마크다운으로 반환합니다. 폭넓은 컨텍스트나 문서 구조, 또는 highlights가 놓칠 수 있는 세부 정보가 필요한 작업에 사용하세요.
+    전체 텍스트는 정제된 페이지 본문을 마크다운으로 반환합니다. 폭넓은 컨텍스트나 문서 구조가 필요하거나, highlights가 놓칠 수 있는 세부 정보가 필요한 작업에 사용하세요.
 
-    전체 페이지는 분량이 클 수 있으므로 limit이 필요하다면 `maxCharacters`를 사용하세요:
+    전체 페이지는 분량이 클 수 있으므로, limit이 필요하다면 `maxCharacters`를 사용하세요:
 
     <CodeGroup>
       ```python Python theme={null}
@@ -178,7 +176,7 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   </Tab>
 
   <Tab title="Summary">
-    Summary는 페이지마다 언어 모델을 call합니다. 생성된 개요가 필요하거나 JSON schema로 필드를 추출해야 할 때 사용하세요.
+    Summary는 페이지마다 언어 모델을 call합니다. 생성된 개요가 필요하거나 fields를 JSON schema 형태로 추출해야 할 때 사용하세요.
 
     <CodeGroup>
       ```python Python theme={null}
@@ -212,7 +210,7 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
       ```
     </CodeGroup>
 
-    서술형 문장 대신 필드를 추출하려면 `summary.schema`에 JSON schema를 전달하세요. summary는 해당 schema에 맞는 JSON 문자열로 반환되므로, 파싱해서 필드를 읽으면 됩니다:
+    서술형 텍스트 대신 fields를 추출하려면 `summary.schema`에 JSON schema를 전달하세요. summary는 해당 schema에 맞는 JSON 문자열로 반환되므로, fields를 읽으려면 이를 파싱하세요:
 
     ```json theme={null}
     {
@@ -235,40 +233,36 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   </Tab>
 </Tabs>
 
-요청당 하나의 콘텐츠 뷰만 선택하세요. highlights, text, summary를 함께 요청하면 각 뷰가 개별적으로 반환되고 각각 과금됩니다.
+요청당 콘텐츠 뷰는 하나만 선택하세요. highlights, text, summary를 함께 요청하면 각 뷰가 개별적으로 반환되고 각각 과금됩니다.
 
-<div id="content-freshness">
-  ## Content freshness
-</div>
+## 콘텐츠 최신성 {#content-freshness}
 
 `maxAgeHours`는 추출된 페이지 콘텐츠가 얼마나 최신이어야 하는지를 제어합니다.
 
-| 값     | 동작                                          |
-| ----- | ------------------------------------------- |
-| 생략    | 캐시된 콘텐츠가 있으면 사용하고, 필요할 때 페이지를 가져옴           |
-| 양의 정수 | 캐시된 콘텐츠가 지정한 시간 이내로 최신이면 사용하고, 아니면 페이지를 가져옴 |
-| `0`   | 항상 새로 가져옴                                   |
-| `-1`  | 캐시된 콘텐츠만 사용                                 |
+| 값     | 동작                                              |
+| ----- | ----------------------------------------------- |
+| 생략    | 캐시된 콘텐츠가 있으면 사용하고, 필요한 경우 페이지를 가져옵니다            |
+| 양의 정수 | 캐시된 콘텐츠가 지정한 시간보다 최신이면 사용하고, 그렇지 않으면 페이지를 가져옵니다 |
+| `0`   | 항상 최신 콘텐츠를 새로 가져옵니다                             |
+| `-1`  | 캐시된 콘텐츠만 사용합니다                                  |
 
-대부분의 요청에서는 이 필드를 생략하는 것이 좋습니다. 가격, 재고 여부, 자주 업데이트되는 페이지처럼 오래된 페이지 콘텐츠를 쓸 수 없는 경우에만 설정하세요. `maxAgeHours`를 낮게 잡을 때는 `livecrawlTimeout`(밀리초)을 함께 지정해 새로 가져오는 데 걸리는 시간을 제한하세요.
+대부분의 요청에서는 이 field를 생략하는 것이 좋습니다. 가격, 재고 여부, 자주 갱신되는 페이지처럼 오래된 페이지 콘텐츠를 쓸 수 없는 경우에만 설정하세요. `maxAgeHours`를 낮게 설정할 때는 `livecrawlTimeout`(밀리초)을 함께 지정해 새로 가져오는 데 걸리는 시간에 상한을 둘 수 있습니다.
 
-<Accordion title="지원 중단된 livecrawl 파라미터에서 마이그레이션하기">
-  `livecrawl` 문자열 파라미터(`"always"`, `"preferred"`, `"fallback"`, `"never"`)는
+<Accordion title="지원 중단된 livecrawl 매개변수에서 마이그레이션하기">
+  `livecrawl` 문자열 매개변수(`"always"`, `"preferred"`, `"fallback"`, `"never"`)는
   `maxAgeHours`로 대체되어 지원이 중단되었습니다:
 
-  | 기존 `livecrawl` 값 | 대응 값                                           |
+  | 기존 `livecrawl` 값 | 대응 설정                                          |
   | ---------------- | ---------------------------------------------- |
   | `"always"`       | `maxAgeHours: 0`                               |
   | `"never"`        | `maxAgeHours: -1`                              |
   | `"fallback"`     | `maxAgeHours` 생략                               |
-  | `"preferred"`    | 직접 대응되는 값 없음. `maxAgeHours: 1`과 같이 낮은 값을 사용하세요 |
+  | `"preferred"`    | 직접적인 대응 값 없음. `maxAgeHours: 1`과 같은 낮은 값을 사용하세요 |
 </Accordion>
 
-<div id="crawl-subpages">
-  ## 하위 페이지 크롤링
-</div>
+## 하위 페이지 크롤링 {#crawl-subpages}
 
-각 시작 URL의 링크를 따라가게 하려면 `subpages`를 설정하세요. Exa가 특정 사이트 섹션을 우선적으로 처리하도록 하려면 `subpageTarget`을 추가하세요:
+각 시작 URL의 링크를 따라가려면 `subpages`를 설정하세요. 특정 사이트 섹션을 Exa가 우선적으로 처리하도록 하려면 `subpageTarget`을 추가하세요:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -304,30 +298,26 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   ```
 </CodeGroup>
 
-<div id="images-and-favicons">
-  ## 이미지와 파비콘
-</div>
+## 이미지와 파비콘 {#images-and-favicons}
 
-각 페이지에서 가져올 이미지 URL 개수를 `extras.imageLinks`에 지정하세요. 결과에는 사이트의 `favicon`과, 사용 가능한 경우 대표 `image` URL도 함께 포함됩니다. `/search`에서는 이 옵션이 `contents.extras.imageLinks`에 위치합니다.
+각 페이지에서 가져올 이미지 URL 개수를 `extras.imageLinks`에 지정하세요. result에는 사이트의 `favicon`과 대표 `image` URL도 가능한 경우 함께 포함됩니다. `/search`에서는 이 옵션이 `contents.extras.imageLinks`에 위치합니다.
 
-<div id="next-steps">
-  ## 다음 단계
-</div>
+## 다음 단계 {#next-steps}
 
 <Columns cols={2}>
-  <Card title="API 레퍼런스" icon="square-terminal" href="/ko/docs/reference/get-contents" cta="레퍼런스 열기" arrow="true">
-    모든 요청 파라미터와 응답 필드를 확인하세요.
+  <Card title="API reference" icon="square-terminal" href="/ko/docs/reference/get-contents" cta="reference 열기" arrow="true">
+    모든 요청 매개변수와 response field를 확인해 보세요.
   </Card>
 
   <Card title="Highlights" icon="highlighter" href="/ko/docs/search/highlights" cta="가이드 읽기" arrow="true">
-    agent 및 RAG 컨텍스트에 활용할 일반 highlights와 Dynamic Highlights를 비교해 보세요.
+    agent 및 RAG 컨텍스트에 적합한 일반 highlights와 Dynamic Highlights를 비교해 보세요.
   </Card>
 
   <Card title="Search API" icon="search" href="/ko/docs/search/quickstart" cta="가이드 열기" arrow="true">
-    콘텐츠를 추출하기 전에 관련 페이지를 먼저 찾아보세요.
+    content를 추출하기 전에 관련 페이지를 먼저 찾아보세요.
   </Card>
 
-  <Card title="SDK" icon="code" href="/ko/docs/sdks/quickstart" cta="SDK 보기" arrow="true">
-    Python 또는 JavaScript에서 Exa를 사용해 보세요.
+  <Card title="SDKs" icon="code" href="/ko/docs/sdks/quickstart" cta="SDK 보기" arrow="true">
+    Python이나 JavaScript에서 Exa를 사용해 보세요.
   </Card>
 </Columns>

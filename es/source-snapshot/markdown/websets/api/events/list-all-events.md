@@ -1,26 +1,20 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
-> Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
+> Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-<div id="list-all-events">
-  # Listar todos los eventos
-</div>
+# Listar todos los eventos {#list-all-events}
 
 > Lista todos los eventos que han ocurrido en el sistema.
 
-Puedes paginar los resultados mediante el parámetro `cursor`.
+Puedes paginar los resultados con el parámetro `cursor`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0
 info:
-  title: Exa Public API
+  title: API pública de Exa
   version: 2.0.0
 servers:
   - url: https://api.exa.ai
@@ -35,9 +29,9 @@ paths:
     get:
       tags:
         - Events
-      summary: List all Events
+      summary: Listar todos los eventos
       description: |-
-        List all events that have occurred in the system.
+        Lista todos los eventos que han ocurrido en el sistema.
 
         You can paginate through the results using the `cursor` parameter.
       operationId: events-list

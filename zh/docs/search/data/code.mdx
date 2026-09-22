@@ -31,61 +31,47 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-使用 Exa Search，通过自然语言查询检索代码仓库、技术文档、软件包信息和实现指南。
+使用 Exa Search，通过自然语言查询查找代码仓库、技术文档、包信息和实现指导。
 
 <Tip>
   阅读 [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode)，了解 Exa
-  如何评估编码任务中的检索效果。
+  如何评估编码任务中的 retrieval 效果。
 </Tip>
 
-<div id="use-it-for">
-  ## 适用场景
-</div>
+## 适用场景 {#use-it-for}
 
-* 编程 agent 与代码生成工具
+* 编码智能体与代码生成工具
 * 开发者搜索与文档类产品
 * 调试、迁移与配置工作流
-* 跨代码仓库、文档和包管理平台的技术调研
+* 跨代码仓库、文档和包注册表的技术研究
 
-<div id="example-queries">
-  ## 查询示例
-</div>
+## 查询示例 {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### 按能力发现库
-</div>
+### 按能力发现 库 {#discover-libraries-by-capability}
 
-描述你关注的能力、生态系统和约束条件。这样即可根据库的实际功能来检索候选项，而无需依赖确切的项目名称。
+描述你关注的能力、生态系统和约束条件。这样检索到的候选项取决于它们能做什么，而不依赖于精确的项目名称。
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### 查找实现文档
-</div>
+### 检索实现文档 {#retrieve-implementation-documentation}
 
-写明产品名称和具体操作。这样 search 就能优先返回 API 文档和实现指南，而不是泛泛的讨论内容。
+指明产品名称和具体操作。这样 search 就能优先返回 API 文档和实现指南，而非泛泛的讨论内容。
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### 查看特定版本的变更
-</div>
+### 查看特定版本的变更 {#check-version-specific-changes}
 
-当兼容性很重要时，请注明发布渠道或版本号，以减少与旧版本相关的结果。
+当兼容性比较关键时，请注明发布渠道或版本号，这样可以减少与旧版本相关的结果。
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### 查找可复用的 agent 工具
-</div>
+### 查找可复用的 agent 工具 {#find-reusable-agent-tooling}
 
-明确指出产物类型和具体任务，而不要搜索“AI 工具”这类宽泛的表述。
+明确说明制品类型和任务，而不是搜索“AI 工具”这类宽泛的短语。
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## 发起请求
-</div>
+## 发起请求 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -133,12 +119,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## 使用 Exa Agent 获取结构化数据
-</div>
+## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
 
-如果结构化数据需要跨多个来源调研才能得到，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的库、技术 criteria 和输出字段，Agent 就会返回经 schema 校验的结果，并附上引用来源。
+如果结构化数据需要跨多个来源进行研究，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的库、技术 criteria 和输出 fields，Agent 就会返回经过 schema 校验的结果及引用来源。
 
-<Card title="启动 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
-  对比各类库、丰富代码仓库记录，或基于多种技术信号生成结构化列表。
+<Card title="启动一个 Agent 任务" icon="bot" href="/zh/docs/agent/quickstart" cta="打开 Agent 指南" arrow="true">
+  对比各类库、增强代码仓库记录，或基于多种技术信号生成结构化列表。
 </Card>

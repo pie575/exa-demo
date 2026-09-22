@@ -1,30 +1,24 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="contents-api">
-  # Contents API
-</div>
+# Contents API {#contents-api}
 
 > Extrae texto, highlights y resúmenes de cualquier URL.
 
-Exa Contents devuelve el contenido limpio de las páginas a partir de sus URLs y gestiona automáticamente páginas renderizadas con JavaScript, PDFs y maquetaciones complejas.
+Exa Contents devuelve contenido limpio de páginas a partir de URL, y gestiona automáticamente páginas renderizadas con JavaScript, PDF y diseños complejos.
 
-Todas las funcionalidades de contents están disponibles también en [Exa Search](/es/docs/search/quickstart) para las URLs devueltas, sin coste adicional hasta 10 resultados por búsqueda ($1/1000 páginas a partir de ahí). Para casos de uso de herramientas de web search, recomendamos usar Search de esta forma en lugar de Contents.
+Todas las funcionalidades de contenido también están disponibles en [Exa Search](/es/docs/search/quickstart) para las URL devueltas, sin coste adicional hasta 10 resultados por búsqueda ($1/1000 páginas a partir de ahí). Recomendamos usar Search de esta forma en lugar de Contents para casos de uso de herramientas de búsqueda web.
 
 <Tip>
   Para resultados de búsqueda que alimentan el contexto de una IA, solicita `contents: { highlights: true }` en `/search`:
-  Exa ajusta la extensión de los extractos de cada resultado según su relevancia. Consulta [Highlights](/es/docs/search/highlights).
+  Exa ajusta los extractos de cada resultado a su relevancia. Consulta [Highlights](/es/docs/search/highlights).
 </Tip>
 
-<div id="make-your-first-request">
-  ## Haz tu primera solicitud
-</div>
+## Haz tu primera solicitud {#make-your-first-request}
 
-Pasa una o más URL o IDs de documento y solicita highlights de las partes relevantes para tu tarea. En las solicitudes HTTP, indícalos en `ids`:
+Pasa una o más URL o IDs de documentos y solicita highlights de las partes relevantes para tu tarea. En las solicitudes HTTP, indícalos en `ids`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -70,7 +64,7 @@ Pasa una o más URL o IDs de documento y solicita highlights de las partes relev
   ```
 </CodeGroup>
 
-<Accordion title="Respuesta de ejemplo">
+<Accordion title="Ejemplo de respuesta">
   ```json theme={null}
   {
     "requestId": "e492118ccdedcba5088bfc4357a8a125",
@@ -98,7 +92,7 @@ Pasa una o más URL o IDs de documento y solicita highlights de las partes relev
   ```
 </Accordion>
 
-Cada elemento de `results` incluye los metadatos de la página y la vista de contenido que solicitaste. Consulta `statuses` para saber si cada URL se procesó correctamente o falló.
+Cada elemento de `results` incluye los metadatos de la página y la vista de contenido que solicitaste. Consulta `statuses` para ver si cada URL se procesó correctamente o falló.
 
 <h2 id="dynamic-highlights">
   Formatos de salida
@@ -107,9 +101,9 @@ Cada elemento de `results` incluye los metadatos de la página y la vista de con
 <Tabs>
   <Tab title="Highlights">
     Los highlights devuelven pasajes relevantes copiados de la página. Empieza por aquí para agentes, RAG y
-    consultas de datos concretos, ya que los highlights ocupan menos contexto que el texto completo.
+    búsquedas de datos concretos, ya que los highlights ocupan menos contexto que el texto completo.
 
-    Establece `highlights: true` para habilitarlos. Se recomienda añadir el parámetro `query` al usar Contents para enfocar la extracción de contenido de la página:
+    Establece `highlights: true` para activarlos. Se recomienda añadir un parámetro `query` al usar Contents para enfocar la extracción de contenido de la página:
 
     <CodeGroup>
       ```python Python theme={null}
@@ -143,12 +137,12 @@ Cada elemento de `results` incluye los metadatos de la página y la vista de con
       ```
     </CodeGroup>
 
-    Consulta [Highlights](/es/docs/search/highlights) para conocer los Dynamic Highlights y ver recomendaciones sobre cómo repartir el contexto
+    Consulta [Highlights](/es/docs/search/highlights) para conocer los Dynamic Highlights y recomendaciones sobre cómo repartir el contexto
     entre varias páginas.
   </Tab>
 
   <Tab title="Texto completo">
-    El texto completo devuelve el cuerpo de la página ya limpio, en markdown. Úsalo cuando la tarea dependa de un contexto amplio,
+    El texto completo devuelve el cuerpo limpio de la página en markdown. Úsalo cuando la tarea dependa de un contexto amplio,
     de la estructura del documento o de detalles que los highlights podrían omitir.
 
     Las páginas completas pueden ser extensas, así que usa `maxCharacters` cuando necesites un límite:
@@ -186,8 +180,8 @@ Cada elemento de `results` incluye los metadatos de la página y la vista de con
     </CodeGroup>
   </Tab>
 
-  <Tab title="Summary">
-    Summary realiza una llamada a un modelo de lenguaje por cada página. Úsalo cuando necesites un resumen generado o
+  <Tab title="Resumen">
+    El resumen hace una llamada a un modelo de lenguaje por cada página. Úsalo cuando necesites una visión general generada o
     campos extraídos según un esquema JSON.
 
     <CodeGroup>
@@ -222,7 +216,7 @@ Cada elemento de `results` incluye los metadatos de la página y la vista de con
       ```
     </CodeGroup>
 
-    Para extraer campos en lugar de prosa, pasa un esquema JSON en `summary.schema`. El summary se
+    Para extraer campos en lugar de prosa, pasa un esquema JSON en `summary.schema`. El resumen se
     devuelve como una cadena JSON que cumple el esquema; analízala para leer los campos:
 
     ```json theme={null}
@@ -246,40 +240,36 @@ Cada elemento de `results` incluye los metadatos de la página y la vista de con
   </Tab>
 </Tabs>
 
-Elige una sola vista de contenido por solicitud. Si solicitas highlights, text y summary a la vez, cada vista se devuelve y se factura por separado.
+Elige una sola vista de contenido por solicitud. Si pides highlights, text y summary a la vez, cada vista se devuelve y se factura por separado.
 
-<div id="content-freshness">
-  ## Actualidad del contenido
-</div>
+## Frescura del contenido {#content-freshness}
 
 `maxAgeHours` controla qué tan reciente debe ser el contenido extraído de la página.
 
-| Valor           | Comportamiento                                                                                              |
-| --------------- | ----------------------------------------------------------------------------------------------------------- |
-| Omitir          | Usa el contenido en caché cuando esté disponible y descarga la página cuando sea necesario                  |
-| Entero positivo | Usa el contenido en caché si es más reciente que esa cantidad de horas; de lo contrario, descarga la página |
-| `0`             | Descarga siempre contenido nuevo                                                                            |
-| `-1`            | Usa únicamente contenido en caché                                                                           |
+| Valor           | Comportamiento                                                                                                  |
+| --------------- | --------------------------------------------------------------------------------------------------------------- |
+| Omitir          | Usa el contenido en caché cuando esté disponible y obtiene la página cuando sea necesario                       |
+| Entero positivo | Usa el contenido en caché si tiene menos horas de antigüedad que este valor; de lo contrario, obtiene la página |
+| `0`             | Siempre obtiene contenido fresco                                                                                |
+| `-1`            | Solo usa contenido en caché                                                                                     |
 
-La mayoría de las solicitudes deberían omitir este campo. Defínelo cuando el contenido desactualizado de la página resulte inservible, por ejemplo en precios, disponibilidad o páginas que se actualizan con frecuencia. Combina un valor bajo de `maxAgeHours` con `livecrawlTimeout` (en milisegundos) para limitar cuánto puede tardar una descarga nueva.
+La mayoría de las solicitudes deberían omitir este campo. Configúralo cuando un contenido desactualizado resulte inservible, como en precios, disponibilidad o páginas que se actualizan con frecuencia. Combina un `maxAgeHours` bajo con `livecrawlTimeout` (milisegundos) para limitar cuánto puede tardar una obtención en vivo.
 
-<Accordion title="Migrar desde el parámetro livecrawl obsoleto">
-  El parámetro de texto `livecrawl` (`"always"`, `"preferred"`, `"fallback"`, `"never"`) está
-  obsoleto y se reemplaza por `maxAgeHours`:
+<Accordion title="Migrar desde el parámetro deprecado livecrawl">
+  El parámetro de cadena `livecrawl` (`"always"`, `"preferred"`, `"fallback"`, `"never"`) está
+  deprecado en favor de `maxAgeHours`:
 
-  | Valor anterior de `livecrawl` | Equivalente                                                      |
-  | ----------------------------- | ---------------------------------------------------------------- |
-  | `"always"`                    | `maxAgeHours: 0`                                                 |
-  | `"never"`                     | `maxAgeHours: -1`                                                |
-  | `"fallback"`                  | Omitir `maxAgeHours`                                             |
-  | `"preferred"`                 | Sin equivalente directo; usa un valor bajo como `maxAgeHours: 1` |
+  | Valor antiguo de `livecrawl` | Equivalente                                                      |
+  | ---------------------------- | ---------------------------------------------------------------- |
+  | `"always"`                   | `maxAgeHours: 0`                                                 |
+  | `"never"`                    | `maxAgeHours: -1`                                                |
+  | `"fallback"`                 | Omitir `maxAgeHours`                                             |
+  | `"preferred"`                | Sin equivalente directo; usa un valor bajo como `maxAgeHours: 1` |
 </Accordion>
 
-<div id="crawl-subpages">
-  ## Rastrear subpáginas
-</div>
+## Rastrear subpáginas {#crawl-subpages}
 
-Configura `subpages` para seguir los enlaces de cada URL inicial. Añade `subpageTarget` cuando quieras que Exa priorice determinadas secciones del sitio:
+Define `subpages` para seguir los enlaces desde cada URL inicial. Añade `subpageTarget` cuando quieras que Exa priorice secciones concretas del sitio:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -315,28 +305,24 @@ Configura `subpages` para seguir los enlaces de cada URL inicial. Añade `subpag
   ```
 </CodeGroup>
 
-<div id="images-and-favicons">
-  ## Imágenes y favicons
-</div>
+## Imágenes y favicons {#images-and-favicons}
 
 Asigna a `extras.imageLinks` la cantidad de URL de imágenes que quieras obtener de cada página. Los resultados también incluyen
 el `favicon` del sitio y una URL de `image` representativa cuando esté disponible. En `/search`, esta opción
-se ubica en `contents.extras.imageLinks`.
+se encuentra en `contents.extras.imageLinks`.
 
-<div id="next-steps">
-  ## Próximos pasos
-</div>
+## Próximos pasos {#next-steps}
 
 <Columns cols={2}>
   <Card title="Referencia de la API" icon="square-terminal" href="/es/docs/reference/get-contents" cta="Abrir referencia" arrow="true">
-    Consulta todos los parámetros de solicitud y los campos de respuesta.
+    Consulta todos los parámetros de solicitud y campos de respuesta.
   </Card>
 
-  <Card title="Highlights" icon="highlighter" href="/es/docs/search/highlights" cta="Leer guía" arrow="true">
+  <Card title="Highlights" icon="highlighter" href="/es/docs/search/highlights" cta="Leer la guía" arrow="true">
     Compara los highlights normales con los Dynamic Highlights para el contexto de agentes y RAG.
   </Card>
 
-  <Card title="Search API" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">
+  <Card title="Search API" icon="search" href="/es/docs/search/quickstart" cta="Abrir la guía" arrow="true">
     Encuentra páginas relevantes antes de extraer su contenido.
   </Card>
 

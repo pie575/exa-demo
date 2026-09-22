@@ -1,13 +1,13 @@
 ---
 title: "HIPAA"
-description: "Usa el modo de cumplimiento de HIPAA para las solicitudes de recuperación en caché que sean elegibles."
+description: "Usa el modo de cumplimiento de HIPAA en las solicitudes de recuperación en caché elegibles."
 ---
 
 <Info>
   El cumplimiento de HIPAA está disponible para clientes Enterprise una vez que Exa lo habilita para tu equipo. Escribe a [sales@exa.ai](mailto:sales@exa.ai) para hablar sobre el acceso Enterprise, los requisitos del BAA y su habilitación.
 </Info>
 
-El modo HIPAA se controla en cada solicitud mediante un campo `compliance` de nivel superior:
+El modo HIPAA se controla por solicitud mediante un campo `compliance` de nivel superior:
 
 ```json theme={null}
 {
@@ -15,40 +15,34 @@ El modo HIPAA se controla en cada solicitud mediante un campo `compliance` de ni
 }
 ```
 
-Cuando este campo está presente en un equipo apto, Exa procesa la solicitud con controles de cumplimiento de HIPAA. Si tu equipo no está habilitado, la API devuelve `403 FEATURE_DISABLED`.
+Cuando este campo está presente en un equipo habilitado, Exa procesa la solicitud con controles de cumplimiento de HIPAA. Si tu equipo no está habilitado, la API devuelve `403 FEATURE_DISABLED`.
 
-El modo HIPAA incluye [Retención Cero de Datos](/es/docs/admin/security/zero-data-retention) para esas solicitudes: Exa no conserva PHI.
+El modo HIPAA incluye [Zero Data Retention](/es/docs/admin/security/zero-data-retention) para esas solicitudes: Exa no almacena PHI.
 
-<div id="supported-endpoints">
-  ## Endpoints compatibles
-</div>
+## Endpoints compatibles {#supported-endpoints}
 
 El campo `compliance` se reconoce en:
 
 * [`/search`](/es/docs/reference/search)
 * [`/contents`](/es/docs/reference/get-contents)
 
-Los demás endpoints rechazan el campo.
+Los demás endpoints rechazan este campo.
 
-<div id="requirements">
-  ## Requisitos
-</div>
+## Requisitos {#requirements}
 
 El modo HIPAA solo admite recuperación en caché. Solicitudes compatibles:
 
-* En `/search`, establece `type` como `instant` o `fast`
+* En `/search`, establece `type` en `instant` o `fast`
 * Solicita `text` o `highlights` (no `summary`)
-* Usa contenido exclusivamente de caché: omite los campos de actualidad o establece `maxAgeHours: -1` en `/contents`
+* Usa contenido únicamente de caché: omite los campos de frescura o establece `maxAgeHours: -1` en `/contents`
 
-Las solicitudes incompatibles devuelven `400 INVALID_REQUEST_BODY`, por ejemplo:
+Las solicitudes incompatibles devuelven `400 INVALID_REQUEST_BODY`, entre ellas:
 
 * `summary` en `/contents`, o `contents.summary` en `/search`
-* Configuraciones de actualidad que exigen una obtención en vivo, como `maxAgeHours: 0` o un `maxAgeHours` positivo
-* Solicitudes de búsqueda que omiten `type` o que usan un tipo distinto de `instant` o `fast`
+* Ajustes de frescura que exigen una descarga en vivo, como `maxAgeHours: 0` o un `maxAgeHours` positivo
+* Solicitudes de búsqueda que omiten `type` o usan un tipo distinto de `instant` o `fast`
 
-<div id="example">
-  ## Ejemplo
-</div>
+## Ejemplo {#example}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -64,8 +58,6 @@ Las solicitudes incompatibles devuelven `400 INVALID_REQUEST_BODY`, por ejemplo:
   ```
 </CodeGroup>
 
-<div id="access">
-  ## Acceso
-</div>
+## Acceso {#access}
 
 Para habilitar el modo HIPAA en tu equipo, escribe a [sales@exa.ai](mailto:sales@exa.ai). Consulta el [Trust Center](https://trust.exa.ai) para ver la documentación de seguridad de Exa.

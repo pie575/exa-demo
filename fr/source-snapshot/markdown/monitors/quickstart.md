@@ -1,35 +1,26 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="monitors-api">
-  # API Monitors
-</div>
+# Monitors API {#monitors-api}
 
 > Exécutez des recherches récurrentes et recevez les nouveaux résultats découverts via webhook.
 
-Les monitors exécutent des recherches Exa selon une schedule récurrente et envoient les résultats vers un endpoint webhook.
+Les monitors exécutent des Exa searches selon un schedule récurrent et transmettent les résultats à un endpoint webhook.
 
-Utilisez les Monitors pour suivre l&#39;actualité, les annonces de concurrents, les levées de fonds, les évolutions réglementaires, les publications
-de recherche ou tout autre sujet qui évolue dans le temps.
+Utilisez les Monitors pour suivre l&#39;actualité, les annonces de concurrents, les levées de fonds, les évolutions réglementaires, les publications de recherche ou tout autre sujet qui évolue dans le temps.
 
-<div id="how-monitors-work">
-  ## Fonctionnement des Monitors
-</div>
+## Fonctionnement des Monitors {#how-monitors-work}
 
-À chaque run, Exa exécute la search configurée, applique un filtre temporel, écarte les résultats ou observations déjà renvoyés par le monitor, puis envoie le nouvel output à votre webhook.
+À chaque run, Exa exécute la search configurée, applique un filtre temporel, écarte les résultats ou découvertes que le monitor a déjà renvoyés, puis envoie le nouvel output à votre webhook.
 
-Chaque monitor conserve son propre historique de runs : rédigez donc la query autour du signal continu que vous souhaitez suivre, plutôt que d&#39;y ajouter vous-même une plage de dates glissante.
+Chaque monitor conserve son propre historique de runs : formulez donc la requête autour du signal continu que vous souhaitez suivre, plutôt que d&#39;y ajouter vous-même une plage de dates glissante.
 
-<div id="create-your-first-monitor">
-  ## Créez votre premier monitor
-</div>
+## Créez votre premier monitor {#create-your-first-monitor}
 
-Créez un monitor avec une query de search, un intervalle et l&#39;endpoint HTTPS qui recevra les
-mises à jour :
+Créez un monitor avec une requête de recherche, un intervalle et l&#39;endpoint HTTPS qui recevra
+les mises à jour :
 
 <CodeGroup>
   ```python Python theme={null}
@@ -128,25 +119,23 @@ mises à jour :
   ```
 </Accordion>
 
-Conservez le `webhookSecret` au moment de la création du monitor : il n&#39;est renvoyé qu&#39;une seule fois et il est
-indispensable pour vérifier les signatures des webhooks.
+Conservez `webhookSecret` au moment de la création du monitor. Il n&#39;est renvoyé qu&#39;une seule fois et il est indispensable pour
+vérifier les signatures des webhooks.
 
-<div id="configure-the-output">
-  ## Configurer l’output
-</div>
+## Configurer l&#39;output {#configure-the-output}
 
 Chaque run terminé renvoie les pages nouvellement découvertes dans `output.results`.
 
 Exa synthétise également les informations de chaque page dans `output.content` :
 
-| Forme d’output | Utilisation                     | Valeur renvoyée                               |
-| --------------- | ------------------------------- | --------------------------------------------- |
-| Résumé textuel  | Par défaut                      | Une chaîne dans `output.content`              |
-| JSON structuré  | Ajoutez un objet `outputSchema` | JSON conforme au schema dans `output.content` |
+| Forme de l&#39;output | Utilisation                     | Valeur renvoyée                               |
+| --------------------- | ------------------------------- | --------------------------------------------- |
+| Résumé textuel        | Par défaut                      | Une chaîne dans `output.content`              |
+| JSON structuré        | Ajouter un objet `outputSchema` | JSON conforme au schéma dans `output.content` |
 
-Les sources des champs synthétisés sont renvoyées automatiquement dans `output.grounding`.
+Les sources des fields synthétisés sont renvoyées automatiquement dans `output.grounding`.
 
-Ajoutez `outputSchema` lorsque le code en aval a besoin de champs
+Ajoutez `outputSchema` lorsque le code en aval a besoin de fields
 cohérents :
 
 ```json theme={null}
@@ -172,15 +161,13 @@ cohérents :
 }
 ```
 
-N&#39;incluez pas les citations ni le niveau de confiance dans le schema. Ils sont renvoyés séparément dans
+N&#39;incluez pas les citations ni le niveau de confiance dans le schéma. Ils sont renvoyés séparément dans
 `output.grounding`.
 
-<div id="add-page-content">
-  ## Ajouter le contenu des pages
-</div>
+## Ajouter le contenu des pages {#add-page-content}
 
 `search` accepte les mêmes options qu&#39;[Exa Search](/fr/docs/search/quickstart) : utilisez `contents` pour inclure
-les highlights, le full text ou les summaries avec chaque résultat, et `includeDomains` ou `excludeDomains` pour
+les highlights, le texte intégral ou les résumés à chaque résultat, et `includeDomains` ou `excludeDomains` pour
 restreindre les sources.
 
 <CodeGroup>
@@ -251,9 +238,7 @@ restreindre les sources.
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## Testez votre monitor
-</div>
+## Testez votre monitor {#test-your-monitor}
 
 Déclenchez un run immédiatement au lieu d&#39;attendre la prochaine exécution planifiée, puis listez ses runs :
 
@@ -283,48 +268,44 @@ Déclenchez un run immédiatement au lieu d&#39;attendre la prochaine exécution
   ```
 </CodeGroup>
 
-Les statuts de run possibles sont :
+Les statuts de run sont les suivants :
 
-| Statut      | Signification                                                                               |
-| ----------- | ------------------------------------------------------------------------------------------- |
-| `pending`   | Le run est en file d&#39;attente                                                            |
-| `running`   | Le run est en cours d&#39;exécution                                                         |
-| `completed` | Le run est terminé ; récupérez-le par son ID pour consulter l&#39;intégralité de son output |
-| `failed`    | Le run a échoué ; `failReason` en indique la raison                                         |
-| `cancelled` | Le run a été annulé                                                                         |
+| Statut      | Signification                                                         |
+| ----------- | --------------------------------------------------------------------- |
+| `pending`   | Le run est en file d&#39;attente                                      |
+| `running`   | Le run est en cours d&#39;exécution                                   |
+| `completed` | Le run est terminé ; récupérez-le par ID pour lire son output complet |
+| `failed`    | Le run a échoué ; `failReason` en indique la raison                   |
+| `cancelled` | Le run a été annulé                                                   |
 
-`output` reste null tant que le run n&#39;est pas terminé.
+`output` vaut null tant que le run n&#39;est pas terminé.
 
-<div id="schedule-runs">
-  ## Planifier les runs
-</div>
+## Planifier les runs {#schedule-runs}
 
-L&#39;intervalle minimal est d&#39;une heure. Utilisez une durée unique telle que `1h`, `6h`, `1d` ou `7d`. Le
-schedule est calé sur la date de création du monitor — un monitor quotidien créé à 14 h 30 s&#39;exécute
-chaque jour aux alentours de 14 h 30 — mais chaque run peut être retardé de 30 minutes au maximum : ne vous fiez donc pas à une
+L&#39;intervalle minimum est d&#39;une heure. Utilisez une durée unique telle que `1h`, `6h`, `1d` ou `7d`. Le
+schedule est calé sur la date de création du monitor — un monitor quotidien créé à 14h30 s&#39;exécute
+chaque jour aux alentours de 14h30 — mais chaque run peut être retardé de 30 minutes au maximum : ne vous fiez donc pas à une
 heure de livraison exacte.
 
-Omettez `trigger` pour créer un monitor déclenché uniquement manuellement. Mettre en pause un monitor planifié interrompt également les runs
-automatiques, tout en conservant les déclenchements manuels.
+Omettez `trigger` pour créer un monitor à déclenchement manuel uniquement. Mettre en pause un monitor planifié interrompt également les runs
+automatiques, tout en conservant la possibilité de déclenchements manuels.
 
 <Note>
-  Les monitor runs ne se chevauchent pas. Si le run planifié suivant démarre alors que le précédent est
-  encore en cours, Exa annule ce dernier.
+  Les runs d&#39;un monitor ne se chevauchent pas. Si le run planifié suivant démarre alors que le précédent est
+  toujours en cours, Exa annule ce dernier.
 </Note>
 
-<div id="receive-webhook-updates">
-  ## Recevoir les mises à jour par webhook
-</div>
+## Recevoir les mises à jour par webhook {#receive-webhook-updates}
 
 Abonnez-vous à `monitor.run.completed` si vous n&#39;avez besoin que des runs terminés. Si vous omettez `events`, Exa
 envoie également les événements de cycle de vie du monitor et les événements de création de run.
 
-Le payload d&#39;un run terminé contient le status et l&#39;output du run. Les `metadata` facultatives du monitor sont
-reprises dans les livraisons de webhook, ce qui vous permet d&#39;acheminer une mise à jour vers le bon client,
-espace de travail, canal ou traitement interne.
+Le payload d&#39;un run terminé contient le statut et l&#39;output du run. Les `métadonnées` facultatives du monitor sont
+reprises dans les deliveries de webhook, ce qui vous permet d&#39;acheminer une mise à jour vers le bon client,
+espace de travail, canal ou job interne.
 
-<Accordion title="Payload du webhook de run terminé">
-  L&#39;output et les timestamps sont abrégés ci-dessous.
+<Accordion title="Payload de webhook d'un run terminé">
+  L&#39;output et les horodatages sont abrégés ci-dessous.
 
   ```json theme={null}
   {
@@ -367,13 +348,13 @@ espace de travail, canal ou traitement interne.
 </Accordion>
 
 <Warning>
-  Votre webhook doit utiliser HTTPS et constituer la destination finale, car les redirections ne sont pas suivies.
+  Votre webhook doit utiliser HTTPS et être la destination finale, car les redirections ne sont pas suivies.
   Vérifiez `Exa-Signature` avant de traiter l&#39;événement.
 </Warning>
 
-Chaque livraison inclut un header `Exa-Signature` de la forme `t=<timestamp>,v1=<signature>`.
+Chaque delivery inclut un header `Exa-Signature` au format `t=<timestamp>,v1=<signature>`.
 Construisez `<timestamp>.<raw-request-body>`, calculez son empreinte HMAC-SHA256 avec le
-`webhookSecret` à usage unique, puis comparez le résultat à `v1` à l&#39;aide d&#39;une comparaison à temps constant.
+`webhookSecret` à usage unique, puis comparez le résultat à `v1` au moyen d&#39;une comparaison à temps constant.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -411,24 +392,22 @@ Construisez `<timestamp>.<raw-request-body>`, calculez son empreinte HMAC-SHA256
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## Prochaines étapes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
   <Card title="Créer un monitor" icon="bell" href="/fr/docs/reference/monitors/create-a-monitor" cta="Ouvrir la référence" arrow="true">
-    Découvrez tous les champs search, schedule, output, metadata et webhook.
+    Découvrez tous les champs search, schedule, output, métadonnées et webhook.
   </Card>
 
-  <Card title="Monitor runs" icon="clock" href="/fr/docs/reference/monitors/runs/get-a-run" cta="Ouvrir la référence" arrow="true">
-    Inspectez le status, l&#39;output, le grounding et la cause d&#39;échec d&#39;un run.
+  <Card title="Runs de monitor" icon="clock" href="/fr/docs/reference/monitors/runs/get-a-run" cta="Ouvrir la référence" arrow="true">
+    Inspectez le statut, l&#39;output, le grounding et le motif d&#39;échec d&#39;un run.
   </Card>
 
-  <Card title="Guide de la search" icon="search" href="/fr/docs/search/quickstart" cta="Ouvrir le guide" arrow="true">
-    Configurez les queries, les filtres, les highlights, le full text et la freshness.
+  <Card title="Guide de recherche" icon="search" href="/fr/docs/search/quickstart" cta="Ouvrir le guide" arrow="true">
+    Configurez les requêtes, les filtres, les highlights, le texte intégral et la fraîcheur.
   </Card>
 
-  <Card title="Bonnes pratiques de search" icon="sparkles" href="/fr/docs/search/best-practices" cta="Lire le guide" arrow="true">
-    Améliorez la qualité du retrieval tout en conservant un output ciblé.
+  <Card title="Bonnes pratiques de recherche" icon="sparkles" href="/fr/docs/search/best-practices" cta="Lire le guide" arrow="true">
+    Améliorez la qualité du retrieval tout en gardant un output ciblé.
   </Card>
 </Columns>

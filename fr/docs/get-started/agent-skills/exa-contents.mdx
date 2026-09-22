@@ -1,26 +1,24 @@
 ---
-title: "Agent skill Exa Contents"
+title: "Skill Exa Contents"
 sidebarTitle: "Exa Contents"
 description: "Extrayez le contenu des pages avec Exa Contents lorsque vous disposez déjà des URL."
 keywords: ["exa contents", "agent skills", "curl", "http"]
 searchable: false
 ---
 
-Utilisez cette skill pour apprendre à votre agent à appeler Exa Contents avec cURL ou en raw HTTP, en suivant les bonnes pratiques.
+Utilisez cette skill pour apprendre à votre agent à appeler Exa Contents en cURL ou en HTTP brut, en suivant les bonnes pratiques.
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
 <Note>
-  Définissez votre key sous le nom `EXA_API_KEY` dans l&#39;environnement de votre agent.
+  Définissez votre clé sous le nom `EXA_API_KEY` dans l&#39;environnement de votre agent.
 </Note>
 
-<div id="setup">
-  ## Configuration
-</div>
+## Configuration {#setup}
 
-**Option A : installez directement ce skill :**
+**Option A : installez directement cette skill :**
 
 ```bash theme={null}
 npx skills add exa-labs/agent-skills --skill "exa-contents"
@@ -31,54 +29,50 @@ npx skills add exa-labs/agent-skills --skill "exa-contents"
 Le prompt suivant installe la skill et vérifie votre API key sans l&#39;afficher :
 
 ```text Copy this setup prompt into your agent theme={null}
-Installe l'agent skill Exa exa-contents sur cette machine.
+Configure l'agent skill Exa exa-contents sur cette machine.
 
 Objectif :
-- Installer la skill exa-contents afin que mon agent de code puisse l'utiliser pour appeler Exa Contents directement avec cURL ou en raw HTTP.
-- Faire fonctionner une API key Exa SANS jamais exposer, afficher ou coller la key dans cette conversation.
+- Installer la skill exa-contents afin que mon agent de code puisse l'utiliser pour appeler Exa Contents directement avec cURL ou en HTTP brut.
+- Obtenir une API key Exa fonctionnelle SANS jamais exposer, afficher ni coller la clé dans cette conversation.
 
 Agent sélectionné :
-- Claude Code, Codex, Cursor ou tout agent compatible Agent Skills
+- Claude Code, Codex, Cursor, ou tout agent compatible Agent Skills
 - Répertoires d'installation globaux : ~/.claude/skills (Claude Code), ~/.codex/skills (Codex), ~/.agents/skills (Cursor / autre)
 - Répertoires d'installation locaux au projet : .claude/skills (Claude Code), .agents/skills (Codex / Cursor / autre)
 
 Source de la skill :
 - URL de SKILL.md : https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md
 
-Marche à suivre :
-1. Installe D'ABORD la skill, avant toute configuration de key. Privilégie une installation locale au projet si tu travailles dans un dépôt ; sinon, utilise le répertoire global correspondant indiqué ci-dessus. Crée le répertoire de skills choisi et télécharge la skill :
+À faire :
+1. Installe la skill EN PREMIER, avant toute configuration de clé. Privilégie une installation locale au projet si tu travailles dans un repo ; sinon, utilise le répertoire global correspondant listé ci-dessus. Crée le répertoire de skills choisi et télécharge la skill :
    mkdir -p <skills-dir>/exa-contents && curl -fsSL "https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" -o <skills-dir>/exa-contents/SKILL.md
    Vérifie ensuite que <skills-dir>/exa-contents/SKILL.md existe.
-2. Vérifie si une API key Exa est déjà disponible DEPUIS TON PROPRE ENVIRONNEMENT D'EXÉCUTION DE COMMANDES — utilise le même outil/shell avec lequel tu exécuteras la skill, et ne me demande pas de l'afficher. La skill résout la key d'abord depuis EXA_API_KEY, puis depuis le fichier ~/.config/exa/key : vérifie donc les deux sans jamais afficher de valeur :
+2. Vérifie si une API key Exa est déjà disponible DEPUIS TON PROPRE ENVIRONNEMENT D'EXÉCUTION DE COMMANDES — utilise le même outil/shell avec lequel tu lanceras la skill, plutôt que de me demander de l'afficher. La skill résout la clé d'abord depuis EXA_API_KEY, puis depuis le fichier ~/.config/exa/key : vérifie les deux sans jamais afficher de valeur :
    printf '%s\n' "${EXA_API_KEY:+env-set}"; [ -s ~/.config/exa/key ] && printf 'file-set\n'
-   Ton shell est probablement non interactif et ne source PAS automatiquement les profils interactifs comme ~/.zshrc ou ~/.bashrc : une key que j'y ai définie peut donc sembler présente de mon côté mais vide du tien. Si aucune des deux ne ressort, la key réside peut-être dans un profil interactif ignoré par ton shell : trouve le fichier concerné SANS afficher sa valeur avec `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` (n'affiche que les noms — n'exécute JAMAIS un simple `grep`/`cat`/`echo` sur un profil, car une ligne `export EXA_API_KEY=...` divulguerait le secret dans notre conversation). Fais ensuite un `source` de ce fichier dans ta commande et relance le test de présence ci-dessus ; s'il aboutit, ajoute ce même `source ...;` en préfixe de toutes les commandes ultérieures nécessitant la key.
-3. Uniquement si aucune key n'est résolvable nulle part, configures-en une SANS modifier à la main le moindre profil shell et SANS coller la key dans cette conversation. Demande-moi de créer/copier une key sur https://dashboard.exa.ai/api-keys, puis, dans mon propre terminal, d'exporter moi-même EXA_API_KEY ou de l'écrire dans ~/.config/exa/key avec le mode 600 — ne me demande jamais de coller la key dans la conversation. Attends ensuite que je confirme que c'est fait avant de continuer.
-4. Teste rapidement la key depuis ton propre shell — résous-la depuis la variable d'environnement ou le fichier, et n'affiche que le code de statut :
+   Ton shell est probablement non interactif et ne source PAS automatiquement les profils interactifs comme ~/.zshrc ou ~/.bashrc : une clé que j'y ai définie peut donc me sembler présente alors qu'elle est vide pour toi. Si aucun des deux n'apparaît, la clé peut malgré tout se trouver dans un profil interactif ignoré par ton shell : trouve dans quel fichier SANS en afficher la valeur avec `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` (liste uniquement les noms — ne lance JAMAIS un simple `grep`/`cat`/`echo` sur un profil, car une ligne `export EXA_API_KEY=...` divulguerait le secret dans notre conversation). Ensuite, fais un `source` de ce fichier dans ta commande et relance le test de présence ci-dessus ; s'il apparaît, ajoute ce même `source ...;` en préfixe de chaque commande ultérieure nécessitant la clé.
+3. Uniquement si aucune clé n'est résolvable nulle part, configures-en une SANS éditer manuellement un profil de shell et SANS coller la clé dans cette conversation. Dis-moi de créer/copier une clé sur https://dashboard.exa.ai/api-keys, puis, dans mon propre terminal, d'exporter moi-même EXA_API_KEY ou de l'écrire dans ~/.config/exa/key avec les permissions 600 — ne me demande jamais de coller la clé dans la conversation. Attends ensuite ma confirmation avant de continuer.
+4. Teste rapidement la clé depuis ton propre shell — résous-la depuis la variable d'environnement ou le fichier, et n'affiche que le code de statut HTTP :
    KEY="${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}"
    curl -s -o /dev/null -w "%{http_code}\n" -X POST https://api.exa.ai/contents \
      -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
      -d '{"urls":["https://exa.ai"],"text":true}'
-   Conserve l'endpoint, les headers et le corps exactement tels quels (ne devine pas le schema). La réponse doit être 200, pas 401/429. Si tu as eu besoin d'un préfixe `source ...;` à l'étape 2 pour voir une key d'environnement, ajoute-le également ici.
-5. Explique-moi comment redémarrer mon agent ou relancer son analyse pour qu'il détecte la skill.
+   Conserve l'endpoint, les headers et le corps exactement tels quels (ne devine pas le schéma). Le retour doit être 200, pas 401/429. Si tu as eu besoin d'un préfixe `source ...;` à l'étape 2 pour voir une clé d'environnement, ajoute-le également ici.
+5. Explique-moi comment redémarrer mon agent ou relancer sa détection pour qu'il découvre la skill.
 
-Règle absolue tout du long : la key est un secret. Ne l'inspecte jamais autrement que par un test de présence/longueur (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) ou par un code de statut HTTP — n'affiche jamais, avec `echo`, `cat` ou `grep` avec sortie, un fichier ou une variable susceptible de la contenir, et n'essaie jamais de « caviarder » un fichier de key avec une expression régulière. Si une key venait à être exposée, dis-moi de la renouveler sur https://dashboard.exa.ai/api-keys.
+Règle absolue tout du long : la clé est un secret. Ne l'inspecte jamais autrement que par un test de présence/longueur (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) ou un code de statut HTTP — n'affiche jamais, ne fais jamais `echo`, `cat`, ni `grep` avec sortie sur un fichier ou une variable susceptible de la contenir, et n'essaie jamais de « masquer » un fichier de clé avec une regex. Si une clé est exposée, dis-moi de la faire tourner sur https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## Voir la source
-</div>
+## Voir la source {#view-source}
 
 <Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="Voir la source" arrow="true">
   Lisez la définition du skill exa-contents avant de l&#39;installer.
 </Card>
 
-<div id="related">
-  ## Ressources associées
-</div>
+## Ressources associées {#related}
 
 <Columns cols={2}>
-  <Card title="Toutes les agent skills" icon="layers" href="/fr/docs/get-started/agent-skills/overview" cta="Parcourir les skills" arrow="true">
-    Parcourez toutes les skills Exa et installez-les en une seule fois.
+  <Card title="Tous les agent skills" icon="layers" href="/fr/docs/get-started/agent-skills/overview" cta="Parcourir les skills" arrow="true">
+    Parcourez tous les skills Exa et installez-les en une seule fois.
   </Card>
 
   <Card title="Repository des skills" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Voir la source" arrow="true">

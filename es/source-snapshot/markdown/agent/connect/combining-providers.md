@@ -1,23 +1,17 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="combining-providers">
-  # Combinar proveedores
-</div>
+# Combinar proveedores {#combining-providers}
 
-> Usa varios partners de datos a la vez en una sola ejecución de Exa Agent.
+> Usa varios socios de datos a la vez en un mismo run de Exa Agent.
 
-Adjuntar un partner a `dataSources` lo pone a disposición de Exa Agent como una herramienta, pero **no** obliga al agente a invocarlo. Que un partner se use o no depende de tu `query` y tu `outputSchema`: indica qué tipo de resultado esperas de cada partner y Exa Agent recurrirá a la herramienta correspondiente en lugar de deducirlo de una página web. Puedes adjuntar hasta cinco partners por ejecución; Exa Agent decide a cuáles llamar en cada paso, y la búsqueda web de Exa está disponible junto a ellos. ¿Necesitas más de cinco en una sola ejecución? [Contáctanos](mailto:sales@exa.ai) para ampliar el límite.
+Adjuntar un socio a `dataSources` lo pone a disposición de Exa Agent como herramienta; **no** obliga al agente a llamarlo. Que un socio se active depende de tu `consulta` y de tu `outputSchema`: indica qué tipo de resultado quieres de cada socio y Exa Agent recurrirá a la herramienta correspondiente en lugar de adivinar a partir de una página web. Puedes adjuntar hasta cinco socios por run; Exa Agent decide a cuáles llamar en cada paso, con Exa web search disponible junto a ellos. ¿Necesitas más de cinco en un mismo run? [Contáctanos](mailto:sales@exa.ai) para ampliar el límite.
 
-<div id="two-partners-in-one-run">
-  ## Dos partners en una misma ejecución
-</div>
+## Dos socios en un mismo run {#two-partners-in-one-run}
 
-Indica varios partners a la vez y el Exa Agent recurrirá a cada uno en aquello donde destaca. Dos es solo un ejemplo: puedes adjuntar hasta cinco partners a `dataSources` y el principio es el mismo: pide de forma explícita los datos de cada uno. Esta ejecución de informe para inversores combina [Financial Datasets](/es/docs/agent/connect/financialdatasets) para noticias de tickers con [Particle](/es/docs/agent/connect/particle) para comentarios de pódcast. La query pide los datos distintivos de cada partner y el esquema divide la salida en `financialNews` y `podcastChatter`, de modo que el Exa Agent llama a **ambos** partners en la misma ejecución.
+Enumera varios socios juntos y el Exa Agent recurrirá a cada uno allí donde destaca. Dos es solo un ejemplo: puedes adjuntar hasta cinco socios a `dataSources` y el principio es el mismo, pide explícitamente los datos de cada uno. Este run de informe para inversores combina [Financial Datasets](/es/docs/agent/connect/financialdatasets) para noticias por ticker con [Particle](/es/docs/agent/connect/particle) para comentarios de pódcast. La consulta pide los datos distintivos de cada socio y el esquema divide el output en `financialNews` y `podcastChatter`, de modo que el Exa Agent llama a **ambos** socios en el mismo run.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -174,5 +168,5 @@ Indica varios partners a la vez y el Exa Agent recurrirá a cada uno en aquello 
 </CodeGroup>
 
 <Tip>
-  Haz explícitos en tu *query* los datos de cada partner: indica qué tipo de resultado quieres de cada uno (aquí: noticias financieras por ticker frente a citas de pódcast atribuidas a un ponente). Si la petición es genérica («últimas noticias»), el Exa Agent tiende a recurrir a la búsqueda web en lugar de a un partner. Reflejar esas peticiones diferenciadas en los campos de tu `outputSchema` lo refuerza.
+  Explicita en tu *consulta* los datos que esperas de cada partner: indica qué tipo de resultado quieres de cada uno (aquí: noticias financieras por ticker frente a citas de pódcast atribuidas a un ponente). Si la solicitud es genérica («últimas noticias»), el Exa Agent tiende a recurrir a la búsqueda web en lugar de a un partner. Reflejar esas peticiones diferenciadas en los campos de tu `outputSchema` lo refuerza.
 </Tip>

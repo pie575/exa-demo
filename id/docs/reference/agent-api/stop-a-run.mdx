@@ -1,18 +1,18 @@
 ---
-title: "Menghentikan sebuah run"
-description: "Hentikan Agent run yang sedang berjalan secara mulus dan
-  pertahankan hasil yang sudah terkumpul."
+title: "Menghentikan run"
+description: "Hentikan Agent run yang sedang berjalan secara halus dan
+  pertahankan hasil yang sudah dikumpulkan sejauh ini."
 openapi: "/id/docs/exa-spec.yaml POST /agent/runs/{id}/stop"
 timestamp: false
 ---
 
-Jika run masih aktif, agent akan merampungkan pekerjaannya dan menyelesaikan run lebih awal dengan hasil yang sudah terkumpul. Run berakhir dengan status `completed` dan `stopReason: stopped`. Anda ditagih atas usage yang terakumulasi sebelum penghentian. Jika run sudah mencapai status terminal (completed, failed, atau cancelled), endpoint akan mengembalikan run yang ada tanpa perubahan.
+Jika run masih aktif, agent akan merampungkan pekerjaannya dan menyelesaikan run lebih awal dengan hasil yang sudah dikumpulkan sejauh ini. Run berakhir dengan status `completed` dan `stopReason: stopped`. Anda ditagih atas penggunaan yang terakumulasi sebelum penghentian. Jika run sudah mencapai status terminal (completed, failed, atau cancelled), endpoint akan mengembalikan run yang ada tanpa perubahan.
 
 Untuk menghentikan run seketika tanpa mengembalikan hasil apa pun, gunakan [cancel](/id/docs/reference/agent-api/cancel-a-run).
 
 <Note>
   Hanya didukung pada run dengan effort `max`. `Exa-Beta: agent-max-effort-2026-07-27` harus
-  dikirimkan sebagai header permintaan. Header ini menerima daftar token beta yang dipisahkan koma.
+  dikirim sebagai header permintaan. Header ini menerima daftar token beta yang dipisahkan koma.
 </Note>
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">

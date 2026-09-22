@@ -1,18 +1,14 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="llamaindex">
-  # LlamaIndex
-</div>
+# LlamaIndex {#llamaindex}
 
-> Panduan quickstart tentang cara menambahkan retrieval Exa ke aplikasi Agent LlamaIndex.
+> Panduan singkat tentang cara menambahkan retrieval Exa ke aplikasi LlamaIndex Agent.
 
 <Card title="Quickstart Coding Agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Baru mengenal Exa? Mulai dalam waktu kurang dari satu menit.
+  Baru mengenal Exa? Memulai dalam waktu kurang dari satu menit.
 </Card>
 
 ***
@@ -20,17 +16,15 @@
 LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data terstruktur. Dalam panduan ini, kita akan menggunakan integrasi LlamaIndex dari Exa untuk:
 
 1. Menetapkan Search and Retrieve Highlight Tool dari Exa sebagai retriever LlamaIndex
-2. Menyiapkan OpenAI Agent yang memakai tool ini saat menghasilkan respons
+2. Menyiapkan OpenAI Agent yang memanfaatkan tool ini saat menghasilkan response
 
 ***
 
-<div id="get-started">
-  ## Get started
-</div>
+## Memulai {#get-started}
 
 <Steps>
   <Step title="Prasyarat dan instalasi">
-    Instal pustaka llama-index, llama-index core, dan llama-index-tools-exa. Dependensi OpenAI sudah termasuk dalam pustaka core, jadi kita tidak perlu menyebutkannya.
+    Instal library llama-index, llama-index core, dan llama-index-tools-exa. Dependensi OpenAI sudah tercakup dalam core library, jadi tidak perlu disebutkan secara terpisah.
 
     ```Python Python theme={null}
     pip install llama-index llama-index-core llama-index-tools-exa
@@ -43,8 +37,8 @@ LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data ter
     </Card>
   </Step>
 
-  <Step title="Buat instance tool Exa">
-    Impor pustaka integrasi Exa yang relevan dan buat instance `ExaToolSpec` dari LlamaIndex.
+  <Step title="Instansiasi tool Exa">
+    Impor library integrasi Exa yang relevan lalu instansiasi `ExaToolSpec` dari LlamaIndex.
 
     ```Python Python theme={null}
     from llama_index.tools.exa import ExaToolSpec
@@ -57,7 +51,7 @@ LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data ter
   </Step>
 
   <Step title="Pilih metode Exa yang akan digunakan">
-    Pada contoh ini, kita hanya ingin meneruskan metode [search&#95;and&#95;retrieve&#95;highlights](https://docs.llamaindex.ai/en/stable/api_reference/tools/exa/) ke agent kita, jadi kita menentukannya lewat metode `.to_tool_list` dari LlamaIndex. Kita juga meneruskan `current_date`, sebuah utilitas sederhana agar agent kita mengetahui tanggal saat ini.
+    Pada contoh ini, kita hanya ingin meneruskan metode [search&#95;and&#95;retrieve&#95;highlights](https://docs.llamaindex.ai/en/stable/api_reference/tools/exa/) ke agent kita, sehingga kita menentukannya melalui metode `.to_tool_list` dari LlamaIndex. Kita juga meneruskan `current_date`, sebuah utilitas sederhana agar agent mengetahui tanggal saat ini.
 
     ```Python Python theme={null}
     print('Tools that are provide by Exa LlamaIndex integration:')
@@ -69,8 +63,8 @@ LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data ter
     ```
   </Step>
 
-  <Step title="Siapkan OpenAI Agent dan buat permintaan bertenaga Exa">
-    Siapkan [OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/), lalu teruskan kumpulan tool yang sudah disaring di atas.
+  <Step title="Siapkan OpenAI agent dan kirim permintaan berbasis Exa">
+    Siapkan [OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/) dengan meneruskan kumpulan tool yang sudah disaring di atas.
 
     ```Python Python theme={null}
     from llama_index.agent.openai import OpenAIAgent
@@ -81,7 +75,7 @@ LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data ter
     )
     ```
 
-    Selanjutnya kita bisa menggunakan metode chat untuk berinteraksi dengan agent.
+    Setelah itu, kita bisa menggunakan metode chat untuk berinteraksi dengan agent.
 
     ```Python Python theme={null}
     agent.chat(
@@ -89,13 +83,13 @@ LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data ter
     )
     ```
 
-    Agent akan memanggil tool Exa yang diberikan kepadanya, lalu menjawab berdasarkan hasil tersebut. Output persisnya bervariasi tergantung query dan tanggal publikasi halaman yang dikembalikan Exa.
+    Agent akan memanggil Exa tools yang diberikan kepadanya, lalu menyusun jawaban dari hasil tersebut. Output persisnya berbeda-beda tergantung query dan publication date halaman yang dikembalikan Exa.
   </Step>
 </Steps>
 
 <Columns cols={2}>
   <Card title="Panduan Search API" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
-    Tinjau search parameters dan kolom respons Exa.
+    Tinjau search parameters dan field response Exa.
   </Card>
 
   <Card title="Referensi tool LlamaIndex" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="Buka referensi" arrow="true">

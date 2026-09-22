@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
-> Utilisez ce fichier pour identifier toutes les pages disponibles avant d&#39;aller plus loin.
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
+> Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="get-an-item">
-  # Récupérer un item
-</div>
+# Récupérer un item {#get-an-item}
 
 > Renvoie un Item de Webset.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items/{id}
 openapi: 3.1.0
@@ -727,12 +721,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez également vous authentifier
+        avec Authorization: Bearer <key>.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        Transmettez votre API key Exa dans le header x-api-key. Vous pouvez également vous authentifier
+        avec Authorization: Bearer <key>.
 ```

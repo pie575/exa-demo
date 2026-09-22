@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="list-webhooks">
-  # Daftar webhook
-</div>
+# List webhooks {#list-webhooks}
 
-> Mengembalikan Webhooks yang aktif untuk Team Anda.
+> Mengembalikan Webhooks yang aktif untuk team Anda.
 
-Anda dapat menelusuri hasil secara berhalaman menggunakan parameter `cursor`.
+Anda dapat menelusuri hasil secara bertahap (paginasi) menggunakan parameter `cursor`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks
 openapi: 3.1.0

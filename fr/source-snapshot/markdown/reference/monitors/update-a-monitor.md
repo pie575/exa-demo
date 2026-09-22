@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="update-a-monitor">
-  # Mettre à jour un monitor
-</div>
+# Mettre à jour un monitor {#update-a-monitor}
 
-> Met à jour un monitor existant. Tous les champs sont facultatifs. Pour `search`, vous pouvez envoyer un objet partiel ne contenant que les champs à modifier. Définissez `trigger` sur `null` pour supprimer le schedule.
+> Met à jour un monitor existant. Tous les fields sont facultatifs. Pour `search`, vous pouvez envoyer un objet partiel ne contenant que les fields à modifier. Définissez `trigger` sur `null` pour supprimer le schedule.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0

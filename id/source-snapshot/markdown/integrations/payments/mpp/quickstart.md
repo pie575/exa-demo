@@ -1,54 +1,42 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="pay-with-mpp-tempo">
-  # Bayar dengan MPP (Tempo)
-</div>
+# Bayar dengan MPP (Tempo) {#pay-with-mpp-tempo}
 
 > Panggil API Search dan Contents milik Exa tanpa API key dengan membayar per permintaan menggunakan USDC.e di Tempo.
 
-<div id="what-is-mpp">
-  ## Apa itu MPP?
-</div>
+## Apa itu MPP? {#what-is-mpp}
 
-MPP (Machine Payments Protocol) adalah standar pembayaran terbuka dan HTTP-native yang dibangun di atas status code `402 Payment Required`. Standar ini memungkinkan klien membayar akses API per permintaan menggunakan berbagai metode pembayaran, termasuk stablecoin di [Tempo](https://tempo.xyz), tanpa perlu akun, API key, maupun langganan. Contoh pada halaman ini menggunakan Tempo; saat ini Exa menyelesaikan pembayaran MPP dalam USDC.e di Tempo mainnet.
+MPP (Machine Payments Protocol) adalah standar payment terbuka yang bersifat HTTP-native dan dibangun di atas kode status `402 Payment Required`. Standar ini memungkinkan client membayar akses API per permintaan menggunakan berbagai metode payment, termasuk stablecoin di [Tempo](https://tempo.xyz), tanpa perlu akun, API key, atau langganan. Contoh pada halaman ini menggunakan Tempo; saat ini Exa menyelesaikan MPP pembayaran dalam USDC.e di Tempo mainnet.
 
-Exa mendukung MPP pada dua endpoint: **`/search`** dan **`/contents`**. Ketika Anda mengirim permintaan tanpa API key atau payment credential, Exa merespons dengan `402` beserta challenge `WWW-Authenticate: Payment` yang memuat informasi harga dan cara membayar. Klien Anda menandatangani pembayaran, mengirim ulang permintaan dengan credential `Authorization: Payment`, lalu menerima hasilnya setelah pembayaran tuntas on-chain.
+Exa mendukung MPP pada dua endpoint: **`/search`** dan **`/contents`**. Ketika Anda mengirim permintaan tanpa API key atau payment credential, Exa merespons dengan `402` dan challenge `WWW-Authenticate: Payment` yang menjelaskan harga serta cara membayar. Client Anda menandatangani payment, mengirim ulang permintaan dengan credential `Authorization: Payment`, lalu menerima hasil setelah payment tuntas secara on-chain.
 
-Pendekatan ini sangat cocok untuk **AI agents** yang perlu membayar web search secara mandiri tanpa credential yang sudah di-provisioned sebelumnya.
+Ini sangat cocok untuk **AI agents** yang perlu membayar web search secara mandiri tanpa credential yang sudah di-provision sebelumnya.
 
 <Info>
   MPP dan akses melalui API key bersifat independen. Jika permintaan Anda menyertakan header `x-api-key`, alur API key billing biasa yang digunakan dan MPP dilewati sepenuhnya.
 </Info>
 
-<div id="supported-endpoints">
-  ## Endpoint yang didukung
-</div>
+## Endpoint yang didukung {#supported-endpoints}
 
 | Endpoint    | Metode | Deskripsi                                                                                              |
 | ----------- | ------ | ------------------------------------------------------------------------------------------------------ |
 | `/search`   | POST   | Web search dengan semua search type (`instant`, `auto`, `fast`, `deep`, `deep-lite`, `deep-reasoning`) |
 | `/contents` | POST   | Pengambilan konten berdasarkan URL atau ID dokumen                                                     |
 
-Endpoint Exa lainnya *belum* menerima pembayaran MPP.
+Endpoint Exa lainnya *belum* menerima MPP pembayaran.
 
-<div id="get-started">
-  ## Mulai
-</div>
+## Memulai {#get-started}
 
-Anda memerlukan wallet yang kompatibel dengan Tempo dan sudah terisi dana USDC.e. Ekspor private key wallet Anda sebelum menjalankan contoh:
+Anda memerlukan wallet yang kompatibel dengan Tempo dan sudah terisi USDC.e. Export private key wallet Anda sebelum menjalankan contoh:
 
 ```bash theme={null}
 export WALLET_PRIVATE_KEY="0x..."
 ```
 
-<div id="install-the-client">
-  ### Instal klien
-</div>
+### Instal client {#install-the-client}
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -60,11 +48,9 @@ export WALLET_PRIVATE_KEY="0x..."
   ```
 </CodeGroup>
 
-<div id="make-a-paid-search-request">
-  ### Membuat search request berbayar
-</div>
+### Membuat permintaan search berbayar {#make-a-paid-search-request}
 
-Gunakan klien MPP untuk menandatangani dan mengirimkan payment untuk sebuah search request:
+Gunakan client MPP untuk menandatangani dan mengirim payment untuk sebuah permintaan search:
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -122,17 +108,13 @@ Gunakan klien MPP untuk menandatangani dan mengirimkan payment untuk sebuah sear
   ```
 </CodeGroup>
 
-Run yang berhasil akan mencetak hasil search beserta header `Payment-Receipt` yang berisi hash transaksi on-chain.
+Eksekusi yang berhasil akan menampilkan hasil search dan header `Payment-Receipt` yang berisi hash transaksi on-chain.
 
-<div id="pay-from-the-command-line">
-  ## Bayar dari baris perintah
-</div>
+## Membayar dari command line {#pay-from-the-command-line}
 
-Jika Anda tidak ingin repot mengelola private key secara langsung, gunakan Tempo Wallet CLI. Perintah `tempo wallet login` akan membuat atau menghubungkan wallet Tempo, mengotorisasi access key lokal, dan dapat menyertakan MPP Credits gratis untuk pendaftaran baru.
+Jika Anda tidak ingin mengelola private key mentah, gunakan Tempo Wallet CLI. Perintah `tempo wallet login` akan membuat atau menghubungkan wallet Tempo, mengotorisasi access key lokal, dan dapat menyertakan MPP Credits gratis untuk pendaftaran baru.
 
-<div id="install-and-authenticate">
-  ### Instal dan autentikasi
-</div>
+### Instal dan autentikasi {#install-and-authenticate}
 
 ```bash theme={null}
 curl -fsSL https://tempo.xyz/install | bash
@@ -141,20 +123,16 @@ tempo add request
 tempo wallet login
 ```
 
-Pada host remote tanpa browser lokal, gunakan `tempo wallet login --no-browser` lalu buka URL yang ditampilkan di perangkat Anda untuk mengotorisasi CLI.
+Pada host jarak jauh tanpa browser lokal, gunakan `tempo wallet login --no-browser` lalu buka URL yang ditampilkan di perangkat Anda untuk mengotorisasi CLI.
 
-<div id="check-balances-and-credits">
-  ### Memeriksa saldo dan credits
-</div>
+### Memeriksa saldo dan credits {#check-balances-and-credits}
 
 ```bash theme={null}
 tempo wallet whoami
 tempo wallet whoami --credits
 ```
 
-<div id="make-a-paid-request">
-  ### Buat permintaan berbayar
-</div>
+### Membuat permintaan berbayar {#make-a-paid-request}
 
 ```bash theme={null}
 tempo request --max-spend 1.00 https://api.exa.ai/search \
@@ -165,51 +143,41 @@ tempo request --max-spend 1.00 https://api.exa.ai/search \
 
 Untuk referensi CLI lengkap, lihat [dokumentasi Tempo Wallet CLI](https://tempo.xyz/developers/docs/cli/wallet) dan [dokumentasi `tempo request`](https://tempo.xyz/developers/docs/cli/request).
 
-<div id="gas-fees">
-  ## Biaya gas
-</div>
+## Biaya gas {#gas-fees}
 
-Exa menanggung biaya jaringan Tempo dan membayarnya dalam USDC.e. Wallet Anda hanya perlu memiliki USDC.e yang cukup untuk biaya API; tidak perlu ada saldo pathUSD atau token gas lainnya. Anda tidak perlu mengonfigurasi pembayar biaya. Payment challenge dari Exa dan MPP SDK menangani sponsorship secara otomatis.
+Exa menanggung biaya jaringan Tempo dan membayarnya dalam USDC.e. Wallet Anda hanya perlu memiliki USDC.e yang cukup untuk biaya API; wallet tidak memerlukan saldo pathUSD atau token gas lainnya. Anda tidak perlu mengonfigurasi fee payer. Payment challenge dari Exa dan MPP SDK menangani sponsorship secara otomatis.
 
-<div id="pricing">
-  ## Harga
-</div>
+## Harga {#pricing}
 
-MPP menggunakan skema harga paket yang sama seperti billing API key. Exa menghitung harga berdasarkan parameter permintaan sebelum memproses permintaan tersebut.
+MPP menggunakan harga paket yang sama dengan API key billing. Exa menghitung harga berdasarkan parameter permintaan sebelum memproses permintaan tersebut.
 
-<div id="search">
-  ### Search
-</div>
+### Search {#search}
 
 | Search type               | Harga untuk maksimal 10 hasil |
 | ------------------------- | ----------------------------- |
-| `instant`, `auto`, `fast` | $0,007 per permintaan         |
-| `deep-lite`, `deep`       | $0,012 per permintaan         |
-| `deep-reasoning`          | $0,015 per permintaan         |
+| `instant`, `auto`, `fast` | $0.007 per permintaan         |
+| `deep-lite`, `deep`       | $0.012 per permintaan         |
+| `deep-reasoning`          | $0.015 per permintaan         |
 
-Menambahkan `contents.summary` dikenakan biaya tambahan **$0,001 per hasil**.
+Menambahkan `contents.summary` dikenakan biaya tambahan **$0.001 per hasil**.
 
 <Warning>
   Permintaan search MPP dibatasi maksimal 10 hasil. Jika `numResults` lebih dari 10, Exa tetap menggunakan 10 dan menagihkan permintaan tersebut untuk 10 hasil. Jika Anda membutuhkan lebih banyak, gunakan [API key billing](/id/docs/search/quickstart).
 </Warning>
 
-<div id="contents">
-  ### Contents
-</div>
+### Contents {#contents}
 
-Setiap jenis konten yang diminta dikenakan biaya $0,001 per URL:
+Setiap tipe konten yang diminta dikenakan biaya $0.001 per URL:
 
-| Jenis konten | Harga per URL |
+| Tipe konten  | Harga per URL |
 | ------------ | ------------- |
-| `text`       | $0,001        |
-| `highlights` | $0,001        |
-| `summary`    | $0,001        |
+| `text`       | $0.001        |
+| `highlights` | $0.001        |
+| `summary`    | $0.001        |
 
-Jika Anda tidak meminta `text`, `highlights`, atau `summary`, Exa mengaktifkan `text` secara bawaan.
+Jika Anda tidak meminta `text`, `highlights`, atau `summary`, Exa akan mengaktifkan `text` secara default.
 
-<div id="pricing-examples">
-  ### Contoh harga
-</div>
+### Contoh harga {#pricing-examples}
 
 | Permintaan                                          | Harga  |
 | --------------------------------------------------- | ------ |
@@ -219,21 +187,17 @@ Jika Anda tidak meminta `text`, `highlights`, atau `summary`, Exa mengaktifkan `
 | `/contents` untuk 2 URL dengan `text: true`         | $0.002 |
 | `/contents` untuk 1 URL dengan `text` dan `summary` | $0.002 |
 
-<div id="how-the-payment-flow-works">
-  ## Cara kerja payment flow
-</div>
+## Cara kerja payment flow {#how-the-payment-flow-works}
 
-SDK mengotomatiskan alur ini, tetapi Anda dapat memeriksanya langsung melalui HTTP:
+SDK mengotomatiskan flow ini, tetapi Anda bisa memeriksanya secara langsung melalui HTTP:
 
-1. Kirim permintaan tanpa API key atau payment credential. Exa mengembalikan `402` beserta challenge `WWW-Authenticate: Payment` yang memuat harga, token, penerima, jaringan, dan detail sponsorship.
+1. Kirim permintaan tanpa API key atau payment credential. Exa mengembalikan `402` disertai challenge `WWW-Authenticate: Payment` yang memuat harga, token, penerima, jaringan, dan detail sponsorship.
 2. Tanda tangani challenge tersebut, lalu kirim ulang permintaan dengan `Authorization: Payment <credential>`.
-3. Exa memproses permintaan sambil melakukan settlement payment. Setelah settlement terkonfirmasi, Exa mengembalikan hasilnya beserta header `Payment-Receipt`. Jika settlement gagal, Exa mengembalikan `402` dengan challenge baru dan tanpa hasil.
+3. Exa memproses permintaan sambil melakukan settlement payment. Setelah settlement terkonfirmasi, Exa mengembalikan hasil beserta header `Payment-Receipt`. Jika settlement gagal, Exa mengembalikan `402` dengan challenge baru dan tanpa hasil.
 
-<div id="inspect-a-payment-challenge">
-  ### Memeriksa payment challenge
-</div>
+### Memeriksa payment challenge {#inspect-a-payment-challenge}
 
-Anda dapat memeriksa harga dan detail pembayaran tanpa wallet:
+Anda dapat memeriksa harga dan detail payment tanpa wallet:
 
 ```bash theme={null}
 curl -s -D - -X POST "https://api.exa.ai/search" \
@@ -241,59 +205,49 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
   -d '{"query": "test query", "numResults": 3}'
 ```
 
-Cari header `WWW-Authenticate: Payment` pada respons `402`. Permintaan discovery yang belum dibayar memiliki batas laju (rate limit), jadi gunakan ini untuk keperluan debugging, bukan untuk polling.
+Cari header `WWW-Authenticate: Payment` pada response `402`. Unpaid discovery request memiliki batas rate, jadi gunakan ini untuk debugging, bukan untuk polling.
 
-<div id="payment-reference">
-  ## Referensi pembayaran
-</div>
+## Referensi payment {#payment-reference}
 
-Exa menerima pembayaran MPP dalam USDC.e di Tempo mainnet.
+Exa menerima MPP pembayaran dalam USDC.e di Tempo mainnet.
 
 | Jaringan      | Identifier    | Token  | Aset                                         |
 | ------------- | ------------- | ------ | -------------------------------------------- |
 | Tempo mainnet | `eip155:4217` | USDC.e | `0x20c000000000000000000000b9537d11c60e8b50` |
 
-USDC.e memiliki 6 angka desimal. Challenge menyatakan harga dalam satuan atomik, sehingga `7000` berarti $0,007 dan `1000000` berarti $1,00.
+USDC.e memiliki 6 angka desimal. Challenge menyatakan harga dalam unit atomik, sehingga `7000` berarti $0,007 dan `1000000` berarti $1,00.
 
 <Note>
-  Exa mendukung MPP dan [x402](/id/docs/integrations/payments/x402/quickstart) pada endpoint yang sama. Respons `402` yang belum terautentikasi dapat memuat challenge MPP `WWW-Authenticate: Payment` sekaligus header x402 `PAYMENT-REQUIRED`. Gunakan header yang sesuai dengan protokol pembayaran yang didukung klien Anda.
+  Exa mendukung MPP dan [x402](/id/docs/integrations/payments/x402/quickstart) pada endpoint yang sama. Response `402` yang unauthenticated dapat menyertakan challenge MPP `WWW-Authenticate: Payment` sekaligus header x402 `PAYMENT-REQUIRED`. Gunakan header yang sesuai dengan protokol payment yang didukung client Anda.
 </Note>
 
-<div id="headers">
-  ### Header
-</div>
+### Headers {#headers}
 
-| Header                                | Arah             | Deskripsi                                             |
-| ------------------------------------- | ---------------- | ----------------------------------------------------- |
-| `Authorization: Payment <credential>` | Permintaan       | Payment credential MPP                                |
-| `WWW-Authenticate: Payment`           | Respons `402`    | Harga dan instruksi payment untuk permintaan tersebut |
-| `Payment-Receipt`                     | Respons berhasil | Settlement receipt, termasuk hash transaksi on-chain  |
+| Header                                | Arah              | Deskripsi                                             |
+| ------------------------------------- | ----------------- | ----------------------------------------------------- |
+| `Authorization: Payment <credential>` | Permintaan        | Payment credential MPP                                |
+| `WWW-Authenticate: Payment`           | Response `402`    | Harga dan instruksi payment untuk permintaan tersebut |
+| `Payment-Receipt`                     | Response berhasil | Settlement receipt, termasuk hash transaksi on-chain  |
 
-<div id="errors">
-  ### Error
-</div>
+### Error {#errors}
 
-| Status | Deskripsi                                                                         |
-| ------ | --------------------------------------------------------------------------------- |
-| `402`  | Payment credential tidak ada atau tidak valid; respons menyertakan challenge baru |
-| `402`  | Jumlah payment tidak sesuai dengan harga permintaan, atau settlement gagal        |
-| `429`  | IP ini mengirim terlalu banyak unpaid discovery request                           |
-| `429`  | Wallet ini melampaui rate limit permintaan berbayar                               |
+| Status | Deskripsi                                                                          |
+| ------ | ---------------------------------------------------------------------------------- |
+| `402`  | Payment credential tidak ada atau tidak valid; response menyertakan challenge baru |
+| `402`  | Jumlah payment tidak sesuai dengan harga permintaan, atau settlement gagal         |
+| `429`  | IP ini mengirim terlalu banyak unpaid discovery request                            |
+| `429`  | Wallet ini melampaui rate limit permintaan berbayar                                |
 
-<div id="rate-limits">
-  ### Rate limit
-</div>
+### Rate limit {#rate-limits}
 
-Rate limit MPP digunakan bersama dengan x402 dan terpisah dari limit API key:
+Rate limit MPP dipakai bersama dengan x402 dan terpisah dari batas API key:
 
-| Limit                           | Ambang     | Rentang Waktu |
-| ------------------------------- | ---------- | ------------- |
-| Unpaid discovery request per IP | 5 request  | 60 detik      |
-| Request berbayar per wallet     | 10 request | 1 detik       |
+| Batas                           | Ambang        | Jendela  |
+| ------------------------------- | ------------- | -------- |
+| Unpaid discovery request per IP | 5 permintaan  | 60 detik |
+| Permintaan berbayar per wallet  | 10 permintaan | 1 detik  |
 
-<div id="faq">
-  ## FAQ
-</div>
+## FAQ {#faq}
 
 <AccordionGroup>
   <Accordion title="Bisakah saya menggunakan MPP dan API key sekaligus?">
@@ -301,21 +255,19 @@ Rate limit MPP digunakan bersama dengan x402 dan terpisah dari limit API key:
   </Accordion>
 
   <Accordion title="Apa yang terjadi jika settlement gagal setelah permintaan saya diproses?">
-    Respons Anda diblokir. Anda akan menerima `402` beserta challenge `WWW-Authenticate: Payment` yang baru sehingga klien Anda dapat mencoba lagi. Tidak ada hasil yang dikembalikan sampai settlement berhasil.
+    Response Anda diblokir. Anda akan menerima `402` beserta challenge `WWW-Authenticate: Payment` yang baru sehingga client Anda dapat mencoba lagi. Tidak ada hasil yang dikembalikan sampai settlement berhasil.
   </Accordion>
 
   <Accordion title="Wallet apa saja yang didukung?">
-    Semua wallet EVM yang kompatibel dengan Tempo dan bisa dipakai menandatangani lewat SDK klien — akun `viem` dengan `mppx` (TypeScript), atau key `eth-account` dengan `pympp` (Python). Untuk AI agents, gunakan wallet dengan saldo USDC.e di Tempo untuk menutupi biaya permintaan.
+    Wallet EVM apa pun yang kompatibel dengan Tempo dan dapat dipakai client SDK untuk menandatangani — akun `viem` dengan `mppx` (TypeScript), atau key `eth-account` dengan `pympp` (Python). Untuk AI agent, gunakan wallet dengan saldo USDC.e di Tempo untuk menutup biaya permintaan.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Sumber Daya
-</div>
+## Sumber Daya {#resources}
 
 * [Dokumentasi protokol MPP](https://mpp.dev/protocol): detail protokol dan format autentikasi
-* [Dokumentasi mppx](https://mpp.dev/sdk/typescript): SDK reference MPP untuk TypeScript
-* [Dokumentasi pympp](https://mpp.dev/sdk/python): SDK reference MPP untuk Python
+* [Dokumentasi mppx](https://mpp.dev/sdk/typescript): referensi SDK TypeScript MPP
+* [Dokumentasi pympp](https://mpp.dev/sdk/python): referensi SDK Python MPP
 * [Tempo](https://tempo.xyz): dokumentasi jaringan Tempo
 * [Bayar dengan x402](/id/docs/integrations/payments/x402/quickstart): bayar endpoint yang sama menggunakan x402
 * [Panduan Exa Search API](/id/docs/search/quickstart): referensi lengkap parameter search

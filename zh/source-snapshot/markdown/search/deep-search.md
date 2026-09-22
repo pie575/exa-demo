@@ -1,67 +1,57 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件了解所有可用页面。
+> 在深入探索之前，可通过该文件了解所有可用页面。
 
-<div id="deep-search">
-  # Deep Search
-</div>
+# 深度搜索 {#deep-search}
 
-> 通过迭代搜索、推理和有据可依的综合，完成复杂的研究任务。
+> 通过迭代式 search、推理和有据可依的综合，完成复杂的研究任务。
 
-Deep Search 是 Search API 的研究模式。它使用相同的 `/search` 端点，但检索过程可以发起多次搜索、审查证据、调整策略，并综合出有据可依的结果。
+深度搜索是 Search API 的研究模式。它使用同一个 `/search` 端点，但 retrieval 过程可以发起多次 search、检视证据、调整策略，并综合出有据可依的结果。
 
-如果你只需针对表述清晰的 query 获取排序后的网页，使用标准 Search；如果找到答案需要开展研究，则使用 Deep。
+如果你只需针对表述清晰的 query 获取排序后的页面，请使用标准 Search；如果找到答案需要研究，请使用 Deep。
 
-<div id="how-deep-search-works">
-  ## Deep Search 的工作原理
-</div>
+## 深度搜索的工作原理 {#how-deep-search-works}
 
-Deep Search 会在生成最终响应之前加入一轮研究循环：
+深度搜索会在生成最终响应前先执行一个研究 loop：
 
 <Steps>
   <Step title="规划搜索">
-    Exa 从你的 `query` 出发，可能会将其拆解扩展为多次搜索，以覆盖请求的不同方面。你也可以通过 `additionalQueries` 提供初始的查询变体。
+    Exa 以你的 `query` 为起点，可能将其扩展为若干次 search，以覆盖请求的不同方面。你也可以通过 `additionalQueries` 提供初始的查询变体。
   </Step>
 
-  <Step title="搜索并检查">
-    Deep 搜索相关证据，将结果与请求进行比对，判断哪些内容已有支撑、哪些仍然缺失。
+  <Step title="搜索并核查">
+    deep 会搜索证据，将结果与请求逐一比对，判断哪些已有支撑、哪些仍有缺失。
   </Step>
 
   <Step title="优化">
-    当证据不完整或相互矛盾时，Deep 会发起更有针对性的搜索，而不是直接返回最先找到的看似合理的页面。
+    当证据不完整或相互矛盾时，deep 会发起更有针对性的 search，而不是直接返回最先看似合理的页面。
   </Step>
 
   <Step title="筛选与综合">
-    Deep 挑选出有用的结果，然后使用与其他搜索类型相同的综合流程。当你提供 `outputSchema` 时，响应会包含结构化的 `output.content`，以及 `output.grounding` 中的字段级引用。
+    deep 会挑选出有用的结果，然后走与其他搜索类型相同的综合路径。当你提供 `outputSchema` 时，响应中会包含结构化的 `output.content`，以及 `output.grounding` 中的 field 级引用来源。
   </Step>
 </Steps>
 
-该流程对列表和结构化输出尤其有用：请求中的每一项可能都需要单独搜索，而 Deep 可以在生成最终结构之前先收集并核实这些结果。
+这一流程在处理列表和结构化输出时尤其有用：请求中的每个项目可能都需要各自的 search，而 deep 能在生成最终结构前先收集并核查这些结果。
 
-<div id="choose-a-deep-mode">
-  ## 选择 Deep 模式
-</div>
+## 选择 Deep 模式 {#choose-a-deep-mode}
 
-| 类型               | 适用场景                      |
-| ---------------- | ------------------------- |
-| `deep-lite`      | 只需轻量级的查询扩展与结果综合           |
-| `deep`           | 任务需要迭代式搜索、证据收集，或输出多个结构化项目 |
-| `deep-reasoning` | 任务需要针对复杂或相互冲突的证据进行更审慎的推理  |
+| 类型               | 适用场景                           |
+| ---------------- | ------------------------------ |
+| `deep-lite`      | 需要轻量级的 query 扩展与综合             |
+| `deep`           | 任务需要迭代式 search、收集证据，或产出多个结构化项目 |
+| `deep-reasoning` | 任务需要针对复杂或相互矛盾的证据进行更审慎的推理       |
 
-研究类工作流建议从 `deep` 入手；若任务较简单且对延迟敏感，则改用 `deep-lite`。
+研究类工作流建议从 `deep` 入手；当任务较为简单且更看重延迟时，改用 `deep-lite`。
 
 <Tip>
-  对于长时间运行的研究、列表构建和多跳 Enrichment，建议使用 [Exa Agent](/zh/docs/agent/quickstart)，而非 `deep-reasoning`。Agent 单次运行可用的算力更多，并返回有据可依的结构化结果。
+  对于长时间运行的研究、列表构建和多跳增强，请使用 [Exa Agent](/zh/docs/agent/quickstart)，而不是 `deep-reasoning`。agent 每次运行可用的算力更多，返回的结果有据可依且结构化。
 </Tip>
 
-有关当前的成本与延迟说明，请参阅[定价](/zh/docs/admin/pricing#deep-search)。
+当前的费用与延迟参考请见 [定价](/zh/docs/admin/pricing#deep-search)。
 
-<div id="make-a-deep-request">
-  ## 发起 Deep 请求
-</div>
+## 发起 Deep 请求 {#make-a-deep-request}
 
 在普通的 Search API 请求中设置 `type`：
 
@@ -104,13 +94,11 @@ Deep Search 会在生成最终响应之前加入一轮研究循环：
   ```
 </CodeGroup>
 
-Deep 会在 `results` 中返回筛选后的搜索结果。如果你还需要综合生成的答案或结构化数据集，请加上 `outputSchema`。
+Deep 会在 `results` 中返回筛选出的搜索结果。如果你还需要综合生成的答案或结构化数据集，请添加 `outputSchema`。
 
-<div id="provide-starting-queries">
-  ## 提供初始查询
-</div>
+## 提供初始 query {#provide-starting-queries}
 
-Deep 通常会自行决定执行哪些搜索。如果你已经明确知道研究需要覆盖的特定术语、视角或子问题，可以使用 `additionalQueries`：
+deep 通常会自行决定执行哪些 search。如果你已经明确知道研究需要覆盖的特定术语、视角或子问题，可以使用 `additionalQueries`：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -158,20 +146,18 @@ Deep 通常会自行决定执行哪些搜索。如果你已经明确知道研究
   ```
 </CodeGroup>
 
-主 `query` 始终包含在内。最多可提供 10 条附加查询，该列表仅对 Deep 搜索类型可用。
+主 `query` 始终会被包含在内。最多可提供 10 个额外的 query，该列表仅在 Deep 搜索类型下可用。
 
-不要仅仅为了增加搜索量而提供细微改写的查询。只有当某条查询能带来实质不同的搜索方向时，才值得添加。
+不要只为增加搜索量而提供细微改写。只有当每个 query 都能带来实质不同的搜索方向时，才值得添加。
 
-<div id="guide-behavior-and-output-separately">
-  ## 分别控制行为与输出
-</div>
+## 分别控制行为与输出 {#guide-behavior-and-output-separately}
 
-`systemPrompt` 与 `outputSchema` 作用于请求的不同部分：
+`systemPrompt` 和 `outputSchema` 作用于请求的不同部分：
 
-* `systemPrompt` 用于控制来源偏好、新颖度、去重以及 Deep 的研究行为。
-* `outputSchema` 定义最终输出结构，并触发结果综合。
+* `systemPrompt` 用于引导来源偏好、新颖性、去重以及 Deep 的研究行为。
+* `outputSchema` 定义最终的输出结构，并触发综合。
 
-query 应说明要研究什么，系统提示词则应说明如何开展并呈现这项研究。
+query 应描述要研究什么，system prompt 则应描述如何开展并呈现这项研究。
 
 <CodeGroup>
   ```python Python theme={null}
@@ -262,13 +248,11 @@ query 应说明要研究什么，系统提示词则应说明如何开展并呈�
   ```
 </CodeGroup>
 
-如果你需要两个以上的结构化项目，或每个项目都必须满足多项要求，建议使用 Deep。标准 search 类型走的是同一条综合流程，但不会在综合前执行同样的迭代式研究。
+当你需要两个以上的结构化项目，或每个项目必须满足多项要求时，建议使用 Deep。标准搜索类型走的是同一条综合路径，但不会在综合之前执行同样的迭代研究。
 
-<div id="read-the-grounded-response">
-  ## 读取有据可依的响应
-</div>
+## 读取有据可依的响应 {#read-the-grounded-response}
 
-结构化响应会将生成的值与其证据分离：
+结构化响应会将生成的值与其证据分开呈现：
 
 ```json theme={null}
 {
@@ -304,15 +288,13 @@ query 应说明要研究什么，系统提示词则应说明如何开展并呈�
 }
 ```
 
-使用 `output.content` 作为生成的结果，使用 `output.grounding` 来展示或验证支撑每个字段的来源。无需在你自己的 schema 中添加引用或置信度字段，Exa 会自动返回这些信息。
+使用 `output.content` 作为生成的结果，并通过 `output.grounding` 展示或验证支撑每个 field 的 sources。不要在自己的 schema 中添加 citation 或 confidence field，Exa 会自动返回这些内容。
 
-`numResults` 控制 `results` 中返回的页面数量，而非 Deep 可能执行的 search 次数。
+`numResults` 控制 `results` 中返回多少个选中的页面，但不决定 Deep 可能执行的 search 次数。
 
-<div id="stream-the-synthesis">
-  ## 流式输出综合结果
-</div>
+## 流式获取综合结果 {#stream-the-synthesis}
 
-将 `stream: true` 与 `outputSchema` 搭配使用，即可通过服务器发送事件 (SSE) 接收综合输出：
+将 `stream: true` 与 `outputSchema` 搭配使用，即可通过服务器发送事件接收综合后的输出：
 
 <CodeGroup>
   ```python Python theme={null}
@@ -384,35 +366,33 @@ query 应说明要研究什么，系统提示词则应说明如何开展并呈�
   ```
 </CodeGroup>
 
-持续消费这些带类型的事件，直到收到 `done`。最后一个事件包含完整的输出结果和搜索耗时，若有费用信息也会一并返回。
+持续消费这些带类型的事件，直到收到 `done`。最后一个事件包含最终输出和搜索耗时，若有费用信息也会一并返回。
 
-<div id="when-to-stay-with-standard-search">
-  ## 何时继续使用标准 Search
-</div>
+## 何时继续使用标准 Search {#when-to-stay-with-standard-search}
 
-当一次检索就能满足需求时，就不必用 Deep：
+当一次 retrieval 就能满足请求时，就不需要 deep：
 
-* 你需要的是相关页面，而不是研究得出的结论。
-* query 本身已指向特定来源或范围很窄的主题。
-* 你的应用自行完成推理，只需要检索。
-* 该请求处于交互式、自动补全或语音链路中。
+* 你需要的是相关页面，而不是经过研究得出的结论。
+* query 本身已经指向某个特定 source 或很窄的主题。
+* 你的应用自行完成推理，只需要 retrieval。
+* 该请求位于交互式、自动补全或语音链路上。
 
-使用 `auto` 可获得默认的质量与速度平衡；若有明确的延迟要求，可使用 `fast` 和 `instant`。
+需要默认的质量与速度平衡时使用 `auto`；对延迟有明确要求时使用 `fast` 和 `instant`。
 
 <Columns cols={2}>
   <Card title="Search API 指南" icon="search" href="/zh/docs/search/quickstart" cta="查看 Search" arrow="true">
-    构建请求、选择结果内容并应用筛选条件。
+    构建请求、选择结果内容并应用过滤条件。
   </Card>
 
-  <Card title="Search 最佳实践" icon="sliders-horizontal" href="/zh/docs/search/best-practices" cta="调优检索" arrow="true">
-    提升质量、上下文、延迟表现以及 agent 集成效果。
+  <Card title="Search 最佳实践" icon="sliders-horizontal" href="/zh/docs/search/best-practices" cta="调优 retrieval" arrow="true">
+    提升质量、上下文、延迟以及 agent integration 效果。
   </Card>
 
-  <Card title="Search API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考文档" arrow="true">
-    查看全部请求参数与响应字段。
+  <Card title="Search API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考" arrow="true">
+    查看全部请求参数与响应 field。
   </Card>
 
   <Card title="定价" icon="credit-card" href="/zh/docs/admin/pricing#deep-search" cta="对比模式" arrow="true">
-    了解当前 Deep Search 的费用与延迟。
+    了解当前深度搜索的费用与延迟。
   </Card>
 </Columns>

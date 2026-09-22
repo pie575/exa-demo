@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="get-a-webhook">
-  # Mendapatkan webhook
-</div>
+# Mendapatkan webhook {#get-a-webhook}
 
-> Mengembalikan Webhook berdasarkan id, termasuk status, event yang dilanggan, URL tujuan, dan metadata-nya. `secret` untuk penandatanganan tidak dikembalikan.
+> Mengembalikan Webhook berdasarkan id, termasuk status, events yang dilanggan, URL target, dan metadata. `secret` penandatanganan tidak dikembalikan.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}
 openapi: 3.1.0

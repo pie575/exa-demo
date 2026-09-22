@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="delete-an-enrichment">
-  # Menghapus Enrichment
-</div>
+# Menghapus enrichment {#delete-an-enrichment}
 
-> Saat menghapus Enrichment, semua enrichment yang sedang berjalan akan dibatalkan dan seluruh `enrichment_result` yang dihasilkan oleh Enrichment ini tidak lagi tersedia.
+> Saat Enrichment dihapus, semua enrichment yang sedang berjalan akan dibatalkan dan seluruh `enrichment_result` yang dihasilkan oleh Enrichment ini tidak akan tersedia lagi.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

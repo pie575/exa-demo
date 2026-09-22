@@ -5,8 +5,8 @@ openapi: "/ko/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
 timestamp: false
 ---
 
-실행이 아직 활성 상태라면 즉시 `cancelled` 상태로 전환되며, 아무 결과도 반환하지 않고 종료됩니다. 해당 실행은 상태 `cancelled`, `stopReason: cancelled`로 종료됩니다. 취소 전까지 누적된 사용량에 대해서는 요금이 청구됩니다. 실행이 이미 종료 상태(completed, failed, cancelled)에 도달한 경우에는 endpoint가 기존 실행을 변경 없이 그대로 반환합니다.
+실행이 아직 활성 상태라면 즉시 `cancelled` 상태로 전환되며, 결과를 반환하지 않고 종료됩니다. 이때 실행은 상태가 `cancelled`, `stopReason`이 `cancelled`인 상태로 종료됩니다. 취소 전까지 누적된 사용량에 대해서는 요금이 청구됩니다. 실행이 이미 종료 상태(completed, failed, cancelled)에 도달한 경우에는 엔드포인트가 기존 실행을 변경 없이 그대로 반환합니다.
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  대시보드에서 key를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
+  dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>

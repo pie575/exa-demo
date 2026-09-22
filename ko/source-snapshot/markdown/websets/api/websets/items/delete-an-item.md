@@ -1,21 +1,15 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="delete-an-item">
-  # Item 삭제
-</div>
+# Item 삭제 {#delete-an-item}
 
 > Webset에서 Item을 삭제합니다.
 
-이때 해당 Item에 대해 진행 중인 enrichment 작업은 모두 취소됩니다.
+이 경우 해당 item에 대해 진행 중인 enrichment 작업은 모두 취소됩니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}
 openapi: 3.1.0
@@ -739,5 +733,5 @@ components:
       scheme: bearer
       description: >-
         Pass your Exa API key in the x-api-key header. You can also authenticate
-        Authorization: Bearer <key> 형식으로도 사용할 수 있습니다.
+        Authorization: Bearer <key> 형식으로 사용합니다.
 ```

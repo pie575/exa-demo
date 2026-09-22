@@ -4,21 +4,17 @@ description: "Gabungkan pencarian perusahaan Exa dengan otomatisasi browser Brow
 icon: "/docs/images/sidebar-icons/browserbase.svg"
 ---
 
-Gunakan Exa untuk menemukan perusahaan dan careers page, lalu gunakan Browserbase dan Stagehand untuk memeriksa dan berinteraksi dengan halaman-halaman tersebut.
+Gunakan Exa untuk menemukan perusahaan dan halaman karier, lalu gunakan Browserbase dan Stagehand untuk memeriksa dan berinteraksi dengan halaman-halaman tersebut.
 
-<div id="install">
-  ## Instalasi
-</div>
+## Pasang {#install}
 
-Instal package yang digunakan oleh template Browserbase Exa:
+Instal package yang digunakan oleh templat Browserbase Exa:
 
 ```bash npm theme={null}
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## Konfigurasi variabel lingkungan
-</div>
+## Konfigurasikan variabel lingkungan {#configure-environment-variables}
 
 Atur API key yang digunakan oleh Exa dan Browserbase:
 
@@ -27,11 +23,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## Search dan berinteraksi dengan halaman
-</div>
+## Search dan berinteraksi dengan halaman {#search-and-interact-with-a-page}
 
-Contoh berikut mengikuti workflow dari template: search perusahaan, temukan careers page, buka halaman tersebut dalam sesi Browserbase, ekstrak deskripsi pekerjaan, lalu biarkan agent Stagehand berinteraksi dengan halaman itu.
+Contoh berikut mengikuti workflow dari templat: search perusahaan, temukan halaman karier-nya, buka di sesi Browserbase, ekstrak deskripsi pekerjaan, lalu biarkan agent Stagehand berinteraksi dengan halaman tersebut.
 
 ```typescript quickstart.ts theme={null}
 import "dotenv/config";
@@ -103,4 +97,4 @@ try {
 }
 ```
 
-Template ini mencakup workflow lengkap untuk mengekstrak detail lowongan, membuat respons yang disesuaikan, dan mengisi formulir lamaran. Lihat [implementasi TypeScript](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) atau [implementasi Python](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase).
+Templat ini mencakup workflow lengkap untuk mengekstrak detail pekerjaan, membuat response yang disesuaikan, dan mengisi formulir lamaran. Lihat [implementasi TypeScript](https://github.com/browserbase/templates/tree/dev/typescript/exa-browserbase) atau [implementasi Python](https://github.com/browserbase/templates/tree/dev/python/exa-browserbase).

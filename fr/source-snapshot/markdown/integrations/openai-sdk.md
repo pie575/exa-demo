@@ -1,45 +1,37 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="openai-sdk-compatibility">
-  # Compatibilité avec le SDK OpenAI
-</div>
+# Compatibilité avec le SDK OpenAI {#openai-sdk-compatibility}
 
-> Utilisez les endpoints d&#39;Exa comme substitut direct d&#39;OpenAI — avec prise en charge des API chat completions et responses.
+> Utilisez les endpoints d&#39;Exa comme remplacement direct d&#39;OpenAI, avec la prise en charge des API chat completions et responses.
 
-<Card title="Quickstart agent de code" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+<Card title="Quickstart Agent de code" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
   Vous découvrez Exa ? Lancez-vous en moins d&#39;une minute.
 </Card>
 
 ***
 
-<div id="overview">
-  ## Vue d&#39;ensemble
-</div>
+## Vue d&#39;ensemble {#overview}
 
 Exa fournit des endpoints compatibles OpenAI qui fonctionnent avec le SDK OpenAI :
 
-| Endpoint            | Interface OpenAI     | Modèles disponibles | Cas d&#39;usage                                             |
-| ------------------- | -------------------- | ------------------- | ----------------------------------------------------------- |
-| `/chat/completions` | Chat Completions API | `exa`               | Interface de conversation traditionnelle                    |
-| `/responses`        | Responses API        | `exa-agent`         | API Exa Agent (recherche asynchrone, enrichment, list-building) |
+| Endpoint            | Interface OpenAI     | Modèles disponibles | Cas d&#39;usage                                                     |
+| ------------------- | -------------------- | ------------------- | ------------------------------------------------------------------- |
+| `/chat/completions` | Chat Completions API | `exa`               | Interface de chat traditionnelle                                    |
+| `/responses`        | API Responses        | `exa-agent`         | API Agent (recherche asynchrone, enrichment, constitution de liste) |
 
 <Info>
-  `/chat/completions` est routé vers [`/answer`](/fr/docs/reference/answer), et `/responses` vers l&#39;[API Exa Agent](/fr/docs/agent/quickstart). Voir [Agent via Responses API](#agent-via-responses-api) ci-dessous.
+  `/chat/completions` est routé vers [`/answer`](/fr/docs/reference/answer), et `/responses` vers l&#39;[API Agent](/fr/docs/agent/quickstart). Voir [Agent via l&#39;API Responses](#agent-via-responses-api) ci-dessous.
 </Info>
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 Pour utiliser l&#39;endpoint `/answer` d&#39;Exa via l&#39;interface chat completions :
 
 1. Remplacez l&#39;URL de base par `https://api.exa.ai`
-2. Remplacez l&#39;API key par votre Exa API key
+2. Remplacez la clé d&#39;API par votre API key Exa
 3. Remplacez le nom du modèle par `exa`.
 
 <Info>
@@ -127,31 +119,27 @@ Pour utiliser l&#39;endpoint `/answer` d&#39;Exa via l&#39;interface chat comple
   ```
 </CodeGroup>
 
-<div id="agent-via-responses-api">
-  ## Agent via l&#39;API Responses
-</div>
+## Agent via l&#39;API Responses {#agent-via-responses-api}
 
-L&#39;endpoint [`/responses`](https://api.exa.ai/responses) d&#39;Exa expose l&#39;[API Exa Agent](/fr/docs/agent/quickstart) via l&#39;interface OpenAI Responses : les SDK OpenAI fonctionnent donc avec lui sans aucune modification. Définissez `model: "exa-agent"` et choisissez un mode d&#39;exécution :
+L&#39;endpoint [`/responses`](https://api.exa.ai/responses) d&#39;Exa expose l&#39;[API Agent](/fr/docs/agent/quickstart) via l&#39;interface OpenAI Responses : les SDK OpenAI fonctionnent donc tels quels. Définissez `model: "exa-agent"` et choisissez un mode d&#39;exécution :
 
-| Mode       | Requête                                 | Comportement                                                                                                                      |
-| ---------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| Synchrone  | par défaut (sans `stream`/`background`) | La requête est bloquante et renvoie l&#39;objet `response` terminé.                                                               |
-| Streaming  | `stream: true`                          | La requête diffuse les événements OpenAI Responses (SSE) au fil de la progression du run, et se termine par `response.completed`. |
-| Background | `background: true`                      | La requête renvoie immédiatement une réponse `in_progress` ; interrogez `GET /responses/{id}` pour obtenir le résultat.           |
+| Mode       | Requête                                  | Comportement                                                                                                                        |
+| ---------- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| Synchrone  | par défaut (ni `stream` ni `background`) | La requête est bloquante et renvoie l&#39;objet `response` finalisé.                                                                |
+| Streaming  | `stream: true`                           | La requête diffuse les événements OpenAI Responses (SSE) au fil de l&#39;avancement du run, et se termine par `response.completed`. |
+| Background | `background: true`                       | La requête renvoie immédiatement une réponse `in_progress` ; interrogez `GET /responses/{id}` pour obtenir le résultat.             |
 
-Définissez `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`) pour arbitrer entre coût et profondeur, et annulez un run avec `POST /responses/{id}/cancel`. Pour `max`, définissez `Exa-Beta: agent-max-effort-2026-07-27` comme header par défaut du client. Le [guide Agent](/fr/docs/agent/quickstart) détaille le modèle de run, la structure de l&#39;output et la tarification par effort sur lesquels repose cette interface.
+Définissez `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`) pour arbitrer entre coût et profondeur, et annulez un run avec `POST /responses/{id}/cancel`. Pour `max`, définissez `Exa-Beta: agent-max-effort-2026-07-27` comme header par défaut du client. Le [guide Agent](/fr/docs/agent/quickstart) détaille le modèle de run, la forme de l&#39;output et la tarification par effort qui sous-tendent cette interface.
 
 <Warning>
-  Les runs dont le `reasoning.effort` vaut `high`, `xhigh` ou `max` durent trop longtemps pour une requête synchrone et renvoient `400`. Utilisez `stream: true` ou `background: true` pour ces runs. `/responses` ne dispose pas de field `budget` ; max applique son plafond par run par défaut.
+  Les runs avec un `reasoning.effort` de `high`, `xhigh` ou `max` durent trop longtemps pour une requête synchrone et renvoient `400`. Utilisez `stream: true` ou `background: true` pour ces runs. `/responses` ne comporte pas de field `budget` ; max applique son plafond par run par défaut.
 </Warning>
 
 Utilisez `previous_response_id` pour poursuivre un run Responses terminé.
 
-<div id="synchronous">
-  ### Synchrone
-</div>
+### Synchronous {#synchronous}
 
-La requête reste bloquante jusqu&#39;à la fin du run, puis renvoie l&#39;objet `response` final.
+La requête reste bloquée jusqu&#39;à la fin du run, puis renvoie l&#39;objet `response` final.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -205,11 +193,9 @@ La requête reste bloquante jusqu&#39;à la fin du run, puis renvoie l&#39;objet
   ```
 </CodeGroup>
 
-<div id="streaming">
-  ### Streaming
-</div>
+### Streaming {#streaming}
 
-Définissez `stream: true` pour recevoir les événements de flux Responses via SSE. Les événements portent un `sequence_number` monotone et se terminent par `response.completed` ; il n&#39;y a pas de sentinelle `[DONE]`. Le flux peut contenir des lignes de commentaire `: keep-alive`, que les clients SSE ignorent.
+Définissez `stream: true` pour recevoir les événements de stream Responses via SSE. Les événements portent un `sequence_number` monotone et se terminent par `response.completed` ; il n&#39;existe pas de sentinelle `[DONE]`. Le stream peut contenir des lignes de commentaire `: keep-alive`, que les clients SSE ignorent.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -271,11 +257,9 @@ Définissez `stream: true` pour recevoir les événements de flux Responses via 
   ```
 </CodeGroup>
 
-<div id="background">
-  ### Background
-</div>
+### Background {#background}
 
-Définissez `background: true` pour démarrer un run sans maintenir la connexion ouverte, puis interrogez `GET /responses/{id}` (poll) jusqu&#39;à ce qu&#39;il atteigne un status terminal. Pour utiliser le streaming plutôt que le polling, consultez [Streaming](#streaming).
+Définissez `background: true` pour démarrer un run sans maintenir la connexion ouverte, puis interrogez `GET /responses/{id}` (poll) jusqu&#39;à ce qu&#39;il atteigne un statut terminal. Pour utiliser le streaming au lieu du polling, consultez [Streaming](#streaming).
 
 <CodeGroup>
   ```python Python theme={null}
@@ -294,7 +278,7 @@ Définissez `background: true` pour démarrer un run sans maintenir la connexion
       background=True,
   )
 
-  # Interroger jusqu'à la fin du traitement
+  # Interroger jusqu'à la fin
   while response.status in ("queued", "in_progress"):
       time.sleep(5)
       response = client.responses.retrieve(response.id)
@@ -317,7 +301,7 @@ Définissez `background: true` pour démarrer un run sans maintenir la connexion
       background: true,
     });
 
-    // Interroger jusqu'à la fin du traitement
+    // Interroger jusqu'à la fin
     while (response.status === "queued" || response.status === "in_progress") {
       await new Promise((r) => setTimeout(r, 5000));
       response = await openai.responses.retrieve(response.id);
@@ -346,11 +330,9 @@ Définissez `background: true` pour démarrer un run sans maintenir la connexion
   ```
 </CodeGroup>
 
-<div id="chat-wrapper">
-  ## Chat wrapper
-</div>
+## Chat wrapper {#chat-wrapper}
 
-Exa fournit un wrapper Python qui enrichit automatiquement n&#39;importe quelle complétion de chat OpenAI avec des capacités de RAG. En une seule ligne de code, vous pouvez transformer n&#39;importe quelle complétion de chat OpenAI en un système RAG propulsé par Exa, qui gère automatiquement la search, le découpage en fragments et le prompting.
+Exa fournit un wrapper Python qui enrichit automatiquement n&#39;importe quelle chat completion OpenAI de capacités RAG. En une seule ligne de code, vous pouvez transformer n&#39;importe quelle chat completion OpenAI en un système RAG propulsé par Exa qui gère automatiquement la search, le découpage en fragments et le prompting.
 
 <CodeGroup>
   ```python Python theme={null}
@@ -365,7 +347,7 @@ Exa fournit un wrapper Python qui enrichit automatiquement n&#39;importe quelle 
   # Envelopper le client OpenAI
   exa_openai = exa.wrap(openai)
 
-  # Utiliser exactement comme le client OpenAI normal
+  # S'utilise exactement comme le client OpenAI normal
   completion = exa_openai.chat.completions.create(
       model="gpt-5.6-sol",
       messages=[{"role": "user", "content": "What is the latest climate tech news?"}]
@@ -375,9 +357,9 @@ Exa fournit un wrapper Python qui enrichit automatiquement n&#39;importe quelle 
   ```
 </CodeGroup>
 
-Le client enveloppé s&#39;utilise exactement comme le client OpenAI natif, à ceci près qu&#39;il enrichit automatiquement vos complétions avec des résultats de search pertinents lorsque c&#39;est nécessaire.
+Le client enveloppé fonctionne exactement comme le client OpenAI natif, à ceci près qu&#39;il enrichit automatiquement vos completions de résultats de recherche pertinents lorsque c&#39;est nécessaire.
 
-Le wrapper prend en charge tous les parameters de la fonction `exa.search()`.
+Le wrapper prend en charge tous les paramètres de la fonction `exa.search()`.
 
 ```python theme={null}
 completion = exa_openai.chat.completions.create(

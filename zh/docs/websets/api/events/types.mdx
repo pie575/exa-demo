@@ -1,74 +1,62 @@
 ---
 title: "事件类型"
-sidebarTitle: "类型"
-description: "了解 Webset API 中会发生哪些事件"
+sidebarTitle: "Types"
+description: "了解 Webset API 中发生的各类事件"
 timestamp: false
 searchable: false
 ---
 
-Websets API 通过事件通知你 Websets 中发生的变更。你可以使用我们的 [events 端点](/zh/docs/websets/api/events/list-all-events) 或配置 [webhook](/zh/docs/websets/api/webhooks/create-a-webhook) 来监控这些事件。
+Websets API 通过事件通知你 Websets 中发生的变更。你可以通过我们的[事件端点](/zh/docs/websets/api/events/list-all-events)监控这些事件，也可以设置 [webhook](/zh/docs/websets/api/webhooks/create-a-webhook) 来接收通知。
 
-事件保留 60 天，到期后会被自动删除。
+事件保留 60 天，之后会被自动删除。
 
-<div id="webset">
-  ## Webset
-</div>
+## Webset {#webset}
 
 * `webset.created` - 创建新的 Webset 时触发。
 * `webset.deleted` - 删除 Webset 时触发。
 * `webset.paused` - Webset 的操作被暂停时触发。
 * `webset.idle` - Webset 没有正在运行的操作时触发。
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
 * `webset.search.created` - 发起新的 Search 时触发。
 * `webset.search.updated` - Search 进度更新时触发。
 * `webset.search.completed` - Search 查找完所有项目时触发。
 * `webset.search.canceled` - 手动取消 Search 时触发。
 
-<div id="item">
-  ## Item
-</div>
+## 项目 {#item}
 
 * `webset.item.created` - 当有新项目添加到 Webset 时触发。
-* `webset.item.enriched` - 当某个项目的 Enrichment 完成时触发。
+* `webset.item.enriched` - 当某个项目的增强完成时触发。
 
-<div id="import">
-  ## Import
-</div>
+## 导入 {#import}
 
-* `import.created` - 发起新的 import 时触发。
-* `import.completed` - import 完成时触发。
+* `import.created` - 发起新的导入时触发。
+* `import.completed` - 导入完成时触发。
 
-<div id="export">
-  ## 导出
-</div>
+## 导出 {#export}
 
 * `webset.export.created` - 发起新的导出时触发。
 * `webset.export.completed` - 导出完成时触发。
 
-<div id="monitor">
-  ## Monitor
-</div>
+## Monitor {#monitor}
 
-* `monitor.created` - 创建新的 monitor 时触发。
+* `monitor.created` - 创建新 monitor 时触发。
 * `monitor.updated` - monitor 的配置更新时触发。
 * `monitor.deleted` - 删除 monitor 时触发。
-* `monitor.run.created` - monitor 运行开始时触发。
-* `monitor.run.completed` - monitor 运行结束时触发。
+* `monitor.run.created` - monitor run 开始时触发。
+* `monitor.run.completed` - monitor run 结束时触发。
 
 每个事件包含：
 
 * 唯一的 `id`
 * 事件 `type`
-* `data` 对象，其中包含触发该事件的完整资源
+* `data` 对象，包含触发该事件的完整资源
 * `createdAt` 时间戳
 
 你可以利用这些事件：
 
-* 跟踪 search 和 enrichment 的进度
-* 构建实时仪表板
-* 在发现新项目时触发工作流
-* 监控导出任务的状态
+* 跟踪 Search 和 增强 的进度
+* 构建实时控制台
+* 在发现新 项目 时触发工作流
+* 监控导出的状态

@@ -2,7 +2,7 @@
 title: "Pasar Keuangan"
 sidebarTitle: "Pasar Keuangan"
 icon: "chart-line"
-description: "Temukan data pasar, dokumen pelaporan regulator, earnings call, dan rilis data ekonomi dengan Exa Search."
+description: "Temukan data pasar, filings, earnings call, dan rilis data ekonomi dengan Exa Search."
 ---
 
 export const PlaygroundQuery = ({query, category, filters}) => {
@@ -31,74 +31,56 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-Gunakan Exa Search untuk mendapatkan harga, filings, transcript, dan pemberitaan seputar semuanya itu dalam satu query. Pertanyaan tentang sebuah ticker dapat sekaligus menghasilkan kuotasi harga, earnings call terbaru, dan liputan analis.
+Gunakan Exa Search untuk harga, filings, transkrip, dan pemberitaan seputar semuanya dalam satu query. Pertanyaan tentang sebuah ticker dapat mengembalikan kuotasi harga, earnings call terbaru, dan liputan analis sekaligus.
 
-<div id="included">
-  ## Termasuk
-</div>
+## Termasuk {#included}
 
-* Kuotasi harga dan riwayat harga terkini untuk saham, kripto, forex, indeks, futures, opsi, dan komoditas
+* Kuotasi harga dan riwayat harga terkini untuk saham, kripto, forex, indeks, futures, options, dan komoditas
 * Profil sekuritas dengan statistik utama dan riwayat OHLCV harian
-* Transcript earnings call, lengkap dengan pernyataan pembuka dan sesi tanya jawab beserta atribusi pembicaranya
+* Transkrip earnings call, lengkap dengan pernyataan pembuka dan sesi tanya jawab beserta pembicaranya
 * SEC filings, laporan keuangan, dan filings internasional
 * Estimasi analis, pengumuman pendanaan, dan rilis data ekonomi
 
-<div id="use-it-for">
-  ## Gunakan untuk
-</div>
+## Gunakan untuk {#use-it-for}
 
-* Riset ekuitas dan kredit
-* Penyaringan KYC, KYB, dan adverse media
+* Research ekuitas dan kredit
+* Screening KYC, KYB, dan adverse media
 * Pemantauan portofolio dan kebijakan
-* Penjaringan peluang transaksi dan riset pasar privat
+* Pencarian peluang transaksi dan research pasar privat
 
-<div id="example-queries">
-  ## Contoh kueri
-</div>
+## Contoh query {#example-queries}
 
-<div id="look-up-a-quote">
-  ### Mencari kuotasi harga
-</div>
+### Mencari kuotasi harga {#look-up-a-quote}
 
 Sebutkan ticker atau nama perusahaan beserta angka yang Anda inginkan. Cashtag seperti `$NVDA` juga bisa digunakan.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-<div id="read-an-earnings-call">
-  ### Membaca earnings call
-</div>
+### Membaca earnings call {#read-an-earnings-call}
 
-Sebutkan nama perusahaan dan kuartalnya agar yang diambil adalah transcript-nya, bukan berita tentang earnings call tersebut.
+Sebutkan nama perusahaan dan kuartalnya agar yang didapat adalah transkripnya, bukan pemberitaan tentangnya.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-<div id="search-filings">
-  ### Mencari filings
-</div>
+### Mencari filings {#search-filings}
 
-Jelaskan pengungkapan yang Anda cari, bukan hanya jenis formulirnya. Kategori `financial report` membatasi hasil hanya pada filings dan laporan.
+Jelaskan pengungkapan yang Anda cari, bukan sekadar jenis formulirnya. Kategori `financial report` membatasi hasil hanya pada filings dan laporan.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-<div id="track-private-market-activity">
-  ### Pantau aktivitas pasar privat
-</div>
+### Melacak aktivitas pasar privat {#track-private-market-activity}
 
 Tentukan putaran pendanaan, sektor, dan rentang waktunya.
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-<div id="follow-economic-data">
-  ### Pantau data ekonomi
-</div>
+### Pantau data ekonomi {#follow-economic-data}
 
-Sebutkan rilis data dan angka yang ingin Anda peroleh darinya.
+Sebutkan rilis data dan angka yang Anda butuhkan dari rilis tersebut.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-<div id="make-a-request">
-  ## Buat permintaan
-</div>
+## Membuat permintaan {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -142,12 +124,10 @@ Sebutkan rilis data dan angka yang ingin Anda peroleh darinya.
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Dapatkan data terstruktur dengan Exa Agent
-</div>
+## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
 
-Untuk data terstruktur yang membutuhkan riset lintas banyak sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan sekuritas, periode, criteria, dan bidang output yang Anda perlukan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema lengkap dengan citations.
+Untuk data terstruktur yang memerlukan research di berbagai sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan sekuritas, period, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 
-<Card title="Mulai task Agent" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
+<Card title="Mulai Agent task" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan Agent" arrow="true">
   Saring perusahaan, bandingkan filings, atau susun ringkasan terstruktur untuk satu portofolio.
 </Card>

@@ -1,51 +1,39 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可先通过该文件了解所有可用页面。
+> 获取完整文档索引：https://exa.ai/docs/llms.txt
+> 在深入查阅之前，可通过该文件了解所有可用页面。
 
-<div id="get-api-key">
-  # 获取 API key
-</div>
+# 获取 API 密钥 {#get-api-key}
 
-> 通过 ID 获取指定 API key 的详细信息。
+> 通过 ID 获取指定 API 密钥的详细信息。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户会赠送免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
 <Info>
-  团队管理 API 需按团队单独启用，并使用服务账户 API key 进行认证。为你的团队启用该功能后，即可在 [API keys 页面](https://dashboard.exa.ai/api-keys)的 **Service keys** 标签页中创建此 key。如需开通，请联系 [support@exa.ai](mailto:support@exa.ai)。
+  Team Management API 需按团队单独启用。该 API 使用服务账户 API 密钥进行身份验证；为你的团队启用该功能后，可在 [API 密钥页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 选项卡中创建此密钥。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
 </Info>
 
-<div id="overview">
-  ## 概述
-</div>
+## 概览 {#overview}
 
-Get API Key 端点可让你通过唯一标识符获取某个 API key 的详细信息。
+Get API Key 端点用于通过唯一标识符获取特定 API 密钥的详细信息。
 
-<div id="path-parameters">
-  ## 路径参数
-</div>
+## 路径参数 {#path-parameters}
 
-* **id**：要获取的 API key 的唯一标识符
+* **id**：要获取的 API 密钥的唯一标识符
 
-<div id="response">
-  ## 响应
-</div>
+## 响应 {#response}
 
-返回该 API key 的详细信息，包括：
+返回该 API 密钥的详细信息，包括：
 
 * **id**：唯一标识符
 * **name**：描述性名称
-* **rateLimit**：速率限制，以每分钟请求数计 (若已设置) 
-* **teamId**：该 key 所属的团队 ID
-* **createdAt**：该 key 的创建时间
+* **rateLimit**：速率限制，单位为每分钟请求数 (如已设置)
+* **teamId**：该密钥所属的团队 ID
+* **createdAt**：密钥的创建时间
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}
 openapi: 3.1.0

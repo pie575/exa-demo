@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入查阅之前，可通过该文件了解所有可用页面。
+> 在进一步探索之前，可通过该文件查看所有可用页面。
 
-<div id="delete-a-run">
-  # 删除运行记录
-</div>
+# 删除运行 {#delete-a-run}
 
-> 删除已存储的 Agent 运行记录。
+> 删除已存储的 Agent 运行。
 
-删除后，该运行记录将从你团队的 Agent 运行历史中移除。
+删除运行会将该运行从团队的 Agent 运行历史记录中移除。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建 key。新账户将获得免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获赠免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /agent/runs/{id}
 openapi: 3.1.0

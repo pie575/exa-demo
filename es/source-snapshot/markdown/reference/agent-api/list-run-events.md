@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="list-run-events">
-  # Listar eventos de una ejecución
-</div>
+# Listar eventos de un run {#list-run-events}
 
-> Lista los eventos almacenados de una ejecución de Agent o reprodúcelos como server-sent events.
+> Lista los eventos almacenados de un Agent run o reprodúcelos como server-sent events.
 
 De forma predeterminada, este endpoint devuelve una lista JSON paginada de los eventos almacenados. Establece `Accept: text/event-stream` para reproducir los eventos almacenados como SSE. Para la paginación JSON, usa `cursor`. Para la reproducción por SSE, usa `Last-Event-ID`.
 
-<Card title="Obtén tu Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el panel. Las cuentas nuevas empiezan con credits gratuitos.
+<Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

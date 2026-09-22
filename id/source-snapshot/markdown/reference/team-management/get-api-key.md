@@ -1,51 +1,39 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
-> Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
+> Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-<div id="get-api-key">
-  # Get API key
-</div>
+# Get API key {#get-api-key}
 
-> Ambil detail sebuah API key tertentu berdasarkan ID-nya.
+> Ambil detail API key tertentu berdasarkan ID-nya.
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
 <Info>
-  Team Management API diaktifkan per team. API ini diautentikasi menggunakan API key akun layanan, yang dibuat dari tab **Service keys** pada [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+  Team Management API diaktifkan per team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-<div id="overview">
-  ## Ikhtisar
-</div>
+## Ikhtisar {#overview}
 
-Endpoint Get API Key memungkinkan Anda mengambil informasi detail tentang suatu API key tertentu menggunakan pengenal uniknya.
+Endpoint Get API Key memungkinkan Anda mengambil informasi detail tentang suatu API key tertentu menggunakan identifier uniknya.
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: Pengenal unik dari API key yang ingin diambil
+* **id**: Identifier unik dari API key yang ingin diambil
 
-<div id="response">
-  ## Response
-</div>
+## Response {#response}
 
 Mengembalikan informasi detail tentang API key, termasuk:
 
-* **id**: Pengenal unik
+* **id**: Identifier unik
 * **name**: Nama deskriptif
 * **rateLimit**: Rate limit dalam permintaan per menit (jika diatur)
 * **teamId**: ID Team pemilik key ini
 * **createdAt**: Waktu key dibuat
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}
 openapi: 3.1.0

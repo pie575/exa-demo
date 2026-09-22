@@ -2,23 +2,23 @@
 openapi: "/es/docs/exa-spec.yaml POST /monitors"
 timestamp: false
 title: "Crear un monitor"
-description: "Crea un nuevo Monitor para ejecutar búsquedas de Exa de forma
-  recurrente según una programación.
+description: "Crea un nuevo Monitor para ejecutar búsquedas recurrentes de Exa
+  según una programación.
 
 
-  Los monitores ejecutan automáticamente tu query de búsqueda de forma periódica
-  y envían los resultados a tu endpoint de webhook con deduplicación automática:
+  Los monitores ejecutan automáticamente tu consulta de búsqueda de forma
+  recurrente y entregan los resultados al endpoint de tu webhook con
+  deduplicación automática:
 
 
-  - **El filtrado por fecha** solo obtiene el contenido publicado desde la
-  última ejecución
+  - El **filtrado por fecha** solo obtiene contenido posterior al último run
 
 
-  - **La deduplicación semántica** hace seguimiento de los resultados anteriores
-  para mostrar únicamente las novedades
+  - La **deduplicación semántica** hace seguimiento de los outputs anteriores
+  para mostrar únicamente novedades
 
 
   La respuesta incluye un `webhookSecret` que solo se devuelve una vez, en el
-  momento de la creación. Guárdalo de forma segura para verificar la firma del
-  webhook."
+  momento de la creación. Guárdalo de forma segura para la verificación de la
+  firma del webhook."
 ---

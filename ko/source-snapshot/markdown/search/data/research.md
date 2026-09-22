@@ -1,13 +1,9 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
+> 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 먼저 확인하세요.
 
-<div id="research-publications">
-  # 연구 간행물
-</div>
+# 리서치 출판물 {#research-publications}
 
 > Exa Search로 학술 논문, 특허, 연구비, 임상시험, 규제 승인 정보를 찾아보세요.
 
@@ -37,71 +33,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
     </div>;
 };
 
-제목, 초록, 저자, 발표 학회/저널, 인용, 출판사 페이지, 프리프린트, repository 페이지 등 연구 논문 및 관련 레코드를 찾을 때 Exa Search를 활용하세요.
+제목, 초록, 저자, 학회/저널, citations, 출판사 페이지, 프리프린트, 리포지토리 페이지 등 리서치 출판물과 관련 records를 찾을 때 Exa Search를 활용하세요.
 
 <Tip>
-  논문 검색 품질에 대해 자세히 알아보려면 [SOTA Search Over Academic Publications](https://exa.ai/blog/publications-search)를
-  읽어보세요.
+  출판물 검색 품질에 대해 자세히 알아보려면 [SOTA Search Over Academic Publications](https://exa.ai/blog/publications-search)를 읽어보세요.
 </Tip>
 
-<div id="included">
-  ## 포함 대상
-</div>
+## 포함 대상 {#included}
 
-* 논문 및 프리프린트(파싱된 전문이 있는 경우 전문 청크 포함)
+* 논문 및 프리프린트(파싱된 전체 텍스트가 있는 경우 전체 텍스트 청크 포함)
 * 특허(초록, 청구항, 발명자, 양수인 포함)
-* 연구비 지원 및 펀딩 공고
+* 연구비 및 펀딩 공고
 * 임상시험, 의약품 라벨, 상호작용 데이터
 * 규제 및 보건 당국 승인
 
-<div id="use-it-for">
-  ## 활용 사례
-</div>
+## 활용 사례 {#use-it-for}
 
-* 문헌 조사 및 인용 문헌 탐색
-* 선행 기술 조사 및 특허 동향 분석
-* 임상 및 제약 연구
-* 연구비 및 지원 사업 기회 탐색
+* 문헌 조사 및 인용 탐색
+* 선행 기술 조사 및 특허 환경 분석
+* 임상 및 제약 리서치
+* 연구비 및 자금 지원 기회 발굴
 
-<div id="example-queries">
-  ## 예시 쿼리
-</div>
+## 예시 쿼리 {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### 특정 주제의 논문 찾기
-</div>
+### 주제별 논문 찾기 {#find-papers-on-a-topic}
 
-제목에 쓰였을 법한 키워드를 추측하기보다는 방법론이나 연구 결과를 설명하세요. `publication` 카테고리를 지정하면 결과가 논문으로 한정됩니다.
+제목에 들어갈 키워드를 추측하기보다는 연구 방법이나 결과를 설명하세요. `publication` 카테고리를 지정하면 결과가 논문으로만 한정됩니다.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### 임상 근거 검색
-</div>
+### 임상 evidence 검색 {#search-clinical-evidence}
 
-임상시험 등록 정보와 결과 페이지가 일반 기사보다 상위에 노출되도록 시험 단계, 중재, 대상 집단을 명시하세요.
+임상시험 등록 정보와 결과 페이지가 일반 기사보다 상위에 노출되도록 임상시험 단계(phase), 중재법, 대상 집단을 명시하세요.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### 규제 승인 추적
-</div>
+### 규제 승인 추적 {#track-regulatory-approvals}
 
 주시할 규제 기관과 기기 또는 약물 분류를 명시하세요.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### 선행 기술 search 실행하기
-</div>
+### 선행기술 search 실행하기 {#run-a-prior-art-search}
 
-제품명을 쓰는 대신, 청구항을 작성하듯 발명을 기능적으로 서술하세요.
+제품명을 사용하는 대신, 청구항을 쓰듯이 발명을 기능적으로 설명하세요.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## 요청 보내기
-</div>
+## 요청 보내기 {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,12 +124,10 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent로 구조화된 데이터 가져오기
-</div>
+## Exa Agent으로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
 
-여러 출처에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent 작업 실행](/ko/docs/agent/quickstart)을 사용하세요. 필요한 출판물, 포함 criteria, 출력 필드를 설명하면 Agent가 인용과 함께 schema로 검증된 결과를 반환합니다.
+여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent task run](/ko/docs/agent/quickstart)을 사용하세요. 필요한 출판물, 포함 criteria, output fields를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 
-<Card title="Agent 작업 시작하기" icon="bot" href="/ko/docs/agent/quickstart" cta="Agent 가이드 열기" arrow="true">
-  문헌 지도를 구축하거나, 포함 criteria에 따라 논문을 선별하거나, 여러 출판물의 필드를 하나의 표로 모아 보세요.
+<Card title="Agent task 시작하기" icon="bot" href="/ko/docs/agent/quickstart" cta="Agent 가이드 열기" arrow="true">
+  문헌 지도를 만들거나, 포함 criteria에 따라 논문을 선별하거나, 여러 출판물의 fields를 하나의 표로 모아 보세요.
 </Card>

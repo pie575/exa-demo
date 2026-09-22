@@ -1,28 +1,22 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
-> 获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入浏览之前，可通过该文件查看所有可用页面。
+> 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
+> 在深入探索前，可通过该文件了解所有可用页面。
 
-<div id="exa-snapshot">
-  # Exa Snapshot
-</div>
+# Exa Snapshot {#exa-snapshot}
 
-> 将 Search 和 Contents 固定到你指定时间点的页面存储版本。
+> 将 Search 和 Contents 锁定到你指定 datetime 的页面存储版本。
 
-Exa Snapshot 会保存 Exa 已抓取页面的历史版本。只需传入 `snapshotAsOf`，即可将请求固定到指定时间点。
+Exa Snapshot 会保留 Exa 已抓取页面的存储版本。在请求中传入 `snapshotAsOf`，即可将其锁定到指定的 datetime。
 
-你可以借此回测 agent、运行可复现的评估，并对比文档、定价页、政策和申报文件的早期版本。
+可用于回测 agent、运行可复现的评估，以及对比文档、定价页面、政策和申报文件的历史版本。
 
 <Info>
-  Exa Snapshot 支持按量付费，速率为 10 QPS，索引窗口为滚动的 5 个月。
-  请求数超过 100 次后，请[联系销售](https://exa.ai/contact/sales)以继续使用。
+  Exa Snapshot 以 Pay as you go 方式提供，限速 10 QPS，索引窗口为滚动 5 个月。
+  超过 100 次请求后，请[联系销售](https://exa.ai/contact/sales)以继续使用。
 </Info>
 
-<div id="search-at-a-datetime">
-  ## 在指定时间点搜索
-</div>
+## 按指定 datetime 搜索 {#search-at-a-datetime}
 
 在 `/search` 中，将 `snapshotAsOf` 放在 `contents` 内。
 
@@ -78,7 +72,7 @@ Exa Snapshot 会保存 Exa 已抓取页面的历史版本。只需传入 `snapsh
   ```
 </CodeGroup>
 
-Exa 会先找出候选 URL，再只保留在 `snapshotAsOf` 及之前有存储版本的页面。
+Exa 会先找出候选 URL，再只保留在 `snapshotAsOf` 当时或之前已有存储版本的页面。
 
 <Accordion title="响应示例">
   ```json theme={null}
@@ -111,9 +105,7 @@ Exa 会先找出候选 URL，再只保留在 `snapshotAsOf` 及之前有存储�
   ```
 </Accordion>
 
-<div id="pin-contents-to-a-datetime">
-  ## 将 contents 固定到指定时间点
-</div>
+## 将页面内容固定到指定时间点 {#pin-contents-to-a-datetime}
 
 在 `/contents` 请求的顶层添加 `snapshotAsOf`。
 
@@ -160,7 +152,7 @@ Exa 会先找出候选 URL，再只保留在 `snapshotAsOf` 及之前有存储�
   ```
 </CodeGroup>
 
-Exa 会返回该时间点或此前的最新存储版本。
+Exa 会返回该时间点或之前最新的存储版本。
 
 <Accordion title="响应示例">
   ```json theme={null}
@@ -189,40 +181,38 @@ Exa 会返回该时间点或此前的最新存储版本。
 
 <Tip>
   若某个 ID 没有符合条件的版本，则不会出现在 `results` 中，而是在 `statuses` 中以
-  `"status": "error"` 和 `"tag": "CONTENT_NOT_CACHED"` 的形式返回。
+  `"status": "error"` 和 `"tag": "CONTENT_NOT_CACHED"` 报告。
 </Tip>
 
-<div id="how-snapshots-work">
-  ## 快照的工作原理
-</div>
+## snapshot 的工作方式 {#how-snapshots-work}
 
-| 字段             | 位置 | 含义                          |
-| -------------- | -- | --------------------------- |
-| `snapshotAsOf` | 请求 | 时间截止点。Exa 会返回该时刻及之前存储的最新版本。 |
+| Field          | 位置 | 含义                                  |
+| -------------- | -- | ----------------------------------- |
+| `snapshotAsOf` | 请求 | datetime 截止时间。Exa 会返回该时刻或此前的最新存储版本。 |
 
-两个端点均适用：
+这两个端点均适用：
 
 * 返回的页面内容来自该存储版本。
-* 标题、作者、发布日期、正文、highlights 和摘要均仅基于该版本生成。
-* 在 5 个月窗口内没有符合条件版本的页面会被略过。
+* 标题、作者、publication date、正文、highlights 和摘要均仅基于该版本生成。
+* 在 5 个月窗口内没有符合条件的版本的页面将被忽略。
 
 <Note>
-  在 Search 中，该截止点限定的是内容，而非排序。Exa 仍会使用当前的检索信号来发现候选 URL。请将结果视为受 `snapshotAsOf` 限定的证据，而非对当时搜索排序结果的精确还原。
+  在 Search 中，截止时间限定的是 content，而非排序。Exa 仍会使用当前的 retrieval 信号来
+  发现候选 URL。请将结果视为受 `snapshotAsOf` 限定的证据，而不是
+  对当时 search 排序结果的精确还原。
 </Note>
 
-<div id="limits-and-compatibility">
-  ## 限制与兼容性
-</div>
+## 限制与兼容性 {#limits-and-compatibility}
 
 <AccordionGroup>
-  <Accordion title="访问权限、速率限制与可回溯范围">
-    按量付费包含 10 QPS，以及滚动 5 个月的索引访问范围。早于该时间窗口的 `snapshotAsOf`
-    会被拒绝。请求数超过 100 次后，请[联系销售](https://exa.ai/contact/sales)以继续使用。
+  <Accordion title="访问权限、速率限制与回溯范围">
+    Pay as you go 提供 10 QPS，以及滚动 5 个月的索引访问范围。超出该时间窗口的 `snapshotAsOf`
+    会被拒绝。请求数达到 100 次后，请[联系销售](https://exa.ai/contact/sales)以继续使用。
   </Accordion>
 
   <Accordion title="历史请求使用已存储的内容">
-    请勿将 `snapshotAsOf` 与可能访问实时网页或扩展至其他页面的选项搭配使用。
-    请完全省略 `livecrawl`、`livecrawlTimeout`、`maxAgeHours` 和 `subpages`；若请求在设置
+    请勿将 `snapshotAsOf` 与可能访问实时网页或扩展到其他页面的选项搭配使用。
+    请完全省略 `livecrawl`、`livecrawlTimeout`、`maxAgeHours` 和 `subpages`；若请求在使用
     `snapshotAsOf` 的同时设置了其中任意一项，将以 `INVALID_REQUEST` 被拒绝。
   </Accordion>
 
@@ -230,16 +220,14 @@ Exa 会返回该时间点或此前的最新存储版本。
     Search 上的 Exa Snapshot 支持 `auto`、`fast` 和 `instant`，不支持
     `deep-lite`、`deep` 或 `deep-reasoning`。
 
-    Exa Snapshot 不支持 Search 的 `category` 参数。
+    Exa Snapshot 不支持 Search 上的 `category` 参数。
   </Accordion>
 </AccordionGroup>
 
-<div id="common-uses">
-  ## 常见用途
-</div>
+## 常见用途 {#common-uses}
 
-当任务取决于 Exa 在某个特定时间点存储的内容时，可以使用 Exa Snapshot：
+当任务依赖于 Exa 在某个特定 datetime 所存储的内容时，请使用 Exa Snapshot：
 
-* 对 Agent 进行回测，避免其受到后续页面更新的影响。
-* 在可复现的内容边界上运行评估。
-* 对比文档、定价、政策或申报文件的早期版本。
+* 对 agent 进行回测，避免其接触到后续的页面更新。
+* 在可重复的内容边界上运行评估。
+* 比较文档、定价、政策或申报文件的历史版本。

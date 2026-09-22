@@ -1,18 +1,14 @@
-> <div id="documentation-index">
-  > ## Índice de documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="additional-providers">
-  # Proveedores adicionales
-</div>
+# Proveedores adicionales {#additional-providers}
 
-> Socios de Exa Connect más allá del conjunto de proveedores de autoservicio.
+> Partners de Exa Connect más allá del conjunto de proveedores de autoservicio.
 
-Además de los proveedores de autoservicio, Exa Connect admite otros socios de datos.
-Están **disponibles previa solicitud**; [ponte en contacto con nuestro equipo para habilitarlos en
+Además de los proveedores de autoservicio, Exa Connect admite data partners adicionales.
+Están **disponibles bajo solicitud**, [contacta con nuestro equipo para habilitarlos en
 tu cuenta](mailto:sales@exa.ai).
 
 <div className="connect-request-tiles">
@@ -71,10 +67,10 @@ tu cuenta](mailto:sales@exa.ai).
 
 <Columns cols={2}>
   <Card title="Habla con nuestro equipo" icon="mail" href="mailto:sales@exa.ai" cta="Contactar con ventas" arrow="true">
-    Cuéntanos qué socio necesita tu Exa Agent y te pondremos en contacto.
+    Cuéntanos qué partner necesita tu Exa Agent y te pondremos en contacto.
   </Card>
 
   <Card title="Conviértete en proveedor" icon="handshake" href="https://docs.google.com/forms/d/e/1FAIpQLSexTOC8ix28h8uumexJxFg4Mln4WPmm-D332RSbdB01DtnvnQ/viewform" cta="Solicitar" arrow="true">
-    ¿Tienes datos que ofrecer? Solicita unirte a Exa Connect como socio.
+    ¿Tienes datos que ofrecer? Solicita unirte a Exa Connect como partner.
   </Card>
 </Columns>

@@ -1,12 +1,12 @@
 ---
 title: "Lister les batches"
-description: "Récupérez une liste paginée des batches de votre team."
+description: "Récupérez une liste paginée des batches de votre équipe."
 openapi: "/fr/docs/exa-spec.yaml GET /batches"
 timestamp: false
 ---
 
-Les batches sont renvoyés du plus récent au plus ancien. Utilisez `limit` pour contrôler la taille des pages et `cursor` avec la valeur `nextCursor` de la réponse précédente pour récupérer la page suivante. Passez `status=completed` pour ne lister que les batches terminés ; ces listes utilisent leur propre cursor, pensez donc à envoyer `status=completed` sur chaque page.
+Les batches sont renvoyés du plus récent au plus ancien. Utilisez `limit` pour définir la taille de page et `cursor` avec la valeur `nextCursor` de la réponse précédente pour récupérer la page suivante. Passez `status=completed` pour ne lister que les batches terminés ; ces listes utilisent leur propre cursor, veillez donc à envoyer `status=completed` à chaque page.
 
-<Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Créez une key dans le dashboard. Les nouveaux comptes bénéficient de credits gratuits.
+<Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>

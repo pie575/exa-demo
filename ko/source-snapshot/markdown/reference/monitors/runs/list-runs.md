@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 인덱스 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 받을 수 있습니다.
+> 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-runs">
-  # 실행 목록 조회
-</div>
+# 실행 목록 조회 {#list-runs}
 
-> monitor의 모든 실행을 cursor 기반 페이지네이션으로 조회합니다. 실행은 최신순으로 반환됩니다.
+> 커서 기반 페이지네이션으로 monitor의 모든 실행을 조회합니다. 실행은 최신순으로 반환됩니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs
 openapi: 3.1.0

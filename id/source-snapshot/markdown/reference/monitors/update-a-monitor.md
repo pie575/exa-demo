@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="update-a-monitor">
-  # Memperbarui monitor
-</div>
+# Memperbarui monitor {#update-a-monitor}
 
 > Memperbarui monitor yang sudah ada. Semua field bersifat opsional. Untuk `search`, Anda dapat mengirim objek parsial yang hanya berisi field yang ingin diubah. Setel `trigger` ke `null` untuk menghapus jadwal.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0
@@ -578,20 +572,20 @@ components:
           example: 24
         filterEmptyResults:
           type: boolean
-          description: Menyaring hasil yang tidak memiliki konten
+          description: Filter out results with no content
         subpages:
           type: integer
           minimum: 0
           maximum: 100
           description: >-
-            Jumlah subhalaman yang akan dirayapi. Jumlah sebenarnya yang
-            dirayapi dapat dibatasi oleh kendala sistem.
+            The number of subpages to crawl. The actual number crawled may be
+            limited by system constraints.
           example: 1
           default: 0
         subpageTarget:
           description: >-
-            Istilah untuk menemukan subhalaman tertentu dari hasil search. Dapat
-            berupa satu string atau larik string.
+            Term to find specific subpages of search results. Can be a single
+            string or an array of strings.
           example: sources
           oneOf:
             - type: string
@@ -605,19 +599,19 @@ components:
                 minLength: 1
                 maxLength: 100
       description: >-
-        Opsi extraction konten yang diterapkan pada setiap hasil search. Semua
-        kolom bersifat opsional.
+        Content extraction options applied to each search result. All fields are
+        optional.
     SearchMonitorOutputSchema:
       anyOf:
         - oneOf:
             - $ref: '#/components/schemas/OutputSchemaText'
             - $ref: '#/components/schemas/OutputSchemaObject'
           description: >-
-            Schema JSON untuk output hasil synthesis. Tipe root yang didukung
-            adalah "text" dan "object". Jika disediakan, respons menyertakan
-            objek output yang kontennya sesuai dengan schema ini. Berfungsi
-            dengan semua search type dan menambah sekitar 2 detik latensi
-            synthesis di luar search type yang dipilih.
+            JSON schema for synthesized output. Supported root types are "text"
+            and "object". When provided, the response includes an output object
+            whose content matches this schema. Works with every search type and
+            adds about 2 seconds of synthesis latency on top of the selected
+            search type.
           type: object
           discriminator:
             propertyName: type
@@ -628,37 +622,36 @@ components:
                 $ref: '#/components/schemas/OutputSchemaObject'
         - type: 'null'
       description: >-
-        Mengontrol format output run. Default-nya `{ "type": "text" }` jika
-        tidak ditentukan. Jika `type` bernilai `"text"`, output berupa summary
-        teks biasa. Jika `type` bernilai `"object"`, output berupa JSON
-        terstruktur. Jika tidak ada `properties` yang ditentukan pada tipe
-        `"object"`, schema akan disimpulkan secara otomatis; jika tidak, output
-        mengikuti schema yang diberikan.
+        Controls the format of the run output. Defaults to `{ "type": "text" }`
+        if not specified. When `type` is `"text"`, the output is a plain text
+        summary. When `type` is `"object"`, the output is structured JSON. If no
+        `properties` are specified with `"object"` type, a schema is inferred
+        automatically; otherwise the output adheres to the provided schema.
     SearchMonitorSearchOutput:
       type: object
       properties:
         query:
           type: string
           minLength: 1
-          description: String query untuk search tersebut.
+          description: The query string for the search.
           example: Latest developments in LLM capabilities
         numResults:
           type: integer
           minimum: 1
           maximum: 100
           description: >-
-            Jumlah hasil yang dikembalikan. Limits bervariasi menurut search
-            type. Limit publik maksimum adalah 100 hasil. Hubungi tim penjualan
-            (hello@exa.ai) untuk membahas limits yang lebih tinggi.
+            Number of results to return. Limits vary by search type. The maximum
+            public limit is 100 results. Contact sales (hello@exa.ai) to discuss
+            higher limits.
           example: 10
           default: 10
         includeDomains:
-          description: Membatasi hasil search hanya pada domain berikut.
+          description: Restrict search results to these domains.
           type: array
           items:
             type: string
         excludeDomains:
-          description: Mengecualikan domain berikut dari hasil search.
+          description: Exclude these domains from search results.
           type: array
           items:
             type: string
@@ -673,16 +666,15 @@ components:
         type:
           type: string
           const: interval
-          description: Jenis pemicu. Saat ini hanya `interval` yang didukung.
+          description: The type of trigger. Currently only `interval` is supported.
           default: interval
         period:
           type: string
           description: >-
-            String durasi yang menentukan seberapa sering monitor dijalankan
-            (mis. "1h", "6h", "1d", "7d"). Hanya satu satuan. Interval minimum
-            adalah 1 jam. Jadwal mengacu pada waktu pembuatan monitor (mis.
-            monitor harian yang dibuat pukul 14.30 akan berjalan setiap hari
-            sekitar pukul 14.30).
+            A duration string specifying how often the monitor runs (e.g., "1h",
+            "6h", "1d", "7d"). Single-unit only. Minimum interval is 1 hour. The
+            schedule is anchored to the monitor's creation time (e.g., a daily
+            monitor created at 2:30 PM runs daily around 2:30 PM).
           example: 6h
       required:
         - type
@@ -694,11 +686,11 @@ components:
             - $ref: '#/components/schemas/OutputSchemaTextOutput'
             - $ref: '#/components/schemas/OutputSchemaObject'
           description: >-
-            Schema JSON untuk output hasil synthesis. Tipe root yang didukung
-            adalah "text" dan "object". Jika disediakan, respons menyertakan
-            objek output yang kontennya sesuai dengan schema ini. Berfungsi
-            dengan semua search type dan menambah sekitar 2 detik latensi
-            synthesis di luar search type yang dipilih.
+            JSON schema for synthesized output. Supported root types are "text"
+            and "object". When provided, the response includes an output object
+            whose content matches this schema. Works with every search type and
+            adds about 2 seconds of synthesis latency on top of the selected
+            search type.
           type: object
           discriminator:
             propertyName: type
@@ -709,12 +701,11 @@ components:
                 $ref: '#/components/schemas/OutputSchemaObject'
         - type: 'null'
       description: >-
-        Mengontrol format output run. Default-nya `{ "type": "text" }` jika
-        tidak ditentukan. Jika `type` bernilai `"text"`, output berupa summary
-        teks biasa. Jika `type` bernilai `"object"`, output berupa JSON
-        terstruktur. Jika tidak ada `properties` yang ditentukan pada tipe
-        `"object"`, schema akan disimpulkan secara otomatis; jika tidak, output
-        mengikuti schema yang diberikan.
+        Controls the format of the run output. Defaults to `{ "type": "text" }`
+        if not specified. When `type` is `"text"`, the output is a plain text
+        summary. When `type` is `"object"`, the output is structured JSON. If no
+        `properties` are specified with `"object"` type, a schema is inferred
+        automatically; otherwise the output adheres to the provided schema.
     SearchMonitorWebhookOutput:
       type: object
       properties:
@@ -722,8 +713,8 @@ components:
           type: string
           format: uri
           description: >-
-            URL HTTPS untuk menerima event webhook. Tidak boleh mengarah ke
-            localhost atau rentang IP privat.
+            The HTTPS URL to receive webhook events. Must not point to localhost
+            or private IP ranges.
         events:
           type: array
           items:
@@ -735,8 +726,8 @@ components:
               - monitor.run.created
               - monitor.run.completed
           description: >-
-            Event mana yang akan dilanggani. Default-nya semua event jika tidak
-            ditentukan.
+            Which events to subscribe to. Defaults to all events if not
+            specified.
       required:
         - url
       additionalProperties: false
@@ -745,20 +736,19 @@ components:
       properties:
         requestId:
           type: string
-          description: Pengidentifikasi unik untuk permintaan tersebut.
+          description: Unique identifier for the request.
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Pesan yang mudah dibaca manusia yang menjelaskan kesalahan.
+          description: Human-readable message describing the error.
           example: Invalid API key
         tag:
           type: string
           description: >-
-            Tag kesalahan yang dapat dibaca mesin untuk mengidentifikasi
-            kegagalan. Kumpulan tag bersifat terbuka: tag baru dapat ditambahkan
-            kapan saja, jadi perlakukan tag yang tidak dikenali sebagai
-            kesalahan umum dari status HTTP respons tersebut. Tag yang sudah
-            dikenal dicantumkan sebagai contoh.
+            Machine-readable error tag identifying the failure. The set of tags
+            is open-ended: new tags may be added at any time, so treat
+            unrecognized tags as a generic error of the response's HTTP status.
+            Known tags are listed as examples.
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -794,20 +784,20 @@ components:
         - error
         - tag
       additionalProperties: false
-      description: Amplop kesalahan standar yang dikembalikan Exa API untuk permintaan yang gagal.
+      description: Standard error envelope returned by the Exa API for failed requests.
     SummaryWithMaxTokensOptions:
       type: object
       properties:
         query:
           anyOf:
             - type: string
-              description: Query khusus untuk summary yang dihasilkan LLM.
+              description: Custom query for the LLM-generated summary.
               example: Main developments
             - type: 'null'
         maxTokens:
           type: integer
           minimum: 1
-          description: Token maksimum untuk summary yang dihasilkan.
+          description: Maximum tokens for the generated summary.
     OutputSchemaText:
       type: object
       properties:
@@ -846,7 +836,7 @@ components:
       type: object
       properties:
         text:
-          description: Opsi extraction teks untuk setiap hasil.
+          description: Text extraction options for each result.
           oneOf:
             - type: boolean
               title: Simple text retrieval

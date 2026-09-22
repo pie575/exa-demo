@@ -6,28 +6,22 @@ timestamp: false
 ---
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
+  Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
 <Info>
-  Team Management API diaktifkan per team. API ini diautentikasi dengan API key akun layanan, yang dibuat melalui tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
+  Team Management API diaktifkan per team. Autentikasinya menggunakan API key service account, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-<div id="overview">
-  ## Ikhtisar
-</div>
+## Ikhtisar {#overview}
 
-Endpoint Update API Key memungkinkan Anda mengubah API key yang sudah ada
+Endpoint Perbarui API key memungkinkan Anda mengubah API key yang sudah ada
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
-* **id**: Pengenal unik API key yang akan diperbarui.
+* **id**: Identifier unik dari API key yang akan diperbarui.
 
-<div id="optional-parameters">
-  ## Parameter Opsional
-</div>
+## Parameter Opsional {#optional-parameters}
 
 * **name**: Nama deskriptif baru untuk API key
-* **rateLimit**: Rate limit baru dalam satuan permintaan per menit
+* **rateLimit**: Rate limit baru dalam permintaan per menit

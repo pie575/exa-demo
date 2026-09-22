@@ -1,32 +1,26 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="llamaindex">
-  # LlamaIndex
-</div>
+# LlamaIndex {#llamaindex}
 
-> Un guide de démarrage rapide pour ajouter la récupération de contenu Exa à une application d&#39;agent LlamaIndex.
+> Un guide de démarrage rapide pour ajouter le retrieval Exa à une application d&#39;agent LlamaIndex.
 
 <Card title="Quickstart agent de code" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
-  Vous débutez avec Exa ? Lancez-vous en moins d&#39;une minute.
+  Vous découvrez Exa ? Lancez-vous en moins d&#39;une minute.
 </Card>
 
 ***
 
-LlamaIndex est un framework permettant de créer des applications LLM alimentées par des données structurées. Dans ce guide, nous allons utiliser l&#39;intégration LlamaIndex d&#39;Exa pour :
+LlamaIndex est un framework permettant de créer des applications LLM reposant sur des données structurées. Dans ce guide, nous utiliserons l&#39;integration LlamaIndex d&#39;Exa pour :
 
-1. Déclarer l&#39;outil Search and Retrieve Highlight d&#39;Exa comme retriever LlamaIndex
-2. Configurer un OpenAI Agent qui utilise cet outil pour générer ses réponses
+1. Définir l&#39;outil Search and Retrieve Highlight d&#39;Exa comme retriever LlamaIndex
+2. Mettre en place un OpenAI Agent qui s&#39;appuie sur cet outil pour générer ses réponses
 
 ***
 
-<div id="get-started">
-  ## Get started
-</div>
+## Get started {#get-started}
 
 <Steps>
   <Step title="Prérequis et installation">
@@ -36,14 +30,14 @@ LlamaIndex est un framework permettant de créer des applications LLM alimentée
     pip install llama-index llama-index-core llama-index-tools-exa
     ```
 
-    Assurez-vous également que les API keys sont correctement initialisées. Le code suivant utilise `EXA_API_KEY` comme nom d&#39;environment variable.
+    Vérifiez également que les API keys sont correctement initialisées. Le code suivant utilise `EXA_API_KEY` comme nom de variable d&#39;environnement.
 
-    <Card title="Obtenez votre Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Créez une key dans le dashboard. Les nouveaux comptes démarrent avec des credits gratuits.
+    <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
     </Card>
   </Step>
 
-  <Step title="Instancier l'outil Exa">
+  <Step title="Instancier le tool Exa">
     Importez la bibliothèque d&#39;integration Exa correspondante et instanciez le `ExaToolSpec` de LlamaIndex.
 
     ```Python Python theme={null}
@@ -57,7 +51,7 @@ LlamaIndex est un framework permettant de créer des applications LLM alimentée
   </Step>
 
   <Step title="Choisir la méthode Exa à utiliser">
-    Dans cet exemple, nous souhaitons uniquement transmettre la méthode [search&#95;and&#95;retrieve&#95;highlights](https://docs.llamaindex.ai/en/stable/api_reference/tools/exa/) à notre agent : nous la spécifions donc via la méthode LlamaIndex `.to_tool_list`. Nous transmettons également `current_date`, un utilitaire simple qui permet à notre agent de connaître la date du jour.
+    Dans cet exemple, nous souhaitons transmettre uniquement la méthode [search&#95;and&#95;retrieve&#95;highlights](https://docs.llamaindex.ai/en/stable/api_reference/tools/exa/) à notre agent, ce que nous précisons avec la méthode LlamaIndex `.to_tool_list`. Nous transmettons également `current_date`, un utilitaire simple qui permet à notre agent de connaître la date du jour.
 
     ```Python Python theme={null}
     print('Tools that are provide by Exa LlamaIndex integration:')
@@ -69,7 +63,7 @@ LlamaIndex est un framework permettant de créer des applications LLM alimentée
     ```
   </Step>
 
-  <Step title="Configurer un OpenAI Agent et effectuer des requêtes Exa-powered">
+  <Step title="Configurer un OpenAI Agent et effectuer des requests propulsées par Exa">
     Configurez l&#39;[OpenAIAgent](https://docs.llamaindex.ai/en/stable/examples/agent/Chatbot%5FSEC/) en lui transmettant l&#39;ensemble de tools filtré ci-dessus.
 
     ```Python Python theme={null}
@@ -89,16 +83,16 @@ LlamaIndex est un framework permettant de créer des applications LLM alimentée
     )
     ```
 
-    L&#39;agent appelle les tools Exa mis à sa disposition, puis formule sa réponse à partir des résultats. La sortie exacte varie selon la query et les dates de publication des pages renvoyées par Exa.
+    L&#39;agent appelle les tools Exa qui lui ont été fournis, puis répond à partir des résultats. L&#39;output exact varie selon la requête et les dates de publication des pages renvoyées par Exa.
   </Step>
 </Steps>
 
 <Columns cols={2}>
   <Card title="Guide de la Search API" icon="search" href="/fr/docs/search/quickstart" cta="Lire le guide" arrow="true">
-    Passez en revue les search parameters et les fields de réponse d&#39;Exa.
+    Passez en revue les paramètres de recherche Exa et les fields de réponse.
   </Card>
 
-  <Card title="Référence des tools LlamaIndex" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="Ouvrir la reference" arrow="true">
+  <Card title="Référence des tools LlamaIndex" icon="book" href="https://docs.llamaindex.ai/en/stable/module_guides/deploying/agents/tools/" cta="Ouvrir la référence" arrow="true">
     Explorez les tools LlamaIndex et la configuration des agents.
   </Card>
 </Columns>

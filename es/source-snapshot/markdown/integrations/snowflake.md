@@ -1,44 +1,34 @@
-> <div id="documentation-index">
-  > ## Índice de la documentación
-> </div>
+> ## Índice de la documentación {#documentation-index}
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-<div id="snowflake">
-  # Snowflake
-</div>
+# Snowflake {#snowflake}
 
 > Usa Exa Search y la recuperación de contenido desde procedimientos almacenados de Snowflake y Cortex Agents.
 
 Usa la Search API de Exa directamente desde Snowflake para enriquecer tus datos con inteligencia web en tiempo real, sin salir de SQL.
 
-Esta integración utiliza la función [External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) de Snowflake para llamar de forma segura a la API de Exa desde procedimientos almacenados, lo que habilita dos flujos de trabajo principales:
+Esta integración usa la funcionalidad [External Access](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview) de Snowflake para llamar de forma segura a la API de Exa desde procedimientos almacenados, lo que habilita dos flujos de trabajo principales:
 
-1. **Herramientas de Cortex Agent**: dale a un Cortex Agent de Snowflake la capacidad de buscar en la web y recuperar el contenido de las páginas
-2. **enrichment de datos**: enriquece tablas por lotes con información de directores ejecutivos y fundadores, últimas noticias y otros datos de la web
+1. **Herramientas de Cortex Agent**: dale a un Snowflake Cortex Agent la capacidad de buscar en la web y recuperar el contenido de las páginas
+2. **Data enrichment**: enriquece tablas con información de CEO/fundadores, noticias recientes y otros datos web en batch
 
-<div id="prerequisites">
-  ## Requisitos previos
-</div>
+## Requisitos previos {#prerequisites}
 
 1. Una API key de Exa
 2. Rol `ACCOUNTADMIN` (necesario para crear External Access Integrations)
 3. Una cuenta de Snowflake compatible con External Access (cuentas de pago)
 
 <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Crea una key en el dashboard. Las cuentas nuevas incluyen créditos gratuitos.
+  Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
-<div id="setup">
-  ## Configuración
-</div>
+## Configuración {#setup}
 
 Ejecuta el siguiente SQL en una hoja de trabajo de Snowflake. Reemplaza `<<YOUR_EXA_API_KEY>>` por tu key real.
 
-<div id="roles-and-database">
-  ### Roles y base de datos
-</div>
+### Roles y base de datos {#roles-and-database}
 
 ```sql theme={null}
 USE ROLE ACCOUNTADMIN;
@@ -56,9 +46,7 @@ GRANT USAGE ON DATABASE exa_integration TO ROLE exa_agent_role;
 GRANT USAGE ON SCHEMA exa_integration.tools TO ROLE exa_agent_role;
 ```
 
-<div id="warehouse">
-  ### Warehouse
-</div>
+### Warehouse {#warehouse}
 
 ```sql theme={null}
 CREATE WAREHOUSE IF NOT EXISTS exa_agent_wh
@@ -71,9 +59,7 @@ WITH
 GRANT USAGE, OPERATE ON WAREHOUSE exa_agent_wh TO ROLE exa_agent_role;
 ```
 
-<div id="network-rule-secret-and-external-access">
-  ### Regla de red, secreto y acceso externo
-</div>
+### Regla de red, secreto y acceso externo {#network-rule-secret-and-external-access}
 
 ```sql theme={null}
 CREATE OR REPLACE NETWORK RULE exa_integration.tools.exa_api_rule
@@ -96,16 +82,12 @@ GRANT USAGE ON INTEGRATION exa_api_access TO ROLE exa_agent_role;
 Esto crea:
 
 * Una **regla de red** que permite el tráfico de salida únicamente hacia `api.exa.ai:443`
-* Un **secreto** que almacena tu API key (cifrada, no visible en SQL)
-* Una **external access integration** que vincula la regla y el secreto
+* Un **secreto** que almacena tu API key (cifrado, no visible en SQL)
+* Una **External Access Integration** que vincula la regla y el secreto
 
-<div id="stored-procedures">
-  ## Procedimientos almacenados
-</div>
+## Procedimientos almacenados {#stored-procedures}
 
-<div id="exa_search">
-  ### EXA_SEARCH
-</div>
+### EXA_SEARCH {#exa_search}
 
 Busca en la web mediante la Search API de Exa. Devuelve resultados con títulos, URL, puntuaciones y, opcionalmente, texto, highlights o resúmenes.
 
@@ -210,28 +192,24 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="parameters">
-  #### Parámetros
-</div>
+#### Parámetros {#parameters}
 
 | Parámetro              | Tipo      | Valor predeterminado | Descripción                                                                             |
 | ---------------------- | --------- | -------------------- | --------------------------------------------------------------------------------------- |
-| `query`                | `STRING`  | obligatorio          | La query de búsqueda                                                                    |
+| `query`                | `STRING`  | obligatorio          | La consulta de búsqueda                                                                 |
 | `num_results`          | `INTEGER` | `10`                 | Número de resultados (1–100)                                                            |
 | `search_type`          | `STRING`  | `'auto'`             | Valores recomendados: `auto`, `instant`, `fast`, `deep-lite`, `deep` o `deep-reasoning` |
 | `category`             | `STRING`  | `NULL`               | `company`, `publication`, `news`, `personal_site`, `financial_report`, `people`         |
 | `include_domains`      | `STRING`  | `NULL`               | Dominios separados por comas a los que restringir la búsqueda                           |
 | `exclude_domains`      | `STRING`  | `NULL`               | Dominios separados por comas que se excluirán                                           |
-| `start_published_date` | `STRING`  | `NULL`               | Límite inferior de fecha en formato ISO 8601                                            |
-| `end_published_date`   | `STRING`  | `NULL`               | Límite superior de fecha en formato ISO 8601                                            |
+| `start_published_date` | `STRING`  | `NULL`               | Límite inferior de fecha en ISO 8601                                                    |
+| `end_published_date`   | `STRING`  | `NULL`               | Límite superior de fecha en ISO 8601                                                    |
 | `include_text`         | `STRING`  | `NULL`               | Frase que debe aparecer en los resultados                                               |
 | `get_contents`         | `BOOLEAN` | `TRUE`               | Obtener texto, highlights y resúmenes                                                   |
 
-<div id="exa_get_contents">
-  ### EXA_GET_CONTENTS
-</div>
+### EXA_GET_CONTENTS {#exa_get_contents}
 
-Recupera el contenido de las páginas (texto, highlights, resúmenes) de URLs específicas.
+Recupera el contenido de las páginas (texto, highlights, resúmenes) de URL específicas.
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -311,13 +289,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="usage-examples">
-  ## Ejemplos de uso
-</div>
+## Ejemplos de uso {#usage-examples}
 
-<div id="basic-search">
-  ### Búsqueda básica
-</div>
+### Búsqueda básica {#basic-search}
 
 ```sql theme={null}
 USE WAREHOUSE exa_agent_wh;
@@ -333,9 +307,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="get-contents-for-specific-urls">
-  ### Obtener contents de URLs específicas
-</div>
+### Obtener contenido de URL específicas {#get-contents-for-specific-urls}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -346,9 +318,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 );
 ```
 
-<div id="company-research">
-  ### Investigación de empresas
-</div>
+### Investigación de empresas {#company-research}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -358,15 +328,11 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="data-enrichment">
-  ## Enrichment de datos
-</div>
+## Data enrichment {#data-enrichment}
 
-Exa puede enriquecer tablas de Snowflake con datos web en tiempo real —información de CEO/fundadores, últimas noticias y mucho más—, todo sin salir de la plataforma.
+Exa puede enriquecer las tablas de Snowflake con datos web en tiempo real (información del CEO o fundador, últimas noticias y mucho más) sin salir de la plataforma.
 
-<div id="create-a-prospect-table">
-  ### Crear una tabla de prospectos
-</div>
+### Crear una tabla de prospectos {#create-a-prospect-table}
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_enrichment;
@@ -398,9 +364,7 @@ VALUES
     ('Vercel', 'https://vercel.com', 'Developer Platform', 600);
 ```
 
-<div id="enrich-with-ceofounder-info">
-  ### Enriquecer con información del CEO/fundador
-</div>
+### Enriquecer con información del CEO/fundador {#enrich-with-ceofounder-info}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_leaders(
@@ -502,9 +466,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="enrich-with-latest-news">
-  ### Enriquecer con las últimas noticias
-</div>
+### Enriquecer con las últimas noticias {#enrich-with-latest-news}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_news(
@@ -586,9 +548,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="run-enrichment">
-  ### Ejecutar el enrichment
-</div>
+### Ejecutar el enrichment {#run-enrichment}
 
 ```sql theme={null}
 -- Enriquecer una sola empresa
@@ -601,15 +561,11 @@ SELECT company_name, ceo_name, ceo_title,
 FROM exa_enrichment.demo.prospect_companies;
 ```
 
-<div id="parallelizing-exa-requests">
-  ## Paralelizar solicitudes a Exa
-</div>
+## Paralelizar solicitudes a Exa {#parallelizing-exa-requests}
 
-Al enriquecer tablas grandes, llamar a Exa de forma secuencial fila por fila resulta lento. Puedes paralelizar las solicitudes con `concurrent.futures` de Python dentro de un único procedimiento almacenado, enviando varias llamadas a la API de Exa a la vez.
+Al enriquecer tablas grandes, llamar a Exa de forma secuencial fila por fila es lento. Puedes paralelizar las solicitudes usando `concurrent.futures` de Python dentro de un único procedimiento almacenado, enviando varias llamadas a la API de Exa a la vez.
 
-<div id="concurrent-enrichment-procedure">
-  ### Procedimiento de enrichment concurrente
-</div>
+### Procedimiento de enrichment concurrente {#concurrent-enrichment-procedure}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_all_parallel(
@@ -681,21 +637,17 @@ def main(session, max_workers):
 $$;
 ```
 
-<div id="choosing-parallelism">
-  ### Elegir el nivel de paralelismo
-</div>
+### Elegir el paralelismo {#choosing-parallelism}
 
 | `max_workers` | Caso de uso                                                                                       |
 | ------------- | ------------------------------------------------------------------------------------------------- |
-| `5`           | Conservador: se mantiene holgadamente dentro de los límites de tasa                               |
+| `5`           | Conservador: se mantiene muy por debajo de los límites de tasa                                    |
 | `10`          | Buen valor predeterminado para la mayoría de los trabajos de enrichment                           |
 | `20–50`       | Conjuntos de datos grandes con un nivel alto de [límite de tasa](/es/docs/admin/billing#rate-limits) |
 
-<div id="snowflake-task-scheduling">
-  ### Programación de tareas en Snowflake
-</div>
+### Programación de tareas en Snowflake {#snowflake-task-scheduling}
 
-Para trabajos de enrichment recurrentes, encapsula el procedimiento en una [Task de Snowflake](https://docs.snowflake.com/en/user-guide/tasks-intro):
+Para trabajos de enrichment recurrentes, encapsula el procedimiento en una [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro):
 
 ```sql theme={null}
 CREATE OR REPLACE TASK exa_enrichment.demo.daily_enrichment
@@ -707,13 +659,11 @@ AS
 ALTER TASK exa_enrichment.demo.daily_enrichment RESUME;
 ```
 
-Esto ejecuta el enrichment en paralelo todos los días a las 8 AM PT. Ajusta la programación cron y `max_workers` según tu volumen y tus limits.
+Esto ejecuta el enrichment en paralelo todos los días a las 8 AM PT. Ajusta la programación cron y `max_workers` según tu volumen y tus límites de tasa.
 
-<div id="cortex-agent-integration">
-  ## Integración con Cortex Agent
-</div>
+## Integración con Cortex Agent {#cortex-agent-integration}
 
-También puedes registrar los procedimientos almacenados de Exa como herramientas de un [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents), lo que le permitirá buscar en la web de forma conversacional.
+También puedes registrar los procedimientos almacenados de Exa como herramientas para un [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents), lo que le permite buscar en la web de forma conversacional.
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_agents;
@@ -839,32 +789,28 @@ Una vez creado, abre Snowflake Intelligence y prueba a preguntarle a tu agente:
 
 * &quot;Busca en la web frameworks recientes de agentes de IA&quot;
 * &quot;Encuentra artículos de investigación sobre generación aumentada por recuperación&quot;
-* &quot;¿Cuáles son las principales empresas de IA que hay que seguir?&quot;
+* &quot;¿Cuáles son las principales empresas de IA a las que seguir la pista?&quot;
 
-<div id="security">
-  ## Seguridad
-</div>
+## Seguridad {#security}
 
-La integración utiliza las funciones de seguridad integradas de Snowflake:
+La integración utiliza las funcionalidades de seguridad integradas de Snowflake:
 
 | Capa                            | Detalle                                                           |
 | ------------------------------- | ----------------------------------------------------------------- |
 | **Roles**                       | `exa_agent_role` para acceso restringido a procedimientos y datos |
-| **Regla de red**                | Salida restringida únicamente a `api.exa.ai:443`                  |
-| **Secreto**                     | API key almacenada cifrada, no visible en consultas SQL           |
+| **Regla de red**                | Salida permitida únicamente hacia `api.exa.ai:443`                |
+| **Secreto**                     | API key almacenada cifrada, no visible en las consultas SQL       |
 | **External Access Integration** | Vincula la regla de red y el secreto                              |
 
-Otorga acceso a más usuarios:
+Otorga acceso a usuarios adicionales:
 
 ```sql theme={null}
 GRANT ROLE exa_agent_role TO USER analyst_user;
 ```
 
-<div id="more-resources">
-  ## Más recursos
-</div>
+## Más recursos {#more-resources}
 
 * [Documentación de la API de Exa](/es/docs/search/quickstart)
-* [Panel de Exa](https://dashboard.exa.ai) — obtén tu API key
-* [Documentación de acceso externo de Snowflake](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)
+* [Exa Dashboard](https://dashboard.exa.ai) — obtén tu API key
+* [Documentación de External Access de Snowflake](https://docs.snowflake.com/en/developer-guide/external-network-access/external-network-access-overview)
 * [Documentación de Snowflake Cortex Agents](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents)

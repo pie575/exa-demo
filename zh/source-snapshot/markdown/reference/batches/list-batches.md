@@ -1,25 +1,19 @@
-> <div id="documentation-index">
-  > ## 文档索引
-> </div>
+> ## 文档索引 {#documentation-index}
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
-> 在深入查阅之前，可先通过该文件了解所有可用页面。
+> 在深入查阅前，可通过该文件了解所有可用页面。
 
-<div id="list-batches">
-  # 列出批次
-</div>
+# 列出批次 {#list-batches}
 
 > 获取团队批次的分页列表。
 
-批次按从新到旧的顺序返回。使用 `limit` 控制每页大小，并将上一次响应中的 `nextCursor` 作为 `cursor` 传入以获取下一页。传入 `status=completed` 可仅列出已完成的批次；已完成列表使用各自独立的 cursor，因此每一页请求都要带上 `status=completed`。
+批次按从新到旧的顺序返回。使用 `limit` 控制每页大小，并将上一次响应中的 `nextCursor` 传给 `cursor` 以获取下一页。传入 `status=completed` 可仅列出已完成的批次；已完成列表使用独立的 cursor，因此每一页请求都需要带上 `status=completed`。
 
-<Card title="获取你的 Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  在控制台中创建一个 key。新账户可获赠免费积分。
+<Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches
 openapi: 3.1.0
@@ -37,23 +31,22 @@ paths:
     get:
       tags:
         - Batches
-      summary: List batches
-      description: List batches for your team, ordered from newest to oldest.
+      summary: 列出批次
+      description: 列出你所在团队的批次，按从新到旧排序。
       operationId: listBatches
       parameters:
         - in: query
           name: cursor
           schema:
             type: string
-            description: Pagination cursor from a previous response
+            description: 上一次响应返回的分页 cursor
         - in: query
           name: limit
           schema:
             type: integer
             minimum: 1
             description: >-
-              Maximum number of batches to return per page. Defaults to 100 when
-              omitted; there is no upper bound.
+              每页返回的批次数量上限。省略时默认为 100；无上限限制。
             default: 100
         - in: query
           name: status
@@ -61,10 +54,9 @@ paths:
             type: string
             const: completed
             description: >-
-              Filter the listing to completed batches. `completed` is the only
-              supported value; any other value returns a 400. Completed listings
-              are ordered by expiry and use a distinct cursor, so keep sending
-              `status=completed` on every cursor-paginated request.
+              只列出已完成的批次。`completed` 是唯一支持的值，传入其他值会返回
+              400。已完成批次的列表按过期时间排序，并使用独立的 cursor，因此在每个使用
+              cursor 分页的请求中都需持续发送 `status=completed`。
         - $ref: '#/components/parameters/BatchesBetaHeader'
       responses:
         '200':
@@ -110,14 +102,13 @@ components:
         type: string
         enum:
           - batches-2026-06-06
-        description: Required beta token for the Batch API.
+        description: 使用 Batch API 所需的 beta token。
       required: true
-      description: Required beta token for the Batch API.
+      description: 使用 Batch API 所需的 beta token。
   headers:
     XRequestId:
       description: >-
-        Unique identifier for the request. Matches the `requestId` field
-        returned in response bodies that carry one.
+        请求的唯一标识符。与响应体中返回的 `requestId` field（若存在）一致。
       schema:
         type: string
       example: 07e29bb1f4f1dd05f0d4b57bbcf6e4b8
@@ -128,20 +119,20 @@ components:
         object:
           type: string
           const: list
-          description: The object type, always `list`.
+          description: 对象类型，始终为 `list`。
         data:
           type: array
           items:
             $ref: '#/components/schemas/Batch'
-          description: The page of batches, newest first.
+          description: 当前页的批次，最新的排在前面。
         hasMore:
           type: boolean
-          description: Whether there are more results
+          description: 是否还有更多结果
         nextCursor:
           anyOf:
             - type: string
             - type: 'null'
-          description: Cursor for the next page
+          description: 下一页的 cursor
       required:
         - object
         - data
@@ -153,12 +144,12 @@ components:
       properties:
         id:
           type: string
-          description: Batch ID. New batch IDs are returned with the `batch_` prefix.
+          description: 批次 ID。新的批次 ID 返回时会带有 `batch_` 前缀。
           example: batch_01j7x9v0m2n4p6q8r0s2t4v6w8
         object:
           type: string
           const: batch
-          description: The object type, always `batch`.
+          description: 对象类型，始终为 `batch`。
         status:
           $ref: '#/components/schemas/BatchStatus'
         requestCounts:
@@ -166,13 +157,13 @@ components:
         createdAt:
           type: string
           format: date-time
-          description: When the batch was created.
+          description: 批次的创建时间。
         expiresAt:
           anyOf:
             - type: string
               format: date-time
             - type: 'null'
-          description: When the batch expires, or `null` if it does not expire.
+          description: 批次的过期时间；若不会过期则为 `null`。
           format: date-time
         endedAt:
           anyOf:
@@ -180,25 +171,23 @@ components:
               format: date-time
             - type: 'null'
           description: >-
-            When the batch reached a terminal status, or `null` while it is
-            still running.
+            批次进入终态的时间；若仍在运行中则为 `null`。
           format: date-time
         resultsUrl:
           anyOf:
             - type: string
             - type: 'null'
           description: >-
-            Short-lived presigned download URL for the batch results file
-            (JSONL), or `null` until the batch completes. This is a direct
-            object-store download link, not an API route; fetch it as-is and
-            re-fetch the batch to mint a fresh URL once it expires.
+            批次结果文件（JSONL）的短期预签名下载 URL；批次完成前为 `null`。这是
+            直接指向对象存储的下载链接，而非 API 路由；请按原样使用，过期后重新获取
+            该批次以 mint 一个新的 URL。
         metadata:
           type: object
           propertyNames:
             type: string
           additionalProperties:
             type: string
-          description: Caller-provided key-value metadata for your own tracking.
+          description: 由调用方提供的键值对元数据，供你自行追踪使用。
           example:
             slack_channel_id: C123ABC
             slack_thread_id: '1745444400.123456'
@@ -219,19 +208,17 @@ components:
       properties:
         requestId:
           type: string
-          description: Unique identifier for the request.
+          description: 请求的唯一标识符。
           example: b5947044c4b78efa9552a7c89b306d95
         error:
           type: string
-          description: Human-readable message describing the error.
+          description: 描述该错误的可读信息。
           example: Invalid API key
         tag:
           type: string
           description: >-
-            Machine-readable error tag identifying the failure. The set of tags
-            is open-ended: new tags may be added at any time, so treat
-            unrecognized tags as a generic error of the response's HTTP status.
-            Known tags are listed as examples.
+            标识该失败的机器可读错误 tag。tag 集合是开放的：随时可能新增 tag，因此
+            请将无法识别的 tag 视为该响应 HTTP 状态对应的通用错误。已知 tag 见示例。
           examples:
             - DEFAULT_ERROR
             - INTERNAL_ERROR
@@ -267,7 +254,7 @@ components:
         - error
         - tag
       additionalProperties: false
-      description: Standard error envelope returned by the Exa API for failed requests.
+      description: 请求失败时 Exa API 返回的标准错误结构。
     BatchStatus:
       type: string
       enum:
@@ -276,22 +263,22 @@ components:
         - cancelling
         - cancelled
         - expired
-      description: Lifecycle status of the batch.
+      description: 批次的生命周期状态。
     BatchRequestCounts:
       type: object
       properties:
         total:
           type: integer
           minimum: 0
-          description: Total requests in the batch.
+          description: 批次中的请求总数。
         completed:
           type: integer
           minimum: 0
-          description: Requests that have completed successfully.
+          description: 已成功完成的请求。
         failed:
           type: integer
           minimum: 0
-          description: Requests that have failed.
+          description: 已失败的请求。
       required:
         - total
         - completed
@@ -299,7 +286,7 @@ components:
       additionalProperties: false
   responses:
     BadRequestResponse:
-      description: The request body or query parameters failed validation.
+      description: 请求体或查询参数未通过校验。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -314,7 +301,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     UnauthorizedResponse:
-      description: The API key is missing or invalid.
+      description: API 密钥缺失或无效。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -327,7 +314,7 @@ components:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
     InternalServerErrorResponse:
-      description: An unexpected error occurred while processing the request.
+      description: 处理请求时发生意外错误。
       headers:
         x-request-id:
           $ref: '#/components/headers/XRequestId'
@@ -347,12 +334,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用
+        Authorization: Bearer <key> 进行认证。
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        在 x-api-key header 中传入你的 Exa API 密钥。你也可以使用
+        Authorization: Bearer <key> 进行认证。
 ```

@@ -1,36 +1,28 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
-> Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
+> Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="baselayer">
-  # Baselayer
-</div>
+# Baselayer {#baselayer}
 
 > Vérifiez les entreprises américaines et récupérez des données KYB : dirigeants, immatriculations, scores de risque.
 
-[Baselayer](https://baselayer.com) est une plateforme de vérification d&#39;entreprise (KYB, Know Your Business) qui
-contrôle les entités américaines à partir de données officielles d&#39;immatriculation et de risque. Elle
-identifie une entreprise par son nom et son adresse, puis renvoie son profil complet : dirigeants,
+[Baselayer](https://baselayer.com) est une plateforme KYB (Know Your Business) qui
+vérifie les entités américaines à partir de données officielles d&#39;immatriculation et de risque. Elle
+identifie une entreprise à partir de son nom et de son adresse, puis renvoie son profil complet : dirigeants,
 immatriculations par État, structure de l&#39;entité et statut de vérification.
 
-Attachez `baselayer` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) via
+Attachez `baselayer` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Baselayer en parallèle d&#39;Exa web search.
 
-<div id="use-it-for">
-  ## Cas d&#39;usage
-</div>
+## À utiliser pour {#use-it-for}
 
-* Onboarding KYB et vérification des vendors et des clients.
-* Due diligence sur les dirigeants, les immatriculations et la structure de l&#39;entité.
-* Screening des entreprises pour détecter les risques et les correspondances en watchlist.
+* L&#39;onboarding KYB et la vérification des vendors et des clients.
+* La due diligence sur les dirigeants, les immatriculations et la structure de l&#39;entité.
+* Le screening des entreprises à la recherche de risques et de correspondances en watchlist.
 
-<div id="provider-id">
-  ## ID du provider
-</div>
+## ID du fournisseur {#provider-id}
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -38,33 +30,29 @@ Utilisez cette valeur dans `dataSources` :
 baselayer
 ```
 
-<div id="pricing">
-  ## Tarification
-</div>
+## Tarification {#pricing}
 
 Baselayer facture à la commande, et le tarif dépend de l&#39;opération et de ses
 paramètres :
 
-| Opération                                                                                       | Prix                                             |
-| ----------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| Recherche d&#39;entreprise                                                                      | `$1.00 / search`                                 |
-| Consultation d&#39;entreprise / dirigeants / immatriculations / recherche inversée de dirigeant | Gratuit (lecture d&#39;une recherche antérieure) |
-| Recherche de privilèges                                                                         | `$2.00 / state searched`                         |
-| Recherche de contentieux                                                                        | `$1.00 / category (litigation, bankruptcy)`      |
-| Filtrage sur liste de surveillance                                                              | `$0.10 – $0.25 / list requested`                 |
-| Classification sectorielle                                                                      | `$0.35 / call`                                   |
-| Analyse de site web                                                                             | `$0.35 / call`                                   |
-| Présence en ligne                                                                               | `$0.15 – $0.35 / selected analysis`              |
-| Recherche d&#39;entreprise à l&#39;international                                                | `$4.00 / search`                                 |
+| Opération                                                                                       | Prix                                              |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Recherche d&#39;entreprise                                                                      | `$1.00 / search`                                  |
+| Consultation d&#39;entreprise / dirigeants / immatriculations / recherche inversée de dirigeant | Gratuit (lectures d&#39;une recherche antérieure) |
+| Recherche de privilèges                                                                         | `$2.00 / state searched`                          |
+| Recherche de contentieux                                                                        | `$1.00 / category (litigation, bankruptcy)`       |
+| Filtrage sur watchlist                                                                          | `$0.10 – $0.25 / list requested`                  |
+| Classification sectorielle                                                                      | `$0.35 / call`                                    |
+| Analyse de site web                                                                             | `$0.35 / call`                                    |
+| Présence sur le web                                                                             | `$0.15 – $0.35 / selected analysis`               |
+| Recherche d&#39;entreprise à l&#39;international                                                | `$4.00 / search`                                  |
 
-Le choix des paramètres fait varier le prix : une recherche de privilèges sur deux
-États coûte 4,00 $, un filtrage sur les six listes de surveillance prises en charge coûte 1,35 $, et un
-appel de présence en ligne correspond à la somme des analyses sélectionnées (ou de l&#39;ensemble
+Le choix des paramètres fait varier le prix : une recherche de privilèges sur deux États coûte
+4,00 $, un filtrage sur les six listes prises en charge coûte 1,35 $, et un appel
+de présence sur le web équivaut à la somme des analyses sélectionnées (ou de l&#39;ensemble
 par défaut de Baselayer — prédiction NAICS et analyse de site web — si vous n&#39;en sélectionnez aucune).
 
-<div id="example">
-  ## Exemple
-</div>
+## Exemple {#example}
 
 Vérifiez une entreprise et récupérez les informations sur ses dirigeants et son immatriculation.
 
@@ -179,32 +167,28 @@ Vérifiez une entreprise et récupérez les informations sur ses dirigeants et s
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## S&#39;utilise bien avec
-</div>
+## Fonctionne bien avec {#pairs-well-with}
 
-* [Fiber.ai](/fr/docs/agent/connect/fiber) : enrichissez une entreprise vérifiée avec des données firmographiques, des effectifs et des contacts.
+* [Fiber.ai](/fr/docs/agent/connect/fiber) : enrichissez une entreprise vérifiée avec des données firmographiques, ses effectifs et ses contacts.
 * [Financial Datasets](/fr/docs/agent/connect/financialdatasets) : ajoutez la couverture médiatique récente des entités publiques.
-* [Similarweb](/fr/docs/agent/connect/similarweb) : comparez le trafic web et les concurrents d&#39;une entreprise vérifiée.
+* [Similarweb](/fr/docs/agent/connect/similarweb) : comparez le trafic web d&#39;une entreprise vérifiée et celui de ses concurrents.
 
-<div id="next-steps">
-  ## Étapes suivantes
-</div>
+## Étapes suivantes {#next-steps}
 
 <Columns cols={2}>
-  <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
-    Le quickstart Exa Connect couvre `dataSources`, la tarification et le catalogue complet des partners.
+  <Card title="Attachez-le à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">
+    Le quickstart Exa Connect couvre `dataSources`, la tarification et l&#39;ensemble du catalogue de partners.
   </Card>
 
-  <Card title="Combiner les providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
-    Attachez jusqu&#39;à cinq partners à un même run et formulez la query de façon à ce que chacun se déclenche.
+  <Card title="Combiner des providers" icon="blend" href="/fr/docs/agent/connect/combining-providers" cta="Lire le guide" arrow="true">
+    Attachez jusqu&#39;à cinq partners à un même run et formulez la requête de façon à ce que chacun soit sollicité.
   </Card>
 
   <Card title="Découvrir Exa Agent" icon="book-open" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">
-    Créez des runs, suivez la progression en streaming, concevez des schemas de sortie et maîtrisez l&#39;effort et le coût.
+    Créez des runs, suivez la progression en stream, concevez des schémas d&#39;output et maîtrisez l&#39;effort et le coût.
   </Card>
 
-  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une key" arrow="true">
-    Créez une key dans le dashboard et exécutez tel quel l&#39;exemple de cette page. Les nouveaux comptes bénéficient de credits gratuits.
+  <Card title="Obtenir une API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Créer une clé" arrow="true">
+    Créez une clé dans le dashboard et exécutez l&#39;exemple de cette page tel quel. Les nouveaux comptes démarrent avec des crédits gratuits.
   </Card>
 </Columns>

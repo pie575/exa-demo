@@ -1,24 +1,18 @@
-> <div id="documentation-index">
-  > ## Indeks Dokumentasi
-> </div>
+> ## Indeks Dokumentasi {#documentation-index}
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-<div id="openclaw">
-  # OpenClaw
-</div>
+# OpenClaw {#openclaw}
 
 > Lengkapi OpenClaw dengan web search real-time dan page contents dari Exa.
 
 [OpenClaw](https://openclaw.ai/) mendukung Exa sebagai provider `web_search` native. Setelah dipilih, setiap agent OpenClaw dapat memanfaatkan search mode Exa, filter tanggal, dan extraction konten melalui tool web bawaan.
 
-<div id="set-up-exa">
-  ## Menyiapkan Exa
-</div>
+## Menyiapkan Exa {#set-up-exa}
 
 <Steps>
-  <Step title="Instal plugin Exa">
+  <Step title="Pasang plugin Exa">
     ```bash theme={null}
     openclaw plugins install @openclaw/exa-plugin
     openclaw gateway restart
@@ -27,7 +21,7 @@
 
   <Step title="Dapatkan Exa API key">
     <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-      Buat key di dashboard. Akun baru mendapatkan credits gratis.
+      Buat key di dashboard. Akun baru langsung mendapat credits gratis.
     </Card>
   </Step>
 
@@ -38,7 +32,7 @@
     EXA_API_KEY=your-exa-api-key
     ```
 
-    Mulai ulang gateway setelah mengubah environment-nya.
+    Restart gateway setelah mengubah environment-nya.
   </Step>
 
   <Step title="Pilih Exa untuk web search">
@@ -48,13 +42,11 @@
     openclaw configure --section web
     ```
 
-    Pilih **Exa** sebagai provider web search. OpenClaw menyimpan pilihan provider tersebut di konfigurasinya dan membaca credential dari `EXA_API_KEY`.
+    Pilih **Exa** sebagai provider web search. OpenClaw menyimpan pemilihan provider di konfigurasinya dan membaca credential dari `EXA_API_KEY`.
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Konfigurasi manual
-</div>
+## Konfigurasi secara manual {#configure-manually}
 
 Anda dapat memilih Exa langsung di konfigurasi JSON5 OpenClaw:
 
@@ -89,25 +81,23 @@ Untuk menyimpan key di konfigurasi alih-alih di environment gateway:
 ```
 
 <Note>
-  Sebaiknya gunakan `EXA_API_KEY` atau SecretRef OpenClaw daripada menuliskan API key langsung di file konfigurasi.
+  Sebaiknya gunakan `EXA_API_KEY` atau SecretRef OpenClaw daripada menyimpan API key langsung di file konfigurasi.
 </Note>
 
-<div id="what-agents-can-request">
-  ## Apa yang dapat diminta oleh agent
-</div>
+## Apa yang dapat diminta agent {#what-agents-can-request}
 
 OpenClaw menyediakan Exa melalui `web_search`.
 
 | Parameter                    | Tujuan                                                                                       |
 | ---------------------------- | -------------------------------------------------------------------------------------------- |
 | `query`                      | Query web search.                                                                            |
-| `count`                      | Jumlah hasil, hingga 100 dan mengikuti limit dari search type yang dipilih.                  |
+| `count`                      | Jumlah hasil, hingga 100 dan tunduk pada batas dari search type yang dipilih.                |
 | `type`                       | Search mode Exa, meliputi `auto`, `neural`, `fast`, `instant`, `deep`, dan `deep-reasoning`. |
 | `freshness`                  | Membatasi hasil pada hari, minggu, bulan, atau tahun terakhir.                               |
 | `date_after` / `date_before` | Membatasi hasil dengan rentang `YYYY-MM-DD`.                                                 |
-| `contents`                   | Mengembalikan teks lengkap, highlights, atau summaries pada setiap hasil.                    |
+| `contents`                   | Mengembalikan teks penuh, kutipan, atau ringkasan pada setiap hasil.                         |
 
-Jika `contents` tidak disertakan, OpenClaw meminta highlights secara default. Agent dapat meminta bentuk konten yang berbeda saat membutuhkan halaman lengkap atau summaries:
+Jika `contents` tidak disertakan, OpenClaw meminta kutipan secara default. Agent dapat meminta bentuk konten yang berbeda saat membutuhkan halaman lengkap atau ringkasan:
 
 ```javascript theme={null}
 await web_search({
@@ -121,29 +111,25 @@ await web_search({
 });
 ```
 
-Secara bawaan, OpenClaw menyimpan hasil web search dalam cache selama 15 menit. Ubah `tools.web.search.cacheTtlMinutes` atau setel ke `0` jika setiap permintaan harus selalu baru.
+OpenClaw menyimpan hasil web search di cache selama 15 menit secara default. Ubah `tools.web.search.cacheTtlMinutes` atau setel ke `0` jika setiap permintaan harus selalu mendapatkan data terbaru.
 
-<div id="troubleshooting">
-  ## Pemecahan Masalah
-</div>
+## Pemecahan Masalah {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="OpenClaw tidak menampilkan Exa sebagai provider">
     Pasang `@openclaw/exa-plugin`, mulai ulang gateway, lalu jalankan kembali `openclaw configure --section web`.
   </Accordion>
 
-  <Accordion title="OpenClaw melaporkan key Exa tidak ditemukan">
-    Pastikan `EXA_API_KEY` tersedia bagi proses gateway, bukan hanya di shell interaktif Anda. Untuk instalasi gateway, letakkan di `~/.openclaw/.env` lalu mulai ulang gateway.
+  <Accordion title="OpenClaw melaporkan Exa key tidak ditemukan">
+    Pastikan `EXA_API_KEY` tersedia bagi proses gateway, bukan hanya di shell interaktif Anda. Untuk instalasi gateway, tempatkan di `~/.openclaw/.env` lalu mulai ulang gateway.
   </Accordion>
 
   <Accordion title="Hasil search tampak usang">
-    OpenClaw menyimpan cache hasil secara terpisah dari Exa. Turunkan nilai `tools.web.search.cacheTtlMinutes` atau setel ke `0`, lalu gunakan opsi content freshness Exa saat meminta page contents.
+    OpenClaw menyimpan cache hasil secara terpisah dari Exa. Turunkan nilai `tools.web.search.cacheTtlMinutes` atau setel ke `0`, lalu gunakan opsi kesegaran konten Exa saat meminta konten halaman.
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Sumber Daya
-</div>
+## Sumber daya {#resources}
 
 <Columns cols={3}>
   <Card title="Exa provider OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Baca panduan" arrow="true">
@@ -151,10 +137,10 @@ Secara bawaan, OpenClaw menyimpan hasil web search dalam cache selama 15 menit. 
   </Card>
 
   <Card title="Exa Search" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">
-    Bandingkan search mode Exa beserta format responsnya.
+    Bandingkan search mode Exa dan format response.
   </Card>
 
-  <Card title="Content freshness" icon="clock" href="/id/docs/contents/quickstart#content-freshness" cta="Baca panduan" arrow="true">
-    Kendalikan page contents yang terindeks maupun yang diambil secara langsung.
+  <Card title="Kesegaran konten" icon="clock" href="/id/docs/contents/quickstart#content-freshness" cta="Baca panduan" arrow="true">
+    Kendalikan konten halaman dari indeks maupun yang diambil secara live.
   </Card>
 </Columns>

@@ -1,27 +1,21 @@
-> <div id="documentation-index">
-  > ## Index de la documentation
-> </div>
+> ## Index de la documentation {#documentation-index}
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-<div id="create-a-webhook">
-  # Créer un webhook
-</div>
+# Créer un webhook {#create-a-webhook}
 
-> Crée un Webhook qui transmet les événements sélectionnés à votre URL au fur et à mesure qu&#39;ils surviennent.
+> Crée un Webhook qui transmet les events sélectionnés à votre URL au fur et à mesure qu&#39;ils se produisent.
 
-La response inclut le `secret` de signature permettant de vérifier les livraisons ; il n&#39;est renvoyé qu&#39;à la création.
+La réponse contient le `secret` de signature permettant de vérifier les deliveries ; il n&#39;est renvoyé qu&#39;à la création.
 
 <Warning>
-  **Les redirections ne sont pas suivies.** Les livraisons de webhook sont envoyées directement à
-  l&#39;URL enregistrée. Si votre endpoint répond par une redirection 3xx, la livraison
-  sera considérée comme un échec. Enregistrez toujours l&#39;URL de destination finale.
+  **Les redirections ne sont pas suivies.** Les deliveries de webhook sont envoyées directement à
+  l&#39;URL enregistrée. Si votre endpoint répond par une redirection 3xx, la delivery
+  est considérée comme un échec. Enregistrez toujours l&#39;URL de destination finale.
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

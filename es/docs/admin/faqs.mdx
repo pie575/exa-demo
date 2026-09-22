@@ -1,34 +1,34 @@
 ---
 title: "Preguntas frecuentes"
-description: "Respuestas a las preguntas más frecuentes sobre los productos de Exa, el índice de búsqueda, la actualización de los datos, el grounding, la seguridad y los precios."
+description: "Respuestas a las preguntas más habituales sobre los productos de Exa, el índice de búsqueda, la frescura, el grounding, la seguridad y los precios."
 ---
 
 <AccordionGroup>
   <Accordion title="¿Qué es Exa?">
-    Exa ofrece infraestructura de búsqueda web e investigación para aplicaciones de IA. Combina un índice de búsqueda independiente con extracción de contenido y APIs de investigación agéntica, de modo que las aplicaciones puedan encontrar fuentes, recuperar su contenido y generar resultados fundamentados.
+    Exa ofrece infraestructura de búsqueda web e investigación para aplicaciones de IA. Combina un índice de búsqueda independiente con extracción de contenido y APIs de investigación agéntica, de modo que las aplicaciones puedan encontrar fuentes, recuperar su contenido y producir resultados fundamentados.
   </Accordion>
 
   <Accordion title="¿Qué producto de Exa debería usar?">
-    * Usa la [Search API](/es/docs/search/quickstart) para obtener resultados web clasificados y, opcionalmente, devolver highlights, texto completo o resúmenes.
+    * Usa la [Search API](/es/docs/search/quickstart) para obtener resultados web ordenados por relevancia y, opcionalmente, devolver highlights, texto completo o resúmenes.
     * Usa la [Contents API](/es/docs/contents/quickstart) cuando ya tengas las URLs y necesites su contenido extraído.
     * Usa la [Agent API](/es/docs/agent/quickstart) para investigación asíncrona de varios pasos, creación de listas y enrichment estructurado.
-    * Usa [Monitors](/es/docs/monitors/quickstart) para ejecutar búsquedas recurrentes y recibir los nuevos resultados descubiertos.
+    * Usa [Monitors](/es/docs/monitors/quickstart) para ejecutar búsquedas recurrentes y recibir los nuevos resultados que se descubran.
   </Accordion>
 
   <Accordion title="¿Qué es Exa Connect?">
-    [Exa Connect](/es/docs/agent/connect/overview) le da a Exa Agent acceso a proveedores de datos premium junto con la búsqueda web en una misma ejecución. Agrega proveedores mediante `dataSources` y Exa Agent decide cuándo consultar cada fuente antes de combinar los datos del partner y la investigación web en un único resultado estructurado y fundamentado.
+    [Exa Connect](/es/docs/agent/connect/overview) le da a Exa Agent acceso a proveedores de datos premium junto con la búsqueda web en un mismo run. Agrega proveedores mediante `dataSources` y Exa Agent decide cuándo consultar cada fuente antes de combinar los datos del partner y la investigación web en una única salida estructurada y fundamentada.
 
-    En el caso de los proveedores de autoservicio, Exa se encarga de la autenticación del proveedor y de la facturación del uso, así que no necesitas crear una integración aparte ni abrir una cuenta separada con el proveedor.
+    En el caso de los proveedores de autoservicio, Exa se encarga de la autenticación del proveedor y de la facturación del uso, por lo que no necesitas desarrollar una integración aparte ni crear una cuenta independiente con el proveedor.
   </Accordion>
 
   <Accordion title="¿Qué distingue a Exa Search?">
-    Exa Search está diseñado para la recuperación programática, no para la navegación impulsada por publicidad. Puede buscar por significado, aceptar queries en lenguaje natural y devolver el contenido de las páginas en la misma solicitud. Los modos de búsqueda van desde la recuperación de baja latencia hasta la investigación de varios pasos con salida estructurada.
+    Exa Search está diseñado para la recuperación programática, no para la navegación impulsada por publicidad. Puede buscar por significado, aceptar consultas en lenguaje natural y devolver el contenido de las páginas en la misma solicitud. Los modos de búsqueda van desde la recuperación de baja latencia hasta la investigación de varios pasos con salida estructurada.
 
-    Consulta la [guía rápida de Search](/es/docs/search/quickstart) para ver los tipos de búsqueda y los formatos de respuesta disponibles.
+    Consulta el [Quickstart de Search](/es/docs/search/quickstart) para conocer los tipos de búsqueda disponibles y los formatos de respuesta.
   </Accordion>
 
   <Accordion title="¿Qué tamaño tiene el índice de Exa?">
-    A agosto de 2026, el índice de Exa rastrea 1,4 billones de URLs y sirve 100 mil millones de páginas de toda la web pública. El índice cambia de forma continua a medida que se descubren, actualizan o eliminan páginas.
+    A agosto de 2026, el índice de Exa rastrea 1,4 billones de URLs y sirve 100 mil millones de páginas de toda la web pública. El índice cambia continuamente a medida que se descubren, actualizan o eliminan páginas.
   </Accordion>
 
   <Accordion title="¿Qué tan actualizados están los resultados de Exa?">
@@ -36,24 +36,24 @@ description: "Respuestas a las preguntas más frecuentes sobre los productos de 
   </Accordion>
 
   <Accordion title="¿Exa opera un rastreador?">
-    Sí. Exa opera `ExaSearchBot` para descubrir y actualizar páginas de la web pública con fines de búsqueda y recuperación. Respeta el Protocolo de Exclusión de Robots, limita la frecuencia de solicitudes por sitio y no intenta eludir inicios de sesión, muros de pago ni CAPTCHAs.
+    Sí. Exa opera `ExaSearchBot` para descubrir y actualizar páginas de la web pública con fines de búsqueda y recuperación. Respeta el Protocolo de Exclusión de Robots, limita la tasa de solicitudes por sitio y no intenta eludir inicios de sesión, muros de pago ni CAPTCHAs.
 
-    El archivo `robots.txt` controla el rastreo. Para eliminar una página ya indexada, usa una metaetiqueta robots `noindex` o un encabezado de respuesta `X-Robots-Tag: noindex`; Exa elimina la página tras su siguiente recuperación. Consulta [Exa Search Crawler](https://crawler.exa.ai/) para conocer el agente de usuario, las instrucciones de verificación criptográfica y los controles del rastreador.
+    El rastreo se controla mediante `robots.txt`. Para eliminar una página ya indexada, usa una metaetiqueta robots `noindex` o un encabezado de respuesta `X-Robots-Tag: noindex`; Exa eliminará la página tras la siguiente relectura. Consulta [Exa Search Crawler](https://crawler.exa.ai/) para conocer el agente de usuario, las instrucciones de verificación criptográfica y los controles del rastreador.
   </Accordion>
 
   <Accordion title="¿Cómo ayuda Exa a fundamentar las respuestas de los LLM?">
-    Exa devuelve las URLs de origen y el contenido web utilizado en la recuperación, lo que permite a una aplicación generar respuestas con citas e inspeccionar la evidencia que las respalda. La calidad de la búsqueda y el grounding de las fuentes pueden reducir las afirmaciones sin respaldo, pero la aplicación y su modelo de lenguaje siguen siendo responsables de cómo se interpreta y presenta la información recuperada.
+    Exa devuelve las URLs de origen y el contenido web utilizado en la recuperación, lo que permite que una aplicación genere respuestas con citas e inspeccione la evidencia que las respalda. La calidad de la búsqueda y el grounding de las fuentes pueden reducir las afirmaciones sin respaldo, pero la aplicación y su modelo de lenguaje siguen siendo responsables de cómo se interpreta y se presenta la información recuperada.
   </Accordion>
 
-  <Accordion title="¿Puedo restringir en qué fuentes busca Exa?">
-    Sí. Usa `includeDomains` para limitar la Search a dominios específicos o `excludeDomains` para descartar fuentes no deseadas. Exa también ofrece categorías de datos para la recuperación por fuente, como empresas, personas, noticias y código. Consulta [Mejores prácticas de Search](/es/docs/search/best-practices) y [Data](/es/docs/search/data/overview).
+  <Accordion title="¿Puedo restringir qué fuentes busca Exa?">
+    Sí. Usa `includeDomains` para limitar Search a determinados dominios o `excludeDomains` para descartar fuentes no deseadas. Exa también ofrece categorías de datos para la recuperación por fuente específica, como empresas, personas, noticias y código. Consulta [Mejores prácticas de Search](/es/docs/search/best-practices) y [Data](/es/docs/search/data/overview).
   </Accordion>
 
   <Accordion title="¿Qué opciones de seguridad y retención de datos hay disponibles?">
-    Exa ofrece controles de seguridad y cumplimiento para casos de uso en producción y empresariales, incluidos [Zero Data Retention](/es/docs/admin/security/zero-data-retention) y [cumplimiento de HIPAA](/es/docs/admin/security/hipaa) para clientes Enterprise elegibles. Consulta [Seguridad y cumplimiento](/es/docs/admin/security/overview) para más detalles.
+    Exa ofrece controles de seguridad y cumplimiento para casos de uso en producción y empresariales, incluidos [Zero Data Retention](/es/docs/admin/security/zero-data-retention) y el [cumplimiento de HIPAA](/es/docs/admin/security/hipaa) para clientes Enterprise elegibles. Consulta [Seguridad y cumplimiento](/es/docs/admin/security/overview) para más detalles.
   </Accordion>
 
   <Accordion title="¿Cómo funcionan los precios de Exa?">
-    El uso de la API se cobra con los credits de la cuenta según el endpoint y las opciones utilizadas. Las cuentas nuevas reciben credits gratuitos, y el uso de pago funciona por consumo salvo que tu organización tenga un contrato empresarial. Consulta [Precios](/es/docs/admin/pricing) y [Facturación](/es/docs/admin/billing).
+    El uso de la API se factura con los créditos de la cuenta según el endpoint y las opciones utilizadas. Las cuentas nuevas reciben créditos gratuitos, y el uso de pago es bajo demanda salvo que tu organización tenga un contrato empresarial. Consulta [Precios](/es/docs/admin/pricing) y [Facturación](/es/docs/admin/billing).
   </Accordion>
 </AccordionGroup>

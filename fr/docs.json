@@ -14,7 +14,7 @@
             "fr/docs/get-started/exa-mcp",
             {
               "boost": 0.5,
-              "group": "Compétences d’agent",
+              "group": "Agent Skills",
               "pages": [
                 "fr/docs/get-started/agent-skills/overview",
                 "fr/docs/get-started/agent-skills/build-with-exa",
@@ -105,7 +105,7 @@
             "fr/docs/integrations/claude-web-desktop",
             "fr/docs/integrations/openai-sdk",
             {
-              "group": "Appel d’outils",
+              "group": "Appels d’outils",
               "pages": [
                 "fr/docs/integrations/tool-calling/openai",
                 "fr/docs/integrations/tool-calling/anthropic"
@@ -205,7 +205,7 @@
             "fr/docs/websets/quickstart",
             "fr/docs/websets/imports-and-search",
             {
-              "group": "Dashboard",
+              "group": "Tableau de bord",
               "pages": [
                 "fr/docs/websets/dashboard/get-started",
                 "fr/docs/websets/dashboard/import-from-csv",
@@ -258,7 +258,7 @@
             "fr/docs/reference/monitors/trigger-a-monitor",
             "fr/docs/reference/monitors/batch-monitors",
             {
-              "group": "Exécutions",
+              "group": "Runs",
               "pages": [
                 "fr/docs/reference/monitors/runs/list-runs",
                 "fr/docs/reference/monitors/runs/get-a-run"
@@ -275,7 +275,7 @@
         },
         {
           "boost": 2,
-          "group": "Lot",
+          "group": "Batch",
           "pages": [
             "fr/docs/reference/batches/create-a-batch",
             "fr/docs/reference/batches/list-batches",
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "Gestion des équipes",
+          "group": "Gestion de l’équipe",
           "pages": [
             "fr/docs/reference/team-management/create-api-key",
             "fr/docs/reference/team-management/list-api-keys",
@@ -363,7 +363,7 @@
                 "fr/docs/websets/api/monitors/delete-monitor",
                 "fr/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "Exécutions de moniteurs",
+                  "group": "Exécutions de monitor",
                   "icon": "play",
                   "pages": [
                     "fr/docs/websets/api/monitors/runs/list-monitor-runs",

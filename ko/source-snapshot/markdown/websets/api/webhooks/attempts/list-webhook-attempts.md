@@ -1,19 +1,13 @@
-> <div id="documentation-index">
-  > ## 문서 인덱스
-> </div>
+> ## 문서 색인 {#documentation-index}
 >
-> 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
-> 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
+> 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
+> 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-<div id="list-webhook-attempts">
-  # webhook 시도 목록 조회
-</div>
+# 웹훅 시도 목록 조회 {#list-webhook-attempts}
 
-> Webhook이 수행한 모든 시도를 내림차순으로 조회합니다.
+> 웹훅이 수행한 모든 시도를 내림차순으로 조회합니다.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}/attempts
 openapi: 3.1.0
@@ -33,15 +27,15 @@ paths:
     get:
       tags:
         - Webhooks Attempts
-      summary: List webhook attempts
-      description: List all attempts made by a Webhook ordered in descending order.
+      summary: 웹훅 시도 목록 조회
+      description: 웹훅이 수행한 모든 시도를 내림차순으로 정렬하여 나열합니다.
       operationId: webhooks-attempts-list
       parameters:
         - in: path
           name: id
           schema:
             type: string
-          description: The ID of the webhook
+          description: 웹훅의 ID
           required: true
         - in: query
           name: cursor
@@ -49,7 +43,7 @@ paths:
             minLength: 1
             type: string
           required: false
-          description: The cursor to paginate through the results
+          description: 결과를 페이지 단위로 탐색하기 위한 커서
         - in: query
           name: limit
           schema:
@@ -58,7 +52,7 @@ paths:
             maximum: 200
             type: integer
           required: false
-          description: The number of results to return
+          description: 반환할 결과의 개수
         - in: query
           name: eventType
           schema:
@@ -84,21 +78,21 @@ paths:
               - webset.export.completed
             type: string
           required: false
-          description: The type of event to filter by
+          description: 필터링할 이벤트 유형
         - in: query
           name: successful
           schema:
             type: boolean
           required: false
-          description: Filter attempts by their success status
+          description: 성공 여부로 시도를 필터링합니다
       responses:
         '200':
-          description: List of webhook attempts
+          description: 웹훅 시도 목록
           headers:
             X-Request-Id:
               schema:
                 type: string
-              description: Unique identifier for the request.
+              description: 요청의 고유 식별자입니다.
               example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
           content:
@@ -115,14 +109,14 @@ components:
         data:
           items:
             $ref: '#/components/schemas/WebhookAttempt'
-          description: The list of webhook attempts
+          description: 웹훅 시도 목록
           type: array
         hasMore:
-          description: Whether there are more results to paginate through
+          description: 페이지 단위로 탐색할 결과가 더 있는지 여부
           type: boolean
         nextCursor:
           type: string
-          description: The cursor to paginate through the next set of results
+          description: 다음 결과 집합을 페이지 단위로 탐색하기 위한 커서
           nullable: true
       required:
         - data
@@ -132,14 +126,14 @@ components:
     WebhookAttempt:
       properties:
         id:
-          description: The unique identifier for the webhook attempt
+          description: 웹훅 시도의 고유 식별자
           type: string
         object:
           const: webhook_attempt
           default: webhook_attempt
           type: string
         eventId:
-          description: The unique identifier for the event
+          description: 이벤트의 고유 식별자
           type: string
         eventType:
           enum:
@@ -162,37 +156,37 @@ components:
             - monitor.run.completed
             - webset.export.created
             - webset.export.completed
-          description: The type of event
+          description: 이벤트의 유형
           type: string
         webhookId:
-          description: The unique identifier for the webhook
+          description: 웹훅의 고유 식별자
           type: string
         url:
-          description: The URL that was used during the attempt
+          description: 시도 중에 사용된 URL
           type: string
         successful:
-          description: Whether the attempt was successful
+          description: 시도의 성공 여부
           type: boolean
         responseHeaders:
           propertyNames:
             type: string
           additionalProperties:
             type: string
-          description: The headers of the response
+          description: 응답의 헤더
           type: object
         responseBody:
           type: string
-          description: The body of the response
+          description: 응답의 본문
           nullable: true
         responseStatusCode:
-          description: The status code of the response
+          description: 응답의 상태 코드
           type: number
         attempt:
-          description: The attempt number of the webhook
+          description: 웹훅의 시도 횟수
           type: number
         attemptedAt:
           format: date-time
-          description: The date and time the webhook attempt was made
+          description: 웹훅 시도가 수행된 날짜 및 시간
           type: string
       required:
         - id
@@ -214,12 +208,12 @@ components:
       name: x-api-key
       in: header
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>를
+        사용하여 인증할 수도 있습니다.
     bearer:
       type: http
       scheme: bearer
       description: >-
-        Pass your Exa API key in the x-api-key header. You can also authenticate
-        with Authorization: Bearer <key>.
+        x-api-key 헤더에 Exa API 키를 전달하세요. Authorization: Bearer <key>를
+        사용하여 인증할 수도 있습니다.
 ```
