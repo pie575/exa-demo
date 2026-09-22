@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Códigos de error {#error-codes}
+<div id="error-codes">
+  # Códigos de error
+</div>
 
 > Referencia de los códigos de error comunes que utiliza la API de Exa
 
 Las API de Exa indican los errores mediante códigos de estado HTTP estándar y un cuerpo de error en JSON.
 
-## Códigos de estado HTTP {#http-status-codes}
+<div id="http-status-codes">
+  ## Códigos de estado HTTP
+</div>
 
 | Código                      | Significado                                                                                                             | Qué hacer                                                                                                                             |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,7 +35,9 @@ Las API de Exa indican los errores mediante códigos de estado HTTP estándar y 
   Los fallos a nivel de URL de `/contents` se informan en el campo `statuses` de una respuesta `200` exitosa, no como errores a nivel de solicitud. Consulta [Etiquetas de estado de obtención de contenido](#content-fetch-status-tags).
 </Note>
 
-## Estructura de la respuesta de error {#error-response-structure}
+<div id="error-response-structure">
+  ## Estructura de la respuesta de error
+</div>
 
 Las respuestas de error devuelven un `requestId`, un mensaje `error` legible por humanos y un `tag` legible por máquinas:
 
@@ -47,9 +55,13 @@ Las respuestas de error devuelven un `requestId`, un mensaje `error` legible por
 
 El conjunto de tags es abierto y sus nombres se explican por sí solos. Ramifica primero según el código de estado HTTP y trata los tags no reconocidos como información adicional, no como errores de análisis.
 
-## Tags de error comunes {#common-error-tags}
+<div id="common-error-tags">
+  ## Tags de error comunes
+</div>
 
-### Cuenta, facturación y acceso {#account-billing-and-access}
+<div id="account-billing-and-access">
+  ### Cuenta, facturación y acceso
+</div>
 
 | Tag                       | Código HTTP | Descripción                                                                                                                        |
 | ------------------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,7 +75,9 @@ El conjunto de tags es abierto y sus nombres se explican por sí solos. Ramifica
 | `RATE_LIMIT_EXCEEDED`     | `429`       | Tu API key, equipo o red superó su propio límite de tasa — reduce tu tasa de solicitudes.                                          |
 | `SERVICE_OVERLOADED`      | `503`       | Exa está temporalmente por encima de su capacidad y descartó la solicitud antes de procesarla — reintenta con exponential backoff. |
 
-### Validación de la solicitud {#request-validation}
+<div id="request-validation">
+  ### Validación de la solicitud
+</div>
 
 | Tag                       | Código HTTP | Descripción                                                                                              |
 | ------------------------- | ----------- | -------------------------------------------------------------------------------------------------------- |
@@ -74,7 +88,9 @@ El conjunto de tags es abierto y sus nombres se explican por sí solos. Ramifica
 | `INVALID_JSON_SCHEMA`     | `400`       | El esquema de output proporcionado no es válido.                                                         |
 | `SUBPAGES_LIMIT_EXCEEDED` | `400`       | `/contents` permite como máximo 100 subpáginas por solicitud.                                            |
 
-### Protocolos de pago {#payment-protocols}
+<div id="payment-protocols">
+  ### Protocolos de pago
+</div>
 
 Las solicitudes pagadas mediante x402 o MPP también pueden devolver:
 
@@ -88,7 +104,9 @@ Las solicitudes pagadas mediante x402 o MPP también pueden devolver:
 | `X402_WALLET_RATE_LIMITED` | `429`       | La wallet x402 superó su límite de tasa.        |
 | `X402_INTERNAL_ERROR`      | `500`       | Exa no pudo crear los requisitos de pago x402.  |
 
-## Etiquetas de estado de obtención de contenido {#content-fetch-status-tags}
+<div id="content-fetch-status-tags">
+  ## Etiquetas de estado de obtención de contenido
+</div>
 
 Cuando `/contents` recibe varias URL, una de ellas puede fallar mientras las demás se procesan correctamente. Los fallos a nivel de URL se devuelven en el campo `statuses` y no provocan el fallo de la solicitud:
 
@@ -122,7 +140,9 @@ Cuando `/contents` recibe varias URL, una de ellas puede fallar mientras las dem
 
 Estas etiquetas de estado son específicas de `/contents`; `/search` no devuelve un campo `statuses`.
 
-## Obtener ayuda {#getting-help}
+<div id="getting-help">
+  ## Obtener ayuda
+</div>
 
 * Consulta el [estado de Exa](/es/docs/admin/status) si los errores `500`, `503` o `504` persisten.
 * Consulta los [límites de tasa](/es/docs/admin/billing#rate-limits) para conocer los límites actuales.

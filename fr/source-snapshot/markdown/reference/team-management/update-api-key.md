@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Mettre à jour une API key {#update-api-key}
+<div id="update-api-key">
+  # Mettre à jour une API key
+</div>
 
 > Mettez à jour le nom et la limite de débit d&#39;une API key existante.
 
@@ -15,20 +19,28 @@
   La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie à l&#39;aide d&#39;une API key de compte de service, que vous créez depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
 </Info>
 
-## Vue d&#39;ensemble {#overview}
+<div id="overview">
+  ## Vue d&#39;ensemble
+</div>
 
 L&#39;endpoint Update API Key vous permet de modifier une API key existante
 
-## Paramètres de chemin {#path-parameters}
+<div id="path-parameters">
+  ## Paramètres de chemin
+</div>
 
 * **id** : l&#39;identifiant unique de l&#39;API key à mettre à jour.
 
-## Paramètres optionnels {#optional-parameters}
+<div id="optional-parameters">
+  ## Paramètres optionnels
+</div>
 
 * **name** : nouveau nom descriptif de l&#39;API key
 * **rateLimit** : nouvelle limite de débit, en requêtes par minute
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

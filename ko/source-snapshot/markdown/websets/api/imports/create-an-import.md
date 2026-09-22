@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# import 생성 {#create-an-import}
+<div id="create-an-import">
+  # import 생성
+</div>
 
 > 데이터를 Websets에 업로드하기 위한 새로운 import를 생성합니다. import는 다음과 같은 용도로 사용할 수 있습니다:
 
@@ -13,7 +17,9 @@
 
 import가 생성되면 `uploadValidUntil`(기본값 1시간)까지 반환된 `uploadUrl`에 데이터를 업로드할 수 있습니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

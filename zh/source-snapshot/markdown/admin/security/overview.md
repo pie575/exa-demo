@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 安全概览 {#security-overview}
+<div id="security-overview">
+  # 安全概览
+</div>
 
 > Exa 的安全、合规及区域访问信息。
 
@@ -15,7 +19,9 @@ Exa 高度重视数据安全与隐私。我们已通过 SOC 2 Type II 认证，�
 
 访问我们的 [Trust Center](https://trust.exa.ai)，即可查看 SOC 2 报告、数据处理协议及其他安全文档。
 
-## 区域访问限制 {#regional-access-restrictions}
+<div id="regional-access-restrictions">
+  ## 区域访问限制
+</div>
 
 为遵守制裁和贸易限制规定，Exa 会阻止来自受制裁或其他受限国家和地区的 API 访问，包括克里米亚、古巴、伊朗、朝鲜、俄罗斯、叙利亚、乌克兰和委内瑞拉。
 

@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
 
-# API 키 생성 {#create-api-key}
+<div id="create-api-key">
+  # API 키 생성
+</div>
 
 > 이름과 속도 제한 구성을 선택적으로 지정하여 team의 새 API 키를 생성합니다.
 
@@ -17,12 +21,16 @@
 
 API 키 생성 엔드포인트를 사용하면 서비스 API 키로 team의 새 API 키를 프로그래밍 방식으로 생성할 수 있습니다.
 
-## 선택적 Parameters {#optional-parameters}
+<div id="optional-parameters">
+  ## 선택적 Parameters
+</div>
 
 * **name**: API 키의 용도를 파악하는 데 도움이 되는 설명용 이름
 * **rateLimit**: 이 API 키에 허용되는 분당 최대 요청 수
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

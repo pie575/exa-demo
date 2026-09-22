@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Polymarket {#polymarket}
+<div id="polymarket">
+  # Polymarket
+</div>
 
 > Obtenez les odds des marchés de prédiction, l&#39;historique des prix, les carnets d&#39;ordres et les positions des traders.
 
@@ -15,14 +19,18 @@ un accès en lecture seule aux données publiques des marchés de Polymarket.
 Attachez `polymarket` à un run [Exa Agent](/fr/docs/agent/quickstart) : l&#39;agent
 interroge alors Polymarket en parallèle d&#39;Exa web search.
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * Trouver des marchés prédictifs et les market-implied odds actuelles sur un sujet.
 * Comparer l&#39;évolution dans le temps de la probabilité implicite d&#39;un résultat.
 * Examiner la liquidité d&#39;un marché, la profondeur à l&#39;achat/à la vente et les principaux détenteurs de positions.
 * Consulter les positions actuelles d&#39;un trader et son activité on-chain récente.
 
-## ID du fournisseur {#provider-id}
+<div id="provider-id">
+  ## ID du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -30,13 +38,17 @@ Utilisez cette valeur dans `dataSources` :
 polymarket
 ```
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 Les API de lecture de Polymarket sont gratuites et ne nécessitent aucune authentification : les appels d&#39;outil Polymarket
 ne coûtent donc rien. Vous ne payez que la
 [tarification standard des Agent runs](/fr/docs/agent/quickstart#pricing).
 
-## Données disponibles {#data-available}
+<div id="data-available">
+  ## Données disponibles
+</div>
 
 | Donnée                | Description                                                                                                                             |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,7 +57,9 @@ ne coûtent donc rien. Vous ne payez que la
 | Carnets d&#39;ordres  | Profondeur et écart achat/vente en temps réel pour le résultat d&#39;un marché.                                                         |
 | Détenteurs et traders | Principaux détenteurs de positions sur un marché, ainsi que les positions actuelles et l&#39;activité on-chain récente d&#39;un trader. |
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Obtenez les market-implied odds d&#39;une baisse des taux de la Fed ainsi que leur évolution au cours du mois écoulé.
 
@@ -113,13 +127,17 @@ Obtenez les market-implied odds d&#39;une baisse des taux de la Fed ainsi que le
   ```
 </CodeGroup>
 
-## S&#39;utilise bien avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## S&#39;utilise bien avec
+</div>
 
 * [Exa web search](/fr/docs/search/quickstart) : ajoutez des articles et du contexte de fond aux odds d&#39;un market.
 * [Particle](/fr/docs/agent/connect/particle) : récupérez la couverture médiatique à l&#39;origine d&#39;une variation des odds.
 * [Financial Datasets](/fr/docs/agent/connect/financialdatasets) : reliez les market-implied odds aux prix, aux fondamentaux et aux données macroéconomiques.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

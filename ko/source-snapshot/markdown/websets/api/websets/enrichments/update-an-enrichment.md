@@ -1,13 +1,19 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# enrichment 업데이트 {#update-an-enrichment}
+<div id="update-an-enrichment">
+  # enrichment 업데이트
+</div>
 
 > Webset의 Enrichment 구성을 업데이트합니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

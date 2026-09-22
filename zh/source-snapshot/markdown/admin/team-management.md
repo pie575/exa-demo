@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 管理你的团队 {#managing-your-team}
+<div id="managing-your-team">
+  # 管理你的团队
+</div>
 
 > 关于 Exa 平台的团队结构与账户管理
 
@@ -17,19 +21,25 @@ Exa 通过“团队”来组织账户用量和付费功能的使用权限：
 
 创建账户后，你会被自动归入一个“Personal”团队。通过下图所示 Exa 控制台左上角的下拉菜单，你可以创建新团队，或在已有的团队之间切换。团队数量不限，可按需创建。
 
-## 查看你的团队 {#seeing-your-teams}
+<div id="seeing-your-teams">
+  ## 查看你的团队
+</div>
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_team_switcher.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=094d2830e671762132604cace63b423a" alt="Exa 控制台 中 团队 settings 下的团队下拉菜单（左上角）" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
 
 Exa 控制台 中 团队 settings 下的团队下拉菜单 (左上角)
 
-## 为团队充值余额 {#topping-up-a-teams-balance}
+<div id="topping-up-a-teams-balance">
+  ## 为团队充值余额
+</div>
 
 选中目标团队后，你可以在 Billing 页面为积分余额充值。
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_topup.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=36f4bbbd52a71bae490be4df3ba1b500" alt="Billing 页面积分余额充值" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
 
-## 邀请他人加入团队 {#inviting-people-to-your-team}
+<div id="inviting-people-to-your-team">
+  ## 邀请他人加入团队
+</div>
 
 团队管理员可在 团队 settings 中通过 Invite 功能添加成员。
 
@@ -47,7 +57,9 @@ Exa 控制台 中 团队 settings 下的团队下拉菜单 (左上角)
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_accepted.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=15396c783df64ffee162ab2de434a045" alt="团队成员列表显示 Accepted 状态" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
 
-## Team Management API {#team-management-api}
+<div id="team-management-api">
+  ## Team Management API
+</div>
 
 使用 [Team Management API](/zh/docs/reference/team-management/create-api-key) 以编程方式创建和管理 API 密钥。
 

@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# batch 삭제 {#delete-a-batch}
+<div id="delete-a-batch">
+  # batch 삭제
+</div>
 
 > 종료 상태의 batch를 삭제합니다.
 
@@ -13,7 +17,9 @@ batch를 삭제하면 해당 batch가 team의 batch 기록에서 제거됩니다
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /batches/{id}
 openapi: 3.1.0

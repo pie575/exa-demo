@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# OpenRouter {#openrouter}
+<div id="openrouter">
+  # OpenRouter
+</div>
 
 > Fundamenta cualquier modelo de OpenRouter con Exa web search mediante la herramienta de servidor openrouter:web&#95;search.
 
 Exa es el motor de búsqueda que impulsa la búsqueda web de [OpenRouter](https://openrouter.ai). OpenRouter te ofrece una sola API para cientos de modelos y Exa les da a esos modelos acceso web en tiempo real: cualquier modelo sin búsqueda nativa se fundamenta a través de Exa de forma predeterminada, y cualquier modelo puede dirigirse a Exa de forma explícita. No hace falta una API key de Exa. OpenRouter ejecuta las búsquedas del lado del servidor y las cobra a tus créditos de OpenRouter.
 
-## Usa la herramienta de servidor de búsqueda web {#use-the-web-search-server-tool}
+<div id="use-the-web-search-server-tool">
+  ## Usa la herramienta de servidor de búsqueda web
+</div>
 
 Agrega `openrouter:web_search` a tu arreglo `tools` y el modelo decidirá cuándo buscar, qué buscar y si conviene volver a buscar dentro de la misma solicitud. Las [herramientas de servidor](https://openrouter.ai/docs/guides/features/server-tools/web-search) están en beta en OpenRouter y sustituyen al plugin `web` deprecado y a las variantes de modelo `:online`; si usas alguno de los dos, consulta la [guía de migración](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) de OpenRouter.
 
@@ -95,17 +101,23 @@ Con el valor predeterminado `engine: "auto"`, OpenRouter usa la búsqueda nativa
 | `search_context_size`                 | Usar en su lugar un presupuesto predefinido: `low`, `medium` o `high`                                                                                                                                         |
 | `allowed_domains`, `excluded_domains` | Filtrar los dominios de los resultados. Exa admite ambos filtros en la misma solicitud.                                                                                                                       |
 
-## Cómo se devuelven los resultados {#how-results-come-back}
+<div id="how-results-come-back">
+  ## Cómo se devuelven los resultados
+</div>
 
 OpenRouter solicita [highlights de Exa](/es/docs/search/highlights) para cada resultado en lugar del texto completo de la página: extractos de tamaño adaptable, normalmente de 2.000 a 4.000 caracteres por resultado, salvo que definas `max_characters` o `search_context_size`. El modelo lee los extractos y quienes llaman a la API los reciben en anotaciones `url_citation` estandarizadas dentro del mensaje de respuesta. Dentro de un mismo resultado, los marcadores `[...]` separan extractos tomados de distintas partes de la página.
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Las búsquedas de Exa se cobran con cargo a tus créditos de OpenRouter, además de los costos de tokens del modelo por leer los resultados. Los modos `instant`, `fast` y `auto` cuestan $0.007 por búsqueda, `deep-lite` y `deep` cuestan $0.012, y `deep-reasoning` cuesta $0.015. Cada búsqueda incluye hasta 10 resultados, y cada resultado adicional cuesta $0.001. Consulta la [documentación de búsqueda web de OpenRouter](https://openrouter.ai/docs/guides/features/server-tools/web-search) para ver las tarifas actuales.
 
 El objeto `usage` de la respuesta indica cuántas búsquedas ejecutó el modelo en `server_tool_use.web_search_requests`.
 
-## Recursos {#resources}
+<div id="resources">
+  ## Recursos
+</div>
 
 <Columns cols={2}>
   <Card title="Documentación de la herramienta de servidor" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="Abrir documentación" arrow="true">

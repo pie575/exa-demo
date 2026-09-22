@@ -1,17 +1,25 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa in Slack {#exa-in-slack}
+<div id="exa-in-slack">
+  # Exa in Slack
+</div>
 
 > Slack에 Exa를 설치하고 어느 채널이나 thread에서든 @Exa를 태그하면 출처가 포함된 리서치, 리스트 빌딩, enrichment 답변을 받을 수 있습니다.
 
 team의 Slack에서 Exa를 사용해 보세요. 어느 채널이나 thread에서든 **@Exa**를 태그하고 리서치 질문, 리스트 빌딩 작업, enrichment 요청을 남기기만 하면 됩니다. Exa가 웹을 검색하고 소스를 읽은 뒤, 출처가 포함된 답변을 thread에 바로 남겨 줍니다.
 
-## 시작하기 {#get-started}
+<div id="get-started">
+  ## 시작하기
+</div>
 
-### 설치 {#installation}
+<div id="installation">
+  ### 설치
+</div>
 
 1. [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack)로 이동한 뒤 **Install**을 클릭합니다.
 
@@ -28,7 +36,9 @@ team의 Slack에서 Exa를 사용해 보세요. 어느 채널이나 thread에서
 
 3. 설치가 완료되면 채널에 @Exa를 초대하거나 직접 DM을 보내 질문을 시작하세요.
 
-## Slack에서 Exa 사용하기 {#how-to-use-exa-from-slack}
+<div id="how-to-use-exa-from-slack">
+  ## Slack에서 Exa 사용하기
+</div>
 
 Exa가 추가된 채널이라면 어디서든 @Exa를 mention하고 질문을 입력하세요:
 
@@ -38,15 +48,21 @@ Exa가 추가된 채널이라면 어디서든 @Exa를 mention하고 질문을 �
 
 Exa가 thread 안에서 질문에 답변합니다.
 
-### Follow-ups {#follow-ups}
+<div id="follow-ups">
+  ### Follow-ups
+</div>
 
 Exa가 thread에서 답변한 뒤에는 해당 thread에 답글만 달면 대화를 계속 이어갈 수 있습니다. @Exa를 다시 mention하지 않아도 됩니다. Exa가 대화 내용을 기억하기 때문에 follow-ups는 이전 답변을 이어받아 진행됩니다. thread에 참여한 누구나 follow-up을 보낼 수 있습니다.
 
-### Direct messages {#direct-messages}
+<div id="direct-messages">
+  ### Direct messages
+</div>
 
 DM으로 Exa에 직접 메시지를 보낼 수도 있습니다. 이 경우에는 mention이 전혀 필요 없습니다. 보내는 메시지 하나하나가 새로운 요청이 되며, 해당 메시지 아래 thread에 답변이 달립니다. 대화를 이어가려면 그 thread에 답글을 남기세요.
 
-### 실행 취소하기 {#cancelling-a-run}
+<div id="cancelling-a-run">
+  ### 실행 취소하기
+</div>
 
 실행이 진행 중일 때 thread에 답글을 달아 Exa에게 실행을 중지해 달라고 요청하세요. mention은 필요하지 않습니다.
 
@@ -54,7 +70,9 @@ DM으로 Exa에 직접 메시지를 보낼 수도 있습니다. 이 경우에는
 현재 실행 중지
 ```
 
-### Exa Connect 제공업체 {#exa-connect-providers}
+<div id="exa-connect-providers">
+  ### Exa Connect 제공업체
+</div>
 
 Exa는 질문과 관련이 있는 경우 [Exa Connect](/ko/docs/agent/connect/overview) 데이터 제공업체를 자동으로 포함합니다. 특정 제공업체를 사용하려면 메시지에서 해당 제공업체를 mention하세요:
 
@@ -64,21 +82,29 @@ Exa는 질문과 관련이 있는 경우 [Exa Connect](/ko/docs/agent/connect/ov
 
 사용 가능한 전체 데이터 제공업체 목록은 Exa에 물어보기만 하면 됩니다.
 
-## 예시 {#examples}
+<div id="examples">
+  ## 예시
+</div>
 
-### 뉴스와 시사 {#news-and-current-events}
+<div id="news-and-current-events">
+  ### 뉴스와 시사
+</div>
 
 무엇이든 최신 정보를 확인해 보세요.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f" alt="Slack thread에서 특정 주제의 최신 뉴스에 대한 질문에 답하는 Exa, 날짜가 표기된 결과가 표로 정리되어 있음" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-### 대규모 리스트 구축 {#large-list-building}
+<div id="large-list-building">
+  ### 대규모 리스트 구축
+</div>
 
 빠짐없이 리스트를 구축하려면 요청 앞에 `!max`를 붙이세요.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2" alt="Exa가 Slack thread에서 !max 리스트 빌딩 요청을 실행하고 결과 표를 반환하는 모습" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-## Keywords {#keywords}
+<div id="keywords">
+  ## Keywords
+</div>
 
 Exa가 참여 중인 thread에서 사용하세요. 명령어는 `@Exa` mention 뒤에 이어 쓰거나 메시지 맨 앞에 바로 쓸 수 있습니다:
 
@@ -91,7 +117,9 @@ Exa가 참여 중인 thread에서 사용하세요. 명령어는 `@Exa` mention �
 | `aside <message>` | Exa가 무시하는 사이드 코멘트를 남깁니다. Exa가 지켜보고 있는 thread에서 팀원과 이야기할 때 유용합니다.          |
 | `help`            | 사용 방법을 보여줍니다.                                                             |
 
-## 권한 {#permissions}
+<div id="permissions">
+  ## 권한
+</div>
 
 Slack용 Exa app은 다음 scope를 요청합니다:
 
@@ -121,10 +149,14 @@ Slack용 Exa app은 다음 scope를 요청합니다:
 
 Exa는 명시적으로 초대된 채널과 자체 DM에서만 메시지를 수신합니다.
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 Slack에서 시작한 실행은 사용자의 Exa team에 청구됩니다. 자세한 내용은 [가격](https://exa.ai/pricing)을 참고하세요.
 
-## 개인정보 보호 {#privacy}
+<div id="privacy">
+  ## 개인정보 보호
+</div>
 
 Exa가 사용자 데이터를 처리하는 방식에 대한 자세한 내용은 [Exa 개인정보 처리방침](https://exa.ai/privacy-policy)을 참고하세요.

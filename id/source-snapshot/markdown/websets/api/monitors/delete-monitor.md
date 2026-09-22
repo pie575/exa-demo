@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Menghapus monitor Websets {#delete-a-websets-monitor}
+<div id="delete-a-websets-monitor">
+  # Menghapus monitor Websets
+</div>
 
 > Menghapus sebuah monitor.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/monitors/{id}
 openapi: 3.1.0

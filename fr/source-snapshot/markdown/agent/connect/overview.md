@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exa Connect {#exa-connect}
+<div id="exa-connect">
+  # Exa Connect
+</div>
 
 > Donnez à votre Exa Agent un accès en direct à des data partners premium, en complément d&#39;Exa web search, au sein d&#39;un même run.
 
@@ -24,7 +28,9 @@ puis revenez ici pour attacher des data partners.
   Vous préférez MCP ? Exa Agent et [Exa Connect](/fr/docs/agent/connect/overview) sont disponibles dans [Exa MCP](/fr/docs/get-started/exa-mcp#exa-agent). Activez `tools=agent_run` pour lancer des recherches multi-étapes, de la constitution de liste, de l&#39;enrichment et de la sortie structurée depuis Claude, Cursor et d&#39;autres clients MCP.
 </Tip>
 
-## Pourquoi Exa Connect {#why-exa-connect}
+<div id="why-exa-connect">
+  ## Pourquoi Exa Connect
+</div>
 
 * **Des données premium sans intégrations séparées.** Accédez aux données des partners sans
   signer de contrat ni intégrer un SDK. Vous appelez une seule API Exa.
@@ -36,7 +42,9 @@ puis revenez ici pour attacher des data partners.
 * **Données de l&#39;index et des partners dans un même run.** Connect s&#39;appuie sur l&#39;index Exa.
   Exa Agent exploite chaque source là où elle est la plus solide et cite les résultats.
 
-## Fonctionnement {#how-it-works}
+<div id="how-it-works">
+  ## Fonctionnement
+</div>
 
 1. **Attachez** un ou plusieurs providers via le tableau `dataSources` de
    [`POST /agent/runs`](/fr/docs/reference/agent-api/create-a-run).
@@ -45,7 +53,9 @@ puis revenez ici pour attacher des data partners.
 3. Les résultats du partner sont **fusionnés avec la recherche web** dans votre sortie structurée,
    avec les sources associées.
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 <Note>
   La tarification d&#39;Exa Connect s&#39;ajoute à la [tarification standard des Agent runs](/fr/docs/agent/quickstart#pricing).
@@ -169,7 +179,9 @@ Voir la [tarification Baselayer](/fr/docs/agent/connect/baselayer#pricing).
   ```
 </CodeGroup>
 
-## Partners de données {#data-partners}
+<div id="data-partners">
+  ## Partners de données
+</div>
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -212,9 +224,13 @@ Voir la [tarification Baselayer](/fr/docs/agent/connect/baselayer#pricing).
 
 Vous avez besoin d&#39;une source qui ne figure pas dans la liste ci-dessus ? Consultez nos [provider supplémentaires](/fr/docs/agent/connect/additional-partners), disponibles sur demande auprès de notre équipe.
 
-## Utilisation {#usage}
+<div id="usage">
+  ## Utilisation
+</div>
 
-### Combiner les provider {#combining-providers}
+<div id="combining-providers">
+  ### Combiner les provider
+</div>
 
 Attachez autant de partner que votre tâche l&#39;exige. L&#39;Exa Agent appelle chacun d&#39;eux là où il est
 le plus performant et combine les résultats avec la recherche web en une seule réponse structurée :

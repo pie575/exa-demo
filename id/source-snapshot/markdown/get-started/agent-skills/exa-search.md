@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa Search Skill {#exa-search-skill}
+<div id="exa-search-skill">
+  # Exa Search Skill
+</div>
 
 > Temukan halaman web yang relevan dan dapatkan konten tersintesis dalam waktu kurang dari dua detik dengan Exa Search.
 
@@ -17,7 +21,9 @@ Gunakan skill ini untuk mengajari agent Anda memanggil Exa Search melalui cURL a
   Setel key Anda sebagai `EXA_API_KEY` di lingkungan agent Anda.
 </Note>
 
-## Penyiapan {#setup}
+<div id="setup">
+  ## Penyiapan
+</div>
 
 **Opsi A: Pasang skill ini secara langsung:**
 
@@ -63,13 +69,17 @@ What to do:
 Hard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-## Lihat sumber {#view-source}
+<div id="view-source">
+  ## Lihat sumber
+</div>
 
 <Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="Lihat sumber" arrow="true">
   Baca definisi skill exa-search sebelum memasangnya.
 </Card>
 
-## Terkait {#related}
+<div id="related">
+  ## Terkait
+</div>
 
 <Columns cols={2}>
   <Card title="Semua agent skill" icon="layers" href="/id/docs/get-started/agent-skills/overview" cta="Jelajahi skill" arrow="true">

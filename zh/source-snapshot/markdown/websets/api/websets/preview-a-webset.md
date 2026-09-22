@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 预览 webset {#preview-a-webset}
+<div id="preview-a-webset">
+  # 预览 webset
+</div>
 
 > 在创建 webset 之前，预览搜索 query 将如何被拆解。该端点执行的 query 分析与创建 webset 时完全相同，可让你提前看到识别出的实体类型、生成的 search criteria 以及可用的增强 column。
 
 可借助该端点，让用户在正式创建完整 webset 之前，先了解自己的搜索会被如何解读。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0

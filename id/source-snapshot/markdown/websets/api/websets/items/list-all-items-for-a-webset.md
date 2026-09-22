@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Menampilkan semua item untuk sebuah webset {#list-all-items-for-a-webset}
+<div id="list-all-items-for-a-webset">
+  # Menampilkan semua item untuk sebuah webset
+</div>
 
 > Mengembalikan daftar Item Webset.
 
 Anda dapat melakukan paginasi pada Item menggunakan parameter `cursor`.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items
 openapi: 3.1.0

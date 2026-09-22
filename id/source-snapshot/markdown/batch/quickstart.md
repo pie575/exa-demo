@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Batch API {#batch-api}
+<div id="batch-api">
+  # Batch API
+</div>
 
 > Jalankan permintaan Exa API secara asinkron dalam batch.
 
@@ -19,7 +23,9 @@ Gunakan ini untuk enrichment offline, backfill, atau pekerjaan lain yang tidak m
   Batch API masih dalam tahap beta. Sertakan header `Exa-Beta: batches-2026-06-06` pada setiap permintaan.
 </Note>
 
-## Permintaan yang didukung {#supported-requests}
+<div id="supported-requests">
+  ## Permintaan yang didukung
+</div>
 
 Setiap item batch harus berupa permintaan `POST` ke salah satu route berikut:
 
@@ -30,7 +36,9 @@ Setiap item batch harus berupa permintaan `POST` ke salah satu route berikut:
 
 Setiap item memerlukan `customId` yang unik dalam satu batch. `customId` yang sama dikembalikan pada file hasil sehingga Anda dapat memetakan baris output kembali ke data input Anda.
 
-## Membuat batch {#create-a-batch}
+<div id="create-a-batch">
+  ## Membuat batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -88,7 +96,9 @@ Response berisi ID batch dan status awalnya:
   ```
 </Accordion>
 
-## Cek status {#check-status}
+<div id="check-status">
+  ## Cek status
+</div>
 
 Poll batch hingga mencapai status terminal:
 
@@ -116,7 +126,9 @@ Saat batch selesai, `resultsUrl` berisi URL unduhan untuk file hasil JSONL, dan 
   `resultsUrl` adalah URL presigned yang berumur pendek. Ambil ulang batch untuk mendapatkan URL baru setiap kali Anda perlu mengunduh hasil kembali.
 </Warning>
 
-## Daftar batch {#list-batches}
+<div id="list-batches">
+  ## Daftar batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -147,7 +159,9 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-## Unduh hasil {#download-results}
+<div id="download-results">
+  ## Unduh hasil
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -162,7 +176,9 @@ Setiap baris JSONL berisi `customId` asli beserta `response` atau `error`:
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-## Membatalkan batch {#cancel-a-batch}
+<div id="cancel-a-batch">
+  ## Membatalkan batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -172,7 +188,9 @@ Setiap baris JSONL berisi `customId` asli beserta `response` atau `error`:
   ```
 </CodeGroup>
 
-## Menghapus batch {#delete-a-batch}
+<div id="delete-a-batch">
+  ## Menghapus batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,6 +200,8 @@ Setiap baris JSONL berisi `customId` asli beserta `response` atau `error`:
   ```
 </CodeGroup>
 
-## Akses {#access}
+<div id="access">
+  ## Akses
+</div>
 
 Untuk mengaktifkan Batch API bagi sebuah team, hubungi [sales@exa.ai](mailto:sales@exa.ai).

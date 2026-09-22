@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，请先通过该文件了解所有可用页面。
 
-# Websets {#websets}
+<div id="websets">
+  # Websets
+</div>
 
 > 从网络构建经过验证、内容丰富的数据集。
 
-## 什么是 Websets？ {#what-are-websets}
+<div id="what-are-websets">
+  ## 什么是 Websets？
+</div>
 
 一个 Webset 从一条自然语言 query 和目标项目数量开始。你可以添加每条 result 都必须满足的 criteria，并指定为每个已接受项目填充的增强 fields。结果会通过控制台、API 或 webhook 异步返回。
 
@@ -19,14 +25,18 @@
   Websets API 需要付费的 Websets plan；Search API 积分与 Websets 积分相互独立。
 </Info>
 
-## 工作原理 {#how-it-works}
+<div id="how-it-works">
+  ## 工作原理
+</div>
 
 1. **定义 search：** 提供自然语言 query、结果数量，以及可选的验证 criteria 和增强。
 2. **search 并验证：** Websets 找出候选结果，并逐一对照你的 criteria 进行检查,只有符合的结果才会成为项目。
 3. **执行增强：** 针对每个通过验证的项目，Websets 会 search 你所需的额外数据，例如 CEO 姓名、融资金额或联系方式。
 4. **获取结果：** 轮询状态、通过 webhook 接收更新，或在项目陆续产生时查看控制台。
 
-## 核心能力 {#key-capabilities}
+<div id="key-capabilities">
+  ## 核心能力
+</div>
 
 | 功能              | 作用                            |
 | --------------- | ----------------------------- |
@@ -36,7 +46,9 @@
 | **Webhooks**    | 在项目被添加或丰富时实时接收 HTTP 回调        |
 | **导入**          | 导入你自己的 URL 并对其运行增强            |
 
-## 人工快速开始 {#human-quickstart}
+<div id="human-quickstart">
+  ## 人工快速开始
+</div>
 
 <Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   在控制台中创建密钥。新账户会赠送免费积分。
@@ -142,7 +154,9 @@
   有关产品可用性，请参阅 [Zero Data Retention](/zh/docs/admin/security/zero-data-retention)。
 </Note>
 
-## 下一步 {#next}
+<div id="next">
+  ## 下一步
+</div>
 
 * [**控制台指南**](./dashboard/get-started) - 在控制台中使用 Websets 的分步指南
 * [**工作原理**](./api/how-it-works) - 深入了解事件驱动架构

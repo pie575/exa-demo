@@ -5,7 +5,9 @@ description: "在单次 Exa Agent 运行中同时使用多个数据合作伙伴�
 
 将某个合作伙伴附加到 `dataSources` 后，它会作为一个工具提供给 Exa Agent，但这**并不会**强制 agent 去调用它。合作伙伴是否会被调用，取决于你的 `query` 和 `outputSchema`：只要说明你希望从每个合作伙伴获得哪类结果，Exa Agent 就会选用对应的工具，而不是从网页中去猜。每次运行最多可接入五个合作伙伴；Exa Agent 会自行决定每一步调用哪一个，同时还可搭配使用 Exa 网页搜索。单次运行需要超过五个？请[联系我们](mailto:sales@exa.ai)提高上限。
 
-## 在一次运行中使用两个合作伙伴 {#two-partners-in-one-run}
+<div id="two-partners-in-one-run">
+  ## 在一次运行中使用两个合作伙伴
+</div>
 
 同时列出多个合作伙伴，Exa Agent 会在各自最擅长的领域调用它们。这里用两个只是举例，你最多可以向 `dataSources` 附加五个合作伙伴，原理相同：明确要求获取每一方的数据。下面这个投资者简报运行结合了 [Financial Datasets](/zh/docs/agent/connect/financialdatasets) (用于股票代码相关新闻) 与 [Particle](/zh/docs/agent/connect/particle) (用于播客评论) 。query 明确要求获取每个合作伙伴的特色数据，schema 将输出拆分为 `financialNews` 和 `podcastChatter`，因此 Exa Agent 会在同一次运行中同时调用**两个**合作伙伴。
 

@@ -8,7 +8,9 @@ boost: 6
 
 Exa Search menerima query dalam bahasa alami dan mengembalikan hasil web yang sudah diperingkat beserta konten halaman yang bersih.
 
-## Buat permintaan pertama Anda {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Buat permintaan pertama Anda
+</div>
 
 Mulailah dengan `query` dalam bahasa alami dan `contents: { highlights: true }`, yang mengembalikan kutipan dengan panjang menyesuaikan relevance tiap hasil. Field lain mengatur cara Exa melakukan search dan apa saja yang disertakan pada setiap hasil; bagian selanjutnya di halaman ini membahas field yang benar-benar akan Anda pakai.
 
@@ -104,7 +106,9 @@ Secara default, search mengembalikan maksimal 10 hasil. Atur `numResults` untuk 
 
 Hasil diurutkan berdasarkan relevance. Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasi, ditambah apa pun yang Anda minta lewat `contents`.
 
-## Menulis query {#writing-queries}
+<div id="writing-queries">
+  ## Menulis query
+</div>
 
 Field `query` adalah satu-satunya field yang wajib diisi saat menggunakan Search API.
 
@@ -141,7 +145,9 @@ Mode deep menjalankan proses research, bukan sekadar satu tahap retrieval. Lihat
   terstruktur yang grounded.
 </Tip>
 
-## Bentuk output {#output-shapes}
+<div id="output-shapes">
+  ## Bentuk output
+</div>
 
 Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasinya. Gunakan `contents` untuk menambahkan kutipan, teks penuh, atau ringkasan dari halaman tersebut.
 
@@ -236,7 +242,9 @@ Pilih satu tampilan konten per permintaan. Meminta kutipan dan teks sekaligus ak
     field yang sama berada di tingkat teratas bersama `urls`: `"urls": [...], "highlights": true`
 </Warning>
 
-## Output schema {#output-schema}
+<div id="output-schema">
+  ## Output schema
+</div>
 
 Tambahkan `outputSchema` jika Anda ingin Exa mensintesis hasil search. Parameter ini berfungsi dengan semua search type dan menambahkan objek `output` ke response.
 
@@ -402,11 +410,15 @@ Gunakan `systemPrompt` untuk instruksi seperti source preferences atau penekanan
   field citation atau confidence ke dalam schema; Exa mengembalikannya secara otomatis di `output.grounding`.
 </Note>
 
-## Memfilter hasil {#filter-results}
+<div id="filter-results">
+  ## Memfilter hasil
+</div>
 
 Filter adalah batasan ketat: gunakan filter jika hasil di luar batasan tersebut memang tidak berguna bagi Anda, dan biarkan preferensi sumber yang lebih longgar tetap berada di dalam teks query. [API reference](/id/docs/reference/search) memuat daftar lengkapnya.
 
-### Menyertakan domain atau path {#include-domains-or-paths}
+<div id="include-domains-or-paths">
+  ### Menyertakan domain atau path
+</div>
 
 `includeDomains` membatasi hasil hanya pada sources yang Anda percaya. Parameter ini menerima domain lengkap, prefiks path seperti `anthropic.com/news`, dan wildcard subdomain seperti `*.substack.com`.
 
@@ -440,7 +452,9 @@ Filter adalah batasan ketat: gunakan filter jika hasil di luar batasan tersebut 
 
 Cantumkan path di dalam filter, jangan mengulanginya sebagai operator `site:` di dalam query.
 
-### Kecualikan domain atau path {#exclude-domains-or-paths}
+<div id="exclude-domains-or-paths">
+  ### Kecualikan domain atau path
+</div>
 
 `excludeDomains` menghapus hasil dari domain atau path tertentu. Parameter ini mendukung prefiks path dan wildcard subdomain yang sama seperti `includeDomains`. Gunakan parameter ini ketika sources tersebut membuat hasil menjadi tidak berguna, bukan sekadar untuk menyatakan preferensi.
 
@@ -475,7 +489,9 @@ Cantumkan path di dalam filter, jangan mengulanginya sebagai operator `site:` di
   ```
 </CodeGroup>
 
-## Kebaruan konten {#content-freshness}
+<div id="content-freshness">
+  ## Kebaruan konten
+</div>
 
 `contents.maxAgeHours` mengatur seberapa baru konten yang diekstraksi dari setiap hasil harus dibuat. Field ini tidak memfilter hasil berdasarkan tanggal publikasi.
 
@@ -522,7 +538,9 @@ Sebagian besar pencarian sebaiknya mengosongkan field ini. Setel field ini ketik
   ```
 </CodeGroup>
 
-## Langkah berikutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah berikutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Praktik terbaik" icon="sparkles" href="/id/docs/search/best-practices" cta="Baca panduan" arrow="true">

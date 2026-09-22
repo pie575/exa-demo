@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 사이버 보안 {#cybersecurity}
+<div id="cybersecurity">
+  # 사이버 보안
+</div>
 
 > Exa Search로 취약점, 보안 권고문, 위협 보고서, 신뢰 문서를 찾아보세요.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 보안 팀이 이미 활용하고 있는 소스에서 취약점 레코드, 벤더 보안 권고문, 위협 리서치 자료를 찾으려면 Exa Search를 사용하세요.
 
-## 포함 항목 {#included}
+<div id="included">
+  ## 포함 항목
+</div>
 
 * CVE 및 GHSA 취약점 레코드
 * 벤더 보안 권고문 및 패치 노트
@@ -43,40 +49,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * 트러스트 페이지, 하위 처리자 목록, 컴플라이언스 문서
 * 보안 블로그, 콘퍼런스 발표, 리서치 자료
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 취약점 트리아지 및 노출 평가
 * 위협 인텔리전스 및 공격자 추적
 * 벤더 리스크 및 서드파티 보안 검토
 * 보안 모니터링 및 알림
 
-## 예시 쿼리 {#example-queries}
+<div id="example-queries">
+  ## 예시 쿼리
+</div>
 
-### 취약점 유형 분류하기 {#triage-a-vulnerability-class}
+<div id="triage-a-vulnerability-class">
+  ### 취약점 유형 분류하기
+</div>
 
 제품, 버전 범위, 심각도를 명시하세요.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-### 벤더 보안 권고문 찾기 {#find-vendor-advisories}
+<div id="find-vendor-advisories">
+  ### 벤더 보안 권고문 찾기
+</div>
 
 특정 CVE ID 하나를 지정하기보다 악용 상태와 제품 유형을 설명하세요.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-### 벤더의 보안 태세 검토 {#review-a-vendors-security-posture}
+<div id="review-a-vendors-security-posture">
+  ### 벤더의 보안 태세 검토
+</div>
 
 문서 유형과 벤더 유형을 명시하세요.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-### 공격자 리서치하기 {#research-an-adversary}
+<div id="research-an-adversary">
+  ### 공격자 리서치하기
+</div>
 
 관심 있는 그룹이나 캠페인, 그리고 기법이나 산업 분야를 지정하세요.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-## 요청 보내기 {#make-a-request}
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -117,7 +137,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## Exa Agent로 구조화된 데이터 얻기 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent로 구조화된 데이터 얻기
+</div>
 
 여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent 태스크 실행](/ko/docs/agent/quickstart)을 사용하세요. 필요한 제품, 위협 criteria, output fields를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 

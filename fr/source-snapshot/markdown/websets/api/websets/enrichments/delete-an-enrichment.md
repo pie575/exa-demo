@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Supprimer un enrichment {#delete-an-enrichment}
+<div id="delete-an-enrichment">
+  # Supprimer un enrichment
+</div>
 
 > Lors de la suppression d&#39;un Enrichment, les enrichments en cours sont annulés et tous les `enrichment_result` générés par cet Enrichment ne sont plus disponibles.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

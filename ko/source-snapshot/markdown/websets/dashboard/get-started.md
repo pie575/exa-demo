@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-# 시작하기 {#get-started}
+<div id="get-started">
+  # 시작하기
+</div>
 
 > Websets Dashboard에 오신 것을 환영합니다! 아무리 복잡한 조건이라도 웹에서 원하는 것을 무엇이든 찾아보세요.
 
 <br />
 
-## 1. 가입하기 {#1-sign-up}
+<div id="1-sign-up">
+  ## 1. 가입하기
+</div>
 
 Websets가 이제 [https://websets.exa.ai/](https://websets.exa.ai/)에서 정식 출시되었습니다!
 
@@ -17,7 +23,9 @@ Websets가 이제 [https://websets.exa.ai/](https://websets.exa.ai/)에서 정�
 
 <br />
 
-## 2. Get started {#2-get-started}
+<div id="2-get-started">
+  ## 2. Get started
+</div>
 
 Websets는 사용법이 아주 간단합니다.
 
@@ -33,7 +41,9 @@ Websets는 사용법이 아주 간단합니다.
 
 <br />
 
-## 3. Webset 내부 살펴보기 {#3-inside-your-webset}
+<div id="3-inside-your-webset">
+  ## 3. Webset 내부 살펴보기
+</div>
 
 간단히 말해 Websets는 다음과 같이 동작합니다:
 
@@ -52,7 +62,9 @@ Websets는 사용법이 아주 간단합니다.
 
 <br />
 
-## 4. Webset 다루기 {#4-interacting-with-your-webset}
+<div id="4-interacting-with-your-webset">
+  ## 4. Webset 다루기
+</div>
 
 Webset이 완성되면 각 구성 요소를 직접 살펴보고 조작할 수 있습니다!
 
@@ -70,7 +82,9 @@ result를 수동으로 삭제해 export하기 전에 Webset을 정리할 수도 
 
 <br />
 
-## 5. result criteria와 사용자 지정 열 추가하기 {#5-add-more-result-criteria-and-custom-columns}
+<div id="5-add-more-result-criteria-and-custom-columns">
+  ## 5. result criteria와 사용자 지정 열 추가하기
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075" alt="enrichment 열 추가하기" width="2870" height="1734" data-path="images/websets/add-enrichment.png" />
 
@@ -86,7 +100,9 @@ result를 수동으로 삭제해 export하기 전에 Webset을 정리할 수도 
 
 <br />
 
-## 6. Webset 공유 및 내보내기 {#6-share-and-export-your-webset}
+<div id="6-share-and-export-your-webset">
+  ## 6. Webset 공유 및 내보내기
+</div>
 
 1. export를 클릭하여 Webset을 CSV 파일로 다운로드합니다.
 
@@ -94,6 +110,8 @@ result를 수동으로 삭제해 export하기 전에 Webset을 정리할 수도 
 
 <br />
 
-## 7. 검색 기록 {#7-search-history}
+<div id="7-search-history">
+  ## 7. 검색 기록
+</div>
 
 왼쪽 상단의 sidebar 아이콘을 클릭하면 왼쪽 패널에서 지금까지 만든 모든 Websets을 포함한 전체 기록을 확인할 수 있습니다.

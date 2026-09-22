@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# LlamaIndex {#llamaindex}
+<div id="llamaindex">
+  # LlamaIndex
+</div>
 
 > Panduan singkat tentang cara menambahkan retrieval Exa ke aplikasi LlamaIndex Agent.
 
@@ -20,7 +24,9 @@ LlamaIndex adalah framework untuk membangun aplikasi LLM yang ditenagai data ter
 
 ***
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Prasyarat dan instalasi">

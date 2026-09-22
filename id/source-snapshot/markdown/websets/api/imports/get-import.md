@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Mendapatkan impor {#get-an-import}
+<div id="get-an-import">
+  # Mendapatkan impor
+</div>
 
 > Mendapatkan impor tertentu.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/imports/{id}
 openapi: 3.1.0

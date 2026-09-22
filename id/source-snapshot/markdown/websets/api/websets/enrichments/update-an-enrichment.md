@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Memperbarui enrichment {#update-an-enrichment}
+<div id="update-an-enrichment">
+  # Memperbarui enrichment
+</div>
 
 > Perbarui konfigurasi Enrichment untuk sebuah Webset.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

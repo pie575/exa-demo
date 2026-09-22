@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Codes d&#39;erreur {#error-codes}
+<div id="error-codes">
+  # Codes d&#39;erreur
+</div>
 
 > Référence des codes d&#39;erreur courants utilisés par l&#39;API Exa
 
 Les API Exa signalent les échecs par des codes de statut HTTP standard et un corps d&#39;erreur JSON.
 
-## Codes de statut HTTP {#http-status-codes}
+<div id="http-status-codes">
+  ## Codes de statut HTTP
+</div>
 
 | Code                        | Signification                                                                                                                             | Que faire                                                                                                                                                  |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,7 +35,9 @@ Les API Exa signalent les échecs par des codes de statut HTTP standard et un co
   Les échecs au niveau d&#39;une URL provenant de `/contents` sont signalés dans le field `statuses` d&#39;une réponse `200` réussie, et non comme des erreurs au niveau de la requête. Voir [Tags de statut de récupération du contenu](#content-fetch-status-tags).
 </Note>
 
-## Structure des réponses d&#39;erreur {#error-response-structure}
+<div id="error-response-structure">
+  ## Structure des réponses d&#39;erreur
+</div>
 
 Les réponses d&#39;erreur renvoient un `requestId`, un message `error` lisible par un humain et un `tag` lisible par une machine :
 
@@ -47,9 +55,13 @@ Les réponses d&#39;erreur renvoient un `requestId`, un message `error` lisible 
 
 La liste des tags n&#39;est pas figée et les noms de tag sont explicites. Branchez d&#39;abord sur le code de statut HTTP et traitez les tags non reconnus comme une information complémentaire plutôt que comme des erreurs d&#39;analyse.
 
-## Tags d&#39;erreur courants {#common-error-tags}
+<div id="common-error-tags">
+  ## Tags d&#39;erreur courants
+</div>
 
-### Compte, facturation et accès {#account-billing-and-access}
+<div id="account-billing-and-access">
+  ### Compte, facturation et accès
+</div>
 
 | Tag                       | Code HTTP | Description                                                                                                                |
 | ------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -63,7 +75,9 @@ La liste des tags n&#39;est pas figée et les noms de tag sont explicites. Branc
 | `RATE_LIMIT_EXCEEDED`     | `429`     | Votre API key, votre équipe ou votre réseau a dépassé sa propre limite de débit — réduisez votre cadence de requêtes.      |
 | `SERVICE_OVERLOADED`      | `503`     | Exa est temporairement en surcharge et a abandonné la requête avant de la traiter — réessayez avec un backoff exponentiel. |
 
-### Validation des requêtes {#request-validation}
+<div id="request-validation">
+  ### Validation des requêtes
+</div>
 
 | Tag                       | Code HTTP | Description                                                                                        |
 | ------------------------- | --------- | -------------------------------------------------------------------------------------------------- |
@@ -74,7 +88,9 @@ La liste des tags n&#39;est pas figée et les noms de tag sont explicites. Branc
 | `INVALID_JSON_SCHEMA`     | `400`     | Le schéma de sortie fourni est invalide.                                                           |
 | `SUBPAGES_LIMIT_EXCEEDED` | `400`     | `/contents` autorise au maximum 100 sous-pages par requête.                                        |
 
-### Protocoles de paiement {#payment-protocols}
+<div id="payment-protocols">
+  ### Protocoles de paiement
+</div>
 
 Les requêtes payées via x402 ou MPP peuvent également renvoyer :
 
@@ -88,7 +104,9 @@ Les requêtes payées via x402 ou MPP peuvent également renvoyer :
 | `X402_WALLET_RATE_LIMITED` | `429`     | Le wallet x402 a dépassé sa limite de débit.               |
 | `X402_INTERNAL_ERROR`      | `500`     | Exa n&#39;a pas pu générer les exigences de paiement x402. |
 
-## Tags de statut de récupération du contenu {#content-fetch-status-tags}
+<div id="content-fetch-status-tags">
+  ## Tags de statut de récupération du contenu
+</div>
 
 Lorsque `/contents` reçoit plusieurs URL, une URL peut échouer alors que les autres aboutissent. Les échecs au niveau d&#39;une URL sont renvoyés dans le field `statuses` et ne font pas échouer la requête :
 
@@ -122,7 +140,9 @@ Lorsque `/contents` reçoit plusieurs URL, une URL peut échouer alors que les a
 
 Ces tags de statut sont spécifiques à `/contents` ; `/search` ne renvoie pas de field `statuses`.
 
-## Obtenir de l&#39;aide {#getting-help}
+<div id="getting-help">
+  ## Obtenir de l&#39;aide
+</div>
 
 * Consultez le [statut d&#39;Exa](/fr/docs/admin/status) si les erreurs `500`, `503` ou `504` persistent.
 * Consultez les [limites de débit](/fr/docs/admin/billing#rate-limits) pour connaître les limites en vigueur.

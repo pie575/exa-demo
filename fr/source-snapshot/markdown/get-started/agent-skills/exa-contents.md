@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Skill Exa Contents {#exa-contents-skill}
+<div id="exa-contents-skill">
+  # Skill Exa Contents
+</div>
 
 > Extrayez le contenu des pages avec Exa Contents lorsque vous disposez déjà des URL.
 
@@ -17,7 +21,9 @@ Utilisez cette skill pour apprendre à votre agent à appeler Exa Contents en cU
   Définissez votre clé dans la variable `EXA_API_KEY` de l&#39;environnement de votre agent.
 </Note>
 
-## Configuration {#setup}
+<div id="setup">
+  ## Configuration
+</div>
 
 **Option A : installez directement cette skill :**
 
@@ -63,13 +69,17 @@ Source de la skill :
 Règle absolue tout du long : la clé est un secret. Ne l'inspecte jamais autrement que par un test de présence/longueur (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) ou un code de statut HTTP — n'affiche jamais, et n'utilise jamais `echo`, `cat` ou `grep` avec sortie sur un fichier ou une variable susceptible de la contenir, et n'essaie jamais de « masquer » un fichier de clé avec une regex. Si une clé venait à être exposée, dis-moi de la renouveler sur https://dashboard.exa.ai/api-keys.
 ```
 
-## Voir la source {#view-source}
+<div id="view-source">
+  ## Voir la source
+</div>
 
 <Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="Voir la source" arrow="true">
   Consultez la définition de la skill exa-contents avant de l&#39;installer.
 </Card>
 
-## Ressources associées {#related}
+<div id="related">
+  ## Ressources associées
+</div>
 
 <Columns cols={2}>
   <Card title="Toutes les agent skills" icon="layers" href="/fr/docs/get-started/agent-skills/overview" cta="Parcourir les skills" arrow="true">

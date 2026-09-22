@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Answer {#answer}
+<div id="answer">
+  # Answer
+</div>
 
 > Exa search 결과를 바탕으로 질문에 대한 LLM 답변을 받아보세요. `/answer`는 Exa search를 수행한 뒤 LLM을 사용해 다음 중 하나를 생성합니다:
 
@@ -22,7 +26,9 @@ response에는 생성된 답변과 답변 작성에 사용된 소스가 함께 �
   `/answer`는 `outputSchema` 매개변수를 통해 structured output을 지원합니다. [JSON Schema](https://json-schema.org/draft-07) 객체를 전달하면 답변이 일반 문자열 대신 지정한 schema에 맞는 구조화된 JSON으로 반환됩니다.
 </Info>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0

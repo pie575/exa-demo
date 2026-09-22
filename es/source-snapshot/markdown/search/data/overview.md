@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Índice de datos {#data-index}
+<div id="data-index">
+  # Índice de datos
+</div>
 
 > Qué indexa Exa en la web pública y en fuentes de datos privadas.
 

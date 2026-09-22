@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Browserbase {#browserbase}
+<div id="browserbase">
+  # Browserbase
+</div>
 
 > Gabungkan Exa company search dengan otomatisasi browser Browserbase untuk workflow lamaran kerja.
 
 Gunakan Exa untuk menemukan perusahaan dan careers page, lalu gunakan Browserbase dan Stagehand untuk memeriksa serta berinteraksi dengan halaman-halaman tersebut.
 
-## Pasang {#install}
+<div id="install">
+  ## Pasang
+</div>
 
 Instal package yang digunakan oleh templat Browserbase Exa:
 
@@ -17,7 +23,9 @@ Instal package yang digunakan oleh templat Browserbase Exa:
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-## Konfigurasi variabel lingkungan {#configure-environment-variables}
+<div id="configure-environment-variables">
+  ## Konfigurasi variabel lingkungan
+</div>
 
 Atur API key yang digunakan oleh Exa dan Browserbase:
 
@@ -26,7 +34,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-## Mencari dan berinteraksi dengan halaman {#search-and-interact-with-a-page}
+<div id="search-and-interact-with-a-page">
+  ## Mencari dan berinteraksi dengan halaman
+</div>
 
 Contoh berikut mengikuti workflow templat: mencari perusahaan, menemukan careers page, membukanya di sesi Browserbase, mengekstrak deskripsi pekerjaan, dan membiarkan agent Stagehand berinteraksi dengan halaman tersebut.
 

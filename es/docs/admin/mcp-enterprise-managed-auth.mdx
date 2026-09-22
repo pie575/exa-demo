@@ -8,13 +8,17 @@ De forma predeterminada, cada miembro conecta el [conector de Exa](/es/docs/get-
 
 El acceso sigue a tu directorio: si desaprovisionas a alguien en Okta, su acceso a Exa desde Claude también se corta. EMA es la [extensión de managed authorization empresarial](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) de MCP.
 
-## Antes de empezar {#before-you-start}
+<div id="before-you-start">
+  ## Antes de empezar
+</div>
 
 * Una organización de Claude Team o Enterprise con tu identity provider conectado y acceso de administrador a ella.
 * Una **organization** de Exa (no un equipo personal) con SSO y directory sync, y acceso de administrador a ella.
 * Okta como identity provider, en Okta Identity Engine con [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) habilitado, y acceso de Super Admin al tenant. Hoy por hoy, Okta es el único identity provider compatible.
 
-## Valores de Exa que necesitarás {#exa-values-youll-need}
+<div id="exa-values-youll-need">
+  ## Valores de Exa que necesitarás
+</div>
 
 | Campo                                            | Valor                    |
 | ------------------------------------------------ | ------------------------ |
@@ -22,7 +26,9 @@ El acceso sigue a tu directorio: si desaprovisionas a alguien en Okta, su acceso
 | URL del recurso / MCP server                     | `https://mcp.exa.ai/mcp` |
 | Scope                                            | `mcp:tools`              |
 
-## Configurar EMA {#set-up-ema}
+<div id="set-up-ema">
+  ## Configurar EMA
+</div>
 
 <Steps>
   <Step title="Aprovisiona a tus miembros en Exa">
@@ -54,12 +60,16 @@ Los miembros reciben el conector la próxima vez que inicien sesión. Puedes man
   El uso a través de Claude se factura al equipo de Exa del miembro, según el plan y los límites de tasa de ese equipo, igual que cualquier otra cosa que ejecuten en el equipo.
 </Note>
 
-## Revocar el acceso {#revoking-access}
+<div id="revoking-access">
+  ## Revocar el acceso
+</div>
 
 * **Un solo miembro:** elimínalo en Okta o de su equipo en Exa. Cualquiera de las dos acciones pone fin a su acceso a través de Claude.
 * **Todos:** elimina el issuer en la página Organization o desactiva managed authorization en Claude. Las nuevas conexiones se bloquean de inmediato y las sesiones ya abiertas finalizan poco después. Puedes volver a registrar el issuer en cualquier momento.
 
-## Solución de problemas {#troubleshooting}
+<div id="troubleshooting">
+  ## Solución de problemas
+</div>
 
 <AccordionGroup>
   <Accordion title="Funciona para algunos miembros, pero no para otros">

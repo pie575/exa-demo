@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# CrewAI {#crewai}
+<div id="crewai">
+  # CrewAI
+</div>
 
 > Découvrez comment ajouter les capacités de retrieval d&#39;Exa à vos agents CrewAI.
 
@@ -26,7 +30,9 @@ Dans ce guide, nous allons créer une équipe de deux agents qui génèrent une 
 
 ***
 
-## Démarrer {#get-started}
+<div id="get-started">
+  ## Démarrer
+</div>
 
 <Steps>
   <Step title="Prérequis et installation">

@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 상태 페이지 {#status-page}
+<div id="status-page">
+  # 상태 페이지
+</div>
 
 > Exa 서비스의 실시간 가용성, 진행 중인 incident, uptime 기록을 확인하세요.
 
@@ -169,11 +173,15 @@ Exa는 [status.exa.ai](https://status.exa.ai)에서 서비스 가용성을 공�
 
 <ExaStatus />
 
-## 업데이트 구독 {#subscribe-to-updates}
+<div id="subscribe-to-updates">
+  ## 업데이트 구독
+</div>
 
 상태 페이지에서 구독하면 incident가 발생하거나 업데이트되거나 해결될 때 알림을 받을 수 있습니다. 알림은 이메일, Slack, Google Chat 또는 웹훅으로 전달됩니다.
 
-## 도움 받기 {#get-help}
+<div id="get-help">
+  ## 도움 받기
+</div>
 
 모든 시스템이 정상으로 표시되는데도 요청이 계속 실패한다면 원인은 요청 수준에 있을 가능성이 높습니다. 먼저 [오류 코드](/ko/docs/admin/error-codes)를 확인하세요.
 

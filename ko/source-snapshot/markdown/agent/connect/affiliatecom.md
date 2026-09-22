@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Affiliate.com {#affiliatecom}
+<div id="affiliatecom">
+  # Affiliate.com
+</div>
 
 > 판매처와 제휴 네트워크 전반의 제품 카탈로그를 검색하세요.
 
@@ -15,13 +19,17 @@
 [Exa Agent](/ko/docs/agent/quickstart) 실행에 attach하면, agent가
 Exa web search와 함께 Affiliate.com에도 질의합니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 여러 판매처의 상품 탐색 및 가격 비교
 * 쇼핑 어시스턴트 및 구매 가이드 콘텐츠 구현
 * 리서치 결과와 함께 제휴 링크 노출
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -29,7 +37,9 @@ Exa web search와 함께 Affiliate.com에도 질의합니다.
 affiliate
 ```
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 $300 이하의 무선 노이즈 캔슬링 헤드폰을 찾아 가격을 비교합니다.
 
@@ -126,12 +136,16 @@ $300 이하의 무선 노이즈 캔슬링 헤드폰을 찾아 가격을 비교�
   ```
 </CodeGroup>
 
-## 함께 사용하면 좋은 기능 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하면 좋은 기능
+</div>
 
 * [Similarweb](/ko/docs/agent/connect/similarweb): 판매처를 추천하기 전에 해당 판매처의 도달 범위를 확인하세요.
 * [Fiber.ai](/ko/docs/agent/connect/fiber): 판매처나 브랜드를 운영하는 회사를 리서치하세요.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

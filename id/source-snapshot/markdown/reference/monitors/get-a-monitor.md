@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Mendapatkan monitor {#get-a-monitor}
+<div id="get-a-monitor">
+  # Mendapatkan monitor
+</div>
 
 > Mengambil satu monitor berdasarkan ID-nya.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0

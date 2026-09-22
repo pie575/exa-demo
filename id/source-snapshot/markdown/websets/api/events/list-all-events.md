@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Menampilkan semua events {#list-all-events}
+<div id="list-all-events">
+  # Menampilkan semua events
+</div>
 
 > Menampilkan semua events yang telah terjadi di sistem.
 
 Anda dapat melakukan paginasi hasil menggunakan parameter `cursor`.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0

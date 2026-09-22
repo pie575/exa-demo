@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Récupérer un run {#get-a-run}
+<div id="get-a-run">
+  # Récupérer un run
+</div>
 
 > Récupère un run unique via son ID, avec l&#39;output complet si le run est terminé.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs/{runId}
 openapi: 3.1.0

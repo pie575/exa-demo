@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 创建 webset {#create-a-webset}
+<div id="create-a-webset">
+  # 创建 webset
+</div>
 
 > 创建一个新的 Webset，可选配置 search、导入和增强。Webset 创建后会自动开始处理。
 
 你可以指定 `externalId`，使用自己的标识符来引用该 Webset，从而更方便地进行 integration。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Membatalkan run {#cancel-a-run}
+<div id="cancel-a-run">
+  # Membatalkan run
+</div>
 
 > Batalkan Agent run yang berstatus queued atau sedang berjalan.
 
@@ -13,7 +17,9 @@ Jika run masih aktif, statusnya langsung berubah menjadi `cancelled` dan run ber
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0

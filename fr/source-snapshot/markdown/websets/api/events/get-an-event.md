@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Récupérer un événement {#get-an-event}
+<div id="get-an-event">
+  # Récupérer un événement
+</div>
 
 > Récupère un Event unique par son id.
 
 Vous pouvez vous abonner aux Events en créant un Webhook.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/events/{id}
 openapi: 3.1.0

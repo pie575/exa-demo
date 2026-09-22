@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 在 Claude Code、Web 和 Desktop 中使用 Exa {#exa-in-claude-code-web-and-desktop}
+<div id="exa-in-claude-code-web-and-desktop">
+  # 在 Claude Code、Web 和 Desktop 中使用 Exa
+</div>
 
 > 直接在 Claude 中用 Exa 搜索网页、阅读任意页面
 
 在 Claude Code 中安装 Exa，或将其连接到 Claude Web、Desktop 和 Cowork，让 Claude 获取网络上的最新信息。Claude 可以用自然语言搜索，阅读关键页面，并在工作过程中引用这些来源。
 
-## 安装 Exa {#install-exa}
+<div id="install-exa">
+  ## 安装 Exa
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -59,7 +65,9 @@
 
 两种方式都无需编辑 MCP 配置文件即可使用 Exa。
 
-## 用上网络上此刻的最新信息 {#work-with-whats-on-the-web-right-now}
+<div id="work-with-whats-on-the-web-right-now">
+  ## 用上网络上此刻的最新信息
+</div>
 
 在 Claude Code 中，Exa 可以在你操作代码仓库的同时，搜索最新的文档、issues、变更日志和真实场景示例。同一个 integration 还能为 Claude Web、Desktop 和 Cowork 带来最新的新闻、研究、公司信息、产品详情，以及其他尚未进入上下文的 sources。
 
@@ -77,7 +85,9 @@ Claude Code 可以利用检索到的内容修改你的代码库。在其他 Clau
 * “阅读当前的 Stripe webhook 文档，并说明推荐的重试行为。”
 * “查找这些产品的官方定价页面，并比较它们的入门级 plan。”
 
-## 搜索、阅读与研究 {#search-read-and-research}
+<div id="search-read-and-research">
+  ## 搜索、阅读与研究
+</div>
 
 Exa integration 为 Claude 提供了搜索和阅读网页的 tools，Claude 可以在较长的研究任务中组合使用这些能力。
 
@@ -95,7 +105,9 @@ Exa integration 为 Claude 提供了搜索和阅读网页的 tools，Claude 可�
   </Card>
 </Columns>
 
-## 无需离开 Claude 即可完成研究 {#research-without-leaving-claude}
+<div id="research-without-leaving-claude">
+  ## 无需离开 Claude 即可完成研究
+</div>
 
 直接说出你想要的结果，并告诉 Claude 你看重哪些类型的信息源：
 
@@ -106,7 +118,9 @@ Exa integration 为 Claude 提供了搜索和阅读网页的 tools，Claude 可�
 
 Claude 可以在整个对话过程中调用 Exa，查找并阅读完成任务所需的信息来源。适用于技术研究、竞品分析、市场版图梳理、公司调研，以及任何答案散落在网络各处的问题。
 
-## 在 Cowork 中使用 Exa {#use-exa-in-cowork}
+<div id="use-exa-in-cowork">
+  ## 在 Cowork 中使用 Exa
+</div>
 
 同一个连接器在 Cowork 中同样可用。给 Claude 分配一项依赖外部信息的任务，它就能一边处理你的文件和其他已连接的 tools，一边搜索或读取网页。
 
@@ -115,7 +129,9 @@ Claude 可以在整个对话过程中调用 Exa，查找并阅读完成任务所
 并在文档中补充引用来源。
 ```
 
-## 更想直接用 MCP？ {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## 更想直接用 MCP？
+</div>
 
 如果你想手动配置 Claude，或使用其他 MCP 客户端，可以直接连接到 Exa 托管的 MCP server：
 

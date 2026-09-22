@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Jinko {#jinko}
+<div id="jinko">
+  # Jinko
+</div>
 
 > Recherche de vols et d&#39;hôtels avec tarification en temps réel.
 
@@ -16,13 +20,17 @@ Attachez `jinko` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Jinko en parallèle d&#39;Exa web search.
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * Rechercher des offres de vol en temps réel avec les tarifs, les bagages et les conditions de modification pour un itinéraire et une date.
 * Trouver des hôtels proposant des tarifs de chambre en temps réel pour une destination, ou réinterroger des hôtels précis.
 * Découvrir des destinations et des dates flexibles selon des plages de dates, des classes de cabine et des budgets.
 
-## ID du fournisseur {#provider-id}
+<div id="provider-id">
+  ## ID du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -30,7 +38,9 @@ Utilisez cette valeur dans `dataSources` :
 jinko
 ```
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Trouvez des destinations balnéaires accessibles depuis New York pour moins de $400 l&#39;aller-retour en mars.
 
@@ -124,12 +134,16 @@ Trouvez des destinations balnéaires accessibles depuis New York pour moins de $
   ```
 </CodeGroup>
 
-## À combiner avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## À combiner avec
+</div>
 
 * [Similarweb](/fr/docs/agent/connect/similarweb) : analysez les sites de voyage et les plateformes de réservation associés à une destination.
 * [Particle](/fr/docs/agent/connect/particle) : récupérez les articles récents et les commentaires de voyageurs sur un lieu.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

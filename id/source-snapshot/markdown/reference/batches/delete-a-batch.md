@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Menghapus batch {#delete-a-batch}
+<div id="delete-a-batch">
+  # Menghapus batch
+</div>
 
 > Hapus batch yang berada dalam status terminal.
 
@@ -13,7 +17,9 @@ Menghapus batch akan menghilangkannya dari riwayat batch team Anda. Hanya batch 
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /batches/{id}
 openapi: 3.1.0

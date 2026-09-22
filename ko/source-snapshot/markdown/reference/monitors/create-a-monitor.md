@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# monitor 생성 {#create-a-monitor}
+<div id="create-a-monitor">
+  # monitor 생성
+</div>
 
 > 일정에 따라 Exa search를 반복 실행하는 새 Monitor를 생성합니다.
 
@@ -15,7 +19,9 @@ monitor는 설정한 검색 질의를 반복 일정에 따라 자동으로 실�
 
 response에는 생성 시점에 단 한 번만 반환되는 `webhookSecret`이 포함됩니다. 웹훅 서명 검증에 사용되므로 안전하게 보관하세요.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

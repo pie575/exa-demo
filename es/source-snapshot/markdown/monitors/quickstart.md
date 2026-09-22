@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Monitors API {#monitors-api}
+<div id="monitors-api">
+  # Monitors API
+</div>
 
 > Ejecuta búsquedas recurrentes y recibe los nuevos resultados descubiertos mediante un webhook.
 
@@ -11,7 +15,9 @@ Los monitors ejecutan búsquedas de Exa de forma recurrente según una programac
 
 Usa Monitors para hacer seguimiento de noticias, anuncios de competidores, rondas de financiación, cambios regulatorios, publicaciones de investigación o cualquier otro tema que cambie con el tiempo.
 
-## Cómo funcionan los Monitors {#how-monitors-work}
+<div id="how-monitors-work">
+  ## Cómo funcionan los Monitors
+</div>
 
 En cada run, Exa ejecuta la búsqueda configurada, filtra por fecha, descarta los resultados o hallazgos que el
 monitor ya devolvió y envía el nuevo output a tu webhook.
@@ -19,7 +25,9 @@ monitor ya devolvió y envía el nuevo output a tu webhook.
 Cada monitor mantiene su propio historial de runs, así que formula la consulta en torno a la señal continua que quieres
 seguir, en lugar de añadir tú mismo un rango de fechas móvil.
 
-## Crea tu primer monitor {#create-your-first-monitor}
+<div id="create-your-first-monitor">
+  ## Crea tu primer monitor
+</div>
 
 Crea un monitor con una consulta de búsqueda, un intervalo y el endpoint HTTPS que recibirá
 las actualizaciones:
@@ -124,7 +132,9 @@ las actualizaciones:
 Guarda el `webhookSecret` al crear el monitor. Solo se devuelve una vez y es necesario para
 verificar las firmas de los webhook.
 
-## Configura el output {#configure-the-output}
+<div id="configure-the-output">
+  ## Configura el output
+</div>
 
 Cada run completado devuelve las páginas recién descubiertas en `output.results`.
 
@@ -166,7 +176,9 @@ consistentes:
 Mantén las citas y la confianza fuera del esquema. Se devuelven por separado en
 `output.grounding`.
 
-## Añadir contenido de página {#add-page-content}
+<div id="add-page-content">
+  ## Añadir contenido de página
+</div>
 
 `search` acepta las mismas opciones que [Exa Search](/es/docs/search/quickstart): usa `contents` para incluir
 highlights, texto completo o resúmenes en cada resultado, y `includeDomains` o `excludeDomains` para
@@ -240,7 +252,9 @@ limitar las fuentes.
   ```
 </CodeGroup>
 
-## Prueba tu monitor {#test-your-monitor}
+<div id="test-your-monitor">
+  ## Prueba tu monitor
+</div>
 
 Lanza un run de inmediato en lugar de esperar a la próxima ejecución programada y luego lista sus runs:
 
@@ -282,7 +296,9 @@ Los estados de un run son:
 
 `output` es null hasta que el run se completa.
 
-## Programar runs {#schedule-runs}
+<div id="schedule-runs">
+  ## Programar runs
+</div>
 
 El intervalo mínimo es de una hora. Usa una única duración como `1h`, `6h`, `1d` o `7d`. La programación se ancla a la hora de creación del monitor — un monitor diario creado a las 2:30 PM se ejecuta cada día alrededor de las 2:30 PM — pero cada run puede retrasarse hasta 30 minutos, así que no dependas de una hora de entrega exacta.
 
@@ -292,7 +308,9 @@ Omite `trigger` para crear un monitor de ejecución solo manual. Pausar un monit
   Los runs de un monitor no se superponen. Si el siguiente run programado comienza mientras el anterior aún está en ejecución, Exa cancela el run anterior.
 </Note>
 
-## Recibir actualizaciones por webhook {#receive-webhook-updates}
+<div id="receive-webhook-updates">
+  ## Recibir actualizaciones por webhook
+</div>
 
 Suscríbete a `monitor.run.completed` cuando solo necesites los runs finalizados. Si omites `events`, Exa
 envía también eventos del ciclo de vida del monitor y eventos de creación de runs.
@@ -389,7 +407,9 @@ Construye `<timestamp>.<raw-request-body>`, calcula su resumen HMAC-SHA256 con e
   ```
 </CodeGroup>
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Crear un monitor" icon="bell" href="/es/docs/reference/monitors/create-a-monitor" cta="Abrir referencia" arrow="true">

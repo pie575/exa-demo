@@ -7,7 +7,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 
 本指南假设你已经有一个可用的 [Search API 请求](/zh/docs/search/quickstart)，并介绍如何按照 Exa 推荐的最佳实践进一步优化该请求。
 
-## 从最小可用请求开始 {#start-with-the-smallest-useful-request}
+<div id="start-with-the-smallest-useful-request">
+  ## 从最小可用请求开始
+</div>
 
 最好的基线做法是使用自然语言 query 并设置 `highlights: true`。Exa 会按每条结果的相关性自动决定摘录长度，因此无需调节字符预算：
 
@@ -50,7 +52,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 | `highlights.maxCharacters` | 你的应用需要为每个页面设定固定的摘录上限           |
 | 域名或日期过滤条件                  | 约束范围之外的结果将无法使用                 |
 
-## Search 与深度搜索对比 {#search-vs-deep-search}
+<div id="search-vs-deep-search">
+  ## Search 与深度搜索对比
+</div>
 
 标准 search 会针对 query 检索并排序页面。深度搜索则会运行一套研究流程：迭代式地 search、检查已找到的内容、优化 search，并综合出有据可依的结果。
 
@@ -62,7 +66,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 
 使用 `outputSchema` 时，默认推荐采用 deep 模式。完整说明与示例请参阅[深度搜索指南](/zh/docs/search/deep-search)。
 
-## 提升 retrieval 质量 {#improve-retrieval-quality}
+<div id="improve-retrieval-quality">
+  ## 提升 retrieval 质量
+</div>
 
 当结果不理想时，每次只调整请求中的一个部分。
 
@@ -107,7 +113,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 
 调优时保留一小组有代表性的 query，在整组上比较 result 的相关性和下游任务的成功率，而不是只针对单个示例做优化。记录 `requestId`、`searchTime` 和 `costDollars`，让回归问题可复现。
 
-## 规划延迟与上下文预算 {#budget-latency-and-context}
+<div id="budget-latency-and-context">
+  ## 规划延迟与上下文预算
+</div>
 
 每个控制项消耗的资源各不相同：
 
@@ -163,7 +171,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 
 如果希望由 Exa 在整个结果集上统一分配上下文预算，即从优质来源提取更多内容、从冗余来源提取更少内容，请参阅 [Dynamic Highlights 研究预览](/zh/docs/search/highlights#dynamic-highlights)。
 
-## 常见用例小贴士 {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## 常见用例小贴士
+</div>
 
 | 如果你需要             | 使用                                                             | 避免                         |
 | ----------------- | -------------------------------------------------------------- | -------------------------- |
@@ -176,7 +186,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 | 从少量页面获取更多上下文      | 先用 highlights 进行 search，再调用 Contents                           | 为每条 result 获取 full text    |
 | 更低的延迟             | 用紧凑的 content 测试 `fast` 或 `instant`                             | 默认加上新鲜度或综合相关的控制项           |
 
-## 何时使用其他端点 {#when-to-use-another-endpoint}
+<div id="when-to-use-another-endpoint">
+  ## 何时使用其他端点
+</div>
 
 当任务性质发生变化时，请改用其他 Exa 端点：
 
@@ -186,7 +198,9 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "结�
 | URL 已知                 | [Contents](/zh/docs/contents/quickstart) |
 | 按 schedule 定期执行 search | [Monitors](/zh/docs/monitors/quickstart) |
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="Search API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考" arrow="true">

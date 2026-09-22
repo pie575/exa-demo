@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# ElevenLabs {#elevenlabs}
+<div id="elevenlabs">
+  # ElevenLabs
+</div>
 
 > Ajoutez Exa web search aux agents vocaux ElevenLabs.
 
@@ -20,7 +24,9 @@ Il existe deux façons de connecter Exa à ElevenLabs :
 
 Ce guide couvre l&#39;approche par outil webhook, qui vous laisse un contrôle total sur la manière dont Exa est appelé. Vous pouvez également configurer l&#39;integration depuis le [tableau de bord ElevenLabs](https://elevenlabs.io/app/conversational-ai).
 
-## Fonctionnement {#how-it-works}
+<div id="how-it-works">
+  ## Fonctionnement
+</div>
 
 1. L&#39;utilisateur parle à l&#39;agent vocal
 2. Le LLM décide d&#39;appeler `web_search` en fonction de la description de l&#39;outil
@@ -30,7 +36,9 @@ Ce guide couvre l&#39;approche par outil webhook, qui vous laisse un contrôle t
 
 Pas de serveur, pas d&#39;URL de callback, pas de listener. ElevenLabs est le client HTTP qui appelle Exa directement. Les appels d&#39;outil ont un délai d&#39;expiration de 20 secondes.
 
-## Prérequis {#prerequisites}
+<div id="prerequisites">
+  ## Prérequis
+</div>
 
 * Une [API key Exa](https://dashboard.exa.ai/api-keys)
 * Une [API key ElevenLabs](https://elevenlabs.io/app/settings/api-keys)
@@ -39,7 +47,9 @@ Pas de serveur, pas d&#39;URL de callback, pas de listener. ElevenLabs est le cl
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 <Steps>
   <Step title="Créer l'outil webhook">
@@ -148,7 +158,9 @@ Pas de serveur, pas d&#39;URL de callback, pas de listener. ElevenLabs est le cl
   </Step>
 </Steps>
 
-## Exemple complet en Python {#full-python-example}
+<div id="full-python-example">
+  ## Exemple complet en Python
+</div>
 
 Ce script crée à la fois l&#39;outil webhook et l&#39;agent en une seule exécution :
 
@@ -242,11 +254,15 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-## Personnaliser les paramètres de recherche {#customizing-search-parameters}
+<div id="customizing-search-parameters">
+  ## Personnaliser les paramètres de recherche
+</div>
 
 Le schéma du corps de l&#39;outil webhook correspond directement à [la Search API d&#39;Exa](/fr/docs/reference/search). Voici les configurations les plus courantes :
 
-### Type de recherche {#search-type}
+<div id="search-type">
+  ### Type de recherche
+</div>
 
 Contrôlez le compromis vitesse/qualité avec la constante `type` :
 
@@ -257,7 +273,9 @@ Contrôlez le compromis vitesse/qualité avec la constante `type` :
 
 Pour les agents vocaux, commencez par `instant`. Utilisez `auto` si vous préférez laisser Exa choisir le mode de recherche le plus adapté à chaque requête.
 
-### Options de contenu {#content-options}
+<div id="content-options">
+  ### Options de contenu
+</div>
 
 Choisissez la manière dont les résultats sont renvoyés via l&#39;objet `contents` :
 
@@ -281,7 +299,9 @@ Choisissez la manière dont les résultats sont renvoyés via l&#39;objet `conte
 
 Pour les agents vocaux, `highlights: true` est la valeur par défaut recommandée : elle offre un bon équilibre entre relevance et rapidité de réponse.
 
-### Filtrage des résultats {#filtering-results}
+<div id="filtering-results">
+  ### Filtrage des résultats
+</div>
 
 Ajoutez des filtres de domaine ou de date sous forme de constantes :
 
@@ -303,11 +323,15 @@ Ajoutez des filtres de domaine ou de date sous forme de constantes :
 }
 ```
 
-### Nombre de résultats {#number-of-results}
+<div id="number-of-results">
+  ### Nombre de résultats
+</div>
 
 Ajustez `numResults` selon votre cas d&#39;usage. Pour la voix, 3 à 5 résultats suffisent à garder des réponses rapides. Pour les agents orientés recherche, 10 résultats ou plus offrent une couverture plus large.
 
-## Référence du schéma {#schema-reference}
+<div id="schema-reference">
+  ## Référence du schéma
+</div>
 
 Les outils webhook d&#39;ElevenLabs utilisent un schéma JSON avec ces types de propriétés :
 
@@ -325,7 +349,9 @@ Les paramètres définis sur **Fixed** (marqués par `constant_value` dans l&#39
 
 Pour le schéma complet des outils webhook ElevenLabs, consultez la [documentation des outils serveur ElevenLabs](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
 
-## Built-in Exa integration (alpha) {#built-in-exa-integration-alpha}
+<div id="built-in-exa-integration-alpha">
+  ## Built-in Exa integration (alpha)
+</div>
 
 ElevenLabs propose également une integration Exa native, disponible dans le tableau de bord de l&#39;agent sous **Tools &gt; Integrations**. Sa mise en place est plus simple, mais la personnalisation des paramètres de recherche y est plus délicate qu&#39;avec l&#39;approche par outil webhook.
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# Exa MCP {#exa-mcp}
+<div id="exa-mcp">
+  # Exa MCP
+</div>
 
 > 将 ChatGPT、Codex、Claude、Grok、Cursor 以及任何其他 MCP 客户端连接到 Exa 的网页搜索、页面抓取、Exa Agent 和 Exa Connect tools。
 
@@ -17,7 +21,9 @@ https://mcp.exa.ai/mcp
 
 无需 API 密钥即可开始使用。Exa MCP 是开源项目，代码托管在 [GitHub](https://github.com/exa-labs/exa-mcp-server) 上。
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -48,7 +54,9 @@ https://mcp.exa.ai/mcp
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-### Claude Code CLI {#claude-code-cli}
+      <div id="claude-code-cli">
+        ### Claude Code CLI
+      </div>
 
       <Steps>
         <Step title="安装插件">
@@ -66,7 +74,9 @@ https://mcp.exa.ai/mcp
         </Step>
       </Steps>
 
-### Desktop、Web 与 Cowork {#desktop-web-cowork}
+      <div id="desktop-web-cowork">
+        ### Desktop、Web 与 Cowork
+      </div>
 
       Claude Desktop、Web 和 Cowork 均使用 Exa 的官方连接器。
 
@@ -201,7 +211,9 @@ https://mcp.exa.ai/mcp
   </Tabs>
 </div>
 
-## 身份验证 {#authentication}
+<div id="authentication">
+  ## 身份验证
+</div>
 
 Exa MCP 支持三种身份验证模式：
 
@@ -211,7 +223,9 @@ Exa MCP 支持三种身份验证模式：
 | OAuth  | 交互式客户端、插件市场安装、production 用量 | 连接到 `https://mcp.exa.ai/mcp?login`，在浏览器中登录 Exa。用量计入你的 Exa 团队。   |
 | API 密钥 | 不支持 MCP OAuth 的客户端          | 连接到 `https://mcp.exa.ai/mcp`，并将 `x-api-key` header 设置为你的 API 密钥 |
 
-### 使用 OAuth 登录 {#sign-in-with-oauth}
+<div id="sign-in-with-oauth">
+  ### 使用 OAuth 登录
+</div>
 
 ChatGPT、Claude 以及其他通过插件市场安装的方式，会在需要时提示你登录。在任何支持 MCP OAuth 的客户端中，你都可以通过连接以下地址来发起相同的流程：
 
@@ -221,7 +235,9 @@ https://mcp.exa.ai/mcp?login
 
 你的客户端会自动发现 Exa 的授权 server，打开浏览器进行登录，并管理访问权限。
 
-### 使用 API 密钥 {#use-an-api-key}
+<div id="use-an-api-key">
+  ### 使用 API 密钥
+</div>
 
 <Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   在控制台中创建密钥。新账户可获得免费积分。
@@ -233,7 +249,9 @@ https://mcp.exa.ai/mcp?login
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-## 可用tools {#available-tools}
+<div id="available-tools">
+  ## 可用tools
+</div>
 
 | 工具                        | 可用性                  | 用途                    |
 | ------------------------- | -------------------- | --------------------- |
@@ -252,7 +270,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   显式指定 `tools` 列表会覆盖默认配置，因此请列出所有需要启用的工具，包括网页搜索和抓取。
 </Tip>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 如果研究任务需要多次 search，请使用 [Exa Agent](/zh/docs/agent/quickstart)，例如构建列表、按 criteria 逐项核查，或返回结构化结果。
 
@@ -305,7 +325,9 @@ https://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run
 
 关于 output schema 模式、effort 模式、数据源和定价，请参阅 [Exa Agent 指南](/zh/docs/agent/quickstart)。
 
-## Advanced search {#advanced-search}
+<div id="advanced-search">
+  ## Advanced search
+</div>
 
 当请求需要显式的类别或域名过滤、日期范围、文本约束、地理定位、query 扩展、摘要、highlights、新鲜度控制或子页面抓取时，请使用 `web_search_advanced_exa`。普通的 search 仍建议使用 `web_search_exa`，它暴露给模型的工具面更小，所需配置也更少。
 
@@ -317,7 +339,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
 
 MCP 工具把常用的 [Search API](/zh/docs/reference/search) 控制项暴露为便于工具调用的 field，例如 `includeDomains`、`startPublishedDate`、`enableHighlights` 和 `maxAgeHours`。具体的 field 名称请在你的客户端中查看 tool schema。
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="速率限制错误 (429)">
@@ -355,7 +379,9 @@ MCP 工具把常用的 [Search API](/zh/docs/reference/search) 控制项暴露�
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 <Columns cols={2}>
   <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="查看源文件" arrow="true">

@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exa dans Claude Code, Web et Desktop {#exa-in-claude-code-web-and-desktop}
+<div id="exa-in-claude-code-web-and-desktop">
+  # Exa dans Claude Code, Web et Desktop
+</div>
 
 > Recherchez sur le web et consultez n&#39;importe quelle page avec Exa, directement depuis Claude
 
 Installez Exa dans Claude Code ou connectez-le à Claude Web, Desktop et Cowork pour donner à Claude accès aux informations les plus récentes du web. Claude peut effectuer des recherches en langage naturel, lire les pages pertinentes et s&#39;appuyer sur ces sources pendant qu&#39;il travaille.
 
-## Installer Exa {#install-exa}
+<div id="install-exa">
+  ## Installer Exa
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -59,7 +65,9 @@ Installez Exa dans Claude Code ou connectez-le à Claude Web, Desktop et Cowork 
 
 Ces deux options rendent Exa disponible sans avoir à modifier de fichier de configuration MCP.
 
-## Travaillez avec ce qui est disponible sur le web en temps réel {#work-with-whats-on-the-web-right-now}
+<div id="work-with-whats-on-the-web-right-now">
+  ## Travaillez avec ce qui est disponible sur le web en temps réel
+</div>
 
 Dans Claude Code, Exa peut rechercher la documentation à jour, les issues, les changelogs et des exemples concrets pendant que vous travaillez dans votre repository. La même integration donne à Claude Web, Desktop et Cowork accès à l&#39;actualité, à des recherches, à des informations sur les entreprises, à des détails produits et à d&#39;autres sources qui ne figurent pas nécessairement déjà dans le context.
 
@@ -77,7 +85,9 @@ Le même principe s&#39;applique dès que la réponse dépend de sources web ré
 * « Lis la documentation actuelle des webhooks Stripe et explique le comportement de réessai recommandé. »
 * « Trouve les pages de tarification officielles de ces produits et compare leurs offres d&#39;entrée de gamme. »
 
-## Rechercher, lire et mener des recherches {#search-read-and-research}
+<div id="search-read-and-research">
+  ## Rechercher, lire et mener des recherches
+</div>
 
 L&#39;integration Exa met à la disposition de Claude des tools pour rechercher et lire le web, qu&#39;il peut combiner au fil d&#39;une tâche de recherche plus longue.
 
@@ -95,7 +105,9 @@ L&#39;integration Exa met à la disposition de Claude des tools pour rechercher 
   </Card>
 </Columns>
 
-## Faire des recherches sans quitter Claude {#research-without-leaving-claude}
+<div id="research-without-leaving-claude">
+  ## Faire des recherches sans quitter Claude
+</div>
 
 Demandez le résultat souhaité et précisez à Claude quels types de sources comptent :
 
@@ -106,7 +118,9 @@ bases de données vectorielles open source. Appuie-toi sur des sources primaires
 
 Claude peut utiliser Exa tout au long de la conversation pour trouver et lire les sources nécessaires à la tâche. Utilisez-le pour la recherche technique, l&#39;analyse concurrentielle, la cartographie de marché, la recherche sur des entreprises ou toute question dont la réponse se trouve dispersée sur le web.
 
-## Utiliser Exa dans Cowork {#use-exa-in-cowork}
+<div id="use-exa-in-cowork">
+  ## Utiliser Exa dans Cowork
+</div>
 
 Le même connecteur est disponible dans Cowork. Confiez à Claude une tâche qui dépend d&#39;informations externes : il peut effectuer des recherches ou consulter des pages tout en travaillant avec vos fichiers et les autres tools connectés.
 
@@ -116,7 +130,9 @@ avec Exa sur les pages actuelles des vendors, puis mets à jour le document
 avec les citations.
 ```
 
-## Vous préférez utiliser MCP directement ? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## Vous préférez utiliser MCP directement ?
+</div>
 
 Si vous configurez Claude manuellement ou utilisez un autre client MCP, vous pouvez vous connecter directement au MCP server hébergé d&#39;Exa :
 

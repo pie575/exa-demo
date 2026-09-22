@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索前，可通过该文件了解所有可用页面。
 
-# Exa Snapshot {#exa-snapshot}
+<div id="exa-snapshot">
+  # Exa Snapshot
+</div>
 
 > 将 Search 和 Contents 锁定到你指定 datetime 的页面存储版本。
 
@@ -16,7 +20,9 @@ Exa Snapshot 会保留 Exa 已抓取页面的存储版本。在请求中传入 `
   超过 100 次请求后，请[联系销售](https://exa.ai/contact/sales)以继续使用。
 </Info>
 
-## 按指定 datetime 搜索 {#search-at-a-datetime}
+<div id="search-at-a-datetime">
+  ## 按指定 datetime 搜索
+</div>
 
 在 `/search` 中，将 `snapshotAsOf` 放在 `contents` 内。
 
@@ -105,7 +111,9 @@ Exa 会先找出候选 URL，再只保留在 `snapshotAsOf` 当时或之前已�
   ```
 </Accordion>
 
-## 将页面内容固定到指定时间点 {#pin-contents-to-a-datetime}
+<div id="pin-contents-to-a-datetime">
+  ## 将页面内容固定到指定时间点
+</div>
 
 在 `/contents` 请求的顶层添加 `snapshotAsOf`。
 
@@ -184,7 +192,9 @@ Exa 会返回该时间点或之前最新的存储版本。
   `"status": "error"` 和 `"tag": "CONTENT_NOT_CACHED"` 报告。
 </Tip>
 
-## snapshot 的工作方式 {#how-snapshots-work}
+<div id="how-snapshots-work">
+  ## snapshot 的工作方式
+</div>
 
 | Field          | 位置 | 含义                                  |
 | -------------- | -- | ----------------------------------- |
@@ -202,7 +212,9 @@ Exa 会返回该时间点或之前最新的存储版本。
   对当时 search 排序结果的精确还原。
 </Note>
 
-## 限制与兼容性 {#limits-and-compatibility}
+<div id="limits-and-compatibility">
+  ## 限制与兼容性
+</div>
 
 <AccordionGroup>
   <Accordion title="访问权限、速率限制与回溯范围">
@@ -224,7 +236,9 @@ Exa 会返回该时间点或之前最新的存储版本。
   </Accordion>
 </AccordionGroup>
 
-## 常见用途 {#common-uses}
+<div id="common-uses">
+  ## 常见用途
+</div>
 
 当任务依赖于 Exa 在某个特定 datetime 所存储的内容时，请使用 Exa Snapshot：
 

@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Memperbarui monitor {#update-a-monitor}
+<div id="update-a-monitor">
+  # Memperbarui monitor
+</div>
 
 > Memperbarui monitor yang sudah ada. Semua field bersifat opsional. Untuk `search`, Anda dapat mengirim objek parsial yang hanya berisi field yang ingin diubah. Setel `trigger` ke `null` untuk menghapus jadwal.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0

@@ -6,7 +6,9 @@ icon: "/docs/images/sidebar-icons/vercel.svg"
 
 使用 `ai` 包中的 `gateway.tools.exaSearch()`，通过 [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) 调用 Exa 网页搜索。你无需 Exa API 密钥，Vercel 会通过 AI Gateway 为这些请求计费。完整参考请查看 Vercel 的[网页搜索文档](https://vercel.com/docs/ai-gateway/models-and-providers/web-search)。
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 安装 AI SDK 5 或更高版本：
 
@@ -14,7 +16,9 @@ icon: "/docs/images/sidebar-icons/vercel.svg"
 npm install ai
 ```
 
-## 身份验证 {#authentication}
+<div id="authentication">
+  ## 身份验证
+</div>
 
 <Info>
   AI Gateway 需要 API 密钥或 OIDC token。在 Vercel 控制台的 **AI Gateway &gt; API Keys** 中创建一个 `AI_GATEWAY_API_KEY`，然后将其添加到你的环境变量中。
@@ -26,7 +30,9 @@ AI_GATEWAY_API_KEY=your-api-key-here
 
 当你在 Vercel 上部署应用时，可以改用自动提供的 `VERCEL_OIDC_TOKEN`。参见 Vercel 的[认证与 BYOK 文档](https://vercel.com/docs/ai-gateway/authentication-and-byok)。
 
-## 快速开始 {#quick-start}
+<div id="quick-start">
+  ## 快速开始
+</div>
 
 你可以在任何受支持的模型上使用 Exa search：
 
@@ -45,7 +51,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-## 流式传输 {#streaming}
+<div id="streaming">
+  ## 流式传输
+</div>
 
 使用 `streamText` 在生成的文本和 search 工具事件到达时实时处理它们：
 
@@ -73,7 +81,9 @@ for await (const part of result.fullStream) {
 
 在 Next.js 路由处理器中，使用 `return result.toUIMessageStreamResponse()` 将流返回给客户端。
 
-## 配置 {#configuration}
+<div id="configuration">
+  ## 配置
+</div>
 
 向 `gateway.tools.exaSearch()` 传入 options 即可调整搜索行为：
 
@@ -111,7 +121,9 @@ tools: {
 
 完整的 parameters 列表及其行为，请参阅 Vercel 的 [Exa web search 参考文档](https://vercel.com/docs/ai-gateway/models-and-providers/web-search)。
 
-## Vercel eve agent {#vercel-eve-agents}
+<div id="vercel-eve-agents">
+  ## Vercel eve agent
+</div>
 
 使用 [eve](https://eve.dev) 构建的 agent 自带 `web_search` 工具，AI Gateway 模型默认通过 Exa 运行该工具，无需任何配置或 Exa API 密钥。若要显式指定提供方，可在 `agent/tools/web_search.ts` 中导出：
 
@@ -123,7 +135,9 @@ export default webSearch({ provider: 'exa' });
 
 通过直接提供方 (而非 AI Gateway) 调用的模型会保留其原生网页搜索功能。完整的工具集请参阅 eve 的 [harness 文档](https://eve.dev/docs/concepts/default-harness#built-in-tools)。
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 <Tip>
   在 AI Gateway 和 eve 上，Exa 网页搜索 **在 8 月 31 日前免费**，你现在就可以零成本用它来构建应用。

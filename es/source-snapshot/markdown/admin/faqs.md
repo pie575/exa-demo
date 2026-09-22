@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Preguntas frecuentes {#faqs}
+<div id="faqs">
+  # Preguntas frecuentes
+</div>
 
 > Respuestas a las preguntas más habituales sobre los productos de Exa, el índice de búsqueda, la frescura, el grounding, la seguridad y los precios.
 

@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Payer avec MPP (Tempo) {#pay-with-mpp-tempo}
+<div id="pay-with-mpp-tempo">
+  # Payer avec MPP (Tempo)
+</div>
 
 > Appelez les API Search et Contents d&#39;Exa sans API key, en payant à la requête en USDC.e sur Tempo.
 
-## Qu&#39;est-ce que MPP ? {#what-is-mpp}
+<div id="what-is-mpp">
+  ## Qu&#39;est-ce que MPP ?
+</div>
 
 MPP (Machine Payments Protocol) est un standard de paiement ouvert et natif HTTP, fondé sur le code de statut `402 Payment Required`. Il permet aux clients de payer l&#39;accès à une API à la requête via plusieurs moyens de paiement, dont les stablecoins sur [Tempo](https://tempo.xyz), sans compte, API key ni abonnement. Les exemples de cette page utilisent Tempo ; Exa règle actuellement les paiements MPP en USDC.e sur le mainnet Tempo.
 
@@ -19,7 +25,9 @@ C&#39;est idéal pour les **agents IA** qui doivent payer de façon autonome une
   MPP et l&#39;accès par API key sont indépendants. Si votre requête inclut un header `x-api-key`, c&#39;est le flux de facturation par API key habituel qui s&#39;applique et MPP est entièrement contourné.
 </Info>
 
-## Endpoints pris en charge {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoints pris en charge
+</div>
 
 | Endpoint    | Méthode | Description                                                                                                 |
 | ----------- | ------- | ----------------------------------------------------------------------------------------------------------- |
@@ -28,7 +36,9 @@ C&#39;est idéal pour les **agents IA** qui doivent payer de façon autonome une
 
 Les autres endpoints Exa n&#39;acceptent *pas encore* les paiements MPP.
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 Vous avez besoin d&#39;un wallet compatible Tempo approvisionné en USDC.e. Exportez la private key de votre wallet avant d&#39;exécuter un exemple :
 
@@ -36,7 +46,9 @@ Vous avez besoin d&#39;un wallet compatible Tempo approvisionné en USDC.e. Expo
 export WALLET_PRIVATE_KEY="0x..."
 ```
 
-### Installer le client {#install-the-client}
+<div id="install-the-client">
+  ### Installer le client
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -48,7 +60,9 @@ export WALLET_PRIVATE_KEY="0x..."
   ```
 </CodeGroup>
 
-### Effectuer une requête de recherche payante {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Effectuer une requête de recherche payante
+</div>
 
 Utilisez le client MPP pour signer et soumettre un paiement pour une requête de recherche :
 
@@ -110,11 +124,15 @@ Utilisez le client MPP pour signer et soumettre un paiement pour une requête de
 
 Une exécution réussie affiche les résultats de la recherche ainsi que le header `Payment-Receipt` contenant le hash de la transaction on-chain.
 
-## Payer depuis la ligne de commande {#pay-from-the-command-line}
+<div id="pay-from-the-command-line">
+  ## Payer depuis la ligne de commande
+</div>
 
 Si vous préférez ne pas manipuler directement une private key, utilisez plutôt la CLI Tempo Wallet. `tempo wallet login` crée ou connecte un wallet Tempo, autorise une clé d&#39;accès locale et peut inclure des MPP Credits gratuits pour les nouvelles inscriptions.
 
-### Installer et s&#39;authentifier {#install-and-authenticate}
+<div id="install-and-authenticate">
+  ### Installer et s&#39;authentifier
+</div>
 
 ```bash theme={null}
 curl -fsSL https://tempo.xyz/install | bash
@@ -125,14 +143,18 @@ tempo wallet login
 
 Sur un hôte distant dépourvu de navigateur local, utilisez `tempo wallet login --no-browser` et ouvrez l&#39;URL affichée sur votre appareil pour autoriser la CLI.
 
-### Vérifier les soldes et les crédits {#check-balances-and-credits}
+<div id="check-balances-and-credits">
+  ### Vérifier les soldes et les crédits
+</div>
 
 ```bash theme={null}
 tempo wallet whoami
 tempo wallet whoami --credits
 ```
 
-### Effectuer une requête payante {#make-a-paid-request}
+<div id="make-a-paid-request">
+  ### Effectuer une requête payante
+</div>
 
 ```bash theme={null}
 tempo request --max-spend 1.00 https://api.exa.ai/search \
@@ -143,15 +165,21 @@ tempo request --max-spend 1.00 https://api.exa.ai/search \
 
 Pour la référence complète de la CLI, consultez la [documentation de la CLI Tempo Wallet](https://tempo.xyz/developers/docs/cli/wallet) et la [documentation de `tempo request`](https://tempo.xyz/developers/docs/cli/request).
 
-## Frais de gas {#gas-fees}
+<div id="gas-fees">
+  ## Frais de gas
+</div>
 
 Exa prend en charge les frais du réseau Tempo et les règle en USDC.e. Votre wallet doit uniquement disposer d&#39;assez d&#39;USDC.e pour couvrir les frais d&#39;API ; il n&#39;a besoin ni de pathUSD ni du solde d&#39;un autre jeton de gas. Vous n&#39;avez aucun payeur de frais à configurer : le payment challenge d&#39;Exa et le SDK MPP gèrent automatiquement la prise en charge.
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 MPP utilise la même tarification groupée que la facturation par API key. Exa calcule le prix à partir des paramètres de la requête avant de la traiter.
 
-### Search {#search}
+<div id="search">
+  ### Search
+</div>
 
 | Type de recherche         | Prix pour 10 résultats maximum |
 | ------------------------- | ------------------------------ |
@@ -165,7 +193,9 @@ L&#39;ajout de `contents.summary` coûte **$0,001 de plus par résultat**.
   Les requêtes de recherche MPP sont limitées à 10 résultats. Si `numResults` est supérieur à 10, Exa en retient 10 et facture la requête pour 10 résultats. S&#39;il vous en faut davantage, utilisez la [facturation par API key](/fr/docs/search/quickstart).
 </Warning>
 
-### Contents {#contents}
+<div id="contents">
+  ### Contents
+</div>
 
 Chaque type de contenu demandé coûte 0,001 $ par URL :
 
@@ -177,7 +207,9 @@ Chaque type de contenu demandé coûte 0,001 $ par URL :
 
 Si vous ne demandez ni `text`, ni `highlights`, ni `summary`, Exa active `text` par défaut.
 
-### Exemples de tarification {#pricing-examples}
+<div id="pricing-examples">
+  ### Exemples de tarification
+</div>
 
 | Requête                                          | Prix   |
 | ------------------------------------------------ | ------ |
@@ -187,7 +219,9 @@ Si vous ne demandez ni `text`, ni `highlights`, ni `summary`, Exa active `text` 
 | `/contents` pour 2 URL avec `text: true`         | $0.002 |
 | `/contents` pour 1 URL avec `text` et `summary`  | $0.002 |
 
-## Fonctionnement du payment flow {#how-the-payment-flow-works}
+<div id="how-the-payment-flow-works">
+  ## Fonctionnement du payment flow
+</div>
 
 Le SDK automatise ce flow, mais vous pouvez l&#39;inspecter directement en HTTP :
 
@@ -195,7 +229,9 @@ Le SDK automatise ce flow, mais vous pouvez l&#39;inspecter directement en HTTP 
 2. Signez le challenge, puis relancez la requête avec `Authorization: Payment <credential>`.
 3. Exa traite la requête pendant le settlement du paiement. Une fois le settlement confirmé, Exa renvoie les résultats avec un header `Payment-Receipt`. Si le settlement échoue, Exa renvoie `402` avec un nouveau challenge et aucun résultat.
 
-### Inspecter un payment challenge {#inspect-a-payment-challenge}
+<div id="inspect-a-payment-challenge">
+  ### Inspecter un payment challenge
+</div>
 
 Vous pouvez consulter le prix et les détails de paiement sans wallet :
 
@@ -207,7 +243,9 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
 
 Recherchez le header `WWW-Authenticate: Payment` dans la réponse `402`. Les discovery requests non payées sont soumises à une limite de débit : réservez-les au débogage plutôt qu&#39;au polling.
 
-## Référence des paiements {#payment-reference}
+<div id="payment-reference">
+  ## Référence des paiements
+</div>
 
 Exa accepte les paiements MPP en USDC.e sur le mainnet Tempo.
 
@@ -221,7 +259,9 @@ USDC.e comporte 6 décimales. Le challenge exprime les prix en unités atomiques
   Exa prend en charge MPP et [x402](/fr/docs/integrations/payments/x402/quickstart) sur les mêmes endpoints. Une réponse `402` non authentifiée peut contenir à la fois le challenge MPP `WWW-Authenticate: Payment` et le header x402 `PAYMENT-REQUIRED`. Utilisez les headers correspondant au protocole de paiement pris en charge par votre client.
 </Note>
 
-### Headers {#headers}
+<div id="headers">
+  ### Headers
+</div>
 
 | Header                                | Direction       | Description                                                     |
 | ------------------------------------- | --------------- | --------------------------------------------------------------- |
@@ -229,7 +269,9 @@ USDC.e comporte 6 décimales. Le challenge exprime les prix en unités atomiques
 | `WWW-Authenticate: Payment`           | Réponse `402`   | Prix et instructions de paiement pour la requête                |
 | `Payment-Receipt`                     | Réponse réussie | Settlement receipt, incluant le hash de la transaction on-chain |
 
-### Erreurs {#errors}
+<div id="errors">
+  ### Erreurs
+</div>
 
 | Statut | Description                                                                               |
 | ------ | ----------------------------------------------------------------------------------------- |
@@ -238,7 +280,9 @@ USDC.e comporte 6 décimales. Le challenge exprime les prix en unités atomiques
 | `429`  | Cette IP a envoyé trop de discovery requests non payées                                   |
 | `429`  | Ce wallet a dépassé la limite de débit des requêtes payées                                |
 
-### Limites de débit {#rate-limits}
+<div id="rate-limits">
+  ### Limites de débit
+</div>
 
 Les limites de débit MPP sont partagées avec x402 et sont distinctes des limites liées aux API keys :
 
@@ -247,7 +291,9 @@ Les limites de débit MPP sont partagées avec x402 et sont distinctes des limit
 | Discovery requests non payées par IP | 5 requêtes  | 60 secondes |
 | Requêtes payées par wallet           | 10 requêtes | 1 seconde   |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Puis-je utiliser MPP et une API key en même temps ?">
@@ -263,7 +309,9 @@ Les limites de débit MPP sont partagées avec x402 et sont distinctes des limit
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 * [Documentation du protocole MPP](https://mpp.dev/protocol) : détails du protocole et format d&#39;authentification
 * [Documentation mppx](https://mpp.dev/sdk/typescript) : référence du SDK TypeScript MPP

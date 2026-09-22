@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 실행 취소 {#cancel-a-run}
+<div id="cancel-a-run">
+  # 실행 취소
+</div>
 
 > 대기 중이거나 진행 중인 Agent 실행을 취소합니다.
 
@@ -13,7 +17,9 @@
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0

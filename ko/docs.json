@@ -8,7 +8,7 @@
         "ko/docs",
         {
           "boost": 3,
-          "group": "시작하기",
+          "group": "Get Started",
           "pages": [
             "ko/docs/get-started/quickstart",
             "ko/docs/get-started/exa-mcp",
@@ -34,7 +34,7 @@
             "ko/docs/search/snapshot",
             "ko/docs/search/best-practices",
             {
-              "group": "데이터",
+              "group": "Data",
               "pages": [
                 "ko/docs/search/data/overview",
                 "ko/docs/search/data/news",
@@ -63,7 +63,7 @@
                 "ko/docs/agent/connect/overview",
                 {
                   "boost": 2,
-                  "group": "셀프 서비스 제공업체",
+                  "group": "Self-Serve Providers",
                   "pages": [
                     "ko/docs/agent/connect/fiber",
                     "ko/docs/agent/connect/similarweb",
@@ -83,7 +83,7 @@
         },
         {
           "boost": 3,
-          "group": "기타 API",
+          "group": "Other APIs",
           "pages": [
             "ko/docs/contents/quickstart",
             "ko/docs/monitors/quickstart",
@@ -92,20 +92,20 @@
         },
         {
           "boost": 2,
-          "group": "SDK",
+          "group": "SDKs",
           "pages": [
             "ko/docs/sdks/quickstart"
           ]
         },
         {
           "boost": 2,
-          "group": "연동",
+          "group": "Integrations",
           "pages": [
             "ko/docs/integrations/chatgpt-codex",
             "ko/docs/integrations/claude-web-desktop",
             "ko/docs/integrations/openai-sdk",
             {
-              "group": "도구 호출",
+              "group": "Tool Calling",
               "pages": [
                 "ko/docs/integrations/tool-calling/openai",
                 "ko/docs/integrations/tool-calling/anthropic"
@@ -120,13 +120,13 @@
               ]
             },
             {
-              "group": "마켓플레이스",
+              "group": "Marketplaces",
               "pages": [
                 "ko/docs/integrations/marketplaces/stripe-projects"
               ]
             },
             {
-              "group": "에이전트 결제",
+              "group": "Agentic Payments",
               "pages": [
                 {
                   "group": "x402",
@@ -147,7 +147,7 @@
             },
             {
               "boost": 0.6,
-              "group": "추가 연동",
+              "group": "More Integrations",
               "pages": [
                 "ko/docs/integrations/exa-slack",
                 "ko/docs/integrations/hermes-agent",
@@ -173,13 +173,13 @@
         },
         {
           "boost": 0.8,
-          "group": "관리",
+          "group": "Admin",
           "pages": [
             "ko/docs/admin/pricing",
             "ko/docs/admin/billing",
             "ko/docs/admin/team-management",
             {
-              "group": "보안 및 규정 준수",
+              "group": "Security & Compliance",
               "pages": [
                 "ko/docs/admin/security/overview",
                 "ko/docs/admin/security/zero-data-retention",
@@ -188,7 +188,7 @@
             },
             "ko/docs/admin/mcp-enterprise-managed-auth",
             {
-              "group": "reference",
+              "group": "Reference",
               "pages": [
                 "ko/docs/admin/status",
                 "ko/docs/admin/error-codes",
@@ -205,7 +205,7 @@
             "ko/docs/websets/quickstart",
             "ko/docs/websets/imports-and-search",
             {
-              "group": "dashboard",
+              "group": "Dashboard",
               "pages": [
                 "ko/docs/websets/dashboard/get-started",
                 "ko/docs/websets/dashboard/import-from-csv",
@@ -215,7 +215,7 @@
           ]
         }
       ],
-      "tab": "문서"
+      "tab": "Documentation"
     },
     {
       "groups": [
@@ -258,7 +258,7 @@
             "ko/docs/reference/monitors/trigger-a-monitor",
             "ko/docs/reference/monitors/batch-monitors",
             {
-              "group": "실행",
+              "group": "Runs",
               "pages": [
                 "ko/docs/reference/monitors/runs/list-runs",
                 "ko/docs/reference/monitors/runs/get-a-run"
@@ -275,7 +275,7 @@
         },
         {
           "boost": 2,
-          "group": "batch",
+          "group": "Batch",
           "pages": [
             "ko/docs/reference/batches/create-a-batch",
             "ko/docs/reference/batches/list-batches",
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "team 관리",
+          "group": "Team Management",
           "pages": [
             "ko/docs/reference/team-management/create-api-key",
             "ko/docs/reference/team-management/list-api-keys",
@@ -314,7 +314,7 @@
               ]
             },
             {
-              "group": "항목",
+              "group": "Items",
               "icon": "list",
               "pages": [
                 "ko/docs/websets/api/websets/items/get-an-item",
@@ -323,7 +323,7 @@
               ]
             },
             {
-              "group": "검색",
+              "group": "Searches",
               "icon": "search",
               "pages": [
                 "ko/docs/websets/api/websets/searches/create-a-search",
@@ -332,7 +332,7 @@
               ]
             },
             {
-              "group": "enrichment",
+              "group": "Enrichments",
               "icon": "sparkles",
               "pages": [
                 "ko/docs/websets/api/websets/enrichments/create-an-enrichment",
@@ -343,7 +343,7 @@
               ]
             },
             {
-              "group": "import",
+              "group": "Imports",
               "icon": "cloud-download",
               "pages": [
                 "ko/docs/websets/api/imports/create-an-import",
@@ -363,7 +363,7 @@
                 "ko/docs/websets/api/monitors/delete-monitor",
                 "ko/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "Monitor 실행",
+                  "group": "Monitor Runs",
                   "icon": "play",
                   "pages": [
                     "ko/docs/websets/api/monitors/runs/list-monitor-runs",
@@ -373,7 +373,7 @@
               ]
             },
             {
-              "group": "웹훅",
+              "group": "Webhooks",
               "icon": "webhook",
               "pages": [
                 "ko/docs/websets/api/webhooks/create-a-webhook",
@@ -386,7 +386,7 @@
               ]
             },
             {
-              "group": "이벤트",
+              "group": "Events",
               "icon": "bell",
               "pages": [
                 "ko/docs/websets/api/events/types",
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "group": "팀",
+              "group": "Teams",
               "icon": "users",
               "pages": [
                 "ko/docs/websets/api/teams/get-team-info"
@@ -404,20 +404,20 @@
           ]
         }
       ],
-      "tab": "API reference"
+      "tab": "API Reference"
     },
     {
       "groups": [
         {
           "boost": 0.5,
-          "group": "업데이트",
+          "group": "Updates",
           "pages": [
             "ko/docs/changelog"
           ],
           "root": "ko/docs/changelog"
         }
       ],
-      "tab": "변경 로그"
+      "tab": "Changelog"
     }
   ]
 }

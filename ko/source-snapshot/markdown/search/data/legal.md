@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 법률 및 공공 records {#legal-public-records}
+<div id="legal-public-records">
+  # 법률 및 공공 records
+</div>
 
 > Exa Search로 판례, 특허, 제재 목록, 정부 계약을 비롯한 각종 공공 records를 찾아보세요.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Exa Search를 활용해 1차 법률 소스와 정부 records는 물론, 그에 대해 작성된 해설까지 함께 찾아보세요.
 
-## 포함 항목 {#included}
+<div id="included">
+  ## 포함 항목
+</div>
 
 * 미국 판례(전체 텍스트, 법원, 사건번호, 인용 metadata 포함)
 * 등록된 미국 특허(초록, 청구항, 상세 설명, 발명자, 양수인 포함)
@@ -44,7 +50,9 @@ Exa Search를 활용해 1차 법률 소스와 정부 records는 물론, 그에 �
 * 정부 계약 및 조달 records
 * 인구조사 데이터 및 기타 공공 통계 records
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 판례 리서치 및 법률 RAG
 * 규제 및 정책 모니터링
@@ -52,39 +60,53 @@ Exa Search를 활용해 1차 법률 소스와 정부 records는 물론, 그에 �
 * 컴플라이언스 스크리닝 및 실사
 * 공공 부문 시장 조사
 
-## 예시 쿼리 {#example-queries}
+<div id="example-queries">
+  ## 예시 쿼리
+</div>
 
-### 판례 찾기 {#find-case-law}
+<div id="find-case-law">
+  ### 판례 찾기
+</div>
 
 인용 형식으로 적기보다는, 법적 쟁점과 관할권을 일상적인 표현으로 설명하세요.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-### 특허 검색 {#search-patents}
+<div id="search-patents">
+  ### 특허 검색
+</div>
 
 청구항을 쓰듯이 해당 발명이 어떤 기능을 하는지 설명하세요.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-### 제재 목록 대조 심사 {#screen-against-sanctions}
+<div id="screen-against-sanctions">
+  ### 제재 목록 대조 심사
+</div>
 
 대조할 목록과 심사 대상 엔터티 유형을 명시하세요.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-### 정부 지출 리서치 {#research-government-spending}
+<div id="research-government-spending">
+  ### 정부 지출 리서치
+</div>
 
 구매 기관이나 서비스 범주, 그리고 조회 기간을 명시하세요.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-### 공공 통계 가져오기 {#pull-public-statistics}
+<div id="pull-public-statistics">
+  ### 공공 통계 가져오기
+</div>
 
 데이터셋과 지역을 명시하세요.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-## 요청 보내기 {#make-a-request}
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +147,9 @@ Exa Search를 활용해 1차 법률 소스와 정부 records는 물론, 그에 �
   ```
 </CodeGroup>
 
-## Exa Agent으로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent으로 구조화된 데이터 가져오기
+</div>
 
 여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent task run](/ko/docs/agent/quickstart)을 사용하세요. 필요한 관할 구역, 레코드 유형, criteria, output field를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 

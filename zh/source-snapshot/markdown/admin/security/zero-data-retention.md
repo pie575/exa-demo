@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Zero Data Retention {#zero-data-retention}
+<div id="zero-data-retention">
+  # Zero Data Retention
+</div>
 
 > Zero Data Retention 在各 Exa 产品中的可用情况。
 

@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Skill de Exa Search {#exa-search-skill}
+<div id="exa-search-skill">
+  # Skill de Exa Search
+</div>
 
 > Encuentra páginas web relevantes y obtén contenido sintetizado en menos de dos segundos con Exa Search.
 
@@ -17,7 +21,9 @@ Usa este skill para enseñar a tu agente a llamar a Exa Search con cURL o HTTP s
   Define tu key como `EXA_API_KEY` en el entorno de tu agente.
 </Note>
 
-## Configuración {#setup}
+<div id="setup">
+  ## Configuración
+</div>
 
 **Opción A: instala esta skill directamente:**
 
@@ -63,13 +69,17 @@ What to do:
 Hard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-## Ver código fuente {#view-source}
+<div id="view-source">
+  ## Ver código fuente
+</div>
 
 <Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="Ver código fuente" arrow="true">
   Lee la definición de la skill exa-search antes de instalarla.
 </Card>
 
-## Relacionado {#related}
+<div id="related">
+  ## Relacionado
+</div>
 
 <Columns cols={2}>
   <Card title="Todos los skills de agente" icon="layers" href="/es/docs/get-started/agent-skills/overview" cta="Explorar skills" arrow="true">

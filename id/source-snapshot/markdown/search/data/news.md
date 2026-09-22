@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Berita {#news}
+<div id="news">
+  # Berita
+</div>
 
 > Temukan pemberitaan terkini, liputan industri, dan isu yang sedang berkembang dengan Exa Search.
 
@@ -35,40 +39,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Gunakan Exa Search untuk pemberitaan dari media besar, pers industri, dan media niche. Artikel baru bisa ditemukan lewat pencarian dalam hitungan menit setelah terbit. Padukan query berbahasa alami dengan filter tanggal jika rentang waktu publikasi menjadi syarat mutlak.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Research pasar dan investasi
 * Keamanan siber dan threat intelligence
 * Pemantauan perusahaan, produk, dan kompetitor
 * Briefing industri dan research peristiwa terkini
 
-## Contoh kueri {#example-queries}
+<div id="example-queries">
+  ## Contoh kueri
+</div>
 
-### Mengikuti perkembangan berita kebijakan {#follow-a-developing-policy-story}
+<div id="follow-a-developing-policy-story">
+  ### Mengikuti perkembangan berita kebijakan
+</div>
 
 Sebutkan topik, jenis sumber, dan rentang waktu publikasi agar hasil berfokus pada perkembangan terbaru dari berita tersebut.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-### Menemukan analisis dari praktisi {#find-practitioner-analysis}
+<div id="find-practitioner-analysis">
+  ### Menemukan analisis dari praktisi
+</div>
 
 Sebutkan jenis sumbernya jika Anda menginginkan analisis dari praktisi, bukan liputan berita umum.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-### Temukan diskusi dalam format tertentu {#discover-discussions-in-a-specific-format}
+<div id="discover-discussions-in-a-specific-format">
+  ### Temukan diskusi dalam format tertentu
+</div>
 
 Sertakan format dan topiknya dalam query. Dengan begitu, pencarian tetap mencakup halaman episode dan transkrip di seluruh web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-### Research pemberitaan negatif {#research-adverse-media}
+<div id="research-adverse-media">
+  ### Research pemberitaan negatif
+</div>
 
 Jelaskan sinyal negatifnya sekaligus kelas entitas yang sedang Anda selidiki. Hindari menyingkat query menjadi sekadar nama perusahaan ditambah kata &quot;news&quot;.
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -109,7 +127,9 @@ Jelaskan sinyal negatifnya sekaligus kelas entitas yang sedang Anda selidiki. Hi
   ```
 </CodeGroup>
 
-## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Dapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan berita, fields, dan rentang waktu yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi sesuai schema beserta sitasi.
 

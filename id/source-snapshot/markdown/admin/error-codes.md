@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Error Codes {#error-codes}
+<div id="error-codes">
+  # Error Codes
+</div>
 
 > Referensi untuk error codes umum yang digunakan oleh Exa API
 
 Exa API menandakan kegagalan melalui kode status HTTP standar dan error body dalam format JSON.
 
-## Kode status HTTP {#http-status-codes}
+<div id="http-status-codes">
+  ## Kode status HTTP
+</div>
 
 | Kode                        | Arti                                                                                                                                   | Yang harus dilakukan                                                                                                                                          |
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -29,7 +35,9 @@ Exa API menandakan kegagalan melalui kode status HTTP standar dan error body dal
   Kegagalan di tingkat URL dari `/contents` dilaporkan pada field `statuses` dalam response `200` yang berhasil, bukan sebagai error di tingkat permintaan. Lihat [Content fetch status tags](#content-fetch-status-tags).
 </Note>
 
-## Struktur response error {#error-response-structure}
+<div id="error-response-structure">
+  ## Struktur response error
+</div>
 
 Response error mengembalikan `requestId`, pesan `error` yang mudah dibaca manusia, dan `tag` yang dapat dibaca mesin:
 
@@ -47,9 +55,13 @@ Response error mengembalikan `requestId`, pesan `error` yang mudah dibaca manusi
 
 Kumpulan tag bersifat terbuka dan nama tag cukup jelas dengan sendirinya. Lakukan percabangan berdasarkan kode status HTTP terlebih dahulu, dan perlakukan tag yang tidak dikenali sebagai detail tambahan, bukan sebagai kegagalan parsing.
 
-## Tag error umum {#common-error-tags}
+<div id="common-error-tags">
+  ## Tag error umum
+</div>
 
-### Akun, billing, dan akses {#account-billing-and-access}
+<div id="account-billing-and-access">
+  ### Akun, billing, dan akses
+</div>
 
 | Tag                       | HTTP code | Deskripsi                                                                                                                          |
 | ------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------- |
@@ -63,7 +75,9 @@ Kumpulan tag bersifat terbuka dan nama tag cukup jelas dengan sendirinya. Lakuka
 | `RATE_LIMIT_EXCEEDED`     | `429`     | API key, team, atau jaringan Anda melampaui rate limit-nya — kurangi laju permintaan Anda.                                         |
 | `SERVICE_OVERLOADED`      | `503`     | Exa sedang kelebihan kapasitas untuk sementara dan menolak permintaan sebelum memprosesnya — coba lagi dengan exponential backoff. |
 
-### Validasi permintaan {#request-validation}
+<div id="request-validation">
+  ### Validasi permintaan
+</div>
 
 | Tag                       | HTTP code | Deskripsi                                                                         |
 | ------------------------- | --------- | --------------------------------------------------------------------------------- |
@@ -74,7 +88,9 @@ Kumpulan tag bersifat terbuka dan nama tag cukup jelas dengan sendirinya. Lakuka
 | `INVALID_JSON_SCHEMA`     | `400`     | Schema output yang diberikan tidak valid.                                         |
 | `SUBPAGES_LIMIT_EXCEEDED` | `400`     | `/contents` hanya mengizinkan maksimal 100 subhalaman per permintaan.             |
 
-### Protokol payment {#payment-protocols}
+<div id="payment-protocols">
+  ### Protokol payment
+</div>
 
 Permintaan yang dibayar melalui x402 atau MPP juga dapat mengembalikan:
 
@@ -88,7 +104,9 @@ Permintaan yang dibayar melalui x402 atau MPP juga dapat mengembalikan:
 | `X402_WALLET_RATE_LIMITED` | `429`     | Wallet x402 melampaui rate limit-nya.             |
 | `X402_INTERNAL_ERROR`      | `500`     | Exa tidak dapat membuat persyaratan payment x402. |
 
-## Konten fetch status tags {#content-fetch-status-tags}
+<div id="content-fetch-status-tags">
+  ## Konten fetch status tags
+</div>
 
 Ketika `/contents` menerima beberapa URL, salah satu URL bisa gagal sementara URL lainnya berhasil. Kegagalan di tingkat URL dikembalikan pada field `statuses` dan tidak menggagalkan permintaan:
 
@@ -122,7 +140,9 @@ Ketika `/contents` menerima beberapa URL, salah satu URL bisa gagal sementara UR
 
 Status tag ini khusus untuk `/contents`; `/search` tidak mengembalikan field `statuses`.
 
-## Mendapatkan bantuan {#getting-help}
+<div id="getting-help">
+  ## Mendapatkan bantuan
+</div>
 
 * Periksa [Exa Status](/id/docs/admin/status) jika error `500`, `503`, atau `504` terus terjadi.
 * Periksa [Rate Limits](/id/docs/admin/billing#rate-limits) untuk mengetahui batas saat ini.

@@ -1,13 +1,19 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Websets {#websets}
+<div id="websets">
+  # Websets
+</div>
 
 > Crea conjuntos de datos verificados y enriquecidos a partir de la web.
 
-## ¿Qué son los Websets? {#what-are-websets}
+<div id="what-are-websets">
+  ## ¿Qué son los Websets?
+</div>
 
 Un Webset comienza con una consulta en lenguaje natural y un número objetivo de items. Agrega criteria que todo result debe cumplir y campos de enrichment que se completarán en cada item aceptado. Los resultados llegan de forma asíncrona a través del panel, la API o webhooks.
 
@@ -20,14 +26,18 @@ de escribir código.
   La API de Websets requiere un plan de pago de Websets; los créditos de la Search API y los créditos de Websets son independientes.
 </Info>
 
-## Cómo funciona {#how-it-works}
+<div id="how-it-works">
+  ## Cómo funciona
+</div>
 
 1. **Define una búsqueda:** Proporciona una consulta en lenguaje natural, un número de resultados y, opcionalmente, criteria de verificación y enrichments.
 2. **Busca y verifica:** Websets encuentra candidatos y evalúa cada uno según tus criteria. Solo los resultados que coinciden se convierten en items.
 3. **Ejecuta los enrichments:** Para cada item verificado, Websets busca los datos adicionales que solicitaste, como el nombre del CEO, el monto de financiación o la información de contacto.
 4. **Recibe los resultados:** Sondea el estado, usa webhooks para recibir actualizaciones o consulta el panel a medida que llegan los items.
 
-## Capacidades clave {#key-capabilities}
+<div id="key-capabilities">
+  ## Capacidades clave
+</div>
 
 | Funcionalidad                | Qué hace                                                                                          |
 | ---------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -37,7 +47,9 @@ de escribir código.
 | **Webhooks**                 | Recibe callbacks HTTP en tiempo real a medida que se añaden o enriquecen items                    |
 | **Imports**                  | Aporta tus propias URL y ejecuta enrichments sobre ellas                                          |
 
-## Quickstart para humanos {#human-quickstart}
+<div id="human-quickstart">
+  ## Quickstart para humanos
+</div>
 
 <Card title="Obtén tu API key de Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
@@ -143,7 +155,9 @@ Luego haz tu primera solicitud:
   Consulta [Zero Data Retention](/es/docs/admin/security/zero-data-retention) para conocer la disponibilidad del producto.
 </Note>
 
-## Siguientes pasos {#next}
+<div id="next">
+  ## Siguientes pasos
+</div>
 
 * [**Guía del panel**](./dashboard/get-started) - Guía paso a paso para usar Websets en el panel
 * [**Cómo funciona**](./api/how-it-works) - Análisis a fondo de la arquitectura basada en eventos

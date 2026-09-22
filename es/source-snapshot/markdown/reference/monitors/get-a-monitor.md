@@ -1,13 +1,19 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Obtener un monitor {#get-a-monitor}
+<div id="get-a-monitor">
+  # Obtener un monitor
+</div>
 
 > Recupera un único monitor por su ID.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Exa Search Skill {#exa-search-skill}
+<div id="exa-search-skill">
+  # Exa Search Skill
+</div>
 
 > 使用 Exa Search，在两秒内找到相关网页并返回整合后的内容。
 
@@ -17,7 +21,9 @@
   在 agent 环境中将密钥设置为 `EXA_API_KEY`。
 </Note>
 
-## 设置 {#setup}
+<div id="setup">
+  ## 设置
+</div>
 
 **方式 A：直接安装此 skill：**
 
@@ -63,13 +69,17 @@ What to do:
 Hard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-## 查看源文件 {#view-source}
+<div id="view-source">
+  ## 查看源文件
+</div>
 
 <Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="查看源文件" arrow="true">
   安装前请先阅读 exa-search skill 的定义。
 </Card>
 
-## 相关内容 {#related}
+<div id="related">
+  ## 相关内容
+</div>
 
 <Columns cols={2}>
   <Card title="所有 agent skill" icon="layers" href="/zh/docs/get-started/agent-skills/overview" cta="浏览 skill" arrow="true">

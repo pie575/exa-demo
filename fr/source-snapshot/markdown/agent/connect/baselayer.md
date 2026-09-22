@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Baselayer {#baselayer}
+<div id="baselayer">
+  # Baselayer
+</div>
 
 > Vérifiez les entreprises américaines et récupérez des données KYB : dirigeants, immatriculations, scores de risque.
 
@@ -16,13 +20,17 @@ Attachez `baselayer` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Baselayer en parallèle d&#39;Exa web search.
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * L&#39;onboarding KYB et la vérification des vendors et des clients.
 * La due diligence sur les dirigeants, les immatriculations et la structure de l&#39;entité.
 * Le screening des entreprises à la recherche de risques et de correspondances en watchlist.
 
-## ID du fournisseur {#provider-id}
+<div id="provider-id">
+  ## ID du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -30,7 +38,9 @@ Utilisez cette valeur dans `dataSources` :
 baselayer
 ```
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 Baselayer facture à la commande, et le tarif dépend de l&#39;opération et de ses
 paramètres :
@@ -52,7 +62,9 @@ Le choix des paramètres fait varier le prix : une recherche de privilèges sur 
 de présence sur le web équivaut à la somme des analyses sélectionnées (ou de l&#39;ensemble
 par défaut de Baselayer — prédiction NAICS et analyse de site web — si vous n&#39;en sélectionnez aucune).
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Vérifiez une entreprise et récupérez les informations sur ses dirigeants et son immatriculation.
 
@@ -167,13 +179,17 @@ Vérifiez une entreprise et récupérez les informations sur ses dirigeants et s
   ```
 </CodeGroup>
 
-## Fonctionne bien avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Fonctionne bien avec
+</div>
 
 * [Fiber.ai](/fr/docs/agent/connect/fiber) : enrichissez une entreprise vérifiée avec des données firmographiques, ses effectifs et ses contacts.
 * [Financial Datasets](/fr/docs/agent/connect/financialdatasets) : ajoutez la couverture médiatique récente des entités publiques.
 * [Similarweb](/fr/docs/agent/connect/similarweb) : comparez le trafic web d&#39;une entreprise vérifiée et celui de ses concurrents.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="Attachez-le à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

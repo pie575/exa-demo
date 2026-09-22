@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Aperçu de la sécurité {#security-overview}
+<div id="security-overview">
+  # Aperçu de la sécurité
+</div>
 
 > Informations sur la sécurité, la conformité et l&#39;accès régional d&#39;Exa.
 
@@ -15,7 +19,9 @@ Contactez-nous à l&#39;adresse [sales@exa.ai](mailto:sales@exa.ai) pour envisag
 
 Consultez notre [Trust Center](https://trust.exa.ai) pour accéder à nos rapports SOC 2, à notre accord de traitement des données et à nos autres documentations relatives à la sécurité.
 
-## Restrictions d&#39;accès régionales {#regional-access-restrictions}
+<div id="regional-access-restrictions">
+  ## Restrictions d&#39;accès régionales
+</div>
 
 Pour se conformer aux sanctions et aux restrictions commerciales, Exa bloque l&#39;accès à l&#39;API depuis les pays et régions sous sanctions ou soumis à d&#39;autres restrictions, notamment la Crimée, Cuba, l&#39;Iran, la Corée du Nord, la Russie, la Syrie, l&#39;Ukraine et le Venezuela.
 

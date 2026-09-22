@@ -1,4 +1,6 @@
-# Verifikasi terhadap Exa production {#verification-against-exa-production}
+<div id="verification-against-exa-production">
+  # Verifikasi terhadap Exa production
+</div>
 
 Snapshot production: 18 September 2026. Preview lokal: http://localhost:3000/docs.
 
@@ -19,7 +21,9 @@ teks lengkap lokal dan navigasi keyboard, hasil kosong, Escape, penyalinan clipb
 pergantian tema, rendering schema API, seluruh tujuh tab spreadsheet Agent, serta
 navigasi/search seluler.
 
-## Tinjauan visual buta {#blind-visual-review}
+<div id="blind-visual-review">
+  ## Tinjauan visual buta
+</div>
 
 [Buka galeri perbandingan A/B 159 halaman](blind/index.html). Dua
 tangkapan layar pada setiap halaman diacak secara terpisah. Galeri menyimpan preferensi A/B/seri
@@ -36,7 +40,9 @@ terhadap viewport yang ditangkap, bukan klaim bahwa seluruh piksel identik atau
 bahwa layanan yang dihosting setara. Dari 159 halaman, body teks cocok pada 158 halaman;
 satu-satunya perbedaan adalah timestamp pemeriksaan pada status page langsung.
 
-## Detail kesetiaan {#fidelity-details}
+<div id="fidelity-details">
+  ## Detail kesetiaan
+</div>
 
 Impor ini mempertahankan tema production, navigasi, gaya dan skrip kustom,
 font, metadata halaman, spesifikasi API, serta komponen MDX asli.
@@ -51,7 +57,9 @@ menggunakan pengalihan ke payload `.txt` yang identik karena server pengembangan
 native tidak menyajikan ekstensi file tersebut secara langsung. Timestamp status
 langsung dan media beranimasi dapat berbeda antar pengambilan.
 
-## Reproduksi {#reproduce}
+<div id="reproduce">
+  ## Reproduksi
+</div>
 
 ```sh
 pnpm validate

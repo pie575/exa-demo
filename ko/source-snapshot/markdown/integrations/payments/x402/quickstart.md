@@ -1,13 +1,19 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# x402로 결제하기 {#pay-with-x402}
+<div id="pay-with-x402">
+  # x402로 결제하기
+</div>
 
 > API 키 없이 Exa의 Search 및 Contents API를 사용하세요. x402 프로토콜을 통해 Base 또는 Solana의 USDC로 요청당 결제합니다.
 
-## x402란? {#what-is-x402}
+<div id="what-is-x402">
+  ## x402란?
+</div>
 
 [x402](https://x402.org)는 HTTP `402 Payment Required` 상태 코드를 기반으로 만들어진 개방형 결제 표준입니다. 계정, API 키, 구독 없이도 Base 또는 Solana의 USDC 스테이블코인으로 client가 요청 단위로 API 사용료를 지불할 수 있습니다.
 
@@ -19,7 +25,9 @@ Exa는 **`/search`**와 **`/contents`** 두 엔드포인트에서 x402를 지원
   x402와 API 키 접근은 서로 독립적입니다. 요청에 `x-api-key` 또는 `Authorization: Bearer` header가 포함되어 있으면 일반적인 API 키 청구 흐름이 적용되고 x402는 완전히 우회됩니다.
 </Info>
 
-## 지원 엔드포인트 {#supported-endpoints}
+<div id="supported-endpoints">
+  ## 지원 엔드포인트
+</div>
 
 | 엔드포인트       | 메서드  | 설명                                                                                                |
 | ----------- | ---- | ------------------------------------------------------------------------------------------------- |
@@ -28,13 +36,17 @@ Exa는 **`/search`**와 **`/contents`** 두 엔드포인트에서 x402를 지원
 
 그 외의 모든 엔드포인트는 x402를 통해 **사용할 수 없습니다**.
 
-## 작동 방식 {#how-it-works}
+<div id="how-it-works">
+  ## 작동 방식
+</div>
 
 <Frame>
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/payments/x402/payment-flow.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5a560d80bb84828e03dfacd61351e9fb" alt="x402 결제 흐름 시퀀스 다이어그램: client가 서버에 요청을 보내면 PAYMENT-REQUIRED header와 함께 402를 받고, payment payload를 생성해 PAYMENT-SIGNATURE를 붙여 재시도하면, 서버가 facilitator를 통해 검증한 뒤 작업을 수행하고 on-chain으로 정산한 다음, 결과와 PAYMENT-RESPONSE를 담아 200을 반환" width="4224" height="2720" data-path="images/integrations/payments/x402/payment-flow.png" />
 </Frame>
 
-### 1단계: 디스커버리 {#step-1-discovery}
+<div id="step-1-discovery">
+  ### 1단계: 디스커버리
+</div>
 
 API 키나 payment header 없이 지원되는 엔드포인트로 요청을 보냅니다:
 
@@ -79,11 +91,15 @@ base64로 인코딩된 `PAYMENT-REQUIRED` header가 포함된 `402` response를 
 `amount`는 USDC 최소 단위(소수점 6자리)로 표시되므로 `"7000"` = $0.007입니다.
 client는 제시된 `accepts` 항목 중 자신이 지원하는 항목으로 결제할 수 있습니다. Solana 항목에는 `extra.feePayer`와 같이 facilitator가 제공하는 field가 포함됩니다. 결제를 구성할 때는 `PAYMENT-REQUIRED` header에 있는 항목을 그대로 사용하세요.
 
-### 2단계: 결제 후 재시도 {#step-2-pay-and-retry}
+<div id="step-2-pay-and-retry">
+  ### 2단계: 결제 후 재시도
+</div>
 
 wallet으로 payment에 서명한 뒤, base64로 인코딩된 payment payload를 담은 `PAYMENT-SIGNATURE` header와 함께 요청을 다시 전송하세요. x402 client SDK는 이 과정을 자동으로 처리합니다.
 
-### Step 3: Settlement {#step-3-settlement}
+<div id="step-3-settlement">
+  ### Step 3: Settlement
+</div>
 
 Exa는 facilitator를 통해 결제 signature를 검증한 뒤, 요청을 처리하는 것과 **동시에** on-chain settlement를 시작합니다. response는 settlement가 확정될 때까지 보류됩니다. 성공하면 다음을 받게 됩니다:
 
@@ -92,11 +108,15 @@ Exa는 facilitator를 통해 결제 signature를 검증한 뒤, 요청을 처리
 
 settlement가 실패하면 `PAYMENT-RESPONSE`(오류 상세 정보)와 `PAYMENT-REQUIRED`(재시도용)가 모두 포함된 `402`를 받게 됩니다.
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 x402는 API 키 청구와 동일한 번들 가격을 사용합니다. 가격은 실제로 반환된 결과가 아니라 요청 parameters를 기준으로 사전에 계산됩니다.
 
-### Search (`/search`) {#search-search}
+<div id="search-search">
+  ### Search (`/search`)
+</div>
 
 | Search type               | 기본 가격 (최대 10개 result) | 10개 초과 result당  |
 | ------------------------- | --------------------- | --------------- |
@@ -111,7 +131,9 @@ x402는 API 키 청구와 동일한 번들 가격을 사용합니다. 가격은 
   x402 요청은 **최대 10개 result**로 제한됩니다. 10개를 초과해 요청하면 `numResults`가 별도 알림 없이 10으로 조정되며, 가격도 10개 result 기준으로 산정됩니다.
 </Warning>
 
-### Contents (`/contents`) {#contents-contents}
+<div id="contents-contents">
+  ### Contents (`/contents`)
+</div>
 
 각 content type은 페이지/URL 단위로 요금이 부과됩니다:
 
@@ -123,7 +145,9 @@ x402는 API 키 청구와 동일한 번들 가격을 사용합니다. 가격은 
 
 content type을 하나도 지정하지 않으면(`text`, `highlights`, `summary` 모두 미지정) 기본적으로 `text`가 활성화됩니다.
 
-### 예시 {#examples}
+<div id="examples">
+  ### 예시
+</div>
 
 | 요청                                         | 가격     | USDC 최소 단위 |
 | ------------------------------------------ | ------ | ---------- |
@@ -135,9 +159,13 @@ content type을 하나도 지정하지 않으면(`text`, `highlights`, `summary`
 | `/contents`, URL 2개, `text: true`          | $0.002 | 2000       |
 | `/contents`, URL 1개, `text` + `summary`    | $0.002 | 2000       |
 
-## 퀵스타트 {#quickstart}
+<div id="quickstart">
+  ## 퀵스타트
+</div>
 
-### 의존성 설치 {#install-dependencies}
+<div id="install-dependencies">
+  ### 의존성 설치
+</div>
 
 <CodeGroup>
   ```bash JavaScript theme={null}
@@ -161,7 +189,9 @@ content type을 하나도 지정하지 않으면(`text`, `highlights`, `summary`
   private key를 직접 관리하고 싶지 않다면? [Coinbase Agentic Wallets](https://docs.cdp.coinbase.com/agent-kit/core-concepts/wallet-management)는 AI agent를 위한 TEE 격리 키 관리를 제공합니다. agent가 private key를 볼 일은 전혀 없습니다. 이 wallet은 viem과 호환되므로 `@x402/fetch`에서 바로 사용할 수 있습니다.
 </Tip>
 
-### 유료 search 요청 보내기 {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### 유료 search 요청 보내기
+</div>
 
 <CodeGroup>
   ```typescript JavaScript theme={null}
@@ -251,7 +281,9 @@ content type을 하나도 지정하지 않으면(`text`, `highlights`, `summary`
   cURL에서는 결제 서명을 직접 처리해야 합니다. 프로덕션에서는 402 &gt; 서명 &gt; 재시도 flow 전체를 자동으로 처리해 주는 JavaScript 또는 Python SDK를 사용하세요.
 </Info>
 
-### 디스커버리 모드 (wallet 불필요) {#discovery-mode-no-wallet-needed}
+<div id="discovery-mode-no-wallet-needed">
+  ### 디스커버리 모드 (wallet 불필요)
+</div>
 
 인증되지 않은 요청을 보내 wallet 없이 가격을 확인할 수 있습니다:
 
@@ -297,7 +329,9 @@ content type을 하나도 지정하지 않으면(`text`, `highlights`, `summary`
   ```
 </CodeGroup>
 
-## 결제 네트워크 {#payment-networks}
+<div id="payment-networks">
+  ## 결제 네트워크
+</div>
 
 Exa는 현재 지원하는 모든 네트워크를 `accepts` array에 명시합니다. 사용 중인 wallet과 등록된 x402 client 스킴에 맞는 항목을 선택하세요.
 
@@ -308,7 +342,9 @@ Exa는 현재 지원하는 모든 네트워크를 `accepts` array에 명시합�
 
 두 네트워크 모두 소수점 6자리 USDC(`1000000` = $1.00)를 사용하며, x402 facilitator를 통해 on-chain으로 정산됩니다.
 
-## 속도 제한 {#rate-limits}
+<div id="rate-limits">
+  ## 속도 제한
+</div>
 
 x402에는 API 키 limits와 별개로 자체 속도 제한이 적용됩니다:
 
@@ -321,9 +357,13 @@ x402에는 API 키 limits와 별개로 자체 속도 제한이 적용됩니다:
 
 wallet별 QPS는 동일한 wallet 주소에서 발생하는 모든 유료 요청에 걸쳐 적용됩니다.
 
-## Header reference {#headers-reference}
+<div id="headers-reference">
+  ## Header reference
+</div>
 
-### 요청 header {#request-headers}
+<div id="request-headers">
+  ### 요청 header
+</div>
 
 | Header              | 설명                                     |
 | ------------------- | -------------------------------------- |
@@ -331,14 +371,18 @@ wallet별 QPS는 동일한 wallet 주소에서 발생하는 모든 유료 요청
 | `payment-signature` | 별칭 (동일하게 허용됨)                          |
 | `x-payment`         | 레거시 별칭 (v1 호환용)                        |
 
-### Response header {#response-headers}
+<div id="response-headers">
+  ### Response header
+</div>
 
 | Header             | 적용 시점                    | 설명                                             |
 | ------------------ | ------------------------ | ---------------------------------------------- |
 | `PAYMENT-REQUIRED` | `402` response           | 가격 및 결제 안내가 담긴 Base64 인코딩 `PaymentRequired` 객체 |
 | `PAYMENT-RESPONSE` | `200` 또는 `402` (결제 시도 후) | 트랜잭션 해시 또는 오류가 담긴 Base64 인코딩 settlement 결과     |
 
-## 오류 코드 {#error-codes}
+<div id="error-codes">
+  ## 오류 코드
+</div>
 
 | 상태    | Tag                        | 설명                                                      |
 | ----- | -------------------------- | ------------------------------------------------------- |
@@ -349,7 +393,9 @@ wallet별 QPS는 동일한 wallet 주소에서 발생하는 모든 유료 요청
 | `429` | `X402_WALLET_RATE_LIMITED` | wallet이 초당 10회 요청을 초과했습니다                               |
 | `500` | `X402_INTERNAL_ERROR`      | 결제 요구 사항을 생성하는 중 서버 측 오류가 발생했습니다                        |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="x402와 API 키를 함께 사용할 수 있나요?">
@@ -369,7 +415,9 @@ wallet별 QPS는 동일한 wallet 주소에서 발생하는 모든 유료 요청
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 * [x402 프로토콜 문서](https://docs.x402.org): 전체 프로토콜 명세
 * [x402 GitHub](https://github.com/coinbase/x402): 오픈소스 SDK 및 예제

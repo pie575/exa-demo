@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 获取增强 {#get-an-enrichment}
+<div id="get-an-enrichment">
+  # 获取增强
+</div>
 
 > 返回在 Webset 上配置的 增强，包括其状态、描述、格式和选项。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

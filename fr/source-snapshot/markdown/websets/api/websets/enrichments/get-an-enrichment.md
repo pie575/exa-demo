@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour identifier toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Récupérer une enrichment {#get-an-enrichment}
+<div id="get-an-enrichment">
+  # Récupérer une enrichment
+</div>
 
 > Renvoie une Enrichment configurée sur un Webset, avec son statut, sa description, son format et ses options.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

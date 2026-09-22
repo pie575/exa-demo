@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Mendapatkan event {#get-an-event}
+<div id="get-an-event">
+  # Mendapatkan event
+</div>
 
 > Mendapatkan satu Event berdasarkan id.
 
 Anda dapat berlangganan Events dengan membuat Webhook.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/events/{id}
 openapi: 3.1.0

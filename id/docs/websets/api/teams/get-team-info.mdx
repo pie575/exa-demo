@@ -6,11 +6,15 @@ openapi: "/id/docs/exa-spec.yaml GET /v0/teams/me"
 timestamp: false
 ---
 
-## Ikhtisar {#overview}
+<div id="overview">
+  ## Ikhtisar
+</div>
 
 Endpoint Get Team Info mengembalikan informasi tentang team yang terautentikasi, termasuk penggunaan konkurensi team saat ini dan batas yang dikonfigurasi. Endpoint ini berguna untuk memantau penggunaan Websets API Anda dan memahami rate limit yang berlaku.
 
-## Response {#response}
+<div id="response">
+  ## Response
+</div>
 
 Response mencakup:
 
@@ -20,14 +24,18 @@ Response mencakup:
 * **concurrency**: Penggunaan saat ini yang menunjukkan permintaan aktif dan yang sedang mengantre
 * **limits**: Batas konkurensi team Anda
 
-### Field Konkurensi {#concurrency-fields}
+<div id="concurrency-fields">
+  ### Field Konkurensi
+</div>
 
 Objek `concurrency` menunjukkan status permintaan Anda saat ini:
 
 * **active**: Jumlah permintaan yang sedang diproses
 * **queued**: Jumlah permintaan yang menunggu untuk diproses
 
-### Field Limits {#limits-fields}
+<div id="limits-fields">
+  ### Field Limits
+</div>
 
 Objek `limits` menampilkan batas yang dikonfigurasi untuk team Anda:
 

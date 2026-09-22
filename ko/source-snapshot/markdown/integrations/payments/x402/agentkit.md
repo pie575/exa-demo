@@ -1,13 +1,19 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# World AgentKit {#world-agentkit}
+<div id="world-agentkit">
+  # World AgentKit
+</div>
 
 > World AgentKit를 사용하면 verified human이 보증하는 AI agent가 USDC 없이 무료로 Exa를 이용할 수 있습니다.
 
-## AgentKit이란? {#what-is-agentkit}
+<div id="what-is-agentkit">
+  ## AgentKit이란?
+</div>
 
 [World AgentKit](https://docs.world.org/agents/agent-kit)은 AI agent가 [World ID](https://world.org)를 통해 실재하는 verified human이 뒷받침하고 있음을 증명할 수 있게 해주는 툴킷입니다. [x402](/ko/docs/integrations/payments/x402/quickstart)와 연동하면 **무료 체험** 경로를 사용할 수 있습니다. World의 [AgentBook](https://docs.world.org/agents/agent-kit/integrate)에 등록된 agent는 USDC를 지불하지 않고도 Exa의 `/search` 및 `/contents` 엔드포인트를 이용할 수 있습니다.
 
@@ -17,7 +23,9 @@
   요청에 `x-api-key` 또는 `Authorization: Bearer` header가 포함되어 있으면 AgentKit 무료 체험과 x402 결제는 모두 적용되지 않습니다. 일반 API 키 청구 흐름이 우선합니다.
 </Info>
 
-## 동작 방식 {#how-it-works}
+<div id="how-it-works">
+  ## 동작 방식
+</div>
 
 client가 API 키 없이 `/search` 또는 `/contents`를 호출하면 Exa는 `402 Payment Required`를 반환합니다. 이 response의 `PAYMENT-REQUIRED` header에는 [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md)(Sign-In with Ethereum) challenge를 담은 `agentkit` 확장이 포함됩니다.
 
@@ -27,9 +35,13 @@ agent가 등록된 wallet으로 이 challenge에 서명하면, Exa는 다음을 
 2. **AgentBook 조회** — World Chain(`eip155:480`)의 AgentBook 컨트랙트로 wallet을 익명 `humanId`로 확인하여, 고유한 verified human이 이 agent에 자신의 신원을 위임했음을 검증합니다
 3. **사용량 확인** — 해당 사용자에게 무료 체험 uses가 남아 있으면 접근을 허용하고, 남아 있지 않으면 USDC 결제를 요구합니다
 
-## Quickstart {#quickstart}
+<div id="quickstart">
+  ## Quickstart
+</div>
 
-### 1. AgentBook에 agent 등록하기 {#1-register-your-agent-in-agentbook}
+<div id="1-register-your-agent-in-agentbook">
+  ### 1. AgentBook에 agent 등록하기
+</div>
 
 최초 1회만 설정하면 됩니다. 신원 인증이 완료된 [World App](https://world.org/download)이 필요합니다.
 
@@ -39,7 +51,9 @@ npx @worldcoin/agentkit-cli register <your-agent-wallet-address>
 
 CLI가 World App verification flow를 시작한 뒤, World Chain에 registration 트랜잭션을 제출합니다. 완료되면 AgentKit을 사용하는 모든 서버가 여러분의 wallet을 조회해 실제 사람이 backed하고 있는지 확인할 수 있습니다.
 
-### 2. 요청 보내기 (challenge 받기) {#2-send-a-request-get-the-challenge}
+<div id="2-send-a-request-get-the-challenge">
+  ### 2. 요청 보내기 (challenge 받기)
+</div>
 
 ```bash theme={null}
 curl -s -D - -X POST "https://api.exa.ai/search" \
@@ -79,7 +93,9 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
 }
 ```
 
-### 3. challenge 서명 후 재전송 {#3-sign-the-challenge-and-resubmit}
+<div id="3-sign-the-challenge-and-resubmit">
+  ### 3. challenge 서명 후 재전송
+</div>
 
 `info` field(domain, uri, nonce, statement 등)를 사용해 [SIWE 메시지](https://eips.ethereum.org/EIPS/eip-4361)를 구성하고, `supportedChains` 타입 중 하나로 등록된 agent wallet을 사용해 서명한 뒤, `agentkit` header에 담아(base64로 인코딩된 JSON) 전송하세요:
 
@@ -92,7 +108,9 @@ curl -X POST "https://api.exa.ai/search" \
 
 agent이 검증되었고 무료 체험 사용 횟수가 남아 있으면, Exa는 `200`과 함께 검색 결과를 반환하며 결제가 필요하지 않습니다.
 
-### AgentKit x402 skill 사용하기 {#using-the-agentkit-x402-skill}
+<div id="using-the-agentkit-x402-skill">
+  ### AgentKit x402 skill 사용하기
+</div>
 
 challenge-response flow를 직접 구현하는 대신, AI agent에 [agentkit-x402 skill](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md)을 추가하세요:
 
@@ -102,7 +120,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 이 skill은 agent가 AgentKit 확장이 포함된 `402` response를 받았을 때 전체 흐름을 자동으로 처리합니다.
 
-## 무료 체험 세부 사항 {#free-trial-details}
+<div id="free-trial-details">
+  ## 무료 체험 세부 사항
+</div>
 
 * 각 verified human은 자신이 backing하는 모든 agent를 합쳐 **월 100회의 무료 요청**을 제공받습니다
 * 사용량 카운터는 매월(UTC 기준) 1일에 초기화됩니다
@@ -112,7 +132,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 * `/search`의 무료 체험 요청에도 동일한 [결과 10개 제한](/ko/docs/integrations/payments/x402/quickstart#pricing)이 적용됩니다
 * 무료 체험 카운터는 현재 API response에 노출되지 않습니다. 사용 횟수를 모두 소진하면 서버는 무료 접근을 허용하지 않고 표준 `402`로 응답합니다
 
-## 지원 엔드포인트 {#supported-endpoints}
+<div id="supported-endpoints">
+  ## 지원 엔드포인트
+</div>
 
 | 엔드포인트       | x402 결제 | AgentKit 무료 체험 |
 | ----------- | :-----: | :------------: |
@@ -121,7 +143,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 그 외 Exa 엔드포인트는 x402 결제나 AgentKit 무료 체험을 지원하지 않습니다.
 
-## 네트워크 세부 정보 {#network-details}
+<div id="network-details">
+  ## 네트워크 세부 정보
+</div>
 
 | 속성              | 값                                                 |
 | --------------- | ------------------------------------------------- |
@@ -130,7 +154,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 | Verification    | World Chain의 AgentBook 컨트랙트                       |
 | 지원 wallet types | EOA (EIP-191) 및 smart contract wallets (ERC-1271) |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="x402 결제와 AgentKit을 함께 사용할 수 있나요?">
@@ -154,7 +180,9 @@ npx skills add worldcoin/agentkit agentkit-x402
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 * [x402 결제 가이드](/ko/docs/integrations/payments/x402/quickstart): 표준 USDC 결제 흐름
 * [World AgentKit 문서](https://docs.world.org/agents/agent-kit): AgentKit 전체 문서

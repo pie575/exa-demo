@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Especificación OpenAPI {#openapi-specification}
+<div id="openapi-specification">
+  # Especificación OpenAPI
+</div>
 
 > Descarga las especificaciones OpenAPI de la API pública de Exa y de la Team Management API en YAML o JSON.
 

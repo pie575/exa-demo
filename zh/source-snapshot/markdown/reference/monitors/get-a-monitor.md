@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# 获取 monitor {#get-a-monitor}
+<div id="get-a-monitor">
+  # 获取 monitor
+</div>
 
 > 根据 ID 获取单个 monitor。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}
 openapi: 3.1.0

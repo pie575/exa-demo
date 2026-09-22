@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 웹훅 생성 {#create-a-webhook}
+<div id="create-a-webhook">
+  # 웹훅 생성
+</div>
 
 > 선택한 이벤트가 발생할 때마다 해당 이벤트를 지정한 URL로 전달하는 웹훅을 생성합니다.
 
@@ -15,7 +19,9 @@ response에는 전송 내용을 검증하는 데 사용하는 서명용 `secret`
   항상 최종 목적지 URL을 등록하세요.
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

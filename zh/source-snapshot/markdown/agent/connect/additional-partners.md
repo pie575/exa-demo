@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 更多提供方 {#additional-providers}
+<div id="additional-providers">
+  # 更多提供方
+</div>
 
 > 自助提供方之外的 Exa Connect 合作伙伴。
 

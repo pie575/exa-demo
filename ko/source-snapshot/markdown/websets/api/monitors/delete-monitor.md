@@ -1,13 +1,19 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Websets Monitor 삭제 {#delete-a-websets-monitor}
+<div id="delete-a-websets-monitor">
+  # Websets Monitor 삭제
+</div>
 
 > Monitor를 삭제합니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/monitors/{id}
 openapi: 3.1.0

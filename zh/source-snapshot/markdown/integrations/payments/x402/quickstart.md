@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 使用 x402 付款 {#pay-with-x402}
+<div id="pay-with-x402">
+  # 使用 x402 付款
+</div>
 
 > 无需 API 密钥即可使用 Exa 的 Search 和 Contents API。通过 x402 协议，在 Base 或 Solana 上用 USDC 按请求付费。
 
-## 什么是 x402？ {#what-is-x402}
+<div id="what-is-x402">
+  ## 什么是 x402？
+</div>
 
 [x402](https://x402.org) 是基于 HTTP `402 Payment Required` 状态码构建的开放支付标准。它让客户端能在 Base 或 Solana 上使用 USDC 稳定币按请求付费调用 API，无需账户、API 密钥或订阅。
 
@@ -19,7 +25,9 @@ Exa 在两个端点上支持 x402：**`/search`** 和 **`/contents`**。当你�
   x402 与 API 密钥访问相互独立。如果你的请求包含 `x-api-key` 或 `Authorization: Bearer` header，则会走常规的 API 密钥计费流程，完全绕过 x402。
 </Info>
 
-## 支持的端点 {#supported-endpoints}
+<div id="supported-endpoints">
+  ## 支持的端点
+</div>
 
 | 端点          | 方法   | 描述                                                                           |
 | ----------- | ---- | ---------------------------------------------------------------------------- |
@@ -28,13 +36,17 @@ Exa 在两个端点上支持 x402：**`/search`** 和 **`/contents`**。当你�
 
 其余端点均**不**支持通过 x402 调用。
 
-## 工作原理 {#how-it-works}
+<div id="how-it-works">
+  ## 工作原理
+</div>
 
 <Frame>
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/payments/x402/payment-flow.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5a560d80bb84828e03dfacd61351e9fb" alt="x402 支付流程时序图：客户端向 server 发送请求，收到带 PAYMENT-REQUIRED header 的 402 响应，创建支付负载，携带 PAYMENT-SIGNATURE 重试，server 通过 facilitator 验证支付，执行任务，在链上完成结算，返回 200 响应，其中包含结果和 PAYMENT-RESPONSE" width="4224" height="2720" data-path="images/integrations/payments/x402/payment-flow.png" />
 </Frame>
 
-### 步骤 1：Discovery {#step-1-discovery}
+<div id="step-1-discovery">
+  ### 步骤 1：Discovery
+</div>
 
 在不带 API 密钥和支付 header 的情况下，向受支持的端点发送请求：
 
@@ -79,11 +91,15 @@ curl -X POST "https://api.exa.ai/search" \
 `amount` 使用 USDC atomic 单位 (6 位小数) ，因此 `"7000"` = $0.007。
 客户端可以使用它所支持的任意一个已声明的 `accepts` 条目进行支付。Solana 条目包含由 facilitator 提供的 fields，例如 `extra.feePayer`；构造支付时请使用 `PAYMENT-REQUIRED` header 中的原始条目。
 
-### 步骤 2：支付并重试 {#step-2-pay-and-retry}
+<div id="step-2-pay-and-retry">
+  ### 步骤 2：支付并重试
+</div>
 
 使用你的 wallet 对支付进行签名，然后重新发送请求，并附上 `PAYMENT-SIGNATURE` header，其中包含经 base64 编码的支付负载。x402 客户端 SDK 会自动完成这一过程。
 
-### 第 3 步：结算 {#step-3-settlement}
+<div id="step-3-settlement">
+  ### 第 3 步：结算
+</div>
 
 Exa 会通过 facilitator 验证你的支付签名，然后在处理请求的**同时并行**启动链上结算。响应会一直挂起，直到结算确认完成。成功后，你将收到：
 
@@ -92,11 +108,15 @@ Exa 会通过 facilitator 验证你的支付签名，然后在处理请求的**�
 
 如果结算失败，你会收到 `402`，并同时附带 `PAYMENT-RESPONSE` (错误详情) 和 `PAYMENT-REQUIRED` (便于重试) 。
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请求参数预先计算，而非依据实际返回的结果。
 
-### Search (`/search`) {#search-search}
+<div id="search-search">
+  ### Search (`/search`)
+</div>
 
 | 搜索类型                    | 基础价格 (最多 10 条结果)  | 超出 10 条的每条结果   |
 | ----------------------- | ----------------- | -------------- |
@@ -111,7 +131,9 @@ x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请�
   x402 请求的结果数上限为 **10 条**。如果请求超过 10 条，`numResults` 会被静默截断为 10，并按 10 条结果计费。
 </Warning>
 
-### Contents (`/contents`) {#contents-contents}
+<div id="contents-contents">
+  ### Contents (`/contents`)
+</div>
 
 每种内容类型均按页面/URL 计费：
 
@@ -123,7 +145,9 @@ x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请�
 
 如果请求中未指定任何内容类型 (没有 `text`、`highlights` 或 `summary`) ，则默认启用 `text`。
 
-### 示例 {#examples}
+<div id="examples">
+  ### 示例
+</div>
 
 | 请求                                     | 价格     | USDC atomic |
 | -------------------------------------- | ------ | ----------- |
@@ -135,9 +159,13 @@ x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请�
 | `/contents`，2 个 URL，`text: true`       | $0.002 | 2000        |
 | `/contents`，1 个 URL，`text` + `summary` | $0.002 | 2000        |
 
-## 快速开始 {#quickstart}
+<div id="quickstart">
+  ## 快速开始
+</div>
 
-### 安装依赖 {#install-dependencies}
+<div id="install-dependencies">
+  ### 安装依赖
+</div>
 
 <CodeGroup>
   ```bash JavaScript theme={null}
@@ -161,7 +189,9 @@ x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请�
   不想自己管理私钥？[Coinbase Agentic Wallets](https://docs.cdp.coinbase.com/agent-kit/core-concepts/wallet-management) 为 AI agent 提供基于 TEE 隔离的密钥管理，你的 agent 始终不会接触到私钥。该 wallet 兼容 viem，可直接搭配 `@x402/fetch` 使用。
 </Tip>
 
-### 发起一次付费 search 请求 {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### 发起一次付费 search 请求
+</div>
 
 <CodeGroup>
   ```typescript JavaScript theme={null}
@@ -251,7 +281,9 @@ x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请�
   cURL 需要手动完成支付签名。在 production 环境中，请使用 JavaScript 或 Python SDK，它们会自动处理完整的 402 &gt; 签名 &gt; 重试流程。
 </Info>
 
-### Discovery 模式 (无需 wallet) {#discovery-mode-no-wallet-needed}
+<div id="discovery-mode-no-wallet-needed">
+  ### Discovery 模式 (无需 wallet)
+</div>
 
 发送未认证的请求即可探测定价，无需 wallet：
 
@@ -297,7 +329,9 @@ x402 采用与 API 密钥计费相同的打包定价。价格会根据你的请�
   ```
 </CodeGroup>
 
-## 支付网络 {#payment-networks}
+<div id="payment-networks">
+  ## 支付网络
+</div>
 
 Exa 会在 `accepts` 数组中列出当前支持的所有网络。请选择与你的 wallet 以及已注册的 x402 客户端方案相匹配的条目。
 
@@ -308,7 +342,9 @@ Exa 会在 `accepts` 数组中列出当前支持的所有网络。请选择与�
 
 两者均使用 6 位小数精度的 USDC (`1000000` = $1.00) ，并通过 x402 facilitator 完成 on-chain 结算。
 
-## 速率限制 {#rate-limits}
+<div id="rate-limits">
+  ## 速率限制
+</div>
 
 x402 有自己的速率限制，与 API 密钥的限制相互独立：
 
@@ -321,9 +357,13 @@ x402 有自己的速率限制，与 API 密钥的限制相互独立：
 
 按 wallet 的 QPS 限制适用于来自同一 wallet 地址的所有付费请求。
 
-## Header 参考 {#headers-reference}
+<div id="headers-reference">
+  ## Header 参考
+</div>
 
-### 请求 header {#request-headers}
+<div id="request-headers">
+  ### 请求 header
+</div>
 
 | Header              | 说明                        |
 | ------------------- | ------------------------- |
@@ -331,14 +371,18 @@ x402 有自己的速率限制，与 API 密钥的限制相互独立：
 | `payment-signature` | 别名 (同样支持)                 |
 | `x-payment`         | 旧版别名 (兼容 v1)              |
 
-### 响应 header {#response-headers}
+<div id="response-headers">
+  ### 响应 header
+</div>
 
 | Header             | 出现时机                    | 说明                                        |
 | ------------------ | ----------------------- | ----------------------------------------- |
 | `PAYMENT-REQUIRED` | `402` 响应                | Base64 编码的 `PaymentRequired` 对象，包含定价和支付说明 |
 | `PAYMENT-RESPONSE` | `200` 或 `402` (支付尝试之后)  | Base64 编码的结算结果，包含交易哈希或错误信息                |
 
-## 错误码 {#error-codes}
+<div id="error-codes">
+  ## 错误码
+</div>
 
 | 状态    | Tag                        | 说明                                      |
 | ----- | -------------------------- | --------------------------------------- |
@@ -349,7 +393,9 @@ x402 有自己的速率限制，与 API 密钥的限制相互独立：
 | `429` | `X402_WALLET_RATE_LIMITED` | wallet 超过每秒 10 个请求的限制                   |
 | `500` | `X402_INTERNAL_ERROR`      | 生成支付要求时发生服务端错误                          |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="可以同时使用 x402 和 API 密钥吗？">
@@ -369,7 +415,9 @@ x402 有自己的速率限制，与 API 密钥的限制相互独立：
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 * [x402 协议文档](https://docs.x402.org)：完整的协议规范
 * [x402 GitHub](https://github.com/coinbase/x402)：开源 SDK 与示例

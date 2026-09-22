@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa Search API {#exa-search-api}
+<div id="exa-search-api">
+  # Exa Search API
+</div>
 
 > Cari di web dengan bahasa alami dan dapatkan konten halaman yang bersih dan relevan dalam satu permintaan.
 
 Exa Search menerima query dalam bahasa alami dan mengembalikan hasil web yang sudah diperingkat beserta konten halamannya yang bersih.
 
-## Buat permintaan pertama Anda {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Buat permintaan pertama Anda
+</div>
 
 Mulailah dengan `query` dalam bahasa alami dan `contents: { highlights: true }`, yang mengembalikan kutipan dengan panjang menyesuaikan relevance tiap hasil. Field lain mengatur cara Exa melakukan pencarian dan apa saja yang disertakan pada setiap hasil; bagian selanjutnya dari halaman ini membahas field yang benar-benar akan Anda gunakan.
 
@@ -105,7 +111,9 @@ Secara default, Search mengembalikan maksimal 10 hasil. Atur `numResults` untuk 
 
 Hasil diurutkan berdasarkan relevance. Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasi, ditambah apa pun yang Anda minta melalui `contents`.
 
-## Menulis query {#writing-queries}
+<div id="writing-queries">
+  ## Menulis query
+</div>
 
 Field `query` adalah satu-satunya field yang wajib diisi saat menggunakan Search API.
 
@@ -142,7 +150,9 @@ Mode deep menjalankan proses research, bukan sekadar satu tahap retrieval. Lihat
   terstruktur yang grounded.
 </Tip>
 
-## Bentuk keluaran {#output-shapes}
+<div id="output-shapes">
+  ## Bentuk keluaran
+</div>
 
 Setiap hasil menyertakan metadata seperti judul, URL, dan tanggal publikasinya. Gunakan `contents` untuk menambahkan kutipan, teks penuh, atau ringkasan dari halaman tersebut.
 
@@ -237,7 +247,9 @@ Pilih satu content view per permintaan. Meminta highlights dan text sekaligus ak
     field yang sama berada di tingkat teratas, bersebelahan dengan `urls`: `"urls": [...], "highlights": true`
 </Warning>
 
-## Output schema {#output-schema}
+<div id="output-schema">
+  ## Output schema
+</div>
 
 Tambahkan `outputSchema` jika Anda ingin Exa mensintesis hasil search. Parameter ini berfungsi dengan semua search type dan menambahkan objek `output` ke response.
 
@@ -403,11 +415,15 @@ Gunakan `systemPrompt` untuk instruksi seperti source preferences atau penekanan
   field citation atau confidence ke dalam schema; Exa mengembalikannya secara otomatis di `output.grounding`.
 </Note>
 
-## Memfilter hasil {#filter-results}
+<div id="filter-results">
+  ## Memfilter hasil
+</div>
 
 Filter adalah batasan ketat: gunakan filter jika hasil di luar batasan tersebut tidak berguna bagi Anda, dan cukup nyatakan preferensi sumber yang lebih longgar di dalam teks query. [API reference](/id/docs/reference/search) memuat daftar lengkapnya.
 
-### Menyertakan domain atau path {#include-domains-or-paths}
+<div id="include-domains-or-paths">
+  ### Menyertakan domain atau path
+</div>
 
 `includeDomains` membatasi hasil hanya pada sources yang Anda percaya. Parameter ini menerima domain lengkap, prefiks path seperti `anthropic.com/news`, dan wildcard subdomain seperti `*.substack.com`.
 
@@ -441,7 +457,9 @@ Filter adalah batasan ketat: gunakan filter jika hasil di luar batasan tersebut 
 
 Cantumkan path di dalam filter, bukan mengulanginya sebagai operator `site:` pada query.
 
-### Kecualikan domain atau path {#exclude-domains-or-paths}
+<div id="exclude-domains-or-paths">
+  ### Kecualikan domain atau path
+</div>
 
 `excludeDomains` menghapus hasil dari domain atau path tertentu. Parameter ini mendukung prefiks path dan wildcard subdomain yang sama seperti `includeDomains`. Gunakan parameter ini jika sources tersebut membuat hasil menjadi tidak berguna, bukan sekadar untuk menyatakan preferensi.
 
@@ -476,7 +494,9 @@ Cantumkan path di dalam filter, bukan mengulanginya sebagai operator `site:` pad
   ```
 </CodeGroup>
 
-## Kebaruan konten {#content-freshness}
+<div id="content-freshness">
+  ## Kebaruan konten
+</div>
 
 `contents.maxAgeHours` mengatur seberapa baru konten yang diekstraksi dari setiap hasil. Field ini tidak memfilter hasil berdasarkan tanggal publikasi.
 
@@ -523,7 +543,9 @@ Sebagian besar pencarian sebaiknya tidak menggunakan field ini. Gunakan field in
   ```
 </CodeGroup>
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Praktik terbaik" icon="sparkles" href="/id/docs/search/best-practices" cta="Baca panduan" arrow="true">

@@ -1,17 +1,25 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exa in Slack {#exa-in-slack}
+<div id="exa-in-slack">
+  # Exa in Slack
+</div>
 
 > Installez Exa dans Slack et taguez @Exa dans n&#39;importe quel canal ou thread pour obtenir des réponses sourcées : recherche, constitution de liste et enrichment.
 
 Intégrez Exa au Slack de votre équipe. Taguez **@Exa** dans n&#39;importe quel canal ou thread avec une question de recherche, une tâche de constitution de liste ou une requête d&#39;enrichment. Exa parcourt le web, consulte les sources et répond dans le thread avec des réponses sourcées.
 
-## Démarrer {#get-started}
+<div id="get-started">
+  ## Démarrer
+</div>
 
-### Installation {#installation}
+<div id="installation">
+  ### Installation
+</div>
 
 1. Rendez-vous dans [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack), puis cliquez sur **Install**.
 
@@ -28,7 +36,9 @@ Intégrez Exa au Slack de votre équipe. Taguez **@Exa** dans n&#39;importe quel
 
 3. Une fois l&#39;installation terminée, invitez @Exa dans un canal (ou envoyez-lui un message direct) et commencez à poser vos questions.
 
-## Comment utiliser Exa depuis Slack {#how-to-use-exa-from-slack}
+<div id="how-to-use-exa-from-slack">
+  ## Comment utiliser Exa depuis Slack
+</div>
 
 Dans n&#39;importe quel canal auquel Exa a été ajouté, mentionnez @Exa en posant votre question :
 
@@ -38,15 +48,21 @@ Dans n&#39;importe quel canal auquel Exa a été ajouté, mentionnez @Exa en pos
 
 Exa répond à votre question dans le thread.
 
-### Follow-up {#follow-ups}
+<div id="follow-ups">
+  ### Follow-up
+</div>
 
 Une fois qu&#39;Exa a répondu dans un thread, il suffit de répondre dans ce thread pour poursuivre la conversation. Pas besoin de mentionner @Exa à nouveau. Exa garde le contexte de la conversation : les follow-up s&#39;appuient donc sur la réponse précédente. Toute personne présente dans le thread peut envoyer un follow-up.
 
-### Messages directs {#direct-messages}
+<div id="direct-messages">
+  ### Messages directs
+</div>
 
 Vous pouvez aussi écrire directement à Exa en message privé. Aucune mention n&#39;est nécessaire dans ce cas. Chaque message que vous envoyez lance une nouvelle requête, dont la réponse s&#39;affiche dans un thread sous ce message. Répondez dans le thread pour poursuivre la conversation.
 
-### Annuler un run {#cancelling-a-run}
+<div id="cancelling-a-run">
+  ### Annuler un run
+</div>
 
 Tant qu&#39;un run est en cours, répondez dans le thread et demandez à Exa de l&#39;arrêter. Aucune mention n&#39;est nécessaire.
 
@@ -54,7 +70,9 @@ Tant qu&#39;un run est en cours, répondez dans le thread et demandez à Exa de 
 Arrête le run en cours
 ```
 
-### Providers Exa Connect {#exa-connect-providers}
+<div id="exa-connect-providers">
+  ### Providers Exa Connect
+</div>
 
 Exa inclut automatiquement les fournisseurs de données [Exa Connect](/fr/docs/agent/connect/overview) lorsqu&#39;ils sont pertinents pour votre question. Pour utiliser un fournisseur en particulier, mentionnez-le dans votre message :
 
@@ -64,21 +82,29 @@ Exa inclut automatiquement les fournisseurs de données [Exa Connect](/fr/docs/a
 
 Pour obtenir la liste de tous les fournisseurs de données disponibles, il suffit de le demander à Exa.
 
-## Exemples {#examples}
+<div id="examples">
+  ## Exemples
+</div>
 
-### Actualités et événements récents {#news-and-current-events}
+<div id="news-and-current-events">
+  ### Actualités et événements récents
+</div>
 
 Obtenez les dernières informations sur n&#39;importe quel sujet.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f" alt="Exa répondant à une question sur les dernières actualités d'un sujet dans un thread Slack, avec des résultats datés dans un tableau" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-### Constitution de listes volumineuses {#large-list-building}
+<div id="large-list-building">
+  ### Constitution de listes volumineuses
+</div>
 
 Faites précéder la requête de `!max` pour une constitution de listes exhaustive.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2" alt="Exa exécutant une requête de constitution de liste !max dans un thread Slack et renvoyant un tableau de résultats" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-## Mots-clés {#keywords}
+<div id="keywords">
+  ## Mots-clés
+</div>
 
 À utiliser dans un thread où Exa est présent. Les commandes peuvent suivre une mention `@Exa` ou être placées en début de message :
 
@@ -91,7 +117,9 @@ Faites précéder la requête de `!max` pour une constitution de listes exhausti
 | `aside <message>` | Publie un commentaire annexe qu&#39;Exa ignore, utile pour échanger avec vos collègues dans un thread suivi par Exa. |
 | `help`            | Affiche les instructions d&#39;utilisation.                                                                          |
 
-## Autorisations {#permissions}
+<div id="permissions">
+  ## Autorisations
+</div>
 
 L&#39;Exa app pour Slack demande les scopes suivants :
 
@@ -122,10 +150,14 @@ L&#39;Exa app pour Slack demande les scopes suivants :
 
 Exa ne reçoit que les messages des canaux auxquels il a été explicitement invité et ceux de ses propres DM.
 
-## Tarifs {#pricing}
+<div id="pricing">
+  ## Tarifs
+</div>
 
 Les runs lancés depuis Slack sont facturés à votre équipe Exa. Consultez la [tarification](https://exa.ai/pricing) pour plus de détails.
 
-## Confidentialité {#privacy}
+<div id="privacy">
+  ## Confidentialité
+</div>
 
 Pour savoir comment Exa traite vos données, consultez la [politique de confidentialité d&#39;Exa](https://exa.ai/privacy-policy).

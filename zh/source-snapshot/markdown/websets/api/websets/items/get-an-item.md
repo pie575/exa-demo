@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# 获取单个项目 {#get-an-item}
+<div id="get-an-item">
+  # 获取单个项目
+</div>
 
 > 返回一个 Webset Item。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/items/{id}
 openapi: 3.1.0

@@ -6,7 +6,9 @@ timestamp: false
 
 当你收到来自 Exa 的 webhook 时，应验证它确实由我们发出，以确保数据的完整性和真实性。Exa 会使用你的 webhook 端点专属的密钥对所有 webhook 负载进行签名。
 
-## Webhook 签名的工作原理 {#how-webhook-signatures-work}
+<div id="how-webhook-signatures-work">
+  ## Webhook 签名的工作原理
+</div>
 
 Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Signature` header 中，其中包含：
 
@@ -19,7 +21,9 @@ Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Sig
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-## 验证流程 {#verification-process}
+<div id="verification-process">
+  ## 验证流程
+</div>
 
 验证 webhook 签名的步骤：
 
@@ -362,7 +366,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-## 安全最佳实践 {#security-best-practices}
+<div id="security-best-practices">
+  ## 安全最佳实践
+</div>
 
 遵循以下实践有助于确保你的 webhook 实现安全且健壮：
 
@@ -382,9 +388,13 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
-### 签名无效错误 {#invalid-signature-errors}
+<div id="invalid-signature-errors">
+  ### 签名无效错误
+</div>
 
 如果签名验证失败：
 
@@ -393,7 +403,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 3. **检查 header 解析**：确认已正确从 header 中提取时间戳和签名
 4. **编码问题**：确保整个验证过程始终使用 UTF-8 编码
 
-### 在本地测试签名 {#testing-signatures-locally}
+<div id="testing-signatures-locally">
+  ### 在本地测试签名
+</div>
 
 你可以使用 webhook 密钥和示例负载来测试签名验证逻辑：
 
@@ -425,7 +437,9 @@ print(f"Test signature valid: {is_valid}")  # 应输出 True
 
 <br />
 
-## 下一步 {#whats-next}
+<div id="whats-next">
+  ## 下一步
+</div>
 
 * 了解 [webhook 事件](/zh/docs/websets/api/events/types)及其负载
 * 配置 [webhook 重试与监控](/zh/docs/websets/api/webhooks/attempts/list-webhook-attempts)

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# Financial Datasets {#financial-datasets}
+<div id="financial-datasets">
+  # Financial Datasets
+</div>
 
 > 覆盖 27,000 多个美股股票代码的结构化金融与市场数据：价格、基本面、财报、SEC 备案文件、持股情况以及股票筛选。
 
@@ -18,7 +22,9 @@
 在 [Exa Agent](/zh/docs/agent/quickstart) 运行中附加 `financial_datasets`，
 agent 便会在进行 Exa 网页搜索的同时查询 Financial Datasets。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 构建结构化的公司研究 快照。
 * 分析财务表现、估值与历史趋势。
@@ -27,7 +33,9 @@ agent 便会在进行 Exa 网页搜索的同时查询 Financial Datasets。
 * 按基本面指标筛选美国市场标的。
 * 跟踪公司新闻与相关动态。
 
-## 可用数据 {#data-available}
+<div id="data-available">
+  ## 可用数据
+</div>
 
 以下每个数据集都可通过 `financial_datasets` 提供方获取；agent 会自行选择最适合当前任务的数据集：
 
@@ -51,7 +59,9 @@ agent 便会在进行 Exa 网页搜索的同时查询 Financial Datasets。
 | 股价快照       | 当前实时价格、当日涨跌幅及报价时间。                                           |
 | 选股器        | 符合基本面筛选 criteria 的公司。                                        |
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用该值：
 
@@ -59,7 +69,9 @@ agent 便会在进行 Exa 网页搜索的同时查询 Financial Datasets。
 financial_datasets
 ```
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 为 NVIDIA 构建一份结构化的公司研究快照。
 
@@ -279,13 +291,17 @@ financial_datasets
   ```
 </CodeGroup>
 
-## 搭配使用 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用
+</div>
 
 * [Particle](/zh/docs/agent/connect/particle)：将已发布的报道与播客评论相互印证。
 * [Baselayer](/zh/docs/agent/connect/baselayer)：核实股票代码背后的实际主体。
 * [Fiber.ai](/zh/docs/agent/connect/fiber)：为上市公司补充增强私募市场同类企业及管理层联系方式等信息。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

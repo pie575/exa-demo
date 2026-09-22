@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Ejemplos {#examples}
+<div id="examples">
+  # Ejemplos
+</div>
 
 > Ejemplos de Exa Agent en producción para creación de listas, inteligencia KYB, ofertas de empleo y salidas estructuradas.
 
@@ -1023,7 +1027,9 @@ La vista previa de la hoja usa nombres de empresas ficticios para ilustrar el pa
   ```
 </CodeGroup>
 
-## Creación de listas amplias con Agent Max {#broad-list-building-with-agent-max}
+<div id="broad-list-building-with-agent-max">
+  ## Creación de listas amplias con Agent Max
+</div>
 
 Usa `effort: "max"` para tareas en las que la exhaustividad y la minuciosidad importan más que la latencia o el costo, como la creación de listas extensas, la investigación profunda en múltiples fuentes y los criterios difíciles de verificar. Agent Max está en beta pública: envía `Exa-Beta: agent-max-effort-2026-07-27` con la solicitud. El encabezado acepta una lista de tokens beta separados por comas.
 
@@ -1067,7 +1073,9 @@ Usa `effort: "max"` para tareas en las que la exhaustividad y la minuciosidad im
   ```
 </CodeGroup>
 
-## Adjuntar un data partner con Exa Connect {#attach-a-data-partner-with-exa-connect}
+<div id="attach-a-data-partner-with-exa-connect">
+  ## Adjuntar un data partner con Exa Connect
+</div>
 
 Usa `dataSources` para que Exa Agent obtenga datos de un data partner premium durante un run. En este ejemplo, enriquece cada empresa con el tráfico de Similarweb y la financiación de Harmonic, combinados con investigación web. Consulta [Exa Connect](/es/docs/agent/connect/overview) para ver la lista completa de partners.
 
@@ -1192,7 +1200,9 @@ Usa `dataSources` para que Exa Agent obtenga datos de un data partner premium du
   ```
 </CodeGroup>
 
-## Lista de verificación para producción {#production-checklist}
+<div id="production-checklist">
+  ## Lista de verificación para producción
+</div>
 
 * Dale a Agent una `query` específica que indique la unidad de trabajo y la calidad de fuentes deseada.
 * Usa `input.data` para los registros conocidos en lugar de incrustar filas en el prompt.

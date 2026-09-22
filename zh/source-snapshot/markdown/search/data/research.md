@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 研究文献 {#research-publications}
+<div id="research-publications">
+  # 研究文献
+</div>
 
 > 使用 Exa Search 查找学术论文、专利、科研资助、临床试验和监管批准信息。
 
@@ -40,7 +44,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   进一步了解文献搜索的质量表现。
 </Tip>
 
-## 包含内容 {#included}
+<div id="included">
+  ## 包含内容
+</div>
 
 * 论文与预印本，若有解析好的 full text，则包含 full text 分块
 * 专利，含摘要、权利要求、发明人和受让人
@@ -48,40 +54,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * 临床试验、药品说明书及药物相互作用数据
 * 监管与卫生批准
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 文献综述与引用来源查找
 * 现有技术检索与专利布局分析
 * 临床与制药研究
 * 科研资助与经费机会发掘
 
-## 查询示例 {#example-queries}
+<div id="example-queries">
+  ## 查询示例
+</div>
 
-### 查找某个主题的论文 {#find-papers-on-a-topic}
+<div id="find-papers-on-a-topic">
+  ### 查找某个主题的论文
+</div>
 
 请描述方法或研究发现，而不是去猜测标题中的关键词。`publication` 类别可将结果限定为论文。
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-### 检索临床证据 {#search-clinical-evidence}
+<div id="search-clinical-evidence">
+  ### 检索临床证据
+</div>
 
 明确写出试验分期、干预措施和人群，让试验注册登记和结果页面的排名高于泛泛的报道。
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-### 追踪监管批准 {#track-regulatory-approvals}
+<div id="track-regulatory-approvals">
+  ### 追踪监管批准
+</div>
 
 指明你关注的监管机构以及设备或药物类别。
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-### 运行现有技术检索 {#run-a-prior-art-search}
+<div id="run-a-prior-art-search">
+  ### 运行现有技术检索
+</div>
 
 像撰写权利要求那样，从功能角度描述该发明，而不要使用产品名称。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +145,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 若所需的结构化数据需要跨多个来源开展研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的文献、纳入 criteria 和输出 fields，agent 即会返回经 schema 校验的结果及引用来源。
 

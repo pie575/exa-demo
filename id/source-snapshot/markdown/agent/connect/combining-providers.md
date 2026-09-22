@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Menggabungkan provider {#combining-providers}
+<div id="combining-providers">
+  # Menggabungkan provider
+</div>
 
 > Gunakan beberapa data partner sekaligus dalam satu run Exa Agent.
 
 Meng-attach partner ke `dataSources` membuatnya tersedia bagi Exa Agent sebagai tool — ini **tidak** memaksa agent untuk memanggilnya. Dipanggil atau tidaknya suatu partner bergantung pada `query` dan `outputSchema` Anda: sebutkan jenis hasil yang Anda inginkan dari masing-masing partner, maka Exa Agent akan memakai tool yang sesuai alih-alih menebak dari halaman web. Anda dapat meng-attach hingga lima partner per run; Exa Agent yang menentukan mana yang dipanggil di setiap langkah, dengan Exa web search tersedia berdampingan. Butuh lebih dari lima untuk satu run? [Hubungi kami](mailto:sales@exa.ai) untuk menaikkan batasnya.
 
-## Dua partner dalam satu run {#two-partners-in-one-run}
+<div id="two-partners-in-one-run">
+  ## Dua partner dalam satu run
+</div>
 
 Cantumkan beberapa partner sekaligus, dan Exa Agent akan memanfaatkan keunggulan masing-masing. Dua hanyalah contoh di sini — Anda bisa attach hingga lima partner ke `dataSources`, dan prinsipnya tetap sama: minta data dari masing-masing secara eksplisit. Run pengarahan investor ini menggabungkan [Financial Datasets](/id/docs/agent/connect/financialdatasets) untuk berita ticker dengan [Particle](/id/docs/agent/connect/particle) untuk komentar podcast. Query meminta data khas dari tiap partner dan schema memisahkan output menjadi `financialNews` dan `podcastChatter`, sehingga Exa Agent memanggil **kedua** partner dalam run yang sama.
 

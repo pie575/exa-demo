@@ -19,7 +19,9 @@ Ketika field ini disertakan pada team yang memenuhi syarat, Exa memproses permin
 
 Mode HIPAA mencakup [Zero Data Retention](/id/docs/admin/security/zero-data-retention) untuk permintaan tersebut: Exa tidak menyimpan PHI.
 
-## Endpoint yang didukung {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoint yang didukung
+</div>
 
 Field `compliance` dikenali pada:
 
@@ -28,7 +30,9 @@ Field `compliance` dikenali pada:
 
 Endpoint lain akan menolak field ini.
 
-## Persyaratan {#requirements}
+<div id="requirements">
+  ## Persyaratan
+</div>
 
 Mode HIPAA hanya mendukung cached retrieval. Permintaan yang kompatibel:
 
@@ -42,7 +46,9 @@ Permintaan yang tidak kompatibel akan mengembalikan `400 INVALID_REQUEST_BODY`, 
 * Pengaturan kebaruan yang memerlukan pengambilan langsung, seperti `maxAgeHours: 0` atau `maxAgeHours` bernilai positif
 * Permintaan search yang tidak menyertakan `type`, atau menggunakan tipe selain `instant` atau `fast`
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -58,6 +64,8 @@ Permintaan yang tidak kompatibel akan mengembalikan `400 INVALID_REQUEST_BODY`, 
   ```
 </CodeGroup>
 
-## Akses {#access}
+<div id="access">
+  ## Akses
+</div>
 
 Untuk mengaktifkan mode HIPAA bagi team Anda, hubungi [sales@exa.ai](mailto:sales@exa.ai). Lihat [Trust Center](https://trust.exa.ai) untuk dokumentasi keamanan Exa.

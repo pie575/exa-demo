@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# CrewAI {#crewai}
+<div id="crewai">
+  # CrewAI
+</div>
 
 > Aprende a añadir capacidades de recuperación de Exa a tus agentes de CrewAI.
 
@@ -26,7 +30,9 @@ En esta guía crearemos un crew de dos agentes que genera un boletín a partir d
 
 ***
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
 <Steps>
   <Step title="Requisitos previos e instalación">

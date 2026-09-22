@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 创建批次 {#create-a-batch}
+<div id="create-a-batch">
+  # 创建批次
+</div>
 
 > 提交一批 Exa API 请求以异步运行。
 
@@ -13,7 +17,9 @@
   在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /batches
 openapi: 3.1.0

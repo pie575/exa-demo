@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Olahraga, Cuaca &amp; Tempat {#sports-weather-places}
+<div id="sports-weather-places">
+  # Olahraga, Cuaca &amp; Tempat
+</div>
 
 > Temukan data olahraga langsung, prakiraan cuaca, dan tempat lokal dengan Exa Search.
 
@@ -35,13 +39,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Gunakan Exa Search untuk data olahraga langsung, prakiraan cuaca, dan informasi lokal tanpa perlu mengintegrasikan API terpisah untuk masing-masing. Ajukan pertanyaan dalam bahasa alami yang menyebutkan tim, tempat, dan rentang waktu yang Anda maksud.
 
-## Tulis query yang lebih baik {#write-better-queries}
+<div id="write-better-queries">
+  ## Tulis query yang lebih baik
+</div>
 
 Sebutkan lokasi atau tim secara spesifik dan sertakan tanggal bila jawabannya berubah seiring waktu. Tambahkan kondisi atau atribut yang relevan dengan tugas Anda, bukan meminta informasi yang terlalu umum.
 
 <Tabs>
   <Tab title="Olahraga" icon="trophy">
-### Yang tercakup {#included}
+    <div id="included">
+      ### Yang tercakup
+    </div>
 
     Data olahraga yang tersedia:
 
@@ -51,13 +59,17 @@ Sebutkan lokasi atau tim secara spesifik dan sertakan tanggal bila jawabannya be
 
     Cakupannya meliputi NBA, WNBA, NFL, MLB, NHL, MLS, bola basket dan football tingkat universitas, liga sepak bola utama Eropa dan kompetisi UEFA, kriket, F1, UFC, tenis, dan golf.
 
-### Sebutkan liga, tim, dan waktu {#ask-for-the-league-team-and-time}
+    <div id="ask-for-the-league-team-and-time">
+      ### Sebutkan liga, tim, dan waktu
+    </div>
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-### Tambahkan konteks beritanya {#add-the-surrounding-story}
+    <div id="add-the-surrounding-story">
+      ### Tambahkan konteks beritanya
+    </div>
 
     Mintalah liputan yang Anda butuhkan bersama data langsung.
 
@@ -65,50 +77,68 @@ Sebutkan lokasi atau tim secara spesifik dan sertakan tanggal bila jawabannya be
   </Tab>
 
   <Tab title="Cuaca" icon="cloud-sun">
-### Yang tercakup {#included-2}
+    <div id="included-2">
+      ### Yang tercakup
+    </div>
 
     Prakiraan mencakup kondisi cuaca, suhu tertinggi dan terendah, curah hujan, angin, kelembapan, indeks UV, serta waktu matahari terbit dan terbenam dalam waktu setempat.
 
     Query tanpa tanggal akan mengembalikan prakiraan hari ini. Mintalah hari atau rentang tertentu untuk mendapatkan satu halaman per hari, hingga 16 hari ke depan atau 92 hari ke belakang.
 
-### Sebutkan tempat dan harinya {#name-the-place-and-day}
+    <div id="name-the-place-and-day">
+      ### Sebutkan tempat dan harinya
+    </div>
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-### Tanyakan kondisi yang memengaruhi rencana Anda {#ask-about-the-condition-that-affects-your-plan}
+    <div id="ask-about-the-condition-that-affects-your-plan">
+      ### Tanyakan kondisi yang memengaruhi rencana Anda
+    </div>
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-### Gabungkan prakiraan dengan liputan berita {#combine-forecasts-with-reporting}
+    <div id="combine-forecasts-with-reporting">
+      ### Gabungkan prakiraan dengan liputan berita
+    </div>
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="Tempat" icon="map-pin">
-### Yang tercakup {#included-3}
+    <div id="included-3">
+      ### Yang tercakup
+    </div>
 
     * Profil bisnis lokal, lengkap dengan alamat, jam operasional, fasilitas, dan ulasan
     * Venue, atraksi, dan tempat menarik
     * Listing properti dan catatan properti
     * Keputusan zonasi, izin, dan catatan perencanaan
 
-### Deskripsikan tempatnya seperti saat Anda bertanya kepada warga setempat {#describe-the-place-like-you-would-ask-a-local}
+    <div id="describe-the-place-like-you-would-ask-a-local">
+      ### Deskripsikan tempatnya seperti saat Anda bertanya kepada warga setempat
+    </div>
 
     Gabungkan kategori, area, dan atribut yang Anda pentingkan.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-### Sebutkan jenis catatan dan wilayahnya {#name-the-record-type-and-geography}
+    <div id="name-the-record-type-and-geography">
+      ### Sebutkan jenis catatan dan wilayahnya
+    </div>
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-### Bandingkan tempat berdasarkan kendala praktis {#compare-places-against-practical-constraints}
+    <div id="compare-places-against-practical-constraints">
+      ### Bandingkan tempat berdasarkan kendala praktis
+    </div>
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 Ketiga tipe data ini menggunakan endpoint Search yang sama.
 
@@ -148,7 +178,9 @@ Ketiga tipe data ini menggunakan endpoint Search yang sama.
   ```
 </CodeGroup>
 
-## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Dapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang membutuhkan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan tempat, team, tanggal, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi schema beserta sitasi.
 

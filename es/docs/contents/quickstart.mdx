@@ -14,7 +14,9 @@ Todas las funcionalidades de contenido también están disponibles en [Exa Searc
   Exa ajusta los extractos de cada resultado según su relevancia. Consulta [Highlights](/es/docs/search/highlights).
 </Tip>
 
-## Haz tu primera solicitud {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Haz tu primera solicitud
+</div>
 
 Pasa una o más URL o IDs de documentos y solicita highlights de las partes relevantes para tu tarea. En las solicitudes HTTP, indícalos en `ids`:
 
@@ -240,7 +242,9 @@ Cada item de `results` incluye los metadatos de la página y el contenido que so
 
 Elige una sola vista de contenido por solicitud. Si solicitas highlights, text y resumen a la vez, cada vista se devuelve y se factura por separado.
 
-## Frescura del contenido {#content-freshness}
+<div id="content-freshness">
+  ## Frescura del contenido
+</div>
 
 `maxAgeHours` controla qué tan reciente debe ser el contenido extraído de la página.
 
@@ -265,7 +269,9 @@ La mayoría de las solicitudes deberían omitir este campo. Establécelo cuando 
   | `"preferred"`                | Sin equivalente directo; usa un valor bajo como `maxAgeHours: 1` |
 </Accordion>
 
-## Rastrear subpáginas {#crawl-subpages}
+<div id="crawl-subpages">
+  ## Rastrear subpáginas
+</div>
 
 Configura `subpages` para seguir los enlaces de cada URL inicial. Añade `subpageTarget` cuando quieras que Exa priorice determinadas secciones del sitio:
 
@@ -303,13 +309,17 @@ Configura `subpages` para seguir los enlaces de cada URL inicial. Añade `subpag
   ```
 </CodeGroup>
 
-## Imágenes y favicons {#images-and-favicons}
+<div id="images-and-favicons">
+  ## Imágenes y favicons
+</div>
 
 Asigna a `extras.imageLinks` la cantidad de URL de imágenes que quieres obtener de cada página. Los resultados también incluyen
 el `favicon` del sitio y una URL de `image` representativa cuando está disponible. En `/search`, esta opción
 se ubica en `contents.extras.imageLinks`.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Referencia de la API" icon="square-terminal" href="/es/docs/reference/get-contents" cta="Abrir referencia" arrow="true">

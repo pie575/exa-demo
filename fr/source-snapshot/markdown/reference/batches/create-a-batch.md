@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Créer un batch {#create-a-batch}
+<div id="create-a-batch">
+  # Créer un batch
+</div>
 
 > Soumettez un batch de requests à l&#39;API Exa pour une exécution asynchrone.
 
@@ -13,7 +17,9 @@ Chaque élément de `requests` est un `POST` vers `/search` ou `/agent/runs` ave
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /batches
 openapi: 3.1.0

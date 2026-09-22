@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Créer un monitor Websets {#create-a-websets-monitor}
+<div id="create-a-websets-monitor">
+  # Créer un monitor Websets
+</div>
 
 > Crée un nouveau `Monitor` pour tenir vos Websets continuellement à jour avec des données fraîches.
 
@@ -13,7 +17,9 @@ Les monitors s&#39;exécutent automatiquement selon le schedule que vous défini
 * **Mettre à jour le contenu existant** : exécutez des opérations `refresh` pour actualiser les contenus et les enrichments des items
 * **Planification automatisée** : configurez des expressions `cron` et un `timezone` pour un contrôle précis de la planification
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0

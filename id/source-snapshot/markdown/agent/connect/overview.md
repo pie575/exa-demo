@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa Connect {#exa-connect}
+<div id="exa-connect">
+  # Exa Connect
+</div>
 
 > Berikan Exa Agent Anda akses langsung ke data partners premium, berdampingan dengan web search Exa, dalam satu run.
 
@@ -24,7 +28,9 @@ lalu kembali ke sini untuk attach data partners.
   Lebih suka MCP? Exa Agent dan [Exa Connect](/id/docs/agent/connect/overview) tersedia di [Exa MCP](/id/docs/get-started/exa-mcp#exa-agent). Aktifkan `tools=agent_run` untuk menjalankan Research multi-langkah, list building, enrichment, dan terstruktur output dari Claude, Cursor, dan MCP clients lainnya.
 </Tip>
 
-## Mengapa Exa Connect {#why-exa-connect}
+<div id="why-exa-connect">
+  ## Mengapa Exa Connect
+</div>
 
 * **Data premium tanpa integrasi terpisah.** Akses data partner tanpa perlu
   menandatangani kontrak atau memasang SDK. Anda cukup memanggil satu API Exa.
@@ -36,7 +42,9 @@ lalu kembali ke sini untuk attach data partners.
 * **Data indeks dan partner dalam satu run.** Connect berjalan di atas indeks Exa.
   Exa Agent memakai tiap source pada area terkuatnya dan mencantumkan sumber hasilnya.
 
-## Cara kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
 
 1. **Attach** satu atau beberapa provider melalui array `dataSources` pada
    [`POST /agent/runs`](/id/docs/reference/agent-api/create-a-run).
@@ -45,7 +53,9 @@ lalu kembali ke sini untuk attach data partners.
 3. Hasil dari partner **digabungkan dengan web research** ke dalam terstruktur output Anda,
    lengkap dengan sources yang dilampirkan.
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 <Note>
   Harga Exa Connect bersifat tambahan di atas [harga Agent run](/id/docs/agent/quickstart#pricing) standar.
@@ -163,7 +173,9 @@ pencarian balik pejabat) tidak dikenakan biaya. Lihat [harga Baselayer](/id/docs
   ```
 </CodeGroup>
 
-## Data partners {#data-partners}
+<div id="data-partners">
+  ## Data partners
+</div>
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -209,9 +221,13 @@ pencarian balik pejabat) tidak dikenakan biaya. Lihat [harga Baselayer](/id/docs
 
 Butuh sumber yang tidak tercantum di atas? Lihat [Penyedia tambahan](/id/docs/agent/connect/additional-partners) kami, yang tersedia atas permintaan dengan menghubungi tim kami.
 
-## Penggunaan {#usage}
+<div id="usage">
+  ## Penggunaan
+</div>
 
-### Menggabungkan provider {#combining-providers}
+<div id="combining-providers">
+  ### Menggabungkan provider
+</div>
 
 Attach sebanyak apa pun partner yang dibutuhkan tugas Anda. Exa Agent memanggil masing-masing partner di bidang yang paling
 dikuasainya dan memadukan hasilnya dengan web search menjadi satu jawaban terstruktur:

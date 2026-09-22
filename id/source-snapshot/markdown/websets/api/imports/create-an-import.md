@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Membuat impor {#create-an-import}
+<div id="create-an-import">
+  # Membuat impor
+</div>
 
 > Membuat impor baru untuk mengunggah data Anda ke Websets. Impor dapat digunakan untuk:
 
@@ -13,7 +17,9 @@
 
 Setelah impor dibuat, Anda dapat mengunggah data ke `uploadUrl` yang dikembalikan hingga `uploadValidUntil` (secara default 1 jam).
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

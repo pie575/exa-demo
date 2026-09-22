@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，请先通过该文件了解所有可用页面。
 
-# LangChain {#langchain}
+<div id="langchain">
+  # LangChain
+</div>
 
 > 如何使用 Exa 与 LangChain 的 integration 来实现 RAG。
 
@@ -24,7 +28,9 @@ LangChain 是一个用于构建应用的框架，可将 LLM 与数据、API 及�
 
 ***
 
-## 快速开始 {#get-started}
+<div id="get-started">
+  ## 快速开始
+</div>
 
 <Steps>
   <Step title="前提条件与安装">

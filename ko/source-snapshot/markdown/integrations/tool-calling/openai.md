@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# OpenAI Tool Calling {#openai-tool-calling}
+<div id="openai-tool-calling">
+  # OpenAI Tool Calling
+</div>
 
 > OpenAI tool calling으로 애플리케이션에 Exa web search와 page contents를 추가하세요.
 
@@ -13,7 +17,9 @@
 
 OpenAI의 [tool calling](https://platform.openai.com/docs/guides/function-calling?lang=python)을 사용하면 모델이 코드에 직접 정의한 함수를 호출할 수 있습니다. Exa SDK는 OpenAI용으로 미리 만들어진 web search 및 페이지 읽기 도구를 제공하므로, tool schema를 직접 작성하거나 도구 call을 파싱하거나 Exa result를 일일이 형식에 맞출 필요가 없습니다.
 
-## 시작하기 {#get-started}
+<div id="get-started">
+  ## 시작하기
+</div>
 
 <Steps>
   <Step title="SDK 설치">
@@ -106,7 +112,9 @@ OpenAI의 [tool calling](https://platform.openai.com/docs/guides/function-callin
   </Step>
 </Steps>
 
-## Responses API {#responses-api}
+<div id="responses-api">
+  ## Responses API
+</div>
 
 OpenAI Responses API에서는 동일한 `handle_tool_calls` 헬퍼와 함께 `responses` factory를 사용하세요. handler는 follow-up 요청에 사용할 `function_call_output` 항목을 반환합니다.
 
@@ -138,7 +146,9 @@ OpenAI Responses API에서는 동일한 `handle_tool_calls` 헬퍼와 함께 `re
   Chat Completions와 Responses API는 서로 다른 도구 형식을 사용하며 상대방의 형식을 허용하지 않으므로, 호출하려는 엔드포인트에 맞는 factory를 사용하세요.
 </Note>
 
-## 도구 설정하기 {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 도구 설정하기
+</div>
 
 키워드 인자는 일반적인 Exa 옵션으로, 도구가 실행될 때 그대로 전달됩니다. search 옵션은 `exa.search()`로, contents 옵션은 `exa.get_contents()`로 전달됩니다:
 
@@ -162,11 +172,15 @@ OpenAI Responses API에서는 동일한 `handle_tool_calls` 헬퍼와 함께 `re
 
 반면 `name`(기본값은 `"web_search"`와 `"get_contents"`)과 `description`은 모델에게 노출되는 도구 정의 자체를 덮어씁니다. 서로 다르게 설정된 Exa 도구를 나란히 함께 사용하거나, 해당 이름을 선점하는 다른 도구와의 충돌을 피하려면 사용자 지정 `name`을 지정하세요.
 
-## 직접 만든 도구 함께 사용하기 {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 직접 만든 도구 함께 사용하기
+</div>
 
 handler는 메시지에 포함된 모든 도구 호출에 응답합니다. handler가 해석할 수 없는 도구를 지정한 call은 그냥 누락되지 않고 `Error: unknown tool "<name>"` output을 받으므로, follow-up 요청에서 필수 도구 response가 빠지는 일이 없습니다. Exa의 도구와 함께 직접 만든 도구를 실행한다면, 다음 요청을 보내기 전에 해당 오류 output을 직접 만든 result로 교체하세요.
 
-## 루프를 직접 작성하기 {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## 루프를 직접 작성하기
+</div>
 
 tool schema와 실행을 직접 제어하고 싶다면, 도구를 정의하고 call을 수동으로 처리하면 됩니다. `exa.tools.web_search()`와 `exa.tools.get_contents()`는 직접 작성한 루프에서 사용할 수 있도록 제공업체에 종속되지 않는 동일한 도구 사양(`run` 메서드 포함)을 제공하며, 전부 처음부터 직접 작성할 수도 있습니다:
 

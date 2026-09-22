@@ -14,7 +14,9 @@ Utilisez cette fonctionnalité pour backtester vos agents, exécuter des évalua
   Au-delà de 100 requests, [contactez le service commercial](https://exa.ai/contact/sales) pour continuer.
 </Info>
 
-## Search à un datetime {#search-at-a-datetime}
+<div id="search-at-a-datetime">
+  ## Search à un datetime
+</div>
 
 Sur `/search`, placez `snapshotAsOf` dans `contents`.
 
@@ -103,7 +105,9 @@ Exa identifie les candidate URLs, puis ne conserve que les pages ayant une store
   ```
 </Accordion>
 
-## Figer les contenus à un datetime {#pin-contents-to-a-datetime}
+<div id="pin-contents-to-a-datetime">
+  ## Figer les contenus à un datetime
+</div>
 
 Ajoutez `snapshotAsOf` au niveau racine d&#39;une requête `/contents`.
 
@@ -182,7 +186,9 @@ Exa renvoie la stored version la plus récente à cette datetime ou antérieure.
   `"status": "error"` et `"tag": "CONTENT_NOT_CACHED"`.
 </Tip>
 
-## Fonctionnement des snapshots {#how-snapshots-work}
+<div id="how-snapshots-work">
+  ## Fonctionnement des snapshots
+</div>
 
 | Field          | Emplacement | Signification                                                                          |
 | -------------- | ----------- | -------------------------------------------------------------------------------------- |
@@ -200,7 +206,9 @@ Pour les deux endpoints :
   `snapshotAsOf`, et non comme une reconstitution exacte du classement qu&#39;une search aurait produit à ce moment-là.
 </Note>
 
-## Limites et compatibilité {#limits-and-compatibility}
+<div id="limits-and-compatibility">
+  ## Limites et compatibilité
+</div>
 
 <AccordionGroup>
   <Accordion title="Accès, limite de débit et profondeur d'historique">
@@ -223,7 +231,9 @@ Pour les deux endpoints :
   </Accordion>
 </AccordionGroup>
 
-## Cas d&#39;usage courants {#common-uses}
+<div id="common-uses">
+  ## Cas d&#39;usage courants
+</div>
 
 Utilisez Exa Snapshot lorsque la tâche dépend de ce qu&#39;Exa avait stocké à une datetime précise :
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Monitors API {#monitors-api}
+<div id="monitors-api">
+  # Monitors API
+</div>
 
 > 定期运行 search，并通过 webhook 接收新发现的结果。
 
@@ -11,13 +15,17 @@ Monitors 会按照设定的 schedule 定期运行 Exa search，并将结果投�
 
 可以使用 Monitors 持续跟踪新闻、竞争对手动态、融资轮次、监管变化、研究文献，或任何随时间变化的主题。
 
-## Monitors 的工作方式 {#how-monitors-work}
+<div id="how-monitors-work">
+  ## Monitors 的工作方式
+</div>
 
 每次运行时，Exa 会执行已配置的 search，按时间进行过滤，剔除该 monitor 此前已返回过的结果或发现内容，再将新的输出发送到你的 webhook。
 
 每个 monitor 都有各自独立的运行历史，因此编写 query 时应围绕你想要持续追踪的信号，而不必自行添加不断变动的日期范围。
 
-## 创建你的第一个 monitor {#create-your-first-monitor}
+<div id="create-your-first-monitor">
+  ## 创建你的第一个 monitor
+</div>
 
 创建 monitor 时，需指定搜索 query、interval，以及用于接收更新的 HTTPS 端点：
 
@@ -120,7 +128,9 @@ Monitors 会按照设定的 schedule 定期运行 Exa search，并将结果投�
 
 创建 monitor 时请妥善保存 `webhookSecret`。它只返回一次，且是验证 webhook 签名的必要凭据。
 
-## 配置输出 {#configure-the-output}
+<div id="configure-the-output">
+  ## 配置输出
+</div>
 
 每次完成的运行都会在 `output.results` 中返回新发现的页面。
 
@@ -162,7 +172,9 @@ Exa 还会将每个页面的发现内容归纳汇总到 `output.content` 中：
 不要将引用来源和 confidence 写入 schema。它们会单独在
 `output.grounding` 中返回。
 
-## 添加页面内容 {#add-page-content}
+<div id="add-page-content">
+  ## 添加页面内容
+</div>
 
 `search` 接受与 [Exa Search](/zh/docs/search/quickstart) 相同的选项：用 `contents` 为每条结果附带 highlights、full text 或摘要，用 `includeDomains` 或 `excludeDomains` 限定来源范围。
 
@@ -234,7 +246,9 @@ Exa 还会将每个页面的发现内容归纳汇总到 `output.content` 中：
   ```
 </CodeGroup>
 
-## 测试你的 monitor {#test-your-monitor}
+<div id="test-your-monitor">
+  ## 测试你的 monitor
+</div>
 
 无需等待下一个计划时间，立即触发一次运行，然后列出该 monitor 的运行记录：
 
@@ -276,7 +290,9 @@ Exa 还会将每个页面的发现内容归纳汇总到 `output.content` 中：
 
 运行完成之前，`output` 均为 null。
 
-## Schedule 运行 {#schedule-runs}
+<div id="schedule-runs">
+  ## Schedule 运行
+</div>
 
 最小 interval 为一小时。请使用单一时长，例如 `1h`、`6h`、`1d` 或 `7d`。schedule 以 monitor 的创建时间为基准：下午 2:30 创建的每日 monitor 会在每天下午 2:30 左右运行，但每次运行最多可能延迟 30 分钟，因此请勿依赖精确的时钟送达时间。
 
@@ -286,7 +302,9 @@ Exa 还会将每个页面的发现内容归纳汇总到 `output.content` 中：
   Monitor 的运行不会重叠。如果下一次按 schedule 安排的运行开始时上一次运行仍在进行，Exa 会取消上一次运行。
 </Note>
 
-## 接收 webhook 更新 {#receive-webhook-updates}
+<div id="receive-webhook-updates">
+  ## 接收 webhook 更新
+</div>
 
 如果你只需要已完成的运行，请订阅 `monitor.run.completed`。若省略 `events`，Exa
 还会发送 monitor 生命周期事件和运行创建事件。
@@ -383,7 +401,9 @@ Exa 还会将每个页面的发现内容归纳汇总到 `output.content` 中：
   ```
 </CodeGroup>
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="创建 monitor" icon="bell" href="/zh/docs/reference/monitors/create-a-monitor" cta="打开参考文档" arrow="true">

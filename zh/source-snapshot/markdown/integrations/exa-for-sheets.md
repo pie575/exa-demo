@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# Exa for Google Sheets {#exa-for-google-sheets}
+<div id="exa-for-google-sheets">
+  # Exa for Google Sheets
+</div>
 
 > 在 Google 表格中使用 Exa Agent 和 Exa 公式。
 
@@ -18,7 +22,9 @@
 * **Exa Agent**：处理完整表格和跨单元格任务
 * **`=EXA(...)`**：在单个单元格中返回一个答案
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 <Steps>
   <Step title="安装 add-on">
@@ -46,7 +52,9 @@
   </Step>
 </Steps>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Exa Agent 让你可以在 Google 表格中跨多个单元格使用 Exa。
 
@@ -57,7 +65,9 @@ Exa Agent 让你可以在 Google 表格中跨多个单元格使用 Exa。
 * 通过新增行来续写表格
 * 用网络数据丰富列表内容
 
-### 生成表格 {#generate-a-table}
+<div id="generate-a-table">
+  ### 生成表格
+</div>
 
 如果想让 Exa 创建一个新表格，请使用 **Generate table**。
 
@@ -77,7 +87,9 @@ Exa 会在网络上进行研究，并将表格写入你的工作表。
 
 默认情况下，表格从所选单元格开始。你可以在 **More options** 中选择其他起始单元格。
 
-### 填充单元格 {#fill-cells}
+<div id="fill-cells">
+  ### 填充单元格
+</div>
 
 如果你已经有了一个表格，想让 Exa 补全其中缺失的数据，可以使用**填充单元格**。
 
@@ -99,7 +111,9 @@ Exa 会参考所选区域周围的表格内容来填补空白。
 
 选中 Apple 所在行的空白单元格，然后点击**填充所选单元格**。Exa 会把公司名称和邻近行作为上下文来使用。
 
-### 续写行 {#continue-rows}
+<div id="continue-rows">
+  ### 续写行
+</div>
 
 你也可以选中表格下方的空白行。
 
@@ -107,7 +121,9 @@ Exa 会参考所选区域周围的表格内容来填补空白。
 
 Exa 会参照已有的行作为示例，保持相同的列，并避免重复表格中已有的项目。
 
-## `=EXA(...)` {#exa}
+<div id="exa">
+  ## `=EXA(...)`
+</div>
 
 当你想在单个单元格中获得一个答案时，请使用 `=EXA(...)`。它会搜索网络、阅读排名靠前的结果，并返回一个简洁的答案。
 
@@ -133,7 +149,9 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 
 简单的单元格答案请使用 `=EXA(...)`；如果想创建或填充整个表格，请使用 **Exa Agent**。
 
-## `=EXA_ANSWER(...)` {#exa_answer}
+<div id="exa_answer">
+  ## `=EXA_ANSWER(...)`
+</div>
 
 高级 AI 回答，可完全控制输出格式。当你需要 system prompt、结构化 JSON 输出、引用来源或特定搜索类型时，请使用此函数。
 
@@ -160,7 +178,9 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-## `=EXA_SEARCH(...)` {#exa_search}
+<div id="exa_search">
+  ## `=EXA_SEARCH(...)`
+</div>
 
 搜索网页，并以垂直列表形式返回 URL。支持域名过滤、类别过滤、content highlights，以及通过 `outputSchema` 生成的合成输出。
 
@@ -188,7 +208,9 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-## `=EXA_CONTENTS(...)` {#exa_contents}
+<div id="exa_contents">
+  ## `=EXA_CONTENTS(...)`
+</div>
 
 从 URL 中提取文本内容。
 
@@ -200,7 +222,9 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 | ----- | ---- | ----------------------------------- |
 | `url` | 是    | 完整的 URL (必须以 `http` 或 `https` 开头) 。 |
 
-## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
+<div id="exa_findsimilar">
+  ## `=EXA_FINDSIMILAR(...)`
+</div>
 
 查找与参考 URL 相似的 URL，可选择使用域名和文本过滤条件。
 
@@ -217,7 +241,9 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 | `includeTextStr`    | 否    | `""` | 结果中必须出现的短语。    |
 | `excludeTextStr`    | 否    | `""` | 结果中不得出现的短语。    |
 
-## 批次 {#batch}
+<div id="batch">
+  ## 批次
+</div>
 
 需要一次性处理多个 Exa 公式单元格时，请使用 **批次**。
 
@@ -228,7 +254,9 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 
 如果想保留当前结果，不再让公式重新运行，可以将公式转换为数值。
 
-## 何时使用哪种方式 {#when-to-use-what}
+<div id="when-to-use-what">
+  ## 何时使用哪种方式
+</div>
 
 | 任务                          | 使用方式                       |
 | --------------------------- | -------------------------- |
@@ -243,13 +271,17 @@ Exa 会参照已有的行作为示例，保持相同的列，并避免重复表�
 | 批量刷新 Exa 公式                 | 批次                         |
 | 将公式结果保存为纯文本                 | 批次 → Convert to values     |
 
-## 注意事项 {#notes}
+<div id="notes">
+  ## 注意事项
+</div>
 
 * Exa API 请求会计入你的用量配额。使用 **Batch → Convert to values** 可将结果固定下来，避免公式重新计算。
 * 触发速率限制 (HTTP 429) 时，add-on 会按指数退避策略自动重试，最多重试 3 次。
 * 建议先从小批次 (10–20 行) 开始，再逐步扩展到数百行。
 
-## 链接 {#links}
+<div id="links">
+  ## 链接
+</div>
 
 * [安装 Exa AI for Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
 * [获取 Exa API 密钥](https://dashboard.exa.ai/api-keys)

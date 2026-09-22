@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 面向 Claude 的 Enterprise Managed Auth {#enterprise-managed-auth-for-claude}
+<div id="enterprise-managed-auth-for-claude">
+  # 面向 Claude 的 Enterprise Managed Auth
+</div>
 
 > 配置 Enterprise Managed Auth (EMA) ，让 Claude 通过你的身份提供商连接 Exa MCP，包括 Okta Cross App Access (XAA) 。
 
@@ -11,13 +15,17 @@
 
 访问权限随你的目录而变：在 Okta 中注销某人后，其通过 Claude 访问 Exa 的权限也随之终止。EMA 即 MCP 的 [enterprise managed authorization 扩展](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)。
 
-## 开始之前 {#before-you-start}
+<div id="before-you-start">
+  ## 开始之前
+</div>
 
 * 一个已连接身份提供商的 Claude Team 或 Enterprise organization，且你拥有其管理员权限。
 * 一个已启用 SSO 和 directory sync 的 Exa **organization** (非个人团队) ，且你拥有其管理员权限。
 * 使用 Okta 作为身份提供商，且运行在 Okta Identity Engine 上并已启用 [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm)，同时拥有该租户的超级管理员权限。目前仅支持 Okta 这一种身份提供商。
 
-## 你需要的 Exa 值 {#exa-values-youll-need}
+<div id="exa-values-youll-need">
+  ## 你需要的 Exa 值
+</div>
 
 | 字段                        | 值                        |
 | ------------------------- | ------------------------ |
@@ -25,7 +33,9 @@
 | Resource / MCP server URL | `https://mcp.exa.ai/mcp` |
 | Scope                     | `mcp:tools`              |
 
-## 设置 EMA {#set-up-ema}
+<div id="set-up-ema">
+  ## 设置 EMA
+</div>
 
 <Steps>
   <Step title="在 Exa 中预配成员">
@@ -57,12 +67,16 @@
   通过 Claude 产生的用量将计入该成员所属的 Exa 团队，按该团队的 plan 和速率限制计费，与他们在该团队下运行的其他任何内容一样。
 </Note>
 
-## 撤销访问权限 {#revoking-access}
+<div id="revoking-access">
+  ## 撤销访问权限
+</div>
 
 * **单个成员：** 在 Okta 中移除该成员，或将其从 Exa 中所属团队移除。任一操作都会终止其通过 Claude 的访问权限。
 * **所有人：** 在 Organization 页面移除颁发者，或在 Claude 中关闭 managed authorization。新建连接会立即被阻止，已打开的会话也会在短时间内结束。你可以随时重新注册该颁发者。
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="部分成员可用，部分成员不可用">

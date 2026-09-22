@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Financial Datasets {#financial-datasets}
+<div id="financial-datasets">
+  # Financial Datasets
+</div>
 
 > Données financières et de marché structurées pour plus de 27 000 tickers américains : prix, fondamentaux, earnings, SEC filings, ownership et screening d&#39;actions.
 
@@ -18,7 +22,9 @@ fondamentaux.
 Attachez `financial_datasets` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) :
 l&#39;agent interrogera alors Financial Datasets en parallèle d&#39;Exa web search.
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Créer des snapshots structurés de recherche sur les entreprises.
 * Analyser la performance financière, la valorisation et les tendances historiques.
@@ -27,7 +33,9 @@ l&#39;agent interrogera alors Financial Datasets en parallèle d&#39;Exa web sea
 * Screening du marché américain selon des critères fondamentaux.
 * Suivre les Company news des entreprises et les évolutions pertinentes.
 
-## Données disponibles {#data-available}
+<div id="data-available">
+  ## Données disponibles
+</div>
 
 Chacun des jeux de données suivants est accessible via le fournisseur `financial_datasets` ; l&#39;Agent sélectionne celui qui convient à la tâche :
 
@@ -51,7 +59,9 @@ Chacun des jeux de données suivants est accessible via le fournisseur `financia
 | Stock price snapshot    | Cours actuel en temps réel, variation du jour et heure de la quote.                                                                           |
 | Stock screener          | Entreprises correspondant à des critères de filtrage fondamentaux.                                                                            |
 
-## Identifiant du fournisseur {#provider-id}
+<div id="provider-id">
+  ## Identifiant du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -59,7 +69,9 @@ Utilisez cette valeur dans `dataSources` :
 financial_datasets
 ```
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Créez un aperçu structuré des recherches sur l&#39;entreprise NVIDIA.
 
@@ -279,13 +291,17 @@ Créez un aperçu structuré des recherches sur l&#39;entreprise NVIDIA.
   ```
 </CodeGroup>
 
-## À combiner avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## À combiner avec
+</div>
 
 * [Particle](/fr/docs/agent/connect/particle) : comparez la couverture publiée avec les commentaires de podcasts.
 * [Baselayer](/fr/docs/agent/connect/baselayer) : identifiez l&#39;entité qui se cache derrière un ticker.
 * [Fiber.ai](/fr/docs/agent/connect/fiber) : enrichissez une société cotée avec des pairs du marché privé et des contacts de dirigeants.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="Attachez-le à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

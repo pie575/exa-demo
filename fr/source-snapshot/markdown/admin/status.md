@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Page de statut {#status-page}
+<div id="status-page">
+  # Page de statut
+</div>
 
 > Disponibilité en temps réel, incidents en cours et historique d&#39;uptime des services Exa.
 
@@ -169,11 +173,15 @@ Exa publie la disponibilité de ses services sur [status.exa.ai](https://status.
 
 <ExaStatus />
 
-## S&#39;abonner aux mises à jour {#subscribe-to-updates}
+<div id="subscribe-to-updates">
+  ## S&#39;abonner aux mises à jour
+</div>
 
 Abonnez-vous sur la page de statut pour être averti à l&#39;ouverture, à la mise à jour ou à la résolution d&#39;un incident. Les notifications sont envoyées par e-mail, Slack, Google Chat ou webhook.
 
-## Obtenir de l&#39;aide {#get-help}
+<div id="get-help">
+  ## Obtenir de l&#39;aide
+</div>
 
 Si les requests continuent d&#39;échouer alors que tous les systèmes sont signalés comme opérationnels, la cause se situe probablement au niveau de la requête : consultez d&#39;abord les [codes d&#39;erreur](/fr/docs/admin/error-codes).
 

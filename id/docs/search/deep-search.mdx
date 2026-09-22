@@ -9,7 +9,9 @@ Deep Search adalah mode research pada Search API. Mode ini menggunakan endpoint 
 
 Gunakan standard Search jika Anda membutuhkan halaman berperingkat untuk query yang sudah dirumuskan dengan baik. Gunakan Deep jika untuk menemukan jawabannya diperlukan research.
 
-## Cara kerja Deep Search {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## Cara kerja Deep Search
+</div>
 
 Deep Search menambahkan research loop sebelum response akhir:
 
@@ -38,7 +40,9 @@ Deep Search menambahkan research loop sebelum response akhir:
 
 Proses ini sangat berguna untuk daftar dan output terstruktur. Setiap item yang diminta bisa saja memerlukan search yang berbeda, dan Deep dapat mengumpulkan serta memeriksa hasil tersebut sebelum menyusun struktur akhir.
 
-## Memilih mode Deep {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## Memilih mode Deep
+</div>
 
 | Tipe             | Gunakan saat                                                                                    |
 | ---------------- | ----------------------------------------------------------------------------------------------- |
@@ -56,7 +60,9 @@ Mulailah dengan `deep` untuk workflow Research. Beralihlah ke `deep-lite` bila t
 
 Lihat [Harga](/id/docs/admin/pricing#deep-search) untuk instruksi terkini mengenai biaya dan latency.
 
-## Membuat permintaan Deep {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## Membuat permintaan Deep
+</div>
 
 Setel `type` pada permintaan Search API biasa:
 
@@ -101,7 +107,9 @@ Setel `type` pada permintaan Search API biasa:
 
 Deep mengembalikan hasil pencarian terpilih di dalam `results`. Tambahkan `outputSchema` jika Anda juga ingin mendapatkan jawaban hasil sintesis atau himpunan data terstruktur.
 
-## Sediakan query awal {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## Sediakan query awal
+</div>
 
 Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additionalQueries` bila Anda sudah mengetahui terminologi, sudut pandang, atau submasalah spesifik yang perlu dicakup oleh research:
 
@@ -155,7 +163,9 @@ Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additio
 
 Hindari parafrase kecil yang hanya menambah jumlah pencarian. Tambahkan query hanya jika masing-masing membuka arah pencarian yang benar-benar berbeda.
 
-## Arahkan perilaku dan output secara terpisah {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## Arahkan perilaku dan output secara terpisah
+</div>
 
 `systemPrompt` dan `outputSchema` memengaruhi bagian permintaan yang berbeda:
 
@@ -255,7 +265,9 @@ Query sebaiknya menjelaskan apa yang perlu diteliti. System prompt sebaiknya men
 
 Gunakan Deep jika Anda membutuhkan lebih dari dua item terstruktur atau jika setiap item harus memenuhi beberapa persyaratan sekaligus. Search type standar memakai synthesis path yang sama, tetapi tidak menjalankan research iteratif sebelum synthesis.
 
-## Membaca response yang grounded {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## Membaca response yang grounded
+</div>
 
 Response terstruktur memisahkan nilai yang dihasilkan dari evidence pendukungnya:
 
@@ -297,7 +309,9 @@ Gunakan `output.content` sebagai hasil yang dihasilkan dan `output.grounding` un
 
 `numResults` mengatur berapa banyak halaman terpilih yang dikembalikan dalam `results`. Parameter ini tidak menentukan jumlah searches yang mungkin dijalankan Deep.
 
-## Stream the synthesis {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## Stream the synthesis
+</div>
 
 Setel `stream: true` bersama `outputSchema` untuk menerima output synthesis melalui server-sent events:
 
@@ -373,7 +387,9 @@ Setel `stream: true` bersama `outputSchema` untuk menerima output synthesis mela
 
 Proses typed events hingga `done`. Event terakhir berisi output final dan waktu search, beserta informasi cost jika tersedia.
 
-## Kapan tetap menggunakan standard Search {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## Kapan tetap menggunakan standard Search
+</div>
 
 Deep tidak diperlukan jika satu kali retrieval sudah cukup untuk memenuhi permintaan:
 

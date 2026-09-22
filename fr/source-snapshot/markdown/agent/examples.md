@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exemples {#examples}
+<div id="examples">
+  # Exemples
+</div>
 
 > Exemples Exa Agent en production pour la constitution de listes, la veille KYB, les offres d&#39;emploi et les sorties structurées.
 
@@ -1023,7 +1027,9 @@ L&#39;aperçu de la feuille s&#39;appuie sur des noms d&#39;entreprises fictifs 
   ```
 </CodeGroup>
 
-## Constitution de listes à grande échelle avec Agent Max {#broad-list-building-with-agent-max}
+<div id="broad-list-building-with-agent-max">
+  ## Constitution de listes à grande échelle avec Agent Max
+</div>
 
 Utilisez `effort: "max"` pour les tâches où l&#39;exhaustivité et la rigueur priment sur la latence ou le coût : constitution de listes volumineuses, recherche approfondie multi-sources et critères difficiles à vérifier. Agent Max est en bêta publique : envoyez `Exa-Beta: agent-max-effort-2026-07-27` avec la requête. Le header accepte une liste de jetons bêta séparés par des virgules.
 
@@ -1067,7 +1073,9 @@ Utilisez `effort: "max"` pour les tâches où l&#39;exhaustivité et la rigueur 
   ```
 </CodeGroup>
 
-## Attacher un data partner avec Exa Connect {#attach-a-data-partner-with-exa-connect}
+<div id="attach-a-data-partner-with-exa-connect">
+  ## Attacher un data partner avec Exa Connect
+</div>
 
 Utilisez `dataSources` pour permettre à Exa Agent d&#39;exploiter les données d&#39;un partner premium pendant un run. Ici, chaque entreprise est enrichie avec le trafic issu de Similarweb et les levées de fonds issues de Harmonic, le tout combiné à de la recherche web. Consultez [Exa Connect](/fr/docs/agent/connect/overview) pour la liste complète des partners.
 
@@ -1192,7 +1200,9 @@ Utilisez `dataSources` pour permettre à Exa Agent d&#39;exploiter les données 
   ```
 </CodeGroup>
 
-## Checklist de mise en production {#production-checklist}
+<div id="production-checklist">
+  ## Checklist de mise en production
+</div>
 
 * Donnez à l&#39;Agent une `query` précise qui nomme l&#39;unité de travail et la qualité de sources attendue.
 * Utilisez `input.data` pour les records connus plutôt que d&#39;intégrer les lignes dans le prompt.

@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步浏览之前，可通过该文件查看所有可用页面。
 
-# 列出运行 {#list-runs}
+<div id="list-runs">
+  # 列出运行
+</div>
 
 > 列出某个 monitor 的所有运行，支持基于 cursor 的分页。运行按时间倒序返回。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Supprimer une API key {#delete-api-key}
+<div id="delete-api-key">
+  # Supprimer une API key
+</div>
 
 > Supprimez définitivement une API key de votre équipe.
 
@@ -15,15 +19,21 @@
   La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie avec une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour en demander l&#39;accès.
 </Info>
 
-## Aperçu {#overview}
+<div id="overview">
+  ## Aperçu
+</div>
 
 L&#39;endpoint Delete API Key supprime définitivement une API key de votre équipe.
 
-## Paramètres de chemin {#path-parameters}
+<div id="path-parameters">
+  ## Paramètres de chemin
+</div>
 
 * **id** : l&#39;identifiant unique de l&#39;API key à supprimer.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

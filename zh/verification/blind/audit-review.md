@@ -1,4 +1,6 @@
-# 独立盲审截图评估 — 最终图像 {#independent-blind-screenshot-review-final-images}
+<div id="independent-blind-screenshot-review-final-images">
+  # 独立盲审截图评估 — 最终图像
+</div>
 
 在图片替换后，重新评估了最新的四组 A/B 对照。未查阅任何来源标识密钥。主体布局、排版、配色、间距、换行和工具栏图标在视觉上一致；剩余的可见差异集中在底部遮罩区域。
 

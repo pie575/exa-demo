@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Combinar proveedores {#combining-providers}
+<div id="combining-providers">
+  # Combinar proveedores
+</div>
 
 > Usa varios socios de datos a la vez en un mismo run de Exa Agent.
 
 Adjuntar un socio a `dataSources` lo pone a disposición de Exa Agent como herramienta; **no** obliga al agente a llamarlo. Que un socio se active depende de tu `consulta` y de tu `outputSchema`: indica qué tipo de resultado quieres de cada socio y Exa Agent recurrirá a la herramienta correspondiente en lugar de adivinar a partir de una página web. Puedes adjuntar hasta cinco socios por run; Exa Agent decide a cuáles llamar en cada paso, con Exa web search disponible junto a ellos. ¿Necesitas más de cinco en un mismo run? [Contáctanos](mailto:sales@exa.ai) para ampliar el límite.
 
-## Dos socios en un mismo run {#two-partners-in-one-run}
+<div id="two-partners-in-one-run">
+  ## Dos socios en un mismo run
+</div>
 
 Enumera varios socios juntos y el Exa Agent recurrirá a cada uno allí donde destaca. Dos es solo un ejemplo: puedes adjuntar hasta cinco socios a `dataSources` y el principio es el mismo, pide explícitamente los datos de cada uno. Este run de informe para inversores combina [Financial Datasets](/es/docs/agent/connect/financialdatasets) para noticias por ticker con [Particle](/es/docs/agent/connect/particle) para comentarios de pódcast. La consulta pide los datos distintivos de cada socio y el esquema divide el output en `financialNews` y `podcastChatter`, de modo que el Exa Agent llama a **ambos** socios en el mismo run.
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 创建导入 {#create-an-import}
+<div id="create-an-import">
+  # 创建导入
+</div>
 
 > 创建一个新的导入，将你的数据上传到 Websets。导入可用于：
 
@@ -13,7 +17,9 @@
 
 导入创建完成后，你可以在 `uploadValidUntil` 之前 (默认 1 小时) 将数据上传到返回的 `uploadUrl`。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

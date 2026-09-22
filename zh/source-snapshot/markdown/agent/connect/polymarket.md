@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Polymarket {#polymarket}
+<div id="polymarket">
+  # Polymarket
+</div>
 
 > 获取预测市场赔率、价格历史、订单簿和交易者持仓。
 
@@ -11,14 +15,18 @@
 
 将 `polymarket` 附加到 [Exa Agent](/zh/docs/agent/quickstart) 运行中，agent 便会在 Exa 网页搜索之外同时查询 Polymarket。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 查找某一话题的预测市场及当前的市场隐含赔率。
 * 对比某一结果的隐含概率随时间的变化。
 * 查看市场流动性、买卖盘深度以及主要持仓者。
 * 查看某位交易者的当前持仓和近期链上活动。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用此值：
 
@@ -26,12 +34,16 @@
 polymarket
 ```
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具不产生任何费用：你只需按标准的
 [Agent 运行定价](/zh/docs/agent/quickstart#pricing)付费。
 
-## 可用数据 {#data-available}
+<div id="data-available">
+  ## 可用数据
+</div>
 
 | 数据      | 说明                            |
 | ------- | ----------------------------- |
@@ -40,7 +52,9 @@ Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具�
 | 订单簿     | 某一市场结果的实时买卖盘深度与价差。            |
 | 持仓者与交易者 | 某一市场的头部持仓者，以及交易者的当前持仓和近期链上活动。 |
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 获取美联储降息的市场隐含赔率，以及其在过去一个月中的变化。
 
@@ -108,13 +122,17 @@ Polymarket 的读取 API 无需认证且免费，因此调用 Polymarket 工具�
   ```
 </CodeGroup>
 
-## 搭配使用 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用
+</div>
 
 * [Exa 网页搜索](/zh/docs/search/quickstart)：为市场赔率补充报道与背景信息。
 * [Particle](/zh/docs/agent/connect/particle)：获取赔率变动背后的新闻报道。
 * [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：将市场隐含赔率与价格、基本面和宏观数据关联起来。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

@@ -33,13 +33,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Utilisez Exa Search pour obtenir des données sportives en direct, des prévisions météo et des informations locales sans avoir à intégrer une API distincte pour chacun de ces besoins. Posez une question en langage naturel en précisant l&#39;équipe, le lieu et la période qui vous intéressent.
 
-## Rédiger de meilleures requêtes {#write-better-queries}
+<div id="write-better-queries">
+  ## Rédiger de meilleures requêtes
+</div>
 
 Nommez précisément le lieu ou l&#39;équipe et incluez une date dès que la réponse évolue dans le temps. Ajoutez la condition ou l&#39;attribut qui compte pour votre tâche plutôt que de demander des informations générales.
 
 <Tabs>
   <Tab title="Sport" icon="trophy">
-### Inclus {#included}
+    <div id="included">
+      ### Inclus
+    </div>
 
     Données sportives disponibles :
 
@@ -49,13 +53,17 @@ Nommez précisément le lieu ou l&#39;équipe et incluez une date dès que la r�
 
     La couverture inclut la NBA, la WNBA, la NFL, la MLB, la NHL, la MLS, le basketball et le football américain universitaires, les grands championnats européens de football et les compétitions de l&#39;UEFA, le cricket, la F1, l&#39;UFC, le tennis et le golf.
 
-### Précisez la ligue, l&#39;équipe et la période {#ask-for-the-league-team-and-time}
+    <div id="ask-for-the-league-team-and-time">
+      ### Précisez la ligue, l&#39;équipe et la période
+    </div>
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-### Ajoutez le contexte autour de l&#39;événement {#add-the-surrounding-story}
+    <div id="add-the-surrounding-story">
+      ### Ajoutez le contexte autour de l&#39;événement
+    </div>
 
     Demandez les articles dont vous avez besoin en complément des données en direct.
 
@@ -63,50 +71,68 @@ Nommez précisément le lieu ou l&#39;équipe et incluez une date dès que la r�
   </Tab>
 
   <Tab title="Météo" icon="cloud-sun">
-### Inclus {#included-2}
+    <div id="included-2">
+      ### Inclus
+    </div>
 
     Les prévisions comprennent les conditions, les températures maximales et minimales, les précipitations, le vent, l&#39;humidité, l&#39;indice UV ainsi que le lever et le coucher du soleil à l&#39;heure locale du lieu.
 
     Une requête sans date renvoie les prévisions du jour. Demandez un jour ou une plage précise pour obtenir une page par jour, jusqu&#39;à 16 jours à l&#39;avance ou 92 jours en arrière.
 
-### Nommez le lieu et le jour {#name-the-place-and-day}
+    <div id="name-the-place-and-day">
+      ### Nommez le lieu et le jour
+    </div>
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-### Interrogez la condition qui influence vos plans {#ask-about-the-condition-that-affects-your-plan}
+    <div id="ask-about-the-condition-that-affects-your-plan">
+      ### Interrogez la condition qui influence vos plans
+    </div>
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-### Combinez prévisions et articles d&#39;actualité {#combine-forecasts-with-reporting}
+    <div id="combine-forecasts-with-reporting">
+      ### Combinez prévisions et articles d&#39;actualité
+    </div>
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="Lieux" icon="map-pin">
-### Inclus {#included-3}
+    <div id="included-3">
+      ### Inclus
+    </div>
 
     * Fiches d&#39;entreprises locales, avec adresses, horaires, équipements et avis
     * Salles, attractions et points d&#39;intérêt
     * Annonces immobilières et records de propriété
     * Décisions de zonage, permis et records d&#39;urbanisme
 
-### Décrivez le lieu comme si vous demandiez à un habitant {#describe-the-place-like-you-would-ask-a-local}
+    <div id="describe-the-place-like-you-would-ask-a-local">
+      ### Décrivez le lieu comme si vous demandiez à un habitant
+    </div>
 
     Combinez la catégorie, le quartier et les attributs qui comptent.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-### Précisez le type de record et la zone géographique {#name-the-record-type-and-geography}
+    <div id="name-the-record-type-and-geography">
+      ### Précisez le type de record et la zone géographique
+    </div>
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-### Comparez les lieux selon des contraintes concrètes {#compare-places-against-practical-constraints}
+    <div id="compare-places-against-practical-constraints">
+      ### Comparez les lieux selon des contraintes concrètes
+    </div>
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-## Effectuer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Effectuer une requête
+</div>
 
 Les trois types de données utilisent le même endpoint Search.
 
@@ -146,7 +172,9 @@ Les trois types de données utilisent le même endpoint Search.
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les lieux, équipes, dates, critères et fields d&#39;output dont vous avez besoin, et Agent renvoie des résultats validés par schéma, accompagnés de citations.
 

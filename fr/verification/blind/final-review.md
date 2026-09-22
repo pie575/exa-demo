@@ -1,4 +1,6 @@
-# Revue visuelle finale à l&#39;aveugle {#final-blind-visual-review}
+<div id="final-blind-visual-review">
+  # Revue visuelle finale à l&#39;aveugle
+</div>
 
 Revue des quatre paires A/B finales après les corrections des contrôles natifs
 en bas d&#39;écran et de l&#39;espacement des images. La clé d&#39;identité A/B n&#39;a pas été consultée.

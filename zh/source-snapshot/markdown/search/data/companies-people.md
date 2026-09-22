@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 公司与人物 {#companies-people}
+<div id="companies-people">
+  # 公司与人物
+</div>
 
 > 使用 Exa Search 查找公司、职业档案以及两者之间的关联。
 
@@ -45,32 +49,42 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Card>
 </Columns>
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 发现公司、候选人与专家
 * 客户研究与关键干系人梳理
 * 市场版图、投资研究与项目源挖掘
 * 高管团队、招聘与组织架构研究
 
-## 编写更好的 query {#write-better-queries}
+<div id="write-better-queries">
+  ## 编写更好的 query
+</div>
 
 先写出你想要的实体，再补充用于限定它的特征和关系。当来源类型很重要时，请明确说明，比如公司主页、职业档案、招聘信息或个人网站。
 
 <Tabs>
   <Tab title="公司" icon="building">
-### 按业务内容发现公司 {#discover-companies-by-what-they-do}
+    <div id="discover-companies-by-what-they-do">
+      ### 按业务内容发现公司
+    </div>
 
     描述界定该市场的客户、产品、能力、阶段和地域。这样可以基于公司的实际业务来寻找候选对象，而不必依赖预先设定的公司名单。
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-### 发现经营信号 {#find-operating-signals}
+    <div id="find-operating-signals">
+      ### 发现经营信号
+    </div>
 
     写明你关注的信号以及相关的公司特征。search 在检索公司主页的同时，还能获取招聘信息、定价页面、产品文档和新闻报道。
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-### 研究融资动态 {#research-funding-activity}
+    <div id="research-funding-activity">
+      ### 研究融资动态
+    </div>
 
     指明轮次、行业、参与方和时间范围。
 
@@ -78,19 +92,25 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 
   <Tab title="人物" icon="users">
-### 按职位和技能发现人才 {#discover-people-by-role-and-skills}
+    <div id="discover-people-by-role-and-skills">
+      ### 按职位和技能发现人才
+    </div>
 
     组合你需要的职位、资历、地点、相关技能和来源类型。
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-### 按公司特征筛选人才 {#qualify-people-by-company-traits}
+    <div id="qualify-people-by-company-traits">
+      ### 按公司特征筛选人才
+    </div>
 
     描述此人与公司的关系，以及用于限定这家公司的特征。这比先构建一份公司名单效果更好。
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-### 查找个人网站和公开作品 {#find-personal-websites-and-public-work}
+    <div id="find-personal-websites-and-public-work">
+      ### 查找个人网站和公开作品
+    </div>
 
     写明职业或研究领域，并明确要求个人网站、演讲、访谈或文章。
 
@@ -98,13 +118,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 </Tabs>
 
-## 同时搜索两者 {#search-both-together}
+<div id="search-both-together">
+  ## 同时搜索两者
+</div>
 
 写一条能表达出你所需关联关系的 query。Exa 可以在同一个结果集中返回公司页面、职业档案、招聘页面和公开引用。
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,7 +169,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 对于需要跨多个来源进行研究的结构化数据，请使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的公司、人物、筛选 criteria 和输出 fields，agent 即可返回经过 schema 校验的结果，并附带引用来源。
 

@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Payer avec x402 {#pay-with-x402}
+<div id="pay-with-x402">
+  # Payer avec x402
+</div>
 
 > Utilisez les API Search et Contents d&#39;Exa sans API key. Payez à la requête en USDC sur Base ou Solana via le protocole x402.
 
-## Qu&#39;est-ce que x402 ? {#what-is-x402}
+<div id="what-is-x402">
+  ## Qu&#39;est-ce que x402 ?
+</div>
 
 [x402](https://x402.org) est un standard de paiement ouvert reposant sur le code de statut HTTP `402 Payment Required`. Il permet aux clients de payer l&#39;accès à une API à la requête, avec des stablecoins USDC sur Base ou Solana, sans compte, API key ni abonnement.
 
@@ -19,7 +25,9 @@ C&#39;est idéal pour les **agents IA** qui doivent payer de façon autonome des
   x402 et l&#39;accès par API key sont indépendants. Si votre requête inclut un header `x-api-key` ou `Authorization: Bearer`, le flux habituel de facturation par API key s&#39;applique et x402 est entièrement contourné.
 </Info>
 
-## Endpoints pris en charge {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoints pris en charge
+</div>
 
 | Endpoint    | Méthode | Description                                                                                                 |
 | ----------- | ------- | ----------------------------------------------------------------------------------------------------------- |
@@ -28,13 +36,17 @@ C&#39;est idéal pour les **agents IA** qui doivent payer de façon autonome des
 
 Tous les autres endpoints ne sont **pas** disponibles via x402.
 
-## Fonctionnement {#how-it-works}
+<div id="how-it-works">
+  ## Fonctionnement
+</div>
 
 <Frame>
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/payments/x402/payment-flow.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5a560d80bb84828e03dfacd61351e9fb" alt="Diagramme de séquence du flux de paiement x402 : le client envoie une requête au serveur, reçoit un 402 avec le header PAYMENT-REQUIRED, crée un payload de paiement, réessaie avec PAYMENT-SIGNATURE, le serveur vérifie via le facilitateur, effectue le traitement, procède au règlement on-chain, puis renvoie un 200 avec les résultats et PAYMENT-RESPONSE" width="4224" height="2720" data-path="images/integrations/payments/x402/payment-flow.png" />
 </Frame>
 
-### Étape 1 : Discovery {#step-1-discovery}
+<div id="step-1-discovery">
+  ### Étape 1 : Discovery
+</div>
 
 Envoyez une requête à un endpoint pris en charge sans API key ni header de paiement :
 
@@ -79,11 +91,15 @@ Vous recevrez une réponse `402` accompagnée d&#39;un header `PAYMENT-REQUIRED`
 Le champ `amount` est exprimé en unités atomiques USDC (6 décimales), donc `"7000"` = 0,007 $.
 Le client peut payer avec n&#39;importe quelle entrée `accepts` annoncée qu&#39;il prend en charge. Les entrées Solana incluent des fields fournis par le facilitator, tels que `extra.feePayer` ; utilisez l&#39;entrée exacte issue du header `PAYMENT-REQUIRED` pour construire le paiement.
 
-### Étape 2 : payer et réessayer {#step-2-pay-and-retry}
+<div id="step-2-pay-and-retry">
+  ### Étape 2 : payer et réessayer
+</div>
 
 Signez le paiement avec votre wallet, puis renvoyez la requête avec un header `PAYMENT-SIGNATURE` contenant votre payload de paiement encodé en base64. Les SDK clients x402 s&#39;en chargent automatiquement.
 
-### Étape 3 : Settlement {#step-3-settlement}
+<div id="step-3-settlement">
+  ### Étape 3 : Settlement
+</div>
 
 Exa vérifie votre payment signature auprès du facilitator, puis lance le settlement on-chain **en parallèle** du traitement de votre requête. La réponse est mise en attente jusqu&#39;à la confirmation du settlement. En cas de succès, vous recevez :
 
@@ -92,11 +108,15 @@ Exa vérifie votre payment signature auprès du facilitator, puis lance le settl
 
 Si le settlement échoue, vous obtenez un `402` accompagné à la fois de `PAYMENT-RESPONSE` (détails de l&#39;erreur) et de `PAYMENT-REQUIRED` (afin que vous puissiez réessayer).
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 x402 utilise la même tarification groupée que la facturation par API key. Les prix sont calculés en amont à partir des paramètres de votre requête (et non des résultats réellement renvoyés).
 
-### Search (`/search`) {#search-search}
+<div id="search-search">
+  ### Search (`/search`)
+</div>
 
 | Type de recherche         | Prix de base (jusqu&#39;à 10 résultats) | Par résultat au-delà de 10 |
 | ------------------------- | --------------------------------------- | -------------------------- |
@@ -111,7 +131,9 @@ L&#39;ajout de `contents.summary` coûte **$0,001 de plus par résultat**.
   Les requêtes x402 sont plafonnées à **10 résultats maximum**. Si vous en demandez davantage, `numResults` est silencieusement ramené à 10 et la tarification s&#39;appuie sur 10 résultats.
 </Warning>
 
-### Contents (`/contents`) {#contents-contents}
+<div id="contents-contents">
+  ### Contents (`/contents`)
+</div>
 
 Chaque type de contenu est facturé par page/URL :
 
@@ -123,7 +145,9 @@ Chaque type de contenu est facturé par page/URL :
 
 Si vous ne demandez aucun type de contenu (ni `text`, ni `highlights`, ni `summary`), `text` est activé par défaut.
 
-### Exemples {#examples}
+<div id="examples">
+  ### Exemples
+</div>
 
 | Requête                                             | Prix   | USDC atomic |
 | --------------------------------------------------- | ------ | ----------- |
@@ -135,9 +159,13 @@ Si vous ne demandez aucun type de contenu (ni `text`, ni `highlights`, ni `summa
 | `/contents` pour 2 URL avec `text: true`            | $0.002 | 2000        |
 | `/contents` pour 1 URL avec `text` + `summary`      | $0.002 | 2000        |
 
-## Quickstart {#quickstart}
+<div id="quickstart">
+  ## Quickstart
+</div>
 
-### Installer les dépendances {#install-dependencies}
+<div id="install-dependencies">
+  ### Installer les dépendances
+</div>
 
 <CodeGroup>
   ```bash JavaScript theme={null}
@@ -161,7 +189,9 @@ Si vous ne demandez aucun type de contenu (ni `text`, ni `highlights`, ni `summa
   Vous ne souhaitez pas gérer de private keys ? Les [Coinbase Agentic Wallets](https://docs.cdp.coinbase.com/agent-kit/core-concepts/wallet-management) assurent une gestion des clés isolée par TEE pour les agents IA. Votre agent ne voit jamais la private key. Le wallet est compatible viem : il fonctionne donc directement avec `@x402/fetch`.
 </Tip>
 
-### Effectuer une search payante {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Effectuer une search payante
+</div>
 
 <CodeGroup>
   ```typescript JavaScript theme={null}
@@ -251,7 +281,9 @@ Si vous ne demandez aucun type de contenu (ni `text`, ni `highlights`, ni `summa
   cURL impose de signer le paiement manuellement. En production, utilisez le SDK JavaScript ou Python, qui gère automatiquement l&#39;intégralité du flux 402 &gt; signature &gt; nouvelle tentative.
 </Info>
 
-### Mode discovery (aucun wallet requis) {#discovery-mode-no-wallet-needed}
+<div id="discovery-mode-no-wallet-needed">
+  ### Mode discovery (aucun wallet requis)
+</div>
 
 Interrogez la tarification sans wallet en envoyant des requêtes non authentifiées :
 
@@ -297,7 +329,9 @@ Interrogez la tarification sans wallet en envoyant des requêtes non authentifi�
   ```
 </CodeGroup>
 
-## Réseaux de paiement {#payment-networks}
+<div id="payment-networks">
+  ## Réseaux de paiement
+</div>
 
 Exa annonce tous les réseaux actuellement pris en charge dans le tableau `accepts`. Choisissez l&#39;entrée qui correspond à votre wallet et au schéma de client x402 enregistré.
 
@@ -308,7 +342,9 @@ Exa annonce tous les réseaux actuellement pris en charge dans le tableau `accep
 
 Les deux utilisent l&#39;USDC à 6 décimales (`1000000` = 1,00 $) et sont réglés on-chain via un facilitator x402.
 
-## Limites de débit {#rate-limits}
+<div id="rate-limits">
+  ## Limites de débit
+</div>
 
 x402 applique sa propre limitation de débit, distincte des limites liées aux API keys :
 
@@ -321,9 +357,13 @@ Au-delà de 5 discovery requests `402` non authentifiées provenant de la même 
 
 Le QPS par wallet s&#39;applique à toutes les requêtes payées provenant de la même adresse de wallet.
 
-## Référence des headers {#headers-reference}
+<div id="headers-reference">
+  ## Référence des headers
+</div>
 
-### Headers de requête {#request-headers}
+<div id="request-headers">
+  ### Headers de requête
+</div>
 
 | Header              | Description                                    |
 | ------------------- | ---------------------------------------------- |
@@ -331,14 +371,18 @@ Le QPS par wallet s&#39;applique à toutes les requêtes payées provenant de la
 | `payment-signature` | Alias (également accepté)                      |
 | `x-payment`         | Ancien alias (compatibilité v1)                |
 
-### Headers de réponse {#response-headers}
+<div id="response-headers">
+  ### Headers de réponse
+</div>
 
 | Header             | Cas                                          | Description                                                                                        |
 | ------------------ | -------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `PAYMENT-REQUIRED` | Réponses `402`                               | Objet `PaymentRequired` encodé en Base64 contenant la tarification et les instructions de paiement |
 | `PAYMENT-RESPONSE` | `200` ou `402` (après tentative de paiement) | Résultat du settlement encodé en Base64 avec le hash de la transaction ou l&#39;erreur             |
 
-## Codes d&#39;erreur {#error-codes}
+<div id="error-codes">
+  ## Codes d&#39;erreur
+</div>
 
 | Statut | Tag                        | Description                                                                     |
 | ------ | -------------------------- | ------------------------------------------------------------------------------- |
@@ -349,7 +393,9 @@ Le QPS par wallet s&#39;applique à toutes les requêtes payées provenant de la
 | `429`  | `X402_WALLET_RATE_LIMITED` | Le wallet a dépassé 10 requests par seconde                                     |
 | `500`  | `X402_INTERNAL_ERROR`      | Erreur côté serveur lors de la génération des exigences de paiement             |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Puis-je utiliser x402 et une API key en même temps ?">
@@ -369,7 +415,9 @@ Le QPS par wallet s&#39;applique à toutes les requêtes payées provenant de la
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 * [Documentation du protocole x402](https://docs.x402.org) : spécification complète du protocole
 * [x402 sur GitHub](https://github.com/coinbase/x402) : SDK et exemples open source

@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# Exa Search API {#exa-search-api}
+<div id="exa-search-api">
+  # Exa Search API
+</div>
 
 > 用自然语言搜索网页，一次请求即可获得干净、相关的页面内容。
 
 Exa Search 接收自然语言 query，返回经过排序的网页结果，并附带干净的页面内容。
 
-## 发起首次请求 {#make-your-first-request}
+<div id="make-your-first-request">
+  ## 发起首次请求
+</div>
 
 先传入一条自然语言 `query`，并设置 `contents: { highlights: true }`，后者会返回长度随各条结果相关度而定的摘录。其他 field 用于控制 Exa 如何搜索、以及每条结果包含哪些内容；本页余下部分会介绍你实际会用到的那些。
 
@@ -105,7 +111,9 @@ search 默认最多返回 10 条结果。通过 `numResults` 最多可请求 100
 
 结果按相关度排序。每条结果都带有标题、URL、发布日期等元数据，以及你在 `contents` 中请求的内容。
 
-## 编写查询 {#writing-queries}
+<div id="writing-queries">
+  ## 编写查询
+</div>
 
 使用 Search API 时，`query` 是唯一必填的 field。
 
@@ -141,7 +149,9 @@ Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该�
   在每次运行中拥有更多算力，并返回有据可依的结构化结果。
 </Tip>
 
-## 输出形态 {#output-shapes}
+<div id="output-shapes">
+  ## 输出形态
+</div>
 
 每条 result 都包含元数据，例如标题、URL 和发布日期。使用 `contents` 可以额外获取页面的 highlights、full text 或 summary。
 
@@ -232,7 +242,9 @@ Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该�
   * **`/contents`** 没有 `contents` 这层包装。它的请求体本身就是 content options，因此相同的 fields 与 `urls` 并列位于顶层：`"urls": [...], "highlights": true`
 </Warning>
 
-## 输出 schema {#output-schema}
+<div id="output-schema">
+  ## 输出 schema
+</div>
 
 如果希望 Exa 对搜索结果进行归纳合成，可添加 `outputSchema`。它适用于所有搜索类型，并会在响应中增加一个 `output` 对象。
 
@@ -398,11 +410,15 @@ Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该�
   field；Exa 会在 `output.grounding` 中自动返回这些信息。
 </Note>
 
-## 过滤结果 {#filter-results}
+<div id="filter-results">
+  ## 过滤结果
+</div>
 
 过滤器是硬性约束：只有当范围之外的 result 对你毫无用处时才添加过滤器；较宽松的来源偏好则应写进 query 文本中。完整的过滤器列表请参见 [API 参考](/zh/docs/reference/search)。
 
-### 包含域名或路径 {#include-domains-or-paths}
+<div id="include-domains-or-paths">
+  ### 包含域名或路径
+</div>
 
 `includeDomains` 可将结果限制在你信任的来源范围内。它支持完整域名、路径前缀 (如 `anthropic.com/news`) ，以及子域名通配符 (如 `*.substack.com`) 。
 
@@ -436,7 +452,9 @@ Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该�
 
 请把路径写在过滤条件中，不要在 query 里用 `site:` 操作符再写一遍。
 
-### 排除域名或路径 {#exclude-domains-or-paths}
+<div id="exclude-domains-or-paths">
+  ### 排除域名或路径
+</div>
 
 `excludeDomains` 会剔除来自特定域名或路径的结果。它支持与 `includeDomains` 相同的路径前缀和子域名通配符。只有当这些来源会让结果变得不可用时才使用它，不要用它来表达偏好。
 
@@ -471,7 +489,9 @@ Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该�
   ```
 </CodeGroup>
 
-## 内容新鲜度 {#content-freshness}
+<div id="content-freshness">
+  ## 内容新鲜度
+</div>
 
 `contents.maxAgeHours` 用于控制从每个 result 中提取的内容必须有多新，它不会按 publication date 过滤 result。
 
@@ -518,7 +538,9 @@ Deep 模式执行的是一套研究流程，而非单次 retrieval。关于该�
   ```
 </CodeGroup>
 
-## 下一步 {#next-steps}
+<div id="next-steps">
+  ## 下一步
+</div>
 
 <Columns cols={2}>
   <Card title="最佳实践" icon="sparkles" href="/zh/docs/search/best-practices" cta="阅读指南" arrow="true">

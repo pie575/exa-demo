@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 创建 monitor {#create-a-monitor}
+<div id="create-a-monitor">
+  # 创建 monitor
+</div>
 
 > 创建一个新的 Monitor，按 schedule 定期运行 Exa search。
 
@@ -15,7 +19,9 @@ Monitor 会按设定的周期自动执行你的 search query，并将结果推�
 
 响应中包含 `webhookSecret`，它仅在创建时返回一次。请妥善保存，用于 webhook 签名验证。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

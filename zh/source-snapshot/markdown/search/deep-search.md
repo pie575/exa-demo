@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 深度搜索 {#deep-search}
+<div id="deep-search">
+  # 深度搜索
+</div>
 
 > 通过迭代式 search、推理和有据可依的综合，完成复杂的研究任务。
 
@@ -11,7 +15,9 @@
 
 如果你只需针对表述清晰的 query 获取排序后的页面，请使用标准 Search；如果找到答案需要研究，请使用 Deep。
 
-## 深度搜索的工作原理 {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## 深度搜索的工作原理
+</div>
 
 深度搜索会在生成最终响应前先执行一个研究 loop：
 
@@ -35,7 +41,9 @@
 
 这一流程在处理列表和结构化输出时尤其有用：请求中的每个项目可能都需要各自的 search，而 deep 能在生成最终结构前先收集并核查这些结果。
 
-## 选择 Deep 模式 {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## 选择 Deep 模式
+</div>
 
 | 类型               | 适用场景                           |
 | ---------------- | ------------------------------ |
@@ -51,7 +59,9 @@
 
 当前的费用与延迟参考请见 [定价](/zh/docs/admin/pricing#deep-search)。
 
-## 发起 Deep 请求 {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## 发起 Deep 请求
+</div>
 
 在普通的 Search API 请求中设置 `type`：
 
@@ -96,7 +106,9 @@
 
 Deep 会在 `results` 中返回筛选出的搜索结果。如果你还需要综合生成的答案或结构化数据集，请添加 `outputSchema`。
 
-## 提供初始 query {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## 提供初始 query
+</div>
 
 deep 通常会自行决定执行哪些 search。如果你已经明确知道研究需要覆盖的特定术语、视角或子问题，可以使用 `additionalQueries`：
 
@@ -150,7 +162,9 @@ deep 通常会自行决定执行哪些 search。如果你已经明确知道研�
 
 不要只为增加搜索量而提供细微改写。只有当每个 query 都能带来实质不同的搜索方向时，才值得添加。
 
-## 分别控制行为与输出 {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## 分别控制行为与输出
+</div>
 
 `systemPrompt` 和 `outputSchema` 作用于请求的不同部分：
 
@@ -250,7 +264,9 @@ query 应描述要研究什么，system prompt 则应描述如何开展并呈现
 
 当你需要两个以上的结构化项目，或每个项目必须满足多项要求时，建议使用 Deep。标准搜索类型走的是同一条综合路径，但不会在综合之前执行同样的迭代研究。
 
-## 读取有据可依的响应 {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## 读取有据可依的响应
+</div>
 
 结构化响应会将生成的值与其证据分开呈现：
 
@@ -292,7 +308,9 @@ query 应描述要研究什么，system prompt 则应描述如何开展并呈现
 
 `numResults` 控制 `results` 中返回多少个选中的页面，但不决定 Deep 可能执行的 search 次数。
 
-## 流式获取综合结果 {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## 流式获取综合结果
+</div>
 
 将 `stream: true` 与 `outputSchema` 搭配使用，即可通过服务器发送事件接收综合后的输出：
 
@@ -368,7 +386,9 @@ query 应描述要研究什么，system prompt 则应描述如何开展并呈现
 
 持续消费这些带类型的事件，直到收到 `done`。最后一个事件包含最终输出和搜索耗时，若有费用信息也会一并返回。
 
-## 何时继续使用标准 Search {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## 何时继续使用标准 Search
+</div>
 
 当一次 retrieval 就能满足请求时，就不需要 deep：
 

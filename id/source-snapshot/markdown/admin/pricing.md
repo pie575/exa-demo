@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Harga {#pricing}
+<div id="pricing">
+  # Harga
+</div>
 
 > Tarif pay-as-you-go untuk Exa Search, Contents, Answer, Monitors, dan Agent API
 
@@ -21,7 +25,9 @@ Exa menggunakan sistem pay-as-you-go. Tidak ada langganan dan tidak ada minimum 
   Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
-## Produk {#products}
+<div id="products">
+  ## Produk
+</div>
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/id/docs/search/quickstart">
@@ -61,7 +67,9 @@ Exa menggunakan sistem pay-as-you-go. Tidak ada langganan dan tidak ada minimum 
   </Card>
 </Columns>
 
-## Search, Contents, Answer, dan Monitors {#search-contents-answer-and-monitors}
+<div id="search-contents-answer-and-monitors">
+  ## Search, Contents, Answer, dan Monitors
+</div>
 
 Setiap endpoint memiliki harga dasar per permintaan yang sudah mencakup hingga 10 hasil. Hasil tambahan dan Ringkasan halaman AI yang dihasilkan Exa ditagih terpisah.
 
@@ -72,7 +80,9 @@ Setiap endpoint memiliki harga dasar per permintaan yang sudah mencakup hingga 1
 | `/monitors` | $15 / 1k permintaan                | $1 / 1k hasil           | $1 / 1k halaman      |
 | `/contents` | $1 / 1k halaman, per tipe konten   | —                       | $1 / 1k halaman      |
 
-## Agent {#agent}
+<div id="agent">
+  ## Agent
+</div>
 
 Tetapkan nilai `effort` tetap pada [Agent](/id/docs/agent/quickstart) agar harga per permintaan dapat diprediksi. `auto` adalah mode terukur default; `max` (beta) juga terukur dan menggunakan tarif penggunaan yang sama:
 
@@ -93,7 +103,9 @@ Run terukur ditagih sesuai penggunaan aktual hingga batas maksimum per run. Bata
 | Contact enrichment email   | $0,02 / email         |
 | Contact enrichment telepon | $0,07 / nomor telepon |
 
-### Connect providers {#connect-providers}
+<div id="connect-providers">
+  ### Connect providers
+</div>
 
 Runs yang menggunakan sumber data [Exa Connect](/id/docs/agent/connect/overview)
 juga dikenakan biaya untuk setiap panggilan provider — misalnya
@@ -103,7 +115,9 @@ order tergantung operasinya. Lihat
 [Harga Connect](/id/docs/agent/connect/overview#pricing) untuk semua
 tarif provider.
 
-## Deep Search {#deep-search}
+<div id="deep-search">
+  ## Deep Search
+</div>
 
 Atur dengan `type` pada [`/search`](/id/docs/search/deep-search). Hasil tambahan dan Ringkasan halaman AI dikenakan biaya yang sama dengan standard Search.
 
@@ -113,7 +127,9 @@ Atur dengan `type` pada [`/search`](/id/docs/search/deep-search). Hasil tambahan
 | `deep`           | $12 / 1k permintaan                | 4–15 detik  | Penalaran multi-langkah dengan structured outputs |
 | `deep-reasoning` | $15 / 1k permintaan                | 12–40 detik | Tugas Research yang lebih berat                   |
 
-## Enterprise {#enterprise}
+<div id="enterprise">
+  ## Enterprise
+</div>
 
 Untuk volume tinggi, dataset kustom, dan kebutuhan keamanan yang lebih ketat.
 
@@ -135,7 +151,9 @@ Untuk volume tinggi, dataset kustom, dan kebutuhan keamanan yang lebih ketat.
   Dapatkan kuotasi harga untuk volume dan ketentuan enterprise
 </Card>
 
-## Glosarium biaya {#cost-glossary}
+<div id="cost-glossary">
+  ## Glosarium biaya
+</div>
 
 <AccordionGroup>
   <Accordion title="Permintaan">

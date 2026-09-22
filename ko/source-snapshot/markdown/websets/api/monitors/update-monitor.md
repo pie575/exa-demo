@@ -1,13 +1,19 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Websets monitor 업데이트 {#update-a-websets-monitor}
+<div id="update-a-websets-monitor">
+  # Websets monitor 업데이트
+</div>
 
 > monitor 구성을 업데이트합니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/monitors/{id}
 openapi: 3.1.0

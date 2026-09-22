@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Grok Build {#grok-build}
+<div id="grok-build">
+  # Grok Build
+</div>
 
 > Gunakan Exa web search di Grok Build. Instal plugin Exa dari marketplace Grok Build dan masuk dengan akun Exa Anda.
 
 Exa tersedia sebagai plugin di marketplace [Grok Build](https://docs.x.ai/build/overview). Plugin ini memberi Grok kemampuan web search real-time, pembacaan halaman, serta deep research skill.
 
-## Instalasi {#installation}
+<div id="installation">
+  ## Instalasi
+</div>
 
 <Steps>
   <Step title="Instal Grok Build">
@@ -45,13 +51,17 @@ Exa tersedia sebagai plugin di marketplace [Grok Build](https://docs.x.ai/build/
 
 Setelah exa berstatus **ready**, tanyakan apa pun kepada Grok yang memerlukan akses web.
 
-## Apa yang Anda dapatkan {#what-you-get}
+<div id="what-you-get">
+  ## Apa yang Anda dapatkan
+</div>
 
 * **web&#95;search&#95;exa**: web search real-time. Mendukung kueri bahasa alami dan filter kategori seperti berita, perusahaan, orang, paper riset, dan GitHub.
 * **web&#95;fetch&#95;exa**: membaca URL apa pun dan mengembalikan page content dalam bentuk markdown yang bersih.
 * **exa-search skill**: sebuah deep research skill. Minta Grok mendalami suatu topik, dan ia akan menjalankan beberapa searches, membaca sources terbaik, lalu menjawab dengan sitasi.
 
-## Contoh prompt {#example-prompts}
+<div id="example-prompts">
+  ## Contoh prompt
+</div>
 
 * &quot;Cari berita terbaru tentang xAI&quot;
 * &quot;Baca [https://exa.ai](https://exa.ai) lalu ringkas isinya&quot;

@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Mercados financieros {#financial-markets}
+<div id="financial-markets">
+  # Mercados financieros
+</div>
 
 > Encuentra datos de mercado, informes regulatorios, earnings calls y publicaciones económicas con Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Usa Exa Search para obtener precios, informes regulatorios, transcripts y la cobertura informativa sobre ellos en una sola consulta. Una pregunta sobre un ticker puede devolver, de una vez, la cotización, la última earnings call y la cobertura de los analistas.
 
-## Incluido {#included}
+<div id="included">
+  ## Incluido
+</div>
 
 * Cotizaciones e historial de precios reciente de acciones, cripto, divisas, índices, futuros, opciones y materias primas
 * Perfiles de valores con estadísticas clave e historial diario OHLCV
@@ -43,46 +49,62 @@ Usa Exa Search para obtener precios, informes regulatorios, transcripts y la cob
 * Documentos presentados ante la SEC, estados financieros reportados e informes regulatorios internacionales
 * Estimaciones de analistas, anuncios de financiación y publicaciones económicas
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Investigación de renta variable y crédito
 * KYC, KYB y cribado de medios adversos
 * Seguimiento de carteras y políticas
 * Originación de operaciones e investigación de mercados privados
 
-## Consultas de ejemplo {#example-queries}
+<div id="example-queries">
+  ## Consultas de ejemplo
+</div>
 
-### Consultar una cotización {#look-up-a-quote}
+<div id="look-up-a-quote">
+  ### Consultar una cotización
+</div>
 
 Indica el ticker o la empresa y el dato que necesitas. También puedes usar un cashtag como `$NVDA`.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-### Leer una earnings call {#read-an-earnings-call}
+<div id="read-an-earnings-call">
+  ### Leer una earnings call
+</div>
 
 Indica el nombre de la empresa y el trimestre para obtener el transcript y no las noticias que hablan sobre él.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-### Buscar informes regulatorios {#search-filings}
+<div id="search-filings">
+  ### Buscar informes regulatorios
+</div>
 
 Describe la información que buscas, no solo el tipo de formulario. La categoría `financial report` limita los resultados a informes regulatorios y reportes.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-### Seguir la actividad del mercado privado {#track-private-market-activity}
+<div id="track-private-market-activity">
+  ### Seguir la actividad del mercado privado
+</div>
 
 Especifica la ronda, el sector y el intervalo de tiempo.
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-### Sigue los datos económicos {#follow-economic-data}
+<div id="follow-economic-data">
+  ### Sigue los datos económicos
+</div>
 
 Indica la publicación y la cifra que quieres obtener de ella.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-## Realizar una solicitud {#make-a-request}
+<div id="make-a-request">
+  ## Realizar una solicitud
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -126,7 +148,9 @@ Indica la publicación y la cifra que quieres obtener de ella.
   ```
 </CodeGroup>
 
-## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtén datos estructurados con Exa Agent
+</div>
 
 Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe los valores, periodos, criteria y campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 

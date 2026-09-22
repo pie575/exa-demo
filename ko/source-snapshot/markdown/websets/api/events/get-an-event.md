@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 이벤트 조회 {#get-an-event}
+<div id="get-an-event">
+  # 이벤트 조회
+</div>
 
 > id로 단일 Event를 조회합니다.
 
 Webhook을 생성하면 Event를 구독할 수 있습니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/events/{id}
 openapi: 3.1.0

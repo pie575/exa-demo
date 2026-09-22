@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 데이터 인덱스 {#data-index}
+<div id="data-index">
+  # 데이터 인덱스
+</div>
 
 > Exa가 공개 웹과 비공개 데이터 소스 전반에서 인덱싱하는 대상입니다.
 

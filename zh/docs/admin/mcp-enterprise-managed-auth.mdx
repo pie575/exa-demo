@@ -8,13 +8,17 @@ sidebarTitle: "Enterprise Managed Auth"
 
 访问权限与你的目录保持一致：在 Okta 中取消某人的账号配置后，其通过 Claude 访问 Exa 的权限也随之终止。EMA 即 MCP 的 [enterprise managed authorization 扩展](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)。
 
-## 开始之前 {#before-you-start}
+<div id="before-you-start">
+  ## 开始之前
+</div>
 
 * 一个已连接身份提供商的 Claude Team 或 Enterprise Organization，且你拥有其管理员权限。
 * 一个已启用 SSO 和 directory sync 的 Exa **Organization** (而非个人团队) ，且你拥有其管理员权限。
 * 使用 Okta 作为身份提供商，运行在 Okta Identity Engine 上并已启用 [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm)，且你拥有该租户的超级管理员 (Super Admin) 权限。目前仅支持 Okta 这一种身份提供商。
 
-## 你需要的 Exa 值 {#exa-values-youll-need}
+<div id="exa-values-youll-need">
+  ## 你需要的 Exa 值
+</div>
 
 | Field                     | 值                        |
 | ------------------------- | ------------------------ |
@@ -22,7 +26,9 @@ sidebarTitle: "Enterprise Managed Auth"
 | Resource / MCP server URL | `https://mcp.exa.ai/mcp` |
 | Scope                     | `mcp:tools`              |
 
-## 设置 EMA {#set-up-ema}
+<div id="set-up-ema">
+  ## 设置 EMA
+</div>
 
 <Steps>
   <Step title="在 Exa 中预配你的成员">
@@ -54,12 +60,16 @@ sidebarTitle: "Enterprise Managed Auth"
   通过 Claude 产生的用量会计入该成员所属的 Exa 团队，按该团队的 plan 和速率限制计费，与他们在该团队下运行的其他任务一样。
 </Note>
 
-## 撤销访问权限 {#revoking-access}
+<div id="revoking-access">
+  ## 撤销访问权限
+</div>
 
 * **单个成员：** 在 Okta 中移除该成员，或将其从 Exa 的团队中移除。两种方式都会终止其通过 Claude 的访问权限。
 * **所有成员：** 在 Organization 页面移除颁发者，或在 Claude 中关闭 managed authorization。新连接会立即中断，已打开的会话也会在短时间内结束。你可以随时重新注册该颁发者。
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="部分成员可用，另一些成员不可用">

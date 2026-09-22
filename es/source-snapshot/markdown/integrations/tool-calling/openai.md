@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# OpenAI Tool Calling {#openai-tool-calling}
+<div id="openai-tool-calling">
+  # OpenAI Tool Calling
+</div>
 
 > Usa las llamadas a herramientas de OpenAI para añadir Exa web search y contenido de páginas a tu aplicación.
 
@@ -13,7 +17,9 @@
 
 Las [llamadas a herramientas](https://platform.openai.com/docs/guides/function-calling?lang=python) de OpenAI permiten que los modelos llamen a funciones que defines en tu código. Los SDK de Exa incluyen herramientas listas para usar de búsqueda web y lectura de páginas para OpenAI, así que no necesitas escribir a mano el esquema de la herramienta, procesar las llamadas a herramientas ni dar formato a los resultados de Exa.
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
 <Steps>
   <Step title="Instala los SDKs">
@@ -106,7 +112,9 @@ Las [llamadas a herramientas](https://platform.openai.com/docs/guides/function-c
   </Step>
 </Steps>
 
-## Responses API {#responses-api}
+<div id="responses-api">
+  ## Responses API
+</div>
 
 Para la Responses API de OpenAI, usa la fábrica `responses` con el mismo helper `handle_tool_calls`. El handler devuelve elementos `function_call_output` para una solicitud de follow-up.
 
@@ -138,7 +146,9 @@ Para la Responses API de OpenAI, usa la fábrica `responses` con el mismo helper
   Chat Completions y la Responses API usan formatos de herramientas distintos y rechazan los de la otra, así que usa la fábrica que corresponda al endpoint que estás llamando.
 </Note>
 
-## Configuración de las herramientas {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Configuración de las herramientas
+</div>
 
 Los argumentos con nombre son opciones habituales de Exa, que se pasan cuando se ejecuta la herramienta: las opciones de búsqueda a `exa.search()` y las opciones de contenido a `exa.get_contents()`:
 
@@ -162,11 +172,15 @@ El modelo elige la `query` de búsqueda y las `urls` que va a leer; todo lo dem�
 
 En cambio, `name` (con valor predeterminado `"web_search"` y `"get_contents"`) y `description` sobrescriben la definición de la herramienta que ve el modelo. Usa un `name` personalizado para ejecutar en paralelo herramientas de Exa con configuraciones distintas, o para evitar conflictos con otras herramientas que reserven esos nombres.
 
-## Cómo combinar tus propias herramientas {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Cómo combinar tus propias herramientas
+</div>
 
 Los handlers responden a todas las llamadas a herramientas del mensaje: una llamada que nombre una herramienta que no puedan resolver recibe un output `Error: unknown tool "<name>"` en lugar de descartarse, de modo que la solicitud de follow-up nunca omite una respuesta de herramienta obligatoria. Si ejecutas tus propias herramientas junto con las de Exa, sustituye esos outputs de error por tus propios resultados antes de la siguiente solicitud.
 
-## Escribir el bucle a mano {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Escribir el bucle a mano
+</div>
 
 Si prefieres encargarte tú mismo del esquema de la herramienta y de su ejecución, define la herramienta y procesa las llamadas manualmente. `exa.tools.web_search()` y `exa.tools.get_contents()` te ofrecen las mismas especificaciones de herramienta independientes del proveedor (con un método `run`) para bucles hechos a mano, o puedes escribirlo todo desde cero:
 

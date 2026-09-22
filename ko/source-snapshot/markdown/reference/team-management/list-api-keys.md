@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# API 키 목록 조회 {#list-api-keys}
+<div id="list-api-keys">
+  # API 키 목록 조회
+</div>
 
 > team에 속한 모든 API 키를 metadata와 함께 조회합니다.
 
@@ -15,11 +19,15 @@
   Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API 키를 사용하며, 이 키는 team에 해당 feature가 활성화된 후 [API 키 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 접근 권한이 필요하면 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-## 개요 {#overview}
+<div id="overview">
+  ## 개요
+</div>
 
 List API Keys 엔드포인트는 team에 연결된 모든 API 키를 반환합니다. 응답에는 각 키의 키 ID, 이름, 속도 제한, 생성 timestamp가 포함됩니다.
 
-## Response Format {#response-format}
+<div id="response-format">
+  ## Response Format
+</div>
 
 response에는 다음 정보가 담긴 API 키 객체의 배열이 포함됩니다:
 
@@ -28,7 +36,9 @@ response에는 다음 정보가 담긴 API 키 객체의 배열이 포함됩니�
 * **rateLimit**: 분당 요청 수 기준 속도 제한(설정된 경우)
 * **createdAt**: 키가 생성된 시점의 ISO 8601 timestamp
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

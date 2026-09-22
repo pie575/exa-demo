@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Facturation et limites de débit {#billing-and-rate-limits}
+<div id="billing-and-rate-limits">
+  # Facturation et limites de débit
+</div>
 
 > Gérez vos crédits Exa, vos factures et les limites de débit de l&#39;API.
 
@@ -23,7 +27,9 @@ Exa propose une offre gratuite, une facturation à l&#39;usage et des plans Ente
   </Card>
 </Columns>
 
-## Aperçu des plans {#plans-at-a-glance}
+<div id="plans-at-a-glance">
+  ## Aperçu des plans
+</div>
 
 | Plan              | Facturation                                                                    | Limite de débit                                        | Concurrency Agent |
 | ----------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------ | ----------------- |
@@ -35,7 +41,9 @@ Exa propose une offre gratuite, une facturation à l&#39;usage et des plans Ente
   Nous vous conseillerons sur la configuration la mieux adaptée à vos besoins en matière de latence, de montée en charge, de ZDR et bien plus encore.
 </Card>
 
-## Bases de la facturation {#billing-basics}
+<div id="billing-basics">
+  ## Bases de la facturation
+</div>
 
 Les requests sont décomptées de vos crédits prépayés selon les tarifs indiqués dans [Tarification](/fr/docs/admin/pricing) ou dans votre contrat Enterprise. Les propriétaires d&#39;équipe peuvent ajouter des crédits depuis le [tableau de bord de facturation](https://dashboard.exa.ai/billing) ; les paiements sont traités via Stripe.
 
@@ -43,7 +51,9 @@ Si votre équipe épuise ses crédits, les requests renvoient `402 Payment Requi
 
 Pour consulter l&#39;historique d&#39;utilisation par API key, utilisez [Get API key usage](/fr/docs/reference/team-management/get-api-key-usage).
 
-## Limites de débit {#rate-limits}
+<div id="rate-limits">
+  ## Limites de débit
+</div>
 
 Les limites de débit sont mesurées en requêtes par seconde (QPS) et s&#39;appliquent à votre équipe dans son ensemble, toutes API keys confondues. Vous pouvez attribuer une limite inférieure à une clé donnée depuis la page [API Keys](https://dashboard.exa.ai/api-keys), mais son trafic reste comptabilisé dans la limite de l&#39;équipe.
 
@@ -59,7 +69,9 @@ Certains endpoints partagent la même capacité de limite de débit. Les limites
 
 Lorsque vous dépassez une limite, les requests renvoient `429 Too Many Requests`. Attendez la durée indiquée par le header `Retry-After` lorsqu&#39;il est présent, ou réessayez avec un backoff exponentiel. Consultez [Codes d&#39;erreur](/fr/docs/admin/error-codes).
 
-### Limites d&#39;Agent {#agent-limits}
+<div id="agent-limits">
+  ### Limites d&#39;Agent
+</div>
 
 Les limites d&#39;Agent reposent sur deux contrôles distincts : le nombre de runs pouvant être en cours simultanément et la vitesse à laquelle vous pouvez en démarrer de nouveaux.
 
@@ -67,13 +79,17 @@ Les limites d&#39;Agent reposent sur deux contrôles distincts : le nombre de ru
 * **Démarrage des runs** : `POST /agent/runs` puise dans le QPS de votre compte, et chaque démarrage de run compte pour deux requests. Vous pouvez donc démarrer des runs à la moitié de votre QPS : un compte disposant du QPS par défaut de 10 peut démarrer 5 runs par seconde, et 25 QPS en autorisent 12 par seconde.
 * **Polling** : les requests `GET` portant sur le statut d&#39;un run, les events et les listes de runs ne sont pas décomptées de votre QPS et ne bloquent jamais le dispatch : vous pouvez donc poller les Agents en cours indépendamment de la vitesse à laquelle vous en démarrez de nouveaux.
 
-### 25 QPS avec le Pay as you go {#25-qps-on-pay-as-you-go}
+<div id="25-qps-on-pay-as-you-go">
+  ### 25 QPS avec le Pay as you go
+</div>
 
 Achetez pour 1 000 $ de crédits sur une période de 30 jours et la limite de débit de votre équipe passe automatiquement à **25 QPS pendant 90 jours**. Le seuil porte sur les crédits que vous achetez, et non sur ceux que vous dépensez, et remplir à nouveau la condition réinitialise les 90 jours. Suivez votre progression sur le [tableau de bord de facturation](https://dashboard.exa.ai/billing).
 
 Besoin de plus de 25 QPS ? [Contactez le service commercial](https://exa.ai/contact/sales).
 
-## Auto recharge {#auto-recharge}
+<div id="auto-recharge">
+  ## Auto recharge
+</div>
 
 L&#39;auto recharge achète des crédits lorsque votre solde atteint un seuil que vous définissez. Configurez-la depuis le [tableau de bord de facturation](https://dashboard.exa.ai/billing).
 
@@ -87,13 +103,17 @@ Par exemple, avec un montant de recharge de $100, un seuil de $10 et un maximum 
 
 Pour un lancement à venir ou toute autre charge de travail à fort volume, ajoutez suffisamment de crédits à l&#39;avance et définissez un montant d&#39;auto recharge qui évite de multiplier les petites tentatives de paiement.
 
-## Reçus et factures {#receipts-and-invoices}
+<div id="receipts-and-invoices">
+  ## Reçus et factures
+</div>
 
 Exa envoie par e-mail les reçus des achats de crédits et des auto recharges depuis l&#39;adresse [billing@exa.ai](mailto:billing@exa.ai). Au besoin, ajoutez cette adresse à votre liste d&#39;autorisation. L&#39;historique complet de vos factures est disponible dans le [tableau de bord de facturation](https://dashboard.exa.ai/billing).
 
 La facturation postpayée sur facture est proposée avec un plan Enterprise.
 
-## Obtenir de l&#39;aide {#get-help}
+<div id="get-help">
+  ## Obtenir de l&#39;aide
+</div>
 
 <Columns cols={2}>
   <Card title="Augmentez vos limites" icon="gauge" href="https://exa.ai/contact/sales" cta="Contacter le service commercial" arrow="true">

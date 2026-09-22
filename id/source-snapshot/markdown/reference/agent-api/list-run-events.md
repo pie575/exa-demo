@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# List run events {#list-run-events}
+<div id="list-run-events">
+  # List run events
+</div>
 
 > Menampilkan daftar event Agent run yang tersimpan atau memutarnya kembali sebagai server-sent events.
 
@@ -13,7 +17,9 @@ Secara default, endpoint ini mengembalikan daftar JSON berhalaman berisi event y
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

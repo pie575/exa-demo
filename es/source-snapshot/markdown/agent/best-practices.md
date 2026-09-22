@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Buenas prácticas de Agent {#agent-best-practices}
+<div id="agent-best-practices">
+  # Buenas prácticas de Agent
+</div>
 
 > Ajusta la calidad de las consultas, la salida estructurada, el effort y el costo para integraciones de Exa Agent en producción.
 
 Usa esta guía después del [quickstart de Exa Agent](/es/docs/agent/quickstart) para mejorar la calidad de las consultas, estructurar los outputs y controlar el tiempo de ejecución y el costo. Para ver solicitudes completas, empieza por los [ejemplos de Agent](/es/docs/agent/examples).
 
-## Principios fundamentales {#core-principles}
+<div id="core-principles">
+  ## Principios fundamentales
+</div>
 
 Trata `query` como una especificación de tarea. Indica qué debe encontrar Agent, el alcance del trabajo, la evidencia requerida y cómo debe ser un resultado completo.
 
@@ -51,7 +57,9 @@ Sin un `outputSchema`, Agent devuelve texto en prosa en `output.text` y citas en
 
 Mantén las filas, las exclusiones y la forma de la respuesta en sus campos dedicados en lugar de incrustarlas en `query`.
 
-## Redacción de consultas de creación de listas y enrichment {#writing-list-building-and-enrichment-queries}
+<div id="writing-list-building-and-enrichment-queries">
+  ## Redacción de consultas de creación de listas y enrichment
+</div>
 
 Para la creación de listas, define la entidad, el número objetivo, los criteria de calificación, las exclusiones y el nivel de evidencia exigido. Para el enrichment, coloca los registros existentes en `input.data` y describe únicamente la investigación que Agent debe añadir.
 
@@ -73,7 +81,9 @@ Pide una justificación cuando la calificación requiera criterio propio. Incluy
 
 Consulta [Find all GTM members](/es/docs/agent/examples#find-all-code) para ver una solicitud de descubrimiento y [Enrich input rows](/es/docs/agent/examples#enrich-input-rows-code) para el patrón correspondiente de enrichment de filas.
 
-## Gestionar runs asíncronos {#handle-asynchronous-runs}
+<div id="handle-asynchronous-runs">
+  ## Gestionar runs asíncronos
+</div>
 
 Los runs del Agent pueden tardar de segundos a minutos mientras buscan, leen y razonan. Diseña en torno al ciclo de vida en lugar de mantener abierta una solicitud de tu aplicación.
 
@@ -97,7 +107,9 @@ Para batches, mide tareas representativas antes de estimar la concurrencia o de 
 
 Para equipos con Zero Data Retention, consume el stream en vivo o sondea dentro de la ventana de retención. `previousRunId` y los `dataSources` de Connect no están disponibles. Consulta [Zero Data Retention](/es/docs/admin/security/zero-data-retention).
 
-## Escribe esquemas JSON personalizados para la salida estructurada {#write-custom-json-schemas-for-structured-output}
+<div id="write-custom-json-schemas-for-structured-output">
+  ## Escribe esquemas JSON personalizados para la salida estructurada
+</div>
 
 Usa `outputSchema` cuando el código posterior necesite campos legibles por máquina, valores normalizados, filas de tabla o registros de enrichment. Si basta con una respuesta en prosa, omítelo y lee `output.text`; la salida estructurada añade trabajo de formateo y puede aumentar la latencia.
 
@@ -147,7 +159,9 @@ No dupliques en tu esquema las citas ni la confianza que Exa ya incluye. Añade 
 
 Consulta los [ejemplos estructurados de Agent](/es/docs/agent/examples) para comparar esquemas de creación de listas, KYB, ofertas de empleo, exclusiones y runs continuados.
 
-## Agent frente a Search {#agent-vs-search}
+<div id="agent-vs-search">
+  ## Agent frente a Search
+</div>
 
 | Necesidad                                                           | Empieza con                             |
 | ------------------------------------------------------------------- | --------------------------------------- |
@@ -157,7 +171,9 @@ Consulta los [ejemplos estructurados de Agent](/es/docs/agent/examples) para com
 
 Usa Agent cuando el trabajo requiera varios pasos de recuperación, verificación por entidad o enrichment sobre registros conocidos. Usa Search cuando necesites páginas con rapidez y sea tu aplicación la que realice el razonamiento restante.
 
-## Consejos para casos de uso comunes {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## Consejos para casos de uso comunes
+</div>
 
 | Si necesitas                                        | Usa                                                           | Evita                                                                            |
 | --------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------------------------- |
@@ -169,7 +185,9 @@ Usa Agent cuando el trabajo requiera varios pasos de recuperación, verificació
 | Costo predecible por solicitud                      | Un `effort` fijo                                              | `auto` o `max` sin un presupuesto                                                |
 | Exhaustividad por encima de latencia y costo        | `xhigh` o `max`                                               | Subir el effort antes de afinar la consulta                                      |
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Quickstart de Agent" icon="bot" href="/es/docs/agent/quickstart" cta="Abrir guía" arrow="true">

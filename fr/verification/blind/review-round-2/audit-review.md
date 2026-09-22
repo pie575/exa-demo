@@ -1,4 +1,6 @@
-# Revue à l&#39;aveugle indépendante des captures d&#39;écran — images finales {#independent-blind-screenshot-review-final-images}
+<div id="independent-blind-screenshot-review-final-images">
+  # Revue à l&#39;aveugle indépendante des captures d&#39;écran — images finales
+</div>
 
 Nouvel examen des quatre dernières paires A/B après leur remplacement. Aucune clé d&#39;identité de source n&#39;a été consultée. Les mises en page principales, la typographie, les couleurs, les espacements, les retours à la ligne et les icônes de la barre d&#39;outils correspondent visuellement ; les différences encore visibles concernent la superposition du bas.
 

@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Mettre à jour un enrichment {#update-an-enrichment}
+<div id="update-an-enrichment">
+  # Mettre à jour un enrichment
+</div>
 
 > Mettre à jour une configuration d&#39;Enrichment pour un Webset.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

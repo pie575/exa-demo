@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Créer un run {#create-a-run}
+<div id="create-a-run">
+  # Créer un run
+</div>
 
 > Crée un run Agent asynchrone. La réponse renvoie immédiatement l&#39;objet run, sauf si vous demandez des server-sent events.
 
@@ -19,7 +23,9 @@ Définissez `Accept: text/event-stream` pour diffuser les événements du run au
   Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0

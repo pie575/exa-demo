@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 列出所有 events {#list-all-events}
+<div id="list-all-events">
+  # 列出所有 events
+</div>
 
 > 列出系统中发生的所有 events。
 
 你可以使用 `cursor` 参数对结果进行分页。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Enterprise Managed Auth untuk Claude {#enterprise-managed-auth-for-claude}
+<div id="enterprise-managed-auth-for-claude">
+  # Enterprise Managed Auth untuk Claude
+</div>
 
 > Siapkan Enterprise Managed Auth (EMA) agar Claude terhubung ke Exa MCP melalui identity provider Anda, termasuk Okta Cross App Access (XAA).
 
@@ -11,13 +15,17 @@ Secara default, setiap anggota menghubungkan [konektor Exa](/id/docs/get-started
 
 Akses mengikuti direktori Anda: cabut akun seseorang di Okta, maka akses Exa-nya melalui Claude ikut terhenti. EMA adalah [enterprise managed authorization extension](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) dari MCP.
 
-## Sebelum memulai {#before-you-start}
+<div id="before-you-start">
+  ## Sebelum memulai
+</div>
 
 * Organisasi Claude Team atau Enterprise yang sudah terhubung dengan identity provider Anda, beserta akses admin ke organisasi tersebut.
 * **Organisasi** Exa (bukan team pribadi) dengan SSO dan sinkronisasi direktori, beserta akses admin ke organisasi tersebut.
 * Okta sebagai identity provider Anda, berjalan di Okta Identity Engine dengan [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) yang aktif, serta akses Super Admin ke tenant. Saat ini, Okta adalah satu-satunya identity provider yang didukung.
 
-## Nilai Exa yang Anda perlukan {#exa-values-youll-need}
+<div id="exa-values-youll-need">
+  ## Nilai Exa yang Anda perlukan
+</div>
 
 | Field                             | Nilai                    |
 | --------------------------------- | ------------------------ |
@@ -25,7 +33,9 @@ Akses mengikuti direktori Anda: cabut akun seseorang di Okta, maka akses Exa-nya
 | URL sumber daya / MCP server      | `https://mcp.exa.ai/mcp` |
 | Scope                             | `mcp:tools`              |
 
-## Menyiapkan EMA {#set-up-ema}
+<div id="set-up-ema">
+  ## Menyiapkan EMA
+</div>
 
 <Steps>
   <Step title="Provision anggota Anda di Exa">
@@ -57,12 +67,16 @@ Anggota akan mendapatkan konektor tersebut saat mereka masuk berikutnya. Anda da
   Penggunaan melalui Claude ditagihkan ke team Exa milik anggota tersebut, sesuai plan dan rate limit team itu, sama seperti hal lain yang mereka jalankan di team tersebut.
 </Note>
 
-## Mencabut akses {#revoking-access}
+<div id="revoking-access">
+  ## Mencabut akses
+</div>
 
 * **Satu anggota:** hapus anggota tersebut di Okta, atau keluarkan dari Team-nya di Exa. Salah satu langkah ini sudah cukup untuk mengakhiri aksesnya melalui Claude.
 * **Semua anggota:** hapus issuer di halaman Organization, atau nonaktifkan managed authorization di Claude. Koneksi baru langsung terhenti dan sesi yang sedang berjalan akan berakhir tidak lama kemudian. Anda dapat mendaftarkan issuer kembali kapan saja.
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Berfungsi untuk sebagian anggota, tetapi tidak untuk yang lain">

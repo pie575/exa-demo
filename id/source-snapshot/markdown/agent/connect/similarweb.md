@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Similarweb {#similarweb}
+<div id="similarweb">
+  # Similarweb
+</div>
 
 > Dapatkan estimasi trafik situs web, peringkat global, dan discovery kompetitor.
 
@@ -16,14 +20,18 @@ Attach `similarweb` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), lalu agent akan melakukan kueri ke
 Similarweb bersamaan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Membandingkan trafik web dan engagement sebuah perusahaan dengan kompetitor sejenisnya.
 * Memetakan kompetitor sebuah domain dan situs-situs dengan audiens yang beririsan.
 * Mengukur ukuran pasar dan menyaring perusahaan berdasarkan jejak digitalnya.
 * Memperkaya Research perusahaan dan kategori dengan data perilaku nyata.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -31,7 +39,9 @@ Gunakan nilai ini pada `dataSources`:
 similarweb
 ```
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Similarweb menagih dalam data credits seharga `$0.30 / credit`, dan setiap call dikenakan
 credits sesuai yang dilaporkan Similarweb untuk call tersebut. Credits meningkat seiring banyaknya data yang dikembalikan —
@@ -57,7 +67,9 @@ Calls yang tidak mengembalikan data (domain tidak dikenal atau bertrafik rendah,
 volume pencarian) tidak dikenakan biaya. `numResults` dan `months` menentukan berapa banyak titik data yang Anda
 bayar, jadi buat nilainya sekecil mungkin sesuai kebutuhan tugas.
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Temukan 10 perusahaan SaaS B2B yang tumbuh pesat beserta perkiraan trafik web mereka.
 
@@ -151,12 +163,16 @@ Temukan 10 perusahaan SaaS B2B yang tumbuh pesat beserta perkiraan trafik web me
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Fiber.ai](/id/docs/agent/connect/fiber): ubah kompetitor yang ditemukan menjadi catatan perusahaan yang ter-enrich.
 * [Affiliate.com](/id/docs/agent/connect/affiliatecom): ukur jangkauan sebuah merchant sebelum merekomendasikan produknya.
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

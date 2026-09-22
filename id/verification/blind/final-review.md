@@ -1,4 +1,6 @@
-# Tinjauan visual buta akhir {#final-blind-visual-review}
+<div id="final-blind-visual-review">
+  # Tinjauan visual buta akhir
+</div>
 
 Meninjau empat pasangan A/B akhir setelah perbaikan kontrol bawah native dan
 jarak antar gambar. Kunci identitas A/B tidak dilihat.

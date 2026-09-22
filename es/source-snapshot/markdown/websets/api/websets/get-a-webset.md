@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Obtener un webset {#get-a-webset}
+<div id="get-a-webset">
+  # Obtener un webset
+</div>
 
 > Devuelve un Webset por `id` o `externalId`, incluidos su estado, búsquedas, imports, enrichments y monitors.
 
 Pasa `expand=items` para incluir hasta los primeros 100 items en la respuesta.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0

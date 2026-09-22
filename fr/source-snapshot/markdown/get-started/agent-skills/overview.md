@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Agent Skills {#agent-skills}
+<div id="agent-skills">
+  # Agent Skills
+</div>
 
 > Installez les skills Exa dans Claude Code, Codex et d&#39;autres agents de code.
 
@@ -11,7 +15,9 @@ Les skills Exa apprennent aux agents de code à effectuer des recherches, à ré
 
 Chaque skill contient des fichiers markdown conformes au standard ouvert [Agent Skills](https://agentskills.io) : les mêmes fichiers s&#39;installent donc dans n&#39;importe quel agent compatible.
 
-## Installation {#install}
+<div id="install">
+  ## Installation
+</div>
 
 Installez toutes les skills Exa en une seule fois :
 
@@ -29,7 +35,9 @@ npx skills add exa-labs/agent-skills
 
 Vous pouvez aussi ouvrir une page de skill ci-dessous et copier son setup prompt dans votre agent. Le prompt installe le skill en question et vérifie votre API key sans l&#39;afficher.
 
-## Skills {#skills}
+<div id="skills">
+  ## Skills
+</div>
 
 Chaque page de skill comprend une description en une ligne, un setup prompt à copier et un lien vers le fichier source `SKILL.md` brut.
 
@@ -47,7 +55,9 @@ Chaque page de skill comprend une description en une ligne, un setup prompt à c
   </Card>
 </Columns>
 
-## Ressources associées {#related}
+<div id="related">
+  ## Ressources associées
+</div>
 
 <Columns cols={2}>
   <Card title="Repository des skills" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Voir la source" arrow="true">

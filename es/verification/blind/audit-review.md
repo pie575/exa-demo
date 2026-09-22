@@ -1,4 +1,6 @@
-# Revisión ciega independiente de capturas de pantalla — imágenes finales {#independent-blind-screenshot-review-final-images}
+<div id="independent-blind-screenshot-review-final-images">
+  # Revisión ciega independiente de capturas de pantalla — imágenes finales
+</div>
 
 Se volvieron a revisar los cuatro pares A/B más recientes después de su reemplazo. No se consultó ninguna key de identidad de origen. Los diseños principales, la tipografía, los colores, el espaciado, el ajuste de línea y los iconos de la barra de herramientas coinciden visualmente; las diferencias visibles restantes tienen que ver con la superposición inferior.
 

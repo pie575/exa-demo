@@ -33,7 +33,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Gunakan Exa Search untuk menemukan sumber hukum primer dan catatan pemerintah beserta ulasan yang ditulis tentangnya.
 
-## Termasuk {#included}
+<div id="included">
+  ## Termasuk
+</div>
 
 * Putusan pengadilan AS, dengan teks penuh, pengadilan, nomor perkara, dan metadata sitasi
 * Paten AS yang telah diberikan, dengan abstrak, klaim, deskripsi, inventor, dan pemegang paten
@@ -42,7 +44,9 @@ Gunakan Exa Search untuk menemukan sumber hukum primer dan catatan pemerintah be
 * Kontrak pemerintah dan catatan pengadaan
 * Data sensus dan catatan statistik publik lainnya
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Research yurisprudensi dan RAG hukum
 * Pemantauan regulasi dan kebijakan
@@ -50,39 +54,53 @@ Gunakan Exa Search untuk menemukan sumber hukum primer dan catatan pemerintah be
 * Screening kepatuhan dan uji tuntas
 * Research pasar sektor publik
 
-## Contoh query {#example-queries}
+<div id="example-queries">
+  ## Contoh query
+</div>
 
-### Mencari yurisprudensi {#find-case-law}
+<div id="find-case-law">
+  ### Mencari yurisprudensi
+</div>
 
 Jelaskan pertanyaan hukum dan yurisdiksinya dengan bahasa sehari-hari, bukan dalam bentuk sitasi.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-### Mencari paten {#search-patents}
+<div id="search-patents">
+  ### Mencari paten
+</div>
 
 Jelaskan fungsi invensi tersebut, seperti cara sebuah klaim paten menuliskannya.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-### Screening terhadap sanksi {#screen-against-sanctions}
+<div id="screen-against-sanctions">
+  ### Screening terhadap sanksi
+</div>
 
 Sebutkan nama daftar dan kelas entitas yang Anda screening.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-### Research pengeluaran pemerintah {#research-government-spending}
+<div id="research-government-spending">
+  ### Research pengeluaran pemerintah
+</div>
 
 Sebutkan instansi pembeli atau kategori layanan beserta rentang waktunya.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-### Mengambil statistik publik {#pull-public-statistics}
+<div id="pull-public-statistics">
+  ### Mengambil statistik publik
+</div>
 
 Sebutkan nama dataset dan wilayah geografisnya.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -123,7 +141,9 @@ Sebutkan nama dataset dan wilayah geografisnya.
   ```
 </CodeGroup>
 
-## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan yurisdiksi, jenis catatan, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 

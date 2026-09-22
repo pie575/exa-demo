@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Skill Build with Exa {#build-with-exa-skill}
+<div id="build-with-exa-skill">
+  # Skill Build with Exa
+</div>
 
 > Un skill de agente para ayudar a los desarrolladores a implementar cualquier parte de la plataforma de APIs de Exa.
 
@@ -17,7 +21,9 @@ Usa este skill para enseñarle a tu agente a crear aplicaciones y agentes con la
   Define tu key como `EXA_API_KEY` en el entorno de tu agente.
 </Note>
 
-## Configuración {#setup}
+<div id="setup">
+  ## Configuración
+</div>
 
 **Opción A: instala este skill directamente:**
 
@@ -63,13 +69,17 @@ Qué hacer:
 Regla estricta en todo momento: la key es un secreto. Inspecciónala únicamente mediante una comprobación de presencia o longitud (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) o un código de estado HTTP — nunca imprimas ni uses `echo`, `cat` o `grep` con salida sobre ningún archivo o variable que pueda contenerla, y nunca intentes "censurar" un archivo de key con una expresión regular. Si una key queda expuesta alguna vez, indícame que la rote en https://dashboard.exa.ai/api-keys.
 ```
 
-## Ver código fuente {#view-source}
+<div id="view-source">
+  ## Ver código fuente
+</div>
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="Ver código fuente" arrow="true">
   Lee la definición de la skill build-with-exa antes de instalarla.
 </Card>
 
-## Relacionado {#related}
+<div id="related">
+  ## Relacionado
+</div>
 
 <Columns cols={2}>
   <Card title="Todos los skills de agente" icon="layers" href="/es/docs/get-started/agent-skills/overview" cta="Explorar skills" arrow="true">

@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 웹훅 업데이트 {#update-a-webhook}
+<div id="update-a-webhook">
+  # 웹훅 업데이트
+</div>
 
 > 웹훅의 대상 URL, 구독 중인 events, metadata를 업데이트합니다. 생략된 fields는 변경되지 않습니다.
 
@@ -13,7 +17,9 @@
   처리됩니다.
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

@@ -1,4 +1,6 @@
-# 独立盲审视觉评审 — 最终截图 {#independent-blinded-visual-review-final-captures}
+<div id="independent-blinded-visual-review-final-captures">
+  # 独立盲审视觉评审 — 最终截图
+</div>
 
 在没有来源与标签对照表的情况下，评审了更新后的四组 A/B 对比图。
 

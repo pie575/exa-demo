@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# 删除项目 {#delete-an-item}
+<div id="delete-an-item">
+  # 删除项目
+</div>
 
 > 从 Webset 中删除一个项目。
 
 此操作将取消该项目正在进行的所有增强处理。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}
 openapi: 3.1.0

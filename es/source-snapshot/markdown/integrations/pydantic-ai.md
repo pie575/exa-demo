@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Pydantic AI {#pydantic-ai}
+<div id="pydantic-ai">
+  # Pydantic AI
+</div>
 
 > Dale a un agente de Pydantic AI herramientas de investigación web respaldadas por la Exa Search API.
 
@@ -28,7 +32,9 @@ Una capacidad agrupa las herramientas, los presupuestos de output por herramient
 
 ***
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
 <Steps>
   <Step title="Requisitos previos e instalación">
@@ -81,7 +87,9 @@ Una capacidad agrupa las herramientas, los presupuestos de output por herramient
 
 ***
 
-## Configuración {#configuration}
+<div id="configuration">
+  ## Configuración
+</div>
 
 Todos los campos de `ExaSearch` con su valor predeterminado:
 
@@ -102,7 +110,9 @@ ExaSearch(
 
 `include_domains` y `exclude_domains` se aplican a `web_search` y `deep_search`, y son mutuamente excluyentes. Los límites fuera de rango y definir ambas listas de dominios provocan un error en la construcción.
 
-### Resumen de texto {#text-summary}
+<div id="text-summary">
+  ### Resumen de texto
+</div>
 
 Define `text_summary` para que cada llamada a `web_search` solicite también un resumen sintetizado en texto plano de los resultados. Pasa `True` para obtener un resumen sin restricciones, o una cadena que describa el formato deseado:
 
@@ -114,7 +124,9 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 La estructura del valor devuelto por la herramienta no cambia: cuando Exa devuelve un resumen, este se antepone como una línea `Summary:`.
 
-### Citas estructuradas {#structured-citations}
+<div id="structured-citations">
+  ### Citas estructuradas
+</div>
 
 Cada herramienta devuelve un `ToolReturn`: `return_value` contiene el texto legible que ve el modelo (incluidos los bloques `Sources:`), y `metadata` contiene las fuentes como registros `ExaSource` estructurados (`{'url': ..., 'title': ...}`) bajo la clave `'sources'`. Los metadatos nunca se envían al modelo, así que renderizar las citas no requiere analizar ningún texto:
 
@@ -129,7 +141,9 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-### Cliente personalizado {#custom-client}
+<div id="custom-client">
+  ### Cliente personalizado
+</div>
 
 El cliente predeterminado es `exa_py.AsyncExa`, configurado a partir de `EXA_API_KEY`. Pasa cualquier objeto que cumpla el protocolo `ExaClient` para configurar explícitamente la autenticación o la URL base, o para sustituirlo por un doble de prueba en tus tests:
 
@@ -142,7 +156,9 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-## Runs del agente de Exa {#exa-agent-runs}
+<div id="exa-agent-runs">
+  ## Runs del agente de Exa
+</div>
 
 La [Exa Agent API](/es/docs/agent/quickstart) ejecuta tareas de investigación abiertas de forma asíncrona. La capacidad `ExaAgent` adapta ese ciclo de vida a las [llamadas a herramienta diferidas](https://pydantic.dev/docs/ai/deferred-tools/) de Pydantic AI: su herramienta `exa_agent` crea el run y lo difiere, llevando el ID del run de Exa en los metadatos de la llamada diferida.
 
@@ -174,7 +190,9 @@ ExaAgent(
 
 ***
 
-## Especificación de agente (YAML/JSON) {#agent-spec-yamljson}
+<div id="agent-spec-yamljson">
+  ## Especificación de agente (YAML/JSON)
+</div>
 
 Ambas capacidades funcionan con la [especificación de agente](https://pydantic.dev/docs/ai/agents/#agent-spec) de Pydantic AI, por lo que puedes declararlas en un archivo de configuración en lugar de en Python:
 
@@ -199,7 +217,9 @@ Pasa `custom_capability_types` para que el cargador de especificaciones sepa có
 
 ***
 
-## Siguiente {#next}
+<div id="next">
+  ## Siguiente
+</div>
 
 * [**Search API**](/es/docs/search/quickstart) - Búsqueda semántica con highlights, resúmenes y deep search
 * [**Agent API**](/es/docs/agent/quickstart) - Runs de investigación asíncronos y de final abierto

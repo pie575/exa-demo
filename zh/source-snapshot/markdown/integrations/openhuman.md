@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# OpenHuman {#openhuman}
+<div id="openhuman">
+  # OpenHuman
+</div>
 
 > 为 OpenHuman agent 接入 Exa 的实时网页搜索，可使用托管方式，也可使用你自己的 Exa API 密钥。
 
@@ -14,7 +18,9 @@ TinyHumans 推出的 [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 是一
 | **OpenHuman Managed** | 无需配置          | OpenHuman 的后端，由 Exa 提供支持。无需 API 密钥。       |
 | **Exa 提供方**           | 粘贴 Exa API 密钥 | 你的本机，以你自己的 Exa 账户直连 `https://api.exa.ai`。 |
 
-## OpenHuman Managed {#openhuman-managed}
+<div id="openhuman-managed">
+  ## OpenHuman Managed
+</div>
 
 托管 search 是默认选项。在引导流程中选择 **Simple**，agent 即可立即搜索网络。
 
@@ -26,17 +32,23 @@ TinyHumans 推出的 [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 是一
   **托管方式是获取 Exa 结果最快的途径。** 无需创建、存储或轮换密钥，本机不保存任何凭据，search 费用直接计入你的 OpenHuman 订阅。
 </Tip>
 
-## Exa 提供方 {#exa-provider}
+<div id="exa-provider">
+  ## Exa 提供方
+</div>
 
 直接配置 Exa，即可使用你自己的 Exa 账户执行 search，并为 agent 提供 Exa 的 search 和页面内容 tools。
 
-### 获取你的 Exa API 密钥 {#get-your-exa-api-key}
+<div id="get-your-exa-api-key">
+  ### 获取你的 Exa API 密钥
+</div>
 
 <Card title="获取你的 Exa API 密钥" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   在控制台中创建密钥。新账户会赠送免费积分。
 </Card>
 
-### 在 OpenHuman 中添加 Exa {#add-exa-in-openhuman}
+<div id="add-exa-in-openhuman">
+  ### 在 OpenHuman 中添加 Exa
+</div>
 
 1. 打开 **Connections**，然后在 **API 密钥** 下选择 **Search engine**。
 
@@ -60,7 +72,9 @@ TinyHumans 推出的 [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 是一
   <img src="https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/configured.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=b3c8df585a06a31daa8bba6c2a516722" alt="OpenHuman 的 Search engine 面板中已选中 Exa 并标记为 Configured" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-### 配置 {#configuration}
+<div id="configuration">
+  ### 配置
+</div>
 
 该面板会将配置写入 OpenHuman 的 `config.toml`。你也可以直接在该文件或环境变量中设置相同的值：
 
@@ -89,7 +103,9 @@ TinyHumans 推出的 [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 是一
   </Tab>
 </Tabs>
 
-### agent 可用的 tools {#tools-the-agent-gets}
+<div id="tools-the-agent-gets">
+  ### agent 可用的 tools
+</div>
 
 | 工具                 | 返回内容                               |
 | ------------------ | ---------------------------------- |
@@ -99,7 +115,9 @@ TinyHumans 推出的 [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 是一
 
 agent 会为每次调用设置 Exa 的[搜索参数](/zh/docs/search/quickstart)，因此只需用简单的指令就能控制搜索模式、域名、日期和类别。
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa search 不可用：未配置 API 密钥">
@@ -119,7 +137,9 @@ agent 会为每次调用设置 Exa 的[搜索参数](/zh/docs/search/quickstart)
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 <Columns cols={3}>
   <Card title="OpenHuman 网页搜索文档" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="打开指南" arrow="true">

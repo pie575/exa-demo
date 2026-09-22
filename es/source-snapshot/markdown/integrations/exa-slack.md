@@ -1,17 +1,25 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa in Slack {#exa-in-slack}
+<div id="exa-in-slack">
+  # Exa in Slack
+</div>
 
 > Instala Exa en Slack y menciona a @Exa en cualquier canal o hilo para obtener respuestas con fuentes citadas sobre investigación, creación de listas y enrichment.
 
 Lleva Exa al Slack de tu equipo. Menciona a **@Exa** en cualquier canal o hilo con una pregunta de investigación, una tarea de creación de listas o una solicitud de enrichment. Exa busca en la web, lee las fuentes y responde en el hilo con respuestas citadas.
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
-### Instalación {#installation}
+<div id="installation">
+  ### Instalación
+</div>
 
 1. Ve a [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack) y haz clic en **Install**.
 
@@ -28,7 +36,9 @@ Lleva Exa al Slack de tu equipo. Menciona a **@Exa** en cualquier canal o hilo c
 
 3. Una vez instalada, invita a @Exa a un canal (o escríbele por mensaje directo) y empieza a hacer preguntas.
 
-## Cómo usar Exa desde Slack {#how-to-use-exa-from-slack}
+<div id="how-to-use-exa-from-slack">
+  ## Cómo usar Exa desde Slack
+</div>
 
 En cualquier canal al que se haya añadido Exa, menciona a @Exa junto con tu pregunta:
 
@@ -38,15 +48,21 @@ En cualquier canal al que se haya añadido Exa, menciona a @Exa junto con tu pre
 
 Exa responde a tu pregunta en el hilo.
 
-### Follow-ups {#follow-ups}
+<div id="follow-ups">
+  ### Follow-ups
+</div>
 
 Una vez que Exa haya respondido en un hilo, basta con responder en ese mismo hilo para continuar la conversación. No hace falta volver a mencionar a @Exa. Exa recuerda la conversación, así que los follow-ups parten de la respuesta anterior. Cualquier persona del hilo puede enviar un follow-up.
 
-### Mensajes directos {#direct-messages}
+<div id="direct-messages">
+  ### Mensajes directos
+</div>
 
 También puedes escribirle a Exa directamente por DM. Ahí no hace falta ninguna mención. Cada mensaje que envíes inicia una nueva solicitud, que se responde en un hilo debajo de ese mensaje. Responde en el hilo para continuar esa conversación.
 
-### Cancelar un run {#cancelling-a-run}
+<div id="cancelling-a-run">
+  ### Cancelar un run
+</div>
 
 Mientras un run está en curso, responde en el hilo y pídele a Exa que lo detenga. No hace falta mencionarlo.
 
@@ -54,7 +70,9 @@ Mientras un run está en curso, responde en el hilo y pídele a Exa que lo deten
 Detén el run actual
 ```
 
-### Proveedores de Exa Connect {#exa-connect-providers}
+<div id="exa-connect-providers">
+  ### Proveedores de Exa Connect
+</div>
 
 Exa incluye automáticamente los proveedores de datos de [Exa Connect](/es/docs/agent/connect/overview) cuando son relevantes para tu pregunta. Para usar un proveedor específico, menciónalo en tu mensaje:
 
@@ -64,21 +82,29 @@ Exa incluye automáticamente los proveedores de datos de [Exa Connect](/es/docs/
 
 Para obtener una lista de todos los proveedores de datos disponibles, solo pregúntale a Exa.
 
-## Ejemplos {#examples}
+<div id="examples">
+  ## Ejemplos
+</div>
 
-### Noticias y actualidad {#news-and-current-events}
+<div id="news-and-current-events">
+  ### Noticias y actualidad
+</div>
 
 Infórmate de lo último sobre cualquier tema.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f" alt="Exa respondiendo una pregunta sobre las últimas noticias de un tema en un hilo de Slack, con resultados fechados en una tabla" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-### Creación de listas extensas {#large-list-building}
+<div id="large-list-building">
+  ### Creación de listas extensas
+</div>
 
 Antepón `!max` a la solicitud para una creación de listas exhaustiva.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2" alt="Exa ejecutando una solicitud de creación de listas con !max en un hilo de Slack y devolviendo una tabla de resultados" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-## Palabras clave {#keywords}
+<div id="keywords">
+  ## Palabras clave
+</div>
 
 Úsalas en un hilo en el que esté Exa. Los comandos pueden ir después de una mención a `@Exa` o iniciar el mensaje
 directamente:
@@ -92,7 +118,9 @@ directamente:
 | `aside <message>` | Publica un comentario aparte que Exa ignora; útil para hablar con compañeros de equipo en un hilo que Exa está siguiendo.   |
 | `help`            | Muestra las instrucciones de uso.                                                                                           |
 
-## Permisos {#permissions}
+<div id="permissions">
+  ## Permisos
+</div>
 
 La aplicación de Exa para Slack solicita los siguientes scopes:
 
@@ -123,10 +151,14 @@ La aplicación de Exa para Slack solicita los siguientes scopes:
 
 Exa solo recibe mensajes de los canales a los que se la ha invitado explícitamente y de sus propios mensajes directos.
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Los runs iniciados desde Slack se facturan a tu equipo de Exa. Consulta los [precios](https://exa.ai/pricing) para más detalles.
 
-## Privacidad {#privacy}
+<div id="privacy">
+  ## Privacidad
+</div>
 
 Para conocer más detalles sobre cómo Exa trata tus datos, consulta la [política de privacidad de Exa](https://exa.ai/privacy-policy).

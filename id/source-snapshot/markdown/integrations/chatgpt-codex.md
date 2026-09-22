@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa di Codex dan ChatGPT {#exa-in-codex-and-chatgpt}
+<div id="exa-in-codex-and-chatgpt">
+  # Exa di Codex dan ChatGPT
+</div>
 
 > Cari di web, baca halaman apa pun, dan lakukan research dengan Exa langsung dari Codex dan ChatGPT.
 
 Pasang plugin Exa sekali saja untuk memberi Codex dan ChatGPT akses ke web secara langsung melalui Exa. Cari informasi terkini, baca sources yang penting, dan jalankan research yang lebih mendalam tanpa meninggalkan percakapan atau sesi coding Anda.
 
-## Pasang Exa {#install-exa}
+<div id="install-exa">
+  ## Pasang Exa
+</div>
 
 <Steps>
   <Step title="Buka plugin">
@@ -31,7 +37,9 @@ Pasang plugin Exa sekali saja untuk memberi Codex dan ChatGPT akses ke web secar
 
 Selesai. Plugin ini sudah mencakup integrasi MCP sekaligus skill dari Exa, jadi tidak perlu menyiapkan MCP atau skill secara terpisah.
 
-## Bangun dengan apa yang ada di web saat ini {#build-with-whats-on-the-web-right-now}
+<div id="build-with-whats-on-the-web-right-now">
+  ## Bangun dengan apa yang ada di web saat ini
+</div>
 
 Library, API, dan tool yang Anda pakai untuk membangun berubah setiap hari. Dengan Exa terpasang, Codex dapat melakukan search untuk menemukan dokumentasi, issues, changelogs, dan contoh nyata terbaru sambil bekerja.
 
@@ -51,7 +59,9 @@ Hal yang sama berlaku setiap kali jawabannya mungkin berada di luar repositori A
 * &quot;Baca dokumentasi webhook Stripe terkini dan bandingkan implementasi kami dengan dokumentasi tersebut.&quot;
 * &quot;Cari panduan migrasi terbaru untuk dependensi ini, lalu lakukan upgrade.&quot;
 
-## Search, baca, dan research {#search-read-and-research}
+<div id="search-read-and-research">
+  ## Search, baca, dan research
+</div>
 
 Plugin Exa memberi Codex dan ChatGPT tiga cara untuk bekerja dengan web.
 
@@ -69,7 +79,9 @@ Plugin Exa memberi Codex dan ChatGPT tiga cara untuk bekerja dengan web.
   </Card>
 </Columns>
 
-## Research tanpa meninggalkan ChatGPT {#research-without-leaving-chatgpt}
+<div id="research-without-leaving-chatgpt">
+  ## Research tanpa meninggalkan ChatGPT
+</div>
 
 Exa juga berfungsi di ChatGPT. Ajukan pertanyaan yang memerlukan informasi terkini, lalu gunakan Exa untuk melakukan search dan research di web langsung dari percakapan.
 
@@ -82,7 +94,9 @@ Alih-alih hanya mengandalkan informasi yang sudah ada di konteks, ChatGPT dapat 
 
 Gunakan untuk Research kompetitor, Research teknis, pemetaan pasar, Research perusahaan, atau hal lain apa pun yang jawabannya tersebar di seluruh web.
 
-## MCP + skills, bersama-sama {#mcp-skills-together}
+<div id="mcp-skills-together">
+  ## MCP + skills, bersama-sama
+</div>
 
 Di balik layar, plugin ini menggabungkan dua bagian dari agent stack Exa.
 
@@ -92,7 +106,9 @@ Di balik layar, plugin ini menggabungkan dua bagian dari agent stack Exa.
 
 Anda tidak perlu mengonfigurasi keduanya secara terpisah saat menginstal plugin ini.
 
-## Ingin langsung pakai MCP? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## Ingin langsung pakai MCP?
+</div>
 
 Plugin adalah cara yang direkomendasikan untuk menggunakan Exa dengan Codex dan ChatGPT. Jika Anda mengonfigurasi Codex secara manual atau menggunakan MCP client lain, Anda dapat terhubung langsung ke MCP server yang dihosting Exa:
 

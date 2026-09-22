@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# HIPAA {#hipaa}
+<div id="hipaa">
+  # HIPAA
+</div>
 
 > Usa el modo de HIPAA compliance para las solicitudes aptas de recuperación en caché.
 
@@ -23,7 +27,9 @@ Cuando este campo está presente en un equipo habilitado, Exa procesa la solicit
 
 El modo HIPAA incluye [Zero Data Retention](/es/docs/admin/security/zero-data-retention) para esas solicitudes: Exa no almacena PHI.
 
-## Endpoints compatibles {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoints compatibles
+</div>
 
 El campo `compliance` se reconoce en:
 
@@ -32,7 +38,9 @@ El campo `compliance` se reconoce en:
 
 Los demás endpoints rechazan el campo.
 
-## Requisitos {#requirements}
+<div id="requirements">
+  ## Requisitos
+</div>
 
 El modo HIPAA solo admite recuperación en caché. Solicitudes compatibles:
 
@@ -46,7 +54,9 @@ Las solicitudes incompatibles devuelven `400 INVALID_REQUEST_BODY`, entre ellas:
 * Ajustes de frescura que requieren una descarga en vivo, como `maxAgeHours: 0` o un valor positivo de `maxAgeHours`
 * Solicitudes de búsqueda que omiten `type` o que usan un tipo distinto de `instant` o `fast`
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -62,6 +72,8 @@ Las solicitudes incompatibles devuelven `400 INVALID_REQUEST_BODY`, entre ellas:
   ```
 </CodeGroup>
 
-## Acceso {#access}
+<div id="access">
+  ## Acceso
+</div>
 
 Para habilitar el modo HIPAA en tu equipo, escribe a [sales@exa.ai](mailto:sales@exa.ai). Consulta el [Trust Center](https://trust.exa.ai) para ver la documentación de seguridad de Exa.

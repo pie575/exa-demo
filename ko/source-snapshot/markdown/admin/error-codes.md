@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 오류 코드 {#error-codes}
+<div id="error-codes">
+  # 오류 코드
+</div>
 
 > Exa API에서 사용하는 일반적인 오류 코드 reference
 
 Exa API는 표준 HTTP 상태 코드와 JSON 오류 본문으로 실패를 알립니다.
 
-## HTTP status codes {#http-status-codes}
+<div id="http-status-codes">
+  ## HTTP status codes
+</div>
 
 | 코드                          | 의미                                                                                  | 조치 방법                                                                        |
 | --------------------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -29,7 +35,9 @@ Exa API는 표준 HTTP 상태 코드와 JSON 오류 본문으로 실패를 알�
   `/contents`의 URL-level failures는 요청 수준 오류가 아니라 성공한 `200` response의 `statuses` field에 보고됩니다. [Content fetch 상태 태그](#content-fetch-status-tags)를 참고하세요.
 </Note>
 
-## 오류 response 구조 {#error-response-structure}
+<div id="error-response-structure">
+  ## 오류 response 구조
+</div>
 
 오류 response는 `requestId`, 사람이 읽을 수 있는 `error` 메시지, 기계가 읽을 수 있는 `tag`를 반환합니다:
 
@@ -47,9 +55,13 @@ Exa API는 표준 HTTP 상태 코드와 JSON 오류 본문으로 실패를 알�
 
 tag 집합은 고정되어 있지 않으며, tag 이름만 봐도 의미를 알 수 있습니다. 먼저 HTTP status code를 기준으로 분기하고, 알 수 없는 tag는 파싱 실패로 처리하지 말고 부가 정보로 취급하세요.
 
-## 일반적인 오류 Tag {#common-error-tags}
+<div id="common-error-tags">
+  ## 일반적인 오류 Tag
+</div>
 
-### 계정, billing 및 접근 권한 {#account-billing-and-access}
+<div id="account-billing-and-access">
+  ### 계정, billing 및 접근 권한
+</div>
 
 | Tag                       | HTTP code | 설명                                                                           |
 | ------------------------- | --------- | ---------------------------------------------------------------------------- |
@@ -63,7 +75,9 @@ tag 집합은 고정되어 있지 않으며, tag 이름만 봐도 의미를 알 
 | `RATE_LIMIT_EXCEEDED`     | `429`     | API 키, team 또는 네트워크가 각자의 속도 제한을 초과했습니다 — 요청 빈도를 줄이세요.                        |
 | `SERVICE_OVERLOADED`      | `503`     | Exa의 처리 용량이 일시적으로 초과되어 요청이 처리 전에 차단되었습니다 — exponential backoff로 재시도하세요.      |
 
-### 요청 검증 {#request-validation}
+<div id="request-validation">
+  ### 요청 검증
+</div>
 
 | Tag                       | HTTP code | 설명                                                     |
 | ------------------------- | --------- | ------------------------------------------------------ |
@@ -74,7 +88,9 @@ tag 집합은 고정되어 있지 않으며, tag 이름만 봐도 의미를 알 
 | `INVALID_JSON_SCHEMA`     | `400`     | 제공된 output schema가 유효하지 않습니다.                          |
 | `SUBPAGES_LIMIT_EXCEEDED` | `400`     | `/contents`는 요청당 최대 100개의 하위 페이지만 허용합니다.               |
 
-### 결제 프로토콜 {#payment-protocols}
+<div id="payment-protocols">
+  ### 결제 프로토콜
+</div>
 
 x402 또는 MPP로 결제된 요청은 다음도 반환할 수 있습니다:
 
@@ -88,7 +104,9 @@ x402 또는 MPP로 결제된 요청은 다음도 반환할 수 있습니다:
 | `X402_WALLET_RATE_LIMITED` | `429`     | x402 wallet이 속도 제한을 초과했습니다.     |
 | `X402_INTERNAL_ERROR`      | `500`     | Exa가 x402 결제 요구 사항을 생성하지 못했습니다. |
 
-## Content fetch 상태 태그 {#content-fetch-status-tags}
+<div id="content-fetch-status-tags">
+  ## Content fetch 상태 태그
+</div>
 
 `/contents`에 여러 URL을 전달하면 일부 URL만 실패하고 나머지는 성공할 수 있습니다. URL 단위 실패는 `statuses` field에 반환되며, 요청 전체가 실패하지는 않습니다:
 
@@ -122,7 +140,9 @@ x402 또는 MPP로 결제된 요청은 다음도 반환할 수 있습니다:
 
 이 상태 태그는 `/contents`에만 적용됩니다. `/search`는 `statuses` field를 반환하지 않습니다.
 
-## 도움 받기 {#getting-help}
+<div id="getting-help">
+  ## 도움 받기
+</div>
 
 * `500`, `503`, `504` 오류가 계속 발생하면 [Exa 상태](/ko/docs/admin/status)를 확인하세요.
 * 현재 limits는 [속도 제한](/ko/docs/admin/billing#rate-limits)에서 확인하세요.

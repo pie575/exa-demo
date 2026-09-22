@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# OpenAPI 规范 {#openapi-specification}
+<div id="openapi-specification">
+  # OpenAPI 规范
+</div>
 
 > 下载 Exa 公开 API 与 Team Management API 的 OpenAPI 规范 (YAML 或 JSON 格式) 。
 

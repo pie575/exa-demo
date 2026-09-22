@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# World AgentKit {#world-agentkit}
+<div id="world-agentkit">
+  # World AgentKit
+</div>
 
 > 借助 World AgentKit，让有经过验证的真人支持的 AI agent 免费使用 Exa，无需 USDC。
 
-## 什么是 AgentKit？ {#what-is-agentkit}
+<div id="what-is-agentkit">
+  ## 什么是 AgentKit？
+</div>
 
 [World AgentKit](https://docs.world.org/agents/agent-kit) 是一套工具包，可让 AI agent 通过 [World ID](https://world.org) 证明自己由真实的、经过验证的真人支持。与 [x402](/zh/docs/integrations/payments/x402/quickstart) 集成后，它可提供一条**免费试用**路径：在 World 的 [AgentBook](https://docs.world.org/agents/agent-kit/integrate) 中注册的 agent 无需支付 USDC 即可访问 Exa 的 `/search` 和 `/contents` 端点。
 
@@ -17,7 +23,9 @@
   如果请求中包含 `x-api-key` 或 `Authorization: Bearer` header，AgentKit 免费试用和 x402 支付都会被跳过，优先使用常规的 API 密钥计费流程。
 </Info>
 
-## 工作原理 {#how-it-works}
+<div id="how-it-works">
+  ## 工作原理
+</div>
 
 当客户端在不带 API 密钥的情况下请求 `/search` 或 `/contents` 时，Exa 会返回 `402 Payment Required`。该响应会在 `PAYMENT-REQUIRED` header 中包含一个 `agentkit` 扩展，其中携带 [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum) 挑战。
 
@@ -27,9 +35,13 @@ agent 使用其注册的 wallet 对该挑战签名，Exa 随后进行验证：
 2. **AgentBook 查询** —— 通过 World Chain (`eip155:480`) 上的 AgentBook 合约，将 wallet 解析为匿名的 `humanId`，确认有唯一的经过验证的真人将其身份委托给了该 agent
 3. **用量检查** —— 如果该真人仍有剩余的免费试用次数，则授予访问权限；否则回退为要求进行 USDC 支付
 
-## 快速开始 {#quickstart}
+<div id="quickstart">
+  ## 快速开始
+</div>
 
-### 1. 在 AgentBook 中注册你的 agent {#1-register-your-agent-in-agentbook}
+<div id="1-register-your-agent-in-agentbook">
+  ### 1. 在 AgentBook 中注册你的 agent
+</div>
 
 这是一次性设置。你需要安装 [World App](https://world.org/download) 并完成身份验证。
 
@@ -39,7 +51,9 @@ npx @worldcoin/agentkit-cli register <your-agent-wallet-address>
 
 CLI 会触发 World App 验证流程，随后在 World Chain 上提交一笔注册登记交易。完成后，任何使用 AgentKit 的 server 都可以查询你的 wallet，确认其由真实人类支持。
 
-### 2. 发送请求 (获取挑战) {#2-send-a-request-get-the-challenge}
+<div id="2-send-a-request-get-the-challenge">
+  ### 2. 发送请求 (获取挑战)
+</div>
 
 ```bash theme={null}
 curl -s -D - -X POST "https://api.exa.ai/search" \
@@ -79,7 +93,9 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
 }
 ```
 
-### 3. 签署挑战并重新提交 {#3-sign-the-challenge-and-resubmit}
+<div id="3-sign-the-challenge-and-resubmit">
+  ### 3. 签署挑战并重新提交
+</div>
 
 根据 `info` 中的 field (domain、uri、nonce、statement 等) 构造一条 [SIWE 消息](https://eips.ethereum.org/EIPS/eip-4361)，使用已注册的 agent wallet 并采用 `supportedChains` 中的某一种类型对其签名，然后通过 `agentkit` header 发送 (base64 编码的 JSON) ：
 
@@ -92,7 +108,9 @@ curl -X POST "https://api.exa.ai/search" \
 
 如果 agent 已通过验证且仍有剩余的免费试用次数，Exa 将返回 `200` 及搜索结果，无需支付。
 
-### 使用 AgentKit x402 skill {#using-the-agentkit-x402-skill}
+<div id="using-the-agentkit-x402-skill">
+  ### 使用 AgentKit x402 skill
+</div>
 
 无需手动实现挑战-响应流程，只需将 [agentkit-x402 skill](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md) 添加到你的 AI agent 中：
 
@@ -102,7 +120,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 当 agent 遇到带有 AgentKit 扩展的 `402` 响应时，该 skill 会自动处理整个流程。
 
-## 免费试用详情 {#free-trial-details}
+<div id="free-trial-details">
+  ## 免费试用详情
+</div>
 
 * 每位经过验证的真人可在其支持的所有 agent 之间共享**每月 100 次免费请求**
 * 用量计数器在每个自然月开始时重置 (UTC)
@@ -112,7 +132,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 * 对 `/search` 的免费试用请求同样适用 [10 条结果上限](/zh/docs/integrations/payments/x402/quickstart#pricing)
 * 免费试用计数器目前不会在 API 响应中体现：次数用尽后，server 会返回标准的 `402`，不再授予免费访问
 
-## 支持的端点 {#supported-endpoints}
+<div id="supported-endpoints">
+  ## 支持的端点
+</div>
 
 | 端点          | x402 支付 | AgentKit 免费试用 |
 | ----------- | :-----: | :-----------: |
@@ -121,7 +143,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 其他 Exa 端点均不支持 x402 支付或 AgentKit 免费试用。
 
-## 网络详情 {#network-details}
+<div id="network-details">
+  ## 网络详情
+</div>
 
 | 属性             | 值                                      |
 | -------------- | -------------------------------------- |
@@ -130,7 +154,9 @@ npx skills add worldcoin/agentkit agentkit-x402
 | 验证             | World Chain 上的 AgentBook 合约            |
 | 支持的 wallet 类型  | EOA (EIP-191) 与智能合约 wallet (ERC-1271)  |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="我可以同时使用 x402 支付 和 AgentKit 吗？">
@@ -154,7 +180,9 @@ npx skills add worldcoin/agentkit agentkit-x402
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 * [x402 支付指南](/zh/docs/integrations/payments/x402/quickstart)：标准 USDC 支付流程
 * [World AgentKit 文档](https://docs.world.org/agents/agent-kit)：完整的 AgentKit 文档

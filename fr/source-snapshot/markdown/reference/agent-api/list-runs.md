@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Lister les runs Agent {#list-agent-runs}
+<div id="list-agent-runs">
+  # Lister les runs Agent
+</div>
 
 > Récupérez une liste paginée des runs Agent de votre équipe.
 
@@ -13,7 +17,9 @@ Les runs sont renvoyés du plus récent au plus ancien. Utilisez `limit` pour d�
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs
 openapi: 3.1.0

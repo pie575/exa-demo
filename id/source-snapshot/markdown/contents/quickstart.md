@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Contents API {#contents-api}
+<div id="contents-api">
+  # Contents API
+</div>
 
 > Ekstrak teks, kutipan, dan ringkasan dari URL mana pun.
 
@@ -16,7 +20,9 @@ Semua fitur contents juga tersedia di [Exa Search](/id/docs/search/quickstart) u
   Exa menyesuaikan panjang kutipan setiap hasil dengan relevance-nya. Lihat [kutipan](/id/docs/search/highlights).
 </Tip>
 
-## Kirim permintaan pertama Anda {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Kirim permintaan pertama Anda
+</div>
 
 Berikan satu atau beberapa URL atau ID dokumen, lalu minta kutipan untuk bagian yang relevan dengan tugas Anda. Pada permintaan HTTP, cantumkan nilainya di `ids`:
 
@@ -242,7 +248,9 @@ Setiap item pada `results` memuat metadata halaman dan content view yang Anda mi
 
 Pilih satu content view per permintaan. Meminta kutipan, teks, dan ringkasan sekaligus akan mengembalikan sekaligus menagih setiap view secara terpisah.
 
-## Kebaruan konten {#content-freshness}
+<div id="content-freshness">
+  ## Kebaruan konten
+</div>
 
 `maxAgeHours` mengatur seberapa baru konten halaman yang diekstrak harus.
 
@@ -267,7 +275,9 @@ Sebagian besar permintaan sebaiknya tidak menyertakan field ini. Setel field ini
   | `"preferred"`          | Tidak ada padanan langsung; gunakan nilai rendah seperti `maxAgeHours: 1` |
 </Accordion>
 
-## Crawl subhalaman {#crawl-subpages}
+<div id="crawl-subpages">
+  ## Crawl subhalaman
+</div>
 
 Atur `subpages` untuk menelusuri tautan dari setiap URL awal. Tambahkan `subpageTarget` jika Anda ingin Exa memprioritaskan bagian situs tertentu:
 
@@ -305,13 +315,17 @@ Atur `subpages` untuk menelusuri tautan dari setiap URL awal. Tambahkan `subpage
   ```
 </CodeGroup>
 
-## Gambar dan favicon {#images-and-favicons}
+<div id="images-and-favicons">
+  ## Gambar dan favicon
+</div>
 
 Atur `extras.imageLinks` sesuai jumlah URL gambar yang Anda inginkan dari setiap halaman. Hasil juga menyertakan
 `favicon` situs dan URL `image` yang representatif jika tersedia. Pada `/search`, opsi ini
 berada di `contents.extras.imageLinks`.
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="API reference" icon="square-terminal" href="/id/docs/reference/get-contents" cta="Buka referensi" arrow="true">

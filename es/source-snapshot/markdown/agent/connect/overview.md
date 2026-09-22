@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa Connect {#exa-connect}
+<div id="exa-connect">
+  # Exa Connect
+</div>
 
 > Dale a tu Exa Agent acceso en tiempo real a socios de datos premium, junto con Exa web search, en un solo run.
 
@@ -24,7 +28,9 @@ y luego vuelve aquí para adjuntar socios de datos.
   ¿Prefieres MCP? Exa Agent y [Exa Connect](/es/docs/agent/connect/overview) están disponibles en [Exa MCP](/es/docs/get-started/exa-mcp#exa-agent). Activa `tools=agent_run` para ejecutar investigación de varios pasos, creación de listas, enrichment y salida estructurada desde Claude, Cursor y otros MCP clients.
 </Tip>
 
-## Por qué Exa Connect {#why-exa-connect}
+<div id="why-exa-connect">
+  ## Por qué Exa Connect
+</div>
 
 * **Datos premium sin integraciones independientes.** Accede a datos de socios sin
   firmar contratos ni conectar un SDK. Solo llamas a una API de Exa.
@@ -36,7 +42,9 @@ y luego vuelve aquí para adjuntar socios de datos.
 * **Datos del índice y de socios en un mismo run.** Connect se apoya en el índice de Exa.
   El Exa Agent usa cada fuente allí donde es más sólida y cita los resultados.
 
-## Cómo funciona {#how-it-works}
+<div id="how-it-works">
+  ## Cómo funciona
+</div>
 
 1. **Adjunta** uno o más proveedores mediante el arreglo `dataSources` en
    [`POST /agent/runs`](/es/docs/reference/agent-api/create-a-run).
@@ -45,7 +53,9 @@ y luego vuelve aquí para adjuntar socios de datos.
 3. Los resultados del partner se **combinan con la investigación web** en tu salida estructurada,
    con las fuentes adjuntas.
 
-## Precio {#pricing}
+<div id="pricing">
+  ## Precio
+</div>
 
 <Note>
   El precio de Exa Connect se suma al [precio estándar de Agent run](/es/docs/agent/quickstart#pricing).
@@ -163,7 +173,9 @@ búsqueda inversa de directivos) son gratuitas. Consulta [el precio de Baselayer
   ```
 </CodeGroup>
 
-## Socios de datos {#data-partners}
+<div id="data-partners">
+  ## Socios de datos
+</div>
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -209,9 +221,13 @@ búsqueda inversa de directivos) son gratuitas. Consulta [el precio de Baselayer
 
 ¿Necesitas una fuente que no aparezca en la lista anterior? Consulta nuestros [Proveedores adicionales](/es/docs/agent/connect/additional-partners), disponibles bajo petición si te pones en contacto con nuestro equipo.
 
-## Uso {#usage}
+<div id="usage">
+  ## Uso
+</div>
 
-### Combinar proveedores {#combining-providers}
+<div id="combining-providers">
+  ### Combinar proveedores
+</div>
 
 Adjunta tantos socios como necesite tu tarea. El Exa Agent llama a cada uno en aquello en lo que destaca
 y combina los resultados con la búsqueda web en una única respuesta estructurada:

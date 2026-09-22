@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Search {#search}
+<div id="search">
+  # Search
+</div>
 
 > search 端点可用于搜索网络，并从结果中提取页面内容。
 
@@ -11,7 +15,9 @@
   在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /search
 openapi: 3.1.0

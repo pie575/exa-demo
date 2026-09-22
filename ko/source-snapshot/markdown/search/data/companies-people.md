@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 확인하세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 파악하세요.
 
-# 기업 및 인물 {#companies-people}
+<div id="companies-people">
+  # 기업 및 인물
+</div>
 
 > Exa Search로 기업과 professional profiles, 그리고 이들 간의 관계를 찾아보세요.
 
@@ -45,32 +49,42 @@ Exa Search로 조직과 그 조직에 속한 사람들을 찾아보세요. 이 �
   </Card>
 </Columns>
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 기업, 후보자, 전문가 발굴
 * 고객사 리서치 및 이해관계자 매핑
 * 마켓맵, 투자 리서치, 딜 소싱
 * 경영진, 채용, 조직 리서치
 
-## 더 나은 질의 작성하기 {#write-better-queries}
+<div id="write-better-queries">
+  ## 더 나은 질의 작성하기
+</div>
 
 원하는 엔티티부터 시작한 다음, 이를 한정하는 특성과 관계를 추가하세요. 회사 홈페이지, professional profiles, 채용 공고, 개인 웹사이트처럼 출처 유형이 중요할 때는 이를 명시해서 요청하세요.
 
 <Tabs>
   <Tab title="회사" icon="building">
-### 하는 일로 회사 찾기 {#discover-companies-by-what-they-do}
+    <div id="discover-companies-by-what-they-do">
+      ### 하는 일로 회사 찾기
+    </div>
 
     시장을 정의하는 고객, 제품, capability, 단계, 지역을 설명하세요. 미리 정해둔 회사 목록에 의존하는 대신, 실제로 무엇을 하는지를 기준으로 후보를 찾아냅니다.
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-### 운영 신호 찾기 {#find-operating-signals}
+    <div id="find-operating-signals">
+      ### 운영 신호 찾기
+    </div>
 
     중요한 신호와 company traits를 명시하세요. search는 회사 페이지뿐 아니라 채용 공고, 가격 페이지, 제품 문서, 보도 자료까지 가져올 수 있습니다.
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-### 투자 활동 리서치 {#research-funding-activity}
+    <div id="research-funding-activity">
+      ### 투자 활동 리서치
+    </div>
 
     라운드, 산업, 참여자, 기간을 지정하세요.
 
@@ -78,19 +92,25 @@ Exa Search로 조직과 그 조직에 속한 사람들을 찾아보세요. 이 �
   </Tab>
 
   <Tab title="사람" icon="users">
-### 역할과 역량으로 사람 찾기 {#discover-people-by-role-and-skills}
+    <div id="discover-people-by-role-and-skills">
+      ### 역할과 역량으로 사람 찾기
+    </div>
 
     원하는 역할, 직급, 지역, 관련 역량, 출처 유형을 조합하세요.
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-### company traits로 사람 한정하기 {#qualify-people-by-company-traits}
+    <div id="qualify-people-by-company-traits">
+      ### company traits로 사람 한정하기
+    </div>
 
     해당 인물과 회사의 관계, 그리고 그 회사를 한정하는 특성을 설명하세요. 회사 목록을 먼저 만드는 방식보다 더 효과적입니다.
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-### 개인 웹사이트와 공개 활동 찾기 {#find-personal-websites-and-public-work}
+    <div id="find-personal-websites-and-public-work">
+      ### 개인 웹사이트와 공개 활동 찾기
+    </div>
 
     직업이나 리서치 분야를 명시하고, 개인 웹사이트, 강연, 인터뷰, 기고문을 명확하게 요청하세요.
 
@@ -98,13 +118,17 @@ Exa Search로 조직과 그 조직에 속한 사람들을 찾아보세요. 이 �
   </Tab>
 </Tabs>
 
-## 둘을 함께 검색하기 {#search-both-together}
+<div id="search-both-together">
+  ## 둘을 함께 검색하기
+</div>
 
 원하는 관계를 그대로 표현한 질의 하나를 작성하세요. Exa는 회사 페이지, professional profiles, 채용 페이지, 공개 reference를 하나의 결과 집합으로 반환할 수 있습니다.
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-## 요청 보내기 {#make-a-request}
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,7 +169,9 @@ Exa Search로 조직과 그 조직에 속한 사람들을 찾아보세요. 이 �
   ```
 </CodeGroup>
 
-## Exa Agent으로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent으로 구조화된 데이터 가져오기
+</div>
 
 여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent task run](/ko/docs/agent/quickstart)을 사용하세요. 필요한 기업, 인물, 자격 criteria, output field를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 

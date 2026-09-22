@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Browserbase {#browserbase}
+<div id="browserbase">
+  # Browserbase
+</div>
 
 > 将 Exa 的公司搜索与 Browserbase 的浏览器自动化相结合，构建求职申请工作流。
 
 使用 Exa 查找公司及其招聘页面，再通过 Browserbase 和 Stagehand 检查这些页面并与之交互。
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 安装 Browserbase Exa 模板所需的包：
 
@@ -17,7 +23,9 @@
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-## 配置环境变量 {#configure-environment-variables}
+<div id="configure-environment-variables">
+  ## 配置环境变量
+</div>
 
 设置 Exa 和 Browserbase 使用的 API 密钥：
 
@@ -26,7 +34,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-## 搜索并与页面交互 {#search-and-interact-with-a-page}
+<div id="search-and-interact-with-a-page">
+  ## 搜索并与页面交互
+</div>
 
 以下示例遵循该模板的工作流：搜索公司、找到招聘页面、在 Browserbase 会话中打开该页面、提取职位描述，并让 Stagehand agent 与页面交互。
 

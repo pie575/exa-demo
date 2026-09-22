@@ -1,4 +1,6 @@
-# Tinjauan tangkapan layar buta independen — gambar final {#independent-blind-screenshot-review-final-images}
+<div id="independent-blind-screenshot-review-final-images">
+  # Tinjauan tangkapan layar buta independen — gambar final
+</div>
 
 Meninjau ulang empat pasangan A/B terbaru setelah diganti. Tidak ada kunci identitas sumber yang dirujuk. Tata letak utama, tipografi, warna, spasi, pemenggalan baris, dan ikon bilah alat tampak serupa secara visual; perbedaan yang masih terlihat hanya menyangkut overlay di bagian bawah.
 

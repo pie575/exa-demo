@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# fx by Vercel Labs {#fx-by-vercel-labs}
+<div id="fx-by-vercel-labs">
+  # fx by Vercel Labs
+</div>
 
 > 通过托管的 Exa MCP server，为 Vercel Labs 的原生编码智能体 fx 添加 Exa 网页搜索能力。
 
@@ -13,7 +17,9 @@
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/vercel/fx/install-exa.gif?s=2e331148abdf5bdf083e6f651e3b8b75" alt="安装 fx、使用 /mcp add 添加 Exa MCP server，并运行一次实时 Exa 网页搜索" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## 安装 {#installation}
+<div id="installation">
+  ## 安装
+</div>
 
 <Steps>
   <Step title="安装 fx">
@@ -41,7 +47,9 @@
   </Step>
 </Steps>
 
-## 手动配置 {#configure-by-hand}
+<div id="configure-by-hand">
+  ## 手动配置
+</div>
 
 fx 只会从 `~/.fx/mcp.json` 读取 MCP server，因此你也可以直接在该文件中添加 Exa：
 
@@ -80,7 +88,9 @@ fx 只会从 `~/.fx/mcp.json` 读取 MCP server，因此你也可以直接在该
 
 `header_env` 将 header 名称映射到环境变量，这样密钥就不会出现在配置文件中。
 
-## 工具发现 {#tool-discovery}
+<div id="tool-discovery">
+  ## 工具发现
+</div>
 
 fx 以惰性方式发现 MCP 工具：只有在某一轮对话需要时，server 的工具才会进入模型的上下文，因此在不需要联网搜索的轮次中，接入 Exa 不会带来任何开销。
 

@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# FAQ {#faqs}
+<div id="faqs">
+  # FAQ
+</div>
 
 > Réponses aux questions fréquentes sur les produits Exa, l&#39;index de recherche, la fraîcheur, le grounding, la sécurité et la tarification.
 

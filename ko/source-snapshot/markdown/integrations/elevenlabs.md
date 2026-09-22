@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# ElevenLabs {#elevenlabs}
+<div id="elevenlabs">
+  # ElevenLabs
+</div>
 
 > ElevenLabs voice agent에 Exa web search를 추가하세요.
 
@@ -20,7 +24,9 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
 
 이 가이드에서는 Exa 호출 방식을 완전히 제어할 수 있는 webhook 도구 방식을 다룹니다. [ElevenLabs dashboard](https://elevenlabs.io/app/conversational-ai)에서 연동을 구성할 수도 있습니다.
 
-## 작동 방식 {#how-it-works}
+<div id="how-it-works">
+  ## 작동 방식
+</div>
 
 1. 사용자가 voice agent에게 말합니다
 2. LLM이 도구 설명을 보고 `web_search`를 call할지 결정합니다
@@ -30,7 +36,9 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
 
 서버도, 콜백 URL도, 리스너도 필요 없습니다. ElevenLabs가 Exa를 직접 호출하는 HTTP client 역할을 합니다. 도구 call의 타임아웃은 20초입니다.
 
-## 사전 준비 사항 {#prerequisites}
+<div id="prerequisites">
+  ## 사전 준비 사항
+</div>
 
 * [Exa API key](https://dashboard.exa.ai/api-keys)
 * [ElevenLabs API 키](https://elevenlabs.io/app/settings/api-keys)
@@ -39,7 +47,9 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 <Steps>
   <Step title="webhook 도구 만들기">
@@ -148,7 +158,9 @@ Exa를 ElevenLabs에 연결하는 방법은 두 가지입니다.
   </Step>
 </Steps>
 
-## 전체 Python 예제 {#full-python-example}
+<div id="full-python-example">
+  ## 전체 Python 예제
+</div>
 
 이 스크립트는 한 번의 실행으로 webhook 도구와 agent를 모두 생성합니다:
 
@@ -242,11 +254,15 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-## search parameters 커스터마이징 {#customizing-search-parameters}
+<div id="customizing-search-parameters">
+  ## search parameters 커스터마이징
+</div>
 
 webhook 도구의 body schema는 [Exa의 Search API](/ko/docs/reference/search)와 직접 매핑됩니다. 자주 사용하는 구성은 다음과 같습니다:
 
-### Search type {#search-type}
+<div id="search-type">
+  ### Search type
+</div>
 
 `type` 상수로 속도와 품질 간의 균형을 조절하세요:
 
@@ -257,7 +273,9 @@ webhook 도구의 body schema는 [Exa의 Search API](/ko/docs/reference/search)�
 
 voice agent에는 `instant`로 시작하는 것이 좋습니다. 각 질의에 가장 적합한 search mode를 Exa가 알아서 선택하도록 하려면 `auto`를 사용하세요.
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 `contents` 객체를 통해 결과를 반환하는 방식을 선택하세요:
 
@@ -281,7 +299,9 @@ voice agent에는 `instant`로 시작하는 것이 좋습니다. 각 질의에 �
 
 voice agent에는 `highlights: true`를 기본값으로 권장합니다. 관련성과 응답 속도의 균형이 가장 좋습니다.
 
-### 결과 필터링 {#filtering-results}
+<div id="filtering-results">
+  ### 결과 필터링
+</div>
 
 도메인 또는 날짜 필터를 상수로 추가하세요:
 
@@ -303,11 +323,15 @@ voice agent에는 `highlights: true`를 기본값으로 권장합니다. 관련�
 }
 ```
 
-### 결과 개수 {#number-of-results}
+<div id="number-of-results">
+  ### 결과 개수
+</div>
 
 사용 사례에 맞춰 `numResults`를 조정하세요. 음성의 경우 결과 3~5개면 응답을 빠르게 유지할 수 있습니다. 리서치 중심 agent라면 10개 이상으로 더 폭넓게 다룰 수 있습니다.
 
-## Schema reference {#schema-reference}
+<div id="schema-reference">
+  ## Schema reference
+</div>
 
 ElevenLabs의 webhook 도구는 다음 속성 유형을 갖는 JSON schema를 사용합니다:
 
@@ -325,7 +349,9 @@ ElevenLabs의 webhook 도구는 다음 속성 유형을 갖는 JSON schema를 �
 
 전체 ElevenLabs webhook tool schema는 [ElevenLabs server tools 문서](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools)를 참고하세요.
 
-## Built-in Exa integration (alpha) {#built-in-exa-integration-alpha}
+<div id="built-in-exa-integration-alpha">
+  ## Built-in Exa integration (alpha)
+</div>
 
 ElevenLabs는 agent dashboard의 **Tools &gt; Integrations**에서 사용할 수 있는 내장 Exa 연동도 제공합니다. 설정은 더 간단하지만, webhook 도구 방식에 비해 search parameters를 커스터마이징하기는 더 어렵습니다.
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Jinko {#jinko}
+<div id="jinko">
+  # Jinko
+</div>
 
 > 提供实时定价的航班与酒店搜索。
 
@@ -11,13 +15,17 @@
 
 通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `jinko` 接入 [Exa Agent](/zh/docs/agent/quickstart) 运行，agent 便会在使用 Exa 网页搜索的同时查询 Jinko。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 搜索指定航线和日期的实时航班报价，包含票价、行李额和改签政策。
 * 查找目的地的酒店及其实时房间费率，或对特定酒店重新比价。
 * 在不同日期区间、舱位等级和预算范围内发掘目的地与灵活出行日期。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用此值：
 
@@ -25,7 +33,9 @@
 jinko
 ```
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 查找 3 月可从纽约出发、往返票价低于 $400 的海滩目的地。
 
@@ -119,12 +129,16 @@ jinko
   ```
 </CodeGroup>
 
-## 搭配使用效果更佳 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用效果更佳
+</div>
 
 * [Similarweb](/zh/docs/agent/connect/similarweb)：研究某个目的地背后的旅游网站与预订平台。
 * [Particle](/zh/docs/agent/connect/particle)：获取某地的近期报道与旅行评论。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

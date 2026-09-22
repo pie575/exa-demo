@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Mengambil batch {#get-a-batch}
+<div id="get-a-batch">
+  # Mengambil batch
+</div>
 
 > Ambil batch berdasarkan ID.
 
@@ -13,7 +17,9 @@ Gunakan endpoint ini untuk mem-poll batch hingga statusnya menjadi `completed`, 
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Nevermined {#nevermined}
+<div id="nevermined">
+  # Nevermined
+</div>
 
 > 通过 Nevermined x402 银行卡委托为 Exa 实现自主 agent 支付。每笔 7 美元的购买会开通一个 Exa API 密钥或为其充值 7 美元积分。
 
@@ -15,7 +19,9 @@ Agent 通过 [Nevermined](https://nevermined.ai) 的 [x402 银行卡委托](http
 
 对于首次付款的 Nevermined 付款方，`POST /team-management/nevermined/purchase-key` 会开通一个新的 Exa API 密钥并充入 $7 积分。若密钥积分用尽，可使用相同的委托 mint 一个新的 x402 token，并再次调用同一端点。Exa 会返回同一个 API 密钥，并再充入 $7 积分。
 
-## 购买密钥 {#buy-a-key}
+<div id="buy-a-key">
+  ## 购买密钥
+</div>
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -28,7 +34,9 @@ payment-signature: <x402-token>
 * **响应 (重放的 token) ：** 返回缓存结果，不重复扣款。
 * **签名缺失或无效：** 返回 `402 Payment Required`，响应体中包含支付要求。
 
-## 工作原理 {#how-it-works}
+<div id="how-it-works">
+  ## 工作原理
+</div>
 
 支付部分由 Nevermined 处理；Exa 只看到签名后的 x402 token。
 
@@ -40,7 +48,9 @@ payment-signature: <x402-token>
 
 如需面向 agent 的完整操作指南 (SDK 方法、参数、委托的发现与创建、故障排查) ，请参阅 Nevermined 的 Exa 集成指南：[nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agent 可获取 [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)) 。
 
-## $7 能用来做什么 {#what-7-buys}
+<div id="what-7-buys">
+  ## $7 能用来做什么
+</div>
 
 积分按 Exa API 标准定价扣除。按当前费率，$7 积分大致可覆盖：
 
@@ -59,7 +69,9 @@ payment-signature: <x402-token>
 Search 请求包含最多 10 条结果的文本和 highlights。超出 10 条的结果以及 AI 摘要将单独计费。<br />
 完整定价详情请参见 [Exa 定价](https://exa.ai/pricing)。
 
-## 密钥额度耗尽时 {#when-the-key-runs-out}
+<div id="when-the-key-runs-out">
+  ## 密钥额度耗尽时
+</div>
 
 当 API 密钥的积分耗尽后，Exa 会在常规 API 端点上返回 **`HTTP 402`**：
 
@@ -73,7 +85,9 @@ Search 请求包含最多 10 条结果的文本和 highlights。超出 10 条的
 
 使用相同的计划 ID 和委托 mint 一个新的 x402 token，然后再次将其 POST 到同一个 `/purchase-key` 端点。Exa 会向同一个 API 密钥再追加价值 7 美元的积分。
 
-## 参考资料 {#references}
+<div id="references">
+  ## 参考资料
+</div>
 
 * [Nevermined Exa integration 指南](https://nevermined.ai/docs/integrations/exa)
 * [x402 银行卡委托规范](https://nevermined.ai/docs/specs/x402-card-delegation)

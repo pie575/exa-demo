@@ -1,4 +1,6 @@
-# Exa 프로덕션 대비 verification {#verification-against-exa-production}
+<div id="verification-against-exa-production">
+  # Exa 프로덕션 대비 verification
+</div>
 
 프로덕션 snapshot: 2026년 9월 18일. 로컬 미리보기: http://localhost:3000/docs.
 
@@ -18,7 +20,9 @@
 Escape, 클립보드 복사, 테마 전환, API schema 렌더링, Agent spreadsheet 탭 7개 전체,
 모바일 내비게이션/search가 포함됩니다.
 
-## 블라인드 시각 검토 {#blind-visual-review}
+<div id="blind-visual-review">
+  ## 블라인드 시각 검토
+</div>
 
 [159페이지 분량의 A/B 비교 갤러리 열기](blind/index.html). 각 페이지의 두 스크린샷은
 서로 독립적으로 섞입니다. 갤러리는 A/B/무승부 선호도를 브라우저에 저장합니다.
@@ -34,7 +38,9 @@ Escape, 클립보드 복사, 테마 전환, API schema 렌더링, Agent spreadsh
 159개 페이지 전체에서 본문 텍스트는 158개가 일치하며, 나머지 한 건의 차이는
 실시간 상태 페이지의 검사 timestamp입니다.
 
-## 충실도 세부 사항 {#fidelity-details}
+<div id="fidelity-details">
+  ## 충실도 세부 사항
+</div>
 
 import는 프로덕션 테마, 내비게이션, 커스텀 스타일과 스크립트, 폰트, 페이지
 metadata, API 명세, 원본 MDX 컴포넌트를 그대로 보존합니다. 또한 Markdown
@@ -48,7 +54,9 @@ Exa의 호스팅 AI 어시스턴트는 Mintlify 로컬 미리보기에서 사용
 해당 파일 확장자를 직접 제공하지 않기 때문입니다. 실시간 상태 timestamp와
 애니메이션 미디어는 캡처 시점에 따라 다를 수 있습니다.
 
-## 재현하기 {#reproduce}
+<div id="reproduce">
+  ## 재현하기
+</div>
 
 ```sh
 pnpm validate

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# HIPAA {#hipaa}
+<div id="hipaa">
+  # HIPAA
+</div>
 
 > 为符合条件的缓存检索请求启用 HIPAA 合规模式。
 
@@ -23,7 +27,9 @@ HIPAA 模式通过顶层的 `compliance` field 按请求单独控制：
 
 HIPAA 模式为这些请求提供 [Zero Data Retention](/zh/docs/admin/security/zero-data-retention)：Exa 不会保留 PHI。
 
-## 支持的端点 {#supported-endpoints}
+<div id="supported-endpoints">
+  ## 支持的端点
+</div>
 
 以下端点可识别 `compliance` field：
 
@@ -32,7 +38,9 @@ HIPAA 模式为这些请求提供 [Zero Data Retention](/zh/docs/admin/security/
 
 其他端点会拒绝该 field。
 
-## 要求 {#requirements}
+<div id="requirements">
+  ## 要求
+</div>
 
 HIPAA 模式仅支持缓存检索。兼容的请求：
 
@@ -46,7 +54,9 @@ HIPAA 模式仅支持缓存检索。兼容的请求：
 * 需要实时抓取的新鲜度设置，例如 `maxAgeHours: 0` 或正数的 `maxAgeHours`
 * 未指定 `type`，或使用 `instant`、`fast` 以外类型的搜索请求
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -62,6 +72,8 @@ HIPAA 模式仅支持缓存检索。兼容的请求：
   ```
 </CodeGroup>
 
-## 访问权限 {#access}
+<div id="access">
+  ## 访问权限
+</div>
 
 如需为你的团队启用 HIPAA 模式，请联系 [sales@exa.ai](mailto:sales@exa.ai)。有关 Exa 的安全文档，请参阅 [Trust Center](https://trust.exa.ai)。

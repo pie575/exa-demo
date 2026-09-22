@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 停止运行 {#stop-a-run}
+<div id="stop-a-run">
+  # 停止运行
+</div>
 
 > 优雅地停止正在进行的 Agent 运行，并保留截至目前收集到的结果。
 
@@ -19,7 +23,9 @@
   在控制台中创建密钥。新账户将获得免费积分。
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0

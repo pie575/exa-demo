@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 코드 &amp; 문서 {#code-docs}
+<div id="code-docs">
+  # 코드 &amp; 문서
+</div>
 
 > Exa Search로 코드, 기술 문서, 구현 가이드를 찾아보세요.
 
@@ -39,40 +43,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   Exa가 코딩 작업에서 검색 성능을 어떻게 평가하는지 알아보려면 [WebCode: Search Evals for Coding Agents](https://exa.ai/blog/webcode)를 읽어보세요.
 </Tip>
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * Coding agent 및 코드 생성 도구
 * 개발자용 search 및 문서 제품
 * 디버깅, 마이그레이션, 구성 워크플로우
 * 리포지토리, 문서, 패키지 레지스트리 전반의 기술 리서치
 
-## 예시 쿼리 {#example-queries}
+<div id="example-queries">
+  ## 예시 쿼리
+</div>
 
-### capability 기준으로 라이브러리 찾기 {#discover-libraries-by-capability}
+<div id="discover-libraries-by-capability">
+  ### capability 기준으로 라이브러리 찾기
+</div>
 
 관심 있는 capability, 생태계, 제약 조건을 설명하세요. 정확한 프로젝트 이름에 의존하지 않고, 해당 라이브러리가 무엇을 하는지를 기준으로 후보를 찾아옵니다.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-### 구현 문서 가져오기 {#retrieve-implementation-documentation}
+<div id="retrieve-implementation-documentation">
+  ### 구현 문서 가져오기
+</div>
 
 제품명과 정확한 작업을 명시하세요. 그러면 search가 일반적인 논의보다 API 문서와 구현 가이드를 우선적으로 찾아줍니다.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-### 버전별 변경 사항 확인 {#check-version-specific-changes}
+<div id="check-version-specific-changes">
+  ### 버전별 변경 사항 확인
+</div>
 
 호환성이 중요한 경우 릴리스 채널이나 버전을 함께 명시하세요. 이렇게 하면 이전 릴리스에 대한 결과가 줄어듭니다.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-### 재사용 가능한 agent 도구 찾기 {#find-reusable-agent-tooling}
+<div id="find-reusable-agent-tooling">
+  ### 재사용 가능한 agent 도구 찾기
+</div>
 
 “AI 도구”처럼 광범위한 문구로 검색하지 말고, 산출물 유형과 작업을 구체적으로 명시하세요.
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-## 요청 보내기 {#make-a-request}
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -120,7 +138,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## Exa Agent으로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent으로 구조화된 데이터 가져오기
+</div>
 
 여러 소스를 아우르는 리서치가 필요한 구조화된 데이터라면 [Exa Agent task run](/ko/docs/agent/quickstart)을 사용하세요. 필요한 라이브러리, 기술적 criteria, output field를 설명하면 Agent가 schema로 검증된 결과를 citations와 함께 반환합니다.
 

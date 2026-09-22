@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Pydantic AI {#pydantic-ai}
+<div id="pydantic-ai">
+  # Pydantic AI
+</div>
 
 > Lengkapi agent Pydantic AI dengan tool Research web yang didukung Exa search API.
 
@@ -28,7 +32,9 @@ Sebuah capability menggabungkan tool, anggaran output per tool, dan instruksi Re
 
 ***
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Prasyarat dan instalasi">
@@ -81,7 +87,9 @@ Sebuah capability menggabungkan tool, anggaran output per tool, dan instruksi Re
 
 ***
 
-## Konfigurasi {#configuration}
+<div id="configuration">
+  ## Konfigurasi
+</div>
 
 Setiap field pada `ExaSearch` beserta nilai default-nya:
 
@@ -102,7 +110,9 @@ ExaSearch(
 
 `include_domains` dan `exclude_domains` berlaku untuk `web_search` dan `deep_search`, serta bersifat saling eksklusif. Batas di luar rentang dan pengisian kedua daftar domain sekaligus akan memunculkan error saat konstruksi.
 
-### Ringkasan teks {#text-summary}
+<div id="text-summary">
+  ### Ringkasan teks
+</div>
 
 Atur `text_summary` agar setiap pemanggilan `web_search` juga meminta ringkasan teks biasa hasil sintesis dari hasil pencarian. Berikan `True` untuk ringkasan tanpa batasan, atau string yang mendeskripsikan format yang diinginkan:
 
@@ -114,7 +124,9 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 Bentuk nilai kembalian tool tidak berubah: ketika Exa mengembalikan ringkasan, ringkasan itu disisipkan di awal sebagai baris `Summary:`.
 
-### Sitasi terstruktur {#structured-citations}
+<div id="structured-citations">
+  ### Sitasi terstruktur
+</div>
 
 Setiap tool mengembalikan `ToolReturn`: `return_value` berisi teks terbaca yang dilihat model (termasuk blok `Sources:`), sedangkan `metadata` berisi sources sebagai catatan `ExaSource` terstruktur (`{'url': ..., 'title': ...}`) di bawah key `'sources'`. Metadata tidak pernah dikirim ke model, sehingga penampilan sitasi tidak memerlukan penguraian teks:
 
@@ -129,7 +141,9 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-### Custom client {#custom-client}
+<div id="custom-client">
+  ### Custom client
+</div>
 
 Client default adalah `exa_py.AsyncExa`, yang dikonfigurasi dari `EXA_API_KEY`. Berikan objek apa pun yang memenuhi protokol `ExaClient` untuk mengatur autentikasi atau base URL secara eksplisit, atau untuk menggantinya dengan objek tiruan dalam pengujian:
 
@@ -142,7 +156,9 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-## Exa agent runs {#exa-agent-runs}
+<div id="exa-agent-runs">
+  ## Exa agent runs
+</div>
 
 [Exa Agent API](/id/docs/agent/quickstart) menjalankan tugas research terbuka secara asinkron. Capability `ExaAgent` memetakan siklus hidup tersebut ke [deferred tool calls](https://pydantic.dev/docs/ai/deferred-tools/) milik Pydantic AI: tool `exa_agent` membuat run lalu menundanya, sambil membawa ID run Exa di dalam metadata deferred call tersebut.
 
@@ -174,7 +190,9 @@ ExaAgent(
 
 ***
 
-## Agent spec (YAML/JSON) {#agent-spec-yamljson}
+<div id="agent-spec-yamljson">
+  ## Agent spec (YAML/JSON)
+</div>
 
 Kedua capabilities tersebut dapat digunakan dengan [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec) dari Pydantic AI, sehingga Anda bisa mendeklarasikannya di file konfigurasi alih-alih di Python:
 
@@ -199,7 +217,9 @@ Berikan `custom_capability_types` agar loader spec mengetahui cara menginstansia
 
 ***
 
-## Selanjutnya {#next}
+<div id="next">
+  ## Selanjutnya
+</div>
 
 * [**Search API**](/id/docs/search/quickstart) - Pencarian semantik dengan kutipan, ringkasan, dan deep search
 * [**Agent API**](/id/docs/agent/quickstart) - Research runs asinkron yang bersifat terbuka

@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Deep Search {#deep-search}
+<div id="deep-search">
+  # Deep Search
+</div>
 
 > Usa búsqueda iterativa, razonamiento y síntesis fundamentada para tareas de investigación complejas.
 
@@ -11,7 +15,9 @@ Deep Search es el modo de investigación de la Search API. Usa el mismo endpoint
 
 Usa Search estándar cuando necesites páginas ordenadas por relevancia para una consulta bien formulada. Usa Deep cuando hallar la respuesta requiera investigación.
 
-## Cómo funciona Deep Search {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## Cómo funciona Deep Search
+</div>
 
 Deep Search añade un bucle de investigación antes de la respuesta final:
 
@@ -40,7 +46,9 @@ Deep Search añade un bucle de investigación antes de la respuesta final:
 
 Este proceso resulta especialmente útil para listas y salidas estructuradas. Cada elemento solicitado puede requerir una búsqueda distinta, y Deep puede reunir y verificar esos resultados antes de generar la estructura final.
 
-## Elige un modo Deep {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## Elige un modo Deep
+</div>
 
 | Tipo             | Úsalo cuando                                                                                     |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
@@ -58,7 +66,9 @@ Empieza con `deep` para los flujos de trabajo de investigación. Cambia a `deep-
 
 Consulta [Pricing](/es/docs/admin/pricing#deep-search) para ver las recomendaciones actuales sobre costo y latencia.
 
-## Hacer una solicitud Deep {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## Hacer una solicitud Deep
+</div>
 
 Define `type` en una solicitud normal de la Search API:
 
@@ -103,7 +113,9 @@ Define `type` en una solicitud normal de la Search API:
 
 Deep devuelve los resultados de búsqueda seleccionados en `results`. Agrega `outputSchema` si además quieres una respuesta sintetizada o un conjunto de datos estructurado.
 
-## Proporcionar consultas iniciales {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## Proporcionar consultas iniciales
+</div>
 
 Normalmente, deep decide qué búsquedas ejecutar. Usa `additionalQueries` cuando ya conozcas terminología, perspectivas o subproblemas concretos que la investigación deba cubrir:
 
@@ -157,7 +169,9 @@ La `query` principal siempre se incluye. Puedes proporcionar hasta 10 consultas 
 
 No añadas reformulaciones menores solo para aumentar el volumen de búsquedas. Añade consultas cuando cada una aporte una dirección de búsqueda realmente distinta.
 
-## Guía el comportamiento y el output por separado {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## Guía el comportamiento y el output por separado
+</div>
 
 `systemPrompt` y `outputSchema` afectan a partes distintas de la solicitud:
 
@@ -257,7 +271,9 @@ La consulta debe describir qué investigar. El prompt de sistema debe describir 
 
 Opta por Deep cuando necesites más de dos elementos estructurados o cuando cada elemento deba cumplir varios requisitos. Los tipos de búsqueda estándar usan la misma ruta de síntesis, pero no realizan la investigación iterativa previa a la síntesis.
 
-## Lee la respuesta fundamentada {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## Lee la respuesta fundamentada
+</div>
 
 Las respuestas estructuradas separan los valores generados de su evidencia:
 
@@ -299,7 +315,9 @@ Usa `output.content` como el resultado generado y `output.grounding` para mostra
 
 `numResults` controla cuántas páginas seleccionadas se devuelven en `results`. No define el número de búsquedas que Deep puede realizar.
 
-## Transmitir la síntesis {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## Transmitir la síntesis
+</div>
 
 Establece `stream: true` junto con `outputSchema` para recibir el output sintetizado mediante server-sent events:
 
@@ -375,7 +393,9 @@ Establece `stream: true` junto con `outputSchema` para recibir el output sinteti
 
 Consume los eventos tipados hasta `done`. El evento final contiene el output final y el tiempo de búsqueda, además de información de costo cuando esté disponible.
 
-## Cuándo quedarse con Search estándar {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## Cuándo quedarse con Search estándar
+</div>
 
 Deep no es necesario cuando una sola pasada de recuperación basta para resolver la solicitud:
 

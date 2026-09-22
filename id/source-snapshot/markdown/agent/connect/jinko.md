@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Jinko {#jinko}
+<div id="jinko">
+  # Jinko
+</div>
 
 > Pencarian penerbangan dan hotel dengan harga real-time.
 
@@ -16,13 +20,17 @@ Attach `jinko` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
 Jinko bersamaan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Mencari penawaran penerbangan terkini lengkap dengan tarif, bagasi, dan kebijakan perubahan untuk rute dan tanggal tertentu.
 * Menemukan hotel dengan tarif kamar terkini untuk suatu destinasi, atau mengecek ulang hotel tertentu.
 * Menjelajahi destinasi dan tanggal fleksibel di berbagai rentang tanggal, kelas kabin, dan anggaran.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -30,7 +38,9 @@ Gunakan nilai ini pada `dataSources`:
 jinko
 ```
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Temukan destinasi pantai yang bisa dijangkau dari New York dengan tarif pulang-pergi di bawah $400 pada bulan Maret.
 
@@ -124,12 +134,16 @@ Temukan destinasi pantai yang bisa dijangkau dari New York dengan tarif pulang-p
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Similarweb](/id/docs/agent/connect/similarweb): Research situs perjalanan dan platform pemesanan di balik sebuah destinasi.
 * [Particle](/id/docs/agent/connect/particle): ambil liputan terbaru dan ulasan perjalanan tentang suatu tempat.
 
-## Langkah berikutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah berikutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

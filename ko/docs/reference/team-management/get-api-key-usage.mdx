@@ -13,21 +13,29 @@ timestamp: false
   Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API 키를 사용하며, 이 키는 team에서 해당 기능이 활성화된 후 [API 키 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 접근 권한을 요청하려면 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-## 개요 {#overview}
+<div id="overview">
+  ## 개요
+</div>
 
 Get API Key Usage 엔드포인트를 사용하면 특정 API 키의 지정한 기간 동안의 상세한 billing 및 사용량 분석 데이터를 조회할 수 있습니다. 이 엔드포인트는 Exa의 billing 시스템에서 비용 데이터를 가져오므로, 해당 API 키에 실제로 청구되는 내역을 정확하게 확인할 수 있습니다.
 
-## Path Parameters {#path-parameters}
+<div id="path-parameters">
+  ## Path Parameters
+</div>
 
 * **id**: 사용량을 조회할 API 키의 고유 식별자
 
-## Query Parameters {#query-parameters}
+<div id="query-parameters">
+  ## Query Parameters
+</div>
 
 * **start&#95;date** (선택): 사용량 집계 기간의 시작 날짜이며, ISO 8601 형식입니다(예: `2025-01-01T00:00:00Z` 또는 `2025-01-01`). 기본값은 30일 전입니다. 최근 6개월(180일) 이내여야 합니다.
 * **end&#95;date** (선택): 사용량 집계 기간의 종료 날짜이며, ISO 8601 형식입니다. 기본값은 현재 시각입니다.
 * **group&#95;by** (선택): 결과를 그룹화할 시간 단위입니다(`hour`, `day`, `month`). 현재는 향후 기능 확장을 위해 예약된 값으로, response 구조에는 영향을 주지 않습니다. 기본값은 `day`입니다.
 
-## Response {#response}
+<div id="response">
+  ## Response
+</div>
 
 다음을 포함한 상세 사용량 및 billing 정보를 반환합니다:
 
@@ -44,14 +52,18 @@ Get API Key Usage 엔드포인트를 사용하면 특정 API 키의 지정한 �
   * **amount&#95;usd**: 해당 가격 유형의 비용(USD)
 * **metadata**: 리포트 생성 timestamp를 담은 객체
 
-## 중요 참고 사항 {#important-notes}
+<div id="important-notes">
+  ## 중요 참고 사항
+</div>
 
 * **6개월 조회 제한**: billing 시스템에는 6개월(180일) 조회 제한이 있습니다. `start_date`가 180일 이전인 요청은 400 오류를 반환합니다.
 * **사용량 없음**: 요청한 기간에 해당 API 키의 사용량이 없으면 `total_cost_usd`는 0이 되고 `cost_breakdown`은 비어 있을 수 있습니다.
 * **Team 소유권**: authentication에 사용하는 서비스 API 키는 조회 대상 API 키와 같은 team에 속해야 합니다. team 간 교차 접근은 허용되지 않습니다.
 * **날짜 형식**: 날짜는 시간 정보를 포함하거나 생략한 ISO 8601 형식으로 지정할 수 있습니다(예: `2025-01-01` 또는 `2025-01-01T00:00:00Z`).
 
-## 활용 사례 {#use-cases}
+<div id="use-cases">
+  ## 활용 사례
+</div>
 
 이 엔드포인트는 다음과 같은 경우에 유용합니다:
 

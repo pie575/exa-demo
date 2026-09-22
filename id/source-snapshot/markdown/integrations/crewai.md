@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# CrewAI {#crewai}
+<div id="crewai">
+  # CrewAI
+</div>
 
 > Pelajari cara menambahkan kemampuan retrieval Exa ke agent CrewAI Anda.
 
@@ -26,7 +30,9 @@ Dalam panduan ini, kita akan membuat satu crew berisi dua agent yang menghasilka
 
 ***
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Prasyarat dan instalasi">

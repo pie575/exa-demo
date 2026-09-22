@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Hermes Agent {#hermes-agent}
+<div id="hermes-agent">
+  # Hermes Agent
+</div>
 
 > Berikan Hermes Agent kemampuan web search real-time dan page contents dengan Exa.
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) menyertakan Exa sebagai backend native untuk tool `web_search` dan `web_extract` yang dapat dipanggil model. Gunakan Exa untuk kedua kemampuan tersebut, atau padukan dengan provider web Hermes lainnya.
 
-## Hubungkan akun Exa Anda {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## Hubungkan akun Exa Anda
+</div>
 
 <Steps>
   <Step title="Dapatkan Exa API key">
@@ -39,7 +45,9 @@
   </Step>
 </Steps>
 
-## Konfigurasi manual {#configure-manually}
+<div id="configure-manually">
+  ## Konfigurasi manual
+</div>
 
 Tambahkan key Anda ke file environment Hermes:
 
@@ -64,7 +72,9 @@ web:
 
 Pengaturan per capability lebih diprioritaskan daripada `web.backend`. Dengan begitu, Anda bisa menggunakan Exa hanya untuk search atau hanya untuk extraction saat menggabungkan provider.
 
-## Tool yang didapat Hermes {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Tool yang didapat Hermes
+</div>
 
 | Tool          | Perilaku Exa                                                                                                               |
 | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
@@ -77,7 +87,9 @@ Hermes memotong halaman hasil ekstraksi yang panjang agar sesuai dengan characte
   Hermes dapat menggunakan Exa melalui kumpulan provider gratis tanpa key, sehingga API key tidak diperlukan. Kumpulan tersebut dibatasi laju permintaannya dan dapat berganti-ganti antar provider. Konfigurasikan `EXA_API_KEY` dan pilih opsi Exa yang menggunakan API key jika Anda ingin permintaan selalu menggunakan akun Exa Anda.
 </Note>
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes tidak memilih Exa">
@@ -93,7 +105,9 @@ Hermes memotong halaman hasil ekstraksi yang panjang agar sesuai dengan characte
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Tool web Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Baca panduan" arrow="true">

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 创建 webhook {#create-a-webhook}
+<div id="create-a-webhook">
+  # 创建 webhook
+</div>
 
 > 创建一个 Webhook，在所选事件发生时将其投递到你的 URL。
 
@@ -13,7 +17,9 @@
   **不会跟随重定向。** Webhook 投递会直接发送到已注册的 URL。如果你的端点返回 3xx 重定向，本次投递将被视为失败。请始终注册最终的目标 URL。
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

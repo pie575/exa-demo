@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Anthropic Tool Calling {#anthropic-tool-calling}
+<div id="anthropic-tool-calling">
+  # Anthropic Tool Calling
+</div>
 
 > Utilisez le tool use de Claude pour ajouter Exa web search et les page contents à votre application.
 
@@ -15,7 +19,9 @@
 
 Le [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) de Claude permet aux modèles d&#39;appeler des fonctions que vous définissez dans votre code. Les SDK Exa intègrent des tools de recherche web et de lecture de pages prêts à l&#39;emploi pour Anthropic : vous n&#39;avez donc pas à écrire vous-même le schéma de tool, à analyser les blocs `tool_use` ni à formater les résultats Exa.
 
-## Démarrer {#get-started}
+<div id="get-started">
+  ## Démarrer
+</div>
 
 <Steps>
   <Step title="Installer les SDK">
@@ -114,7 +120,9 @@ Le [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) de 
   </Step>
 </Steps>
 
-## Configuration des tools {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Configuration des tools
+</div>
 
 Les arguments nommés sont des options Exa classiques, transmises au moment de l&#39;exécution du tool : les options de recherche à `exa.search()`, les options de contenu à `exa.get_contents()` :
 
@@ -164,11 +172,15 @@ Le modèle choisit la `query` de recherche et les `urls` à lire ; tout le reste
   ```
 </CodeGroup>
 
-## Combiner vos propres tools {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Combiner vos propres tools
+</div>
 
 `handle_tool_use` répond à chaque bloc `tool_use` du message : un bloc désignant un outil qu&#39;il ne parvient pas à résoudre reçoit un résultat `Error: unknown tool "<name>"` plutôt que d&#39;être ignoré, si bien que la requête de suivi n&#39;omet jamais un résultat d&#39;outil requis. Si vous exécutez vos propres tools en parallèle de ceux d&#39;Exa, remplacez ces résultats d&#39;erreur par les vôtres avant la requête suivante.
 
-## Écrire la loop à la main {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Écrire la loop à la main
+</div>
 
 Si vous préférez gérer vous-même le schéma d&#39;outil et l&#39;exécution, définissez l&#39;outil et traitez les blocs `tool_use` manuellement. `exa.tools.web_search()` et `exa.tools.get_contents()` vous fournissent les mêmes spécifications d&#39;outil indépendantes du fournisseur (avec une méthode `run`) pour vos loops faites main, ou bien vous pouvez tout écrire de zéro :
 

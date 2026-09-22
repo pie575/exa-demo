@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Menghapus run {#delete-a-run}
+<div id="delete-a-run">
+  # Menghapus run
+</div>
 
 > Menghapus Agent run yang tersimpan.
 
@@ -13,7 +17,9 @@ Menghapus run akan mengeluarkan run tersebut dari riwayat Agent run team Anda.
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /agent/runs/{id}
 openapi: 3.1.0

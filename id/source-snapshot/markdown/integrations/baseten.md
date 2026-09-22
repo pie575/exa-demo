@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Baseten {#baseten}
+<div id="baseten">
+  # Baseten
+</div>
 
 > Grounding model open-source di Baseten Model APIs dengan Exa web search melalui Baseten Hosted Tools.
 
 Exa adalah provider web search di [Baseten Hosted Tools](https://www.baseten.co/blog/introducing-baseten-hosted-tools/). Baseten Model APIs menyediakan model open-source, dan Hosted Tools memungkinkan model tersebut melakukan pencarian web tanpa Anda perlu merangkai tool loop sendiri: Anda cukup menambahkan selector tool Exa ke permintaan standar, Baseten menjalankan model beserta Exa search dalam satu loop di sisi server, lalu Anda menerima grounded answer dalam response yang sama. Exa API key tidak diperlukan. Baseten meneruskan cost Exa ke tagihan Baseten Anda tanpa markup.
 
-## Menggunakan tool web search Exa {#use-the-exa-web-search-tools}
+<div id="use-the-exa-web-search-tools">
+  ## Menggunakan tool web search Exa
+</div>
 
 Setel header `x-baseten-server-tools: true`, lalu tambahkan satu atau beberapa selector Exa ke array `tools` Anda. Hanya `type` yang diperlukan; Baseten memperluas tool schema secara otomatis, dan model yang menentukan kapan harus melakukan search, apa yang dicari, serta halaman mana yang dibaca. Server-side tools bekerja pada endpoint [Chat Completions](https://docs.baseten.co/reference/inference-api/chat-completions), [Messages](https://docs.baseten.co/reference/inference-api/messages), dan Responses milik Baseten, baik buffered maupun streaming.
 
@@ -96,17 +102,23 @@ Selector tidak memerlukan field tambahan; model mengisi sendiri argumen tool dar
 | `max_react_iterations`         | Membatasi iterasi model per permintaan (default 12, rentang 2 sampai 20). Iterasi terakhir disediakan untuk jawaban, jadi `N` memungkinkan `N - 1` putaran tool call. |
 | `max_tool_calls_per_iteration` | Membatasi tool call server-side dalam satu iterasi (default 10, rentang 1 sampai 10)                                                                                  |
 
-## Bagaimana hasil dikembalikan {#how-results-come-back}
+<div id="how-results-come-back">
+  ## Bagaimana hasil dikembalikan
+</div>
 
 Jawaban akhir dikirim melalui field standar milik endpoint tersebut. Panggilan Exa yang selesai dicatat sesuai protokolnya masing-masing: blok `tool_use` dan `tool_result` pada Messages, item `mcp_call` pada Responses, serta `baseten.iterations[].continuation_messages` pada Chat Completions. Permintaan streaming menerima setiap panggilan search beserta hasilnya sebagai server-sent events selama loop berjalan, sehingga Anda dapat menampilkan progres sebelum jawaban muncul. Array `baseten.request.server_tool_calls[]` melaporkan hasil dari setiap panggilan Exa dalam permintaan tersebut.
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Panggilan Exa ditagihkan ke akun Baseten Anda dengan tarif Exa tanpa markup, di luar biaya token model: sekitar $0,007 per search dan $0,001 per URL yang diambil. Exa melaporkan biaya setiap panggilan saat runtime, sehingga biaya masing-masing panggilan bisa berbeda dari angka tersebut. Tool call yang ditagihkan muncul di pengaturan workspace Baseten pada Billing → Usage, dikelompokkan berdasarkan provider. Lihat [tabel harga Baseten](https://docs.baseten.co/inference/model-apis/web-search#pricing) untuk tarif terkini.
 
 Hosted Tools masih dalam tahap early access di Baseten dengan batas 25 permintaan per menit per organisasi. Coba Exa search di [playground Baseten](https://app.baseten.co/model-apis/zai-org/GLM-5.3-Fast/playground), atau hubungi Baseten untuk menaikkan batas tersebut bagi beban kerja production.
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={2}>
   <Card title="Dokumentasi web search Baseten" icon="wrench" href="https://docs.baseten.co/inference/model-apis/web-search" cta="Buka dokumentasi" arrow="true">

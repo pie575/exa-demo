@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Kompatibilitas SDK OpenAI {#openai-sdk-compatibility}
+<div id="openai-sdk-compatibility">
+  # Kompatibilitas SDK OpenAI
+</div>
 
 > Gunakan endpoint Exa sebagai pengganti langsung OpenAI - mendukung baik API chat completions maupun responses.
 
@@ -13,7 +17,9 @@
 
 ***
 
-## Ikhtisar {#overview}
+<div id="overview">
+  ## Ikhtisar
+</div>
 
 Exa menyediakan endpoint yang kompatibel dengan OpenAI dan dapat digunakan bersama SDK OpenAI:
 
@@ -26,7 +32,9 @@ Exa menyediakan endpoint yang kompatibel dengan OpenAI dan dapat digunakan bersa
   `/chat/completions` dirutekan ke [`/answer`](/id/docs/reference/answer), dan `/responses` dirutekan ke [Agent API](/id/docs/agent/quickstart). Lihat [Agent melalui Responses API](#agent-via-responses-api) di bawah ini.
 </Info>
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 Untuk menggunakan endpoint `/answer` milik Exa melalui antarmuka chat completions:
 
@@ -119,7 +127,9 @@ Untuk menggunakan endpoint `/answer` milik Exa melalui antarmuka chat completion
   ```
 </CodeGroup>
 
-## Agent melalui Responses API {#agent-via-responses-api}
+<div id="agent-via-responses-api">
+  ## Agent melalui Responses API
+</div>
 
 Endpoint [`/responses`](https://api.exa.ai/responses) milik Exa mengekspos [Agent API](/id/docs/agent/quickstart) melalui antarmuka OpenAI Responses, sehingga SDK OpenAI bisa langsung digunakan tanpa perubahan. Atur `model: "exa-agent"` dan pilih mode eksekusi:
 
@@ -137,7 +147,9 @@ Atur `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `m
 
 Gunakan `previous_response_id` untuk melanjutkan run Responses yang sudah selesai.
 
-### Synchronous {#synchronous}
+<div id="synchronous">
+  ### Synchronous
+</div>
 
 Permintaan akan tertahan hingga run selesai dan mengembalikan objek `response` terminal.
 
@@ -193,7 +205,9 @@ Permintaan akan tertahan hingga run selesai dan mengembalikan objek `response` t
   ```
 </CodeGroup>
 
-### Streaming {#streaming}
+<div id="streaming">
+  ### Streaming
+</div>
 
 Setel `stream: true` untuk menerima event stream Responses melalui SSE. Setiap event membawa `sequence_number` yang monoton dan diakhiri dengan `response.completed`; tidak ada penanda `[DONE]`. Stream dapat memuat baris komentar `: keep-alive`, yang akan diabaikan oleh client SSE.
 
@@ -257,7 +271,9 @@ Setel `stream: true` untuk menerima event stream Responses melalui SSE. Setiap e
   ```
 </CodeGroup>
 
-### Background {#background}
+<div id="background">
+  ### Background
+</div>
 
 Atur `background: true` untuk memulai run tanpa menahan koneksi tetap terbuka, lalu poll `GET /responses/{id}` hingga mencapai status terminal. Untuk melakukan stream alih-alih polling, gunakan [Streaming](#streaming).
 
@@ -330,7 +346,9 @@ Atur `background: true` untuk memulai run tanpa menahan koneksi tetap terbuka, l
   ```
 </CodeGroup>
 
-## Chat wrapper {#chat-wrapper}
+<div id="chat-wrapper">
+  ## Chat wrapper
+</div>
 
 Exa menyediakan wrapper Python yang secara otomatis melengkapi chat completion OpenAI mana pun dengan kemampuan RAG. Hanya dengan satu baris kode, Anda dapat mengubah chat completion OpenAI apa pun menjadi sistem RAG berbasis Exa yang menangani search, chunking, dan prompting secara otomatis.
 

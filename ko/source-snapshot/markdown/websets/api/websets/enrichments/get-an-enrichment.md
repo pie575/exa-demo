@@ -1,13 +1,19 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# enrichment 조회 {#get-an-enrichment}
+<div id="get-an-enrichment">
+  # enrichment 조회
+</div>
 
 > Webset에 설정된 Enrichment를 상태, 설명, 형식, 옵션과 함께 반환합니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

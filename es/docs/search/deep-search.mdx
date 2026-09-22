@@ -9,7 +9,9 @@ Deep Search es el modo de investigación de la Search API. Usa el mismo endpoint
 
 Usa el Search estándar cuando necesites páginas ordenadas por relevancia para una consulta bien formulada. Usa Deep cuando dar con la respuesta requiera investigación.
 
-## Cómo funciona Deep Search {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## Cómo funciona Deep Search
+</div>
 
 Deep Search añade un bucle de investigación antes de la respuesta final:
 
@@ -38,7 +40,9 @@ Deep Search añade un bucle de investigación antes de la respuesta final:
 
 Este proceso resulta especialmente útil para listas y salidas estructuradas. Cada elemento solicitado puede requerir una búsqueda distinta, y Deep puede reunir y verificar esos resultados antes de generar la estructura final.
 
-## Elige un modo Deep {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## Elige un modo Deep
+</div>
 
 | Tipo             | Úsalo cuando                                                                                     |
 | ---------------- | ------------------------------------------------------------------------------------------------ |
@@ -56,7 +60,9 @@ Empieza con `deep` para los flujos de trabajo de investigación. Pasa a `deep-li
 
 Consulta [Pricing](/es/docs/admin/pricing#deep-search) para ver las recomendaciones actuales sobre costo y latencia.
 
-## Hacer una solicitud Deep {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## Hacer una solicitud Deep
+</div>
 
 Define `type` en una solicitud normal de la Search API:
 
@@ -101,7 +107,9 @@ Define `type` en una solicitud normal de la Search API:
 
 Deep devuelve los resultados de búsqueda seleccionados en `results`. Añade `outputSchema` cuando además quieras una respuesta sintetizada o un conjunto de datos estructurado.
 
-## Proporciona consultas iniciales {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## Proporciona consultas iniciales
+</div>
 
 Normalmente, deep decide qué búsquedas ejecutar. Usa `additionalQueries` cuando ya conozcas terminología, perspectivas o subproblemas concretos que la investigación deba cubrir:
 
@@ -155,7 +163,9 @@ La `query` principal siempre se incluye. Puedes proporcionar hasta 10 consultas 
 
 No añadas reformulaciones menores solo para aumentar el volumen de búsquedas. Añade consultas cuando cada una aporte una dirección de búsqueda realmente distinta.
 
-## Orienta el comportamiento y el output por separado {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## Orienta el comportamiento y el output por separado
+</div>
 
 `systemPrompt` y `outputSchema` afectan a partes distintas de la solicitud:
 
@@ -255,7 +265,9 @@ La consulta debe describir qué investigar. El prompt de sistema debe describir 
 
 Usa Deep cuando necesites más de dos items estructurados o cuando cada item deba cumplir varios requisitos. Los tipos de búsqueda estándar usan la misma ruta de síntesis, pero no realizan la misma investigación iterativa previa a la síntesis.
 
-## Lee la respuesta fundamentada {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## Lee la respuesta fundamentada
+</div>
 
 Las respuestas estructuradas separan los valores generados de su evidencia:
 
@@ -297,7 +309,9 @@ Usa `output.content` como resultado generado y `output.grounding` para mostrar o
 
 `numResults` controla cuántas páginas seleccionadas se devuelven en `results`. No define el número de búsquedas que Deep puede realizar.
 
-## Transmitir la síntesis por stream {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## Transmitir la síntesis por stream
+</div>
 
 Establece `stream: true` junto con `outputSchema` para recibir el output sintetizado mediante server-sent events:
 
@@ -373,7 +387,9 @@ Establece `stream: true` junto con `outputSchema` para recibir el output sinteti
 
 Consume los eventos tipados hasta `done`. El evento final contiene el output completo y el tiempo de búsqueda, además de la información de costo cuando esté disponible.
 
-## Cuándo conviene quedarse con Search estándar {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## Cuándo conviene quedarse con Search estándar
+</div>
 
 Deep no es necesario cuando una sola pasada de recuperación basta para resolver la solicitud:
 

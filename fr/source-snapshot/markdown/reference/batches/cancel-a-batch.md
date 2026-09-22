@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Annuler un batch {#cancel-a-batch}
+<div id="cancel-a-batch">
+  # Annuler un batch
+</div>
 
 > Annuler un batch en cours.
 
@@ -13,7 +17,9 @@ Le batch cesse de planifier de nouvelles requêtes et termine les traitements en
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /batches/{id}/cancel
 openapi: 3.1.0

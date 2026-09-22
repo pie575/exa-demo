@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Jinko {#jinko}
+<div id="jinko">
+  # Jinko
+</div>
 
 > Búsqueda de vuelos y hoteles con precios en tiempo real.
 
@@ -16,13 +20,17 @@ Adjunta `jinko` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview), y el agente consultará
 Jinko junto con Exa web search.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Buscar ofertas de vuelos en tiempo real con tarifas, equipaje y políticas de cambio para una ruta y fecha.
 * Encontrar hoteles con tarifas de habitación en tiempo real para un destino, o volver a consultar hoteles concretos.
 * Descubrir destinos y fechas flexibles en distintos rangos de fechas, clases de cabina y presupuestos.
 
-## ID del proveedor {#provider-id}
+<div id="provider-id">
+  ## ID del proveedor
+</div>
 
 Usa este valor en `dataSources`:
 
@@ -30,7 +38,9 @@ Usa este valor en `dataSources`:
 jinko
 ```
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 Encuentra destinos de playa a los que se pueda llegar desde Nueva York por menos de $400 ida y vuelta en marzo.
 
@@ -124,12 +134,16 @@ Encuentra destinos de playa a los que se pueda llegar desde Nueva York por menos
   ```
 </CodeGroup>
 
-## Combina bien con {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
 
 * [Similarweb](/es/docs/agent/connect/similarweb): investiga los sitios de viajes y las plataformas de reservas que hay detrás de un destino.
 * [Particle](/es/docs/agent/connect/particle): obtén cobertura reciente y comentarios de viaje sobre un lugar.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">

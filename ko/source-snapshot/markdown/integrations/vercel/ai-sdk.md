@@ -1,21 +1,29 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# AI SDK by Vercel {#ai-sdk-by-vercel}
+<div id="ai-sdk-by-vercel">
+  # AI SDK by Vercel
+</div>
 
 > @exalabs/ai-sdk 패키지로 AI SDK 애플리케이션에 Exa web search를 추가하세요.
 
 `@exalabs/ai-sdk` 패키지를 사용하면 Vercel의 AI SDK로 만든 애플리케이션에 Exa web search를 추가할 수 있습니다. Exa API key만 제공하면 `webSearch()` 도구가 모델의 search request를 대신 처리합니다.
 
-## 설치 {#install}
+<div id="install">
+  ## 설치
+</div>
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-## 빠른 시작 {#quick-start}
+<div id="quick-start">
+  ## 빠른 시작
+</div>
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -43,7 +51,9 @@ console.log(text);
   예제를 실행하기 전에 키를 `EXA_API_KEY`에 설정하세요. 패키지가 이 환경 변수를 자동으로 읽어옵니다.
 </Info>
 
-## 기본값 {#defaults}
+<div id="defaults">
+  ## 기본값
+</div>
 
 `webSearch()`는 다음 기본값을 사용합니다:
 
@@ -52,7 +62,9 @@ console.log(text);
 * `contents.text`: result당 `3000`자
 * `maxAgeHours`: 기본 캐시 폴백 값이며, 더 엄격한 freshness가 필요하면 이 옵션을 설정하세요
 
-## search 설정 {#configure-search}
+<div id="configure-search">
+  ## search 설정
+</div>
 
 아래 옵션으로 search와 콘텐츠 extraction을 조정하세요:
 
@@ -78,7 +90,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-### search 옵션 {#search-options}
+<div id="search-options">
+  ### search 옵션
+</div>
 
 | 옵션                                        | 설명                                                                                                 |
 | ----------------------------------------- | -------------------------------------------------------------------------------------------------- |
@@ -90,7 +104,9 @@ console.log(text);
 | `includeText` / `excludeText`             | 결과에 특정 텍스트를 반드시 포함하거나 제외합니다.                                                                       |
 | `userLocation`                            | 위치를 반영한 검색에 사용할 두 자리 국가 코드입니다.                                                                     |
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 | 옵션                                                     | 설명                                                         |
 | ------------------------------------------------------ | ---------------------------------------------------------- |
@@ -101,7 +117,9 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | 하위 페이지를 크롤링하고, 필요에 따라 특정 하위 페이지를 지정합니다.                    |
 | `contents.extras.links` / `contents.extras.imageLinks` | 결과에서 링크 또는 이미지 링크를 반환합니다.                                  |
 
-## TypeScript 지원 {#typescript-support}
+<div id="typescript-support">
+  ## TypeScript 지원
+</div>
 
 이 패키지에는 TypeScript 타입이 포함되어 있습니다:
 
@@ -116,7 +134,9 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-## 관련 페이지 {#related-pages}
+<div id="related-pages">
+  ## 관련 페이지
+</div>
 
 <Columns cols={2}>
   <Card title="Vercel AI Gateway 사용하기" icon="cloud" href="/ko/docs/integrations/vercel/ai-gateway" cta="가이드 열기" arrow="true">

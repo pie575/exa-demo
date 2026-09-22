@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa Search Skill {#exa-search-skill}
+<div id="exa-search-skill">
+  # Exa Search Skill
+</div>
 
 > Exa Search로 관련 웹 페이지를 찾고 종합된 content를 2초 이내에 받아보세요.
 
@@ -17,7 +21,9 @@
   agent 환경에서 키를 `EXA_API_KEY`로 설정하세요.
 </Note>
 
-## 설정 {#setup}
+<div id="setup">
+  ## 설정
+</div>
 
 **옵션 A: 이 skill을 직접 설치하기:**
 
@@ -63,13 +69,17 @@ Skill 소스:
 전체에 적용되는 엄격한 규칙: 키는 secret임. 존재 여부나 길이 확인(`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) 또는 HTTP 상태 코드로만 확인할 것. 키가 들어 있을 수 있는 파일이나 변수는 절대 출력하거나 `echo`, `cat`, 출력이 있는 `grep`으로 다루지 말고, 정규식으로 키 파일을 "가리려고" 시도하지도 말 것. 키가 노출된 적이 있다면 https://dashboard.exa.ai/api-keys 에서 교체하라고 알려줄 것.
 ```
 
-## 소스 보기 {#view-source}
+<div id="view-source">
+  ## 소스 보기
+</div>
 
 <Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="소스 보기" arrow="true">
   설치하기 전에 exa-search skill 정의를 확인하세요.
 </Card>
 
-## 관련 항목 {#related}
+<div id="related">
+  ## 관련 항목
+</div>
 
 <Columns cols={2}>
   <Card title="모든 agent skill" icon="layers" href="/ko/docs/get-started/agent-skills/overview" cta="skill 둘러보기" arrow="true">

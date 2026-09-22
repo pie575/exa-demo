@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Hermes Agent {#hermes-agent}
+<div id="hermes-agent">
+  # Hermes Agent
+</div>
 
 > Dale a Hermes Agent búsqueda web en tiempo real y contenido de páginas con Exa.
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) incluye Exa como backend nativo para sus herramientas `web_search` y `web_extract`, invocables por el modelo. Usa Exa para ambas capacidades o combínalo con otro proveedor web de Hermes.
 
-## Conecta tu cuenta de Exa {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## Conecta tu cuenta de Exa
+</div>
 
 <Steps>
   <Step title="Obtén una API key de Exa">
@@ -39,7 +45,9 @@
   </Step>
 </Steps>
 
-## Configurar manualmente {#configure-manually}
+<div id="configure-manually">
+  ## Configurar manualmente
+</div>
 
 Agrega tu key al archivo de entorno de Hermes:
 
@@ -64,7 +72,9 @@ web:
 
 La configuración por capacidad tiene prioridad sobre `web.backend`. Esto te permite usar Exa solo para búsqueda o solo para extracción al combinar proveedores.
 
-## Herramientas que obtiene Hermes {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Herramientas que obtiene Hermes
+</div>
 
 | Herramienta   | Comportamiento de Exa                                                                             |
 | ------------- | ------------------------------------------------------------------------------------------------- |
@@ -77,7 +87,9 @@ Hermes trunca las páginas extraídas que son largas según su presupuesto de ca
   Hermes puede usar Exa a través de su grupo de proveedores gratuitos sin necesidad de una API key. Ese grupo tiene límites de tasa y puede rotar entre proveedores. Configura `EXA_API_KEY` y selecciona la opción de Exa autenticada con API key cuando necesites que las solicitudes usen siempre tu cuenta de Exa.
 </Note>
 
-## Solución de problemas {#troubleshooting}
+<div id="troubleshooting">
+  ## Solución de problemas
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes no selecciona Exa">
@@ -93,7 +105,9 @@ Hermes trunca las páginas extraídas que son largas según su presupuesto de ca
   </Accordion>
 </AccordionGroup>
 
-## Recursos {#resources}
+<div id="resources">
+  ## Recursos
+</div>
 
 <Columns cols={3}>
   <Card title="Herramientas web de Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Leer la guía" arrow="true">

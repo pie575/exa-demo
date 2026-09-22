@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Particle {#particle}
+<div id="particle">
+  # Particle
+</div>
 
 > Recherchez dans les transcriptions de podcasts avec attribution des intervenants et horodatages.
 
@@ -16,14 +20,18 @@ Attachez `particle` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Particle en parallèle d&#39;Exa web search.
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * Trouver des commentaires d&#39;experts et des extraits citables.
 * La veille médiatique et de marque.
 * L&#39;analyse des récits et des sentiments.
 * Découvrir des podcasts et suivre leur actualité.
 
-## ID du fournisseur {#provider-id}
+<div id="provider-id">
+  ## ID du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -31,7 +39,9 @@ Utilisez cette valeur dans `dataSources` :
 particle
 ```
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Découvrez ce que les animateurs de podcasts disent de la réglementation de l&#39;IA.
 
@@ -131,12 +141,16 @@ Découvrez ce que les animateurs de podcasts disent de la réglementation de l&#
   ```
 </CodeGroup>
 
-## À combiner avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## À combiner avec
+</div>
 
 * [Financial Datasets](/fr/docs/agent/connect/financialdatasets) : recoupez les discussions de podcasts avec les actualités publiées.
 * [Fiber.ai](/fr/docs/agent/connect/fiber) : attachez le context entreprise et contact aux personnes évoquées.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

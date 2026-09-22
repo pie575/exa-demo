@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Comment utiliser les imports {#how-to-use-imports}
+<div id="how-to-use-imports">
+  # Comment utiliser les imports
+</div>
 
 > Un guide pas à pas pour importer des URL dans Websets : enrichir votre liste, l&#39;évaluer selon des critères, découvrir de nouvelles correspondances et combiner les trois.
 
@@ -11,7 +15,9 @@ Lorsque vous disposez déjà d&#39;une liste d&#39;URL (entreprises, personnes, 
 
 Ce guide passe en revue chaque configuration avec les appels API exacts que vous pouvez copier-coller. Il vous suffit de remplacer `$EXA_API_KEY` par votre API key.
 
-## Notre exemple : 5 fournisseurs de conseil informatique {#our-example-5-it-consulting-suppliers}
+<div id="our-example-5-it-consulting-suppliers">
+  ## Notre exemple : 5 fournisseurs de conseil informatique
+</div>
 
 Tout au long de ce guide, nous utiliserons la même liste de 5 entreprises comme import :
 
@@ -32,7 +38,9 @@ Nos critères pour les exemples ci-dessous :
 
 ***
 
-## Config 1 : Import Only -- enrichir sans filtrage {#config-1-import-only-enrich-without-filtering}
+<div id="config-1-import-only-enrich-without-filtering">
+  ## Config 1 : Import Only -- enrichir sans filtrage
+</div>
 
 <Note>
   **Exemple en direct :** [Voir ce webset sur le tableau de bord](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -40,7 +48,9 @@ Nos critères pour les exemples ci-dessous :
 
 **À utiliser quand :** vous avez une liste d&#39;URL et souhaitez simplement les enrichir. Aucun scoring, aucun filtrage -- chaque item est conservé.
 
-### Appels API {#api-calls}
+<div id="api-calls">
+  ### Appels API
+</div>
 
 ```bash theme={null}
 # Étape 1 : créer un import CSV avec les URL de vos fournisseurs
@@ -78,7 +88,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### Ce que l&#39;on observe dans le Webset en direct {#what-we-see-in-the-live-webset}
+<div id="what-we-see-in-the-live-webset">
+  ### Ce que l&#39;on observe dans le Webset en direct
+</div>
 
 Les **5 items** apparaissent tous dans le Webset. Aucun filtrage n&#39;a lieu puisqu&#39;il n&#39;y a aucun critère.
 
@@ -98,7 +110,9 @@ Chaque item possède `source: "import"` et `evaluations: []`. Les 5 sont conserv
 
 ***
 
-## Config 2 : Search uniquement -- Web Discovery {#config-2-search-only-web-discovery}
+<div id="config-2-search-only-web-discovery">
+  ## Config 2 : Search uniquement -- Web Discovery
+</div>
 
 <Note>
   **Exemple en direct :** [Voir ce webset sur le tableau de bord](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -106,7 +120,9 @@ Chaque item possède `source: "import"` et `evaluations: []`. Les 5 sont conserv
 
 **À utiliser quand :** vous n&#39;avez pas de liste -- vous souhaitez découvrir sur le web de nouvelles entreprises correspondant à vos critères.
 
-### Appel d&#39;API {#api-call}
+<div id="api-call">
+  ### Appel d&#39;API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -198,7 +214,9 @@ Chaque item possède `source: "import"` et `evaluations: []`. Les 5 sont conserv
   ```
 </CodeGroup>
 
-### Ce que nous observons dans le Webset en direct {#what-we-see-in-the-live-webset-2}
+<div id="what-we-see-in-the-live-webset-2">
+  ### Ce que nous observons dans le Webset en direct
+</div>
 
 Le système a parcouru le web et trouvé **35 entreprises** qui satisfont les deux critères. Chaque item porte `source: "search"`, accompagné d&#39;évaluations complètes expliquant la correspondance.
 
@@ -215,7 +233,9 @@ La recherche web a trouvé Accenture parmi ses 35 résultats, mais les 4 autres 
 
 ***
 
-## Config 3 : Scoped Search -- évaluez votre liste selon des critères {#config-3-scoped-search-score-your-list-against-criteria}
+<div id="config-3-scoped-search-score-your-list-against-criteria">
+  ## Config 3 : Scoped Search -- évaluez votre liste selon des critères
+</div>
 
 <Note>
   **Exemple en direct :** [Voir ce webset sur le tableau de bord](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -223,7 +243,9 @@ La recherche web a trouvé Accenture parmi ses 35 résultats, mais les 4 autres 
 
 **À utiliser quand :** vous disposez d&#39;une liste de fournisseurs et souhaitez **évaluer chacun d&#39;eux selon des critères**. Seuls ceux qui satisfont aux critères sont renvoyés. C&#39;est le cas d&#39;usage « évaluer ma liste ».
 
-### Appels API {#api-calls-2}
+<div id="api-calls-2">
+  ### Appels API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -332,7 +354,9 @@ La recherche web a trouvé Accenture parmi ses 35 résultats, mais les 4 autres 
   ```
 </CodeGroup>
 
-### Ce que nous observons dans le Webset en direct {#what-we-see-in-the-live-webset-3}
+<div id="what-we-see-in-the-live-webset-3">
+  ### Ce que nous observons dans le Webset en direct
+</div>
 
 Le webset contient **4 items**. Chacun de nos 5 fournisseurs a été évalué au regard des critères : seuls ceux qui satisfont les deux critères apparaissent.
 
@@ -352,7 +376,9 @@ Nous avons importé 5 fournisseurs, mais seuls 4 apparaissent dans les résultat
 
 ***
 
-## Config 4 : Scoped Search + Web Discovery -- évaluez votre liste ET trouvez de nouvelles correspondances {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
+<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
+  ## Config 4 : Scoped Search + Web Discovery -- évaluez votre liste ET trouvez de nouvelles correspondances
+</div>
 
 <Note>
   **Exemple en direct :** [Voir ce webset sur le tableau de bord](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -360,7 +386,9 @@ Nous avons importé 5 fournisseurs, mais seuls 4 apparaissent dans les résultat
 
 **À utiliser quand :** vous disposez d&#39;une liste de fournisseurs à évaluer selon des critères, mais vous souhaitez aussi découvrir sur le web d&#39;autres entreprises répondant à ces mêmes critères. Le processus se déroule en deux étapes : créez d&#39;abord un webset avec une scoped search, puis ajoutez une recherche web classique à ce même webset.
 
-### Appels API {#api-calls-3}
+<div id="api-calls-3">
+  ### Appels API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -532,7 +560,9 @@ Nous avons importé 5 fournisseurs, mais seuls 4 apparaissent dans les résultat
   ```
 </CodeGroup>
 
-### Ce que nous voyons dans le webset en direct {#what-we-see-in-the-live-webset-4}
+<div id="what-we-see-in-the-live-webset-4">
+  ### Ce que nous voyons dans le webset en direct
+</div>
 
 Le webset contient **29 items** : 4 issus de nos fournisseurs importés (évalués et retenus) plus 25 entreprises découvertes sur le web. Les deux ensembles sont évalués selon les critères.
 
@@ -553,7 +583,9 @@ La Scoped Search évalue votre liste importée selon les critères (et écarte P
 
 ***
 
-## Référence rapide {#quick-reference}
+<div id="quick-reference">
+  ## Référence rapide
+</div>
 
 | Configuration                        | Rôle                                                         | Tous les items conservés ?              | Les items sont-ils évalués ?                          |
 | ------------------------------------ | ------------------------------------------------------------ | --------------------------------------- | ----------------------------------------------------- |
@@ -562,7 +594,9 @@ La Scoped Search évalue votre liste importée selon les critères (et écarte P
 | **3. Scoped Search**                 | Évaluer votre liste au regard des critères                   | Non -- les items rejetés sont écartés   | Oui                                                   |
 | **4. Scoped Search + Web Discovery** | Évaluer votre liste + découvrir de nouvelles correspondances | Non -- les imports rejetés sont écartés | Oui -- les imports comme les découvertes sont évalués |
 
-## Quelle Config utiliser ? {#which-config-should-i-use}
+<div id="which-config-should-i-use">
+  ## Quelle Config utiliser ?
+</div>
 
 * **« Je veux simplement enrichir ma liste, sans filtrage »** -- Config 1
 * **« Je n&#39;ai pas de liste, trouvez-moi des entreprises »** -- Config 2

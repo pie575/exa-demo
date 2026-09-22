@@ -1,21 +1,29 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# AI SDK by Vercel {#ai-sdk-by-vercel}
+<div id="ai-sdk-by-vercel">
+  # AI SDK by Vercel
+</div>
 
 > Tambahkan Exa web search ke aplikasi AI SDK dengan package @exalabs/ai-sdk.
 
 Gunakan package `@exalabs/ai-sdk` untuk menambahkan Exa web search ke aplikasi yang dibangun dengan AI SDK by Vercel. Anda cukup menyediakan Exa API key, dan tool `webSearch()` akan menangani permintaan search untuk model Anda.
 
-## Pasang {#install}
+<div id="install">
+  ## Pasang
+</div>
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-## Mulai cepat {#quick-start}
+<div id="quick-start">
+  ## Mulai cepat
+</div>
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -43,7 +51,9 @@ console.log(text);
   Setel key Anda sebagai `EXA_API_KEY` sebelum menjalankan contoh ini. Package akan membaca variabel lingkungan ini secara otomatis.
 </Info>
 
-## Default {#defaults}
+<div id="defaults">
+  ## Default
+</div>
 
 `webSearch()` menggunakan default berikut:
 
@@ -52,7 +62,9 @@ console.log(text);
 * `contents.text`: `3000` karakter per hasil
 * `maxAgeHours`: fallback cache default; atur opsi ini jika Anda memerlukan kebaruan yang lebih ketat
 
-## Konfigurasi search {#configure-search}
+<div id="configure-search">
+  ## Konfigurasi search
+</div>
 
 Gunakan options berikut untuk menyetel search dan extraction konten:
 
@@ -78,7 +90,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-### Opsi pencarian {#search-options}
+<div id="search-options">
+  ### Opsi pencarian
+</div>
 
 | Opsi                                      | Deskripsi                                                                                              |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -90,7 +104,9 @@ console.log(text);
 | `includeText` / `excludeText`             | Mewajibkan atau mengecualikan teks dalam hasil.                                                        |
 | `userLocation`                            | Kode negara dua huruf untuk pencarian berbasis lokasi.                                                 |
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 | Opsi                                                   | Deskripsi                                                                                                     |
 | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
@@ -101,7 +117,9 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | Meng-crawl subhalaman dan secara opsional menargetkan subhalaman tertentu.                                    |
 | `contents.extras.links` / `contents.extras.imageLinks` | Mengembalikan tautan atau tautan gambar dari hasil.                                                           |
 
-## Dukungan TypeScript {#typescript-support}
+<div id="typescript-support">
+  ## Dukungan TypeScript
+</div>
 
 Package ini sudah menyertakan tipe TypeScript:
 
@@ -116,7 +134,9 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-## Halaman terkait {#related-pages}
+<div id="related-pages">
+  ## Halaman terkait
+</div>
 
 <Columns cols={2}>
   <Card title="Gunakan Vercel AI Gateway" icon="cloud" href="/id/docs/integrations/vercel/ai-gateway" cta="Buka panduan" arrow="true">

@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Cómo usar los imports {#how-to-use-imports}
+<div id="how-to-use-imports">
+  # Cómo usar los imports
+</div>
 
 > Una guía paso a paso para importar URLs a Websets: enriquecer tu lista, puntuarla según criteria, descubrir nuevas coincidencias y combinar las tres cosas.
 
@@ -11,7 +15,9 @@ Cuando ya tienes una lista de URLs (empresas, personas, productos, etc.), puedes
 
 Esta guía recorre cada configuración con llamadas a la API exactas que puedes copiar y pegar. Solo reemplaza `$EXA_API_KEY` por tu API key.
 
-## Nuestro ejemplo: 5 Suppliers de consultoría de TI {#our-example-5-it-consulting-suppliers}
+<div id="our-example-5-it-consulting-suppliers">
+  ## Nuestro ejemplo: 5 Suppliers de consultoría de TI
+</div>
 
 A lo largo de esta guía, usaremos la misma lista de 5 empresas como nuestro import:
 
@@ -32,7 +38,9 @@ Los criteria que usaremos en los ejemplos siguientes:
 
 ***
 
-## Config 1: Solo import -- enriquecer sin filtrado {#config-1-import-only-enrich-without-filtering}
+<div id="config-1-import-only-enrich-without-filtering">
+  ## Config 1: Solo import -- enriquecer sin filtrado
+</div>
 
 <Note>
   **Ejemplo en vivo:** [Ver este webset en el panel](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -40,7 +48,9 @@ Los criteria que usaremos en los ejemplos siguientes:
 
 **Úsalo cuando:** tienes una lista de URL y solo quieres enriquecerlas. Sin puntuación ni filtrado: se conservan todos los items.
 
-### Llamada a la API {#api-calls}
+<div id="api-calls">
+  ### Llamada a la API
+</div>
 
 ```bash theme={null}
 # Paso 1: Crea un import CSV con las URL de tus suppliers
@@ -78,7 +88,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### Qué vemos en el Webset en vivo {#what-we-see-in-the-live-webset}
+<div id="what-we-see-in-the-live-webset">
+  ### Qué vemos en el Webset en vivo
+</div>
 
 Los **5 items** aparecen en el Webset. No se aplica ningún filtrado porque no hay criteria.
 
@@ -98,7 +110,9 @@ Cada item tiene `source: "import"` y `evaluations: []`. Los 5 se conservan y se 
 
 ***
 
-## Config 2: Search Only -- descubrimiento web {#config-2-search-only-web-discovery}
+<div id="config-2-search-only-web-discovery">
+  ## Config 2: Search Only -- descubrimiento web
+</div>
 
 <Note>
   **Ejemplo en vivo:** [Ver este webset en el panel](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -106,7 +120,9 @@ Cada item tiene `source: "import"` y `evaluations: []`. Los 5 se conservan y se 
 
 **Úsalo cuando:** no tienes una lista -- quieres descubrir en la web nuevas empresas que cumplan tus criteria.
 
-### Llamada a la API {#api-call}
+<div id="api-call">
+  ### Llamada a la API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -198,7 +214,9 @@ Cada item tiene `source: "import"` y `evaluations: []`. Los 5 se conservan y se 
   ```
 </CodeGroup>
 
-### Lo que vemos en el Webset en vivo {#what-we-see-in-the-live-webset-2}
+<div id="what-we-see-in-the-live-webset-2">
+  ### Lo que vemos en el Webset en vivo
+</div>
 
 El sistema buscó en la web y encontró **35 empresas** que cumplen ambos criteria. Cada item tiene `source: "search"` con evaluaciones completas que explican por qué coincidió.
 
@@ -215,7 +233,9 @@ Dio la casualidad de que la búsqueda web encontró a Accenture entre sus 35 res
 
 ***
 
-## Config 3: Search con scope -- Puntúa tu lista según los criteria {#config-3-scoped-search-score-your-list-against-criteria}
+<div id="config-3-scoped-search-score-your-list-against-criteria">
+  ## Config 3: Search con scope -- Puntúa tu lista según los criteria
+</div>
 
 <Note>
   **Ejemplo en vivo:** [Ver este webset en el panel](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -223,7 +243,9 @@ Dio la casualidad de que la búsqueda web encontró a Accenture entre sus 35 res
 
 **Úsalo cuando:** tienes una lista de suppliers y quieres **evaluar cada uno según los criteria**. Solo se devuelven los que pasan. Este es el caso de uso de «puntuar mi lista».
 
-### Llamada a la API {#api-calls-2}
+<div id="api-calls-2">
+  ### Llamada a la API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -332,7 +354,9 @@ Dio la casualidad de que la búsqueda web encontró a Accenture entre sus 35 res
   ```
 </CodeGroup>
 
-### Qué vemos en el Webset en vivo {#what-we-see-in-the-live-webset-3}
+<div id="what-we-see-in-the-live-webset-3">
+  ### Qué vemos en el Webset en vivo
+</div>
 
 El webset contiene **4 items**. Cada uno de nuestros 5 suppliers se evaluó frente a los criteria: solo aparecen los que cumplieron ambos criteria.
 
@@ -352,7 +376,9 @@ Importamos 5 suppliers, pero solo 4 aparecen en los resultados. **Persol Group s
 
 ***
 
-## Config 4: Search con scope + descubrimiento web -- puntúa tu lista Y encuentra nuevas coincidencias {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
+<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
+  ## Config 4: Search con scope + descubrimiento web -- puntúa tu lista Y encuentra nuevas coincidencias
+</div>
 
 <Note>
   **Ejemplo en vivo:** [Ver este webset en el panel](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -360,7 +386,9 @@ Importamos 5 suppliers, pero solo 4 aparecen en los resultados. **Persol Group s
 
 **Úsalo cuando:** tienes una lista de suppliers que quieres puntuar según ciertos criteria, pero además quieres descubrir en la web otras empresas que cumplan esos mismos criteria. Es un proceso de dos pasos: primero crea un webset con un search con scope y luego añade una búsqueda web normal a ese mismo webset.
 
-### Llamadas a la API {#api-calls-3}
+<div id="api-calls-3">
+  ### Llamadas a la API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -532,7 +560,9 @@ Importamos 5 suppliers, pero solo 4 aparecen en los resultados. **Persol Group s
   ```
 </CodeGroup>
 
-### Qué vemos en el Webset en vivo {#what-we-see-in-the-live-webset-4}
+<div id="what-we-see-in-the-live-webset-4">
+  ### Qué vemos en el Webset en vivo
+</div>
 
 El webset contiene **29 items**: 4 de nuestros suppliers importados (puntuados y aprobados) más 25 empresas descubiertas en la web. Ambos conjuntos se evalúan frente a los criteria.
 
@@ -553,7 +583,9 @@ El search con scope evalúa tu lista importada frente a los criteria (y descarta
 
 ***
 
-## Referencia rápida {#quick-reference}
+<div id="quick-reference">
+  ## Referencia rápida
+</div>
 
 | Configuración                                | Qué hace                                  | ¿Se conservan todos los items?            | ¿Se puntúan los items?                                    |
 | -------------------------------------------- | ----------------------------------------- | ----------------------------------------- | --------------------------------------------------------- |
@@ -562,7 +594,9 @@ El search con scope evalúa tu lista importada frente a los criteria (y descarta
 | **3. Search con scope**                      | Puntúa tu lista según los criteria        | No, los que no pasan se descartan         | Sí                                                        |
 | **4. Search con scope + descubrimiento web** | Puntúa tu lista y descubre nuevas coincidencias | No, los imports que no pasan se descartan | Sí, se puntúan tanto los imports como los descubrimientos |
 
-## ¿Qué Config debo usar? {#which-config-should-i-use}
+<div id="which-config-should-i-use">
+  ## ¿Qué Config debo usar?
+</div>
 
 * **«Solo quiero enriquecer mi lista, sin filtrado»** -- Config 1
 * **«No tengo una lista, encuéntrame empresas»** -- Config 2

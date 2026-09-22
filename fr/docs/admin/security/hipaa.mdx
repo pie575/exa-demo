@@ -19,7 +19,9 @@ Lorsque ce field est présent sur une équipe éligible, Exa traite la request a
 
 Le mode HIPAA inclut le [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) pour ces requests : Exa ne conserve aucune donnée de santé protégée (PHI).
 
-## Endpoints pris en charge {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoints pris en charge
+</div>
 
 Le field `compliance` est reconnu sur :
 
@@ -28,7 +30,9 @@ Le field `compliance` est reconnu sur :
 
 Les autres endpoints rejettent ce field.
 
-## Prérequis {#requirements}
+<div id="requirements">
+  ## Prérequis
+</div>
 
 Le mode HIPAA prend uniquement en charge la récupération depuis le cache. Requests compatibles :
 
@@ -42,7 +46,9 @@ Les requests incompatibles renvoient `400 INVALID_REQUEST_BODY`, notamment :
 * Les paramètres de fraîcheur qui imposent une récupération en direct, comme `maxAgeHours: 0` ou une valeur positive de `maxAgeHours`
 * Les requests de recherche qui omettent `type`, ou qui utilisent un type autre que `instant` ou `fast`
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -58,6 +64,8 @@ Les requests incompatibles renvoient `400 INVALID_REQUEST_BODY`, notamment :
   ```
 </CodeGroup>
 
-## Accès {#access}
+<div id="access">
+  ## Accès
+</div>
 
 Pour activer le mode HIPAA sur votre équipe, contactez [sales@exa.ai](mailto:sales@exa.ai). Consultez le [Trust Center](https://trust.exa.ai) pour la documentation de sécurité d&#39;Exa.

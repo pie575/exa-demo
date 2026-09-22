@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa Connect {#exa-connect}
+<div id="exa-connect">
+  # Exa Connect
+</div>
 
 > 한 번의 실행에서 Exa web search와 함께 프리미엄 data partners에 실시간으로 접근할 수 있는 권한을 Exa Agent에 부여하세요.
 
@@ -22,7 +26,9 @@ Agent 실행이 처음이신가요? [Exa Agent 가이드](/ko/docs/agent/quickst
   MCP를 선호하시나요? Exa Agent와 [Exa Connect](/ko/docs/agent/connect/overview)는 [Exa MCP](/ko/docs/get-started/exa-mcp#exa-agent)에서 사용할 수 있습니다. `tools=agent_run`을 활성화하면 Claude, Cursor를 비롯한 MCP 클라이언트에서 다단계 리서치, 리스트 빌딩, enrichment, structured output을 실행할 수 있습니다.
 </Tip>
 
-## Exa Connect를 사용하는 이유 {#why-exa-connect}
+<div id="why-exa-connect">
+  ## Exa Connect를 사용하는 이유
+</div>
 
 * **별도 연동 없이 프리미엄 데이터 이용.** 계약을 체결하거나 SDK를 붙이지 않고도
   파트너 데이터에 접근할 수 있습니다. Exa API 하나만 call하면 됩니다.
@@ -34,13 +40,17 @@ Agent 실행이 처음이신가요? [Exa Agent 가이드](/ko/docs/agent/quickst
 * **한 번의 실행에서 인덱스와 파트너 데이터를 함께 활용.** Connect는 Exa 인덱스 위에서 동작합니다.
   Exa Agent는 각 소스를 가장 강점이 있는 영역에 활용하고 그 결과를 인용합니다.
 
-## 작동 방식 {#how-it-works}
+<div id="how-it-works">
+  ## 작동 방식
+</div>
 
 1. [`POST /agent/runs`](/ko/docs/reference/agent-api/create-a-run)의 `dataSources` 배열로 하나 이상의 제공업체를 **attach**합니다.
 2. Exa Agent가 질의와 `outputSchema`를 바탕으로 각 단계에 **알맞은 도구**를 선택합니다. 파트너 데이터 또는 Exa web search 중에서 선택합니다.
 3. 파트너 결과는 **웹 리서치와 통합**되어 소스가 첨부된 structured output으로 제공됩니다.
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 <Note>
   Exa Connect 가격은 표준 [Agent 실행 가격](/ko/docs/agent/quickstart#pricing)에 더해 부과됩니다.
@@ -155,7 +165,9 @@ $0.15~$0.35), 국제 사업자 search는 $4.00입니다. 앞서 수행한 사업
   ```
 </CodeGroup>
 
-## Data partners {#data-partners}
+<div id="data-partners">
+  ## Data partners
+</div>
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -198,9 +210,13 @@ $0.15~$0.35), 국제 사업자 search는 $4.00입니다. 앞서 수행한 사업
 
 위 목록에 없는 소스가 필요하신가요? [추가 제공업체](/ko/docs/agent/connect/additional-partners)를 확인해 보세요. 저희 팀에 문의하시면 요청에 따라 이용하실 수 있습니다.
 
-## 사용량 {#usage}
+<div id="usage">
+  ## 사용량
+</div>
 
-### 제공업체 조합하기 {#combining-providers}
+<div id="combining-providers">
+  ### 제공업체 조합하기
+</div>
 
 작업에 필요한 만큼 파트너를 attach하세요. Exa Agent는 각 파트너가 가장 강점을 보이는 영역에서 해당 파트너를 call하고, 그 결과를 web search 결과와 결합해 하나의 구조화된 답변으로 만들어 줍니다:
 

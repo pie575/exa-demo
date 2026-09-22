@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Entreprises et personnes {#companies-people}
+<div id="companies-people">
+  # Entreprises et personnes
+</div>
 
 > Trouvez des entreprises, des profils professionnels et les relations qui les unissent grâce à Exa Search.
 
@@ -45,32 +49,42 @@ Utilisez Exa Search pour les organizations et les personnes qui y sont liées. C
   </Card>
 </Columns>
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Découverte d&#39;entreprises, de candidats et d&#39;experts
 * Recherche sur les comptes et cartographie des parties prenantes
 * Cartographies de marché, recherche d&#39;investissement et sourcing d&#39;opportunités
 * Recherche sur les dirigeants, le recrutement et l&#39;organization
 
-## Rédiger de meilleures requêtes {#write-better-queries}
+<div id="write-better-queries">
+  ## Rédiger de meilleures requêtes
+</div>
 
 Commencez par l&#39;entité recherchée, puis ajoutez les caractéristiques et les relations qui la qualifient. Précisez le type de source lorsque cela compte : pages d&#39;accueil d&#39;entreprises, profils professionnels, offres d&#39;emploi ou sites personnels.
 
 <Tabs>
   <Tab title="Entreprises" icon="building">
-### Découvrir des entreprises par leur activité {#discover-companies-by-what-they-do}
+    <div id="discover-companies-by-what-they-do">
+      ### Découvrir des entreprises par leur activité
+    </div>
 
     Décrivez le client, le produit, la capacité, le stade de développement et la zone géographique qui définissent le marché. Vous trouverez ainsi des candidats selon ce qu&#39;ils font, sans dépendre d&#39;une liste d&#39;entreprises prédéfinie.
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-### Repérer des signaux opérationnels {#find-operating-signals}
+    <div id="find-operating-signals">
+      ### Repérer des signaux opérationnels
+    </div>
 
     Nommez le signal et les caractéristiques d&#39;entreprise qui comptent. Search peut récupérer des offres d&#39;emploi, des pages de tarifs, de la documentation produit et des publications, en plus des pages d&#39;entreprise.
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-### Étudier l&#39;activité de financement {#research-funding-activity}
+    <div id="research-funding-activity">
+      ### Étudier l&#39;activité de financement
+    </div>
 
     Précisez le tour de table, le secteur, le participant et la période.
 
@@ -78,19 +92,25 @@ Commencez par l&#39;entité recherchée, puis ajoutez les caractéristiques et l
   </Tab>
 
   <Tab title="Personnes" icon="users">
-### Découvrir des personnes par rôle et compétences {#discover-people-by-role-and-skills}
+    <div id="discover-people-by-role-and-skills">
+      ### Découvrir des personnes par rôle et compétences
+    </div>
 
     Combinez le rôle, le niveau de séniorité, la localisation, les compétences pertinentes et le type de source souhaité.
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-### Qualifier des personnes par les caractéristiques de l&#39;entreprise {#qualify-people-by-company-traits}
+    <div id="qualify-people-by-company-traits">
+      ### Qualifier des personnes par les caractéristiques de l&#39;entreprise
+    </div>
 
     Décrivez le lien entre la personne et l&#39;entreprise, ainsi que les caractéristiques qui qualifient cette entreprise. Cette approche donne de meilleurs résultats que de constituer d&#39;abord une liste d&#39;entreprises.
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-### Trouver des sites personnels et des travaux publiés {#find-personal-websites-and-public-work}
+    <div id="find-personal-websites-and-public-work">
+      ### Trouver des sites personnels et des travaux publiés
+    </div>
 
     Nommez la profession ou le domaine de recherche et demandez explicitement des sites personnels, des conférences, des entretiens ou des articles.
 
@@ -98,13 +118,17 @@ Commencez par l&#39;entité recherchée, puis ajoutez les caractéristiques et l
   </Tab>
 </Tabs>
 
-## Rechercher les deux ensemble {#search-both-together}
+<div id="search-both-together">
+  ## Rechercher les deux ensemble
+</div>
 
 Rédigez une seule requête qui exprime la relation dont vous avez besoin. Exa peut renvoyer des pages d&#39;entreprises, des profils professionnels, des pages de recrutement et des références publiques dans un même ensemble de résultats.
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,7 +169,9 @@ Rédigez une seule requête qui exprime la relation dont vous avez besoin. Exa p
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les entreprises, les personnes, les critères de qualification et les fields de sortie dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de citations.
 

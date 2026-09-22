@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Batch API {#batch-api}
+<div id="batch-api">
+  # Batch API
+</div>
 
 > Exa API 요청을 batch 단위로 비동기 실행합니다.
 
@@ -19,7 +23,9 @@ Batch API를 사용하면 여러 Exa API 요청을 한 번에 제출하고, 그 
   Batch API는 베타 단계입니다. 모든 요청에 `Exa-Beta: batches-2026-06-06` header를 포함하세요.
 </Note>
 
-## 지원되는 요청 {#supported-requests}
+<div id="supported-requests">
+  ## 지원되는 요청
+</div>
 
 각 batch 항목은 다음 경로 중 하나에 대한 `POST` 요청이어야 합니다:
 
@@ -30,7 +36,9 @@ Batch API를 사용하면 여러 Exa API 요청을 한 번에 제출하고, 그 
 
 각 항목에는 batch 내에서 고유한 `customId`가 필요합니다. 결과 파일에도 동일한 `customId`가 반환되므로 output 행을 입력 데이터와 대응시킬 수 있습니다.
 
-## batch 생성하기 {#create-a-batch}
+<div id="create-a-batch">
+  ## batch 생성하기
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -88,7 +96,9 @@ response에는 batch ID와 초기 상태가 담겨 있습니다:
   ```
 </Accordion>
 
-## 상태 확인 {#check-status}
+<div id="check-status">
+  ## 상태 확인
+</div>
 
 batch가 종료 상태에 도달할 때까지 폴링하세요:
 
@@ -116,7 +126,9 @@ batch가 완료되면 `resultsUrl`에 JSONL 결과 파일의 다운로드 URL이
   `resultsUrl`은 유효 기간이 짧은 사전 서명 URL입니다. 결과를 다시 다운로드해야 할 때마다 batch를 다시 조회해 새 URL을 받으세요.
 </Warning>
 
-## batch 목록 조회 {#list-batches}
+<div id="list-batches">
+  ## batch 목록 조회
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -147,7 +159,9 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-## 결과 다운로드 {#download-results}
+<div id="download-results">
+  ## 결과 다운로드
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -162,7 +176,9 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-## batch 취소하기 {#cancel-a-batch}
+<div id="cancel-a-batch">
+  ## batch 취소하기
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -172,7 +188,9 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   ```
 </CodeGroup>
 
-## batch 삭제 {#delete-a-batch}
+<div id="delete-a-batch">
+  ## batch 삭제
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,6 +200,8 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   ```
 </CodeGroup>
 
-## 액세스 {#access}
+<div id="access">
+  ## 액세스
+</div>
 
 team에 Batch API를 활성화하려면 [sales@exa.ai](mailto:sales@exa.ai)로 문의하세요.

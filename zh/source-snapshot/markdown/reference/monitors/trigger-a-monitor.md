@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 触发 monitor {#trigger-a-monitor}
+<div id="trigger-a-monitor">
+  # 触发 monitor
+</div>
 
 > 立即触发一次运行，不受 schedule 限制。适用于状态为 `active` 或 `paused` 的 monitor。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /monitors/{id}/trigger
 openapi: 3.1.0

@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Codex와 ChatGPT에서 Exa 사용하기 {#exa-in-codex-and-chatgpt}
+<div id="exa-in-codex-and-chatgpt">
+  # Codex와 ChatGPT에서 Exa 사용하기
+</div>
 
 > Codex와 ChatGPT에서 바로 Exa로 웹을 검색하고, 원하는 페이지를 읽고, 리서치하세요.
 
 Exa 플러그인을 한 번만 설치하면 Codex와 ChatGPT가 Exa를 통해 실시간 웹에 접근할 수 있습니다. 대화나 코딩 세션을 벗어나지 않고도 최신 정보를 검색하고, 꼭 필요한 소스를 읽고, 더 깊이 있는 리서치를 진행하세요.
 
-## Exa 설치 {#install-exa}
+<div id="install-exa">
+  ## Exa 설치
+</div>
 
 <Steps>
   <Step title="플러그인 열기">
@@ -31,7 +37,9 @@ Exa 플러그인을 한 번만 설치하면 Codex와 ChatGPT가 Exa를 통해 �
 
 이것으로 끝입니다. 플러그인에 Exa의 MCP 연동과 skill이 모두 포함되어 있어 별도의 MCP나 skill 설정은 필요하지 않습니다.
 
-## 지금 이 순간 웹에 있는 정보로 개발하세요 {#build-with-whats-on-the-web-right-now}
+<div id="build-with-whats-on-the-web-right-now">
+  ## 지금 이 순간 웹에 있는 정보로 개발하세요
+</div>
 
 여러분이 사용하는 라이브러리, API, 도구는 매일 바뀝니다. Exa를 설치하면 Codex가 작업하는 동안 최신 문서, 이슈, 변경 로그, 실제 사용 예제를 검색할 수 있습니다.
 
@@ -51,7 +59,9 @@ Codex는 Exa로 검색하고, 관련 소스를 읽고, 찾은 내용을 바탕�
 * &quot;최신 Stripe 웹훅 문서를 읽고 우리 구현이 거기에 맞는지 확인해 줘.&quot;
 * &quot;이 의존성의 최신 마이그레이션 가이드를 검색한 다음, 업그레이드해 줘.&quot;
 
-## 검색, 읽기, 리서치 {#search-read-and-research}
+<div id="search-read-and-research">
+  ## 검색, 읽기, 리서치
+</div>
 
 Exa 플러그인은 Codex와 ChatGPT가 웹을 활용할 수 있는 세 가지 방법을 제공합니다.
 
@@ -69,7 +79,9 @@ Exa 플러그인은 Codex와 ChatGPT가 웹을 활용할 수 있는 세 가지 �
   </Card>
 </Columns>
 
-## ChatGPT를 벗어나지 않고 리서치하기 {#research-without-leaving-chatgpt}
+<div id="research-without-leaving-chatgpt">
+  ## ChatGPT를 벗어나지 않고 리서치하기
+</div>
 
 Exa는 ChatGPT에서도 동작합니다. 최신 정보가 필요한 질문을 던지고, 대화창에서 바로 Exa로 웹을 search하고 리서치해 보세요.
 
@@ -82,7 +94,9 @@ ChatGPT는 이미 컨텍스트에 있는 정보에만 의존하지 않고, Exa�
 
 경쟁사 리서치, 기술 리서치, 시장 지형 파악, 기업 리서치 등 답이 웹 곳곳에 흩어져 있는 모든 작업에 활용하세요.
 
-## MCP + skills, together {#mcp-skills-together}
+<div id="mcp-skills-together">
+  ## MCP + skills, together
+</div>
 
 내부적으로 이 플러그인은 Exa agent 스택의 두 가지 요소를 결합합니다.
 
@@ -92,7 +106,9 @@ ChatGPT는 이미 컨텍스트에 있는 정보에만 의존하지 않고, Exa�
 
 플러그인을 설치하면 이 두 가지를 따로 설정할 필요가 없습니다.
 
-## MCP를 직접 사용하고 싶으신가요? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## MCP를 직접 사용하고 싶으신가요?
+</div>
 
 Codex와 ChatGPT에서 Exa를 사용하는 권장 방법은 플러그인입니다. Codex를 수동으로 설정하거나 다른 MCP 클라이언트를 사용한다면, Exa가 호스팅하는 MCP 서버에 직접 연결할 수 있습니다:
 

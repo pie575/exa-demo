@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Cookbook d&#39;enrichment GTM Tempo MPP {#tempo-mpp-gtm-enrichment-cookbook}
+<div id="tempo-mpp-gtm-enrichment-cookbook">
+  # Cookbook d&#39;enrichment GTM Tempo MPP
+</div>
 
 > Construisez un workflow d&#39;enrichment GTM qui paie à la requête Exa search et contenu avec Tempo MPP, sans API key.
 
@@ -21,7 +25,9 @@ vous enrichissez des leads ou des entreprises.
   par le flux standard de facturation par API key.
 </Info>
 
-## Ce que vous allez construire {#what-youll-build}
+<div id="what-youll-build">
+  ## Ce que vous allez construire
+</div>
 
 Un pipeline d&#39;enrichment léger qui, à partir d&#39;une liste de noms d&#39;entreprises ou de
 descriptions de cibles :
@@ -36,7 +42,9 @@ Ce modèle s&#39;applique à l&#39;enrichment de listes de prospects, à la rech
 personnalisation des campagnes sortantes. Comme il repose sur des appels `/search` + `/contents`
 distincts, chaque étape peut être payée avec MPP.
 
-## Prérequis {#prerequisites}
+<div id="prerequisites">
+  ## Prérequis
+</div>
 
 * Un wallet compatible Tempo approvisionné en **USDC.e** sur le mainnet Tempo.
 * Un moyen sûr de charger la private key du wallet au moment de l&#39;exécution (voir ci-dessous ; ne commitez jamais
@@ -47,9 +55,13 @@ distincts, chaque étape peut être payée avec MPP.
   Pour une configuration en ligne de commande qui ne nécessite pas de private key brute, utilisez la [Tempo Wallet CLI](/fr/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). `tempo wallet login` crée ou connecte un wallet et peut inclure des MPP Credits gratuits pour les nouvelles inscriptions.
 </Info>
 
-## Configuration de MPP {#mpp-setup}
+<div id="mpp-setup">
+  ## Configuration de MPP
+</div>
 
-### Installer le client {#install-the-client}
+<div id="install-the-client">
+  ### Installer le client
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -61,7 +73,9 @@ distincts, chaque étape peut être payée avec MPP.
   ```
 </CodeGroup>
 
-### Charger votre private key en toute sécurité {#load-your-private-key-safely}
+<div id="load-your-private-key-safely">
+  ### Charger votre private key en toute sécurité
+</div>
 
 Ne codez jamais une private key en dur. Les exemples ci-dessous lisent `WALLET_PRIVATE_KEY` depuis
 votre environnement d&#39;exécution, uniquement pour le développement local. En production, chargez-la depuis
@@ -79,7 +93,9 @@ un secrets manager tel que 1Password, AWS Secrets Manager ou HashiCorp Vault.
   ```
 </CodeGroup>
 
-### Effectuer une requête de search payante {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Effectuer une requête de search payante
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -147,7 +163,9 @@ un secrets manager tel que 1Password, AWS Secrets Manager ou HashiCorp Vault.
 En cas de succès, la réponse renvoie les résultats Exa ainsi qu&#39;un header `Payment-Receipt` contenant
 le hash de la transaction on-chain.
 
-### Effectuer une requête contenu payante {#make-a-paid-contents-request}
+<div id="make-a-paid-contents-request">
+  ### Effectuer une requête contenu payante
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -180,9 +198,13 @@ le hash de la transaction on-chain.
   ```
 </CodeGroup>
 
-## Recette d&#39;enrichment GTM {#gtm-enrichment-recipe}
+<div id="gtm-enrichment-recipe">
+  ## Recette d&#39;enrichment GTM
+</div>
 
-### Enrichir une liste d&#39;entreprises {#enrich-a-list-of-companies}
+<div id="enrich-a-list-of-companies">
+  ### Enrichir une liste d&#39;entreprises
+</div>
 
 À partir d&#39;une liste de noms d&#39;entreprises, recherchez la page de chaque entreprise et extrayez-en
 des informations structurées.
@@ -309,7 +331,9 @@ des informations structurées.
   ```
 </CodeGroup>
 
-### Enrichir un profil de personne {#enrich-a-person-profile}
+<div id="enrich-a-person-profile">
+  ### Enrichir un profil de personne
+</div>
 
 Cette recette utilise `type: "deep"`, `contents.highlights` et `outputSchema` pour
 rechercher des informations sur une personne et renvoyer un profil structuré.
@@ -400,7 +424,9 @@ rechercher des informations sur une personne et renvoyer un profil structuré.
   `contents.highlights` ajoute $0,001 par résultat.
 </Note>
 
-### Sortie structurée {#structured-output}
+<div id="structured-output">
+  ### Sortie structurée
+</div>
 
 Si vous souhaitez des fields JSON plutôt que du texte brut, utilisez `outputSchema` dans la requête
 de recherche. Exa renvoie un objet `output` conforme à votre schéma.
@@ -473,7 +499,9 @@ de recherche. Exa renvoie un objet `output` conforme à votre schéma.
   appel LLM côté Exa, et il est donc facturé comme `deep-lite`/`deep`.
 </Note>
 
-## Tarification et limites {#pricing-and-limits}
+<div id="pricing-and-limits">
+  ## Tarification et limites
+</div>
 
 MPP applique la même tarification par request que la facturation par API key. Les requests de recherche MPP
 sont plafonnées à 10 résultats.
@@ -490,7 +518,9 @@ sont plafonnées à 10 résultats.
 Consultez [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) pour la référence complète,
 y compris les limites de débit, les détails réseau et les headers de paiement.
 
-## Conseils pour la production {#production-tips}
+<div id="production-tips">
+  ## Conseils pour la production
+</div>
 
 * **Approvisionnez le wallet uniquement en USDC.e.** Exa prend en charge les frais de réseau Tempo : le
   wallet n&#39;a donc pas besoin d&#39;un jeton de gas distinct.
@@ -502,7 +532,9 @@ y compris les limites de débit, les détails réseau et les headers de paiement
 * **Ne commitez jamais de private keys.** Chargez `WALLET_PRIVATE_KEY` depuis un secrets manager,
   secrets, et non depuis le contrôle de version.
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Puis-je utiliser MPP avec l'API Exa Agent ?">
@@ -529,7 +561,9 @@ y compris les limites de débit, les détails réseau et les headers de paiement
   </Accordion>
 </AccordionGroup>
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 * [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) : référence complète de MPP
 * [Guide de l&#39;Exa Search API](/fr/docs/search/quickstart) : référence des paramètres de search

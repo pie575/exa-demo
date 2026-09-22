@@ -7,7 +7,9 @@ icon: "/docs/images/sidebar-icons/n8n.svg"
 
 Le [node Exa pour n8n](https://github.com/exa-labs/n8n-integration) officiel ajoute la recherche web, l&#39;extraction de contenu, les réponses fondées sur des preuves et les runs Exa Agent à vos workflows visuels. Utilisez-le comme une étape de workflow classique ou connectez-le à un AI Agent n8n en tant qu&#39;outil.
 
-## Installer le node Exa {#install-the-exa-node}
+<div id="install-the-exa-node">
+  ## Installer le node Exa
+</div>
 
 Le nom du package est `n8n-nodes-exa-official`.
 
@@ -29,7 +31,9 @@ Le nom du package est `n8n-nodes-exa-official`.
   </Step>
 </Steps>
 
-## Lancer une recherche {#run-a-search}
+<div id="run-a-search">
+  ## Lancer une recherche
+</div>
 
 1. Ajoutez un déclencheur à un workflow.
 2. Ajoutez le node **Exa**.
@@ -43,7 +47,9 @@ Le nom du package est `n8n-nodes-exa-official`.
 
 Search peut également renvoyer le texte, les highlights, les résumés, les liens et les images de chaque result. Les filtres de domaine, les dates de publication, les catégories, `maxAgeHours` et l&#39;exploration des sous-pages sont disponibles dans les fields facultatifs du node.
 
-## Ressources disponibles {#available-resources}
+<div id="available-resources">
+  ## Ressources disponibles
+</div>
 
 | Ressource    | Opérations                                                                                                                                   |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -52,7 +58,9 @@ Search peut également renvoyer le texte, les highlights, les résumés, les lie
 | **Answer**   | Générer une réponse fondée sur des preuves, avec citations et sortie structurée en option.                                                   |
 | **Agent**    | Créer, inspecter, lister, streamer, interroger et annuler des runs Agent multi-étapes.                                                       |
 
-## Utiliser Exa avec un AI Agent n8n {#use-exa-with-an-n8n-ai-agent}
+<div id="use-exa-with-an-n8n-ai-agent">
+  ## Utiliser Exa avec un AI Agent n8n
+</div>
 
 Connectez un node Exa à un node **AI Agent** via son entrée outil. Les paramètres que le modèle doit fournir peuvent utiliser l&#39;expression `$fromAI()` de n8n :
 
@@ -62,7 +70,9 @@ Connectez un node Exa à un node **AI Agent** via son entrée outil. Les paramè
 
 Search et Answer conviennent bien comme outils de grounding. Utilisez la ressource Agent lorsque la tâche nécessite une recherche en plusieurs étapes, de la constitution de listes, des enrichments structurés ou des données premium [Exa Connect](/fr/docs/agent/connect/overview).
 
-## Attendre un Agent run {#wait-for-an-agent-run}
+<div id="wait-for-an-agent-run">
+  ## Attendre un Agent run
+</div>
 
 Lors de la création d&#39;un Agent run, **Wait for Completion** prend en charge :
 
@@ -71,7 +81,9 @@ Lors de la création d&#39;un Agent run, **Wait for Completion** prend en charge
 
 Pour les workflows longs ou asynchrones, désactivez **Wait for Completion**, conservez l&#39;`id` du run renvoyé et utilisez **Get Run** ultérieurement. Le run se poursuit côté Exa une fois l&#39;étape n8n terminée.
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Le node Exa n'apparaît pas dans le node picker">
@@ -87,7 +99,9 @@ Pour les workflows longs ou asynchrones, désactivez **Wait for Completion**, co
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={3}>
   <Card title="Node Exa officiel" icon="github" href="https://github.com/exa-labs/n8n-integration" cta="Voir le repository" arrow="true">

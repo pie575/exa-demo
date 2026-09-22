@@ -19,7 +19,9 @@ HIPAA 모드는 최상위 `compliance` field를 통해 요청 단위로 제어�
 
 HIPAA 모드는 해당 요청에 대해 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)을 포함하며, Exa는 PHI를 저장하지 않습니다.
 
-## 지원 엔드포인트 {#supported-endpoints}
+<div id="supported-endpoints">
+  ## 지원 엔드포인트
+</div>
 
 `compliance` field는 다음 엔드포인트에서 인식됩니다:
 
@@ -28,7 +30,9 @@ HIPAA 모드는 해당 요청에 대해 [Zero Data Retention](/ko/docs/admin/sec
 
 그 외 엔드포인트에서는 이 field가 거부됩니다.
 
-## 요구 사항 {#requirements}
+<div id="requirements">
+  ## 요구 사항
+</div>
 
 HIPAA 모드는 캐시된 retrieval만 지원합니다. 호환되는 요청은 다음과 같습니다.
 
@@ -42,7 +46,9 @@ HIPAA 모드는 캐시된 retrieval만 지원합니다. 호환되는 요청은 �
 * `maxAgeHours: 0` 또는 양수 `maxAgeHours`처럼 실시간 fetch가 필요한 freshness 설정
 * `type`을 생략하거나 `instant`, `fast` 이외의 타입을 사용하는 search 요청
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -58,6 +64,8 @@ HIPAA 모드는 캐시된 retrieval만 지원합니다. 호환되는 요청은 �
   ```
 </CodeGroup>
 
-## 액세스 {#access}
+<div id="access">
+  ## 액세스
+</div>
 
 team에서 HIPAA 모드를 활성화하려면 [sales@exa.ai](mailto:sales@exa.ai)로 문의하세요. Exa 보안 문서는 [Trust Center](https://trust.exa.ai)에서 확인할 수 있습니다.

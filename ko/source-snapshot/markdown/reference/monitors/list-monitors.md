@@ -1,13 +1,19 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# monitor 목록 조회 {#list-monitors}
+<div id="list-monitors">
+  # monitor 목록 조회
+</div>
 
 > 인증된 team의 모든 monitor를 조회합니다. 상태별 필터링과 cursor 기반 페이지네이션을 지원합니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors
 openapi: 3.1.0

@@ -1,14 +1,20 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 개발자 quickstart {#developer-quickstart}
+<div id="developer-quickstart">
+  # 개발자 quickstart
+</div>
 
 > API 키를 발급받고, 직접 작성한 코드나 agent에서 Exa를 사용하세요.
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  ## 1. API 키 발급받기 {#1-get-an-api-key}
+  <div id="1-get-an-api-key">
+    ## 1. API 키 발급받기
+  </div>
 
   <Steps>
     <Step title="Exa Dashboard 방문하기">
@@ -36,7 +42,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 2. Exa 사용 방식 선택하기 {#2-choose-how-youll-use-exa}
+  <div id="2-choose-how-youll-use-exa">
+    ## 2. Exa 사용 방식 선택하기
+  </div>
 
   Exa는 두 가지 방식으로 애플리케이션에 통합할 수 있습니다. 직접 작성한 코드에서 API를 호출하거나, 이미 사용 중인 agent를 연결하면 됩니다.
 
@@ -63,7 +71,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 3. SDK 설치하기 {#3-install-an-sdk}
+  <div id="3-install-an-sdk">
+    ## 3. SDK 설치하기
+  </div>
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -77,7 +87,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 4. 첫 요청 보내기 {#4-make-your-first-request}
+  <div id="4-make-your-first-request">
+    ## 4. 첫 요청 보내기
+  </div>
 
   <CodeGroup>
     ```python Python theme={null}
@@ -120,7 +132,9 @@
     ```
   </CodeGroup>
 
-  ## 다음 단계 {#next-steps}
+  <div id="next-steps">
+    ## 다음 단계
+  </div>
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/ko/docs/search/quickstart" cta="가이드 읽기" arrow="true">

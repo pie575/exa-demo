@@ -1,4 +1,6 @@
-# 독립 블라인드 시각 검토 — 최종 캡처 {#independent-blinded-visual-review-final-captures}
+<div id="independent-blinded-visual-review-final-captures">
+  # 독립 블라인드 시각 검토 — 최종 캡처
+</div>
 
 소스와 레이블을 연결하는 키 없이, 새로 갱신된 네 개의 A/B 비교 이미지를 검토했습니다.
 

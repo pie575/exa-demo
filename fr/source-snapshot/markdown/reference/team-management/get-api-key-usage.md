@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Obtenir l&#39;utilisation d&#39;une API key {#get-api-key-usage}
+<div id="get-api-key-usage">
+  # Obtenir l&#39;utilisation d&#39;une API key
+</div>
 
 > Récupérez les données d&#39;utilisation et de facturation d&#39;une API key spécifique.
 
@@ -15,21 +19,29 @@
   La Team Management API s&#39;active équipe par équipe. Elle s&#39;authentifie avec une API key de compte de service, créée depuis l&#39;onglet **Service keys** de la [page API keys](https://dashboard.exa.ai/api-keys) une fois la fonctionnalité activée pour votre équipe. Contactez [support@exa.ai](mailto:support@exa.ai) pour demander l&#39;accès.
 </Info>
 
-## Aperçu {#overview}
+<div id="overview">
+  ## Aperçu
+</div>
 
 L&#39;endpoint Get API Key Usage vous permet de récupérer des statistiques détaillées de facturation et d&#39;utilisation pour une API key donnée sur une période déterminée. Cet endpoint renvoie les données de coûts issues du système de facturation d&#39;Exa, offrant ainsi une vue de référence sur ce qui vous est facturé pour cette API key.
 
-## Path Parameters {#path-parameters}
+<div id="path-parameters">
+  ## Path Parameters
+</div>
 
 * **id** : L&#39;identifiant unique de l&#39;API key dont vous souhaitez récupérer l&#39;utilisation
 
-## Paramètres de requête {#query-parameters}
+<div id="query-parameters">
+  ## Paramètres de requête
+</div>
 
 * **start&#95;date** (facultatif) : date de début de la période d&#39;utilisation au format ISO 8601 (par exemple, `2025-01-01T00:00:00Z` ou `2025-01-01`). Par défaut, il y a 30 jours. Doit se situer dans les 6 derniers mois (180 jours).
 * **end&#95;date** (facultatif) : date de fin de la période d&#39;utilisation au format ISO 8601. Par défaut, l&#39;heure actuelle.
 * **group&#95;by** (facultatif) : granularité temporelle pour le regroupement des résultats (`hour`, `day` ou `month`). Actuellement réservé à de futures évolutions, ce paramètre ne modifie pas la structure de la réponse. Valeur par défaut : `day`.
 
-## Réponse {#response}
+<div id="response">
+  ## Réponse
+</div>
 
 Renvoie des informations détaillées d&#39;utilisation et de facturation, notamment :
 
@@ -46,14 +58,18 @@ Renvoie des informations détaillées d&#39;utilisation et de facturation, notam
   * **amount&#95;usd** : coût en USD pour ce type de tarif
 * **metadata** : objet contenant l&#39;horodatage de génération du rapport
 
-## Remarques importantes {#important-notes}
+<div id="important-notes">
+  ## Remarques importantes
+</div>
 
 * **Historique limité à 6 mois** : le système de facturation ne remonte pas au-delà de 6 mois (180 jours). Les requêtes dont la `start_date` est antérieure à 180 jours renverront une erreur 400.
 * **Utilisation nulle** : si l&#39;API key n&#39;a enregistré aucune utilisation sur la période demandée, `total_cost_usd` vaudra 0 et `cost_breakdown` pourra être vide.
 * **Appartenance à une Team** : l&#39;API key de service utilisée pour l&#39;authentification doit appartenir à la même équipe que l&#39;API key demandée. L&#39;accès inter-équipes n&#39;est pas autorisé.
 * **Formats de date** : les dates peuvent être fournies au format ISO 8601, avec ou sans composante horaire (par exemple, `2025-01-01` ou `2025-01-01T00:00:00Z`).
 
-## Cas d&#39;usage {#use-cases}
+<div id="use-cases">
+  ## Cas d&#39;usage
+</div>
 
 Cet endpoint est utile pour :
 
@@ -63,7 +79,9 @@ Cet endpoint est utile pour :
 * Générer des rapports d&#39;utilisation pour la répartition interne des coûts
 * Élucider des questions de facturation liées à des API keys spécifiques
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}/usage
 openapi: 3.1.0

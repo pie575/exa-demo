@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Hermes Agent {#hermes-agent}
+<div id="hermes-agent">
+  # Hermes Agent
+</div>
 
 > 借助 Exa 为 Hermes Agent 提供实时网页搜索和页面内容。
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) 内置 Exa，作为其模型可调用的 `web_search` 和 `web_extract` 工具的原生后端。这两项能力都可以使用 Exa，也可以让 Exa 与另一个 Hermes 网页提供方搭配使用。
 
-## 连接你的 Exa 账户 {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## 连接你的 Exa 账户
+</div>
 
 <Steps>
   <Step title="获取 Exa API 密钥">
@@ -39,7 +45,9 @@
   </Step>
 </Steps>
 
-## 手动配置 {#configure-manually}
+<div id="configure-manually">
+  ## 手动配置
+</div>
 
 将你的密钥添加到 Hermes 环境文件中：
 
@@ -64,7 +72,9 @@ web:
 
 各项能力的单独设置优先于 `web.backend`。这样一来，在组合多个提供方时，你可以仅将 Exa 用于搜索，或仅用于提取。
 
-## Hermes 可用的 tools {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Hermes 可用的 tools
+</div>
 
 | 工具            | Exa 行为                                       |
 | ------------- | -------------------------------------------- |
@@ -77,7 +87,9 @@ Hermes 会将过长的提取页面截断至其配置的字符预算，并把完�
   无需 API 密钥，Hermes 也能通过其免密钥的免费提供方池使用 Exa。该池有速率限制，并可能在多个提供方之间轮换。如果你希望请求始终使用自己的 Exa 账户，请配置 `EXA_API_KEY` 并选择基于 API 密钥的 Exa 选项。
 </Note>
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes 未选择 Exa">
@@ -93,7 +105,9 @@ Hermes 会将过长的提取页面截断至其配置的字符预算，并把完�
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 <Columns cols={3}>
   <Card title="Hermes 网页 tools" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="阅读指南" arrow="true">

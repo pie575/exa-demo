@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Gumloop {#gumloop}
+<div id="gumloop">
+  # Gumloop
+</div>
 
 > Gumloop flow 안에서 Exa search와 contents를 사용하세요.
 
 [Gumloop](https://www.gumloop.com/)은 Exa를 기본 제공 MCP 연동으로 지원합니다. agent나 Agent Node에 추가하면 워크플로우 안에서 웹을 검색하고, 페이지를 추출하고, 관련 소스를 찾고, 인용에 근거한 답변을 생성할 수 있습니다.
 
-## Gumloop agent에 Exa 추가하기 {#add-exa-to-a-gumloop-agent}
+<div id="add-exa-to-a-gumloop-agent">
+  ## Gumloop agent에 Exa 추가하기
+</div>
 
 <Steps>
   <Step title="agent 열기">
@@ -35,7 +41,9 @@
   </Step>
 </Steps>
 
-## 사용 가능한 도구 {#available-tools}
+<div id="available-tools">
+  ## 사용 가능한 도구
+</div>
 
 | 도구                       | 용도                                          |
 | ------------------------ | ------------------------------------------- |
@@ -48,9 +56,13 @@
 
 대화형 agent라면 Search, Get Contents, Answer를 먼저 활성화하세요. 나머지 도구는 워크플로우에 필요할 때만 추가하면 됩니다.
 
-## 워크플로우에서 Exa 사용하기 {#use-exa-in-a-workflow}
+<div id="use-exa-in-a-workflow">
+  ## 워크플로우에서 Exa 사용하기
+</div>
 
-### Agent Node {#agent-node}
+<div id="agent-node">
+  ### Agent Node
+</div>
 
 결정적으로 동작하는 Gumloop flow에 **Agent Node**를 추가하고 Exa를 도구 중 하나로 attach하세요. 이 node는 다음 워크플로우 단계로 output을 전달하기 전에 search를 수행할지, 페이지 전체를 가져올지, 여러 Exa calls를 연결할지 스스로 판단할 수 있습니다.
 
@@ -61,7 +73,9 @@
 * records를 영업 워크플로우로 라우팅하기 전에 기업을 리서치하기
 * 제품을 비교하고 그 결과를 문서에 기록하기
 
-### 재사용 가능한 커스텀 MCP node {#reusable-custom-mcp-node}
+<div id="reusable-custom-mcp-node">
+  ### 재사용 가능한 커스텀 MCP node
+</div>
 
 반복적으로 수행할 단일 동작이라면 전용 node를 만드세요:
 
@@ -72,7 +86,9 @@
 
 동적인 계획 수립이나 여러 도구가 필요한 작업에는 Agent Node를 사용하세요. 동일한 Exa 작업을 모든 item에 대해 예측 가능하게 실행해야 한다면 커스텀 MCP node를 사용하세요.
 
-## Prompt 패턴 {#prompt-patterns}
+<div id="prompt-patterns">
+  ## Prompt 패턴
+</div>
 
 <AccordionGroup>
   <Accordion title="검색 후 요약하기">
@@ -96,7 +112,9 @@
   </Accordion>
 </AccordionGroup>
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="agent에서 Exa를 사용할 수 없습니다">
@@ -112,7 +130,9 @@
   </Accordion>
 </AccordionGroup>
 
-## 참고 자료 {#resources}
+<div id="resources">
+  ## 참고 자료
+</div>
 
 <Columns cols={3}>
   <Card title="Gumloop Exa 연동" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="가이드 읽기" arrow="true">

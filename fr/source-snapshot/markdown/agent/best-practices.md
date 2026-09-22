@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Bonnes pratiques Agent {#agent-best-practices}
+<div id="agent-best-practices">
+  # Bonnes pratiques Agent
+</div>
 
 > Optimisez la qualité des requêtes, la sortie structurée, l&#39;effort et le coût de vos intégrations Exa Agent en production.
 
 Utilisez ce guide après le [Quickstart Agent](/fr/docs/agent/quickstart) pour améliorer la qualité des requêtes, structurer les sorties et maîtriser le temps d&#39;exécution et le coût. Pour des requêtes complètes, commencez par les [exemples Agent](/fr/docs/agent/examples).
 
-## Principes fondamentaux {#core-principles}
+<div id="core-principles">
+  ## Principes fondamentaux
+</div>
 
 Considérez `query` comme une spécification de tâche. Précisez ce que l&#39;Agent doit trouver, le scope du travail, les preuves requises et ce qui constitue un résultat complet.
 
@@ -51,7 +57,9 @@ Sans `outputSchema`, l&#39;Agent renvoie du texte dans `output.text` et des cita
 
 Placez les lignes, les exclusions et la forme de la réponse dans leurs fields dédiés plutôt que de les intégrer à `query`.
 
-## Rédiger des requêtes de constitution de liste et d&#39;enrichment {#writing-list-building-and-enrichment-queries}
+<div id="writing-list-building-and-enrichment-queries">
+  ## Rédiger des requêtes de constitution de liste et d&#39;enrichment
+</div>
 
 Pour la constitution de listes, définissez l&#39;entité, le nombre cible, les critères de qualification, les exclusions et le niveau de preuve exigé. Pour l&#39;enrichment, placez les records existants dans `input.data` et décrivez uniquement la recherche qu&#39;Agent doit effectuer en complément.
 
@@ -73,7 +81,9 @@ Demandez une justification lorsque la qualification relève d&#39;un jugement. N
 
 Consultez [Find all GTM members](/fr/docs/agent/examples#find-all-code) pour un exemple de requête de discovery et [Enrich input rows](/fr/docs/agent/examples#enrich-input-rows-code) pour le modèle d&#39;enrichment de lignes correspondant.
 
-## Gérer les runs asynchrones {#handle-asynchronous-runs}
+<div id="handle-asynchronous-runs">
+  ## Gérer les runs asynchrones
+</div>
 
 Les Agent runs peuvent durer de quelques secondes à plusieurs minutes, le temps de rechercher, lire et raisonner. Concevez votre application autour de ce cycle de vie plutôt que de maintenir une requête applicative ouverte.
 
@@ -97,7 +107,9 @@ Pour les batchs, testez des tâches représentatives avant d&#39;estimer la conc
 
 Pour les équipes en Zero Data Retention, consommez le flux en direct ou interrogez l&#39;API pendant la fenêtre de rétention. `previousRunId` et les `dataSources` Connect ne sont pas disponibles. Voir [Zero Data Retention](/fr/docs/admin/security/zero-data-retention).
 
-## Rédiger des schémas JSON personnalisés pour la sortie structurée {#write-custom-json-schemas-for-structured-output}
+<div id="write-custom-json-schemas-for-structured-output">
+  ## Rédiger des schémas JSON personnalisés pour la sortie structurée
+</div>
 
 Utilisez `outputSchema` lorsque le code en aval a besoin de fields exploitables par une machine, de valeurs normalisées, de lignes de tableau ou de records d&#39;enrichment. Si une réponse en prose suffit, omettez-le et lisez `output.text` ; la sortie structurée demande un travail de formatage supplémentaire et peut augmenter la latence.
 
@@ -147,7 +159,9 @@ Ne dupliquez pas dans votre schéma les citations ou la confidence intégrées d
 
 Parcourez les [exemples d&#39;Agent structurés](/fr/docs/agent/examples) pour comparer les schémas de constitution de listes, de KYB, d&#39;offres d&#39;emploi, d&#39;exclusions et de runs poursuivis.
 
-## Agent ou Search {#agent-vs-search}
+<div id="agent-vs-search">
+  ## Agent ou Search
+</div>
 
 | Besoin                                                                  | Commencer par                           |
 | ----------------------------------------------------------------------- | --------------------------------------- |
@@ -157,7 +171,9 @@ Parcourez les [exemples d&#39;Agent structurés](/fr/docs/agent/examples) pour c
 
 Utilisez Agent lorsque la tâche exige plusieurs étapes de retrieval, une vérification entité par entité ou un enrichment sur des records connus. Utilisez Search lorsque vous avez besoin de pages rapidement et que votre application prend en charge le reste du raisonnement.
 
-## Conseils pour les cas d&#39;usage courants {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## Conseils pour les cas d&#39;usage courants
+</div>
 
 | Si vous avez besoin de                                  | Utilisez                                                       | Évitez                                                                      |
 | ------------------------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------- |
@@ -169,7 +185,9 @@ Utilisez Agent lorsque la tâche exige plusieurs étapes de retrieval, une véri
 | Un coût prévisible par requête                          | Un `effort` fixe                                               | `auto` ou `max` sans budget                                                 |
 | L&#39;exhaustivité plutôt que la latence et le coût     | `xhigh` ou `max`                                               | Augmenter l&#39;effort avant d&#39;avoir affiné la requête                  |
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="Quickstart Agent" icon="bot" href="/fr/docs/agent/quickstart" cta="Ouvrir le guide" arrow="true">

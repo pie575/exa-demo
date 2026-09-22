@@ -16,7 +16,9 @@ searchable: false
   在 agent 环境中将密钥设置为 `EXA_API_KEY`。
 </Note>
 
-## 设置 {#setup}
+<div id="setup">
+  ## 设置
+</div>
 
 **方式 A：直接安装此 skill：**
 
@@ -62,13 +64,17 @@ Skill 来源：
 全程必须遵守的硬性规则：密钥是 secret。只能通过存在性/长度检查（`${EXA_API_KEY:+set}`、`[ -s ~/.config/exa/key ]`）或 HTTP 状态码来查看它 — 绝不要对任何可能包含它的文件或变量执行 print、`echo`、`cat` 或带输出的 `grep`，也绝不要试图用正则“脱敏”密钥文件。一旦密钥被暴露，告诉我到 https://dashboard.exa.ai/api-keys 轮换它。
 ```
 
-## 查看源文件 {#view-source}
+<div id="view-source">
+  ## 查看源文件
+</div>
 
 <Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="查看源文件" arrow="true">
   安装前请先阅读 exa-contents skill 的定义。
 </Card>
 
-## 相关内容 {#related}
+<div id="related">
+  ## 相关内容
+</div>
 
 <Columns cols={2}>
   <Card title="全部 agent skill" icon="layers" href="/zh/docs/get-started/agent-skills/overview" cta="浏览 skill" arrow="true">

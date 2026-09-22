@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Imports 사용 방법 {#how-to-use-imports}
+<div id="how-to-use-imports">
+  # Imports 사용 방법
+</div>
 
 > URL을 Websets로 import하는 단계별 가이드 -- 목록을 enrich하고, criteria로 점수를 매기고, 새로운 일치 항목을 찾고, 이 세 가지를 모두 결합하는 방법을 다룹니다.
 
@@ -11,7 +15,9 @@
 
 이 가이드에서는 복사해서 바로 쓸 수 있는 API 호출과 함께 모든 구성을 하나씩 살펴봅니다. `$EXA_API_KEY`만 본인의 API 키로 바꾸면 됩니다.
 
-## 예시: IT 컨설팅 공급업체 5곳 {#our-example-5-it-consulting-suppliers}
+<div id="our-example-5-it-consulting-suppliers">
+  ## 예시: IT 컨설팅 공급업체 5곳
+</div>
 
 이 가이드 전반에서 동일한 5개 회사 목록을 import로 사용합니다:
 
@@ -32,7 +38,9 @@
 
 ***
 
-## Config 1: Import Only -- filtering 없이 enrich하기 {#config-1-import-only-enrich-without-filtering}
+<div id="config-1-import-only-enrich-without-filtering">
+  ## Config 1: Import Only -- filtering 없이 enrich하기
+</div>
 
 <Note>
   **실제 예시:** [dashboard에서 이 webset 보기](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -40,7 +48,9 @@
 
 **사용 시점:** URL 목록이 있고 이를 enrich하기만 하면 될 때. 점수 산정도 filtering도 없이 모든 item이 그대로 유지됩니다.
 
-### API 호출 {#api-calls}
+<div id="api-calls">
+  ### API 호출
+</div>
 
 ```bash theme={null}
 # 1단계: 공급업체 URL로 CSV import 생성
@@ -78,7 +88,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### 실제 Webset에서 확인되는 내용 {#what-we-see-in-the-live-webset}
+<div id="what-we-see-in-the-live-webset">
+  ### 실제 Webset에서 확인되는 내용
+</div>
 
 **5개 item**이 모두 Webset에 나타납니다. criteria가 없으므로 filtering도 일어나지 않습니다.
 
@@ -98,7 +110,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-## Config 2: Search Only -- Web Discovery {#config-2-search-only-web-discovery}
+<div id="config-2-search-only-web-discovery">
+  ## Config 2: Search Only -- Web Discovery
+</div>
 
 <Note>
   **실제 예시:** [dashboard에서 이 webset 보기](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -106,7 +120,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **사용 시점:** 보유한 목록이 없고, criteria에 맞는 새로운 회사를 웹에서 찾아내고 싶을 때.
 
-### API 호출 {#api-call}
+<div id="api-call">
+  ### API 호출
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -198,7 +214,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### 실제 Webset에서 확인되는 결과 {#what-we-see-in-the-live-webset-2}
+<div id="what-we-see-in-the-live-webset-2">
+  ### 실제 Webset에서 확인되는 결과
+</div>
 
 시스템이 웹을 검색해 두 criteria를 모두 통과하는 **35개 기업**을 찾았습니다. 모든 item에는 `source: "search"`가 설정되어 있으며, 매칭된 이유를 설명하는 전체 evaluations가 함께 제공됩니다.
 
@@ -215,7 +233,9 @@ web search가 35개 결과 중에 우연히 Accenture를 찾아내긴 했지만,
 
 ***
 
-## Config 3: Scoped Search -- criteria 기준으로 목록 score하기 {#config-3-scoped-search-score-your-list-against-criteria}
+<div id="config-3-scoped-search-score-your-list-against-criteria">
+  ## Config 3: Scoped Search -- criteria 기준으로 목록 score하기
+</div>
 
 <Note>
   **실제 예시:** [dashboard에서 이 webset 보기](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -223,7 +243,9 @@ web search가 35개 결과 중에 우연히 Accenture를 찾아내긴 했지만,
 
 **사용 시점:** 공급업체 목록이 있고 **각 항목을 criteria 기준으로 평가**하려는 경우에 사용합니다. 통과한 항목만 반환됩니다. 이른바 &quot;내 목록 score하기&quot; 사용 사례입니다.
 
-### API 호출 {#api-calls-2}
+<div id="api-calls-2">
+  ### API 호출
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -332,7 +354,9 @@ web search가 35개 결과 중에 우연히 Accenture를 찾아내긴 했지만,
   ```
 </CodeGroup>
 
-### 실제 Webset에서 확인되는 결과 {#what-we-see-in-the-live-webset-3}
+<div id="what-we-see-in-the-live-webset-3">
+  ### 실제 Webset에서 확인되는 결과
+</div>
 
 webset에는 **4개의 item**이 있습니다. 5개 공급업체 각각을 criteria에 따라 평가했으며, 두 criteria를 모두 통과한 항목만 표시됩니다.
 
@@ -352,7 +376,9 @@ webset에는 **4개의 item**이 있습니다. 5개 공급업체 각각을 crite
 
 ***
 
-## Config 4: Scoped Search + Web Discovery -- 내 리스트 score 매기기 + 신규 일치 항목 찾기 {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
+<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
+  ## Config 4: Scoped Search + Web Discovery -- 내 리스트 score 매기기 + 신규 일치 항목 찾기
+</div>
 
 <Note>
   **실제 예시:** [dashboard에서 이 webset 보기](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -360,7 +386,9 @@ webset에는 **4개의 item**이 있습니다. 5개 공급업체 각각을 crite
 
 **사용 시점:** criteria에 따라 score를 매기고 싶은 공급업체 리스트가 있고, 동시에 같은 criteria에 부합하는 기업을 웹에서 추가로 발굴하고 싶을 때 사용합니다. 두 단계로 진행됩니다. 먼저 Scoped Search로 webset을 생성한 다음, 같은 webset에 일반 web search를 추가합니다.
 
-### API 호출 {#api-calls-3}
+<div id="api-calls-3">
+  ### API 호출
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -532,7 +560,9 @@ webset에는 **4개의 item**이 있습니다. 5개 공급업체 각각을 crite
   ```
 </CodeGroup>
 
-### 실시간 Webset에서 확인할 수 있는 것 {#what-we-see-in-the-live-webset-4}
+<div id="what-we-see-in-the-live-webset-4">
+  ### 실시간 Webset에서 확인할 수 있는 것
+</div>
 
 이 webset에는 **29개 item**이 들어 있습니다. import한 공급업체 중 4개(score를 받아 통과)와 웹에서 발견된 25개 기업입니다. 두 그룹 모두 criteria에 따라 평가됩니다.
 
@@ -553,7 +583,9 @@ Scoped Search는 import한 목록을 criteria에 따라 평가하고(Persol Grou
 
 ***
 
-## 빠른 reference {#quick-reference}
+<div id="quick-reference">
+  ## 빠른 reference
+</div>
 
 | 구성                                   | 기능 설명                    | 모든 item 유지?             | item이 score됨?                   |
 | ------------------------------------ | ------------------------ | ----------------------- | ------------------------------- |
@@ -562,7 +594,9 @@ Scoped Search는 import한 목록을 criteria에 따라 평가하고(Persol Grou
 | **3. Scoped Search**                 | criteria 기준으로 목록을 score  | 아니요 -- 실패한 항목은 제외       | 예                               |
 | **4. Scoped Search + Web Discovery** | 목록을 score하고 새로운 일치 항목 발견 | 아니요 -- import 실패 항목은 제외 | 예 -- import 항목과 발견된 항목 모두 score |
 
-## 어떤 Config를 사용해야 하나요? {#which-config-should-i-use}
+<div id="which-config-should-i-use">
+  ## 어떤 Config를 사용해야 하나요?
+</div>
 
 * **&quot;필터링 없이 내 리스트를 enrich만 하고 싶어요&quot;** -- Config 1
 * **&quot;리스트가 없어요, 회사를 찾아주세요&quot;** -- Config 2

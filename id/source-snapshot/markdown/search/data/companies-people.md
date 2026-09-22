@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Perusahaan &amp; Orang {#companies-people}
+<div id="companies-people">
+  # Perusahaan &amp; Orang
+</div>
 
 > Temukan perusahaan, profil profesional, dan keterkaitan di antara keduanya dengan Exa Search.
 
@@ -45,32 +49,42 @@ Gunakan Exa Search untuk organisasi dan orang-orang yang terkait dengannya. Kedu
   </Card>
 </Columns>
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Penemuan perusahaan, kandidat, dan pakar
 * Research akun dan pemetaan pemangku kepentingan
 * Peta pasar, research investasi, dan pencarian peluang transaksi
 * Research kepemimpinan, perekrutan, dan organisasi
 
-## Tulis query yang lebih baik {#write-better-queries}
+<div id="write-better-queries">
+  ## Tulis query yang lebih baik
+</div>
 
 Mulailah dengan entitas yang Anda cari, lalu tambahkan karakteristik dan hubungan yang menjadi syaratnya. Sebutkan jenis sumber bila hal itu penting, misalnya halaman utama perusahaan, profil profesional, lowongan pekerjaan, atau situs web pribadi.
 
 <Tabs>
   <Tab title="Perusahaan" icon="building">
-### Temukan perusahaan berdasarkan apa yang mereka kerjakan {#discover-companies-by-what-they-do}
+    <div id="discover-companies-by-what-they-do">
+      ### Temukan perusahaan berdasarkan apa yang mereka kerjakan
+    </div>
 
     Jelaskan pelanggan, produk, capability, tahap, dan cakupan geografis yang mendefinisikan market tersebut. Dengan cara ini, kandidat ditemukan berdasarkan apa yang mereka kerjakan, bukan berdasarkan daftar perusahaan yang sudah ditentukan sebelumnya.
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-### Temukan sinyal operasional {#find-operating-signals}
+    <div id="find-operating-signals">
+      ### Temukan sinyal operasional
+    </div>
 
     Sebutkan sinyal dan company traits yang penting. Search dapat mengambil lowongan pekerjaan, halaman harga, dokumentasi produk, dan laporan, selain halaman perusahaan.
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-### Teliti aktivitas pendanaan {#research-funding-activity}
+    <div id="research-funding-activity">
+      ### Teliti aktivitas pendanaan
+    </div>
 
     Tentukan putaran pendanaan, industri, pihak yang terlibat, dan rentang waktunya.
 
@@ -78,19 +92,25 @@ Mulailah dengan entitas yang Anda cari, lalu tambahkan karakteristik dan hubunga
   </Tab>
 
   <Tab title="Orang" icon="users">
-### Temukan orang berdasarkan role dan keahlian {#discover-people-by-role-and-skills}
+    <div id="discover-people-by-role-and-skills">
+      ### Temukan orang berdasarkan role dan keahlian
+    </div>
 
     Gabungkan role, senioritas, lokasi, keahlian yang relevan, dan jenis sumber yang Anda inginkan.
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-### Saring orang berdasarkan company traits {#qualify-people-by-company-traits}
+    <div id="qualify-people-by-company-traits">
+      ### Saring orang berdasarkan company traits
+    </div>
 
     Jelaskan hubungan orang tersebut dengan perusahaan serta karakteristik yang menjadi syarat bagi perusahaan itu. Cara ini lebih efektif daripada menyusun daftar perusahaan terlebih dahulu.
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-### Temukan situs web pribadi dan karya publik {#find-personal-websites-and-public-work}
+    <div id="find-personal-websites-and-public-work">
+      ### Temukan situs web pribadi dan karya publik
+    </div>
 
     Sebutkan profesi atau bidang research, lalu minta secara eksplisit situs web pribadi, ceramah, wawancara, atau artikel.
 
@@ -98,13 +118,17 @@ Mulailah dengan entitas yang Anda cari, lalu tambahkan karakteristik dan hubunga
   </Tab>
 </Tabs>
 
-## Cari keduanya sekaligus {#search-both-together}
+<div id="search-both-together">
+  ## Cari keduanya sekaligus
+</div>
 
 Tulis satu query yang menyatakan keterkaitan yang Anda butuhkan. Exa dapat mengembalikan halaman perusahaan, profil profesional, halaman lowongan kerja, dan referensi publik dalam satu kumpulan hasil yang sama.
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,7 +169,9 @@ Tulis satu query yang menyatakan keterkaitan yang Anda butuhkan. Exa dapat menge
   ```
 </CodeGroup>
 
-## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research di berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan perusahaan, orang, kriteria kualifikasi, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 

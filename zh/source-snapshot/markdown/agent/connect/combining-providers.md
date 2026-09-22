@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，请通过该文件了解所有可用页面。
 
-# Combining providers {#combining-providers}
+<div id="combining-providers">
+  # Combining providers
+</div>
 
 > 在单次 Exa Agent 运行中同时使用多个数据合作伙伴。
 
 将合作伙伴附加到 `dataSources` 后，它便会作为工具提供给 Exa Agent，但这**并不会**强制 agent 去调用它。合作伙伴是否会被触发，取决于你的 `query` 和 `outputSchema`：明确说明你希望从每个合作伙伴获得哪类结果，Exa Agent 就会直接选用对应的工具，而不必从网页中猜测。每次运行最多可接入五个合作伙伴；Exa Agent 会为每一步选择要调用的工具，同时还可使用 Exa 网页搜索。单次运行需要超过五个？请[联系我们](mailto:sales@exa.ai)以提高该上限。
 
-## 在一次运行中使用两个合作伙伴 {#two-partners-in-one-run}
+<div id="two-partners-in-one-run">
+  ## 在一次运行中使用两个合作伙伴
+</div>
 
 同时列出多个合作伙伴，Exa Agent 会各取所长。这里的两个只是举例，你最多可以将五个合作伙伴附加到 `dataSources`，原理相同：明确要求获取每个合作伙伴的数据。下面这个投资简报运行结合了 [Financial Datasets](/zh/docs/agent/connect/financialdatasets) (获取股票代码相关新闻) 与 [Particle](/zh/docs/agent/connect/particle) (获取播客评论) 。query 明确要求获取每个合作伙伴的特色数据，schema 将输出拆分为 `financialNews` 和 `podcastChatter`，因此 Exa Agent 会在同一次运行中同时调用**两个**合作伙伴。
 

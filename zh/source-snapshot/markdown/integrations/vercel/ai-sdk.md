@@ -1,21 +1,29 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# AI SDK by Vercel {#ai-sdk-by-vercel}
+<div id="ai-sdk-by-vercel">
+  # AI SDK by Vercel
+</div>
 
 > 使用 @exalabs/ai-sdk 包，为 AI SDK 应用添加 Exa 网页搜索能力。
 
 使用 `@exalabs/ai-sdk` 包，可为基于 Vercel AI SDK 构建的应用添加 Exa 网页搜索。你只需提供 Exa API 密钥，`webSearch()` 工具便会为你的模型处理搜索请求。
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-## 快速开始 {#quick-start}
+<div id="quick-start">
+  ## 快速开始
+</div>
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -43,7 +51,9 @@ console.log(text);
   运行示例前，请将密钥设置到环境变量 `EXA_API_KEY` 中。该包会自动读取此环境变量。
 </Info>
 
-## 默认值 {#defaults}
+<div id="defaults">
+  ## 默认值
+</div>
 
 `webSearch()` 使用以下默认值：
 
@@ -52,7 +62,9 @@ console.log(text);
 * `contents.text`：每条结果 `3000` 个字符
 * `maxAgeHours`：采用默认的缓存回退值；如需更严格的新鲜度，请显式设置该选项
 
-## 配置搜索 {#configure-search}
+<div id="configure-search">
+  ## 配置搜索
+</div>
 
 使用以下选项调整搜索和内容提取：
 
@@ -78,7 +90,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-### 搜索选项 {#search-options}
+<div id="search-options">
+  ### 搜索选项
+</div>
 
 | 选项                                        | 说明                                                                                 |
 | ----------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -90,7 +104,9 @@ console.log(text);
 | `includeText` / `excludeText`             | 要求结果中包含或排除指定文本。                                                                    |
 | `userLocation`                            | 两位字母国家代码，用于位置感知搜索。                                                                 |
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 | 选项                                                     | 说明                                              |
 | ------------------------------------------------------ | ----------------------------------------------- |
@@ -101,7 +117,9 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | 抓取子页面，并可指定目标子页面。                                |
 | `contents.extras.links` / `contents.extras.imageLinks` | 返回结果中的链接或图片链接。                                  |
 
-## TypeScript 支持 {#typescript-support}
+<div id="typescript-support">
+  ## TypeScript 支持
+</div>
 
 该包内置了 TypeScript 类型定义：
 
@@ -116,7 +134,9 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-## 相关页面 {#related-pages}
+<div id="related-pages">
+  ## 相关页面
+</div>
 
 <Columns cols={2}>
   <Card title="使用 Vercel AI Gateway" icon="cloud" href="/zh/docs/integrations/vercel/ai-gateway" cta="打开指南" arrow="true">

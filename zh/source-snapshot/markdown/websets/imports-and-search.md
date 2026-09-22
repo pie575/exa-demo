@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# 如何使用导入 {#how-to-use-imports}
+<div id="how-to-use-imports">
+  # 如何使用导入
+</div>
 
 > 将 URL 导入 Websets 的分步指南：丰富列表、依据 criteria 评分、发现新的匹配项，以及将三者结合使用。
 
@@ -11,7 +15,9 @@
 
 本指南将逐一介绍每种配置，并提供可直接复制粘贴的 API 调用示例。只需将 `$EXA_API_KEY` 替换为你的 API 密钥即可。
 
-## 我们的示例：5 家 IT consulting 供应商 {#our-example-5-it-consulting-suppliers}
+<div id="our-example-5-it-consulting-suppliers">
+  ## 我们的示例：5 家 IT consulting 供应商
+</div>
 
 在本指南中，我们将始终使用这份包含 5 家公司的列表作为导入内容：
 
@@ -32,7 +38,9 @@
 
 ***
 
-## Config 1：Import Only —— 仅丰富，不做过滤 {#config-1-import-only-enrich-without-filtering}
+<div id="config-1-import-only-enrich-without-filtering">
+  ## Config 1：Import Only —— 仅丰富，不做过滤
+</div>
 
 <Note>
   **在线示例：** [在控制台中查看此 webset](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -40,7 +48,9 @@
 
 **适用场景：** 你已有一份 URL 列表，只想对其进行丰富。不评分、不过滤 —— 每一个项目都会保留。
 
-### API 调用 {#api-calls}
+<div id="api-calls">
+  ### API 调用
+</div>
 
 ```bash theme={null}
 # 第 1 步：用你的供应商 URL 创建一个 CSV 导入
@@ -78,7 +88,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### 在实时 Webset 中看到的结果 {#what-we-see-in-the-live-webset}
+<div id="what-we-see-in-the-live-webset">
+  ### 在实时 Webset 中看到的结果
+</div>
 
 全部 **5 个项目**都出现在 Webset 中。由于没有 criteria，因此不会执行任何过滤。
 
@@ -98,7 +110,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-## Config 2：Search Only —— 网络发现 {#config-2-search-only-web-discovery}
+<div id="config-2-search-only-web-discovery">
+  ## Config 2：Search Only —— 网络发现
+</div>
 
 <Note>
   **在线示例：**[在控制台中查看该 webset](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -106,7 +120,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **适用场景：** 你没有现成的名单，希望直接从网络中发现符合 criteria 的新公司。
 
-### API 调用 {#api-call}
+<div id="api-call">
+  ### API 调用
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -198,7 +214,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### 在实时 Webset 中看到的结果 {#what-we-see-in-the-live-webset-2}
+<div id="what-we-see-in-the-live-webset-2">
+  ### 在实时 Webset 中看到的结果
+</div>
 
 系统搜索网页后，找到 **35 家公司** 同时满足两项 criteria。每个项目都带有 `source: "search"`，并附有完整的评估结果，说明其匹配原因。
 
@@ -215,7 +233,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-## Config 3：限定 scope 的 Search —— 用 criteria 给你的列表打分 {#config-3-scoped-search-score-your-list-against-criteria}
+<div id="config-3-scoped-search-score-your-list-against-criteria">
+  ## Config 3：限定 scope 的 Search —— 用 criteria 给你的列表打分
+</div>
 
 <Note>
   **在线示例：**[在控制台中查看该 webset](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -223,7 +243,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **适用场景：** 你已有一份供应商列表，想要**按 criteria 逐一评估**。只有通过评估的条目才会返回。这就是“给我的列表打分”这类用例。
 
-### API 调用 {#api-calls-2}
+<div id="api-calls-2">
+  ### API 调用
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -332,7 +354,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### 在实时 Webset 中看到的结果 {#what-we-see-in-the-live-webset-3}
+<div id="what-we-see-in-the-live-webset-3">
+  ### 在实时 Webset 中看到的结果
+</div>
 
 该 webset 包含 **4 个项目**。我们的 5 家供应商都按 criteria 做了评估——只有两项 criteria 都通过的才会出现。
 
@@ -352,7 +376,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-## Config 4：限定 scope 的 Search + 网络发现 —— 既为你的列表打分，又发现新的匹配项 {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
+<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
+  ## Config 4：限定 scope 的 Search + 网络发现 —— 既为你的列表打分，又发现新的匹配项
+</div>
 
 <Note>
   **在线示例：**[在控制台查看此 webset](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -360,7 +386,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **适用场景：** 你有一份供应商列表，想对照 criteria 打分，同时还想从网络上发现符合相同 criteria 的其他公司。这需要分两步完成：先用限定 scope 的 Search 创建一个 webset，再向同一个 webset 添加一个常规的网页搜索。
 
-### API 调用 {#api-calls-3}
+<div id="api-calls-3">
+  ### API 调用
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -532,7 +560,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### 在实时 Webset 中看到的内容 {#what-we-see-in-the-live-webset-4}
+<div id="what-we-see-in-the-live-webset-4">
+  ### 在实时 Webset 中看到的内容
+</div>
 
 该 webset 包含 **29 个项目**：4 个来自我们导入的供应商 (已打分并通过) ，外加 25 家通过网页发现的公司。两部分都会依据 criteria 进行评估。
 
@@ -553,7 +583,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-## 快速参考 {#quick-reference}
+<div id="quick-reference">
+  ## 快速参考
+</div>
 
 | 配置                                   | 作用                  | 是否保留所有项目？         | 项目是否打分？          |
 | ------------------------------------ | ------------------- | ----------------- | ---------------- |
@@ -562,7 +594,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 | **3. Scoped Search**                 | 依据 criteria 为你的列表打分 | 否 —— 未通过的会被剔除     | 是                |
 | **4. Scoped Search + 网络发现** | 为你的列表打分 + 发现新的匹配项   | 否 —— 导入项中未通过的会被剔除 | 是 —— 导入项和发现项都会打分 |
 
-## 我该使用哪个 Config？ {#which-config-should-i-use}
+<div id="which-config-should-i-use">
+  ## 我该使用哪个 Config？
+</div>
 
 * **“我只想丰富我的列表，不需要过滤”** —— Config 1
 * **“我没有列表，帮我找公司”** —— Config 2

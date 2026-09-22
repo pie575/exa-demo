@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Marchés financiers {#financial-markets}
+<div id="financial-markets">
+  # Marchés financiers
+</div>
 
 > Trouvez des données de marché, des filings, des earnings calls et des publications économiques avec Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Utilisez Exa Search pour obtenir les prix, les filings, les transcriptions et les analyses associées en une seule requête. Une question sur un ticker peut renvoyer à la fois la quote, le dernier earnings call et la couverture des analystes.
 
-## Inclus {#included}
+<div id="included">
+  ## Inclus
+</div>
 
 * Quotes et historique récent des prix pour les actions, cryptomonnaies, devises, indices, contrats à terme, options et matières premières
 * Profils de titres avec statistiques clés et historique OHLCV quotidien
@@ -43,46 +49,62 @@ Utilisez Exa Search pour obtenir les prix, les filings, les transcriptions et le
 * SEC filings, résultats financiers publiés et filings internationaux
 * Estimations d&#39;analystes, annonces de levées de fonds et publications économiques
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * La recherche actions et crédit
 * Le KYC, le KYB et le screening des médias défavorables
 * Le suivi des portefeuilles et des politiques
 * Le sourcing d&#39;opérations et la recherche sur les marchés privés
 
-## Exemples de requêtes {#example-queries}
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
 
-### Consulter une quote {#look-up-a-quote}
+<div id="look-up-a-quote">
+  ### Consulter une quote
+</div>
 
 Indiquez le ticker ou le nom de l&#39;entreprise, ainsi que la donnée souhaitée. Un cashtag tel que `$NVDA` fonctionne également.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-### Lire un earnings call {#read-an-earnings-call}
+<div id="read-an-earnings-call">
+  ### Lire un earnings call
+</div>
 
 Indiquez le nom de l&#39;entreprise et le trimestre pour obtenir la transcription elle-même plutôt que de la couverture de celle-ci.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-### Rechercher des filings {#search-filings}
+<div id="search-filings">
+  ### Rechercher des filings
+</div>
 
 Décrivez l&#39;information que vous recherchez, et pas seulement le type de formulaire. La catégorie `financial report` limite les résultats aux filings et aux rapports.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-### Suivre l&#39;activité du marché privé {#track-private-market-activity}
+<div id="track-private-market-activity">
+  ### Suivre l&#39;activité du marché privé
+</div>
 
 Précisez le tour de financement, le secteur et la période.
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-### Suivre les données économiques {#follow-economic-data}
+<div id="follow-economic-data">
+  ### Suivre les données économiques
+</div>
 
 Indiquez la publication et le chiffre que vous souhaitez en extraire.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -126,7 +148,9 @@ Indiquez la publication et le chiffre que vous souhaitez en extraire.
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les titres, les périodes, les critères et les fields de sortie dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 

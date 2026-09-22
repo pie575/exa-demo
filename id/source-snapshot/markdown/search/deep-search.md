@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Deep Search {#deep-search}
+<div id="deep-search">
+  # Deep Search
+</div>
 
 > Gunakan pencarian iteratif, penalaran, dan synthesis yang grounded untuk tugas Research yang kompleks.
 
@@ -11,7 +15,9 @@ Deep Search adalah mode Research dari Search API. Mode ini menggunakan endpoint 
 
 Gunakan standard Search jika Anda membutuhkan halaman berperingkat untuk query yang sudah terumuskan dengan baik. Gunakan Deep jika untuk menemukan jawabannya diperlukan Research.
 
-## Cara kerja Deep Search {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## Cara kerja Deep Search
+</div>
 
 Deep Search menambahkan loop research sebelum response akhir:
 
@@ -40,7 +46,9 @@ Deep Search menambahkan loop research sebelum response akhir:
 
 Proses ini sangat berguna untuk daftar dan terstruktur outputs. Setiap item yang diminta bisa saja memerlukan search yang berbeda, dan Deep dapat mengumpulkan serta memeriksa hasil tersebut sebelum menghasilkan struktur akhir.
 
-## Memilih mode Deep {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## Memilih mode Deep
+</div>
 
 | Tipe             | Gunakan saat                                                                                   |
 | ---------------- | ---------------------------------------------------------------------------------------------- |
@@ -58,7 +66,9 @@ Mulailah dengan `deep` untuk workflow research. Gunakan `deep-lite` bila tugasny
 
 Lihat [Harga](/id/docs/admin/pricing#deep-search) untuk instruksi terkini mengenai biaya dan latency.
 
-## Membuat permintaan Deep {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## Membuat permintaan Deep
+</div>
 
 Atur `type` pada permintaan Search API biasa:
 
@@ -103,7 +113,9 @@ Atur `type` pada permintaan Search API biasa:
 
 Deep mengembalikan hasil search terpilih di dalam `results`. Tambahkan `outputSchema` jika Anda juga ingin mendapatkan jawaban hasil sintesis atau kumpulan data terstruktur.
 
-## Sediakan query awal {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## Sediakan query awal
+</div>
 
 Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additionalQueries` bila Anda sudah mengetahui terminologi, sudut pandang, atau submasalah tertentu yang perlu dicakup oleh Research:
 
@@ -157,7 +169,9 @@ Deep biasanya menentukan sendiri searches mana yang dijalankan. Gunakan `additio
 
 Jangan memberikan parafrasa kecil hanya demi menambah jumlah pencarian. Tambahkan query hanya jika masing-masing membuka arah pencarian yang benar-benar berbeda.
 
-## Arahkan perilaku dan output secara terpisah {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## Arahkan perilaku dan output secara terpisah
+</div>
 
 `systemPrompt` dan `outputSchema` memengaruhi bagian permintaan yang berbeda:
 
@@ -257,7 +271,9 @@ Query sebaiknya menjelaskan apa yang perlu diteliti, sedangkan system prompt seb
 
 Gunakan Deep jika Anda membutuhkan lebih dari dua item terstruktur atau jika setiap item harus memenuhi beberapa persyaratan sekaligus. Search type standar memakai synthesis path yang sama, tetapi tidak menjalankan Research iteratif sebelum synthesis.
 
-## Membaca response yang grounded {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## Membaca response yang grounded
+</div>
 
 Response terstruktur memisahkan nilai yang dihasilkan dari evidence pendukungnya:
 
@@ -299,7 +315,9 @@ Gunakan `output.content` sebagai hasil yang dihasilkan dan `output.grounding` un
 
 `numResults` mengontrol berapa banyak halaman terpilih yang dikembalikan dalam `results`. Parameter ini tidak menentukan jumlah searches yang mungkin dijalankan oleh Deep.
 
-## Streaming synthesis {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## Streaming synthesis
+</div>
 
 Setel `stream: true` bersama `outputSchema` untuk menerima output synthesis melalui server-sent events:
 
@@ -375,7 +393,9 @@ Setel `stream: true` bersama `outputSchema` untuk menerima output synthesis mela
 
 Proses event bertipe tersebut hingga `done`. Event terakhir berisi output final dan waktu search, beserta informasi cost jika tersedia.
 
-## Kapan tetap menggunakan standard Search {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## Kapan tetap menggunakan standard Search
+</div>
 
 Deep tidak diperlukan jika satu kali retrieval sudah cukup untuk memenuhi permintaan:
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# 对 monitor 执行批量操作 {#batch-action-on-monitors}
+<div id="batch-action-on-monitors">
+  # 对 monitor 执行批量操作
+</div>
 
 > 对符合所提供筛选条件的 monitor 执行批量操作。
 
@@ -15,7 +19,9 @@
 
 使用 `dry_run: true` (默认值) 可在执行操作前预览哪些 monitor 会受到影响。结果通过 `limit` 参数分页；请 loop 调用直到 `has_more` 为 `false`，以处理所有匹配的 monitor。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /monitors/batch
 openapi: 3.1.0

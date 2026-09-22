@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Catatan Hukum &amp; Publik {#legal-public-records}
+<div id="legal-public-records">
+  # Catatan Hukum &amp; Publik
+</div>
 
 > Temukan putusan pengadilan, paten, sanksi, kontrak pemerintah, dan catatan publik lainnya dengan Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Gunakan Exa Search untuk sources hukum primer dan catatan pemerintah, sekaligus ulasan yang membahasnya.
 
-## Termasuk {#included}
+<div id="included">
+  ## Termasuk
+</div>
 
 * Putusan pengadilan AS, dengan teks penuh, pengadilan, nomor perkara, dan metadata sitasi
 * Paten AS yang telah diberikan, dengan abstrak, klaim, deskripsi, penemu, dan pemegang hak
@@ -44,7 +50,9 @@ Gunakan Exa Search untuk sources hukum primer dan catatan pemerintah, sekaligus 
 * Kontrak pemerintah dan catatan pengadaan
 * Data sensus dan catatan statistik publik lainnya
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Research yurisprudensi dan RAG hukum
 * Pemantauan regulasi dan kebijakan
@@ -52,39 +60,53 @@ Gunakan Exa Search untuk sources hukum primer dan catatan pemerintah, sekaligus 
 * Penyaringan kepatuhan dan uji tuntas
 * Research pasar sektor publik
 
-## Contoh kueri {#example-queries}
+<div id="example-queries">
+  ## Contoh kueri
+</div>
 
-### Menemukan yurisprudensi {#find-case-law}
+<div id="find-case-law">
+  ### Menemukan yurisprudensi
+</div>
 
 Jelaskan pertanyaan hukum dan yurisdiksinya dengan bahasa sehari-hari, bukan dalam bentuk sitasi.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-### Search paten {#search-patents}
+<div id="search-patents">
+  ### Search paten
+</div>
 
 Jelaskan apa yang dilakukan invensi tersebut, sebagaimana sebuah klaim dituliskan.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-### Screening terhadap sanksi {#screen-against-sanctions}
+<div id="screen-against-sanctions">
+  ### Screening terhadap sanksi
+</div>
 
 Sebutkan nama daftar dan kelas entitas yang Anda screening.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-### Research pengeluaran pemerintah {#research-government-spending}
+<div id="research-government-spending">
+  ### Research pengeluaran pemerintah
+</div>
 
 Sebutkan instansi pembeli atau kategori layanan beserta rentang waktunya.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-### Ambil statistik publik {#pull-public-statistics}
+<div id="pull-public-statistics">
+  ### Ambil statistik publik
+</div>
 
 Sebutkan nama dataset dan wilayah geografisnya.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +147,9 @@ Sebutkan nama dataset dan wilayah geografisnya.
   ```
 </CodeGroup>
 
-## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Dapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research lintas berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan yurisdiksi, jenis catatan, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 

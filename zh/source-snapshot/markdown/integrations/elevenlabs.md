@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，请先通过该文件了解所有可用页面。
 
-# ElevenLabs {#elevenlabs}
+<div id="elevenlabs">
+  # ElevenLabs
+</div>
 
 > 为 ElevenLabs 语音 agent 添加 Exa 网页搜索能力。
 
@@ -20,7 +24,9 @@ ElevenLabs 语音 agent 可以把 Exa 作为 **webhook tool**，在对话过程�
 
 本指南介绍 webhook tool 方式，它让你完全掌控 Exa 的调用方式。你也可以通过 [ElevenLabs 控制台](https://elevenlabs.io/app/conversational-ai)配置该 integration。
 
-## 工作原理 {#how-it-works}
+<div id="how-it-works">
+  ## 工作原理
+</div>
 
 1. 用户与语音 agent 对话
 2. LLM 根据工具描述决定调用 `web_search`
@@ -30,7 +36,9 @@ ElevenLabs 语音 agent 可以把 Exa 作为 **webhook tool**，在对话过程�
 
 无需 server，无需回调 URL，也无需监听器。ElevenLabs 本身就是直接调用 Exa 的 HTTP 客户端。工具调用的超时时间为 20 秒。
 
-## 前置条件 {#prerequisites}
+<div id="prerequisites">
+  ## 前置条件
+</div>
 
 * 一个 [Exa API 密钥](https://dashboard.exa.ai/api-keys)
 * 一个 [ElevenLabs API 密钥](https://elevenlabs.io/app/settings/api-keys)
@@ -39,7 +47,9 @@ ElevenLabs 语音 agent 可以把 Exa 作为 **webhook tool**，在对话过程�
   在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-## 快速开始 {#get-started}
+<div id="get-started">
+  ## 快速开始
+</div>
 
 <Steps>
   <Step title="创建 webhook tool">
@@ -148,7 +158,9 @@ ElevenLabs 语音 agent 可以把 Exa 作为 **webhook tool**，在对话过程�
   </Step>
 </Steps>
 
-## 完整 Python 示例 {#full-python-example}
+<div id="full-python-example">
+  ## 完整 Python 示例
+</div>
 
 该脚本会在一次运行中同时创建 webhook tool 和 agent：
 
@@ -242,11 +254,15 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-## 自定义搜索参数 {#customizing-search-parameters}
+<div id="customizing-search-parameters">
+  ## 自定义搜索参数
+</div>
 
 webhook tool 的请求体 schema 与 [Exa 的 search API](/zh/docs/reference/search) 直接对应。以下是几种常见配置：
 
-### 搜索类型 {#search-type}
+<div id="search-type">
+  ### 搜索类型
+</div>
 
 通过 `type` 常量控制速度与质量的权衡：
 
@@ -257,7 +273,9 @@ webhook tool 的请求体 schema 与 [Exa 的 search API](/zh/docs/reference/sea
 
 语音 agent 建议从 `instant` 开始。若希望 Exa 为每个 query 自动选择当前最合适的搜索模式，请使用 `auto`。
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 通过 `contents` 对象选择结果的返回方式：
 
@@ -281,7 +299,9 @@ webhook tool 的请求体 schema 与 [Exa 的 search API](/zh/docs/reference/sea
 
 对于语音 agent，推荐默认使用 `highlights: true`，它在相关性与响应速度之间取得了良好平衡。
 
-### 过滤结果 {#filtering-results}
+<div id="filtering-results">
+  ### 过滤结果
+</div>
 
 以常量形式添加域名或日期过滤条件：
 
@@ -303,11 +323,15 @@ webhook tool 的请求体 schema 与 [Exa 的 search API](/zh/docs/reference/sea
 }
 ```
 
-### 结果数量 {#number-of-results}
+<div id="number-of-results">
+  ### 结果数量
+</div>
 
 根据使用场景调整 `numResults`。语音场景下，3-5 条结果可以保证响应速度；面向研究的 agent 则可用 10 条以上，以获得更广的覆盖面。
 
-## Schema reference {#schema-reference}
+<div id="schema-reference">
+  ## Schema reference
+</div>
 
 ElevenLabs 的 webhook tool 使用包含以下属性类型的 JSON schema：
 
@@ -325,7 +349,9 @@ ElevenLabs 的 webhook tool 使用包含以下属性类型的 JSON schema：
 
 完整的 ElevenLabs webhook tool schema 请参阅 [ElevenLabs server tools 文档](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools)。
 
-## Built-in Exa integration (alpha) {#built-in-exa-integration-alpha}
+<div id="built-in-exa-integration-alpha">
+  ## Built-in Exa integration (alpha)
+</div>
 
 ElevenLabs 还提供内置的 Exa integration，可在 agent 控制台的 **Tools &gt; Integrations** 中找到。这种方式配置更简单，但与 webhook tool 方式相比，自定义搜索参数更为不便。
 

@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# TrueFoundry {#truefoundry}
+<div id="truefoundry">
+  # TrueFoundry
+</div>
 
 > 중앙화된 접근 제어, 도구 관리, 사용량 모니터링을 위해 Exa를 TrueFoundry MCP Gateway에 연결하세요.
 
@@ -15,7 +19,9 @@ TrueFoundry는 [MCP Gateway](https://www.truefoundry.com/mcp-gateway)에서 Exa�
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/catalog.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=add2e6b185410cfac99d0ed9fdf56a10" alt="The Exa server in TrueFoundry's official remote MCP catalog" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-## TrueFoundry에 Exa 추가하기 {#add-exa-to-truefoundry}
+<div id="add-exa-to-truefoundry">
+  ## TrueFoundry에 Exa 추가하기
+</div>
 
 1. TrueFoundry sidebar에서 **MCP Servers**를 열고 **Add new MCP Server**를 선택합니다.
 2. **Connect Official Remote MCP Servers**를 선택합니다.
@@ -44,11 +50,15 @@ TrueFoundry는 [MCP Gateway](https://www.truefoundry.com/mcp-gateway)에서 Exa�
   **Tools** 탭을 열어 Exa의 search, 콘텐츠 가져오기, agentic research 도구를 사용할 수 있는지 확인하세요.
 </Check>
 
-## Exa 서버 구성 {#configure-the-exa-server}
+<div id="configure-the-exa-server">
+  ## Exa 서버 구성
+</div>
 
 미리 입력된 URL은 Exa의 기본 도구 세트를 제공합니다. 사용 가능한 도구를 제한하거나 직접 발급한 API 키를 사용해야 하는 경우에만 변경하세요.
 
-### 사용할 도구 선택 {#choose-which-tools-are-available}
+<div id="choose-which-tools-are-available">
+  ### 사용할 도구 선택
+</div>
 
 `tools` 질의 매개변수에 도구 이름을 쉼표로 구분한 목록으로 전달하세요:
 
@@ -73,7 +83,9 @@ collaborators:
   사용 가능한 도구 이름은 [Exa MCP 문서](/ko/docs/get-started/exa-mcp)에서 확인할 수 있습니다.
 </Tip>
 
-### Exa API key로 무료 속도 제한 우회하기 {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
+<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
+  ### Exa API key로 무료 속도 제한 우회하기
+</div>
 
 무료 속도 제한에 도달했다면 서버 URL에 Exa API key를 추가하세요:
 
@@ -85,7 +97,9 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-## MCP 클라이언트 연결 {#connect-an-mcp-client}
+<div id="connect-an-mcp-client">
+  ## MCP 클라이언트 연결
+</div>
 
 Exa 서버의 **How To Use** 탭을 열고 사용할 클라이언트를 선택하세요. TrueFoundry가 Cursor, Claude Code, VS Code, Windsurf, Codex 등 여러 MCP 클라이언트에 맞는 테넌트별 엔드포인트와 바로 붙여넣을 수 있는 구성을 생성해 줍니다.
 
@@ -93,7 +107,9 @@ Exa 서버의 **How To Use** 탭을 열고 사용할 클라이언트를 선택�
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/how-to-use.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=ec79070bbb5919f931ed52f8ae961183" alt="Exa MCP 서버에 대한 TrueFoundry의 클라이언트별 설정 안내" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-## 도구 테스트하기 {#test-a-tool}
+<div id="test-a-tool">
+  ## 도구 테스트하기
+</div>
 
 Exa 도구 옆의 **Try**를 선택해 입력값을 입력한 다음 **Execute Tool**을 선택하세요. 플레이그라운드에 JSON response가 표시되므로 agent에 적용하기 전에 도구를 검증할 수 있습니다.
 
@@ -101,7 +117,9 @@ Exa 도구 옆의 **Try**를 선택해 입력값을 입력한 다음 **Execute T
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tool-playground.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=6cb86026c8ea245de4a9c701f4b51b8e" alt="TrueFoundry 도구 플레이그라운드에서 Exa 도구 테스트하기" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-## 도구 관리 및 모니터링 {#manage-and-monitor-tools}
+<div id="manage-and-monitor-tools">
+  ## 도구 관리 및 모니터링
+</div>
 
 * 개별 도구를 켜고 끄며 MCP 클라이언트가 call할 수 있는 범위를 제어하세요
 * **Tool Metrics**에서 traffic, latency, 오류를 확인하세요
@@ -111,7 +129,9 @@ Exa 도구 옆의 **Try**를 선택해 입력값을 입력한 다음 **Execute T
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tools-list.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=d0cef2a24127c7bfc0099876dee8f891" alt="TrueFoundry MCP 서버에서 사용할 수 있는 Exa 도구" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 <Columns cols={3}>
   <Card title="TrueFoundry 설정 가이드" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="가이드 열기" arrow="true">

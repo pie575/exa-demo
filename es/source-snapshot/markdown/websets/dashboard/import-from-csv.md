@@ -1,21 +1,29 @@
-> ## Índice de documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
 >
 > Obtén el índice completo de documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Importar desde CSV {#import-from-csv}
+<div id="import-from-csv">
+  # Importar desde CSV
+</div>
 
 > Convierte tus datos CSV existentes en un Webset
 
 <br />
 
-## Descripción general {#overview}
+<div id="overview">
+  ## Descripción general
+</div>
 
 La funcionalidad Importar desde CSV te permite convertir tus archivos CSV existentes con URLs en Websets totalmente funcionales. Es ideal cuando ya tienes una lista de sitios web, empresas o recursos que quieres enriquecer con datos adicionales o filtrar aplicando criteria de búsqueda.
 
 <br />
 
-## Cómo funciona {#how-it-works}
+<div id="how-it-works">
+  ## Cómo funciona
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/import-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=6cf23e9e291fe7811942d18c3aa08b33" alt="Flujo de importación de CSV para crear un Webset" width="1512" height="857" data-path="images/websets/import-flow.png" />
 
@@ -26,7 +34,9 @@ La funcionalidad Importar desde CSV te permite convertir tus archivos CSV existe
 
 <br />
 
-## Preparación del CSV {#csv-preparation}
+<div id="csv-preparation">
+  ## Preparación del CSV
+</div>
 
 Asegúrate de que tu archivo CSV tenga una columna de URL
 
@@ -38,11 +48,15 @@ Si no tienes URL, Websets intentará deducirlas a partir de la información de c
 
 El número máximo de resultados que puedes importar depende de tu plan.
 
-## ¿Qué sucede después? {#what-happens-next}
+<div id="what-happens-next">
+  ## ¿Qué sucede después?
+</div>
 
 Una vez importado, tu CSV se convierte en un Webset completo en el que puedes:
 
-### Enriquecer con columnas personalizadas {#enrich-with-custom-columns}
+<div id="enrich-with-custom-columns">
+  ### Enriquecer con columnas personalizadas
+</div>
 
 Añade toda la información que quieras sobre cada URL:
 
@@ -51,7 +65,9 @@ Añade toda la información que quieras sobre cada URL:
 * Análisis de contenido (sentimiento, temas, resúmenes)
 * Datos personalizados propios de tu caso de uso
 
-### Aplicar criteria de búsqueda {#apply-search-criteria}
+<div id="apply-search-criteria">
+  ### Aplicar criteria de búsqueda
+</div>
 
 Filtra las URL importadas según criteria específicos:
 

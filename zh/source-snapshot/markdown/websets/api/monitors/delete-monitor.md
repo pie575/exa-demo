@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，请先通过该文件查看所有可用页面。
 
-# 删除 Websets monitor {#delete-a-websets-monitor}
+<div id="delete-a-websets-monitor">
+  # 删除 Websets monitor
+</div>
 
 > 删除指定的 monitor。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/monitors/{id}
 openapi: 3.1.0

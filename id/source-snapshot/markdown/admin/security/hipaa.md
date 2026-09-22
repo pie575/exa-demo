@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# HIPAA {#hipaa}
+<div id="hipaa">
+  # HIPAA
+</div>
 
 > Gunakan mode HIPAA compliance untuk permintaan cached retrieval yang memenuhi syarat.
 
@@ -23,7 +27,9 @@ Ketika field ini ada pada team yang memenuhi syarat, Exa memproses permintaan te
 
 Mode HIPAA mencakup [Zero Data Retention](/id/docs/admin/security/zero-data-retention) untuk permintaan tersebut: Exa tidak menyimpan PHI.
 
-## Endpoint yang didukung {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoint yang didukung
+</div>
 
 Field `compliance` dikenali pada:
 
@@ -32,7 +38,9 @@ Field `compliance` dikenali pada:
 
 Endpoint lainnya akan menolak field ini.
 
-## Persyaratan {#requirements}
+<div id="requirements">
+  ## Persyaratan
+</div>
 
 Mode HIPAA hanya mendukung cached retrieval. Permintaan yang kompatibel:
 
@@ -46,7 +54,9 @@ Permintaan yang tidak kompatibel akan mengembalikan `400 INVALID_REQUEST_BODY`, 
 * Pengaturan kebaruan yang mengharuskan pengambilan langsung, seperti `maxAgeHours: 0` atau `maxAgeHours` bernilai positif
 * Permintaan search yang tidak menyertakan `type`, atau menggunakan tipe selain `instant` atau `fast`
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -62,6 +72,8 @@ Permintaan yang tidak kompatibel akan mengembalikan `400 INVALID_REQUEST_BODY`, 
   ```
 </CodeGroup>
 
-## Akses {#access}
+<div id="access">
+  ## Akses
+</div>
 
 Untuk mengaktifkan mode HIPAA pada team Anda, hubungi [sales@exa.ai](mailto:sales@exa.ai). Lihat [Trust Center](https://trust.exa.ai) untuk dokumentasi keamanan Exa.

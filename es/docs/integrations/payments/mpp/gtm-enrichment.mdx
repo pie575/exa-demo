@@ -18,7 +18,9 @@ enriqueces leads o empresas.
   por el flujo estándar de facturación con API key.
 </Info>
 
-## Qué vas a construir {#what-youll-build}
+<div id="what-youll-build">
+  ## Qué vas a construir
+</div>
 
 Un pipeline de enrichment ligero que, dada una lista de nombres de empresas o
 descripciones objetivo:
@@ -33,7 +35,9 @@ Este patrón sirve para el enrichment de listas de leads, la investigación de
 cuentas y la personalización de campañas salientes. Como se compone de llamadas
 discretas a `/search` + `/contents`, cada paso se puede pagar con MPP.
 
-## Requisitos previos {#prerequisites}
+<div id="prerequisites">
+  ## Requisitos previos
+</div>
 
 * Una wallet compatible con Tempo con fondos en **USDC.e** en la red principal de Tempo.
 * Una forma segura de cargar la key privada de la wallet en tiempo de ejecución (ver más abajo; nunca subas
@@ -44,9 +48,13 @@ discretas a `/search` + `/contents`, cada paso se puede pagar con MPP.
   Para una configuración desde la línea de comandos que no requiere una key privada en texto plano, usa la [CLI de Tempo Wallet](/es/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). `tempo wallet login` crea o conecta una wallet y puede incluir MPP Credits gratuitos para nuevos registros.
 </Info>
 
-## Configuración de MPP {#mpp-setup}
+<div id="mpp-setup">
+  ## Configuración de MPP
+</div>
 
-### Instalar el cliente {#install-the-client}
+<div id="install-the-client">
+  ### Instalar el cliente
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -58,7 +66,9 @@ discretas a `/search` + `/contents`, cada paso se puede pagar con MPP.
   ```
 </CodeGroup>
 
-### Carga tu key privada de forma segura {#load-your-private-key-safely}
+<div id="load-your-private-key-safely">
+  ### Carga tu key privada de forma segura
+</div>
 
 Nunca escribas una key privada directamente en el código. Los siguientes ejemplos leen `WALLET_PRIVATE_KEY` del entorno de ejecución solo para desarrollo local. En producción, cárgala desde un gestor de secretos como 1Password, AWS Secrets Manager o HashiCorp Vault.
 
@@ -74,7 +84,9 @@ Nunca escribas una key privada directamente en el código. Los siguientes ejempl
   ```
 </CodeGroup>
 
-### Realizar una solicitud de búsqueda de pago {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Realizar una solicitud de búsqueda de pago
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -142,7 +154,9 @@ Nunca escribas una key privada directamente en el código. Los siguientes ejempl
 Una respuesta correcta devuelve los resultados de Exa junto con un encabezado `Payment-Receipt` que contiene
 el hash de la transacción on-chain.
 
-### Realizar una solicitud de pago a contenido {#make-a-paid-contents-request}
+<div id="make-a-paid-contents-request">
+  ### Realizar una solicitud de pago a contenido
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -175,9 +189,13 @@ el hash de la transacción on-chain.
   ```
 </CodeGroup>
 
-## Receta de enrichment para GTM {#gtm-enrichment-recipe}
+<div id="gtm-enrichment-recipe">
+  ## Receta de enrichment para GTM
+</div>
 
-### Enriquecer una lista de empresas {#enrich-a-list-of-companies}
+<div id="enrich-a-list-of-companies">
+  ### Enriquecer una lista de empresas
+</div>
 
 A partir de una lista de nombres de empresas, busca la página de cada una y extrae
 detalles estructurados.
@@ -304,7 +322,9 @@ detalles estructurados.
   ```
 </CodeGroup>
 
-### Enriquecer el perfil de una persona {#enrich-a-person-profile}
+<div id="enrich-a-person-profile">
+  ### Enriquecer el perfil de una persona
+</div>
 
 Esta receta usa `type: "deep"`, `contents.highlights` y `outputSchema` para
 investigar a una persona y devolver un perfil estructurado.
@@ -395,7 +415,9 @@ investigar a una persona y devolver un perfil estructurado.
   $0.012 por solicitud, y `contents.highlights` añade $0.001 por resultado.
 </Note>
 
-### Salida estructurada {#structured-output}
+<div id="structured-output">
+  ### Salida estructurada
+</div>
 
 Si quieres campos JSON en lugar de texto plano, usa `outputSchema` en la
 solicitud de búsqueda. Exa devuelve un objeto `output` con la forma de tu esquema.
@@ -468,7 +490,9 @@ solicitud de búsqueda. Exa devuelve un objeto `output` con la forma de tu esque
   llamada a un LLM del lado de Exa, por lo que se cobra como `deep-lite`/`deep`.
 </Note>
 
-## Precios y límites {#pricing-and-limits}
+<div id="pricing-and-limits">
+  ## Precios y límites
+</div>
 
 MPP usa los mismos precios por solicitud que la facturación con API key. Las solicitudes de búsqueda con MPP
 están limitadas a 10 resultados.
@@ -485,7 +509,9 @@ están limitadas a 10 resultados.
 Consulta [Pagar con MPP (Tempo)](/es/docs/integrations/payments/mpp/quickstart) para ver la referencia completa,
 incluidos los límites de tasa, los detalles de red y los encabezados de pago.
 
-## Consejos para producción {#production-tips}
+<div id="production-tips">
+  ## Consejos para producción
+</div>
 
 * **Financia la wallet solo con USDC.e.** Exa cubre la tarifa de red de Tempo, por lo que
   la wallet no necesita un token de gas aparte.
@@ -497,7 +523,9 @@ incluidos los límites de tasa, los detalles de red y los encabezados de pago.
 * **Nunca subas keys privadas al repositorio.** Carga `WALLET_PRIVATE_KEY` desde un gestor de
   secretos, no desde el control de versiones.
 
-## Preguntas frecuentes {#faq}
+<div id="faq">
+  ## Preguntas frecuentes
+</div>
 
 <AccordionGroup>
   <Accordion title="¿Puedo usar MPP con la Exa Agent API?">
@@ -524,7 +552,9 @@ incluidos los límites de tasa, los detalles de red y los encabezados de pago.
   </Accordion>
 </AccordionGroup>
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 * [Pagar con MPP (Tempo)](/es/docs/integrations/payments/mpp/quickstart): referencia completa de MPP
 * [Guía de la Exa Search API](/es/docs/search/quickstart): referencia de parámetros de búsqueda

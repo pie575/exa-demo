@@ -12,7 +12,9 @@ TrueFoundry incluye a Exa como remote server oficial en su [MCP Gateway](https:/
   <img src="/docs/images/integrations/truefoundry/catalog.png" alt="El server de Exa en el catálogo oficial de remote MCP de TrueFoundry" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-## Añadir Exa a TrueFoundry {#add-exa-to-truefoundry}
+<div id="add-exa-to-truefoundry">
+  ## Añadir Exa a TrueFoundry
+</div>
 
 1. Abre **MCP Servers** en el sidebar de TrueFoundry y selecciona **Add new MCP Server**.
 2. Selecciona **Connect Official Remote MCP Servers**.
@@ -41,11 +43,15 @@ TrueFoundry incluye a Exa como remote server oficial en su [MCP Gateway](https:/
   Abre la pestaña **Herramientas** y comprueba que las herramientas de búsqueda, content fetching e investigación agéntica de Exa estén disponibles.
 </Check>
 
-## Configura el server de Exa {#configure-the-exa-server}
+<div id="configure-the-exa-server">
+  ## Configura el server de Exa
+</div>
 
 La URL prellenada expone el conjunto de herramientas predeterminado de Exa. Cámbiala solo si necesitas limitar las herramientas disponibles o usar tu propia API key.
 
-### Elige qué herramientas están disponibles {#choose-which-tools-are-available}
+<div id="choose-which-tools-are-available">
+  ### Elige qué herramientas están disponibles
+</div>
 
 Pasa una lista de nombres de herramientas separados por comas en el parámetro de consulta `tools`:
 
@@ -70,7 +76,9 @@ collaborators:
   Puedes consultar los nombres de las herramientas disponibles en la [documentación de Exa MCP](/es/docs/get-started/exa-mcp).
 </Tip>
 
-### Usa tu API key de Exa para superar el límite de tasa gratuito {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
+<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
+  ### Usa tu API key de Exa para superar el límite de tasa gratuito
+</div>
 
 Si alcanzas el límite de tasa gratuito, añade tu API key de Exa a la URL del server:
 
@@ -82,7 +90,9 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
-## Conectar un MCP cliente {#connect-an-mcp-client}
+<div id="connect-an-mcp-client">
+  ## Conectar un MCP cliente
+</div>
 
 Abre la pestaña **How To Use** del server de Exa y selecciona tu cliente. TrueFoundry genera el endpoint específico del tenant y la configuración lista para pegar en Cursor, Claude Code, VS Code, Windsurf, Codex y otros MCP clientes.
 
@@ -90,7 +100,9 @@ Abre la pestaña **How To Use** del server de Exa y selecciona tu cliente. TrueF
   <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="Instrucciones de configuración de TrueFoundry específicas para cada cliente del Exa MCP server" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-## Probar una herramienta {#test-a-tool}
+<div id="test-a-tool">
+  ## Probar una herramienta
+</div>
 
 Selecciona **Try** junto a una herramienta de Exa, introduce sus valores de entrada y después selecciona **Execute Tool**. El playground muestra la respuesta JSON para que puedas verificar la herramienta antes de usarla en un agente.
 
@@ -98,7 +110,9 @@ Selecciona **Try** junto a una herramienta de Exa, introduce sus valores de entr
   <img src="/docs/images/integrations/truefoundry/tool-playground.png" alt="Prueba de una herramienta de Exa en el playground de herramientas de TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-## Gestionar y monitorear herramientas {#manage-and-monitor-tools}
+<div id="manage-and-monitor-tools">
+  ## Gestionar y monitorear herramientas
+</div>
 
 * Activa o desactiva herramientas individuales para controlar qué pueden llamar los MCP clientes
 * Usa **Tool Metrics** para revisar el tráfico, la latencia y los errores
@@ -108,7 +122,9 @@ Selecciona **Try** junto a una herramienta de Exa, introduce sus valores de entr
   <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="Herramientas de Exa disponibles desde el MCP server de TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-## Recursos {#resources}
+<div id="resources">
+  ## Recursos
+</div>
 
 <Columns cols={3}>
   <Card title="Guía de configuración de TrueFoundry" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="Abrir guía" arrow="true">

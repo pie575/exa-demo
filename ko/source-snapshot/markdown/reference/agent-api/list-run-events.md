@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 실행 이벤트 목록 조회 {#list-run-events}
+<div id="list-run-events">
+  # 실행 이벤트 목록 조회
+</div>
 
 > 저장된 Agent 실행 이벤트를 조회하거나 server-sent events로 replay합니다.
 
@@ -13,7 +17,9 @@
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

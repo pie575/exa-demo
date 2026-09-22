@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Membuat run {#create-a-run}
+<div id="create-a-run">
+  # Membuat run
+</div>
 
 > Membuat Agent run asinkron. Response langsung mengembalikan objek run kecuali Anda meminta server-sent events.
 
@@ -19,7 +23,9 @@ Setel `Accept: text/event-stream` untuk melakukan stream event run saat run dibu
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0

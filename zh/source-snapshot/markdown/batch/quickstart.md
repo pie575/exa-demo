@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Batch API {#batch-api}
+<div id="batch-api">
+  # Batch API
+</div>
 
 > 以批次形式异步运行 Exa API 请求。
 
@@ -19,7 +23,9 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
   Batch API 目前处于 beta 阶段。请在每个请求中包含 `Exa-Beta: batches-2026-06-06` header。
 </Note>
 
-## 支持的请求 {#supported-requests}
+<div id="supported-requests">
+  ## 支持的请求
+</div>
 
 批次中的每个项目必须是发送到以下路由之一的 `POST` 请求：
 
@@ -30,7 +36,9 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
 
 每个项目都需要一个在批次内唯一的 `customId`。结果文件中会返回相同的 `customId`，便于你将输出行对应回输入数据。
 
-## 创建批次 {#create-a-batch}
+<div id="create-a-batch">
+  ## 创建批次
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -88,7 +96,9 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
   ```
 </Accordion>
 
-## 检查状态 {#check-status}
+<div id="check-status">
+  ## 检查状态
+</div>
 
 轮询该批次，直到其进入终止状态：
 
@@ -116,7 +126,9 @@ Batch API 让你一次性提交大量 Exa API 请求，并在稍后以 JSONL 文
   `resultsUrl` 是有效期很短的预签名 URL。每次需要重新下载结果时，请重新获取该批次以取得新的 URL。
 </Warning>
 
-## 列出批次 {#list-batches}
+<div id="list-batches">
+  ## 列出批次
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -147,7 +159,9 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-## 下载结果 {#download-results}
+<div id="download-results">
+  ## 下载结果
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -162,7 +176,9 @@ JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-## 取消批次 {#cancel-a-batch}
+<div id="cancel-a-batch">
+  ## 取消批次
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -172,7 +188,9 @@ JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 
   ```
 </CodeGroup>
 
-## 删除批次 {#delete-a-batch}
+<div id="delete-a-batch">
+  ## 删除批次
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,6 +200,8 @@ JSONL 的每一行都包含原始的 `customId`，以及 `response` 或 `error` 
   ```
 </CodeGroup>
 
-## 访问权限 {#access}
+<div id="access">
+  ## 访问权限
+</div>
 
 如需为团队启用 Batch API，请联系 [sales@exa.ai](mailto:sales@exa.ai)。

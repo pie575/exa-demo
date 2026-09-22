@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 获取运行 {#get-a-run}
+<div id="get-a-run">
+  # 获取运行
+</div>
 
 > 根据 ID 检索单个运行；若该运行已完成，则返回完整输出。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs/{runId}
 openapi: 3.1.0

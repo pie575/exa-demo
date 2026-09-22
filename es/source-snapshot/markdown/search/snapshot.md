@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa Snapshot {#exa-snapshot}
+<div id="exa-snapshot">
+  # Exa Snapshot
+</div>
 
 > Fija Search y contenido a una versión almacenada de una página en la fecha y hora que elijas.
 
@@ -16,7 +20,9 @@ Exa Snapshot conserva versiones almacenadas de las páginas que Exa ha rastreado
   Tras 100 solicitudes, [habla con el equipo de ventas](https://exa.ai/contact/sales) para continuar.
 </Info>
 
-## Búsqueda en una fecha y hora {#search-at-a-datetime}
+<div id="search-at-a-datetime">
+  ## Búsqueda en una fecha y hora
+</div>
 
 En `/search`, coloca `snapshotAsOf` dentro de `contents`.
 
@@ -105,7 +111,9 @@ Exa detecta las URL candidatas y luego conserva únicamente las páginas que ten
   ```
 </Accordion>
 
-## Fijar el contenido a una fecha y hora {#pin-contents-to-a-datetime}
+<div id="pin-contents-to-a-datetime">
+  ## Fijar el contenido a una fecha y hora
+</div>
 
 Agrega `snapshotAsOf` en el nivel superior de una solicitud a `/contents`.
 
@@ -184,7 +192,9 @@ Exa devuelve la versión almacenada más reciente correspondiente a esa fecha y 
   `"status": "error"` y `"tag": "CONTENT_NOT_CACHED"`.
 </Tip>
 
-## Cómo funcionan las instantáneas {#how-snapshots-work}
+<div id="how-snapshots-work">
+  ## Cómo funcionan las instantáneas
+</div>
 
 | Campo          | Dónde     | Significado                                                                                             |
 | -------------- | --------- | ------------------------------------------------------------------------------------------------------- |
@@ -202,7 +212,9 @@ Para ambos endpoints:
   no como una reconstrucción exacta de lo que una búsqueda habría clasificado en ese momento.
 </Note>
 
-## Límites y compatibilidad {#limits-and-compatibility}
+<div id="limits-and-compatibility">
+  ## Límites y compatibilidad
+</div>
 
 <AccordionGroup>
   <Accordion title="Acceso, límite de tasa y ventana histórica">
@@ -225,7 +237,9 @@ Para ambos endpoints:
   </Accordion>
 </AccordionGroup>
 
-## Usos comunes {#common-uses}
+<div id="common-uses">
+  ## Usos comunes
+</div>
 
 Usa Exa Snapshot cuando la tarea dependa de lo que Exa tenía almacenado en una fecha y hora concretas:
 

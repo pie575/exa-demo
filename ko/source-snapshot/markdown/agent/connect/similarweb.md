@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Similarweb {#similarweb}
+<div id="similarweb">
+  # Similarweb
+</div>
 
 > 웹사이트 트래픽 추정치, 글로벌 순위, 경쟁사 발굴 정보를 확인하세요.
 
@@ -11,14 +15,18 @@
 
 [Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에 `similarweb`을 attach하면, agent가 Exa web search와 함께 Similarweb에 질의합니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 기업의 웹 트래픽과 engagement를 동종 업체와 벤치마킹
 * 도메인의 competitor 및 방문자층이 겹치는 사이트 파악
 * 디지털 발자국을 기준으로 시장 규모 산정 및 기업 스크리닝
 * 실제 행동 데이터로 기업 및 카테고리 리서치를 enrich
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -26,7 +34,9 @@
 similarweb
 ```
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 Similarweb는 데이터 credits 기준으로 `$0.30 / credit`씩 과금하며, 각 call에는 Similarweb가 해당 call에 대해 보고한 credits만큼 청구됩니다. Credits는 반환되는 데이터 양에 비례해 늘어나며, 대략 데이터 포인트(지표 × 행 × 월)당 1 credit입니다. 따라서 call의 가격은 그 parameters에 따라 결정됩니다:
 
@@ -47,7 +57,9 @@ Similarweb는 데이터 credits 기준으로 `$0.30 / credit`씩 과금하며, �
 
 데이터를 반환하지 않는 call(알 수 없거나 트래픽이 적은 도메인, 검색량이 없는 키워드)은 무료입니다. `numResults`와 `months`가 비용을 지불할 데이터 포인트 수를 결정하므로, 작업에 필요한 만큼만 작게 유지하세요.
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 빠르게 성장하는 B2B SaaS 기업 10곳과 각 기업의 추정 웹 트래픽을 찾습니다.
 
@@ -141,12 +153,16 @@ Similarweb는 데이터 credits 기준으로 `$0.30 / credit`씩 과금하며, �
   ```
 </CodeGroup>
 
-## 함께 사용하기 좋은 기능 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하기 좋은 기능
+</div>
 
 * [Fiber.ai](/ko/docs/agent/connect/fiber): 발견한 경쟁사를 enrich된 기업 레코드로 만듭니다.
 * [Affiliate.com](/ko/docs/agent/connect/affiliatecom): 특정 판매처의 상품을 추천하기 전에 해당 판매처의 도달 범위를 확인합니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

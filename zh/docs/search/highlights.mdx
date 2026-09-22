@@ -8,7 +8,9 @@ Highlights 会从每条结果中抽取与你的 query 相关的段落。当应�
 
 每条结果选出的段落会在 `results[].highlights` 中返回。
 
-## 为什么用 highlights 而不是 full text {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## 为什么用 highlights 而不是 full text
+</div>
 
 Highlights 来自 Exa 自研的提取模型。该模型会在每次请求时结合你的 query 通读每条 result，只返回能回答该 query 的段落。你只需花费整页文本的一小部分 token，就能获得同等甚至更好的下游回答质量。
 
@@ -26,7 +28,9 @@ Highlights 来自 Exa 自研的提取模型。该模型会在每次请求时结�
   了解方法论和完整结果。
 </Tip>
 
-## 为 Search 添加 highlights {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## 为 Search 添加 highlights
+</div>
 
 推荐的默认做法是在 `contents` 中设置 `highlights: true`。Exa 会根据每条结果与你的 query 的相关度，自动决定返回多少文本，因此无需调整字符预算。只有当你的应用需要固定的单页字符上限时，才需要设置 `maxCharacters`。
 
@@ -58,7 +62,9 @@ Highlights 来自 Exa 自研的提取模型。该模型会在每次请求时结�
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights 会根据哪些内容对你的 query 最有价值，动态调整从每条结果中选取的文本量：从优质来源中多取，从重复或无关的来源中少取，从而减少返回的 token 总量。
 
@@ -128,7 +134,9 @@ Dynamic Highlights 会根据哪些内容对你的 query 最有价值，动态调
   `results[].highlights` 结构。
 </Info>
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="Search API 指南" icon="search" href="/zh/docs/search/quickstart" cta="打开指南" arrow="true">

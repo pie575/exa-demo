@@ -8,7 +8,9 @@ Los highlights devuelven pasajes extraídos de cada resultado que son relevantes
 
 Cada resultado devuelve sus pasajes seleccionados en `results[].highlights`.
 
-## Por qué highlights en lugar de texto completo {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## Por qué highlights en lugar de texto completo
+</div>
 
 Los highlights provienen del modelo de extracción propio de Exa. En cada solicitud, el modelo lee cada resultado en función de tu consulta y devuelve únicamente los pasajes que la responden. Te quedas con una fracción de los tokens del texto completo de la página, con una calidad de respuesta igual o mejor.
 
@@ -26,7 +28,9 @@ El ahorro se nota sobre todo en los bucles de agentes, donde cada ronda de resul
   para conocer la metodología y los resultados completos.
 </Tip>
 
-## Añadir highlights a Search {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## Añadir highlights a Search
+</div>
 
 Usa `highlights: true` dentro de `contents` como valor predeterminado recomendado. Exa decide cuánto texto devolver de cada resultado según su relevancia para tu consulta, por lo que no hay ningún presupuesto de caracteres que ajustar. Establece `maxCharacters` solo cuando tu aplicación requiera un límite fijo por página.
 
@@ -58,7 +62,9 @@ Usa `highlights: true` dentro de `contents` como valor predeterminado recomendad
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights ajusta la cantidad de texto que selecciona de cada resultado según lo que resulte más útil para tu consulta. Puede extraer más de las fuentes sólidas y menos de las repetitivas o irrelevantes, lo que reduce el total de tokens devueltos.
 
@@ -129,7 +135,9 @@ Actívalo con `dynamic: true`:
   estructura `results[].highlights` que los highlights normales.
 </Info>
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Guía de la Search API" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# Particle {#particle}
+<div id="particle">
+  # Particle
+</div>
 
 > 搜索播客会议记录，支持说话人归属和时间戳。
 
@@ -11,14 +15,18 @@
 
 通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `particle` 附加到 [Exa Agent](/zh/docs/agent/quickstart) 运行，agent 就会在进行 Exa 网页搜索的同时查询 Particle。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 查找专家评论和可引用的精彩观点。
 * 媒体与品牌监测。
 * 叙事与舆情研究。
 * 发现播客并及时掌握最新内容。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用该值：
 
@@ -26,7 +34,9 @@
 particle
 ```
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 查找播客主持人对 AI 监管的讨论内容。
 
@@ -126,12 +136,16 @@ particle
   ```
 </CodeGroup>
 
-## 搭配使用 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用
+</div>
 
 * [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：将播客中的讨论与已发布的新闻交叉验证。
 * [Fiber.ai](/zh/docs/agent/connect/fiber)：为讨论中提及的人物接入公司与联系人上下文。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

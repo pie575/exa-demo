@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-# API 키 업데이트 {#update-api-key}
+<div id="update-api-key">
+  # API 키 업데이트
+</div>
 
 > 기존 API 키의 이름과 속도 제한을 업데이트합니다.
 
@@ -15,20 +19,28 @@
   Team Management API는 team 단위로 활성화됩니다. 인증에는 서비스 계정 API 키를 사용하며, 이 키는 해당 기능이 team에 활성화된 후 [API keys 페이지](https://dashboard.exa.ai/api-keys)의 **Service keys** 탭에서 생성할 수 있습니다. 액세스 요청은 [support@exa.ai](mailto:support@exa.ai)로 문의하세요.
 </Info>
 
-## 개요 {#overview}
+<div id="overview">
+  ## 개요
+</div>
 
 API 키 업데이트 엔드포인트를 사용하면 기존 API 키를 수정할 수 있습니다
 
-## Path Parameters {#path-parameters}
+<div id="path-parameters">
+  ## Path Parameters
+</div>
 
 * **id**: 업데이트할 API 키의 고유 식별자입니다.
 
-## 선택적 Parameters {#optional-parameters}
+<div id="optional-parameters">
+  ## 선택적 Parameters
+</div>
 
 * **name**: API 키에 사용할 새 설명 이름
 * **rateLimit**: 새 속도 제한(분당 요청 수)
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

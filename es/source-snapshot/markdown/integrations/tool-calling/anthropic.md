@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Anthropic Tool Calling {#anthropic-tool-calling}
+<div id="anthropic-tool-calling">
+  # Anthropic Tool Calling
+</div>
 
 > Usa el uso de herramientas de Claude para añadir Exa web search y contenido de páginas a tu aplicación.
 
@@ -15,7 +19,9 @@
 
 El [uso de herramientas](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) de Claude permite que los modelos llamen a funciones que defines en tu código. Los SDK de Exa incluyen herramientas listas para usar de búsqueda web y lectura de páginas para Anthropic, así que no tienes que escribir a mano el esquema de la herramienta, analizar los bloques `tool_use` ni dar formato a los resultados de Exa por tu cuenta.
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
 <Steps>
   <Step title="Instala los SDK">
@@ -114,7 +120,9 @@ El [uso de herramientas](https://docs.anthropic.com/en/docs/build-with-claude/to
   </Step>
 </Steps>
 
-## Configuración de las herramientas {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Configuración de las herramientas
+</div>
 
 Los argumentos con nombre son opciones habituales de Exa que se transmiten cuando se ejecuta la herramienta: las opciones de búsqueda a `exa.search()` y las de contenido a `exa.get_contents()`:
 
@@ -164,11 +172,15 @@ En cambio, `name` (con valor predeterminado `"web_search"` y `"get_contents"`) y
   ```
 </CodeGroup>
 
-## Cómo combinar tus propias herramientas {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Cómo combinar tus propias herramientas
+</div>
 
 `handle_tool_use` responde a todos los bloques `tool_use` del mensaje: un bloque que nombre una herramienta que no puede resolver recibe un resultado `Error: unknown tool "<name>"` en lugar de descartarse, de modo que la solicitud de follow-up nunca omite un resultado de herramienta obligatorio. Si ejecutas tus propias herramientas junto con las de Exa, sustituye esos resultados de error por los tuyos antes de la siguiente solicitud.
 
-## Escribir el bucle a mano {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Escribir el bucle a mano
+</div>
 
 Si prefieres encargarte tú mismo del esquema de la herramienta y de su ejecución, define la herramienta y procesa los bloques `tool_use` manualmente. `exa.tools.web_search()` y `exa.tools.get_contents()` te ofrecen las mismas especificaciones de herramienta independientes del proveedor (con un método `run`) para bucles hechos a mano, o puedes escribirlo todo desde cero:
 

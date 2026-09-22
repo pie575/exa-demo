@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Cybersécurité {#cybersecurity}
+<div id="cybersecurity">
+  # Cybersécurité
+</div>
 
 > Trouvez des vulnérabilités, des advisories, des rapports de menaces et de la documentation de confiance avec Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Utilisez Exa Search pour les records de vulnérabilité, les advisory des vendors et la recherche sur les menaces, à partir des sources que les équipes de sécurité consultent déjà.
 
-## Inclus {#included}
+<div id="included">
+  ## Inclus
+</div>
 
 * Records de vulnérabilité CVE et GHSA
 * Advisories de sécurité des vendors et notes de correctifs
@@ -43,40 +49,54 @@ Utilisez Exa Search pour les records de vulnérabilité, les advisory des vendor
 * Pages de confiance, listes de sous-traitants et documentation de conformité
 * Blogs de sécurité, conférences et travaux de recherche
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Triage des vulnérabilités et évaluation de l&#39;exposition
 * Threat intelligence et suivi des adversaires
 * Risque vendor et revues de sécurité des tiers
 * Surveillance et alertes de sécurité
 
-## Exemples de requêtes {#example-queries}
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
 
-### Trier une classe de vulnérabilités {#triage-a-vulnerability-class}
+<div id="triage-a-vulnerability-class">
+  ### Trier une classe de vulnérabilités
+</div>
 
 Indiquez le produit, la plage de versions et la gravité.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-### Trouver des advisories vendor {#find-vendor-advisories}
+<div id="find-vendor-advisories">
+  ### Trouver des advisories vendor
+</div>
 
 Décrivez le statut d&#39;exploitation et la classe de produit plutôt qu&#39;un seul identifiant CVE.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-### Examiner la posture de sécurité d&#39;un vendor {#review-a-vendors-security-posture}
+<div id="review-a-vendors-security-posture">
+  ### Examiner la posture de sécurité d&#39;un vendor
+</div>
 
 Indiquez le type de document et la catégorie de vendor.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-### Enquêter sur un adversaire {#research-an-adversary}
+<div id="research-an-adversary">
+  ### Enquêter sur un adversaire
+</div>
 
 Nommez le groupe ou la campagne, ainsi que la technique ou le secteur qui vous intéresse.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -117,7 +137,9 @@ Nommez le groupe ou la campagne, ainsi que la technique ou le secteur qui vous i
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les produits, les critères de menace et les fields d&#39;output dont vous avez besoin : Agent renvoie des résultats validés par schéma, avec citations.
 

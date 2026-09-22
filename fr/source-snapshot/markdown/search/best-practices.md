@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Bonnes pratiques de search {#search-best-practices}
+<div id="search-best-practices">
+  # Bonnes pratiques de search
+</div>
 
 > Optimisez la qualité du retrieval, la latence, le context et la synthèse de vos integrations de la Search API en production.
 
 Ce guide part du principe que vous disposez déjà d&#39;une [requête à la Search API](/fr/docs/search/quickstart) fonctionnelle. Il explique comment l&#39;améliorer en suivant les bonnes pratiques recommandées par Exa.
 
-## Commencez par la requête utile la plus simple {#start-with-the-smallest-useful-request}
+<div id="start-with-the-smallest-useful-request">
+  ## Commencez par la requête utile la plus simple
+</div>
 
 La meilleure base de départ est une requête en langage naturel avec `highlights: true`. Exa dimensionne les extraits de chaque résultat en fonction de leur relevance : il n&#39;y a donc aucun budget de caractères à ajuster :
 
@@ -52,7 +58,9 @@ N&#39;ajoutez des paramètres supplémentaires qu&#39;en cas de besoin :
 | `highlights.maxCharacters`    | Votre application exige une limite d&#39;extrait fixe par page                         |
 | Filtres de domaine ou de date | Les résultats hors de cette contrainte seraient inutilisables                          |
 
-## Search vs. Deep Search {#search-vs-deep-search}
+<div id="search-vs-deep-search">
+  ## Search vs. Deep Search
+</div>
 
 La recherche standard récupère et classe les pages correspondant à une requête. Deep Search exécute un processus de recherche capable d&#39;itérer, d&#39;examiner ce qu&#39;il a trouvé, d&#39;affiner la recherche et de synthétiser un résultat fondé sur des preuves.
 
@@ -64,7 +72,9 @@ La recherche standard récupère et classe les pages correspondant à une requê
 
 Les modes deep sont recommandés par défaut avec `outputSchema`. Consultez le [guide Deep Search](/fr/docs/search/deep-search) pour des instructions complètes et des exemples.
 
-## Améliorer la qualité du retrieval {#improve-retrieval-quality}
+<div id="improve-retrieval-quality">
+  ## Améliorer la qualité du retrieval
+</div>
 
 Lorsque les résultats laissent à désirer, modifiez un seul élément de la requête à la fois.
 
@@ -116,7 +126,9 @@ Lorsque les résultats laissent à désirer, modifiez un seul élément de la re
 
 Conservez un petit ensemble de requêtes représentatives pendant le réglage. Comparez la relevance des résultats et la réussite des tâches en aval sur l&#39;ensemble de ces requêtes plutôt que d&#39;optimiser pour un seul exemple. Enregistrez `requestId`, `searchTime` et `costDollars` afin que les régressions soient reproductibles.
 
-## Maîtriser la latence et le context {#budget-latency-and-context}
+<div id="budget-latency-and-context">
+  ## Maîtriser la latence et le context
+</div>
 
 Chaque paramètre consomme une ressource différente :
 
@@ -172,7 +184,9 @@ N&#39;appliquez pas cette recette lorsque la fraîcheur des pages conditionne l&
 
 Pour laisser Exa répartir un budget de context unique sur l&#39;ensemble des résultats — davantage pour les sources solides, moins pour les sources redondantes — consultez l&#39;[aperçu de recherche Dynamic Highlights](/fr/docs/search/highlights#dynamic-highlights).
 
-## Conseils pour les cas d&#39;usage courants {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## Conseils pour les cas d&#39;usage courants
+</div>
 
 | Si vous avez besoin de                               | Utilisez                                                                                      | Évitez                                                                   |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -185,7 +199,9 @@ Pour laisser Exa répartir un budget de context unique sur l&#39;ensemble des r�
 | Plus de context à partir de quelques pages           | Search avec highlights, puis appel à Contents                                                 | Le texte intégral pour chaque résultat                                   |
 | Une latence plus faible                              | Mesurer `fast` ou `instant` avec du contenu compact                                           | Ajouter par défaut des contrôles de fraîcheur ou de synthèse             |
 
-## Quand utiliser un autre endpoint {#when-to-use-another-endpoint}
+<div id="when-to-use-another-endpoint">
+  ## Quand utiliser un autre endpoint
+</div>
 
 Utilisez un autre endpoint Exa lorsque la nature de la tâche change :
 
@@ -195,7 +211,9 @@ Utilisez un autre endpoint Exa lorsque la nature de la tâche change :
 | Les URL sont déjà connues                                       | [Contents](/fr/docs/contents/quickstart) |
 | Exécuter une search selon un schedule                           | [Monitors](/fr/docs/monitors/quickstart) |
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="Search API reference" icon="square-terminal" href="/fr/docs/reference/search" cta="Ouvrir la référence" arrow="true">

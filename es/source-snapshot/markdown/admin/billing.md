@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Facturación y límites de tasa {#billing-and-rate-limits}
+<div id="billing-and-rate-limits">
+  # Facturación y límites de tasa
+</div>
 
 > Gestiona los créditos, las facturas y los límites de tasa de la API de Exa.
 
@@ -23,7 +27,9 @@ Exa ofrece un nivel gratuito, facturación de pago por uso y planes Enterprise p
   </Card>
 </Columns>
 
-## Planes de un vistazo {#plans-at-a-glance}
+<div id="plans-at-a-glance">
+  ## Planes de un vistazo
+</div>
 
 | Plan             | Facturación                                                                    | Límite de tasa                                   | Concurrencia de Agent |
 | ---------------- | ------------------------------------------------------------------------------ | ------------------------------------------------ | --------------------- |
@@ -35,7 +41,9 @@ Exa ofrece un nivel gratuito, facturación de pago por uso y planes Enterprise p
   Te asesoraremos sobre la mejor configuración para gestionar la latencia, la escala, ZDR y más.
 </Card>
 
-## Conceptos básicos de facturación {#billing-basics}
+<div id="billing-basics">
+  ## Conceptos básicos de facturación
+</div>
 
 Las solicitudes se cobran con cargo a créditos prepagados según las tarifas indicadas en [Precios](/es/docs/admin/pricing) o conforme a tu contrato Enterprise. Los propietarios del equipo pueden añadir créditos desde el [panel de facturación](https://dashboard.exa.ai/billing); los pagos se procesan a través de Stripe.
 
@@ -43,7 +51,9 @@ Si tu equipo agota sus créditos, las solicitudes devuelven `402 Payment Require
 
 Para consultar el uso histórico por API key, usa [Get API key usage](/es/docs/reference/team-management/get-api-key-usage).
 
-## Límites de tasa {#rate-limits}
+<div id="rate-limits">
+  ## Límites de tasa
+</div>
 
 Los límites de tasa se miden en consultas por segundo (QPS) y se aplican a tu equipo en conjunto, sumando todas sus API keys. Puedes asignar un límite menor a una key individual desde la página [API Keys](https://dashboard.exa.ai/api-keys), pero su tráfico sigue contando para el límite del equipo.
 
@@ -59,7 +69,9 @@ Algunos endpoints comparten la capacidad del límite de tasa. Los límites está
 
 Cuando superas un límite, las solicitudes devuelven `429 Too Many Requests`. Espera el tiempo indicado en el encabezado `Retry-After` cuando esté presente, o reintenta con exponential backoff. Consulta [Códigos de error](/es/docs/admin/error-codes).
 
-### Límites de Agent {#agent-limits}
+<div id="agent-limits">
+  ### Límites de Agent
+</div>
 
 Los límites de Agent son dos controles independientes: cuántos runs pueden estar en curso a la vez y con qué rapidez puedes iniciar nuevos.
 
@@ -67,13 +79,17 @@ Los límites de Agent son dos controles independientes: cuántos runs pueden est
 * **Inicio de runs**: `POST /agent/runs` consume del QPS de tu cuenta, y cada inicio de run cuenta como dos solicitudes. Puedes iniciar runs a la mitad de tu QPS, de modo que una cuenta con los 10 QPS predeterminados puede iniciar 5 runs por segundo, y con 25 QPS se permiten 12 por segundo.
 * **Sondeo**: las solicitudes `GET` para consultar el estado de un run, los eventos y las listas de runs no cuentan para tu QPS ni bloquean nunca el despacho, así que puedes sondear los Agents en ejecución con independencia de la rapidez con la que inicies nuevos.
 
-### 25 QPS con pago por uso {#25-qps-on-pay-as-you-go}
+<div id="25-qps-on-pay-as-you-go">
+  ### 25 QPS con pago por uso
+</div>
 
 Añade $1.000 en créditos en cualquier periodo de 30 días y el límite de tasa de tu equipo subirá automáticamente a **25 QPS durante 90 días**. El umbral tiene en cuenta los créditos que compras, no los que gastas, y volver a alcanzarlo reinicia los 90 días. Consulta tu progreso en el [panel de facturación](https://dashboard.exa.ai/billing).
 
 ¿Necesitas más de 25 QPS? [Habla con ventas](https://exa.ai/contact/sales).
 
-## Recarga automática {#auto-recharge}
+<div id="auto-recharge">
+  ## Recarga automática
+</div>
 
 La recarga automática compra créditos cuando tu saldo alcanza el umbral que elijas. Configúrala desde el [panel de facturación](https://dashboard.exa.ai/billing).
 
@@ -87,13 +103,17 @@ Por ejemplo, con un monto de recarga de $100, un umbral de $10 y un máximo mens
 
 Si tienes un lanzamiento próximo u otra carga de trabajo de alto volumen, añade suficientes créditos por anticipado y define un monto de recarga automática que evite muchos intentos de pago pequeños.
 
-## Recibos y facturas {#receipts-and-invoices}
+<div id="receipts-and-invoices">
+  ## Recibos y facturas
+</div>
 
 Exa envía por correo electrónico los recibos de las compras de créditos y de las recargas automáticas desde [billing@exa.ai](mailto:billing@exa.ai). Añade la dirección a tu lista de remitentes permitidos si es necesario. El historial completo de tus facturas está disponible en el [panel de facturación](https://dashboard.exa.ai/billing).
 
 La facturación pospago está disponible con un plan Enterprise.
 
-## Obtener ayuda {#get-help}
+<div id="get-help">
+  ## Obtener ayuda
+</div>
 
 <Columns cols={2}>
   <Card title="Aumenta tus límites" icon="gauge" href="https://exa.ai/contact/sales" cta="Contactar con ventas" arrow="true">

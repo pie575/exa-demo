@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，请先通过该文件了解所有可用页面。
 
-# Agent 最佳实践 {#agent-best-practices}
+<div id="agent-best-practices">
+  # Agent 最佳实践
+</div>
 
 > 为 production 环境的 Exa Agent integration 调优 query 质量、结构化输出、effort 与费用。
 
 完成 [Exa Agent 快速开始](/zh/docs/agent/quickstart) 后，可参考本指南提升 query 质量、组织输出结构，并控制运行时长与费用。如需完整的请求示例，请从 [Agent 示例](/zh/docs/agent/examples) 开始。
 
-## 核心原则 {#core-principles}
+<div id="core-principles">
+  ## 核心原则
+</div>
 
 把 `query` 当作一份任务说明来写：明确 agent 要找什么、工作的 scope、需要哪些证据，以及怎样才算一个完整的结果。
 
@@ -51,7 +57,9 @@
 
 数据行、exclusions 和响应结构都应放在各自专属的 fields 中，不要塞进 `query` 里。
 
-## 编写列表构建与增强类 query {#writing-list-building-and-enrichment-queries}
+<div id="writing-list-building-and-enrichment-queries">
+  ## 编写列表构建与增强类 query
+</div>
 
 对于列表构建，需要明确实体、目标数量、资格 criteria、exclusions 以及证据标准。对于增强，将已有记录放入 `input.data`，并只描述 agent 需要补充研究的内容。
 
@@ -73,7 +81,9 @@
 
 发现类请求示例参见 [Find all GTM members](/zh/docs/agent/examples#find-all-code)，对应的行增强模式参见 [Enrich input rows](/zh/docs/agent/examples#enrich-input-rows-code)。
 
-## 处理异步运行 {#handle-asynchronous-runs}
+<div id="handle-asynchronous-runs">
+  ## 处理异步运行
+</div>
 
 Agent 运行在搜索、阅读和推理期间可能耗时数秒到数分钟。请围绕运行生命周期来设计，而不是让应用请求一直挂着。
 
@@ -97,7 +107,9 @@ Agent 运行在搜索、阅读和推理期间可能耗时数秒到数分钟。�
 
 对于启用了 Zero Data Retention 的团队，请消费实时流或在保留窗口内轮询。`previousRunId` 和 Connect `dataSources` 不可用。参见 [Zero Data Retention](/zh/docs/admin/security/zero-data-retention)。
 
-## 为结构化输出编写自定义 JSON schema {#write-custom-json-schemas-for-structured-output}
+<div id="write-custom-json-schemas-for-structured-output">
+  ## 为结构化输出编写自定义 JSON schema
+</div>
 
 当下游代码需要机器可读的 fields、归一化的值、表格行或增强记录时，使用 `outputSchema`。如果一段文字答案就够用，可以省略它并直接读取 `output.text`；结构化输出会增加格式化工作量，也可能提高延迟。
 
@@ -147,7 +159,9 @@ schema 遵从性校验的是结构，而不是事实。当证据不足以支撑�
 
 浏览[结构化 agent 示例](/zh/docs/agent/examples)，对比列表构建、KYB、招聘信息、exclusions 和续跑运行所用的 schema。
 
-## agent 与 Search 的对比 {#agent-vs-search}
+<div id="agent-vs-search">
+  ## agent 与 Search 的对比
+</div>
 
 | 需求             | 从这里开始                             |
 | -------------- | --------------------------------- |
@@ -157,7 +171,9 @@ schema 遵从性校验的是结构，而不是事实。当证据不足以支撑�
 
 如果任务需要多步 retrieval、逐个实体验证，或对已知 记录 进行增强，请使用 agent。如果你只需快速获取网页，后续推理由你的应用完成，则使用 Search。
 
-## 常见用例技巧 {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## 常见用例技巧
+</div>
 
 | 如果你需要       | 使用                                                           | 避免                            |
 | ----------- | ------------------------------------------------------------ | ----------------------------- |
@@ -169,7 +185,9 @@ schema 遵从性校验的是结构，而不是事实。当证据不足以支撑�
 | 可预测的单次请求费用  | 固定的 `effort`                                                 | 不设预算就使用 `auto` 或 `max`        |
 | 完整性优先于延迟与费用 | `xhigh` 或 `max`                                              | 还没收紧 query 就先提高 effort        |
 
-## 下一步 {#next-steps}
+<div id="next-steps">
+  ## 下一步
+</div>
 
 <Columns cols={2}>
   <Card title="Agent 快速开始" icon="bot" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">

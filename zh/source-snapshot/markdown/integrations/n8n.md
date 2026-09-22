@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# n8n {#n8n}
+<div id="n8n">
+  # n8n
+</div>
 
 > 在 n8n 工作流中使用 Exa search 和 Contents。
 
 官方 [n8n Exa node](https://github.com/exa-labs/n8n-integration) 为可视化工作流带来了网页搜索、内容提取、有据可循的答案以及 Exa Agent 运行能力。你可以把它当作普通的工作流步骤使用，也可以将其作为工具连接到 n8n AI agent。
 
-## 安装 Exa node {#install-the-exa-node}
+<div id="install-the-exa-node">
+  ## 安装 Exa node
+</div>
 
 包名为 `n8n-nodes-exa-official`。
 
@@ -31,7 +37,9 @@
   </Step>
 </Steps>
 
-## 运行搜索 {#run-a-search}
+<div id="run-a-search">
+  ## 运行搜索
+</div>
 
 1. 为工作流添加一个触发器。
 2. 添加 **Exa** node。
@@ -45,7 +53,9 @@
 
 搜索还可以返回每条 result 的文本、highlights、摘要、链接和图片。域名过滤、publication date、类别、`maxAgeHours` 以及子页面抓取均可在该 node 的可选 fields 中配置。
 
-## 可用资源 {#available-resources}
+<div id="available-resources">
+  ## 可用资源
+</div>
 
 | 资源           | 操作                                                                                    |
 | ------------ | ------------------------------------------------------------------------------------- |
@@ -54,7 +64,9 @@
 | **Answer**   | 生成有据可循、带引用来源的答案，并可选择结构化输出。                                                            |
 | **Agent**    | 创建、查看、列出、流式获取、轮询和取消多步骤的 Agent 运行。                                                     |
 
-## 在 n8n AI agent 中使用 Exa {#use-exa-with-an-n8n-ai-agent}
+<div id="use-exa-with-an-n8n-ai-agent">
+  ## 在 n8n AI agent 中使用 Exa
+</div>
 
 通过工具输入，将 Exa node 连接到 **AI Agent** node。需要由模型提供的参数可以使用 n8n 的 `$fromAI()` 表达式：
 
@@ -64,7 +76,9 @@
 
 Search 与 Answer 很适合作为 grounding 工具。若任务需要多步研究、列表构建、结构化增强或 [Exa Connect](/zh/docs/agent/connect/overview) 的高级数据，请使用 Agent 资源。
 
-## 等待 Agent 运行 {#wait-for-an-agent-run}
+<div id="wait-for-an-agent-run">
+  ## 等待 Agent 运行
+</div>
 
 创建 Agent 运行时，**Wait for Completion** 支持：
 
@@ -73,7 +87,9 @@ Search 与 Answer 很适合作为 grounding 工具。若任务需要多步研究
 
 对于长时间运行或异步的工作流，请关闭 **Wait for Completion**，保存返回的运行 `id`，稍后再使用 **Get Run** 获取结果。n8n 步骤结束后，该运行仍会在 Exa 上继续执行。
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="node picker 中没有 Exa node">
@@ -89,7 +105,9 @@ Search 与 Answer 很适合作为 grounding 工具。若任务需要多步研究
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 <Columns cols={3}>
   <Card title="官方 Exa node" icon="github" href="https://github.com/exa-labs/n8n-integration" cta="查看代码仓库" arrow="true">

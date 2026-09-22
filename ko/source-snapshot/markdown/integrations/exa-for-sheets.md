@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa for Google Sheets {#exa-for-google-sheets}
+<div id="exa-for-google-sheets">
+  # Exa for Google Sheets
+</div>
 
 > Google Sheets에서 Exa Agent와 Exa 수식을 사용하세요.
 
@@ -18,7 +22,9 @@ add-on은 두 가지 작업 방식을 제공합니다:
 * 전체 표와 여러 셀에 걸친 작업을 위한 **Exa Agent**
 * 한 셀에서 하나의 답변을 얻는 **`=EXA(...)`**
 
-## 설치 {#install}
+<div id="install">
+  ## 설치
+</div>
 
 <Steps>
   <Step title="add-on 설치">
@@ -46,7 +52,9 @@ add-on은 두 가지 작업 방식을 제공합니다:
   </Step>
 </Steps>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Exa Agent를 사용하면 Google Sheets의 여러 셀에 걸쳐 Exa를 활용할 수 있습니다.
 
@@ -57,7 +65,9 @@ Exa Agent를 사용하면 Google Sheets의 여러 셀에 걸쳐 Exa를 활용할
 * 새 행을 추가해 표를 이어가고 싶을 때
 * 웹 데이터로 목록을 enrich하고 싶을 때
 
-### 표 생성하기 {#generate-a-table}
+<div id="generate-a-table">
+  ### 표 생성하기
+</div>
 
 Exa로 새 표를 만들고 싶을 때 **Generate table**을 사용하세요.
 
@@ -77,7 +87,9 @@ Exa가 웹을 리서치한 뒤 시트에 표를 작성합니다.
 
 기본적으로 표는 선택한 셀에서 시작합니다. **More options**에서 다른 시작 셀을 지정할 수 있습니다.
 
-### Fill cells {#fill-cells}
+<div id="fill-cells">
+  ### Fill cells
+</div>
 
 이미 표가 있고 비어 있는 데이터를 Exa가 채워주길 원할 때 **Fill cells**를 사용하세요.
 
@@ -99,7 +111,9 @@ Exa는 선택 영역 주변의 표를 파악해 빈 칸을 채웁니다.
 
 Apple 행의 빈 셀을 선택한 다음 **Fill selected cells**를 클릭하세요. Exa는 회사 이름과 주변 행을 컨텍스트로 활용합니다.
 
-### 행 이어서 채우기 {#continue-rows}
+<div id="continue-rows">
+  ### 행 이어서 채우기
+</div>
 
 표 아래의 빈 행을 선택할 수도 있습니다.
 
@@ -107,7 +121,9 @@ Apple 행의 빈 셀을 선택한 다음 **Fill selected cells**를 클릭하세
 
 Exa는 기존 행을 예시로 삼아 동일한 열 구성을 유지하며, 이미 표에 있는 항목이 중복되지 않도록 합니다.
 
-## `=EXA(...)` {#exa}
+<div id="exa">
+  ## `=EXA(...)`
+</div>
 
 셀 하나에 답변 하나만 필요할 때는 `=EXA(...)`를 사용하세요. 웹을 검색해 상위 결과를 읽은 뒤 간결한 답변을 반환합니다.
 
@@ -133,7 +149,9 @@ Exa는 기존 행을 예시로 삼아 동일한 열 구성을 유지하며, 이�
 
 한 셀에 간단한 답변만 필요할 때는 `=EXA(...)`를 사용하세요. 표 전체를 만들거나 채우려면 **Exa Agent**를 사용하세요.
 
-## `=EXA_ANSWER(...)` {#exa_answer}
+<div id="exa_answer">
+  ## `=EXA_ANSWER(...)`
+</div>
 
 output 형식을 완벽하게 제어할 수 있는 고급 AI 답변 기능입니다. system prompt, 구조화된 JSON output, citations, 특정 search type이 필요한 경우에 사용하세요.
 
@@ -160,7 +178,9 @@ output 형식을 완벽하게 제어할 수 있는 고급 AI 답변 기능입니
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-## `=EXA_SEARCH(...)` {#exa_search}
+<div id="exa_search">
+  ## `=EXA_SEARCH(...)`
+</div>
 
 웹을 검색하여 URL 목록을 세로 방향으로 반환합니다. 도메인 필터링, 카테고리 필터링, content highlights, `outputSchema`를 통한 합성 output을 지원합니다.
 
@@ -188,7 +208,9 @@ output 형식을 완벽하게 제어할 수 있는 고급 AI 답변 기능입니
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-## `=EXA_CONTENTS(...)` {#exa_contents}
+<div id="exa_contents">
+  ## `=EXA_CONTENTS(...)`
+</div>
 
 URL에서 텍스트 콘텐츠를 추출합니다.
 
@@ -200,7 +222,9 @@ URL에서 텍스트 콘텐츠를 추출합니다.
 | ----- | -- | ------------------------------------ |
 | `url` | 예  | 전체 URL(`http` 또는 `https`로 시작해야 합니다). |
 
-## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
+<div id="exa_findsimilar">
+  ## `=EXA_FINDSIMILAR(...)`
+</div>
 
 기준 URL과 유사한 URL을 찾습니다. 도메인 및 텍스트 필터를 선택적으로 적용할 수 있습니다.
 
@@ -217,7 +241,9 @@ URL에서 텍스트 콘텐츠를 추출합니다.
 | `includeTextStr`    | 아니오   | `""` | result에 반드시 포함되어야 하는 문구입니다. |
 | `excludeTextStr`    | 아니오   | `""` | result에 포함되면 안 되는 문구입니다.    |
 
-## Batch {#batch}
+<div id="batch">
+  ## Batch
+</div>
 
 여러 Exa 수식 셀을 한 번에 처리하려면 **Batch**를 사용하세요.
 
@@ -228,7 +254,9 @@ Batch로 할 수 있는 작업:
 
 현재 결과를 그대로 유지하면서 수식이 다시 실행되지 않도록 하려면 수식을 값으로 변환하세요.
 
-## 언제 무엇을 사용할까 {#when-to-use-what}
+<div id="when-to-use-what">
+  ## 언제 무엇을 사용할까
+</div>
 
 | 작업                                         | 사용                         |
 | ------------------------------------------ | -------------------------- |
@@ -243,13 +271,17 @@ Batch로 할 수 있는 작업:
 | 여러 Exa 수식 한 번에 새로 고치기                      | Batch                      |
 | 수식 결과를 일반 텍스트로 저장하기                        | Batch → Convert to values  |
 
-## 참고 사항 {#notes}
+<div id="notes">
+  ## 참고 사항
+</div>
 
 * Exa API 요청은 사용량 할당량에서 차감됩니다. **Batch → Convert to values**를 사용해 결과를 고정하면 수식이 다시 계산되지 않습니다.
 * add-on은 속도 제한(HTTP 429)에 걸리면 exponential backoff 방식으로 최대 3회까지 자동으로 재시도합니다.
 * 수백 행으로 늘리기 전에 작은 batch(10~20행)부터 시작하세요.
 
-## 링크 {#links}
+<div id="links">
+  ## 링크
+</div>
 
 * [Google Sheets용 Exa AI 설치](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
 * [Exa API key 발급받기](https://dashboard.exa.ai/api-keys)

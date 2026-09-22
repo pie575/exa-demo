@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# List API keys {#list-api-keys}
+<div id="list-api-keys">
+  # List API keys
+</div>
 
 > Recupera todas las API keys de tu equipo junto con sus metadatos.
 
@@ -15,11 +19,15 @@
   La Team Management API se habilita por equipo. Se autentica con una API key de cuenta de servicio, que se crea desde la pestaña **Service keys** de la [página de API keys](https://dashboard.exa.ai/api-keys) una vez que la funcionalidad esté habilitada para tu equipo. Escribe a [support@exa.ai](mailto:support@exa.ai) para solicitar acceso.
 </Info>
 
-## Descripción general {#overview}
+<div id="overview">
+  ## Descripción general
+</div>
 
 El endpoint List API Keys devuelve todas las API keys asociadas a tu equipo. Se incluye el ID, el nombre, el límite de tasa y la marca de tiempo de creación de cada key.
 
-## Formato de respuesta {#response-format}
+<div id="response-format">
+  ## Formato de respuesta
+</div>
 
 La respuesta incluye un arreglo de objetos de API key con la siguiente información:
 
@@ -28,7 +36,9 @@ La respuesta incluye un arreglo de objetos de API key con la siguiente informaci
 * **rateLimit**: límite de tasa en solicitudes por minuto (si está definido)
 * **createdAt**: timestamp ISO 8601 de la fecha de creación de la key
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

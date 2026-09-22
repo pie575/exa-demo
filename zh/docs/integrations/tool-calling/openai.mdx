@@ -10,7 +10,9 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-calling?lang=python)让模型可以调用你在代码中定义的函数。Exa SDK 为 OpenAI 提供了开箱即用的网页搜索和页面读取 tools，你无需自己手写 tool schema、解析工具调用或格式化 Exa 结果。
 
-## 快速开始 {#get-started}
+<div id="get-started">
+  ## 快速开始
+</div>
 
 <Steps>
   <Step title="安装 SDK">
@@ -103,7 +105,9 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
   </Step>
 </Steps>
 
-## Responses API {#responses-api}
+<div id="responses-api">
+  ## Responses API
+</div>
 
 对于 OpenAI Responses API，请使用 `responses` 工厂函数，并搭配相同的 `handle_tool_calls` 辅助函数。该处理器会返回 `function_call_output` 项，供后续请求使用。
 
@@ -135,7 +139,9 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
   Chat Completions 与 Responses API 所用的 tools 结构不同，且互不接受对方的格式，因此请使用与所调用端点相匹配的工厂函数。
 </Note>
 
-## 配置 tools {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 配置 tools
+</div>
 
 关键字参数就是常规的 Exa options，会在工具运行时透传下去：search options 传给 `exa.search()`，页面内容选项传给 `exa.get_contents()`：
 
@@ -159,11 +165,15 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
 
 而 `name` (默认为 `"web_search"` 和 `"get_contents"`) 和 `description` 则会覆盖模型所看到的工具定义。可以用自定义 `name` 来同时使用多个配置不同的 Exa tools，或避免与占用这些名称的其他 tools 冲突。
 
-## 混入你自己的工具 {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 混入你自己的工具
+</div>
 
 处理器会应答消息中的每一个工具调用：若某个调用指定了它们无法识别的工具，会输出 `Error: unknown tool "<name>"`，而不是直接丢弃，这样后续请求就不会遗漏必需的工具响应。如果你在 Exa 的 tools 之外还运行了自己的 tools，请在发起下一个请求前，用你自己的结果替换这些错误输出。
 
-## 手动编写 loop {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## 手动编写 loop
+</div>
 
 如果你希望自己掌控 tool schema 和执行流程，可以手动定义工具并处理调用。`exa.tools.web_search()` 和 `exa.tools.get_contents()` 为手写 loop 提供了同样与提供方无关的工具规范 (带 `run` 方法) ，你也可以完全从零编写：
 

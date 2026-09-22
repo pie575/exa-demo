@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Similarweb {#similarweb}
+<div id="similarweb">
+  # Similarweb
+</div>
 
 > Obtén estimaciones de tráfico de sitios web, rankings globales y descubrimiento de competidores.
 
@@ -16,14 +20,18 @@ Adjunta `similarweb` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
 Similarweb junto con Exa web search.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Comparar el tráfico web y el engagement de una empresa con los de empresas similares.
 * Mapear los competidores de un dominio y los sitios con audiencia coincidente.
 * Dimensionar mercados y cribar empresas según su huella digital.
 * Enriquecer la investigación de empresas y categorías con datos reales de comportamiento.
 
-## ID del proveedor {#provider-id}
+<div id="provider-id">
+  ## ID del proveedor
+</div>
 
 Usa este valor en `dataSources`:
 
@@ -31,7 +39,9 @@ Usa este valor en `dataSources`:
 similarweb
 ```
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Similarweb factura en créditos de datos a `$0.30 / credit`, y cada llamada se cobra
 según los créditos que Similarweb informa para ella. Los créditos aumentan con los datos devueltos:
@@ -57,7 +67,9 @@ Las llamadas que no devuelven datos (un dominio desconocido o con poco tráfico,
 volumen de búsqueda) son gratuitas. `numResults` y `months` determinan por cuántos puntos de datos
 pagas, así que mantenlos tan bajos como lo permita la tarea.
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 Encuentra 10 empresas SaaS B2B de rápido crecimiento y su tráfico web estimado.
 
@@ -151,12 +163,16 @@ Encuentra 10 empresas SaaS B2B de rápido crecimiento y su tráfico web estimado
   ```
 </CodeGroup>
 
-## Combina bien con {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
 
 * [Fiber.ai](/es/docs/agent/connect/fiber): convierte los competidores descubiertos en registros de empresas enriquecidos.
 * [Affiliate.com](/es/docs/agent/connect/affiliatecom): evalúa el alcance de un comercio antes de recomendar sus productos.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">

@@ -1,21 +1,29 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# AI SDK by Vercel {#ai-sdk-by-vercel}
+<div id="ai-sdk-by-vercel">
+  # AI SDK by Vercel
+</div>
 
 > Ajoutez Exa web search à vos applications AI SDK grâce au package @exalabs/ai-sdk.
 
 Utilisez le package `@exalabs/ai-sdk` pour ajouter Exa web search aux applications développées avec l&#39;AI SDK by Vercel. Il vous suffit de fournir une API key Exa : l&#39;outil `webSearch()` se charge des requêtes de recherche de votre modèle.
 
-## Installation {#install}
+<div id="install">
+  ## Installation
+</div>
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-## Démarrage rapide {#quick-start}
+<div id="quick-start">
+  ## Démarrage rapide
+</div>
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -43,7 +51,9 @@ console.log(text);
   Définissez votre clé dans `EXA_API_KEY` avant d&#39;exécuter l&#39;exemple. Le package lit automatiquement cette variable d&#39;environnement.
 </Info>
 
-## Valeurs par défaut {#defaults}
+<div id="defaults">
+  ## Valeurs par défaut
+</div>
 
 `webSearch()` utilise ces valeurs par défaut :
 
@@ -52,7 +62,9 @@ console.log(text);
 * `contents.text` : `3000` caractères par résultat
 * `maxAgeHours` : la valeur de repli du cache par défaut ; définissez cette option si vous avez besoin d&#39;une fraîcheur plus stricte
 
-## Configurer la recherche {#configure-search}
+<div id="configure-search">
+  ## Configurer la recherche
+</div>
 
 Utilisez les options ci-dessous pour ajuster la recherche et l&#39;extraction de contenu :
 
@@ -78,7 +90,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-### Options de recherche {#search-options}
+<div id="search-options">
+  ### Options de recherche
+</div>
 
 | Option                                    | Description                                                                                               |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -90,7 +104,9 @@ console.log(text);
 | `includeText` / `excludeText`             | Exiger ou exclure du texte dans les résultats.                                                            |
 | `userLocation`                            | Code pays à deux lettres pour une recherche tenant compte de la localisation.                             |
 
-### Options de contenu {#content-options}
+<div id="content-options">
+  ### Options de contenu
+</div>
 
 | Option                                                 | Description                                                                                                             |
 | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
@@ -101,7 +117,9 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | Explore les sous-pages et cible éventuellement une sous-page.                                                           |
 | `contents.extras.links` / `contents.extras.imageLinks` | Renvoie les liens ou les liens d&#39;images des résultats.                                                              |
 
-## Prise en charge de TypeScript {#typescript-support}
+<div id="typescript-support">
+  ## Prise en charge de TypeScript
+</div>
 
 Le package inclut des types TypeScript :
 
@@ -116,7 +134,9 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-## Pages associées {#related-pages}
+<div id="related-pages">
+  ## Pages associées
+</div>
 
 <Columns cols={2}>
   <Card title="Utiliser Vercel AI Gateway" icon="cloud" href="/fr/docs/integrations/vercel/ai-gateway" cta="Ouvrir le guide" arrow="true">

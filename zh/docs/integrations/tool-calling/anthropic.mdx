@@ -12,7 +12,9 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
 
 Claude 的 [工具调用](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) 允许模型调用你在代码中定义的函数。Exa SDK 为 Anthropic 提供了开箱即用的网页搜索和页面读取工具，你无需手写 工具 schema、解析 `tool_use` 块，也不必自行格式化 Exa 的结果。
 
-## 开始使用 {#get-started}
+<div id="get-started">
+  ## 开始使用
+</div>
 
 <Steps>
   <Step title="安装 SDK">
@@ -111,7 +113,9 @@ Claude 的 [工具调用](https://docs.anthropic.com/en/docs/build-with-claude/t
   </Step>
 </Steps>
 
-## 配置工具 {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 配置工具
+</div>
 
 关键字参数就是常规的 Exa options，会在工具运行时透传下去：search options 传给 `exa.search()`，页面内容选项传给 `exa.get_contents()`：
 
@@ -161,11 +165,15 @@ Claude 的 [工具调用](https://docs.anthropic.com/en/docs/build-with-claude/t
   ```
 </CodeGroup>
 
-## 混合使用你自己的工具 {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 混合使用你自己的工具
+</div>
 
 `handle_tool_use` 会对消息中的每一个 `tool_use` 块作出响应：若某个块指定了它无法识别的工具，该块不会被丢弃，而是返回一个 `Error: unknown tool "<name>"` 结果，从而保证后续请求不会遗漏任何必需的工具结果。如果你在 Exa 的工具之外还运行自己的工具，请在发送下一个请求前，用你自己的结果替换这些错误结果。
 
-## 手动编写 loop {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## 手动编写 loop
+</div>
 
 如果你更愿意自己掌控工具 schema 和执行过程，可以手动定义工具并处理 `tool_use` 块。`exa.tools.web_search()` 和 `exa.tools.get_contents()` 同样提供与提供方无关的工具规格 (带 `run` 方法) ，可用于手写的 loop；你也可以完全从零开始编写：
 

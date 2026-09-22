@@ -33,7 +33,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Usa Exa Search para encontrar fuentes jurídicas primarias y registros gubernamentales, junto con los comentarios escritos sobre ellos.
 
-## Incluido {#included}
+<div id="included">
+  ## Incluido
+</div>
 
 * Sentencias judiciales de EE. UU., con texto completo y metadatos de tribunal, número de expediente y cita
 * Patentes concedidas en EE. UU., con resumen, reivindicaciones, descripción, inventores y cesionarios
@@ -42,7 +44,9 @@ Usa Exa Search para encontrar fuentes jurídicas primarias y registros gubername
 * Contratos públicos y registros de licitaciones
 * Datos censales y otros registros estadísticos públicos
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Investigación de jurisprudencia y RAG legal
 * Monitoreo regulatorio y de políticas públicas
@@ -50,39 +54,53 @@ Usa Exa Search para encontrar fuentes jurídicas primarias y registros gubername
 * Cribado de cumplimiento normativo y diligencia debida
 * Estudios de mercado del sector público
 
-## Consultas de ejemplo {#example-queries}
+<div id="example-queries">
+  ## Consultas de ejemplo
+</div>
 
-### Encontrar jurisprudencia {#find-case-law}
+<div id="find-case-law">
+  ### Encontrar jurisprudencia
+</div>
 
 Describe la cuestión jurídica y la jurisdicción en lenguaje sencillo en lugar de usar una cita.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-### Buscar patentes {#search-patents}
+<div id="search-patents">
+  ### Buscar patentes
+</div>
 
 Describe qué hace la invención, tal como lo haría una reivindicación.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-### Cribar contra sanctions {#screen-against-sanctions}
+<div id="screen-against-sanctions">
+  ### Cribar contra sanctions
+</div>
 
 Indica el nombre de la lista y la clase de entidad que estás cribando.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-### Investigar el gasto público {#research-government-spending}
+<div id="research-government-spending">
+  ### Investigar el gasto público
+</div>
 
 Indica la agencia compradora o la categoría de servicio y el periodo de tiempo.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-### Obtener estadísticas públicas {#pull-public-statistics}
+<div id="pull-public-statistics">
+  ### Obtener estadísticas públicas
+</div>
 
 Indica el conjunto de datos y el área geográfica.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-## Realiza una solicitud {#make-a-request}
+<div id="make-a-request">
+  ## Realiza una solicitud
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -123,7 +141,9 @@ Indica el conjunto de datos y el área geográfica.
   ```
 </CodeGroup>
 
-## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtén datos estructurados con Exa Agent
+</div>
 
 Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criteria y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 

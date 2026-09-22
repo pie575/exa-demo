@@ -13,7 +13,9 @@ agent는 [Nevermined](https://nevermined.ai)의 [x402 card-delegation](https://n
 
 Nevermined로 처음 결제하는 payer라면 `POST /team-management/nevermined/purchase-key`가 새 Exa API key를 발급하고 $7의 credits를 추가합니다. 키의 잔액이 모두 소진되면 동일한 delegation으로 새 x402 토큰을 mint한 뒤 같은 엔드포인트를 다시 call하세요. Exa는 동일한 API key에 $7의 credits를 추가해 반환합니다.
 
-## 키 구매하기 {#buy-a-key}
+<div id="buy-a-key">
+  ## 키 구매하기
+</div>
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -26,7 +28,9 @@ payment-signature: <x402-token>
 * **Response (replay된 토큰):** 캐시된 결과가 반환되며, 추가 청구는 없습니다.
 * **signature 누락/유효하지 않음:** `402 Payment Required`와 함께 결제 요구 사항이 body에 담겨 반환됩니다.
 
-## 작동 방식 {#how-it-works}
+<div id="how-it-works">
+  ## 작동 방식
+</div>
 
 결제는 Nevermined가 처리하며, Exa는 서명된 x402 토큰만 확인합니다.
 
@@ -38,7 +42,9 @@ payment-signature: <x402-token>
 
 agent가 바로 활용할 수 있는 전체 안내(SDK 메서드, parameters, delegation discovery 및 생성, 문제 해결)는 Nevermined의 Exa 연동 가이드를 참고하세요: [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agent의 경우: [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md) 가져오기).
 
-## $7로 이용할 수 있는 양 {#what-7-buys}
+<div id="what-7-buys">
+  ## $7로 이용할 수 있는 양
+</div>
 
 Credits는 표준 Exa API 가격에 따라 차감됩니다. 현재 요금 기준으로 $7의 credits로 대략 다음 정도를 이용할 수 있습니다:
 
@@ -57,7 +63,9 @@ Credits는 표준 Exa API 가격에 따라 차감됩니다. 현재 요금 기준
 Search 요청에는 최대 10개 결과에 대한 text와 highlights가 포함됩니다. 10개를 초과하는 추가 결과와 AI summary는 별도로 청구됩니다.<br />
 전체 가격 정보는 [Exa 가격](https://exa.ai/pricing)을 참고하세요.
 
-## 키의 credits가 소진되면 {#when-the-key-runs-out}
+<div id="when-the-key-runs-out">
+  ## 키의 credits가 소진되면
+</div>
 
 API 키의 credits가 모두 소진되면 Exa는 일반 API 엔드포인트에서 **`HTTP 402`**를 반환합니다:
 
@@ -71,7 +79,9 @@ API 키의 credits가 모두 소진되면 Exa는 일반 API 엔드포인트에�
 
 동일한 plan ID와 delegation으로 새 x402 토큰을 mint한 다음, 같은 `/purchase-key` 엔드포인트로 다시 POST하세요. 그러면 Exa가 동일한 API 키에 $7 상당의 credits를 추가로 적립합니다.
 
-## 참고 자료 {#references}
+<div id="references">
+  ## 참고 자료
+</div>
 
 * [Nevermined Exa 연동 가이드](https://nevermined.ai/docs/integrations/exa)
 * [x402 card-delegation 명세](https://nevermined.ai/docs/specs/x402-card-delegation)

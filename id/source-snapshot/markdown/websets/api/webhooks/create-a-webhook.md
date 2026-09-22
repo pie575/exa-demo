@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Membuat webhook {#create-a-webhook}
+<div id="create-a-webhook">
+  # Membuat webhook
+</div>
 
 > Membuat Webhook yang mengirimkan events yang dipilih ke URL Anda begitu events tersebut terjadi.
 
@@ -15,7 +19,9 @@ Response menyertakan `secret` penandatanganan yang digunakan untuk memverifikasi
   tersebut akan dianggap gagal. Selalu daftarkan URL tujuan akhir.
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

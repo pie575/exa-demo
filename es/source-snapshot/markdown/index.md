@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Empieza a construir con Exa {#start-building-with-exa}
+<div id="start-building-with-exa">
+  # Empieza a construir con Exa
+</div>
 
 > Una potente herramienta de búsqueda web diseñada para agentes. Todo está optimizado para ofrecerte resultados precisos y eficientes en el uso de tokens.
 

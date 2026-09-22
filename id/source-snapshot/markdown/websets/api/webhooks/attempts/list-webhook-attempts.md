@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Daftar percobaan webhook {#list-webhook-attempts}
+<div id="list-webhook-attempts">
+  # Daftar percobaan webhook
+</div>
 
 > Menampilkan semua percobaan yang dilakukan oleh sebuah Webhook, diurutkan secara menurun.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}/attempts
 openapi: 3.1.0

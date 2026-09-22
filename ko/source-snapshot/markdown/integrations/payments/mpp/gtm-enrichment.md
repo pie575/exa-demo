@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Tempo MPP GTM Enrichment 쿡북 {#tempo-mpp-gtm-enrichment-cookbook}
+<div id="tempo-mpp-gtm-enrichment-cookbook">
+  # Tempo MPP GTM Enrichment 쿡북
+</div>
 
 > Tempo MPP로 Exa search 및 contents 요청마다 비용을 지불하는 GTM enrichment 워크플로우를 구축하세요. API 키가 필요 없습니다.
 
@@ -18,7 +22,9 @@ Payments Protocol(MPP)을 통해 요청 단위로 비용을 지불하세요. MPP
   흐름을 따릅니다.
 </Info>
 
-## 무엇을 만드나요 {#what-youll-build}
+<div id="what-youll-build">
+  ## 무엇을 만드나요
+</div>
 
 회사명 또는 타깃 설명 목록을 입력받아 동작하는 경량 enrichment 파이프라인입니다:
 
@@ -28,7 +34,9 @@ Payments Protocol(MPP)을 통해 요청 단위로 비용을 지불하세요. MPP
 
 이 패턴은 리드 목록 enrichment, 계정 리서치, 아웃바운드 개인화에 활용할 수 있습니다. 개별적인 `/search` + `/contents` call로 구성되어 있으므로, 모든 단계를 MPP로 결제할 수 있습니다.
 
-## 사전 준비 사항 {#prerequisites}
+<div id="prerequisites">
+  ## 사전 준비 사항
+</div>
 
 * Tempo mainnet에서 **USDC.e**가 입금된 Tempo 호환 wallet.
 * 런타임에 wallet private key를 안전하게 로드하는 방법(아래 참조. private key를 커밋하거나 소스 코드에 노출하지 마세요).
@@ -38,9 +46,13 @@ Payments Protocol(MPP)을 통해 요청 단위로 비용을 지불하세요. MPP
   raw private key 없이 명령줄에서 설정하려면 [Tempo Wallet CLI](/ko/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line)를 사용하세요. `tempo wallet login`을 실행하면 wallet이 생성되거나 연결되며, 신규 가입자에게는 무료 MPP Credits가 제공될 수 있습니다.
 </Info>
 
-## MPP 설정 {#mpp-setup}
+<div id="mpp-setup">
+  ## MPP 설정
+</div>
 
-### client 설치 {#install-the-client}
+<div id="install-the-client">
+  ### client 설치
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -52,7 +64,9 @@ Payments Protocol(MPP)을 통해 요청 단위로 비용을 지불하세요. MPP
   ```
 </CodeGroup>
 
-### private key를 안전하게 불러오기 {#load-your-private-key-safely}
+<div id="load-your-private-key-safely">
+  ### private key를 안전하게 불러오기
+</div>
 
 private key를 절대 하드코딩하지 마세요. 아래 예시는 로컬 개발 환경 전용으로, 런타임 환경에서 `WALLET_PRIVATE_KEY`를 읽어옵니다. 프로덕션에서는 1Password, AWS Secrets Manager, HashiCorp Vault 같은 secret 관리 도구에서 불러오세요.
 
@@ -68,7 +82,9 @@ private key를 절대 하드코딩하지 마세요. 아래 예시는 로컬 개�
   ```
 </CodeGroup>
 
-### 유료 search 요청 보내기 {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### 유료 search 요청 보내기
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -135,7 +151,9 @@ private key를 절대 하드코딩하지 마세요. 아래 예시는 로컬 개�
 
 response가 성공하면 Exa 결과와 함께 on-chain 트랜잭션 해시가 담긴 `Payment-Receipt` header가 반환됩니다.
 
-### 유료 contents 요청 보내기 {#make-a-paid-contents-request}
+<div id="make-a-paid-contents-request">
+  ### 유료 contents 요청 보내기
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -168,9 +186,13 @@ response가 성공하면 Exa 결과와 함께 on-chain 트랜잭션 해시가 �
   ```
 </CodeGroup>
 
-## GTM enrichment 레시피 {#gtm-enrichment-recipe}
+<div id="gtm-enrichment-recipe">
+  ## GTM enrichment 레시피
+</div>
 
-### 회사 목록 enrich하기 {#enrich-a-list-of-companies}
+<div id="enrich-a-list-of-companies">
+  ### 회사 목록 enrich하기
+</div>
 
 회사 이름 목록을 입력하면 각 회사의 페이지를 search하여 구조화된 세부 정보를 추출합니다.
 
@@ -296,7 +318,9 @@ response가 성공하면 Exa 결과와 함께 on-chain 트랜잭션 해시가 �
   ```
 </CodeGroup>
 
-### 인물 프로필 enrich하기 {#enrich-a-person-profile}
+<div id="enrich-a-person-profile">
+  ### 인물 프로필 enrich하기
+</div>
 
 이 레시피는 `type: "deep"`, `contents.highlights`, `outputSchema`를 사용해 인물을
 리서치하고 구조화된 프로필을 반환합니다.
@@ -387,7 +411,9 @@ response가 성공하면 Exa 결과와 함께 on-chain 트랜잭션 해시가 �
   `contents.highlights`는 result당 $0.001이 추가됩니다.
 </Note>
 
-### Structured output {#structured-output}
+<div id="structured-output">
+  ### Structured output
+</div>
 
 원시 텍스트 대신 JSON field를 받고 싶다면 search 요청에 `outputSchema`를 사용하세요.
 Exa는 지정한 schema 형태에 맞춘 `output` 객체를 반환합니다.
@@ -460,7 +486,9 @@ Exa는 지정한 schema 형태에 맞춘 `output` 객체를 반환합니다.
   call이 한 번 추가되므로 요금은 `deep-lite`/`deep` 기준으로 책정됩니다.
 </Note>
 
-## 가격 및 limits {#pricing-and-limits}
+<div id="pricing-and-limits">
+  ## 가격 및 limits
+</div>
 
 MPP는 API 키 청구와 동일한 요청당 가격을 사용합니다. MPP search 요청은
 결과가 최대 10개로 제한됩니다.
@@ -476,7 +504,9 @@ MPP는 API 키 청구와 동일한 요청당 가격을 사용합니다. MPP sear
 
 속도 제한, 네트워크 세부 정보, payment header를 포함한 전체 reference는 [Pay with MPP (Tempo)](/ko/docs/integrations/payments/mpp/quickstart)를 참고하세요.
 
-## 프로덕션 팁 {#production-tips}
+<div id="production-tips">
+  ## 프로덕션 팁
+</div>
 
 * **wallet에는 USDC.e만 충전하세요.** Exa가 Tempo 네트워크 수수료를 대신 부담하므로
   wallet에 별도의 가스 토큰이 필요 없습니다.
@@ -488,7 +518,9 @@ MPP는 API 키 청구와 동일한 요청당 가격을 사용합니다. MPP sear
 * **private key는 절대 커밋하지 마세요.** `WALLET_PRIVATE_KEY`는 소스 관리 시스템이 아니라
   secret 관리 도구에서 불러오세요.
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa Agent API에서 MPP를 사용할 수 있나요?">
@@ -515,7 +547,9 @@ MPP는 API 키 청구와 동일한 요청당 가격을 사용합니다. MPP sear
   </Accordion>
 </AccordionGroup>
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 * [MPP(Tempo)로 결제하기](/ko/docs/integrations/payments/mpp/quickstart): MPP 전체 reference
 * [Exa Search API 가이드](/ko/docs/search/quickstart): search 매개변수 reference

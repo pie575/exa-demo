@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# n8n {#n8n}
+<div id="n8n">
+  # n8n
+</div>
 
 > Usa la búsqueda y el contenido de Exa dentro de flujos de trabajo de n8n.
 
 El [nodo de Exa para n8n](https://github.com/exa-labs/n8n-integration) oficial añade búsqueda web, extracción de contenido, respuestas fundamentadas y runs de Exa Agent a los flujos de trabajo visuales. Úsalo como un paso más del flujo de trabajo o conéctalo como herramienta a un AI Agent de n8n.
 
-## Instalar el nodo de Exa {#install-the-exa-node}
+<div id="install-the-exa-node">
+  ## Instalar el nodo de Exa
+</div>
 
 El nombre del paquete es `n8n-nodes-exa-official`.
 
@@ -31,7 +37,9 @@ El nombre del paquete es `n8n-nodes-exa-official`.
   </Step>
 </Steps>
 
-## Ejecutar una búsqueda {#run-a-search}
+<div id="run-a-search">
+  ## Ejecutar una búsqueda
+</div>
 
 1. Añade un disparador a un flujo de trabajo.
 2. Añade el nodo **Exa**.
@@ -45,7 +53,9 @@ El nombre del paquete es `n8n-nodes-exa-official`.
 
 La búsqueda también puede devolver texto, highlights, resúmenes, enlaces e imágenes de cada resultado. Los filtros de dominio, las fechas de publicación, las categorías, `maxAgeHours` y el rastreo de subpáginas están disponibles en los campos opcionales del nodo.
 
-## Recursos disponibles {#available-resources}
+<div id="available-resources">
+  ## Recursos disponibles
+</div>
 
 | Recurso      | Operaciones                                                                                                                           |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +64,9 @@ La búsqueda también puede devolver texto, highlights, resúmenes, enlaces e im
 | **Answer**   | Genera una respuesta fundamentada con citas y salida estructurada opcional.                                                           |
 | **Agent**    | Crea, inspecciona, lista, transmite, sondea y cancela runs de Agent de varios pasos.                                                  |
 
-## Usa Exa con un AI Agent de n8n {#use-exa-with-an-n8n-ai-agent}
+<div id="use-exa-with-an-n8n-ai-agent">
+  ## Usa Exa con un AI Agent de n8n
+</div>
 
 Conecta un nodo de Exa a un nodo **AI Agent** mediante su entrada de herramienta. Los parámetros que debe proporcionar el modelo pueden usar la expresión `$fromAI()` de n8n:
 
@@ -64,7 +76,9 @@ Conecta un nodo de Exa a un nodo **AI Agent** mediante su entrada de herramienta
 
 Search y Answer funcionan bien como herramientas de grounding. Usa el recurso Agent cuando la tarea requiera investigación de varios pasos, creación de listas, enrichment estructurado o datos premium de [Exa Connect](/es/docs/agent/connect/overview).
 
-## Esperar un run de Agent {#wait-for-an-agent-run}
+<div id="wait-for-an-agent-run">
+  ## Esperar un run de Agent
+</div>
 
 Al crear un run de Agent, **Wait for Completion** admite:
 
@@ -73,7 +87,9 @@ Al crear un run de Agent, **Wait for Completion** admite:
 
 Para flujos de trabajo prolongados o asíncronos, desactiva **Wait for Completion**, guarda el `id` del run devuelto y usa **Get Run** más adelante. El run continúa en Exa una vez finalizado el paso de n8n.
 
-## Solución de problemas {#troubleshooting}
+<div id="troubleshooting">
+  ## Solución de problemas
+</div>
 
 <AccordionGroup>
   <Accordion title="El nodo de Exa no aparece en el selector de nodos">
@@ -89,7 +105,9 @@ Para flujos de trabajo prolongados o asíncronos, desactiva **Wait for Completio
   </Accordion>
 </AccordionGroup>
 
-## Recursos {#resources}
+<div id="resources">
+  ## Recursos
+</div>
 
 <Columns cols={3}>
   <Card title="Nodo oficial de Exa" icon="github" href="https://github.com/exa-labs/n8n-integration" cta="Ver repositorio" arrow="true">

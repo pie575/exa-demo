@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Get an Agent run {#get-an-agent-run}
+<div id="get-an-agent-run">
+  # Get an Agent run
+</div>
 
 > Ambil Agent run berdasarkan ID.
 
@@ -13,7 +17,9 @@ Gunakan endpoint ini untuk melakukan poll terhadap run hingga statusnya menjadi 
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}
 openapi: 3.1.0

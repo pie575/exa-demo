@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Obtener un Agent run {#get-an-agent-run}
+<div id="get-an-agent-run">
+  # Obtener un Agent run
+</div>
 
 > Recupera un Agent run por ID.
 
@@ -13,7 +17,9 @@ Usa este endpoint para sondear un run hasta que alcance el estado `completed`, `
   Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}
 openapi: 3.1.0

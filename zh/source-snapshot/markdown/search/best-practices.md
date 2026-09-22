@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Search 最佳实践 {#search-best-practices}
+<div id="search-best-practices">
+  # Search 最佳实践
+</div>
 
 > 为 production 环境的 Search API integration 调优 retrieval 质量、延迟、上下文与综合效果。
 
 本指南假定你已经有一个可用的 [Search API 请求](/zh/docs/search/quickstart)，下面介绍如何按照 Exa 推荐的最佳实践进一步优化它。
 
-## 从最小可用请求开始 {#start-with-the-smallest-useful-request}
+<div id="start-with-the-smallest-useful-request">
+  ## 从最小可用请求开始
+</div>
 
 最佳的基线做法是使用自然语言 query 并设置 `highlights: true`。Exa 会根据每条结果的相关性自动调整摘录长度，因此无需调节字符预算：
 
@@ -52,7 +58,9 @@
 | `highlights.maxCharacters` | 你的应用要求每个页面有固定的摘录上限时         |
 | 域名或日期过滤条件                  | 不满足该约束的结果将无法使用时             |
 
-## Search 与深度搜索对比 {#search-vs-deep-search}
+<div id="search-vs-deep-search">
+  ## Search 与深度搜索对比
+</div>
 
 标准 search 会针对 query 检索并排序页面。深度搜索则运行一套研究流程，可迭代式地 search、检查已找到的内容、优化 search，并综合出有据可依的结果。
 
@@ -64,7 +72,9 @@
 
 使用 `outputSchema` 时，默认推荐采用 deep 模式。完整说明与示例请阅读[深度搜索指南](/zh/docs/search/deep-search)。
 
-## 提升 retrieval 质量 {#improve-retrieval-quality}
+<div id="improve-retrieval-quality">
+  ## 提升 retrieval 质量
+</div>
 
 当结果不理想时，每次只调整请求中的一个部分。
 
@@ -109,7 +119,9 @@
 
 调优时保留一小组有代表性的 query，在整组 query 上比较结果的 relevance 和下游任务的成功率，而不要针对单个示例做优化。记录 `requestId`、`searchTime` 和 `costDollars`，这样出现回归时才能复现。
 
-## 权衡延迟与上下文 {#budget-latency-and-context}
+<div id="budget-latency-and-context">
+  ## 权衡延迟与上下文
+</div>
 
 每项控制消耗的资源各不相同：
 
@@ -165,7 +177,9 @@
 
 若希望由 Exa 在整个结果集范围内统一分配上下文预算，即对优质来源多分配、对冗余来源少分配，请参阅 [Dynamic Highlights 研究预览](/zh/docs/search/highlights#dynamic-highlights)。
 
-## 常见用例技巧 {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## 常见用例技巧
+</div>
 
 | 如果你需要             | 使用                                                             | 避免                         |
 | ----------------- | -------------------------------------------------------------- | -------------------------- |
@@ -178,7 +192,9 @@
 | 从少量页面获取更多上下文      | 先用带 highlights 的 search，再调用 Contents                           | 为每条结果都获取 full text         |
 | 更低延迟              | 用精简内容测试 `fast` 或 `instant`                                     | 默认添加新鲜度或综合类控制项             |
 
-## 何时使用其他端点 {#when-to-use-another-endpoint}
+<div id="when-to-use-another-endpoint">
+  ## 何时使用其他端点
+</div>
 
 当任务性质发生变化时，请改用其他 Exa 端点：
 
@@ -188,7 +204,9 @@
 | URL 已知            | [Contents](/zh/docs/contents/quickstart) |
 | 按 schedule 定期执行搜索 | [Monitors](/zh/docs/monitors/quickstart) |
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="Search API 参考" icon="square-terminal" href="/zh/docs/reference/search" cta="打开参考" arrow="true">

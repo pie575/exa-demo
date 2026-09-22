@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# fx by Vercel Labs {#fx-by-vercel-labs}
+<div id="fx-by-vercel-labs">
+  # fx by Vercel Labs
+</div>
 
 > 호스팅형 Exa MCP 서버로 Vercel Labs의 네이티브 coding agent인 fx에 Exa web search를 추가하세요.
 
@@ -13,7 +17,9 @@
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/vercel/fx/install-exa.gif?s=2e331148abdf5bdf083e6f651e3b8b75" alt="fx 설치, /mcp add로 Exa MCP 서버 추가, 실시간 Exa web search 실행" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## 설치 {#installation}
+<div id="installation">
+  ## 설치
+</div>
 
 <Steps>
   <Step title="fx 설치">
@@ -41,7 +47,9 @@
   </Step>
 </Steps>
 
-## 직접 설정하기 {#configure-by-hand}
+<div id="configure-by-hand">
+  ## 직접 설정하기
+</div>
 
 fx는 `~/.fx/mcp.json`에서만 MCP 서버를 읽어오므로, 이 파일에 Exa를 직접 추가할 수도 있습니다:
 
@@ -80,7 +88,9 @@ fx를 재시작하지 않고 변경 사항을 적용하려면 `/mcp reload`를 �
 
 `header_env`는 header 이름을 환경 변수에 매핑하므로, 키가 설정 파일에 남지 않습니다.
 
-## 도구 디스커버리 {#tool-discovery}
+<div id="tool-discovery">
+  ## 도구 디스커버리
+</div>
 
 fx는 MCP 도구를 지연 방식으로 검색합니다. 서버의 도구는 해당 턴에서 필요해지기 전까지 모델의 컨텍스트에 올라가지 않으므로, 웹을 search하지 않는 턴에서는 Exa를 추가해도 비용이 들지 않습니다.
 

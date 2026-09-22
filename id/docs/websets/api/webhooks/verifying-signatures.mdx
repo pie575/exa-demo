@@ -6,7 +6,9 @@ timestamp: false
 
 Saat menerima webhook dari Exa, Anda sebaiknya memverifikasi bahwa webhook tersebut memang berasal dari kami untuk memastikan integritas dan keaslian data. Exa menandatangani semua payload webhook dengan secret key yang unik untuk setiap endpoint webhook Anda.
 
-## Cara Kerja Signature Webhook {#how-webhook-signatures-work}
+<div id="how-webhook-signatures-work">
+  ## Cara Kerja Signature Webhook
+</div>
 
 Exa menggunakan HMAC SHA256 untuk menandatangani payload webhook. Signature disertakan dalam header `Exa-Signature`, yang berisi:
 
@@ -19,7 +21,9 @@ Format signature-nya seperti ini:
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-## Proses Verifikasi {#verification-process}
+<div id="verification-process">
+  ## Proses Verifikasi
+</div>
 
 Untuk memverifikasi signature webhook:
 
@@ -362,7 +366,9 @@ Untuk memverifikasi signature webhook:
 
 <br />
 
-## Praktik Terbaik Keamanan {#security-best-practices}
+<div id="security-best-practices">
+  ## Praktik Terbaik Keamanan
+</div>
 
 Mengikuti praktik berikut akan membantu memastikan implementasi webhook Anda aman dan tangguh:
 
@@ -382,9 +388,13 @@ Mengikuti praktik berikut akan membantu memastikan implementasi webhook Anda ama
 
 <br />
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
-### Error Signature Tidak Valid {#invalid-signature-errors}
+<div id="invalid-signature-errors">
+  ### Error Signature Tidak Valid
+</div>
 
 Jika verifikasi signature Anda gagal:
 
@@ -393,7 +403,9 @@ Jika verifikasi signature Anda gagal:
 3. **Periksa parsing header**: Pastikan Anda mengekstrak timestamp dan signature dari header dengan benar
 4. **Masalah encoding**: Pastikan encoding UTF-8 konsisten selama proses verifikasi
 
-### Menguji Signature Secara Lokal {#testing-signatures-locally}
+<div id="testing-signatures-locally">
+  ### Menguji Signature Secara Lokal
+</div>
 
 Anda dapat menguji logika verifikasi signature Anda menggunakan webhook secret dan contoh payload:
 
@@ -425,7 +437,9 @@ print(f"Test signature valid: {is_valid}")  # Seharusnya mencetak True
 
 <br />
 
-## Apa Selanjutnya? {#whats-next}
+<div id="whats-next">
+  ## Apa Selanjutnya?
+</div>
 
 * Pelajari [event webhook](/id/docs/websets/api/events/types) dan payload-nya
 * Siapkan [percobaan ulang dan pemantauan webhook](/id/docs/websets/api/webhooks/attempts/list-webhook-attempts)

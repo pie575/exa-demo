@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Previsualizar un webset {#preview-a-webset}
+<div id="preview-a-webset">
+  # Previsualizar un webset
+</div>
 
 > Previsualiza cómo se descompondrá una consulta de búsqueda antes de crear un webset. Este endpoint realiza el mismo análisis de la consulta que se hace durante la creación de un webset, lo que te permite ver de antemano el tipo de entidad detectado, los criteria de búsqueda generados y las columnas de enrichment disponibles.
 
 Úsalo para que los usuarios comprendan cómo se interpretará su búsqueda antes de crear un webset completo.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0

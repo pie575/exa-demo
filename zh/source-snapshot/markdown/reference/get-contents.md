@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步浏览之前，可通过该文件了解所有可用页面。
 
-# Contents {#contents}
+<div id="contents">
+  # Contents
+</div>
 
 > 获取一组 URL 的完整页面内容、摘要和元数据。
 
@@ -15,7 +19,9 @@
   在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0

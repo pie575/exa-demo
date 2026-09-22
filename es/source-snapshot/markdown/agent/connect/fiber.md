@@ -1,9 +1,13 @@
-> ## Índice de documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Fiber.ai {#fiberai}
+<div id="fiberai">
+  # Fiber.ai
+</div>
 
 > Busca empresas, personas y perfiles de LinkedIn en la base de datos B2B de Fiber.ai.
 
@@ -16,7 +20,9 @@ Adjunta `fiber` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview), y el agente consultará
 Fiber.ai junto con Exa web search.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Limpiar un CRM mediante la búsqueda inversa de un correo laboral o personal
   para identificar a una persona, o enriquecer un registro parcial de empresa o persona.
@@ -28,7 +34,9 @@ Fiber.ai junto con Exa web search.
 * Buscar entre más de 40 millones de empresas y más de 850 millones de personas, y enriquecer prospectos con
   correo laboral, correo personal y números de teléfono.
 
-## ID del proveedor {#provider-id}
+<div id="provider-id">
+  ## ID del proveedor
+</div>
 
 Usa este valor en `dataSources`:
 
@@ -36,7 +44,9 @@ Usa este valor en `dataSources`:
 fiber
 ```
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Fiber.ai factura en créditos a `$0.02 / credit`, y cada llamada se cobra según los
 créditos que Fiber reporta para ella:
@@ -52,7 +62,9 @@ Las llamadas que no devuelven ninguna coincidencia (o cuyo cargo Fiber reembolsa
 opciones de parámetros modifican el precio: el `numResults` de una búsqueda de empresa define por cuántos
 candidatos pagas, y la cantidad de resultados de una búsqueda determina la mayor parte de su costo.
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 Crea una lista de prospección B2B de empresas fintech en ronda Serie A ubicadas en Nueva York y con entre 50 y 200 empleados.
 
@@ -149,13 +161,17 @@ Crea una lista de prospección B2B de empresas fintech en ronda Serie A ubicadas
   ```
 </CodeGroup>
 
-## Combina bien con {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
 
 * [Similarweb](/es/docs/agent/connect/similarweb): evalúa la presencia web y los competidores de un prospecto.
 * [Baselayer](/es/docs/agent/connect/baselayer): verifica directivos y registrations de empresas estadounidenses preseleccionadas.
 * [Particle](/es/docs/agent/connect/particle): descubre qué dicen los pódcast sobre una empresa o un directivo.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">

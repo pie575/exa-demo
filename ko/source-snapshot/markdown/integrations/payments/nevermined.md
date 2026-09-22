@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일을 통해 사용 가능한 모든 페이지를 확인하세요.
 
-# Nevermined {#nevermined}
+<div id="nevermined">
+  # Nevermined
+</div>
 
 > Nevermined x402 card delegation을 통한 Exa 자율 agent 결제. 7 USD를 결제하면 Exa API key가 새로 발급되거나 7 USD 상당의 credits이 충전됩니다.
 
@@ -15,7 +19,9 @@ Agent는 [Nevermined](https://nevermined.ai)의 [x402 card-delegation](https://n
 
 Nevermined를 처음 이용하는 payer라면 `POST /team-management/nevermined/purchase-key`가 새 Exa API key를 발급하고 $7의 credits을 추가합니다. 키를 모두 소진했다면 동일한 delegation으로 새 x402 token을 mint한 뒤 같은 엔드포인트를 다시 call하세요. Exa는 기존과 동일한 API 키에 $7의 credits을 추가해 반환합니다.
 
-## 키 구매하기 {#buy-a-key}
+<div id="buy-a-key">
+  ## 키 구매하기
+</div>
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -28,7 +34,9 @@ payment-signature: <x402-token>
 * **Response (replay된 토큰):** 캐시된 결과가 반환되며 추가 청구는 없습니다.
 * **signature 누락 또는 유효하지 않음:** `402 Payment Required`가 반환되며, body에 결제 요구 사항이 포함됩니다.
 
-## 작동 방식 {#how-it-works}
+<div id="how-it-works">
+  ## 작동 방식
+</div>
 
 결제는 Nevermined가 처리하며, Exa는 서명된 x402 token만 확인합니다.
 
@@ -40,7 +48,9 @@ payment-signature: <x402-token>
 
 agent 구현에 바로 활용할 수 있는 전체 안내(SDK 메서드, parameters, delegation 탐색 및 생성, 문제 해결)는 Nevermined의 Exa 연동 가이드를 참고하세요: [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agent의 경우: [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)를 가져오세요).
 
-## $7로 이용할 수 있는 범위 {#what-7-buys}
+<div id="what-7-buys">
+  ## $7로 이용할 수 있는 범위
+</div>
 
 Credits는 표준 Exa API 가격에 따라 차감됩니다. 현재 요금 기준으로 $7어치 credits는 대략 다음 정도에 해당합니다.
 
@@ -59,7 +69,9 @@ Credits는 표준 Exa API 가격에 따라 차감됩니다. 현재 요금 기준
 Search 요청에는 최대 10개 결과의 text와 highlights가 포함됩니다. 10개를 초과하는 추가 결과와 AI summary는 별도로 과금됩니다.<br />
 전체 가격 세부 정보는 [Exa 가격](https://exa.ai/pricing)을 참고하세요.
 
-## 키가 소진되면 {#when-the-key-runs-out}
+<div id="when-the-key-runs-out">
+  ## 키가 소진되면
+</div>
 
 API 키의 credits를 모두 사용하면 Exa는 일반 API 엔드포인트에서 **`HTTP 402`**를 반환합니다:
 
@@ -73,7 +85,9 @@ API 키의 credits를 모두 사용하면 Exa는 일반 API 엔드포인트에�
 
 동일한 plan ID와 delegation으로 새 x402 token을 mint한 다음, 같은 `/purchase-key` 엔드포인트로 다시 POST하세요. Exa가 동일한 API 키에 $7 상당의 credits를 추가로 적립해 줍니다.
 
-## 참고 자료 {#references}
+<div id="references">
+  ## 참고 자료
+</div>
 
 * [Nevermined Exa 연동 가이드](https://nevermined.ai/docs/integrations/exa)
 * [x402 card-delegation 명세](https://nevermined.ai/docs/specs/x402-card-delegation)

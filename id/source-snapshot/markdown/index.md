@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Mulai membangun dengan Exa {#start-building-with-exa}
+<div id="start-building-with-exa">
+  # Mulai membangun dengan Exa
+</div>
 
 > Tool web search andal yang dirancang khusus untuk agent. Semuanya dioptimalkan agar Anda mendapatkan hasil yang akurat dan hemat token.
 

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Perbarui API key {#update-api-key}
+<div id="update-api-key">
+  # Perbarui API key
+</div>
 
 > Perbarui nama dan rate limit API key yang sudah ada.
 
@@ -15,20 +19,28 @@
   Team Management API diaktifkan per team. Autentikasinya menggunakan API key service account, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah fitur ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-## Ikhtisar {#overview}
+<div id="overview">
+  ## Ikhtisar
+</div>
 
 Endpoint Perbarui API key memungkinkan Anda mengubah API key yang sudah ada
 
-## Path Parameters {#path-parameters}
+<div id="path-parameters">
+  ## Path Parameters
+</div>
 
 * **id**: Identifier unik dari API key yang akan diperbarui.
 
-## Parameter Opsional {#optional-parameters}
+<div id="optional-parameters">
+  ## Parameter Opsional
+</div>
 
 * **name**: Nama deskriptif baru untuk API key
 * **rateLimit**: Rate limit baru dalam permintaan per menit
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

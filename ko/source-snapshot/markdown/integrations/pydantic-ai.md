@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Pydantic AI {#pydantic-ai}
+<div id="pydantic-ai">
+  # Pydantic AI
+</div>
 
 > Exa search API 기반의 웹 리서치 도구를 Pydantic AI agent에 제공하세요.
 
@@ -28,7 +32,9 @@ capability는 도구, 도구별 output 예산, 간결한 리서치 guidance를 s
 
 ***
 
-## Get Started {#get-started}
+<div id="get-started">
+  ## Get Started
+</div>
 
 <Steps>
   <Step title="사전 요구 사항 및 설치">
@@ -81,7 +87,9 @@ capability는 도구, 도구별 output 예산, 간결한 리서치 guidance를 s
 
 ***
 
-## 구성 {#configuration}
+<div id="configuration">
+  ## 구성
+</div>
 
 `ExaSearch`의 모든 field와 기본값:
 
@@ -102,7 +110,9 @@ ExaSearch(
 
 `include_domains`와 `exclude_domains`는 `web_search` 및 `deep_search`에 적용되며, 두 옵션은 함께 사용할 수 없습니다. 범위를 벗어난 limits를 지정하거나 두 도메인 목록을 동시에 설정하면 생성 시점에 오류가 발생합니다.
 
-### Text summary {#text-summary}
+<div id="text-summary">
+  ### Text summary
+</div>
 
 `text_summary`를 설정하면 모든 `web_search` call이 결과에 대한 일반 텍스트 summary도 함께 요청합니다. 제약 없는 summary를 원하면 `True`를, 특정 형식을 원하면 그 형식을 설명하는 문자열을 전달하세요:
 
@@ -114,7 +124,9 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 도구의 반환 형태는 그대로입니다. Exa가 summary를 반환하면 맨 앞에 `Summary:` 줄이 추가됩니다.
 
-### 구조화된 citations {#structured-citations}
+<div id="structured-citations">
+  ### 구조화된 citations
+</div>
 
 모든 도구는 `ToolReturn`을 반환합니다. `return_value`에는 모델이 보는 텍스트(`Sources:` 블록 포함)가 담기고, `metadata`에는 `'sources'` 키 아래에 구조화된 `ExaSource` 레코드(`{'url': ..., 'title': ...}`) 형태로 소스가 담깁니다. Metadata는 모델에 전달되지 않으므로 citations를 렌더링할 때 텍스트 파싱이 필요 없습니다:
 
@@ -129,7 +141,9 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-### 커스텀 client {#custom-client}
+<div id="custom-client">
+  ### 커스텀 client
+</div>
 
 기본 client는 `exa_py.AsyncExa`이며, `EXA_API_KEY`에서 설정을 가져옵니다. authentication이나 base URL을 명시적으로 지정하거나 테스트에서 가짜 객체로 대체하려면, `ExaClient` 프로토콜을 만족하는 객체를 전달하세요:
 
@@ -142,7 +156,9 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-## Exa agent 실행 {#exa-agent-runs}
+<div id="exa-agent-runs">
+  ## Exa agent 실행
+</div>
 
 [Exa Agent API](/ko/docs/agent/quickstart)는 개방형 리서치 작업을 비동기로 실행합니다. `ExaAgent` capability는 이 수명 주기를 Pydantic AI의 [지연 도구 호출](https://pydantic.dev/docs/ai/deferred-tools/)에 매핑합니다. `exa_agent` 도구가 실행을 생성한 뒤 지연 처리하며, 이때 Exa 실행 ID를 지연된 call의 metadata에 담아 전달합니다.
 
@@ -174,7 +190,9 @@ ExaAgent(
 
 ***
 
-## Agent spec (YAML/JSON) {#agent-spec-yamljson}
+<div id="agent-spec-yamljson">
+  ## Agent spec (YAML/JSON)
+</div>
 
 두 기능 모두 Pydantic AI의 [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec)을 지원하므로, Python 코드 대신 설정 파일에서 선언할 수 있습니다:
 
@@ -199,7 +217,9 @@ spec 로더가 기능을 인스턴스화하는 방법을 알 수 있도록 `cust
 
 ***
 
-## 다음 단계 {#next}
+<div id="next">
+  ## 다음 단계
+</div>
 
 * [**Search API**](/ko/docs/search/quickstart) - highlights, summary, deep search를 지원하는 시맨틱 search
 * [**Agent API**](/ko/docs/agent/quickstart) - 형식에 제약이 없는 비동기 리서치 실행

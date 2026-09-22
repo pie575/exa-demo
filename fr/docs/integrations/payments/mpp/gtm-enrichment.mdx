@@ -19,7 +19,9 @@ mesure que vous enrichissez vos leads ou vos entreprises.
   par le flux standard de facturation par API key.
 </Info>
 
-## Ce que vous allez construire {#what-youll-build}
+<div id="what-youll-build">
+  ## Ce que vous allez construire
+</div>
 
 Un pipeline d&#39;enrichment léger qui, à partir d&#39;une liste de noms d&#39;entreprises ou de
 descriptions cibles :
@@ -34,7 +36,9 @@ Ce modèle convient à l&#39;enrichment de listes de prospects, à la recherche 
 personnalisation des campagnes sortantes. Comme il repose sur des appels `/search` + `/contents`
 distincts, chaque étape peut être payée avec MPP.
 
-## Prérequis {#prerequisites}
+<div id="prerequisites">
+  ## Prérequis
+</div>
 
 * Un wallet compatible Tempo approvisionné en **USDC.e** sur le mainnet Tempo.
 * Un moyen sûr de charger la private key du wallet au moment de l&#39;exécution (voir ci-dessous ; ne jamais committer
@@ -45,9 +49,13 @@ distincts, chaque étape peut être payée avec MPP.
   Pour une configuration en ligne de commande ne nécessitant pas de private key brute, utilisez la [Tempo Wallet CLI](/fr/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). `tempo wallet login` crée ou connecte un wallet et peut inclure des MPP Credits gratuits pour les nouvelles inscriptions.
 </Info>
 
-## Configuration de MPP {#mpp-setup}
+<div id="mpp-setup">
+  ## Configuration de MPP
+</div>
 
-### Installer le client {#install-the-client}
+<div id="install-the-client">
+  ### Installer le client
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -59,7 +67,9 @@ distincts, chaque étape peut être payée avec MPP.
   ```
 </CodeGroup>
 
-### Charger votre private key en toute sécurité {#load-your-private-key-safely}
+<div id="load-your-private-key-safely">
+  ### Charger votre private key en toute sécurité
+</div>
 
 Ne codez jamais une private key en dur. Les exemples ci-dessous lisent `WALLET_PRIVATE_KEY` depuis
 votre environnement d&#39;exécution, uniquement pour le développement local. En production, chargez-la depuis
@@ -77,7 +87,9 @@ un secrets manager tel que 1Password, AWS Secrets Manager ou HashiCorp Vault.
   ```
 </CodeGroup>
 
-### Effectuer une search payante {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Effectuer une search payante
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -145,7 +157,9 @@ un secrets manager tel que 1Password, AWS Secrets Manager ou HashiCorp Vault.
 En cas de succès, la réponse renvoie les résultats Exa ainsi qu&#39;un header `Payment-Receipt` contenant
 le hash de la transaction on-chain.
 
-### Effectuer une requête contents payante {#make-a-paid-contents-request}
+<div id="make-a-paid-contents-request">
+  ### Effectuer une requête contents payante
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -178,9 +192,13 @@ le hash de la transaction on-chain.
   ```
 </CodeGroup>
 
-## Recette d&#39;enrichment GTM {#gtm-enrichment-recipe}
+<div id="gtm-enrichment-recipe">
+  ## Recette d&#39;enrichment GTM
+</div>
 
-### Enrichir une liste d&#39;entreprises {#enrich-a-list-of-companies}
+<div id="enrich-a-list-of-companies">
+  ### Enrichir une liste d&#39;entreprises
+</div>
 
 À partir d&#39;une liste de noms d&#39;entreprises, recherchez la page de chaque entreprise et extrayez-en
 des informations structurées.
@@ -307,7 +325,9 @@ des informations structurées.
   ```
 </CodeGroup>
 
-### Enrichir le profil d&#39;une personne {#enrich-a-person-profile}
+<div id="enrich-a-person-profile">
+  ### Enrichir le profil d&#39;une personne
+</div>
 
 Cette recette utilise `type: "deep"`, `contents.highlights` et `outputSchema` pour
 faire des recherches sur une personne et renvoyer un profil structuré.
@@ -398,7 +418,9 @@ faire des recherches sur une personne et renvoyer un profil structuré.
   `contents.highlights` ajoute $0,001 par résultat.
 </Note>
 
-### Sortie structurée {#structured-output}
+<div id="structured-output">
+  ### Sortie structurée
+</div>
 
 Si vous souhaitez des fields JSON plutôt que du texte brut, utilisez `outputSchema` dans la
 requête de search. Exa renvoie un objet `output` conforme à votre schéma.
@@ -471,7 +493,9 @@ requête de search. Exa renvoie un objet `output` conforme à votre schéma.
   appel LLM côté Exa, il est donc facturé comme `deep-lite`/`deep`.
 </Note>
 
-## Tarifs et limites {#pricing-and-limits}
+<div id="pricing-and-limits">
+  ## Tarifs et limites
+</div>
 
 MPP utilise la même tarification par requête que la facturation par API key. Les requêtes de recherche MPP
 sont plafonnées à 10 résultats.
@@ -488,7 +512,9 @@ sont plafonnées à 10 résultats.
 Consultez [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) pour la référence complète,
 notamment les limites de débit, les détails du réseau et les headers de paiement.
 
-## Conseils pour la production {#production-tips}
+<div id="production-tips">
+  ## Conseils pour la production
+</div>
 
 * **Alimentez le wallet uniquement en USDC.e.** Exa prend en charge les frais de réseau Tempo : le wallet n&#39;a donc pas besoin d&#39;un jeton de gas distinct.
 * **Gérez les réponses `402`.** Le SDK MPP réessaie automatiquement, mais un client personnalisé doit réessayer en cas de `402` à l&#39;aide du challenge `WWW-Authenticate: Payment`.
@@ -496,7 +522,9 @@ notamment les limites de débit, les détails du réseau et les headers de paiem
 * **Attention au plafond de 10 résultats.** La search MPP limite `numResults` à 10.
 * **Ne committez jamais de private keys.** Chargez `WALLET_PRIVATE_KEY` depuis un gestionnaire de secrets, et non depuis votre gestionnaire de versions.
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Puis-je utiliser MPP avec l'API Exa Agent ?">
@@ -523,7 +551,9 @@ notamment les limites de débit, les détails du réseau et les headers de paiem
   </Accordion>
 </AccordionGroup>
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 * [Payer avec MPP (Tempo)](/fr/docs/integrations/payments/mpp/quickstart) : référence complète de MPP
 * [Guide de l&#39;Exa Search API](/fr/docs/search/quickstart) : référence des paramètres de search

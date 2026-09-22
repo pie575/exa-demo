@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# OpenAI SDK 兼容性 {#openai-sdk-compatibility}
+<div id="openai-sdk-compatibility">
+  # OpenAI SDK 兼容性
+</div>
 
 > 将 Exa 的端点作为 OpenAI 的直接替代，同时支持 chat completions 和 responses API。
 
@@ -13,7 +17,9 @@
 
 ***
 
-## 概览 {#overview}
+<div id="overview">
+  ## 概览
+</div>
 
 Exa 提供与 OpenAI 兼容的端点，可直接搭配 OpenAI SDK 使用：
 
@@ -26,7 +32,9 @@ Exa 提供与 OpenAI 兼容的端点，可直接搭配 OpenAI SDK 使用：
   `/chat/completions` 会路由到 [`/answer`](/zh/docs/reference/answer)，`/responses` 会路由到 [Agent API](/zh/docs/agent/quickstart)。详见下方的[通过 Responses API 使用 Agent](#agent-via-responses-api)。
 </Info>
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 要通过 chat completions 接口使用 Exa 的 `/answer` 端点：
 
@@ -119,7 +127,9 @@ Exa 提供与 OpenAI 兼容的端点，可直接搭配 OpenAI SDK 使用：
   ```
 </CodeGroup>
 
-## 通过 Responses API 使用 Agent {#agent-via-responses-api}
+<div id="agent-via-responses-api">
+  ## 通过 Responses API 使用 Agent
+</div>
 
 Exa 的 [`/responses`](https://api.exa.ai/responses) 端点通过 OpenAI Responses 接口对外提供 [Agent API](/zh/docs/agent/quickstart)，因此 OpenAI SDK 无需改动即可直接使用。设置 `model: "exa-agent"` 并选择一种执行模式：
 
@@ -137,7 +147,9 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点通过 OpenAI Respons
 
 使用 `previous_response_id` 可以继续一次已完成的 Responses 运行。
 
-### Synchronous {#synchronous}
+<div id="synchronous">
+  ### Synchronous
+</div>
 
 请求会一直阻塞，直到运行完成，并返回终态的 `response` 对象。
 
@@ -193,7 +205,9 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点通过 OpenAI Respons
   ```
 </CodeGroup>
 
-### 流式传输 {#streaming}
+<div id="streaming">
+  ### 流式传输
+</div>
 
 设置 `stream: true` 即可通过 SSE 接收 Responses 流式事件。事件带有单调递增的 `sequence_number`，并以 `response.completed` 结束，没有 `[DONE]` 结束标记。流中可能包含 `: keep-alive` 注释行，SSE 客户端会自动忽略。
 
@@ -257,7 +271,9 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点通过 OpenAI Respons
   ```
 </CodeGroup>
 
-### 后台 {#background}
+<div id="background">
+  ### 后台
+</div>
 
 设置 `background: true` 可在不保持连接的情况下启动运行，然后轮询 `GET /responses/{id}`，直到其进入终止状态。如果想用流式传输代替轮询，请参阅[流式传输](#streaming)。
 
@@ -330,7 +346,9 @@ Exa 的 [`/responses`](https://api.exa.ai/responses) 端点通过 OpenAI Respons
   ```
 </CodeGroup>
 
-## Chat wrapper {#chat-wrapper}
+<div id="chat-wrapper">
+  ## Chat wrapper
+</div>
 
 Exa 提供了一个 Python wrapper，可自动为任意 OpenAI chat completion 增加 RAG 能力。只需一行代码，就能把任意 OpenAI chat completion 变成由 Exa 驱动的 RAG 系统，自动完成搜索、分块和 prompt 构建。
 

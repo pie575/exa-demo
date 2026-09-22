@@ -1,17 +1,25 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 获取团队信息 {#get-team-info}
+<div id="get-team-info">
+  # 获取团队信息
+</div>
 
 > 获取你的团队信息，包括并发使用情况和限制。
 
-## 概览 {#overview}
+<div id="overview">
+  ## 概览
+</div>
 
 获取团队信息端点返回已认证团队的信息，包括该团队当前的并发使用情况和已配置的限制。它有助于监控你的 Websets API 用量，并了解自己的速率限制。
 
-## 响应 {#response}
+<div id="response">
+  ## 响应
+</div>
 
 响应包含：
 
@@ -21,21 +29,27 @@
 * **concurrency**：当前用量，显示进行中和排队中的请求数
 * **limits**：团队的并发限制
 
-### 并发 Fields {#concurrency-fields}
+<div id="concurrency-fields">
+  ### 并发 Fields
+</div>
 
 `concurrency` 对象显示当前的请求状态：
 
 * **active**：当前正在处理的请求数
 * **queued**：正在等待处理的请求数
 
-### 限制 field {#limits-fields}
+<div id="limits-fields">
+  ### 限制 field
+</div>
 
 `limits` 对象显示团队已配置的限制：
 
 * **maxConcurrent**：可同时处理的最大请求数 (null 表示无限制) 
 * **maxQueued**：可在队列中等待的最大请求数 (null 表示无限制)
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0

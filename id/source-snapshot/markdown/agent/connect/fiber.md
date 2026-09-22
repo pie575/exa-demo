@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Fiber.ai {#fiberai}
+<div id="fiberai">
+  # Fiber.ai
+</div>
 
 > Cari perusahaan, orang, dan profil LinkedIn di basis data B2B milik Fiber.ai.
 
@@ -16,7 +20,9 @@ Attach `fiber` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan kueri ke
 Fiber.ai bersamaan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Merapikan CRM dengan menelusuri balik work email atau personal email menjadi
   identitas seseorang, atau meng-enrich catatan perusahaan/orang yang belum
@@ -29,7 +35,9 @@ Fiber.ai bersamaan dengan Exa web search.
 * Mencari di antara 40 juta+ perusahaan dan 850 juta+ orang serta meng-enrich
   prospek dengan work email, personal email, dan nomor telepon.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -37,7 +45,9 @@ Gunakan nilai ini pada `dataSources`:
 fiber
 ```
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Fiber.ai menagih dalam credits dengan tarif `$0.02 / credit`, dan setiap panggilan dikenakan
 credits sesuai yang dilaporkan Fiber untuk panggilan tersebut:
@@ -53,7 +63,9 @@ Panggilan yang tidak menemukan kecocokan (atau yang biayanya dikembalikan oleh F
 parameter memengaruhi harga: `numResults` pada pencarian perusahaan menentukan berapa banyak
 kandidat yang Anda bayar, dan jumlah hasil pada sebuah search menentukan sebagian besar biayanya.
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Bangun daftar prospek B2B berisi perusahaan fintech tahap Series A di New York dengan 50–200 karyawan.
 
@@ -150,13 +162,17 @@ Bangun daftar prospek B2B berisi perusahaan fintech tahap Series A di New York d
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Similarweb](/id/docs/agent/connect/similarweb): mengukur kehadiran web dan kompetitor sebuah prospek.
 * [Baselayer](/id/docs/agent/connect/baselayer): memverifikasi pejabat dan registrasi bisnis AS yang masuk daftar pendek.
 * [Particle](/id/docs/agent/connect/particle): mencari tahu apa yang dibicarakan podcast tentang sebuah perusahaan atau eksekutif.
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

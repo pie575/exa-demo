@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Lister tous les websets {#list-all-websets}
+<div id="list-all-websets">
+  # Lister tous les websets
+</div>
 
 > Renvoie une liste de Websets.
 
@@ -11,7 +15,9 @@ Vous pouvez parcourir les résultats page par page à l&#39;aide du paramètre `
 
 Vous pouvez filtrer les résultats avec le paramètre `search` pour retrouver des Websets par ID, ID externe ou titre.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets
 openapi: 3.1.0

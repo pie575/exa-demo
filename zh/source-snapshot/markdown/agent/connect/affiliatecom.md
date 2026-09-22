@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅前，可通过该文件了解所有可用页面。
 
-# Affiliate.com {#affiliatecom}
+<div id="affiliatecom">
+  # Affiliate.com
+</div>
 
 > 跨商家与联盟网络搜索商品目录。
 
@@ -14,13 +18,17 @@
 [Exa Agent](/zh/docs/agent/quickstart) 运行中，agent 便会在进行 Exa 网页搜索的同时查询
 Affiliate.com。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 跨商家的商品发现与比价。
 * 为购物助手和选购指南内容提供支持。
 * 在研究结果中同时展示联盟营销链接。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用此值：
 
@@ -28,7 +36,9 @@ Affiliate.com。
 affiliate
 ```
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 查找价格低于 $300 的无线降噪耳机并比较定价。
 
@@ -125,12 +135,16 @@ affiliate
   ```
 </CodeGroup>
 
-## 搭配使用 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用
+</div>
 
 * [Similarweb](/zh/docs/agent/connect/similarweb)：在推荐某个商家前，先评估其影响力覆盖。
 * [Fiber.ai](/zh/docs/agent/connect/fiber)：研究商家或品牌背后的公司。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="附加到运行中" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

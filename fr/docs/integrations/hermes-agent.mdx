@@ -7,7 +7,9 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) intègre Exa comme backend natif pour ses outils `web_search` et `web_extract` appelables par le modèle. Utilisez Exa pour ces deux capacités, ou associez-le à un autre fournisseur web de Hermes.
 
-## Connectez votre compte Exa {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## Connectez votre compte Exa
+</div>
 
 <Steps>
   <Step title="Obtenir une API key Exa">
@@ -37,7 +39,9 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
   </Step>
 </Steps>
 
-## Configuration manuelle {#configure-manually}
+<div id="configure-manually">
+  ## Configuration manuelle
+</div>
 
 Ajoutez votre clé au fichier d&#39;environnement Hermes :
 
@@ -62,7 +66,9 @@ web:
 
 Les paramètres propres à chaque capacité sont prioritaires sur `web.backend`. Cela vous permet d&#39;utiliser Exa uniquement pour la recherche ou uniquement pour l&#39;extraction lorsque vous combinez plusieurs providers.
 
-## Les tools dont dispose Hermes {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Les tools dont dispose Hermes
+</div>
 
 | Tool          | Comportement d&#39;Exa                                                                                     |
 | ------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -75,7 +81,9 @@ Hermes tronque les pages extraites trop longues selon le character budget config
   Hermes peut utiliser Exa via son pool de fournisseurs gratuits, sans API key. Ce pool est soumis à une limitation de débit et peut alterner entre les fournisseurs. Configurez `EXA_API_KEY` et sélectionnez l&#39;option Exa adossée à une API key lorsque vous avez besoin que les requests passent systématiquement par votre compte Exa.
 </Note>
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes ne sélectionne pas Exa">
@@ -91,7 +99,9 @@ Hermes tronque les pages extraites trop longues selon le character budget config
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={3}>
   <Card title="Outils web Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Lire le guide" arrow="true">

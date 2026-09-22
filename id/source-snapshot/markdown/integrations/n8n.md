@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# n8n {#n8n}
+<div id="n8n">
+  # n8n
+</div>
 
 > Gunakan Exa search dan contents di dalam workflow n8n.
 
 [Node Exa resmi untuk n8n](https://github.com/exa-labs/n8n-integration) menambahkan web search, extraction konten, grounded answer, dan Exa Agent run ke workflow visual. Gunakan sebagai langkah workflow biasa atau hubungkan ke AI Agent n8n sebagai tool.
 
-## Instal node Exa {#install-the-exa-node}
+<div id="install-the-exa-node">
+  ## Instal node Exa
+</div>
 
 Nama package-nya adalah `n8n-nodes-exa-official`.
 
@@ -31,7 +37,9 @@ Nama package-nya adalah `n8n-nodes-exa-official`.
   </Step>
 </Steps>
 
-## Menjalankan search {#run-a-search}
+<div id="run-a-search">
+  ## Menjalankan search
+</div>
 
 1. Tambahkan trigger ke sebuah workflow.
 2. Tambahkan node **Exa**.
@@ -45,7 +53,9 @@ Nama package-nya adalah `n8n-nodes-exa-official`.
 
 Search juga dapat mengembalikan teks, kutipan, ringkasan, tautan, dan gambar dari setiap hasil. Filter domain, publication date, kategori, `maxAgeHours`, dan crawling subhalaman tersedia di field opsional pada node tersebut.
 
-## Sumber daya yang tersedia {#available-resources}
+<div id="available-resources">
+  ## Sumber daya yang tersedia
+</div>
 
 | Sumber daya  | Operasi                                                                                                                                            |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +64,9 @@ Search juga dapat mengembalikan teks, kutipan, ringkasan, tautan, dan gambar dar
 | **Answer**   | Menghasilkan grounded answer dengan sitasi dan output terstruktur opsional.                                                                         |
 | **Agent**    | Membuat, memeriksa, mendaftar, melakukan stream, poll, dan membatalkan Agent run multi-langkah.                                                    |
 
-## Menggunakan Exa dengan AI Agent n8n {#use-exa-with-an-n8n-ai-agent}
+<div id="use-exa-with-an-n8n-ai-agent">
+  ## Menggunakan Exa dengan AI Agent n8n
+</div>
 
 Hubungkan node Exa ke node **AI Agent** melalui input tool-nya. Parameter yang perlu diisi oleh model dapat menggunakan ekspresi `$fromAI()` dari n8n:
 
@@ -64,7 +76,9 @@ Hubungkan node Exa ke node **AI Agent** melalui input tool-nya. Parameter yang p
 
 Search dan Answer berfungsi dengan baik sebagai tool grounding. Gunakan sumber daya Agent bila tugas tersebut membutuhkan research multi-langkah, list building, enrichment terstruktur, atau data premium [Exa Connect](/id/docs/agent/connect/overview).
 
-## Menunggu Agent run {#wait-for-an-agent-run}
+<div id="wait-for-an-agent-run">
+  ## Menunggu Agent run
+</div>
 
 Saat membuat Agent run, **Wait for Completion** mendukung:
 
@@ -73,7 +87,9 @@ Saat membuat Agent run, **Wait for Completion** mendukung:
 
 Untuk workflow yang berjalan lama atau asinkron, nonaktifkan **Wait for Completion**, simpan `id` run yang dikembalikan, lalu gunakan **Get Run** nanti. Run akan tetap berjalan di Exa setelah langkah n8n selesai.
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Node Exa tidak muncul di node picker">
@@ -89,7 +105,9 @@ Untuk workflow yang berjalan lama atau asinkron, nonaktifkan **Wait for Completi
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Node Exa resmi" icon="github" href="https://github.com/exa-labs/n8n-integration" cta="Lihat repositori" arrow="true">

@@ -8,7 +8,9 @@ Highlights는 각 결과에서 질의와 관련된 구절을 추출해 반환합
 
 각 결과에서 선택된 구절은 `results[].highlights`에 담겨 반환됩니다.
 
-## 전체 텍스트 대신 highlights를 쓰는 이유 {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## 전체 텍스트 대신 highlights를 쓰는 이유
+</div>
 
 Highlights는 Exa가 자체 개발한 extraction 모델에서 생성됩니다. 이 모델은 요청할 때마다 각 result를 질의에 비추어 읽고, 질의에 답하는 구절만 반환합니다. 전체 페이지 텍스트의 극히 일부 토큰만으로도 동등하거나 더 나은 최종 답변 품질을 얻을 수 있습니다.
 
@@ -26,7 +28,9 @@ Highlights는 Exa가 자체 개발한 extraction 모델에서 생성됩니다. �
   확인하세요.
 </Tip>
 
-## search에 highlights 추가하기 {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## search에 highlights 추가하기
+</div>
 
 권장 기본 설정으로 `contents` 안에 `highlights: true`를 사용하세요. Exa가 각 result에서 반환할 텍스트 분량을 질의와의 관련성에 따라 알아서 결정하므로 따로 조정할 character budget이 없습니다. 애플리케이션에서 페이지당 고정된 limit이 필요할 때만 `maxCharacters`를 설정하세요.
 
@@ -58,7 +62,9 @@ Highlights는 Exa가 자체 개발한 extraction 모델에서 생성됩니다. �
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights는 질의에 가장 유용한 내용이 무엇인지에 따라 각 result에서 가져올 텍스트 분량을 조절합니다. 품질이 좋은 소스에서는 더 많이, 반복적이거나 관련성이 낮은 소스에서는 더 적게 가져와 반환되는 전체 토큰 수를 줄입니다.
 
@@ -129,7 +135,9 @@ Exa의 평가에서 Dynamic Highlights는 전체 페이지 콘텐츠 대비 토�
   `results[].highlights` 형태를 사용합니다.
 </Info>
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="Search API 가이드" icon="search" href="/ko/docs/search/quickstart" cta="가이드 열기" arrow="true">

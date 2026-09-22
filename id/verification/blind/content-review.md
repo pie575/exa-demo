@@ -1,4 +1,6 @@
-# Tinjauan visual buta independen — tangkapan layar final {#independent-blinded-visual-review-final-captures}
+<div id="independent-blinded-visual-review-final-captures">
+  # Tinjauan visual buta independen — tangkapan layar final
+</div>
 
 Meninjau empat gambar perbandingan A/B yang telah diperbarui, tanpa kunci pemetaan sumber ke label.
 

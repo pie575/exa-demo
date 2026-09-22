@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Mendapatkan webset {#get-a-webset}
+<div id="get-a-webset">
+  # Mendapatkan webset
+</div>
 
 > Mengembalikan sebuah Webset berdasarkan `id` atau `externalId`, beserta status, searches, impor, enrichments, dan monitors miliknya.
 
 Kirimkan `expand=items` untuk menyertakan hingga 100 item pertama dalam response.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0

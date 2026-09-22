@@ -1,4 +1,6 @@
-# 针对 Exa production 的验证 {#verification-against-exa-production}
+<div id="verification-against-exa-production">
+  # 针对 Exa production 的验证
+</div>
 
 Production 快照：2026 年 9 月 18 日。本地预览：http://localhost:3000/docs。
 
@@ -19,19 +21,25 @@ search 与键盘导航、空结果、Escape、剪贴板复制、主题
 切换、API schema 渲染、agent 电子表格的全部七个标签页，以及移动端
 导航/search。
 
-## 盲评视觉审查 {#blind-visual-review}
+<div id="blind-visual-review">
+  ## 盲评视觉审查
+</div>
 
 [打开 159 页 A/B 对比图库](blind/index.html)。每个页面的两张截图均独立打乱顺序。图库会将 A/B/平局的偏好选择保存在浏览器中。四组代表性的桌面端/移动端配对也在未查阅身份对照表的情况下完成了审查：[最终审查](blind/final-review.md)。更早的独立审查及对应截图归档在 `blind/review-round-2/` 中。
 
 最终的代表性审查未发现任何一个版本在视觉效果上具有实质优势。其中两组代表性配对的位图完全一致；另外两组在记录的阈值下分别仅有 8 个和 1 个像素的差异 ([像素测量结果](representative-pixel-comparison.json)) 。这些只是针对已捕获视口的检查，并不意味着全局像素完全一致或托管服务等效。在全部 159 个页面中，有 158 个页面的正文文本完全一致；剩余的差异来自实时状态页的检查时间戳。
 
-## 保真度细节 {#fidelity-details}
+<div id="fidelity-details">
+  ## 保真度细节
+</div>
 
 本次导入保留了 production 主题、导航、自定义样式与脚本、字体、页面元数据、API 规范以及原始 MDX 组件，并补回了 Markdown 导出中缺失的 Agent Examples 电子表格，以及本地渲染器遗漏的 85 个已发布修改标签。原始响应与校验和保存在 `source-snapshot/` 目录中。
 
 Exa 托管的 AI 助手无法在 Mintlify 本地预览中使用，其本地控件转而打开一个可正常工作的文档搜索。外部控制台与 API playground 的跳转目标仍为外部地址。Markdown 与 schema 下载 URL 通过重定向指向内容相同的 `.txt` 负载，因为原生 development 服务器不会直接提供这些扩展名的文件。实时状态时间戳与动态媒体在不同次抓取之间可能存在差异。
 
-## 复现 {#reproduce}
+<div id="reproduce">
+  ## 复现
+</div>
 
 ```sh
 pnpm validate

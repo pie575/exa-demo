@@ -8,7 +8,9 @@ keywords: ["OpenRouter", "web search", "server tool", "grounding", "url_citation
 
 Exa adalah mesin pencari di balik web search [OpenRouter](https://openrouter.ai). OpenRouter memberi Anda satu API untuk ratusan model, dan Exa memberi model-model tersebut akses web secara langsung: model yang tidak memiliki search bawaan akan di-grounding melalui Exa secara default, dan model mana pun dapat diarahkan ke Exa secara eksplisit. Exa API key tidak diperlukan. OpenRouter menjalankan searches di sisi server dan menagihkannya ke OpenRouter credits Anda.
 
-## Menggunakan server tool web search {#use-the-web-search-server-tool}
+<div id="use-the-web-search-server-tool">
+  ## Menggunakan server tool web search
+</div>
 
 Tambahkan `openrouter:web_search` ke array `tools` Anda, lalu model akan menentukan kapan harus melakukan search, apa yang dicari, dan apakah perlu melakukan search lagi dalam permintaan yang sama. [Server tools](https://openrouter.ai/docs/guides/features/server-tools/web-search) masih dalam tahap beta di OpenRouter dan menggantikan plugin `web` yang sudah usang serta varian model `:online`; lihat [panduan migrasi](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) OpenRouter jika Anda masih menggunakan salah satunya.
 
@@ -94,17 +96,23 @@ Dengan nilai default `engine: "auto"`, OpenRouter memakai search bawaan provider
 | `search_context_size`                 | Menggunakan budget preset sebagai gantinya: `low`, `medium`, atau `high`                                                                                                                         |
 | `allowed_domains`, `excluded_domains` | Memfilter domain hasil. Exa mendukung kedua filter tersebut dalam satu permintaan yang sama.                                                                                                     |
 
-## Bagaimana hasil dikembalikan {#how-results-come-back}
+<div id="how-results-come-back">
+  ## Bagaimana hasil dikembalikan
+</div>
 
 OpenRouter meminta [kutipan Exa](/id/docs/search/highlights) untuk setiap hasil alih-alih teks halaman secara utuh: kutipan ekstraktif dengan ukuran adaptif, umumnya 2.000 hingga 4.000 karakter per hasil, kecuali Anda menetapkan `max_characters` atau `search_context_size`. Model membaca kutipan tersebut, dan pemanggil API menerimanya dalam anotasi `url_citation` yang terstandarisasi pada pesan response. Dalam satu hasil, penanda `[...]` memisahkan kutipan yang diambil dari bagian halaman yang berbeda.
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Exa search ditagihkan ke OpenRouter credits Anda, selain biaya token model untuk membaca hasilnya. Mode `instant`, `fast`, dan `auto` berbiaya $0,007 per search, `deep-lite` dan `deep` berbiaya $0,012, dan `deep-reasoning` berbiaya $0,015. Setiap search mencakup hingga 10 hasil, dan setiap hasil tambahan berbiaya $0,001. Lihat [dokumentasi web search OpenRouter](https://openrouter.ai/docs/guides/features/server-tools/web-search) untuk tarif terkini.
 
 Objek `usage` pada response melaporkan berapa banyak search yang dijalankan model melalui `server_tool_use.web_search_requests`.
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={2}>
   <Card title="Dokumentasi server tool" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="Buka dokumentasi" arrow="true">

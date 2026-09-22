@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
 
-# LlamaIndex {#llamaindex}
+<div id="llamaindex">
+  # LlamaIndex
+</div>
 
 > LlamaIndex Agent 애플리케이션에 Exa 검색을 추가하는 방법을 소개하는 빠른 시작 가이드입니다.
 
@@ -20,7 +24,9 @@ LlamaIndex는 구조화된 데이터를 기반으로 LLM 애플리케이션을 �
 
 ***
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 <Steps>
   <Step title="사전 준비 및 설치">

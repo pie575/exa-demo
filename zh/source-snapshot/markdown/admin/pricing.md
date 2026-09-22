@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 定价 {#pricing}
+<div id="pricing">
+  # 定价
+</div>
 
 > Exa Search、Contents、Answer、Monitors 和 Agent API 的按量付费费率
 
@@ -21,7 +25,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
   在控制台中创建密钥。新账户自带免费积分。
 </Card>
 
-## 产品 {#products}
+<div id="products">
+  ## 产品
+</div>
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/zh/docs/search/quickstart">
@@ -61,7 +67,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
   </Card>
 </Columns>
 
-## Search、Contents、Answer 和 Monitors {#search-contents-answer-and-monitors}
+<div id="search-contents-answer-and-monitors">
+  ## Search、Contents、Answer 和 Monitors
+</div>
 
 每个端点都有按请求计费的基础价格，包含最多 10 条结果。超出部分的结果以及 Exa 生成的页面摘要将额外计费。
 
@@ -72,7 +80,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
 | `/monitors` | $15 / 1k 请求             | $1 / 1k 结果   | $1 / 1k 页 |
 | `/contents` | $1 / 1k 页，按内容类型计费       | —            | $1 / 1k 页 |
 
-## Agent {#agent}
+<div id="agent">
+  ## Agent
+</div>
 
 为 [Agent](/zh/docs/agent/quickstart) 设置固定的 `effort`，即可获得可预测的单次请求价格。`auto` 是默认的计量模式；测试版的 `max` 同样按计量计费，并使用相同的用量费率：
 
@@ -93,7 +103,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
 | 邮箱联系方式增强            | $0.02 / 个邮箱   |
 | 电话联系方式增强            | $0.07 / 个电话号码 |
 
-### Connect 提供方 {#connect-providers}
+<div id="connect-providers">
+  ### Connect 提供方
+</div>
 
 使用 [Exa Connect](/zh/docs/agent/connect/overview) 数据源的运行，还会对每次提供方调用单独计费。例如
 [Fiber.ai](/zh/docs/agent/connect/fiber#pricing) 每积分 $0.02，
@@ -101,7 +113,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
 全部提供方费率请参见
 [Connect 定价](/zh/docs/agent/connect/overview#pricing)。
 
-## 深度搜索 {#deep-search}
+<div id="deep-search">
+  ## 深度搜索
+</div>
 
 在 [`/search`](/zh/docs/search/deep-search) 中通过 `type` 设置。额外结果和 AI 页面摘要的费用与标准搜索相同。
 
@@ -111,7 +125,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
 | `deep`           | $12 / 1000 次请求          | 4–15 秒  | 带结构化输出的多步推理 |
 | `deep-reasoning` | $15 / 1000 次请求          | 12–40 秒 | 难度更高的研究任务   |
 
-## Enterprise {#enterprise}
+<div id="enterprise">
+  ## Enterprise
+</div>
 
 面向大规模用量、自定义数据集以及更严格的安全要求。
 
@@ -133,7 +149,9 @@ Exa 采用按量付费模式，无订阅费、无最低消费：你充值积分�
   获取企业级用量与条款的报价
 </Card>
 
-## 费用术语表 {#cost-glossary}
+<div id="cost-glossary">
+  ## 费用术语表
+</div>
 
 <AccordionGroup>
   <Accordion title="请求">

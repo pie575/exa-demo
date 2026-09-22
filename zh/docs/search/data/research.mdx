@@ -38,7 +38,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   进一步了解文献检索的质量表现。
 </Tip>
 
-## 包含内容 {#included}
+<div id="included">
+  ## 包含内容
+</div>
 
 * 论文与预印本，若有已解析的 full text，则包含全文分块
 * 专利，含摘要、权利要求、发明人和专利权人
@@ -46,40 +48,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * 临床试验、药品说明书及药物相互作用数据
 * 监管与卫生批准
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 文献综述与引用来源查找
 * 现有技术检索与专利布局分析
 * 临床与药物研究
 * 科研资助与经费机会发现
 
-## 查询示例 {#example-queries}
+<div id="example-queries">
+  ## 查询示例
+</div>
 
-### 查找某一主题的论文 {#find-papers-on-a-topic}
+<div id="find-papers-on-a-topic">
+  ### 查找某一主题的论文
+</div>
 
 描述方法或研究发现，而不要去猜测标题中的关键词。`publication` 类别会将结果限定为论文。
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-### 检索临床证据 {#search-clinical-evidence}
+<div id="search-clinical-evidence">
+  ### 检索临床证据
+</div>
 
 写明试验分期、干预措施和受试人群，让试验注册登记和结果页面的排名高于泛泛的报道。
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-### 跟踪监管批准 {#track-regulatory-approvals}
+<div id="track-regulatory-approvals">
+  ### 跟踪监管批准
+</div>
 
 指明监管机构以及你关注的设备或药物类别。
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-### 运行一次现有技术检索 {#run-a-prior-art-search}
+<div id="run-a-prior-art-search">
+  ### 运行一次现有技术检索
+</div>
 
 像撰写权利要求那样，从功能角度描述该发明，而不要使用产品名称。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -123,7 +139,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa agent 获取结构化数据
+</div>
 
 如果结构化数据需要跨多个来源进行研究才能获得，请使用 [Exa agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的文献、纳入 criteria 和输出 fields，agent 就会返回经过 schema 校验的结果及引用来源。
 

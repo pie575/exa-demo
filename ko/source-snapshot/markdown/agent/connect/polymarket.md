@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Polymarket {#polymarket}
+<div id="polymarket">
+  # Polymarket
+</div>
 
 > 예측 시장의 odds, 가격 이력, 오더북, trader 포지션을 가져옵니다.
 
@@ -14,14 +18,18 @@ Polymarket의 공개 시장 데이터에 대한 읽기 전용 접근을 제공�
 [Exa Agent](/ko/docs/agent/quickstart) 실행에 `polymarket`을 attach하면
 agent가 Exa web search와 함께 Polymarket에도 쿼리를 보냅니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 특정 주제에 대한 예측 시장과 현재 market-implied odds 찾기
 * 특정 결과의 implied probability가 시간에 따라 어떻게 변했는지 비교하기
 * 시장 유동성, 매수/매도 깊이, 상위 포지션 보유자 살펴보기
 * trader의 현재 포지션과 최근 온체인 활동 검토하기
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -29,13 +37,17 @@ agent가 Exa web search와 함께 Polymarket에도 쿼리를 보냅니다.
 polymarket
 ```
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 Polymarket의 읽기 API는 인증이 필요 없고 무료이므로 Polymarket 도구 호출에는
 비용이 발생하지 않습니다. 표준
 [Agent 실행 가격](/ko/docs/agent/quickstart#pricing)만 지불하면 됩니다.
 
-## 제공 데이터 {#data-available}
+<div id="data-available">
+  ## 제공 데이터
+</div>
 
 | 데이터          | 설명                                                |
 | ------------ | ------------------------------------------------- |
@@ -44,7 +56,9 @@ Polymarket의 읽기 API는 인증이 필요 없고 무료이므로 Polymarket �
 | 오더북          | 시장 결과에 대한 실시간 매수/매도 깊이와 스프레드.                     |
 | 보유자 및 trader | 해당 시장의 상위 포지션 보유자, 그리고 trader의 현재 포지션과 최근 온체인 활동. |
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 연준 금리 인하의 market-implied odds와 지난 한 달 동안의 변화 추이를 가져옵니다.
 
@@ -112,13 +126,17 @@ Polymarket의 읽기 API는 인증이 필요 없고 무료이므로 Polymarket �
   ```
 </CodeGroup>
 
-## 함께 사용하면 좋은 기능 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하면 좋은 기능
+</div>
 
 * [Exa web search](/ko/docs/search/quickstart): 시장 odds에 관련 보도와 배경 컨텍스트를 더합니다.
 * [Particle](/ko/docs/agent/connect/particle): odds 변동의 배경이 된 뉴스 보도를 가져옵니다.
 * [Financial Datasets](/ko/docs/agent/connect/financialdatasets): market-implied odds를 가격, fundamental, 거시 경제 데이터와 연결합니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

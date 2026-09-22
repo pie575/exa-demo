@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 状态页 {#status-page}
+<div id="status-page">
+  # 状态页
+</div>
 
 > Exa 服务的实时可用性、进行中的故障事件与可用性历史记录。
 
@@ -169,11 +173,15 @@ Exa 在 [status.exa.ai](https://status.exa.ai) 发布服务可用性信息：Sea
 
 <ExaStatus />
 
-## 订阅更新 {#subscribe-to-updates}
+<div id="subscribe-to-updates">
+  ## 订阅更新
+</div>
 
 在状态页上订阅，即可在故障事件创建、更新或解决时收到通知。通知可通过电子邮件、Slack、Google Chat 或 webhook 发送。
 
-## 获取帮助 {#get-help}
+<div id="get-help">
+  ## 获取帮助
+</div>
 
 如果所有系统均显示运行正常，但请求仍持续失败，问题很可能出在请求本身，请先查看[错误码](/zh/docs/admin/error-codes)。
 

@@ -1,17 +1,25 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
 
-# team 정보 조회 {#get-team-info}
+<div id="get-team-info">
+  # team 정보 조회
+</div>
 
 > concurrency 사용량과 limits를 포함한 team 정보를 조회합니다.
 
-## 개요 {#overview}
+<div id="overview">
+  ## 개요
+</div>
 
 Get Team Info 엔드포인트는 인증된 team의 현재 concurrency 사용량과 설정된 limits를 비롯해 해당 team에 대한 정보를 반환합니다. Websets API 사용량을 모니터링하고 속도 제한을 파악하는 데 유용합니다.
 
-## Response {#response}
+<div id="response">
+  ## Response
+</div>
 
 response에는 다음 항목이 포함됩니다:
 
@@ -21,21 +29,27 @@ response에는 다음 항목이 포함됩니다:
 * **concurrency**: 활성 요청과 대기 중인 요청을 나타내는 현재 사용량
 * **limits**: team의 concurrency limits
 
-### Concurrency Fields {#concurrency-fields}
+<div id="concurrency-fields">
+  ### Concurrency Fields
+</div>
 
 `concurrency` 객체는 현재 요청 상태를 나타냅니다:
 
 * **active**: 현재 처리 중인 요청 수
 * **queued**: 처리를 대기 중인 요청 수
 
-### Limits Fields {#limits-fields}
+<div id="limits-fields">
+  ### Limits Fields
+</div>
 
 `limits` 객체는 team에 설정된 limits를 보여줍니다:
 
 * **maxConcurrent**: 동시에 처리할 수 있는 최대 요청 수 (null이면 무제한)
 * **maxQueued**: 큐에서 대기할 수 있는 최대 요청 수 (null이면 무제한)
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0

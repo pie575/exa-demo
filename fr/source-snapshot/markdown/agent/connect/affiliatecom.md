@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Affiliate.com {#affiliatecom}
+<div id="affiliatecom">
+  # Affiliate.com
+</div>
 
 > Recherchez dans les catalogues de produits des marchands et des réseaux d&#39;affiliation.
 
@@ -15,13 +19,17 @@ Attachez `affiliate` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Affiliate.com en parallèle d&#39;Exa web search.
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Découverte de produits et comparaison des prix entre marchands.
 * Alimenter des assistants d&#39;achat et des contenus de guides d&#39;achat.
 * Faire apparaître des liens d&#39;affiliation aux côtés des résultats de recherche.
 
-## ID du fournisseur {#provider-id}
+<div id="provider-id">
+  ## ID du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -29,7 +37,9 @@ Utilisez cette valeur dans `dataSources` :
 affiliate
 ```
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Trouver des casques sans fil à réduction de bruit à moins de $300 et comparer la tarification.
 
@@ -126,12 +136,16 @@ Trouver des casques sans fil à réduction de bruit à moins de $300 et comparer
   ```
 </CodeGroup>
 
-## À combiner avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## À combiner avec
+</div>
 
 * [Similarweb](/fr/docs/agent/connect/similarweb) : évaluez l&#39;audience d&#39;un marchand avant de le recommander.
 * [Fiber.ai](/fr/docs/agent/connect/fiber) : recherchez des informations sur l&#39;entreprise derrière un marchand ou une marque.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

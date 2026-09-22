@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Registros legales y públicos {#legal-public-records}
+<div id="legal-public-records">
+  # Registros legales y públicos
+</div>
 
 > Encuentra sentencias judiciales, patentes, sanctions, contratos públicos y otros registros públicos con Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Usa Exa Search para acceder a fuentes jurídicas primarias y registros públicos oficiales, junto con los análisis y comentarios escritos sobre ellos.
 
-## Incluido {#included}
+<div id="included">
+  ## Incluido
+</div>
 
 * Sentencias judiciales de EE. UU., con texto completo y metadatos de tribunal, expediente y cita
 * Patentes concedidas en EE. UU., con resumen, reivindicaciones, descripción, inventores y cesionarios
@@ -44,7 +50,9 @@ Usa Exa Search para acceder a fuentes jurídicas primarias y registros públicos
 * Contratos públicos y registros de contratación
 * Datos censales y otros registros estadísticos públicos
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Investigación de jurisprudencia y RAG jurídico
 * Seguimiento regulatorio y de políticas públicas
@@ -52,39 +60,53 @@ Usa Exa Search para acceder a fuentes jurídicas primarias y registros públicos
 * Cribado de cumplimiento normativo y debida diligencia
 * Estudios de mercado del sector público
 
-## Consultas de ejemplo {#example-queries}
+<div id="example-queries">
+  ## Consultas de ejemplo
+</div>
 
-### Encontrar jurisprudencia {#find-case-law}
+<div id="find-case-law">
+  ### Encontrar jurisprudencia
+</div>
 
 Describe la cuestión jurídica y la jurisdicción en lenguaje natural en lugar de usar una cita.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-### Buscar patentes {#search-patents}
+<div id="search-patents">
+  ### Buscar patentes
+</div>
 
 Describe qué hace la invención, tal como lo haría una reivindicación.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-### Cribar contra sanctions {#screen-against-sanctions}
+<div id="screen-against-sanctions">
+  ### Cribar contra sanctions
+</div>
 
 Indica el nombre de la lista y la clase de entidad que estás cribando.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-### Investigar el gasto público {#research-government-spending}
+<div id="research-government-spending">
+  ### Investigar el gasto público
+</div>
 
 Indica la agencia compradora o la categoría de servicio y el periodo de tiempo.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-### Extraer estadísticas públicas {#pull-public-statistics}
+<div id="pull-public-statistics">
+  ### Extraer estadísticas públicas
+</div>
 
 Indica el conjunto de datos y la zona geográfica.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-## Realizar una solicitud {#make-a-request}
+<div id="make-a-request">
+  ## Realizar una solicitud
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +147,9 @@ Indica el conjunto de datos y la zona geográfica.
   ```
 </CodeGroup>
 
-## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtén datos estructurados con Exa Agent
+</div>
 
 Para datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las jurisdicciones, los tipos de registro, los criteria y los campos de output que necesitas, y Agent devolverá resultados validados contra el esquema y con citas.
 

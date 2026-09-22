@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exa Search API {#exa-search-api}
+<div id="exa-search-api">
+  # Exa Search API
+</div>
 
 > Effectuez des recherches sur le web en langage naturel et obtenez un contenu de page propre et pertinent en une seule requête.
 
 Exa Search reçoit une requête en langage naturel et renvoie des résultats web classés, accompagnés d&#39;un contenu de page propre.
 
-## Effectuez votre première requête {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Effectuez votre première requête
+</div>
 
 Commencez avec une `query` en langage naturel et `contents: { highlights: true }`, qui renvoie des extraits dont la longueur s&#39;adapte à la relevance de chaque result. D&#39;autres fields déterminent la façon dont Exa effectue la recherche et ce que contient chaque result ; la suite de cette page couvre ceux que vous utiliserez réellement.
 
@@ -105,7 +111,9 @@ Par défaut, search renvoie jusqu&#39;à 10 results. Définissez `numResults` po
 
 Les results sont classés par relevance. Chacun comporte des métadonnées telles que le titre, l&#39;URL et la date de publication, ainsi que tout ce que vous avez demandé dans `contents`.
 
-## Rédiger des requêtes {#writing-queries}
+<div id="writing-queries">
+  ## Rédiger des requêtes
+</div>
 
 Le field `query` est le seul field obligatoire pour utiliser la Search API.
 
@@ -142,7 +150,9 @@ Les modes deep exécutent un véritable processus de recherche plutôt qu&#39;un
   fondés sur des preuves.
 </Tip>
 
-## Formes de sortie {#output-shapes}
+<div id="output-shapes">
+  ## Formes de sortie
+</div>
 
 Chaque result inclut des métadonnées telles que son titre, son URL et sa date de publication. Utilisez `contents` pour ajouter des highlights, le texte intégral ou un résumé de la page.
 
@@ -237,7 +247,9 @@ Choisissez une seule vue de contenu par requête. Demander à la fois les highli
     mêmes fields se placent donc au niveau racine, à côté de `urls` : `"urls": [...], "highlights": true`
 </Warning>
 
-## Schéma de sortie {#output-schema}
+<div id="output-schema">
+  ## Schéma de sortie
+</div>
 
 Ajoutez `outputSchema` lorsque vous souhaitez qu&#39;Exa synthétise les résultats de recherche. Ce paramètre fonctionne avec tous les types de recherche et ajoute un objet `output` à la réponse.
 
@@ -403,11 +415,15 @@ Utilisez `systemPrompt` pour les instructions telles que les préférences de so
   fields de citation ou de confiance au schéma ; Exa les renvoie automatiquement dans `output.grounding`.
 </Note>
 
-## Filtrer les résultats {#filter-results}
+<div id="filter-results">
+  ## Filtrer les résultats
+</div>
 
 Les filtres sont des contraintes strictes : ajoutez-en un lorsqu&#39;un résultat situé hors de son périmètre vous serait inutilisable, et exprimez plutôt vos préférences de sources plus souples directement dans le texte de la requête. L&#39;[Référence de l&#39;API](/fr/docs/reference/search) en présente la liste complète.
 
-### Inclure des domaines ou des chemins {#include-domains-or-paths}
+<div id="include-domains-or-paths">
+  ### Inclure des domaines ou des chemins
+</div>
 
 `includeDomains` limite les résultats aux sources de confiance. Ce paramètre accepte des domaines complets, des préfixes de chemin comme `anthropic.com/news` et des caractères génériques de sous-domaine comme `*.substack.com`.
 
@@ -441,7 +457,9 @@ Les filtres sont des contraintes strictes : ajoutez-en un lorsqu&#39;un résulta
 
 Indiquez le chemin dans le filtre plutôt que de le répéter sous forme d&#39;opérateur `site:` dans la requête.
 
-### Exclure des domaines ou des chemins {#exclude-domains-or-paths}
+<div id="exclude-domains-or-paths">
+  ### Exclure des domaines ou des chemins
+</div>
 
 `excludeDomains` écarte les résultats provenant de domaines ou de chemins précis. Ce paramètre prend en charge les mêmes préfixes de chemin et caractères génériques de sous-domaine que `includeDomains`. Utilisez-le lorsque ces sources rendraient un résultat inexploitable, et non pour exprimer une préférence.
 
@@ -476,7 +494,9 @@ Indiquez le chemin dans le filtre plutôt que de le répéter sous forme d&#39;o
   ```
 </CodeGroup>
 
-## Fraîcheur du contenu {#content-freshness}
+<div id="content-freshness">
+  ## Fraîcheur du contenu
+</div>
 
 `contents.maxAgeHours` contrôle le degré de fraîcheur exigé du contenu extrait de chaque résultat. Ce paramètre ne filtre pas les résultats selon la date de publication.
 
@@ -523,7 +543,9 @@ La plupart des recherches devraient omettre ce field. Définissez-le lorsqu&#39;
   ```
 </CodeGroup>
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="Bonnes pratiques" icon="sparkles" href="/fr/docs/search/best-practices" cta="Lire le guide" arrow="true">

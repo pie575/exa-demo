@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa Search API {#exa-search-api}
+<div id="exa-search-api">
+  # Exa Search API
+</div>
 
 > Busca en la web en lenguaje natural y obtén contenido de páginas limpio y relevante en una sola solicitud.
 
 Exa Search recibe una consulta en lenguaje natural y devuelve resultados web ordenados por relevancia con contenido de página limpio.
 
-## Haz tu primera solicitud {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Haz tu primera solicitud
+</div>
 
 Empieza con una `query` en lenguaje natural y `contents: { highlights: true }`, que devuelve extractos cuyo tamaño se ajusta a la relevancia de cada resultado. Otros campos controlan cómo busca Exa y qué incluye cada resultado; el resto de esta página cubre los que realmente vas a usar.
 
@@ -105,7 +111,9 @@ La búsqueda devuelve hasta 10 resultados de forma predeterminada. Configura `nu
 
 Los resultados se ordenan por relevancia. Cada uno incluye metadatos como el título, la URL y la fecha de publicación, además de lo que hayas solicitado en `contents`.
 
-## Cómo escribir consultas {#writing-queries}
+<div id="writing-queries">
+  ## Cómo escribir consultas
+</div>
 
 El campo `query` es el único campo obligatorio al usar la Search API.
 
@@ -142,7 +150,9 @@ Los modos deep ejecutan un proceso de investigación en lugar de una única pasa
   estructurados.
 </Tip>
 
-## Formas de salida {#output-shapes}
+<div id="output-shapes">
+  ## Formas de salida
+</div>
 
 Cada resultado incluye metadatos como su título, URL y fecha de publicación. Usa `contents` para añadir highlights, texto completo o un resumen de la página.
 
@@ -237,7 +247,9 @@ Elige una sola vista de contenido por solicitud. Solicitar highlights y texto a 
     mismos campos van en el nivel superior junto a `urls`: `"urls": [...], "highlights": true`
 </Warning>
 
-## Esquema de salida {#output-schema}
+<div id="output-schema">
+  ## Esquema de salida
+</div>
 
 Añade `outputSchema` cuando quieras que Exa sintetice los resultados de búsqueda. Funciona con todos los tipos de búsqueda y añade un objeto `output` a la respuesta.
 
@@ -402,11 +414,15 @@ Usa `systemPrompt` para instrucciones como las preferencias de fuentes o el énf
   Mantén los esquemas de objeto pequeños: admiten hasta 2 niveles de anidamiento y 10 propiedades. No agregues campos de cita ni de confianza al esquema; Exa los devuelve automáticamente en `output.grounding`.
 </Note>
 
-## Filtrar resultados {#filter-results}
+<div id="filter-results">
+  ## Filtrar resultados
+</div>
 
 Los filtros son restricciones estrictas: añade uno cuando un resultado que quede fuera no te sirva de nada, y expresa las preferencias de fuentes más flexibles en el texto de la consulta. La [referencia de la API](/es/docs/reference/search) incluye el conjunto completo.
 
-### Incluir dominios o rutas {#include-domains-or-paths}
+<div id="include-domains-or-paths">
+  ### Incluir dominios o rutas
+</div>
 
 `includeDomains` limita los resultados a las fuentes en las que confías. Acepta dominios completos, prefijos de ruta como `anthropic.com/news` y comodines de subdominio como `*.substack.com`.
 
@@ -440,7 +456,9 @@ Los filtros son restricciones estrictas: añade uno cuando un resultado que qued
 
 Indica la ruta en el filtro en lugar de repetirla como operador `site:` en la consulta.
 
-### Excluir dominios o rutas {#exclude-domains-or-paths}
+<div id="exclude-domains-or-paths">
+  ### Excluir dominios o rutas
+</div>
 
 `excludeDomains` elimina resultados de dominios o rutas específicos. Admite los mismos prefijos de ruta y comodines de subdominio que `includeDomains`. Úsalo cuando esas fuentes harían que un resultado fuera inservible, no para expresar una preferencia.
 
@@ -475,7 +493,9 @@ Indica la ruta en el filtro en lugar de repetirla como operador `site:` en la co
   ```
 </CodeGroup>
 
-## Frescura del contenido {#content-freshness}
+<div id="content-freshness">
+  ## Frescura del contenido
+</div>
 
 `contents.maxAgeHours` controla qué tan reciente debe ser el contenido extraído de cada resultado. No filtra los resultados por fecha de publicación.
 
@@ -522,7 +542,9 @@ La mayoría de las búsquedas deberían omitir este campo. Úsalo cuando el cont
   ```
 </CodeGroup>
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Buenas prácticas" icon="sparkles" href="/es/docs/search/best-practices" cta="Leer la guía" arrow="true">

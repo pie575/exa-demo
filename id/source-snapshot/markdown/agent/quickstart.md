@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa Agent {#exa-agent}
+<div id="exa-agent">
+  # Exa Agent
+</div>
 
 > Jalankan workflow deep research, list building, dan enrichment yang mengembalikan terstruktur output.
 
@@ -17,7 +21,9 @@ Setiap run dapat mengembalikan jawaban dalam bahasa alami, JSON yang tervalidasi
   Lebih suka MCP? Exa Agent dan [Exa Connect](/id/docs/agent/connect/overview) tersedia di [Exa MCP](/id/docs/get-started/exa-mcp#exa-agent). Aktifkan `tools=agent_run` untuk menjalankan research multi-langkah, list building, enrichment, dan terstruktur output dari Claude, Cursor, dan MCP clients lainnya.
 </Tip>
 
-## Kapan menggunakan Exa Agent {#when-to-use-exa-agent}
+<div id="when-to-use-exa-agent">
+  ## Kapan menggunakan Exa Agent
+</div>
 
 Gunakan Exa Agent ketika sebuah workflow membutuhkan lebih dari satu search atau extraction call, atau ketika Anda harus menulis sendiri loop berisi searches, pembacaan halaman, dan langkah verifikasi untuk menyusun data:
 
@@ -30,11 +36,15 @@ Gunakan Exa Agent ketika sebuah workflow membutuhkan lebih dari satu search atau
 
 Exa Agent memang dirancang bersifat async dengan latency yang lebih tinggi. Untuk satu search dengan latency rendah di mana Anda mengorkestrasi calls sendiri, mulailah dengan [Search API](/id/docs/search/quickstart).
 
-## Quickstart {#quickstart}
+<div id="quickstart">
+  ## Quickstart
+</div>
 
 Contoh ini memulai sebuah run yang menyusun daftar orang terstruktur sesuai kriteria Anda. Hasilnya dikembalikan dalam bentuk JSON di `output.structured`.
 
-### 1. Instal SDK Exa {#1-install-the-exa-sdk}
+<div id="1-install-the-exa-sdk">
+  ### 1. Instal SDK Exa
+</div>
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -46,7 +56,9 @@ Contoh ini memulai sebuah run yang menyusun daftar orang terstruktur sesuai krit
   ```
 </CodeGroup>
 
-### 2. Atur API key Anda {#2-set-your-api-key}
+<div id="2-set-your-api-key">
+  ### 2. Atur API key Anda
+</div>
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -62,7 +74,9 @@ Contoh ini memulai sebuah run yang menyusun daftar orang terstruktur sesuai krit
   </Tab>
 </Tabs>
 
-### 3. Buat run {#3-create-a-run}
+<div id="3-create-a-run">
+  ### 3. Buat run
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -161,7 +175,9 @@ Contoh ini memulai sebuah run yang menyusun daftar orang terstruktur sesuai krit
 
 Tambahkan `Accept: text/event-stream` saat membuat run untuk menerima server-sent events ketika run masuk antrean (queued), dimulai, dan selesai. Lihat [Stream events](#stream-events) untuk detail selengkapnya.
 
-### 4. Poll hingga selesai {#4-poll-for-completion}
+<div id="4-poll-for-completion">
+  ### 4. Poll hingga selesai
+</div>
 
 Jika Anda tidak melakukan streaming events, simpan `id` yang dikembalikan lalu poll run tersebut hingga mencapai status terminal.
 
@@ -226,7 +242,9 @@ Runs yang telah selesai berisi:
   OpenAI](/id/docs/integrations/openai-sdk#agent-via-responses-api).
 </Note>
 
-## Verifikasi dan enrich entitas tertentu {#verify-and-enrich-a-specific-entity}
+<div id="verify-and-enrich-a-specific-entity">
+  ## Verifikasi dan enrich entitas tertentu
+</div>
 
 Selain list building, gunakan Exa Agent untuk menelaah satu entitas yang sudah diketahui, memverifikasi sebuah klaim terhadap sources tepercaya, dan mengembalikan enrichment terstruktur. Contoh ini memeriksa apakah situs web resmi sebuah perusahaan memiliki halaman pricing yang dapat diakses publik, lalu meng-enrich hasil dengan detail pricing bila tersedia. Schema hanya mewajibkan `domain` dan `verdict`; selebihnya merupakan enrichment opsional.
 
@@ -407,7 +425,9 @@ Selain list building, gunakan Exa Agent untuk menelaah satu entitas yang sudah d
   halaman tersebut tidak ada.
 </Note>
 
-## Stream events {#stream-events}
+<div id="stream-events">
+  ## Stream events
+</div>
 
 Streaming membuat permintaan create tetap terbuka dan mengirimkan Server-Sent Events (SSE) sampai run selesai. Lihat [Event format](#event-format) untuk jenis event dan payload-nya.
 
@@ -452,7 +472,9 @@ Setel `stream=True` di Python, `stream: true` di JavaScript, atau kirim `Accept:
   ```
 </CodeGroup>
 
-### Format event {#event-format}
+<div id="event-format">
+  ### Format event
+</div>
 
 Setiap frame SSE berisi ID event, nama event, dan payload JSON:
 
@@ -464,7 +486,9 @@ data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:5
 
 Stream juga dapat berisi baris komentar seperti `: keep-alive`. Client SSE mengabaikan komentar secara otomatis; parser kustom sebaiknya melakukan hal yang sama.
 
-### Jenis event {#event-types}
+<div id="event-types">
+  ### Jenis event
+</div>
 
 | Event                 | `data` payload                        | Cara menggunakannya                                                                                                |
 | --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -478,7 +502,9 @@ Event yang terkait dengan langkah research yang sama menyertakan `callId`, yang 
 
 Perlakukan `agent_run.source.added` sebagai pratinjau langsung, bukan daftar sitasi yang lengkap. `output.grounding` pada run terminal adalah output grounding yang otoritatif.
 
-### Replay event tersimpan {#replay-stored-events}
+<div id="replay-stored-events">
+  ### Replay event tersimpan
+</div>
 
 Untuk run non-ZDR, [`GET /agent/runs/{id}/events`](/id/docs/reference/agent-api/list-run-events) mengembalikan event tersimpan dalam bentuk JSON berhalaman. Kirim `Accept: text/event-stream` untuk melakukan replay event tersimpan sebagai SSE, dan `Last-Event-ID` untuk melewati event yang sudah diproses oleh client Anda:
 
@@ -493,7 +519,9 @@ Endpoint replay mengirimkan events yang tersimpan pada saat permintaan dibuat, l
 
 Demi kompatibilitas ke depan, abaikan nama event yang tidak dikenali aplikasi Anda dan lanjutkan hingga event terminal diterima.
 
-## Mengembalikan JSON terstruktur {#return-structured-json}
+<div id="return-structured-json">
+  ## Mengembalikan JSON terstruktur
+</div>
 
 Gunakan `outputSchema` untuk mengembalikan JSON yang tervalidasi terhadap schema di `output.structured`.
 
@@ -597,13 +625,17 @@ Untuk meminta informasi kontak, jelaskan field kontak yang diinginkan di `output
   ```
 </CodeGroup>
 
-## Memproses baris input {#process-input-rows}
+<div id="process-input-rows">
+  ## Memproses baris input
+</div>
 
 Gunakan `input.data` jika Anda sudah memiliki kumpulan data yang ingin di-enrich. Anda dapat menambahkan lebih banyak field ke setiap entitas data, memunculkan entitas tambahan berdasarkan data yang Anda masukkan, atau keduanya.
 
 Untuk contoh lengkap enrichment baris, lihat [Contoh Agent](/id/docs/agent/examples#enrich-input-rows-code).
 
-## Memproses pengecualian {#process-exclusions}
+<div id="process-exclusions">
+  ## Memproses pengecualian
+</div>
 
 Gunakan `input.exclusion` untuk mencegah entri tertentu muncul dalam run. Pada contoh di bawah ini, kita ingin mencari 10 hewan paling menggemaskan, tetapi kambing dan panda dikecualikan dari run karena kita sudah tahu betapa menggemaskannya mereka.
 
@@ -659,7 +691,9 @@ Gunakan `input.exclusion` untuk mencegah entri tertentu muncul dalam run. Pada c
   ```
 </CodeGroup>
 
-## Hubungkan sumber data {#connect-data-sources}
+<div id="connect-data-sources">
+  ## Hubungkan sumber data
+</div>
 
 Indeks sudah tersedia di setiap run. Gunakan `dataSources` hanya untuk melakukan attach partner [Exa Connect](/id/docs/agent/connect/overview). Setiap entri memilih satu `provider`. Jika sebuah properti dalam `outputSchema` Anda merujuk ke sumber tertentu (misalnya, &quot;dari Similarweb&quot;), Exa Agent akan memanggil tool provider yang sesuai alih-alih menebak dari halaman web.
 
@@ -674,7 +708,9 @@ Indeks sudah tersedia di setiap run. Gunakan `dataSources` hanya untuk melakukan
 
 Lihat [Exa Connect](/id/docs/agent/connect/overview) untuk daftar lengkap data partners, lengkap dengan contoh untuk masing-masing.
 
-## Melanjutkan dari run sebelumnya {#continue-from-a-previous-run}
+<div id="continue-from-a-previous-run">
+  ## Melanjutkan dari run sebelumnya
+</div>
 
 Gunakan `previousRunId` untuk mengajukan follow-up terhadap response sebelumnya. Setiap follow-up memulai run baru dengan ID tersendiri. `previousRunId` membawa konteks ke run baru; ID tersebut tidak dipakai ulang sebagai ID run baru.
 
@@ -715,7 +751,9 @@ Gunakan `previousRunId` untuk mengajukan follow-up terhadap response sebelumnya.
   ```
 </CodeGroup>
 
-## Menemukan ID run {#find-a-run-id}
+<div id="find-a-run-id">
+  ## Menemukan ID run
+</div>
 
 Tampilkan daftar run terbaru dan periksa statusnya:
 
@@ -753,7 +791,9 @@ Tampilkan daftar run terbaru dan periksa statusnya:
   ```
 </CodeGroup>
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Biaya bersifat berbasis penggunaan dan dihitung per komponen:
 
@@ -770,7 +810,9 @@ Biaya bersifat berbasis penggunaan dan dihitung per komponen:
 
 Lihat [batas Agent](/id/docs/admin/billing#agent-limits) untuk konkurensi dan rate limit.
 
-### Effort {#effort}
+<div id="effort">
+  ### Effort
+</div>
 
 Gunakan `effort` untuk memilih tingkat biaya dan penalaran pada setiap run. Nilai yang didukung adalah `minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, dan `max`; nilai default-nya adalah `auto`. Effort tetap memiliki harga per permintaan yang dapat diprediksi, sedangkan `auto` dan `max` (beta) dihitung berdasarkan penggunaan:
 
@@ -795,7 +837,9 @@ Gunakan `effort` untuk memilih tingkat biaya dan penalaran pada setiap run. Nila
 
 `budget.maxCostDollars` adalah batas atas opsional per run untuk `auto` dan `max`. Nilainya menerima `$1`–`$100`; maksimum yang dirilis adalah `$100`, meskipun server dapat mengatur nilai maksimum yang lebih rendah. Batas default-nya adalah `$5` untuk `auto` dan `$20` untuk `max`. Ini adalah batas atas, bukan harga tetap: run yang selesai lebih cepat akan berbiaya lebih murah. Budget tidak diterima untuk effort tetap.
 
-### Memilih mode effort {#choosing-an-effort-mode}
+<div id="choosing-an-effort-mode">
+  ### Memilih mode effort
+</div>
 
 Mode effort tetap cocok ketika Anda menginginkan harga per permintaan yang dapat diprediksi untuk Research standar. Gunakan `auto` untuk pekerjaan dengan scope yang bervariasi seperti list building, di mana jumlah entitas bisa berbeda dari satu permintaan ke permintaan lainnya.
 
@@ -813,7 +857,9 @@ Mulailah dengan `medium` untuk Research entitas tunggal yang standar. Turunkan k
 
 Runtime bervariasi tergantung tingkat kesulitan query, kompleksitas schema, dan ketersediaan sumber eksternal. Perlakukan mode effort sebagai tradeoff antara kualitas/biaya/runtime, bukan sebagai jaminan latency yang pasti.
 
-### Menjalankan run dengan effort max {#run-with-max-effort}
+<div id="run-with-max-effort">
+  ### Menjalankan run dengan effort max
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -857,7 +903,9 @@ Runtime bervariasi tergantung tingkat kesulitan query, kompleksitas schema, dan 
 
 Contoh SDK ini memerlukan versi `exa-py` atau `exa-js` yang mendukung Agent Max.
 
-## Zero Data Retention {#zero-data-retention}
+<div id="zero-data-retention">
+  ## Zero Data Retention
+</div>
 
 Exa Agent mendukung [Zero Data Retention](/id/docs/admin/security/zero-data-retention) (ZDR). ZDR diaktifkan per Team. [Hubungi kami](mailto:sales@exa.ai) untuk mengaktifkannya pada akun Anda.
 
@@ -868,7 +916,9 @@ Ketika ZDR aktif untuk Team Anda:
 * `previousRunId` tidak tersedia.
 * `dataSources` Exa Connect tidak tersedia; permintaan yang menyertakannya akan mengembalikan error `400`.
 
-## Langkah berikutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah berikutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Apa saja yang ada di indeks" icon="search" href="/id/docs/search/data/overview" cta="Buka panduan" arrow="true">

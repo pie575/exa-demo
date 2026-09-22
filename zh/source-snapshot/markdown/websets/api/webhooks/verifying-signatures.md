@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# 验证签名 {#verifying-signatures}
+<div id="verifying-signatures">
+  # 验证签名
+</div>
 
 > 了解如何安全地验证 webhook 签名，以确保请求来自 Exa
 
 收到来自 Exa 的 webhook 时，你应当验证它确实来自我们，以保证数据的完整性和真实性。Exa 会使用与你的 webhook 端点一一对应的 secret 密钥，对所有 webhook 负载进行签名。
 
-## Webhook 签名的工作原理 {#how-webhook-signatures-work}
+<div id="how-webhook-signatures-work">
+  ## Webhook 签名的工作原理
+</div>
 
 Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Signature` header 中，其中包含：
 
@@ -22,7 +28,9 @@ Exa 使用 HMAC SHA256 对 webhook 负载进行签名。签名包含在 `Exa-Sig
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-## 验证流程 {#verification-process}
+<div id="verification-process">
+  ## 验证流程
+</div>
 
 验证 webhook 签名的步骤如下：
 
@@ -365,7 +373,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-## 安全最佳实践 {#security-best-practices}
+<div id="security-best-practices">
+  ## 安全最佳实践
+</div>
 
 遵循以下实践有助于确保你的 webhook 实现安全可靠：
 
@@ -385,9 +395,13 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
-### 签名无效错误 {#invalid-signature-errors}
+<div id="invalid-signature-errors">
+  ### 签名无效错误
+</div>
 
 如果遇到签名验证失败：
 
@@ -396,7 +410,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 3. **检查 header 解析**：确认已正确从 header 中提取时间戳和签名
 4. **编码问题**：确保整个验证过程中始终使用一致的 UTF-8 编码
 
-### 在本地测试签名 {#testing-signatures-locally}
+<div id="testing-signatures-locally">
+  ### 在本地测试签名
+</div>
 
 你可以使用 webhook 密钥和示例负载来测试签名验证逻辑：
 
@@ -428,7 +444,9 @@ print(f"Test signature valid: {is_valid}")  # 应输出 True
 
 <br />
 
-## 下一步 {#whats-next}
+<div id="whats-next">
+  ## 下一步
+</div>
 
 * 了解 [webhook 事件](/zh/docs/websets/api/events/types)及其负载
 * 配置 [webhook 重试与监控](/zh/docs/websets/api/webhooks/attempts/list-webhook-attempts)

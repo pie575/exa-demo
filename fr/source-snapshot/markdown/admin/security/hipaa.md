@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# HIPAA {#hipaa}
+<div id="hipaa">
+  # HIPAA
+</div>
 
 > Utilisez le mode de conformité HIPAA pour les requests de récupération depuis le cache éligibles.
 
@@ -23,7 +27,9 @@ Lorsque ce field est présent sur une équipe éligible, Exa traite la requête 
 
 Le mode HIPAA inclut le [Zero Data Retention](/fr/docs/admin/security/zero-data-retention) pour ces requests : Exa ne conserve aucune PHI.
 
-## Endpoints pris en charge {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoints pris en charge
+</div>
 
 Le field `compliance` est reconnu sur :
 
@@ -32,7 +38,9 @@ Le field `compliance` est reconnu sur :
 
 Les autres endpoints rejettent ce field.
 
-## Prérequis {#requirements}
+<div id="requirements">
+  ## Prérequis
+</div>
 
 Le mode HIPAA prend uniquement en charge la récupération depuis le cache. Requests compatibles :
 
@@ -46,7 +54,9 @@ Les requests incompatibles renvoient `400 INVALID_REQUEST_BODY`, notamment :
 * Les paramètres de fraîcheur qui nécessitent une récupération en direct, comme `maxAgeHours: 0` ou une valeur positive de `maxAgeHours`
 * Les requests de recherche qui omettent `type` ou qui utilisent un type autre que `instant` ou `fast`
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -62,6 +72,8 @@ Les requests incompatibles renvoient `400 INVALID_REQUEST_BODY`, notamment :
   ```
 </CodeGroup>
 
-## Accès {#access}
+<div id="access">
+  ## Accès
+</div>
 
 Pour activer le mode HIPAA sur votre équipe, contactez [sales@exa.ai](mailto:sales@exa.ai). Consultez le [Trust Center](https://trust.exa.ai) pour accéder à la documentation de sécurité d&#39;Exa.

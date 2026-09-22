@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Agent Skills {#agent-skills}
+<div id="agent-skills">
+  # Agent Skills
+</div>
 
 > Claude Code, Codex를 비롯한 coding agent에 Exa skill을 설치하세요.
 
@@ -11,7 +15,9 @@ Exa skill은 coding agent가 Exa API로 검색하고, 콘텐츠를 가져오고,
 
 각 skill은 공개 [Agent Skills](https://agentskills.io) 표준을 따르는 마크다운 파일로 구성되어 있어, 동일한 파일을 호환되는 모든 agent에 그대로 설치할 수 있습니다.
 
-## 설치 {#install}
+<div id="install">
+  ## 설치
+</div>
 
 모든 Exa skill을 한 번에 설치합니다:
 
@@ -29,7 +35,9 @@ npx skills add exa-labs/agent-skills
 
 또는 아래 skill 페이지를 열어 해당 setup prompt를 복사한 뒤 agent에 붙여넣으세요. 이 prompt는 해당 skill을 설치하고, API 키를 출력하지 않고 검증합니다.
 
-## Skills {#skills}
+<div id="skills">
+  ## Skills
+</div>
 
 각 skill 페이지에는 한 줄 설명, 복사해서 사용할 수 있는 setup prompt, 그리고 원본 `SKILL.md` 소스 링크가 포함되어 있습니다.
 
@@ -47,7 +55,9 @@ npx skills add exa-labs/agent-skills
   </Card>
 </Columns>
 
-## 관련 자료 {#related}
+<div id="related">
+  ## 관련 자료
+</div>
 
 <Columns cols={2}>
   <Card title="Skill 리포지토리" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="소스 보기" arrow="true">

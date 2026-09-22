@@ -1,9 +1,13 @@
-> ## Índice de documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Crear API key {#create-api-key}
+<div id="create-api-key">
+  # Crear API key
+</div>
 
 > Crea una nueva API key para tu equipo con nombre y configuración de límite de tasa opcionales.
 
@@ -17,12 +21,16 @@
 
 El endpoint Create API Key te permite generar nuevas API keys para tu equipo de forma programática usando tu API key de servicio.
 
-## Parámetros opcionales {#optional-parameters}
+<div id="optional-parameters">
+  ## Parámetros opcionales
+</div>
 
 * **name**: Un nombre descriptivo para la API key que ayude a identificar su propósito
 * **rateLimit**: Número máximo de solicitudes por minuto permitidas para esta API key
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

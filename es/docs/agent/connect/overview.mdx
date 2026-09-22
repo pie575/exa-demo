@@ -22,7 +22,9 @@ y luego vuelve aquí para adjuntar socios de datos.
   ¿Prefieres MCP? Exa Agent y [Exa Connect](/es/docs/agent/connect/overview) están disponibles en [Exa MCP](/es/docs/get-started/exa-mcp#exa-agent). Activa `tools=agent_run` para ejecutar investigación de varios pasos, creación de listas, enrichment y salida estructurada desde Claude, Cursor y otros MCP clients.
 </Tip>
 
-## Por qué Exa Connect {#why-exa-connect}
+<div id="why-exa-connect">
+  ## Por qué Exa Connect
+</div>
 
 * **Datos premium sin integraciones separadas.** Accede a datos de partners sin
   firmar contratos ni integrar un SDK. Solo llamas a una API de Exa.
@@ -34,7 +36,9 @@ y luego vuelve aquí para adjuntar socios de datos.
 * **Datos del índice y de partners en un mismo run.** Connect se apoya en el índice de Exa.
   El Exa Agent usa cada fuente allí donde es más sólida y cita los resultados.
 
-## Cómo funciona {#how-it-works}
+<div id="how-it-works">
+  ## Cómo funciona
+</div>
 
 1. **Adjunta** uno o más proveedores mediante el arreglo `dataSources` en
    [`POST /agent/runs`](/es/docs/reference/agent-api/create-a-run).
@@ -43,7 +47,9 @@ y luego vuelve aquí para adjuntar socios de datos.
 3. Los resultados del partner se **combinan con la investigación web** en tu salida estructurada,
    con las fuentes adjuntas.
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 <Note>
   Los precios de Exa Connect se suman a los [precios estándar del run del agente](/es/docs/agent/quickstart#pricing).
@@ -161,7 +167,9 @@ búsqueda inversa de directivos) son gratuitas. Consulta los [precios de Baselay
   ```
 </CodeGroup>
 
-## Socios de datos {#data-partners}
+<div id="data-partners">
+  ## Socios de datos
+</div>
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -207,9 +215,13 @@ búsqueda inversa de directivos) son gratuitas. Consulta los [precios de Baselay
 
 ¿Necesitas una fuente que no aparezca en la lista anterior? Consulta nuestros [proveedores adicionales](/es/docs/agent/connect/additional-partners), disponibles bajo petición escribiendo a nuestro equipo.
 
-## Uso {#usage}
+<div id="usage">
+  ## Uso
+</div>
 
-### Combinar proveedores {#combining-providers}
+<div id="combining-providers">
+  ### Combinar proveedores
+</div>
 
 Adjunta tantos socios como necesite tu tarea. El Exa Agent llama a cada uno en aquello en lo que destaca
 y combina los resultados con la búsqueda web en una única respuesta estructurada:

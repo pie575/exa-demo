@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 数据索引 {#data-index}
+<div id="data-index">
+  # 数据索引
+</div>
 
 > Exa 在公开网络和私有数据源中索引的内容。
 

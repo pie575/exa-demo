@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，请通过该文件了解所有可用页面。
 
-# 删除增强 {#delete-an-enrichment}
+<div id="delete-an-enrichment">
+  # 删除增强
+</div>
 
 > 删除 Enrichment 时，所有正在运行的增强都会被取消，且该 Enrichment 已生成的所有 `enrichment_result` 将不再可用。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

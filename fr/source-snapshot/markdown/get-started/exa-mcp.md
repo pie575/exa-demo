@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exa MCP {#exa-mcp}
+<div id="exa-mcp">
+  # Exa MCP
+</div>
 
 > Connectez ChatGPT, Codex, Claude, Grok, Cursor et tout autre client MCP aux tools de recherche web, de récupération de pages, Exa Agent et Exa Connect d&#39;Exa.
 
@@ -17,7 +21,9 @@ https://mcp.exa.ai/mcp
 
 Aucune API key n&#39;est nécessaire pour démarrer. Exa MCP est open source et disponible sur [GitHub](https://github.com/exa-labs/exa-mcp-server).
 
-## Installation {#install}
+<div id="install">
+  ## Installation
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -48,7 +54,9 @@ Aucune API key n&#39;est nécessaire pour démarrer. Exa MCP est open source et 
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-### Claude Code CLI {#claude-code-cli}
+      <div id="claude-code-cli">
+        ### Claude Code CLI
+      </div>
 
       <Steps>
         <Step title="Installer le plugin">
@@ -66,7 +74,9 @@ Aucune API key n&#39;est nécessaire pour démarrer. Exa MCP est open source et 
         </Step>
       </Steps>
 
-### Desktop, Web et Cowork {#desktop-web-cowork}
+      <div id="desktop-web-cowork">
+        ### Desktop, Web et Cowork
+      </div>
 
       Claude Desktop, Web et Cowork utilisent tous le connecteur officiel d&#39;Exa.
 
@@ -201,7 +211,9 @@ Aucune API key n&#39;est nécessaire pour démarrer. Exa MCP est open source et 
   </Tabs>
 </div>
 
-## Authentification {#authentication}
+<div id="authentication">
+  ## Authentification
+</div>
 
 Exa MCP prend en charge trois modes d&#39;authentification :
 
@@ -211,7 +223,9 @@ Exa MCP prend en charge trois modes d&#39;authentification :
 | OAuth    | Clients interactifs, installations depuis le marketplace, utilisation en production | Connectez-vous à `https://mcp.exa.ai/mcp?login` pour vous authentifier auprès d&#39;Exa dans le navigateur. L&#39;utilisation est rattachée à votre équipe Exa. |
 | API key  | Clients sans MCP OAuth                                                              | Connectez-vous à `https://mcp.exa.ai/mcp` avec le header `x-api-key` défini sur votre API key                                                                   |
 
-### Se connecter avec OAuth {#sign-in-with-oauth}
+<div id="sign-in-with-oauth">
+  ### Se connecter avec OAuth
+</div>
 
 ChatGPT, Claude et les autres installations depuis un marketplace vous invitent à vous connecter le cas échéant. Dans tout client prenant en charge MCP OAuth, vous pouvez déclencher le même flow en vous connectant à :
 
@@ -221,7 +235,9 @@ https://mcp.exa.ai/mcp?login
 
 Votre client détecte le serveur d&#39;autorisation d&#39;Exa, ouvre la page de connexion dans le navigateur et gère l&#39;accès.
 
-### Utiliser une API key {#use-an-api-key}
+<div id="use-an-api-key">
+  ### Utiliser une API key
+</div>
 
 <Card title="Obtenez votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
@@ -233,7 +249,9 @@ Ajoutez le header `x-api-key` à la configuration du MCP server :
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-## Tools disponibles {#available-tools}
+<div id="available-tools">
+  ## Tools disponibles
+</div>
 
 | Outil                     | Disponibilité                    | À utiliser pour                                                                                                         |
 | ------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -252,7 +270,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   Une liste `tools` explicite remplace les valeurs par défaut : incluez donc tous les tools que vous souhaitez activer, y compris la recherche web et la récupération de contenu.
 </Tip>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Utilisez [Exa Agent](/fr/docs/agent/quickstart) pour les recherches qui nécessitent plus d&#39;une search : par exemple, construire une liste, évaluer chaque item selon des critères ou renvoyer des résultats structurés.
 
@@ -305,7 +325,9 @@ Si vous utilisez une API key, omettez `login` et ajoutez la clé comme décrit d
 
 Consultez le [guide Exa Agent](/fr/docs/agent/quickstart) pour les modèles de schéma de sortie, les modes d&#39;effort, les sources de données et la tarification.
 
-## Recherche avancée {#advanced-search}
+<div id="advanced-search">
+  ## Recherche avancée
+</div>
 
 Utilisez `web_search_advanced_exa` lorsque la requête nécessite des filtres explicites de catégorie ou de domaine, des plages de dates, des contraintes textuelles, un ciblage géographique, l&#39;expansion de requête, des résumés, des highlights, un contrôle de la fraîcheur ou l&#39;exploration des sous-pages. Pour les recherches ordinaires, conservez `web_search_exa` : il expose au modèle une surface d&#39;outils plus réduite et demande moins de configuration.
 
@@ -317,7 +339,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
 
 L&#39;outil MCP expose les principaux paramètres de la [Search API](/fr/docs/reference/search) sous forme de fields adaptés aux outils, comme `includeDomains`, `startPublishedDate`, `enableHighlights` et `maxAgeHours`. Consultez le schéma d&#39;outil dans votre client pour connaître les noms exacts des fields.
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Erreur de limite de débit (429)">
@@ -355,7 +379,9 @@ L&#39;outil MCP expose les principaux paramètres de la [Search API](/fr/docs/re
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={2}>
   <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Voir la source" arrow="true">

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Anthropic Tool Calling {#anthropic-tool-calling}
+<div id="anthropic-tool-calling">
+  # Anthropic Tool Calling
+</div>
 
 > Gunakan tool use Claude untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
 
@@ -15,7 +19,9 @@
 
 [Tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) dari Claude memungkinkan model memanggil fungsi yang Anda definisikan dalam kode Anda. SDK Exa sudah menyertakan tool web search dan pembacaan halaman siap pakai untuk Anthropic, sehingga Anda tidak perlu menulis tool schema secara manual, mengurai blok `tool_use`, atau memformat hasil Exa sendiri.
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Instal SDK">
@@ -114,7 +120,9 @@
   </Step>
 </Steps>
 
-## Mengonfigurasi tool {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Mengonfigurasi tool
+</div>
 
 Argumen keyword adalah options Exa biasa yang diteruskan saat tool dijalankan — options search ke `exa.search()`, options contents ke `exa.get_contents()`:
 
@@ -164,11 +172,15 @@ Sebaliknya, `name` (dengan default `"web_search"` dan `"get_contents"`) serta `d
   ```
 </CodeGroup>
 
-## Menggabungkan tool Anda sendiri {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Menggabungkan tool Anda sendiri
+</div>
 
 `handle_tool_use` merespons setiap blok `tool_use` dalam pesan: blok yang menyebut tool yang tidak dikenali akan mendapat hasil `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga follow-up permintaan tidak pernah kehilangan hasil tool yang diwajibkan. Jika Anda menjalankan tool sendiri bersama tool milik Exa, ganti hasil error tersebut dengan hasil Anda sebelum permintaan berikutnya.
 
-## Menulis loop secara manual {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Menulis loop secara manual
+</div>
 
 Jika Anda lebih suka menangani sendiri tool schema dan eksekusinya, definisikan tool tersebut dan proses blok `tool_use` secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` menyediakan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# LlamaIndex {#llamaindex}
+<div id="llamaindex">
+  # LlamaIndex
+</div>
 
 > 快速上手指南：如何将 Exa retrieval 接入 LlamaIndex agent 应用。
 
@@ -20,7 +24,9 @@ LlamaIndex 是一个基于结构化数据构建 LLM 应用的框架。在本指�
 
 ***
 
-## 快速开始 {#get-started}
+<div id="get-started">
+  ## 快速开始
+</div>
 
 <Steps>
   <Step title="前置条件与安装">

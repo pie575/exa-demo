@@ -1,9 +1,13 @@
-> ## Índice de documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
 >
 > Obtén el índice completo de documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa para Google Sheets {#exa-for-google-sheets}
+<div id="exa-for-google-sheets">
+  # Exa para Google Sheets
+</div>
 
 > Usa Exa Agent y las fórmulas de Exa dentro de Google Sheets.
 
@@ -18,7 +22,9 @@ El add-on te ofrece dos formas de trabajar:
 * **Exa Agent** para tablas completas y tareas de varias celdas
 * **`=EXA(...)`** para obtener una respuesta en una sola celda
 
-## Instalación {#install}
+<div id="install">
+  ## Instalación
+</div>
 
 <Steps>
   <Step title="Instala el add-on">
@@ -46,7 +52,9 @@ El add-on te ofrece dos formas de trabajar:
   </Step>
 </Steps>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Exa Agent te permite usar Exa en varias celdas de Google Sheets.
 
@@ -57,7 +65,9 @@ Exa Agent te permite usar Exa en varias celdas de Google Sheets.
 * ampliar una tabla añadiendo nuevas filas
 * enriquecer una lista con datos de la web
 
-### Generar una tabla {#generate-a-table}
+<div id="generate-a-table">
+  ### Generar una tabla
+</div>
 
 Usa **Generate table** cuando quieras que Exa cree una tabla nueva.
 
@@ -77,7 +87,9 @@ Exa investiga en la web y escribe la tabla en tu hoja.
 
 De forma predeterminada, la tabla comienza en la celda seleccionada. Puedes elegir otra celda de inicio en **Más opciones**.
 
-### Fill cells {#fill-cells}
+<div id="fill-cells">
+  ### Fill cells
+</div>
 
 Usa **Fill cells** cuando ya tengas una tabla y quieras que Exa complete los datos que faltan.
 
@@ -99,7 +111,9 @@ Ejemplo:
 
 Selecciona las celdas vacías de Apple y luego haz clic en **Fill selected cells**. Exa usa el nombre de la empresa y las filas cercanas como contexto.
 
-### Continuar filas {#continue-rows}
+<div id="continue-rows">
+  ### Continuar filas
+</div>
 
 También puedes seleccionar filas en blanco debajo de una tabla.
 
@@ -107,7 +121,9 @@ Si tu tabla termina en la posición 55 y seleccionas las dos filas en blanco sig
 
 Exa usa las filas existentes como ejemplos, mantiene las mismas columnas y evita repetir elementos que ya figuran en la tabla.
 
-## `=EXA(...)` {#exa}
+<div id="exa">
+  ## `=EXA(...)`
+</div>
 
 Usa `=EXA(...)` cuando quieras obtener una única respuesta en una celda. Busca en la web, lee los principales resultados y devuelve una respuesta concisa.
 
@@ -133,7 +149,9 @@ El segundo argumento es el contexto. Puedes arrastrar la fórmula hacia abajo en
 
 Usa `=EXA(...)` para respuestas simples de una sola celda. Usa **Exa Agent** cuando quieras crear o completar una tabla completa.
 
-## `=EXA_ANSWER(...)` {#exa_answer}
+<div id="exa_answer">
+  ## `=EXA_ANSWER(...)`
+</div>
 
 Respuestas avanzadas con IA y control total sobre el formato del output. Úsala cuando necesites prompts de sistema, output JSON estructurado, citas o un tipo de búsqueda específico.
 
@@ -160,7 +178,9 @@ Ejemplos:
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-## `=EXA_SEARCH(...)` {#exa_search}
+<div id="exa_search">
+  ## `=EXA_SEARCH(...)`
+</div>
 
 Busca en la web y devuelve una lista vertical de URL. Admite filtrado por dominio, filtrado por categoría, highlights del contenido y output sintetizado mediante `outputSchema`.
 
@@ -188,7 +208,9 @@ Ejemplos:
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-## `=EXA_CONTENTS(...)` {#exa_contents}
+<div id="exa_contents">
+  ## `=EXA_CONTENTS(...)`
+</div>
 
 Extrae el contenido de texto de una URL.
 
@@ -200,7 +222,9 @@ Extrae el contenido de texto de una URL.
 | --------- | ----------- | ----------------------------------------------------- |
 | `url`     | Sí          | La URL completa (debe comenzar con `http` o `https`). |
 
-## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
+<div id="exa_findsimilar">
+  ## `=EXA_FINDSIMILAR(...)`
+</div>
 
 Encuentra URL similares a una URL de referencia, con filtros opcionales de dominio y texto.
 
@@ -217,7 +241,9 @@ Encuentra URL similares a una URL de referencia, con filtros opcionales de domin
 | `includeTextStr`    | No          | `""`              | Frase que debe aparecer en los resultados.    |
 | `excludeTextStr`    | No          | `""`              | Frase que no debe aparecer en los resultados. |
 
-## Batch {#batch}
+<div id="batch">
+  ## Batch
+</div>
 
 Usa **Batch** cuando quieras trabajar con muchas celdas con fórmulas de Exa a la vez.
 
@@ -228,7 +254,9 @@ Batch puede:
 
 Convierte las fórmulas en valores cuando quieras conservar los resultados actuales e impedir que las fórmulas se vuelvan a ejecutar.
 
-## Cuándo usar cada cosa {#when-to-use-what}
+<div id="when-to-use-what">
+  ## Cuándo usar cada cosa
+</div>
 
 | Tarea                                                             | Usar                        |
 | ----------------------------------------------------------------- | --------------------------- |
@@ -243,13 +271,17 @@ Convierte las fórmulas en valores cuando quieras conservar los resultados actua
 | Actualizar muchas fórmulas de Exa                                 | Batch                       |
 | Guardar los resultados de las fórmulas como texto plano           | Batch → Convertir a valores |
 
-## Notas {#notes}
+<div id="notes">
+  ## Notas
+</div>
 
 * Las solicitudes a la API de Exa se descuentan de tu cuota de uso. Usa **Batch → Convertir a valores** para fijar los resultados e impedir que las fórmulas se recalculen.
 * El add-on reintenta automáticamente hasta 3 veces con exponential backoff cuando se alcanza el límite de tasa (HTTP 429).
 * Empieza con batches pequeños (10–20 filas) antes de escalar a cientos.
 
-## Enlaces {#links}
+<div id="links">
+  ## Enlaces
+</div>
 
 * [Instalar Exa AI para Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
 * [Obtener una API key de Exa](https://dashboard.exa.ai/api-keys)

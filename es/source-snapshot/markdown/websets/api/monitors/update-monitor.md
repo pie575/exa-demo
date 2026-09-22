@@ -1,13 +1,19 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Actualizar un monitor de Websets {#update-a-websets-monitor}
+<div id="update-a-websets-monitor">
+  # Actualizar un monitor de Websets
+</div>
 
 > Actualiza la configuración de un monitor.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/monitors/{id}
 openapi: 3.1.0

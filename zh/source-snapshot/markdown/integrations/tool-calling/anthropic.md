@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Anthropic Tool Calling {#anthropic-tool-calling}
+<div id="anthropic-tool-calling">
+  # Anthropic Tool Calling
+</div>
 
 > 使用 Claude 的 tool use，为你的应用添加 Exa 网页搜索和页面内容能力。
 
@@ -15,7 +19,9 @@
 
 Claude 的 [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) 允许模型调用你在代码中定义的函数。Exa SDK 为 Anthropic 提供了开箱即用的网页搜索和页面读取工具，因此你无需手写 tool schema、解析 `tool_use` 块，也不必自行格式化 Exa 返回的结果。
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 <Steps>
   <Step title="安装 SDK">
@@ -114,7 +120,9 @@ Claude 的 [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-
   </Step>
 </Steps>
 
-## 配置 tools {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 配置 tools
+</div>
 
 关键字参数就是常规的 Exa options，会在工具运行时透传：search options 传给 `exa.search()`，页面内容选项传给 `exa.get_contents()`：
 
@@ -164,11 +172,15 @@ Claude 的 [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-
   ```
 </CodeGroup>
 
-## 混合使用你自己的 tools {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 混合使用你自己的 tools
+</div>
 
 `handle_tool_use` 会为消息中的每一个 `tool_use` 块返回结果：若某个块指定的 tool 无法解析，则返回 `Error: unknown tool "<name>"` 结果，而不是直接丢弃，这样后续请求就不会遗漏必需的 tool 结果。如果你在 Exa 的 tools 之外还运行了自己的 tools，请在发起下一个请求前，用你自己的结果替换这些错误结果。
 
-## 手动编写 loop {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## 手动编写 loop
+</div>
 
 如果你更愿意自己掌控 tool schema 和执行流程，可以手动定义 tool 并处理 `tool_use` 块。`exa.tools.web_search()` 和 `exa.tools.get_contents()` 同样提供与提供方无关的工具规范 (带有 `run` 方法) ，可用于手写 loop；当然，你也可以完全从零开始编写：
 

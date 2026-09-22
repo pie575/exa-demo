@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Compatibilidad con el OpenAI SDK {#openai-sdk-compatibility}
+<div id="openai-sdk-compatibility">
+  # Compatibilidad con el OpenAI SDK
+</div>
 
 > Usa los endpoints de Exa como reemplazo directo de OpenAI, con soporte tanto para la API de chat completions como para la Responses API.
 
@@ -13,7 +17,9 @@
 
 ***
 
-## Descripción general {#overview}
+<div id="overview">
+  ## Descripción general
+</div>
 
 Exa ofrece endpoints compatibles con OpenAI que funcionan con el OpenAI SDK:
 
@@ -26,7 +32,9 @@ Exa ofrece endpoints compatibles con OpenAI que funcionan con el OpenAI SDK:
   `/chat/completions` se enruta a [`/answer`](/es/docs/reference/answer) y `/responses` se enruta a la [Agent API](/es/docs/agent/quickstart). Consulta [Agent mediante la Responses API](#agent-via-responses-api) más abajo.
 </Info>
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 Para usar el endpoint `/answer` de Exa mediante la interfaz de chat completions:
 
@@ -119,7 +127,9 @@ Para usar el endpoint `/answer` de Exa mediante la interfaz de chat completions:
   ```
 </CodeGroup>
 
-## Agent mediante la Responses API {#agent-via-responses-api}
+<div id="agent-via-responses-api">
+  ## Agent mediante la Responses API
+</div>
 
 El endpoint [`/responses`](https://api.exa.ai/responses) de Exa expone la [Agent API](/es/docs/agent/quickstart) a través de la interfaz de OpenAI Responses, por lo que los SDK de OpenAI funcionan con ella sin cambios. Define `model: "exa-agent"` y elige un modo de ejecución:
 
@@ -137,7 +147,9 @@ Define `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, 
 
 Usa `previous_response_id` para continuar un run de Responses completado.
 
-### Synchronous {#synchronous}
+<div id="synchronous">
+  ### Synchronous
+</div>
 
 La solicitud se bloquea hasta que el run finaliza y devuelve el objeto `response` terminal.
 
@@ -193,7 +205,9 @@ La solicitud se bloquea hasta que el run finaliza y devuelve el objeto `response
   ```
 </CodeGroup>
 
-### Streaming {#streaming}
+<div id="streaming">
+  ### Streaming
+</div>
 
 Establece `stream: true` para recibir los eventos de stream de Responses mediante SSE. Los eventos incluyen un `sequence_number` monótono y finalizan con `response.completed`; no existe un centinela `[DONE]`. El stream puede incluir líneas de comentario `: keep-alive`, que los clientes SSE ignoran.
 
@@ -257,7 +271,9 @@ Establece `stream: true` para recibir los eventos de stream de Responses mediant
   ```
 </CodeGroup>
 
-### En segundo plano {#background}
+<div id="background">
+  ### En segundo plano
+</div>
 
 Establece `background: true` para iniciar un run sin mantener la conexión abierta y luego sondea `GET /responses/{id}` hasta que alcance un estado terminal. Para usar streaming en lugar de sondeo, consulta [Streaming](#streaming).
 
@@ -330,7 +346,9 @@ Establece `background: true` para iniciar un run sin mantener la conexión abier
   ```
 </CodeGroup>
 
-## Chat wrapper {#chat-wrapper}
+<div id="chat-wrapper">
+  ## Chat wrapper
+</div>
 
 Exa ofrece un wrapper de Python que añade automáticamente capacidades de RAG a cualquier chat completion de OpenAI. Con una sola línea de código, puedes convertir cualquier chat completion de OpenAI en un sistema RAG impulsado por Exa que se encarga de la búsqueda, la segmentación y el prompting de forma automática.
 

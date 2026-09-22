@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Membuat batch {#create-a-batch}
+<div id="create-a-batch">
+  # Membuat batch
+</div>
 
 > Kirim satu batch permintaan Exa API untuk dijalankan secara asinkron.
 
@@ -13,7 +17,9 @@ Setiap item dalam `requests` merupakan `POST` ke `/search` atau `/agent/runs` de
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /batches
 openapi: 3.1.0

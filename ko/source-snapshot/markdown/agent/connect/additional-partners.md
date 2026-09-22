@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 추가 제공업체 {#additional-providers}
+<div id="additional-providers">
+  # 추가 제공업체
+</div>
 
 > 셀프 서비스 제공업체 외에 이용할 수 있는 Exa Connect 파트너입니다.
 

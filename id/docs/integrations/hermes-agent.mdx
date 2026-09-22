@@ -7,7 +7,9 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) menyertakan Exa sebagai backend native untuk tool `web_search` dan `web_extract` yang dapat dipanggil model. Gunakan Exa untuk kedua kemampuan tersebut, atau padukan dengan provider web Hermes lainnya.
 
-## Hubungkan akun Exa Anda {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## Hubungkan akun Exa Anda
+</div>
 
 <Steps>
   <Step title="Dapatkan Exa API key">
@@ -37,7 +39,9 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
   </Step>
 </Steps>
 
-## Konfigurasi secara manual {#configure-manually}
+<div id="configure-manually">
+  ## Konfigurasi secara manual
+</div>
 
 Tambahkan key Anda ke file environment Hermes:
 
@@ -62,7 +66,9 @@ web:
 
 Pengaturan per-kemampuan lebih diprioritaskan daripada `web.backend`. Dengan begitu, Anda dapat menggunakan Exa hanya untuk search atau hanya untuk extraction saat menggabungkan provider.
 
-## Tool yang didapat Hermes {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Tool yang didapat Hermes
+</div>
 
 | Tool          | Perilaku Exa                                                                                              |
 | ------------- | --------------------------------------------------------------------------------------------------------- |
@@ -75,7 +81,9 @@ Hermes memotong halaman hasil ekstraksi yang panjang agar sesuai character budge
   Hermes dapat menggunakan Exa melalui kumpulan provider gratis tanpa key, jadi tidak memerlukan API key. Kumpulan tersebut dibatasi laju permintaannya dan dapat berganti-ganti antar provider. Konfigurasikan `EXA_API_KEY` dan pilih opsi Exa yang menggunakan API key jika Anda ingin permintaan konsisten memakai akun Exa Anda.
 </Note>
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes tidak memilih Exa">
@@ -91,7 +99,9 @@ Hermes memotong halaman hasil ekstraksi yang panjang agar sesuai character budge
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Hermes web tools" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Baca panduan" arrow="true">

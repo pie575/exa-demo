@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Memulai {#get-started}
+<div id="get-started">
+  # Memulai
+</div>
 
 > Selamat datang di Websets Dashboard! Temukan apa pun yang Anda cari di web, seberapa rumit pun itu.
 
 <br />
 
-## 1. Daftar {#1-sign-up}
+<div id="1-sign-up">
+  ## 1. Daftar
+</div>
 
 Websets kini tersedia secara umum di [https://websets.exa.ai/](https://websets.exa.ai/)!
 
@@ -17,7 +23,9 @@ Jika Anda ingin bertanya kepada kami soal ini, [jadwalkan panggilan di sini](htt
 
 <br />
 
-## 2. Memulai {#2-get-started}
+<div id="2-get-started">
+  ## 2. Memulai
+</div>
 
 Websets sangat mudah digunakan.
 
@@ -33,7 +41,9 @@ Websets sangat mudah digunakan.
 
 <br />
 
-## 3. Di dalam Webset Anda {#3-inside-your-webset}
+<div id="3-inside-your-webset">
+  ## 3. Di dalam Webset Anda
+</div>
 
 Singkatnya, Websets melakukan hal berikut:
 
@@ -52,7 +62,9 @@ Singkatnya, Websets melakukan hal berikut:
 
 <br />
 
-## 4. Berinteraksi dengan Webset Anda {#4-interacting-with-your-webset}
+<div id="4-interacting-with-your-webset">
+  ## 4. Berinteraksi dengan Webset Anda
+</div>
 
 Setelah Webset selesai, Anda dapat berinteraksi dengan komponen-komponennya!
 
@@ -70,7 +82,9 @@ Anda dapat menghapus hasil secara manual untuk merapikan Webset sebelum melakuka
 
 <br />
 
-## 5. Tambahkan lebih banyak kriteria hasil dan kolom kustom {#5-add-more-result-criteria-and-custom-columns}
+<div id="5-add-more-result-criteria-and-custom-columns">
+  ## 5. Tambahkan lebih banyak kriteria hasil dan kolom kustom
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075" alt="Menambahkan kolom enrichment" width="2870" height="1734" data-path="images/websets/add-enrichment.png" />
 
@@ -86,7 +100,9 @@ Anda dapat menghapus hasil secara manual untuk merapikan Webset sebelum melakuka
 
 <br />
 
-## 6. Bagikan dan export Webset Anda {#6-share-and-export-your-webset}
+<div id="6-share-and-export-your-webset">
+  ## 6. Bagikan dan export Webset Anda
+</div>
 
 1. Klik export untuk mengunduh Webset Anda sebagai file CSV.
 
@@ -94,6 +110,8 @@ Anda dapat menghapus hasil secara manual untuk merapikan Webset sebelum melakuka
 
 <br />
 
-## 7. Riwayat pencarian {#7-search-history}
+<div id="7-search-history">
+  ## 7. Riwayat pencarian
+</div>
 
 Jika Anda mengklik ikon sidebar di kiri atas, riwayat lengkap Anda beserta semua Websets sebelumnya akan muncul di panel kiri.

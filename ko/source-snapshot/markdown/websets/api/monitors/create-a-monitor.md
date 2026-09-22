@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Websets monitor 생성 {#create-a-websets-monitor}
+<div id="create-a-websets-monitor">
+  # Websets monitor 생성
+</div>
 
 > 새로운 `Monitor`를 생성해 Websets를 최신 데이터로 계속 업데이트합니다.
 
@@ -13,7 +17,9 @@ monitor는 지정한 일정에 따라 자동으로 실행되어, 수동 개입 �
 * **기존 콘텐츠 업데이트**: `refresh` 작업을 실행해 item의 contents와 enrichment를 업데이트합니다
 * **자동 일정 관리**: `cron` 표현식과 `timezone`을 설정해 일정을 정밀하게 제어합니다
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0

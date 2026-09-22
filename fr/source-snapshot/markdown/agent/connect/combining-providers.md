@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Combiner les providers {#combining-providers}
+<div id="combining-providers">
+  # Combiner les providers
+</div>
 
 > Utilisez plusieurs data partners ensemble au sein d&#39;un même run Exa Agent.
 
 Attacher un partner à `dataSources` le met à disposition de l&#39;Exa Agent en tant qu&#39;outil : cela n&#39;**oblige pas** l&#39;agent à l&#39;appeler. Le déclenchement d&#39;un partner dépend de votre `query` et de votre `outputSchema` : précisez le type de résultat attendu de chaque partner, et l&#39;Exa Agent ira chercher l&#39;outil correspondant au lieu de deviner à partir d&#39;une page web. Vous pouvez attacher jusqu&#39;à cinq partners par run ; l&#39;Exa Agent choisit lesquels appeler à chaque étape, Exa web search restant disponible en parallèle. Il vous en faut plus de cinq pour un même run ? [Contactez-nous](mailto:sales@exa.ai) pour relever la limite.
 
-## Deux partners dans un même run {#two-partners-in-one-run}
+<div id="two-partners-in-one-run">
+  ## Deux partners dans un même run
+</div>
 
 Indiquez plusieurs partners ensemble et l&#39;Exa Agent tire parti de chacun là où il excelle. Deux n&#39;est qu&#39;un exemple ici : attachez jusqu&#39;à cinq partners à `dataSources`, le même principe s&#39;applique, demandez explicitement les données de chacun. Ce run de briefing pour investisseurs combine [Financial Datasets](/fr/docs/agent/connect/financialdatasets) pour l&#39;actualité liée aux tickers et [Particle](/fr/docs/agent/connect/particle) pour les commentaires de podcasts. La requête demande les données propres à chaque partner et le schéma répartit l&#39;output entre `financialNews` et `podcastChatter`, de sorte que l&#39;Exa Agent appelle **les deux** partners dans le même run.
 

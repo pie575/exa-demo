@@ -1,15 +1,19 @@
 ---
 title: "获取团队信息"
 description: "获取你的团队信息，包括并发使用情况和限制。"
-openapi: "/zh/docs/exa-spec.yaml GET /v0/teams/me"
+openapi: "/zh/docs/exa-spec.json GET /v0/teams/me"
 timestamp: false
 ---
 
-## 概览 {#overview}
+<div id="overview">
+  ## 概览 {#overview}
+</div>
 
 Get Team Info 端点返回已认证团队的相关信息，包括该团队当前的并发使用情况和已配置的限制。这有助于你监控 Websets API 的用量并了解自己的速率限制。
 
-## 响应 {#response}
+<div id="response">
+  ## 响应 {#response}
+</div>
 
 响应包含：
 
@@ -19,14 +23,18 @@ Get Team Info 端点返回已认证团队的相关信息，包括该团队当前
 * **concurrency**：当前用量，显示进行中和排队中的请求数
 * **limits**：团队的并发限制
 
-### 并发 field {#concurrency-fields}
+<div id="concurrency-fields">
+  ### 并发 field {#concurrency-fields}
+</div>
 
 `concurrency` 对象展示了你当前的请求状态：
 
 * **active**：当前正在处理的请求数
 * **queued**：等待处理的请求数
 
-### 限制 field {#limits-fields}
+<div id="limits-fields">
+  ### 限制 field {#limits-fields}
+</div>
 
 `limits` 对象展示了你所在团队配置的限制：
 

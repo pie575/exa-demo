@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Affiliate.com {#affiliatecom}
+<div id="affiliatecom">
+  # Affiliate.com
+</div>
 
 > Cari katalog produk di berbagai merchant dan jaringan afiliasi.
 
@@ -15,13 +19,17 @@ Attach `affiliate` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), lalu agent akan melakukan kueri ke
 Affiliate.com bersamaan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Penemuan produk dan perbandingan harga antar merchant.
 * Mendukung asisten belanja dan konten panduan pembelian.
 * Menampilkan tautan afiliasi berdampingan dengan hasil research.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -29,7 +37,9 @@ Gunakan nilai ini pada `dataSources`:
 affiliate
 ```
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Temukan headphone nirkabel peredam bising di bawah $300 dan bandingkan Harga.
 
@@ -126,12 +136,16 @@ Temukan headphone nirkabel peredam bising di bawah $300 dan bandingkan Harga.
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Similarweb](/id/docs/agent/connect/similarweb): ukur jangkauan sebuah merchant sebelum merekomendasikannya.
 * [Fiber.ai](/id/docs/agent/connect/fiber): lakukan research terhadap perusahaan di balik sebuah merchant atau merek.
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

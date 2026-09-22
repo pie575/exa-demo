@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Noticias {#news}
+<div id="news">
+  # Noticias
+</div>
 
 > Encuentra información de actualidad, cobertura sectorial e historias emergentes con Exa Search.
 
@@ -35,40 +39,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Usa Exa Search para encontrar reportajes de grandes medios, prensa especializada y publicaciones de nicho. Los artículos nuevos se pueden buscar a los pocos minutos de su publicación. Combina una consulta en lenguaje natural con filtros de fecha cuando la ventana de publicación sea un requisito estricto.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Investigación de mercados e inversiones
 * Ciberseguridad e inteligencia de amenazas
 * Monitoreo de empresas, productos y competidores
 * Informes sectoriales e investigación de actualidad
 
-## Consultas de ejemplo {#example-queries}
+<div id="example-queries">
+  ## Consultas de ejemplo
+</div>
 
-### Seguir una noticia de política en desarrollo {#follow-a-developing-policy-story}
+<div id="follow-a-developing-policy-story">
+  ### Seguir una noticia de política en desarrollo
+</div>
 
 Indica el tema, el tipo de fuente y la ventana de publicación para que los resultados se centren en la fase actual de la noticia.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-### Encontrar análisis de profesionales {#find-practitioner-analysis}
+<div id="find-practitioner-analysis">
+  ### Encontrar análisis de profesionales
+</div>
 
 Indica el tipo de fuente cuando quieras análisis de profesionales del sector y no cobertura periodística general.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-### Descubre debates en un formato específico {#discover-discussions-in-a-specific-format}
+<div id="discover-discussions-in-a-specific-format">
+  ### Descubre debates en un formato específico
+</div>
 
 Incluye el formato y el tema en la consulta. De este modo, la búsqueda sigue abierta a páginas de episodios y transcripts de toda la web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-### Investigar prensa adversa {#research-adverse-media}
+<div id="research-adverse-media">
+  ### Investigar prensa adversa
+</div>
 
 Describe tanto la señal negativa como el tipo de entidad que estás investigando. Evita reducir la consulta al nombre de una empresa más la palabra «noticias».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-## Realizar una solicitud {#make-a-request}
+<div id="make-a-request">
+  ## Realizar una solicitud
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -109,7 +127,9 @@ Describe tanto la señal negativa como el tipo de entidad que estás investigand
   ```
 </CodeGroup>
 
-## Obtén datos estructurados con Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtén datos estructurados con Exa Agent
+</div>
 
 Para obtener datos estructurados que requieren investigación en múltiples fuentes, usa un [run de tarea de Exa Agent](/es/docs/agent/quickstart). Describe las noticias, los campos y el periodo de tiempo que necesitas, y Agent devolverá resultados validados con el esquema y con citas.
 

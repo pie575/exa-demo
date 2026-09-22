@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Praktik Terbaik Agent {#agent-best-practices}
+<div id="agent-best-practices">
+  # Praktik Terbaik Agent
+</div>
 
 > Sesuaikan kualitas query, terstruktur output, effort, dan cost untuk integrasi Exa Agent di production.
 
 Gunakan panduan ini setelah [Exa Agent quickstart](/id/docs/agent/quickstart) untuk meningkatkan kualitas query, menyusun output, serta mengendalikan runtime dan cost. Untuk permintaan yang utuh, mulailah dari [contoh Agent](/id/docs/agent/examples).
 
-## Prinsip inti {#core-principles}
+<div id="core-principles">
+  ## Prinsip inti
+</div>
 
 Perlakukan `query` sebagai spesifikasi tugas. Sebutkan apa yang harus ditemukan Agent, cakupan pekerjaannya, evidence yang dibutuhkan, dan seperti apa hasil yang dianggap lengkap.
 
@@ -51,7 +57,9 @@ Tanpa `outputSchema`, Agent mengembalikan prosa di `output.text` dan sitasi di `
 
 Letakkan baris data, pengecualian, dan bentuk response pada field khususnya masing-masing, jangan menyisipkannya ke dalam `query`.
 
-## Menulis query list building dan enrichment {#writing-list-building-and-enrichment-queries}
+<div id="writing-list-building-and-enrichment-queries">
+  ## Menulis query list building dan enrichment
+</div>
 
 Untuk list building, tentukan entitas, jumlah target, kriteria kualifikasi, pengecualian, dan standar evidence. Untuk enrichment, masukkan catatan yang sudah ada ke `input.data` dan jelaskan hanya research yang perlu ditambahkan oleh Agent.
 
@@ -73,7 +81,9 @@ Mintalah alasan ketika kualifikasi membutuhkan penilaian. Berikan contoh hanya j
 
 Lihat [Find all GTM members](/id/docs/agent/examples#find-all-code) untuk contoh permintaan discovery dan [Enrich input rows](/id/docs/agent/examples#enrich-input-rows-code) untuk pola enrichment baris yang sesuai.
 
-## Menangani run asinkron {#handle-asynchronous-runs}
+<div id="handle-asynchronous-runs">
+  ## Menangani run asinkron
+</div>
 
 Agent run bisa memakan waktu beberapa detik hingga beberapa menit saat melakukan search, membaca, dan menalar. Rancang alur mengikuti siklus hidup run, bukan dengan menahan permintaan aplikasi tetap terbuka.
 
@@ -97,7 +107,9 @@ Untuk batch, lakukan benchmark pada tugas yang representatif sebelum memperkirak
 
 Untuk team dengan Zero Data Retention, konsumsi stream langsung atau lakukan poll dalam jendela retensi. `previousRunId` dan `dataSources` Connect tidak tersedia. Lihat [Zero Data Retention](/id/docs/admin/security/zero-data-retention).
 
-## Tulis JSON schema kustom untuk terstruktur output {#write-custom-json-schemas-for-structured-output}
+<div id="write-custom-json-schemas-for-structured-output">
+  ## Tulis JSON schema kustom untuk terstruktur output
+</div>
 
 Gunakan `outputSchema` saat kode di sisi hilir membutuhkan field yang dapat dibaca mesin, nilai yang dinormalisasi, baris tabel, atau catatan enrichment. Jika jawaban dalam bentuk prosa sudah cukup, abaikan saja dan baca `output.text`; terstruktur output menambah pekerjaan pemformatan dan dapat menambah latency.
 
@@ -147,7 +159,9 @@ Jangan menduplikasi sitasi atau confidence bawaan Exa di dalam schema Anda. Tamb
 
 Telusuri [contoh Agent terstruktur](/id/docs/agent/examples) untuk membandingkan schema bagi list building, KYB, lowongan kerja, pengecualian, dan runs lanjutan.
 
-## Agent vs Search {#agent-vs-search}
+<div id="agent-vs-search">
+  ## Agent vs Search
+</div>
 
 | Kebutuhan                                                       | Mulai dengan                            |
 | --------------------------------------------------------------- | --------------------------------------- |
@@ -157,7 +171,9 @@ Telusuri [contoh Agent terstruktur](/id/docs/agent/examples) untuk membandingkan
 
 Gunakan Agent jika pekerjaan tersebut membutuhkan beberapa langkah retrieval, verifikasi per entitas, atau enrichment terhadap catatan yang sudah diketahui. Gunakan Search jika Anda butuh halaman dengan cepat dan aplikasi Anda yang akan melakukan sisa penalarannya.
 
-## Tips untuk kasus penggunaan umum {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## Tips untuk kasus penggunaan umum
+</div>
 
 | Jika Anda butuh                                       | Gunakan                                                          | Hindari                                                           |
 | ----------------------------------------------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------- |
@@ -169,7 +185,9 @@ Gunakan Agent jika pekerjaan tersebut membutuhkan beberapa langkah retrieval, ve
 | Cost per permintaan yang dapat diprediksi             | `effort` yang tetap                                              | `auto` atau `max` tanpa anggaran                                  |
 | Kelengkapan lebih penting daripada latency &amp; cost | `xhigh` atau `max`                                               | Menaikkan effort sebelum mempertajam query                        |
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Agent quickstart" icon="bot" href="/id/docs/agent/quickstart" cta="Buka panduan" arrow="true">

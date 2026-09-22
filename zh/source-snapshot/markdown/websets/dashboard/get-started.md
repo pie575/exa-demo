@@ -17,7 +17,9 @@ Websets 现已正式上线，访问地址：[https://websets.exa.ai/](https://we
 
 <br />
 
-## 2. 开始使用 {#2-get-started}
+<div id="1-sign-up">
+  ## 2. 开始使用 {#2-get-started}
+</div>
 
 Websets 用起来非常简单。
 
@@ -33,7 +35,9 @@ Websets 用起来非常简单。
 
 <br />
 
-## 3. 深入了解你的 Webset {#3-inside-your-webset}
+<div id="2-get-started">
+  ## 3. 深入了解你的 Webset {#3-inside-your-webset}
+</div>
 
 简而言之，Websets 会完成以下工作：
 
@@ -51,7 +55,9 @@ Websets 用起来非常简单。
 
 <br />
 
-## 4. 与你的 Webset 交互 {#4-interacting-with-your-webset}
+<div id="3-inside-your-webset">
+  ## 4. 与你的 Webset 交互 {#4-interacting-with-your-webset}
+</div>
 
 Webset 生成完成后，你就可以与其中的各个部分进行交互了！
 
@@ -69,7 +75,9 @@ Webset 生成完成后，你就可以与其中的各个部分进行交互了！
 
 <br />
 
-## 5. 添加更多 result criteria 和自定义列 {#5-add-more-result-criteria-and-custom-columns}
+<div id="4-interacting-with-your-webset">
+  ## 5. 添加更多 result criteria 和自定义列 {#5-add-more-result-criteria-and-custom-columns}
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075" alt="添加增强列" width="2870" height="1734" data-path="images/websets/add-enrichment.png" />
 
@@ -85,7 +93,9 @@ Webset 生成完成后，你就可以与其中的各个部分进行交互了！
 
 <br />
 
-## 6. 分享并导出你的 Webset {#6-share-and-export-your-webset}
+<div id="5-add-more-result-criteria-and-custom-columns">
+  ## 6. 分享并导出你的 Webset {#6-share-and-export-your-webset}
+</div>
 
 1. 点击导出，将 Webset 下载为 CSV 文件。
 
@@ -93,6 +103,8 @@ Webset 生成完成后，你就可以与其中的各个部分进行交互了！
 
 <br />
 
-## 7. 搜索历史 {#7-search-history}
+<div id="6-share-and-export-your-webset">
+  ## 7. 搜索历史 {#7-search-history}
+</div>
 
 点击左上角的 sidebar 图标，即可在左侧面板中查看包含所有历史 Websets 的完整记录。

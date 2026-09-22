@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 网络安全 {#cybersecurity}
+<div id="cybersecurity">
+  # 网络安全
+</div>
 
 > 使用 Exa Search 查找漏洞、安全公告、威胁情报报告和信任文档。
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 使用 Exa Search，从安全团队日常关注的信息源中获取漏洞记录、厂商安全公告和威胁研究。
 
-## 包含内容 {#included}
+<div id="included">
+  ## 包含内容
+</div>
 
 * CVE 与 GHSA 漏洞记录
 * 厂商安全公告与补丁说明
@@ -43,40 +49,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * 信任页面、子处理方清单与合规文档
 * 安全博客、会议演讲与研究成果
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 漏洞分级处置与暴露面评估
 * 威胁情报与攻击者追踪
 * 厂商风险与第三方安全审查
 * 安全监控与告警
 
-## 查询示例 {#example-queries}
+<div id="example-queries">
+  ## 查询示例
+</div>
 
-### 对某一类漏洞进行分级 {#triage-a-vulnerability-class}
+<div id="triage-a-vulnerability-class">
+  ### 对某一类漏洞进行分级
+</div>
 
 指明产品、版本范围和严重程度。
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-### 查找厂商安全公告 {#find-vendor-advisories}
+<div id="find-vendor-advisories">
+  ### 查找厂商安全公告
+</div>
 
 描述漏洞的利用状态和产品类别，而不是只给出某个 CVE ID。
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-### 评估厂商的安全态势 {#review-a-vendors-security-posture}
+<div id="review-a-vendors-security-posture">
+  ### 评估厂商的安全态势
+</div>
 
 指明文档类型和厂商类别。
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-### 研究攻击者 {#research-an-adversary}
+<div id="research-an-adversary">
+  ### 研究攻击者
+</div>
 
 写明攻击组织或攻击活动的名称，以及你关注的攻击手法或行业领域。
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -117,7 +137,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 对于需要跨多个来源开展研究的结构化数据，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。描述你需要的产品、威胁 criteria 和输出 fields，agent 即会返回经 schema 校验的结果及引用来源。
 

@@ -1,17 +1,25 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa in Slack {#exa-in-slack}
+<div id="exa-in-slack">
+  # Exa in Slack
+</div>
 
 > Instal Exa in Slack dan tag @Exa di channel atau thread mana pun untuk mendapatkan jawaban Research yang disertai sitasi, list building, dan Enrichment.
 
 Hadirkan Exa ke Slack Team Anda. Tag **@Exa** di channel atau thread mana pun dengan pertanyaan Research, tugas list building, atau permintaan Enrichment. Exa menelusuri web, membaca sources, lalu membalas langsung di thread dengan jawaban yang disertai sitasi.
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
-### Instalasi {#installation}
+<div id="installation">
+  ### Instalasi
+</div>
 
 1. Buka [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack), lalu klik **Install**.
 
@@ -28,7 +36,9 @@ Hadirkan Exa ke Slack Team Anda. Tag **@Exa** di channel atau thread mana pun de
 
 3. Setelah terpasang, undang @Exa ke sebuah channel (atau kirim DM langsung) dan mulailah bertanya.
 
-## Cara menggunakan Exa dari Slack {#how-to-use-exa-from-slack}
+<div id="how-to-use-exa-from-slack">
+  ## Cara menggunakan Exa dari Slack
+</div>
 
 Di channel mana pun tempat Exa sudah ditambahkan, sebut @Exa beserta pertanyaan Anda:
 
@@ -38,15 +48,21 @@ Di channel mana pun tempat Exa sudah ditambahkan, sebut @Exa beserta pertanyaan 
 
 Exa membalas pertanyaan Anda di dalam thread.
 
-### Follow-up {#follow-ups}
+<div id="follow-ups">
+  ### Follow-up
+</div>
 
 Setelah Exa menjawab di sebuah thread, cukup balas di thread tersebut untuk melanjutkan percakapan. Tidak perlu menyebut @Exa lagi. Exa mengingat isi percakapan, sehingga follow-up akan melanjutkan jawaban sebelumnya. Siapa pun di dalam thread tersebut bisa mengirim follow-up.
 
-### Pesan langsung {#direct-messages}
+<div id="direct-messages">
+  ### Pesan langsung
+</div>
 
 Anda juga bisa mengirim pesan langsung ke Exa melalui DM. Di sana Anda sama sekali tidak perlu menyebut Exa. Setiap pesan yang Anda kirim akan memulai permintaan baru, yang dijawab dalam thread di bawah pesan tersebut. Balas di thread tersebut untuk melanjutkan percakapan.
 
-### Membatalkan run {#cancelling-a-run}
+<div id="cancelling-a-run">
+  ### Membatalkan run
+</div>
 
 Saat run sedang berjalan, balas di thread dan minta Exa menghentikan run tersebut. Tidak perlu menyebut Exa.
 
@@ -54,7 +70,9 @@ Saat run sedang berjalan, balas di thread dan minta Exa menghentikan run tersebu
 Hentikan run saat ini
 ```
 
-### Provider Exa Connect {#exa-connect-providers}
+<div id="exa-connect-providers">
+  ### Provider Exa Connect
+</div>
 
 Exa secara otomatis menyertakan data provider [Exa Connect](/id/docs/agent/connect/overview) jika relevan dengan pertanyaan Anda. Untuk menggunakan provider tertentu, sebutkan provider tersebut dalam pesan Anda:
 
@@ -64,21 +82,29 @@ Exa secara otomatis menyertakan data provider [Exa Connect](/id/docs/agent/conne
 
 Untuk melihat daftar semua data provider yang tersedia, cukup tanyakan kepada Exa.
 
-## Contoh {#examples}
+<div id="examples">
+  ## Contoh
+</div>
 
-### Berita dan peristiwa terkini {#news-and-current-events}
+<div id="news-and-current-events">
+  ### Berita dan peristiwa terkini
+</div>
 
 Dapatkan informasi terbaru tentang apa pun.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f" alt="Exa menjawab pertanyaan tentang berita terbaru mengenai suatu topik di thread Slack, dengan hasil bertanggal dalam sebuah tabel" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-### List building skala besar {#large-list-building}
+<div id="large-list-building">
+  ### List building skala besar
+</div>
 
 Awali permintaan dengan `!max` untuk list building yang menyeluruh.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2" alt="Exa menjalankan permintaan list-building !max di dalam thread Slack dan menampilkan tabel hasil" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-## Keywords {#keywords}
+<div id="keywords">
+  ## Keywords
+</div>
 
 Gunakan kata kunci ini di thread tempat Exa berada. Perintah dapat ditulis setelah sebutan `@Exa` atau langsung di awal pesan:
 
@@ -91,7 +117,9 @@ Gunakan kata kunci ini di thread tempat Exa berada. Perintah dapat ditulis setel
 | `aside <message>` | Mengirim komentar sampingan yang diabaikan Exa, berguna untuk berbicara dengan rekan tim di thread yang sedang diikuti Exa. |
 | `help`            | Menampilkan petunjuk penggunaan.                                                                                            |
 
-## Permissions {#permissions}
+<div id="permissions">
+  ## Permissions
+</div>
 
 Aplikasi Exa untuk Slack meminta scope berikut:
 
@@ -122,10 +150,14 @@ Aplikasi Exa untuk Slack meminta scope berikut:
 
 Exa hanya menerima pesan dari channel tempat ia diundang secara eksplisit dan dari DM miliknya sendiri.
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Run yang dijalankan dari Slack ditagihkan ke Team Exa Anda. Lihat [harga](https://exa.ai/pricing) untuk detailnya.
 
-## Privasi {#privacy}
+<div id="privacy">
+  ## Privasi
+</div>
 
 Untuk detail mengenai cara Exa menangani data Anda, lihat [kebijakan privasi Exa](https://exa.ai/privacy-policy).

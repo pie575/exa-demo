@@ -10,7 +10,9 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 OpenAI의 [도구 호출](https://platform.openai.com/docs/guides/function-calling?lang=python)을 사용하면 모델이 코드에 정의한 함수를 호출할 수 있습니다. Exa SDK는 OpenAI용 web search 및 페이지 읽기 도구를 기본 제공하므로, tool schema를 직접 작성하거나 도구 call을 파싱하거나 Exa result를 직접 형식에 맞게 가공할 필요가 없습니다.
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 <Steps>
   <Step title="SDK 설치">
@@ -103,7 +105,9 @@ OpenAI의 [도구 호출](https://platform.openai.com/docs/guides/function-calli
   </Step>
 </Steps>
 
-## Responses API {#responses-api}
+<div id="responses-api">
+  ## Responses API
+</div>
 
 OpenAI Responses API에서는 동일한 `handle_tool_calls` 헬퍼와 함께 `responses` factory를 사용하세요. handler는 follow-up 요청에 사용할 `function_call_output` 항목을 반환합니다.
 
@@ -135,7 +139,9 @@ OpenAI Responses API에서는 동일한 `handle_tool_calls` 헬퍼와 함께 `re
   Chat Completions와 Responses API는 서로 다른 도구 형식을 사용하며 서로의 형식을 허용하지 않으므로, 호출하려는 엔드포인트에 맞는 factory를 사용하세요.
 </Note>
 
-## 도구 구성하기 {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 도구 구성하기
+</div>
 
 키워드 인자는 일반적인 Exa 옵션으로, 도구가 실행될 때 그대로 전달됩니다. search 옵션은 `exa.search()`로, contents 옵션은 `exa.get_contents()`로 전달됩니다:
 
@@ -159,11 +165,15 @@ OpenAI Responses API에서는 동일한 `handle_tool_calls` 헬퍼와 함께 `re
 
 반면 `name`(기본값은 `"web_search"`와 `"get_contents"`)과 `description`은 모델에게 노출되는 도구 정의를 재정의합니다. 서로 다르게 설정된 Exa 도구를 나란히 실행하거나, 해당 이름을 이미 쓰고 있는 다른 도구와 충돌하지 않도록 하려면 사용자 지정 `name`을 지정하세요.
 
-## 직접 만든 도구 함께 사용하기 {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 직접 만든 도구 함께 사용하기
+</div>
 
 handler는 메시지에 포함된 모든 도구 호출에 응답합니다. handler가 해석할 수 없는 도구를 지정한 call은 무시되지 않고 `Error: unknown tool "<name>"` output을 받습니다. 덕분에 follow-up 요청에서 필수 도구 response가 빠지는 일이 없습니다. Exa의 도구와 함께 직접 만든 도구를 실행하는 경우, 다음 요청을 보내기 전에 이러한 오류 output을 직접 만든 도구의 result로 교체하세요.
 
-## 루프를 직접 작성하기 {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## 루프를 직접 작성하기
+</div>
 
 tool schema와 실행을 직접 관리하고 싶다면, 도구를 정의하고 call을 수동으로 처리하면 됩니다. `exa.tools.web_search()`와 `exa.tools.get_contents()`는 직접 구현한 루프에서 쓸 수 있는 제공업체 중립적인 동일한 도구 사양(`run` 메서드 포함)을 제공하며, 모든 것을 처음부터 직접 작성할 수도 있습니다:
 

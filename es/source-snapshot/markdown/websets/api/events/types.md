@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Tipos de evento {#event-types}
+<div id="event-types">
+  # Tipos de evento
+</div>
 
 > Conoce los eventos que ocurren dentro de la API de Websets
 
@@ -11,36 +15,48 @@ La API de Websets usa eventos para notificarte los cambios en tus Websets. Puede
 
 Los eventos se conservan durante 60 días y luego se eliminan automáticamente.
 
-## Webset {#webset}
+<div id="webset">
+  ## Webset
+</div>
 
 * `webset.created` - Se emite cuando se crea un nuevo Webset.
 * `webset.deleted` - Se emite cuando se elimina un Webset.
 * `webset.paused` - Se emite cuando se pausan las operaciones de un Webset.
 * `webset.idle` - Se emite cuando un Webset no tiene operaciones en ejecución.
 
-## Search {#search}
+<div id="search">
+  ## Search
+</div>
 
 * `webset.search.created` - Se emite cuando se inicia una nueva búsqueda.
 * `webset.search.updated` - Se emite cuando se actualiza el progreso de la búsqueda.
 * `webset.search.completed` - Se emite cuando una búsqueda termina de encontrar todos los items.
 * `webset.search.canceled` - Se emite cuando una búsqueda se cancela manualmente.
 
-## Item {#item}
+<div id="item">
+  ## Item
+</div>
 
 * `webset.item.created` - Se emite cuando se añade un nuevo item al Webset.
 * `webset.item.enriched` - Se emite cuando se completa el enrichment de un item.
 
-## Import {#import}
+<div id="import">
+  ## Import
+</div>
 
 * `import.created` - Se emite cuando se inicia un nuevo import.
 * `import.completed` - Se emite cuando un import se ha completado.
 
-## Export {#export}
+<div id="export">
+  ## Export
+</div>
 
 * `webset.export.created` - Se emite cuando se inicia un nuevo export.
 * `webset.export.completed` - Se emite cuando se ha completado un export.
 
-## Monitor {#monitor}
+<div id="monitor">
+  ## Monitor
+</div>
 
 * `monitor.created` - Se emite cuando se crea un nuevo monitor.
 * `monitor.updated` - Se emite cuando se actualiza la configuración de un monitor.

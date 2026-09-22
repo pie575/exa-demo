@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# Pydantic AI {#pydantic-ai}
+<div id="pydantic-ai">
+  # Pydantic AI
+</div>
 
 > 为 Pydantic AI agent 配备由 Exa search API 支持的网页研究工具。
 
@@ -28,7 +32,9 @@
 
 ***
 
-## Get Started {#get-started}
+<div id="get-started">
+  ## Get Started
+</div>
 
 <Steps>
   <Step title="前置条件与安装">
@@ -81,7 +87,9 @@
 
 ***
 
-## 配置 {#configuration}
+<div id="configuration">
+  ## 配置
+</div>
 
 `ExaSearch` 的每个 field 及其默认值：
 
@@ -102,7 +110,9 @@ ExaSearch(
 
 `include_domains` 和 `exclude_domains` 适用于 `web_search` 和 `deep_search`，且两者互斥。限制值超出范围或同时设置这两个域名列表，都会在构造时抛出异常。
 
-### 文本摘要 {#text-summary}
+<div id="text-summary">
+  ### 文本摘要
+</div>
 
 设置 `text_summary` 后，每次 `web_search` 调用都会同时请求对结果生成的纯文本摘要。传入 `True` 表示不限定格式的摘要，或传入一个字符串来描述所需的格式：
 
@@ -114,7 +124,9 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 该工具的返回结构保持不变：当 Exa 返回 summary 时，它会以 `Summary:` 开头的一行形式添加到结果最前面。
 
-### 结构化引用来源 {#structured-citations}
+<div id="structured-citations">
+  ### 结构化引用来源
+</div>
 
 每个工具都会返回一个 `ToolReturn`：`return_value` 包含模型看到的可读文本 (含 `Sources:` 块) ，`metadata` 则在 `'sources'` 键下以结构化的 `ExaSource` 记录 (`{'url': ..., 'title': ...}`) 形式提供各个 source。元数据不会发送给模型，因此渲染引用来源时无需解析文本：
 
@@ -129,7 +141,9 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-### 自定义客户端 {#custom-client}
+<div id="custom-client">
+  ### 自定义客户端
+</div>
 
 默认客户端为 `exa_py.AsyncExa`，由 `EXA_API_KEY` 配置。你可以传入任何满足 `ExaClient` 协议的对象，以显式配置认证或基础 URL，或在测试中替换为伪造实现：
 
@@ -142,7 +156,9 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-## Exa agent 运行 {#exa-agent-runs}
+<div id="exa-agent-runs">
+  ## Exa agent 运行
+</div>
 
 [Exa Agent API](/zh/docs/agent/quickstart) 以异步方式执行开放式研究任务。`ExaAgent` 能力将该生命周期映射到 Pydantic AI 的 [deferred tool calls](https://pydantic.dev/docs/ai/deferred-tools/)：其 `exa_agent` 工具会创建运行并进入延迟状态，并在延迟调用的元数据中携带 Exa 运行 ID。
 
@@ -174,7 +190,9 @@ ExaAgent(
 
 ***
 
-## Agent spec (YAML/JSON) {#agent-spec-yamljson}
+<div id="agent-spec-yamljson">
+  ## Agent spec (YAML/JSON)
+</div>
 
 这两种能力都支持 Pydantic AI 的 [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec)，因此你可以在配置文件中声明它们，而不必写 Python 代码：
 
@@ -199,7 +217,9 @@ agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAge
 
 ***
 
-## 下一步 {#next}
+<div id="next">
+  ## 下一步
+</div>
 
 * [**Search API**](/zh/docs/search/quickstart) - 语义搜索，支持 highlights、摘要和深度搜索
 * [**Agent API**](/zh/docs/agent/quickstart) - 开放式的异步研究运行

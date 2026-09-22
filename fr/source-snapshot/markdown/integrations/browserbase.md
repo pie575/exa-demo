@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Browserbase {#browserbase}
+<div id="browserbase">
+  # Browserbase
+</div>
 
 > Combinez la recherche d&#39;entreprises Exa avec l&#39;automatisation de navigateur Browserbase pour vos workflows de candidature.
 
 Utilisez Exa pour trouver des entreprises et leurs pages carrières, puis Browserbase et Stagehand pour inspecter ces pages et interagir avec elles.
 
-## Installation {#install}
+<div id="install">
+  ## Installation
+</div>
 
 Installez les packages utilisés par le template Browserbase Exa :
 
@@ -17,7 +23,9 @@ Installez les packages utilisés par le template Browserbase Exa :
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-## Configurer les variables d&#39;environnement {#configure-environment-variables}
+<div id="configure-environment-variables">
+  ## Configurer les variables d&#39;environnement
+</div>
 
 Définissez les API keys utilisées par Exa et Browserbase :
 
@@ -26,7 +34,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-## Rechercher et interagir avec une page {#search-and-interact-with-a-page}
+<div id="search-and-interact-with-a-page">
+  ## Rechercher et interagir avec une page
+</div>
 
 L&#39;exemple suivant reprend le workflow du template : rechercher des entreprises, trouver une page carrières, l&#39;ouvrir dans une session Browserbase, extraire la description du poste et laisser un agent Stagehand interagir avec la page.
 

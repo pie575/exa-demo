@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Commencez à développer avec Exa {#start-building-with-exa}
+<div id="start-building-with-exa">
+  # Commencez à développer avec Exa
+</div>
 
 > Un outil de recherche web puissant conçu pour les agents. Tout est optimisé pour vous fournir des résultats précis et économes en jetons.
 

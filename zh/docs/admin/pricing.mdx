@@ -18,7 +18,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
   在控制台中创建密钥。新账户自带免费积分。
 </Card>
 
-## 产品 {#products}
+<div id="products">
+  ## 产品
+</div>
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/zh/docs/search/quickstart">
@@ -58,7 +60,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
   </Card>
 </Columns>
 
-## Search、Contents、Answer 和 Monitors {#search-contents-answer-and-monitors}
+<div id="search-contents-answer-and-monitors">
+  ## Search、Contents、Answer 和 Monitors
+</div>
 
 每个端点均按请求收取基础费用，其中包含最多 10 条结果。超出的结果以及 Exa 生成的页面摘要将另行计费。
 
@@ -69,7 +73,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
 | `/monitors` | $15 / 1k 次请求             | $1 / 1k 条结果  | $1 / 1k 个页面 |
 | `/contents` | $1 / 1k 个页面，按内容类型计费      | —            | $1 / 1k 个页面 |
 
-## Agent {#agent}
+<div id="agent">
+  ## Agent
+</div>
 
 为 [Agent](/zh/docs/agent/quickstart) 设置固定的 `effort`，即可获得可预测的单次请求价格。`auto` 是默认的计量模式；beta 版的 `max` 也按计量方式计费，并采用相同的用量费率：
 
@@ -90,7 +96,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
 | 邮箱联系方式增强            | $0.02 / 个邮箱   |
 | 电话联系方式增强            | $0.07 / 个电话号码 |
 
-### Connect 提供方 {#connect-providers}
+<div id="connect-providers">
+  ### Connect 提供方
+</div>
 
 使用 [Exa Connect](/zh/docs/agent/connect/overview) 数据源的运行，还会对每次提供方调用另行计费，例如
 [Fiber.ai](/zh/docs/agent/connect/fiber#pricing) 每积分 $0.02，
@@ -98,7 +106,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
 全部提供方费率请参见
 [Connect 定价](/zh/docs/agent/connect/overview#pricing)。
 
-## 深度搜索 {#deep-search}
+<div id="deep-search">
+  ## 深度搜索
+</div>
 
 在 [`/search`](/zh/docs/search/deep-search) 中通过 `type` 设置。额外结果和 AI 页面摘要的费用与标准 Search 相同。
 
@@ -108,7 +118,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
 | `deep`           | $12 / 1k 次请求            | 4–15 秒  | 带结构化输出的多步推理 |
 | `deep-reasoning` | $15 / 1k 次请求            | 12–40 秒 | 难度更高的研究任务   |
 
-## Enterprise {#enterprise}
+<div id="enterprise">
+  ## Enterprise
+</div>
 
 适用于高用量、自定义数据集以及更严格的安全要求。
 
@@ -130,7 +142,9 @@ Exa 采用按量付费模式，无需订阅，也没有最低消费：充值积�
   获取企业级用量与条款的报价
 </Card>
 
-## 费用术语表 {#cost-glossary}
+<div id="cost-glossary">
+  ## 费用术语表
+</div>
 
 <AccordionGroup>
   <Accordion title="请求">

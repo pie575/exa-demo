@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Proveedores adicionales {#additional-providers}
+<div id="additional-providers">
+  # Proveedores adicionales
+</div>
 
 > Partners de Exa Connect más allá del conjunto de proveedores de autoservicio.
 

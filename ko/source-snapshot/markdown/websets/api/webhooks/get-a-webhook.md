@@ -1,13 +1,19 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# 웹훅 조회 {#get-a-webhook}
+<div id="get-a-webhook">
+  # 웹훅 조회
+</div>
 
 > id로 Webhook을 반환하며, 상태, 구독 중인 events, 대상 URL, metadata가 함께 포함됩니다. 서명용 `secret`은 반환되지 않습니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}
 openapi: 3.1.0

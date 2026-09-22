@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Contents API {#contents-api}
+<div id="contents-api">
+  # Contents API
+</div>
 
 > Extrayez du texte, des highlights et des résumés depuis n&#39;importe quelle URL.
 
@@ -16,7 +20,9 @@ Toutes les fonctionnalités de contenu sont également disponibles dans [Exa Sea
   Exa ajuste la taille des extraits de chaque résultat à sa relevance. Voir [Highlights](/fr/docs/search/highlights).
 </Tip>
 
-## Effectuez votre première request {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Effectuez votre première request
+</div>
 
 Transmettez une ou plusieurs URL ou identifiants de documents et demandez des highlights sur les parties pertinentes pour votre tâche. Dans les requests HTTP, indiquez-les dans `ids` :
 
@@ -242,7 +248,9 @@ Chaque élément de `results` contient les métadonnées de la page ainsi que la
 
 Choisissez une seule vue de contenu par requête. Si vous demandez à la fois les highlights, le texte et le résumé, chaque vue est renvoyée et facturée séparément.
 
-## Fraîcheur du contenu {#content-freshness}
+<div id="content-freshness">
+  ## Fraîcheur du contenu
+</div>
 
 `maxAgeHours` contrôle le degré de fraîcheur exigé pour le contenu extrait de la page.
 
@@ -267,7 +275,9 @@ La plupart des requests devraient omettre ce field. Définissez-le lorsqu&#39;un
   | `"preferred"`               | Aucun équivalent direct ; utilisez une valeur basse telle que `maxAgeHours: 1` |
 </Accordion>
 
-## Explorer les sous-pages {#crawl-subpages}
+<div id="crawl-subpages">
+  ## Explorer les sous-pages
+</div>
 
 Définissez `subpages` pour suivre les liens depuis chaque URL de départ. Ajoutez `subpageTarget` lorsque vous souhaitez qu&#39;Exa privilégie certaines sections du site :
 
@@ -305,13 +315,17 @@ Définissez `subpages` pour suivre les liens depuis chaque URL de départ. Ajout
   ```
 </CodeGroup>
 
-## Images et favicons {#images-and-favicons}
+<div id="images-and-favicons">
+  ## Images et favicons
+</div>
 
 Définissez `extras.imageLinks` sur le nombre d&#39;URL d&#39;images souhaité pour chaque page. Les résultats incluent également
 le `favicon` du site et une URL d&#39;`image` représentative lorsqu&#39;elle est disponible. Sur `/search`, cette option
 se trouve dans `contents.extras.imageLinks`.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="API reference" icon="square-terminal" href="/fr/docs/reference/get-contents" cta="Ouvrir la reference" arrow="true">

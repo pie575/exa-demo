@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 모든 webset 목록 조회 {#list-all-websets}
+<div id="list-all-websets">
+  # 모든 webset 목록 조회
+</div>
 
 > Webset 목록을 반환합니다.
 
@@ -11,7 +15,9 @@
 
 `search` 매개변수를 사용해 ID, 외부 ID 또는 제목으로 Webset을 검색해 결과를 필터링할 수 있습니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets
 openapi: 3.1.0

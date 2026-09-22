@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Exa pour Google Sheets {#exa-for-google-sheets}
+<div id="exa-for-google-sheets">
+  # Exa pour Google Sheets
+</div>
 
 > Utilisez Exa Agent et les formules Exa directement dans Google Sheets.
 
@@ -18,7 +22,9 @@ L&#39;add-on vous propose deux façons de travailler :
 * **Exa Agent** pour les tableaux complets et les tâches multicellules
 * **`=EXA(...)`** pour obtenir une réponse dans une seule cellule
 
-## Installation {#install}
+<div id="install">
+  ## Installation
+</div>
 
 <Steps>
   <Step title="Installer l'add-on">
@@ -46,7 +52,9 @@ L&#39;add-on vous propose deux façons de travailler :
   </Step>
 </Steps>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Exa Agent vous permet d&#39;utiliser Exa sur plusieurs cellules à la fois dans Google Sheets.
 
@@ -57,7 +65,9 @@ Utilisez-le lorsque vous souhaitez :
 * prolonger un tableau en ajoutant de nouvelles lignes
 * enrichir une liste avec des données issues du web
 
-### Générer un tableau {#generate-a-table}
+<div id="generate-a-table">
+  ### Générer un tableau
+</div>
 
 Utilisez **Generate table** lorsque vous souhaitez qu&#39;Exa crée un nouveau tableau.
 
@@ -77,7 +87,9 @@ Exa effectue des recherches sur le web et écrit le tableau dans votre feuille.
 
 Par défaut, le tableau démarre à la cellule sélectionnée. Vous pouvez choisir une autre cellule de départ dans **More options**.
 
-### Fill cells {#fill-cells}
+<div id="fill-cells">
+  ### Fill cells
+</div>
 
 Utilisez **Fill cells** lorsque vous disposez déjà d&#39;un tableau et que vous souhaitez qu&#39;Exa complète les données manquantes.
 
@@ -99,7 +111,9 @@ Exemple :
 
 Sélectionnez les cellules vides de la ligne Apple, puis cliquez sur **Fill selected cells**. Exa utilise le nom de l&#39;entreprise et les lignes voisines comme context.
 
-### Continuer des lignes {#continue-rows}
+<div id="continue-rows">
+  ### Continuer des lignes
+</div>
 
 Vous pouvez également sélectionner des lignes vides sous un tableau.
 
@@ -107,7 +121,9 @@ Si votre tableau se termine au rang 55 et que vous sélectionnez les deux lignes
 
 Exa s&#39;appuie sur les lignes existantes comme exemples, conserve les mêmes colonnes et évite de répéter des items déjà présents dans le tableau.
 
-## `=EXA(...)` {#exa}
+<div id="exa">
+  ## `=EXA(...)`
+</div>
 
 Utilisez `=EXA(...)` lorsque vous souhaitez obtenir une seule réponse dans une seule cellule. La fonction effectue une recherche sur le web, lit les premiers résultats et renvoie une réponse concise.
 
@@ -133,7 +149,9 @@ Le second argument est le context. Vous pouvez étirer la formule vers le bas d&
 
 Utilisez `=EXA(...)` pour des réponses simples tenant dans une seule cellule. Utilisez **Exa Agent** lorsque vous souhaitez créer ou remplir un tableau entier.
 
-## `=EXA_ANSWER(...)` {#exa_answer}
+<div id="exa_answer">
+  ## `=EXA_ANSWER(...)`
+</div>
 
 Réponses IA avancées avec un contrôle total du format de sortie. À utiliser lorsque vous avez besoin de system prompts, d&#39;un output JSON structuré, de citations ou d&#39;un type de recherche spécifique.
 
@@ -160,7 +178,9 @@ Exemples :
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-## `=EXA_SEARCH(...)` {#exa_search}
+<div id="exa_search">
+  ## `=EXA_SEARCH(...)`
+</div>
 
 Effectue une recherche sur le web et renvoie une liste verticale d&#39;URL. Prend en charge le filtrage par domaine, le filtrage par catégorie, les highlights de contenu et l&#39;output synthétisé via `outputSchema`.
 
@@ -188,7 +208,9 @@ Exemples :
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-## `=EXA_CONTENTS(...)` {#exa_contents}
+<div id="exa_contents">
+  ## `=EXA_CONTENTS(...)`
+</div>
 
 Extrait le contenu textuel d&#39;une URL.
 
@@ -200,7 +222,9 @@ Extrait le contenu textuel d&#39;une URL.
 | --------- | ------ | ---------------------------------------------------------- |
 | `url`     | Oui    | L&#39;URL complète (doit commencer par `http` ou `https`). |
 
-## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
+<div id="exa_findsimilar">
+  ## `=EXA_FINDSIMILAR(...)`
+</div>
 
 Trouve des URL similaires à une URL de référence, avec des filtres facultatifs sur les domaines et le texte.
 
@@ -217,7 +241,9 @@ Trouve des URL similaires à une URL de référence, avec des filtres facultatif
 | `includeTextStr`    | Non    | `""`              | Expression devant figurer dans les résultats.        |
 | `excludeTextStr`    | Non    | `""`              | Expression ne devant pas figurer dans les résultats. |
 
-## Batch {#batch}
+<div id="batch">
+  ## Batch
+</div>
 
 Utilisez **Batch** lorsque vous souhaitez traiter de nombreuses cellules contenant des formules Exa en une seule fois.
 
@@ -228,7 +254,9 @@ Batch permet de :
 
 Convertissez les formules en valeurs lorsque vous souhaitez conserver les résultats actuels et éviter que les formules ne s&#39;exécutent de nouveau.
 
-## Quand utiliser quoi {#when-to-use-what}
+<div id="when-to-use-what">
+  ## Quand utiliser quoi
+</div>
 
 | Tâche                                                       | Utiliser                   |
 | ----------------------------------------------------------- | -------------------------- |
@@ -243,13 +271,17 @@ Convertissez les formules en valeurs lorsque vous souhaitez conserver les résul
 | Actualiser de nombreuses formules Exa                       | Batch                      |
 | Enregistrer les résultats de formules en texte brut         | Batch → Convert to values  |
 
-## Notes {#notes}
+<div id="notes">
+  ## Notes
+</div>
 
 * Les requêtes à l&#39;API Exa sont décomptées de votre quota d&#39;utilisation. Utilisez **Batch → Convert to values** pour figer les résultats et empêcher le recalcul des formules.
 * L&#39;add-on effectue automatiquement jusqu&#39;à 3 nouvelles tentatives avec un backoff exponentiel lorsque la limite de débit est atteinte (HTTP 429).
 * Commencez par de petits batches (10 à 20 lignes) avant de passer à plusieurs centaines.
 
-## Liens {#links}
+<div id="links">
+  ## Liens
+</div>
 
 * [Installer Exa AI pour Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
 * [Obtenir une API key Exa](https://dashboard.exa.ai/api-keys)

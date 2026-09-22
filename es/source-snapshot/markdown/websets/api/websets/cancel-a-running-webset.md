@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Cancelar un webset en ejecución {#cancel-a-running-webset}
+<div id="cancel-a-running-webset">
+  # Cancelar un webset en ejecución
+</div>
 
 > Cancela todas las operaciones que se estén realizando en un Webset.
 
 Se detendrá cualquier enrichment o búsqueda y el Webset se marcará como `idle`.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}/cancel
 openapi: 3.1.0

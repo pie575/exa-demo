@@ -13,21 +13,29 @@ timestamp: false
   Team Management API 需按团队单独启用，并使用服务账户 API 密钥进行身份验证。为你的团队启用该功能后，可在 [API 密钥页面](https://dashboard.exa.ai/api-keys) 的 **Service keys** 标签页中创建该密钥。如需申请访问权限，请联系 [support@exa.ai](mailto:support@exa.ai)。
 </Info>
 
-## 概述 {#overview}
+<div id="overview">
+  ## 概述 {#overview}
+</div>
 
 Get API Key Usage 端点可让你获取指定 API 密钥在特定时间段内的详细计费与用量分析数据。该端点返回来自 Exa 计费系统的费用数据，为你提供该 API 密钥实际计费情况的权威依据。
 
-## 路径参数 {#path-parameters}
+<div id="path-parameters">
+  ## 路径参数 {#path-parameters}
+</div>
 
 * **id**: 要查询用量的 API 密钥的唯一标识符
 
-## Query Parameters {#query-parameters}
+<div id="query-parameters">
+  ## Query Parameters {#query-parameters}
+</div>
 
 * **start&#95;date** (可选) ：用量周期的起始日期，采用 ISO 8601 格式 (例如 `2025-01-01T00:00:00Z` 或 `2025-01-01`) 。默认为 30 天前，且必须在最近 6 个月 (180 天) 内。
 * **end&#95;date** (可选) ：用量周期的结束日期，采用 ISO 8601 格式。默认为当前时间。
 * **group&#95;by** (可选) ：结果分组的时间粒度 (`hour`、`day` 或 `month`) 。目前为后续功能增强预留，不会改变响应结构。默认为 `day`。
 
-## 响应 {#response}
+<div id="response">
+  ## 响应 {#response}
+</div>
 
 返回详细的用量与计费信息，包括：
 
@@ -44,14 +52,18 @@ Get API Key Usage 端点可让你获取指定 API 密钥在特定时间段内的
   * **amount&#95;usd**：该价格类型的费用 (美元) 
 * **metadata**：包含报告生成时间戳的对象
 
-## 重要说明 {#important-notes}
+<div id="important-notes">
+  ## 重要说明 {#important-notes}
+</div>
 
 * **6 个月回溯限制**：计费系统的回溯期限为 6 个月 (180 天) 。`start_date` 超过 180 天的请求将返回 400 错误。
 * **零用量**：如果该 API 密钥在所查询时间段内没有用量，`total_cost_usd` 将为 0，`cost_breakdown` 可能为空。
 * **团队归属**：用于身份验证的服务 API 密钥必须与所查询的 API 密钥属于同一团队，不允许跨团队访问。
 * **日期格式**：日期需采用 ISO 8601 格式，可带或不带时间部分 (例如 `2025-01-01` 或 `2025-01-01T00:00:00Z`) 。
 
-## 使用场景 {#use-cases}
+<div id="use-cases">
+  ## 使用场景 {#use-cases}
+</div>
 
 该端点适用于：
 

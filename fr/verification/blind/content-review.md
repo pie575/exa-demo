@@ -1,4 +1,6 @@
-# Revue visuelle indépendante en aveugle — captures finales {#independent-blinded-visual-review-final-captures}
+<div id="independent-blinded-visual-review-final-captures">
+  # Revue visuelle indépendante en aveugle — captures finales
+</div>
 
 Examen des quatre images de comparaison A/B actualisées, sans clé de correspondance entre source et étiquette.
 

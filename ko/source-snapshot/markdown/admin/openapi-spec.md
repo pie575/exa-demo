@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# OpenAPI 명세 {#openapi-specification}
+<div id="openapi-specification">
+  # OpenAPI 명세
+</div>
 
 > Exa 공개 API와 Team Management API의 OpenAPI 명세를 YAML 또는 JSON 형식으로 내려받으세요.
 

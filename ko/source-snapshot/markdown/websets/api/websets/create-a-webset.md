@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 다음 주소에서 가져오세요: https://exa.ai/docs/llms.txt
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Webset 생성 {#create-a-webset}
+<div id="create-a-webset">
+  # Webset 생성
+</div>
 
 > 선택적인 search, import, enrichment 구성과 함께 새 Webset을 생성합니다. Webset은 생성되는 즉시 자동으로 처리를 시작합니다.
 
 `externalId`를 지정하면 직접 정의한 식별자로 Webset을 참조할 수 있어 연동이 더 쉬워집니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# OpenAI 工具调用 {#openai-tool-calling}
+<div id="openai-tool-calling">
+  # OpenAI 工具调用
+</div>
 
 > 使用 OpenAI 工具调用，为你的应用添加 Exa 网页搜索和页面内容能力。
 
@@ -13,7 +17,9 @@
 
 OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-calling?lang=python)允许模型调用你在代码中定义的函数。Exa SDK 为 OpenAI 提供了开箱即用的网页搜索和页面读取工具，因此你无需自己手写工具 schema、解析工具调用，也无需自行格式化 Exa 返回的结果。
 
-## 快速开始 {#get-started}
+<div id="get-started">
+  ## 快速开始
+</div>
 
 <Steps>
   <Step title="安装 SDK">
@@ -106,7 +112,9 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
   </Step>
 </Steps>
 
-## Responses API {#responses-api}
+<div id="responses-api">
+  ## Responses API
+</div>
 
 对于 OpenAI Responses API，请使用 `responses` 工厂函数，并搭配同样的 `handle_tool_calls` 辅助函数。该处理器会返回 `function_call_output` 项目，供后续请求使用。
 
@@ -138,7 +146,9 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
   Chat Completions 与 Responses API 使用不同的工具格式，且互不接受对方的格式，因此请使用与所调用端点相匹配的工厂函数。
 </Note>
 
-## 配置 工具 {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 配置 工具
+</div>
 
 关键字参数就是常规的 Exa options，会在工具运行时透传下去：search options 传给 `exa.search()`，页面内容选项 传给 `exa.get_contents()`：
 
@@ -162,11 +172,15 @@ OpenAI 的[工具调用](https://platform.openai.com/docs/guides/function-callin
 
 而 `name` (默认为 `"web_search"` 和 `"get_contents"`) 和 `description` 则会覆盖模型看到的工具定义。可以用自定义 `name` 让配置不同的 Exa 工具并存，或避免与占用这些名称的其他工具冲突。
 
-## 混入你自己的 tools {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 混入你自己的 tools
+</div>
 
 处理器会应答消息中的每一个工具调用：若某个调用指定了它们无法识别的工具，该调用不会被丢弃，而是返回一个 `Error: unknown tool "<name>"` 输出，因此后续请求绝不会遗漏必需的工具响应。如果你在 Exa 的 tools 之外还运行自己的 tools，请在发起下一次请求前，用你自己的结果替换这些错误输出。
 
-## 手动编写 loop {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## 手动编写 loop
+</div>
 
 如果你希望自行掌控工具 schema 和执行过程，可以手动定义工具并处理调用。`exa.tools.web_search()` 和 `exa.tools.get_contents()` 会提供同样的、与提供方无关的工具规范 (带有 `run` 方法) ，供你手写 loop 使用；你也可以完全从零开始编写：
 

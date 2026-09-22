@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 错误码 {#error-codes}
+<div id="error-codes">
+  # 错误码
+</div>
 
 > Exa API 常见错误码参考
 
 Exa API 通过标准 HTTP 状态码和 JSON 错误响应体来表示请求失败。
 
-## HTTP 状态码 {#http-status-codes}
+<div id="http-status-codes">
+  ## HTTP 状态码
+</div>
 
 | 代码                          | 含义                                                  | 处理方式                                        |
 | --------------------------- | --------------------------------------------------- | ------------------------------------------- |
@@ -29,7 +35,9 @@ Exa API 通过标准 HTTP 状态码和 JSON 错误响应体来表示请求失败
   `/contents` 的 URL-level failures 会在成功的 `200` 响应中通过 `statuses` field 返回，而不是作为请求级别的错误。参见[内容抓取状态标签](#content-fetch-status-tags)。
 </Note>
 
-## 错误响应结构 {#error-response-structure}
+<div id="error-response-structure">
+  ## 错误响应结构
+</div>
 
 错误响应会返回 `requestId`、便于人阅读的 `error` 消息以及机器可读的 `tag`：
 
@@ -47,9 +55,13 @@ Exa API 通过标准 HTTP 状态码和 JSON 错误响应体来表示请求失败
 
 tag 集合是开放式的，tag 名称本身即可说明含义。请先根据 HTTP 状态码进行分支处理，并将无法识别的 tag 视为附加信息，而非解析失败。
 
-## 常见错误 tag {#common-error-tags}
+<div id="common-error-tags">
+  ## 常见错误 tag
+</div>
 
-### 账户、计费与访问 {#account-billing-and-access}
+<div id="account-billing-and-access">
+  ### 账户、计费与访问
+</div>
 
 | Tag                       | HTTP 状态码 | 说明                                                             |
 | ------------------------- | -------- | -------------------------------------------------------------- |
@@ -63,7 +75,9 @@ tag 集合是开放式的，tag 名称本身即可说明含义。请先根据 HT
 | `RATE_LIMIT_EXCEEDED`     | `429`    | 你的 API 密钥、团队或网络已超出各自的速率限制 — 请降低请求速率。                           |
 | `SERVICE_OVERLOADED`      | `503`    | Exa 暂时负载过高，已在处理前丢弃该请求 — 请使用指数退避重试。                             |
 
-### 请求校验 {#request-validation}
+<div id="request-validation">
+  ### 请求校验
+</div>
 
 | Tag                       | HTTP 状态码 | 说明                                           |
 | ------------------------- | -------- | -------------------------------------------- |
@@ -74,7 +88,9 @@ tag 集合是开放式的，tag 名称本身即可说明含义。请先根据 HT
 | `INVALID_JSON_SCHEMA`     | `400`    | 提供的输出 schema 无效。                             |
 | `SUBPAGES_LIMIT_EXCEEDED` | `400`    | `/contents` 每个请求最多支持 100 个子页面。               |
 
-### 支付协议 {#payment-protocols}
+<div id="payment-protocols">
+  ### 支付协议
+</div>
 
 通过 x402 或 MPP 支付的请求还可能返回：
 
@@ -88,7 +104,9 @@ tag 集合是开放式的，tag 名称本身即可说明含义。请先根据 HT
 | `X402_WALLET_RATE_LIMITED` | `429`    | 该 x402 wallet 已超出速率限制。 |
 | `X402_INTERNAL_ERROR`      | `500`    | Exa 无法创建 x402 支付要求。    |
 
-## 内容抓取状态标签 {#content-fetch-status-tags}
+<div id="content-fetch-status-tags">
+  ## 内容抓取状态标签
+</div>
 
 当 `/contents` 接收多个 URL 时，可能出现部分 URL 失败、其余成功的情况。URL 级别的失败会在 `statuses` field 中返回，不会导致整个请求失败：
 
@@ -122,7 +140,9 @@ tag 集合是开放式的，tag 名称本身即可说明含义。请先根据 HT
 
 这些状态 tag 仅适用于 `/contents`；`/search` 不会返回 `statuses` field。
 
-## 获取帮助 {#getting-help}
+<div id="getting-help">
+  ## 获取帮助
+</div>
 
 * 当 `500`、`503` 或 `504` 错误持续出现时，请查看 [Exa 状态](/zh/docs/admin/status)。
 * 查看[速率限制](/zh/docs/admin/billing#rate-limits)了解当前的限制。

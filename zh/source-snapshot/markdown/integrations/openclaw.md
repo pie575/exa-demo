@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# OpenClaw {#openclaw}
+<div id="openclaw">
+  # OpenClaw
+</div>
 
 > 使用 Exa 为 OpenClaw 提供实时网页搜索和页面内容。
 
 [OpenClaw](https://openclaw.ai/) 原生支持将 Exa 作为 `web_search` 提供方。选定后，每个 OpenClaw agent 都可以通过内置的 web 工具使用 Exa 的搜索模式、日期筛选和内容提取功能。
 
-## 设置 Exa {#set-up-exa}
+<div id="set-up-exa">
+  ## 设置 Exa
+</div>
 
 <Steps>
   <Step title="安装 Exa 插件">
@@ -46,7 +52,9 @@
   </Step>
 </Steps>
 
-## 手动配置 {#configure-manually}
+<div id="configure-manually">
+  ## 手动配置
+</div>
 
 你可以直接在 OpenClaw 的 JSON5 配置中选择 Exa：
 
@@ -84,7 +92,9 @@
   建议使用 `EXA_API_KEY` 或 OpenClaw SecretRef，不要将 API 密钥直接提交到配置文件中。
 </Note>
 
-## agent 可以请求哪些内容 {#what-agents-can-request}
+<div id="what-agents-can-request">
+  ## agent 可以请求哪些内容
+</div>
 
 OpenClaw 通过 `web_search` 提供 Exa 能力。
 
@@ -113,7 +123,9 @@ await web_search({
 
 OpenClaw 默认将网页搜索结果缓存 15 分钟。如果每个请求都必须获取最新结果，请修改 `tools.web.search.cacheTtlMinutes` 或将其设为 `0`。
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="OpenClaw 中没有显示 Exa 提供方">
@@ -129,7 +141,9 @@ OpenClaw 默认将网页搜索结果缓存 15 分钟。如果每个请求都必�
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 <Columns cols={3}>
   <Card title="OpenClaw Exa 提供方" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="阅读指南" arrow="true">

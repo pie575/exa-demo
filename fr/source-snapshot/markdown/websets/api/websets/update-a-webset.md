@@ -1,13 +1,19 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour identifier toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Mettre à jour un webset {#update-a-webset}
+<div id="update-a-webset">
+  # Mettre à jour un webset
+</div>
 
 > Met à jour le `title` ou les `metadata` d&#39;un Webset. Les recherches, imports et enrichments sont gérés via leurs propres endpoints.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}
 openapi: 3.1.0

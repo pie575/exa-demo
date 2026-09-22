@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 示例 {#examples}
+<div id="examples">
+  # 示例
+</div>
 
 > 适用于列表构建、KYB 情报、职位发布和结构化输出的 production Exa Agent 示例。
 
@@ -1023,7 +1027,9 @@ sheet preview 中的公司名称为虚构数据，用于演示这种延续模式
   ```
 </CodeGroup>
 
-## 使用 Agent Max 进行大规模列表构建 {#broad-list-building-with-agent-max}
+<div id="broad-list-building-with-agent-max">
+  ## 使用 Agent Max 进行大规模列表构建
+</div>
 
 如果任务更看重结果的完整与详尽，而非延迟或费用，例如大规模列表构建、跨多个来源的深度研究，以及难以验证的 criteria，请使用 `effort: "max"`。Agent Max 目前处于公开测试阶段：请在请求中发送 `Exa-Beta: agent-max-effort-2026-07-27`。该 header 接受以逗号分隔的 beta token 列表。
 
@@ -1067,7 +1073,9 @@ sheet preview 中的公司名称为虚构数据，用于演示这种延续模式
   ```
 </CodeGroup>
 
-## 使用 Exa Connect 接入数据合作伙伴 {#attach-a-data-partner-with-exa-connect}
+<div id="attach-a-data-partner-with-exa-connect">
+  ## 使用 Exa Connect 接入数据合作伙伴
+</div>
 
 使用 `dataSources` 让 Exa Agent 在运行期间从高级数据合作伙伴获取数据。在这个例子中，它会结合网络研究，用 Similarweb 的流量数据和 Harmonic 的融资数据丰富每家公司的信息。完整的合作伙伴列表请参阅 [Exa Connect](/zh/docs/agent/connect/overview)。
 
@@ -1192,7 +1200,9 @@ sheet preview 中的公司名称为虚构数据，用于演示这种延续模式
   ```
 </CodeGroup>
 
-## Production 检查清单 {#production-checklist}
+<div id="production-checklist">
+  ## Production 检查清单
+</div>
 
 * 为 agent 提供明确的 `query`，说明工作单元以及期望的来源质量。
 * 已知记录请通过 `input.data` 传入，不要把行数据写进 prompt。

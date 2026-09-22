@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Récupérer un batch {#get-a-batch}
+<div id="get-a-batch">
+  # Récupérer un batch
+</div>
 
 > Récupérer un batch par son ID.
 
@@ -13,7 +17,9 @@ Utilisez cet endpoint pour interroger un batch jusqu&#39;à ce qu&#39;il atteign
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0

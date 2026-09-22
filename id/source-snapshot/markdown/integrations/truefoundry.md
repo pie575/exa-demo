@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# TrueFoundry {#truefoundry}
+<div id="truefoundry">
+  # TrueFoundry
+</div>
 
 > Hubungkan Exa ke TrueFoundry MCP Gateway untuk kontrol akses terpusat, manajemen tool, dan pemantauan penggunaan.
 
@@ -15,7 +19,9 @@ TrueFoundry menyediakan Exa sebagai remote server resmi di [MCP Gateway](https:/
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/catalog.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=add2e6b185410cfac99d0ed9fdf56a10" alt="The Exa server in TrueFoundry's official remote MCP catalog" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-## Tambahkan Exa ke TrueFoundry {#add-exa-to-truefoundry}
+<div id="add-exa-to-truefoundry">
+  ## Tambahkan Exa ke TrueFoundry
+</div>
 
 1. Buka **MCP Servers** di sidebar TrueFoundry dan pilih **Add new MCP Server**.
 2. Pilih **Connect Official Remote MCP Servers**.
@@ -44,11 +50,15 @@ TrueFoundry menyediakan Exa sebagai remote server resmi di [MCP Gateway](https:/
   Buka tab **Tools** dan pastikan tool search, content fetching, dan agentic research dari Exa tersedia.
 </Check>
 
-## Konfigurasikan server Exa {#configure-the-exa-server}
+<div id="configure-the-exa-server">
+  ## Konfigurasikan server Exa
+</div>
 
 URL yang sudah terisi otomatis menyediakan kumpulan tool default dari Exa. Ubah URL tersebut hanya jika Anda perlu membatasi tool yang tersedia atau menggunakan API key Anda sendiri.
 
-### Pilih tool mana yang tersedia {#choose-which-tools-are-available}
+<div id="choose-which-tools-are-available">
+  ### Pilih tool mana yang tersedia
+</div>
 
 Berikan daftar nama tool yang dipisahkan koma pada parameter query `tools`:
 
@@ -73,7 +83,9 @@ collaborators:
   Anda dapat menemukan nama tool yang tersedia di [dokumentasi Exa MCP](/id/docs/get-started/exa-mcp).
 </Tip>
 
-### Gunakan Exa API key Anda untuk melampaui rate limit gratis {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
+<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
+  ### Gunakan Exa API key Anda untuk melampaui rate limit gratis
+</div>
 
 Jika Anda mencapai rate limit gratis, tambahkan Exa API key Anda ke URL server:
 
@@ -85,7 +97,9 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
-## Menghubungkan MCP client {#connect-an-mcp-client}
+<div id="connect-an-mcp-client">
+  ## Menghubungkan MCP client
+</div>
 
 Buka tab **How To Use** pada server Exa, lalu pilih client Anda. TrueFoundry akan menghasilkan endpoint khusus tenant beserta konfigurasi siap tempel untuk Cursor, Claude Code, VS Code, Windsurf, Codex, dan MCP client lainnya.
 
@@ -93,7 +107,9 @@ Buka tab **How To Use** pada server Exa, lalu pilih client Anda. TrueFoundry aka
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/how-to-use.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=ec79070bbb5919f931ed52f8ae961183" alt="Instruksi penyiapan khusus client dari TrueFoundry untuk Exa MCP server" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-## Menguji tool {#test-a-tool}
+<div id="test-a-tool">
+  ## Menguji tool
+</div>
 
 Pilih **Try** di samping tool Exa, masukkan input-nya, lalu pilih **Execute Tool**. Playground akan menampilkan response JSON sehingga Anda dapat memverifikasi tool tersebut sebelum menggunakannya dalam agent.
 
@@ -101,7 +117,9 @@ Pilih **Try** di samping tool Exa, masukkan input-nya, lalu pilih **Execute Tool
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tool-playground.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=6cb86026c8ea245de4a9c701f4b51b8e" alt="Menguji tool Exa di tool playground TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-## Kelola dan pantau tool {#manage-and-monitor-tools}
+<div id="manage-and-monitor-tools">
+  ## Kelola dan pantau tool
+</div>
 
 * Aktifkan atau nonaktifkan tiap tool untuk mengatur apa saja yang dapat dipanggil oleh MCP client
 * Gunakan **Tool Metrics** untuk meninjau trafik, latency, dan error
@@ -111,7 +129,9 @@ Pilih **Try** di samping tool Exa, masukkan input-nya, lalu pilih **Execute Tool
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tools-list.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=d0cef2a24127c7bfc0099876dee8f891" alt="Exa tools yang tersedia dari MCP server TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Panduan penyiapan TrueFoundry" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="Buka panduan" arrow="true">

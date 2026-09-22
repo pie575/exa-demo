@@ -15,7 +15,9 @@
 
 <br />
 
-## 工作原理 {#how-it-works}
+<div id="overview">
+  ## 工作原理 {#how-it-works}
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/import-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=6cf23e9e291fe7811942d18c3aa08b33" alt="CSV import flow for creating a Webset" width="1512" height="857" data-path="images/websets/import-flow.png" />
 
@@ -26,7 +28,9 @@
 
 <br />
 
-## CSV 准备 {#csv-preparation}
+<div id="how-it-works">
+  ## CSV 准备 {#csv-preparation}
+</div>
 
 确保你的 CSV 文件包含一个 URL 列
 
@@ -38,7 +42,9 @@
 
 可导入的 result 数量上限取决于你的 plan。
 
-## 接下来会发生什么？ {#what-happens-next}
+<div id="csv-preparation">
+  ## 接下来会发生什么？ {#what-happens-next}
+</div>
 
 导入完成后，你的 CSV 将成为一个完整的 Webset，你可以在其中：
 
@@ -51,7 +57,9 @@
 * 内容分析 (情感倾向、主题、摘要)
 * 贴合你具体使用场景的自定义数据
 
-### 应用搜索条件 {#apply-search-criteria}
+<div id="enrich-with-custom-columns">
+  ### 应用搜索条件 {#apply-search-criteria}
+</div>
 
 根据特定 criteria 筛选导入的 URL：
 

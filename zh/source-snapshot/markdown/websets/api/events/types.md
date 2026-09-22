@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# Event types {#event-types}
+<div id="event-types">
+  # Event types
+</div>
 
 > 了解 Webset API 中发生的各类事件
 
@@ -11,36 +15,48 @@ Websets API 通过事件来通知你 Webset 中发生的变更。你可以借助
 
 事件保留 60 天，到期后会被自动删除。
 
-## Webset {#webset}
+<div id="webset">
+  ## Webset
+</div>
 
 * `webset.created` - 创建新的 Webset 时触发。
 * `webset.deleted` - 删除 Webset 时触发。
 * `webset.paused` - Webset 的操作被暂停时触发。
 * `webset.idle` - Webset 没有正在运行的操作时触发。
 
-## Search {#search}
+<div id="search">
+  ## Search
+</div>
 
 * `webset.search.created` - 发起新的 search 时触发。
 * `webset.search.updated` - search 进度更新时触发。
 * `webset.search.completed` - search 查找完所有项目时触发。
 * `webset.search.canceled` - 手动取消 search 时触发。
 
-## 项目 {#item}
+<div id="item">
+  ## 项目
+</div>
 
 * `webset.item.created` - 当有新项目被添加到 Webset 时触发。
 * `webset.item.enriched` - 当某个项目的增强完成时触发。
 
-## 导入 {#import}
+<div id="import">
+  ## 导入
+</div>
 
 * `import.created` - 发起新的导入时触发。
 * `import.completed` - 导入完成时触发。
 
-## 导出 {#export}
+<div id="export">
+  ## 导出
+</div>
 
 * `webset.export.created` - 发起新的导出时触发。
 * `webset.export.completed` - 导出完成时触发。
 
-## Monitor {#monitor}
+<div id="monitor">
+  ## Monitor
+</div>
 
 * `monitor.created` - 创建新 monitor 时触发。
 * `monitor.updated` - monitor 的配置更新时触发。

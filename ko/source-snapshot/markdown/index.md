@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa로 개발 시작하기 {#start-building-with-exa}
+<div id="start-building-with-exa">
+  # Exa로 개발 시작하기
+</div>
 
 > agent를 위해 설계된 강력한 web search 도구. 토큰 효율적이고 정확한 결과를 얻을 수 있도록 모든 것이 최적화되어 있습니다.
 

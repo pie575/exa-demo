@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa Agent {#exa-agent}
+<div id="exa-agent">
+  # Exa Agent
+</div>
 
 > structured outputs를 반환하는 딥 리서치, 리스트 빌딩, enrichment 워크플로우를 실행하세요.
 
@@ -17,7 +21,9 @@ Exa Agent는 리스트 구축, enrichment, 딥 리서치처럼 연산량이 많�
   MCP를 선호하시나요? Exa Agent와 [Exa Connect](/ko/docs/agent/connect/overview)는 [Exa MCP](/ko/docs/get-started/exa-mcp#exa-agent)에서 사용할 수 있습니다. `tools=agent_run`을 활성화하면 Claude, Cursor를 비롯한 MCP 클라이언트에서 다단계 리서치, 리스트 빌딩, enrichment, structured output을 실행할 수 있습니다.
 </Tip>
 
-## Exa Agent를 사용해야 할 때 {#when-to-use-exa-agent}
+<div id="when-to-use-exa-agent">
+  ## Exa Agent를 사용해야 할 때
+</div>
 
 워크플로우에 단일 search나 extraction call 이상이 필요할 때, 또는 데이터를 모으기 위해 searches, 페이지 읽기, verification 단계로 이어지는 loop를 직접 작성해야 할 상황이라면 Exa Agent를 사용하세요:
 
@@ -30,11 +36,15 @@ Exa Agent는 리스트 구축, enrichment, 딥 리서치처럼 연산량이 많�
 
 Exa Agent는 설계상 latency가 높고 비동기 방식으로 동작합니다. call을 직접 조율하면서 낮은 latency의 단일 search만 필요하다면 [Search API](/ko/docs/search/quickstart)로 시작하세요.
 
-## Quickstart {#quickstart}
+<div id="quickstart">
+  ## Quickstart
+</div>
 
 이 예제는 criteria에 맞는 인물의 구조화된 목록을 생성하는 실행을 시작합니다. 결과는 `output.structured`에 JSON으로 반환됩니다.
 
-### 1. Exa SDK 설치 {#1-install-the-exa-sdk}
+<div id="1-install-the-exa-sdk">
+  ### 1. Exa SDK 설치
+</div>
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -46,7 +56,9 @@ Exa Agent는 설계상 latency가 높고 비동기 방식으로 동작합니다.
   ```
 </CodeGroup>
 
-### 2. API 키 설정하기 {#2-set-your-api-key}
+<div id="2-set-your-api-key">
+  ### 2. API 키 설정하기
+</div>
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -62,7 +74,9 @@ Exa Agent는 설계상 latency가 높고 비동기 방식으로 동작합니다.
   </Tab>
 </Tabs>
 
-### 3. 실행 생성하기 {#3-create-a-run}
+<div id="3-create-a-run">
+  ### 3. 실행 생성하기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -161,7 +175,9 @@ Exa Agent는 설계상 latency가 높고 비동기 방식으로 동작합니다.
 
 실행을 생성할 때 `Accept: text/event-stream`을 추가하면 실행이 queued, started, completed 상태로 진행되는 동안 server-sent events를 받을 수 있습니다. 자세한 내용은 [Stream events](#stream-events)를 참고하세요.
 
-### 4. 완료될 때까지 폴링하기 {#4-poll-for-completion}
+<div id="4-poll-for-completion">
+  ### 4. 완료될 때까지 폴링하기
+</div>
 
 이벤트를 스트리밍하지 않는다면, 반환된 `id`를 저장해 두고 실행이 종료 상태에 도달할 때까지 폴링하세요.
 
@@ -226,7 +242,9 @@ Exa Agent는 설계상 latency가 높고 비동기 방식으로 동작합니다.
   호환성](/ko/docs/integrations/openai-sdk#agent-via-responses-api)을 참고하세요.
 </Note>
 
-## 특정 엔티티 검증 및 enrich {#verify-and-enrich-a-specific-entity}
+<div id="verify-and-enrich-a-specific-entity">
+  ## 특정 엔티티 검증 및 enrich
+</div>
 
 리스트 구축뿐 아니라, Exa Agent로 이미 알고 있는 단일 엔티티를 조사하고, 신뢰할 수 있는 소스를 근거로 주장을 검증하며, 구조화된 enrichment를 반환할 수 있습니다. 이 예시는 특정 기업의 공식 웹사이트에 공개적으로 접근 가능한 가격 페이지가 있는지 확인하고, 가격 정보가 있으면 그 세부 내용으로 결과를 enrich합니다. schema에서 필수 항목은 `domain`과 `verdict`뿐이며, 나머지는 모두 선택적인 enrichment입니다.
 
@@ -407,7 +425,9 @@ Exa Agent는 설계상 latency가 높고 비동기 방식으로 동작합니다.
   않는다는 evidence가 될 수 없습니다.
 </Note>
 
-## 이벤트 스트리밍 {#stream-events}
+<div id="stream-events">
+  ## 이벤트 스트리밍
+</div>
 
 스트리밍은 생성 요청을 열린 상태로 유지하면서 실행이 완료될 때까지 Server-Sent Events(SSE)를 전송합니다. 이벤트 유형과 payload는 [Event format](#event-format)을 참고하세요.
 
@@ -452,7 +472,9 @@ Python에서는 `stream=True`, JavaScript에서는 `stream: true`를 설정하�
   ```
 </CodeGroup>
 
-### 이벤트 형식 {#event-format}
+<div id="event-format">
+  ### 이벤트 형식
+</div>
 
 각 SSE 프레임에는 이벤트 ID, 이벤트 이름, JSON payload가 포함됩니다:
 
@@ -464,7 +486,9 @@ data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:5
 
 스트리밍에는 `: keep-alive`와 같은 주석 줄이 포함될 수도 있습니다. SSE client는 주석을 자동으로 무시하며, 직접 구현한 파서도 동일하게 처리해야 합니다.
 
-### Event types {#event-types}
+<div id="event-types">
+  ### Event types
+</div>
 
 | 이벤트                   | `data` payload                        | 사용 방법                                                                                               |
 | --------------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------- |
@@ -478,7 +502,9 @@ data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:5
 
 `agent_run.source.added`는 완전한 citation 목록이 아닌 실시간 미리보기로 취급하세요. 최종 상태 실행의 `output.grounding`이 기준이 되는 grounding output입니다.
 
-### 저장된 이벤트 replay {#replay-stored-events}
+<div id="replay-stored-events">
+  ### 저장된 이벤트 replay
+</div>
 
 ZDR이 아닌 실행의 경우, [`GET /agent/runs/{id}/events`](/ko/docs/reference/agent-api/list-run-events)는 저장된 이벤트를 페이지네이션된 JSON으로 반환합니다. 저장된 이벤트를 SSE로 replay하려면 `Accept: text/event-stream`을 보내고, client가 이미 처리한 이벤트를 건너뛰려면 `Last-Event-ID`를 함께 보내세요:
 
@@ -493,7 +519,9 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 향후 호환성을 위해, 애플리케이션이 인식하지 못하는 이벤트 이름은 무시하고 종료 이벤트가 도착할 때까지 계속 처리하세요.
 
-## 구조화된 JSON 반환 {#return-structured-json}
+<div id="return-structured-json">
+  ## 구조화된 JSON 반환
+</div>
 
 `outputSchema`를 사용하면 schema 검증을 거친 JSON을 `output.structured`에 담아 반환할 수 있습니다.
 
@@ -597,13 +625,17 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-## 입력 행 처리 {#process-input-rows}
+<div id="process-input-rows">
+  ## 입력 행 처리
+</div>
 
 enrich하려는 기존 데이터 집합이 있다면 `input.data`를 사용하세요. 각 데이터 엔티티에 field를 더 추가하거나, 가져온 데이터를 기반으로 더 많은 엔티티를 찾아내거나, 두 가지를 모두 수행할 수 있습니다.
 
 전체 행 enrichment 예제는 [Agent 예제](/ko/docs/agent/examples#enrich-input-rows-code)를 참고하세요.
 
-## exclusion 처리 {#process-exclusions}
+<div id="process-exclusions">
+  ## exclusion 처리
+</div>
 
 `input.exclusion`을 사용하면 특정 항목이 실행 결과에 나타나지 않도록 제외할 수 있습니다. 아래 예시에서는 가장 귀여운 동물 10종을 찾되, 염소와 판다는 이미 얼마나 귀여운지 알고 있으므로 실행에서 제외합니다.
 
@@ -659,7 +691,9 @@ enrich하려는 기존 데이터 집합이 있다면 `input.data`를 사용하�
   ```
 </CodeGroup>
 
-## 데이터 소스 연결 {#connect-data-sources}
+<div id="connect-data-sources">
+  ## 데이터 소스 연결
+</div>
 
 인덱스는 모든 실행에서 기본적으로 사용할 수 있습니다. `dataSources`는 [Exa Connect](/ko/docs/agent/connect/overview) 파트너를 attach할 때만 사용하세요. 각 항목은 하나의 `provider`를 지정합니다. `outputSchema`의 속성이 특정 소스를 참조하는 경우(예: &quot;from Similarweb&quot;), Exa Agent는 웹 페이지를 보고 추측하지 않고 해당 제공업체 도구를 call합니다.
 
@@ -674,7 +708,9 @@ enrich하려는 기존 데이터 집합이 있다면 `input.data`를 사용하�
 
 data partners 전체 목록과 각각의 예시는 [Exa Connect](/ko/docs/agent/connect/overview)에서 확인하세요.
 
-## 이전 실행에서 이어가기 {#continue-from-a-previous-run}
+<div id="continue-from-a-previous-run">
+  ## 이전 실행에서 이어가기
+</div>
 
 이전 response에 대한 follow-ups을 보내려면 `previousRunId`를 사용하세요. 각 follow-up은 고유한 ID를 가진 새 실행으로 시작됩니다. `previousRunId`는 컨텍스트를 새 실행으로 전달할 뿐, 새 실행의 ID로 재사용되지는 않습니다.
 
@@ -715,7 +751,9 @@ data partners 전체 목록과 각각의 예시는 [Exa Connect](/ko/docs/agent/
   ```
 </CodeGroup>
 
-## 실행 ID 찾기 {#find-a-run-id}
+<div id="find-a-run-id">
+  ## 실행 ID 찾기
+</div>
 
 최근 실행 목록을 조회하고 각 실행의 상태를 확인합니다:
 
@@ -753,7 +791,9 @@ data partners 전체 목록과 각각의 예시는 [Exa Connect](/ko/docs/agent/
   ```
 </CodeGroup>
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 비용은 사용량 기반이며 구성 요소별로 가격이 책정됩니다:
 
@@ -770,7 +810,9 @@ data partners 전체 목록과 각각의 예시는 [Exa Connect](/ko/docs/agent/
 
 concurrency 및 속도 제한은 [Agent limits](/ko/docs/admin/billing#agent-limits)를 참조하세요.
 
-### Effort {#effort}
+<div id="effort">
+  ### Effort
+</div>
 
 `effort`를 사용해 각 실행의 비용과 추론 수준을 선택합니다. 지원되는 값은 `minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, `max`이며 기본값은 `auto`입니다. 고정 effort는 요청당 가격이 예측 가능하고, `auto`와 베타 `max`는 사용량에 따라 과금됩니다.
 
@@ -794,7 +836,9 @@ concurrency 및 속도 제한은 [Agent limits](/ko/docs/admin/billing#agent-lim
 
 `budget.maxCostDollars`는 `auto`와 `max`에 적용되는 선택적 실행별 상한값입니다. `$1`–`$100` 범위를 허용하며 제공되는 최대값은 `$100`이지만, 서버에서 더 낮은 최대값을 설정할 수도 있습니다. 기본 상한은 `auto`가 `$5`, `max`가 `$20`입니다. 이는 고정 가격이 아니라 상한이므로, 일찍 완료된 실행은 비용이 그만큼 줄어듭니다. 고정 effort에는 budget을 지정할 수 없습니다.
 
-### effort 모드 선택하기 {#choosing-an-effort-mode}
+<div id="choosing-an-effort-mode">
+  ### effort 모드 선택하기
+</div>
 
 고정 effort 모드는 표준 리서치에서 요청당 비용을 예측 가능하게 유지하고 싶을 때 적합합니다. 리스트 구축처럼 요청마다 엔티티 수가 달라질 수 있는 가변 범위 작업에는 `auto`를 사용하세요.
 
@@ -812,7 +856,9 @@ concurrency 및 속도 제한은 [Agent limits](/ko/docs/admin/billing#agent-lim
 
 실행 시간은 질의 난이도, schema 복잡도, 외부 소스의 가용성에 따라 달라집니다. effort 모드는 엄격한 latency 보장이 아니라 품질·비용·실행 시간 사이의 절충으로 이해하세요.
 
-### max effort로 실행하기 {#run-with-max-effort}
+<div id="run-with-max-effort">
+  ### max effort로 실행하기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -856,7 +902,9 @@ concurrency 및 속도 제한은 [Agent limits](/ko/docs/admin/billing#agent-lim
 
 위 SDK 예제를 실행하려면 Agent Max를 지원하는 `exa-py` 또는 `exa-js` 버전이 필요합니다.
 
-## Zero Data Retention {#zero-data-retention}
+<div id="zero-data-retention">
+  ## Zero Data Retention
+</div>
 
 Exa Agent은 [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)(ZDR)을 지원합니다. ZDR은 team 단위로 활성화됩니다. 계정에 적용하려면 [문의해 주세요](mailto:sales@exa.ai).
 
@@ -867,7 +915,9 @@ team에 ZDR이 활성화되면:
 * `previousRunId`는 사용할 수 없습니다.
 * Exa Connect `dataSources`는 사용할 수 없으며, 이를 포함한 요청은 `400` 오류를 반환합니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="인덱스에 포함된 내용" icon="search" href="/ko/docs/search/data/overview" cta="가이드 열기" arrow="true">

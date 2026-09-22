@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일을 활용해 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa MCP {#exa-mcp}
+<div id="exa-mcp">
+  # Exa MCP
+</div>
 
 > ChatGPT, Codex, Claude, Grok, Cursor를 비롯한 모든 MCP 클라이언트를 Exa의 web search, 페이지 가져오기, Exa Agent, Exa Connect 도구에 연결하세요.
 
@@ -17,7 +21,9 @@ https://mcp.exa.ai/mcp
 
 시작하는 데 API 키는 필요하지 않습니다. Exa MCP는 오픈 소스이며 [GitHub](https://github.com/exa-labs/exa-mcp-server)에서 확인할 수 있습니다.
 
-## 설치 {#install}
+<div id="install">
+  ## 설치
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -48,7 +54,9 @@ https://mcp.exa.ai/mcp
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-### Claude Code CLI {#claude-code-cli}
+      <div id="claude-code-cli">
+        ### Claude Code CLI
+      </div>
 
       <Steps>
         <Step title="플러그인 설치">
@@ -66,7 +74,9 @@ https://mcp.exa.ai/mcp
         </Step>
       </Steps>
 
-### Desktop, Web &amp; Cowork {#desktop-web-cowork}
+      <div id="desktop-web-cowork">
+        ### Desktop, Web &amp; Cowork
+      </div>
 
       Claude Desktop, Web, Cowork는 모두 Exa의 공식 커넥터를 사용합니다.
 
@@ -201,7 +211,9 @@ https://mcp.exa.ai/mcp
   </Tabs>
 </div>
 
-## 인증 {#authentication}
+<div id="authentication">
+  ## 인증
+</div>
 
 Exa MCP는 세 가지 authentication 모드를 지원합니다:
 
@@ -211,7 +223,9 @@ Exa MCP는 세 가지 authentication 모드를 지원합니다:
 | OAuth | 대화형 client, 마켓플레이스 설치, 프로덕션 사용      | `https://mcp.exa.ai/mcp?login`에 연결해 브라우저에서 Exa에 sign-in합니다. 사용량은 소속 Exa team에 집계됩니다. |
 | API 키 | MCP OAuth를 지원하지 않는 client           | `x-api-key` header에 API 키를 설정한 뒤 `https://mcp.exa.ai/mcp`에 연결                        |
 
-### OAuth로 로그인 {#sign-in-with-oauth}
+<div id="sign-in-with-oauth">
+  ### OAuth로 로그인
+</div>
 
 ChatGPT, Claude 등 마켓플레이스를 통해 설치한 경우 필요할 때 로그인 안내가 표시됩니다. MCP OAuth를 지원하는 client라면 다음 주소로 연결해 동일한 flow를 요청할 수 있습니다:
 
@@ -221,7 +235,9 @@ https://mcp.exa.ai/mcp?login
 
 client이 Exa의 인가 서버를 발견하고, 브라우저에서 sign-in을 열고, 액세스를 관리합니다.
 
-### API 키 사용 {#use-an-api-key}
+<div id="use-an-api-key">
+  ### API 키 사용
+</div>
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
@@ -233,7 +249,9 @@ MCP 서버 구성에 `x-api-key` header를 추가하세요:
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-## 사용 가능한 도구 {#available-tools}
+<div id="available-tools">
+  ## 사용 가능한 도구
+</div>
 
 | 도구                        | 제공 여부                 | 용도                                                |
 | ------------------------- | --------------------- | ------------------------------------------------- |
@@ -252,7 +270,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   `tools` 목록을 명시하면 기본값을 대체하므로, web search와 fetch를 포함해 활성화하려는 모든 도구를 빠짐없이 나열하세요.
 </Tip>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 search 한 번으로 끝나지 않는 리서치, 예를 들어 목록을 구축하거나 각 item을 criteria에 따라 검증하거나 구조화된 결과를 반환해야 하는 작업에는 [Exa Agent](/ko/docs/agent/quickstart)를 사용하세요.
 
@@ -305,7 +325,9 @@ API 키를 사용하는 경우 `login`을 생략하고 [인증](#authentication)
 
 output schema 패턴, effort 모드, 데이터 소스, 가격은 [Exa Agent 가이드](/ko/docs/agent/quickstart)를 참고하세요.
 
-## Advanced search {#advanced-search}
+<div id="advanced-search">
+  ## Advanced search
+</div>
 
 명시적인 카테고리나 도메인 필터, 날짜 범위, 텍스트 제약 조건, 지역 타기팅, 질의 확장, summary, highlights, freshness 제어, 하위 페이지 크롤링이 필요한 요청이라면 `web_search_advanced_exa`를 사용하세요. 일반적인 검색에는 `web_search_exa`를 그대로 쓰는 것이 좋습니다. 모델에 노출되는 도구 표면이 더 작고 구성도 덜 필요합니다.
 
@@ -317,7 +339,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
 
 MCP 도구는 자주 사용하는 [Search API](/ko/docs/reference/search) 옵션을 `includeDomains`, `startPublishedDate`, `enableHighlights`, `maxAgeHours`처럼 도구에서 쓰기 편한 field로 제공합니다. 정확한 field 이름은 client의 tool schema를 참고하세요.
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="속도 제한 오류 (429)">
@@ -355,7 +379,9 @@ MCP 도구는 자주 사용하는 [Search API](/ko/docs/reference/search) 옵션
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 <Columns cols={2}>
   <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="소스 보기" arrow="true">

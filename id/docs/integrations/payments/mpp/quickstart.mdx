@@ -5,7 +5,9 @@ description: "Panggil API Search dan Contents milik Exa tanpa API key dengan mem
 icon: "/docs/images/sidebar-icons/tempo.svg"
 ---
 
-## Apa itu MPP? {#what-is-mpp}
+<div id="what-is-mpp">
+  ## Apa itu MPP?
+</div>
 
 MPP (Machine Payments Protocol) adalah standar payment terbuka yang bersifat HTTP-native dan dibangun di atas status code `402 Payment Required`. Standar ini memungkinkan client membayar akses API per permintaan menggunakan berbagai metode payment, termasuk stablecoin di [Tempo](https://tempo.xyz), tanpa perlu akun, API key, maupun langganan. Contoh pada halaman ini menggunakan Tempo; saat ini Exa menyelesaikan MPP payments dalam USDC.e di Tempo mainnet.
 
@@ -17,7 +19,9 @@ Pendekatan ini sangat cocok untuk **AI agents** yang perlu membayar web search s
   MPP dan akses melalui API key bersifat independen. Jika permintaan Anda menyertakan header `x-api-key`, alur API key billing biasa yang digunakan dan MPP dilewati sepenuhnya.
 </Info>
 
-## Endpoint yang didukung {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoint yang didukung
+</div>
 
 | Endpoint    | Metode | Deskripsi                                                                                              |
 | ----------- | ------ | ------------------------------------------------------------------------------------------------------ |
@@ -26,7 +30,9 @@ Pendekatan ini sangat cocok untuk **AI agents** yang perlu membayar web search s
 
 Endpoint Exa lainnya *belum* menerima MPP payment.
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 Anda memerlukan wallet yang kompatibel dengan Tempo dan sudah terisi USDC.e. Export private key wallet Anda sebelum menjalankan contoh:
 
@@ -34,7 +40,9 @@ Anda memerlukan wallet yang kompatibel dengan Tempo dan sudah terisi USDC.e. Exp
 export WALLET_PRIVATE_KEY="0x..."
 ```
 
-### Pasang client {#install-the-client}
+<div id="install-the-client">
+  ### Pasang client
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -46,7 +54,9 @@ export WALLET_PRIVATE_KEY="0x..."
   ```
 </CodeGroup>
 
-### Membuat permintaan search berbayar {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Membuat permintaan search berbayar
+</div>
 
 Gunakan MPP client untuk menandatangani dan mengirim payment bagi sebuah permintaan search:
 
@@ -108,11 +118,15 @@ Gunakan MPP client untuk menandatangani dan mengirim payment bagi sebuah permint
 
 Eksekusi yang berhasil akan mencetak hasil search dan header `Payment-Receipt` yang berisi hash transaksi on-chain.
 
-## Bayar dari baris perintah {#pay-from-the-command-line}
+<div id="pay-from-the-command-line">
+  ## Bayar dari baris perintah
+</div>
 
 Jika Anda tidak ingin mengelola private key secara langsung, gunakan Tempo Wallet CLI. Perintah `tempo wallet login` membuat atau menghubungkan wallet Tempo, mengotorisasi access key lokal, dan dapat menyertakan MPP Credits gratis bagi pengguna yang baru mendaftar.
 
-### Pasang dan autentikasi {#install-and-authenticate}
+<div id="install-and-authenticate">
+  ### Pasang dan autentikasi
+</div>
 
 ```bash theme={null}
 curl -fsSL https://tempo.xyz/install | bash
@@ -123,14 +137,18 @@ tempo wallet login
 
 Pada host jarak jauh tanpa browser lokal, gunakan `tempo wallet login --no-browser` lalu buka URL yang ditampilkan di perangkat Anda untuk mengotorisasi CLI.
 
-### Memeriksa saldo dan credits {#check-balances-and-credits}
+<div id="check-balances-and-credits">
+  ### Memeriksa saldo dan credits
+</div>
 
 ```bash theme={null}
 tempo wallet whoami
 tempo wallet whoami --credits
 ```
 
-### Melakukan permintaan berbayar {#make-a-paid-request}
+<div id="make-a-paid-request">
+  ### Melakukan permintaan berbayar
+</div>
 
 ```bash theme={null}
 tempo request --max-spend 1.00 https://api.exa.ai/search \
@@ -141,15 +159,21 @@ tempo request --max-spend 1.00 https://api.exa.ai/search \
 
 Untuk referensi CLI lengkap, lihat [dokumentasi Tempo Wallet CLI](https://tempo.xyz/developers/docs/cli/wallet) dan [dokumentasi `tempo request`](https://tempo.xyz/developers/docs/cli/request).
 
-## Gas fees {#gas-fees}
+<div id="gas-fees">
+  ## Gas fees
+</div>
 
 Exa mensponsori biaya jaringan Tempo dan membayarnya dalam USDC.e. Wallet Anda hanya perlu memiliki USDC.e yang cukup untuk biaya API; tidak perlu ada saldo pathUSD atau token gas lainnya. Anda tidak perlu mengonfigurasi fee payer. Payment challenge dari Exa dan MPP SDK menangani sponsorship secara otomatis.
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 MPP menggunakan pricing paket yang sama seperti API key billing. Exa menghitung harga berdasarkan parameter permintaan sebelum memproses permintaan tersebut.
 
-### Search {#search}
+<div id="search">
+  ### Search
+</div>
 
 | Search type               | Harga untuk maksimal 10 hasil |
 | ------------------------- | ----------------------------- |
@@ -163,7 +187,9 @@ Menambahkan `contents.summary` dikenakan biaya tambahan **$0.001 per hasil**.
   Permintaan search MPP dibatasi maksimal 10 hasil. Jika `numResults` lebih dari 10, Exa tetap menggunakan 10 dan menagihkan permintaan tersebut untuk 10 hasil. Jika Anda membutuhkan lebih banyak, gunakan [API key billing](/id/docs/search/quickstart).
 </Warning>
 
-### Contents {#contents}
+<div id="contents">
+  ### Contents
+</div>
 
 Setiap tipe konten yang diminta dikenakan biaya $0,001 per URL:
 
@@ -175,7 +201,9 @@ Setiap tipe konten yang diminta dikenakan biaya $0,001 per URL:
 
 Jika Anda tidak meminta `text`, `highlights`, atau `summary`, Exa akan mengaktifkan `text` secara default.
 
-### Contoh harga {#pricing-examples}
+<div id="pricing-examples">
+  ### Contoh harga
+</div>
 
 | Permintaan                                          | Harga  |
 | --------------------------------------------------- | ------ |
@@ -185,7 +213,9 @@ Jika Anda tidak meminta `text`, `highlights`, atau `summary`, Exa akan mengaktif
 | `/contents` untuk 2 URL dengan `text: true`         | $0.002 |
 | `/contents` untuk 1 URL dengan `text` dan `summary` | $0.002 |
 
-## Cara kerja payment flow {#how-the-payment-flow-works}
+<div id="how-the-payment-flow-works">
+  ## Cara kerja payment flow
+</div>
 
 SDK mengotomatiskan flow ini, tetapi Anda dapat memeriksanya langsung melalui HTTP:
 
@@ -193,7 +223,9 @@ SDK mengotomatiskan flow ini, tetapi Anda dapat memeriksanya langsung melalui HT
 2. Tanda tangani challenge tersebut, lalu kirim ulang permintaan dengan `Authorization: Payment <credential>`.
 3. Exa memproses permintaan sambil melakukan settlement payment. Setelah settlement dikonfirmasi, Exa mengembalikan hasil beserta header `Payment-Receipt`. Jika settlement gagal, Exa mengembalikan `402` dengan challenge baru dan tanpa hasil.
 
-### Memeriksa payment challenge {#inspect-a-payment-challenge}
+<div id="inspect-a-payment-challenge">
+  ### Memeriksa payment challenge
+</div>
 
 Anda dapat memeriksa harga dan detail payment tanpa wallet:
 
@@ -205,7 +237,9 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
 
 Cari header `WWW-Authenticate: Payment` pada response `402`. Unpaid discovery request memiliki batas laju (rate limit), jadi gunakan cara ini untuk debugging, bukan untuk polling.
 
-## Referensi payment {#payment-reference}
+<div id="payment-reference">
+  ## Referensi payment
+</div>
 
 Exa menerima MPP payments dalam USDC.e di Tempo mainnet.
 
@@ -219,7 +253,9 @@ USDC.e memiliki 6 desimal. Challenge menyatakan harga dalam satuan atomik, sehin
   Exa mendukung MPP dan [x402](/id/docs/integrations/payments/x402/quickstart) pada endpoint yang sama. Response `402` yang unauthenticated dapat memuat challenge MPP `WWW-Authenticate: Payment` sekaligus header x402 `PAYMENT-REQUIRED`. Gunakan header sesuai protokol payment yang didukung client Anda.
 </Note>
 
-### Headers {#headers}
+<div id="headers">
+  ### Headers
+</div>
 
 | Header                                | Arah              | Deskripsi                                             |
 | ------------------------------------- | ----------------- | ----------------------------------------------------- |
@@ -227,7 +263,9 @@ USDC.e memiliki 6 desimal. Challenge menyatakan harga dalam satuan atomik, sehin
 | `WWW-Authenticate: Payment`           | Response `402`    | Harga dan instruksi payment untuk permintaan tersebut |
 | `Payment-Receipt`                     | Response berhasil | Settlement receipt, termasuk hash transaksi on-chain  |
 
-### Error {#errors}
+<div id="errors">
+  ### Error
+</div>
 
 | Status | Deskripsi                                                                          |
 | ------ | ---------------------------------------------------------------------------------- |
@@ -236,7 +274,9 @@ USDC.e memiliki 6 desimal. Challenge menyatakan harga dalam satuan atomik, sehin
 | `429`  | IP ini mengirim terlalu banyak unpaid discovery request                            |
 | `429`  | Wallet ini melampaui rate limit permintaan berbayar                                |
 
-### Rate limit {#rate-limits}
+<div id="rate-limits">
+  ### Rate limit
+</div>
 
 Rate limit MPP dipakai bersama x402 dan terpisah dari batas API key:
 
@@ -245,7 +285,9 @@ Rate limit MPP dipakai bersama x402 dan terpisah dari batas API key:
 | Unpaid discovery request per IP | 5 permintaan  | 60 detik |
 | Permintaan berbayar per wallet  | 10 permintaan | 1 detik  |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Bisakah saya menggunakan MPP dan API key sekaligus?">
@@ -261,7 +303,9 @@ Rate limit MPP dipakai bersama x402 dan terpisah dari batas API key:
   </Accordion>
 </AccordionGroup>
 
-## Resources {#resources}
+<div id="resources">
+  ## Resources
+</div>
 
 * [Dokumentasi protokol MPP](https://mpp.dev/protocol): detail protokol dan format autentikasi
 * [Dokumentasi mppx](https://mpp.dev/sdk/typescript): SDK referensi MPP untuk TypeScript

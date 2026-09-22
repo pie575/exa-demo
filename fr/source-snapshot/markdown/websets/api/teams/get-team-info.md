@@ -1,17 +1,25 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Obtenir les informations de l&#39;équipe {#get-team-info}
+<div id="get-team-info">
+  # Obtenir les informations de l&#39;équipe
+</div>
 
 > Récupérez les informations sur votre équipe, notamment l&#39;utilisation de la concurrency et les limites associées.
 
-## Aperçu {#overview}
+<div id="overview">
+  ## Aperçu
+</div>
 
 L&#39;endpoint Get Team Info renvoie des informations sur l&#39;équipe authentifiée, notamment sa concurrency utilisation actuelle et ses limites configurées. Pratique pour suivre votre utilisation de l&#39;API Websets et comprendre vos limites de débit.
 
-## Réponse {#response}
+<div id="response">
+  ## Réponse
+</div>
 
 La réponse comprend :
 
@@ -21,21 +29,27 @@ La réponse comprend :
 * **concurrency** : l&#39;utilisation actuelle, indiquant les requests actives et en file d&#39;attente
 * **limits** : les limites de concurrency de votre équipe
 
-### Fields de concurrency {#concurrency-fields}
+<div id="concurrency-fields">
+  ### Fields de concurrency
+</div>
 
 L&#39;objet `concurrency` indique l&#39;état actuel de vos requests :
 
 * **active** : nombre de requests en cours de traitement
 * **en file d'attente** : nombre de requests en attente de traitement
 
-### Fields de l&#39;objet limits {#limits-fields}
+<div id="limits-fields">
+  ### Fields de l&#39;objet limits
+</div>
 
 L&#39;objet `limits` affiche les limites configurées pour votre équipe :
 
 * **maxConcurrent** : nombre maximal de requests pouvant être traitées simultanément (null signifie illimité)
 * **maxQueued** : nombre maximal de requests pouvant patienter dans la file d&#39;attente (null signifie illimité)
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0

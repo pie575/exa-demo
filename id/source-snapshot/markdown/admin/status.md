@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Status Page {#status-page}
+<div id="status-page">
+  # Status Page
+</div>
 
 > Ketersediaan real-time, incident aktif, dan riwayat uptime layanan Exa.
 
@@ -169,11 +173,15 @@ Exa memublikasikan ketersediaan layanan di [status.exa.ai](https://status.exa.ai
 
 <ExaStatus />
 
-## Berlangganan pembaruan {#subscribe-to-updates}
+<div id="subscribe-to-updates">
+  ## Berlangganan pembaruan
+</div>
 
 Berlangganan di status page untuk mendapatkan notifikasi ketika sebuah incident dibuka, diperbarui, atau diselesaikan. Notifikasi dikirim melalui email, Slack, Google Chat, atau webhook.
 
-## Dapatkan bantuan {#get-help}
+<div id="get-help">
+  ## Dapatkan bantuan
+</div>
 
 Jika permintaan terus gagal padahal semua sistem dilaporkan beroperasi normal, penyebabnya kemungkinan ada di tingkat permintaan — periksa [Error codes](/id/docs/admin/error-codes) terlebih dahulu.
 

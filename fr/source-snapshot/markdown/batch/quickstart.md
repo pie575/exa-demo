@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# API Batch {#batch-api}
+<div id="batch-api">
+  # API Batch
+</div>
 
 > Exécutez des requests de l&#39;API Exa de manière asynchrone, par batch.
 
@@ -19,7 +23,9 @@ Utilisez-la pour de l&#39;enrichment hors ligne, des reprises de données ou tou
   L&#39;API Batch est en bêta. Incluez le header `Exa-Beta: batches-2026-06-06` dans chaque request.
 </Note>
 
-## Requests prises en charge {#supported-requests}
+<div id="supported-requests">
+  ## Requests prises en charge
+</div>
 
 Chaque élément d&#39;un batch doit être une request `POST` vers l&#39;une de ces routes :
 
@@ -30,7 +36,9 @@ Chaque élément d&#39;un batch doit être une request `POST` vers l&#39;une de 
 
 Chaque élément nécessite un `customId` unique au sein du batch. Ce même `customId` est renvoyé dans le fichier de résultats, ce qui vous permet de faire correspondre les lignes d&#39;output à vos données d&#39;entrée.
 
-## Créer un batch {#create-a-batch}
+<div id="create-a-batch">
+  ## Créer un batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -88,7 +96,9 @@ La réponse contient l&#39;ID du batch et son statut initial :
   ```
 </Accordion>
 
-## Vérifier le statut {#check-status}
+<div id="check-status">
+  ## Vérifier le statut
+</div>
 
 Interrogez le batch jusqu&#39;à ce qu&#39;il atteigne un statut terminal :
 
@@ -116,7 +126,9 @@ Lorsque le batch se termine, `resultsUrl` contient une URL de téléchargement d
   `resultsUrl` est une URL présignée à durée de vie courte. Récupérez à nouveau le batch pour obtenir une nouvelle URL chaque fois que vous devez retélécharger les résultats.
 </Warning>
 
-## Lister les batches {#list-batches}
+<div id="list-batches">
+  ## Lister les batches
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -147,7 +159,9 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-## Télécharger les résultats {#download-results}
+<div id="download-results">
+  ## Télécharger les résultats
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -162,7 +176,9 @@ Chaque ligne JSONL contient le `customId` d&#39;origine, ainsi qu&#39;une `respo
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-## Annuler un batch {#cancel-a-batch}
+<div id="cancel-a-batch">
+  ## Annuler un batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -172,7 +188,9 @@ Chaque ligne JSONL contient le `customId` d&#39;origine, ainsi qu&#39;une `respo
   ```
 </CodeGroup>
 
-## Supprimer un batch {#delete-a-batch}
+<div id="delete-a-batch">
+  ## Supprimer un batch
+</div>
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,6 +200,8 @@ Chaque ligne JSONL contient le `customId` d&#39;origine, ainsi qu&#39;une `respo
   ```
 </CodeGroup>
 
-## Accès {#access}
+<div id="access">
+  ## Accès
+</div>
 
 Pour activer l&#39;API Batch pour une équipe, contactez [sales@exa.ai](mailto:sales@exa.ai).

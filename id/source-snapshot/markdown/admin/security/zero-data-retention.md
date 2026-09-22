@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Zero Data Retention {#zero-data-retention}
+<div id="zero-data-retention">
+  # Zero Data Retention
+</div>
 
 > Ketersediaan Zero Data Retention di seluruh produk Exa.
 

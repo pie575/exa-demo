@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Precios {#pricing}
+<div id="pricing">
+  # Precios
+</div>
 
 > Tarifas de pago por uso para Exa Search, Contents, Answer, Monitors y la Agent API
 
@@ -21,7 +25,9 @@ Exa funciona con pago por uso. No hay suscripción ni gasto mínimo: cargas cré
   Crea una key en el panel. Las cuentas nuevas empiezan con créditos gratuitos.
 </Card>
 
-## Productos {#products}
+<div id="products">
+  ## Productos
+</div>
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/es/docs/search/quickstart">
@@ -61,7 +67,9 @@ Exa funciona con pago por uso. No hay suscripción ni gasto mínimo: cargas cré
   </Card>
 </Columns>
 
-## Search, Contents, Answer y Monitors {#search-contents-answer-and-monitors}
+<div id="search-contents-answer-and-monitors">
+  ## Search, Contents, Answer y Monitors
+</div>
 
 Cada endpoint tiene un precio base por solicitud que incluye hasta 10 resultados. Los resultados adicionales y los resúmenes de página generados por Exa se facturan aparte.
 
@@ -72,7 +80,9 @@ Cada endpoint tiene un precio base por solicitud que incluye hasta 10 resultados
 | `/monitors` | $15 / 1k solicitudes                   | $1 / 1k resultados                      | $1 / 1k páginas                      |
 | `/contents` | $1 / 1k páginas, por tipo de contenido | —                                       | $1 / 1k páginas                      |
 
-## Agent {#agent}
+<div id="agent">
+  ## Agent
+</div>
 
 Fija un `effort` fijo en [Agent](/es/docs/agent/quickstart) para obtener un precio predecible por solicitud. `auto` es el modo medido predeterminado; `max` (beta) también es medido y usa las mismas tarifas de uso:
 
@@ -93,7 +103,9 @@ Los runs medidos se facturan según el uso real hasta su límite por run. `auto`
 | Enrichment de contacto por email    | $0,02 / email              |
 | Enrichment de contacto por teléfono | $0,07 / número de teléfono |
 
-### Proveedores de Connect {#connect-providers}
+<div id="connect-providers">
+  ### Proveedores de Connect
+</div>
 
 Los runs que usan fuentes de datos de [Exa Connect](/es/docs/agent/connect/overview)
 facturan además cada llamada a un proveedor: por ejemplo,
@@ -103,7 +115,9 @@ pedido según la operación. Consulta el
 [precio de Connect](/es/docs/agent/connect/overview#pricing) para ver todas
 las tarifas de los proveedores.
 
-## Deep Search {#deep-search}
+<div id="deep-search">
+  ## Deep Search
+</div>
 
 Se configura con `type` en [`/search`](/es/docs/search/deep-search). Los resultados adicionales y los resúmenes de página generados por IA tienen el mismo costo que la búsqueda estándar.
 
@@ -113,7 +127,9 @@ Se configura con `type` en [`/search`](/es/docs/search/deep-search). Los resulta
 | `deep`           | $12 / 1k solicitudes                   | 4–15 segundos  | Razonamiento de varios pasos con salidas estructuradas |
 | `deep-reasoning` | $15 / 1k solicitudes                   | 12–40 segundos | Tareas de investigación más complejas                  |
 
-## Enterprise {#enterprise}
+<div id="enterprise">
+  ## Enterprise
+</div>
 
 Para alto volumen, conjuntos de datos personalizados y requisitos de seguridad más estrictos.
 
@@ -135,7 +151,9 @@ Para alto volumen, conjuntos de datos personalizados y requisitos de seguridad m
   Solicita un presupuesto según tu volumen y condiciones Enterprise
 </Card>
 
-## Glosario de costos {#cost-glossary}
+<div id="cost-glossary">
+  ## Glosario de costos
+</div>
 
 <AccordionGroup>
   <Accordion title="Solicitud">

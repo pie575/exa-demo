@@ -12,7 +12,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="Memasang fx, menambahkan Exa MCP server dengan /mcp add, dan menjalankan Exa web search secara langsung" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## Instalasi {#installation}
+<div id="installation">
+  ## Instalasi
+</div>
 
 <Steps>
   <Step title="Pasang fx">
@@ -40,7 +42,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   </Step>
 </Steps>
 
-## Konfigurasi secara manual {#configure-by-hand}
+<div id="configure-by-hand">
+  ## Konfigurasi secara manual
+</div>
 
 fx hanya membaca MCP server dari `~/.fx/mcp.json`, jadi Anda juga bisa menambahkan Exa langsung di sana:
 
@@ -79,7 +83,9 @@ Paket gratis sudah cukup untuk penggunaan ringan. Untuk menaikkan rate limit, bu
 
 `header_env` memetakan nama header ke sebuah variabel lingkungan, sehingga key tidak perlu disimpan di dalam file config.
 
-## Tool discovery {#tool-discovery}
+<div id="tool-discovery">
+  ## Tool discovery
+</div>
 
 fx menemukan tool MCP secara lazy: tool dari server tidak dimuat ke konteks model sampai ada giliran yang membutuhkannya, sehingga menambahkan Exa tidak menimbulkan biaya pada giliran yang tidak melakukan search di web.
 

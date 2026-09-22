@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa en Claude Code, Web y Desktop {#exa-in-claude-code-web-and-desktop}
+<div id="exa-in-claude-code-web-and-desktop">
+  # Exa en Claude Code, Web y Desktop
+</div>
 
 > Busca en la web y lee cualquier página con Exa directamente desde Claude
 
 Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para dar a Claude acceso a información actualizada de la web. Claude puede buscar en lenguaje natural, leer las páginas relevantes y usar esas fuentes mientras trabaja.
 
-## Instalar Exa {#install-exa}
+<div id="install-exa">
+  ## Instalar Exa
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -59,7 +65,9 @@ Instala Exa en Claude Code o conéctalo a Claude Web, Desktop y Cowork para dar 
 
 Ambas opciones habilitan Exa sin necesidad de editar un archivo de configuración de MCP.
 
-## Trabaja con lo que hay en la web ahora mismo {#work-with-whats-on-the-web-right-now}
+<div id="work-with-whats-on-the-web-right-now">
+  ## Trabaja con lo que hay en la web ahora mismo
+</div>
 
 En Claude Code, Exa puede buscar documentación actualizada, incidencias, registros de cambios y ejemplos reales mientras trabajas en tu repositorio. Esa misma integración aporta a Claude Web, Desktop y Cowork noticias recientes, investigación, información de empresas, detalles de productos y otras fuentes que quizá aún no estén en el contexto.
 
@@ -77,7 +85,9 @@ El mismo patrón funciona siempre que la respuesta dependa de fuentes web actual
 * «Lee la documentación actual de webhooks de Stripe y explica el comportamiento de reintentos recomendado».
 * «Busca las páginas oficiales de precios de estos productos y compara sus planes de nivel inicial».
 
-## Buscar, leer e investigar {#search-read-and-research}
+<div id="search-read-and-research">
+  ## Buscar, leer e investigar
+</div>
 
 La integración de Exa proporciona a Claude herramientas para buscar y leer en la web, que puede combinar a lo largo de una tarea de investigación más extensa.
 
@@ -95,7 +105,9 @@ La integración de Exa proporciona a Claude herramientas para buscar y leer en l
   </Card>
 </Columns>
 
-## Investigación sin salir de Claude {#research-without-leaving-claude}
+<div id="research-without-leaving-claude">
+  ## Investigación sin salir de Claude
+</div>
 
 Pide el resultado que quieres e indícale a Claude qué tipo de fuentes te interesan:
 
@@ -106,7 +118,9 @@ bases de datos vectoriales de código abierto. Usa fuentes primarias actualizada
 
 Claude puede usar Exa durante toda la conversación para encontrar y leer las fuentes que necesite la tarea. Úsalo para investigación técnica, análisis competitivo, mapeo de mercados, investigación de empresas o cualquier pregunta cuya respuesta esté repartida por la web.
 
-## Usa Exa en Cowork {#use-exa-in-cowork}
+<div id="use-exa-in-cowork">
+  ## Usa Exa en Cowork
+</div>
 
 El mismo conector está disponible en Cowork. Asigna a Claude una tarea que dependa de información externa y podrá buscar o leer páginas mientras trabaja con tus archivos y otras herramientas conectadas.
 
@@ -115,7 +129,9 @@ Revisa este informe competitivo, verifica con Exa cada afirmación sobre precios
 contrastándola con las páginas actuales del vendor y actualiza el documento con citas.
 ```
 
-## ¿Prefieres usar MCP directamente? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## ¿Prefieres usar MCP directamente?
+</div>
 
 Si estás configurando Claude manualmente o usas otro MCP client, puedes conectarte directamente al MCP server alojado de Exa:
 

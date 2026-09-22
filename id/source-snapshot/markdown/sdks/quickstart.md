@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Quickstart SDK {#sdk-quickstart}
+<div id="sdk-quickstart">
+  # Quickstart SDK
+</div>
 
 > Instal dan gunakan SDK Python dan JavaScript dari Exa
 
@@ -13,7 +17,9 @@ SDK resmi Exa. Cari di web, ambil page contents, dan dapatkan jawaban lengkap de
   Buat key di dashboard. Akun baru langsung mendapat credits gratis.
 </Card>
 
-## Instal {#install}
+<div id="install">
+  ## Instal
+</div>
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -35,7 +41,9 @@ SDK resmi Exa. Cari di web, ambil page contents, dan dapatkan jawaban lengkap de
 
 SDK Python memerlukan Python 3.9+.
 
-## Autentikasi {#authentication}
+<div id="authentication">
+  ## Autentikasi
+</div>
 
 Setel API key Anda sebagai variabel lingkungan:
 
@@ -53,7 +61,9 @@ Setel API key Anda sebagai variabel lingkungan:
   </Tab>
 </Tabs>
 
-## Memulai {#getting-started}
+<div id="getting-started">
+  ## Memulai
+</div>
 
 Inisialisasi client dan jalankan search pertama Anda:
 
@@ -96,7 +106,9 @@ Inisialisasi client dan jalankan search pertama Anda:
   berikan langsung secara inline: `Exa(api_key="your-api-key")` atau `new Exa("your-api-key")`.
 </Note>
 
-## Default yang direkomendasikan {#recommended-defaults}
+<div id="recommended-defaults">
+  ## Default yang direkomendasikan
+</div>
 
 | Keputusan                | Default yang direkomendasikan                                                      |
 | ------------------------ | ---------------------------------------------------------------------------------- |
@@ -115,7 +127,9 @@ Inisialisasi client dan jalankan search pertama Anda:
   | `get_contents` / `getContents` | Langsung pada permintaan, seperti pada `exa.get_contents(urls, highlights=True)`     |
 </Warning>
 
-## Search {#search}
+<div id="search">
+  ## Search
+</div>
 
 Search menemukan halaman yang relevan dan mengembalikan contents-nya dalam satu panggilan.
 
@@ -150,7 +164,9 @@ Filter, rentang tanggal, dan jumlah hasil:
   ```
 </CodeGroup>
 
-### Output schema {#output-schema}
+<div id="output-schema">
+  ### Output schema
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -204,7 +220,9 @@ Filter, rentang tanggal, dan jumlah hasil:
 
 Mode deep disarankan bila output memerlukan Research lintas beberapa searches. Gunakan `deep-lite` untuk Research ringan atau `deep` untuk search multi-langkah dengan synthesis yang lebih kuat. Lihat [panduan Search](/id/docs/search/quickstart) untuk opsi permintaan selengkapnya.
 
-## Contents {#contents}
+<div id="contents">
+  ## Contents
+</div>
 
 Ekstrak kutipan, teks penuh, atau ringkasan dari URL yang sudah Anda ketahui. Mulailah dengan kutipan, lalu
 tambahkan query untuk mengarahkannya ke informasi yang Anda butuhkan.
@@ -228,7 +246,9 @@ tambahkan query untuk mengarahkannya ke informasi yang Anda butuhkan.
 
 Gunakan teks penuh saat Anda memerlukan konteks yang lebih luas atau struktur dokumen. Lihat [panduan Contents](/id/docs/contents/quickstart) untuk bentuk output, kontrol kebaruan, dan penjelajahan subhalaman.
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 Dapatkan jawaban atas pertanyaan lengkap dengan sitasi.
 
@@ -253,7 +273,9 @@ Dapatkan jawaban atas pertanyaan lengkap dengan sitasi.
   ```
 </CodeGroup>
 
-## Async dan tipe {#async-and-types}
+<div id="async-and-types">
+  ## Async dan tipe
+</div>
 
 Python menyediakan `AsyncExa` untuk operasi async, dan SDK JavaScript menyertakan tipe TypeScript untuk
 setiap metode.
@@ -276,11 +298,15 @@ setiap metode.
   ```
 </CodeGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 Python: [kode sumber exa-py](https://github.com/exa-labs/exa-py) dan [package PyPI](https://pypi.org/project/exa-py/). JavaScript: [kode sumber exa-js](https://github.com/exa-labs/exa-js) dan [package npm](https://www.npmjs.com/package/exa-js).
 
-## Lanjutkan {#continue}
+<div id="continue">
+  ## Lanjutkan
+</div>
 
 <Columns cols={3}>
   <Card title="Panduan Search" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">

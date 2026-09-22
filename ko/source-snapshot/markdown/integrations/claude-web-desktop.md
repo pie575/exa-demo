@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Claude Code, Web, Desktop에서 Exa 사용하기 {#exa-in-claude-code-web-and-desktop}
+<div id="exa-in-claude-code-web-and-desktop">
+  # Claude Code, Web, Desktop에서 Exa 사용하기
+</div>
 
 > Claude에서 바로 Exa로 웹을 검색하고 모든 페이지를 읽어보세요
 
 Claude Code에 Exa를 설치하거나 Claude Web, Desktop, Cowork에 연결하면 Claude가 웹의 최신 정보를 활용할 수 있습니다. Claude는 자연어로 검색하고, 중요한 페이지를 읽고, 작업하는 동안 그 소스를 참고할 수 있습니다.
 
-## Exa 설치 {#install-exa}
+<div id="install-exa">
+  ## Exa 설치
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -59,7 +65,9 @@ Claude Code에 Exa를 설치하거나 Claude Web, Desktop, Cowork에 연결하�
 
 두 방법 모두 MCP 구성 파일을 직접 편집하지 않고도 Exa를 사용할 수 있게 해줍니다.
 
-## 지금 웹에 있는 정보로 작업하기 {#work-with-whats-on-the-web-right-now}
+<div id="work-with-whats-on-the-web-right-now">
+  ## 지금 웹에 있는 정보로 작업하기
+</div>
 
 Claude Code에서 Exa는 리포지토리 작업 중에도 최신 문서, 이슈, 변경 로그, 실제 사용 예제를 검색할 수 있습니다. 동일한 연동으로 Claude Web, Desktop, Cowork에서도 아직 컨텍스트에 없는 최신 뉴스, 리서치, 회사 정보, 제품 정보 등 다양한 소스를 활용할 수 있습니다.
 
@@ -77,7 +85,9 @@ Claude Code는 찾아낸 내용을 활용해 코드베이스를 수정할 수 �
 * &quot;현재 Stripe 웹훅 문서를 읽고 권장 재시도 동작을 설명해 줘.&quot;
 * &quot;이 제품들의 공식 가격 페이지를 찾아서 엔트리급 plan을 비교해 줘.&quot;
 
-## 검색, 읽기, 리서치 {#search-read-and-research}
+<div id="search-read-and-research">
+  ## 검색, 읽기, 리서치
+</div>
 
 Exa 연동은 Claude에 웹을 검색하고 읽는 도구를 제공하며, Claude는 이를 조합해 더 긴 리서치 작업을 수행할 수 있습니다.
 
@@ -95,7 +105,9 @@ Exa 연동은 Claude에 웹을 검색하고 읽는 도구를 제공하며, Claud
   </Card>
 </Columns>
 
-## Claude를 벗어나지 않고 리서치하기 {#research-without-leaving-claude}
+<div id="research-without-leaving-claude">
+  ## Claude를 벗어나지 않고 리서치하기
+</div>
 
 원하는 결과를 요청하고, 어떤 종류의 소스가 중요한지 Claude에게 알려주세요:
 
@@ -106,7 +118,9 @@ Exa 연동은 Claude에 웹을 검색하고 읽는 도구를 제공하며, Claud
 
 Claude는 대화 중 언제든 Exa를 활용해 작업에 필요한 소스를 찾고 읽을 수 있습니다. 기술 리서치, 경쟁사 분석, 시장 매핑, 기업 조사 등 답이 웹 곳곳에 흩어져 있는 질문에 활용해 보세요.
 
-## Cowork에서 Exa 사용하기 {#use-exa-in-cowork}
+<div id="use-exa-in-cowork">
+  ## Cowork에서 Exa 사용하기
+</div>
 
 동일한 커넥터를 Cowork에서도 사용할 수 있습니다. 외부 정보가 필요한 작업을 Claude에게 맡기면, 사용자의 파일 및 연결된 다른 도구를 활용하면서 웹을 검색하거나 페이지를 읽을 수 있습니다.
 
@@ -115,7 +129,9 @@ Claude는 대화 중 언제든 Exa를 활용해 작업에 필요한 소스를 �
 주장을 검증한 뒤, citations을 넣어 문서를 업데이트해 줘.
 ```
 
-## MCP를 직접 사용하고 싶으신가요? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## MCP를 직접 사용하고 싶으신가요?
+</div>
 
 Claude를 수동으로 설정하거나 다른 MCP 클라이언트를 사용한다면, Exa의 호스팅형 MCP 서버에 직접 연결할 수 있습니다:
 

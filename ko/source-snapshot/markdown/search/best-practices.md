@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일을 사용해 이용 가능한 모든 페이지를 확인하세요.
 
-# Search 모범 사례 {#search-best-practices}
+<div id="search-best-practices">
+  # Search 모범 사례
+</div>
 
 > 프로덕션 Search API 연동을 위해 검색 품질, latency, 컨텍스트, synthesis를 조정하세요.
 
 이 가이드는 이미 동작하는 [Search API 요청](/ko/docs/search/quickstart)이 있다고 가정하며, Exa가 권장하는 모범 사례에 따라 해당 요청을 개선하는 방법을 다룹니다.
 
-## 꼭 필요한 최소한의 요청부터 시작하세요 {#start-with-the-smallest-useful-request}
+<div id="start-with-the-smallest-useful-request">
+  ## 꼭 필요한 최소한의 요청부터 시작하세요
+</div>
 
 가장 좋은 출발점은 `highlights: true`를 지정한 자연어 질의입니다. Exa는 각 result의 발췌문 길이를 관련성에 맞춰 조절하므로, 따로 조정할 character budget이 없습니다:
 
@@ -52,7 +58,9 @@
 | `highlights.maxCharacters` | 애플리케이션에서 페이지당 고정된 발췌문 limit이 필요할 때         |
 | 도메인 또는 날짜 필터               | 해당 제약을 벗어난 result는 쓸 수 없을 때                |
 
-## Search vs. Deep Search {#search-vs-deep-search}
+<div id="search-vs-deep-search">
+  ## Search vs. Deep Search
+</div>
 
 표준 search는 질의에 해당하는 페이지를 찾아 순위를 매깁니다. Deep Search는 반복적으로 search하고, 찾은 내용을 검토하고, search를 다듬고, 근거 기반 결과를 synthesis하는 리서치 과정을 실행합니다.
 
@@ -64,7 +72,9 @@
 
 `outputSchema`를 사용할 때는 기본적으로 deep 모드를 권장합니다. 전체 안내와 예제는 [Deep Search 가이드](/ko/docs/search/deep-search)를 참고하세요.
 
-## 검색 품질 개선하기 {#improve-retrieval-quality}
+<div id="improve-retrieval-quality">
+  ## 검색 품질 개선하기
+</div>
 
 결과를 개선해야 할 때는 요청의 한 부분씩만 변경하세요.
 
@@ -115,7 +125,9 @@
 
 튜닝할 때는 대표적인 질의를 소규모 집합으로 유지하세요. 하나의 예시에 최적화하지 말고, 그 집합 전반에서 결과의 관련성과 후속 작업의 성공 여부를 비교하세요. 회귀를 재현할 수 있도록 `requestId`, `searchTime`, `costDollars`를 기록해 두세요.
 
-## latency와 컨텍스트 예산 관리 {#budget-latency-and-context}
+<div id="budget-latency-and-context">
+  ## latency와 컨텍스트 예산 관리
+</div>
 
 각 제어 항목은 서로 다른 자원을 소비합니다:
 
@@ -171,7 +183,9 @@
 
 Exa가 하나의 컨텍스트 예산을 전체 결과 집합에 배분하도록 하려면(양질의 소스에는 더 많이, 중복된 소스에는 더 적게) [Dynamic Highlights 리서치 프리뷰](/ko/docs/search/highlights#dynamic-highlights)를 참고하세요.
 
-## 일반적인 사용 사례별 팁 {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## 일반적인 사용 사례별 팁
+</div>
 
 | 필요한 경우                | 사용                                                                | 피할 것                             |
 | --------------------- | ----------------------------------------------------------------- | -------------------------------- |
@@ -184,7 +198,9 @@ Exa가 하나의 컨텍스트 예산을 전체 결과 집합에 배분하도록 
 | 소수 페이지에서 더 많은 컨텍스트    | highlights와 함께 search한 뒤 Contents 호출                              | 모든 result에 대한 전체 텍스트             |
 | 더 낮은 latency          | 간결한 content로 `fast` 또는 `instant` 측정                               | freshness나 synthesis 제어를 기본으로 추가 |
 
-## 다른 엔드포인트를 사용해야 하는 경우 {#when-to-use-another-endpoint}
+<div id="when-to-use-another-endpoint">
+  ## 다른 엔드포인트를 사용해야 하는 경우
+</div>
 
 작업의 성격이 달라지면 그에 맞는 다른 Exa 엔드포인트를 사용하세요:
 
@@ -194,7 +210,9 @@ Exa가 하나의 컨텍스트 예산을 전체 결과 집합에 배분하도록 
 | URL을 이미 알고 있는 경우                 | [Contents](/ko/docs/contents/quickstart) |
 | 정해진 일정에 따라 search 실행             | [Monitors](/ko/docs/monitors/quickstart) |
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="Search API reference" icon="square-terminal" href="/ko/docs/reference/search" cta="reference 열기" arrow="true">

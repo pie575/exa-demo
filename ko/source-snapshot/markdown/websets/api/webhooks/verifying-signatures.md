@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 본격적으로 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# signature 검증 {#verifying-signatures}
+<div id="verifying-signatures">
+  # signature 검증
+</div>
 
 > 요청이 Exa에서 온 것인지 확인할 수 있도록 웹훅 signature를 안전하게 검증하는 방법을 알아보세요
 
 Exa로부터 웹훅을 수신하면 데이터의 무결성과 진위를 보장하기 위해 해당 요청이 Exa에서 발송된 것인지 검증해야 합니다. Exa는 모든 웹훅 payload를 웹훅 엔드포인트별로 고유한 secret 키로 서명합니다.
 
-## 웹훅 signature 작동 방식 {#how-webhook-signatures-work}
+<div id="how-webhook-signatures-work">
+  ## 웹훅 signature 작동 방식
+</div>
 
 Exa는 HMAC SHA256을 사용해 웹훅 payload에 서명합니다. signature는 `Exa-Signature` header에 포함되며, 다음으로 구성됩니다:
 
@@ -22,7 +28,9 @@ signature 형식은 다음과 같습니다:
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-## Verification 과정 {#verification-process}
+<div id="verification-process">
+  ## Verification 과정
+</div>
 
 웹훅 signature를 verification하려면 다음 단계를 따르세요:
 
@@ -365,7 +373,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-## 보안 모범 사례 {#security-best-practices}
+<div id="security-best-practices">
+  ## 보안 모범 사례
+</div>
 
 다음 사례를 따르면 웹훅 구현을 안전하고 견고하게 유지할 수 있습니다:
 
@@ -385,9 +395,13 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
-### 유효하지 않은 서명 오류 {#invalid-signature-errors}
+<div id="invalid-signature-errors">
+  ### 유효하지 않은 서명 오류
+</div>
 
 서명 검증이 실패하는 경우:
 
@@ -396,7 +410,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 3. **header 파싱 확인**: header에서 timestamp와 signature를 올바르게 추출하고 있는지 확인하세요
 4. **인코딩 문제**: verification 과정 전반에 걸쳐 UTF-8 인코딩이 일관되게 적용되는지 확인하세요
 
-### 로컬에서 signature 테스트하기 {#testing-signatures-locally}
+<div id="testing-signatures-locally">
+  ### 로컬에서 signature 테스트하기
+</div>
 
 웹훅 secret과 샘플 payload를 사용해 서명 검증 로직을 테스트할 수 있습니다:
 
@@ -428,7 +444,9 @@ print(f"Test signature valid: {is_valid}")  # True가 출력되어야 함
 
 <br />
 
-## 다음 단계 {#whats-next}
+<div id="whats-next">
+  ## 다음 단계
+</div>
 
 * [웹훅 이벤트](/ko/docs/websets/api/events/types)와 그 payload 알아보기
 * [웹훅 재시도 및 모니터링](/ko/docs/websets/api/webhooks/attempts/list-webhook-attempts) 설정하기

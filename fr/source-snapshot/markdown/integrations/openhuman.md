@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# OpenHuman {#openhuman}
+<div id="openhuman">
+  # OpenHuman
+</div>
 
 > Offrez à l&#39;agent OpenHuman une recherche web en temps réel avec Exa, en mode managé ou avec votre propre API key Exa.
 
@@ -14,7 +18,9 @@
 | **OpenHuman Managed** | Aucune                 | Le backend d&#39;OpenHuman, propulsé par Exa. Sans API key.                       |
 | **Exa provider**      | Collez une API key Exa | Votre machine, directement vers `https://api.exa.ai` sur votre propre compte Exa. |
 
-## OpenHuman Managed {#openhuman-managed}
+<div id="openhuman-managed">
+  ## OpenHuman Managed
+</div>
 
 La recherche managée est l&#39;option par défaut. Choisissez **Simple** lors de la configuration initiale et l&#39;agent pourra effectuer des recherches sur le web immédiatement.
 
@@ -26,17 +32,23 @@ La recherche managée est l&#39;option par défaut. Choisissez **Simple** lors d
   **L&#39;option managée est le moyen le plus rapide d&#39;obtenir des résultats Exa.** Aucune clé à créer, stocker ou renouveler, aucun identifiant sur votre machine, et la recherche est facturée sur votre abonnement OpenHuman.
 </Tip>
 
-## Exa provider {#exa-provider}
+<div id="exa-provider">
+  ## Exa provider
+</div>
 
 Configurez Exa directement pour exécuter les recherches sur votre propre compte Exa et fournir à l&#39;agent les outils de recherche et de contenu de page d&#39;Exa.
 
-### Obtenir votre API key Exa {#get-your-exa-api-key}
+<div id="get-your-exa-api-key">
+  ### Obtenir votre API key Exa
+</div>
 
 <Card title="Obtenir votre API key Exa" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-### Ajouter Exa dans OpenHuman {#add-exa-in-openhuman}
+<div id="add-exa-in-openhuman">
+  ### Ajouter Exa dans OpenHuman
+</div>
 
 1. Ouvrez **Connections**, puis sélectionnez **Search engine** sous **API keys**.
 
@@ -60,7 +72,9 @@ Configurez Exa directement pour exécuter les recherches sur votre propre compte
   <img src="https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/configured.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=b3c8df585a06a31daa8bba6c2a516722" alt="Le panneau Search engine d'OpenHuman avec Exa sélectionné et marqué Configured" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-### Configuration {#configuration}
+<div id="configuration">
+  ### Configuration
+</div>
 
 Le panneau écrit dans le fichier `config.toml` d&#39;OpenHuman. Vous pouvez aussi définir les mêmes valeurs directement dans le fichier ou dans l&#39;environnement :
 
@@ -89,7 +103,9 @@ Le panneau écrit dans le fichier `config.toml` d&#39;OpenHuman. Vous pouvez aus
   </Tab>
 </Tabs>
 
-### Outils dont dispose l&#39;agent {#tools-the-agent-gets}
+<div id="tools-the-agent-gets">
+  ### Outils dont dispose l&#39;agent
+</div>
 
 | Outil              | Renvoie                                                                    |
 | ------------------ | -------------------------------------------------------------------------- |
@@ -99,7 +115,9 @@ Le panneau écrit dans le fichier `config.toml` d&#39;OpenHuman. Vous pouvez aus
 
 L&#39;agent définit les [paramètres de recherche](/fr/docs/search/quickstart) d&#39;Exa à chaque appel : de simples instructions suffisent donc à orienter le mode de recherche, les domaines, les dates et les catégories.
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa search indisponible : aucune API key configurée">
@@ -119,7 +137,9 @@ L&#39;agent définit les [paramètres de recherche](/fr/docs/search/quickstart) 
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={3}>
   <Card title="Documentation recherche web OpenHuman" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="Ouvrir le guide" arrow="true">

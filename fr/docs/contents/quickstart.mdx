@@ -14,7 +14,9 @@ Toutes les fonctionnalités de contenu sont également disponibles dans [Exa Sea
   Exa ajuste la taille des extraits de chaque résultat en fonction de sa relevance. Voir [Highlights](/fr/docs/search/highlights).
 </Tip>
 
-## Effectuez votre première requête {#make-your-first-request}
+<div id="make-your-first-request">
+  ## Effectuez votre première requête
+</div>
 
 Transmettez une ou plusieurs URL ou identifiants de document et demandez des highlights pour les parties pertinentes pour votre tâche. Dans les requêtes HTTP, indiquez-les dans `ids` :
 
@@ -240,7 +242,9 @@ Chaque item de `results` contient les métadonnées de la page ainsi que la vue 
 
 Choisissez une seule vue de contenu par requête. Si vous demandez à la fois les highlights, le texte et le résumé, chaque vue est renvoyée et facturée séparément.
 
-## Fraîcheur du contenu {#content-freshness}
+<div id="content-freshness">
+  ## Fraîcheur du contenu
+</div>
 
 `maxAgeHours` contrôle le degré de fraîcheur exigé du contenu de page extrait.
 
@@ -265,7 +269,9 @@ La plupart des requêtes devraient omettre ce field. Définissez-le lorsqu&#39;u
   | `"preferred"`               | Pas d&#39;équivalent direct ; utilisez une valeur faible comme `maxAgeHours: 1` |
 </Accordion>
 
-## Explorer les sous-pages {#crawl-subpages}
+<div id="crawl-subpages">
+  ## Explorer les sous-pages
+</div>
 
 Définissez `subpages` pour suivre les liens à partir de chaque URL de départ. Ajoutez `subpageTarget` lorsque vous souhaitez qu&#39;Exa privilégie certaines sections d&#39;un site :
 
@@ -303,13 +309,17 @@ Définissez `subpages` pour suivre les liens à partir de chaque URL de départ.
   ```
 </CodeGroup>
 
-## Images et favicons {#images-and-favicons}
+<div id="images-and-favicons">
+  ## Images et favicons
+</div>
 
 Définissez `extras.imageLinks` avec le nombre d&#39;URL d&#39;images souhaité pour chaque page. Les résultats incluent également
 le `favicon` du site ainsi qu&#39;une URL `image` représentative, lorsqu&#39;elle est disponible. Sur `/search`, cette option
 se situe dans `contents.extras.imageLinks`.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="API reference" icon="square-terminal" href="/fr/docs/reference/get-contents" cta="Ouvrir la reference" arrow="true">

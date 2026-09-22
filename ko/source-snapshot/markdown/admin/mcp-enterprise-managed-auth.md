@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Claude용 Enterprise Managed Auth {#enterprise-managed-auth-for-claude}
+<div id="enterprise-managed-auth-for-claude">
+  # Claude용 Enterprise Managed Auth
+</div>
 
 > Enterprise Managed Auth(EMA)를 설정하면 Okta Cross App Access(XAA)를 비롯한 identity provider를 통해 Claude가 Exa MCP에 연결됩니다.
 
@@ -11,13 +15,17 @@
 
 접근 권한은 디렉터리를 따릅니다. Okta에서 사용자를 프로비저닝 해제하면 Claude를 통한 해당 사용자의 Exa 접근도 함께 중단됩니다. EMA는 MCP [enterprise managed authorization 확장](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)입니다.
 
-## 시작하기 전에 {#before-you-start}
+<div id="before-you-start">
+  ## 시작하기 전에
+</div>
 
 * identity provider가 연결된 Claude Team 또는 Enterprise organization과 이에 대한 관리자 권한.
 * SSO와 directory sync가 설정된 Exa **organization**(개인 team이 아님)과 이에 대한 관리자 권한.
 * identity provider로 Okta를 사용하며, Okta Identity Engine에서 [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm)가 활성화되어 있고, 해당 테넌트에 대한 Super Admin 권한. 현재 지원되는 identity provider는 Okta뿐입니다.
 
-## 필요한 Exa 값 {#exa-values-youll-need}
+<div id="exa-values-youll-need">
+  ## 필요한 Exa 값
+</div>
 
 | Field                   | 값                        |
 | ----------------------- | ------------------------ |
@@ -25,7 +33,9 @@
 | Resource / MCP 서버 URL   | `https://mcp.exa.ai/mcp` |
 | Scope                   | `mcp:tools`              |
 
-## EMA 설정하기 {#set-up-ema}
+<div id="set-up-ema">
+  ## EMA 설정하기
+</div>
 
 <Steps>
   <Step title="Exa에 member 프로비저닝하기">
@@ -57,12 +67,16 @@ member는 다음 sign-in 시 커넥터를 사용할 수 있게 됩니다. 관리
   Claude를 통한 사용량은 member의 Exa team에 해당 team의 plan과 속도 제한에 따라 청구되며, 이는 해당 team에서 실행하는 다른 모든 작업과 동일합니다.
 </Note>
 
-## 접근 권한 취소 {#revoking-access}
+<div id="revoking-access">
+  ## 접근 권한 취소
+</div>
 
 * **member 한 명:** Okta에서 해당 member를 제거하거나 Exa의 team에서 제거하세요. 둘 중 하나만 해도 Claude를 통한 접근이 종료됩니다.
 * **전체:** Organization 페이지에서 issuer를 제거하거나 Claude에서 관리형 인가를 끄세요. 새로운 연결은 즉시 차단되고, 이미 열려 있는 세션도 잠시 후 종료됩니다. issuer는 언제든지 다시 등록할 수 있습니다.
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="일부 member에게만 작동하고 다른 member에게는 작동하지 않는 경우">

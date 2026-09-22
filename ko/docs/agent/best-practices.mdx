@@ -7,7 +7,9 @@ keywords: ["agent api", "리스트 구축", "enrichment", "structured output", "
 
 [Exa Agent quickstart](/ko/docs/agent/quickstart)를 마친 뒤 이 가이드를 참고해 질의 품질을 높이고, output을 구조화하며, 실행 시간과 비용을 제어하세요. 전체 요청 예시는 [Agent examples](/ko/docs/agent/examples)에서 확인해 보세요.
 
-## 핵심 원칙 {#core-principles}
+<div id="core-principles">
+  ## 핵심 원칙
+</div>
 
 `query`는 작업 명세서라고 생각하세요. Agent가 무엇을 찾아야 하는지, 작업의 scope, 필요한 evidence, 그리고 완료된 결과가 어떤 형태여야 하는지를 명시하세요.
 
@@ -49,7 +51,9 @@ keywords: ["agent api", "리스트 구축", "enrichment", "structured output", "
 
 행 데이터, exclusions, response 형태는 `query`에 넣지 말고 각각의 전용 field에 두세요.
 
-## 리스트 구축 및 enrichment 질의 작성하기 {#writing-list-building-and-enrichment-queries}
+<div id="writing-list-building-and-enrichment-queries">
+  ## 리스트 구축 및 enrichment 질의 작성하기
+</div>
 
 리스트 구축에서는 엔터티, 목표 개수, 자격 criteria, exclusions, evidence 기준을 정의하세요. enrichment에서는 기존 레코드를 `input.data`에 넣고 Agent가 추가로 수행할 리서치만 설명하세요.
 
@@ -71,7 +75,9 @@ keywords: ["agent api", "리스트 구축", "enrichment", "structured output", "
 
 디스커버리 요청 예시는 [Find all GTM members](/ko/docs/agent/examples#find-all-code)를, 이에 대응하는 행 enrichment 패턴은 [Enrich input rows](/ko/docs/agent/examples#enrich-input-rows-code)를 참고하세요.
 
-## 비동기 실행 처리하기 {#handle-asynchronous-runs}
+<div id="handle-asynchronous-runs">
+  ## 비동기 실행 처리하기
+</div>
 
 Agent 실행은 검색하고, 읽고, 추론하는 동안 수 초에서 수 분까지 걸릴 수 있습니다. 애플리케이션 요청을 열어 둔 채 기다리지 말고 수명 주기에 맞춰 설계하세요.
 
@@ -95,7 +101,9 @@ batch 작업의 경우, concurrency를 추정하거나 Agent를 동기 UI 흐름
 
 Zero Data Retention을 사용하는 team은 라이브 스트리밍을 수신하거나 보존 기간 내에 폴링해야 합니다. `previousRunId`와 Connect `dataSources`는 사용할 수 없습니다. [Zero Data Retention](/ko/docs/admin/security/zero-data-retention)을 참고하세요.
 
-## structured output을 위한 커스텀 JSON schema 작성하기 {#write-custom-json-schemas-for-structured-output}
+<div id="write-custom-json-schemas-for-structured-output">
+  ## structured output을 위한 커스텀 JSON schema 작성하기
+</div>
 
 다운스트림 코드에서 기계가 읽을 수 있는 field, 정규화된 값, 표의 행, enrichment 레코드가 필요할 때 `outputSchema`를 사용하세요. 서술형 답변으로 충분하다면 이를 생략하고 `output.text`를 읽으면 됩니다. structured output은 형식을 맞추는 작업이 추가되고 latency가 늘어날 수 있습니다.
 
@@ -145,7 +153,9 @@ Exa에 내장된 citations나 confidence를 schema에서 중복으로 정의하�
 
 [structured Agent 예시](/ko/docs/agent/examples)를 살펴보며 리스트 구축, KYB, 채용 공고, exclusions, 이어지는 실행에 쓰이는 schema를 비교해 보세요.
 
-## Agent vs Search {#agent-vs-search}
+<div id="agent-vs-search">
+  ## Agent vs Search
+</div>
 
 | 필요한 작업                           | 시작점                                     |
 | -------------------------------- | --------------------------------------- |
@@ -155,7 +165,9 @@ Exa에 내장된 citations나 confidence를 schema에서 중복으로 정의하�
 
 여러 단계의 검색, 엔터티별 verification, 또는 이미 확보한 records에 대한 enrichment가 필요하다면 Agent를 사용하세요. 페이지를 빠르게 확보하고 나머지 추론은 애플리케이션에서 직접 처리한다면 Search를 사용하세요.
 
-## 일반적인 사용 사례별 팁 {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## 일반적인 사용 사례별 팁
+</div>
 
 | 필요한 경우                 | 사용                                                               | 피해야 할 것                                |
 | ---------------------- | ---------------------------------------------------------------- | -------------------------------------- |
@@ -167,7 +179,9 @@ Exa에 내장된 citations나 confidence를 schema에서 중복으로 정의하�
 | 예측 가능한 요청당 비용          | 고정된 `effort`                                                     | 예산 없이 `auto` 또는 `max` 사용               |
 | latency와 비용보다 완전성 우선   | `xhigh` 또는 `max`                                                 | 질의를 다듬기 전에 effort부터 올리기                |
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="Agent 퀵스타트" icon="bot" href="/ko/docs/agent/quickstart" cta="가이드 열기" arrow="true">

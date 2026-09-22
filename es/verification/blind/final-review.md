@@ -1,4 +1,6 @@
-# Revisión visual ciega final {#final-blind-visual-review}
+<div id="final-blind-visual-review">
+  # Revisión visual ciega final
+</div>
 
 Se revisaron los cuatro pares A/B finales tras las correcciones de los controles
 inferiores nativos y del espaciado de las imágenes. No se consultó la clave de identidad A/B.

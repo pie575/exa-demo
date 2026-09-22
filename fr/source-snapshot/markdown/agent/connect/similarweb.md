@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Similarweb {#similarweb}
+<div id="similarweb">
+  # Similarweb
+</div>
 
 > Obtenez des estimations de trafic des sites web, des classements mondiaux et découvrez les concurrents.
 
@@ -16,14 +20,18 @@ Attachez `similarweb` à un run [Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Similarweb en parallèle d&#39;Exa web search.
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * Comparer le trafic web et l&#39;engagement d&#39;une entreprise à ceux de ses concurrents directs.
 * Cartographier les concurrents d&#39;un domaine et les sites dont l&#39;audience se recoupe.
 * Évaluer la taille des marchés et filtrer les entreprises selon leur empreinte numérique.
 * Enrichir la recherche sur les entreprises et les catégories avec des données comportementales réelles.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -31,7 +39,9 @@ Utilisez cette valeur dans `dataSources` :
 similarweb
 ```
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 Similarweb facture en crédits de données à `$0.30 / credit`, et chaque appel est facturé
 selon les crédits que Similarweb déclare pour celui-ci. Les crédits varient selon les données renvoyées —
@@ -57,7 +67,9 @@ Les appels qui ne renvoient aucune donnée (domaine inconnu ou à faible trafic,
 volume de recherche) sont gratuits. `numResults` et `months` déterminent le nombre de points de données qui vous
 sont facturés : limitez-les au strict nécessaire pour la tâche.
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Trouvez 10 entreprises SaaS B2B à forte croissance ainsi que leur trafic web estimé.
 
@@ -151,12 +163,16 @@ Trouvez 10 entreprises SaaS B2B à forte croissance ainsi que leur trafic web es
   ```
 </CodeGroup>
 
-## S&#39;associe bien avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## S&#39;associe bien avec
+</div>
 
 * [Fiber.ai](/fr/docs/agent/connect/fiber) : transformez les concurrents identifiés en records d&#39;entreprises enrichis.
 * [Affiliate.com](/fr/docs/agent/connect/affiliatecom) : évaluez la portée d&#39;un marchand avant de recommander ses produits.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

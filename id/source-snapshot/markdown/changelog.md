@@ -1,14 +1,20 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Changelog {#changelog}
+<div id="changelog">
+  # Changelog
+</div>
 
 > Pembaruan produk dan pengumuman dari Exa.
 
 <Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
-  ## Dynamic Highlights (pratinjau riset) {#dynamic-highlights-research-preview}
+  <div id="dynamic-highlights-research-preview">
+    ## Dynamic Highlights (pratinjau riset)
+  </div>
 
   Dynamic Highlights memilih kutipan dari keseluruhan kumpulan hasil, bukan memperlakukan setiap halaman secara terpisah. Fitur ini memberikan porsi anggaran konteks bersama yang lebih besar kepada sources yang bermanfaat, dan porsi lebih kecil kepada sources yang hanya mengulang informasi yang sudah dikembalikan.
 
@@ -21,7 +27,9 @@
 </Update>
 
 <Update label="July 23, 2026" rss={{ title: "Publication research" }}>
-  ## Research publikasi {#publication-research}
+  <div id="publication-research">
+    ## Research publikasi
+  </div>
 
   Kami memperluas dan meningkatkan Research atas publikasi akademik secara signifikan.
 
@@ -37,7 +45,9 @@
 </Update>
 
 <Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
-  ## Exa Agent dan Exa Connect di MCP {#exa-agent-and-exa-connect-in-mcp}
+  <div id="exa-agent-and-exa-connect-in-mcp">
+    ## Exa Agent dan Exa Connect di MCP
+  </div>
 
   Exa Agent kini tersedia di dalam Exa MCP. Gunakan dari Claude, Cursor, atau MCP client lainnya saat tugas membutuhkan lebih dari sekadar satu panggilan search.
 
@@ -49,7 +59,9 @@
 </Update>
 
 <Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
-  ## Memperkenalkan Exa Connect {#introducing-exa-connect}
+  <div id="introducing-exa-connect">
+    ## Memperkenalkan Exa Connect
+  </div>
 
   Exa Connect memberi Exa Agent akses langsung ke data publik dan privat di seluruh dunia. Saat diluncurkan, Exa Connect hadir dengan Similarweb, Fiber.ai, Baselayer, Financial Datasets, Affiliate.com, Particle, Jinko, dan Additional Partners. Anda meng-attach-nya melalui `dataSources` pada `POST /agent/runs`.
 
@@ -57,7 +69,9 @@
 </Update>
 
 <Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
-  ## Memperkenalkan Exa Agent {#introducing-exa-agent}
+  <div id="introducing-exa-agent">
+    ## Memperkenalkan Exa Agent
+  </div>
 
   Kami merilis kelas baru agent Research web mutakhir yang dapat diakses melalui API.
 
@@ -67,7 +81,9 @@
 </Update>
 
 <Update label="April 1, 2026" rss={{ title: "Pemberitahuan Penghentian API" }}>
-  ## Pemberitahuan Penghentian API {#api-deprecation-notice}
+  <div id="api-deprecation-notice">
+    ## Pemberitahuan Penghentian API
+  </div>
 
   Kami menghentikan beberapa item lama dari Exa API:
 
@@ -79,7 +95,9 @@
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "Memperkenalkan Exa Monitors" }}>
-  ## Memperkenalkan Exa Monitors {#introducing-exa-monitors}
+  <div id="introducing-exa-monitors">
+    ## Memperkenalkan Exa Monitors
+  </div>
 
   Monitors menjalankan Exa search sesuai jadwal dan mengirimkan hasilnya ke webhook Anda, dengan deduplikasi terhadap run sebelumnya sehingga Anda hanya menerima konten baru.
 
@@ -91,7 +109,9 @@
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Pembaruan Besar Exa Deep" }}>
-  ## Pembaruan Besar Exa Deep {#exa-deep-revamp}
+  <div id="exa-deep-revamp">
+    ## Pembaruan Besar Exa Deep
+  </div>
 
   Exa Deep kini lebih cepat, lebih murah, dan mendukung output terstruktur dengan grounding tingkat field.
 
@@ -105,7 +125,9 @@
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Pembaruan Harga Exa" }}>
-  ## Pembaruan Harga Exa {#exa-pricing-update}
+  <div id="exa-pricing-update">
+    ## Pembaruan Harga Exa
+  </div>
 
   Kami menyederhanakan dan menurunkan harga. Contents untuk 10 hasil search pertama kini disertakan gratis, dan harga baru berlaku otomatis tanpa perlu tindakan apa pun.
 
@@ -118,7 +140,9 @@
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "Memperkenalkan Exa Instant Search" }}>
-  ## Memperkenalkan Exa Instant Search {#introducing-exa-instant-search}
+  <div id="introducing-exa-instant-search">
+    ## Memperkenalkan Exa Instant Search
+  </div>
 
   Exa Instant adalah search type tercepat kami, memadukan kualitas neural search yang lebih baik dengan latency di bawah 150 ms. Aktifkan dengan `type="instant"`.
 
@@ -129,7 +153,9 @@
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "Pembaruan highlights, konten freshness, dan MCP" }}>
-  ## Pembaruan highlights, konten freshness, dan MCP {#highlights-content-freshness-and-mcp-updates}
+  <div id="highlights-content-freshness-and-mcp-updates">
+    ## Pembaruan highlights, konten freshness, dan MCP
+  </div>
 
   Tiga peningkatan pada extraction dan akses konten:
 
@@ -141,7 +167,9 @@
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Memperkenalkan Exa Company Search" }}>
-  ## Memperkenalkan Exa Company Search {#introducing-exa-company-search}
+  <div id="introducing-exa-company-search">
+    ## Memperkenalkan Exa Company Search
+  </div>
 
   Company search kini menggunakan model retrieval hasil fine-tuning dan pipeline pencocokan entitas. Gunakan `type="auto"`, `category="company"`.
 
@@ -153,7 +181,9 @@
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Memperkenalkan Exa People Search" }}>
-  ## Memperkenalkan Exa People Search {#introducing-exa-people-search}
+  <div id="introducing-exa-people-search">
+    ## Memperkenalkan Exa People Search
+  </div>
 
   People search kini mencakup lebih dari 1 miliar profil publik melalui sistem retrieval hibrida. Kategori `linkedin` digantikan oleh kategori baru `people`.
 
@@ -165,7 +195,9 @@
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "JS SDK: kutipan dipulihkan" }}>
-  ## JS SDK: kutipan dipulihkan {#js-sdk-highlights-restored}
+  <div id="js-sdk-highlights-restored">
+    ## JS SDK: kutipan dipulihkan
+  </div>
 
   Kutipan kembali hadir di SDK JavaScript mulai `exa-js` v2.0.11, mengembalikan kalimat-kalimat penting beserta relevance score. Berikan `highlights: true` atau `highlights: { maxCharacters, query }` pada pemanggilan search dan contents.
 
@@ -173,7 +205,9 @@
 </Update>
 
 <Update label="November 20, 2025" rss={{ title: "Search Type Deep Baru" }}>
-  ## Search Type Deep Baru {#new-deep-search-type}
+  <div id="new-deep-search-type">
+    ## Search Type Deep Baru
+  </div>
 
   Exa Deep menemukan hasil yang lebih baik dengan menjalankan beberapa search sekaligus dan mengembalikan konteks berkualitas tinggi untuk setiap hasil. Aktifkan dengan `type="deep"`.
 
@@ -185,7 +219,9 @@
 </Update>
 
 <Update label="November 5, 2025" rss={{ title: "Penambahan Pemfilteran Bahasa" }}>
-  ## Penambahan Pemfilteran Bahasa {#added-language-filtering}
+  <div id="added-language-filtering">
+    ## Penambahan Pemfilteran Bahasa
+  </div>
 
   Exa kini mendeteksi bahasa query Anda dan hanya mengembalikan hasil dalam bahasa tersebut. Aktif secara default untuk semua pengguna, tanpa perlu pengaturan apa pun.
 
@@ -193,7 +229,9 @@
 </Update>
 
 <Update label="October 28, 2025" rss={{ title: "Perubahan SDK: kutipan dihapus dan contents dikembalikan secara default" }}>
-  ## Perubahan SDK: kutipan dihapus dan contents dikembalikan secara default {#sdk-changes-highlights-removed-and-contents-returned-by-default}
+  <div id="sdk-changes-highlights-removed-and-contents-returned-by-default">
+    ## Perubahan SDK: kutipan dihapus dan contents dikembalikan secara default
+  </div>
 
   Versi mayor SDK dengan perubahan yang merusak kompatibilitas:
 
@@ -205,7 +243,9 @@
 </Update>
 
 <Update label="August 4, 2025" rss={{ title: "Dukungan Filter Path Domain" }}>
-  ## Dukungan Filter Path Domain {#domain-path-filter-support}
+  <div id="domain-path-filter-support">
+    ## Dukungan Filter Path Domain
+  </div>
 
   `includeDomains` dan `excludeDomains` kini mendukung penargetan yang lebih presisi:
 
@@ -218,7 +258,9 @@
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "Dukungan Filter Geolokasi" }}>
-  ## Dukungan Filter Geolokasi {#geolocation-filter-support}
+  <div id="geolocation-filter-support">
+    ## Dukungan Filter Geolokasi
+  </div>
 
   Parameter baru `userLocation` mengarahkan hasil ke wilayah pengguna, diberikan sebagai kode negara [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (mis. `"us"`, `"fr"`). Berguna untuk aplikasi multiregional, konten berbahasa regional, dan penemuan lokal.
 
@@ -226,7 +268,9 @@
 </Update>
 
 <Update label="July 29, 2025" rss={{ title: "Search Type Fast Baru" }}>
-  ## Search Type Fast Baru {#new-fast-search-type}
+  <div id="new-fast-search-type">
+    ## Search Type Fast Baru
+  </div>
 
   Exa Fast menggunakan model pencarian yang dirampingkan dengan latency p50 di bawah 425ms. Aktifkan dengan `type="fast"`.
 
@@ -238,7 +282,9 @@
 </Update>
 
 <Update label="July 21, 2025" rss={{ title: "Penghentian Score pada Auto Search" }}>
-  ## Penghentian Score pada Auto Search {#score-deprecation-in-auto-search}
+  <div id="score-deprecation-in-auto-search">
+    ## Penghentian Score pada Auto Search
+  </div>
 
   Arsitektur Auto search yang baru tidak lagi dapat menghasilkan relevance score yang bermakna, sehingga field `score` dihapus dari hasil Auto search.
 
@@ -249,7 +295,9 @@
 </Update>
 
 <Update label="June 23, 2025" rss={{ title: "Contents Markdown sebagai Default" }}>
-  ## Contents Markdown sebagai Default {#markdown-contents-as-default}
+  <div id="markdown-contents-as-default">
+    ## Contents Markdown sebagai Default
+  </div>
 
   Semua endpoint kini mengembalikan markdown yang bersih secara default, yang lebih cocok untuk LLM, RAG, dan pemrosesan teks pada umumnya. Tidak ada tindakan yang diperlukan.
 
@@ -262,7 +310,9 @@
 </Update>
 
 <Update label="June 7, 2025" rss={{ title: "Opsi Livecrawl Baru: Preferred" }}>
-  ## Opsi Livecrawl Baru: Preferred {#new-livecrawl-option-preferred}
+  <div id="new-livecrawl-option-preferred">
+    ## Opsi Livecrawl Baru: Preferred
+  </div>
 
   <Warning>
     Entri historis: parameter string `livecrawl` kini sudah usang. Untuk integrasi baru, gunakan `maxAgeHours` bersama `livecrawlTimeout`. Lihat [Content Freshness](/id/docs/contents/quickstart#content-freshness).
@@ -274,7 +324,9 @@
 </Update>
 
 <Update label="May 22, 2025" rss={{ title: "Perubahan Status Endpoint Contents" }}>
-  ## Perubahan Status Endpoint Contents {#contents-endpoint-status-changes}
+  <div id="contents-endpoint-status-changes">
+    ## Perubahan Status Endpoint Contents
+  </div>
 
   `/contents` kini mengembalikan field `statuses` per URL alih-alih satu error HTTP, sehingga Anda dapat menangani hasil setiap URL secara terpisah. Endpoint ini hanya mengembalikan error untuk masalah internal.
 
@@ -285,7 +337,9 @@
 </Update>
 
 <Update label="December 11, 2024" rss={{ title: "Auto Search sebagai Default" }}>
-  ## Auto search sebagai Default {#auto-search-as-default}
+  <div id="auto-search-as-default">
+    ## Auto search sebagai Default
+  </div>
 
   Auto search kini menjadi default, secara otomatis mengarahkan setiap query ke metode pencarian terbaik. Tidak ada tindakan yang diperlukan; setel `type="neural"` untuk mempertahankan perilaku sebelumnya.
 

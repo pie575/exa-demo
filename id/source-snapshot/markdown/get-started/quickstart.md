@@ -1,14 +1,20 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Quickstart developer {#developer-quickstart}
+<div id="developer-quickstart">
+  # Quickstart developer
+</div>
 
 > Dapatkan API key, lalu gunakan Exa dari kode Anda atau dari agent Anda.
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  ## 1. Dapatkan API key {#1-get-an-api-key}
+  <div id="1-get-an-api-key">
+    ## 1. Dapatkan API key
+  </div>
 
   <Steps>
     <Step title="Kunjungi Exa Dashboard">
@@ -36,7 +42,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 2. Pilih cara Anda menggunakan Exa {#2-choose-how-youll-use-exa}
+  <div id="2-choose-how-youll-use-exa">
+    ## 2. Pilih cara Anda menggunakan Exa
+  </div>
 
   Ada dua cara memakai Exa di aplikasi Anda: memanggil API dari kode Anda sendiri, atau menghubungkan agent yang sudah Anda pakai.
 
@@ -63,7 +71,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 3. Instal SDK {#3-install-an-sdk}
+  <div id="3-install-an-sdk">
+    ## 3. Instal SDK
+  </div>
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -77,7 +87,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 4. Kirim permintaan pertama Anda {#4-make-your-first-request}
+  <div id="4-make-your-first-request">
+    ## 4. Kirim permintaan pertama Anda
+  </div>
 
   <CodeGroup>
     ```python Python theme={null}
@@ -120,7 +132,9 @@
     ```
   </CodeGroup>
 
-  ## Langkah selanjutnya {#next-steps}
+  <div id="next-steps">
+    ## Langkah selanjutnya
+  </div>
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/id/docs/search/quickstart" cta="Baca panduan" arrow="true">

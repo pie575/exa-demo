@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 실행 중인 search 취소 {#cancel-a-running-search}
+<div id="cancel-a-running-search">
+  # 실행 중인 search 취소
+</div>
 
 > 현재 실행 중인 Search를 취소합니다.
 
 `websets/:webset/cancel` 엔드포인트를 사용하면 모든 search를 한 번에 취소할 수 있습니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0

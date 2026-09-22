@@ -33,7 +33,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Gunakan Exa Search untuk catatan kerentanan, advisory vendor, dan threat research dari sources yang memang sudah dibaca Team keamanan.
 
-## Included {#included}
+<div id="included">
+  ## Included
+</div>
 
 * Catatan kerentanan CVE dan GHSA
 * Advisory keamanan vendor dan catatan patch
@@ -41,40 +43,54 @@ Gunakan Exa Search untuk catatan kerentanan, advisory vendor, dan threat researc
 * Trust pages, daftar subprosesor, dan dokumentasi kepatuhan
 * Blog keamanan, presentasi konferensi, dan research
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Triase kerentanan dan penilaian eksposur
 * Threat intelligence dan pelacakan pelaku ancaman
 * Risiko vendor dan tinjauan keamanan pihak ketiga
 * Pemantauan dan pemberian peringatan keamanan
 
-## Contoh kueri {#example-queries}
+<div id="example-queries">
+  ## Contoh kueri
+</div>
 
-### Melakukan triase kelas kerentanan {#triage-a-vulnerability-class}
+<div id="triage-a-vulnerability-class">
+  ### Melakukan triase kelas kerentanan
+</div>
 
 Sebutkan produk, rentang versi, dan tingkat keparahannya.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-### Menemukan advisory vendor {#find-vendor-advisories}
+<div id="find-vendor-advisories">
+  ### Menemukan advisory vendor
+</div>
 
 Jelaskan status eksploitasi dan kelas produknya, bukan satu ID CVE tertentu.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-### Meninjau postur keamanan vendor {#review-a-vendors-security-posture}
+<div id="review-a-vendors-security-posture">
+  ### Meninjau postur keamanan vendor
+</div>
 
 Sebutkan jenis dokumen dan kelas vendor.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-### Research pelaku ancaman {#research-an-adversary}
+<div id="research-an-adversary">
+  ### Research pelaku ancaman
+</div>
 
 Sebutkan nama grup atau kampanyenya, beserta teknik atau sektor yang ingin Anda ketahui.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -115,7 +131,9 @@ Sebutkan nama grup atau kampanyenya, beserta teknik atau sektor yang ingin Anda 
   ```
 </CodeGroup>
 
-## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research di berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan produk, kriteria ancaman, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi schema beserta sitasi.
 

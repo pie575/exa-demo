@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Highlights {#highlights}
+<div id="highlights">
+  # Highlights
+</div>
 
 > Renvoyez des extraits pertinents pour la requête à partir des résultats Exa Search, tout en maîtrisant la taille du contexte et la latence.
 
@@ -11,7 +15,9 @@ Les highlights renvoient, pour chaque résultat, des passages extraits de la pag
 
 Chaque résultat renvoie les passages sélectionnés dans `results[].highlights`.
 
-## Pourquoi des highlights plutôt que le texte intégral {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## Pourquoi des highlights plutôt que le texte intégral
+</div>
 
 Les highlights proviennent du modèle d&#39;extraction développé en interne par Exa. À chaque requête, le modèle analyse chaque result au regard de votre requête et ne renvoie que les passages qui y répondent. Vous ne conservez qu&#39;une fraction des jetons du texte intégral d&#39;une page, pour une qualité de réponse en aval équivalente, voire supérieure.
 
@@ -29,7 +35,9 @@ Ces économies pèsent surtout dans les loops d&#39;agent, où chaque série de 
   pour la méthodologie et l&#39;ensemble des résultats.
 </Tip>
 
-## Ajouter des highlights à Search {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## Ajouter des highlights à Search
+</div>
 
 Utilisez `highlights: true` dans `contents` : c&#39;est la valeur par défaut recommandée. Exa détermine la quantité de texte à renvoyer pour chaque résultat en fonction de sa relevance par rapport à votre requête, il n&#39;y a donc aucun budget de caractères à ajuster. Ne définissez `maxCharacters` que si votre application exige une limite fixe par page.
 
@@ -61,7 +69,9 @@ Utilisez `highlights: true` dans `contents` : c&#39;est la valeur par défaut re
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights ajuste la quantité de texte sélectionnée dans chaque résultat en fonction de ce qui est le plus utile pour votre requête. La fonctionnalité peut extraire davantage des sources solides et moins des sources répétitives ou hors sujet, ce qui réduit le nombre total de jetons retournés.
 
@@ -132,7 +142,9 @@ Activez la fonctionnalité avec `dynamic: true` :
   structure `results[].highlights` que les highlights classiques.
 </Info>
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="Guide de la Search API" icon="search" href="/fr/docs/search/quickstart" cta="Ouvrir le guide" arrow="true">

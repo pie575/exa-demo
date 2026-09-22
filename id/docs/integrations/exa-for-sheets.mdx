@@ -15,7 +15,9 @@ Add-on ini menyediakan dua cara kerja:
 * **Exa Agent** untuk tabel utuh dan tugas lintas sel
 * **`=EXA(...)`** untuk satu jawaban dalam satu sel
 
-## Pasang {#install}
+<div id="install">
+  ## Pasang
+</div>
 
 <Steps>
   <Step title="Pasang add-on">
@@ -43,7 +45,9 @@ Add-on ini menyediakan dua cara kerja:
   </Step>
 </Steps>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Exa Agent memungkinkan Anda menggunakan Exa di banyak sel sekaligus dalam Google Sheets.
 
@@ -54,7 +58,9 @@ Gunakan saat Anda ingin:
 * melanjutkan tabel dengan menambahkan baris baru
 * meng-enrich daftar dengan data web
 
-### Membuat tabel {#generate-a-table}
+<div id="generate-a-table">
+  ### Membuat tabel
+</div>
 
 Gunakan **Generate table** saat Anda ingin Exa membuat tabel baru.
 
@@ -74,7 +80,9 @@ Exa melakukan Research di web dan menuliskan tabel ke dalam sheet Anda.
 
 Secara default, tabel dimulai dari sel yang dipilih. Anda dapat memilih sel awal lain di **More options**.
 
-### Fill cells {#fill-cells}
+<div id="fill-cells">
+  ### Fill cells
+</div>
 
 Gunakan **Fill cells** jika Anda sudah punya tabel dan ingin Exa mengisi data yang belum lengkap.
 
@@ -96,7 +104,9 @@ Contoh:
 
 Pilih sel kosong pada baris Apple, lalu klik **Fill selected cells**. Exa memakai nama perusahaan dan baris-baris di sekitarnya sebagai konteks.
 
-### Melanjutkan baris {#continue-rows}
+<div id="continue-rows">
+  ### Melanjutkan baris
+</div>
 
 Anda juga dapat memilih baris kosong di bawah sebuah tabel.
 
@@ -104,7 +114,9 @@ Jika tabel Anda berakhir di peringkat 55 dan Anda memilih dua baris kosong berik
 
 Exa memakai baris yang sudah ada sebagai contoh, mempertahankan kolom yang sama, dan menghindari pengulangan item yang sudah ada di tabel.
 
-## `=EXA(...)` {#exa}
+<div id="exa">
+  ## `=EXA(...)`
+</div>
 
 Gunakan `=EXA(...)` bila Anda ingin satu jawaban dalam satu sel. Fungsi ini melakukan search di web, membaca hasil teratas, lalu mengembalikan jawaban yang ringkas.
 
@@ -130,7 +142,9 @@ Argumen kedua adalah konteks. Anda dapat menarik formula ke bawah dalam satu kol
 
 Gunakan `=EXA(...)` untuk jawaban sederhana dalam satu sel. Gunakan **Exa Agent** jika Anda ingin membuat atau mengisi seluruh tabel.
 
-## `=EXA_ANSWER(...)` {#exa_answer}
+<div id="exa_answer">
+  ## `=EXA_ANSWER(...)`
+</div>
 
 Jawaban AI tingkat lanjut dengan kendali penuh atas format output. Gunakan ini bila Anda memerlukan system prompt, output JSON terstruktur, sitasi, atau search type tertentu.
 
@@ -157,7 +171,9 @@ Contoh:
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-## `=EXA_SEARCH(...)` {#exa_search}
+<div id="exa_search">
+  ## `=EXA_SEARCH(...)`
+</div>
 
 Menelusuri web dan mengembalikan daftar URL secara vertikal. Mendukung pemfilteran domain, pemfilteran kategori, kutipan konten, dan output hasil sintesis melalui `outputSchema`.
 
@@ -185,7 +201,9 @@ Contoh:
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-## `=EXA_CONTENTS(...)` {#exa_contents}
+<div id="exa_contents">
+  ## `=EXA_CONTENTS(...)`
+</div>
 
 Mengekstrak konten teks dari sebuah URL.
 
@@ -197,7 +215,9 @@ Mengekstrak konten teks dari sebuah URL.
 | --------- | ----- | ------------------------------------------------ |
 | `url`     | Ya    | URL lengkap (harus diawali `http` atau `https`). |
 
-## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
+<div id="exa_findsimilar">
+  ## `=EXA_FINDSIMILAR(...)`
+</div>
 
 Mencari URL yang mirip dengan URL referensi, dengan filter domain dan teks opsional.
 
@@ -214,7 +234,9 @@ Mencari URL yang mirip dengan URL referensi, dengan filter domain dan teks opsio
 | `includeTextStr`    | Tidak | `""`    | Frasa yang harus muncul dalam hasil.       |
 | `excludeTextStr`    | Tidak | `""`    | Frasa yang tidak boleh muncul dalam hasil. |
 
-## Batch {#batch}
+<div id="batch">
+  ## Batch
+</div>
 
 Gunakan **Batch** saat Anda ingin menangani banyak sel formula Exa sekaligus.
 
@@ -225,7 +247,9 @@ Batch dapat:
 
 Konversikan formula menjadi nilai jika Anda ingin mempertahankan hasil saat ini dan mencegah formula dijalankan kembali.
 
-## Kapan menggunakan apa {#when-to-use-what}
+<div id="when-to-use-what">
+  ## Kapan menggunakan apa
+</div>
 
 | Tugas                                                           | Gunakan                    |
 | --------------------------------------------------------------- | -------------------------- |
@@ -240,13 +264,17 @@ Konversikan formula menjadi nilai jika Anda ingin mempertahankan hasil saat ini 
 | Menyegarkan banyak formula Exa sekaligus                        | Batch                      |
 | Menyimpan hasil formula sebagai teks biasa                      | Batch → Convert to values  |
 
-## Catatan {#notes}
+<div id="notes">
+  ## Catatan
+</div>
 
 * Permintaan API Exa dihitung dalam kuota penggunaan Anda. Gunakan **Batch → Convert to values** untuk membekukan hasil agar formula tidak dihitung ulang.
 * Add-on ini otomatis mencoba ulang hingga 3 kali dengan exponential backoff saat terkena rate limit (HTTP 429).
 * Mulailah dengan batch kecil (10–20 baris) sebelum meningkat ke ratusan baris.
 
-## Tautan {#links}
+<div id="links">
+  ## Tautan
+</div>
 
 * [Pasang Exa AI for Google Sheets](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
 * [Dapatkan Exa API key](https://dashboard.exa.ai/api-keys)

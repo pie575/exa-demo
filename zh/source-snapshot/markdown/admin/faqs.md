@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 常见问题 {#faqs}
+<div id="faqs">
+  # 常见问题
+</div>
 
 > 关于 Exa 产品、搜索索引、新鲜度、grounding、安全性和定价的常见问题解答。
 

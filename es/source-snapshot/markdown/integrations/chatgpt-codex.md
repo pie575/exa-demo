@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Exa en Codex y ChatGPT {#exa-in-codex-and-chatgpt}
+<div id="exa-in-codex-and-chatgpt">
+  # Exa en Codex y ChatGPT
+</div>
 
 > Busca en la web, lee cualquier página e investiga con Exa directamente desde Codex y ChatGPT.
 
 Instala el plugin de Exa una sola vez para darle a Codex y ChatGPT acceso a la web en tiempo real a través de Exa. Busca información actualizada, lee las fuentes que importan y realiza investigaciones más profundas sin salir de tu conversación ni de tu sesión de programación.
 
-## Instalar Exa {#install-exa}
+<div id="install-exa">
+  ## Instalar Exa
+</div>
 
 <Steps>
   <Step title="Abre el plugin">
@@ -31,7 +37,9 @@ Instala el plugin de Exa una sola vez para darle a Codex y ChatGPT acceso a la w
 
 Eso es todo. El plugin incluye tanto la integración MCP de Exa como las skills, así que no hace falta configurar MCP ni skills por separado.
 
-## Desarrolla con lo que hay en la web ahora mismo {#build-with-whats-on-the-web-right-now}
+<div id="build-with-whats-on-the-web-right-now">
+  ## Desarrolla con lo que hay en la web ahora mismo
+</div>
 
 Las bibliotecas, APIs y herramientas con las que desarrollas cambian a diario. Con Exa instalado, Codex puede buscar la documentación, las incidencias, los registros de cambios y los ejemplos reales más recientes mientras trabaja.
 
@@ -51,7 +59,9 @@ Lo mismo aplica siempre que la respuesta pueda estar en algún lugar fuera de tu
 * «Lee la documentación actual de webhooks de Stripe y contrasta nuestra implementación con ella.»
 * «Busca la guía de migración más reciente de esta dependencia y luego actualízala.»
 
-## Buscar, leer e investigar {#search-read-and-research}
+<div id="search-read-and-research">
+  ## Buscar, leer e investigar
+</div>
 
 El plugin de Exa ofrece a Codex y ChatGPT tres formas de trabajar con la web.
 
@@ -69,7 +79,9 @@ El plugin de Exa ofrece a Codex y ChatGPT tres formas de trabajar con la web.
   </Card>
 </Columns>
 
-## Investigación sin salir de ChatGPT {#research-without-leaving-chatgpt}
+<div id="research-without-leaving-chatgpt">
+  ## Investigación sin salir de ChatGPT
+</div>
 
 Exa también funciona en ChatGPT. Haz una pregunta que requiera información actualizada y usa Exa para buscar e investigar en la web desde la propia conversación.
 
@@ -82,7 +94,9 @@ En lugar de depender únicamente de la información que ya tiene en el contexto,
 
 Úsalo para investigación de la competencia, investigación técnica, mapeo de mercados, investigación de empresas o cualquier otro caso en el que la respuesta esté repartida por la web.
 
-## MCP + skills, juntos {#mcp-skills-together}
+<div id="mcp-skills-together">
+  ## MCP + skills, juntos
+</div>
 
 Internamente, el plugin combina dos partes del stack de agentes de Exa.
 
@@ -92,7 +106,9 @@ Las [skills de Exa](/es/docs/get-started/agent-skills/overview) dan al agente in
 
 No hace falta que configures ninguno de los dos por separado al instalar el plugin.
 
-## ¿Prefieres usar MCP directamente? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## ¿Prefieres usar MCP directamente?
+</div>
 
 El plugin es la forma recomendada de usar Exa con Codex y ChatGPT. Si configuras Codex manualmente o usas otro MCP client, puedes conectarte directamente al MCP server alojado de Exa:
 

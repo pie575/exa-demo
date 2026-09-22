@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# LangChain {#langchain}
+<div id="langchain">
+  # LangChain
+</div>
 
 > Cómo usar la integración de Exa con LangChain para aplicar RAG.
 
@@ -24,7 +28,9 @@ LangChain es un framework para crear aplicaciones que combinan LLM con datos, AP
 
 ***
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
 <Steps>
   <Step title="Requisitos previos e instalación">

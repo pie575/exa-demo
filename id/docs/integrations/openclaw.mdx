@@ -7,7 +7,9 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
 
 [OpenClaw](https://openclaw.ai/) mendukung Exa sebagai provider `web_search` native. Setelah dipilih, setiap agent OpenClaw dapat menggunakan search mode Exa, filter tanggal, dan ekstraksi konten melalui tool web bawaan.
 
-## Menyiapkan Exa {#set-up-exa}
+<div id="set-up-exa">
+  ## Menyiapkan Exa
+</div>
 
 <Steps>
   <Step title="Instal plugin Exa">
@@ -44,7 +46,9 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
   </Step>
 </Steps>
 
-## Konfigurasi manual {#configure-manually}
+<div id="configure-manually">
+  ## Konfigurasi manual
+</div>
 
 Anda dapat memilih Exa secara langsung di konfigurasi JSON5 OpenClaw:
 
@@ -82,7 +86,9 @@ Untuk menyimpan key di konfigurasi alih-alih di environment gateway:
   Sebaiknya gunakan `EXA_API_KEY` atau SecretRef OpenClaw daripada menuliskan API key langsung ke dalam file konfigurasi.
 </Note>
 
-## Apa yang dapat diminta agent {#what-agents-can-request}
+<div id="what-agents-can-request">
+  ## Apa yang dapat diminta agent
+</div>
 
 OpenClaw mengekspos Exa melalui `web_search`.
 
@@ -111,7 +117,9 @@ await web_search({
 
 OpenClaw menyimpan cache hasil web search selama 15 menit secara default. Ubah `tools.web.search.cacheTtlMinutes` atau setel ke `0` jika setiap permintaan harus selalu mengambil data terbaru.
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="OpenClaw tidak menampilkan Exa sebagai provider">
@@ -127,7 +135,9 @@ OpenClaw menyimpan cache hasil web search selama 15 menit secara default. Ubah `
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Exa provider OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Baca panduan" arrow="true">

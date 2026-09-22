@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Documents juridiques et records publics {#legal-public-records}
+<div id="legal-public-records">
+  # Documents juridiques et records publics
+</div>
 
 > Trouvez des décisions de justice, des brevets, des sanctions, des marchés publics et d&#39;autres records publics avec Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Utilisez Exa Search pour accéder aux sources juridiques primaires et aux records gouvernementaux, ainsi qu&#39;aux commentaires qui les analysent.
 
-## Inclus {#included}
+<div id="included">
+  ## Inclus
+</div>
 
 * Décisions de justice américaines, avec texte intégral, juridiction, numéro de rôle et métadonnées de citation
 * Brevets américains délivrés, avec abrégé, revendications, description, inventeurs et cessionnaires
@@ -44,7 +50,9 @@ Utilisez Exa Search pour accéder aux sources juridiques primaires et aux record
 * Marchés publics et records de passation de marchés
 * Données de recensement et autres records statistiques publics
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Recherche jurisprudentielle et RAG juridique
 * Veille réglementaire et politique
@@ -52,39 +60,53 @@ Utilisez Exa Search pour accéder aux sources juridiques primaires et aux record
 * Screening de conformité et due diligence
 * Études de marché dans le secteur public
 
-## Exemples de requêtes {#example-queries}
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
 
-### Trouver de la jurisprudence {#find-case-law}
+<div id="find-case-law">
+  ### Trouver de la jurisprudence
+</div>
 
 Décrivez la question juridique et la juridiction en langage courant plutôt que sous forme de citation juridique.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-### Rechercher des brevets {#search-patents}
+<div id="search-patents">
+  ### Rechercher des brevets
+</div>
 
 Décrivez ce que fait l&#39;invention, comme le ferait une revendication.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-### Effectuer un screening des sanctions {#screen-against-sanctions}
+<div id="screen-against-sanctions">
+  ### Effectuer un screening des sanctions
+</div>
 
 Indiquez la liste et la catégorie d&#39;entités que vous passez au crible.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-### Rechercher les dépenses publiques {#research-government-spending}
+<div id="research-government-spending">
+  ### Rechercher les dépenses publiques
+</div>
 
 Indiquez l&#39;organisme acheteur ou la catégorie de service ainsi que la période concernée.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-### Extraire des statistiques publiques {#pull-public-statistics}
+<div id="pull-public-statistics">
+  ### Extraire des statistiques publiques
+</div>
 
 Précisez le jeu de données et la zone géographique.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +147,9 @@ Précisez le jeu de données et la zone géographique.
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les juridictions, les types de records, les critères et les fields d&#39;output dont vous avez besoin : Agent renvoie des résultats validés par schéma, avec citations.
 

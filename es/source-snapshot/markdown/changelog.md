@@ -1,14 +1,20 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Registro de cambios {#changelog}
+<div id="changelog">
+  # Registro de cambios
+</div>
 
 > Actualizaciones de producto y anuncios de Exa.
 
 <Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
-  ## Dynamic Highlights (versión preliminar de investigación) {#dynamic-highlights-research-preview}
+  <div id="dynamic-highlights-research-preview">
+    ## Dynamic Highlights (versión preliminar de investigación)
+  </div>
 
   Dynamic Highlights selecciona extractos de todo el conjunto de resultados en lugar de tratar cada página por separado. Destina una mayor parte del presupuesto de contexto compartido a las fuentes útiles y menos contexto a las que solo repiten información ya devuelta.
 
@@ -21,7 +27,9 @@
 </Update>
 
 <Update label="July 23, 2026" rss={{ title: "Publication research" }}>
-  ## Investigación de publicaciones {#publication-research}
+  <div id="publication-research">
+    ## Investigación de publicaciones
+  </div>
 
   Ampliamos y mejoramos notablemente la investigación sobre publicaciones académicas.
 
@@ -37,7 +45,9 @@
 </Update>
 
 <Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
-  ## Exa Agent y Exa Connect en MCP {#exa-agent-and-exa-connect-in-mcp}
+  <div id="exa-agent-and-exa-connect-in-mcp">
+    ## Exa Agent y Exa Connect en MCP
+  </div>
 
   Exa Agent ya está disponible dentro de Exa MCP. Úsalo desde Claude, Cursor o cualquier otro cliente MCP cuando la tarea requiera más que una sola llamada de Search.
 
@@ -49,7 +59,9 @@
 </Update>
 
 <Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
-  ## Presentamos Exa Connect {#introducing-exa-connect}
+  <div id="introducing-exa-connect">
+    ## Presentamos Exa Connect
+  </div>
 
   Exa Connect le da a Exa Agent acceso en vivo a los datos públicos y privados del mundo. Se lanzó con Similarweb, Fiber.ai, Baselayer, Financial Datasets, Affiliate.com, Particle, Jinko y Additional Partners. Los adjuntas mediante `dataSources` en `POST /agent/runs`.
 
@@ -57,7 +69,9 @@
 </Update>
 
 <Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
-  ## Presentamos Exa Agent {#introducing-exa-agent}
+  <div id="introducing-exa-agent">
+    ## Presentamos Exa Agent
+  </div>
 
   Lanzamos una nueva clase de agentes de investigación web de frontera, accesibles a través de la API.
 
@@ -67,7 +81,9 @@
 </Update>
 
 <Update label="April 1, 2026" rss={{ title: "Aviso de deprecación de la API" }}>
-  ## Aviso de deprecación de la API {#api-deprecation-notice}
+  <div id="api-deprecation-notice">
+    ## Aviso de deprecación de la API
+  </div>
 
   Retiramos algunos elementos heredados de la API de Exa:
 
@@ -79,7 +95,9 @@
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "Presentamos Exa Monitors" }}>
-  ## Presentamos Exa Monitors {#introducing-exa-monitors}
+  <div id="introducing-exa-monitors">
+    ## Presentamos Exa Monitors
+  </div>
 
   Los monitors ejecutan Searches de Exa según un schedule y entregan los resultados a tu webhook, deduplicados respecto a runs anteriores para que solo recibas contenido nuevo.
 
@@ -91,7 +109,9 @@
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Renovación de Exa Deep" }}>
-  ## Renovación de Exa Deep {#exa-deep-revamp}
+  <div id="exa-deep-revamp">
+    ## Renovación de Exa Deep
+  </div>
 
   Exa Deep es más rápido, más económico y ahora admite salidas estructuradas con grounding a nivel de campo.
 
@@ -105,7 +125,9 @@
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Actualización de precios de Exa" }}>
-  ## Actualización de precios de Exa {#exa-pricing-update}
+  <div id="exa-pricing-update">
+    ## Actualización de precios de Exa
+  </div>
 
   Simplificamos y redujimos los precios. El contenido de los primeros 10 resultados de Search ahora se incluye gratis, y los nuevos precios se aplican automáticamente sin que tengas que hacer nada.
 
@@ -118,7 +140,9 @@
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "Presentamos Exa Instant Search" }}>
-  ## Presentamos Exa Instant Search {#introducing-exa-instant-search}
+  <div id="introducing-exa-instant-search">
+    ## Presentamos Exa Instant Search
+  </div>
 
   Exa Instant es nuestro tipo de Search más rápido: combina una mejor calidad de Search neuronal con una latencia inferior a 150 ms. Actívalo con `type="instant"`.
 
@@ -129,7 +153,9 @@
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "Highlights, frescura del contenido y actualizaciones de MCP" }}>
-  ## Highlights, frescura del contenido y actualizaciones de MCP {#highlights-content-freshness-and-mcp-updates}
+  <div id="highlights-content-freshness-and-mcp-updates">
+    ## Highlights, frescura del contenido y actualizaciones de MCP
+  </div>
 
   Tres mejoras en la extracción y el acceso al contenido:
 
@@ -141,7 +167,9 @@
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Presentamos Exa Company Search" }}>
-  ## Presentamos Exa Company Search {#introducing-exa-company-search}
+  <div id="introducing-exa-company-search">
+    ## Presentamos Exa Company Search
+  </div>
 
   La Search de empresas ahora usa un modelo de recuperación afinado y un pipeline de coincidencia de entidades. Usa `type="auto"`, `category="company"`.
 
@@ -153,7 +181,9 @@
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Presentamos Exa People Search" }}>
-  ## Presentamos Exa People Search {#introducing-exa-people-search}
+  <div id="introducing-exa-people-search">
+    ## Presentamos Exa People Search
+  </div>
 
   La Search de personas ahora abarca más de 1000 millones de perfiles públicos mediante un sistema de recuperación híbrido. La categoría `linkedin` se reemplaza por la nueva categoría `people`.
 
@@ -165,7 +195,9 @@
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "SDK de JS: highlights restaurados" }}>
-  ## SDK de JS: highlights restaurados {#js-sdk-highlights-restored}
+  <div id="js-sdk-highlights-restored">
+    ## SDK de JS: highlights restaurados
+  </div>
 
   Los highlights vuelven al SDK de JavaScript a partir de `exa-js` v2.0.11 y devuelven las frases clave con sus puntuaciones de relevancia. Pasa `highlights: true` o `highlights: { maxCharacters, query }` en las llamadas de Search y de contenido.
 
@@ -173,7 +205,9 @@
 </Update>
 
 <Update label="November 20, 2025" rss={{ title: "Nuevo tipo de Search Deep" }}>
-  ## Nuevo tipo de Search Deep {#new-deep-search-type}
+  <div id="new-deep-search-type">
+    ## Nuevo tipo de Search Deep
+  </div>
 
   Exa Deep encuentra mejores resultados ejecutando varias Searches a la vez y devolviendo contexto de alta calidad para cada resultado. Actívalo con `type="deep"`.
 
@@ -185,7 +219,9 @@
 </Update>
 
 <Update label="November 5, 2025" rss={{ title: "Se añadió filtrado por idioma" }}>
-  ## Se añadió filtrado por idioma {#added-language-filtering}
+  <div id="added-language-filtering">
+    ## Se añadió filtrado por idioma
+  </div>
 
   Exa ahora detecta el idioma de tu consulta y devuelve resultados solo en ese idioma. Está activado por defecto para todos los usuarios y no requiere configuración.
 
@@ -193,7 +229,9 @@
 </Update>
 
 <Update label="October 28, 2025" rss={{ title: "Cambios en los SDK: highlights eliminados y contenido devuelto por defecto" }}>
-  ## Cambios en los SDK: highlights eliminados y contenido devuelto por defecto {#sdk-changes-highlights-removed-and-contents-returned-by-default}
+  <div id="sdk-changes-highlights-removed-and-contents-returned-by-default">
+    ## Cambios en los SDK: highlights eliminados y contenido devuelto por defecto
+  </div>
 
   Una versión mayor de los SDK con cambios incompatibles:
 
@@ -205,7 +243,9 @@
 </Update>
 
 <Update label="August 4, 2025" rss={{ title: "Compatibilidad con filtros por ruta de dominio" }}>
-  ## Compatibilidad con filtros por ruta de dominio {#domain-path-filter-support}
+  <div id="domain-path-filter-support">
+    ## Compatibilidad con filtros por ruta de dominio
+  </div>
 
   `includeDomains` y `excludeDomains` ahora permiten una segmentación más precisa:
 
@@ -218,7 +258,9 @@
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "Compatibilidad con filtros de geolocalización" }}>
-  ## Compatibilidad con filtros de geolocalización {#geolocation-filter-support}
+  <div id="geolocation-filter-support">
+    ## Compatibilidad con filtros de geolocalización
+  </div>
 
   El nuevo parámetro `userLocation` orienta los resultados hacia la región del usuario, indicada con un código de país [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (p. ej. `"us"`, `"fr"`). Útil para aplicaciones multirregionales, contenido en idiomas regionales y descubrimiento local.
 
@@ -226,7 +268,9 @@
 </Update>
 
 <Update label="July 29, 2025" rss={{ title: "Nuevo tipo de Search Fast" }}>
-  ## Nuevo tipo de Search Fast {#new-fast-search-type}
+  <div id="new-fast-search-type">
+    ## Nuevo tipo de Search Fast
+  </div>
 
   Exa Fast usa modelos de Search optimizados con una latencia p50 inferior a 425 ms. Actívalo con `type="fast"`.
 
@@ -238,7 +282,9 @@
 </Update>
 
 <Update label="July 21, 2025" rss={{ title: "Deprecación de score en Auto Search" }}>
-  ## Deprecación de score en Auto Search {#score-deprecation-in-auto-search}
+  <div id="score-deprecation-in-auto-search">
+    ## Deprecación de score en Auto Search
+  </div>
 
   La nueva arquitectura de Auto Search ya no puede generar puntuaciones de relevancia significativas, por lo que el campo `score` se eliminará de los resultados de Auto Search.
 
@@ -249,7 +295,9 @@
 </Update>
 
 <Update label="June 23, 2025" rss={{ title: "Contenido en Markdown por defecto" }}>
-  ## Contenido en Markdown por defecto {#markdown-contents-as-default}
+  <div id="markdown-contents-as-default">
+    ## Contenido en Markdown por defecto
+  </div>
 
   Todos los endpoints ahora devuelven markdown limpio por defecto, lo cual es mejor para LLM, RAG y el procesamiento de texto en general. No necesitas hacer nada.
 
@@ -262,7 +310,9 @@
 </Update>
 
 <Update label="June 7, 2025" rss={{ title: "Nueva opción de livecrawl: preferred" }}>
-  ## Nueva opción de livecrawl: preferred {#new-livecrawl-option-preferred}
+  <div id="new-livecrawl-option-preferred">
+    ## Nueva opción de livecrawl: preferred
+  </div>
 
   <Warning>
     Entrada histórica: el parámetro de cadena `livecrawl` está deprecado. Para nuevas integraciones, usa `maxAgeHours` junto con `livecrawlTimeout`. Consulta [Frescura del contenido](/es/docs/contents/quickstart#content-freshness).
@@ -274,7 +324,9 @@
 </Update>
 
 <Update label="May 22, 2025" rss={{ title: "Cambios de estado en el endpoint Contents" }}>
-  ## Cambios de estado en el endpoint Contents {#contents-endpoint-status-changes}
+  <div id="contents-endpoint-status-changes">
+    ## Cambios de estado en el endpoint Contents
+  </div>
 
   `/contents` ahora devuelve un campo `statuses` por URL en lugar de un único error HTTP, de modo que puedes gestionar el resultado de cada URL de forma individual. El endpoint solo devuelve error ante incidencias internas.
 
@@ -285,7 +337,9 @@
 </Update>
 
 <Update label="December 11, 2024" rss={{ title: "Auto Search por defecto" }}>
-  ## Auto Search por defecto {#auto-search-as-default}
+  <div id="auto-search-as-default">
+    ## Auto Search por defecto
+  </div>
 
   Auto Search es ahora la opción por defecto y dirige automáticamente cada consulta al mejor método de Search. No necesitas hacer nada; usa `type="neural"` para mantener el comportamiento anterior.
 

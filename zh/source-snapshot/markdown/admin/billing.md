@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 计费与速率限制 {#billing-and-rate-limits}
+<div id="billing-and-rate-limits">
+  # 计费与速率限制
+</div>
 
 > 管理 Exa 积分、发票和 API 速率限制。
 
@@ -23,7 +27,9 @@ Exa 提供免费套餐、按量付费以及定制的 Enterprise plan。API 用�
   </Card>
 </Columns>
 
-## plan 一览 {#plans-at-a-glance}
+<div id="plans-at-a-glance">
+  ## plan 一览
+</div>
 
 | plan              | 计费                         | 速率限制                                           | Agent 并发 |
 | ----------------- | -------------------------- | ---------------------------------------------- | -------- |
@@ -35,7 +41,9 @@ Exa 提供免费套餐、按量付费以及定制的 Enterprise plan。API 用�
   我们会就延迟、规模、ZDR 等方面为你推荐最合适的方案。
 </Card>
 
-## 计费基础 {#billing-basics}
+<div id="billing-basics">
+  ## 计费基础
+</div>
 
 请求将按 [定价](/zh/docs/admin/pricing) 中的费率或您的 Enterprise 合同约定，从预付积分中扣除。团队所有者可在[账单面板](https://dashboard.exa.ai/billing)中充值积分，支付通过 Stripe 处理。
 
@@ -43,7 +51,9 @@ Exa 提供免费套餐、按量付费以及定制的 Enterprise plan。API 用�
 
 如需按 API 密钥查看历史用量，请使用 [获取 API 密钥用量](/zh/docs/reference/team-management/get-api-key-usage)。
 
-## 速率限制 {#rate-limits}
+<div id="rate-limits">
+  ## 速率限制
+</div>
 
 速率限制以每秒查询数 (QPS) 衡量，按团队整体计算，涵盖团队的所有 API 密钥。你可以在 [API 密钥](https://dashboard.exa.ai/api-keys) 页面为单个密钥设置更低的限制，但该密钥的流量仍会计入团队限制。
 
@@ -59,7 +69,9 @@ Exa 提供免费套餐、按量付费以及定制的 Enterprise plan。API 用�
 
 超出限制时，请求会返回 `429 Too Many Requests`。如果响应中带有 `Retry-After` header，请按其指定的时间等待，否则采用指数退避重试。参见[错误码](/zh/docs/admin/error-codes)。
 
-### Agent 限制 {#agent-limits}
+<div id="agent-limits">
+  ### Agent 限制
+</div>
 
 Agent 限制包含两项独立的控制：同时进行中的运行数量，以及启动新运行的速度。
 
@@ -67,13 +79,17 @@ Agent 限制包含两项独立的控制：同时进行中的运行数量，以�
 * **启动运行**：`POST /agent/runs` 会占用账户 QPS，且每次启动运行计为两个请求。因此启动运行的速率为 QPS 的一半，即默认 10 QPS 的账户每秒可启动 5 个运行，25 QPS 则每秒可启动 12 个。
 * **轮询**：用于获取运行状态、事件和运行列表的 `GET` 请求不计入 QPS，也不会阻塞调度，因此轮询进行中的 Agent 与启动新运行的速度互不影响。
 
-### Pay as you go 下的 25 QPS {#25-qps-on-pay-as-you-go}
+<div id="25-qps-on-pay-as-you-go">
+  ### Pay as you go 下的 25 QPS
+</div>
 
 在任意 30 天窗口内充值 $1,000 积分，你所在团队的速率限制会自动提升至 **25 QPS，有效期 90 天**。该门槛按购买的积分计算，而非消耗的积分；再次达标即重新计算 90 天。可在[账单面板](https://dashboard.exa.ai/billing)查看进度。
 
 需要超过 25 QPS？[联系销售](https://exa.ai/contact/sales)。
 
-## 自动充值 {#auto-recharge}
+<div id="auto-recharge">
+  ## 自动充值
+</div>
 
 当余额降至你设定的阈值时，自动充值会自动购买积分。可在[账单面板](https://dashboard.exa.ai/billing)中进行配置。
 
@@ -87,13 +103,17 @@ Agent 限制包含两项独立的控制：同时进行中的运行数量，以�
 
 如果即将发布产品或有其他高用量场景，请提前充入足够的积分，并将自动充值金额设置得高一些，以免频繁产生小额支付。
 
-## 收据与发票 {#receipts-and-invoices}
+<div id="receipts-and-invoices">
+  ## 收据与发票
+</div>
 
 Exa 会通过 [billing@exa.ai](mailto:billing@exa.ai) 发送积分购买和自动充值的收据邮件。如有需要，请将该地址加入允许列表。完整的发票历史记录可在[账单面板](https://dashboard.exa.ai/billing)中查看。
 
 后付费发票计费仅在 Enterprise plan 中提供。
 
-## 获取帮助 {#get-help}
+<div id="get-help">
+  ## 获取帮助
+</div>
 
 <Columns cols={2}>
   <Card title="提高限制" icon="gauge" href="https://exa.ai/contact/sales" cta="联系销售" arrow="true">

@@ -1,4 +1,6 @@
-# Verificación frente a producción de Exa {#verification-against-exa-production}
+<div id="verification-against-exa-production">
+  # Verificación frente a producción de Exa
+</div>
 
 Instantánea de producción: 18 de septiembre de 2026. Vista previa local: http://localhost:3000/docs.
 
@@ -19,7 +21,9 @@ búsqueda local de texto completo y la navegación por teclado, los resultados v
 de tema, el renderizado del esquema de la API, las siete pestañas de la hoja de cálculo de Agent y la navegación
 y búsqueda en móvil.
 
-## Revisión visual a ciegas {#blind-visual-review}
+<div id="blind-visual-review">
+  ## Revisión visual a ciegas
+</div>
 
 [Abre la galería de comparación A/B de 159 páginas](blind/index.html). Las dos
 capturas de pantalla de cada página se barajan de forma independiente. La galería guarda las preferencias A/B/empate
@@ -36,7 +40,9 @@ de las áreas visibles capturadas, no de una afirmación de identidad total de p
 equivalencia del servicio alojado. De las 159 páginas, el texto del cuerpo coincide en 158; la
 única diferencia es el timestamp de comprobación de la Página de estado en vivo.
 
-## Detalles de fidelidad {#fidelity-details}
+<div id="fidelity-details">
+  ## Detalles de fidelidad
+</div>
 
 El import conserva el tema de producción, la navegación, los estilos y scripts
 personalizados, las fuentes, los metadatos de página, las especificaciones de API
@@ -53,7 +59,9 @@ a payloads `.txt` idénticos, ya que el servidor de desarrollo nativo no sirve
 directamente esas extensiones de archivo. Las marcas de tiempo del estado en vivo
 y el contenido multimedia animado pueden variar entre capturas.
 
-## Reproducir {#reproduce}
+<div id="reproduce">
+  ## Reproducir
+</div>
 
 ```sh
 pnpm validate

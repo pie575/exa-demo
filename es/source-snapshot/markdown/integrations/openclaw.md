@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# OpenClaw {#openclaw}
+<div id="openclaw">
+  # OpenClaw
+</div>
 
 > Dale a OpenClaw búsqueda web en tiempo real y contenido de páginas con Exa.
 
 [OpenClaw](https://openclaw.ai/) admite Exa como proveedor nativo de `web_search`. Una vez seleccionado, cualquier agente de OpenClaw puede usar los modos de búsqueda de Exa, los filtros de fecha y la extracción de contenido mediante la herramienta web integrada.
 
-## Configurar Exa {#set-up-exa}
+<div id="set-up-exa">
+  ## Configurar Exa
+</div>
 
 <Steps>
   <Step title="Instalar el plugin de Exa">
@@ -46,7 +52,9 @@
   </Step>
 </Steps>
 
-## Configurar manualmente {#configure-manually}
+<div id="configure-manually">
+  ## Configurar manualmente
+</div>
 
 Puedes seleccionar Exa directamente en la configuración JSON5 de OpenClaw:
 
@@ -84,7 +92,9 @@ Para almacenar la key en la configuración en lugar de en el entorno del gateway
   Es preferible usar `EXA_API_KEY` o un SecretRef de OpenClaw en lugar de incluir una API key en un archivo de configuración.
 </Note>
 
-## Qué pueden solicitar los agentes {#what-agents-can-request}
+<div id="what-agents-can-request">
+  ## Qué pueden solicitar los agentes
+</div>
 
 OpenClaw expone Exa a través de `web_search`.
 
@@ -113,7 +123,9 @@ await web_search({
 
 De forma predeterminada, OpenClaw almacena en caché los resultados de búsqueda web durante 15 minutos. Cambia `tools.web.search.cacheTtlMinutes` o establécelo en `0` cuando cada solicitud deba obtener resultados actualizados.
 
-## Solución de problemas {#troubleshooting}
+<div id="troubleshooting">
+  ## Solución de problemas
+</div>
 
 <AccordionGroup>
   <Accordion title="OpenClaw no muestra Exa como proveedor">
@@ -129,7 +141,9 @@ De forma predeterminada, OpenClaw almacena en caché los resultados de búsqueda
   </Accordion>
 </AccordionGroup>
 
-## Recursos {#resources}
+<div id="resources">
+  ## Recursos
+</div>
 
 <Columns cols={3}>
   <Card title="Proveedor de OpenClaw Exa" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Leer la guía" arrow="true">

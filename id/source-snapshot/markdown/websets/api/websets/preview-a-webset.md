@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk mengetahui semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Pratinjau webset {#preview-a-webset}
+<div id="preview-a-webset">
+  # Pratinjau webset
+</div>
 
 > Lihat pratinjau bagaimana sebuah search query akan diuraikan sebelum membuat webset. Endpoint ini menjalankan analisis query yang sama seperti saat pembuatan webset, sehingga Anda bisa mengetahui lebih awal tipe entitas yang terdeteksi, kriteria pencarian yang dihasilkan, dan kolom enrichment yang tersedia.
 
 Gunakan ini untuk membantu pengguna memahami bagaimana pencarian mereka akan diinterpretasikan sebelum benar-benar membuat webset secara penuh.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0

@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Gumloop {#gumloop}
+<div id="gumloop">
+  # Gumloop
+</div>
 
 > Utilisez Exa search et le contenu dans les flows Gumloop.
 
 [Gumloop](https://www.gumloop.com/) intègre Exa en tant qu&#39;integration MCP native. Ajoutez-la à un agent ou à un Agent Node pour effectuer des recherches sur le web, extraire des pages, trouver des sources connexes et produire des réponses adossées à des citations au sein d&#39;un workflow.
 
-## Ajouter Exa à un agent Gumloop {#add-exa-to-a-gumloop-agent}
+<div id="add-exa-to-a-gumloop-agent">
+  ## Ajouter Exa à un agent Gumloop
+</div>
 
 <Steps>
   <Step title="Ouvrir l'agent">
@@ -35,7 +41,9 @@
   </Step>
 </Steps>
 
-## tools disponibles {#available-tools}
+<div id="available-tools">
+  ## tools disponibles
+</div>
 
 | Outil                    | À utiliser pour                                                                        |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -48,9 +56,13 @@
 
 Pour un agent conversationnel, activez d&#39;abord Search, Get Contents et Answer. N&#39;ajoutez les autres tools que si le workflow l&#39;exige.
 
-## Utiliser Exa dans un workflow {#use-exa-in-a-workflow}
+<div id="use-exa-in-a-workflow">
+  ## Utiliser Exa dans un workflow
+</div>
 
-### Agent Node {#agent-node}
+<div id="agent-node">
+  ### Agent Node
+</div>
 
 Ajoutez un **Agent Node** à un flow Gumloop déterministe et attachez-y Exa comme l&#39;un de ses tools. Le node peut décider de lancer une search, de récupérer des pages complètes ou d&#39;enchaîner plusieurs appels Exa avant de transmettre son output à l&#39;étape suivante du workflow.
 
@@ -61,7 +73,9 @@ Ce fonctionnement convient bien pour :
 * rechercher des informations sur des entreprises avant d&#39;acheminer des records vers un workflow commercial
 * comparer des produits et écrire le résultat dans un document
 
-### MCP node personnalisé réutilisable {#reusable-custom-mcp-node}
+<div id="reusable-custom-mcp-node">
+  ### MCP node personnalisé réutilisable
+</div>
 
 Pour une action unique et répétable, créez un node dédié :
 
@@ -72,7 +86,9 @@ Pour une action unique et répétable, créez un node dédié :
 
 Utilisez un Agent Node lorsque la tâche nécessite une planification dynamique ou plusieurs tools. Utilisez un MCP node personnalisé lorsque la même opération Exa doit s&#39;exécuter de manière prévisible sur chaque item.
 
-## Modèles de prompts {#prompt-patterns}
+<div id="prompt-patterns">
+  ## Modèles de prompts
+</div>
 
 <AccordionGroup>
   <Accordion title="Rechercher et résumer">
@@ -96,7 +112,9 @@ Utilisez un Agent Node lorsque la tâche nécessite une planification dynamique 
   </Accordion>
 </AccordionGroup>
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa n'est pas disponible pour l'agent">
@@ -112,7 +130,9 @@ Utilisez un Agent Node lorsque la tâche nécessite une planification dynamique 
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={3}>
   <Card title="Integration Gumloop Exa" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Lire le guide" arrow="true">

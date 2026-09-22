@@ -1,14 +1,20 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# 变更日志 {#changelog}
+<div id="changelog">
+  # 变更日志
+</div>
 
 > 来自 Exa 的产品更新与公告。
 
 <Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
-  ## Dynamic Highlights (研究预览) {#dynamic-highlights-research-preview}
+  <div id="dynamic-highlights-research-preview">
+    ## Dynamic Highlights (研究预览)
+  </div>
 
   Dynamic Highlights 会在完整结果集范围内挑选摘录，而不是孤立地处理每个页面。它会把更多共享上下文预算分配给有价值的 source，而对只是重复已返回信息的 source 少分配上下文。
 
@@ -21,7 +27,9 @@
 </Update>
 
 <Update label="July 23, 2026" rss={{ title: "Publication research" }}>
-  ## 文献研究 {#publication-research}
+  <div id="publication-research">
+    ## 文献研究
+  </div>
 
   我们大幅扩展并改进了对学术文献的研究能力。
 
@@ -37,7 +45,9 @@
 </Update>
 
 <Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
-  ## MCP 中的 Exa Agent 与 Exa Connect {#exa-agent-and-exa-connect-in-mcp}
+  <div id="exa-agent-and-exa-connect-in-mcp">
+    ## MCP 中的 Exa Agent 与 Exa Connect
+  </div>
 
   Exa Agent 现已在 Exa MCP 中可用。当任务不止需要一次 search 调用时，可在 Claude、Cursor 或任意其他 MCP 客户端中使用它。
 
@@ -49,7 +59,9 @@
 </Update>
 
 <Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
-  ## 推出 Exa Connect {#introducing-exa-connect}
+  <div id="introducing-exa-connect">
+    ## 推出 Exa Connect
+  </div>
 
   Exa Connect 让 Exa Agent 能够实时访问全球的公开与私有数据。首批上线的合作伙伴包括 Similarweb、Fiber.ai、Baselayer、Financial Datasets、Affiliate.com、Particle、Jinko 以及更多合作伙伴。你可以通过 `POST /agent/runs` 上的 `dataSources` 接入它们。
 
@@ -57,7 +69,9 @@
 </Update>
 
 <Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
-  ## 推出 Exa Agent {#introducing-exa-agent}
+  <div id="introducing-exa-agent">
+    ## 推出 Exa Agent
+  </div>
 
   我们发布了新一代前沿网页研究 agent，可通过 API 使用。
 
@@ -67,7 +81,9 @@
 </Update>
 
 <Update label="April 1, 2026" rss={{ title: "API 弃用通知" }}>
-  ## API 弃用通知 {#api-deprecation-notice}
+  <div id="api-deprecation-notice">
+    ## API 弃用通知
+  </div>
 
   我们下线了 Exa API 中的部分历史遗留项：
 
@@ -79,7 +95,9 @@
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "隆重推出 Exa Monitors" }}>
-  ## 隆重推出 Exa Monitors {#introducing-exa-monitors}
+  <div id="introducing-exa-monitors">
+    ## 隆重推出 Exa Monitors
+  </div>
 
   Monitors 按 schedule 运行 Exa search，并将结果投递到你的 webhook，同时与此前的运行去重，因此你只会收到新增内容。
 
@@ -91,7 +109,9 @@
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Exa Deep 全面升级" }}>
-  ## Exa Deep 全面升级 {#exa-deep-revamp}
+  <div id="exa-deep-revamp">
+    ## Exa Deep 全面升级
+  </div>
 
   Exa Deep 更快、更便宜，现已支持带 field 级 grounding 的结构化输出。
 
@@ -105,7 +125,9 @@
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Exa 定价更新" }}>
-  ## Exa 定价更新 {#exa-pricing-update}
+  <div id="exa-pricing-update">
+    ## Exa 定价更新
+  </div>
 
   我们简化并下调了定价。前 10 条搜索结果的页面内容现已免费包含，新定价自动生效，无需任何操作。
 
@@ -118,7 +140,9 @@
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "隆重推出 Exa Instant Search" }}>
-  ## 隆重推出 Exa Instant Search {#introducing-exa-instant-search}
+  <div id="introducing-exa-instant-search">
+    ## 隆重推出 Exa Instant Search
+  </div>
 
   Exa Instant 是我们最快的搜索类型，在提升 neural search 质量的同时将延迟控制在 150 毫秒以内。使用 `type="instant"` 即可启用。
 
@@ -129,7 +153,9 @@
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "Highlights、内容新鲜度与 MCP 更新" }}>
-  ## Highlights、内容新鲜度与 MCP 更新 {#highlights-content-freshness-and-mcp-updates}
+  <div id="highlights-content-freshness-and-mcp-updates">
+    ## Highlights、内容新鲜度与 MCP 更新
+  </div>
 
   内容提取与访问方面的三项改进：
 
@@ -141,7 +167,9 @@
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Introducing Exa Company Search" }}>
-  ## 推出 Exa Company Search {#introducing-exa-company-search}
+  <div id="introducing-exa-company-search">
+    ## 推出 Exa Company Search
+  </div>
 
   公司搜索现已采用微调的 retrieval 模型和实体匹配 pipeline。使用 `type="auto"`、`category="company"`。
 
@@ -153,7 +181,9 @@
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Introducing Exa People Search" }}>
-  ## 推出 Exa People Search {#introducing-exa-people-search}
+  <div id="introducing-exa-people-search">
+    ## 推出 Exa People Search
+  </div>
 
   人物搜索现已通过混合 retrieval 系统覆盖超过 10 亿份公开资料。`linkedin` 类别由新的 `people` 类别取代。
 
@@ -165,7 +195,9 @@
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "JS SDK: highlights restored" }}>
-  ## JS SDK：恢复 highlights {#js-sdk-highlights-restored}
+  <div id="js-sdk-highlights-restored">
+    ## JS SDK：恢复 highlights
+  </div>
 
   自 `exa-js` v2.0.11 起，highlights 回归 JavaScript SDK，返回带相关性分数的关键句子。在 search 和 contents 调用中传入 `highlights: true` 或 `highlights: { maxCharacters, query }` 即可。
 
@@ -173,7 +205,9 @@
 </Update>
 
 <Update label="November 20, 2025" rss={{ title: "New Deep Search Type" }}>
-  ## 新增深度搜索类型 {#new-deep-search-type}
+  <div id="new-deep-search-type">
+    ## 新增深度搜索类型
+  </div>
 
   Exa Deep 会同时运行多个 search，并为每条结果返回高质量上下文，从而得到更优结果。使用 `type="deep"` 启用。
 
@@ -185,7 +219,9 @@
 </Update>
 
 <Update label="November 5, 2025" rss={{ title: "Added Language Filtering" }}>
-  ## 新增语言过滤 {#added-language-filtering}
+  <div id="added-language-filtering">
+    ## 新增语言过滤
+  </div>
 
   Exa 现在会检测你的 query 语言，并仅返回该语言的结果。所有用户默认启用，无需任何配置。
 
@@ -193,7 +229,9 @@
 </Update>
 
 <Update label="October 28, 2025" rss={{ title: "SDK changes: highlights removed and contents returned by default" }}>
-  ## SDK 变更：移除 highlights，默认返回页面内容 {#sdk-changes-highlights-removed-and-contents-returned-by-default}
+  <div id="sdk-changes-highlights-removed-and-contents-returned-by-default">
+    ## SDK 变更：移除 highlights，默认返回页面内容
+  </div>
 
   这是一个包含破坏性变更的大版本 SDK 更新：
 
@@ -205,7 +243,9 @@
 </Update>
 
 <Update label="August 4, 2025" rss={{ title: "Domain Path Filter Support" }}>
-  ## 支持域名路径过滤 {#domain-path-filter-support}
+  <div id="domain-path-filter-support">
+    ## 支持域名路径过滤
+  </div>
 
   `includeDomains` 和 `excludeDomains` 现在支持更精细的定位：
 
@@ -218,7 +258,9 @@
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "Geolocation Filter Support" }}>
-  ## 支持地理位置过滤 {#geolocation-filter-support}
+  <div id="geolocation-filter-support">
+    ## 支持地理位置过滤
+  </div>
 
   新增的 `userLocation` 参数可让结果偏向用户所在地区，传入 [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 国家代码即可 (例如 `"us"`、`"fr"`) 。适合多地区应用、地区语言内容和本地信息发现。
 
@@ -226,7 +268,9 @@
 </Update>
 
 <Update label="July 29, 2025" rss={{ title: "全新 Fast 搜索类型" }}>
-  ## 全新 Fast 搜索类型 {#new-fast-search-type}
+  <div id="new-fast-search-type">
+    ## 全新 Fast 搜索类型
+  </div>
 
   Exa Fast 采用精简的搜索模型，p50 延迟低于 425ms。通过 `type="fast"` 即可启用。
 
@@ -238,7 +282,9 @@
 </Update>
 
 <Update label="July 21, 2025" rss={{ title: "Auto Search 中 Score 的弃用" }}>
-  ## Auto Search 中 Score 的弃用 {#score-deprecation-in-auto-search}
+  <div id="score-deprecation-in-auto-search">
+    ## Auto Search 中 Score 的弃用
+  </div>
 
   新的 Auto search 架构已无法给出有意义的相关性分数，因此 `score` field 将从 Auto search 结果中移除。
 
@@ -249,7 +295,9 @@
 </Update>
 
 <Update label="June 23, 2025" rss={{ title: "Markdown 页面内容成为默认" }}>
-  ## Markdown 页面内容成为默认 {#markdown-contents-as-default}
+  <div id="markdown-contents-as-default">
+    ## Markdown 页面内容成为默认
+  </div>
 
   所有端点现在默认返回干净的 markdown，更适合 LLM、RAG 以及一般的文本处理。无需任何改动。
 
@@ -262,7 +310,9 @@
 </Update>
 
 <Update label="June 7, 2025" rss={{ title: "新的 Livecrawl 选项：Preferred" }}>
-  ## 新的 Livecrawl 选项：Preferred {#new-livecrawl-option-preferred}
+  <div id="new-livecrawl-option-preferred">
+    ## 新的 Livecrawl 选项：Preferred
+  </div>
 
   <Warning>
     历史条目：`livecrawl` 字符串参数现已弃用。新的 integration 请使用 `maxAgeHours` 搭配 `livecrawlTimeout`。参见 [内容新鲜度](/zh/docs/contents/quickstart#content-freshness)。
@@ -274,7 +324,9 @@
 </Update>
 
 <Update label="May 22, 2025" rss={{ title: "页面内容端点状态变更" }}>
-  ## 页面内容端点状态变更 {#contents-endpoint-status-changes}
+  <div id="contents-endpoint-status-changes">
+    ## 页面内容端点状态变更
+  </div>
 
   `/contents` 现在返回按 URL 区分的 `statuses` field，而不是单个 HTTP 错误，因此你可以分别处理每个 URL 的结果。该端点仅在出现内部问题时才会报错。
 
@@ -285,7 +337,9 @@
 </Update>
 
 <Update label="December 11, 2024" rss={{ title: "Auto search 成为默认" }}>
-  ## Auto search 成为默认 {#auto-search-as-default}
+  <div id="auto-search-as-default">
+    ## Auto search 成为默认
+  </div>
 
   Auto search 现已成为默认设置，会自动将每个 query 路由到最合适的搜索方式。无需任何改动；设置 `type="neural"` 即可保持此前的行为。
 

@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Deep Search {#deep-search}
+<div id="deep-search">
+  # Deep Search
+</div>
 
 > 복잡한 리서치 작업에 반복적인 search, 추론, 근거 기반 synthesis를 활용하세요.
 
@@ -11,7 +15,9 @@ Deep Search는 Search API의 리서치 모드입니다. 동일한 `/search` 엔�
 
 잘 정의된 질의에 대해 순위가 매겨진 페이지가 필요하다면 standard Search를, 답을 찾는 데 리서치가 필요하다면 Deep을 사용하세요.
 
-## Deep Search 작동 방식 {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## Deep Search 작동 방식
+</div>
 
 Deep Search는 최종 response를 내놓기 전에 리서치 loop를 거칩니다:
 
@@ -39,7 +45,9 @@ Deep Search는 최종 response를 내놓기 전에 리서치 loop를 거칩니�
 
 이 과정은 목록이나 structured outputs에 특히 유용합니다. 요청한 항목마다 서로 다른 search가 필요할 수 있는데, Deep은 최종 구조를 만들기 전에 그 결과들을 모아 검증할 수 있습니다.
 
-## Deep 모드 선택하기 {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## Deep 모드 선택하기
+</div>
 
 | 유형               | 사용 시점                                                |
 | ---------------- | ---------------------------------------------------- |
@@ -55,7 +63,9 @@ Deep Search는 최종 response를 내놓기 전에 리서치 loop를 거칩니�
 
 현재 비용 및 latency 관련 안내는 [Pricing](/ko/docs/admin/pricing#deep-search)을 참고하세요.
 
-## Deep 요청 보내기 {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## Deep 요청 보내기
+</div>
 
 일반 Search API 요청에 `type`만 설정하면 됩니다:
 
@@ -100,7 +110,9 @@ Deep Search는 최종 response를 내놓기 전에 리서치 loop를 거칩니�
 
 Deep은 선별된 검색 결과를 `results`에 담아 반환합니다. 종합된 답변이나 구조화된 데이터셋까지 필요하다면 `outputSchema`를 추가하세요.
 
-## 시작 질의 제공하기 {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## 시작 질의 제공하기
+</div>
 
 Deep은 보통 어떤 검색을 실행할지 스스로 결정합니다. 리서치가 다뤄야 할 구체적인 용어, 관점, 하위 문제를 이미 알고 있다면 `additionalQueries`를 사용하세요:
 
@@ -154,7 +166,9 @@ Deep은 보통 어떤 검색을 실행할지 스스로 결정합니다. 리서�
 
 검색량을 늘리려는 목적만으로 표현만 살짝 바꾼 질의를 넣지 마세요. 각 질의가 의미 있게 다른 검색 방향을 더할 때만 추가하세요.
 
-## 동작과 output을 따로 제어하기 {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## 동작과 output을 따로 제어하기
+</div>
 
 `systemPrompt`와 `outputSchema`는 요청의 서로 다른 부분에 영향을 줍니다.
 
@@ -254,7 +268,9 @@ Deep은 보통 어떤 검색을 실행할지 스스로 결정합니다. 리서�
 
 구조화된 항목이 세 개 이상 필요하거나 각 항목이 여러 요건을 충족해야 한다면 Deep을 사용하세요. 표준 search type도 동일한 synthesis 경로를 사용하지만, synthesis 이전에 같은 수준의 반복 리서치를 수행하지는 않습니다.
 
-## 근거 기반 response 읽기 {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## 근거 기반 response 읽기
+</div>
 
 구조화된 response는 생성된 값과 그 evidence를 분리해서 보여줍니다:
 
@@ -296,7 +312,9 @@ Deep은 보통 어떤 검색을 실행할지 스스로 결정합니다. 리서�
 
 `numResults`는 `results`에 반환되는 선별된 페이지 수를 제어합니다. Deep이 수행하는 searches 횟수를 설정하는 값은 아닙니다.
 
-## synthesis 스트리밍 {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## synthesis 스트리밍
+</div>
 
 `outputSchema`와 함께 `stream: true`를 설정하면 synthesis된 output을 server-sent events로 받을 수 있습니다:
 
@@ -372,7 +390,9 @@ Deep은 보통 어떤 검색을 실행할지 스스로 결정합니다. 리서�
 
 `done`이 나올 때까지 타입이 지정된 이벤트를 처리하세요. 마지막 이벤트에는 완성된 output과 search 소요 시간이 담기며, 비용 정보가 있는 경우 함께 포함됩니다.
 
-## 기본 search를 그대로 사용해야 할 때 {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## 기본 search를 그대로 사용해야 할 때
+</div>
 
 한 번의 검색만으로 요청을 충족할 수 있다면 deep은 필요하지 않습니다:
 

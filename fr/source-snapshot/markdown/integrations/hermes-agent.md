@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Hermes Agent {#hermes-agent}
+<div id="hermes-agent">
+  # Hermes Agent
+</div>
 
 > Offrez à Hermes Agent la recherche web en temps réel et les page contents grâce à Exa.
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) intègre Exa comme backend natif pour ses tools `web_search` et `web_extract` appelables par le modèle. Utilisez Exa pour ces deux capacités, ou associez-le à un autre fournisseur web de Hermes.
 
-## Connectez votre compte Exa {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## Connectez votre compte Exa
+</div>
 
 <Steps>
   <Step title="Obtenir une API key Exa">
@@ -39,7 +45,9 @@
   </Step>
 </Steps>
 
-## Configuration manuelle {#configure-manually}
+<div id="configure-manually">
+  ## Configuration manuelle
+</div>
 
 Ajoutez votre clé au fichier d&#39;environnement Hermes :
 
@@ -64,7 +72,9 @@ web:
 
 Les paramètres définis par capacité sont prioritaires sur `web.backend`. Cela vous permet d&#39;utiliser Exa uniquement pour la search ou uniquement pour l&#39;extraction lorsque vous combinez plusieurs providers.
 
-## Les tools dont dispose Hermes {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Les tools dont dispose Hermes
+</div>
 
 | outil          | Comportement d&#39;Exa                                                                                     |
 | ------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -77,7 +87,9 @@ Hermes tronque les pages extraites trop longues selon le character budget config
   Hermes peut utiliser Exa via son pool de providers gratuits sans clé, donc sans API key. Ce pool est soumis à des limites de débit et peut alterner entre les providers. Configurez `EXA_API_KEY` et sélectionnez l&#39;option Exa adossée à une API key lorsque vous souhaitez que les requêtes passent systématiquement par votre compte Exa.
 </Note>
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes ne sélectionne pas Exa">
@@ -93,7 +105,9 @@ Hermes tronque les pages extraites trop longues selon le character budget config
   </Accordion>
 </AccordionGroup>
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={3}>
   <Card title="tools web Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Lire le guide" arrow="true">

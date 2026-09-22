@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Agent Skills {#agent-skills}
+<div id="agent-skills">
+  # Agent Skills
+</div>
 
 > Pasang skill Exa di Claude Code, Codex, dan coding agent lainnya.
 
@@ -11,7 +15,9 @@ Skill Exa mengajarkan coding agent cara melakukan search, mengambil konten, dan 
 
 Setiap skill berisi file markdown yang mengikuti standar terbuka [Agent Skills](https://agentskills.io), sehingga file yang sama bisa dipasang di agent mana pun yang kompatibel.
 
-## Pasang {#install}
+<div id="install">
+  ## Pasang
+</div>
 
 Pasang semua skill Exa sekaligus:
 
@@ -29,7 +35,9 @@ npx skills add exa-labs/agent-skills
 
 Atau buka salah satu halaman skill di bawah ini dan salin setup prompt-nya ke agent Anda. Prompt tersebut akan menginstal skill tersebut dan memverifikasi API key Anda tanpa menampilkannya.
 
-## Skills {#skills}
+<div id="skills">
+  ## Skills
+</div>
 
 Setiap halaman skill memuat deskripsi satu baris, setup prompt yang bisa disalin, dan tautan ke sumber mentah `SKILL.md`.
 
@@ -47,7 +55,9 @@ Setiap halaman skill memuat deskripsi satu baris, setup prompt yang bisa disalin
   </Card>
 </Columns>
 
-## Terkait {#related}
+<div id="related">
+  ## Terkait
+</div>
 
 <Columns cols={2}>
   <Card title="Repositori skill" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Lihat sumber" arrow="true">

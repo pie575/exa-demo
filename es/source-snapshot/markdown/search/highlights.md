@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Highlights {#highlights}
+<div id="highlights">
+  # Highlights
+</div>
 
 > Devuelve extractos relevantes para la consulta a partir de los resultados de Exa Search, controlando el tamaño del contexto y la latencia.
 
@@ -11,7 +15,9 @@ Los highlights devuelven pasajes extraídos de cada resultado que son relevantes
 
 Cada resultado devuelve los pasajes seleccionados en `results[].highlights`.
 
-## Por qué highlights en lugar de texto completo {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## Por qué highlights en lugar de texto completo
+</div>
 
 Los highlights provienen del modelo de extraction propio de Exa. El modelo analiza cada result frente a tu consulta en cada solicitud y devuelve solo los pasajes que la responden. Así conservas una fracción de los tokens del texto completo de la página con una calidad de respuesta igual o mejor en las etapas posteriores.
 
@@ -29,7 +35,9 @@ El ahorro se nota sobre todo en los bucles de agentes, donde cada ronda de resul
   para conocer la metodología y los resultados completos.
 </Tip>
 
-## Añadir highlights a Search {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## Añadir highlights a Search
+</div>
 
 Usa `highlights: true` dentro de `contents` como valor predeterminado recomendado. Exa decide cuánto texto devolver de cada resultado según su relevancia para tu consulta, por lo que no hay ningún presupuesto de caracteres que ajustar. Configura `maxCharacters` solo si tu aplicación necesita un límite fijo por página.
 
@@ -61,7 +69,9 @@ Usa `highlights: true` dentro de `contents` como valor predeterminado recomendad
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights ajusta cuánto texto selecciona de cada resultado según lo que resulte más útil para tu consulta. Puede extraer más de las fuentes sólidas y menos de las repetitivas o irrelevantes, reduciendo el total de tokens devueltos.
 
@@ -132,7 +142,9 @@ Actívalo con `dynamic: true`:
   estructura `results[].highlights` que los highlights normales.
 </Info>
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Guía de la Search API" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">

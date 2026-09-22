@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Kode &amp; Dokumentasi {#code-docs}
+<div id="code-docs">
+  # Kode &amp; Dokumentasi
+</div>
 
 > Temukan kode, dokumentasi teknis, dan instruksi implementasi dengan Exa Search.
 
@@ -40,40 +44,54 @@ Gunakan Exa Search untuk mencari repositori, dokumentasi teknis, informasi packa
   mengevaluasi retrieval pada tugas-tugas coding.
 </Tip>
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Coding agent dan tool pembuatan kode
 * Produk pencarian dan dokumentasi untuk developer
 * Workflow debugging, migrasi, dan konfigurasi
 * Research teknis di berbagai repositori, dokumentasi, dan package registry
 
-## Contoh kueri {#example-queries}
+<div id="example-queries">
+  ## Contoh kueri
+</div>
 
-### Temukan libraries berdasarkan capability {#discover-libraries-by-capability}
+<div id="discover-libraries-by-capability">
+  ### Temukan libraries berdasarkan capability
+</div>
 
 Jelaskan capability, ekosistem, dan batasan yang Anda perlukan. Cara ini menghasilkan kandidat berdasarkan fungsinya, bukan berdasarkan nama proyek yang persis.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-### Mengambil dokumentasi implementasi {#retrieve-implementation-documentation}
+<div id="retrieve-implementation-documentation">
+  ### Mengambil dokumentasi implementasi
+</div>
 
 Sebutkan nama produk dan operasi yang spesifik. Dengan begitu, Search dapat memprioritaskan dokumentasi API dan panduan implementasi dibandingkan pembahasan umum.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-### Periksa perubahan spesifik per versi {#check-version-specific-changes}
+<div id="check-version-specific-changes">
+  ### Periksa perubahan spesifik per versi
+</div>
 
 Sertakan kanal rilis atau versi jika kompatibilitas menjadi hal penting. Hal ini mengurangi hasil yang terkait rilis lama.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-### Menemukan tooling agent yang dapat digunakan ulang {#find-reusable-agent-tooling}
+<div id="find-reusable-agent-tooling">
+  ### Menemukan tooling agent yang dapat digunakan ulang
+</div>
 
 Sebutkan jenis artefak dan tugasnya, jangan mencari frasa yang terlalu umum seperti &quot;AI tools&quot;.
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,7 +139,9 @@ Sebutkan jenis artefak dan tugasnya, jangan mencari frasa yang terlalu umum sepe
   ```
 </CodeGroup>
 
-## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang membutuhkan research lintas berbagai sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan libraries, kriteria teknis, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 

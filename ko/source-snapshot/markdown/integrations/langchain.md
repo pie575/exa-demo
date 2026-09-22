@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# LangChain {#langchain}
+<div id="langchain">
+  # LangChain
+</div>
 
 > Exa의 LangChain 연동으로 RAG를 수행하는 방법.
 
@@ -24,7 +28,9 @@ LangChain은 LLM을 데이터, API 및 기타 도구와 결합해 애플리케�
 
 ***
 
-## 시작하기 {#get-started}
+<div id="get-started">
+  ## 시작하기
+</div>
 
 <Steps>
   <Step title="사전 요구 사항 및 설치">

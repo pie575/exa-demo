@@ -43,32 +43,42 @@ Gunakan Exa Search untuk organisasi dan orang-orang yang terhubung dengannya. Pe
   </Card>
 </Columns>
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Penemuan perusahaan, kandidat, dan pakar
 * Research akun dan pemetaan pemangku kepentingan
 * Peta pasar, research investasi, dan pencarian peluang transaksi
 * Research kepemimpinan, perekrutan, dan organisasi
 
-## Menulis query yang lebih baik {#write-better-queries}
+<div id="write-better-queries">
+  ## Menulis query yang lebih baik
+</div>
 
 Mulailah dari entitas yang Anda cari, lalu tambahkan karakteristik dan hubungan yang menjadi kualifikasinya. Sebutkan jenis sumber bila hal itu penting, misalnya beranda perusahaan, profil profesional, lowongan kerja, atau situs web pribadi.
 
 <Tabs>
   <Tab title="Perusahaan" icon="building">
-### Temukan perusahaan berdasarkan apa yang mereka kerjakan {#discover-companies-by-what-they-do}
+    <div id="discover-companies-by-what-they-do">
+      ### Temukan perusahaan berdasarkan apa yang mereka kerjakan
+    </div>
 
     Deskripsikan pelanggan, produk, capability, tahapan, dan cakupan geografis yang mendefinisikan market tersebut. Cara ini menemukan kandidat berdasarkan apa yang mereka kerjakan, bukan bergantung pada daftar perusahaan yang sudah ditentukan sebelumnya.
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-### Temukan sinyal operasional {#find-operating-signals}
+    <div id="find-operating-signals">
+      ### Temukan sinyal operasional
+    </div>
 
     Sebutkan sinyalnya dan company traits yang relevan. Search dapat mengambil lowongan kerja, halaman harga, dokumentasi produk, dan laporan sekaligus halaman perusahaan.
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-### Teliti aktivitas pendanaan {#research-funding-activity}
+    <div id="research-funding-activity">
+      ### Teliti aktivitas pendanaan
+    </div>
 
     Tentukan putaran pendanaan, industri, peserta, dan rentang waktunya.
 
@@ -76,19 +86,25 @@ Mulailah dari entitas yang Anda cari, lalu tambahkan karakteristik dan hubungan 
   </Tab>
 
   <Tab title="Orang" icon="users">
-### Temukan orang berdasarkan role dan keahlian {#discover-people-by-role-and-skills}
+    <div id="discover-people-by-role-and-skills">
+      ### Temukan orang berdasarkan role dan keahlian
+    </div>
 
     Gabungkan role, tingkat senioritas, lokasi, keahlian yang relevan, dan jenis sumber yang Anda inginkan.
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-### Kualifikasikan orang berdasarkan company traits {#qualify-people-by-company-traits}
+    <div id="qualify-people-by-company-traits">
+      ### Kualifikasikan orang berdasarkan company traits
+    </div>
 
     Deskripsikan hubungan orang tersebut dengan perusahaan serta karakteristik yang menjadi kualifikasi perusahaan itu. Cara ini lebih efektif daripada menyusun daftar perusahaan terlebih dahulu.
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-### Temukan situs web pribadi dan karya publik {#find-personal-websites-and-public-work}
+    <div id="find-personal-websites-and-public-work">
+      ### Temukan situs web pribadi dan karya publik
+    </div>
 
     Sebutkan profesi atau bidang research-nya, lalu minta secara eksplisit situs web pribadi, presentasi, wawancara, atau artikel.
 
@@ -96,13 +112,17 @@ Mulailah dari entitas yang Anda cari, lalu tambahkan karakteristik dan hubungan 
   </Tab>
 </Tabs>
 
-## Cari keduanya sekaligus {#search-both-together}
+<div id="search-both-together">
+  ## Cari keduanya sekaligus
+</div>
 
 Tulis satu query yang menyatakan hubungan yang Anda butuhkan. Exa dapat mengembalikan halaman perusahaan, profil profesional, halaman lowongan kerja, dan referensi publik dalam satu kumpulan hasil yang sama.
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -143,7 +163,9 @@ Tulis satu query yang menyatakan hubungan yang Anda butuhkan. Exa dapat mengemba
   ```
 </CodeGroup>
 
-## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research di berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan perusahaan, orang, kriteria kualifikasi, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi schema beserta sitasi.
 

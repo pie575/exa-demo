@@ -10,7 +10,9 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 L&#39;[appel d&#39;outils](https://platform.openai.com/docs/guides/function-calling?lang=python) d&#39;OpenAI permet aux modèles d&#39;appeler des fonctions que vous définissez dans votre code. Les SDK Exa fournissent des tools de recherche web et de lecture de pages prêts à l&#39;emploi pour OpenAI : vous n&#39;avez donc pas à écrire vous-même le schéma d&#39;outil, à analyser les appels d&#39;outil ni à formater les résultats Exa.
 
-## Get started {#get-started}
+<div id="get-started">
+  ## Get started
+</div>
 
 <Steps>
   <Step title="Installer les SDK">
@@ -103,7 +105,9 @@ L&#39;[appel d&#39;outils](https://platform.openai.com/docs/guides/function-call
   </Step>
 </Steps>
 
-## API Responses {#responses-api}
+<div id="responses-api">
+  ## API Responses
+</div>
 
 Pour l&#39;API Responses d&#39;OpenAI, utilisez la factory `responses` avec le même helper `handle_tool_calls`. Le handler renvoie des éléments `function_call_output` destinés à une requête de suivi.
 
@@ -135,7 +139,9 @@ Pour l&#39;API Responses d&#39;OpenAI, utilisez la factory `responses` avec le m
   Chat Completions et l&#39;API Responses utilisent des formats de tools différents et rejettent mutuellement ceux de l&#39;autre : utilisez donc la factory correspondant à l&#39;endpoint que vous appelez.
 </Note>
 
-## Configuration des tools {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Configuration des tools
+</div>
 
 Les arguments nommés sont des options Exa classiques, transmises lors de l&#39;exécution de l&#39;outil — les options de search à `exa.search()`, les options de contenu à `exa.get_contents()` :
 
@@ -159,11 +165,15 @@ Le modèle choisit la `query` de search et les `urls` à lire ; tout le reste es
 
 `name` (valant par défaut `"web_search"` et `"get_contents"`) et `description` remplacent quant à eux la définition de l&#39;outil telle que la voit le modèle. Utilisez un `name` personnalisé pour exécuter côte à côte des tools Exa configurés différemment, ou pour éviter les conflits avec d&#39;autres tools qui réservent ces noms.
 
-## Intégrer vos propres tools {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Intégrer vos propres tools
+</div>
 
 Les handlers répondent à chaque appel d&#39;outil du message : un appel désignant un outil qu&#39;ils ne peuvent pas résoudre reçoit un output `Error: unknown tool "<name>"` au lieu d&#39;être ignoré, de sorte que la requête de suivi n&#39;omet jamais une réponse d&#39;outil requise. Si vous exécutez vos propres tools en parallèle de ceux d&#39;Exa, remplacez ces outputs d&#39;erreur par vos propres résultats avant la requête suivante.
 
-## Écrire la loop à la main {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Écrire la loop à la main
+</div>
 
 Si vous préférez maîtriser vous-même le schéma d&#39;outil et l&#39;exécution, définissez l&#39;outil et traitez les appels manuellement. `exa.tools.web_search()` et `exa.tools.get_contents()` vous fournissent les mêmes spécifications d&#39;outil indépendantes du fournisseur (avec une méthode `run`) pour des loops écrites à la main, ou vous pouvez tout écrire de zéro :
 

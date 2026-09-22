@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件查看所有可用页面。
 
-# Tempo MPP GTM 增强手册 {#tempo-mpp-gtm-enrichment-cookbook}
+<div id="tempo-mpp-gtm-enrichment-cookbook">
+  # Tempo MPP GTM 增强手册
+</div>
 
 > 构建 GTM 增强工作流，通过 Tempo MPP 按每次 Exa search 和 页面内容 请求付费，无需 API 密钥。
 
@@ -18,7 +22,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   API 密钥计费流程。
 </Info>
 
-## 你将构建什么 {#what-youll-build}
+<div id="what-youll-build">
+  ## 你将构建什么
+</div>
 
 一个轻量级的增强 pipeline：给定一组公司名称或目标描述后，它会：
 
@@ -28,7 +34,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
 
 该模式适用于线索列表增强、客户调研和外呼个性化。由于它由独立的 `/search` 与 `/contents` 调用组成，每一步都可以通过 MPP 付费。
 
-## 前置条件 {#prerequisites}
+<div id="prerequisites">
+  ## 前置条件
+</div>
 
 * 一个兼容 Tempo 的 wallet，并在 Tempo mainnet 上存有 **USDC.e**。
 * 一种在运行时安全加载 wallet 私钥的方式 (见下文；切勿提交私钥，也不要将其暴露在源代码中) 。
@@ -38,9 +46,13 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   如果希望使用无需原始私钥的命令行方式，请使用 [Tempo Wallet CLI](/zh/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line)。`tempo wallet login` 会创建或连接一个 wallet，新注册用户还可能获得免费的 MPP 积分。
 </Info>
 
-## MPP 设置 {#mpp-setup}
+<div id="mpp-setup">
+  ## MPP 设置
+</div>
 
-### 安装客户端 {#install-the-client}
+<div id="install-the-client">
+  ### 安装客户端
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -52,7 +64,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   ```
 </CodeGroup>
 
-### 安全地加载私钥 {#load-your-private-key-safely}
+<div id="load-your-private-key-safely">
+  ### 安全地加载私钥
+</div>
 
 切勿硬编码私钥。下面的示例从运行时环境中读取 `WALLET_PRIVATE_KEY`，仅供本地开发使用。在 production 环境中，请通过 secrets manager 加载，例如 1Password、AWS Secrets Manager 或 HashiCorp Vault。
 
@@ -68,7 +82,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   ```
 </CodeGroup>
 
-### 发起一次付费 search 请求 {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### 发起一次付费 search 请求
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -135,7 +151,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
 
 请求成功时，响应会返回 Exa 结果，并附带一个包含 on-chain 交易哈希的 `Payment-Receipt` header。
 
-### 发起付费的页面内容请求 {#make-a-paid-contents-request}
+<div id="make-a-paid-contents-request">
+  ### 发起付费的页面内容请求
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -168,9 +186,13 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   ```
 </CodeGroup>
 
-## GTM 增强实践方案 {#gtm-enrichment-recipe}
+<div id="gtm-enrichment-recipe">
+  ## GTM 增强实践方案
+</div>
 
-### 增强公司列表 {#enrich-a-list-of-companies}
+<div id="enrich-a-list-of-companies">
+  ### 增强公司列表
+</div>
 
 给定一份公司名称列表，为每家公司搜索其页面并提取结构化详情。
 
@@ -296,7 +318,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   ```
 </CodeGroup>
 
-### 增强个人档案 {#enrich-a-person-profile}
+<div id="enrich-a-person-profile">
+  ### 增强个人档案
+</div>
 
 本示例使用 `type: "deep"`、`contents.highlights` 和 `outputSchema` 来
 调研某个人物并返回结构化档案。
@@ -387,7 +411,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   `contents.highlights` 每条结果额外收取 $0.001。
 </Note>
 
-### 结构化输出 {#structured-output}
+<div id="structured-output">
+  ### 结构化输出
+</div>
 
 如果你想要 JSON field 而不是纯文本，可在搜索请求中使用 `outputSchema`。Exa 会返回一个符合你 schema 结构的 `output` 对象。
 
@@ -459,7 +485,9 @@ API 密钥，也不按席位定价：只需为 wallet 充值 USDC.e，在丰富�
   LLM 调用，因此按 `deep-lite`/`deep` 计费。
 </Note>
 
-## 定价与限制 {#pricing-and-limits}
+<div id="pricing-and-limits">
+  ## 定价与限制
+</div>
 
 MPP 采用与 API 密钥计费相同的按请求定价。MPP 搜索请求
 最多返回 10 条结果。
@@ -476,7 +504,9 @@ MPP 采用与 API 密钥计费相同的按请求定价。MPP 搜索请求
 完整参考请见 [使用 MPP 支付 (Tempo) ](/zh/docs/integrations/payments/mpp/quickstart)，
 其中包含速率限制、网络详情和支付 header。
 
-## Production 提示 {#production-tips}
+<div id="production-tips">
+  ## Production 提示
+</div>
 
 * **只向 wallet 充值 USDC.e。** Exa 会代付 Tempo 网络手续费，因此 wallet
   无需单独准备 gas token。
@@ -486,7 +516,9 @@ MPP 采用与 API 密钥计费相同的按请求定价。MPP 搜索请求
 * **注意 10 条结果上限。** MPP search 会将 `numResults` 限制为 10。
 * **切勿提交私钥。** 请从 secrets manager 加载 `WALLET_PRIVATE_KEY`，不要放进源代码管理系统。
 
-## 常见问题 {#faq}
+<div id="faq">
+  ## 常见问题
+</div>
 
 <AccordionGroup>
   <Accordion title="可以在 Exa Agent API 中使用 MPP 吗？">
@@ -511,7 +543,9 @@ MPP 采用与 API 密钥计费相同的按请求定价。MPP 搜索请求
   </Accordion>
 </AccordionGroup>
 
-## 下一步 {#next-steps}
+<div id="next-steps">
+  ## 下一步
+</div>
 
 * [使用 MPP (Tempo) 支付](/zh/docs/integrations/payments/mpp/quickstart)：完整的 MPP 参考文档
 * [Exa Search API 指南](/zh/docs/search/quickstart)：搜索参数参考

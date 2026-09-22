@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Financial Datasets {#financial-datasets}
+<div id="financial-datasets">
+  # Financial Datasets
+</div>
 
 > Data keuangan dan pasar terstruktur untuk 27.000+ ticker AS: harga, fundamental, laba, SEC filings, kepemilikan, dan screening saham.
 
@@ -18,7 +22,9 @@ fundamental.
 Attach `financial_datasets` ke sebuah run [Exa Agent](/id/docs/agent/quickstart),
 dan agent akan melakukan kueri ke Financial Datasets berdampingan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Menyusun snapshot research perusahaan yang terstruktur.
 * Menganalisis kinerja keuangan, valuasi, dan tren historis.
@@ -27,7 +33,9 @@ dan agent akan melakukan kueri ke Financial Datasets berdampingan dengan Exa web
 * Melakukan screening pasar AS berdasarkan kriteria fundamental.
 * Memantau berita perusahaan dan perkembangan yang relevan.
 
-## Data yang tersedia {#data-available}
+<div id="data-available">
+  ## Data yang tersedia
+</div>
 
 Setiap dataset berikut tersedia di bawah provider `financial_datasets`;
 agent akan memilih yang paling sesuai dengan tugasnya:
@@ -52,7 +60,9 @@ agent akan memilih yang paling sesuai dengan tugasnya:
 | Stock price snapshot    | Harga real-time saat ini, perubahan harian, dan waktu kuotasi harga.                                    |
 | Stock screener          | Perusahaan yang memenuhi kriteria filter fundamental.                                                   |
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -60,7 +70,9 @@ Gunakan nilai ini pada `dataSources`:
 financial_datasets
 ```
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Bangun snapshot research perusahaan yang terstruktur untuk NVIDIA.
 
@@ -280,13 +292,17 @@ Bangun snapshot research perusahaan yang terstruktur untuk NVIDIA.
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Particle](/id/docs/agent/connect/particle): bandingkan liputan yang telah dipublikasikan dengan komentar di podcast.
 * [Baselayer](/id/docs/agent/connect/baselayer): verifikasi entitas yang berada di balik sebuah ticker.
 * [Fiber.ai](/id/docs/agent/connect/fiber): enrich perusahaan publik dengan perusahaan sejenis di pasar privat dan kontak jajaran pimpinannya.
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

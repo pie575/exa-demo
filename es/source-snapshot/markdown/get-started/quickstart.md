@@ -1,14 +1,20 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Quickstart para desarrolladores {#developer-quickstart}
+<div id="developer-quickstart">
+  # Quickstart para desarrolladores
+</div>
 
 > Consigue una API key y luego usa Exa desde tu código o desde tu agente.
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  ## 1. Consigue una API key {#1-get-an-api-key}
+  <div id="1-get-an-api-key">
+    ## 1. Consigue una API key
+  </div>
 
   <Steps>
     <Step title="Visita el Exa Dashboard">
@@ -36,7 +42,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 2. Elige cómo vas a usar Exa {#2-choose-how-youll-use-exa}
+  <div id="2-choose-how-youll-use-exa">
+    ## 2. Elige cómo vas a usar Exa
+  </div>
 
   Exa se integra en tu aplicación de dos formas: llamando a las APIs desde tu propio código o conectando un agente que ya uses.
 
@@ -63,7 +71,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 3. Instala un SDK {#3-install-an-sdk}
+  <div id="3-install-an-sdk">
+    ## 3. Instala un SDK
+  </div>
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -77,7 +87,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 4. Realiza tu primera solicitud {#4-make-your-first-request}
+  <div id="4-make-your-first-request">
+    ## 4. Realiza tu primera solicitud
+  </div>
 
   <CodeGroup>
     ```python Python theme={null}
@@ -120,7 +132,9 @@
     ```
   </CodeGroup>
 
-  ## Próximos pasos {#next-steps}
+  <div id="next-steps">
+    ## Próximos pasos
+  </div>
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/es/docs/search/quickstart" cta="Leer la guía" arrow="true">

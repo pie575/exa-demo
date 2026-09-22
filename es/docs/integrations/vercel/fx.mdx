@@ -12,7 +12,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "agente de programación", "búsqueda
   <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="Instalación de fx, incorporación del Exa MCP server con /mcp add y ejecución de una búsqueda web en tiempo real con Exa" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## Instalación {#installation}
+<div id="installation">
+  ## Instalación
+</div>
 
 <Steps>
   <Step title="Instalar fx">
@@ -40,7 +42,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "agente de programación", "búsqueda
   </Step>
 </Steps>
 
-## Configuración manual {#configure-by-hand}
+<div id="configure-by-hand">
+  ## Configuración manual
+</div>
 
 fx lee los MCP servers únicamente desde `~/.fx/mcp.json`, así que también puedes añadir Exa ahí directamente:
 
@@ -79,7 +83,9 @@ El plan gratuito cubre un uso ocasional. Para ampliar los límites de tasa, crea
 
 `header_env` asocia un nombre de encabezado a una variable de entorno, de modo que la key no queda expuesta en el archivo de configuración.
 
-## Descubrimiento de herramientas {#tool-discovery}
+<div id="tool-discovery">
+  ## Descubrimiento de herramientas
+</div>
 
 fx descubre las herramientas MCP de forma diferida: las herramientas del server no están en el contexto del modelo hasta que un turno las necesita, por lo que agregar Exa no tiene ningún costo en los turnos que no hacen búsquedas en la web.
 

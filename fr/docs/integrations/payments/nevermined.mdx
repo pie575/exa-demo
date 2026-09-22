@@ -13,7 +13,9 @@ Les agents paient Exa par carte bancaire grâce au schéma [x402 card-delegation
 
 Pour un payeur Nevermined qui effectue son premier achat, `POST /team-management/nevermined/purchase-key` provisionne une nouvelle API key Exa et y ajoute $7 de crédits. Si la clé est épuisée, générez un nouveau jeton x402 avec la même délégation et appelez de nouveau le même endpoint. Exa renvoie la même API key, avec $7 de crédits supplémentaires.
 
-## Acheter une clé {#buy-a-key}
+<div id="buy-a-key">
+  ## Acheter une clé
+</div>
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -26,7 +28,9 @@ payment-signature: <x402-token>
 * **Réponse (jeton rejoué) :** résultat mis en cache, aucun nouveau débit.
 * **Signature manquante ou invalide :** `402 Payment Required` avec les exigences de paiement dans le corps.
 
-## Fonctionnement {#how-it-works}
+<div id="how-it-works">
+  ## Fonctionnement
+</div>
 
 La partie paiement est gérée par Nevermined ; Exa ne voit que le jeton x402 signé.
 
@@ -38,7 +42,9 @@ La partie paiement est gérée par Nevermined ; Exa ne voit que le jeton x402 si
 
 Pour le guide complet destiné aux agents (méthodes du SDK, paramètres, découverte et création de délégations, dépannage), consultez le Guide d’intégration Exa de Nevermined : [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agents : récupérez [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)).
 
-## Ce que $7 permettent d&#39;obtenir {#what-7-buys}
+<div id="what-7-buys">
+  ## Ce que $7 permettent d&#39;obtenir
+</div>
 
 Les crédits sont consommés selon la tarification standard de l&#39;API Exa. Aux tarifs actuels, $7 de crédits couvrent environ :
 
@@ -57,7 +63,9 @@ Les crédits sont consommés selon la tarification standard de l&#39;API Exa. Au
 Les requêtes Search incluent le texte et les highlights pour un maximum de 10 résultats. Les résultats au-delà de ces 10 premiers ainsi que les résumés par IA sont facturés séparément.<br />
 Pour tous les détails sur la tarification, consultez [la tarification Exa](https://exa.ai/pricing).
 
-## Lorsque la clé est épuisée {#when-the-key-runs-out}
+<div id="when-the-key-runs-out">
+  ## Lorsque la clé est épuisée
+</div>
 
 Exa renvoie **`HTTP 402`** sur les endpoints classiques de l&#39;API dès que les crédits de l&#39;API key sont épuisés :
 
@@ -71,7 +79,9 @@ Exa renvoie **`HTTP 402`** sur les endpoints classiques de l&#39;API dès que le
 
 Générez un nouveau jeton x402 avec le même plan ID et la même délégation, puis envoyez-le de nouveau en POST sur le même endpoint `/purchase-key`. Exa ajoute alors 7 $ de crédits supplémentaires à la même API key.
 
-## Références {#references}
+<div id="references">
+  ## Références
+</div>
 
 * [Guide d’intégration Exa de Nevermined](https://nevermined.ai/docs/integrations/exa)
 * [Spécification x402 card-delegation](https://nevermined.ai/docs/specs/x402-card-delegation)

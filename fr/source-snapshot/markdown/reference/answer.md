@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Answer {#answer}
+<div id="answer">
+  # Answer
+</div>
 
 > Obtenez la réponse d&#39;un LLM à une question, éclairée par les résultats d&#39;Exa search. `/answer` effectue une recherche Exa et utilise un LLM pour générer :
 
@@ -22,7 +26,9 @@ Vous pouvez également utiliser l&#39;[interface chat completions](https://exa.a
   `/answer` prend en charge la sortie structurée via le paramètre `outputSchema`. Transmettez un objet [JSON Schema](https://json-schema.org/draft-07) et la réponse sera renvoyée en JSON structuré conforme à votre schéma plutôt que sous forme de simple chaîne de caractères.
 </Info>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0

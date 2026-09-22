@@ -1,13 +1,19 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 웹훅 시도 목록 조회 {#list-webhook-attempts}
+<div id="list-webhook-attempts">
+  # 웹훅 시도 목록 조회
+</div>
 
 > 웹훅이 수행한 모든 시도를 내림차순으로 조회합니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/webhooks/{id}/attempts
 openapi: 3.1.0

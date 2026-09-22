@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa di Claude Code, Web, dan Desktop {#exa-in-claude-code-web-and-desktop}
+<div id="exa-in-claude-code-web-and-desktop">
+  # Exa di Claude Code, Web, dan Desktop
+</div>
 
 > Cari di web dan baca halaman apa pun dengan Exa langsung dari Claude
 
 Instal Exa di Claude Code atau hubungkan ke Claude Web, Desktop, dan Cowork agar Claude memiliki akses ke informasi terkini dari web. Claude dapat melakukan search dengan bahasa alami, membaca halaman yang relevan, dan memanfaatkan sources tersebut selama bekerja.
 
-## Instal Exa {#install-exa}
+<div id="install-exa">
+  ## Instal Exa
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -59,7 +65,9 @@ Instal Exa di Claude Code atau hubungkan ke Claude Web, Desktop, dan Cowork agar
 
 Kedua opsi ini membuat Exa langsung tersedia tanpa perlu mengedit file konfigurasi MCP.
 
-## Manfaatkan apa yang ada di web saat ini {#work-with-whats-on-the-web-right-now}
+<div id="work-with-whats-on-the-web-right-now">
+  ## Manfaatkan apa yang ada di web saat ini
+</div>
 
 Di Claude Code, Exa dapat mencari dokumentasi, issues, changelog, dan contoh nyata terkini sambil Anda bekerja di repositori Anda. Integrasi yang sama memberi Claude Web, Desktop, dan Cowork akses ke berita terbaru, research, informasi perusahaan, detail produk, serta sources lain yang mungkin belum ada dalam konteks.
 
@@ -77,7 +85,9 @@ Pola yang sama berlaku setiap kali jawaban bergantung pada sources web yang terk
 * &quot;Baca dokumentasi webhook Stripe yang berlaku saat ini dan jelaskan perilaku retry yang direkomendasikan.&quot;
 * &quot;Cari halaman harga resmi untuk produk-produk ini dan bandingkan plan tingkat dasarnya.&quot;
 
-## Search, read, dan research {#search-read-and-research}
+<div id="search-read-and-research">
+  ## Search, read, dan research
+</div>
 
 Integrasi Exa memberi Claude tool untuk melakukan search dan membaca web, yang bisa dipadukan dalam tugas research yang lebih panjang.
 
@@ -95,7 +105,9 @@ Integrasi Exa memberi Claude tool untuk melakukan search dan membaca web, yang b
   </Card>
 </Columns>
 
-## Research tanpa meninggalkan Claude {#research-without-leaving-claude}
+<div id="research-without-leaving-claude">
+  ## Research tanpa meninggalkan Claude
+</div>
 
 Mintalah hasil yang Anda inginkan dan beri tahu Claude jenis sources mana yang penting:
 
@@ -106,7 +118,9 @@ open source utama. Gunakan sumber primer terkini dan cantumkan sitasinya.
 
 Claude dapat menggunakan Exa sepanjang percakapan untuk menemukan dan membaca sources yang dibutuhkan dalam suatu tugas. Gunakan ini untuk Research teknis, analisis kompetitor, pemetaan market, riset perusahaan, atau pertanyaan apa pun yang jawabannya tersebar di seluruh web.
 
-## Menggunakan Exa di Cowork {#use-exa-in-cowork}
+<div id="use-exa-in-cowork">
+  ## Menggunakan Exa di Cowork
+</div>
 
 Konektor yang sama tersedia di Cowork. Berikan Claude tugas yang membutuhkan informasi dari luar, dan Claude dapat melakukan search atau membaca halaman sambil bekerja dengan file Anda serta tool lain yang terhubung.
 
@@ -115,7 +129,9 @@ Tinjau ringkasan kompetitif ini, verifikasi setiap klaim harga dengan
 halaman vendor terkini menggunakan Exa, lalu perbarui dokumen dengan sitasi.
 ```
 
-## Lebih suka langsung pakai MCP? {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## Lebih suka langsung pakai MCP?
+</div>
 
 Jika Anda mengonfigurasi Claude secara manual atau menggunakan MCP client lain, Anda bisa langsung terhubung ke MCP server yang dihosting Exa:
 

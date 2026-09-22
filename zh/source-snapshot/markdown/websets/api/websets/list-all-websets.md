@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 列出所有 websets {#list-all-websets}
+<div id="list-all-websets">
+  # 列出所有 websets
+</div>
 
 > 返回 Websets 列表。
 
@@ -11,7 +15,9 @@
 
 你可以使用 `search` 参数筛选结果，按 ID、外部 ID 或标题查找 Websets。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets
 openapi: 3.1.0

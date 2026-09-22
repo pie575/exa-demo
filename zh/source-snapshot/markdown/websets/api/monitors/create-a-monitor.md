@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 创建 Websets monitor {#create-a-websets-monitor}
+<div id="create-a-websets-monitor">
+  # 创建 Websets monitor
+</div>
 
 > 创建一个新的 `Monitor`，持续为你的 Websets 补充最新数据。
 
@@ -13,7 +17,9 @@ Monitor 会按你设定的 schedule 自动运行，无需人工干预即可让 W
 * **更新已有内容**：执行 `refresh` 操作，更新项目的页面内容和增强
 * **自动化调度**：配置 `cron` 表达式和 `timezone`，实现精确的调度控制
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0

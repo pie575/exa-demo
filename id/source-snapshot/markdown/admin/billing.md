@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Billing dan Rate Limit {#billing-and-rate-limits}
+<div id="billing-and-rate-limits">
+  # Billing dan Rate Limit
+</div>
 
 > Kelola credits Exa, faktur, dan rate limit API.
 
@@ -23,7 +27,9 @@ Exa menyediakan tier Free, billing pay-as-you-go, dan plan Enterprise khusus. Pe
   </Card>
 </Columns>
 
-## Sekilas tentang plan {#plans-at-a-glance}
+<div id="plans-at-a-glance">
+  ## Sekilas tentang plan
+</div>
 
 | Plan              | Billing                                                                        | Rate limit                                        | Konkurensi Agent |
 | ----------------- | ------------------------------------------------------------------------------ | ------------------------------------------------- | ---------------- |
@@ -35,7 +41,9 @@ Exa menyediakan tier Free, billing pay-as-you-go, dan plan Enterprise khusus. Pe
   Kami akan memberikan saran penyiapan terbaik untuk menangani latency, skala, ZDR, dan lainnya.
 </Card>
 
-## Dasar-dasar billing {#billing-basics}
+<div id="billing-basics">
+  ## Dasar-dasar billing
+</div>
 
 Permintaan dikenakan biaya dari credits prabayar sesuai tarif di [Harga](/id/docs/admin/pricing) atau berdasarkan kontrak Enterprise Anda. Team owner dapat menambahkan credits melalui [Billing dashboard](https://dashboard.exa.ai/billing); pembayaran diproses melalui Stripe.
 
@@ -43,7 +51,9 @@ Jika credits team Anda habis, permintaan akan mengembalikan `402 Payment Require
 
 Untuk riwayat penggunaan per API key, gunakan [Get API key usage](/id/docs/reference/team-management/get-api-key-usage).
 
-## Rate limit {#rate-limits}
+<div id="rate-limits">
+  ## Rate limit
+</div>
 
 Rate limit diukur dalam queries per second (QPS) dan berlaku untuk team Anda secara keseluruhan, mencakup seluruh API key di dalamnya. Anda dapat menetapkan batas yang lebih rendah untuk satu key tertentu melalui halaman [API Keys](https://dashboard.exa.ai/api-keys), tetapi trafiknya tetap diperhitungkan terhadap batas team.
 
@@ -59,7 +69,9 @@ Beberapa endpoint berbagi kapasitas rate limit. Batas dapat berubah sewaktu-wakt
 
 Jika Anda melampaui suatu batas, permintaan akan mengembalikan `429 Too Many Requests`. Tunggu sesuai header `Retry-After` bila tersedia, atau coba lagi dengan exponential backoff. Lihat [Error codes](/id/docs/admin/error-codes).
 
-### Batas Agent {#agent-limits}
+<div id="agent-limits">
+  ### Batas Agent
+</div>
 
 Batas Agent terdiri dari dua kontrol terpisah: berapa banyak run yang dapat berjalan sekaligus, dan seberapa cepat Anda dapat memulai run baru.
 
@@ -67,13 +79,17 @@ Batas Agent terdiri dari dua kontrol terpisah: berapa banyak run yang dapat berj
 * **Memulai run**: `POST /agent/runs` mengambil dari QPS akun Anda, dan setiap run yang dimulai dihitung sebagai dua permintaan. Anda dapat memulai run pada setengah dari QPS Anda, sehingga akun dengan default 10 QPS dapat memulai 5 run per detik, dan 25 QPS memungkinkan 12 run per detik.
 * **Polling**: permintaan `GET` untuk status run, events, dan daftar run tidak dihitung terhadap QPS Anda dan tidak pernah menghambat dispatch, jadi Anda dapat melakukan poll pada Agent yang sedang berjalan tanpa terpengaruh seberapa cepat Anda memulai run baru.
 
-### 25 QPS pada pay as you go {#25-qps-on-pay-as-you-go}
+<div id="25-qps-on-pay-as-you-go">
+  ### 25 QPS pada pay as you go
+</div>
 
 Tambahkan credits senilai $1.000 dalam rentang 30 hari mana pun, dan rate limit team Anda otomatis naik menjadi **25 QPS selama 90 hari**. Ambang batas ini dihitung dari credits yang Anda beli, bukan credits yang Anda pakai, dan memenuhi syarat kembali akan mengatur ulang masa 90 hari tersebut. Pantau progres Anda di [Billing dashboard](https://dashboard.exa.ai/billing).
 
 Butuh lebih dari 25 QPS? [Hubungi tim sales](https://exa.ai/contact/sales).
 
-## Isi ulang otomatis {#auto-recharge}
+<div id="auto-recharge">
+  ## Isi ulang otomatis
+</div>
 
 Isi ulang otomatis membeli credits ketika saldo Anda mencapai ambang batas yang Anda tentukan. Konfigurasikan melalui [Billing dashboard](https://dashboard.exa.ai/billing).
 
@@ -87,13 +103,17 @@ Sebagai contoh, dengan jumlah isi ulang $100, ambang batas $10, dan batas maksim
 
 Untuk peluncuran yang akan datang atau beban kerja bervolume tinggi lainnya, tambahkan credits yang cukup sejak awal dan setel jumlah isi ulang otomatis yang cukup besar agar tidak terjadi banyak percobaan payment kecil.
 
-## Tanda terima dan faktur {#receipts-and-invoices}
+<div id="receipts-and-invoices">
+  ## Tanda terima dan faktur
+</div>
 
 Exa mengirimkan tanda terima untuk pembelian credits dan isi ulang otomatis melalui email dari [billing@exa.ai](mailto:billing@exa.ai). Tambahkan alamat tersebut ke daftar izin Anda jika diperlukan. Riwayat faktur lengkap Anda tersedia di [Billing dashboard](https://dashboard.exa.ai/billing).
 
 Billing faktur pascabayar tersedia pada plan Enterprise.
 
-## Dapatkan bantuan {#get-help}
+<div id="get-help">
+  ## Dapatkan bantuan
+</div>
 
 <Columns cols={2}>
   <Card title="Tingkatkan batas Anda" icon="gauge" href="https://exa.ai/contact/sales" cta="Hubungi tim sales" arrow="true">

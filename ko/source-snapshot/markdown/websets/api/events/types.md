@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Event types {#event-types}
+<div id="event-types">
+  # Event types
+</div>
 
 > Webset API에서 발생하는 이벤트에 대해 알아보세요
 
@@ -11,36 +15,48 @@ Websets API는 이벤트를 통해 Websets의 변경 사항을 알려줍니다. 
 
 이벤트는 60일 동안 보관된 후 자동으로 삭제됩니다.
 
-## Webset {#webset}
+<div id="webset">
+  ## Webset
+</div>
 
 * `webset.created` - 새 Webset이 생성될 때 발생합니다.
 * `webset.deleted` - Webset이 삭제될 때 발생합니다.
 * `webset.paused` - Webset의 작업이 일시 중지될 때 발생합니다.
 * `webset.idle` - Webset에 실행 중인 작업이 없을 때 발생합니다.
 
-## search {#search}
+<div id="search">
+  ## search
+</div>
 
 * `webset.search.created` - 새로운 search가 시작될 때 발생합니다.
 * `webset.search.updated` - search 진행 상황이 업데이트될 때 발생합니다.
 * `webset.search.completed` - search가 모든 item을 찾아 완료되었을 때 발생합니다.
 * `webset.search.canceled` - search가 수동으로 취소되었을 때 발생합니다.
 
-## Item {#item}
+<div id="item">
+  ## Item
+</div>
 
 * `webset.item.created` - Webset에 새 item이 추가되면 발생합니다.
 * `webset.item.enriched` - item의 enrichment가 완료되면 발생합니다.
 
-## Import {#import}
+<div id="import">
+  ## Import
+</div>
 
 * `import.created` - 새 import가 시작될 때 발생합니다.
 * `import.completed` - import가 완료되면 발생합니다.
 
-## Export {#export}
+<div id="export">
+  ## Export
+</div>
 
 * `webset.export.created` - 새로운 export가 시작될 때 발생합니다.
 * `webset.export.completed` - export가 완료되면 발생합니다.
 
-## Monitor {#monitor}
+<div id="monitor">
+  ## Monitor
+</div>
 
 * `monitor.created` - 새로운 monitor가 생성될 때 발생합니다.
 * `monitor.updated` - monitor의 구성이 업데이트될 때 발생합니다.

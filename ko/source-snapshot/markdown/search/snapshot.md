@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa Snapshot {#exa-snapshot}
+<div id="exa-snapshot">
+  # Exa Snapshot
+</div>
 
 > 원하는 datetime 시점에 저장된 stored version으로 Search와 Contents를 고정하세요.
 
@@ -16,7 +20,9 @@ Exa Snapshot은 Exa가 크롤링한 페이지의 stored version을 보관합니�
   요청 100회 이후에도 계속 사용하려면 [영업팀에 문의하세요](https://exa.ai/contact/sales).
 </Info>
 
-## 특정 datetime 기준 검색 {#search-at-a-datetime}
+<div id="search-at-a-datetime">
+  ## 특정 datetime 기준 검색
+</div>
 
 `/search`에서는 `contents` 안에 `snapshotAsOf`를 넣습니다.
 
@@ -105,7 +111,9 @@ Exa는 후보 URL을 찾은 뒤, `snapshotAsOf` 시점 또는 그 이전의 stor
   ```
 </Accordion>
 
-## 특정 datetime으로 contents 고정하기 {#pin-contents-to-a-datetime}
+<div id="pin-contents-to-a-datetime">
+  ## 특정 datetime으로 contents 고정하기
+</div>
 
 `/contents` 요청의 최상위 레벨에 `snapshotAsOf`를 추가하세요.
 
@@ -184,7 +192,9 @@ Exa는 해당 datetime 시점 또는 그 이전의 가장 최신 stored version�
   `"status": "error"`와 `"tag": "CONTENT_NOT_CACHED"`로 표시됩니다.
 </Tip>
 
-## snapshot 작동 방식 {#how-snapshots-work}
+<div id="how-snapshots-work">
+  ## snapshot 작동 방식
+</div>
 
 | Field          | 위치 | 의미                                                                 |
 | -------------- | -- | ------------------------------------------------------------------ |
@@ -202,7 +212,9 @@ Exa는 해당 datetime 시점 또는 그 이전의 가장 최신 stored version�
   evidence로 활용하시고, 그 시점에 search가 매겼을 랭킹을 그대로 재현한 것으로 보지 마십시오.
 </Note>
 
-## limits 및 호환성 {#limits-and-compatibility}
+<div id="limits-and-compatibility">
+  ## limits 및 호환성
+</div>
 
 <AccordionGroup>
   <Accordion title="액세스, 속도 제한, 조회 가능 기간">
@@ -224,7 +236,9 @@ Exa는 해당 datetime 시점 또는 그 이전의 가장 최신 stored version�
   </Accordion>
 </AccordionGroup>
 
-## 일반적인 활용 사례 {#common-uses}
+<div id="common-uses">
+  ## 일반적인 활용 사례
+</div>
 
 특정 datetime 시점에 Exa가 저장해 둔 내용에 작업이 좌우되는 경우 Exa Snapshot을 사용하세요:
 

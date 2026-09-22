@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# fx de Vercel Labs {#fx-by-vercel-labs}
+<div id="fx-by-vercel-labs">
+  # fx de Vercel Labs
+</div>
 
 > Añade Exa web search a fx, el agente de programación nativo de Vercel Labs, con el Exa MCP server alojado.
 
@@ -13,7 +17,9 @@
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/vercel/fx/install-exa.gif?s=2e331148abdf5bdf083e6f651e3b8b75" alt="Instalación de fx, incorporación del Exa MCP server con /mcp add y ejecución de una búsqueda web en tiempo real con Exa" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## Instalación {#installation}
+<div id="installation">
+  ## Instalación
+</div>
 
 <Steps>
   <Step title="Instalar fx">
@@ -41,7 +47,9 @@
   </Step>
 </Steps>
 
-## Configuración manual {#configure-by-hand}
+<div id="configure-by-hand">
+  ## Configuración manual
+</div>
 
 fx lee los MCP servers únicamente desde `~/.fx/mcp.json`, por lo que también puedes añadir Exa ahí directamente:
 
@@ -80,7 +88,9 @@ El plan gratuito cubre un uso ocasional. Para ampliar los límites de tasa, crea
 
 `header_env` asigna el nombre de un encabezado a una variable de entorno, de modo que la key no quede en el archivo de configuración.
 
-## Descubrimiento de herramientas {#tool-discovery}
+<div id="tool-discovery">
+  ## Descubrimiento de herramientas
+</div>
 
 fx descubre las herramientas MCP de forma diferida: las herramientas del server no ocupan el contexto del modelo hasta que un turno las necesita, por lo que agregar Exa no tiene costo en los turnos que no requieren buscar en la web.
 

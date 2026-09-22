@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Baselayer {#baselayer}
+<div id="baselayer">
+  # Baselayer
+</div>
 
 > 미국 기업을 verification하고 KYB 데이터를 조회하세요: 임원, 등록 정보, 리스크 score.
 
@@ -11,13 +15,17 @@
 
 [Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에 `baselayer`를 attach하면, agent가 Exa web search와 함께 Baselayer를 조회합니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * KYB 온보딩 및 벤더/고객 verification.
 * 임원, 등록 정보, 법인 구조에 대한 실사.
 * 기업의 위험 요소 및 워치리스트 일치 여부 screening.
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -25,7 +33,9 @@
 baselayer
 ```
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 Baselayer는 주문 단위로 과금하며, 요율은 작업 종류와 해당 parameters에 따라 달라집니다:
 
@@ -43,7 +53,9 @@ Baselayer는 주문 단위로 과금하며, 요율은 작업 종류와 해당 pa
 
 가격은 매개변수 선택에 따라 달라집니다. 두 개 state를 대상으로 한 담보권 search는 $4.00, 지원되는 여섯 개 목록 전체를 대상으로 한 워치리스트 스크리닝은 $1.35이며, 웹 존재감 분석 call은 선택한 분석 항목의 합계(아무것도 선택하지 않으면 Baselayer의 기본 세트인 NAICS 예측과 웹사이트 분석의 합계)로 계산됩니다.
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 기업을 검증하고 해당 기업의 임원 및 등록 정보를 조회합니다.
 
@@ -158,13 +170,17 @@ Baselayer는 주문 단위로 과금하며, 요율은 작업 종류와 해당 pa
   ```
 </CodeGroup>
 
-## 함께 사용하기 좋은 도구 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하기 좋은 도구
+</div>
 
 * [Fiber.ai](/ko/docs/agent/connect/fiber): 검증된 기업에 기업 정보, 직원 수, 연락처를 더해 enrich합니다.
 * [Financial Datasets](/ko/docs/agent/connect/financialdatasets): 상장 기업의 최신 뉴스 보도를 추가합니다.
 * [Similarweb](/ko/docs/agent/connect/similarweb): 검증된 기업의 웹 traffic과 competitor를 비교 분석합니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

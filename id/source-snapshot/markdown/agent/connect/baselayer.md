@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Baselayer {#baselayer}
+<div id="baselayer">
+  # Baselayer
+</div>
 
 > Verifikasi bisnis AS dan ambil data KYB: pejabat, registrasi, skor risiko.
 
@@ -16,13 +20,17 @@ Attach `baselayer` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), maka agent akan mengueri
 Baselayer bersamaan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Onboarding KYB serta verifikasi vendor/pelanggan.
 * Uji tuntas terhadap pejabat, registrasi, dan struktur entitas.
 * Screening bisnis untuk mendeteksi risiko dan kecocokan watchlist.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -30,7 +38,9 @@ Gunakan nilai ini pada `dataSources`:
 baselayer
 ```
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 Baselayer menagih per pesanan, dan tarifnya bergantung pada operasi serta
 parameternya:
@@ -52,7 +62,9 @@ $4.00, watchlist screen untuk keenam daftar yang didukung berbiaya $1.35, dan
 satu panggilan web presence dihitung dari total analisis yang Anda pilih (atau dari
 kumpulan default Baselayer — prediksi NAICS dan website analysis — jika Anda tidak memilih satu pun).
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Verifikasi sebuah bisnis dan ambil detail pejabat serta registrasinya.
 
@@ -167,13 +179,17 @@ Verifikasi sebuah bisnis dan ambil detail pejabat serta registrasinya.
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Fiber.ai](/id/docs/agent/connect/fiber): enrich bisnis terverifikasi dengan data firmografis, jumlah karyawan, dan kontak.
 * [Financial Datasets](/id/docs/agent/connect/financialdatasets): tambahkan liputan berita terbaru untuk entitas publik.
 * [Similarweb](/id/docs/agent/connect/similarweb): bandingkan trafik web dan kompetitor perusahaan terverifikasi.
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

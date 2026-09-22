@@ -17,7 +17,9 @@ Ada dua cara menghubungkan Exa ke ElevenLabs:
 
 Panduan ini membahas pendekatan webhook tool, yang memberi Anda kontrol penuh atas cara Exa dipanggil. Anda juga dapat mengonfigurasi integrasi ini melalui [dashboard ElevenLabs](https://elevenlabs.io/app/conversational-ai).
 
-## Cara kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
 
 1. Pengguna berbicara kepada voice agent
 2. LLM memutuskan untuk memanggil `web_search` berdasarkan deskripsi tool
@@ -27,7 +29,9 @@ Panduan ini membahas pendekatan webhook tool, yang memberi Anda kontrol penuh at
 
 Tanpa server, tanpa callback URL, tanpa listener. ElevenLabs adalah client HTTP yang memanggil Exa secara langsung. Tool call memiliki batas waktu 20 detik.
 
-## Prasyarat {#prerequisites}
+<div id="prerequisites">
+  ## Prasyarat
+</div>
 
 * [Exa API key](https://dashboard.exa.ai/api-keys)
 * [ElevenLabs API key](https://elevenlabs.io/app/settings/api-keys)
@@ -36,7 +40,9 @@ Tanpa server, tanpa callback URL, tanpa listener. ElevenLabs adalah client HTTP 
   Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Buat webhook tool">
@@ -145,7 +151,9 @@ Tanpa server, tanpa callback URL, tanpa listener. ElevenLabs adalah client HTTP 
   </Step>
 </Steps>
 
-## Contoh Python lengkap {#full-python-example}
+<div id="full-python-example">
+  ## Contoh Python lengkap
+</div>
 
 Skrip ini membuat webhook tool dan agent sekaligus dalam satu run:
 
@@ -239,11 +247,15 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-## Menyesuaikan search parameters {#customizing-search-parameters}
+<div id="customizing-search-parameters">
+  ## Menyesuaikan search parameters
+</div>
 
 Schema body dari webhook tool dipetakan langsung ke [Search API Exa](/id/docs/reference/search). Berikut beberapa konfigurasi umum:
 
-### Search type {#search-type}
+<div id="search-type">
+  ### Search type
+</div>
 
 Atur kompromi antara kecepatan dan kualitas dengan konstanta `type`:
 
@@ -254,7 +266,9 @@ Atur kompromi antara kecepatan dan kualitas dengan konstanta `type`:
 
 Untuk voice agent, mulailah dengan `instant`. Gunakan `auto` jika Anda ingin Exa yang memilih search mode terbaik saat itu untuk setiap query.
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 Tentukan bagaimana hasil dikembalikan melalui objek `contents`:
 
@@ -278,7 +292,9 @@ Tentukan bagaimana hasil dikembalikan melalui objek `contents`:
 
 Untuk voice agent, `highlights: true` adalah default yang direkomendasikan — opsi ini menyeimbangkan relevance dengan kecepatan response.
 
-### Pemfilteran hasil {#filtering-results}
+<div id="filtering-results">
+  ### Pemfilteran hasil
+</div>
 
 Tambahkan filter domain atau tanggal sebagai konstanta:
 
@@ -300,11 +316,15 @@ Tambahkan filter domain atau tanggal sebagai konstanta:
 }
 ```
 
-### Jumlah hasil {#number-of-results}
+<div id="number-of-results">
+  ### Jumlah hasil
+</div>
 
 Sesuaikan `numResults` sesuai kebutuhan Anda. Untuk aplikasi suara, 3-5 hasil membuat response tetap cepat. Untuk agent yang berorientasi Research, 10+ hasil memberikan cakupan yang lebih luas.
 
-## Referensi schema {#schema-reference}
+<div id="schema-reference">
+  ## Referensi schema
+</div>
 
 Webhook tool ElevenLabs menggunakan JSON schema dengan tipe properti berikut:
 
@@ -322,7 +342,9 @@ Parameter yang disetel ke **Fixed** (ditandai dengan `constant_value` di API) di
 
 Untuk schema webhook tool ElevenLabs selengkapnya, lihat [dokumentasi server tools ElevenLabs](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
 
-## Integrasi Exa bawaan (alpha) {#built-in-exa-integration-alpha}
+<div id="built-in-exa-integration-alpha">
+  ## Integrasi Exa bawaan (alpha)
+</div>
 
 ElevenLabs juga menyediakan integrasi Exa bawaan yang tersedia di dashboard agent pada **Tools &gt; Integrations**. Integrasi ini lebih mudah disiapkan, tetapi menyesuaikan search parameters lebih sulit dibandingkan pendekatan webhook tool.
 

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# CrewAI {#crewai}
+<div id="crewai">
+  # CrewAI
+</div>
 
 > 了解如何为你的 CrewAI agent 添加 Exa retrieval 能力。
 
@@ -26,7 +30,9 @@
 
 ***
 
-## 快速开始 {#get-started}
+<div id="get-started">
+  ## 快速开始
+</div>
 
 <Steps>
   <Step title="前置条件与安装">

@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Code &amp; Docs {#code-docs}
+<div id="code-docs">
+  # Code &amp; Docs
+</div>
 
 > Trouvez du code, de la documentation technique et des conseils d&#39;implémentation avec Exa Search.
 
@@ -40,40 +44,54 @@ Utilisez Exa Search pour trouver des dépôts, de la documentation technique, de
   évalue le retrieval pour les tâches de code.
 </Tip>
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Agents de code et outils de génération de code
 * Produits de recherche pour développeurs et de documentation
 * Workflows de débogage, de migration et de configuration
 * Recherche technique dans les dépôts, la documentation et les registres de packages
 
-## Exemples de requêtes {#example-queries}
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
 
-### Découvrir des bibliothèques par capacité {#discover-libraries-by-capability}
+<div id="discover-libraries-by-capability">
+  ### Découvrir des bibliothèques par capacité
+</div>
 
 Décrivez la capacité, l&#39;écosystème et les contraintes qui vous intéressent. Les candidats sont ainsi identifiés selon ce qu&#39;ils font, plutôt qu&#39;à partir d&#39;un nom de projet exact.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-### Récupérer la documentation d&#39;implémentation {#retrieve-implementation-documentation}
+<div id="retrieve-implementation-documentation">
+  ### Récupérer la documentation d&#39;implémentation
+</div>
 
 Indiquez le produit et l&#39;opération exacte. Search peut alors privilégier la documentation d&#39;API et les guides d&#39;implémentation plutôt que les discussions générales.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-### Vérifier les changements spécifiques à une version {#check-version-specific-changes}
+<div id="check-version-specific-changes">
+  ### Vérifier les changements spécifiques à une version
+</div>
 
 Précisez le canal de publication ou la version lorsque la compatibilité est en jeu. Cela limite les résultats portant sur des versions plus anciennes.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-### Trouver des outils d&#39;agent réutilisables {#find-reusable-agent-tooling}
+<div id="find-reusable-agent-tooling">
+  ### Trouver des outils d&#39;agent réutilisables
+</div>
 
 Indiquez le type d&#39;artefact et la tâche plutôt que de rechercher une expression générale comme « outils d&#39;IA ».
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,7 +139,9 @@ Indiquez le type d&#39;artefact et la tâche plutôt que de rechercher une expre
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les bibliothèques, les critères techniques et les output fields dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 

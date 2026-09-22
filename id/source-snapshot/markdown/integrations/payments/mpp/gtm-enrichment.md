@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Cookbook Enrichment GTM dengan Tempo MPP {#tempo-mpp-gtm-enrichment-cookbook}
+<div id="tempo-mpp-gtm-enrichment-cookbook">
+  # Cookbook Enrichment GTM dengan Tempo MPP
+</div>
 
 > Bangun workflow enrichment GTM yang membayar per permintaan Exa search dan contents dengan Tempo MPP — tanpa perlu API key.
 
@@ -20,7 +24,9 @@ meng-enrich lead atau perusahaan.
   alur API key billing standar.
 </Info>
 
-## Yang akan Anda bangun {#what-youll-build}
+<div id="what-youll-build">
+  ## Yang akan Anda bangun
+</div>
 
 Sebuah pipeline enrichment ringan yang, dari daftar nama perusahaan atau
 deskripsi target:
@@ -35,7 +41,9 @@ Pola ini cocok untuk enrichment daftar prospek, riset akun, dan
 personalisasi outbound. Karena tersusun dari panggilan `/search` + `/contents`
 yang terpisah, setiap langkah dapat dibayar dengan MPP.
 
-## Prasyarat {#prerequisites}
+<div id="prerequisites">
+  ## Prasyarat
+</div>
 
 * Wallet yang kompatibel dengan Tempo dan telah diisi dana **USDC.e** di Tempo mainnet.
 * Cara yang aman untuk memuat private key wallet saat runtime (lihat di bawah; jangan pernah
@@ -46,9 +54,13 @@ yang terpisah, setiap langkah dapat dibayar dengan MPP.
   Untuk penyiapan lewat baris perintah yang tidak memerlukan private key mentah, gunakan [Tempo Wallet CLI](/id/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). `tempo wallet login` akan membuat atau menghubungkan wallet dan bisa jadi menyertakan MPP Credits gratis untuk pendaftar baru.
 </Info>
 
-## Penyiapan MPP {#mpp-setup}
+<div id="mpp-setup">
+  ## Penyiapan MPP
+</div>
 
-### Instal client {#install-the-client}
+<div id="install-the-client">
+  ### Instal client
+</div>
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -60,7 +72,9 @@ yang terpisah, setiap langkah dapat dibayar dengan MPP.
   ```
 </CodeGroup>
 
-### Muat private key Anda dengan aman {#load-your-private-key-safely}
+<div id="load-your-private-key-safely">
+  ### Muat private key Anda dengan aman
+</div>
 
 Jangan pernah menulis private key secara hardcode. Contoh di bawah ini membaca `WALLET_PRIVATE_KEY` dari
 environment runtime Anda, hanya untuk pengembangan lokal. Di production, muat private key dari
@@ -78,7 +92,9 @@ secrets manager seperti 1Password, AWS Secrets Manager, atau HashiCorp Vault.
   ```
 </CodeGroup>
 
-### Mengirim permintaan search berbayar {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Mengirim permintaan search berbayar
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -146,7 +162,9 @@ secrets manager seperti 1Password, AWS Secrets Manager, atau HashiCorp Vault.
 Response yang berhasil akan mengembalikan hasil Exa beserta header `Payment-Receipt` yang berisi
 hash transaksi on-chain.
 
-### Membuat permintaan contents berbayar {#make-a-paid-contents-request}
+<div id="make-a-paid-contents-request">
+  ### Membuat permintaan contents berbayar
+</div>
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -179,9 +197,13 @@ hash transaksi on-chain.
   ```
 </CodeGroup>
 
-## Resep enrichment GTM {#gtm-enrichment-recipe}
+<div id="gtm-enrichment-recipe">
+  ## Resep enrichment GTM
+</div>
 
-### Enrich daftar perusahaan {#enrich-a-list-of-companies}
+<div id="enrich-a-list-of-companies">
+  ### Enrich daftar perusahaan
+</div>
 
 Dari daftar nama perusahaan, cari halaman masing-masing perusahaan dan ekstrak
 detail terstruktur.
@@ -308,7 +330,9 @@ detail terstruktur.
   ```
 </CodeGroup>
 
-### Enrich profil seseorang {#enrich-a-person-profile}
+<div id="enrich-a-person-profile">
+  ### Enrich profil seseorang
+</div>
 
 Resep ini menggunakan `type: "deep"`, `contents.highlights`, dan `outputSchema` untuk
 meneliti seseorang dan mengembalikan profil terstruktur.
@@ -399,7 +423,9 @@ meneliti seseorang dan mengembalikan profil terstruktur.
   `contents.highlights` menambah $0,001 per hasil.
 </Note>
 
-### Output terstruktur {#structured-output}
+<div id="structured-output">
+  ### Output terstruktur
+</div>
 
 Jika Anda menginginkan field JSON alih-alih teks mentah, gunakan `outputSchema` pada
 permintaan search. Exa akan mengembalikan objek `output` yang bentuknya mengikuti schema Anda.
@@ -472,7 +498,9 @@ permintaan search. Exa akan mengembalikan objek `output` yang bentuknya mengikut
   satu LLM call di sisi Exa, sehingga harganya mengikuti `deep-lite`/`deep`.
 </Note>
 
-## Harga dan batas {#pricing-and-limits}
+<div id="pricing-and-limits">
+  ## Harga dan batas
+</div>
 
 MPP menggunakan harga per permintaan yang sama dengan API key billing. Permintaan search MPP
 dibatasi maksimal 10 hasil.
@@ -489,7 +517,9 @@ dibatasi maksimal 10 hasil.
 Lihat [Pay with MPP (Tempo)](/id/docs/integrations/payments/mpp/quickstart) untuk referensi lengkap,
 termasuk rate limit, detail jaringan, dan header payment.
 
-## Tips untuk production {#production-tips}
+<div id="production-tips">
+  ## Tips untuk production
+</div>
 
 * **Isi wallet hanya dengan USDC.e.** Exa menanggung biaya jaringan Tempo,
   sehingga wallet tidak memerlukan token gas terpisah.
@@ -502,7 +532,9 @@ termasuk rate limit, detail jaringan, dan header payment.
 * **Jangan pernah melakukan commit private keys.** Muat `WALLET_PRIVATE_KEY` dari
   secrets manager, bukan dari source control.
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Bisakah saya menggunakan MPP dengan Exa Agent API?">
@@ -529,7 +561,9 @@ termasuk rate limit, detail jaringan, dan header payment.
   </Accordion>
 </AccordionGroup>
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 * [Bayar dengan MPP (Tempo)](/id/docs/integrations/payments/mpp/quickstart): referensi MPP lengkap
 * [Panduan Exa Search API](/id/docs/search/quickstart): referensi parameter search

@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Websets {#websets}
+<div id="websets">
+  # Websets
+</div>
 
 > Bangun dataset terverifikasi dan ter-enrich dari web.
 
-## Apa Itu Websets? {#what-are-websets}
+<div id="what-are-websets">
+  ## Apa Itu Websets?
+</div>
 
 Sebuah Webset dimulai dari query berbahasa alami dan jumlah item yang ditargetkan. Tambahkan kriteria yang harus dipenuhi oleh setiap hasil serta field enrichment yang akan diisi untuk setiap item yang diterima. Hasil dikirimkan secara asinkron melalui dashboard, API, atau webhook.
 
@@ -20,14 +26,18 @@ kode.
   API Websets memerlukan plan Websets berbayar; credits Search API dan credits Websets bersifat terpisah.
 </Info>
 
-## Cara Kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara Kerjanya
+</div>
 
 1. **Tentukan search:** Berikan query dalam bahasa alami, jumlah hasil, serta kriteria verifikasi dan enrichment opsional.
 2. **Cari dan verifikasi:** Websets menemukan kandidat dan mencocokkan masing-masing dengan kriteria Anda. Hanya hasil yang cocok yang menjadi item.
 3. **Jalankan enrichment:** Untuk setiap item yang terverifikasi, Websets mencari data tambahan yang Anda minta, seperti nama CEO, jumlah pendanaan, atau informasi kontak.
 4. **Terima hasil:** Lakukan poll untuk mengetahui status, gunakan webhook untuk pembaruan, atau periksa dashboard saat item mulai berdatangan.
 
-## Kemampuan Utama {#key-capabilities}
+<div id="key-capabilities">
+  ## Kemampuan Utama
+</div>
 
 | Fitur                   | Fungsinya                                                                                                                   |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -37,7 +47,9 @@ kode.
 | **Webhooks**            | Terima callback HTTP secara real-time saat item ditambahkan atau di-enrich                                                  |
 | **Imports**             | Gunakan URL Anda sendiri dan jalankan enrichments di atasnya                                                                |
 
-## Human Quickstart {#human-quickstart}
+<div id="human-quickstart">
+  ## Human Quickstart
+</div>
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru langsung mendapat credits gratis.
@@ -143,7 +155,9 @@ Lalu kirim permintaan pertama Anda:
   Lihat [Zero Data Retention](/id/docs/admin/security/zero-data-retention) untuk ketersediaan produk.
 </Note>
 
-## Selanjutnya {#next}
+<div id="next">
+  ## Selanjutnya
+</div>
 
 * [**Panduan Dashboard**](./dashboard/get-started) - Panduan langkah demi langkah untuk menggunakan Websets di dashboard
 * [**Cara Kerjanya**](./api/how-it-works) - Pembahasan mendalam tentang arsitektur berbasis event

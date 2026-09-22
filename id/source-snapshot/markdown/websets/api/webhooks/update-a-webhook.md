@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Memperbarui webhook {#update-a-webhook}
+<div id="update-a-webhook">
+  # Memperbarui webhook
+</div>
 
 > Memperbarui URL tujuan, events yang dilanggan, atau metadata sebuah Webhook. Field yang tidak disertakan akan dibiarkan tetap seperti semula.
 
@@ -13,7 +17,9 @@
   dianggap sebagai kegagalan pengiriman.
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

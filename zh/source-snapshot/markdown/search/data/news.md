@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 新闻 {#news}
+<div id="news">
+  # 新闻
+</div>
 
 > 使用 Exa Search 查找最新报道、行业动态和新兴话题。
 
@@ -35,40 +39,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 使用 Exa Search 检索主流媒体、行业媒体和垂直小众媒体的报道。新文章发布后几分钟内即可被搜索到。若对发布时间窗口有硬性要求，可将自然语言 query 与日期筛选条件结合使用。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 市场与投资研究
 * 网络安全与威胁情报
 * 公司、产品与竞争对手监测
 * 行业简报与时事研究
 
-## 查询示例 {#example-queries}
+<div id="example-queries">
+  ## 查询示例
+</div>
 
-### 追踪持续发酵的政策事件 {#follow-a-developing-policy-story}
+<div id="follow-a-developing-policy-story">
+  ### 追踪持续发酵的政策事件
+</div>
 
 指明主题、来源类型和发布时间窗口，让结果聚焦于事件的当前阶段。
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-### 查找从业者分析 {#find-practitioner-analysis}
+<div id="find-practitioner-analysis">
+  ### 查找从业者分析
+</div>
 
 如果你想获取从业者的分析而非泛泛的新闻报道，请在 query 中指明来源类型。
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-### 发现特定形式的讨论 {#discover-discussions-in-a-specific-format}
+<div id="discover-discussions-in-a-specific-format">
+  ### 发现特定形式的讨论
+</div>
 
 在 query 中同时写明形式和主题，这样搜索就能覆盖全网的单集页面和会议记录。
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-### 研究负面媒体报道 {#research-adverse-media}
+<div id="research-adverse-media">
+  ### 研究负面媒体报道
+</div>
 
 请同时描述负面信号和你要调查的实体类别，不要把 query 简化成&quot;公司名 + news&quot;。
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -109,7 +127,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 如果所需的结构化数据需要跨多个来源进行研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。描述你需要的报道、field 和时间范围，agent 会返回经过 schema 校验的结果及引用来源。
 

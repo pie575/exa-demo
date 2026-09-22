@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 金融市场 {#financial-markets}
+<div id="financial-markets">
+  # 金融市场
+</div>
 
 > 使用 Exa Search 查找市场数据、申报文件、财报电话会议和经济数据发布。
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 使用 Exa Search，在一次 query 中获取价格、申报文件、会议记录以及相关报道。针对某个股票代码的提问，可以同时返回报价、最新的财报电话会议和分析师研究内容。
 
-## 包含内容 {#included}
+<div id="included">
+  ## 包含内容
+</div>
 
 * 股票、加密货币、外汇、指数、期货、期权和大宗商品的报价及近期价格走势
 * 证券概况，包含关键统计指标和每日 OHLCV 历史数据
@@ -43,46 +49,62 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * SEC 备案文件、已披露的财务数据以及国际申报文件
 * 分析师预测、融资公告和经济数据发布
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 股票与信用研究
 * KYC、KYB 及负面媒体信息筛查
 * 投资组合与政策监控
 * 项目寻源与私募市场研究
 
-## 示例查询 {#example-queries}
+<div id="example-queries">
+  ## 示例查询
+</div>
 
-### 查询报价 {#look-up-a-quote}
+<div id="look-up-a-quote">
+  ### 查询报价
+</div>
 
 写明股票代码或公司名称，以及你想要的数据。使用 `$NVDA` 这类美元标签 (cashtag) 同样有效。
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-### 阅读财报电话会议 {#read-an-earnings-call}
+<div id="read-an-earnings-call">
+  ### 阅读财报电话会议
+</div>
 
 指明公司和季度，以获取会议记录本身，而非相关报道。
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-### 搜索申报文件 {#search-filings}
+<div id="search-filings">
+  ### 搜索申报文件
+</div>
 
 描述你要查找的披露内容，而不只是表格类型。`financial report` 类别会将结果限定在申报文件和报告范围内。
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-### 追踪一级市场动态 {#track-private-market-activity}
+<div id="track-private-market-activity">
+  ### 追踪一级市场动态
+</div>
 
 指定融资轮次、行业赛道和时间范围。
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-### 跟踪经济数据 {#follow-economic-data}
+<div id="follow-economic-data">
+  ### 跟踪经济数据
+</div>
 
 指明数据发布的名称，以及你想从中获取的具体数值。
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -126,7 +148,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 若所需的结构化数据需要跨多个信息来源开展研究，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的证券、时间区间、criteria 和输出 fields，agent 即会返回经 schema 校验的结果及引用来源。
 

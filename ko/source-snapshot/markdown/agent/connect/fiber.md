@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 먼저 확인하세요.
 
-# Fiber.ai {#fiberai}
+<div id="fiberai">
+  # Fiber.ai
+</div>
 
 > Fiber.ai의 B2B 데이터베이스에서 기업, 인물, LinkedIn 프로필을 search하세요.
 
@@ -15,7 +19,9 @@
 [Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart)
 실행에 `fiber`를 attach하면, agent가 Exa web search와 함께 Fiber.ai에도 질의를 보냅니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * work email 또는 개인 이메일로 인물을 역조회하거나, 일부만 채워진 회사/인물 레코드를 enrich하여
   CRM을 정리합니다.
@@ -27,7 +33,9 @@
 * 4,000만 개 이상의 회사와 8억 5,000만 명 이상의 인물을 search하고, 잠재 고객에
   work email, 개인 이메일, 전화번호를 enrich합니다.
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 이 값을 사용하세요:
 
@@ -35,7 +43,9 @@
 fiber
 ```
 
-## Pricing {#pricing}
+<div id="pricing">
+  ## Pricing
+</div>
 
 Fiber.ai는 `$0.02 / credit` 기준으로 credits를 청구하며, 각 call에는 Fiber가 보고한 credits만큼
 과금됩니다:
@@ -51,7 +61,9 @@ Fiber.ai는 `$0.02 / credit` 기준으로 credits를 청구하며, 각 call에�
 어떻게 설정하느냐에 따라 가격이 달라집니다. 회사 조회에서는 `numResults`가 과금 대상 후보 수를 결정하고,
 search에서는 result 개수가 비용의 대부분을 좌우합니다.
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 뉴욕에 있는 직원 50~200명 규모의 시리즈 A 핀테크 기업으로 B2B 잠재 고객 목록을 만들어 보세요.
 
@@ -148,13 +160,17 @@ search에서는 result 개수가 비용의 대부분을 좌우합니다.
   ```
 </CodeGroup>
 
-## 함께 사용하면 좋은 도구 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하면 좋은 도구
+</div>
 
 * [Similarweb](/ko/docs/agent/connect/similarweb): 잠재 고객의 웹 입지와 경쟁사를 파악합니다.
 * [Baselayer](/ko/docs/agent/connect/baselayer): 후보로 선정한 미국 기업의 임원과 등록 정보를 확인합니다.
 * [Particle](/ko/docs/agent/connect/particle): 특정 기업이나 임원에 대해 팟캐스트에서 어떤 이야기가 오가는지 찾아봅니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

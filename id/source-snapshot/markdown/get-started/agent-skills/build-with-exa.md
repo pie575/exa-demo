@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Build with Exa Skill {#build-with-exa-skill}
+<div id="build-with-exa-skill">
+  # Build with Exa Skill
+</div>
 
 > Agent skill untuk membantu developer mengimplementasikan bagian mana pun dari platform Exa API.
 
@@ -17,7 +21,9 @@ Gunakan skill ini untuk mengajari agent Anda membangun aplikasi dan agent dengan
   Setel key Anda sebagai `EXA_API_KEY` di environment agent Anda.
 </Note>
 
-## Penyiapan {#setup}
+<div id="setup">
+  ## Penyiapan
+</div>
 
 **Opsi A: Pasang skill ini secara langsung:**
 
@@ -63,13 +69,17 @@ What to do:
 Hard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-## Lihat sumber {#view-source}
+<div id="view-source">
+  ## Lihat sumber
+</div>
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="Lihat sumber" arrow="true">
   Baca definisi build-with-exa skill sebelum memasangnya.
 </Card>
 
-## Terkait {#related}
+<div id="related">
+  ## Terkait
+</div>
 
 <Columns cols={2}>
   <Card title="Semua agent skill" icon="layers" href="/id/docs/get-started/agent-skills/overview" cta="Jelajahi skill" arrow="true">

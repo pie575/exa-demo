@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Daftar API key {#list-api-keys}
+<div id="list-api-keys">
+  # Daftar API key
+</div>
 
 > Ambil semua API key milik team Anda beserta metadata-nya.
 
@@ -15,11 +19,15 @@
   Team Management API diaktifkan per team. Autentikasinya menggunakan API key service account, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah feature ini diaktifkan untuk team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-## Ringkasan {#overview}
+<div id="overview">
+  ## Ringkasan
+</div>
 
 Endpoint Daftar API key mengembalikan semua API key yang terkait dengan team Anda, mencakup ID key, nama, rate limit, dan timestamp pembuatan untuk setiap key.
 
-## Format Response {#response-format}
+<div id="response-format">
+  ## Format Response
+</div>
 
 Response berisi array objek API key dengan informasi berikut:
 
@@ -28,7 +36,9 @@ Response berisi array objek API key dengan informasi berikut:
 * **rateLimit**: Rate limit dalam permintaan per menit (jika diatur)
 * **createdAt**: Timestamp ISO 8601 saat key dibuat
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

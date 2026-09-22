@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# Fiber.ai {#fiberai}
+<div id="fiberai">
+  # Fiber.ai
+</div>
 
 > 在 Fiber.ai 的 B2B 数据库中搜索公司、人员和 LinkedIn 资料。
 
@@ -15,7 +19,9 @@
 [Exa Agent](/zh/docs/agent/quickstart) 的运行，agent 便会在进行 Exa 网页搜索的同时查询
 Fiber.ai。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 通过工作邮箱或个人邮箱反查对应人员，或丰富不完整的公司/人员记录，从而清理 CRM 数据。
 * 实时追踪 LinkedIn 动态信号：职位变动、晋升、入职新岗位、员工人数变化以及融资情况。
@@ -24,7 +30,9 @@ Fiber.ai。
 * 在 4000 万家以上公司和 8.5 亿以上人员中进行搜索，并为潜在客户丰富工作邮箱、
   个人邮箱和电话号码等信息。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用此值：
 
@@ -32,7 +40,9 @@ Fiber.ai。
 fiber
 ```
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 Fiber.ai 按积分计费，`$0.02 / credit`，每次调用按 Fiber 上报的积分数收费：
 
@@ -45,7 +55,9 @@ Fiber.ai 按积分计费，`$0.02 / credit`，每次调用按 Fiber 上报的积
 
 未匹配到结果的调用 (或 Fiber 已退款的调用) 不收费。参数选择会影响价格：公司查询的 `numResults` 决定你需要为多少个候选项付费，而搜索的费用主要取决于返回的结果数量。
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 构建一份 B2B 潜客名单：位于纽约、员工人数为 50–200 人的 A 轮金融科技公司。
 
@@ -142,13 +154,17 @@ Fiber.ai 按积分计费，`$0.02 / credit`，每次调用按 Fiber 上报的积
   ```
 </CodeGroup>
 
-## 搭配使用 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用
+</div>
 
 * [Similarweb](/zh/docs/agent/connect/similarweb)：评估潜在客户的网络影响力及其竞争对手。
 * [Baselayer](/zh/docs/agent/connect/baselayer)：为入围的美国企业核实高管信息与注册登记。
 * [Particle](/zh/docs/agent/connect/particle)：了解播客中对某家公司或某位高管的讨论。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="将其接入运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

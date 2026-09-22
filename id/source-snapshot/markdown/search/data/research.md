@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Publikasi Research {#research-publications}
+<div id="research-publications">
+  # Publikasi Research
+</div>
 
 > Temukan paper akademik, paten, hibah, uji klinis, dan persetujuan regulasi dengan Exa Search.
 
@@ -40,7 +44,9 @@ Gunakan Exa Search untuk publikasi research dan catatan terkait, termasuk judul,
   untuk mempelajari lebih lanjut tentang kualitas pencarian publikasi.
 </Tip>
 
-## Termasuk {#included}
+<div id="included">
+  ## Termasuk
+</div>
 
 * Paper dan pracetak, termasuk potongan teks penuh bila tersedia teks penuh hasil penguraian
 * Paten, beserta abstrak, klaim, penemu, dan pemegang hak
@@ -48,40 +54,54 @@ Gunakan Exa Search untuk publikasi research dan catatan terkait, termasuk judul,
 * Uji klinis, label obat, dan data interaksi
 * Persetujuan regulasi dan kesehatan
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Tinjauan literatur dan penemuan sitasi
 * Pemetaan prior art dan lanskap paten
 * Research klinis dan farmasi
 * Penemuan hibah dan peluang pendanaan
 
-## Contoh kueri {#example-queries}
+<div id="example-queries">
+  ## Contoh kueri
+</div>
 
-### Mencari paper tentang suatu topik {#find-papers-on-a-topic}
+<div id="find-papers-on-a-topic">
+  ### Mencari paper tentang suatu topik
+</div>
 
 Deskripsikan metode atau temuannya, jangan menebak-nebak kata kunci pada judul. Kategori `publication` membatasi hasil hanya pada paper.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-### Cari evidence klinis {#search-clinical-evidence}
+<div id="search-clinical-evidence">
+  ### Cari evidence klinis
+</div>
 
 Sebutkan fase, intervensi, dan populasinya agar registrasi uji klinis dan halaman hasil berperingkat lebih tinggi daripada liputan umum.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-### Melacak persetujuan regulasi {#track-regulatory-approvals}
+<div id="track-regulatory-approvals">
+  ### Melacak persetujuan regulasi
+</div>
 
 Sebutkan regulator serta kelas perangkat atau obat yang sedang Anda pantau.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-### Jalankan pencarian prior art {#run-a-prior-art-search}
+<div id="run-a-prior-art-search">
+  ### Jalankan pencarian prior art
+</div>
 
 Jelaskan invensi secara fungsional, seperti cara sebuah klaim ditulis, alih-alih menggunakan nama produk.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-## Membuat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Membuat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +145,9 @@ Jelaskan invensi secara fungsional, seperti cara sebuah klaim ditulis, alih-alih
   ```
 </CodeGroup>
 
-## Mendapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Mendapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang membutuhkan research lintas berbagai sumber, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan publikasi, kriteria inklusi, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil tervalidasi schema beserta sitasi.
 

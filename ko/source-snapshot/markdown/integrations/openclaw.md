@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# OpenClaw {#openclaw}
+<div id="openclaw">
+  # OpenClaw
+</div>
 
 > Exa로 OpenClaw에 실시간 web search와 page contents를 제공하세요.
 
 [OpenClaw](https://openclaw.ai/)는 Exa를 네이티브 `web_search` 제공업체로 지원합니다. Exa를 선택하면 모든 OpenClaw agent가 내장 웹 도구를 통해 Exa search mode, 날짜 필터, content extraction을 사용할 수 있습니다.
 
-## Exa 설정하기 {#set-up-exa}
+<div id="set-up-exa">
+  ## Exa 설정하기
+</div>
 
 <Steps>
   <Step title="Exa 플러그인 설치">
@@ -46,7 +52,9 @@
   </Step>
 </Steps>
 
-## 직접 구성하기 {#configure-manually}
+<div id="configure-manually">
+  ## 직접 구성하기
+</div>
 
 OpenClaw의 JSON5 구성 파일에서 Exa를 직접 선택할 수 있습니다:
 
@@ -84,7 +92,9 @@ gateway 환경 변수 대신 구성에 키를 저장하려면:
   API 키를 구성 파일에 커밋하기보다는 `EXA_API_KEY` 또는 OpenClaw SecretRef를 사용하세요.
 </Note>
 
-## agent가 요청할 수 있는 항목 {#what-agents-can-request}
+<div id="what-agents-can-request">
+  ## agent가 요청할 수 있는 항목
+</div>
 
 OpenClaw는 `web_search`를 통해 Exa를 노출합니다.
 
@@ -113,7 +123,9 @@ await web_search({
 
 OpenClaw는 기본적으로 web search 결과를 15분 동안 캐시합니다. 모든 요청이 항상 최신 결과를 가져와야 한다면 `tools.web.search.cacheTtlMinutes` 값을 변경하거나 `0`으로 설정하세요.
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="OpenClaw에 Exa가 제공업체로 표시되지 않는 경우">
@@ -129,7 +141,9 @@ OpenClaw는 기본적으로 web search 결과를 15분 동안 캐시합니다. �
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 <Columns cols={3}>
   <Card title="OpenClaw Exa 제공업체" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="가이드 읽기" arrow="true">

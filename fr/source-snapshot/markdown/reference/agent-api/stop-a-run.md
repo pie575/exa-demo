@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Arrêter un run {#stop-a-run}
+<div id="stop-a-run">
+  # Arrêter un run
+</div>
 
 > Arrêtez proprement un run Agent en cours et conservez les résultats collectés jusque-là.
 
@@ -20,7 +24,9 @@ Pour interrompre immédiatement un run sans renvoyer de résultats, utilisez plu
   Créez une clé dans le tableau de bord. Les nouveaux comptes démarrent avec des crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/stop
 openapi: 3.1.0

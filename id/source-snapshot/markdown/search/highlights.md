@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Kutipan {#highlights}
+<div id="highlights">
+  # Kutipan
+</div>
 
 > Dapatkan kutipan yang relevan dengan query dari hasil Exa Search sambil mengendalikan ukuran konteks dan latency.
 
@@ -11,7 +15,9 @@ Kutipan mengembalikan potongan teks ekstraktif dari setiap hasil yang relevan de
 
 Setiap hasil mengembalikan potongan teks terpilih pada `results[].highlights`.
 
-## Mengapa kutipan alih-alih teks penuh {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## Mengapa kutipan alih-alih teks penuh
+</div>
 
 Kutipan dihasilkan oleh model extraction internal Exa. Model ini membaca setiap hasil berdasarkan query Anda pada setiap permintaan dan hanya mengembalikan potongan teks yang menjawabnya. Anda memakai token jauh lebih sedikit dibandingkan teks halaman penuh, dengan kualitas jawaban akhir yang setara atau lebih baik.
 
@@ -29,7 +35,9 @@ Penghematan ini paling terasa dalam loop agent, ketika setiap putaran hasil sear
   untuk metodologi dan hasil lengkapnya.
 </Tip>
 
-## Menambahkan kutipan ke Search {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## Menambahkan kutipan ke Search
+</div>
 
 Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendasikan. Exa yang menentukan seberapa banyak teks dikembalikan dari setiap hasil berdasarkan relevance-nya terhadap query Anda, sehingga tidak ada character budget yang perlu disetel. Atur `maxCharacters` hanya jika aplikasi Anda memerlukan batas tetap per halaman.
 
@@ -61,7 +69,9 @@ Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendas
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights menyesuaikan seberapa banyak teks yang diambil dari setiap hasil berdasarkan apa yang paling berguna untuk query Anda. Fitur ini dapat mengambil lebih banyak dari sources yang kuat dan lebih sedikit dari sources yang repetitif atau tidak relevan, sehingga mengurangi total token yang dikembalikan.
 
@@ -132,7 +142,9 @@ Aktifkan dengan `dynamic: true`:
   `results[].highlights` yang sama dengan kutipan biasa.
 </Info>
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Panduan Search API" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">

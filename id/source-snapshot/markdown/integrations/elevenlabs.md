@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# ElevenLabs {#elevenlabs}
+<div id="elevenlabs">
+  # ElevenLabs
+</div>
 
 > Tambahkan Exa web search ke voice agent ElevenLabs.
 
@@ -20,7 +24,9 @@ Ada dua cara untuk menghubungkan Exa ke ElevenLabs:
 
 Panduan ini membahas pendekatan webhook tool, yang memberi Anda kendali penuh atas cara Exa dipanggil. Anda juga dapat mengatur integrasi ini melalui [dashboard ElevenLabs](https://elevenlabs.io/app/conversational-ai).
 
-## Cara kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
 
 1. Pengguna berbicara kepada voice agent
 2. LLM memutuskan untuk memanggil `web_search` berdasarkan deskripsi tool
@@ -30,7 +36,9 @@ Panduan ini membahas pendekatan webhook tool, yang memberi Anda kendali penuh at
 
 Tanpa server, tanpa callback URL, tanpa listener. ElevenLabs berperan sebagai client HTTP yang memanggil Exa secara langsung. Tool call memiliki batas waktu 20 detik.
 
-## Prasyarat {#prerequisites}
+<div id="prerequisites">
+  ## Prasyarat
+</div>
 
 * [Exa API key](https://dashboard.exa.ai/api-keys)
 * [ElevenLabs API key](https://elevenlabs.io/app/settings/api-keys)
@@ -39,7 +47,9 @@ Tanpa server, tanpa callback URL, tanpa listener. ElevenLabs berperan sebagai cl
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Buat webhook tool">
@@ -148,7 +158,9 @@ Tanpa server, tanpa callback URL, tanpa listener. ElevenLabs berperan sebagai cl
   </Step>
 </Steps>
 
-## Contoh Python lengkap {#full-python-example}
+<div id="full-python-example">
+  ## Contoh Python lengkap
+</div>
 
 Skrip ini membuat webhook tool dan agent sekaligus dalam satu run:
 
@@ -242,11 +254,15 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-## Menyesuaikan search parameters {#customizing-search-parameters}
+<div id="customizing-search-parameters">
+  ## Menyesuaikan search parameters
+</div>
 
 Schema body dari webhook tool dipetakan langsung ke [Search API dari Exa](/id/docs/reference/search). Berikut beberapa konfigurasi yang umum digunakan:
 
-### Search type {#search-type}
+<div id="search-type">
+  ### Search type
+</div>
 
 Atur keseimbangan antara kecepatan dan kualitas melalui konstanta `type`:
 
@@ -257,7 +273,9 @@ Atur keseimbangan antara kecepatan dan kualitas melalui konstanta `type`:
 
 Untuk voice agent, mulailah dengan `instant`. Gunakan `auto` jika Anda ingin Exa yang memilih search mode terbaik saat itu untuk setiap query.
 
-### Content options {#content-options}
+<div id="content-options">
+  ### Content options
+</div>
 
 Tentukan cara hasil dikembalikan melalui objek `contents`:
 
@@ -281,7 +299,9 @@ Tentukan cara hasil dikembalikan melalui objek `contents`:
 
 Untuk voice agent, `highlights: true` adalah default yang direkomendasikan — opsi ini menyeimbangkan relevance dengan kecepatan response.
 
-### Pemfilteran hasil {#filtering-results}
+<div id="filtering-results">
+  ### Pemfilteran hasil
+</div>
 
 Tambahkan filter domain atau tanggal sebagai konstanta:
 
@@ -303,11 +323,15 @@ Tambahkan filter domain atau tanggal sebagai konstanta:
 }
 ```
 
-### Jumlah hasil {#number-of-results}
+<div id="number-of-results">
+  ### Jumlah hasil
+</div>
 
 Sesuaikan `numResults` sesuai kasus penggunaan Anda. Untuk voice, 3-5 hasil menjaga response tetap cepat. Untuk agent yang berorientasi Research, 10+ memberikan cakupan yang lebih luas.
 
-## Referensi schema {#schema-reference}
+<div id="schema-reference">
+  ## Referensi schema
+</div>
 
 Webhook tool ElevenLabs menggunakan JSON schema dengan tipe properti berikut:
 
@@ -325,7 +349,9 @@ Parameter yang disetel ke **Fixed** (ditandai dengan `constant_value` di API) di
 
 Untuk schema webhook tool ElevenLabs selengkapnya, lihat [dokumentasi server tool ElevenLabs](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
 
-## Integrasi Exa bawaan (alpha) {#built-in-exa-integration-alpha}
+<div id="built-in-exa-integration-alpha">
+  ## Integrasi Exa bawaan (alpha)
+</div>
 
 ElevenLabs juga menyediakan integrasi Exa bawaan yang tersedia di dashboard agent pada menu **Tools &gt; Integrations**. Cara ini lebih mudah disiapkan, tetapi penyesuaian search parameters lebih sulit dilakukan dibandingkan pendekatan webhook tool.
 

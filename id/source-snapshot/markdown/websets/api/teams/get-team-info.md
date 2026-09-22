@@ -1,17 +1,25 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Get team info {#get-team-info}
+<div id="get-team-info">
+  # Get team info
+</div>
 
 > Ambil informasi tentang team Anda, termasuk penggunaan dan batas konkurensi.
 
-## Overview {#overview}
+<div id="overview">
+  ## Overview
+</div>
 
 Endpoint Get Team Info mengembalikan informasi tentang team yang terautentikasi, termasuk penggunaan konkurensi team saat ini dan batas yang telah dikonfigurasi. Ini berguna untuk memantau penggunaan Websets API Anda dan memahami rate limit yang berlaku.
 
-## Response {#response}
+<div id="response">
+  ## Response
+</div>
 
 Response mencakup:
 
@@ -21,21 +29,27 @@ Response mencakup:
 * **concurrency**: Penggunaan saat ini, menampilkan permintaan yang aktif dan yang mengantre
 * **limits**: Batas konkurensi Team Anda
 
-### Field Konkurensi {#concurrency-fields}
+<div id="concurrency-fields">
+  ### Field Konkurensi
+</div>
 
 Objek `concurrency` menampilkan status permintaan Anda saat ini:
 
 * **active**: Jumlah permintaan yang sedang diproses
 * **queued**: Jumlah permintaan yang menunggu untuk diproses
 
-### Field Limits {#limits-fields}
+<div id="limits-fields">
+  ### Field Limits
+</div>
 
 Objek `limits` menampilkan batas yang dikonfigurasi untuk team Anda:
 
 * **maxConcurrent**: Jumlah maksimum permintaan yang dapat diproses secara bersamaan (null berarti tidak terbatas)
 * **maxQueued**: Jumlah maksimum permintaan yang dapat menunggu dalam antrean (null berarti tidak terbatas)
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/teams/me
 openapi: 3.1.0

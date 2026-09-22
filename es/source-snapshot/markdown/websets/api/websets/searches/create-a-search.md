@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Crear una búsqueda {#create-a-search}
+<div id="create-a-search">
+  # Crear una búsqueda
+</div>
 
 > Crea una nueva Search para el Webset.
 
 El comportamiento por defecto es reutilizar los resultados de la Search anterior y evaluarlos según los nuevos criteria.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches
 openapi: 3.1.0

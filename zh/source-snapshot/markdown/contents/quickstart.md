@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Contents API {#contents-api}
+<div id="contents-api">
+  # Contents API
+</div>
 
 > 从任意 URL 提取文本、highlights 和摘要。
 
@@ -16,7 +20,9 @@ Exa Contents 从 URL 返回干净的页面内容，并自动处理 JavaScript �
   Exa 会根据每条结果的相关度确定其摘录长度。参见 [Highlights](/zh/docs/search/highlights)。
 </Tip>
 
-## 发起首个请求 {#make-your-first-request}
+<div id="make-your-first-request">
+  ## 发起首个请求
+</div>
 
 传入一个或多个 URL 或文档 ID，并针对与任务相关的部分请求 highlights。在 HTTP 请求中，通过 `ids` 传入：
 
@@ -237,7 +243,9 @@ Exa Contents 从 URL 返回干净的页面内容，并自动处理 JavaScript �
 
 每个请求只选用一种内容视图。若同时请求 highlights、text 和 summary，三者将分别返回并分别计费。
 
-## 内容新鲜度 {#content-freshness}
+<div id="content-freshness">
+  ## 内容新鲜度
+</div>
 
 `maxAgeHours` 用于控制提取的页面内容需要多新。
 
@@ -261,7 +269,9 @@ Exa Contents 从 URL 返回干净的页面内容，并自动处理 JavaScript �
   | `"preferred"`   | 无直接等效写法；请使用较小的值，例如 `maxAgeHours: 1` |
 </Accordion>
 
-## 抓取子页面 {#crawl-subpages}
+<div id="crawl-subpages">
+  ## 抓取子页面
+</div>
 
 设置 `subpages` 即可沿着每个起始 URL 中的链接继续抓取。若希望 Exa 优先抓取特定的站点板块，可添加 `subpageTarget`：
 
@@ -299,13 +309,17 @@ Exa Contents 从 URL 返回干净的页面内容，并自动处理 JavaScript �
   ```
 </CodeGroup>
 
-## 图片与网站图标 {#images-and-favicons}
+<div id="images-and-favicons">
+  ## 图片与网站图标
+</div>
 
 将 `extras.imageLinks` 设置为你希望从每个页面获取的图片 URL 数量。结果中还会包含
 站点的 `favicon`，以及一个具有代表性的 `image` URL (如果有) 。在 `/search` 中，该选项
 位于 `contents.extras.imageLinks`。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="API 参考" icon="square-terminal" href="/zh/docs/reference/get-contents" cta="打开参考" arrow="true">

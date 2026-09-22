@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件查看所有可用页面。
 
-# 取消正在运行的 webset {#cancel-a-running-webset}
+<div id="cancel-a-running-webset">
+  # 取消正在运行的 webset
+</div>
 
 > 取消对某个 Webset 正在执行的所有操作。
 
 任何 enrichment 或 search 都会被停止，该 Webset 将被标记为 `idle`。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}/cancel
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步浏览之前，可通过该文件查看所有可用页面。
 
-# 代码与文档 {#code-docs}
+<div id="code-docs">
+  # 代码与文档
+</div>
 
 > 使用 Exa Search 查找代码、技术文档和实现指导。
 
@@ -40,40 +44,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   如何评估编码任务中的 retrieval 效果。
 </Tip>
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 编码智能体与代码生成工具
 * 面向开发者的搜索和文档类产品
 * 调试、迁移与配置工作流
 * 跨代码仓库、文档和包注册表的技术研究
 
-## 示例查询 {#example-queries}
+<div id="example-queries">
+  ## 示例查询
+</div>
 
-### 按能力发现库 {#discover-libraries-by-capability}
+<div id="discover-libraries-by-capability">
+  ### 按能力发现库
+</div>
 
 描述你关注的能力、生态系统和约束条件。这样可以根据库的实际功能来检索候选项，而无需依赖确切的项目名称。
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-### 检索实现文档 {#retrieve-implementation-documentation}
+<div id="retrieve-implementation-documentation">
+  ### 检索实现文档
+</div>
 
 指明产品名称和具体操作。这样 search 就能优先返回 API 文档和实现指南，而不是泛泛的讨论内容。
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-### 检查特定版本的变更 {#check-version-specific-changes}
+<div id="check-version-specific-changes">
+  ### 检查特定版本的变更
+</div>
 
 当兼容性很重要时，请在 query 中注明发布渠道或版本号，这样可以减少与旧版本相关的结果。
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-### 查找可复用的 agent 工具 {#find-reusable-agent-tooling}
+<div id="find-reusable-agent-tooling">
+  ### 查找可复用的 agent 工具
+</div>
 
 请直接说明所需的产物类型和任务，而不要搜索“AI 工具”这类宽泛的说法。
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,7 +139,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 如果结构化数据需要跨多个来源开展研究，可使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述你需要的库、技术 criteria 和输出 fields，agent 即可返回经过 schema 校验的结果及引用来源。
 

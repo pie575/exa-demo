@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 建议先通过该文件了解所有可用页面，再进一步查阅。
 
-# Agent Skills {#agent-skills}
+<div id="agent-skills">
+  # Agent Skills
+</div>
 
 > 在 Claude Code、Codex 等编码智能体中安装 Exa skill。
 
@@ -11,7 +15,9 @@ Exa skill 可以教会编码智能体如何使用 Exa 的 API 进行搜索、获
 
 每个 skill 都包含遵循开放 [Agent Skills](https://agentskills.io) 标准的 Markdown 文件，因此同一组文件可以安装到任何兼容的 agent 中。
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 一次性安装全部 Exa skill：
 
@@ -29,7 +35,9 @@ npx skills add exa-labs/agent-skills
 
 或者打开下方的 skill 页面，将其设置提示词复制到你的 agent 中。该提示词会安装对应的 skill，并在不输出 API 密钥的前提下完成验证。
 
-## Skills {#skills}
+<div id="skills">
+  ## Skills
+</div>
 
 每个 skill 页面都包含一句话简介、可复制的设置提示词，以及指向 `SKILL.md` 原始文件的链接。
 
@@ -47,7 +55,9 @@ npx skills add exa-labs/agent-skills
   </Card>
 </Columns>
 
-## 相关内容 {#related}
+<div id="related">
+  ## 相关内容
+</div>
 
 <Columns cols={2}>
   <Card title="Skill 代码仓库" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="查看源文件" arrow="true">

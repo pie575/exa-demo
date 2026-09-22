@@ -9,7 +9,9 @@ Deep Search est le mode recherche de la Search API. Il utilise le même endpoint
 
 Utilisez le Search standard lorsque vous avez besoin de pages classées pour une requête bien formulée. Utilisez Deep lorsque trouver la réponse exige une véritable recherche.
 
-## Fonctionnement de Deep Search {#how-deep-search-works}
+<div id="how-deep-search-works">
+  ## Fonctionnement de Deep Search
+</div>
 
 Deep Search ajoute une loop de recherche avant la réponse finale :
 
@@ -38,7 +40,9 @@ Deep Search ajoute une loop de recherche avant la réponse finale :
 
 Ce processus est particulièrement utile pour les listes et les sorties structurées. Chaque élément demandé peut nécessiter une recherche distincte, et Deep peut rassembler et vérifier ces résultats avant de produire la structure finale.
 
-## Choisir un mode Deep {#choose-a-deep-mode}
+<div id="choose-a-deep-mode">
+  ## Choisir un mode Deep
+</div>
 
 | Type             | À utiliser lorsque                                                                                  |
 | ---------------- | --------------------------------------------------------------------------------------------------- |
@@ -56,7 +60,9 @@ Commencez par `deep` pour les workflows de recherche. Passez à `deep-lite` lors
 
 Consultez la [tarification](/fr/docs/admin/pricing#deep-search) pour connaître les coûts actuels et les recommandations en matière de latence.
 
-## Effectuer une requête Deep {#make-a-deep-request}
+<div id="make-a-deep-request">
+  ## Effectuer une requête Deep
+</div>
 
 Définissez `type` dans une requête classique à la Search API :
 
@@ -101,7 +107,9 @@ Définissez `type` dans une requête classique à la Search API :
 
 Deep renvoie les résultats de recherche sélectionnés dans `results`. Ajoutez `outputSchema` si vous souhaitez également obtenir une réponse synthétisée ou un jeu de données structuré.
 
-## Fournir des requêtes de départ {#provide-starting-queries}
+<div id="provide-starting-queries">
+  ## Fournir des requêtes de départ
+</div>
 
 En principe, c&#39;est Deep qui décide des recherches à lancer. Utilisez `additionalQueries` lorsque vous connaissez déjà une terminologie, des angles d&#39;approche ou des sous-problèmes précis que la recherche doit couvrir :
 
@@ -155,7 +163,9 @@ La `query` principale est toujours incluse. Vous pouvez fournir jusqu&#39;à 10 
 
 N&#39;ajoutez pas de simples reformulations dans le seul but d&#39;augmenter le volume de recherche. Ajoutez une requête uniquement si elle ouvre une piste de recherche réellement différente.
 
-## Guider le comportement et l&#39;output séparément {#guide-behavior-and-output-separately}
+<div id="guide-behavior-and-output-separately">
+  ## Guider le comportement et l&#39;output séparément
+</div>
 
 `systemPrompt` et `outputSchema` agissent sur des parties différentes de la requête :
 
@@ -255,7 +265,9 @@ La requête doit décrire ce qu&#39;il faut rechercher. Le system prompt, lui, d
 
 Privilégiez Deep lorsqu&#39;il vous faut plus de deux items structurés ou lorsque chaque item doit satisfaire plusieurs exigences. Les search type standards empruntent le même chemin de synthèse, mais n&#39;effectuent pas la même recherche itérative en amont.
 
-## Lire la réponse fondée sur des preuves {#read-the-grounded-response}
+<div id="read-the-grounded-response">
+  ## Lire la réponse fondée sur des preuves
+</div>
 
 Les réponses structurées séparent les valeurs générées de leurs preuves :
 
@@ -297,7 +309,9 @@ Utilisez `output.content` comme résultat généré et `output.grounding` pour a
 
 `numResults` contrôle le nombre de pages sélectionnées renvoyées dans `results`. Ce paramètre ne définit pas le nombre de recherches que Deep peut effectuer.
 
-## Diffuser la synthèse en stream {#stream-the-synthesis}
+<div id="stream-the-synthesis">
+  ## Diffuser la synthèse en stream
+</div>
 
 Définissez `stream: true` avec `outputSchema` pour recevoir l&#39;output synthétisé via server-sent events :
 
@@ -373,7 +387,9 @@ Définissez `stream: true` avec `outputSchema` pour recevoir l&#39;output synth�
 
 Consommez les événements typés jusqu&#39;à `done`. L&#39;événement final contient l&#39;output finalisé et la durée de la search, ainsi que les informations de cost lorsqu&#39;elles sont disponibles.
 
-## Quand conserver le Search standard {#when-to-stay-with-standard-search}
+<div id="when-to-stay-with-standard-search">
+  ## Quand conserver le Search standard
+</div>
 
 Le mode deep est superflu lorsqu&#39;une seule passe de retrieval suffit à répondre à la requête :
 

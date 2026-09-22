@@ -7,7 +7,9 @@ keywords: ["agent api", "列表构建", "增强", "结构化输出", "effort", "
 
 完成 [Exa Agent 快速开始](/zh/docs/agent/quickstart) 后，可参考本指南提升 query 质量、规范输出结构，并控制运行时长与费用。如需完整的请求示例，请查看 [Agent 示例](/zh/docs/agent/examples)。
 
-## 核心原则 {#core-principles}
+<div id="core-principles">
+  ## 核心原则
+</div>
 
 把 `query` 当作一份任务说明书：写清楚 agent 要找什么、工作的 scope、需要哪些证据，以及怎样才算一个完整的结果。
 
@@ -49,7 +51,9 @@ keywords: ["agent api", "列表构建", "增强", "结构化输出", "effort", "
 
 数据行、exclusions 和响应结构都应放在各自专用的 field 中，不要塞进 `query` 里。
 
-## 编写列表构建与增强 query {#writing-list-building-and-enrichment-queries}
+<div id="writing-list-building-and-enrichment-queries">
+  ## 编写列表构建与增强 query
+</div>
 
 列表构建场景下，需明确实体、目标数量、资格 criteria、exclusions 以及证据标准。增强场景下，请将已有记录放入 `input.data`，并只描述需要 agent 补充的研究内容。
 
@@ -71,7 +75,9 @@ keywords: ["agent api", "列表构建", "增强", "结构化输出", "effort", "
 
 发现类请求的写法参见 [查找所有 GTM 成员](/zh/docs/agent/examples#find-all-code)，对应的行增强模式参见 [增强输入行](/zh/docs/agent/examples#enrich-input-rows-code)。
 
-## 处理异步运行 {#handle-asynchronous-runs}
+<div id="handle-asynchronous-runs">
+  ## 处理异步运行
+</div>
 
 Agent 运行需要搜索、阅读和推理，耗时可能从几秒到几分钟不等。请围绕运行的生命周期来设计，而不是让应用的请求一直挂着。
 
@@ -95,7 +101,9 @@ Agent 运行需要搜索、阅读和推理，耗时可能从几秒到几分钟�
 
 对于启用了 Zero Data Retention 的团队，请消费实时流，或在保留窗口内进行轮询。`previousRunId` 和 Connect `dataSources` 不可用。参见 [Zero Data Retention](/zh/docs/admin/security/zero-data-retention)。
 
-## 为结构化输出编写自定义 JSON schema {#write-custom-json-schemas-for-structured-output}
+<div id="write-custom-json-schemas-for-structured-output">
+  ## 为结构化输出编写自定义 JSON schema
+</div>
 
 当下游代码需要机器可读的字段、规范化的值、表格行或增强记录时，使用 `outputSchema`。如果一段文字形式的回答就够用，可以省略它并直接读取 `output.text`；结构化输出会带来额外的格式化工作，还可能增加延迟。
 
@@ -145,7 +153,9 @@ Agent 运行需要搜索、阅读和推理，耗时可能从几秒到几分钟�
 
 浏览[结构化 agent 示例](/zh/docs/agent/examples)，对比列表构建、KYB、招聘信息、exclusions 和继续运行等场景下的 schema 写法。
 
-## Agent 与 Search 对比 {#agent-vs-search}
+<div id="agent-vs-search">
+  ## Agent 与 Search 对比
+</div>
 
 | 需求             | 从这里开始                             |
 | -------------- | --------------------------------- |
@@ -155,7 +165,9 @@ Agent 运行需要搜索、阅读和推理，耗时可能从几秒到几分钟�
 
 当任务需要多步 retrieval、逐个实体验证，或对已知记录进行增强时，请使用 agent。当你只需快速获取页面，后续推理由你的应用完成时，请使用 Search。
 
-## 常见使用场景的建议 {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## 常见使用场景的建议
+</div>
 
 | 如果你需要       | 使用                                                           | 避免                            |
 | ----------- | ------------------------------------------------------------ | ----------------------------- |
@@ -167,7 +179,9 @@ Agent 运行需要搜索、阅读和推理，耗时可能从几秒到几分钟�
 | 可预测的单次请求费用  | 固定的 `effort`                                                 | 不设预算就使用 `auto` 或 `max`        |
 | 完整性优先于延迟与费用 | `xhigh` 或 `max`                                              | 在收紧 query 之前就提高 effort        |
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="Agent 快速开始" icon="bot" href="/zh/docs/agent/quickstart" cta="打开指南" arrow="true">

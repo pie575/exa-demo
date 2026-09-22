@@ -1,14 +1,20 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일을 사용해 사용 가능한 모든 페이지를 확인하세요.
 
-# 변경 로그 {#changelog}
+<div id="changelog">
+  # 변경 로그
+</div>
 
 > Exa의 제품 업데이트 및 공지 사항입니다.
 
 <Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
-  ## Dynamic Highlights (리서치 프리뷰) {#dynamic-highlights-research-preview}
+  <div id="dynamic-highlights-research-preview">
+    ## Dynamic Highlights (리서치 프리뷰)
+  </div>
 
   Dynamic Highlights는 각 페이지를 개별적으로 처리하지 않고 전체 결과 집합을 아울러 발췌문을 선택합니다. 유용한 소스에는 공유 컨텍스트 예산을 더 많이 할당하고, 이미 반환된 정보를 반복하기만 하는 소스에는 적게 할당합니다.
 
@@ -21,7 +27,9 @@
 </Update>
 
 <Update label="July 23, 2026" rss={{ title: "Publication research" }}>
-  ## 출판물 리서치 {#publication-research}
+  <div id="publication-research">
+    ## 출판물 리서치
+  </div>
 
   학술 출판물에 대한 리서치를 대폭 확장하고 개선했습니다.
 
@@ -37,7 +45,9 @@
 </Update>
 
 <Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
-  ## MCP의 Exa Agent 및 Exa Connect {#exa-agent-and-exa-connect-in-mcp}
+  <div id="exa-agent-and-exa-connect-in-mcp">
+    ## MCP의 Exa Agent 및 Exa Connect
+  </div>
 
   이제 Exa MCP에서 Exa Agent를 사용할 수 있습니다. 한 번의 search call만으로 해결되지 않는 작업이라면 Claude, Cursor 등 어떤 MCP 클라이언트에서든 활용해 보세요.
 
@@ -49,7 +59,9 @@
 </Update>
 
 <Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
-  ## Exa Connect 소개 {#introducing-exa-connect}
+  <div id="introducing-exa-connect">
+    ## Exa Connect 소개
+  </div>
 
   Exa Connect는 Exa Agent가 전 세계의 공개 및 비공개 데이터에 실시간으로 접근할 수 있게 해줍니다. Similarweb, Fiber.ai, Baselayer, Financial Datasets, Affiliate.com, Particle, Jinko 및 추가 파트너와 함께 출시되었습니다. `POST /agent/runs`의 `dataSources`를 통해 attach할 수 있습니다.
 
@@ -57,7 +69,9 @@
 </Update>
 
 <Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
-  ## Exa Agent 소개 {#introducing-exa-agent}
+  <div id="introducing-exa-agent">
+    ## Exa Agent 소개
+  </div>
 
   API로 사용할 수 있는 새로운 차원의 프런티어 웹 리서치 agent를 출시했습니다.
 
@@ -67,7 +81,9 @@
 </Update>
 
 <Update label="April 1, 2026" rss={{ title: "API 지원 중단 안내" }}>
-  ## API 지원 중단 안내 {#api-deprecation-notice}
+  <div id="api-deprecation-notice">
+    ## API 지원 중단 안내
+  </div>
 
   Exa API에서 몇 가지 레거시 항목을 종료했습니다:
 
@@ -79,7 +95,9 @@
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "Exa Monitors 소개" }}>
-  ## Exa Monitors 소개 {#introducing-exa-monitors}
+  <div id="introducing-exa-monitors">
+    ## Exa Monitors 소개
+  </div>
 
   Monitors는 Exa search를 일정에 따라 실행하고 결과를 웹훅으로 전달하며, 이전 실행과 중복을 제거해 새로운 콘텐츠만 받아볼 수 있습니다.
 
@@ -91,7 +109,9 @@
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Exa Deep 개편" }}>
-  ## Exa Deep 개편 {#exa-deep-revamp}
+  <div id="exa-deep-revamp">
+    ## Exa Deep 개편
+  </div>
 
   Exa Deep이 더 빠르고 저렴해졌으며, 이제 field 단위 grounding을 포함한 structured output을 지원합니다.
 
@@ -105,7 +125,9 @@
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Exa 가격 업데이트" }}>
-  ## Exa 가격 업데이트 {#exa-pricing-update}
+  <div id="exa-pricing-update">
+    ## Exa 가격 업데이트
+  </div>
 
   가격 체계를 단순화하고 인하했습니다. 이제 search 결과 상위 10개의 contents가 무료로 포함되며, 새로운 가격은 별도의 조치 없이 자동으로 적용됩니다.
 
@@ -118,7 +140,9 @@
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "Exa Instant Search 소개" }}>
-  ## Exa Instant Search 소개 {#introducing-exa-instant-search}
+  <div id="introducing-exa-instant-search">
+    ## Exa Instant Search 소개
+  </div>
 
   Exa Instant는 가장 빠른 search type으로, 향상된 neural search 품질과 150ms 미만의 latency를 함께 제공합니다. `type="instant"`로 활성화하세요.
 
@@ -129,7 +153,9 @@
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "Highlights, 콘텐츠 최신성, MCP 업데이트" }}>
-  ## Highlights, 콘텐츠 최신성, MCP 업데이트 {#highlights-content-freshness-and-mcp-updates}
+  <div id="highlights-content-freshness-and-mcp-updates">
+    ## Highlights, 콘텐츠 최신성, MCP 업데이트
+  </div>
 
   콘텐츠 extraction 및 접근과 관련된 세 가지 개선 사항:
 
@@ -141,7 +167,9 @@
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Exa Company Search 출시" }}>
-  ## Exa Company Search 출시 {#introducing-exa-company-search}
+  <div id="introducing-exa-company-search">
+    ## Exa Company Search 출시
+  </div>
 
   이제 기업 search에 파인튜닝된 검색 모델과 엔티티 매칭 파이프라인이 적용됩니다. `type="auto"`, `category="company"`를 사용하세요.
 
@@ -153,7 +181,9 @@
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Exa People Search 출시" }}>
-  ## Exa People Search 출시 {#introducing-exa-people-search}
+  <div id="introducing-exa-people-search">
+    ## Exa People Search 출시
+  </div>
 
   이제 인물 search가 하이브리드 검색 시스템을 통해 10억 개 이상의 공개 프로필을 아우릅니다. `linkedin` 카테고리는 새로운 `people` 카테고리로 대체되었습니다.
 
@@ -165,7 +195,9 @@
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "JS SDK: highlights 복원" }}>
-  ## JS SDK: highlights 복원 {#js-sdk-highlights-restored}
+  <div id="js-sdk-highlights-restored">
+    ## JS SDK: highlights 복원
+  </div>
 
   `exa-js` v2.0.11부터 JavaScript SDK에 highlights가 다시 추가되어 관련성 점수와 함께 핵심 문장을 반환합니다. search 및 contents 호출에서 `highlights: true` 또는 `highlights: { maxCharacters, query }`를 전달하세요.
 
@@ -173,7 +205,9 @@
 </Update>
 
 <Update label="November 20, 2025" rss={{ title: "새로운 Deep search type" }}>
-  ## 새로운 Deep search type {#new-deep-search-type}
+  <div id="new-deep-search-type">
+    ## 새로운 Deep search type
+  </div>
 
   Exa Deep은 여러 search를 동시에 실행하고 각 result마다 고품질 컨텍스트를 반환해 더 나은 결과를 찾아냅니다. `type="deep"`으로 활성화하세요.
 
@@ -185,7 +219,9 @@
 </Update>
 
 <Update label="November 5, 2025" rss={{ title: "언어 필터링 추가" }}>
-  ## 언어 필터링 추가 {#added-language-filtering}
+  <div id="added-language-filtering">
+    ## 언어 필터링 추가
+  </div>
 
   이제 Exa가 질의 언어를 감지해 해당 언어의 결과만 반환합니다. 모든 사용자에게 기본 활성화되어 있으며 별도의 설정이 필요하지 않습니다.
 
@@ -193,7 +229,9 @@
 </Update>
 
 <Update label="October 28, 2025" rss={{ title: "SDK 변경 사항: highlights 제거 및 contents 기본 반환" }}>
-  ## SDK 변경 사항: highlights 제거 및 contents 기본 반환 {#sdk-changes-highlights-removed-and-contents-returned-by-default}
+  <div id="sdk-changes-highlights-removed-and-contents-returned-by-default">
+    ## SDK 변경 사항: highlights 제거 및 contents 기본 반환
+  </div>
 
   호환성이 깨지는 변경이 포함된 메이저 SDK 버전입니다:
 
@@ -205,7 +243,9 @@
 </Update>
 
 <Update label="August 4, 2025" rss={{ title: "도메인 경로 필터 지원" }}>
-  ## 도메인 경로 필터 지원 {#domain-path-filter-support}
+  <div id="domain-path-filter-support">
+    ## 도메인 경로 필터 지원
+  </div>
 
   이제 `includeDomains`와 `excludeDomains`로 더 세밀하게 타기팅할 수 있습니다:
 
@@ -218,7 +258,9 @@
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "위치 기반 필터 지원" }}>
-  ## 위치 기반 필터 지원 {#geolocation-filter-support}
+  <div id="geolocation-filter-support">
+    ## 위치 기반 필터 지원
+  </div>
 
   새로운 `userLocation` 매개변수는 [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 국가 코드(예: `"us"`, `"fr"`)로 전달되며, 결과를 사용자의 지역에 맞게 편향시킵니다. 다지역 애플리케이션, 지역 언어 콘텐츠, 로컬 탐색에 유용합니다.
 
@@ -226,7 +268,9 @@
 </Update>
 
 <Update label="July 29, 2025" rss={{ title: "New Fast Search Type" }}>
-  ## 새로운 Fast search type {#new-fast-search-type}
+  <div id="new-fast-search-type">
+    ## 새로운 Fast search type
+  </div>
 
   Exa Fast는 간소화된 검색 모델을 사용해 p50 latency가 425ms 미만입니다. `type="fast"`로 사용하세요.
 
@@ -238,7 +282,9 @@
 </Update>
 
 <Update label="July 21, 2025" rss={{ title: "Score Deprecation in Auto Search" }}>
-  ## Auto search의 Score 지원 중단 {#score-deprecation-in-auto-search}
+  <div id="score-deprecation-in-auto-search">
+    ## Auto search의 Score 지원 중단
+  </div>
 
   새로운 Auto search 아키텍처에서는 더 이상 의미 있는 관련성 점수를 산출할 수 없어, Auto search 결과에서 `score` field가 제거됩니다.
 
@@ -249,7 +295,9 @@
 </Update>
 
 <Update label="June 23, 2025" rss={{ title: "Markdown Contents as Default" }}>
-  ## 기본값이 된 마크다운 contents {#markdown-contents-as-default}
+  <div id="markdown-contents-as-default">
+    ## 기본값이 된 마크다운 contents
+  </div>
 
   이제 모든 엔드포인트가 기본적으로 깔끔한 마크다운을 반환합니다. LLM, RAG, 일반 텍스트 처리에 더 적합합니다. 별도의 조치는 필요하지 않습니다.
 
@@ -262,7 +310,9 @@
 </Update>
 
 <Update label="June 7, 2025" rss={{ title: "New Livecrawl Option: Preferred" }}>
-  ## 새로운 Livecrawl 옵션: Preferred {#new-livecrawl-option-preferred}
+  <div id="new-livecrawl-option-preferred">
+    ## 새로운 Livecrawl 옵션: Preferred
+  </div>
 
   <Warning>
     과거 항목입니다. `livecrawl` 문자열 매개변수는 현재 지원 중단되었습니다. 새로 연동하는 경우 `maxAgeHours`와 `livecrawlTimeout`을 사용하세요. [Content Freshness](/ko/docs/contents/quickstart#content-freshness)를 참고하세요.
@@ -274,7 +324,9 @@
 </Update>
 
 <Update label="May 22, 2025" rss={{ title: "Contents Endpoint Status Changes" }}>
-  ## Contents 엔드포인트 상태 변경 {#contents-endpoint-status-changes}
+  <div id="contents-endpoint-status-changes">
+    ## Contents 엔드포인트 상태 변경
+  </div>
 
   이제 `/contents`는 단일 HTTP 오류 대신 URL별 `statuses` field를 반환하므로, 각 URL의 결과를 개별적으로 처리할 수 있습니다. 이 엔드포인트는 내부 문제가 발생한 경우에만 오류를 반환합니다.
 
@@ -285,7 +337,9 @@
 </Update>
 
 <Update label="December 11, 2024" rss={{ title: "Auto search as Default" }}>
-  ## 기본값이 된 Auto search {#auto-search-as-default}
+  <div id="auto-search-as-default">
+    ## 기본값이 된 Auto search
+  </div>
 
   이제 Auto search가 기본값이며, 각 질의를 가장 적합한 검색 방식으로 자동 라우팅합니다. 별도의 조치는 필요하지 않으며, 이전 동작을 유지하려면 `type="neural"`로 설정하세요.
 

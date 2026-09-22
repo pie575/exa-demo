@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Monitors API {#monitors-api}
+<div id="monitors-api">
+  # Monitors API
+</div>
 
 > Jalankan search berulang dan terima hasil yang baru ditemukan melalui webhook.
 
@@ -12,7 +16,9 @@ Monitors menjalankan Exa search sesuai jadwal berulang dan mengirimkan hasilnya 
 Gunakan Monitors untuk memantau berita, pengumuman kompetitor, putaran pendanaan, perubahan regulasi, publikasi
 research, atau topik apa pun lainnya yang berubah seiring waktu.
 
-## Cara kerja Monitors {#how-monitors-work}
+<div id="how-monitors-work">
+  ## Cara kerja Monitors
+</div>
 
 Pada setiap run, Exa menjalankan search yang telah dikonfigurasi, memfilter berdasarkan waktu, menyingkirkan hasil atau temuan yang
 sudah pernah dikembalikan monitor, lalu mengirimkan output baru ke webhook Anda.
@@ -20,7 +26,9 @@ sudah pernah dikembalikan monitor, lalu mengirimkan output baru ke webhook Anda.
 Setiap monitor memiliki riwayat run-nya sendiri, jadi susunlah query berdasarkan sinyal berkelanjutan yang ingin Anda
 pantau, bukan dengan menambahkan rentang tanggal bergerak secara manual.
 
-## Buat monitor pertama Anda {#create-your-first-monitor}
+<div id="create-your-first-monitor">
+  ## Buat monitor pertama Anda
+</div>
 
 Buat monitor dengan query pencarian, interval, dan endpoint HTTPS yang akan menerima
 pembaruan:
@@ -125,7 +133,9 @@ pembaruan:
 Simpan `webhookSecret` saat Anda membuat monitor. Nilai ini hanya dikembalikan sekali dan dibutuhkan untuk
 memverifikasi signature webhook.
 
-## Mengonfigurasi output {#configure-the-output}
+<div id="configure-the-output">
+  ## Mengonfigurasi output
+</div>
 
 Setiap run yang selesai mengembalikan halaman-halaman yang baru ditemukan di `output.results`.
 
@@ -167,7 +177,9 @@ fields yang konsisten:
 Jangan sertakan sitasi dan confidence di dalam schema. Keduanya dikembalikan secara terpisah di
 `output.grounding`.
 
-## Menambahkan page content {#add-page-content}
+<div id="add-page-content">
+  ## Menambahkan page content
+</div>
 
 `search` menerima opsi yang sama dengan [Exa Search](/id/docs/search/quickstart): gunakan `contents` untuk menyertakan
 kutipan, teks penuh, atau summaries pada setiap hasil, serta `includeDomains` atau `excludeDomains` untuk
@@ -241,7 +253,9 @@ membatasi sources.
   ```
 </CodeGroup>
 
-## Uji monitor Anda {#test-your-monitor}
+<div id="test-your-monitor">
+  ## Uji monitor Anda
+</div>
 
 Picu run secara langsung tanpa menunggu jadwal berikutnya, lalu tampilkan daftar runs-nya:
 
@@ -283,7 +297,9 @@ Status run adalah:
 
 `output` bernilai null sampai run selesai.
 
-## Menjadwalkan run {#schedule-runs}
+<div id="schedule-runs">
+  ## Menjadwalkan run
+</div>
 
 Interval minimum adalah satu jam. Gunakan satu durasi tunggal seperti `1h`, `6h`, `1d`, atau `7d`.
 Jadwal mengacu pada waktu pembuatan monitor — monitor harian yang dibuat pukul 14:30 akan berjalan
@@ -298,7 +314,9 @@ terjadwal juga akan menghentikan run otomatis, tetapi pemicu manual tetap berfun
   masih berjalan, Exa akan membatalkan run sebelumnya.
 </Note>
 
-## Menerima pembaruan webhook {#receive-webhook-updates}
+<div id="receive-webhook-updates">
+  ## Menerima pembaruan webhook
+</div>
 
 Berlangganan `monitor.run.completed` jika Anda hanya membutuhkan run yang sudah selesai. Jika Anda tidak menyertakan `events`, Exa
 juga akan mengirimkan event siklus hidup monitor dan event run-created.
@@ -395,7 +413,9 @@ sekali pakai, lalu bandingkan hasilnya dengan `v1` memakai perbandingan waktu ko
   ```
 </CodeGroup>
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Membuat monitor" icon="bell" href="/id/docs/reference/monitors/create-a-monitor" cta="Buka referensi" arrow="true">

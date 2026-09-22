@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# OpenAI Tool Calling {#openai-tool-calling}
+<div id="openai-tool-calling">
+  # OpenAI Tool Calling
+</div>
 
 > Gunakan OpenAI tool calling untuk menambahkan Exa web search dan page contents ke aplikasi Anda.
 
@@ -13,7 +17,9 @@
 
 [Tool calling](https://platform.openai.com/docs/guides/function-calling?lang=python) dari OpenAI memungkinkan model memanggil fungsi yang Anda definisikan dalam kode Anda. SDK Exa sudah menyertakan tool web search dan pembacaan halaman yang siap pakai untuk OpenAI, sehingga Anda tidak perlu menulis tool schema sendiri, mengurai tool call, atau memformat hasil Exa secara manual.
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Instal SDK">
@@ -106,7 +112,9 @@
   </Step>
 </Steps>
 
-## Responses API {#responses-api}
+<div id="responses-api">
+  ## Responses API
+</div>
 
 Untuk OpenAI Responses API, gunakan factory `responses` dengan helper `handle_tool_calls` yang sama. Handler akan mengembalikan item `function_call_output` untuk follow-up permintaan.
 
@@ -138,7 +146,9 @@ Untuk OpenAI Responses API, gunakan factory `responses` dengan helper `handle_to
   Chat Completions dan Responses API menggunakan bentuk tool yang berbeda dan saling menolak bentuk milik satu sama lain, jadi gunakan factory yang sesuai dengan endpoint yang Anda panggil.
 </Note>
 
-## Mengonfigurasi tool {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Mengonfigurasi tool
+</div>
 
 Argumen keyword adalah options Exa biasa yang diteruskan saat tool dijalankan — options search ke `exa.search()`, options contents ke `exa.get_contents()`:
 
@@ -162,11 +172,15 @@ Model memilih `query` untuk search dan `urls` yang akan dibaca; selebihnya sudah
 
 Sebaliknya, `name` (dengan default `"web_search"` dan `"get_contents"`) serta `description` menimpa definisi tool yang dilihat model. Gunakan `name` khusus untuk menjalankan beberapa tool Exa dengan konfigurasi berbeda secara berdampingan, atau untuk menghindari bentrok dengan tool lain yang memakai nama tersebut.
 
-## Menggabungkan tool Anda sendiri {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Menggabungkan tool Anda sendiri
+</div>
 
 Handler menjawab setiap tool call dalam pesan: call yang menyebut tool yang tidak dapat dikenali akan menghasilkan output `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga permintaan follow-up tidak pernah melewatkan tool response yang diperlukan. Jika Anda menjalankan tool Anda sendiri bersama tool milik Exa, gantilah output error tersebut dengan hasil Anda sendiri sebelum permintaan berikutnya.
 
-## Menulis loop secara manual {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Menulis loop secara manual
+</div>
 
 Jika Anda lebih suka menangani sendiri tool schema dan eksekusinya, definisikan tool tersebut dan proses call-nya secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` memberikan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
 

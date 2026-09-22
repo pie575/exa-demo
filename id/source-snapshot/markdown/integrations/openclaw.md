@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# OpenClaw {#openclaw}
+<div id="openclaw">
+  # OpenClaw
+</div>
 
 > Lengkapi OpenClaw dengan web search real-time dan page contents dari Exa.
 
 [OpenClaw](https://openclaw.ai/) mendukung Exa sebagai provider `web_search` native. Setelah dipilih, setiap agent OpenClaw dapat memanfaatkan search mode Exa, filter tanggal, dan extraction konten melalui tool web bawaan.
 
-## Menyiapkan Exa {#set-up-exa}
+<div id="set-up-exa">
+  ## Menyiapkan Exa
+</div>
 
 <Steps>
   <Step title="Pasang plugin Exa">
@@ -46,7 +52,9 @@
   </Step>
 </Steps>
 
-## Konfigurasi secara manual {#configure-manually}
+<div id="configure-manually">
+  ## Konfigurasi secara manual
+</div>
 
 Anda dapat memilih Exa langsung di konfigurasi JSON5 OpenClaw:
 
@@ -84,7 +92,9 @@ Untuk menyimpan key di konfigurasi alih-alih di environment gateway:
   Sebaiknya gunakan `EXA_API_KEY` atau SecretRef OpenClaw daripada menyimpan API key langsung di file konfigurasi.
 </Note>
 
-## Apa yang dapat diminta agent {#what-agents-can-request}
+<div id="what-agents-can-request">
+  ## Apa yang dapat diminta agent
+</div>
 
 OpenClaw menyediakan Exa melalui `web_search`.
 
@@ -113,7 +123,9 @@ await web_search({
 
 OpenClaw menyimpan hasil web search di cache selama 15 menit secara default. Ubah `tools.web.search.cacheTtlMinutes` atau setel ke `0` jika setiap permintaan harus selalu mendapatkan data terbaru.
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="OpenClaw tidak menampilkan Exa sebagai provider">
@@ -129,7 +141,9 @@ OpenClaw menyimpan hasil web search di cache selama 15 menit secara default. Uba
   </Accordion>
 </AccordionGroup>
 
-## Sumber daya {#resources}
+<div id="resources">
+  ## Sumber daya
+</div>
 
 <Columns cols={3}>
   <Card title="Exa provider OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Baca panduan" arrow="true">

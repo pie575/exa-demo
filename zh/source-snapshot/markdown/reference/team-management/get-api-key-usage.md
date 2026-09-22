@@ -19,17 +19,23 @@
 
 Get API Key Usage 端点可用于获取指定 API 密钥在某一时间段内的详细计费与用量分析数据。该端点返回 Exa 计费系统中的费用数据，让你准确掌握该 API 密钥的实际计费情况。
 
-## 路径参数 {#path-parameters}
+<div id="overview">
+  ## 路径参数 {#path-parameters}
+</div>
 
 * **id**：要查询用量的 API 密钥的唯一标识符
 
-## 查询参数 {#query-parameters}
+<div id="path-parameters">
+  ## 查询参数 {#query-parameters}
+</div>
 
 * **start&#95;date** (可选) ：用量周期的开始日期，采用 ISO 8601 格式 (例如 `2025-01-01T00:00:00Z` 或 `2025-01-01`) 。默认为 30 天前，且必须在最近 6 个月 (180 天) 之内。
 * **end&#95;date** (可选) ：用量周期的结束日期，采用 ISO 8601 格式。默认为当前时间。
 * **group&#95;by** (可选) ：结果分组的时间粒度 (`hour`、`day` 或 `month`) 。目前为后续功能扩展预留，不会改变响应结构。默认为 `day`。
 
-## 响应 {#response}
+<div id="query-parameters">
+  ## 响应 {#response}
+</div>
 
 返回详细的用量和计费信息，包括：
 
@@ -46,14 +52,18 @@ Get API Key Usage 端点可用于获取指定 API 密钥在某一时间段内的
   * **amount&#95;usd**：该价格类型的费用 (美元)
 * **metadata**：包含报告生成时间戳的对象
 
-## 重要说明 {#important-notes}
+<div id="response">
+  ## 重要说明 {#important-notes}
+</div>
 
 * **6 个月回溯限制**：计费系统有 6 个月 (180 天) 的回溯限制。`start_date` 早于 180 天的请求将返回 400 错误。
 * **零用量**：如果该 API 密钥在所请求的时间段内没有任何用量，`total_cost_usd` 将为 0，且 `cost_breakdown` 可能为空。
 * **团队归属**：用于身份验证的服务 API 密钥必须与所查询的 API 密钥属于同一团队，不允许跨团队访问。
 * **日期格式**：日期可使用 ISO 8601 格式，可带时间部分，也可不带 (例如 `2025-01-01` 或 `2025-01-01T00:00:00Z`) 。
 
-## 使用场景 {#use-cases}
+<div id="important-notes">
+  ## 使用场景 {#use-cases}
+</div>
 
 该端点适用于：
 
@@ -63,7 +73,9 @@ Get API Key Usage 端点可用于获取指定 API 密钥在某一时间段内的
 * 生成用量报告以便内部成本分摊
 * 排查特定 API 密钥的计费问题
 
-## OpenAPI {#openapi}
+<div id="use-cases">
+  ## OpenAPI {#openapi}
+</div>
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}/usage
 openapi: 3.1.0

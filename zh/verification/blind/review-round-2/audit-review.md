@@ -1,4 +1,6 @@
-# 独立盲审截图评审 — 最终图像 {#independent-blind-screenshot-review-final-images}
+<div id="independent-blind-screenshot-review-final-images">
+  # 独立盲审截图评审 — 最终图像
+</div>
 
 在四组 A/B 对比图替换后重新进行了评审，未查阅任何来源标识密钥。主要布局、排版、颜色、间距、换行以及工具栏图标在视觉上一致；仅存的可见差异集中在底部覆盖层。
 

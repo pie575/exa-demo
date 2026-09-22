@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# LlamaIndex {#llamaindex}
+<div id="llamaindex">
+  # LlamaIndex
+</div>
 
 > Una guía rápida sobre cómo añadir la recuperación de Exa a una aplicación de agente de LlamaIndex.
 
@@ -20,7 +24,9 @@ LlamaIndex es un framework para crear aplicaciones con LLM basadas en datos estr
 
 ***
 
-## Primeros pasos {#get-started}
+<div id="get-started">
+  ## Primeros pasos
+</div>
 
 <Steps>
   <Step title="Requisitos previos e instalación">

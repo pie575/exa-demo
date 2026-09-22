@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Eliminar un batch {#delete-a-batch}
+<div id="delete-a-batch">
+  # Eliminar un batch
+</div>
 
 > Elimina un batch en estado terminal.
 
@@ -13,7 +17,9 @@ Al eliminar un batch, este se quita del historial de batches de tu equipo. Solo 
   Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /batches/{id}
 openapi: 3.1.0

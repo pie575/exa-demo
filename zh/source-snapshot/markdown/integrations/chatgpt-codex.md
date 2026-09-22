@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索前，可通过该文件了解所有可用页面。
 
-# 在 Codex 和 ChatGPT 中使用 Exa {#exa-in-codex-and-chatgpt}
+<div id="exa-in-codex-and-chatgpt">
+  # 在 Codex 和 ChatGPT 中使用 Exa
+</div>
 
 > 直接在 Codex 和 ChatGPT 中使用 Exa 搜索网页、阅读任意页面并开展研究。
 
 只需安装一次 Exa 插件，即可让 Codex 和 ChatGPT 通过 Exa 访问实时网络。无需离开当前对话或编程会话，即可搜索最新信息、阅读关键来源并进行更深入的研究。
 
-## Install Exa {#install-exa}
+<div id="install-exa">
+  ## Install Exa
+</div>
 
 <Steps>
   <Step title="打开插件">
@@ -31,7 +37,9 @@
 
 到这里就完成了。该插件已同时包含 Exa 的 MCP integration 和 skill，无需再单独配置 MCP 或 skill。
 
-## 用网络上此刻的最新内容来构建 {#build-with-whats-on-the-web-right-now}
+<div id="build-with-whats-on-the-web-right-now">
+  ## 用网络上此刻的最新内容来构建
+</div>
 
 你所依赖的库、API 和 tools 每天都在变化。安装 Exa 后，Codex 可以在工作过程中搜索最新的文档、issues、变更日志和实际用例。
 
@@ -51,7 +59,9 @@ Codex 可以用 Exa 搜索、阅读相关来源，并根据检索到的内容在
 * “阅读 Stripe webhook 的最新文档，并对照检查我们的实现。”
 * “搜索这个依赖的最新迁移指南，然后完成升级。”
 
-## 搜索、阅读与研究 {#search-read-and-research}
+<div id="search-read-and-research">
+  ## 搜索、阅读与研究
+</div>
 
 Exa 插件为 Codex 和 ChatGPT 提供了三种与网页交互的方式。
 
@@ -69,7 +79,9 @@ Exa 插件为 Codex 和 ChatGPT 提供了三种与网页交互的方式。
   </Card>
 </Columns>
 
-## 无需离开 ChatGPT 即可研究 {#research-without-leaving-chatgpt}
+<div id="research-without-leaving-chatgpt">
+  ## 无需离开 ChatGPT 即可研究
+</div>
 
 Exa 同样支持在 ChatGPT 中使用。提出需要最新信息的问题，即可直接在对话中用 Exa 搜索并研究网络内容。
 
@@ -82,7 +94,9 @@ ChatGPT 不再只能依赖上下文中已有的信息，而是可以借助 Exa �
 
 你可以将它用于竞品研究、技术研究、市场图谱、公司调研，或任何答案散落在网络各处的场景。
 
-## MCP + skills，协同工作 {#mcp-skills-together}
+<div id="mcp-skills-together">
+  ## MCP + skills，协同工作
+</div>
 
 在底层，该插件整合了 Exa agent 技术栈中的两个部分。
 
@@ -92,7 +106,9 @@ ChatGPT 不再只能依赖上下文中已有的信息，而是可以借助 Exa �
 
 安装插件后，你无需再分别配置这两者。
 
-## 更想直接使用 MCP？ {#prefer-mcp-directly}
+<div id="prefer-mcp-directly">
+  ## 更想直接使用 MCP？
+</div>
 
 插件是在 Codex 和 ChatGPT 中使用 Exa 的推荐方式。如果你要手动配置 Codex，或使用其他 MCP 客户端，也可以直接连接到 Exa 托管的 MCP server：
 

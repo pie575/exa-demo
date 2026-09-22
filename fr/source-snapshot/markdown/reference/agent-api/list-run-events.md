@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Lister les events d&#39;un run {#list-run-events}
+<div id="list-run-events">
+  # Lister les events d&#39;un run
+</div>
 
 > Listez les events stockés d&#39;un Agent run ou rejouez-les sous forme de server-sent events.
 
@@ -13,7 +17,9 @@ Par défaut, cet endpoint renvoie une liste JSON paginée des events stockés. D
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

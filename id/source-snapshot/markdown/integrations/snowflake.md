@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Snowflake {#snowflake}
+<div id="snowflake">
+  # Snowflake
+</div>
 
 > Gunakan Exa search dan content retrieval dari stored procedure Snowflake dan Cortex Agents.
 
@@ -14,7 +18,9 @@ Integrasi ini memakai fitur [External Access](https://docs.snowflake.com/en/deve
 1. **Tool Cortex Agent** — memberi Snowflake Cortex Agent kemampuan untuk mencari di web dan mengambil page contents
 2. **Data enrichment** — enrich tabel dengan informasi CEO/pendiri, berita terbaru, dan data web lainnya secara batch
 
-## Prasyarat {#prerequisites}
+<div id="prerequisites">
+  ## Prasyarat
+</div>
 
 1. Exa API key
 2. Role `ACCOUNTADMIN` (diperlukan untuk membuat External Access Integration)
@@ -24,11 +30,15 @@ Integrasi ini memakai fitur [External Access](https://docs.snowflake.com/en/deve
   Buat key di dashboard. Akun baru mendapatkan credits gratis.
 </Card>
 
-## Penyiapan {#setup}
+<div id="setup">
+  ## Penyiapan
+</div>
 
 Jalankan SQL berikut di worksheet Snowflake. Ganti `<<YOUR_EXA_API_KEY>>` dengan key Anda yang sebenarnya.
 
-### Peran dan basis data {#roles-and-database}
+<div id="roles-and-database">
+  ### Peran dan basis data
+</div>
 
 ```sql theme={null}
 USE ROLE ACCOUNTADMIN;
@@ -46,7 +56,9 @@ GRANT USAGE ON DATABASE exa_integration TO ROLE exa_agent_role;
 GRANT USAGE ON SCHEMA exa_integration.tools TO ROLE exa_agent_role;
 ```
 
-### Warehouse {#warehouse}
+<div id="warehouse">
+  ### Warehouse
+</div>
 
 ```sql theme={null}
 CREATE WAREHOUSE IF NOT EXISTS exa_agent_wh
@@ -59,7 +71,9 @@ WITH
 GRANT USAGE, OPERATE ON WAREHOUSE exa_agent_wh TO ROLE exa_agent_role;
 ```
 
-### Network rule, secret, dan external access {#network-rule-secret-and-external-access}
+<div id="network-rule-secret-and-external-access">
+  ### Network rule, secret, dan external access
+</div>
 
 ```sql theme={null}
 CREATE OR REPLACE NETWORK RULE exa_integration.tools.exa_api_rule
@@ -85,9 +99,13 @@ Ini membuat:
 * **Secret** yang menyimpan API key Anda (terenkripsi, tidak terlihat di SQL)
 * **External access integration** yang menggabungkan rule dan secret tersebut
 
-## Stored procedures {#stored-procedures}
+<div id="stored-procedures">
+  ## Stored procedures
+</div>
 
-### EXA_SEARCH {#exa_search}
+<div id="exa_search">
+  ### EXA_SEARCH
+</div>
 
 Mencari di web menggunakan Search API dari Exa. Mengembalikan hasil berupa judul, URL, nilai, dan secara opsional teks/kutipan/ringkasan.
 
@@ -192,7 +210,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 ) TO ROLE exa_agent_role;
 ```
 
-#### Parameter {#parameters}
+<div id="parameters">
+  #### Parameter
+</div>
 
 | Parameter              | Tipe      | Default  | Deskripsi                                                                                    |
 | ---------------------- | --------- | -------- | -------------------------------------------------------------------------------------------- |
@@ -207,7 +227,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 | `include_text`         | `STRING`  | `NULL`   | Frasa yang harus muncul dalam hasil                                                          |
 | `get_contents`         | `BOOLEAN` | `TRUE`   | Mengambil teks, kutipan, dan ringkasan                                                       |
 
-### EXA_GET_CONTENTS {#exa_get_contents}
+<div id="exa_get_contents">
+  ### EXA_GET_CONTENTS
+</div>
 
 Mengambil contents halaman (teks, kutipan, ringkasan) untuk URL tertentu.
 
@@ -289,9 +311,13 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 ) TO ROLE exa_agent_role;
 ```
 
-## Contoh penggunaan {#usage-examples}
+<div id="usage-examples">
+  ## Contoh penggunaan
+</div>
 
-### Search dasar {#basic-search}
+<div id="basic-search">
+  ### Search dasar
+</div>
 
 ```sql theme={null}
 USE WAREHOUSE exa_agent_wh;
@@ -307,7 +333,9 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-### Mendapatkan contents untuk URL tertentu {#get-contents-for-specific-urls}
+<div id="get-contents-for-specific-urls">
+  ### Mendapatkan contents untuk URL tertentu
+</div>
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -318,7 +346,9 @@ CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 );
 ```
 
-### Research perusahaan {#company-research}
+<div id="company-research">
+  ### Research perusahaan
+</div>
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -328,11 +358,15 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-## Data enrichment {#data-enrichment}
+<div id="data-enrichment">
+  ## Data enrichment
+</div>
 
 Exa dapat meng-enrich tabel Snowflake dengan data web terkini — informasi CEO/pendiri, berita terbaru, dan lainnya — semuanya tanpa perlu keluar dari platform.
 
-### Membuat tabel prospek {#create-a-prospect-table}
+<div id="create-a-prospect-table">
+  ### Membuat tabel prospek
+</div>
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_enrichment;
@@ -364,7 +398,9 @@ VALUES
     ('Vercel', 'https://vercel.com', 'Developer Platform', 600);
 ```
 
-### Enrich dengan info CEO/pendiri {#enrich-with-ceofounder-info}
+<div id="enrich-with-ceofounder-info">
+  ### Enrich dengan info CEO/pendiri
+</div>
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_leaders(
@@ -466,7 +502,9 @@ def main(session, target_company):
 $$;
 ```
 
-### Enrich dengan berita terbaru {#enrich-with-latest-news}
+<div id="enrich-with-latest-news">
+  ### Enrich dengan berita terbaru
+</div>
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_news(
@@ -548,7 +586,9 @@ def main(session, target_company):
 $$;
 ```
 
-### Jalankan enrichment {#run-enrichment}
+<div id="run-enrichment">
+  ### Jalankan enrichment
+</div>
 
 ```sql theme={null}
 -- Enrich satu perusahaan
@@ -561,11 +601,15 @@ SELECT company_name, ceo_name, ceo_title,
 FROM exa_enrichment.demo.prospect_companies;
 ```
 
-## Memparalelkan permintaan Exa {#parallelizing-exa-requests}
+<div id="parallelizing-exa-requests">
+  ## Memparalelkan permintaan Exa
+</div>
 
 Saat melakukan enrich pada tabel berukuran besar, memanggil Exa satu per satu untuk setiap baris akan berjalan lambat. Anda dapat memparalelkan permintaan menggunakan `concurrent.futures` dari Python di dalam satu stored procedure, sehingga beberapa panggilan API Exa dikirim sekaligus.
 
-### Prosedur enrichment paralel {#concurrent-enrichment-procedure}
+<div id="concurrent-enrichment-procedure">
+  ### Prosedur enrichment paralel
+</div>
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_all_parallel(
@@ -637,7 +681,9 @@ def main(session, max_workers):
 $$;
 ```
 
-### Memilih tingkat paralelisme {#choosing-parallelism}
+<div id="choosing-parallelism">
+  ### Memilih tingkat paralelisme
+</div>
 
 | `max_workers` | Kasus Penggunaan                                                               |
 | ------------- | ------------------------------------------------------------------------------ |
@@ -645,7 +691,9 @@ $$;
 | `10`          | Default yang baik untuk sebagian besar pekerjaan enrichment                    |
 | `20–50`       | Dataset besar dengan tier [rate limit](/id/docs/admin/billing#rate-limits) tinggi |
 
-### Penjadwalan task Snowflake {#snowflake-task-scheduling}
+<div id="snowflake-task-scheduling">
+  ### Penjadwalan task Snowflake
+</div>
 
 Untuk pekerjaan enrichment yang berulang, bungkus prosedur tersebut dalam [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro):
 
@@ -661,7 +709,9 @@ ALTER TASK exa_enrichment.demo.daily_enrichment RESUME;
 
 Ini menjalankan enrichment paralel setiap hari pukul 08.00 PT. Sesuaikan jadwal cron dan `max_workers` dengan volume serta rate limit Anda.
 
-## Integrasi Cortex Agent {#cortex-agent-integration}
+<div id="cortex-agent-integration">
+  ## Integrasi Cortex Agent
+</div>
 
 Anda juga dapat mendaftarkan stored procedure Exa sebagai tool untuk [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents), sehingga agent tersebut dapat melakukan search di web melalui percakapan.
 
@@ -791,7 +841,9 @@ Setelah dibuat, buka Snowflake Intelligence dan coba tanyakan ke agent Anda:
 * &quot;Temukan paper riset tentang retrieval augmented generation&quot;
 * &quot;Apa saja perusahaan AI teratas yang perlu diperhatikan?&quot;
 
-## Keamanan {#security}
+<div id="security">
+  ## Keamanan
+</div>
 
 Integrasi ini memanfaatkan fitur keamanan bawaan Snowflake:
 
@@ -808,7 +860,9 @@ Berikan akses kepada pengguna lain:
 GRANT ROLE exa_agent_role TO USER analyst_user;
 ```
 
-## Sumber daya lainnya {#more-resources}
+<div id="more-resources">
+  ## Sumber daya lainnya
+</div>
 
 * [Dokumentasi Exa API](/id/docs/search/quickstart)
 * [Exa Dashboard](https://dashboard.exa.ai) — dapatkan API key Anda

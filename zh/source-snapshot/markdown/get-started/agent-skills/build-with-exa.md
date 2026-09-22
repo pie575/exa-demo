@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Build with Exa Skill {#build-with-exa-skill}
+<div id="build-with-exa-skill">
+  # Build with Exa Skill
+</div>
 
 > 一个 agent skill，帮助开发者实现 Exa API 平台的任意功能。
 
@@ -17,7 +21,9 @@
   在你的 agent 环境中将密钥设置为 `EXA_API_KEY`。
 </Note>
 
-## 设置 {#setup}
+<div id="setup">
+  ## 设置
+</div>
 
 **方式 A：直接安装此 skill：**
 
@@ -63,13 +69,17 @@ Skill 来源：
 全程适用的硬性规则：密钥属于 secret。只能通过存在性/长度检查（`${EXA_API_KEY:+set}`、`[ -s ~/.config/exa/key ]`）或 HTTP 状态码来查验；绝不要打印、`echo`、`cat`，或对任何可能包含它的文件或变量执行带输出的 `grep`，也不要试图用正则"脱敏"密钥文件。一旦密钥泄露，请让我去 https://dashboard.exa.ai/api-keys 轮换密钥。
 ```
 
-## 查看源文件 {#view-source}
+<div id="view-source">
+  ## 查看源文件
+</div>
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="查看源文件" arrow="true">
   安装前请先阅读 build-with-exa skill 的定义。
 </Card>
 
-## 相关内容 {#related}
+<div id="related">
+  ## 相关内容
+</div>
 
 <Columns cols={2}>
   <Card title="所有 agent skill" icon="layers" href="/zh/docs/get-started/agent-skills/overview" cta="浏览 skill" arrow="true">

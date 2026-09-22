@@ -12,7 +12,9 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
 
 Claude의 [도구 사용](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) 기능을 이용하면 모델이 코드에서 정의한 함수를 call할 수 있습니다. Exa SDK는 Anthropic용 web search 및 페이지 읽기 도구를 기본 제공하므로, tool schema를 직접 작성하거나 `tool_use` 블록을 파싱하거나 Exa result를 직접 형식에 맞게 가공할 필요가 없습니다.
 
-## 시작하기 {#get-started}
+<div id="get-started">
+  ## 시작하기
+</div>
 
 <Steps>
   <Step title="SDK 설치하기">
@@ -111,7 +113,9 @@ Claude의 [도구 사용](https://docs.anthropic.com/en/docs/build-with-claude/t
   </Step>
 </Steps>
 
-## 도구 구성하기 {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## 도구 구성하기
+</div>
 
 키워드 인자는 일반적인 Exa 옵션으로, 도구가 실행될 때 그대로 전달됩니다. search 옵션은 `exa.search()`로, contents 옵션은 `exa.get_contents()`로 전달됩니다:
 
@@ -161,11 +165,15 @@ Claude의 [도구 사용](https://docs.anthropic.com/en/docs/build-with-claude/t
   ```
 </CodeGroup>
 
-## 직접 만든 도구 함께 사용하기 {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## 직접 만든 도구 함께 사용하기
+</div>
 
 `handle_tool_use`는 메시지에 있는 모든 `tool_use` 블록에 응답합니다. 처리할 수 없는 도구를 지정한 블록은 무시되지 않고 `Error: unknown tool "<name>"` 결과를 받으므로, 후속 요청에서 필수 도구 결과가 누락되는 일이 없습니다. Exa의 도구와 함께 직접 만든 도구를 실행한다면, 다음 요청을 보내기 전에 이 오류 결과를 직접 만든 결과로 교체하세요.
 
-## loop 직접 작성하기 {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## loop 직접 작성하기
+</div>
 
 tool schema와 실행을 직접 관리하고 싶다면, 도구를 정의하고 `tool_use` 블록을 수동으로 처리하세요. `exa.tools.web_search()`와 `exa.tools.get_contents()`는 직접 작성한 loop에서 사용할 수 있도록 제공업체에 종속되지 않은 동일한 도구 명세(`run` 메서드 포함)를 제공하며, 모든 것을 처음부터 직접 작성해도 됩니다:
 

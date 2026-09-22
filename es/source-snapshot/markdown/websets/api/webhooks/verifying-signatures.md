@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Verificación de firmas {#verifying-signatures}
+<div id="verifying-signatures">
+  # Verificación de firmas
+</div>
 
 > Aprende a verificar de forma segura las firmas de los webhooks para confirmar que las solicitudes provienen de Exa
 
 Cuando recibas un webhook de Exa, conviene verificar que proviene de nosotros para garantizar la integridad y autenticidad de los datos. Exa firma todos los payloads de webhook con una key secreta única para tu endpoint de webhook.
 
-## Cómo funcionan las firmas de webhooks {#how-webhook-signatures-work}
+<div id="how-webhook-signatures-work">
+  ## Cómo funcionan las firmas de webhooks
+</div>
 
 Exa utiliza HMAC SHA256 para firmar los payloads de los webhooks. La firma se incluye en el encabezado `Exa-Signature`, que contiene:
 
@@ -22,7 +28,9 @@ El formato de la firma es el siguiente:
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-## Proceso de verificación {#verification-process}
+<div id="verification-process">
+  ## Proceso de verificación
+</div>
 
 Para verificar la firma de un webhook:
 
@@ -365,7 +373,9 @@ Para verificar la firma de un webhook:
 
 <br />
 
-## Buenas prácticas de seguridad {#security-best-practices}
+<div id="security-best-practices">
+  ## Buenas prácticas de seguridad
+</div>
 
 Seguir estas prácticas te ayudará a que tu implementación de webhooks sea segura y robusta:
 
@@ -385,9 +395,13 @@ Seguir estas prácticas te ayudará a que tu implementación de webhooks sea seg
 
 <br />
 
-## Solución de problemas {#troubleshooting}
+<div id="troubleshooting">
+  ## Solución de problemas
+</div>
 
-### Errores de firma inválida {#invalid-signature-errors}
+<div id="invalid-signature-errors">
+  ### Errores de firma inválida
+</div>
 
 Si la verificación de firma falla:
 
@@ -396,7 +410,9 @@ Si la verificación de firma falla:
 3. **Revisa el análisis del encabezado**: asegúrate de extraer correctamente el timestamp y las firmas del encabezado
 4. **Problemas de codificación**: asegúrate de mantener una codificación UTF-8 uniforme durante todo el proceso de verificación
 
-### Probar firmas en local {#testing-signatures-locally}
+<div id="testing-signatures-locally">
+  ### Probar firmas en local
+</div>
 
 Puedes probar tu lógica de verificación de firmas usando el secreto del webhook y un payload de ejemplo:
 
@@ -428,7 +444,9 @@ print(f"Test signature valid: {is_valid}")  # Debería imprimir True
 
 <br />
 
-## ¿Qué sigue? {#whats-next}
+<div id="whats-next">
+  ## ¿Qué sigue?
+</div>
 
 * Conoce los [eventos de webhook](/es/docs/websets/api/events/types) y sus payloads
 * Configura los [reintentos y la supervisión de webhooks](/es/docs/websets/api/webhooks/attempts/list-webhook-attempts)

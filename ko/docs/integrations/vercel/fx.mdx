@@ -12,7 +12,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="fx 설치, /mcp add로 Exa MCP 서버 추가, 실시간 Exa web search 실행 과정" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## 설치 {#installation}
+<div id="installation">
+  ## 설치
+</div>
 
 <Steps>
   <Step title="fx 설치">
@@ -40,7 +42,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   </Step>
 </Steps>
 
-## 직접 설정하기 {#configure-by-hand}
+<div id="configure-by-hand">
+  ## 직접 설정하기
+</div>
 
 fx는 MCP 서버를 `~/.fx/mcp.json`에서만 읽으므로, 해당 파일에 Exa를 직접 추가해도 됩니다:
 
@@ -79,7 +83,9 @@ fx를 재시작하지 않고 변경 사항을 적용하려면 `/mcp reload`를 �
 
 `header_env`는 header 이름을 환경 변수에 매핑하므로, 키를 설정 파일에 두지 않아도 됩니다.
 
-## 도구 디스커버리 {#tool-discovery}
+<div id="tool-discovery">
+  ## 도구 디스커버리
+</div>
 
 fx는 MCP 도구를 지연 방식으로 탐색합니다. 서버의 도구는 해당 턴에서 필요해지기 전까지 모델의 컨텍스트에 로드되지 않으므로, 웹을 검색하지 않는 턴에서는 Exa를 추가해도 비용이 들지 않습니다.
 

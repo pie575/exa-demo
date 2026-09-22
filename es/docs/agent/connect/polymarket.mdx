@@ -13,14 +13,18 @@ acceso de solo lectura a los datos públicos de mercado de Polymarket.
 Adjunta `polymarket` a un run de [Exa Agent](/es/docs/agent/quickstart) y el
 agente consultará Polymarket junto con Exa web search.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Encontrar mercados de predicción y las probabilidades actuales implícitas por el mercado sobre un tema.
 * Comparar cómo ha cambiado con el tiempo la implied probability de un resultado.
 * Inspeccionar la liquidez del mercado, la profundidad de bid/ask y los principales tenedores de posiciones.
 * Revisar las posiciones actuales de un trader y su actividad on-chain reciente.
 
-## ID del proveedor {#provider-id}
+<div id="provider-id">
+  ## ID del proveedor
+</div>
 
 Usa este valor en `dataSources`:
 
@@ -28,13 +32,17 @@ Usa este valor en `dataSources`:
 polymarket
 ```
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Las APIs de lectura de Polymarket no requieren autenticación y son gratuitas, por lo que las llamadas a herramientas de Polymarket
 no tienen ningún costo: solo pagas el
 [precio estándar de los runs del Agent](/es/docs/agent/quickstart#pricing).
 
-## Datos disponibles {#data-available}
+<div id="data-available">
+  ## Datos disponibles
+</div>
 
 | Datos                | Descripción                                                                                                                         |
 | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,7 +51,9 @@ no tienen ningún costo: solo pagas el
 | Libros de órdenes    | Profundidad y spread de compra/venta en tiempo real para el resultado de un mercado.                                                |
 | Tenedores y traders  | Principales tenedores de posiciones de un mercado, además de las posiciones actuales de un trader y su actividad on-chain reciente. |
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 Obtén las probabilidades implícitas por el mercado de un recorte de tasas de la Fed y cómo evolucionaron durante el último mes.
 
@@ -111,13 +121,17 @@ Obtén las probabilidades implícitas por el mercado de un recorte de tasas de l
   ```
 </CodeGroup>
 
-## Combina bien con {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
 
 * [Exa web search](/es/docs/search/quickstart): añade información periodística y contexto de fondo a las probabilidades del mercado.
 * [Particle](/es/docs/agent/connect/particle): obtén la cobertura informativa detrás de un movimiento en las probabilidades.
 * [Financial Datasets](/es/docs/agent/connect/financialdatasets): conecta las probabilidades implícitas del mercado con precios, fundamentales y datos macroeconómicos.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">

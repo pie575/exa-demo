@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse suivante : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Lister les webhooks {#list-webhooks}
+<div id="list-webhooks">
+  # Lister les webhooks
+</div>
 
 > Renvoie les Webhooks actifs de votre équipe.
 
 Vous pouvez parcourir les résultats page par page à l&#39;aide du paramètre `cursor`.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/webhooks
 openapi: 3.1.0

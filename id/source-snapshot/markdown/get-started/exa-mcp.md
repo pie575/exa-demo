@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa MCP {#exa-mcp}
+<div id="exa-mcp">
+  # Exa MCP
+</div>
 
 > Hubungkan ChatGPT, Codex, Claude, Grok, Cursor, dan MCP client lainnya ke tool web search, pengambilan halaman, Exa Agent, dan Exa Connect dari Exa.
 
@@ -17,7 +21,9 @@ https://mcp.exa.ai/mcp
 
 Tidak diperlukan API key untuk memulai. Exa MCP bersifat open source dan tersedia di [GitHub](https://github.com/exa-labs/exa-mcp-server).
 
-## Pasang {#install}
+<div id="install">
+  ## Pasang
+</div>
 
 <div className="docs-tabs">
   <Tabs>
@@ -48,7 +54,9 @@ Tidak diperlukan API key untuk memulai. Exa MCP bersifat open source dan tersedi
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-### Claude Code CLI {#claude-code-cli}
+      <div id="claude-code-cli">
+        ### Claude Code CLI
+      </div>
 
       <Steps>
         <Step title="Pasang plugin">
@@ -66,7 +74,9 @@ Tidak diperlukan API key untuk memulai. Exa MCP bersifat open source dan tersedi
         </Step>
       </Steps>
 
-### Desktop, Web &amp; Cowork {#desktop-web-cowork}
+      <div id="desktop-web-cowork">
+        ### Desktop, Web &amp; Cowork
+      </div>
 
       Claude Desktop, Web, dan Cowork sama-sama menggunakan konektor resmi Exa.
 
@@ -201,7 +211,9 @@ Tidak diperlukan API key untuk memulai. Exa MCP bersifat open source dan tersedi
   </Tabs>
 </div>
 
-## Autentikasi {#authentication}
+<div id="authentication">
+  ## Autentikasi
+</div>
 
 Exa MCP mendukung tiga mode autentikasi:
 
@@ -211,7 +223,9 @@ Exa MCP mendukung tiga mode autentikasi:
 | OAuth     | Client interaktif, instal dari marketplace, penggunaan production | Hubungkan ke `https://mcp.exa.ai/mcp?login` untuk masuk ke Exa di browser. Penggunaan dihitung pada Team Exa Anda. |
 | API key   | Client tanpa MCP OAuth                                            | Hubungkan ke `https://mcp.exa.ai/mcp` dengan header `x-api-key` diisi API key Anda                                 |
 
-### Masuk dengan OAuth {#sign-in-with-oauth}
+<div id="sign-in-with-oauth">
+  ### Masuk dengan OAuth
+</div>
 
 ChatGPT, Claude, dan instal marketplace lainnya akan meminta Anda masuk saat diperlukan. Pada client mana pun yang mendukung MCP OAuth, Anda dapat meminta flow yang sama dengan terhubung ke:
 
@@ -221,7 +235,9 @@ https://mcp.exa.ai/mcp?login
 
 Client Anda menemukan authorization server Exa, membuka halaman masuk di browser, dan mengelola akses.
 
-### Gunakan API key {#use-an-api-key}
+<div id="use-an-api-key">
+  ### Gunakan API key
+</div>
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
@@ -233,7 +249,9 @@ Tambahkan header `x-api-key` ke konfigurasi MCP server:
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-## Tool yang Tersedia {#available-tools}
+<div id="available-tools">
+  ## Tool yang Tersedia
+</div>
 
 | Tool                      | Ketersediaan                       | Digunakan untuk                                                                      |
 | ------------------------- | ---------------------------------- | ------------------------------------------------------------------------------------ |
@@ -252,7 +270,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   Daftar `tools` yang eksplisit akan menggantikan default, jadi sertakan setiap tool yang ingin Anda aktifkan, termasuk web search dan fetch.
 </Tip>
 
-## Exa Agent {#exa-agent}
+<div id="exa-agent">
+  ## Exa Agent
+</div>
 
 Gunakan [Exa Agent](/id/docs/agent/quickstart) untuk research yang membutuhkan lebih dari satu search—misalnya menyusun daftar, mengevaluasi setiap item terhadap kriteria, atau mengembalikan hasil terstruktur.
 
@@ -305,7 +325,9 @@ Jika Anda menggunakan API key, hilangkan `login` dan tambahkan key seperti dijel
 
 Lihat [panduan Exa Agent](/id/docs/agent/quickstart) untuk pola output schema, mode effort, sumber data, dan harga.
 
-## Advanced search {#advanced-search}
+<div id="advanced-search">
+  ## Advanced search
+</div>
 
 Gunakan `web_search_advanced_exa` ketika permintaan membutuhkan filter kategori atau domain eksplisit, rentang tanggal, batasan teks, penargetan geografis, perluasan query, ringkasan, kutipan, kontrol kebaruan, atau perayapan subhalaman. Untuk pencarian biasa, tetap gunakan `web_search_exa`; tool ini memberi model cakupan tool yang lebih kecil dan membutuhkan lebih sedikit konfigurasi.
 
@@ -317,7 +339,9 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
 
 Tool MCP menghadirkan kontrol [Search API](/id/docs/reference/search) yang umum dalam bentuk field yang ramah tool, seperti `includeDomains`, `startPublishedDate`, `enableHighlights`, dan `maxAgeHours`. Baca tool schema di client Anda untuk mengetahui nama field yang persis.
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Kesalahan rate limit (429)">
@@ -355,7 +379,9 @@ Tool MCP menghadirkan kontrol [Search API](/id/docs/reference/search) yang umum 
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={2}>
   <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Lihat sumber" arrow="true">

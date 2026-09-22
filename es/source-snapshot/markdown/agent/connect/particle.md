@@ -1,9 +1,13 @@
-> ## Índice de documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Particle {#particle}
+<div id="particle">
+  # Particle
+</div>
 
 > Busca en transcripts de pódcast con atribución de hablante y marcas de tiempo.
 
@@ -16,14 +20,18 @@ Adjunta `particle` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
 Particle junto con Exa web search.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Encontrar comentarios de expertos y frases citables.
 * Monitoreo de medios y marcas.
 * Investigación de narrativas y sentimiento.
 * Descubrir pódcasts y mantenerte al día con ellos.
 
-## ID del proveedor {#provider-id}
+<div id="provider-id">
+  ## ID del proveedor
+</div>
 
 Usa este valor en `dataSources`:
 
@@ -31,7 +39,9 @@ Usa este valor en `dataSources`:
 particle
 ```
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 Descubre qué dicen los presentadores de pódcast sobre la regulación de la IA.
 
@@ -131,12 +141,16 @@ Descubre qué dicen los presentadores de pódcast sobre la regulación de la IA.
   ```
 </CodeGroup>
 
-## Combina bien con {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
 
 * [Financial Datasets](/es/docs/agent/connect/financialdatasets): contrasta lo que se comenta en los pódcast con las noticias publicadas.
 * [Fiber.ai](/es/docs/agent/connect/fiber): adjunta contexto de empresas y contactos sobre las personas mencionadas.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">

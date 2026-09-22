@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 이용 가능한 모든 페이지를 확인하세요.
 
-# n8n {#n8n}
+<div id="n8n">
+  # n8n
+</div>
 
 > n8n 워크플로우 안에서 Exa search와 contents를 사용하세요.
 
 공식 [n8n용 Exa node](https://github.com/exa-labs/n8n-integration)를 사용하면 web search, content extraction, 근거 기반 답변, Exa Agent 실행을 시각적 워크플로우에 추가할 수 있습니다. 일반 워크플로우 단계로 사용하거나 n8n AI Agent에 도구로 연결하세요.
 
-## Exa node 설치 {#install-the-exa-node}
+<div id="install-the-exa-node">
+  ## Exa node 설치
+</div>
 
 패키지 이름은 `n8n-nodes-exa-official`입니다.
 
@@ -31,7 +37,9 @@
   </Step>
 </Steps>
 
-## search 실행하기 {#run-a-search}
+<div id="run-a-search">
+  ## search 실행하기
+</div>
 
 1. 워크플로우에 트리거를 추가합니다.
 2. **Exa** node를 추가합니다.
@@ -45,7 +53,9 @@
 
 search는 각 result에서 텍스트, highlights, summary, 링크, 이미지도 함께 반환할 수 있습니다. 도메인 필터, 발행일, 카테고리, `maxAgeHours`, 하위 페이지 크롤링은 node의 선택적 field에서 설정할 수 있습니다.
 
-## 사용 가능한 resource {#available-resources}
+<div id="available-resources">
+  ## 사용 가능한 resource
+</div>
 
 | Resource     | 작업                                                                                                                              |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
@@ -54,7 +64,9 @@ search는 각 result에서 텍스트, highlights, summary, 링크, 이미지도 
 | **Answer**   | citations와 선택적 structured output을 포함한 근거 기반 답변을 생성합니다.                                                                          |
 | **Agent**    | 다단계 Agent 실행을 생성, 조회, 목록 조회, 스트리밍, 폴링, 취소합니다.                                                                                   |
 
-## n8n AI Agent에서 Exa 사용하기 {#use-exa-with-an-n8n-ai-agent}
+<div id="use-exa-with-an-n8n-ai-agent">
+  ## n8n AI Agent에서 Exa 사용하기
+</div>
 
 Exa node를 **AI Agent** node의 도구 입력에 연결하세요. 모델이 제공해야 하는 parameters에는 n8n의 `$fromAI()` 표현식을 사용할 수 있습니다:
 
@@ -64,7 +76,9 @@ Exa node를 **AI Agent** node의 도구 입력에 연결하세요. 모델이 제
 
 Search와 Answer는 grounding 도구로 적합합니다. 다단계 리서치, 리스트 구축, 구조화된 enrichment, 또는 프리미엄 [Exa Connect](/ko/docs/agent/connect/overview) 데이터가 필요한 작업에는 Agent resource를 사용하세요.
 
-## Agent 실행 대기하기 {#wait-for-an-agent-run}
+<div id="wait-for-an-agent-run">
+  ## Agent 실행 대기하기
+</div>
 
 Agent 실행을 생성할 때 **Wait for Completion**은 다음을 지원합니다.
 
@@ -73,7 +87,9 @@ Agent 실행을 생성할 때 **Wait for Completion**은 다음을 지원합니�
 
 오래 걸리거나 비동기로 처리되는 워크플로우에서는 **Wait for Completion**을 끄고, 반환된 실행 `id`를 저장한 뒤 나중에 **Get Run**을 사용하세요. n8n 단계가 끝난 뒤에도 실행은 Exa에서 계속 진행됩니다.
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="node picker에 Exa node가 보이지 않습니다">
@@ -89,7 +105,9 @@ Agent 실행을 생성할 때 **Wait for Completion**은 다음을 지원합니�
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 <Columns cols={3}>
   <Card title="공식 Exa node" icon="github" href="https://github.com/exa-labs/n8n-integration" cta="리포지토리 보기" arrow="true">

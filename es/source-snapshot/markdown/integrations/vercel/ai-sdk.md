@@ -1,21 +1,29 @@
-> ## Índice de documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# AI SDK de Vercel {#ai-sdk-by-vercel}
+<div id="ai-sdk-by-vercel">
+  # AI SDK de Vercel
+</div>
 
 > Añade Exa web search a tus aplicaciones con AI SDK mediante el paquete @exalabs/ai-sdk.
 
 Usa el paquete `@exalabs/ai-sdk` para añadir Exa web search a las aplicaciones creadas con el AI SDK de Vercel. Solo tienes que proporcionar una API key de Exa y la herramienta `webSearch()` se encarga de las solicitudes de búsqueda de tu modelo.
 
-## Instalación {#install}
+<div id="install">
+  ## Instalación
+</div>
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-## Inicio rápido {#quick-start}
+<div id="quick-start">
+  ## Inicio rápido
+</div>
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -43,7 +51,9 @@ console.log(text);
   Define tu key en `EXA_API_KEY` antes de ejecutar el ejemplo. El paquete lee esta variable de entorno automáticamente.
 </Info>
 
-## Valores predeterminados {#defaults}
+<div id="defaults">
+  ## Valores predeterminados
+</div>
 
 `webSearch()` usa estos valores predeterminados:
 
@@ -52,7 +62,9 @@ console.log(text);
 * `contents.text`: `3000` caracteres por resultado
 * `maxAgeHours`: el valor de reserva de caché predeterminado; establece esta opción cuando necesites una frescura más estricta
 
-## Configurar la búsqueda {#configure-search}
+<div id="configure-search">
+  ## Configurar la búsqueda
+</div>
 
 Usa las siguientes opciones para ajustar la búsqueda y la extracción de contenido:
 
@@ -78,7 +90,9 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-### Opciones de búsqueda {#search-options}
+<div id="search-options">
+  ### Opciones de búsqueda
+</div>
 
 | Opción                                    | Descripción                                                                                               |
 | ----------------------------------------- | --------------------------------------------------------------------------------------------------------- |
@@ -90,7 +104,9 @@ console.log(text);
 | `includeText` / `excludeText`             | Exigir o excluir texto en los resultados.                                                                 |
 | `userLocation`                            | Código de país de dos letras para búsquedas según la ubicación.                                           |
 
-### Opciones de contenido {#content-options}
+<div id="content-options">
+  ### Opciones de contenido
+</div>
 
 | Opción                                                 | Descripción                                                                                               |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
@@ -101,7 +117,9 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | Rastrea subpáginas y, opcionalmente, apunta a una subpágina concreta.                                     |
 | `contents.extras.links` / `contents.extras.imageLinks` | Devuelve los enlaces o los enlaces de imágenes de los resultados.                                         |
 
-## Compatibilidad con TypeScript {#typescript-support}
+<div id="typescript-support">
+  ## Compatibilidad con TypeScript
+</div>
 
 El paquete incluye tipos de TypeScript:
 
@@ -116,7 +134,9 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-## Páginas relacionadas {#related-pages}
+<div id="related-pages">
+  ## Páginas relacionadas
+</div>
 
 <Columns cols={2}>
   <Card title="Usar Vercel AI Gateway" icon="cloud" href="/es/docs/integrations/vercel/ai-gateway" cta="Abrir guía" arrow="true">

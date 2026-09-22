@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# 更新 webhook {#update-a-webhook}
+<div id="update-a-webhook">
+  # 更新 webhook
+</div>
 
 > 更新 Webhook 的目标 URL、订阅的 events 或元数据。未提供的 fields 保持不变。
 
@@ -12,7 +16,9 @@
   重定向的端点将被视为投递失败。
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

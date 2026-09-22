@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Get API key usage {#get-api-key-usage}
+<div id="get-api-key-usage">
+  # Get API key usage
+</div>
 
 > Ambil analitik penggunaan dan data billing untuk API key tertentu.
 
@@ -15,21 +19,29 @@
   Team Management API diaktifkan per Team. Autentikasinya menggunakan API key akun layanan, yang dibuat dari tab **Service keys** di [halaman API keys](https://dashboard.exa.ai/api-keys) setelah feature ini diaktifkan untuk Team Anda. Hubungi [support@exa.ai](mailto:support@exa.ai) untuk meminta akses.
 </Info>
 
-## Ringkasan {#overview}
+<div id="overview">
+  ## Ringkasan
+</div>
 
 Endpoint Get API Key Usage memungkinkan Anda mengambil analitik billing dan penggunaan secara mendetail untuk API key tertentu dalam rentang periode waktu tertentu. Endpoint ini mengembalikan data biaya dari sistem billing Exa, sehingga memberikan gambaran resmi mengenai apa saja yang ditagihkan kepada Anda untuk API key tersebut.
 
-## Path Parameters {#path-parameters}
+<div id="path-parameters">
+  ## Path Parameters
+</div>
 
 * **id**: Identifier unik dari API key yang ingin diambil data penggunaannya
 
-## Query Parameters {#query-parameters}
+<div id="query-parameters">
+  ## Query Parameters
+</div>
 
 * **start&#95;date** (opsional): Tanggal mulai usage period dalam format ISO 8601 (misalnya, `2025-01-01T00:00:00Z` atau `2025-01-01`). Default-nya 30 hari yang lalu. Harus berada dalam rentang 6 bulan terakhir (180 hari).
 * **end&#95;date** (opsional): Tanggal akhir usage period dalam format ISO 8601. Default-nya waktu saat ini.
 * **group&#95;by** (opsional): Granularitas waktu untuk mengelompokkan hasil (`hour`, `day`, atau `month`). Saat ini dicadangkan untuk pengembangan di masa mendatang dan tidak mengubah bentuk response. Default-nya `day`.
 
-## Response {#response}
+<div id="response">
+  ## Response
+</div>
 
 Mengembalikan informasi penggunaan dan billing secara terperinci, meliputi:
 
@@ -46,14 +58,18 @@ Mengembalikan informasi penggunaan dan billing secara terperinci, meliputi:
   * **amount&#95;usd**: Biaya dalam USD untuk tipe harga ini
 * **metadata**: Objek berisi timestamp pembuatan laporan
 
-## Catatan Penting {#important-notes}
+<div id="important-notes">
+  ## Catatan Penting
+</div>
 
 * **Batas Penelusuran Mundur 6 Bulan**: Sistem billing memiliki batas penelusuran mundur 6 bulan (180 hari). Permintaan dengan `start_date` yang lebih lama dari 180 hari akan mengembalikan error 400.
 * **Penggunaan Nol**: Jika API key tidak memiliki penggunaan pada periode yang diminta, `total_cost_usd` akan bernilai 0 dan `cost_breakdown` bisa jadi kosong.
 * **Kepemilikan Team**: Service API key yang digunakan untuk autentikasi harus berada di team yang sama dengan API key yang diminta. Akses lintas team tidak diizinkan.
 * **Format Tanggal**: Tanggal dapat diberikan dalam format ISO 8601 dengan atau tanpa komponen waktu (misalnya, `2025-01-01` atau `2025-01-01T00:00:00Z`).
 
-## Use Cases {#use-cases}
+<div id="use-cases">
+  ## Use Cases
+</div>
 
 Endpoint ini berguna untuk:
 
@@ -63,7 +79,9 @@ Endpoint ini berguna untuk:
 * Membuat laporan penggunaan untuk alokasi biaya internal
 * Menelusuri pertanyaan seputar billing untuk API key tertentu
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}/usage
 openapi: 3.1.0

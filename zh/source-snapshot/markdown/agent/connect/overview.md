@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# Exa Connect {#exa-connect}
+<div id="exa-connect">
+  # Exa Connect
+</div>
 
 > 让你的 Exa Agent 在一次运行中实时访问优质数据合作伙伴，并同时使用 Exa 网页搜索。
 
@@ -22,7 +26,9 @@ Exa Connect 将优质数据合作伙伴集成到 Exa Agent 的 loop 中。为一
   更习惯用 MCP？[Exa MCP](/zh/docs/get-started/exa-mcp#exa-agent) 中已提供 Exa Agent 和 [Exa Connect](/zh/docs/agent/connect/overview)。启用 `tools=agent_run`，即可在 Claude、Cursor 等 MCP 客户端中运行多步研究、列表构建、增强和结构化输出。
 </Tip>
 
-## 为什么选择 Exa Connect {#why-exa-connect}
+<div id="why-exa-connect">
+  ## 为什么选择 Exa Connect
+</div>
 
 * **无需单独集成即可获取优质数据。** 不用签合同，也不用接入 SDK，就能访问合作伙伴数据。你只需调用一个 Exa API。
 * **繁琐的对接工作交给 Exa。** 提供方认证、工具选择、重试和结果排序都由我们负责。
@@ -32,13 +38,17 @@ Exa Connect 将优质数据合作伙伴集成到 Exa Agent 的 loop 中。为一
 * **一次运行即可同时使用索引与合作伙伴数据。** Connect 构建于 Exa 索引之上。
   Exa Agent 会扬长避短地使用各个来源，并为结果标注引用。
 
-## 工作原理 {#how-it-works}
+<div id="how-it-works">
+  ## 工作原理
+</div>
 
 1. 在 [`POST /agent/runs`](/zh/docs/reference/agent-api/create-a-run) 的 `dataSources` 数组中**附加**一个或多个提供方。
 2. Exa Agent 会根据你的 query 和 `outputSchema`，为每一步**选择合适的工具**：合作伙伴数据或 Exa 网页搜索。
 3. 合作伙伴返回的结果会与网页研究结果**融合**成结构化输出，并附带来源。
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 <Note>
   Exa Connect 的定价在标准 [Agent 运行定价](/zh/docs/agent/quickstart#pricing)之上叠加计费。
@@ -140,7 +150,9 @@ Baselayer 按订单计费，费率取决于具体操作：KYB 企业 search 为 
   ```
 </CodeGroup>
 
-## 数据合作伙伴 {#data-partners}
+<div id="data-partners">
+  ## 数据合作伙伴
+</div>
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -180,9 +192,13 @@ Baselayer 按订单计费，费率取决于具体操作：KYB 企业 search 为 
 
 需要上面未列出的数据源？请查看我们的[更多提供方](/zh/docs/agent/connect/additional-partners)，联系我们的团队即可按需开通。
 
-## 用量 {#usage}
+<div id="usage">
+  ## 用量
+</div>
 
-### 组合多个提供方 {#combining-providers}
+<div id="combining-providers">
+  ### 组合多个提供方
+</div>
 
 根据任务需要接入任意数量的合作伙伴。Exa Agent 会在每个合作伙伴最擅长的领域调用它，并将这些结果与网页搜索结果融合为一个统一的结构化答案：
 

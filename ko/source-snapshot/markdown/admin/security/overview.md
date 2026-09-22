@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 보안 개요 {#security-overview}
+<div id="security-overview">
+  # 보안 개요
+</div>
 
 > Exa의 보안, 규정 준수 및 지역별 접근 정보입니다.
 
@@ -15,7 +19,9 @@ Exa는 데이터 보안과 개인정보 보호를 중요하게 생각합니다. 
 
 SOC 2 보고서, 데이터 처리 계약서 및 기타 보안 문서는 [Trust Center](https://trust.exa.ai)에서 확인하실 수 있습니다.
 
-## 지역 접근 제한 {#regional-access-restrictions}
+<div id="regional-access-restrictions">
+  ## 지역 접근 제한
+</div>
 
 제재 목록 및 무역 제한을 준수하기 위해 Exa는 크림반도, 쿠바, 이란, 북한, 러시아, 시리아, 우크라이나, 베네수엘라 등 제재 대상이거나 그 밖에 제한된 국가 및 지역에서의 API 접근을 차단합니다.
 

@@ -1,4 +1,6 @@
-# 최종 블라인드 시각 검토 {#final-blind-visual-review}
+<div id="final-blind-visual-review">
+  # 최종 블라인드 시각 검토
+</div>
 
 네이티브 하단 컨트롤과 이미지 간격을 수정한 뒤 최종 A/B 쌍 네 개를 검토했습니다. A/B 식별 키는 참조하지 않았습니다.
 

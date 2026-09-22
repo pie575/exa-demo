@@ -33,40 +33,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Utilisez Exa Search pour les articles de fond des grands médias, de la presse spécialisée et des publications de niche. Les nouveaux articles deviennent consultables quelques minutes après leur publication. Combinez une requête en langage naturel avec des filtres de date lorsque la fenêtre de publication est une contrainte stricte.
 
-## Cas d&#39;usage {#use-it-for}
+<div id="use-it-for">
+  ## Cas d&#39;usage
+</div>
 
 * Recherche de marché et d&#39;investissement
 * Cybersécurité et threat intelligence
 * Suivi d&#39;entreprises, de produits et de concurrents
 * Notes de synthèse sectorielles et recherche sur l&#39;actualité
 
-## Exemples de requêtes {#example-queries}
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
 
-### Suivre l&#39;évolution d&#39;un dossier politique {#follow-a-developing-policy-story}
+<div id="follow-a-developing-policy-story">
+  ### Suivre l&#39;évolution d&#39;un dossier politique
+</div>
 
 Précisez le sujet, le type de source et la fenêtre de publication pour que les résultats portent sur la phase actuelle du dossier.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-### Trouver des analyses de praticiens {#find-practitioner-analysis}
+<div id="find-practitioner-analysis">
+  ### Trouver des analyses de praticiens
+</div>
 
 Indiquez le type de source lorsque vous recherchez des analyses de praticiens plutôt qu&#39;une couverture médiatique généraliste.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-### Découvrir des discussions dans un format précis {#discover-discussions-in-a-specific-format}
+<div id="discover-discussions-in-a-specific-format">
+  ### Découvrir des discussions dans un format précis
+</div>
 
 Indiquez le format et le sujet dans la requête. La recherche reste ainsi ouverte aux pages d&#39;épisodes et aux transcriptions disponibles sur le web.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-### Rechercher la couverture médiatique négative {#research-adverse-media}
+<div id="research-adverse-media">
+  ### Rechercher la couverture médiatique négative
+</div>
 
 Décrivez à la fois le signal négatif et la catégorie d&#39;entités sur laquelle vous enquêtez. Évitez de réduire la requête à un nom d&#39;entreprise suivi du mot « actualités ».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -107,7 +121,9 @@ Décrivez à la fois le signal négatif et la catégorie d&#39;entités sur laqu
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les sujets, les fields et la fenêtre temporelle dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de citations.
 

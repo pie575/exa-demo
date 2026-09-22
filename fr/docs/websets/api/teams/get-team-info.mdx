@@ -6,11 +6,15 @@ openapi: "/fr/docs/exa-spec.yaml GET /v0/teams/me"
 timestamp: false
 ---
 
-## Aperçu {#overview}
+<div id="overview">
+  ## Aperçu
+</div>
 
 L&#39;endpoint Get Team Info renvoie des informations sur l&#39;équipe authentifiée, notamment sa concurrency usage actuelle et ses limites configurées. Cela permet de suivre votre utilisation de l&#39;API Websets et de comprendre vos limites de débit.
 
-## Réponse {#response}
+<div id="response">
+  ## Réponse
+</div>
 
 La réponse comprend :
 
@@ -20,14 +24,18 @@ La réponse comprend :
 * **concurrency** : l&#39;utilisation actuelle, indiquant les requests actives et en file d&#39;attente
 * **limits** : les limites de concurrency de votre équipe
 
-### Fields de concurrency {#concurrency-fields}
+<div id="concurrency-fields">
+  ### Fields de concurrency
+</div>
 
 L&#39;objet `concurrency` indique l&#39;état actuel de vos requests :
 
 * **active** : nombre de requests en cours de traitement
 * **queued** : nombre de requests en attente de traitement
 
-### Fields de limites {#limits-fields}
+<div id="limits-fields">
+  ### Fields de limites
+</div>
 
 L&#39;objet `limits` affiche les limites configurées pour votre équipe :
 

@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Hermes Agent {#hermes-agent}
+<div id="hermes-agent">
+  # Hermes Agent
+</div>
 
 > Exa로 Hermes Agent에 실시간 web search와 page contents를 제공하세요.
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent)는 모델이 호출할 수 있는 `web_search` 및 `web_extract` 도구의 네이티브 백엔드로 Exa를 지원합니다. 두 기능 모두에 Exa를 사용하거나, 다른 Hermes 웹 제공업체와 함께 사용할 수 있습니다.
 
-## Exa 계정 연결 {#connect-your-exa-account}
+<div id="connect-your-exa-account">
+  ## Exa 계정 연결
+</div>
 
 <Steps>
   <Step title="Exa API 키 발급받기">
@@ -39,7 +45,9 @@
   </Step>
 </Steps>
 
-## 수동으로 구성하기 {#configure-manually}
+<div id="configure-manually">
+  ## 수동으로 구성하기
+</div>
 
 Hermes 환경 파일에 키를 추가하세요:
 
@@ -64,7 +72,9 @@ web:
 
 capability별 설정은 `web.backend`보다 우선 적용됩니다. 따라서 여러 제공업체를 함께 사용할 때 Exa를 search 용도로만, 또는 extraction 용도로만 사용할 수 있습니다.
 
-## Hermes가 사용하는 도구 {#tools-hermes-gets}
+<div id="tools-hermes-gets">
+  ## Hermes가 사용하는 도구
+</div>
 
 | 도구            | Exa 동작                                             |
 | ------------- | -------------------------------------------------- |
@@ -77,7 +87,9 @@ Hermes는 추출한 페이지가 길 경우 설정된 character budget에 맞춰
   Hermes는 API 키 없이도 키가 필요 없는 무료 제공업체 풀을 통해 Exa를 사용할 수 있습니다. 이 풀은 요청 수가 제한되며 여러 제공업체 사이에서 순환될 수 있습니다. 요청이 항상 사용자의 Exa 계정을 사용하도록 하려면 `EXA_API_KEY`를 설정하고 API 키 기반 Exa 옵션을 선택하세요.
 </Note>
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="Hermes가 Exa를 선택하지 않는 경우">
@@ -93,7 +105,9 @@ Hermes는 추출한 페이지가 길 경우 설정된 character budget에 맞춰
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 <Columns cols={3}>
   <Card title="Hermes 웹 도구" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="가이드 읽기" arrow="true">

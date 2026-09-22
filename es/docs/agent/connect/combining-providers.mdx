@@ -5,7 +5,9 @@ description: "Usa varios data partners a la vez en un mismo run de Exa Agent."
 
 Adjuntar un partner a `dataSources` lo pone a disposición del Exa Agent como herramienta, pero **no** obliga al agente a llamarlo. Que un partner se active depende de tu `query` y de tu `outputSchema`: indica qué tipo de resultado esperas de cada partner y el Exa Agent recurrirá a la herramienta correspondiente en lugar de deducirlo de una página web. Puedes adjuntar hasta cinco partners por run; el Exa Agent decide a cuáles llamar en cada paso, y también dispone de Exa web search. ¿Necesitas más de cinco en un solo run? [Contáctanos](mailto:sales@exa.ai) para ampliar el límite.
 
-## Dos socios en un mismo run {#two-partners-in-one-run}
+<div id="two-partners-in-one-run">
+  ## Dos socios en un mismo run
+</div>
 
 Enumera varios socios juntos y el Exa Agent recurrirá a cada uno en aquello en lo que destaca. Dos es solo un ejemplo: puedes adjuntar hasta cinco socios a `dataSources` y el principio es el mismo, pide de forma explícita los datos de cada uno. Este run de informe para inversores combina [Financial Datasets](/es/docs/agent/connect/financialdatasets) para noticias por ticker con [Particle](/es/docs/agent/connect/particle) para comentarios de pódcast. La consulta solicita los datos distintivos de cada socio y el esquema divide el output en `financialNews` y `podcastChatter`, de modo que el Exa Agent llama a **ambos** socios en el mismo run.
 

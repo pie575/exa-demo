@@ -1,4 +1,6 @@
-# Revisión visual independiente y ciega — capturas finales {#independent-blinded-visual-review-final-captures}
+<div id="independent-blinded-visual-review-final-captures">
+  # Revisión visual independiente y ciega — capturas finales
+</div>
 
 Se revisaron las cuatro imágenes de comparación A/B actualizadas, sin una key que vinculara origen y etiqueta.
 

@@ -8,13 +8,13 @@
         "es/docs",
         {
           "boost": 3,
-          "group": "Primeros pasos",
+          "group": "Get Started",
           "pages": [
             "es/docs/get-started/quickstart",
             "es/docs/get-started/exa-mcp",
             {
               "boost": 0.5,
-              "group": "Skills de agente",
+              "group": "Agent Skills",
               "pages": [
                 "es/docs/get-started/agent-skills/overview",
                 "es/docs/get-started/agent-skills/build-with-exa",
@@ -34,7 +34,7 @@
             "es/docs/search/snapshot",
             "es/docs/search/best-practices",
             {
-              "group": "Datos",
+              "group": "Data",
               "pages": [
                 "es/docs/search/data/overview",
                 "es/docs/search/data/news",
@@ -51,7 +51,7 @@
         },
         {
           "boost": 5,
-          "group": "agente",
+          "group": "Agent",
           "pages": [
             "es/docs/agent/quickstart",
             "es/docs/agent/best-practices",
@@ -63,7 +63,7 @@
                 "es/docs/agent/connect/overview",
                 {
                   "boost": 2,
-                  "group": "Proveedores de autoservicio",
+                  "group": "Self-Serve Providers",
                   "pages": [
                     "es/docs/agent/connect/fiber",
                     "es/docs/agent/connect/similarweb",
@@ -83,7 +83,7 @@
         },
         {
           "boost": 3,
-          "group": "Otras API",
+          "group": "Other APIs",
           "pages": [
             "es/docs/contents/quickstart",
             "es/docs/monitors/quickstart",
@@ -92,20 +92,20 @@
         },
         {
           "boost": 2,
-          "group": "SDK",
+          "group": "SDKs",
           "pages": [
             "es/docs/sdks/quickstart"
           ]
         },
         {
           "boost": 2,
-          "group": "Integraciones",
+          "group": "Integrations",
           "pages": [
             "es/docs/integrations/chatgpt-codex",
             "es/docs/integrations/claude-web-desktop",
             "es/docs/integrations/openai-sdk",
             {
-              "group": "Llamadas a herramientas",
+              "group": "Tool Calling",
               "pages": [
                 "es/docs/integrations/tool-calling/openai",
                 "es/docs/integrations/tool-calling/anthropic"
@@ -126,7 +126,7 @@
               ]
             },
             {
-              "group": "Pagos agénticos",
+              "group": "Agentic Payments",
               "pages": [
                 {
                   "group": "x402",
@@ -147,7 +147,7 @@
             },
             {
               "boost": 0.6,
-              "group": "Más integraciones",
+              "group": "More Integrations",
               "pages": [
                 "es/docs/integrations/exa-slack",
                 "es/docs/integrations/hermes-agent",
@@ -173,13 +173,13 @@
         },
         {
           "boost": 0.8,
-          "group": "Administración",
+          "group": "Admin",
           "pages": [
             "es/docs/admin/pricing",
             "es/docs/admin/billing",
             "es/docs/admin/team-management",
             {
-              "group": "Seguridad y cumplimiento",
+              "group": "Security & Compliance",
               "pages": [
                 "es/docs/admin/security/overview",
                 "es/docs/admin/security/zero-data-retention",
@@ -188,7 +188,7 @@
             },
             "es/docs/admin/mcp-enterprise-managed-auth",
             {
-              "group": "Referencia",
+              "group": "Reference",
               "pages": [
                 "es/docs/admin/status",
                 "es/docs/admin/error-codes",
@@ -205,7 +205,7 @@
             "es/docs/websets/quickstart",
             "es/docs/websets/imports-and-search",
             {
-              "group": "Panel",
+              "group": "Dashboard",
               "pages": [
                 "es/docs/websets/dashboard/get-started",
                 "es/docs/websets/dashboard/import-from-csv",
@@ -215,7 +215,7 @@
           ]
         }
       ],
-      "tab": "Documentación"
+      "tab": "Documentation"
     },
     {
       "groups": [
@@ -235,7 +235,7 @@
         },
         {
           "boost": 4,
-          "group": "agente",
+          "group": "Agent",
           "pages": [
             "es/docs/reference/agent-api/create-a-run",
             "es/docs/reference/agent-api/get-a-run",
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "Gestión de equipos",
+          "group": "Team Management",
           "pages": [
             "es/docs/reference/team-management/create-api-key",
             "es/docs/reference/team-management/list-api-keys",
@@ -343,7 +343,7 @@
               ]
             },
             {
-              "group": "Importaciones",
+              "group": "Imports",
               "icon": "cloud-download",
               "pages": [
                 "es/docs/websets/api/imports/create-an-import",
@@ -386,7 +386,7 @@
               ]
             },
             {
-              "group": "Eventos",
+              "group": "Events",
               "icon": "bell",
               "pages": [
                 "es/docs/websets/api/events/types",
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "group": "Equipos",
+              "group": "Teams",
               "icon": "users",
               "pages": [
                 "es/docs/websets/api/teams/get-team-info"
@@ -404,20 +404,20 @@
           ]
         }
       ],
-      "tab": "Referencia de la API"
+      "tab": "API Reference"
     },
     {
       "groups": [
         {
           "boost": 0.5,
-          "group": "Actualizaciones",
+          "group": "Updates",
           "pages": [
             "es/docs/changelog"
           ],
           "root": "es/docs/changelog"
         }
       ],
-      "tab": "Registro de cambios"
+      "tab": "Changelog"
     }
   ]
 }

@@ -1,13 +1,19 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Bayar dengan x402 {#pay-with-x402}
+<div id="pay-with-x402">
+  # Bayar dengan x402
+</div>
 
 > Gunakan API Search dan Contents dari Exa tanpa API key. Bayar per permintaan dengan USDC di Base atau Solana melalui protokol x402.
 
-## Apa itu x402? {#what-is-x402}
+<div id="what-is-x402">
+  ## Apa itu x402?
+</div>
 
 [x402](https://x402.org) adalah standar payment terbuka yang dibangun di atas kode status HTTP `402 Payment Required`. Standar ini memungkinkan client membayar akses API per permintaan menggunakan stablecoin USDC di Base atau Solana, tanpa perlu akun, API key, maupun langganan.
 
@@ -19,7 +25,9 @@ Pendekatan ini ideal untuk **AI agent** yang perlu membayar web search secara ma
   x402 dan akses API key bersifat independen. Jika permintaan Anda menyertakan header `x-api-key` atau `Authorization: Bearer`, alur API key billing biasa yang digunakan dan x402 dilewati sepenuhnya.
 </Info>
 
-## Endpoint yang didukung {#supported-endpoints}
+<div id="supported-endpoints">
+  ## Endpoint yang didukung
+</div>
 
 | Endpoint    | Metode | Deskripsi                                                                                              |
 | ----------- | ------ | ------------------------------------------------------------------------------------------------------ |
@@ -28,13 +36,17 @@ Pendekatan ini ideal untuk **AI agent** yang perlu membayar web search secara ma
 
 Semua endpoint lainnya **tidak** tersedia melalui x402.
 
-## Cara kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
 
 <Frame>
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/payments/x402/payment-flow.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=5a560d80bb84828e03dfacd61351e9fb" alt="Diagram sekuens x402 payment flow: Client mengirim permintaan ke server, menerima 402 dengan header PAYMENT-REQUIRED, membuat payload payment, mengulang permintaan dengan PAYMENT-SIGNATURE, server memverifikasi melalui facilitator, menjalankan prosesnya, menyelesaikan pembayaran secara on-chain, lalu mengembalikan 200 beserta hasil dan PAYMENT-RESPONSE" width="4224" height="2720" data-path="images/integrations/payments/x402/payment-flow.png" />
 </Frame>
 
-### Langkah 1: Discovery {#step-1-discovery}
+<div id="step-1-discovery">
+  ### Langkah 1: Discovery
+</div>
 
 Kirim permintaan ke endpoint yang didukung tanpa API key atau header payment:
 
@@ -79,11 +91,15 @@ Anda akan menerima response `402` dengan header `PAYMENT-REQUIRED` berenkode bas
 `amount` dinyatakan dalam satuan atomic USDC (6 desimal), jadi `"7000"` = $0,007.
 Client dapat melakukan payment menggunakan entri `accepts` mana pun yang ditawarkan dan didukungnya. Entri Solana memuat field yang disediakan facilitator seperti `extra.feePayer`; gunakan entri yang persis sama dari header `PAYMENT-REQUIRED` saat menyusun payment.
 
-### Langkah 2: Lakukan payment dan coba lagi {#step-2-pay-and-retry}
+<div id="step-2-pay-and-retry">
+  ### Langkah 2: Lakukan payment dan coba lagi
+</div>
 
 Tanda tangani payment dengan wallet Anda, lalu kirim ulang permintaan tersebut dengan header `PAYMENT-SIGNATURE` yang berisi payload payment Anda dalam format base64. SDK client x402 menangani hal ini secara otomatis.
 
-### Langkah 3: Settlement {#step-3-settlement}
+<div id="step-3-settlement">
+  ### Langkah 3: Settlement
+</div>
 
 Exa memverifikasi signature payment Anda melalui facilitator, lalu memulai settlement on-chain **secara paralel** dengan pemrosesan permintaan Anda. Response ditahan hingga settlement terkonfirmasi. Jika berhasil, Anda akan menerima:
 
@@ -92,11 +108,15 @@ Exa memverifikasi signature payment Anda melalui facilitator, lalu memulai settl
 
 Jika settlement gagal, Anda akan mendapat `402` disertai `PAYMENT-RESPONSE` (detail kesalahan) dan `PAYMENT-REQUIRED` (agar Anda dapat mencoba lagi).
 
-## Harga {#pricing}
+<div id="pricing">
+  ## Harga
+</div>
 
 x402 menggunakan harga paket yang sama seperti API key billing. Harga dihitung di awal berdasarkan parameter permintaan Anda (bukan berdasarkan hasil aktual yang dikembalikan).
 
-### Search (`/search`) {#search-search}
+<div id="search-search">
+  ### Search (`/search`)
+</div>
 
 | Search type               | Harga dasar (hingga 10 hasil) | Per hasil di atas 10 |
 | ------------------------- | ----------------------------- | -------------------- |
@@ -111,7 +131,9 @@ Menambahkan `contents.summary` dikenakan biaya tambahan **$0,001 per hasil**.
   Permintaan x402 dibatasi maksimal **10 hasil**. Jika Anda meminta lebih dari 10, `numResults` akan otomatis dibatasi menjadi 10 dan harga dihitung berdasarkan 10 hasil.
 </Warning>
 
-### Contents (`/contents`) {#contents-contents}
+<div id="contents-contents">
+  ### Contents (`/contents`)
+</div>
 
 Setiap tipe konten dikenakan biaya per halaman/URL:
 
@@ -123,7 +145,9 @@ Setiap tipe konten dikenakan biaya per halaman/URL:
 
 Jika Anda tidak meminta tipe konten apa pun (tanpa `text`, `highlights`, atau `summary`), `text` akan diaktifkan secara default.
 
-### Contoh {#examples}
+<div id="examples">
+  ### Contoh
+</div>
 
 | Permintaan                                           | Harga  | USDC atomic |
 | ---------------------------------------------------- | ------ | ----------- |
@@ -135,9 +159,13 @@ Jika Anda tidak meminta tipe konten apa pun (tanpa `text`, `highlights`, atau `s
 | `/contents` untuk 2 URL dengan `text: true`          | $0.002 | 2000        |
 | `/contents` untuk 1 URL dengan `text` + `summary`    | $0.002 | 2000        |
 
-## Quickstart {#quickstart}
+<div id="quickstart">
+  ## Quickstart
+</div>
 
-### Instal dependensi {#install-dependencies}
+<div id="install-dependencies">
+  ### Instal dependensi
+</div>
 
 <CodeGroup>
   ```bash JavaScript theme={null}
@@ -161,7 +189,9 @@ Jika Anda tidak meminta tipe konten apa pun (tanpa `text`, `highlights`, atau `s
   Tidak ingin mengelola private keys? [Coinbase Agentic Wallets](https://docs.cdp.coinbase.com/agent-kit/core-concepts/wallet-management) menyediakan pengelolaan key terisolasi TEE untuk AI agents. Agent Anda tidak pernah melihat private key tersebut. Wallet ini kompatibel dengan viem, sehingga bisa langsung digunakan dengan `@x402/fetch`.
 </Tip>
 
-### Membuat permintaan search berbayar {#make-a-paid-search-request}
+<div id="make-a-paid-search-request">
+  ### Membuat permintaan search berbayar
+</div>
 
 <CodeGroup>
   ```typescript JavaScript theme={null}
@@ -251,7 +281,9 @@ Jika Anda tidak meminta tipe konten apa pun (tanpa `text`, `highlights`, atau `s
   cURL mengharuskan penandatanganan payment dilakukan manual. Untuk production, gunakan SDK JavaScript atau Python yang menangani seluruh alur 402 &gt; tanda tangan &gt; coba lagi secara otomatis.
 </Info>
 
-### Mode discovery (tanpa perlu wallet) {#discovery-mode-no-wallet-needed}
+<div id="discovery-mode-no-wallet-needed">
+  ### Mode discovery (tanpa perlu wallet)
+</div>
 
 Cek harga tanpa wallet dengan mengirim permintaan unauthenticated:
 
@@ -297,7 +329,9 @@ Cek harga tanpa wallet dengan mengirim permintaan unauthenticated:
   ```
 </CodeGroup>
 
-## Jaringan payment {#payment-networks}
+<div id="payment-networks">
+  ## Jaringan payment
+</div>
 
 Exa mencantumkan setiap jaringan yang saat ini didukung dalam array `accepts`. Pilih entri yang sesuai dengan wallet Anda dan skema client x402 yang terdaftar.
 
@@ -308,7 +342,9 @@ Exa mencantumkan setiap jaringan yang saat ini didukung dalam array `accepts`. P
 
 Keduanya menggunakan USDC dengan 6 desimal (`1000000` = $1,00) dan diselesaikan secara on-chain melalui facilitator x402.
 
-## Rate limit {#rate-limits}
+<div id="rate-limits">
+  ## Rate limit
+</div>
 
 x402 memiliki rate limit tersendiri yang terpisah dari batas API key:
 
@@ -321,9 +357,13 @@ Setelah 5 discovery request `402` tanpa autentikasi dari IP yang sama dalam 60 d
 
 QPS per wallet diberlakukan pada seluruh permintaan berbayar dari alamat wallet yang sama.
 
-## Referensi header {#headers-reference}
+<div id="headers-reference">
+  ## Referensi header
+</div>
 
-### Header permintaan {#request-headers}
+<div id="request-headers">
+  ### Header permintaan
+</div>
 
 | Header              | Deskripsi                                  |
 | ------------------- | ------------------------------------------ |
@@ -331,14 +371,18 @@ QPS per wallet diberlakukan pada seluruh permintaan berbayar dari alamat wallet 
 | `payment-signature` | Alias (juga diterima)                      |
 | `x-payment`         | Alias lama (kompatibilitas v1)             |
 
-### Response header {#response-headers}
+<div id="response-headers">
+  ### Response header
+</div>
 
 | Header             | Kapan                                        | Deskripsi                                                                     |
 | ------------------ | -------------------------------------------- | ----------------------------------------------------------------------------- |
 | `PAYMENT-REQUIRED` | Response `402`                               | Objek `PaymentRequired` terenkode Base64 berisi harga dan instruksi payment |
 | `PAYMENT-RESPONSE` | `200` atau `402` (setelah percobaan payment) | Hasil settlement terenkode Base64 berisi hash transaksi atau error            |
 
-## Error codes {#error-codes}
+<div id="error-codes">
+  ## Error codes
+</div>
 
 | Status | Tag                        | Deskripsi                                                                             |
 | ------ | -------------------------- | ------------------------------------------------------------------------------------- |
@@ -349,7 +393,9 @@ QPS per wallet diberlakukan pada seluruh permintaan berbayar dari alamat wallet 
 | `429`  | `X402_WALLET_RATE_LIMITED` | Wallet melampaui 10 permintaan/detik                                                  |
 | `500`  | `X402_INTERNAL_ERROR`      | Kesalahan di sisi server saat menghasilkan persyaratan payment                        |
 
-## FAQ {#faq}
+<div id="faq">
+  ## FAQ
+</div>
 
 <AccordionGroup>
   <Accordion title="Bisakah saya menggunakan x402 dan API key sekaligus?">
@@ -369,7 +415,9 @@ QPS per wallet diberlakukan pada seluruh permintaan berbayar dari alamat wallet 
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 * [Dokumentasi protokol x402](https://docs.x402.org): spesifikasi protokol lengkap
 * [x402 GitHub](https://github.com/coinbase/x402): SDK dan contoh open-source

@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 完整的文档索引请访问：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 获取 Agent 运行 {#get-an-agent-run}
+<div id="get-an-agent-run">
+  # 获取 Agent 运行
+</div>
 
 > 通过 ID 获取某个 Agent 运行。
 
@@ -13,7 +17,9 @@
   在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}
 openapi: 3.1.0

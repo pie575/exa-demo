@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Monitors API {#monitors-api}
+<div id="monitors-api">
+  # Monitors API
+</div>
 
 > 반복 search를 실행하고 새로 발견된 결과를 웹훅으로 받아보세요.
 
@@ -11,7 +15,9 @@ Monitors는 반복 일정에 따라 Exa search를 실행하고 그 결과를 웹
 
 뉴스, 경쟁사 발표, 투자 라운드, 규제 변화, 리서치 출판물 등 시간이 지나며 달라지는 주제를 추적할 때 Monitors를 활용하세요.
 
-## Monitors 작동 방식 {#how-monitors-work}
+<div id="how-monitors-work">
+  ## Monitors 작동 방식
+</div>
 
 Exa는 실행할 때마다 설정된 search를 수행하고, 시간 기준으로 필터링한 뒤, monitor가 이미 반환한 결과나
 발견 항목을 제외하고 새로운 output을 웹훅으로 전송합니다.
@@ -19,7 +25,9 @@ Exa는 실행할 때마다 설정된 search를 수행하고, 시간 기준으로
 monitor마다 자체 실행 기록을 관리하므로, 날짜 범위를 직접 옮겨 가며 지정하기보다는 추적하려는
 지속적인 신호를 중심으로 질의를 작성하세요.
 
-## 첫 monitor 생성하기 {#create-your-first-monitor}
+<div id="create-your-first-monitor">
+  ## 첫 monitor 생성하기
+</div>
 
 search 질의, 실행 주기, 그리고 업데이트를 받을 HTTPS 엔드포인트를 지정해 monitor를 생성합니다:
 
@@ -122,7 +130,9 @@ search 질의, 실행 주기, 그리고 업데이트를 받을 HTTPS 엔드포�
 
 monitor를 생성할 때 `webhookSecret`을 반드시 저장해 두세요. 이 값은 한 번만 반환되며, 웹훅 signature 검증에 필요합니다.
 
-## output 구성하기 {#configure-the-output}
+<div id="configure-the-output">
+  ## output 구성하기
+</div>
 
 완료된 모든 실행은 새로 발견된 페이지를 `output.results`에 반환합니다.
 
@@ -163,7 +173,9 @@ monitor를 생성할 때 `webhookSecret`을 반드시 저장해 두세요. 이 �
 
 citations와 confidence는 schema에 포함하지 마세요. 이 값들은 `output.grounding`으로 별도 반환됩니다.
 
-## 페이지 콘텐츠 추가 {#add-page-content}
+<div id="add-page-content">
+  ## 페이지 콘텐츠 추가
+</div>
 
 `search`는 [Exa Search](/ko/docs/search/quickstart)와 동일한 옵션을 지원합니다. `contents`로 각 result에 highlights, 전체 텍스트, summary를 포함시키고, `includeDomains` 또는 `excludeDomains`로 소스를 제한할 수 있습니다.
 
@@ -235,7 +247,9 @@ citations와 confidence는 schema에 포함하지 마세요. 이 값들은 `outp
   ```
 </CodeGroup>
 
-## monitor 테스트하기 {#test-your-monitor}
+<div id="test-your-monitor">
+  ## monitor 테스트하기
+</div>
 
 다음 예약 시간까지 기다리지 않고 즉시 실행을 트리거한 다음, 해당 실행 목록을 조회합니다:
 
@@ -277,7 +291,9 @@ citations와 confidence는 schema에 포함하지 마세요. 이 값들은 `outp
 
 `output`은 실행이 완료되기 전까지 null입니다.
 
-## 실행 일정 {#schedule-runs}
+<div id="schedule-runs">
+  ## 실행 일정
+</div>
 
 최소 실행 주기는 1시간입니다. `1h`, `6h`, `1d`, `7d`처럼 단일 기간 값을 사용하세요. 일정은 monitor가 생성된 시각을 기준으로 정해집니다. 예를 들어 오후 2시 30분에 생성된 일간 monitor는 매일 오후 2시 30분경에 실행됩니다. 다만 각 실행은 최대 30분까지 지연될 수 있으므로, 정확한 시각에 결과가 전달된다고 가정해서는 안 됩니다.
 
@@ -287,7 +303,9 @@ citations와 confidence는 schema에 포함하지 마세요. 이 값들은 `outp
   Monitor 실행은 서로 겹치지 않습니다. 이전 실행이 아직 진행 중인 상태에서 다음 예약 실행이 시작되면 Exa는 이전 실행을 취소합니다.
 </Note>
 
-## 웹훅 업데이트 수신 {#receive-webhook-updates}
+<div id="receive-webhook-updates">
+  ## 웹훅 업데이트 수신
+</div>
 
 완료된 실행만 필요하다면 `monitor.run.completed`를 구독하세요. `events`를 생략하면 Exa는
 monitor 수명 주기 이벤트와 실행 생성 이벤트까지 함께 전송합니다.
@@ -384,7 +402,9 @@ monitor 수명 주기 이벤트와 실행 생성 이벤트까지 함께 전송�
   ```
 </CodeGroup>
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="Monitor 생성하기" icon="bell" href="/ko/docs/reference/monitors/create-a-monitor" cta="reference 열기" arrow="true">

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Jenis event {#event-types}
+<div id="event-types">
+  # Jenis event
+</div>
 
 > Pelajari event yang terjadi di dalam Webset API
 
@@ -11,36 +15,48 @@ Websets API menggunakan event untuk memberi tahu Anda tentang perubahan pada Web
 
 Event disimpan selama 60 hari sebelum dihapus secara otomatis.
 
-## Webset {#webset}
+<div id="webset">
+  ## Webset
+</div>
 
 * `webset.created` - Dikirim saat Webset baru dibuat.
 * `webset.deleted` - Dikirim saat sebuah Webset dihapus.
 * `webset.paused` - Dikirim saat operasi sebuah Webset dijeda.
 * `webset.idle` - Dikirim saat sebuah Webset tidak memiliki operasi yang sedang berjalan.
 
-## Search {#search}
+<div id="search">
+  ## Search
+</div>
 
 * `webset.search.created` - Dikirim saat search baru dimulai.
 * `webset.search.updated` - Dikirim saat progres search diperbarui.
 * `webset.search.completed` - Dikirim saat search selesai menemukan semua item.
 * `webset.search.canceled` - Dikirim saat search dibatalkan secara manual.
 
-## Item {#item}
+<div id="item">
+  ## Item
+</div>
 
 * `webset.item.created` - Dikirim saat item baru ditambahkan ke Webset.
 * `webset.item.enriched` - Dikirim saat enrichment sebuah item selesai.
 
-## Impor {#import}
+<div id="import">
+  ## Impor
+</div>
 
 * `import.created` - Dikirim saat impor baru dimulai.
 * `import.completed` - Dikirim saat impor telah selesai.
 
-## Export {#export}
+<div id="export">
+  ## Export
+</div>
 
 * `webset.export.created` - Dikirim saat export baru dimulai.
 * `webset.export.completed` - Dikirim saat export telah selesai.
 
-## Monitor {#monitor}
+<div id="monitor">
+  ## Monitor
+</div>
 
 * `monitor.created` - Dikirim saat monitor baru dibuat.
 * `monitor.updated` - Dikirim saat konfigurasi monitor diperbarui.

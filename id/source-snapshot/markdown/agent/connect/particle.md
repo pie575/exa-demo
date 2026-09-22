@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Particle {#particle}
+<div id="particle">
+  # Particle
+</div>
 
 > Cari transkrip podcast dengan atribusi pembicara dan timestamp.
 
@@ -16,14 +20,18 @@ Attach `particle` ke sebuah run [Exa Agent](/id/docs/agent/quickstart) melalui
 [Exa Connect](/id/docs/agent/connect/overview), dan agent akan melakukan query ke
 Particle bersamaan dengan Exa web search.
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Menemukan komentar pakar dan cuplikan pernyataan yang layak dikutip.
 * Pemantauan media dan merek.
 * Research narasi dan sentimen.
 * Menemukan podcast dan mengikuti perkembangannya.
 
-## Provider ID {#provider-id}
+<div id="provider-id">
+  ## Provider ID
+</div>
 
 Gunakan nilai ini pada `dataSources`:
 
@@ -31,7 +39,9 @@ Gunakan nilai ini pada `dataSources`:
 particle
 ```
 
-## Contoh {#example}
+<div id="example">
+  ## Contoh
+</div>
 
 Cari tahu apa yang dibicarakan para pembawa acara podcast tentang regulasi AI.
 
@@ -131,12 +141,16 @@ Cari tahu apa yang dibicarakan para pembawa acara podcast tentang regulasi AI.
   ```
 </CodeGroup>
 
-## Cocok dipadukan dengan {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Cocok dipadukan dengan
+</div>
 
 * [Financial Datasets](/id/docs/agent/connect/financialdatasets): periksa silang perbincangan di podcast dengan berita yang telah dipublikasikan.
 * [Fiber.ai](/id/docs/agent/connect/fiber): attach konteks perusahaan dan kontak pada orang-orang yang sedang dibahas.
 
-## Langkah berikutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah berikutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Attach ke sebuah run" icon="rocket" href="/id/docs/agent/connect/overview" cta="Buka quickstart" arrow="true">

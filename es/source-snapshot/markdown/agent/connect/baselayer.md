@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Baselayer {#baselayer}
+<div id="baselayer">
+  # Baselayer
+</div>
 
 > Verifica empresas de EE. UU. y obtén datos KYB: directivos, registrations y puntuaciones de riesgo.
 
@@ -16,13 +20,17 @@ Adjunta `baselayer` a un run de [Exa Agent](/es/docs/agent/quickstart) mediante
 [Exa Connect](/es/docs/agent/connect/overview) y el agente consultará
 Baselayer junto con Exa web search.
 
-## Úsalo para {#use-it-for}
+<div id="use-it-for">
+  ## Úsalo para
+</div>
 
 * Onboarding KYB y verificación de vendors y clientes.
 * Debida diligencia sobre directivos, registrations y estructura de la entidad.
 * Cribar empresas en busca de riesgos y coincidencias en watchlists.
 
-## ID del proveedor {#provider-id}
+<div id="provider-id">
+  ## ID del proveedor
+</div>
 
 Usa este valor en `dataSources`:
 
@@ -30,7 +38,9 @@ Usa este valor en `dataSources`:
 baselayer
 ```
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Baselayer factura por pedido, y la tarifa depende de la operación y sus
 parámetros:
@@ -52,7 +62,9 @@ $4.00, una revisión de watchlist con las seis listas admitidas cuesta $1.35, y 
 presencia web equivale a la suma de los análisis que selecciones (o del conjunto
 predeterminado de Baselayer — predicción NAICS y análisis de sitio web — si no seleccionas ninguno).
 
-## Ejemplo {#example}
+<div id="example">
+  ## Ejemplo
+</div>
 
 Verifica una empresa y obtén los detalles de sus directivos y de su registration.
 
@@ -167,13 +179,17 @@ Verifica una empresa y obtén los detalles de sus directivos y de su registratio
   ```
 </CodeGroup>
 
-## Combina bien con {#pairs-well-with}
+<div id="pairs-well-with">
+  ## Combina bien con
+</div>
 
 * [Fiber.ai](/es/docs/agent/connect/fiber): enriquece una empresa verificada con datos firmográficos, número de empleados y contactos.
 * [Financial Datasets](/es/docs/agent/connect/financialdatasets): añade cobertura de noticias reciente sobre entidades públicas.
 * [Similarweb](/es/docs/agent/connect/similarweb): compara el tráfico web y los competidores de una empresa verificada.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Adjúntalo a un run" icon="rocket" href="/es/docs/agent/connect/overview" cta="Abrir quickstart" arrow="true">

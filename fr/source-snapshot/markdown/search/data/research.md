@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Publications de recherche {#research-publications}
+<div id="research-publications">
+  # Publications de recherche
+</div>
 
 > Trouvez des papers académiques, des brevets, des subventions, des essais cliniques et des approbations réglementaires avec Exa Search.
 
@@ -40,7 +44,9 @@ Utilisez Exa Search pour les publications de recherche et les records associés,
   pour en savoir plus sur la qualité de la recherche de publications.
 </Tip>
 
-## Inclus {#included}
+<div id="included">
+  ## Inclus
+</div>
 
 * Papers et prépublications, y compris des fragments de texte intégral lorsqu&#39;un texte intégral analysé est disponible
 * Brevets, avec résumés, revendications, inventeurs et titulaires
@@ -48,40 +54,54 @@ Utilisez Exa Search pour les publications de recherche et les records associés,
 * Essais cliniques, notices de médicaments et données d&#39;interactions
 * Approbations réglementaires et sanitaires
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * La revue de littérature et la recherche de citations
 * L&#39;analyse de l&#39;art antérieur et la cartographie des brevets
 * La recherche clinique et pharmaceutique
 * L&#39;identification de subventions et d&#39;opportunités de financement
 
-## Exemples de requêtes {#example-queries}
+<div id="example-queries">
+  ## Exemples de requêtes
+</div>
 
-### Trouver des papers sur un sujet {#find-papers-on-a-topic}
+<div id="find-papers-on-a-topic">
+  ### Trouver des papers sur un sujet
+</div>
 
 Décrivez la méthode ou le résultat obtenu plutôt que de deviner les mots-clés du titre. La catégorie `publication` restreint les résultats aux papers.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-### Rechercher des preuves cliniques {#search-clinical-evidence}
+<div id="search-clinical-evidence">
+  ### Rechercher des preuves cliniques
+</div>
 
 Précisez la phase, l&#39;intervention et la population pour que les immatriculations d&#39;essais et les pages de résultats se classent avant la couverture générale.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-### Suivre les approbations réglementaires {#track-regulatory-approvals}
+<div id="track-regulatory-approvals">
+  ### Suivre les approbations réglementaires
+</div>
 
 Indiquez l&#39;organisme de réglementation ainsi que le dispositif ou la classe de médicaments que vous surveillez.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-### Lancer une recherche d&#39;antériorité {#run-a-prior-art-search}
+<div id="run-a-prior-art-search">
+  ### Lancer une recherche d&#39;antériorité
+</div>
 
 Décrivez l&#39;invention de façon fonctionnelle, comme le ferait une revendication, plutôt que d&#39;utiliser un nom de produit.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-## Envoyer une requête {#make-a-request}
+<div id="make-a-request">
+  ## Envoyer une requête
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,7 +145,9 @@ Décrivez l&#39;invention de façon fonctionnelle, comme le ferait une revendica
   ```
 </CodeGroup>
 
-## Obtenir des données structurées avec Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Obtenir des données structurées avec Exa Agent
+</div>
 
 Pour des données structurées nécessitant une recherche sur plusieurs sources, utilisez un [run de tâche Exa Agent](/fr/docs/agent/quickstart). Décrivez les publications, les critères d&#39;inclusion et les fields d&#39;output dont vous avez besoin : Agent renvoie des résultats validés par schéma, accompagnés de leurs citations.
 

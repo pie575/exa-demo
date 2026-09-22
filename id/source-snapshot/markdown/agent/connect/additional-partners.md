@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Provider tambahan {#additional-providers}
+<div id="additional-providers">
+  # Provider tambahan
+</div>
 
 > Partner Exa Connect di luar kumpulan provider self-serve.
 

@@ -1,21 +1,29 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Impor from CSV {#import-from-csv}
+<div id="import-from-csv">
+  # Impor from CSV
+</div>
 
 > Ubah data CSV yang sudah Anda miliki menjadi sebuah Webset
 
 <br />
 
-## Ikhtisar {#overview}
+<div id="overview">
+  ## Ikhtisar
+</div>
 
 Fitur Impor from CSV memungkinkan Anda mengubah file CSV berisi URL yang sudah Anda miliki menjadi Websets yang berfungsi penuh. Fitur ini sangat cocok jika Anda sudah memiliki daftar situs web, perusahaan, atau sumber daya yang ingin Anda enrich dengan data tambahan atau Anda saring dengan kriteria pencarian.
 
 <br />
 
-## Cara kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/import-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=6cf23e9e291fe7811942d18c3aa08b33" alt="CSV import flow for creating a Webset" width="1512" height="857" data-path="images/websets/import-flow.png" />
 
@@ -26,7 +34,9 @@ Fitur Impor from CSV memungkinkan Anda mengubah file CSV berisi URL yang sudah A
 
 <br />
 
-## Persiapan CSV {#csv-preparation}
+<div id="csv-preparation">
+  ## Persiapan CSV
+</div>
 
 Pastikan file CSV Anda memiliki kolom URL
 
@@ -38,11 +48,15 @@ Jika Anda tidak memiliki URL, Websets akan mencoba menyimpulkan URL berdasarkan 
 
 Jumlah maksimum hasil yang dapat Anda impor ditentukan oleh plan Anda.
 
-## Apa yang terjadi selanjutnya? {#what-happens-next}
+<div id="what-happens-next">
+  ## Apa yang terjadi selanjutnya?
+</div>
 
 Setelah diimpor, CSV Anda menjadi Webset lengkap tempat Anda dapat:
 
-### Enrich dengan kolom kustom {#enrich-with-custom-columns}
+<div id="enrich-with-custom-columns">
+  ### Enrich dengan kolom kustom
+</div>
 
 Tambahkan informasi apa pun yang Anda inginkan untuk setiap URL:
 
@@ -51,7 +65,9 @@ Tambahkan informasi apa pun yang Anda inginkan untuk setiap URL:
 * Analisis konten (sentimen, topik, ringkasan)
 * Data kustom yang sesuai dengan kasus penggunaan Anda
 
-### Terapkan kriteria pencarian {#apply-search-criteria}
+<div id="apply-search-criteria">
+  ### Terapkan kriteria pencarian
+</div>
 
 Saring URL yang Anda impor berdasarkan kriteria tertentu:
 

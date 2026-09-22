@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Fiber.ai {#fiberai}
+<div id="fiberai">
+  # Fiber.ai
+</div>
 
 > Interrogez la base de données B2B de Fiber.ai pour trouver des entreprises, des personnes et des profils LinkedIn.
 
@@ -16,7 +20,9 @@ Attachez `fiber` à un run d&#39;[Exa Agent](/fr/docs/agent/quickstart) via
 [Exa Connect](/fr/docs/agent/connect/overview) : l&#39;agent interroge alors
 Fiber.ai en parallèle d&#39;Exa web search.
 
-## À utiliser pour {#use-it-for}
+<div id="use-it-for">
+  ## À utiliser pour
+</div>
 
 * Nettoyer un CRM en identifiant une personne à partir d&#39;un e-mail professionnel
   ou personnel, ou en enrichissant un record entreprise/personne incomplet.
@@ -29,7 +35,9 @@ Fiber.ai en parallèle d&#39;Exa web search.
   et enrichir les prospects avec leur e-mail professionnel, leur e-mail personnel
   et leurs numéros de téléphone.
 
-## Identifiant du fournisseur {#provider-id}
+<div id="provider-id">
+  ## Identifiant du fournisseur
+</div>
 
 Utilisez cette valeur dans `dataSources` :
 
@@ -37,7 +45,9 @@ Utilisez cette valeur dans `dataSources` :
 fiber
 ```
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 Fiber.ai facture en crédits au tarif de `$0.02 / credit`, et chaque appel est facturé selon les
 crédits que Fiber déclare pour celui-ci :
@@ -53,7 +63,9 @@ Les appels qui ne renvoient aucune correspondance (ou dont Fiber rembourse les f
 paramètres influe sur le prix : le `numResults` d&#39;une recherche d&#39;entreprise détermine le nombre de
 candidats qui vous sont facturés, et le nombre de résultats d&#39;une recherche représente l&#39;essentiel de son coût.
 
-## Exemple {#example}
+<div id="example">
+  ## Exemple
+</div>
 
 Constituez une liste de prospection B2B regroupant les entreprises fintech en série A situées à New York et comptant de 50 à 200 employés.
 
@@ -150,13 +162,17 @@ Constituez une liste de prospection B2B regroupant les entreprises fintech en s�
   ```
 </CodeGroup>
 
-## À combiner avec {#pairs-well-with}
+<div id="pairs-well-with">
+  ## À combiner avec
+</div>
 
 * [Similarweb](/fr/docs/agent/connect/similarweb) : évaluer la présence web d&#39;un prospect et de ses concurrents.
 * [Baselayer](/fr/docs/agent/connect/baselayer) : vérifier les dirigeants et les immatriculations des entreprises américaines présélectionnées.
 * [Particle](/fr/docs/agent/connect/particle) : découvrir ce que disent les podcasts à propos d&#39;une entreprise ou d&#39;un dirigeant.
 
-## Étapes suivantes {#next-steps}
+<div id="next-steps">
+  ## Étapes suivantes
+</div>
 
 <Columns cols={2}>
   <Card title="L'attacher à un run" icon="rocket" href="/fr/docs/agent/connect/overview" cta="Ouvrir le quickstart" arrow="true">

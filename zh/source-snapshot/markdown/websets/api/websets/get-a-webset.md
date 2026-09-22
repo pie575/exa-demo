@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 获取 webset {#get-a-webset}
+<div id="get-a-webset">
+  # 获取 webset
+</div>
 
 > 通过 `id` 或 `externalId` 返回一个 Webset，包含其状态、search、导入、增强和 monitor。
 
 传入 `expand=items`，可在响应中包含最多前 100 个项目。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0

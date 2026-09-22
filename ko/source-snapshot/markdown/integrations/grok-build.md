@@ -1,15 +1,21 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일을 통해 사용 가능한 모든 페이지를 확인하세요.
 
-# Grok Build {#grok-build}
+<div id="grok-build">
+  # Grok Build
+</div>
 
 > Grok Build에서 Exa web search를 사용하세요. Grok Build 마켓플레이스에서 Exa 플러그인을 설치하고 Exa 계정으로 로그인하면 됩니다.
 
 Exa는 [Grok Build](https://docs.x.ai/build/overview) 마켓플레이스에서 플러그인으로 제공됩니다. 이를 통해 Grok에서 실시간 web search, 페이지 읽기, 딥 리서치 skill을 사용할 수 있습니다.
 
-## 설치 {#installation}
+<div id="installation">
+  ## 설치
+</div>
 
 <Steps>
   <Step title="Grok Build 설치">
@@ -45,13 +51,17 @@ Exa는 [Grok Build](https://docs.x.ai/build/overview) 마켓플레이스에서 �
 
 exa가 **ready** 상태가 되면, 웹 검색이 필요한 무엇이든 Grok에게 물어보세요.
 
-## 제공되는 기능 {#what-you-get}
+<div id="what-you-get">
+  ## 제공되는 기능
+</div>
 
 * **web&#95;search&#95;exa**: 실시간 web search. 자연어 쿼리와 함께 뉴스, 기업, 인물, 연구 논문, GitHub 등의 카테고리 필터를 지원합니다.
 * **web&#95;fetch&#95;exa**: 모든 URL을 읽어 페이지 콘텐츠를 깔끔한 마크다운으로 반환합니다.
 * **exa-search skill**: 딥 리서치 skill입니다. Grok에게 특정 주제를 깊이 파고들어 달라고 요청하면 여러 차례 searches를 수행하고 가장 적합한 소스를 읽은 뒤 citations와 함께 답변합니다.
 
-## 예시 prompt {#example-prompts}
+<div id="example-prompts">
+  ## 예시 prompt
+</div>
 
 * &quot;xAI에 대한 최신 뉴스를 검색해줘&quot;
 * &quot;[https://exa.ai](https://exa.ai)를 읽고 요약해줘&quot;

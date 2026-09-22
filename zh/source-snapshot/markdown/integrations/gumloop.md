@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Gumloop {#gumloop}
+<div id="gumloop">
+  # Gumloop
+</div>
 
 > 在 Gumloop flow 中使用 Exa search 和页面内容。
 
 [Gumloop](https://www.gumloop.com/) 内置了 Exa 作为 MCP integration。将其添加到 agent 或 Agent Node 中，即可在工作流内搜索网页、提取页面内容、查找相关 sources，并生成有引用来源支撑的答案。
 
-## 将 Exa 添加到 Gumloop agent {#add-exa-to-a-gumloop-agent}
+<div id="add-exa-to-a-gumloop-agent">
+  ## 将 Exa 添加到 Gumloop agent
+</div>
 
 <Steps>
   <Step title="打开 agent">
@@ -35,7 +41,9 @@
   </Step>
 </Steps>
 
-## 可用工具 {#available-tools}
+<div id="available-tools">
+  ## 可用工具
+</div>
 
 | 工具                       | 适用场景                         |
 | ------------------------ | ---------------------------- |
@@ -48,9 +56,13 @@
 
 对于对话式 agent，建议先启用 Search、Get Contents 和 Answer，其余工具仅在工作流确有需要时再添加。
 
-## 在工作流中使用 Exa {#use-exa-in-a-workflow}
+<div id="use-exa-in-a-workflow">
+  ## 在工作流中使用 Exa
+</div>
 
-### Agent Node {#agent-node}
+<div id="agent-node">
+  ### Agent Node
+</div>
 
 在确定性的 Gumloop flow 中添加一个 **Agent Node**，并将 Exa 接入为它的 tools 之一。该 node 可以自行决定是执行 search、抓取完整页面，还是先串联多次 Exa 调用，再将输出传递给工作流的下一步。
 
@@ -61,7 +73,9 @@
 * 在将 record 转入销售工作流之前先研究公司背景
 * 对比产品并将结果写入文档
 
-### 可复用的自定义 MCP node {#reusable-custom-mcp-node}
+<div id="reusable-custom-mcp-node">
+  ### 可复用的自定义 MCP node
+</div>
 
 如果只是一个可重复执行的操作，可以创建一个专用 node：
 
@@ -72,7 +86,9 @@
 
 当任务需要动态规划或调用多个 tools 时，请使用 Agent Node；当同一个 Exa 操作需要在每个项目上稳定、可预期地执行时，请使用自定义 MCP node。
 
-## Prompt 模式 {#prompt-patterns}
+<div id="prompt-patterns">
+  ## Prompt 模式
+</div>
 
 <AccordionGroup>
   <Accordion title="搜索并总结">
@@ -96,7 +112,9 @@
   </Accordion>
 </AccordionGroup>
 
-## 故障排查 {#troubleshooting}
+<div id="troubleshooting">
+  ## 故障排查
+</div>
 
 <AccordionGroup>
   <Accordion title="agent 无法使用 Exa">
@@ -112,7 +130,9 @@
   </Accordion>
 </AccordionGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 <Columns cols={3}>
   <Card title="Gumloop Exa integration" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="阅读指南" arrow="true">

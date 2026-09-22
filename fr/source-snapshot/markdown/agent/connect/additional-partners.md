@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Fournisseurs supplémentaires {#additional-providers}
+<div id="additional-providers">
+  # Fournisseurs supplémentaires
+</div>
 
 > Les partners Exa Connect au-delà de l&#39;ensemble de fournisseurs en libre-service.
 

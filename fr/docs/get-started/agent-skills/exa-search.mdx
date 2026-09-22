@@ -16,7 +16,9 @@ Utilisez cette skill pour apprendre à votre agent à appeler Exa Search avec cU
   Définissez votre clé sous le nom `EXA_API_KEY` dans l&#39;environnement de votre agent.
 </Note>
 
-## Configuration {#setup}
+<div id="setup">
+  ## Configuration
+</div>
 
 **Option A : installez directement cette skill :**
 
@@ -62,13 +64,17 @@ Source de la skill :
 Règle absolue tout du long : la clé est un secret. Ne l'inspecte jamais autrement que par un test de présence/longueur (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) ou un code de statut HTTP — n'affiche jamais, n'utilise jamais `echo`, `cat`, ni `grep` avec sortie sur un fichier ou une variable susceptible de la contenir, et n'essaie jamais de « masquer » un fichier de clé avec une regex. Si une clé est exposée, demande-moi de la renouveler sur https://dashboard.exa.ai/api-keys.
 ```
 
-## Voir la source {#view-source}
+<div id="view-source">
+  ## Voir la source
+</div>
 
 <Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="Voir la source" arrow="true">
   Consultez la définition de la skill exa-search avant de l&#39;installer.
 </Card>
 
-## Ressources associées {#related}
+<div id="related">
+  ## Ressources associées
+</div>
 
 <Columns cols={2}>
   <Card title="Toutes les agent skills" icon="layers" href="/fr/docs/get-started/agent-skills/overview" cta="Parcourir les skills" arrow="true">

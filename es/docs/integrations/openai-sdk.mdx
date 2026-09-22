@@ -11,7 +11,9 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 ***
 
-## Descripción general {#overview}
+<div id="overview">
+  ## Descripción general
+</div>
 
 Exa ofrece endpoints compatibles con OpenAI que funcionan con el OpenAI SDK:
 
@@ -24,7 +26,9 @@ Exa ofrece endpoints compatibles con OpenAI que funcionan con el OpenAI SDK:
   `/chat/completions` enruta a [`/answer`](/es/docs/reference/answer) y `/responses` enruta a la [Agent API](/es/docs/agent/quickstart). Consulta [Agent mediante la Responses API](#agent-via-responses-api) más abajo.
 </Info>
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 Para usar el endpoint `/answer` de Exa mediante la interfaz de chat completions:
 
@@ -117,7 +121,9 @@ Para usar el endpoint `/answer` de Exa mediante la interfaz de chat completions:
   ```
 </CodeGroup>
 
-## Agent mediante la Responses API {#agent-via-responses-api}
+<div id="agent-via-responses-api">
+  ## Agent mediante la Responses API
+</div>
 
 El endpoint [`/responses`](https://api.exa.ai/responses) de Exa expone la [Agent API](/es/docs/agent/quickstart) a través de la interfaz de OpenAI Responses, por lo que los SDK de OpenAI funcionan sin ninguna modificación. Define `model: "exa-agent"` y elige un modo de ejecución:
 
@@ -135,7 +141,9 @@ Define `reasoning.effort` (`minimal`, `low`, `medium`, `high`, `xhigh`, `auto`, 
 
 Usa `previous_response_id` para continuar un run de Responses ya completado.
 
-### Synchronous {#synchronous}
+<div id="synchronous">
+  ### Synchronous
+</div>
 
 La solicitud queda bloqueada hasta que el run finaliza y devuelve el objeto `respuesta` terminal.
 
@@ -191,7 +199,9 @@ La solicitud queda bloqueada hasta que el run finaliza y devuelve el objeto `res
   ```
 </CodeGroup>
 
-### Streaming {#streaming}
+<div id="streaming">
+  ### Streaming
+</div>
 
 Establece `stream: true` para recibir los eventos del stream de Responses mediante SSE. Los eventos incluyen un `sequence_number` monótono y terminan con `response.completed`; no existe un centinela `[DONE]`. El stream puede incluir líneas de comentario `: keep-alive`, que los clientes SSE ignoran.
 
@@ -255,7 +265,9 @@ Establece `stream: true` para recibir los eventos del stream de Responses median
   ```
 </CodeGroup>
 
-### En segundo plano {#background}
+<div id="background">
+  ### En segundo plano
+</div>
 
 Establece `background: true` para iniciar un run sin mantener la conexión abierta y luego sondea `GET /responses/{id}` hasta que alcance un estado terminal. Si prefieres usar streaming en lugar de sondeo, consulta [Streaming](#streaming).
 
@@ -328,7 +340,9 @@ Establece `background: true` para iniciar un run sin mantener la conexión abier
   ```
 </CodeGroup>
 
-## Wrapper de chat {#chat-wrapper}
+<div id="chat-wrapper">
+  ## Wrapper de chat
+</div>
 
 Exa ofrece un wrapper de Python que mejora automáticamente cualquier chat completion de OpenAI con capacidades de RAG. Con una sola línea de código, puedes convertir cualquier chat completion de OpenAI en un sistema RAG impulsado por Exa que se encarga automáticamente de la búsqueda, la segmentación y los prompts.
 

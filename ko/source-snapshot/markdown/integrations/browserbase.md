@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Browserbase {#browserbase}
+<div id="browserbase">
+  # Browserbase
+</div>
 
 > Exa 기업 search와 Browserbase 브라우저 자동화를 결합해 입사 지원 워크플로우를 구축하세요.
 
 Exa로 기업과 채용 페이지를 찾은 다음, Browserbase와 Stagehand로 해당 페이지를 분석하고 조작하세요.
 
-## 설치 {#install}
+<div id="install">
+  ## 설치
+</div>
 
 Browserbase Exa 템플릿에서 사용하는 패키지를 설치합니다:
 
@@ -17,7 +23,9 @@ Browserbase Exa 템플릿에서 사용하는 패키지를 설치합니다:
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-## 환경 변수 구성 {#configure-environment-variables}
+<div id="configure-environment-variables">
+  ## 환경 변수 구성
+</div>
 
 Exa와 Browserbase에서 사용할 API 키를 설정합니다:
 
@@ -26,7 +34,9 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-## 페이지 검색 및 상호작용 {#search-and-interact-with-a-page}
+<div id="search-and-interact-with-a-page">
+  ## 페이지 검색 및 상호작용
+</div>
 
 다음 예제는 템플릿의 워크플로우를 그대로 따릅니다. 회사를 검색하고, 채용 페이지를 찾고, Browserbase 세션에서 해당 페이지를 연 뒤, 직무 설명을 추출하고, Stagehand agent가 페이지와 상호작용하도록 합니다.
 

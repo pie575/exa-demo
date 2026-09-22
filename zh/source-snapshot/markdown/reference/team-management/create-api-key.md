@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在进一步探索之前，可通过该文件了解所有可用页面。
 
-# 创建 API 密钥 {#create-api-key}
+<div id="create-api-key">
+  # 创建 API 密钥
+</div>
 
 > 为你的团队创建新的 API 密钥，可选配置名称和速率限制。
 
@@ -17,12 +21,16 @@
 
 通过创建 API 密钥端点，你可以使用服务 API 密钥，以编程方式为团队生成新的 API 密钥。
 
-## 可选参数 {#optional-parameters}
+<div id="optional-parameters">
+  ## 可选参数
+</div>
 
 * **name**：API 密钥的描述性名称，便于识别其用途
 * **rateLimit**：该 API 密钥每分钟允许的最大请求数
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

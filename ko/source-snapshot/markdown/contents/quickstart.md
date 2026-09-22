@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Contents API {#contents-api}
+<div id="contents-api">
+  # Contents API
+</div>
 
 > 모든 URL에서 텍스트, highlights, summary를 추출합니다.
 
@@ -16,7 +20,9 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   Exa가 각 result의 발췌문 길이를 관련성에 맞게 조정합니다. [Highlights](/ko/docs/search/highlights)를 참고하세요.
 </Tip>
 
-## 첫 번째 요청 보내기 {#make-your-first-request}
+<div id="make-your-first-request">
+  ## 첫 번째 요청 보내기
+</div>
 
 하나 이상의 URL 또는 문서 ID를 전달하고, 작업과 관련된 부분에 대한 highlights를 요청하세요. HTTP 요청에서는 `ids`에 전달합니다:
 
@@ -237,7 +243,9 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
 
 요청당 콘텐츠 뷰는 하나만 선택하세요. highlights, text, summary를 함께 요청하면 각 뷰가 개별적으로 반환되고 각각 과금됩니다.
 
-## 콘텐츠 최신성 {#content-freshness}
+<div id="content-freshness">
+  ## 콘텐츠 최신성
+</div>
 
 `maxAgeHours`는 추출된 페이지 콘텐츠가 얼마나 최신이어야 하는지를 제어합니다.
 
@@ -262,7 +270,9 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   | `"preferred"`    | 직접적인 대응 값 없음. `maxAgeHours: 1`처럼 낮은 값을 사용하세요 |
 </Accordion>
 
-## 하위 페이지 크롤링 {#crawl-subpages}
+<div id="crawl-subpages">
+  ## 하위 페이지 크롤링
+</div>
 
 각 시작 URL의 링크를 따라가려면 `subpages`를 설정하세요. 특정 사이트 섹션을 Exa가 우선적으로 처리하게 하려면 `subpageTarget`을 추가하세요:
 
@@ -300,11 +310,15 @@ Exa Contents는 URL에서 깔끔한 페이지 콘텐츠를 반환하며, JavaScr
   ```
 </CodeGroup>
 
-## 이미지와 파비콘 {#images-and-favicons}
+<div id="images-and-favicons">
+  ## 이미지와 파비콘
+</div>
 
 각 페이지에서 가져올 이미지 URL 개수를 `extras.imageLinks`에 지정하세요. result에는 사이트의 `favicon`과 함께, 사용 가능한 경우 대표 `image` URL도 포함됩니다. `/search`에서는 이 옵션이 `contents.extras.imageLinks`에 위치합니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="API reference" icon="square-terminal" href="/ko/docs/reference/get-contents" cta="reference 열기" arrow="true">

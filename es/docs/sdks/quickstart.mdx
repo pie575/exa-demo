@@ -10,7 +10,9 @@ Los SDK oficiales de Exa. Busca en la web, obtén el contenido de las páginas y
   Crea una key en el panel. Las cuentas nuevas incluyen créditos gratuitos.
 </Card>
 
-## Instalación {#install}
+<div id="install">
+  ## Instalación
+</div>
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -32,7 +34,9 @@ Los SDK oficiales de Exa. Busca en la web, obtén el contenido de las páginas y
 
 El SDK de Python requiere Python 3.9 o superior.
 
-## Autenticación {#authentication}
+<div id="authentication">
+  ## Autenticación
+</div>
 
 Define tu API key como variable de entorno:
 
@@ -50,7 +54,9 @@ Define tu API key como variable de entorno:
   </Tab>
 </Tabs>
 
-## Primeros pasos {#getting-started}
+<div id="getting-started">
+  ## Primeros pasos
+</div>
 
 Inicializa el cliente y ejecuta tu primera búsqueda:
 
@@ -93,7 +99,9 @@ Inicializa el cliente y ejecuta tu primera búsqueda:
   pásala directamente: `Exa(api_key="your-api-key")` o `new Exa("your-api-key")`.
 </Note>
 
-## Valores predeterminados recomendados {#recommended-defaults}
+<div id="recommended-defaults">
+  ## Valores predeterminados recomendados
+</div>
 
 | Decisión            | Valor predeterminado recomendado                                                                  |
 | ------------------- | ------------------------------------------------------------------------------------------------- |
@@ -112,7 +120,9 @@ Inicializa el cliente y ejecuta tu primera búsqueda:
   | `get_contents` / `getContents` | Directamente en la solicitud, como en `exa.get_contents(urls, highlights=True)`  |
 </Warning>
 
-## Search {#search}
+<div id="search">
+  ## Search
+</div>
 
 Search encuentra páginas relevantes y devuelve su contenido en una sola llamada.
 
@@ -147,7 +157,9 @@ Filtros, rangos de fechas y cantidad de resultados:
   ```
 </CodeGroup>
 
-### Esquema de salida {#output-schema}
+<div id="output-schema">
+  ### Esquema de salida
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -201,7 +213,9 @@ Filtros, rangos de fechas y cantidad de resultados:
 
 Los modos deep son recomendables cuando el output requiere investigación en varias búsquedas. Usa `deep-lite` para una investigación ligera o `deep` para búsquedas de varios pasos y una síntesis más sólida. Consulta la [guía de Search](/es/docs/search/quickstart) para ver todas las opciones de la solicitud.
 
-## Contents {#contents}
+<div id="contents">
+  ## Contents
+</div>
 
 Extrae highlights, texto completo o resúmenes de URLs que ya conoces. Empieza con highlights y
 añade una consulta para enfocarlos en la información que necesitas.
@@ -225,7 +239,9 @@ añade una consulta para enfocarlos en la información que necesitas.
 
 Usa el texto completo cuando necesites más contexto o la estructura del documento. Consulta la [guía de Contents](/es/docs/contents/quickstart) para conocer los formatos del output, los controles de frescura y el rastreo de subpáginas.
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 Obtén respuestas a tus preguntas con citas.
 
@@ -250,7 +266,9 @@ Obtén respuestas a tus preguntas con citas.
   ```
 </CodeGroup>
 
-## Asincronía y tipos {#async-and-types}
+<div id="async-and-types">
+  ## Asincronía y tipos
+</div>
 
 Python expone `AsyncExa` para operaciones asíncronas, y el SDK de JavaScript incluye tipos de TypeScript para
 cada método.
@@ -273,11 +291,15 @@ cada método.
   ```
 </CodeGroup>
 
-## Recursos {#resources}
+<div id="resources">
+  ## Recursos
+</div>
 
 Python: [código fuente de exa-py](https://github.com/exa-labs/exa-py) y [paquete en PyPI](https://pypi.org/project/exa-py/). JavaScript: [código fuente de exa-js](https://github.com/exa-labs/exa-js) y [paquete en npm](https://www.npmjs.com/package/exa-js).
 
-## Continuar {#continue}
+<div id="continue">
+  ## Continuar
+</div>
 
 <Columns cols={3}>
   <Card title="Guía de Search" icon="search" href="/es/docs/search/quickstart" cta="Abrir guía" arrow="true">

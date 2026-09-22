@@ -8,7 +8,7 @@
         "fr/docs",
         {
           "boost": 3,
-          "group": "Premiers pas",
+          "group": "Get Started",
           "pages": [
             "fr/docs/get-started/quickstart",
             "fr/docs/get-started/exa-mcp",
@@ -34,7 +34,7 @@
             "fr/docs/search/snapshot",
             "fr/docs/search/best-practices",
             {
-              "group": "Données",
+              "group": "Data",
               "pages": [
                 "fr/docs/search/data/overview",
                 "fr/docs/search/data/news",
@@ -63,7 +63,7 @@
                 "fr/docs/agent/connect/overview",
                 {
                   "boost": 2,
-                  "group": "Fournisseurs en libre-service",
+                  "group": "Self-Serve Providers",
                   "pages": [
                     "fr/docs/agent/connect/fiber",
                     "fr/docs/agent/connect/similarweb",
@@ -83,7 +83,7 @@
         },
         {
           "boost": 3,
-          "group": "Autres API",
+          "group": "Other APIs",
           "pages": [
             "fr/docs/contents/quickstart",
             "fr/docs/monitors/quickstart",
@@ -92,20 +92,20 @@
         },
         {
           "boost": 2,
-          "group": "SDK",
+          "group": "SDKs",
           "pages": [
             "fr/docs/sdks/quickstart"
           ]
         },
         {
           "boost": 2,
-          "group": "Intégrations",
+          "group": "Integrations",
           "pages": [
             "fr/docs/integrations/chatgpt-codex",
             "fr/docs/integrations/claude-web-desktop",
             "fr/docs/integrations/openai-sdk",
             {
-              "group": "Appels d’outils",
+              "group": "Tool Calling",
               "pages": [
                 "fr/docs/integrations/tool-calling/openai",
                 "fr/docs/integrations/tool-calling/anthropic"
@@ -120,13 +120,13 @@
               ]
             },
             {
-              "group": "Places de marché",
+              "group": "Marketplaces",
               "pages": [
                 "fr/docs/integrations/marketplaces/stripe-projects"
               ]
             },
             {
-              "group": "Paiements agentiques",
+              "group": "Agentic Payments",
               "pages": [
                 {
                   "group": "x402",
@@ -147,7 +147,7 @@
             },
             {
               "boost": 0.6,
-              "group": "Autres intégrations",
+              "group": "More Integrations",
               "pages": [
                 "fr/docs/integrations/exa-slack",
                 "fr/docs/integrations/hermes-agent",
@@ -173,13 +173,13 @@
         },
         {
           "boost": 0.8,
-          "group": "Administration",
+          "group": "Admin",
           "pages": [
             "fr/docs/admin/pricing",
             "fr/docs/admin/billing",
             "fr/docs/admin/team-management",
             {
-              "group": "Sécurité et conformité",
+              "group": "Security & Compliance",
               "pages": [
                 "fr/docs/admin/security/overview",
                 "fr/docs/admin/security/zero-data-retention",
@@ -188,7 +188,7 @@
             },
             "fr/docs/admin/mcp-enterprise-managed-auth",
             {
-              "group": "Référence",
+              "group": "Reference",
               "pages": [
                 "fr/docs/admin/status",
                 "fr/docs/admin/error-codes",
@@ -205,7 +205,7 @@
             "fr/docs/websets/quickstart",
             "fr/docs/websets/imports-and-search",
             {
-              "group": "Tableau de bord",
+              "group": "Dashboard",
               "pages": [
                 "fr/docs/websets/dashboard/get-started",
                 "fr/docs/websets/dashboard/import-from-csv",
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "Gestion de l’équipe",
+          "group": "Team Management",
           "pages": [
             "fr/docs/reference/team-management/create-api-key",
             "fr/docs/reference/team-management/list-api-keys",
@@ -314,7 +314,7 @@
               ]
             },
             {
-              "group": "Éléments",
+              "group": "Items",
               "icon": "list",
               "pages": [
                 "fr/docs/websets/api/websets/items/get-an-item",
@@ -323,7 +323,7 @@
               ]
             },
             {
-              "group": "Recherches",
+              "group": "Searches",
               "icon": "search",
               "pages": [
                 "fr/docs/websets/api/websets/searches/create-a-search",
@@ -332,7 +332,7 @@
               ]
             },
             {
-              "group": "Enrichissements",
+              "group": "Enrichments",
               "icon": "sparkles",
               "pages": [
                 "fr/docs/websets/api/websets/enrichments/create-an-enrichment",
@@ -363,7 +363,7 @@
                 "fr/docs/websets/api/monitors/delete-monitor",
                 "fr/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "Exécutions de monitor",
+                  "group": "Monitor Runs",
                   "icon": "play",
                   "pages": [
                     "fr/docs/websets/api/monitors/runs/list-monitor-runs",
@@ -386,7 +386,7 @@
               ]
             },
             {
-              "group": "Événements",
+              "group": "Events",
               "icon": "bell",
               "pages": [
                 "fr/docs/websets/api/events/types",
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "group": "Équipes",
+              "group": "Teams",
               "icon": "users",
               "pages": [
                 "fr/docs/websets/api/teams/get-team-info"
@@ -404,20 +404,20 @@
           ]
         }
       ],
-      "tab": "Référence de l’API"
+      "tab": "API Reference"
     },
     {
       "groups": [
         {
           "boost": 0.5,
-          "group": "Mises à jour",
+          "group": "Updates",
           "pages": [
             "fr/docs/changelog"
           ],
           "root": "fr/docs/changelog"
         }
       ],
-      "tab": "Journal des modifications"
+      "tab": "Changelog"
     }
   ]
 }

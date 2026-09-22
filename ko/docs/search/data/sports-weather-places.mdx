@@ -33,13 +33,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 항목마다 별도의 API를 연동할 필요 없이 Exa Search 하나로 실시간 스포츠 데이터, 일기 예보, 지역 정보를 가져오세요. 알고 싶은 team, 장소, 기간을 담아 자연어로 질문하면 됩니다.
 
-## 더 나은 질의 작성하기 {#write-better-queries}
+<div id="write-better-queries">
+  ## 더 나은 질의 작성하기
+</div>
 
 지역이나 팀 이름을 정확히 명시하고, 시간에 따라 답이 달라지는 경우에는 날짜도 함께 넣으세요. 포괄적인 정보를 요청하기보다는, 작업에 중요한 조건이나 속성을 덧붙이세요.
 
 <Tabs>
   <Tab title="스포츠" icon="trophy">
-### 포함 범위 {#included}
+    <div id="included">
+      ### 포함 범위
+    </div>
 
     이용 가능한 스포츠 데이터:
 
@@ -49,13 +53,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
     NBA, WNBA, NFL, MLB, NHL, MLS, 대학 농구 및 미식축구, 주요 유럽 축구 리그와 UEFA 대회, 크리켓, F1, UFC, 테니스, 골프를 다룹니다.
 
-### 리그, 팀, 시점을 함께 요청하세요 {#ask-for-the-league-team-and-time}
+    <div id="ask-for-the-league-team-and-time">
+      ### 리그, 팀, 시점을 함께 요청하세요
+    </div>
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-### 관련 소식까지 함께 요청하세요 {#add-the-surrounding-story}
+    <div id="add-the-surrounding-story">
+      ### 관련 소식까지 함께 요청하세요
+    </div>
 
     실시간 데이터와 함께 필요한 보도 내용도 요청하세요.
 
@@ -63,50 +71,68 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 
   <Tab title="날씨" icon="cloud-sun">
-### 포함 범위 {#included-2}
+    <div id="included-2">
+      ### 포함 범위
+    </div>
 
     예보에는 날씨 상태, 최고 및 최저 기온, 강수량, 바람, 습도, 자외선 지수, 그리고 해당 지역 현지 시간 기준 일출 및 일몰 시간이 포함됩니다.
 
     날짜를 지정하지 않은 질의는 오늘의 예보를 반환합니다. 특정 날짜나 기간을 요청하면 하루에 한 페이지씩 제공되며, 최대 16일 후까지 또는 92일 전까지 조회할 수 있습니다.
 
-### 장소와 날짜를 명시하세요 {#name-the-place-and-day}
+    <div id="name-the-place-and-day">
+      ### 장소와 날짜를 명시하세요
+    </div>
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-### 계획에 영향을 주는 조건을 물어보세요 {#ask-about-the-condition-that-affects-your-plan}
+    <div id="ask-about-the-condition-that-affects-your-plan">
+      ### 계획에 영향을 주는 조건을 물어보세요
+    </div>
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-### 예보와 보도 내용을 함께 활용하세요 {#combine-forecasts-with-reporting}
+    <div id="combine-forecasts-with-reporting">
+      ### 예보와 보도 내용을 함께 활용하세요
+    </div>
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="장소" icon="map-pin">
-### 포함 범위 {#included-3}
+    <div id="included-3">
+      ### 포함 범위
+    </div>
 
     * 주소, 영업시간, 편의시설, 리뷰가 포함된 지역 업체 정보
     * 시설, 명소, 관심 지점
     * 부동산 매물 및 부동산 records
     * 용도지역 결정, 인허가, 도시계획 records
 
-### 현지인에게 묻듯이 장소를 설명하세요 {#describe-the-place-like-you-would-ask-a-local}
+    <div id="describe-the-place-like-you-would-ask-a-local">
+      ### 현지인에게 묻듯이 장소를 설명하세요
+    </div>
 
     중요한 카테고리, 동네, 속성을 함께 조합하세요.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-### records 유형과 지역을 명시하세요 {#name-the-record-type-and-geography}
+    <div id="name-the-record-type-and-geography">
+      ### records 유형과 지역을 명시하세요
+    </div>
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-### 실질적인 제약 조건을 기준으로 장소를 비교하세요 {#compare-places-against-practical-constraints}
+    <div id="compare-places-against-practical-constraints">
+      ### 실질적인 제약 조건을 기준으로 장소를 비교하세요
+    </div>
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-## 요청 보내기 {#make-a-request}
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
 
 세 가지 데이터 유형 모두 동일한 search 엔드포인트를 사용합니다.
 
@@ -146,7 +172,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## Exa Agent으로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent으로 구조화된 데이터 가져오기
+</div>
 
 여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent task 실행](/ko/docs/agent/quickstart)을 사용하세요. 필요한 장소, 팀, 날짜, criteria, output fields를 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 

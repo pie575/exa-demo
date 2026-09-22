@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# OpenAI SDK 호환성 {#openai-sdk-compatibility}
+<div id="openai-sdk-compatibility">
+  # OpenAI SDK 호환성
+</div>
 
 > Exa의 엔드포인트를 OpenAI의 드롭인 대체재로 사용하세요. chat completions와 responses API를 모두 지원합니다.
 
@@ -13,7 +17,9 @@
 
 ***
 
-## 개요 {#overview}
+<div id="overview">
+  ## 개요
+</div>
 
 Exa는 OpenAI SDK에서 그대로 사용할 수 있는 OpenAI 호환 엔드포인트를 제공합니다:
 
@@ -26,7 +32,9 @@ Exa는 OpenAI SDK에서 그대로 사용할 수 있는 OpenAI 호환 엔드포�
   `/chat/completions`는 [`/answer`](/ko/docs/reference/answer)로, `/responses`는 [Agent API](/ko/docs/agent/quickstart)로 라우팅됩니다. 아래 [Responses API로 Agent 사용하기](#agent-via-responses-api)를 참고하세요.
 </Info>
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 chat completions 인터페이스로 Exa의 `/answer` 엔드포인트를 사용하려면 다음과 같이 설정하세요:
 
@@ -119,7 +127,9 @@ chat completions 인터페이스로 Exa의 `/answer` 엔드포인트를 사용�
   ```
 </CodeGroup>
 
-## Responses API를 통한 Agent {#agent-via-responses-api}
+<div id="agent-via-responses-api">
+  ## Responses API를 통한 Agent
+</div>
 
 Exa의 [`/responses`](https://api.exa.ai/responses) 엔드포인트는 [Agent API](/ko/docs/agent/quickstart)를 OpenAI Responses 인터페이스로 노출하므로, OpenAI SDK를 수정 없이 그대로 사용할 수 있습니다. `model: "exa-agent"`를 설정하고 실행 모드를 선택하세요:
 
@@ -137,7 +147,9 @@ Exa의 [`/responses`](https://api.exa.ai/responses) 엔드포인트는 [Agent AP
 
 완료된 Responses 실행을 이어가려면 `previous_response_id`를 사용하세요.
 
-### 동기 {#synchronous}
+<div id="synchronous">
+  ### 동기
+</div>
 
 요청은 실행이 완료될 때까지 대기(블로킹)하며, 최종 상태의 `response` 객체를 반환합니다.
 
@@ -193,7 +205,9 @@ Exa의 [`/responses`](https://api.exa.ai/responses) 엔드포인트는 [Agent AP
   ```
 </CodeGroup>
 
-### 스트리밍 {#streaming}
+<div id="streaming">
+  ### 스트리밍
+</div>
 
 `stream: true`로 설정하면 SSE를 통해 Responses 스트림 이벤트를 수신합니다. 각 이벤트에는 단조 증가하는 `sequence_number`가 포함되며, 스트림은 `response.completed`로 끝납니다. `[DONE]` 센티널은 없습니다. 스트림에 `: keep-alive` 주석 줄이 포함될 수 있는데, SSE client는 이를 무시합니다.
 
@@ -257,7 +271,9 @@ Exa의 [`/responses`](https://api.exa.ai/responses) 엔드포인트는 [Agent AP
   ```
 </CodeGroup>
 
-### 백그라운드 {#background}
+<div id="background">
+  ### 백그라운드
+</div>
 
 `background: true`를 설정하면 연결을 열어 둔 채 기다리지 않고 실행을 시작할 수 있습니다. 이후 `GET /responses/{id}`를 종료 상태에 도달할 때까지 폴링하세요. 폴링 대신 스트리밍을 사용하려면 [스트리밍](#streaming)을 참고하세요.
 
@@ -330,7 +346,9 @@ Exa의 [`/responses`](https://api.exa.ai/responses) 엔드포인트는 [Agent AP
   ```
 </CodeGroup>
 
-## Chat 래퍼 {#chat-wrapper}
+<div id="chat-wrapper">
+  ## Chat 래퍼
+</div>
 
 Exa는 모든 OpenAI chat completion에 RAG 기능을 자동으로 더해주는 Python 래퍼를 제공합니다. 코드 한 줄만 추가하면 어떤 OpenAI chat completion이든 search, 청킹, prompt 구성을 자동으로 처리하는 Exa 기반 RAG 시스템으로 바꿀 수 있습니다.
 

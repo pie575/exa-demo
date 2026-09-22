@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Contenido {#contents}
+<div id="contents">
+  # Contenido
+</div>
 
 > Obtén el contenido completo de las páginas, los resúmenes y los metadatos de una lista de URLs.
 
@@ -15,7 +19,9 @@ Devuelve resultados instantáneos desde nuestra caché, con rastreo en vivo auto
   Crea una key en el panel. Las cuentas nuevas comienzan con créditos gratuitos.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /contents
 openapi: 3.1.0

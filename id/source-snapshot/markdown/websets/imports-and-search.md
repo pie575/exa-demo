@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Cara Menggunakan Imports {#how-to-use-imports}
+<div id="how-to-use-imports">
+  # Cara Menggunakan Imports
+</div>
 
 > Panduan langkah demi langkah untuk mengimpor URL ke Websets -- meng-enrich daftar Anda, menilainya berdasarkan kriteria, menemukan matches baru, dan menggabungkan ketiganya.
 
@@ -11,7 +15,9 @@ Jika Anda sudah punya daftar URL (perusahaan, orang, produk, dan sebagainya), An
 
 Panduan ini membahas setiap konfigurasi beserta panggilan API yang bisa langsung Anda salin-tempel. Cukup ganti `$EXA_API_KEY` dengan API key Anda.
 
-## Contoh Kami: 5 Pemasok Konsultasi TI {#our-example-5-it-consulting-suppliers}
+<div id="our-example-5-it-consulting-suppliers">
+  ## Contoh Kami: 5 Pemasok Konsultasi TI
+</div>
 
 Sepanjang panduan ini, kami akan menggunakan daftar 5 perusahaan yang sama sebagai impor kami:
 
@@ -32,7 +38,9 @@ Kriteria kami untuk contoh-contoh di bawah ini:
 
 ***
 
-## Config 1: Import Only -- Enrich Tanpa Pemfilteran {#config-1-import-only-enrich-without-filtering}
+<div id="config-1-import-only-enrich-without-filtering">
+  ## Config 1: Import Only -- Enrich Tanpa Pemfilteran
+</div>
 
 <Note>
   **Contoh langsung:** [Lihat webset ini di dashboard](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -40,7 +48,9 @@ Kriteria kami untuk contoh-contoh di bawah ini:
 
 **Gunakan saat:** Anda punya daftar URL dan hanya ingin meng-enrich-nya. Tanpa penilaian, tanpa pemfilteran -- semua item dipertahankan.
 
-### Panggilan API {#api-calls}
+<div id="api-calls">
+  ### Panggilan API
+</div>
 
 ```bash theme={null}
 # Langkah 1: Buat impor CSV berisi URL pemasok Anda
@@ -78,7 +88,9 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### Apa yang Kita Lihat di Webset Langsung {#what-we-see-in-the-live-webset}
+<div id="what-we-see-in-the-live-webset">
+  ### Apa yang Kita Lihat di Webset Langsung
+</div>
 
 Seluruh **5 item** muncul di Webset. Tidak ada pemfilteran karena tidak ada kriteria.
 
@@ -98,7 +110,9 @@ Setiap item memiliki `source: "import"` dan `evaluations: []`. Kelima item tetap
 
 ***
 
-## Config 2: Search Only -- Web Discovery {#config-2-search-only-web-discovery}
+<div id="config-2-search-only-web-discovery">
+  ## Config 2: Search Only -- Web Discovery
+</div>
 
 <Note>
   **Contoh langsung:** [Lihat webset ini di dashboard](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -106,7 +120,9 @@ Setiap item memiliki `source: "import"` dan `evaluations: []`. Kelima item tetap
 
 **Gunakan saat:** Anda tidak punya daftar -- Anda ingin menemukan perusahaan baru dari web yang sesuai dengan kriteria Anda.
 
-### Panggilan API {#api-call}
+<div id="api-call">
+  ### Panggilan API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -198,7 +214,9 @@ Setiap item memiliki `source: "import"` dan `evaluations: []`. Kelima item tetap
   ```
 </CodeGroup>
 
-### Apa yang Kita Lihat di Webset Langsung {#what-we-see-in-the-live-webset-2}
+<div id="what-we-see-in-the-live-webset-2">
+  ### Apa yang Kita Lihat di Webset Langsung
+</div>
 
 Sistem menelusuri web dan menemukan **35 perusahaan** yang memenuhi kedua kriteria. Setiap item memiliki `source: "search"` beserta evaluasi lengkap yang menjelaskan alasan kecocokannya.
 
@@ -215,7 +233,9 @@ Web search kebetulan menemukan Accenture di antara 35 hasilnya, tetapi 4 pemasok
 
 ***
 
-## Config 3: Scoped Search -- Nilai Daftar Anda Berdasarkan Kriteria {#config-3-scoped-search-score-your-list-against-criteria}
+<div id="config-3-scoped-search-score-your-list-against-criteria">
+  ## Config 3: Scoped Search -- Nilai Daftar Anda Berdasarkan Kriteria
+</div>
 
 <Note>
   **Contoh langsung:** [Lihat webset ini di dashboard](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -223,7 +243,9 @@ Web search kebetulan menemukan Accenture di antara 35 hasilnya, tetapi 4 pemasok
 
 **Gunakan saat:** Anda memiliki daftar pemasok dan ingin **menilai masing-masing berdasarkan kriteria**. Hanya yang lolos yang dikembalikan. Inilah kasus penggunaan &quot;nilai daftar saya&quot;.
 
-### Panggilan API {#api-calls-2}
+<div id="api-calls-2">
+  ### Panggilan API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -332,7 +354,9 @@ Web search kebetulan menemukan Accenture di antara 35 hasilnya, tetapi 4 pemasok
   ```
 </CodeGroup>
 
-### Apa yang Kita Lihat di Webset Langsung {#what-we-see-in-the-live-webset-3}
+<div id="what-we-see-in-the-live-webset-3">
+  ### Apa yang Kita Lihat di Webset Langsung
+</div>
 
 Webset ini berisi **4 item**. Masing-masing dari 5 pemasok kita dievaluasi terhadap kriteria -- hanya yang lolos kedua kriteria yang muncul.
 
@@ -352,7 +376,9 @@ Kita mengimpor 5 pemasok, tetapi hanya 4 yang muncul di hasil. **Persol Group di
 
 ***
 
-## Config 4: Scoped Search + Web Discovery -- Nilai Daftar Anda DAN Temukan Matches Baru {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
+<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
+  ## Config 4: Scoped Search + Web Discovery -- Nilai Daftar Anda DAN Temukan Matches Baru
+</div>
 
 <Note>
   **Contoh langsung:** [Lihat webset ini di dashboard](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -360,7 +386,9 @@ Kita mengimpor 5 pemasok, tetapi hanya 4 yang muncul di hasil. **Persol Group di
 
 **Gunakan saat:** Anda memiliki daftar pemasok yang ingin dinilai berdasarkan kriteria, tetapi Anda juga ingin menemukan perusahaan lain dari web yang memenuhi kriteria yang sama. Ini adalah proses dua langkah: pertama, buat webset dengan scoped search, lalu tambahkan web search biasa ke webset yang sama.
 
-### Panggilan API {#api-calls-3}
+<div id="api-calls-3">
+  ### Panggilan API
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -532,7 +560,9 @@ Kita mengimpor 5 pemasok, tetapi hanya 4 yang muncul di hasil. **Persol Group di
   ```
 </CodeGroup>
 
-### Yang Kita Lihat di Webset Langsung {#what-we-see-in-the-live-webset-4}
+<div id="what-we-see-in-the-live-webset-4">
+  ### Yang Kita Lihat di Webset Langsung
+</div>
 
 Webset ini berisi **29 item** -- 4 dari pemasok yang kita impor (sudah dinilai dan lolos) ditambah 25 perusahaan hasil penemuan web. Kedua kelompok dievaluasi terhadap kriteria.
 
@@ -553,7 +583,9 @@ Scoped search mengevaluasi daftar impor Anda terhadap kriteria (sehingga Persol 
 
 ***
 
-## Referensi Singkat {#quick-reference}
+<div id="quick-reference">
+  ## Referensi Singkat
+</div>
 
 | Konfigurasi                          | Fungsinya                                | Semua item dipertahankan?         | Item dinilai?                                        |
 | ------------------------------------ | ---------------------------------------- | --------------------------------- | ---------------------------------------------------- |
@@ -562,7 +594,9 @@ Scoped search mengevaluasi daftar impor Anda terhadap kriteria (sehingga Persol 
 | **3. Scoped Search**                 | Nilai daftar Anda terhadap kriteria      | Tidak -- item yang gagal dibuang  | Ya                                                   |
 | **4. Scoped Search + Web Discovery** | Nilai daftar Anda + temukan matches baru | Tidak -- impor yang gagal dibuang | Ya -- impor maupun hasil discovery sama-sama dinilai |
 
-## Config Mana yang Sebaiknya Saya Gunakan? {#which-config-should-i-use}
+<div id="which-config-should-i-use">
+  ## Config Mana yang Sebaiknya Saya Gunakan?
+</div>
 
 * **&quot;Saya hanya ingin meng-enrich daftar saya, tanpa pemfilteran&quot;** -- Config 1
 * **&quot;Saya belum punya daftar, carikan perusahaan untuk saya&quot;** -- Config 2

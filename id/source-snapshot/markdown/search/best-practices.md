@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Praktik Terbaik Search {#search-best-practices}
+<div id="search-best-practices">
+  # Praktik Terbaik Search
+</div>
 
 > Optimalkan kualitas retrieval, latency, konteks, dan synthesis untuk integrasi Search API di production.
 
 Panduan ini mengasumsikan Anda sudah memiliki [permintaan Search API](/id/docs/search/quickstart) yang berjalan. Di sini dijelaskan cara menyempurnakan permintaan tersebut sesuai praktik terbaik yang direkomendasikan Exa.
 
-## Mulai dengan permintaan terkecil yang berguna {#start-with-the-smallest-useful-request}
+<div id="start-with-the-smallest-useful-request">
+  ## Mulai dengan permintaan terkecil yang berguna
+</div>
 
 Baseline terbaik adalah query bahasa alami dengan `highlights: true`. Exa menyesuaikan panjang kutipan setiap hasil dengan relevance-nya, jadi tidak ada character budget yang perlu disetel:
 
@@ -52,7 +58,9 @@ Tambahkan parameter lain hanya jika diperlukan:
 | `highlights.maxCharacters` | Aplikasi Anda membutuhkan batas kutipan tetap per halaman                                         |
 | Filter domain atau tanggal | Hasil di luar batasan tersebut tidak akan berguna                                                 |
 
-## Search vs. Deep Search {#search-vs-deep-search}
+<div id="search-vs-deep-search">
+  ## Search vs. Deep Search
+</div>
 
 Search standar mengambil dan memeringkat halaman untuk sebuah query. Deep Search menjalankan proses Research yang dapat
 melakukan search secara iteratif, memeriksa hasil yang ditemukan, menyempurnakan search, dan melakukan synthesis menjadi hasil yang grounded.
@@ -65,7 +73,9 @@ melakukan search secara iteratif, memeriksa hasil yang ditemukan, menyempurnakan
 
 Mode deep direkomendasikan secara default saat menggunakan `outputSchema`. Baca [panduan Deep Search](/id/docs/search/deep-search) untuk instruksi dan contoh lengkap.
 
-## Tingkatkan kualitas retrieval {#improve-retrieval-quality}
+<div id="improve-retrieval-quality">
+  ## Tingkatkan kualitas retrieval
+</div>
 
 Ketika hasil perlu diperbaiki, ubah satu bagian permintaan dalam satu waktu.
 
@@ -117,7 +127,9 @@ Ketika hasil perlu diperbaiki, ubah satu bagian permintaan dalam satu waktu.
 
 Pertahankan sekumpulan kecil query representatif selama proses penyetelan. Bandingkan relevance hasil dan keberhasilan tugas lanjutan pada seluruh kumpulan tersebut, bukan mengoptimalkan untuk satu contoh saja. Catat `requestId`, `searchTime`, dan `costDollars` agar regresi dapat direproduksi.
 
-## Mengatur anggaran latency dan konteks {#budget-latency-and-context}
+<div id="budget-latency-and-context">
+  ## Mengatur anggaran latency dan konteks
+</div>
 
 Setiap kontrol menghabiskan sumber daya yang berbeda:
 
@@ -173,7 +185,9 @@ Jangan gunakan pola ini jika kebaruan halaman menentukan ketepatan hasil. Mulail
 
 Agar Exa mengalokasikan satu anggaran konteks untuk seluruh kumpulan hasil — lebih banyak dari sources yang kuat, lebih sedikit dari yang redundan — lihat [pratinjau riset Dynamic Highlights](/id/docs/search/highlights#dynamic-highlights).
 
-## Tips untuk kasus penggunaan umum {#tips-for-common-use-cases}
+<div id="tips-for-common-use-cases">
+  ## Tips untuk kasus penggunaan umum
+</div>
 
 | Jika Anda membutuhkan                           | Gunakan                                                                  | Hindari                                                    |
 | ----------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------- |
@@ -186,7 +200,9 @@ Agar Exa mengalokasikan satu anggaran konteks untuk seluruh kumpulan hasil — l
 | Lebih banyak konteks dari beberapa halaman      | Search dengan kutipan, lalu panggil Contents                             | Teks penuh untuk setiap hasil                              |
 | Latency yang lebih rendah                       | Ukur `fast` atau `instant` dengan konten ringkas                         | Menambahkan kontrol kebaruan atau synthesis secara default |
 
-## Kapan menggunakan endpoint lain {#when-to-use-another-endpoint}
+<div id="when-to-use-another-endpoint">
+  ## Kapan menggunakan endpoint lain
+</div>
 
 Gunakan endpoint Exa yang berbeda ketika sifat tugasnya berubah:
 
@@ -196,7 +212,9 @@ Gunakan endpoint Exa yang berbeda ketika sifat tugasnya berubah:
 | URL sudah diketahui                                     | [Contents](/id/docs/contents/quickstart) |
 | Menjalankan search sesuai jadwal                        | [Monitors](/id/docs/monitors/quickstart) |
 
-## Langkah selanjutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah selanjutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Search API reference" icon="square-terminal" href="/id/docs/reference/search" cta="Buka referensi" arrow="true">

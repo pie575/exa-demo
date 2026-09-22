@@ -33,13 +33,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 使用 Exa Search 获取实时体育数据、天气预报和本地信息，无需为每一项单独接入 API。只需用自然语言提问，说明你关注的团队、地点和时间范围即可。
 
-## 写出更好的 query {#write-better-queries}
+<div id="write-better-queries">
+  ## 写出更好的 query
+</div>
 
 准确指明地点或团队，若答案会随时间变化，请加上日期。与其索取宽泛的信息，不如加上与你的任务真正相关的条件或属性。
 
 <Tabs>
   <Tab title="体育" icon="trophy">
-### 包含内容 {#included}
+    <div id="included">
+      ### 包含内容
+    </div>
 
     可用的体育数据：
 
@@ -49,13 +53,17 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
     覆盖范围包括 NBA、WNBA、NFL、MLB、NHL、MLS、大学篮球与橄榄球、欧洲主要足球联赛与欧足联赛事、板球、F1、UFC、网球和高尔夫。
 
-### 指明联赛、团队和时间 {#ask-for-the-league-team-and-time}
+    <div id="ask-for-the-league-team-and-time">
+      ### 指明联赛、团队和时间
+    </div>
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-### 补充相关报道 {#add-the-surrounding-story}
+    <div id="add-the-surrounding-story">
+      ### 补充相关报道
+    </div>
 
     在获取实时数据的同时，一并索取你需要的报道内容。
 
@@ -63,50 +71,68 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 
   <Tab title="天气" icon="cloud-sun">
-### 包含内容 {#included-2}
+    <div id="included-2">
+      ### 包含内容
+    </div>
 
     预报包括天气状况、最高与最低气温、降水、风力、湿度、紫外线指数，以及按当地时间计算的日出与日落时间。
 
     未指定日期的 query 返回当天预报。指定某一天或某个时间范围，可按天各返回一页，最多支持未来 16 天或过去 92 天。
 
-### 指明地点和日期 {#name-the-place-and-day}
+    <div id="name-the-place-and-day">
+      ### 指明地点和日期
+    </div>
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-### 询问影响你计划的具体天气状况 {#ask-about-the-condition-that-affects-your-plan}
+    <div id="ask-about-the-condition-that-affects-your-plan">
+      ### 询问影响你计划的具体天气状况
+    </div>
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-### 将预报与报道结合 {#combine-forecasts-with-reporting}
+    <div id="combine-forecasts-with-reporting">
+      ### 将预报与报道结合
+    </div>
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="地点" icon="map-pin">
-### 包含内容 {#included-3}
+    <div id="included-3">
+      ### 包含内容
+    </div>
 
     * 本地商户资料，包含地址、营业时间、设施和评价
     * 场馆、景点和兴趣点
     * 房地产房源和房产记录
     * 分区决定、许可证和规划记录
 
-### 像向当地人打听那样描述地点 {#describe-the-place-like-you-would-ask-a-local}
+    <div id="describe-the-place-like-you-would-ask-a-local">
+      ### 像向当地人打听那样描述地点
+    </div>
 
     把类别、街区和你关心的属性结合起来。
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-### 指明记录类型和地理范围 {#name-the-record-type-and-geography}
+    <div id="name-the-record-type-and-geography">
+      ### 指明记录类型和地理范围
+    </div>
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-### 按实际条件比较地点 {#compare-places-against-practical-constraints}
+    <div id="compare-places-against-practical-constraints">
+      ### 按实际条件比较地点
+    </div>
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-## 发起请求 {#make-a-request}
+<div id="make-a-request">
+  ## 发起请求
+</div>
 
 三种数据类型都使用同一个 Search 端点。
 
@@ -146,7 +172,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## 使用 Exa Agent 获取结构化数据 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## 使用 Exa Agent 获取结构化数据
+</div>
 
 如果结构化数据需要跨多个来源进行研究，可以使用 [Exa Agent 任务运行](/zh/docs/agent/quickstart)。只需描述所需的地点、团队、日期、criteria 和输出 fields，Agent 就会返回经过 schema 校验的结果和引用来源。
 

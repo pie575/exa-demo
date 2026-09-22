@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# Similarweb {#similarweb}
+<div id="similarweb">
+  # Similarweb
+</div>
 
 > 获取网站流量估算、全球排名和竞争对手发现。
 
@@ -11,14 +15,18 @@
 
 通过 [Exa Connect](/zh/docs/agent/connect/overview) 将 `similarweb` 附加到 [Exa Agent](/zh/docs/agent/quickstart) 运行中，agent 就会在 Exa 网页搜索之外同时查询 Similarweb。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * 将某家公司的网站流量与互动表现与同行进行对标。
 * 梳理某个域名的竞争对手及受众重叠的站点。
 * 依据数字足迹估算市场规模并筛选公司。
 * 用真实的行为数据丰富公司与品类研究。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用此值：
 
@@ -26,7 +34,9 @@
 similarweb
 ```
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 Similarweb 按数据积分计费，`$0.30 / credit`，每次调用按 Similarweb 报告的积分数扣费。积分随返回的数据量增加——大致每个数据点 (指标 × 行 × 月) 消耗一个积分——因此一次调用的价格由其参数决定：
 
@@ -47,7 +57,9 @@ Similarweb 按数据积分计费，`$0.30 / credit`，每次调用按 Similarweb
 
 未返回任何数据的调用 (未知或低流量域名、无搜索量的关键词) 不收费。`numResults` 和 `months` 决定你需要为多少数据点付费，因此应在满足任务需要的前提下尽量取小值。
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 查找 10 家快速增长的 B2B SaaS 公司及其预估网站流量。
 
@@ -141,12 +153,16 @@ Similarweb 按数据积分计费，`$0.30 / credit`，每次调用按 Similarweb
   ```
 </CodeGroup>
 
-## 搭配使用 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用
+</div>
 
 * [Fiber.ai](/zh/docs/agent/connect/fiber)：将发现的竞争对手转化为内容丰富的公司记录。
 * [Affiliate.com](/zh/docs/agent/connect/affiliatecom)：在推荐某个商家的产品之前，先评估其影响力覆盖范围。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

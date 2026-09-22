@@ -1,17 +1,25 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，请先通过该文件了解所有可用页面。
 
-# Exa in Slack {#exa-in-slack}
+<div id="exa-in-slack">
+  # Exa in Slack
+</div>
 
 > 在 Slack 中安装 Exa，在任意频道或消息串中 tag @Exa，即可获得带引用来源的研究、列表构建与增强答案。
 
 把 Exa 引入团队的 Slack。在任意频道或消息串中 tag **@Exa**，提出研究问题、列表构建任务或增强请求。Exa 会搜索网络、阅读来源，并在消息串中回复带引用的答案。
 
-## 开始使用 {#get-started}
+<div id="get-started">
+  ## 开始使用
+</div>
 
-### 安装 {#installation}
+<div id="installation">
+  ### 安装
+</div>
 
 1. 前往 [控制台 &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack)，然后点击 **Install**。
 
@@ -28,7 +36,9 @@
 
 3. 安装完成后，将 @Exa 邀请到频道 (或直接私信它) ，即可开始提问。
 
-## 如何在 Slack 中使用 Exa {#how-to-use-exa-from-slack}
+<div id="how-to-use-exa-from-slack">
+  ## 如何在 Slack 中使用 Exa
+</div>
 
 在任何已添加 Exa 的频道中，@Exa 并提出你的问题：
 
@@ -38,15 +48,21 @@
 
 Exa 会在消息串中回复你的问题。
 
-### 追问 {#follow-ups}
+<div id="follow-ups">
+  ### 追问
+</div>
 
 Exa 在某个消息串中回答后，直接在该消息串里回复即可继续对话，无需再次 @Exa。Exa 会记住对话内容，因此追问会基于上一条回答展开。消息串中的任何人都可以追问。
 
-### 私信 {#direct-messages}
+<div id="direct-messages">
+  ### 私信
+</div>
 
 你也可以在私信中直接给 Exa 发消息，无需 @ 提及。你发送的每条消息都会发起一个新的请求，并在该消息下的消息串中回复。若要继续这段对话，请在该消息串中回复。
 
-### 取消运行 {#cancelling-a-run}
+<div id="cancelling-a-run">
+  ### 取消运行
+</div>
 
 运行进行中时，在消息串中回复并让 Exa 停止该次运行即可，无需 @Exa。
 
@@ -54,7 +70,9 @@ Exa 在某个消息串中回答后，直接在该消息串里回复即可继续�
 停止当前运行
 ```
 
-### Exa Connect 提供方 {#exa-connect-providers}
+<div id="exa-connect-providers">
+  ### Exa Connect 提供方
+</div>
 
 当 [Exa Connect](/zh/docs/agent/connect/overview) 数据提供方与你的问题相关时，Exa 会自动调用它们。若要指定某个提供方，请在消息中提及它：
 
@@ -64,21 +82,29 @@ Exa 在某个消息串中回答后，直接在该消息串里回复即可继续�
 
 想获取所有可用数据提供方的列表，直接问 Exa 即可。
 
-## 示例 {#examples}
+<div id="examples">
+  ## 示例
+</div>
 
-### 新闻与时事 {#news-and-current-events}
+<div id="news-and-current-events">
+  ### 新闻与时事
+</div>
 
 了解任何话题的最新资讯。
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/thread-answer.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=9922bc4e50694de279554241b02c5e3f" alt="Exa 在 Slack 消息串中回答有关某个话题最新新闻的问题，并以表格形式展示带日期的结果" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-### 大规模列表构建 {#large-list-building}
+<div id="large-list-building">
+  ### 大规模列表构建
+</div>
 
 在请求前加上 `!max`，即可进行详尽的列表构建。
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/exa-slack/max-list-building.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=1efbd746ac778aeac2039750e86bccb2" alt="Exa 在 Slack 消息串中运行 !max 列表构建请求并返回结果表格" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-## 关键词 {#keywords}
+<div id="keywords">
+  ## 关键词
+</div>
 
 在 Exa 所在的消息串中使用这些关键词。命令可以跟在 `@Exa` mention 之后，也可以直接作为消息开头：
 
@@ -91,7 +117,9 @@ Exa 在某个消息串中回答后，直接在该消息串里回复即可继续�
 | `aside <message>` | 发布一条 Exa 会忽略的旁注，便于在 Exa 关注的消息串中与队友交流。              |
 | `help`            | 显示使用说明。                                            |
 
-## 权限 {#permissions}
+<div id="permissions">
+  ## 权限
+</div>
 
 Slack 版 Exa 应用会请求以下权限范围：
 
@@ -121,10 +149,14 @@ Slack 版 Exa 应用会请求以下权限范围：
 
 Exa 仅接收来自它被明确邀请加入的频道以及自身私信中的消息。
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 从 Slack 发起的运行将计入你的 Exa 团队账单。详情请参阅[定价](https://exa.ai/pricing)。
 
-## 隐私 {#privacy}
+<div id="privacy">
+  ## 隐私
+</div>
 
 有关 Exa 如何处理你的数据，请参阅 [Exa 隐私政策](https://exa.ai/privacy-policy)。

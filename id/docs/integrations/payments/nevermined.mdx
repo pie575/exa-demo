@@ -13,7 +13,9 @@ Agent membayar Exa dengan kartu kredit melalui skema [x402 card-delegation](http
 
 Untuk payer Nevermined yang baru pertama kali, `POST /team-management/nevermined/purchase-key` akan menyediakan Exa API key baru dan menambahkan credits senilai $7. Jika key habis, cetak x402 token baru dengan delegation yang sama lalu panggil endpoint yang sama kembali. Exa akan mengembalikan API key yang sama dengan tambahan credits senilai $7.
 
-## Beli key {#buy-a-key}
+<div id="buy-a-key">
+  ## Beli key
+</div>
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -26,7 +28,9 @@ payment-signature: <x402-token>
 * **Response (token yang di-replay):** hasil dari cache, tanpa biaya baru.
 * **Signature hilang/tidak valid:** `402 Payment Required` beserta persyaratan payment di dalam body.
 
-## Cara kerjanya {#how-it-works}
+<div id="how-it-works">
+  ## Cara kerjanya
+</div>
 
 Sisi payment ditangani oleh Nevermined; Exa hanya melihat x402 token yang sudah ditandatangani.
 
@@ -38,7 +42,9 @@ Sisi payment ditangani oleh Nevermined; Exa hanya melihat x402 token yang sudah 
 
 Untuk panduan lengkap yang siap dipakai agent (metode SDK, parameter, penemuan dan pembuatan delegation, serta pemecahan masalah), ikuti panduan integrasi Exa dari Nevermined: [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agent: ambil [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)).
 
-## Apa yang bisa didapat dengan $7 {#what-7-buys}
+<div id="what-7-buys">
+  ## Apa yang bisa didapat dengan $7
+</div>
 
 Credits dipakai sesuai harga standar Exa API. Dengan tarif saat ini, $7 credits kira-kira mencakup:
 
@@ -57,7 +63,9 @@ Credits dipakai sesuai harga standar Exa API. Dengan tarif saat ini, $7 credits 
 Permintaan search sudah mencakup text dan highlights untuk maksimal 10 hasil. Hasil tambahan di luar 10 hasil tersebut dan ringkasan AI ditagih terpisah.<br />
 Untuk detail harga lengkap, lihat [Harga Exa](https://exa.ai/pricing).
 
-## Ketika key habis {#when-the-key-runs-out}
+<div id="when-the-key-runs-out">
+  ## Ketika key habis
+</div>
 
 Exa mengembalikan **`HTTP 402`** pada endpoint API biasa setelah credits pada API key habis:
 
@@ -71,7 +79,9 @@ Exa mengembalikan **`HTTP 402`** pada endpoint API biasa setelah credits pada AP
 
 Cetak token x402 baru dengan plan ID dan delegation yang sama, lalu POST kembali ke endpoint `/purchase-key` yang sama. Exa akan menambahkan credits senilai $7 lagi ke API key yang sama.
 
-## Referensi {#references}
+<div id="references">
+  ## Referensi
+</div>
 
 * [Panduan integrasi Exa dari Nevermined](https://nevermined.ai/docs/integrations/exa)
 * [Spesifikasi card-delegation x402](https://nevermined.ai/docs/specs/x402-card-delegation)

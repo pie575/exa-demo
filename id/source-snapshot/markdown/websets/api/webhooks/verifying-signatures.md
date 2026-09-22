@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Memverifikasi signature {#verifying-signatures}
+<div id="verifying-signatures">
+  # Memverifikasi signature
+</div>
 
 > Pelajari cara memverifikasi signature webhook secara aman untuk memastikan permintaan benar-benar berasal dari Exa
 
 Saat menerima webhook dari Exa, sebaiknya Anda memverifikasi bahwa webhook tersebut memang berasal dari kami untuk memastikan integritas dan keaslian datanya. Exa menandatangani semua payload webhook dengan secret key yang unik untuk setiap endpoint webhook Anda.
 
-## Cara Kerja Signature Webhook {#how-webhook-signatures-work}
+<div id="how-webhook-signatures-work">
+  ## Cara Kerja Signature Webhook
+</div>
 
 Exa menggunakan HMAC SHA256 untuk menandatangani payload webhook. Signature disertakan dalam header `Exa-Signature`, yang berisi:
 
@@ -22,7 +28,9 @@ Berikut format signature-nya:
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-## Proses Verifikasi {#verification-process}
+<div id="verification-process">
+  ## Proses Verifikasi
+</div>
 
 Untuk memverifikasi signature webhook:
 
@@ -365,7 +373,9 @@ Untuk memverifikasi signature webhook:
 
 <br />
 
-## Praktik Terbaik Keamanan {#security-best-practices}
+<div id="security-best-practices">
+  ## Praktik Terbaik Keamanan
+</div>
 
 Mengikuti praktik berikut akan membantu memastikan implementasi webhook Anda aman dan andal:
 
@@ -385,9 +395,13 @@ Mengikuti praktik berikut akan membantu memastikan implementasi webhook Anda ama
 
 <br />
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
-### Error Invalid Signature {#invalid-signature-errors}
+<div id="invalid-signature-errors">
+  ### Error Invalid Signature
+</div>
 
 Jika verifikasi signature Anda gagal:
 
@@ -396,7 +410,9 @@ Jika verifikasi signature Anda gagal:
 3. **Periksa parsing header**: Pastikan Anda mengekstrak timestamp dan signature dari header dengan benar
 4. **Masalah encoding**: Pastikan encoding UTF-8 konsisten di sepanjang proses verifikasi
 
-### Menguji Signature Secara Lokal {#testing-signatures-locally}
+<div id="testing-signatures-locally">
+  ### Menguji Signature Secara Lokal
+</div>
 
 Anda dapat menguji logika verifikasi signature dengan menggunakan webhook secret dan contoh payload:
 
@@ -428,7 +444,9 @@ print(f"Test signature valid: {is_valid}")  # Seharusnya mencetak True
 
 <br />
 
-## Selanjutnya {#whats-next}
+<div id="whats-next">
+  ## Selanjutnya
+</div>
 
 * Pelajari [events webhook](/id/docs/websets/api/events/types) dan payload-nya
 * Siapkan [percobaan ulang dan pemantauan webhook](/id/docs/websets/api/webhooks/attempts/list-webhook-attempts)

@@ -8,7 +8,9 @@ Kutipan mengembalikan potongan teks ekstraktif dari setiap hasil yang relevan de
 
 Setiap hasil mengembalikan potongan teks terpilihnya di `results[].highlights`.
 
-## Mengapa kutipan, bukan teks penuh {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## Mengapa kutipan, bukan teks penuh
+</div>
 
 Kutipan dihasilkan oleh model extraction internal Exa. Model membaca setiap hasil berdasarkan query Anda pada setiap permintaan dan hanya mengembalikan bagian teks yang menjawab query tersebut. Anda hanya memakai sebagian kecil token dibanding teks halaman penuh, dengan kualitas jawaban akhir yang setara atau lebih baik.
 
@@ -26,7 +28,9 @@ Penghematan ini paling terasa dalam loop agent, di mana setiap putaran hasil sea
   untuk metodologi dan hasil lengkapnya.
 </Tip>
 
-## Menambahkan kutipan ke Search {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## Menambahkan kutipan ke Search
+</div>
 
 Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendasikan. Exa yang menentukan seberapa banyak teks dikembalikan dari setiap hasil berdasarkan relevance-nya terhadap query Anda, jadi tidak ada character budget yang perlu diatur. Setel `maxCharacters` hanya jika aplikasi Anda memerlukan batas tetap per halaman.
 
@@ -58,7 +62,9 @@ Gunakan `highlights: true` di dalam `contents` sebagai default yang direkomendas
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights menyesuaikan seberapa banyak teks yang diambil dari setiap hasil berdasarkan apa yang paling berguna untuk query Anda. Fitur ini bisa mengambil lebih banyak dari sources yang kuat dan lebih sedikit dari sources yang repetitif atau tidak relevan, sehingga menekan total token yang dikembalikan.
 
@@ -129,7 +135,9 @@ Aktifkan dengan `dynamic: true`:
   `results[].highlights` yang sama dengan kutipan biasa.
 </Info>
 
-## Langkah berikutnya {#next-steps}
+<div id="next-steps">
+  ## Langkah berikutnya
+</div>
 
 <Columns cols={2}>
   <Card title="Panduan Search API" icon="search" href="/id/docs/search/quickstart" cta="Buka panduan" arrow="true">

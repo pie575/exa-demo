@@ -1,13 +1,19 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 웹훅 삭제 {#delete-a-webhook}
+<div id="delete-a-webhook">
+  # 웹훅 삭제
+</div>
 
 > 웹훅을 삭제합니다. 상태가 `inactive`로 바뀌며, 해당 URL로의 이후 웹훅 전송이 중단됩니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /v0/webhooks/{id}
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de explorar más a fondo.
 
-# Exa Agent {#exa-agent}
+<div id="exa-agent">
+  # Exa Agent
+</div>
 
 > Ejecuta flujos de trabajo de deep research, creación de listas y enrichment que devuelven salidas estructuradas.
 
@@ -17,7 +21,9 @@ Cada run puede devolver una respuesta en lenguaje natural, JSON validado contra 
   ¿Prefieres MCP? Exa Agent y [Exa Connect](/es/docs/agent/connect/overview) están disponibles en [Exa MCP](/es/docs/get-started/exa-mcp#exa-agent). Habilita `tools=agent_run` para ejecutar investigación de varios pasos, creación de listas, enrichment y salida estructurada desde Claude, Cursor y otros MCP clients.
 </Tip>
 
-## Cuándo usar Exa Agent {#when-to-use-exa-agent}
+<div id="when-to-use-exa-agent">
+  ## Cuándo usar Exa Agent
+</div>
 
 Usa Exa Agent cuando un flujo de trabajo necesite más que una sola llamada de búsqueda o de extracción, o cuando de otro modo tendrías que escribir tu propio bucle de búsquedas, lecturas de páginas y pasos de verificación para reunir los datos:
 
@@ -30,11 +36,15 @@ Usa Exa Agent cuando un flujo de trabajo necesite más que una sola llamada de b
 
 Exa Agent es, por diseño, asíncrono y de mayor latencia. Para una sola búsqueda de baja latencia en la que tú mismo orquestas las llamadas, empieza con la [Search API](/es/docs/search/quickstart).
 
-## Quickstart {#quickstart}
+<div id="quickstart">
+  ## Quickstart
+</div>
 
 Este ejemplo inicia un run que crea una lista estructurada de personas que cumplen tus criteria. Devuelve JSON en `output.structured`.
 
-### 1. Instala el SDK de Exa {#1-install-the-exa-sdk}
+<div id="1-install-the-exa-sdk">
+  ### 1. Instala el SDK de Exa
+</div>
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -46,7 +56,9 @@ Este ejemplo inicia un run que crea una lista estructurada de personas que cumpl
   ```
 </CodeGroup>
 
-### 2. Configura tu API key {#2-set-your-api-key}
+<div id="2-set-your-api-key">
+  ### 2. Configura tu API key
+</div>
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -62,7 +74,9 @@ Este ejemplo inicia un run que crea una lista estructurada de personas que cumpl
   </Tab>
 </Tabs>
 
-### 3. Crear un run {#3-create-a-run}
+<div id="3-create-a-run">
+  ### 3. Crear un run
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -161,7 +175,9 @@ Este ejemplo inicia un run que crea una lista estructurada de personas que cumpl
 
 Agrega `Accept: text/event-stream` al crear un run para recibir server-sent events a medida que el run se encola, se inicia y se completa. Consulta [Eventos de streaming](#stream-events) para más detalles.
 
-### 4. Sondear hasta la finalización {#4-poll-for-completion}
+<div id="4-poll-for-completion">
+  ### 4. Sondear hasta la finalización
+</div>
 
 Si no usas streaming de eventos, guarda el `id` devuelto y sondea el run hasta que alcance un estado terminal.
 
@@ -226,7 +242,9 @@ Los runs completados incluyen:
   SDK](/es/docs/integrations/openai-sdk#agent-via-responses-api).
 </Note>
 
-## Verificar y enriquecer una entidad específica {#verify-and-enrich-a-specific-entity}
+<div id="verify-and-enrich-a-specific-entity">
+  ## Verificar y enriquecer una entidad específica
+</div>
 
 Más allá de la creación de listas, usa Exa Agent para inspeccionar una única entidad conocida, contrastar una afirmación con fuentes autorizadas y devolver un enrichment estructurado. Este ejemplo comprueba si el sitio web oficial de una empresa tiene una página de precios de acceso público y enriquece el resultado con los detalles de precio cuando están disponibles. El esquema solo requiere `domain` y `verdict`; todo lo demás es enrichment opcional.
 
@@ -407,7 +425,9 @@ Más allá de la creación de listas, usa Exa Agent para inspeccionar una única
   la página no exista.
 </Note>
 
-## Eventos de streaming {#stream-events}
+<div id="stream-events">
+  ## Eventos de streaming
+</div>
 
 El streaming mantiene abierta la solicitud de creación y envía Server-Sent Events (SSE) hasta que el run finaliza. Consulta [Formato de eventos](#event-format) para ver los tipos de evento y los payloads.
 
@@ -452,7 +472,9 @@ Establece `stream=True` en Python, `stream: true` en JavaScript, o envía `Accep
   ```
 </CodeGroup>
 
-### Formato de los eventos {#event-format}
+<div id="event-format">
+  ### Formato de los eventos
+</div>
 
 Cada frame SSE contiene un ID de evento, un nombre de evento y un payload JSON:
 
@@ -464,7 +486,9 @@ data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:5
 
 El stream también puede contener líneas de comentario como `: keep-alive`. Los clientes SSE ignoran los comentarios automáticamente; los parsers personalizados deberían hacer lo mismo.
 
-### Tipos de evento {#event-types}
+<div id="event-types">
+  ### Tipos de evento
+</div>
 
 | Evento                | Payload de `data`                     | Cómo usarlo                                                                                                      |
 | --------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -478,7 +502,9 @@ Los eventos asociados a un mismo paso de investigación incluyen un `callId`, qu
 
 Trata `agent_run.source.added` como una vista previa en vivo y no como una lista completa de citas. El `output.grounding` del run terminal es el output de grounding de referencia.
 
-### Reproducir eventos almacenados {#replay-stored-events}
+<div id="replay-stored-events">
+  ### Reproducir eventos almacenados
+</div>
 
 Para los runs sin ZDR, [`GET /agent/runs/{id}/events`](/es/docs/reference/agent-api/list-run-events) devuelve los eventos almacenados como JSON paginado. Envía `Accept: text/event-stream` para reproducir los eventos almacenados como SSE, y `Last-Event-ID` para omitir los eventos que tu cliente ya haya procesado:
 
@@ -493,7 +519,9 @@ El endpoint de reproducción envía los eventos almacenados en el momento de la 
 
 Para garantizar la compatibilidad futura, ignora los nombres de evento que tu aplicación no reconozca y continúa hasta que llegue un evento terminal.
 
-## Devolver JSON estructurado {#return-structured-json}
+<div id="return-structured-json">
+  ## Devolver JSON estructurado
+</div>
 
 Usa `outputSchema` para devolver JSON validado contra un esquema en `output.structured`.
 
@@ -597,13 +625,17 @@ Para solicitar información de contacto, describe los campos de contacto deseado
   ```
 </CodeGroup>
 
-## Procesar filas de entrada {#process-input-rows}
+<div id="process-input-rows">
+  ## Procesar filas de entrada
+</div>
 
 Usa `input.data` cuando ya tengas un conjunto de datos que quieras enriquecer. Puedes añadir más campos a cada entidad de datos, descubrir nuevas entidades a partir de los datos que aportes, o ambas cosas.
 
 Para ver ejemplos completos de enrichment de filas, consulta [Ejemplos de Agent](/es/docs/agent/examples#enrich-input-rows-code).
 
-## Procesar exclusiones {#process-exclusions}
+<div id="process-exclusions">
+  ## Procesar exclusiones
+</div>
 
 Usa `input.exclusion` para evitar que ciertas entradas aparezcan en el run. En el siguiente ejemplo, buscamos los 10 animales más tiernos, pero excluimos del run las cabras y los pandas porque ya sabemos lo tiernos que son.
 
@@ -659,7 +691,9 @@ Usa `input.exclusion` para evitar que ciertas entradas aparezcan en el run. En e
   ```
 </CodeGroup>
 
-## Conectar fuentes de datos {#connect-data-sources}
+<div id="connect-data-sources">
+  ## Conectar fuentes de datos
+</div>
 
 El índice ya está disponible en cada run. Usa `dataSources` únicamente para adjuntar partners de [Exa Connect](/es/docs/agent/connect/overview). Cada entrada selecciona un `provider`. Cuando una propiedad de tu `outputSchema` hace referencia a una fuente específica (por ejemplo, &quot;from Similarweb&quot;), Exa Agent llama a la herramienta del proveedor correspondiente en lugar de inferir el dato de una página web.
 
@@ -674,7 +708,9 @@ El índice ya está disponible en cada run. Usa `dataSources` únicamente para a
 
 Consulta [Exa Connect](/es/docs/agent/connect/overview) para ver la lista completa de data partners, con ejemplos de cada uno.
 
-## Continuar desde un run anterior {#continue-from-a-previous-run}
+<div id="continue-from-a-previous-run">
+  ## Continuar desde un run anterior
+</div>
 
 Usa `previousRunId` para enviar follow-ups a una respuesta anterior. Cada follow-up inicia un nuevo run con su propio ID. `previousRunId` traslada el contexto al nuevo run; no se reutiliza como ID del nuevo run.
 
@@ -715,7 +751,9 @@ Usa `previousRunId` para enviar follow-ups a una respuesta anterior. Cada follow
   ```
 </CodeGroup>
 
-## Encontrar un ID de run {#find-a-run-id}
+<div id="find-a-run-id">
+  ## Encontrar un ID de run
+</div>
 
 Lista los runs recientes e inspecciona sus estados:
 
@@ -753,7 +791,9 @@ Lista los runs recientes e inspecciona sus estados:
   ```
 </CodeGroup>
 
-## Precios {#pricing}
+<div id="pricing">
+  ## Precios
+</div>
 
 Los costos se basan en el uso y se calculan por componente:
 
@@ -770,7 +810,9 @@ Los costos se basan en el uso y se calculan por componente:
 
 Consulta [Límites de Agent](/es/docs/admin/billing#agent-limits) para conocer los límites de concurrencia y de tasa.
 
-### Effort {#effort}
+<div id="effort">
+  ### Effort
+</div>
 
 Usa `effort` para elegir un nivel de costo y razonamiento en cada run. Los valores admitidos son `minimal`, `low`, `medium`, `high`, `xhigh`, `auto` y `max`; el valor predeterminado es `auto`. Los niveles de effort fijos tienen un precio predecible por solicitud, mientras que `auto` y `max` (beta) se cobran según el uso:
 
@@ -795,7 +837,9 @@ Usa `effort` para elegir un nivel de costo y razonamiento en cada run. Los valor
 
 `budget.maxCostDollars` es un tope opcional por run para `auto` y `max`. Acepta valores de `$1` a `$100`; el máximo disponible es `$100`, aunque el server puede configurar un máximo menor. El tope predeterminado es `$5` para `auto` y `$20` para `max`. Es un tope, no un precio fijo: los runs que terminan antes cuestan menos. El budget no se acepta con niveles de effort fijos.
 
-### Elegir un modo de effort {#choosing-an-effort-mode}
+<div id="choosing-an-effort-mode">
+  ### Elegir un modo de effort
+</div>
 
 Los modos de effort fijos funcionan bien cuando se busca un precio por solicitud predecible para investigación estándar. Usa `auto` para trabajos de alcance variable, como la creación de listas, donde la cantidad de entidades puede variar de una solicitud a otra.
 
@@ -813,7 +857,9 @@ Comienza con `medium` para investigación estándar de una sola entidad. Baja a 
 
 El tiempo de ejecución varía según la dificultad de la consulta, la complejidad del esquema y la disponibilidad de fuentes externas. Considera los modos de effort como un equilibrio entre calidad, costo y tiempo de ejecución, y no como garantías estrictas de latencia.
 
-### Run con effort máximo {#run-with-max-effort}
+<div id="run-with-max-effort">
+  ### Run con effort máximo
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -857,7 +903,9 @@ El tiempo de ejecución varía según la dificultad de la consulta, la complejid
 
 Los ejemplos de SDK requieren una versión de `exa-py` o `exa-js` compatible con Agent Max.
 
-## Zero Data Retention {#zero-data-retention}
+<div id="zero-data-retention">
+  ## Zero Data Retention
+</div>
 
 Exa Agent admite [Zero Data Retention](/es/docs/admin/security/zero-data-retention) (ZDR). ZDR se habilita por equipo. [Contáctanos](mailto:sales@exa.ai) para habilitarlo en tu cuenta.
 
@@ -868,7 +916,9 @@ Cuando ZDR está habilitado en tu equipo:
 * `previousRunId` no está disponible.
 * Los `dataSources` de Exa Connect no están disponibles; las solicitudes que los incluyan devuelven un error `400`.
 
-## Próximos pasos {#next-steps}
+<div id="next-steps">
+  ## Próximos pasos
+</div>
 
 <Columns cols={2}>
   <Card title="Qué contiene el índice" icon="search" href="/es/docs/search/data/overview" cta="Abrir guía" arrow="true">

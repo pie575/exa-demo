@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Gestionar tu equipo {#managing-your-team}
+<div id="managing-your-team">
+  # Gestionar tu equipo
+</div>
 
 > Detalles sobre la estructura de equipos y la gestión de cuentas en la plataforma Exa
 
@@ -17,19 +21,25 @@ Exa organiza el uso de la cuenta y el acceso a las funcionalidades de pago media
 
 Al crear tu cuenta, se te asigna a un equipo «Personal». Con el menú desplegable de la parte superior izquierda del Exa Dashboard que se muestra a continuación puedes crear un equipo nuevo o cambiar entre los demás equipos que tengas. Puedes crear tantos equipos como quieras.
 
-## Ver tus equipos {#seeing-your-teams}
+<div id="seeing-your-teams">
+  ## Ver tus equipos
+</div>
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_team_switcher.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=094d2830e671762132604cace63b423a" alt="Menú desplegable de equipos (arriba a la izquierda) en el Exa Dashboard, dentro de Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
 
 Menú desplegable de equipos (arriba a la izquierda) en el Exa Dashboard, dentro de Team settings
 
-## Recargar el saldo de un equipo {#topping-up-a-teams-balance}
+<div id="topping-up-a-teams-balance">
+  ## Recargar el saldo de un equipo
+</div>
 
 Una vez seleccionado el equipo que quieras, puedes recargar tu saldo de créditos en la página de facturación.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_topup.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=36f4bbbd52a71bae490be4df3ba1b500" alt="Recarga de saldo de créditos en la página de facturación" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
 
-## Invitar personas a tu equipo {#inviting-people-to-your-team}
+<div id="inviting-people-to-your-team">
+  ## Invitar personas a tu equipo
+</div>
 
 Los administradores del equipo pueden añadir miembros mediante la funcionalidad Invite en Team settings.
 
@@ -47,7 +57,9 @@ Una vez aceptada, verás que ambos miembros aparecen como «Accepted». Todos lo
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_accepted.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=15396c783df64ffee162ab2de434a045" alt="Lista de miembros del equipo mostrando el estado Accepted" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
 
-## Team Management API {#team-management-api}
+<div id="team-management-api">
+  ## Team Management API
+</div>
 
 Crea y gestiona API keys de forma programática con la [Team Management API](/es/docs/reference/team-management/create-api-key).
 

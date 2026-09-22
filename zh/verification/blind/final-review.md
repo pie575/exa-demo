@@ -1,4 +1,6 @@
-# 最终盲评视觉评审 {#final-blind-visual-review}
+<div id="final-blind-visual-review">
+  # 最终盲评视觉评审
+</div>
 
 在修正原生底部控件和图片间距后，对四组最终 A/B 对比图进行了评审。评审过程中未查阅 A/B 对应关系表。
 

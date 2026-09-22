@@ -1,15 +1,21 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Primeros pasos {#get-started}
+<div id="get-started">
+  # Primeros pasos
+</div>
 
 > ¡Te damos la bienvenida al Dashboard de Websets! Encuentra en la web todo lo que necesites, por complejo que sea.
 
 <br />
 
-## 1. Regístrate {#1-sign-up}
+<div id="1-sign-up">
+  ## 1. Regístrate
+</div>
 
 ¡Websets ya está disponible para todo el público en [https://websets.exa.ai/](https://websets.exa.ai/)!
 
@@ -17,7 +23,9 @@ Si quieres hacernos alguna consulta, [agenda una llamada aquí](https://schedule
 
 <br />
 
-## 2. Primeros pasos {#2-get-started}
+<div id="2-get-started">
+  ## 2. Primeros pasos
+</div>
 
 Websets es muy fácil de usar.
 
@@ -33,7 +41,9 @@ Websets es muy fácil de usar.
 
 <br />
 
-## 3. Dentro de tu Webset {#3-inside-your-webset}
+<div id="3-inside-your-webset">
+  ## 3. Dentro de tu Webset
+</div>
 
 En resumen, Websets hace lo siguiente:
 
@@ -52,7 +62,9 @@ En resumen, Websets hace lo siguiente:
 
 <br />
 
-## 4. Interactuar con tu Webset {#4-interacting-with-your-webset}
+<div id="4-interacting-with-your-webset">
+  ## 4. Interactuar con tu Webset
+</div>
 
 Una vez que el Webset esté completo, ¡puedes interactuar con sus componentes!
 
@@ -70,7 +82,9 @@ Puedes eliminar resultados manualmente para depurar tu Webset antes de exportarl
 
 <br />
 
-## 5. Añade más criteria de resultados y columnas personalizadas {#5-add-more-result-criteria-and-custom-columns}
+<div id="5-add-more-result-criteria-and-custom-columns">
+  ## 5. Añade más criteria de resultados y columnas personalizadas
+</div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075" alt="Añadir una columna de enrichment" width="2870" height="1734" data-path="images/websets/add-enrichment.png" />
 
@@ -86,7 +100,9 @@ Puedes eliminar resultados manualmente para depurar tu Webset antes de exportarl
 
 <br />
 
-## 6. Comparte y exporta tu Webset {#6-share-and-export-your-webset}
+<div id="6-share-and-export-your-webset">
+  ## 6. Comparte y exporta tu Webset
+</div>
 
 1. Haz clic en export para descargar tu Webset como archivo CSV.
 
@@ -94,6 +110,8 @@ Puedes eliminar resultados manualmente para depurar tu Webset antes de exportarl
 
 <br />
 
-## 7. Historial de búsquedas {#7-search-history}
+<div id="7-search-history">
+  ## 7. Historial de búsquedas
+</div>
 
 Si haces clic en el icono del sidebar en la esquina superior izquierda, verás tu historial completo con todos los Websets anteriores en el panel izquierdo.

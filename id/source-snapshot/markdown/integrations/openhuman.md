@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# OpenHuman {#openhuman}
+<div id="openhuman">
+  # OpenHuman
+</div>
 
 > Berikan agent OpenHuman kemampuan web search real-time dengan Exa, baik secara terkelola maupun dengan Exa API key Anda sendiri.
 
@@ -14,7 +18,9 @@
 | **OpenHuman Managed** | Tidak ada             | Backend OpenHuman, didukung oleh Exa. Tanpa API key.                     |
 | **Exa provider**      | Tempelkan Exa API key | Mesin Anda, langsung ke `https://api.exa.ai` pada akun Exa Anda sendiri. |
 
-## OpenHuman Managed {#openhuman-managed}
+<div id="openhuman-managed">
+  ## OpenHuman Managed
+</div>
 
 Managed search adalah opsi default. Pilih **Simple** saat onboarding, dan agent dapat langsung melakukan search di web.
 
@@ -26,17 +32,23 @@ Managed search adalah opsi default. Pilih **Simple** saat onboarding, dan agent 
   **Managed adalah cara tercepat untuk mendapatkan hasil Exa.** Tidak ada key yang perlu dibuat, disimpan, atau dirotasi, tidak ada credential yang tersimpan di mesin Anda, dan search ditagihkan melalui langganan OpenHuman Anda.
 </Tip>
 
-## Exa provider {#exa-provider}
+<div id="exa-provider">
+  ## Exa provider
+</div>
 
 Konfigurasikan Exa secara langsung agar search dijalankan di akun Exa Anda sendiri dan agent mendapatkan tool search serta page-contents dari Exa.
 
-### Dapatkan Exa API key Anda {#get-your-exa-api-key}
+<div id="get-your-exa-api-key">
+  ### Dapatkan Exa API key Anda
+</div>
 
 <Card title="Dapatkan Exa API key Anda" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Buat key di dashboard. Akun baru langsung mendapatkan credits gratis.
 </Card>
 
-### Menambahkan Exa di OpenHuman {#add-exa-in-openhuman}
+<div id="add-exa-in-openhuman">
+  ### Menambahkan Exa di OpenHuman
+</div>
 
 1. Buka **Connections**, lalu pilih **Search engine** pada bagian **API keys**.
 
@@ -60,7 +72,9 @@ Konfigurasikan Exa secara langsung agar search dijalankan di akun Exa Anda sendi
   <img src="https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/configured.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=b3c8df585a06a31daa8bba6c2a516722" alt="Panel Search engine OpenHuman dengan Exa terpilih dan ditandai Configured" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-### Konfigurasi {#configuration}
+<div id="configuration">
+  ### Konfigurasi
+</div>
 
 Panel ini menulis ke `config.toml` milik OpenHuman. Sebagai alternatif, atur nilai yang sama langsung di file tersebut atau melalui environment:
 
@@ -89,7 +103,9 @@ Panel ini menulis ke `config.toml` milik OpenHuman. Sebagai alternatif, atur nil
   </Tab>
 </Tabs>
 
-### Tool yang didapat agent {#tools-the-agent-gets}
+<div id="tools-the-agent-gets">
+  ### Tool yang didapat agent
+</div>
 
 | Tool               | Mengembalikan                                                                      |
 | ------------------ | ---------------------------------------------------------------------------------- |
@@ -99,7 +115,9 @@ Panel ini menulis ke `config.toml` milik OpenHuman. Sebagai alternatif, atur nil
 
 Agent menentukan [search parameters](/id/docs/search/quickstart) Exa pada setiap pemanggilan, sehingga instruksi sederhana saja sudah cukup untuk mengarahkan search mode, domain, tanggal, dan kategori.
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa search tidak tersedia: tidak ada API key yang dikonfigurasi">
@@ -119,7 +137,9 @@ Agent menentukan [search parameters](/id/docs/search/quickstart) Exa pada setiap
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Dokumentasi web search OpenHuman" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="Buka panduan" arrow="true">

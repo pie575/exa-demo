@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 뉴스 {#news}
+<div id="news">
+  # 뉴스
+</div>
 
 > Exa Search로 최신 보도, 업계 소식, 떠오르는 이슈를 찾아보세요.
 
@@ -35,40 +39,54 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 주요 언론사, 업계 전문지, 틈새 매체의 보도를 찾으려면 Exa Search를 사용하세요. 새 기사는 발행 후 몇 분 이내에 검색됩니다. 발행 기간이 반드시 지켜야 할 조건이라면 자연어 질의와 날짜 필터를 함께 사용하세요.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 시장 및 투자 리서치
 * 사이버 보안 및 위협 인텔리전스
 * 기업, 제품, 경쟁사 모니터링
 * 업계 브리핑 및 시사 리서치
 
-## 예시 쿼리 {#example-queries}
+<div id="example-queries">
+  ## 예시 쿼리
+</div>
 
-### 진행 중인 정책 이슈 추적하기 {#follow-a-developing-policy-story}
+<div id="follow-a-developing-policy-story">
+  ### 진행 중인 정책 이슈 추적하기
+</div>
 
 주제, 출처 유형, 발행 기간을 함께 지정하면 결과가 해당 이슈의 현재 국면에 집중됩니다.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-### 실무자 분석 찾기 {#find-practitioner-analysis}
+<div id="find-practitioner-analysis">
+  ### 실무자 분석 찾기
+</div>
 
 일반 뉴스 보도가 아닌 실무자의 분석을 원한다면 출처 유형을 명시하세요.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-### 특정 형식의 논의 찾기 {#discover-discussions-in-a-specific-format}
+<div id="discover-discussions-in-a-specific-format">
+  ### 특정 형식의 논의 찾기
+</div>
 
 질의에 형식과 주제를 함께 포함하세요. 이렇게 하면 웹 전반의 에피소드 페이지와 전문까지 검색 범위를 열어 둘 수 있습니다.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-### 부정적 언론 보도 리서치 {#research-adverse-media}
+<div id="research-adverse-media">
+  ### 부정적 언론 보도 리서치
+</div>
 
 조사하려는 부정적 신호와 대상 엔터티 유형을 함께 설명하세요. 회사 이름에 &quot;news&quot;만 붙인 형태로 질의를 단순화하지 마세요.
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-## 요청 보내기 {#make-a-request}
+<div id="make-a-request">
+  ## 요청 보내기
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -109,7 +127,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-## Exa Agent로 구조화된 데이터 가져오기 {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent로 구조화된 데이터 가져오기
+</div>
 
 여러 소스에 걸친 리서치가 필요한 구조화된 데이터라면 [Exa Agent task run](/ko/docs/agent/quickstart)을 사용하세요. 필요한 기사, fields, 기간을 설명하면 Agent가 schema 검증을 거친 결과를 citations와 함께 반환합니다.
 

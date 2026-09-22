@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk melihat semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Answer {#answer}
+<div id="answer">
+  # Answer
+</div>
 
 > Dapatkan jawaban LLM atas sebuah pertanyaan berdasarkan hasil Exa search. `/answer` menjalankan Exa search dan menggunakan LLM untuk menghasilkan salah satu dari:
 
@@ -22,7 +26,9 @@ Sebagai alternatif, Anda dapat menggunakan [antarmuka chat completions](https://
   `/answer` mendukung structured output melalui parameter `outputSchema`. Berikan objek [JSON Schema](https://json-schema.org/draft-07) dan jawaban akan dikembalikan sebagai JSON terstruktur yang sesuai dengan schema Anda, bukan sebagai string biasa.
 </Info>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /answer
 openapi: 3.1.0

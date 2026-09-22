@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Supprimer un run {#delete-a-run}
+<div id="delete-a-run">
+  # Supprimer un run
+</div>
 
 > Supprimer un run Agent stocké.
 
@@ -13,7 +17,9 @@ Supprimer un run le retire de l&#39;historique des runs Agent de votre équipe.
   Créez une clé dans le tableau de bord. Les nouveaux comptes bénéficient de crédits gratuits.
 </Card>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml DELETE /agent/runs/{id}
 openapi: 3.1.0

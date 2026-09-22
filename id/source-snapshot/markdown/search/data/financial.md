@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Pasar Keuangan {#financial-markets}
+<div id="financial-markets">
+  # Pasar Keuangan
+</div>
 
 > Temukan data pasar, filings, earnings call, dan rilis data ekonomi dengan Exa Search.
 
@@ -35,7 +39,9 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Gunakan Exa Search untuk harga, filings, transkrip, dan pemberitaan terkait dalam satu query. Pertanyaan tentang sebuah ticker dapat mengembalikan kuotasi harga, earnings call terbaru, dan liputan analis sekaligus.
 
-## Included {#included}
+<div id="included">
+  ## Included
+</div>
 
 * Kuotasi harga dan riwayat harga terkini untuk saham, kripto, forex, indeks, futures, options, dan komoditas
 * Profil sekuritas dengan statistik utama dan riwayat OHLCV harian
@@ -43,46 +49,62 @@ Gunakan Exa Search untuk harga, filings, transkrip, dan pemberitaan terkait dala
 * SEC filings, laporan keuangan, dan filings internasional
 * Estimasi analis, pengumuman pendanaan, dan rilis data ekonomi
 
-## Gunakan untuk {#use-it-for}
+<div id="use-it-for">
+  ## Gunakan untuk
+</div>
 
 * Research ekuitas dan kredit
 * KYC, KYB, dan screening media negatif
 * Pemantauan portofolio dan kebijakan
 * Pencarian peluang transaksi dan research pasar privat
 
-## Contoh kueri {#example-queries}
+<div id="example-queries">
+  ## Contoh kueri
+</div>
 
-### Mencari kuotasi harga {#look-up-a-quote}
+<div id="look-up-a-quote">
+  ### Mencari kuotasi harga
+</div>
 
 Sebutkan ticker atau nama perusahaan beserta angka yang Anda inginkan. Cashtag seperti `$NVDA` juga bisa digunakan.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-### Membaca earnings call {#read-an-earnings-call}
+<div id="read-an-earnings-call">
+  ### Membaca earnings call
+</div>
 
 Sebutkan nama perusahaan dan kuartalnya untuk mendapatkan transkripnya, bukan pemberitaan tentangnya.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-### Cari filings {#search-filings}
+<div id="search-filings">
+  ### Cari filings
+</div>
 
 Jelaskan pengungkapan yang Anda cari, bukan sekadar jenis formulirnya. Kategori `financial report` membatasi hasil hanya pada filings dan laporan.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-### Melacak aktivitas pasar privat {#track-private-market-activity}
+<div id="track-private-market-activity">
+  ### Melacak aktivitas pasar privat
+</div>
 
 Tentukan putaran pendanaan, sektor, dan rentang waktunya.
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-### Pantau data ekonomi {#follow-economic-data}
+<div id="follow-economic-data">
+  ### Pantau data ekonomi
+</div>
 
 Sebutkan rilis data dan angka yang Anda inginkan dari rilis tersebut.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-## Buat permintaan {#make-a-request}
+<div id="make-a-request">
+  ## Buat permintaan
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -126,7 +148,9 @@ Sebutkan rilis data dan angka yang Anda inginkan dari rilis tersebut.
   ```
 </CodeGroup>
 
-## Dapatkan data terstruktur dengan Exa Agent {#get-structured-data-with-exa-agent}
+<div id="get-structured-data-with-exa-agent">
+  ## Dapatkan data terstruktur dengan Exa Agent
+</div>
 
 Untuk data terstruktur yang memerlukan research di berbagai sources, gunakan [Exa Agent task run](/id/docs/agent/quickstart). Jelaskan sekuritas, period, kriteria, dan output fields yang Anda butuhkan, lalu Agent akan mengembalikan hasil yang tervalidasi terhadap schema beserta sitasi.
 

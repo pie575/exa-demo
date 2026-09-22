@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Action batch sur les monitors {#batch-action-on-monitors}
+<div id="batch-action-on-monitors">
+  # Action batch sur les monitors
+</div>
 
 > Effectuez une action batch sur les monitors correspondant aux filtres fournis.
 
@@ -15,7 +19,9 @@ Actions prises en charge :
 
 Utilisez `dry_run: true` (la valeur par défaut) pour prévisualiser les monitors qui seraient concernés avant d&#39;exécuter l&#39;action. Les résultats sont paginés via le paramètre `limit` ; bouclez jusqu&#39;à ce que `has_more` soit `false` pour traiter tous les monitors correspondants.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /monitors/batch
 openapi: 3.1.0

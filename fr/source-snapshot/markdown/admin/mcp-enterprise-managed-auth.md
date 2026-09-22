@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Enterprise Managed Auth pour Claude {#enterprise-managed-auth-for-claude}
+<div id="enterprise-managed-auth-for-claude">
+  # Enterprise Managed Auth pour Claude
+</div>
 
 > Configurez Enterprise Managed Auth (EMA) afin que Claude se connecte à Exa MCP via votre identity provider, y compris Okta Cross App Access (XAA).
 
@@ -11,13 +15,17 @@ Par défaut, chaque membre active le [connecteur Exa](/fr/docs/get-started/exa-m
 
 L&#39;accès suit votre annuaire : supprimez le compte d&#39;une personne dans Okta et son accès à Exa via Claude prend fin immédiatement. EMA correspond à l&#39;[extension enterprise managed authorization](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) de MCP.
 
-## Avant de commencer {#before-you-start}
+<div id="before-you-start">
+  ## Avant de commencer
+</div>
 
 * Une organisation Claude Team ou Enterprise dont votre identity provider est connecté, ainsi qu&#39;un accès administrateur à celle-ci.
 * Une **organization** Exa (et non une équipe personnelle) avec SSO et directory sync, ainsi qu&#39;un accès administrateur à celle-ci.
 * Okta comme identity provider, sur Okta Identity Engine avec [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) activé, ainsi qu&#39;un accès Super Admin au tenant. Okta est le seul identity provider pris en charge à ce jour.
 
-## Valeurs Exa dont vous aurez besoin {#exa-values-youll-need}
+<div id="exa-values-youll-need">
+  ## Valeurs Exa dont vous aurez besoin
+</div>
 
 | Field                                             | Valeur                   |
 | ------------------------------------------------- | ------------------------ |
@@ -25,7 +33,9 @@ L&#39;accès suit votre annuaire : supprimez le compte d&#39;une personne dans O
 | URL de la resource / du MCP server                | `https://mcp.exa.ai/mcp` |
 | Scope                                             | `mcp:tools`              |
 
-## Configurer EMA {#set-up-ema}
+<div id="set-up-ema">
+  ## Configurer EMA
+</div>
 
 <Steps>
   <Step title="Provisionner vos membres dans Exa">
@@ -57,12 +67,16 @@ Les membres disposent du connecteur dès leur prochaine connexion. Vous pouvez l
   L&#39;utilisation via Claude est facturée à l&#39;équipe Exa du membre, selon le plan et les limites de débit de cette équipe, comme tout ce qu&#39;il exécute au sein de l&#39;équipe.
 </Note>
 
-## Révoquer l&#39;accès {#revoking-access}
+<div id="revoking-access">
+  ## Révoquer l&#39;accès
+</div>
 
 * **Un seul membre :** supprimez-le dans Okta, ou retirez-le de son équipe dans Exa. L&#39;une ou l&#39;autre action suffit à mettre fin à son accès via Claude.
 * **Tout le monde :** supprimez l&#39;issuer sur la page Organization, ou désactivez la managed authorization dans Claude. Les nouvelles connexions sont immédiatement bloquées et les sessions déjà ouvertes prennent fin peu après. Vous pouvez réenregistrer l&#39;issuer à tout moment.
 
-## Dépannage {#troubleshooting}
+<div id="troubleshooting">
+  ## Dépannage
+</div>
 
 <AccordionGroup>
   <Accordion title="Cela fonctionne pour certains membres mais pas pour d'autres">

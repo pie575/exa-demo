@@ -1,13 +1,19 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# 실행 조회 {#get-a-run}
+<div id="get-a-run">
+  # 실행 조회
+</div>
 
 > ID로 단일 실행을 조회합니다. 실행이 완료된 경우 전체 output도 함께 반환됩니다.
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs/{runId}
 openapi: 3.1.0

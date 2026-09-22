@@ -1,4 +1,6 @@
-# 독립 블라인드 스크린샷 리뷰 — 최종 이미지 {#independent-blind-screenshot-review-final-images}
+<div id="independent-blind-screenshot-review-final-images">
+  # 독립 블라인드 스크린샷 리뷰 — 최종 이미지
+</div>
 
 이미지 교체 후 최신 A/B 쌍 4개를 다시 검토했습니다. 소스 식별 키는 참조하지 않았습니다. 주요 레이아웃, 타이포그래피, 색상, 여백, 줄바꿈, 툴바 아이콘은 시각적으로 일치하며, 남아 있는 차이는 하단 오버레이 부분뿐입니다.
 

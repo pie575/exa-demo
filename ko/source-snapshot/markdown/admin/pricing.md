@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 먼저 확인하세요.
 
-# Pricing {#pricing}
+<div id="pricing">
+  # Pricing
+</div>
 
 > Exa Search, Contents, Answer, Monitors, Agent API의 사용한 만큼 지불하는 요금
 
@@ -21,7 +25,9 @@ Exa는 사용한 만큼 지불하는 방식입니다. 구독이나 최소 사용
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits가 제공됩니다.
 </Card>
 
-## 제품 {#products}
+<div id="products">
+  ## 제품
+</div>
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/ko/docs/search/quickstart">
@@ -61,7 +67,9 @@ Exa는 사용한 만큼 지불하는 방식입니다. 구독이나 최소 사용
   </Card>
 </Columns>
 
-## Search, Contents, Answer, Monitors {#search-contents-answer-and-monitors}
+<div id="search-contents-answer-and-monitors">
+  ## Search, Contents, Answer, Monitors
+</div>
 
 각 엔드포인트에는 최대 10개의 result를 포함하는 요청당 기본 가격이 있습니다. 10개를 초과하는 result와 Exa가 생성한 페이지 요약은 별도로 과금됩니다.
 
@@ -72,7 +80,9 @@ Exa는 사용한 만큼 지불하는 방식입니다. 구독이나 최소 사용
 | `/monitors` | 1,000요청당 $15               | 1,000 result당 $1 | 1,000페이지당 $1 |
 | `/contents` | content type별 1,000페이지당 $1 | —                | 1,000페이지당 $1 |
 
-## Agent {#agent}
+<div id="agent">
+  ## Agent
+</div>
 
 [Agent](/ko/docs/agent/quickstart)에 `effort`를 고정하면 요청당 가격을 예측할 수 있습니다. `auto`는 기본 종량제 모드이며, 베타 `max` 역시 종량제로 동일한 사용량 요율이 적용됩니다:
 
@@ -93,7 +103,9 @@ Exa는 사용한 만큼 지불하는 방식입니다. 구독이나 최소 사용
 | 이메일 contact enrichment | 이메일당 $0.02     |
 | 전화 contact enrichment  | 전화번호당 $0.07    |
 
-### Connect providers {#connect-providers}
+<div id="connect-providers">
+  ### Connect providers
+</div>
 
 [Exa Connect](/ko/docs/agent/connect/overview) 데이터 소스를 사용하는 실행은
 각 provider call에 대해서도 추가로 과금됩니다. 예를 들어
@@ -102,7 +114,9 @@ Exa는 사용한 만큼 지불하는 방식입니다. 구독이나 최소 사용
 $0.15–$4.00입니다. 모든 제공업체 요금은
 [Connect 가격](/ko/docs/agent/connect/overview#pricing)을 참고하세요.
 
-## Deep Search {#deep-search}
+<div id="deep-search">
+  ## Deep Search
+</div>
 
 [`/search`](/ko/docs/search/deep-search)의 `type`으로 설정합니다. 추가 result와 AI 페이지 요약 비용은 standard search와 동일합니다.
 
@@ -112,7 +126,9 @@ $0.15–$4.00입니다. 모든 제공업체 요금은
 | `deep`           | 1천 요청당 $12                | 4~15초   | structured output을 활용한 다단계 추론 |
 | `deep-reasoning` | 1천 요청당 $15                | 12~40초  | 난이도 높은 리서치 작업                 |
 
-## Enterprise {#enterprise}
+<div id="enterprise">
+  ## Enterprise
+</div>
 
 대용량 사용, 맞춤형 데이터셋, 더 엄격한 보안 요구사항이 필요한 경우에 적합한 플랜입니다.
 
@@ -134,7 +150,9 @@ $0.15–$4.00입니다. 모든 제공업체 요금은
   엔터프라이즈 사용량과 계약 조건에 대한 quote를 받아보세요
 </Card>
 
-## 비용 용어집 {#cost-glossary}
+<div id="cost-glossary">
+  ## 비용 용어집
+</div>
 
 <AccordionGroup>
   <Accordion title="Request">

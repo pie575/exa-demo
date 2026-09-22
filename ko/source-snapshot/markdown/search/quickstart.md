@@ -1,15 +1,21 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Exa Search API {#exa-search-api}
+<div id="exa-search-api">
+  # Exa Search API
+</div>
 
 > 자연어로 웹을 검색하고, 깔끔하고 관련성 높은 페이지 콘텐츠를 한 번의 요청으로 받아보세요.
 
 Exa Search는 자연어 질의를 입력받아 순위가 매겨진 웹 결과와 깔끔한 페이지 콘텐츠를 반환합니다.
 
-## 첫 요청 보내기 {#make-your-first-request}
+<div id="make-your-first-request">
+  ## 첫 요청 보내기
+</div>
 
 자연어 `query`와 `contents: { highlights: true }`로 시작하세요. 각 result의 관련성에 맞는 분량의 발췌문이 반환됩니다. 나머지 field들은 Exa가 검색하는 방식과 각 result에 포함될 내용을 제어하며, 이 페이지의 이후 내용에서는 실제로 사용하게 될 field들을 다룹니다.
 
@@ -105,7 +111,9 @@ search는 기본적으로 최대 10개의 result를 반환합니다. `numResults
 
 result는 관련성 순으로 정렬됩니다. 각 result에는 제목, URL, 발행일 같은 metadata와 `contents`로 요청한 내용이 함께 담깁니다.
 
-## 질의 작성하기 {#writing-queries}
+<div id="writing-queries">
+  ## 질의 작성하기
+</div>
 
 `query` field는 Search API 사용 시 유일한 필수 field입니다.
 
@@ -141,7 +149,9 @@ deep 모드는 단일 검색 과정이 아니라 리서치 프로세스를 실�
   사용하세요. Agent는 실행당 더 많은 연산 자원을 사용하며 근거 기반의 구조화된 결과를 반환합니다.
 </Tip>
 
-## Output shapes {#output-shapes}
+<div id="output-shapes">
+  ## Output shapes
+</div>
 
 모든 result에는 제목, URL, 발행일 같은 metadata가 포함됩니다. `contents`를 사용하면 페이지의 highlights, 전체 텍스트, summary를 함께 가져올 수 있습니다.
 
@@ -236,7 +246,9 @@ deep 모드는 단일 검색 과정이 아니라 리서치 프로세스를 실�
     동일한 field들이 `urls`와 나란히 최상위 레벨에 놓입니다: `"urls": [...], "highlights": true`
 </Warning>
 
-## Output schema {#output-schema}
+<div id="output-schema">
+  ## Output schema
+</div>
 
 Exa가 search 결과를 종합해 주길 원한다면 `outputSchema`를 추가하세요. 모든 search type에서 동작하며, response에 `output` 객체가 추가됩니다.
 
@@ -402,11 +414,15 @@ Exa가 search 결과를 종합해 주길 원한다면 `outputSchema`를 추가�
   confidence field를 추가하지 마세요. Exa가 `output.grounding`에 자동으로 반환합니다.
 </Note>
 
-## 결과 필터링 {#filter-results}
+<div id="filter-results">
+  ## 결과 필터링
+</div>
 
 필터는 엄격한 제약 조건입니다. 해당 범위를 벗어난 결과가 아예 쓸모없는 경우에만 필터를 추가하고, 그보다 느슨한 소스 선호도는 질의 텍스트에 담으세요. 전체 목록은 [API reference](/ko/docs/reference/search)에서 확인할 수 있습니다.
 
-### 도메인 또는 경로 포함하기 {#include-domains-or-paths}
+<div id="include-domains-or-paths">
+  ### 도메인 또는 경로 포함하기
+</div>
 
 `includeDomains`는 결과를 신뢰하는 소스로만 제한합니다. 전체 도메인, `anthropic.com/news`와 같은 경로 접두사, `*.substack.com`과 같은 서브도메인 와일드카드를 사용할 수 있습니다.
 
@@ -440,7 +456,9 @@ Exa가 search 결과를 종합해 주길 원한다면 `outputSchema`를 추가�
 
 경로는 질의에서 `site:` 연산자로 다시 지정하지 말고 필터에 넣으세요.
 
-### 도메인 또는 경로 제외 {#exclude-domains-or-paths}
+<div id="exclude-domains-or-paths">
+  ### 도메인 또는 경로 제외
+</div>
 
 `excludeDomains`는 특정 도메인이나 경로의 결과를 제외합니다. `includeDomains`와 동일한 path prefixes 및 서브도메인 와일드카드를 지원합니다. 단순히 선호도를 나타내는 용도가 아니라, 해당 소스가 포함되면 결과를 쓸 수 없게 되는 경우에 사용하세요.
 
@@ -475,7 +493,9 @@ Exa가 search 결과를 종합해 주길 원한다면 `outputSchema`를 추가�
   ```
 </CodeGroup>
 
-## 콘텐츠 최신성 {#content-freshness}
+<div id="content-freshness">
+  ## 콘텐츠 최신성
+</div>
 
 `contents.maxAgeHours`는 각 result에서 추출하는 콘텐츠가 얼마나 최신이어야 하는지를 제어합니다. 발행일을 기준으로 result를 필터링하지는 않습니다.
 
@@ -522,7 +542,9 @@ Exa가 search 결과를 종합해 주길 원한다면 `outputSchema`를 추가�
   ```
 </CodeGroup>
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="모범 사례" icon="sparkles" href="/ko/docs/search/best-practices" cta="가이드 읽기" arrow="true">

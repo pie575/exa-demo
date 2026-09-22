@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Jinko {#jinko}
+<div id="jinko">
+  # Jinko
+</div>
 
 > 실시간 가격이 반영된 항공권 및 호텔 search.
 
@@ -14,13 +18,17 @@
 [Exa Connect](/ko/docs/agent/connect/overview)를 통해 [Exa Agent](/ko/docs/agent/quickstart) 실행에
 `jinko`를 attach하면, agent가 Exa web search와 함께 Jinko에도 질의합니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 특정 노선과 날짜의 운임, 수하물, 변경 규정이 포함된 실시간 항공권 오퍼 검색
 * 목적지의 실시간 객실 요금이 포함된 호텔 검색 또는 특정 호텔 재조회
 * 날짜 범위, 좌석 등급, 예산에 따른 목적지 및 유연한 날짜 탐색
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -28,7 +36,9 @@
 jinko
 ```
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 3월에 뉴욕에서 왕복 $400 미만으로 다녀올 수 있는 해변 여행지를 찾습니다.
 
@@ -122,12 +132,16 @@ jinko
   ```
 </CodeGroup>
 
-## 함께 사용하면 좋은 도구 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하면 좋은 도구
+</div>
 
 * [Similarweb](/ko/docs/agent/connect/similarweb): 여행지를 뒷받침하는 여행 사이트와 예약 플랫폼을 리서치하세요.
 * [Particle](/ko/docs/agent/connect/particle): 특정 장소에 대한 최신 보도와 여행 관련 논평을 가져오세요.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

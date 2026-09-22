@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Contoh {#examples}
+<div id="examples">
+  # Contoh
+</div>
 
 > Contoh Exa Agent tingkat production untuk list building, intelijen KYB, lowongan kerja, dan output terstruktur.
 
@@ -1023,7 +1027,9 @@ Pratinjau lembar kerja memakai nama perusahaan sintetis pada hasil yang dikembal
   ```
 </CodeGroup>
 
-## List building berskala luas dengan Agent Max {#broad-list-building-with-agent-max}
+<div id="broad-list-building-with-agent-max">
+  ## List building berskala luas dengan Agent Max
+</div>
 
 Gunakan `effort: "max"` untuk pekerjaan yang lebih mengutamakan kelengkapan dan ketelitian daripada latency atau biaya, termasuk list building berskala besar, Research mendalam dari banyak source, dan kriteria yang sulit diverifikasi. Agent Max masih dalam tahap public beta: kirimkan `Exa-Beta: agent-max-effort-2026-07-27` bersama permintaan. Header ini menerima daftar token beta yang dipisahkan koma.
 
@@ -1067,7 +1073,9 @@ Gunakan `effort: "max"` untuk pekerjaan yang lebih mengutamakan kelengkapan dan 
   ```
 </CodeGroup>
 
-## Attach data partner dengan Exa Connect {#attach-a-data-partner-with-exa-connect}
+<div id="attach-a-data-partner-with-exa-connect">
+  ## Attach data partner dengan Exa Connect
+</div>
 
 Gunakan `dataSources` agar Exa Agent bisa mengambil data dari data partner premium selama satu run. Di sini, setiap perusahaan di-enrich dengan trafik dari Similarweb dan pendanaan dari Harmonic, dipadukan dengan Research web. Lihat [Exa Connect](/id/docs/agent/connect/overview) untuk daftar lengkap partner.
 
@@ -1192,7 +1200,9 @@ Gunakan `dataSources` agar Exa Agent bisa mengambil data dari data partner premi
   ```
 </CodeGroup>
 
-## Checklist production {#production-checklist}
+<div id="production-checklist">
+  ## Checklist production
+</div>
 
 * Berikan Agent `query` yang spesifik, yang menyebutkan unit pekerjaan dan kualitas source yang diinginkan.
 * Gunakan `input.data` untuk catatan yang sudah diketahui, bukan menyisipkan barisnya ke dalam prompt.

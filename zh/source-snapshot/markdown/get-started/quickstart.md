@@ -1,14 +1,20 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入探索之前，可通过该文件了解所有可用页面。
 
-# 开发者快速开始 {#developer-quickstart}
+<div id="developer-quickstart">
+  # 开发者快速开始
+</div>
 
 > 获取 API 密钥，然后在你的代码或 agent 中使用 Exa。
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  ## 1. 获取 API 密钥 {#1-get-an-api-key}
+  <div id="1-get-an-api-key">
+    ## 1. 获取 API 密钥
+  </div>
 
   <Steps>
     <Step title="访问 Exa Dashboard">
@@ -36,7 +42,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 2. 选择使用 Exa 的方式 {#2-choose-how-youll-use-exa}
+  <div id="2-choose-how-youll-use-exa">
+    ## 2. 选择使用 Exa 的方式
+  </div>
 
   有两种方式可以把 Exa 接入你的应用：在自己的代码中调用 API，或者连接你已经在用的 agent。
 
@@ -63,7 +71,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 3. 安装 SDK {#3-install-an-sdk}
+  <div id="3-install-an-sdk">
+    ## 3. 安装 SDK
+  </div>
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -77,7 +87,9 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 4. 发起第一个请求 {#4-make-your-first-request}
+  <div id="4-make-your-first-request">
+    ## 4. 发起第一个请求
+  </div>
 
   <CodeGroup>
     ```python Python theme={null}
@@ -120,7 +132,9 @@
     ```
   </CodeGroup>
 
-  ## 后续步骤 {#next-steps}
+  <div id="next-steps">
+    ## 后续步骤
+  </div>
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/zh/docs/search/quickstart" cta="阅读指南" arrow="true">

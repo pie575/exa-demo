@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件查看所有可用页面。
 
-# Baselayer {#baselayer}
+<div id="baselayer">
+  # Baselayer
+</div>
 
 > 验证美国企业并获取 KYB 数据：高管信息、注册登记、风险评分。
 
@@ -16,13 +20,17 @@
 [Exa Agent](/zh/docs/agent/quickstart) 运行中，agent 便会在进行 Exa 网页搜索的同时查询
 Baselayer。
 
-## 适用场景 {#use-it-for}
+<div id="use-it-for">
+  ## 适用场景
+</div>
 
 * KYB 入驻以及厂商/客户验证。
 * 针对高管信息、注册登记和实体结构的尽职调查。
 * 对企业进行风险与 Watchlist 命中筛查。
 
-## 提供方 ID {#provider-id}
+<div id="provider-id">
+  ## 提供方 ID
+</div>
 
 在 `dataSources` 中使用此值：
 
@@ -30,7 +38,9 @@ Baselayer。
 baselayer
 ```
 
-## 定价 {#pricing}
+<div id="pricing">
+  ## 定价
+</div>
 
 Baselayer 按订单计费，费率取决于具体操作及其参数：
 
@@ -48,7 +58,9 @@ Baselayer 按订单计费，费率取决于具体操作及其参数：
 
 参数的选择会影响价格：在两个州范围内进行留置权搜索的费用为 $4.00，对全部六个受支持列表进行 Watchlist 筛查的费用为 $1.35，而网络存在情况调用的费用为所选各项分析之和 (若未选择任何项，则按 Baselayer 的默认组合计算，即 NAICS 预测与网站分析) 。
 
-## 示例 {#example}
+<div id="example">
+  ## 示例
+</div>
 
 验证一家企业，并获取其高管信息与注册登记详情。
 
@@ -163,13 +175,17 @@ Baselayer 按订单计费，费率取决于具体操作及其参数：
   ```
 </CodeGroup>
 
-## 搭配使用效果更佳 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 搭配使用效果更佳
+</div>
 
 * [Fiber.ai](/zh/docs/agent/connect/fiber)：用企业属性、员工人数和联系人信息丰富已验证的企业。
 * [Financial Datasets](/zh/docs/agent/connect/financialdatasets)：为上市主体添加近期新闻报道。
 * [Similarweb](/zh/docs/agent/connect/similarweb)：对已验证公司的网站流量和竞争对手进行对标分析。
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="将其附加到运行" icon="rocket" href="/zh/docs/agent/connect/overview" cta="打开快速开始" arrow="true">

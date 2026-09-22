@@ -1,13 +1,19 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，请先通过该文件查看所有可用页面。
 
-# 更新 Websets monitor {#update-a-websets-monitor}
+<div id="update-a-websets-monitor">
+  # 更新 Websets monitor
+</div>
 
 > 更新 monitor 配置。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml PATCH /v0/monitors/{id}
 openapi: 3.1.0

@@ -1,9 +1,13 @@
-> ## Índice de la documentación {#documentation-index}
+> <div id="documentation-index">
+  > ## Índice de la documentación
+> </div>
 >
 > Obtén el índice completo de la documentación en: https://exa.ai/docs/llms.txt
 > Usa este archivo para descubrir todas las páginas disponibles antes de seguir explorando.
 
-# Nevermined {#nevermined}
+<div id="nevermined">
+  # Nevermined
+</div>
 
 > Pagos autónomos de agentes para Exa mediante la card delegation x402 de Nevermined. Una compra de 7 USD aprovisiona o recarga una API key de Exa con 7 USD en créditos.
 
@@ -15,7 +19,9 @@ Los agentes pagan a Exa con tarjeta de crédito mediante el esquema de [card-del
 
 Si el pagador usa Nevermined por primera vez, `POST /team-management/nevermined/purchase-key` aprovisiona una nueva API key de Exa y añade $7 en créditos. Si la key se queda sin saldo, genera un nuevo token x402 con la misma delegation y llama de nuevo al mismo endpoint. Exa devuelve la misma API key con otros $7 en créditos añadidos.
 
-## Comprar una key {#buy-a-key}
+<div id="buy-a-key">
+  ## Comprar una key
+</div>
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -28,7 +34,9 @@ payment-signature: <x402-token>
 * **Respuesta (token reproducido):** resultado en caché, sin cargo adicional.
 * **Firma ausente o inválida:** `402 Payment Required` con los requisitos de pago en el cuerpo.
 
-## Cómo funciona {#how-it-works}
+<div id="how-it-works">
+  ## Cómo funciona
+</div>
 
 Nevermined se encarga de la parte de pagos; Exa solo ve el token x402 firmado.
 
@@ -40,7 +48,9 @@ Nevermined se encarga de la parte de pagos; Exa solo ve el token x402 firmado.
 
 Para la guía completa lista para agentes (métodos del SDK, parámetros, descubrimiento y creación de delegations, resolución de problemas), consulta la guía de integración de Exa de Nevermined: [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (agentes: obtengan [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)).
 
-## Qué puedes obtener con $7 {#what-7-buys}
+<div id="what-7-buys">
+  ## Qué puedes obtener con $7
+</div>
 
 Los créditos se consumen según los precios estándar de la API de Exa. Con las tarifas actuales, $7 en créditos cubren aproximadamente:
 
@@ -59,7 +69,9 @@ Los créditos se consumen según los precios estándar de la API de Exa. Con las
 Las solicitudes de Search incluyen texto y highlights para hasta 10 resultados. Los resultados que superen esos 10 y los resúmenes generados por IA se facturan por separado.<br />
 Para consultar todos los detalles de precios, visita [Precios de Exa](https://exa.ai/pricing).
 
-## Cuando la key se agota {#when-the-key-runs-out}
+<div id="when-the-key-runs-out">
+  ## Cuando la key se agota
+</div>
 
 Exa devuelve **`HTTP 402`** en los endpoints habituales de la API cuando se agotan los créditos de la API key:
 
@@ -73,7 +85,9 @@ Exa devuelve **`HTTP 402`** en los endpoints habituales de la API cuando se agot
 
 Genera un nuevo x402 token con el mismo plan ID y la misma delegation, y vuelve a enviarlo mediante POST al mismo endpoint `/purchase-key`. Exa añade otros $7 en créditos a la misma API key.
 
-## Referencias {#references}
+<div id="references">
+  ## Referencias
+</div>
 
 * [Guía de integración de Exa con Nevermined](https://nevermined.ai/docs/integrations/exa)
 * [Especificación de x402 card-delegation](https://nevermined.ai/docs/specs/x402-card-delegation)

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih lanjut.
 
-# Ikhtisar Keamanan {#security-overview}
+<div id="security-overview">
+  # Ikhtisar Keamanan
+</div>
 
 > Informasi keamanan, kepatuhan, dan akses regional Exa.
 
@@ -15,7 +19,9 @@ Hubungi kami di [sales@exa.ai](mailto:sales@exa.ai) untuk membahas plan Enterpri
 
 Kunjungi [Trust Center](https://trust.exa.ai) kami untuk melihat laporan SOC 2, Data Processing Agreement, dan dokumentasi keamanan lainnya.
 
-## Pembatasan akses regional {#regional-access-restrictions}
+<div id="regional-access-restrictions">
+  ## Pembatasan akses regional
+</div>
 
 Untuk mematuhi sanksi dan pembatasan perdagangan, Exa memblokir akses API dari negara dan wilayah yang terkena sanksi atau dibatasi, termasuk Krimea, Kuba, Iran, Korea Utara, Rusia, Suriah, Ukraina, dan Venezuela.
 

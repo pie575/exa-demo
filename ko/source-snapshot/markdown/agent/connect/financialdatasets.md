@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 자세히 살펴보기 전에 이 파일로 사용 가능한 모든 페이지를 확인하세요.
 
-# Financial Datasets {#financial-datasets}
+<div id="financial-datasets">
+  # Financial Datasets
+</div>
 
 > 27,000개 이상의 미국 ticker에 대한 구조화된 금융 및 시장 데이터: 가격, 펀더멘털, 실적, SEC 공시 자료, 소유 현황, 종목 스크리닝.
 
@@ -18,7 +22,9 @@
 [Exa Agent](/ko/docs/agent/quickstart) 실행에 `financial_datasets`를 attach하면,
 agent가 Exa web search와 함께 Financial Datasets를 조회합니다.
 
-## 활용 사례 {#use-it-for}
+<div id="use-it-for">
+  ## 활용 사례
+</div>
 
 * 구조화된 기업 리서치 스냅샷 구축
 * 재무 성과, 밸류에이션, 과거 추이 분석
@@ -27,7 +33,9 @@ agent가 Exa web search와 함께 Financial Datasets를 조회합니다.
 * 펀더멘털 기준에 따른 미국 시장 스크리닝
 * 기업 뉴스 및 관련 동향 모니터링
 
-## 사용 가능한 데이터 {#data-available}
+<div id="data-available">
+  ## 사용 가능한 데이터
+</div>
 
 다음 데이터셋은 모두 `financial_datasets` 제공업체에서 제공되며, agent가 작업에
 맞는 것을 선택합니다:
@@ -52,7 +60,9 @@ agent가 Exa web search와 함께 Financial Datasets를 조회합니다.
 | Stock price snapshot    | 현재 실시간 가격, 일간 변동, quote 시각.                                          |
 | Stock screener          | 기본 필터 criteria에 부합하는 기업.                                             |
 
-## 제공업체 ID {#provider-id}
+<div id="provider-id">
+  ## 제공업체 ID
+</div>
 
 `dataSources`에 다음 값을 사용하세요:
 
@@ -60,7 +70,9 @@ agent가 Exa web search와 함께 Financial Datasets를 조회합니다.
 financial_datasets
 ```
 
-## 예시 {#example}
+<div id="example">
+  ## 예시
+</div>
 
 NVIDIA의 구조화된 기업 리서치 스냅샷을 만들어 보세요.
 
@@ -280,13 +292,17 @@ NVIDIA의 구조화된 기업 리서치 스냅샷을 만들어 보세요.
   ```
 </CodeGroup>
 
-## 함께 사용하면 좋은 데이터 제공업체 {#pairs-well-with}
+<div id="pairs-well-with">
+  ## 함께 사용하면 좋은 데이터 제공업체
+</div>
 
 * [Particle](/ko/docs/agent/connect/particle): 보도된 기사 내용을 팟캐스트 논평과 비교합니다.
 * [Baselayer](/ko/docs/agent/connect/baselayer): ticker에 해당하는 실제 법인을 확인합니다.
 * [Fiber.ai](/ko/docs/agent/connect/fiber): 상장 기업 정보를 비상장 시장의 동종 기업 및 경영진 연락처로 enrich합니다.
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="실행에 attach하기" icon="rocket" href="/ko/docs/agent/connect/overview" cta="Quickstart 열기" arrow="true">

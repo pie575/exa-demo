@@ -1,9 +1,13 @@
-> ## 문서 인덱스 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 인덱스
+> </div>
 >
 > 전체 문서 인덱스는 https://exa.ai/docs/llms.txt 에서 가져오세요.
 > 더 살펴보기 전에 이 파일을 사용해 사용 가능한 모든 페이지를 확인하세요.
 
-# OpenHuman {#openhuman}
+<div id="openhuman">
+  # OpenHuman
+</div>
 
 > OpenHuman agent에 Exa 기반 실시간 web search를 더해보세요. 관리형으로 사용하거나 직접 발급한 Exa API key를 쓸 수 있습니다.
 
@@ -14,7 +18,9 @@ TinyHumans의 [OpenHuman](https://tinyhumans.gitbook.io/openhuman)은 agent가 �
 | **OpenHuman Managed** | 없음             | Exa가 구동하는 OpenHuman 백엔드. API 키 불필요.               |
 | **Exa provider**      | Exa API 키 붙여넣기 | 사용자 기기에서 본인 Exa 계정으로 `https://api.exa.ai`에 직접 연결. |
 
-## OpenHuman Managed {#openhuman-managed}
+<div id="openhuman-managed">
+  ## OpenHuman Managed
+</div>
 
 managed search가 기본값입니다. 온보딩 중에 **Simple**을 선택하면 agent가 바로 웹을 검색할 수 있습니다.
 
@@ -26,17 +32,23 @@ managed search가 기본값입니다. 온보딩 중에 **Simple**을 선택하�
   **Managed는 Exa 결과를 가장 빠르게 받아보는 방법입니다.** 생성하거나 저장하거나 교체할 키가 없고, 사용자 컴퓨터에 credential을 보관하지 않으며, search 요금은 OpenHuman 구독으로 청구됩니다.
 </Tip>
 
-## Exa provider {#exa-provider}
+<div id="exa-provider">
+  ## Exa provider
+</div>
 
 Exa를 직접 설정하여 본인의 Exa 계정으로 search를 실행하고, agent에 Exa의 search 및 페이지 contents 도구를 제공하세요.
 
-### Exa API key 발급받기 {#get-your-exa-api-key}
+<div id="get-your-exa-api-key">
+  ### Exa API key 발급받기
+</div>
 
 <Card title="Exa API key 발급받기" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   dashboard에서 키를 생성하세요. 신규 계정에는 무료 credits이 제공됩니다.
 </Card>
 
-### OpenHuman에서 Exa 추가하기 {#add-exa-in-openhuman}
+<div id="add-exa-in-openhuman">
+  ### OpenHuman에서 Exa 추가하기
+</div>
 
 1. **Connections**를 열고 **API keys** 아래의 **Search engine**을 선택합니다.
 
@@ -60,7 +72,9 @@ Exa를 직접 설정하여 본인의 Exa 계정으로 search를 실행하고, ag
   <img src="https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/configured.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=b3c8df585a06a31daa8bba6c2a516722" alt="Exa가 선택되고 Configured로 표시된 OpenHuman Search engine 패널" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-### 구성 {#configuration}
+<div id="configuration">
+  ### 구성
+</div>
 
 이 패널은 OpenHuman의 `config.toml`에 값을 기록합니다. 패널 대신 파일이나 환경 변수에 동일한 값을 직접 설정할 수도 있습니다:
 
@@ -89,7 +103,9 @@ Exa를 직접 설정하여 본인의 Exa 계정으로 search를 실행하고, ag
   </Tab>
 </Tabs>
 
-### agent가 사용할 수 있는 도구 {#tools-the-agent-gets}
+<div id="tools-the-agent-gets">
+  ### agent가 사용할 수 있는 도구
+</div>
 
 | 도구                 | 반환값                                                   |
 | ------------------ | ----------------------------------------------------- |
@@ -99,7 +115,9 @@ Exa를 직접 설정하여 본인의 Exa 계정으로 search를 실행하고, ag
 
 agent는 call마다 Exa의 [search parameters](/ko/docs/search/quickstart)를 설정하므로, 간단한 지시만으로도 search mode, 도메인, 날짜, 카테고리를 제어할 수 있습니다.
 
-## 문제 해결 {#troubleshooting}
+<div id="troubleshooting">
+  ## 문제 해결
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa search를 사용할 수 없음: 설정된 API 키가 없음">
@@ -119,7 +137,9 @@ agent는 call마다 Exa의 [search parameters](/ko/docs/search/quickstart)를 �
   </Accordion>
 </AccordionGroup>
 
-## 리소스 {#resources}
+<div id="resources">
+  ## 리소스
+</div>
 
 <Columns cols={3}>
   <Card title="OpenHuman web search 문서" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="가이드 열기" arrow="true">

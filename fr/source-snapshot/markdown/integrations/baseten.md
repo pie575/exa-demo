@@ -1,15 +1,21 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Baseten {#baseten}
+<div id="baseten">
+  # Baseten
+</div>
 
 > Fondez sur des preuves les modèles open source des Baseten Model APIs grâce à Exa web search via les Baseten Hosted Tools.
 
 Exa est un fournisseur de recherche web dans [Baseten Hosted Tools](https://www.baseten.co/blog/introducing-baseten-hosted-tools/). Les Baseten Model APIs exposent des modèles open source, et les Hosted Tools permettent à ces modèles de faire des recherches sur le web sans que vous ayez à mettre en place un tool loop : vous ajoutez un selector d&#39;outil Exa à une requête standard, Baseten exécute le modèle et les recherches Exa conjointement dans un loop côté serveur, et vous obtenez une réponse fondée sur des preuves au sein de cette même réponse. Aucune API key Exa n&#39;est nécessaire. Baseten répercute le coût d&#39;Exa sur votre facture Baseten sans marge supplémentaire.
 
-## Utiliser les tools Exa web search {#use-the-exa-web-search-tools}
+<div id="use-the-exa-web-search-tools">
+  ## Utiliser les tools Exa web search
+</div>
 
 Définissez le header `x-baseten-server-tools: true`, puis ajoutez un ou plusieurs selectors Exa à votre array `tools`. Seul le `type` est nécessaire : Baseten développe automatiquement le schéma d&#39;outil, et le modèle décide quand chercher, quoi chercher et quelles pages lire. Les server-side tools fonctionnent avec les endpoints [Chat Completions](https://docs.baseten.co/reference/inference-api/chat-completions), [Messages](https://docs.baseten.co/reference/inference-api/messages) et Responses de Baseten, en mode bufferisé ou streaming.
 
@@ -96,17 +102,23 @@ Les selectors ne prennent aucun field supplémentaire : le modèle renseigne les
 | `max_react_iterations`         | Limiter les itérations du modèle par requête (12 par défaut, plage de 2 à 20). La dernière itération est réservée à la réponse : `N` autorise donc `N - 1` tours d&#39;appels d&#39;outils. |
 | `max_tool_calls_per_iteration` | Limiter les appels de server-side tools au sein d&#39;une itération (10 par défaut, plage de 1 à 10)                                                                                        |
 
-## Comment les résultats sont renvoyés {#how-results-come-back}
+<div id="how-results-come-back">
+  ## Comment les résultats sont renvoyés
+</div>
 
 La réponse finale arrive via le field habituel de l&#39;endpoint. Les appels Exa terminés sont consignés selon le protocole : blocs `tool_use` et `tool_result` sur Messages, items `mcp_call` sur Responses et `baseten.iterations[].continuation_messages` sur Chat Completions. Les requests en streaming reçoivent chaque appel de search et chaque résultat sous forme de server-sent events pendant l&#39;exécution de la loop, ce qui permet d&#39;afficher la progression avant l&#39;arrivée de la réponse. L&#39;array `baseten.request.server_tool_calls[]` indique l&#39;issue de chaque appel Exa de la requête.
 
-## Tarification {#pricing}
+<div id="pricing">
+  ## Tarification
+</div>
 
 Les appels Exa sont facturés sur votre compte Baseten au tarif d&#39;Exa, sans majoration, en plus des coûts en jetons du modèle : environ $0,007 par search et $0,001 par URL récupérée. Exa communique le montant de chaque appel à l&#39;exécution, si bien que certains appels peuvent s&#39;écarter de ces valeurs. Les appels d&#39;outils facturés apparaissent dans les paramètres de l&#39;espace de travail Baseten, sous Billing → Usage, regroupés par fournisseur. Consultez le [tableau de tarification de Baseten](https://docs.baseten.co/inference/model-apis/web-search#pricing) pour connaître les tarifs en vigueur.
 
 Les Hosted Tools sont en accès anticipé sur Baseten, avec une limite de 25 requests par minute et par organization. Essayez Exa search dans le [playground Baseten](https://app.baseten.co/model-apis/zai-org/GLM-5.3-Fast/playground), ou contactez Baseten pour relever cette limite pour vos charges de travail en production.
 
-## Ressources {#resources}
+<div id="resources">
+  ## Ressources
+</div>
 
 <Columns cols={2}>
   <Card title="Documentation recherche web de Baseten" icon="wrench" href="https://docs.baseten.co/inference/model-apis/web-search" cta="Ouvrir la documentation" arrow="true">

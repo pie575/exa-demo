@@ -1,15 +1,21 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Gumloop {#gumloop}
+<div id="gumloop">
+  # Gumloop
+</div>
 
 > Gunakan Exa search dan contents di dalam flow Gumloop.
 
 [Gumloop](https://www.gumloop.com/) menyertakan Exa sebagai integrasi MCP bawaan. Tambahkan ke agent atau Agent Node untuk menelusuri web, mengekstrak halaman, menemukan sources terkait, dan menghasilkan jawaban yang didukung sitasi di dalam workflow.
 
-## Menambahkan Exa ke agent Gumloop {#add-exa-to-a-gumloop-agent}
+<div id="add-exa-to-a-gumloop-agent">
+  ## Menambahkan Exa ke agent Gumloop
+</div>
 
 <Steps>
   <Step title="Buka agent">
@@ -35,7 +41,9 @@
   </Step>
 </Steps>
 
-## Tool yang tersedia {#available-tools}
+<div id="available-tools">
+  ## Tool yang tersedia
+</div>
 
 | Tool                     | Kegunaannya                                                                    |
 | ------------------------ | ------------------------------------------------------------------------------ |
@@ -48,9 +56,13 @@
 
 Untuk agent percakapan, aktifkan Search, Get Contents, dan Answer terlebih dahulu. Tambahkan tool lainnya hanya jika workflow memang membutuhkannya.
 
-## Menggunakan Exa dalam workflow {#use-exa-in-a-workflow}
+<div id="use-exa-in-a-workflow">
+  ## Menggunakan Exa dalam workflow
+</div>
 
-### Agent Node {#agent-node}
+<div id="agent-node">
+  ### Agent Node
+</div>
 
 Tambahkan **Agent Node** ke flow Gumloop yang deterministik, lalu attach Exa sebagai salah satu tool-nya. Node ini dapat menentukan apakah perlu melakukan search, mengambil halaman secara utuh, atau merangkai beberapa panggilan Exa sebelum meneruskan output-nya ke langkah workflow berikutnya.
 
@@ -61,7 +73,9 @@ Ini cocok untuk:
 * melakukan Research terhadap perusahaan sebelum mengarahkan catatan ke workflow penjualan
 * membandingkan produk dan menuliskan hasilnya ke sebuah dokumen
 
-### Custom MCP node yang dapat dipakai ulang {#reusable-custom-mcp-node}
+<div id="reusable-custom-mcp-node">
+  ### Custom MCP node yang dapat dipakai ulang
+</div>
 
 Untuk satu aksi yang berulang, buat node khusus:
 
@@ -72,7 +86,9 @@ Untuk satu aksi yang berulang, buat node khusus:
 
 Gunakan Agent Node jika tugas memerlukan perencanaan dinamis atau beberapa tool. Gunakan custom MCP node jika operasi Exa yang sama perlu dijalankan secara konsisten pada setiap item.
 
-## Pola prompt {#prompt-patterns}
+<div id="prompt-patterns">
+  ## Pola prompt
+</div>
 
 <AccordionGroup>
   <Accordion title="Cari dan ringkas">
@@ -96,7 +112,9 @@ Gunakan Agent Node jika tugas memerlukan perencanaan dinamis atau beberapa tool.
   </Accordion>
 </AccordionGroup>
 
-## Pemecahan Masalah {#troubleshooting}
+<div id="troubleshooting">
+  ## Pemecahan Masalah
+</div>
 
 <AccordionGroup>
   <Accordion title="Exa tidak tersedia untuk agent">
@@ -112,7 +130,9 @@ Gunakan Agent Node jika tugas memerlukan perencanaan dinamis atau beberapa tool.
   </Accordion>
 </AccordionGroup>
 
-## Sumber Daya {#resources}
+<div id="resources">
+  ## Sumber Daya
+</div>
 
 <Columns cols={3}>
   <Card title="Integrasi Exa untuk Gumloop" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Baca panduan" arrow="true">

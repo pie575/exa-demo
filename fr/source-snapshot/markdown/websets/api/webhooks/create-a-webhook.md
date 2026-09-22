@@ -1,9 +1,13 @@
-> ## Index de la documentation {#documentation-index}
+> <div id="documentation-index">
+  > ## Index de la documentation
+> </div>
 >
 > Récupérez l&#39;index complet de la documentation à l&#39;adresse : https://exa.ai/docs/llms.txt
 > Utilisez ce fichier pour découvrir toutes les pages disponibles avant d&#39;aller plus loin.
 
-# Créer un webhook {#create-a-webhook}
+<div id="create-a-webhook">
+  # Créer un webhook
+</div>
 
 > Crée un Webhook qui transmet les events sélectionnés à votre URL au fur et à mesure qu&#39;ils se produisent.
 
@@ -15,7 +19,9 @@ La réponse contient le `secret` de signature permettant de vérifier les delive
   est considérée comme un échec. Enregistrez toujours l&#39;URL de destination finale.
 </Warning>
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

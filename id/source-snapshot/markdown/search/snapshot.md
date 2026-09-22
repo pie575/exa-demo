@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# Exa Snapshot {#exa-snapshot}
+<div id="exa-snapshot">
+  # Exa Snapshot
+</div>
 
 > Sematkan Search dan Contents ke stored version sebuah halaman pada datetime yang Anda pilih.
 
@@ -16,7 +20,9 @@ Gunakan ini untuk melakukan backtest pada agent, menjalankan eval yang dapat dir
   Setelah 100 permintaan, [hubungi tim sales](https://exa.ai/contact/sales) untuk melanjutkan.
 </Info>
 
-## Search pada suatu datetime {#search-at-a-datetime}
+<div id="search-at-a-datetime">
+  ## Search pada suatu datetime
+</div>
 
 Pada `/search`, letakkan `snapshotAsOf` di dalam `contents`.
 
@@ -105,7 +111,9 @@ Exa mencari URL kandidat, lalu hanya mempertahankan halaman yang memiliki stored
   ```
 </Accordion>
 
-## Mematok contents ke suatu datetime {#pin-contents-to-a-datetime}
+<div id="pin-contents-to-a-datetime">
+  ## Mematok contents ke suatu datetime
+</div>
 
 Tambahkan `snapshotAsOf` di level teratas pada permintaan `/contents`.
 
@@ -184,7 +192,9 @@ Exa mengembalikan stored version terbaru pada atau sebelum datetime tersebut.
   `"status": "error"` dan `"tag": "CONTENT_NOT_CACHED"`.
 </Tip>
 
-## Cara kerja snapshot {#how-snapshots-work}
+<div id="how-snapshots-work">
+  ## Cara kerja snapshot
+</div>
 
 | Field          | Lokasi     | Arti                                                                                             |
 | -------------- | ---------- | ------------------------------------------------------------------------------------------------ |
@@ -202,7 +212,9 @@ Untuk kedua endpoint:
   rekonstruksi persis dari peringkat yang akan dihasilkan sebuah search pada saat itu.
 </Note>
 
-## Batas dan kompatibilitas {#limits-and-compatibility}
+<div id="limits-and-compatibility">
+  ## Batas dan kompatibilitas
+</div>
 
 <AccordionGroup>
   <Accordion title="Akses, rate limit, dan rentang lookback">
@@ -225,7 +237,9 @@ Untuk kedua endpoint:
   </Accordion>
 </AccordionGroup>
 
-## Penggunaan umum {#common-uses}
+<div id="common-uses">
+  ## Penggunaan umum
+</div>
 
 Gunakan Exa Snapshot ketika tugas bergantung pada apa yang telah tersimpan di Exa pada datetime tertentu:
 

@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# LangChain {#langchain}
+<div id="langchain">
+  # LangChain
+</div>
 
 > Cara menggunakan integrasi Exa dengan LangChain untuk melakukan RAG.
 
@@ -24,7 +28,9 @@ LangChain adalah framework untuk membangun aplikasi yang memadukan LLM dengan da
 
 ***
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Prasyarat dan instalasi">

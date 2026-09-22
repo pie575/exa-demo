@@ -1,15 +1,21 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 在此获取完整的文档索引：https://exa.ai/docs/llms.txt
 > 在深入查阅之前，可通过该文件了解所有可用页面。
 
-# 取消正在运行的 search {#cancel-a-running-search}
+<div id="cancel-a-running-search">
+  # 取消正在运行的 search
+</div>
 
 > 取消当前正在运行的 Search。
 
 你可以使用 `websets/:webset/cancel` 端点一次性取消所有 search。
 
-## OpenAPI {#openapi}
+<div id="openapi">
+  ## OpenAPI
+</div>
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0

@@ -9,13 +9,17 @@ Monitors 会按设定的 schedule 周期性运行 Exa search，并将结果投�
 
 可以用 Monitors 持续跟踪新闻、competitor 动态、融资轮次、监管变化、研究文献，或任何随时间变化的主题。
 
-## Monitors 的工作原理 {#how-monitors-work}
+<div id="how-monitors-work">
+  ## Monitors 的工作原理
+</div>
 
 每次运行时，Exa 会执行已配置的 search，按时间过滤，剔除该 monitor 此前已返回过的结果或发现，然后把新的输出发送到你的 webhook。
 
 每个 monitor 都有各自的运行历史，因此编写 query 时应围绕你想要持续跟踪的信号来写，而不必自己手动设置滚动的日期范围。
 
-## 创建第一个 monitor {#create-your-first-monitor}
+<div id="create-your-first-monitor">
+  ## 创建第一个 monitor
+</div>
 
 创建一个 monitor，指定搜索 query、interval 以及用于接收更新的 HTTPS 端点：
 
@@ -118,7 +122,9 @@ Monitors 会按设定的 schedule 周期性运行 Exa search，并将结果投�
 
 创建 monitor 时请妥善保存 `webhookSecret`。它仅返回一次，且是验证 webhook 签名的必需凭据。
 
-## 配置输出 {#configure-the-output}
+<div id="configure-the-output">
+  ## 配置输出
+</div>
 
 每次完成的运行都会在 `output.results` 中返回新发现的页面。
 
@@ -160,7 +166,9 @@ Exa 还会将各个页面的发现汇总到 `output.content` 中：
 不要将引用来源和置信度放入 schema。它们会通过
 `output.grounding` 单独返回。
 
-## 添加页面内容 {#add-page-content}
+<div id="add-page-content">
+  ## 添加页面内容
+</div>
 
 `search` 接受与 [Exa Search](/zh/docs/search/quickstart) 相同的选项：使用 `contents` 可在每条结果中附带
 highlights、full text 或摘要，使用 `includeDomains` 或 `excludeDomains` 可
@@ -234,7 +242,9 @@ highlights、full text 或摘要，使用 `includeDomains` 或 `excludeDomains` 
   ```
 </CodeGroup>
 
-## 测试你的 monitor {#test-your-monitor}
+<div id="test-your-monitor">
+  ## 测试你的 monitor
+</div>
 
 无需等待下一个计划时间，立即触发一次运行，然后列出它的运行记录：
 
@@ -276,7 +286,9 @@ highlights、full text 或摘要，使用 `includeDomains` 或 `excludeDomains` 
 
 运行完成之前，`output` 为 null。
 
-## Schedule 运行 {#schedule-runs}
+<div id="schedule-runs">
+  ## Schedule 运行
+</div>
 
 最小间隔为一小时。请使用单一时长，例如 `1h`、`6h`、`1d` 或 `7d`。schedule 以 monitor 的创建时间为基准——下午 2:30 创建的每日 monitor 会在每天下午 2:30 前后运行——但每次运行最多可能延迟 30 分钟，因此请勿依赖精确的时钟触发时间。
 
@@ -286,7 +298,9 @@ highlights、full text 或摘要，使用 `includeDomains` 或 `excludeDomains` 
   Monitor 运行不会重叠。如果下一次按 schedule 安排的运行开始时上一次运行仍在进行，Exa 会取消上一次运行。
 </Note>
 
-## 接收 webhook 更新 {#receive-webhook-updates}
+<div id="receive-webhook-updates">
+  ## 接收 webhook 更新
+</div>
 
 如果你只关心已完成的运行，请订阅 `monitor.run.completed`。若省略 `events`，Exa
 还会发送 monitor 生命周期事件和运行创建事件。
@@ -382,7 +396,9 @@ HMAC-SHA256 摘要，再以常量时间比较的方式与 `v1` 比对。
   ```
 </CodeGroup>
 
-## 后续步骤 {#next-steps}
+<div id="next-steps">
+  ## 后续步骤
+</div>
 
 <Columns cols={2}>
   <Card title="创建 monitor" icon="bell" href="/zh/docs/reference/monitors/create-a-monitor" cta="查看参考文档" arrow="true">

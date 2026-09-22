@@ -1,9 +1,13 @@
-> ## 文档索引 {#documentation-index}
+> <div id="documentation-index">
+  > ## 文档索引
+> </div>
 >
 > 获取完整文档索引：https://exa.ai/docs/llms.txt
 > 在深入浏览之前，可通过该文件了解所有可用页面。
 
-# SDK 快速开始 {#sdk-quickstart}
+<div id="sdk-quickstart">
+  # SDK 快速开始
+</div>
 
 > 安装并使用 Exa 的 Python 和 JavaScript SDK
 
@@ -13,7 +17,9 @@ Exa 官方 SDK。搜索网络、获取页面内容，并获得带引用来源的
   在控制台中创建密钥。新账户可获得免费积分。
 </Card>
 
-## 安装 {#install}
+<div id="install">
+  ## 安装
+</div>
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -35,7 +41,9 @@ Exa 官方 SDK。搜索网络、获取页面内容，并获得带引用来源的
 
 Python SDK 需要 Python 3.9 及以上版本。
 
-## 身份验证 {#authentication}
+<div id="authentication">
+  ## 身份验证
+</div>
 
 将你的 API 密钥设置为环境变量：
 
@@ -53,7 +61,9 @@ Python SDK 需要 Python 3.9 及以上版本。
   </Tab>
 </Tabs>
 
-## 开始使用 {#getting-started}
+<div id="getting-started">
+  ## 开始使用
+</div>
 
 初始化客户端并运行第一次搜索：
 
@@ -95,7 +105,9 @@ Python SDK 需要 Python 3.9 及以上版本。
   两个客户端都会从 `EXA_API_KEY` 环境变量读取密钥。如需显式指定，可直接内联传入：`Exa(api_key="your-api-key")` 或 `new Exa("your-api-key")`。
 </Note>
 
-## 推荐默认配置 {#recommended-defaults}
+<div id="recommended-defaults">
+  ## 推荐默认配置
+</div>
 
 | 决策项    | 推荐默认值                                              |
 | ------ | -------------------------------------------------- |
@@ -114,7 +126,9 @@ Python SDK 需要 Python 3.9 及以上版本。
   | `get_contents` / `getContents` | 直接放在请求上，例如 `exa.get_contents(urls, highlights=True)`                  |
 </Warning>
 
-## Search {#search}
+<div id="search">
+  ## Search
+</div>
 
 Search 只需一次调用即可找到相关页面并返回其页面内容。
 
@@ -148,7 +162,9 @@ Search 只需一次调用即可找到相关页面并返回其页面内容。
   ```
 </CodeGroup>
 
-### 输出 schema {#output-schema}
+<div id="output-schema">
+  ### 输出 schema
+</div>
 
 <CodeGroup>
   ```python Python theme={null}
@@ -201,7 +217,9 @@ Search 只需一次调用即可找到相关页面并返回其页面内容。
 
 当输出需要跨多次 search 进行研究时，建议使用 deep 模式：轻量级研究可使用 `deep-lite`，需要多步搜索和更强综合能力时可使用 `deep`。完整的请求选项请参阅 [Search 指南](/zh/docs/search/quickstart)。
 
-## Contents {#contents}
+<div id="contents">
+  ## Contents
+</div>
 
 从你已知的 URL 中提取 highlights、full text 或摘要。可以先使用 highlights，再加上 query，让提取内容聚焦于你所需的信息。
 
@@ -224,7 +242,9 @@ Search 只需一次调用即可找到相关页面并返回其页面内容。
 
 如果需要更完整的上下文或文档结构，请使用 full text。关于输出结构、新鲜度控制和子页面抓取，请参阅 [Contents 指南](/zh/docs/contents/quickstart)。
 
-## Answer {#answer}
+<div id="answer">
+  ## Answer
+</div>
 
 获取问题的答案，并附带引用来源。
 
@@ -249,7 +269,9 @@ Search 只需一次调用即可找到相关页面并返回其页面内容。
   ```
 </CodeGroup>
 
-## 异步与类型 {#async-and-types}
+<div id="async-and-types">
+  ## 异步与类型
+</div>
 
 Python 提供 `AsyncExa` 用于异步操作，JavaScript SDK 则为每个方法都提供了 TypeScript 类型。
 
@@ -271,11 +293,15 @@ Python 提供 `AsyncExa` 用于异步操作，JavaScript SDK 则为每个方法�
   ```
 </CodeGroup>
 
-## 资源 {#resources}
+<div id="resources">
+  ## 资源
+</div>
 
 Python：[exa-py 源码](https://github.com/exa-labs/exa-py) 和 [PyPI 包](https://pypi.org/project/exa-py/)。JavaScript：[exa-js 源码](https://github.com/exa-labs/exa-js) 和 [npm 包](https://www.npmjs.com/package/exa-js)。
 
-## 继续 {#continue}
+<div id="continue">
+  ## 继续
+</div>
 
 <Columns cols={3}>
   <Card title="Search 指南" icon="search" href="/zh/docs/search/quickstart" cta="打开指南" arrow="true">

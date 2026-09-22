@@ -14,7 +14,9 @@ Exa Snapshot 会保留 Exa 已抓取页面的存储版本。传入 `snapshotAsOf
   超过 100 次请求后，请[联系销售](https://exa.ai/contact/sales)以继续使用。
 </Info>
 
-## 按指定 datetime 搜索 {#search-at-a-datetime}
+<div id="search-at-a-datetime">
+  ## 按指定 datetime 搜索
+</div>
 
 在 `/search` 中，将 `snapshotAsOf` 放在 `contents` 里。
 
@@ -103,7 +105,9 @@ Exa 会先找出候选 URL，再只保留在 `snapshotAsOf` 当时或之前存�
   ```
 </Accordion>
 
-## 将页面内容固定到指定时间点 {#pin-contents-to-a-datetime}
+<div id="pin-contents-to-a-datetime">
+  ## 将页面内容固定到指定时间点
+</div>
 
 在 `/contents` 请求的顶层添加 `snapshotAsOf`。
 
@@ -182,7 +186,9 @@ Exa 会返回该时间点或此前最新的存储版本。
   `"status": "error"` 和 `"tag": "CONTENT_NOT_CACHED"` 的形式返回。
 </Tip>
 
-## 快照的工作方式 {#how-snapshots-work}
+<div id="how-snapshots-work">
+  ## 快照的工作方式
+</div>
 
 | Field          | 位置 | 含义                          |
 | -------------- | -- | --------------------------- |
@@ -198,7 +204,9 @@ Exa 会返回该时间点或此前最新的存储版本。
   在 Search 中，该截止点限定的是内容，而非排序。Exa 仍会使用当前的 retrieval 信号来发现候选 URL。请将结果视为受 `snapshotAsOf` 限定的证据，而不是对当时搜索排序结果的精确还原。
 </Note>
 
-## 限制与兼容性 {#limits-and-compatibility}
+<div id="limits-and-compatibility">
+  ## 限制与兼容性
+</div>
 
 <AccordionGroup>
   <Accordion title="访问权限、速率限制与可回溯时间">
@@ -221,7 +229,9 @@ Exa 会返回该时间点或此前最新的存储版本。
   </Accordion>
 </AccordionGroup>
 
-## 常见用途 {#common-uses}
+<div id="common-uses">
+  ## 常见用途
+</div>
 
 当任务依赖于 Exa 在特定 datetime 所存储的内容时，可使用 Exa Snapshot：
 

@@ -12,7 +12,9 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
 
 [Tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) pada Claude memungkinkan model memanggil fungsi yang Anda definisikan di dalam kode. SDK Exa sudah menyertakan tool web search dan pembacaan halaman siap pakai untuk Anthropic, sehingga Anda tidak perlu menulis tool schema secara manual, mem-parsing blok `tool_use`, atau memformat sendiri hasil dari Exa.
 
-## Memulai {#get-started}
+<div id="get-started">
+  ## Memulai
+</div>
 
 <Steps>
   <Step title="Instal SDK">
@@ -111,7 +113,9 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
   </Step>
 </Steps>
 
-## Mengonfigurasi tool {#configuring-the-tools}
+<div id="configuring-the-tools">
+  ## Mengonfigurasi tool
+</div>
 
 Argumen keyword adalah opsi Exa biasa yang diteruskan saat tool dijalankan — opsi search ke `exa.search()`, opsi contents ke `exa.get_contents()`:
 
@@ -161,11 +165,15 @@ Sementara itu, `name` (dengan default `"web_search"` dan `"get_contents"`) dan `
   ```
 </CodeGroup>
 
-## Menggabungkan tool Anda sendiri {#mixing-in-your-own-tools}
+<div id="mixing-in-your-own-tools">
+  ## Menggabungkan tool Anda sendiri
+</div>
 
 `handle_tool_use` merespons setiap blok `tool_use` dalam pesan: blok yang menyebut tool yang tidak dikenali akan menghasilkan `Error: unknown tool "<name>"` alih-alih diabaikan, sehingga permintaan follow-up tidak pernah kehilangan hasil tool yang diwajibkan. Jika Anda menjalankan tool Anda sendiri berdampingan dengan tool milik Exa, gantilah hasil error tersebut dengan hasil Anda sendiri sebelum permintaan berikutnya.
 
-## Menulis loop secara manual {#writing-the-loop-by-hand}
+<div id="writing-the-loop-by-hand">
+  ## Menulis loop secara manual
+</div>
 
 Jika Anda lebih suka menangani sendiri tool schema dan eksekusinya, definisikan tool tersebut dan proses blok `tool_use` secara manual. `exa.tools.web_search()` dan `exa.tools.get_contents()` memberikan spesifikasi tool yang netral terhadap provider (lengkap dengan metode `run`) untuk loop buatan sendiri, atau Anda bisa menulis semuanya dari nol:
 

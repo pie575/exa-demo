@@ -1,9 +1,13 @@
-> ## 문서 색인 {#documentation-index}
+> <div id="documentation-index">
+  > ## 문서 색인
+> </div>
 >
 > 전체 문서 색인은 https://exa.ai/docs/llms.txt 에서 가져올 수 있습니다.
 > 더 자세히 살펴보기 전에 이 파일에서 사용 가능한 모든 페이지를 확인하세요.
 
-# Highlights {#highlights}
+<div id="highlights">
+  # Highlights
+</div>
 
 > 컨텍스트 크기와 latency를 조절하면서 Exa Search 결과에서 질의와 관련된 발췌문을 반환합니다.
 
@@ -11,7 +15,9 @@ Highlights는 각 result에서 질의와 관련된 구절을 추출해 반환합
 
 각 result에서 선택된 구절은 `results[].highlights`로 반환됩니다.
 
-## 전체 텍스트 대신 highlights를 쓰는 이유 {#why-highlights-instead-of-full-text}
+<div id="why-highlights-instead-of-full-text">
+  ## 전체 텍스트 대신 highlights를 쓰는 이유
+</div>
 
 Highlights는 Exa가 자체 개발한 extraction 모델이 생성합니다. 이 모델은 요청할 때마다 질의를 기준으로 각 result를 읽고, 질의에 답이 되는 구절만 반환합니다. 전체 페이지 텍스트의 극히 일부 토큰만 쓰면서도 이후 답변 품질은 동등하거나 더 낫습니다.
 
@@ -29,7 +35,9 @@ Highlights는 Exa가 자체 개발한 extraction 모델이 생성합니다. 이 
   확인하세요.
 </Tip>
 
-## search에 highlights 추가하기 {#add-highlights-to-search}
+<div id="add-highlights-to-search">
+  ## search에 highlights 추가하기
+</div>
 
 권장 기본값으로 `contents` 안에 `highlights: true`를 사용하세요. Exa가 질의와의 관련성에 따라 각 result에서 반환할 텍스트 분량을 알아서 결정하므로 따로 조정할 character budget이 없습니다. 페이지당 고정된 limit이 필요한 경우에만 `maxCharacters`를 설정하세요.
 
@@ -61,7 +69,9 @@ Highlights는 Exa가 자체 개발한 extraction 모델이 생성합니다. 이 
   ```
 </CodeGroup>
 
-## Dynamic Highlights {#dynamic-highlights}
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
 
 Dynamic Highlights는 질의에 가장 유용한 내용이 무엇인지에 따라 각 result에서 가져올 텍스트의 양을 조절합니다. 좋은 소스에서는 더 많이, 반복적이거나 관련성이 낮은 소스에서는 더 적게 가져와 반환되는 전체 토큰 수를 줄입니다.
 
@@ -132,7 +142,9 @@ Exa의 평가에서 Dynamic Highlights는 전체 페이지 콘텐츠 대비 토�
   `results[].highlights` 형태를 사용합니다.
 </Info>
 
-## 다음 단계 {#next-steps}
+<div id="next-steps">
+  ## 다음 단계
+</div>
 
 <Columns cols={2}>
   <Card title="Search API 가이드" icon="search" href="/ko/docs/search/quickstart" cta="가이드 열기" arrow="true">

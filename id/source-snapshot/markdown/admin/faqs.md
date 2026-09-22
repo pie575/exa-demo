@@ -1,9 +1,13 @@
-> ## Indeks Dokumentasi {#documentation-index}
+> <div id="documentation-index">
+  > ## Indeks Dokumentasi
+> </div>
 >
 > Ambil indeks dokumentasi lengkap di: https://exa.ai/docs/llms.txt
 > Gunakan file ini untuk menemukan semua halaman yang tersedia sebelum menjelajah lebih jauh.
 
-# FAQ {#faqs}
+<div id="faqs">
+  # FAQ
+</div>
 
 > Jawaban atas pertanyaan umum seputar produk Exa, indeks search, kebaruan, grounding, keamanan, dan harga.
 

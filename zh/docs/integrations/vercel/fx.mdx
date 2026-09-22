@@ -12,7 +12,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="安装 fx、使用 /mcp add 添加 Exa MCP server，并执行一次实时 Exa 网页搜索" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-## 安装 {#installation}
+<div id="installation">
+  ## 安装
+</div>
 
 <Steps>
   <Step title="安装 fx">
@@ -40,7 +42,9 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   </Step>
 </Steps>
 
-## 手动配置 {#configure-by-hand}
+<div id="configure-by-hand">
+  ## 手动配置
+</div>
 
 fx 仅从 `~/.fx/mcp.json` 中读取 MCP server，因此你也可以直接在该文件中添加 Exa：
 
@@ -79,7 +83,9 @@ fx 仅从 `~/.fx/mcp.json` 中读取 MCP server，因此你也可以直接在该
 
 `header_env` 将 header 名称映射到环境变量，这样密钥就不会出现在配置文件中。
 
-## 工具发现 {#tool-discovery}
+<div id="tool-discovery">
+  ## 工具发现
+</div>
 
 fx 采用惰性方式发现 MCP tools：只有当某一轮对话需要时，server 的 tools 才会进入模型的上下文，因此在不涉及联网搜索的轮次中，接入 Exa 不会带来任何开销。
 

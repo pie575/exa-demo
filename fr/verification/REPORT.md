@@ -1,4 +1,6 @@
-# Vérification par rapport à Exa en production {#verification-against-exa-production}
+<div id="verification-against-exa-production">
+  # Vérification par rapport à Exa en production
+</div>
 
 Snapshot de production : 18 septembre 2026. Aperçu local : http://localhost:3000/docs.
 
@@ -19,7 +21,9 @@ recherche plein texte locale et la navigation au clavier, les résultats vides, 
 thème, le rendu des schémas d&#39;API, les sept onglets de la feuille de calcul Agent ainsi que la
 navigation et la recherche sur mobile.
 
-## Revue visuelle à l&#39;aveugle {#blind-visual-review}
+<div id="blind-visual-review">
+  ## Revue visuelle à l&#39;aveugle
+</div>
 
 [Ouvrez la galerie de comparaison A/B de 159 pages](blind/index.html). Les deux
 captures d&#39;écran de chaque page sont mélangées indépendamment. La galerie enregistre les préférences A/B/égalité
@@ -36,7 +40,9 @@ portant sur les fenêtres d&#39;affichage capturées, et non d&#39;une affirmati
 d&#39;équivalence du service hébergé. Sur l&#39;ensemble des 159 pages, le corps du texte correspond sur 158 ; la
 seule différence restante est l&#39;horodatage de la vérification de la page de statut en direct.
 
-## Détails de fidélité {#fidelity-details}
+<div id="fidelity-details">
+  ## Détails de fidélité
+</div>
 
 L&#39;import préserve le thème de production, la navigation, les styles et scripts
 personnalisés, les polices, les métadonnées des pages, les spécifications d&#39;API
@@ -54,7 +60,9 @@ serveur de développement natif ne sert pas directement ces extensions de
 fichier. Les horodatages de statut en direct et les médias animés peuvent
 varier d&#39;une capture à l&#39;autre.
 
-## Reproduire {#reproduce}
+<div id="reproduce">
+  ## Reproduire
+</div>
 
 ```sh
 pnpm validate
