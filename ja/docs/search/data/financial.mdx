@@ -1,0 +1,153 @@
+---
+title: "金融市場"
+sidebarTitle: "金融市場"
+icon: "chart-line"
+description: "Exa Search で市場データ、規制当局への提出書類、決算説明会、経済指標を検索できます。"
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="APIプレイグラウンドで開く" aria-label={`「${query}」をAPIプレイグラウンドで開く`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Exa Searchなら、株価、開示書類、トランスクリプト、およびそれらに関する報道を1つのクエリでまとめて検索できます。ティッカーについて質問するだけで、株価、直近の決算説明会、アナリストのレポートを一度に取得できます。
+
+<div id="included">
+  ## 含まれるデータ
+</div>
+
+* 株式、暗号資産、外国為替、指数、先物、オプション、コモディティの相場と直近の価格履歴
+* 主要統計と日次 OHLCV 履歴を含む銘柄プロファイル
+* 決算説明会のトランスクリプト (発言者別に整理された準備原稿と Q&amp;A を含む)
+* SEC 開示書類、公表済みの財務データ、海外の開示書類
+* アナリスト予想、資金調達の発表、経済指標の発表
+
+<div id="use-it-for">
+  ## 主な用途
+</div>
+
+* 株式・クレジットリサーチ
+* KYC、KYB、アドバースメディアのスクリーニング
+* ポートフォリオと政策のモニタリング
+* ディールソーシングとプライベートマーケットのリサーチ
+
+<div id="example-queries">
+  ## クエリの例
+</div>
+
+<div id="look-up-a-quote">
+  ### 株価を調べる
+</div>
+
+ティッカーシンボルまたは企業名と、知りたい数値を指定してください。`$NVDA` のようなキャッシュタグも使えます。
+
+<PlaygroundQuery query="NVIDIA stock price and change today" />
+
+<div id="read-an-earnings-call">
+  ### 決算説明会の内容を読む
+</div>
+
+決算説明会に関する報道ではなくトランスクリプトそのものを取得するには、企業名と四半期を指定します。
+
+<PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
+
+<div id="search-filings">
+  ### 開示書類を検索する
+</div>
+
+書類の種類だけでなく、探している開示内容を具体的に記述してください。`financial report` カテゴリを指定すると、結果を開示書類とレポートに絞り込めます。
+
+<PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
+
+<div id="track-private-market-activity">
+  ### プライベートマーケットの動向を追跡する
+</div>
+
+ラウンド、セクター、期間を指定します。
+
+<PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
+
+<div id="follow-economic-data">
+  ### 経済データを追跡する
+</div>
+
+統計の名称と、そこから知りたい数値を指定します。
+
+<PlaygroundQuery query="most recent US CPI release and month-over-month change" />
+
+<div id="make-a-request">
+  ## リクエストを送信する
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "10-K risk factors that mention dependency on third-party AI models",
+      type="auto",
+      category="financial report",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "10-K risk factors that mention dependency on third-party AI models",
+    {
+      type: "auto",
+      category: "financial report",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "10-K risk factors that mention dependency on third-party AI models",
+      "type": "auto",
+      "category": "financial report",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agentで構造化データを取得する
+</div>
+
+複数のソースにまたがるリサーチが必要な構造化データを取得するには、[Exa Agentのタスク実行](/ja/docs/agent/quickstart)を使用します。必要な銘柄、期間、条件、出力フィールドを指定すると、Agentがスキーマ検証済みの結果を引用付きで返します。
+
+<Card title="Agentタスクを開始する" icon="bot" href="/ja/docs/agent/quickstart" cta="Agentガイドを開く" arrow="true">
+  企業のスクリーニングや開示書類の比較、ポートフォリオ全体を対象とした構造化ブリーフの作成が可能です。
+</Card>

@@ -1,0 +1,119 @@
+---
+title: "Codex と ChatGPT で Exa を使う"
+sidebarTitle: "ChatGPT & Codex"
+description: "Codex や ChatGPT から直接 Exa を使って、ウェブ検索、任意のページの読み取り、リサーチを行えます。"
+icon: "/docs/images/sidebar-icons/codex.svg"
+keywords: ["Codex", "ChatGPT", "OpenAI plugin", "Exa MCP", "web search"]
+boost: 5
+---
+
+Exa プラグインを一度インストールするだけで、Codex と ChatGPT から Exa を通じてリアルタイムのウェブにアクセスできるようになります。会話やコーディングセッションを離れずに、最新情報を検索し、必要なソースを読み、さらに踏み込んだリサーチを実行できます。
+
+<div id="install-exa">
+  ## Exa をインストールする
+</div>
+
+<Steps>
+  <Step title="プラグインを開く">
+    [chatgpt.com/plugins/exa](https://chatgpt.com/plugins/exa?open_in_app) にアクセスすると、OpenAI のプラグインディレクトリで **Exa** が開きます。このディレクトリは ChatGPT と Codex で共通です。
+  </Step>
+
+  <Step title="インストールする">
+    プラスボタンを選択してインストールします。インストール時、または Codex や ChatGPT が初めて Exa を使用するときに求められたら、Exa にサインインしてください。
+
+    <Frame caption="Codex でプラグインを開き、Exa を追加してアクセスを許可する">
+      <img src="/docs/images/integrations/chatgpt-codex/install-codex.gif" alt="Codex でプラグインを開き、Exa プラグインを表示してアクセスを許可する様子" style={{width: "100%", height: "auto"}} width="1100" height="825" data-path="images/integrations/chatgpt-codex/install-codex.gif" />
+    </Frame>
+  </Step>
+
+  <Step title="新しいセッションを開始する">
+    スキルは、インストール後に開始したチャットや CLI セッションでのみ読み込まれます。新しいセッションを開き、Web 上の情報が必要な内容を依頼してください。
+  </Step>
+</Steps>
+
+これで完了です。プラグインには Exa の MCP 統合とスキルの両方が含まれているため、MCP やスキルを個別に設定する必要はありません。
+
+<div id="build-with-whats-on-the-web-right-now">
+  ## Web上の最新情報を活用して開発する
+</div>
+
+開発に使うライブラリ、API、ツールは日々変化しています。Exaをインストールすると、Codexは作業中に最新のドキュメント、issue、変更履歴、実際のコード例を検索できるようになります。
+
+リポジトリ内で次を実行します。
+
+```text theme={null}
+このプロジェクトは Tailwind v3 を使っています。Tailwind v4 のアップグレードガイドを検索して読んだうえで、
+このプロジェクトを v4 に移行してください。
+```
+
+Codex は Exa で検索して関連する情報源を読み、そこで得た情報をもとにコードベースを変更できます。
+
+答えがリポジトリの外にありそうなときは、いつでも同じように活用できます。
+
+* &quot;修正に取りかかる前に、`tokio-tungstenite` の issue と 変更履歴 でこのエラーを検索してください。&quot;
+* &quot;Rust で Postgres のアドバイザリーロックを使った実例を探し、このワーカープールに適したパターンを提案してください。&quot;
+* &quot;Stripe の最新の webhook ドキュメントを読み、こちらの実装がそれに沿っているか確認してください。&quot;
+* &quot;この依存関係の最新の移行ガイドを検索してから、アップグレードしてください。&quot;
+
+<div id="search-read-and-research">
+  ## 検索、閲覧、リサーチ
+</div>
+
+Exa プラグインを使うと、Codex と ChatGPT は 3 つの方法でウェブを活用できます。
+
+<Columns cols={3}>
+  <Card title="検索" icon="search">
+    自然言語で検索すると、リンクの一覧ではなく、最適なページのコンテンツそのものが返されます。
+  </Card>
+
+  <Card title="閲覧" icon="file-text">
+    ドキュメント、変更履歴、issue、ブログ記事など、指定したページを読み込みます。
+  </Card>
+
+  <Card title="リサーチ" icon="compass">
+    1 回の検索では答えが出ない問いを段階的に掘り下げ、引用付きで回答します。
+  </Card>
+</Columns>
+
+<div id="research-without-leaving-chatgpt">
+  ## ChatGPT上でそのままリサーチ
+</div>
+
+ExaはChatGPTでも利用できます。最新の情報が必要な質問をするときは、会話の中からExaを使ってWebを検索し、リサーチできます。
+
+```text theme={null}
+主要なオープンソースのベクトルデータベースについて、マネージドサービス、ライセンス、料金を
+比較してください。最新の一次情報源を参照し、出典を明記してください。
+```
+
+ChatGPT は、コンテキスト内にある情報だけに頼るのではなく、Exa を使ってタスクに必要なソースを見つけ出し、読み込むことができます。
+
+競合調査、技術調査、市場マッピング、企業調査など、答えがウェブ上のさまざまな場所に散らばっているあらゆる場面で活用できます。
+
+<div id="mcp-skills-together">
+  ## MCP とスキルの組み合わせ
+</div>
+
+このプラグインは、内部で Exa のエージェントスタックを構成する 2 つの要素を組み合わせています。
+
+[Exa MCP](/ja/docs/get-started/exa-mcp) は、Exa にアクセスするためのツールを Codex と ChatGPT に提供します。エージェントと Exa の検索・リサーチ機能をつなぐ役割を担います。
+
+[Exa スキル](/ja/docs/get-started/agent-skills/overview) は、これらの機能を実用的なワークフローで活用するための追加の指示をエージェントに与えます。対象となるワークフローには、Web リサーチや [Exa Agent](/ja/docs/agent/quickstart) などがあります。
+
+プラグインをインストールするだけで使えるため、どちらも個別に設定する必要はありません。
+
+<div id="prefer-mcp-directly">
+  ## MCP を直接使いたい場合
+</div>
+
+Codex および ChatGPT で Exa を使用する場合は、プラグインの利用を推奨します。Codex を手動で設定する場合や、他の MCP クライアントを使用する場合は、Exa がホストする MCP サーバーに直接接続できます。
+
+```bash theme={null}
+codex mcp add exa --url https://mcp.exa.ai/mcp
+```
+
+その他のクライアント、設定オプション、利用可能なツールについては、[Exa MCP](/ja/docs/get-started/exa-mcp) を参照してください。
+
+<Card title="ChatGPT と Codex に Exa をインストール" icon="download" horizontal href="https://chatgpt.com/plugins/exa?open_in_app">
+  ChatGPT のマーケットプレイスから Exa プラグインを追加してください。
+</Card>

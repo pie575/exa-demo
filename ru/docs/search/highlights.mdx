@@ -1,0 +1,150 @@
+---
+title: "Highlights"
+description: "Возвращайте релевантные запросу фрагменты из результатов Exa Search, контролируя размер контекста и задержку."
+keywords: ["search highlights", "dynamic highlights", "rag", "token efficiency", "search context"]
+---
+
+Highlights возвращают фрагменты текста из каждого результата, релевантные вашему запросу. Используйте их, когда приложению нужны данные со страницы, но без затрат токенов на полный текст.
+
+Для каждого результата выбранные фрагменты возвращаются в `results[].highlights`.
+
+<div id="why-highlights-instead-of-full-text">
+  ## Почему highlights, а не полный текст
+</div>
+
+Highlights формируются собственной моделью extraction от Exa. Модель сопоставляет каждый результат с вашим запросом при каждом request и возвращает только те фрагменты, которые дают на него ответ. Вы тратите в разы меньше токенов, чем на полный текст страницы, при такой же или более высокой итоговой точности ответов.
+
+| Оценка                           | Результат                                                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Точность (SimpleQA)              | 500 символов highlights дают ту же точность, что и первые 8 000 символов текста страницы, но при в 16 раз меньшем числе токенов                        |
+| Качество при больших бюджетах    | 4 000 символов highlights обходят по результату 32 000 символов полного текста                                                                         |
+| Длинная техническая документация | При бюджете в 500 символов highlights достигают точности 60% на API-справочниках, документации SDK, спецификациях и научных статьях; полный текст — 6% |
+| Расход токенов на search         | Highlights сокращают число токенов при search в среднем в 5 раз                                                                                        |
+
+Экономия особенно заметна в циклах работы agent, где каждая порция результатов search конкурирует с цепочками рассуждений за context.
+
+<Tip>
+  Читайте [Exa Highlights: Quality, Token-Efficient Search](https://exa.ai/blog/highlights-for-agents)
+  — там описаны методология и полные результаты.
+</Tip>
+
+<div id="add-highlights-to-search">
+  ## Добавление highlights в Search
+</div>
+
+Используйте `highlights: true` внутри `contents` — это рекомендуемый вариант по умолчанию. Exa сама определяет, сколько текста вернуть из каждого результата, исходя из его релевантности вашему запросу, поэтому подбирать character budget не нужно. Указывайте `maxCharacters` только в том случае, если вашему приложению требуется фиксированный лимит на страницу.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "How are inference providers reducing transformer latency?",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "How are inference providers reducing transformer latency?",
+    { contents: { highlights: true } }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "How are inference providers reducing transformer latency?",
+      "contents": {
+        "highlights": true
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
+
+Dynamic Highlights подстраивает объём текста, выбираемого из каждого результата, под то, что наиболее полезно для вашего запроса. Из сильных источников берётся больше, из повторяющихся или нерелевантных — меньше, за счёт чего сокращается общее количество возвращаемых токенов.
+
+Используйте эту возможность, когда несколько результатов попадают в один и тот же agent или контекстное окно. Оставляйте обычный `highlights: true`, если для каждой страницы нужен собственный excerpt или предсказуемый лимит на страницу.
+
+По результатам оценок Exa, Dynamic Highlights сокращает количество токенов в среднем на 95% по сравнению с полным содержимым страницы. При бюджете в 12 000 символов эта возможность превзошла обычные highlights: средний выигрыш по токен-эффективности составил 40% при росте качества на 3,8%. Внутри Exa Agent она сократила общее использование токенов агентом на 30% при среднем приросте качества 2,1% на бенчмарках, включая BrowseComp и WideSearch.
+
+<Tip>
+  Прочитайте [Dynamic Highlights](https://exa.ai/blog/dynamic-highlights), чтобы узнать результаты оценок и
+  принципы, лежащие в основе выбора highlights сразу по нескольким результатам.
+</Tip>
+
+Включите её с помощью `dynamic: true`:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py.api import DYNAMIC_HIGHLIGHTS_BETA
+
+  result = exa.search(
+      "How did US household solar installation costs change over the past five years?",
+      contents={
+          "highlights": {
+              "dynamic": True,
+          }
+      },
+      betas=[DYNAMIC_HIGHLIGHTS_BETA],
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa, { DYNAMIC_HIGHLIGHTS_BETA } from "exa-js";
+
+  const result = await exa.search(
+    "How did US household solar installation costs change over the past five years?",
+    {
+      contents: {
+        highlights: {
+          dynamic: true
+        }
+      },
+      betas: [DYNAMIC_HIGHLIGHTS_BETA]
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: dynamic-highlights-2026-08-28" \
+    -d '{
+      "query": "How did US household solar installation costs change over the past five years?",
+      "contents": {
+        "highlights": {
+          "dynamic": true
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Info>
+  Dynamic Highlights — это исследовательская превью-версия, для которой требуется
+  header запроса `Exa-Beta: dynamic-highlights-2026-08-28`. SDK отправляют его, когда вы передаёте
+  `betas=[DYNAMIC_HIGHLIGHTS_BETA]` (Python) или `betas: [DYNAMIC_HIGHLIGHTS_BETA]` (JavaScript).
+
+  В ответе используется та же
+  структура `results[].highlights`, что и для обычных highlights.
+</Info>
+
+<div id="next-steps">
+  ## Дальнейшие шаги
+</div>
+
+<Columns cols={2}>
+  <Card title="Руководство по Search API" icon="search" href="/ru/docs/search/quickstart" cta="Открыть руководство" arrow="true">
+    Сформируйте запрос Search и выберите подходящий формат вывода.
+  </Card>
+
+  <Card title="Лучшие практики поиска" icon="sparkles" href="/ru/docs/search/best-practices" cta="Читать руководство" arrow="true">
+    Настройте качество поиска, задержку, свежесть и размер контекста.
+  </Card>
+</Columns>

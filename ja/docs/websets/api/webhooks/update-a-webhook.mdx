@@ -1,0 +1,12 @@
+---
+title: "Webhook を更新する"
+openapi: "/ja/docs/exa-spec.yaml PATCH /v0/webhooks/{id}"
+timestamp: false
+description: "Webhook のターゲット URL、サブスクライブしているイベント、またはメタデータを更新します。 省略したフィールドは変更されません。"
+---
+
+<Warning>
+  **リダイレクトには追従しません。** URL を更新する場合は、それが最終的な
+  宛先であることを確認してください。3xx リダイレクトを返すエンドポイントへの配信は、
+  失敗として扱われます。
+</Warning>

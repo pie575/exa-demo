@@ -1,0 +1,170 @@
+---
+title: "Комбинирование провайдеров"
+description: "Используйте несколько партнёров данных одновременно в одном выполнении Exa Agent."
+---
+
+Добавление партнёра в `dataSources` делает его доступным для Exa Agent как инструмент — но **не** заставляет agent его вызывать. Будет ли партнёр задействован, зависит от вашего `query` и `outputSchema`: укажите, какой результат вы ожидаете от каждого партнёра, и Exa Agent обратится к подходящему инструменту, а не будет угадывать по веб-странице. К одному выполнению можно подключить до пяти партнёров; Exa Agent сам решает, какой из них вызвать на каждом шаге, при этом ему также доступен веб-поиск Exa. Нужно больше пяти для одного выполнения? [Свяжитесь с нами](mailto:sales@exa.ai), чтобы повысить лимит.
+
+<div id="two-partners-in-one-run">
+  ## Два партнёра в одном выполнении
+</div>
+
+Перечислите сразу несколько партнёров, и Exa Agent задействует каждого там, где он сильнее всего. Два — это лишь пример: к `dataSources` можно attach до пяти партнёров, и принцип остаётся тем же — явно запрашивайте данные каждого из них. В этом выполнении для подготовки сводки для инвесторов [Financial Datasets](/ru/docs/agent/connect/financialdatasets) даёт новости по ticker, а [Particle](/ru/docs/agent/connect/particle) — комментарии из подкастов. Запрос требует характерные данные от каждого партнёра, а schema разделяет вывод на `financialNews` и `podcastChatter`, поэтому Exa Agent обращается к **обоим** партнёрам в рамках одного выполнения.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query=(
+          "Give me an investor briefing on NVIDIA (NVDA): (1) the latest financial and "
+          "earnings news, and (2) what podcast hosts and guests have recently been saying "
+          "about NVIDIA, with speaker-attributed quotes and their stance."
+      ),
+      data_sources=[
+          {"provider": "financial_datasets"},
+          {"provider": "particle"},
+      ],
+      output_schema={
+          "type": "object",
+          "required": ["ticker", "financialNews", "podcastChatter"],
+          "properties": {
+              "ticker": {"type": "string"},
+              "financialNews": {
+                  "type": "array",
+                  "maxItems": 6,
+                  "items": {
+                      "type": "object",
+                      "required": ["title", "source", "date", "theme"],
+                      "properties": {
+                          "title": {"type": "string"},
+                          "source": {"type": "string"},
+                          "date": {"type": "string"},
+                          "theme": {"type": "string", "description": "earnings, guidance, analyst rating, product, or market"},
+                      },
+                  },
+              },
+              "podcastChatter": {
+                  "type": "array",
+                  "maxItems": 6,
+                  "items": {
+                      "type": "object",
+                      "required": ["podcast", "speaker", "quote", "stance"],
+                      "properties": {
+                          "podcast": {"type": "string"},
+                          "speaker": {"type": "string"},
+                          "quote": {"type": "string"},
+                          "stance": {"type": "string", "description": "bullish, bearish, or neutral"},
+                      },
+                  },
+              },
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query:
+      "Give me an investor briefing on NVIDIA (NVDA): (1) the latest financial and " +
+      "earnings news, and (2) what podcast hosts and guests have recently been saying " +
+      "about NVIDIA, with speaker-attributed quotes and their stance.",
+    dataSources: [
+      { provider: "financial_datasets" },
+      { provider: "particle" },
+    ],
+    outputSchema: {
+      type: "object",
+      required: ["ticker", "financialNews", "podcastChatter"],
+      properties: {
+        ticker: { type: "string" },
+        financialNews: {
+          type: "array",
+          maxItems: 6,
+          items: {
+            type: "object",
+            required: ["title", "source", "date", "theme"],
+            properties: {
+              title: { type: "string" },
+              source: { type: "string" },
+              date: { type: "string" },
+              theme: { type: "string", description: "earnings, guidance, analyst rating, product, or market" },
+            },
+          },
+        },
+        podcastChatter: {
+          type: "array",
+          maxItems: 6,
+          items: {
+            type: "object",
+            required: ["podcast", "speaker", "quote", "stance"],
+            properties: {
+              podcast: { type: "string" },
+              speaker: { type: "string" },
+              quote: { type: "string" },
+              stance: { type: "string", description: "bullish, bearish, or neutral" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Give me an investor briefing on NVIDIA (NVDA): (1) the latest financial and earnings news, and (2) what podcast hosts and guests have recently been saying about NVIDIA, with speaker-attributed quotes and their stance.",
+      "dataSources": [
+        { "provider": "financial_datasets" },
+        { "provider": "particle" }
+      ],
+      "outputSchema": {
+        "type": "object",
+        "required": ["ticker", "financialNews", "podcastChatter"],
+        "properties": {
+          "ticker": { "type": "string" },
+          "financialNews": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "required": ["title", "source", "date", "theme"],
+              "properties": {
+                "title": { "type": "string" },
+                "source": { "type": "string" },
+                "date": { "type": "string" },
+                "theme": { "type": "string", "description": "earnings, guidance, analyst rating, product, or market" }
+              }
+            }
+          },
+          "podcastChatter": {
+            "type": "array",
+            "maxItems": 6,
+            "items": {
+              "type": "object",
+              "required": ["podcast", "speaker", "quote", "stance"],
+              "properties": {
+                "podcast": { "type": "string" },
+                "speaker": { "type": "string" },
+                "quote": { "type": "string" },
+                "stance": { "type": "string", "description": "bullish, bearish, or neutral" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Tip>
+  Явно указывайте в *запросе*, какие данные нужны от каждого партнёра — назовите тип результата, который вы ждёте от каждого из них (в данном случае: финансовые новости по ticker и цитаты из подкастов с указанием говорящего). Если запрос сформулирован обобщённо («последние новости»), Exa Agent склонен обращаться к веб-поиску вместо партнёра. Если отразить эти различия ещё и в полях `outputSchema`, эффект будет сильнее.
+</Tip>

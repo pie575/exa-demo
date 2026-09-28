@@ -1,0 +1,23 @@
+---
+title: "API キーの作成"
+description: "チーム用の新しい API キーを作成します。名前とレート制限は任意で設定できます。"
+openapi: "/ja/docs/team-management-spec.yaml POST /api-keys"
+timestamp: false
+---
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>
+
+<Info>
+  Team Management API はチーム単位で有効化されます。認証にはサービスアカウントの API キーを使用します。このキーは、チームで機能が有効化された後、[API キーページ](https://dashboard.exa.ai/api-keys)の **Service keys** タブから作成できます。アクセスをご希望の場合は、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
+</Info>
+
+Create API Key エンドポイントでは、サービス API キーを使用して、チーム用の新しい API キーをプログラムから生成できます。
+
+<div id="optional-parameters">
+  ## 任意のパラメーター
+</div>
+
+* **name**: API キーの用途を識別しやすくするためのわかりやすい名前
+* **rateLimit**: この API キーで許可される 1 分あたりの最大リクエスト数

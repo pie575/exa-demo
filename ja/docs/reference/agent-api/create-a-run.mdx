@@ -1,0 +1,18 @@
+---
+title: "実行を作成する"
+description: "非同期の Agent 実行を作成します。server-sent events をリクエストしない限り、レスポンスとして実行オブジェクトが即座に返されます。"
+openapi: "/ja/docs/exa-spec.yaml POST /agent/runs"
+timestamp: false
+---
+
+自然言語の `query` を指定して実行を作成します。必要に応じて、検証済みの構造化 JSON を得るには `outputSchema`、処理対象の行を渡すには `input.data`、除外するレコードやエンティティを指定するには `input.exclusion`、完了済みの実行から続行するには `previousRunId` を追加します。
+
+`Accept: text/event-stream` を設定すると、実行の作成、開始、完了に応じて実行イベントがストリーミングされます。
+
+<Note>
+  **Connect:** `dataSources` を渡すと、エージェントが実行中にサードパーティのデータプロバイダーにアクセスできるようになります。詳細は [Connect ガイド](/ja/docs/agent/quickstart#connect-data-sources)を参照してください。
+</Note>
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

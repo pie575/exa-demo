@@ -1,0 +1,141 @@
+---
+title: "開発者向けクイックスタート"
+sidebarTitle: "クイックスタート"
+description: "APIキーを取得して、コードやエージェントからExaを利用しましょう。"
+boost: 3
+---
+
+<div className="docs-quickstart-section docs-quickstart-auth">
+  ## 1. APIキーを取得する
+
+  <Steps>
+    <Step title="Exa Dashboardにアクセスする">
+      <Card title="Exa APIキーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+        ダッシュボードでキーを作成します。新規アカウントには無料クレジットが付与されます。
+      </Card>
+    </Step>
+
+    <Step title="キーを環境変数に設定する">
+      <Tabs>
+        <Tab title="macOS/Linux">
+          ```bash theme={null}
+          export EXA_API_KEY="your-api-key"
+          ```
+        </Tab>
+
+        <Tab title="Windows">
+          ```powershell theme={null}
+          setx EXA_API_KEY "your-api-key"
+          ```
+        </Tab>
+      </Tabs>
+    </Step>
+  </Steps>
+</div>
+
+<div className="docs-quickstart-section">
+  ## 2. Exaの利用方法を選ぶ
+
+  Exaをアプリケーションに組み込む方法は2つあります。自分のコードからAPIを呼び出す方法と、普段使っているエージェントを接続する方法です。
+
+  <Columns cols={2}>
+    <Card title="APIを呼び出す" icon="code" href="#3-install-an-sdk" cta="SDKをインストール">
+      自分のコードからSearch、Contents、Exa Agentを利用できます。以下の手順でSDKを
+      インストールし、最初のリクエストを送信しましょう。
+    </Card>
+
+    <Card title="エージェントを接続する" icon="plug" href="/ja/docs/get-started/exa-mcp" cta="Exa MCPを設定">
+      ChatGPT、Claude、Codex、CursorをExaの検索ツールやリサーチツールに
+      接続できます。APIキーは不要です。
+    </Card>
+  </Columns>
+
+  APIを使って開発する場合は、目的に合わせて出発点を選んでください。
+
+  | 出発点                                     | 用途                                     |
+  | --------------------------------------- | -------------------------------------- |
+  | [Search](/ja/docs/search/quickstart)       | 関連するWebページを検索し、統合されたコンテンツを2秒以内に取得      |
+  | [Deep Search](/ja/docs/search/deep-search) | LLMが反復的に検索を重ねてより良い結果を見つける、高品質な検索       |
+  | [Agent](/ja/docs/agent/quickstart)         | 長時間実行される非同期のリサーチ、リスト作成、エンリッチメント、レポート作成 |
+  | [Contents](/ja/docs/contents/quickstart)   | URLがわかっている場合のページコンテンツの抽出               |
+</div>
+
+<div className="docs-quickstart-section">
+  ## 3. SDKをインストールする
+
+  <CodeGroup>
+    ```bash Python theme={null}
+    pip install exa-py
+    ```
+
+    ```bash JavaScript theme={null}
+    npm install exa-js
+    ```
+  </CodeGroup>
+</div>
+
+<div className="docs-quickstart-section">
+  ## 4. 最初のリクエストを送信する
+
+  <CodeGroup>
+    ```python Python theme={null}
+    from exa_py import Exa
+
+    exa = Exa()
+
+    results = exa.search(
+        "best blog posts about vector databases",
+        contents={"highlights": True},
+    )
+
+    for result in results.results:
+        print(result.title, result.url)
+    ```
+
+    ```javascript JavaScript theme={null}
+    import Exa from "exa-js";
+
+    const exa = new Exa();
+
+    const { results } = await exa.search(
+      "best blog posts about vector databases",
+      { contents: { highlights: true } },
+    );
+
+    for (const result of results) {
+      console.log(result.title, result.url);
+    }
+    ```
+
+    ```bash cURL theme={null}
+    curl -s -X POST "https://api.exa.ai/search" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $EXA_API_KEY" \
+      -d '{
+        "query": "best blog posts about vector databases",
+        "contents": { "highlights": true }
+      }'
+    ```
+  </CodeGroup>
+
+  ## 次のステップ
+
+  <Columns cols={2}>
+    <Card title="Search API" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを読む" arrow="true">
+      関連性の高いページを検索し、整形済みのコンテンツや構造化出力を取得します。
+    </Card>
+
+    <Card title="Agent API" icon="bot" href="/ja/docs/agent/quickstart" cta="ガイドを読む" arrow="true">
+      長時間にわたるリサーチ、リスト作成、エンリッチメントのワークフローを構築します。
+    </Card>
+
+    <Card title="Contents API" icon="file-text" href="/ja/docs/contents/quickstart" cta="ガイドを読む" arrow="true">
+      URL がわかっているページから整形済みのコンテンツを抽出します。
+    </Card>
+
+    <Card title="Exa MCP" icon="plug" href="/ja/docs/get-started/exa-mcp" cta="ガイドを読む" arrow="true">
+      任意の MCP クライアントから、Exa のウェブ検索、ページ取得、Exa Agent
+      の各ツールを利用できます。
+    </Card>
+  </Columns>
+</div>

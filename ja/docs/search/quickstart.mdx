@@ -1,0 +1,559 @@
+---
+title: "Exa Search API"
+sidebarTitle: "クイックスタート"
+description: "自然言語でウェブを検索し、関連性の高いクリーンなページコンテンツを1回のリクエストで取得できます。"
+keywords: ["search api", "web search", "semantic search", "retrieval", "rag", "highlights"]
+boost: 6
+---
+
+Exa Search は自然言語のクエリを受け取り、ランク付けされたウェブ検索結果をクリーンなページコンテンツとともに返します。
+
+<div id="make-your-first-request">
+  ## 最初のリクエストを送信する
+</div>
+
+まずは自然言語の `query` と `contents: { highlights: true }` を指定します。これにより、各結果の関連度に応じた長さの抜粋が返されます。その他のフィールドでは、Exa の検索方法や各結果に含める内容を制御できます。このページでは以降、実際によく使うフィールドについて説明します。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  result = exa.search(
+      "recent techniques for improving retrieval in RAG systems",
+      type="auto",
+      contents={"highlights": True},
+  )
+
+  for item in result.results:
+      print(item.title, item.url)
+      print(item.highlights)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const result = await exa.search(
+    "recent techniques for improving retrieval in RAG systems",
+    {
+      type: "auto",
+      contents: { highlights: true }
+    }
+  );
+
+  for (const item of result.results) {
+    console.log(item.title, item.url);
+    console.log(item.highlights);
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "recent techniques for improving retrieval in RAG systems",
+      "type": "auto",
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+Search はデフォルトで最大 10 件の結果を返します。`numResults` を設定すると最大 100 件までリクエストできますが、関連するページが少ない場合は返される件数がそれより少なくなることがあります。Search はページネーションに対応していません。
+
+<Accordion title="レスポンスの例">
+  ハイライトと以下のリストは一部省略しています。
+
+  ```json theme={null}
+  {
+    "requestId": "c3174df2b9cd5afbc64cdf79f3719b19",
+    "resolvedSearchType": "",
+    "results": [
+      {
+        "id": "https://arxiv.org/html/2608.21702",
+        "title": "From Association to Causation: Improving Retrieval Precision ofRetrieval-Augmented Generation via Causal Relations and an Attention Mechanism",
+        "url": "https://arxiv.org/html/2608.21702",
+        "highlights": [
+          "Retrieval-Augmented Generation (RAG) grounds LLM generation on retrieved documents, but the standard terminal retrieval stage—dense-vector similarity, optionally followed by reranking—often returns documents that merely share keywords with the query without containing the needed information...\n..."
+        ],
+        "image": "https://arxiv.org/static/base/1.0.1/images/icons/smileybones-small.svg",
+        "favicon": "https://arxiv.org/static/browse/0.3.4/images/icons/favicon-32x32.png"
+      },
+      {
+        "id": "https://www.thoughtworks.com/en-us/insights/blog/generative-ai/four-retrieval-techniques-improve-rag",
+        "title": "Four retrieval techniques to improve RAG you need to know",
+        "url": "https://www.thoughtworks.com/en-us/insights/blog/generative-ai/four-retrieval-techniques-improve-rag",
+        "publishedDate": "2025-04-14T00:00:00.000Z",
+        "highlights": [
+          "It's not surprising, then, that we've seen a range of different approaches emerge that attempt to address RAG's limitations over the last year or so.\n..."
+        ],
+        "image": "https://www.thoughtworks.com/content/dam/thoughtworks/images/illustration/brand/tw_illustration_5.jpg"
+      }
+    ],
+    "searchTime": 1324.3,
+    "costDollars": {
+      "total": 0.007,
+      "search": {
+        "neural": 0.007
+      }
+    }
+  }
+  ```
+</Accordion>
+
+結果は関連度順に並びます。各結果には、タイトル、URL、公開日などのメタデータに加えて、`contents` で指定した内容が含まれます。
+
+<div id="writing-queries">
+  ## クエリの書き方
+</div>
+
+Search API を使用する際、必須のフィールドは `query` フィールドのみです。
+
+クエリは自然言語で記述してください。主題を含め、必要に応じて求めるソースの種類や期間も指定します。
+
+クエリは幅広く探索的な内容でも構いません。`"Latest news on EU battery policy"` なら、Exa は関連ページを見つけるのに十分な意図を読み取れますが、`"news"` だけでは不十分です。ソースタイプが重要な場合は、クエリ内で明示してください。
+
+```text theme={null}
+RAGシステムにおけるハイブリッド検索とセマンティック検索を比較した最近の技術記事
+```
+
+Exa のインデックスに含まれる内容と、それらのコンテンツタイプを検索する方法については、[What&#39;s in Exa&#39;s Index](/ja/docs/search/data/overview) を参照してください。
+
+<h2 id="search-types">
+  検索タイプを選択する
+</h2>
+
+`type` で検索モードを選択します。各モードは、速度、検索の深さ、合成のバランスがそれぞれ異なるように調整されています。デフォルトは `auto` で、ほとんどの検索に適しています。
+
+| タイプ              | 使用する場面                                     |
+| ---------------- | ------------------------------------------ |
+| `auto`           | 品質と速度のバランスに優れたデフォルト設定を使いたい場合               |
+| `fast`           | レイテンシを抑える必要があるリクエストの場合                     |
+| `instant`        | オートコンプリートや音声など、リアルタイム処理が求められる経路でリクエストを行う場合 |
+| `deep-lite`      | 軽量なリサーチと合成が必要なタスクの場合                       |
+| `deep`           | 複数ステップの検索と、より高度な合成が必要なタスクの場合               |
+| `deep-reasoning` | レイテンシよりも網羅性と推論の深さを重視する場合                   |
+
+Deep モードでは、1 回の検索パスではなく、リサーチプロセスを実行します。このプロセスの仕組みと追加の制御オプションの使い方については、[Deep Search](/ja/docs/search/deep-search) を参照してください。
+
+<Tip>
+  長時間にわたるリサーチ、リストの作成、マルチホップのエンリッチメントには、`deep-reasoning` ではなく [Exa Agent](/ja/docs/agent/quickstart) を使用してください。Agent は 1 回の実行あたりにより多くの計算リソースを使用し、
+  根拠に基づく構造化された結果を返します。
+</Tip>
+
+<div id="output-shapes">
+  ## 出力形式
+</div>
+
+すべての結果には、タイトル、URL、公開日などのメタデータが含まれます。`contents` を使用すると、ページのハイライト、全文、または要約を追加できます。
+
+<Tabs>
+  <Tab title="ハイライト">
+    ハイライトは、クエリに最も関連性の高い抜粋を返します。各ページの無関係な部分でコンテキストウィンドウを埋めることなく、モデルやエージェントに必要な根拠を提供できます。
+
+    ほとんどのタスクでは、この出力形式をおすすめします。
+
+    まずは `highlights: true` だけを指定してください。Exa がクエリに基づいて、各結果から適切な量の
+    コンテンツを選択します。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "How are inference providers reducing transformer latency?",
+          contents={"highlights": True},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "How are inference providers reducing transformer latency?",
+        { contents: { highlights: true } }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "How are inference providers reducing transformer latency?",
+          "contents": { "highlights": true }
+        }'
+      ```
+    </CodeGroup>
+
+    Dynamic Highlights の詳細と有効にすべきケースについては、[ハイライト](/ja/docs/search/highlights)を参照してください。
+  </Tab>
+
+  <Tab title="全文">
+    全文は、不要な要素を取り除いたページ本文を返します。より広いコンテキストや文書構造、あるいはクエリに特化した抜粋では
+    拾いきれない詳細がタスクに必要な場合に使用してください。
+
+    ページ全体はサイズが大きくなることがあります。結果の件数とページごとに返すテキスト量の両方を制限してください。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "Technical postmortems of large-scale inference outages",
+          num_results=5,
+          contents={"text": {"max_characters": 10000}},
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "Technical postmortems of large-scale inference outages",
+        {
+          numResults: 5,
+          contents: { text: { maxCharacters: 10000 } }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "Technical postmortems of large-scale inference outages",
+          "numResults": 5,
+          "contents": {
+            "text": { "maxCharacters": 10000 }
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+コンテンツビューはリクエストごとに 1 つ選択してください。ハイライトとテキストの両方をリクエストすると、同じページについて 2 つのビューが返され、両方に課金されます。3 つ目の選択肢として `summary` もありますが、結果ごとに言語モデルの呼び出しが発生します。
+
+<Warning>
+  `/search` と `/contents` は同じコンテンツオプションを受け付けますが、指定する場所が異なります。
+
+  * **`/search`** では、`highlights`、`text`、`summary` を `contents` オブジェクト内にネストします。
+    `"contents": { "highlights": true }`
+  * **`/contents`** には `contents` ラッパーがありません。リクエストボディ自体がコンテンツオプションとなるため、
+    同じフィールドを `urls` と同じトップレベルに配置します。`"urls": [...], "highlights": true`
+</Warning>
+
+<div id="output-schema">
+  ## 出力スキーマ
+</div>
+
+Exa に検索結果を要約・統合させたい場合は、`outputSchema` を追加します。すべての検索タイプで使用でき、レスポンスに `output` オブジェクトが追加されます。
+
+ランク付けされたページは、これまでどおり `results` に含まれます。生成された値は `output.content` で返され、フィールド単位のソースと信頼度は `output.grounding` に格納されます。
+
+<Tabs>
+  <Tab title="自由形式のテキスト">
+    文章を生成するには `type: "text"` を使用します。`description` を追加すると、形式や長さを指定できます。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "What changed in the latest EU battery policy?",
+          output_schema={
+              "type": "text",
+              "description": "Summarize the changes in three concise bullets",
+          },
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "What changed in the latest EU battery policy?",
+        {
+          outputSchema: {
+            type: "text",
+            description: "Summarize the changes in three concise bullets"
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "What changed in the latest EU battery policy?",
+          "outputSchema": {
+            "type": "text",
+            "description": "Summarize the changes in three concise bullets"
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="構造化 JSON">
+    定義したプロパティと必須項目に沿った JSON を出力するには `type: "object"` を使用します。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      result = exa.search(
+          "AI infrastructure companies that announced Series A or B funding in the past six months",
+          output_schema={
+              "type": "object",
+              "properties": {
+                  "companies": {
+                      "type": "array",
+                      "maxItems": 10,
+                      "items": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "round": {"type": "string"},
+                              "amount": {"type": "string"},
+                              "announcedDate": {
+                                  "type": "string",
+                                  "description": "The funding announcement date",
+                              },
+                              "leadInvestors": {
+                                  "type": "array",
+                                  "items": {"type": "string"},
+                              },
+                          },
+                          "required": ["name", "round", "amount", "announcedDate"],
+                      },
+                  }
+              },
+              "required": ["companies"],
+          },
+      )
+      ```
+
+      ```javascript JavaScript theme={null}
+      const result = await exa.search(
+        "AI infrastructure companies that announced Series A or B funding in the past six months",
+        {
+          outputSchema: {
+            type: "object",
+            properties: {
+              companies: {
+                type: "array",
+                maxItems: 10,
+                items: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string" },
+                    round: { type: "string" },
+                    amount: { type: "string" },
+                    announcedDate: {
+                      type: "string",
+                      description: "The funding announcement date"
+                    },
+                    leadInvestors: {
+                      type: "array",
+                      items: { type: "string" }
+                    }
+                  },
+                  required: ["name", "round", "amount", "announcedDate"]
+                }
+              }
+            },
+            required: ["companies"]
+          }
+        }
+      );
+      ```
+
+      ```bash cURL theme={null}
+      curl -s -X POST "https://api.exa.ai/search" \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $EXA_API_KEY" \
+        -d '{
+          "query": "AI infrastructure companies that announced Series A or B funding in the past six months",
+          "outputSchema": {
+            "type": "object",
+            "properties": {
+              "companies": {
+                "type": "array",
+                "maxItems": 10,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "name": { "type": "string" },
+                    "round": { "type": "string" },
+                    "amount": { "type": "string" },
+                    "announcedDate": {
+                      "type": "string",
+                      "description": "The funding announcement date"
+                    },
+                    "leadInvestors": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "required": ["name", "round", "amount", "announcedDate"]
+                }
+              }
+            },
+            "required": ["companies"]
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+参照するソースの優先度や重視すべき点などの指示には `systemPrompt` を、レスポンスの構造には `outputSchema` を使用します。Python では `system_prompt` と `output_schema` を使用します。
+
+<Note>
+  オブジェクトのスキーマは小さく保ってください。ネストは最大 2 階層、プロパティは最大 10 個までです。スキーマに
+  引用や信頼度のフィールドを追加する必要はありません。これらは Exa が `output.grounding` で自動的に返します。
+</Note>
+
+<div id="filter-results">
+  ## 結果をフィルタリングする
+</div>
+
+フィルターは厳格な制約です。条件に合わない結果が使いものにならない場合にのみフィルターを追加し、ソースに関する緩やかな希望はクエリのテキストに含めてください。フィルターの一覧は [API リファレンス](/ja/docs/reference/search)を参照してください。
+
+<div id="include-domains-or-paths">
+  ### ドメインまたはパスを指定して絞り込む
+</div>
+
+`includeDomains` を使うと、結果を信頼できるソースに限定できます。完全なドメインのほか、`anthropic.com/news` のようなパスプレフィックスや、`*.substack.com` のようなサブドメインのワイルドカードも指定できます。
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "new model releases",
+      include_domains=["openai.com", "anthropic.com/news"],
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("new model releases", {
+    includeDomains: ["openai.com", "anthropic.com/news"],
+    contents: { highlights: true }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "new model releases",
+      "includeDomains": ["openai.com", "anthropic.com/news"],
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+パスはフィルターで指定し、クエリ内で `site:` 演算子を使って重複して記述しないでください。
+
+<div id="exclude-domains-or-paths">
+  ### ドメインまたはパスを除外する
+</div>
+
+`excludeDomains` を使うと、特定のドメインまたはパスの結果を除外できます。`includeDomains` と同様に、パスプレフィックスとサブドメインのワイルドカードを指定できます。除外は、そのソースが含まれると結果が役に立たなくなる場合に限って使用してください。単なる優先度の調整には使用しないでください。
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "primary research on retrieval-augmented generation benchmarks",
+      exclude_domains=["medium.com", "dev.to"],
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "primary research on retrieval-augmented generation benchmarks",
+    {
+      excludeDomains: ["medium.com", "dev.to"],
+      contents: { highlights: true }
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "primary research on retrieval-augmented generation benchmarks",
+      "excludeDomains": ["medium.com", "dev.to"],
+      "contents": { "highlights": true }
+    }'
+  ```
+</CodeGroup>
+
+<div id="content-freshness">
+  ## コンテンツの鮮度
+</div>
+
+`contents.maxAgeHours` は、各結果から抽出するコンテンツにどの程度の鮮度を求めるかを制御します。公開日で結果を絞り込むものではありません。
+
+| 値    | 動作                                                   |
+| ---- | ---------------------------------------------------- |
+| 省略   | キャッシュ済みのコンテンツがあればそれを使用し、必要に応じてページを取得します              |
+| 正の整数 | キャッシュ済みのコンテンツが指定した時間以内のものであればそれを使用し、そうでなければページを取得します |
+| `0`  | 常に最新のコンテンツを取得します                                     |
+| `-1` | キャッシュ済みのコンテンツのみを使用します                                |
+
+ほとんどの検索では、このフィールドを省略してください。価格、在庫状況、頻繁に更新されるページなど、古いページコンテンツでは用をなさない場合に設定します。
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "current pricing for serverless GPU providers",
+      contents={
+          "highlights": True,
+          "max_age_hours": 24,
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search("current pricing for serverless GPU providers", {
+    contents: {
+      highlights: true,
+      maxAgeHours: 24
+    }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "current pricing for serverless GPU providers",
+      "contents": {
+        "highlights": true,
+        "maxAgeHours": 24
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="next-steps">
+  ## 次のステップ
+</div>
+
+<Columns cols={2}>
+  <Card title="ベストプラクティス" icon="sparkles" href="/ja/docs/search/best-practices" cta="ガイドを読む" arrow="true">
+    トークン予算、コンテンツの鮮度、構造化出力、システムプロンプトについて解説します。
+  </Card>
+
+  <Card title="API リファレンス" icon="square-terminal" href="/ja/docs/reference/search" cta="リファレンスを開く" arrow="true">
+    すべてのリクエストパラメータとレスポンスフィールドを、ライブプレイグラウンドで試しながら確認できます。
+  </Card>
+
+  <Card title="Contents" icon="file-text" href="/ja/docs/contents/quickstart" cta="ガイドを開く" arrow="true">
+    取得対象の URL が決まっていて、整形済みのテキスト、ハイライト、要約が必要な場合はこちら。
+  </Card>
+
+  <Card title="Exa Agent" icon="bot" href="/ja/docs/agent/quickstart" cta="ガイドを開く" arrow="true">
+    長時間にわたるリサーチ、リスト作成、エンリッチメントが必要な場合はこちら。
+  </Card>
+</Columns>

@@ -1,0 +1,177 @@
+---
+title: "Fiber.ai"
+description: "Fiber.ai の B2B データベースで企業、人物、LinkedIn プロフィールを検索します。"
+icon: "/docs/images/sidebar-icons/fiber.svg"
+---
+
+[Fiber.ai](https://fiber.ai) は、4,000 万社以上の企業、8 億 5,000 万人以上の人物、3,000 万件以上の求人について最新データを提供する B2B データプラットフォームです。企業、人物、求人のリアルタイムデータを検索できるほか、不完全なレコードを勤務先メールアドレス、個人用メールアドレス、電話番号で補完できます。
+
+[Exa Connect](/ja/docs/agent/connect/overview) を使って `fiber` を [Exa Agent](/ja/docs/agent/quickstart) の実行にアタッチすると、エージェントは Exa のウェブ検索に加えて Fiber.ai にもクエリを実行します。
+
+<div id="use-it-for">
+  ## 主な用途
+</div>
+
+* 勤務先メールアドレスや個人用メールアドレスから人物を逆引きしたり、
+  不完全な企業/人物のレコードを補完したりして、CRM のデータを整理する。
+* 転職、昇進、新しい職への就任、従業員数の変化、資金調達といった
+  LinkedIn のシグナルをリアルタイムで追跡する。
+* LinkedIn、X、Instagram、TikTok、Reddit、YouTube から関連する投稿を見つけ、
+  コメントやリアクションを取得したうえで、投稿者の
+  連絡先情報を補完する。
+* 4,000 万社以上の企業と 8 億 5,000 万人以上の人物を横断して検索し、見込み客の
+  勤務先メールアドレス、個人用メールアドレス、電話番号を補完する。
+
+<div id="provider-id">
+  ## プロバイダー ID
+</div>
+
+`dataSources` には次の値を指定します。
+
+```text theme={null}
+fiber
+```
+
+<div id="pricing">
+  ## 料金
+</div>
+
+Fiber.ai はクレジット制で課金され、単価は `$0.02 / credit` です。各呼び出しには、Fiber がその呼び出しについて報告したクレジット数が課金されます。
+
+| 操作                 | クレジット                     |
+| ------------------ | ------------------------- |
+| 検索                 | 2 + 返された結果 1 件につき 1       |
+| 企業検索               | 返された候補 1 件につき約 2          |
+| 人物検索 / メールアドレスの逆引き | 2                         |
+| 連絡先の開示             | 2 (勤務先メールアドレス) – 5 (電話番号) |
+
+一致するデータがなかった呼び出し (または Fiber が課金を返金した呼び出し) は無料です。料金はパラメーターの指定によって変わります。企業検索では `numResults` によって課金対象となる候補数が決まり、検索では結果の件数がコストの大半を占めます。
+
+<div id="example">
+  ## 例
+</div>
+
+ニューヨークを拠点とする従業員数50〜200名のシリーズAフィンテック企業について、B2B向けの見込み顧客リストを作成します。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="I'm building a B2B sales prospecting list using a B2B company database. Find Series A fintech companies in New York with 50-200 employees, and for each return the company's LinkedIn profile, domain, employee count, and funding stage.",
+      data_sources=[{"provider": "fiber"}],
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "domain", "employeeCount", "fundingStage"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "employeeCount": {"type": "number"},
+                          "fundingStage": {"type": "string"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "I'm building a B2B sales prospecting list using a B2B company database. Find Series A fintech companies in New York with 50-200 employees, and for each return the company's LinkedIn profile, domain, employee count, and funding stage.",
+    dataSources: [{ provider: "fiber" }],
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["name", "domain", "employeeCount", "fundingStage"],
+            properties: {
+              name: { type: "string" },
+              domain: { type: "string" },
+              employeeCount: { type: "number" },
+              fundingStage: { type: "string" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "I'\''m building a B2B sales prospecting list using a B2B company database. Find Series A fintech companies in New York with 50-200 employees, and for each return the company'\''s LinkedIn profile, domain, employee count, and funding stage.",
+      "dataSources": [{ "provider": "fiber" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["companies"],
+        "properties": {
+          "companies": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["name", "domain", "employeeCount", "fundingStage"],
+              "properties": {
+                "name": { "type": "string" },
+                "domain": { "type": "string" },
+                "employeeCount": { "type": "number" },
+                "fundingStage": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## 組み合わせて使えるサービス
+</div>
+
+* [Similarweb](/ja/docs/agent/connect/similarweb): 見込み客のウェブ上での存在感や競合状況を把握します。
+* [Baselayer](/ja/docs/agent/connect/baselayer): 候補として絞り込んだ米国企業の役員情報や登記情報を検証します。
+* [Particle](/ja/docs/agent/connect/particle): 企業や経営幹部についてポッドキャストでどのように語られているかを調べます。
+
+<div id="next-steps">
+  ## 次のステップ
+</div>
+
+<Columns cols={2}>
+  <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">
+    Exa Connect のクイックスタートでは、`dataSources`、料金、パートナーの全カタログについて説明しています。
+  </Card>
+
+  <Card title="プロバイダーを組み合わせる" icon="blend" href="/ja/docs/agent/connect/combining-providers" cta="ガイドを読む" arrow="true">
+    1 回の実行に最大 5 つのパートナーをアタッチし、各パートナーが確実に呼び出されるようにクエリを組み立てます。
+  </Card>
+
+  <Card title="Exa Agent について学ぶ" icon="book-open" href="/ja/docs/agent/quickstart" cta="ガイドを開く" arrow="true">
+    実行の作成、進捗のストリーミング、出力スキーマの設計、effort とコストの制御方法を解説します。
+  </Card>
+
+  <Card title="API キーを取得する" icon="key" href="https://dashboard.exa.ai/api-keys" cta="キーを作成する" arrow="true">
+    ダッシュボードでキーを作成すれば、このページの例をそのまま実行できます。新規アカウントには無料クレジットが付与されます。
+  </Card>
+</Columns>

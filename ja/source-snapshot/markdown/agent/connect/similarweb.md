@@ -1,0 +1,191 @@
+> ## ドキュメントインデックス
+>
+> ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
+> 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
+
+<div id="similarweb">
+  # Similarweb
+</div>
+
+> ウェブサイトのトラフィック推定値やグローバルランキングを取得し、競合を発見できます。
+
+[Similarweb](https://www.similarweb.com) は、デジタル市場インテリジェンスを提供する
+代表的なサービスです。数百万のウェブサイトやアプリのトラフィックとエンゲージメントをモデル化しており、
+推定訪問数、トラフィックソース、オーディエンス属性に加え、任意のドメインの
+競合サイト群までカバーしています。
+
+[Exa Connect](/ja/docs/agent/connect/overview) を介して [Exa Agent](/ja/docs/agent/quickstart) の実行に
+`similarweb` をアタッチすると、エージェントは Exa のウェブ検索とあわせて
+Similarweb にもクエリを実行します。
+
+<div id="use-it-for">
+  ## 主な用途
+</div>
+
+* 企業のウェブトラフィックとエンゲージメントを同業他社と比較する。
+* ドメインの競合サイトや、オーディエンスが重複するサイトを洗い出す。
+* 市場規模を推定し、デジタルフットプリントに基づいて企業をスクリーニングする。
+* 実際の行動データで、企業やカテゴリのリサーチを補完する。
+
+<div id="provider-id">
+  ## プロバイダー ID
+</div>
+
+`dataSources` には次の値を指定します。
+
+```text theme={null}
+similarweb
+```
+
+<div id="pricing">
+  ## 料金
+</div>
+
+Similarweb はデータクレジット単位で課金され、料金は `$0.30 / credit` です。各呼び出しには、
+Similarweb が報告したクレジット数が課金されます。クレジットは返されるデータ量に応じて増え、
+おおよそデータポイント (指標 × 行 × 月) 1 つにつき 1 クレジットです。そのため、呼び出しの料金は
+パラメーターによって決まります。
+
+| ツール        | クレジット                                         |
+| ---------- | --------------------------------------------- |
+| トラフィックとランク | リクエストした月ごとに最大 7 (1～2 か月)                      |
+| 類似サイト      | 返されたサイトごとに 3 (1～5 サイト)                        |
+| トラフィックソース  | 10                                            |
+| 上位の参照元     | 返された参照元ごとに 3 (1～5)                            |
+| 上位の国       | 返された国ごとに 3 (1～5)                              |
+| 上位のページ     | 返されたページごとに 2 (1～7)                            |
+| 上位のキーワード   | 1～10 (キーワードデータポイント 100 件あたり約 1、50 キーワードで ~7)  |
+| キーワード概要    | 1～2                                           |
+| オーディエンス属性  | 8                                             |
+| オーディエンスの重複 | ドメインの組み合わせごとに 2 (2～3 ドメインで 6～14)              |
+| 使用技術       | 10                                            |
+| カテゴリ別上位サイト | 返されたサイトごとに 1 (1～10)                           |
+
+データが返されない呼び出し (不明なドメインやトラフィックの少ないドメイン、検索ボリュームのない
+キーワードなど) は無料です。`numResults` と `months` によって課金対象のデータポイント数が決まるため、
+タスクに必要な最小限の値に設定してください。
+
+<div id="example">
+  ## 例
+</div>
+
+急成長中の B2B SaaS 企業を 10 社探し、各社の推定ウェブトラフィックを取得します。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+      data_sources=[{"provider": "similarweb"}],
+      output_schema={
+          "type": "object",
+          "required": ["companies"],
+          "properties": {
+              "companies": {
+                  "type": "array",
+                  "maxItems": 10,
+                  "items": {
+                      "type": "object",
+                      "required": ["name", "domain", "monthlyVisits"],
+                      "properties": {
+                          "name": {"type": "string"},
+                          "domain": {"type": "string"},
+                          "monthlyVisits": {"type": "number", "description": "from Similarweb"},
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+    dataSources: [{ provider: "similarweb" }],
+    outputSchema: {
+      type: "object",
+      required: ["companies"],
+      properties: {
+        companies: {
+          type: "array",
+          maxItems: 10,
+          items: {
+            type: "object",
+            required: ["name", "domain", "monthlyVisits"],
+            properties: {
+              name: { type: "string" },
+              domain: { type: "string" },
+              monthlyVisits: { type: "number", description: "from Similarweb" },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find 10 fast-growing B2B SaaS companies and their estimated web traffic.",
+      "dataSources": [{ "provider": "similarweb" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["companies"],
+        "properties": {
+          "companies": {
+            "type": "array",
+            "maxItems": 10,
+            "items": {
+              "type": "object",
+              "required": ["name", "domain", "monthlyVisits"],
+              "properties": {
+                "name": { "type": "string" },
+                "domain": { "type": "string" },
+                "monthlyVisits": { "type": "number", "description": "from Similarweb" }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## 相性の良い連携サービス
+</div>
+
+* [Fiber.ai](/ja/docs/agent/connect/fiber): 見つかった競合企業を、情報を補完した企業レコードに変換します。
+* [Affiliate.com](/ja/docs/agent/connect/affiliatecom): 販売事業者の商品をおすすめする前に、その事業者のリーチを把握します。
+
+<div id="next-steps">
+  ## 次のステップ
+</div>
+
+<Columns cols={2}>
+  <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">
+    Exa Connect のクイックスタートでは、`dataSources`、料金、パートナーの全カタログを紹介しています。
+  </Card>
+
+  <Card title="プロバイダーを組み合わせる" icon="blend" href="/ja/docs/agent/connect/combining-providers" cta="ガイドを読む" arrow="true">
+    1 つの実行に最大 5 つのパートナーをアタッチし、各パートナーが確実に呼び出されるようにクエリを組み立てます。
+  </Card>
+
+  <Card title="Exa Agent について学ぶ" icon="book-open" href="/ja/docs/agent/quickstart" cta="ガイドを開く" arrow="true">
+    実行の作成、進捗のストリーミング、出力スキーマの設計、effort とコストの制御について解説します。
+  </Card>
+
+  <Card title="API キーを取得する" icon="key" href="https://dashboard.exa.ai/api-keys" cta="キーを作成する" arrow="true">
+    ダッシュボードでキーを作成すれば、このページの例をそのまま実行できます。新規アカウントには無料クレジットが付与されます。
+  </Card>
+</Columns>

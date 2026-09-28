@@ -1,0 +1,60 @@
+---
+title: "Управление командой"
+description: "Подробности о структуре Team и управлении аккаунтом на платформе Exa"
+---
+
+***
+
+<Card title="Перейти в API Dashboard" icon="layout-dashboard" horizontal href="https://dashboard.exa.ai">
+  Создавайте команды, приглашайте участников и управляйте биллингом.
+</Card>
+
+Exa управляет использованием аккаунта и доступом к платным возможностям через «Teams»:
+
+Сразу после создания аккаунта вы попадаете в Team «Personal». В выпадающем списке в левом верхнем углу дашборда Exa (показан ниже) можно создать новую Team или переключиться на другие ваши Teams. Количество Teams не ограничено.
+
+<div id="seeing-your-teams">
+  ## Просмотр ваших команд
+</div>
+
+<img src="/docs/images/admin/team-management/dashboard_team_switcher.png" alt="Выпадающий список команд (вверху слева) в дашборде Exa в разделе Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
+
+Выпадающий список команд (вверху слева) в дашборде Exa в разделе Team settings
+
+<div id="topping-up-a-teams-balance">
+  ## Пополнение баланса Team
+</div>
+
+Выбрав нужную Team, вы можете пополнить баланс кредитов на странице биллинга.
+
+<img src="/docs/images/admin/team-management/dashboard_topup.png" alt="Пополнение баланса кредитов на странице биллинга" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
+
+<div id="inviting-people-to-your-team">
+  ## Приглашение людей в команду
+</div>
+
+Администраторы команды могут добавлять участников с помощью функции Invite в разделе Team settings.
+
+<img src="/docs/images/admin/team-management/dashboard_invite.png" alt="Приглашение участника в разделе Team settings" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite.png" />
+
+После отправки приглашения участник появится в меню управления командой со статусом «Pending».
+
+<img src="/docs/images/admin/team-management/dashboard_invite_pending.png" alt="Участник команды со статусом приглашения Pending" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_pending.png" />
+
+Он получит письмо с приглашением присоединиться к команде.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_email.png" alt="Письмо с приглашением в команду" width="1094" height="1082" data-path="images/admin/team-management/dashboard_invite_email.png" />
+
+После принятия приглашения у обоих участников будет статус «Accepted». Все участники команды используют общие лимиты и возможности тарифного плана своей команды.
+
+<img src="/docs/images/admin/team-management/dashboard_invite_accepted.png" alt="Список участников команды со статусом Accepted" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
+
+<div id="team-management-api">
+  ## Team Management API
+</div>
+
+Создавайте API key и управляйте ими программно с помощью [Team Management API](/ru/docs/reference/team-management/create-api-key).
+
+<Info>
+  Team Management API включается отдельно для каждой team. Аутентификация выполняется по API key сервисного аккаунта, который создаётся на вкладке **Service keys** на [странице API keys](https://dashboard.exa.ai/api-keys) после включения этой возможности для вашей team. Чтобы запросить доступ, напишите на [support@exa.ai](mailto:support@exa.ai).
+</Info>

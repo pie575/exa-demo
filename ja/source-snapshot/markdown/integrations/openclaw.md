@@ -1,0 +1,158 @@
+> ## ドキュメントインデックス
+>
+> ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
+> 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
+
+<div id="openclaw">
+  # OpenClaw
+</div>
+
+> Exa を使って、OpenClaw でリアルタイムのウェブ検索とページコンテンツの取得を利用できるようにします。
+
+[OpenClaw](https://openclaw.ai/) は、Exa をネイティブの `web_search` プロバイダーとしてサポートしています。Exa を選択すると、すべての OpenClaw エージェントが組み込みのウェブツールから Exa の検索モード、日付フィルター、コンテンツ抽出を利用できます。
+
+<div id="set-up-exa">
+  ## Exa をセットアップする
+</div>
+
+<Steps>
+  <Step title="Exa プラグインをインストールする">
+    ```bash theme={null}
+    openclaw plugins install @openclaw/exa-plugin
+    openclaw gateway restart
+    ```
+  </Step>
+
+  <Step title="Exa API キーを取得する">
+    <Card title="Exa API キーを取得" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      ダッシュボードでキーを作成します。新規アカウントには無料クレジットが付与されます。
+    </Card>
+  </Step>
+
+  <Step title="キーを保存する">
+    ゲートウェイにインストールした場合は、`~/.openclaw/.env` にキーを追加します。
+
+    ```bash ~/.openclaw/.env theme={null}
+    EXA_API_KEY=your-exa-api-key
+    ```
+
+    ゲートウェイの環境を変更した後は、ゲートウェイを再起動してください。
+  </Step>
+
+  <Step title="ウェブ検索に Exa を選択する">
+    次のコマンドを実行します。
+
+    ```bash theme={null}
+    openclaw configure --section web
+    ```
+
+    ウェブ検索プロバイダーとして **Exa** を選択します。OpenClaw は選択したプロバイダーを設定に保存し、`EXA_API_KEY` から認証情報を読み取ります。
+  </Step>
+</Steps>
+
+<div id="configure-manually">
+  ## 手動で設定する
+</div>
+
+OpenClaw の JSON5 設定で、Exa を直接選択できます：
+
+```json5 theme={null}
+{
+  tools: {
+    web: {
+      search: {
+        provider: "exa",
+      },
+    },
+  },
+}
+```
+
+キーをゲートウェイの環境変数ではなく設定に保存するには、次のようにします。
+
+```json5 theme={null}
+{
+  plugins: {
+    entries: {
+      exa: {
+        config: {
+          webSearch: {
+            apiKey: "exa-...",
+          },
+        },
+      },
+    },
+  },
+}
+```
+
+<Note>
+  API キーを設定ファイルに直接記述してコミットするのではなく、`EXA_API_KEY` または OpenClaw の SecretRef を使用してください。
+</Note>
+
+<div id="what-agents-can-request">
+  ## エージェントがリクエストできる内容
+</div>
+
+OpenClaw は `web_search` を通じて Exa を利用できるようにしています。
+
+| パラメーター                       | 用途                                                                           |
+| ---------------------------- | ---------------------------------------------------------------------------- |
+| `query`                      | ウェブ検索のクエリ。                                                                   |
+| `count`                      | 結果の件数。最大 100 件ですが、選択した検索タイプの上限も適用されます。                                       |
+| `type`                       | Exa の検索モード。`auto`、`neural`、`fast`、`instant`、`deep`、`deep-reasoning` などがあります。 |
+| `freshness`                  | 結果を直近の 1 日、1 週間、1 か月、または 1 年に限定します。                                          |
+| `date_after` / `date_before` | `YYYY-MM-DD` 形式で期間の開始日や終了日を指定し、結果を絞り込みます。                                    |
+| `contents`                   | 各結果に全文、ハイライト、または要約を含めて返します。                                                  |
+
+`contents` を省略した場合、OpenClaw はデフォルトでハイライトをリクエストします。ページ全体や要約が必要な場合、エージェントは別の形式でコンテンツを要求できます。
+
+```javascript theme={null}
+await web_search({
+  query: "transformer architecture explained",
+  type: "neural",
+  contents: {
+    text: { maxCharacters: 5000 },
+    highlights: { numSentences: 3 },
+    summary: true,
+  },
+});
+```
+
+OpenClaw は、デフォルトでウェブ検索の結果を 15 分間キャッシュします。すべてのリクエストで常に最新の結果が必要な場合は、`tools.web.search.cacheTtlMinutes` の値を変更するか、`0` に設定してください。
+
+<div id="troubleshooting">
+  ## トラブルシューティング
+</div>
+
+<AccordionGroup>
+  <Accordion title="OpenClaw に Exa がプロバイダーとして表示されない">
+    `@openclaw/exa-plugin` をインストールし、ゲートウェイを再起動してから、もう一度 `openclaw configure --section web` を実行してください。
+  </Accordion>
+
+  <Accordion title="OpenClaw で Exa キーが見つからないというエラーが出る">
+    `EXA_API_KEY` が対話型シェルだけでなく、ゲートウェイのプロセスからも参照できることを確認してください。ゲートウェイとしてインストールしている場合は、`~/.openclaw/.env` に設定してからゲートウェイを再起動してください。
+  </Accordion>
+
+  <Accordion title="検索結果が古い">
+    OpenClaw は Exa とは別に独自に結果をキャッシュします。`tools.web.search.cacheTtlMinutes` の値を下げるか `0` に設定し、ページコンテンツを取得する際は Exa のコンテンツ鮮度オプションを使用してください。
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## リソース
+</div>
+
+<Columns cols={3}>
+  <Card title="OpenClaw Exa provider" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="ガイドを読む" arrow="true">
+    最新のプラグイン設定とツールのパラメーターを確認できます。
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを読む" arrow="true">
+    Exa の検索モードとレスポンス形式を比較できます。
+  </Card>
+
+  <Card title="コンテンツの鮮度" icon="clock" href="/ja/docs/contents/quickstart#content-freshness" cta="ガイドを読む" arrow="true">
+    インデックス済みのページコンテンツを使うか、ライブ取得するかを制御できます。
+  </Card>
+</Columns>

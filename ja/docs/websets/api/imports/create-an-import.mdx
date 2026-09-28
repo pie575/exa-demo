@@ -1,0 +1,17 @@
+---
+title: "インポートを作成"
+openapi: "/ja/docs/exa-spec.yaml POST /v0/imports"
+timestamp: false
+description: "データを Websets にアップロードするための新しいインポートを作成します。インポートは次の用途に使用できます:
+
+
+  - **Enrich**: AI を活用したエンリッチメントエンジンで、データに追加情報を補完します
+
+  - **Search**: Websets のエージェント型検索で、自然言語フィルターを使ってデータをクエリします
+
+  - **Exclude**: 重複した結果や既知の結果が検索に表示されないようにします
+
+
+  インポートの作成後は、`uploadUrl` が返されます。`uploadValidUntil` (デフォルトは 1 時間) までに、この URL
+  にデータをアップロードしてください。"
+---

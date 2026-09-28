@@ -1,0 +1,149 @@
+---
+title: "OpenHuman"
+description: "Подключите к агенту OpenHuman live-поиск в вебе через Exa — в управляемом режиме или со своим Exa API key."
+icon: "/docs/images/sidebar-icons/openhuman.svg"
+---
+
+[OpenHuman](https://tinyhumans.gitbook.io/openhuman) от TinyHumans — это десктопный ИИ-ассистент со встроенным инструментом веб-поиска, который agent вызывает самостоятельно. Поисковым провайдером для этого инструмента выступает Exa.
+
+| Подход                | Настройка                 | Где выполняется                                                                       |
+| --------------------- | ------------------------- | ------------------------------------------------------------------------------------- |
+| **OpenHuman Managed** | Не требуется              | Бэкенд OpenHuman на базе Exa. Без API key.                                            |
+| **Exa провайдер**      | Вставьте свой Exa API key | На вашей машине, напрямую к `https://api.exa.ai` под вашим собственным аккаунтом Exa. |
+
+<div id="openhuman-managed">
+  ## OpenHuman Managed
+</div>
+
+Управляемый search используется по умолчанию. Выберите **Simple** при первичной настройке, и agent сразу сможет искать в интернете.
+
+<Frame caption="Выберите Simple при первичной настройке, чтобы использовать управляемый search на базе Exa">
+  <img src="/docs/images/integrations/openhuman/onboarding-runtime-choice.png" alt="Первичная настройка OpenHuman с вопросом, как запускать OpenHuman, и выбранным вариантом Simple" style={{width: "700px", height: "auto", margin: "0 auto"}} width="1180" height="700" data-path="images/integrations/openhuman/onboarding-runtime-choice.png" />
+</Frame>
+
+<Tip>
+  **Управляемый вариант — самый быстрый способ получить результаты Exa.** Не нужно создавать, хранить и ротировать ключ, на вашей машине не хранятся учётные данные, а search оплачивается в рамках вашей подписки OpenHuman.
+</Tip>
+
+<div id="exa-provider">
+  ## Exa провайдер
+</div>
+
+Настройте Exa напрямую, чтобы выполнять search в вашем собственном аккаунте Exa и предоставить agent инструменты Exa для search и получения содержимого страниц.
+
+<div id="get-your-exa-api-key">
+  ### Получите Exa API key
+</div>
+
+<Card title="Получите Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>
+
+<div id="add-exa-in-openhuman">
+  ### Добавление Exa в OpenHuman
+</div>
+
+1. Откройте **Connections**, затем выберите **Search engine** в разделе **API keys**.
+
+<Frame caption="Connections → API keys → Search engine">
+  <img src="/docs/images/integrations/openhuman/connections-search.png" alt="Страница Connections в OpenHuman с выбранным пунктом Search engine в разделе API keys, где показан список поисковых систем с активной OpenHuman Managed" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/connections-search.png" />
+</Frame>
+
+2. Выберите **Exa**.
+
+<Frame caption="Exa выбрана, требуется ключ">
+  <img src="/docs/images/integrations/openhuman/select-exa.png" alt="Выбранная поисковая система Exa на панели Search engine в OpenHuman с бейджем Needs API key" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/select-exa.png" />
+</Frame>
+
+3. Вставьте свой ключ в поле **Exa API key** и нажмите **Save**.
+
+<Frame caption="Сохранение Exa API key">
+  <img src="/docs/images/integrations/openhuman/enter-api-key.png" alt="Поле Exa API key в OpenHuman с введённым ключом и видимой кнопкой Save" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/enter-api-key.png" />
+</Frame>
+
+<Frame caption="Exa настроена как активная поисковая система">
+  <img src="/docs/images/integrations/openhuman/configured.png" alt="Панель Search engine в OpenHuman с выбранной Exa и отметкой Configured" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
+</Frame>
+
+<div id="configuration">
+  ### Настройка
+</div>
+
+Панель записывает данные в файл `config.toml` OpenHuman. Те же значения можно задать напрямую в файле или через переменные окружения:
+
+<Tabs>
+  <Tab title="config.toml">
+    ```toml config.toml theme={null}
+    [search]
+    engine = "exa"        # обязательно
+    max_results = 5       # необязательно, 1-20
+    timeout_secs = 15     # необязательно
+
+    [search.exa]
+    api_key = "your-exa-api-key"   # обязательно
+    ```
+  </Tab>
+
+  <Tab title="Переменные окружения">
+    ```bash theme={null}
+    OPENHUMAN_SEARCH_ENGINE=exa
+    EXA_API_KEY=your-exa-api-key
+    ```
+
+    <Note>
+      И `EXA_API_KEY`, и `OPENHUMAN_EXA_API_KEY` переопределяют `search.exa.api_key`. Если заданы обе переменные, приоритет у `OPENHUMAN_EXA_API_KEY`.
+    </Note>
+  </Tab>
+</Tabs>
+
+<div id="tools-the-agent-gets">
+  ### Инструменты, доступные agent
+</div>
+
+| Инструмент         | Что возвращает                                                                        |
+| ------------------ | ------------------------------------------------------------------------------------- |
+| `web_search_tool`  | Веб-поиск на базе Exa.                                                                |
+| `exa_search`       | Ранжированные страницы с заголовками, URL, датами публикации и, опционально, текстом. |
+| `exa_get_contents` | Полное содержимое указанных URL с опциональными краткими сводками или highlights.     |
+
+Agent задаёт [параметры поиска](/ru/docs/search/quickstart) Exa при каждом вызове, поэтому для управления search mode, доменами, датами и категориями достаточно обычных инструкций.
+
+<div id="troubleshooting">
+  ## Устранение неполадок
+</div>
+
+<AccordionGroup>
+  <Accordion title="Exa search недоступен: API key не настроен">
+    OpenHuman не нашёл ключ ни в панели **Search engine**, ни в переменных `EXA_API_KEY` и `OPENHUMAN_EXA_API_KEY`, ни в `search.exa.api_key`. Задайте его в одном из этих мест и перезапустите OpenHuman, если вы редактировали `config.toml` во время его работы.
+  </Accordion>
+
+  <Accordion title="Exa отклонил настроенный API key (HTTP 401)">
+    Ключ недействителен или отозван. Проверьте его в [Exa дашборде](https://dashboard.exa.ai/api-keys), затем нажмите **Clear**, чтобы удалить сохранённый ключ, и сохраните правильный. Следите за пробелами, попавшими при вставке.
+  </Accordion>
+
+  <Accordion title="Exa вернул статус, отличный от 2xx">
+    `429` означает лимит запросов или исчерпанную квоту: проверьте использование в [дашборде](https://dashboard.exa.ai). При `5xx` повторите запрос, а затем см. [error codes](/ru/docs/admin/error-codes).
+  </Accordion>
+
+  <Accordion title="OpenHuman Managed отсутствует в списке движков">
+    В локальных сессиях управляемый search недоступен. Настройте Exa провайдер со своим собственным ключом.
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+<Columns cols={3}>
+  <Card title="Документация OpenHuman по веб-поиску" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="Открыть руководство" arrow="true">
+    Ознакомьтесь с официальным справочником OpenHuman по её поисковым системам.
+  </Card>
+
+  <Card title="Exa search API" icon="search" href="/ru/docs/search/quickstart" cta="Читать руководство" arrow="true">
+    Разберитесь в search mode, фильтрах и параметрах содержимого, на которых построены инструменты Exa.
+  </Card>
+
+  <Card title="Лучшие практики поиска" icon="sparkles" href="/ru/docs/search/best-practices" cta="Читать руководство" arrow="true">
+    Добивайтесь более качественных результатов по каждому запросу.
+  </Card>
+</Columns>

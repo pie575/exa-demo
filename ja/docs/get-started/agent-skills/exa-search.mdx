@@ -1,0 +1,87 @@
+---
+title: "Exa Search スキル"
+sidebarTitle: "Exa Search"
+description: "Exa Search で関連性の高いウェブページを検索し、統合されたコンテンツを 2 秒以内に取得できます。"
+keywords: ["exa search", "agent skills", "curl", "http"]
+searchable: false
+---
+
+このスキルを使うと、cURL または raw HTTP でベストプラクティスに沿って Exa Search を呼び出す方法をエージェントに習得させることができます。
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>
+
+<Note>
+  エージェントの環境で、キーを `EXA_API_KEY` として設定してください。
+</Note>
+
+<div id="setup">
+  ## セットアップ
+</div>
+
+**オプション A: このスキルを直接インストールする：**
+
+```bash theme={null}
+npx skills add exa-labs/agent-skills --skill "exa-search"
+```
+
+**オプション B: 次のプロンプトをコーディングエージェントに貼り付けます。**
+
+次のプロンプトを実行すると、スキルがインストールされ、API キーが表示されない形で検証されます。
+
+```text Copy this setup prompt into your agent theme={null}
+このマシンに Exa の exa-search エージェントスキルをセットアップしてください。
+
+目標:
+- exa-search スキルをインストールし、私のコーディングエージェントが cURL または raw HTTP で Exa Search を直接呼び出せるようにする。
+- キーをこのチャットに露出、出力、貼り付けすることは一切せずに、Exa API キーを使える状態にする。
+
+対象エージェント:
+- Claude Code、Codex、Cursor、または Agent Skills 対応の任意のエージェント
+- グローバルのインストール先ディレクトリ: ~/.claude/skills (Claude Code)、~/.codex/skills (Codex)、~/.agents/skills (Cursor / その他)
+- プロジェクトローカルのインストール先ディレクトリ: .claude/skills (Claude Code)、.agents/skills (Codex / Cursor / その他)
+
+スキルの取得元:
+- SKILL.md URL: https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md
+
+手順:
+1. キーを設定する前に、「まず」スキルをインストールしてください。リポジトリ内で作業している場合はプロジェクトローカルへのインストールを優先し、それ以外の場合は上記の該当するグローバルディレクトリを使用してください。選択したスキルディレクトリを作成し、スキルをダウンロードします:
+   mkdir -p <skills-dir>/exa-search && curl -fsSL "https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" -o <skills-dir>/exa-search/SKILL.md
+   続いて、<skills-dir>/exa-search/SKILL.md が存在することを確認してください。
+2. Exa API キーが「あなた自身のコマンド実行環境から」すでに利用できるかどうかを確認してください。私に echo させるのではなく、スキルの実行に使うのと同じツール/シェルで確認します。スキルはまず EXA_API_KEY を、次にファイル ~/.config/exa/key を参照してキーを取得するため、値を一切出力せずに両方を確認してください:
+   printf '%s\n' "${EXA_API_KEY:+env-set}"; [ -s ~/.config/exa/key ] && printf 'file-set\n'
+   あなたのシェルはおそらく非対話型で、~/.zshrc や ~/.bashrc などの対話型プロファイルを自動では読み込み「ません」。そのため、私がそこで設定したキーは、私の環境では存在していても、あなたの環境では空に見えることがあります。どちらも表示されない場合でも、あなたのシェルが読み込まない対話型プロファイルにキーが設定されている可能性があります。`grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` を使い、値を出力「せずに」該当ファイルを特定してください (ファイル名のみが表示されます。`export EXA_API_KEY=...` の行からシークレットがチャットに漏洩するため、プロファイルに対して単純な `grep`/`cat`/`echo` は「絶対に」実行しないでください)。次に、コマンド内でそのファイルを `source` し、上記の存在確認を再実行します。キーが表示された場合は、以降キーを必要とするすべてのコマンドの先頭に同じ `source ...;` を付けてください。
+3. どこからもキーを取得できない場合に限り、キーを設定してください。その際、シェルプロファイルを手動で編集したり、キーをこのチャットに貼り付けたりしてはいけません。https://dashboard.exa.ai/api-keys でキーを作成/コピーし、私自身のターミナルで EXA_API_KEY を export するか、モード 600 で ~/.config/exa/key に書き込むよう私に案内してください。キーをチャットに貼り付けるよう求めることは絶対にしないでください。その後、私が完了を伝えるまで待ってから続行してください。
+4. あなた自身のシェルからキーのスモークテストを行ってください。環境変数またはファイルからキーを取得し、ステータスコードのみを出力します:
+   KEY="${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}"
+   curl -s -o /dev/null -w "%{http_code}\n" -X POST https://api.exa.ai/search \
+     -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
+     -d '{"query":"exa.ai","numResults":1}'
+   エンドポイント、ヘッダー、ボディは記載どおりに使用してください (スキーマを推測しないでください)。401/429 ではなく 200 が返れば成功です。手順 2 で環境変数のキーを参照するために `source ...;` のプレフィックスが必要だった場合は、ここでも先頭に付けてください。
+5. エージェントがスキルを認識できるよう、エージェントを再起動または再スキャンする方法を私に伝えてください。
+
+全体を通じた厳守事項: キーはシークレットです。確認は存在/長さのチェック (`${EXA_API_KEY:+set}`、`[ -s ~/.config/exa/key ]`) または HTTP ステータスコードでのみ行ってください。キーを含む可能性のあるファイルや変数を出力したり、`echo`、`cat`、出力を伴う `grep` で表示したりすることは絶対にせず、正規表現でキーファイルを「マスク」しようともしないでください。万一キーが露出した場合は、https://dashboard.exa.ai/api-keys でローテーションするよう私に伝えてください。
+```
+
+<div id="view-source">
+  ## ソースを表示
+</div>
+
+<Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="ソースを表示" arrow="true">
+  インストール前に exa-search スキルの定義を確認してください。
+</Card>
+
+<div id="related">
+  ## 関連情報
+</div>
+
+<Columns cols={2}>
+  <Card title="すべてのエージェントスキル" icon="layers" href="/ja/docs/get-started/agent-skills/overview" cta="スキルを見る" arrow="true">
+    Exa のすべてのスキルを確認し、まとめてインストールできます。
+  </Card>
+
+  <Card title="スキルのリポジトリ" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="ソースを表示" arrow="true">
+    すべてのスキルのソースコードです。未加工の `SKILL.md` ファイルも含まれています。
+  </Card>
+</Columns>

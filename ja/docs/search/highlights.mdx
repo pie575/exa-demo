@@ -1,0 +1,149 @@
+---
+title: "ハイライト"
+description: "コンテキストサイズとレイテンシを制御しながら、Exa Search の結果からクエリに関連する抜粋を返します。"
+keywords: ["search highlights", "dynamic highlights", "rag", "token efficiency", "search context"]
+---
+
+ハイライトは、各結果からクエリに関連するパッセージを抽出して返します。全文取得によるトークンコストをかけずに、ページから根拠となる情報を得たい場合に使用してください。
+
+各結果で選択されたパッセージは、`results[].highlights` に格納されます。
+
+<div id="why-highlights-instead-of-full-text">
+  ## 全文ではなくハイライトを使う理由
+</div>
+
+ハイライトは、Exa が自社開発した抽出モデルによって生成されます。このモデルはリクエストのたびに各結果をクエリと照らし合わせて読み取り、クエリへの答えとなるパッセージだけを返します。ページ全文のごく一部のトークン数で、後続の回答品質は同等以上を維持できます。
+
+| 評価            | 結果                                                                                 |
+| ------------- | ---------------------------------------------------------------------------------- |
+| 精度 (SimpleQA) | 500 文字のハイライトで、ページテキストの先頭 8,000 文字と同等の精度を、16 分の 1 のトークン数で達成します                      |
+| 大きな文字数予算での品質  | 4,000 文字のハイライトが、32,000 文字の全文を上回るスコアを記録します                                          |
+| 長い技術文書        | 500 文字の予算では、API リファレンス、SDK ドキュメント、仕様書、論文において、ハイライトが 60% の精度に達するのに対し、全文は 6% にとどまります |
+| 検索のトークン使用量    | ハイライトにより、検索のトークン数が平均で 5 分の 1 に削減されます                                               |
+
+この削減効果が特に大きいのはエージェントループです。エージェントループでは、検索結果がラウンドごとに推論トレースとコンテキストを奪い合うためです。
+
+<Tip>
+  手法と結果の詳細については、[Exa Highlights: Quality, Token-Efficient Search](https://exa.ai/blog/highlights-for-agents)
+  をご覧ください。
+</Tip>
+
+<div id="add-highlights-to-search">
+  ## Search にハイライトを追加する
+</div>
+
+推奨されるデフォルト設定として、`contents` 内で `highlights: true` を指定してください。Exa がクエリとの関連度に応じて各結果から返すテキスト量を自動で決めるため、文字数の上限を調整する必要はありません。`maxCharacters` は、アプリケーションでページごとに固定の上限が必要な場合にのみ設定してください。
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search(
+      "How are inference providers reducing transformer latency?",
+      contents={"highlights": True},
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.search(
+    "How are inference providers reducing transformer latency?",
+    { contents: { highlights: true } }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "How are inference providers reducing transformer latency?",
+      "contents": {
+        "highlights": true
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="dynamic-highlights">
+  ## Dynamic Highlights
+</div>
+
+Dynamic Highlights は、クエリに対して最も有用な情報に応じて、各結果から選択するテキストの量を調整します。有力なソースからは多く、重複した内容や無関係なソースからは少なく抽出するため、返されるトークンの総数を削減できます。
+
+複数の結果を同じエージェントやコンテキストウィンドウに渡す場合に使用してください。ページごとに個別の抜粋が必要な場合や、ページごとの上限を予測可能にしたい場合は、通常の `highlights: true` を使用してください。
+
+Exa の評価では、Dynamic Highlights はページ全文と比べてトークン数を平均 95% 削減しました。12,000 文字の上限設定では通常のハイライトを上回り、トークン効率が平均 40%、品質が 3.8% 向上しました。Exa Agent 内では、BrowseComp や WideSearch などのベンチマークにおいて、エージェントの総トークン使用量を 30% 削減し、品質も平均 2.1% 向上しました。
+
+<Tip>
+  複数の結果にまたがるハイライト選択の評価結果と設計については、[Dynamic Highlights](https://exa.ai/blog/dynamic-highlights) をご覧ください。
+</Tip>
+
+`dynamic: true` を指定して有効にします。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py.api import DYNAMIC_HIGHLIGHTS_BETA
+
+  result = exa.search(
+      "How did US household solar installation costs change over the past five years?",
+      contents={
+          "highlights": {
+              "dynamic": True,
+          }
+      },
+      betas=[DYNAMIC_HIGHLIGHTS_BETA],
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa, { DYNAMIC_HIGHLIGHTS_BETA } from "exa-js";
+
+  const result = await exa.search(
+    "How did US household solar installation costs change over the past five years?",
+    {
+      contents: {
+        highlights: {
+          dynamic: true
+        }
+      },
+      betas: [DYNAMIC_HIGHLIGHTS_BETA]
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/search" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Exa-Beta: dynamic-highlights-2026-08-28" \
+    -d '{
+      "query": "How did US household solar installation costs change over the past five years?",
+      "contents": {
+        "highlights": {
+          "dynamic": true
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<Info>
+  Dynamic Highlights はリサーチプレビュー版のため、
+  `Exa-Beta: dynamic-highlights-2026-08-28` リクエストヘッダーが必要です。SDK では、
+  `betas=[DYNAMIC_HIGHLIGHTS_BETA]`(Python)または `betas: [DYNAMIC_HIGHLIGHTS_BETA]`(JavaScript)を渡すと、このヘッダーが自動的に送信されます。
+
+  レスポンスは、通常のハイライトと同じ
+  `results[].highlights` の形式で返されます。
+</Info>
+
+<div id="next-steps">
+  ## 次のステップ
+</div>
+
+<Columns cols={2}>
+  <Card title="Search API ガイド" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを開く" arrow="true">
+    Search リクエストを作成し、用途に合った出力形式を選びます。
+  </Card>
+
+  <Card title="Search のベストプラクティス" icon="sparkles" href="/ja/docs/search/best-practices" cta="ガイドを読む" arrow="true">
+    検索結果の品質、レイテンシ、鮮度、コンテキストサイズを最適化します。
+  </Card>
+</Columns>

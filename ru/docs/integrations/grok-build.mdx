@@ -1,0 +1,61 @@
+---
+title: "Grok Build"
+description: "Используйте веб-поиск Exa в Grok Build. Установите плагин Exa из marketplace Grok Build и войдите в свою учётную запись Exa."
+icon: "/docs/images/sidebar-icons/grok-build.svg"
+---
+
+Exa доступна как плагин в marketplace [Grok Build](https://docs.x.ai/build/overview). Он добавляет Grok веб-поиск в реальном времени, чтение страниц и навык глубокого исследования.
+
+<div id="installation">
+  ## Установка
+</div>
+
+<Steps>
+  <Step title="Установите Grok Build">
+    Установите Grok CLI (подробности см. в [документации Grok Build](https://docs.x.ai/build/overview)):
+
+    ```bash theme={null}
+    curl -fsSL https://x.ai/cli/install.sh | bash
+    ```
+
+    Затем войдите в свою учётную запись xAI:
+
+    ```bash theme={null}
+    grok login
+    ```
+  </Step>
+
+  <Step title="Откройте marketplace">
+    Запустите Grok Build командой `grok`, затем откройте marketplace:
+
+    ```text theme={null}
+    /marketplace
+    ```
+  </Step>
+
+  <Step title="Установите плагин Exa">
+    Найдите в списке **exa** и нажмите `i`, чтобы установить его.
+  </Step>
+
+  <Step title="Войдите в Exa">
+    Откройте вкладку MCP-серверов командой `/mcp`, выберите **exa** и нажмите `i` для входа. В браузере откроется страница входа Exa. Новые учётные записи при регистрации получают бесплатные credits.
+  </Step>
+</Steps>
+
+Как только для exa отобразится статус **ready**, задавайте Grok любые вопросы, требующие доступа к вебу.
+
+<div id="what-you-get">
+  ## Что вы получаете
+</div>
+
+* **web&#95;search&#95;exa**: веб-поиск в реальном времени. Поддерживает запросы на естественном языке и фильтры по категориям: новости, компании, люди, научные статьи и GitHub.
+* **web&#95;fetch&#95;exa**: читает любой URL и возвращает содержимое страницы в виде чистого markdown.
+* **навык exa-search**: навык глубокого исследования. Попросите Grok детально разобрать тему — он выполнит несколько поисковых запросов, прочитает лучшие источники и даст ответ со ссылками на них.
+
+<div id="example-prompts">
+  ## Примеры промптов
+</div>
+
+* «Найди свежие новости об xAI»
+* «Прочитай [https://exa.ai](https://exa.ai) и кратко перескажи»
+* «Проведи глубокое исследование по открытым движкам инференса»

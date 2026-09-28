@@ -1,0 +1,59 @@
+---
+title: "よくある質問"
+description: "Exa の製品、検索インデックス、鮮度、グラウンディング、セキュリティ、料金に関するよくある質問とその回答です。"
+---
+
+<AccordionGroup>
+  <Accordion title="Exa とは何ですか？">
+    Exa は、AI アプリケーション向けのウェブ検索およびリサーチ基盤を提供しています。独自の検索インデックスに、コンテンツ抽出とエージェント型リサーチの API を組み合わせているため、アプリケーションは情報源を見つけてそのコンテンツを取得し、根拠に基づいた出力を生成できます。
+  </Accordion>
+
+  <Accordion title="どの Exa 製品を使えばよいですか？">
+    * ランク付けされたウェブ検索結果を取得し、必要に応じてハイライト、全文、要約も返す場合は [Search API](/ja/docs/search/quickstart) を使用します。
+    * すでに URL があり、そのページから抽出したコンテンツが必要な場合は [Contents API](/ja/docs/contents/quickstart) を使用します。
+    * 非同期のマルチステップリサーチ、リスト作成、構造化されたエンリッチメントには [Agent API](/ja/docs/agent/quickstart) を使用します。
+    * 検索を定期的に実行し、新たに見つかった結果を受け取るには [Monitors](/ja/docs/monitors/quickstart) を使用します。
+  </Accordion>
+
+  <Accordion title="Exa Connect とは何ですか？">
+    [Exa Connect](/ja/docs/agent/connect/overview) を使うと、Exa Agent は 1 回の実行の中で、ウェブ検索に加えてプレミアムデータプロバイダーにもアクセスできます。`dataSources` でプロバイダーを追加すると、Exa Agent が各ソースに問い合わせるタイミングを判断し、パートナーのデータとウェブリサーチを統合して、根拠に基づく 1 つの構造化出力にまとめます。
+
+    セルフサービスのプロバイダーでは、プロバイダーの認証と利用料金の請求を Exa が処理するため、個別の連携を構築したり、プロバイダーのアカウントを別途用意したりする必要はありません。
+  </Accordion>
+
+  <Accordion title="Exa Search は何が違うのですか？">
+    Exa Search は、広告を前提とした閲覧用ではなく、プログラムからの情報取得を目的に設計されています。意味に基づく検索や自然言語クエリに対応し、同じリクエストでページコンテンツも返せます。検索モードは、低レイテンシの取得から構造化出力を伴うマルチステップリサーチまで幅広く用意されています。
+
+    利用可能な検索タイプとレスポンス形式については、[Search クイックスタート](/ja/docs/search/quickstart)を参照してください。
+  </Accordion>
+
+  <Accordion title="Exa のインデックスの規模はどれくらいですか？">
+    2026 年 8 月時点で、Exa のインデックスは 1.4 兆件の URL を追跡し、公開ウェブ全体から 1,000 億ページを提供しています。インデックスは、ページの発見、更新、削除に伴って継続的に変化します。
+  </Accordion>
+
+  <Accordion title="Exa の結果の鮮度はどの程度ですか？">
+    Exa はページを継続的に発見・更新しており、そのタイミングはソースやページの更新頻度によって異なります。インデックス済みのコピーより新しいコンテンツが必要な場合は、Contents API の [`maxAgeHours`](/ja/docs/contents/quickstart#content-freshness) オプションでキャッシュの許容期間とライブ取得を制御してください。
+  </Accordion>
+
+  <Accordion title="Exa はクローラーを運用していますか？">
+    はい。Exa は、検索と取得のために公開ウェブ上のページを発見・更新する `ExaSearchBot` を運用しています。Robots Exclusion Protocol を遵守し、サイトごとのリクエストレートを制限しており、ログイン、ペイウォール、CAPTCHA を回避することはありません。
+
+    クロールは `robots.txt` で制御します。すでにインデックスされたページを削除するには、`noindex` の robots メタタグまたは `X-Robots-Tag: noindex` レスポンスヘッダーを使用してください。Exa は次回の再取得後にそのページを削除します。ユーザーエージェント、暗号による検証手順、クローラーの制御方法については、[Exa Search Crawler](https://crawler.exa.ai/) を参照してください。
+  </Accordion>
+
+  <Accordion title="Exa は LLM の回答の根拠づけにどう役立ちますか？">
+    Exa はソース URL と取得に使用したウェブコンテンツを返すため、アプリケーションは引用付きの回答を生成し、裏付けとなる根拠を確認できます。検索品質とソースによる根拠づけにより、裏付けのない主張を減らせますが、取得した情報をどう解釈し提示するかについては、引き続きアプリケーションとその言語モデルが責任を負います。
+  </Accordion>
+
+  <Accordion title="Exa が検索するソースを制限できますか？">
+    はい。`includeDomains` で Search の対象を特定のドメインに限定したり、`excludeDomains` で不要なソースを除外したりできます。また、企業、人物、ニュース、コードなど、ソース別の取得に使えるデータカテゴリも用意されています。[Search のベストプラクティス](/ja/docs/search/best-practices)と[データ](/ja/docs/search/data/overview)を参照してください。
+  </Accordion>
+
+  <Accordion title="どのようなセキュリティおよびデータ保持のオプションがありますか？">
+    Exa は、本番環境やエンタープライズでの利用に向けたセキュリティとコンプライアンスの制御を提供しています。対象となる Enterprise のお客様は、[Zero Data Retention](/ja/docs/admin/security/zero-data-retention) や [HIPAA 準拠](/ja/docs/admin/security/hipaa)もご利用いただけます。詳しくは[セキュリティとコンプライアンス](/ja/docs/admin/security/overview)を参照してください。
+  </Accordion>
+
+  <Accordion title="Exa の料金体系はどうなっていますか？">
+    API の利用料金は、使用したエンドポイントとオプションに応じてアカウントのクレジットから差し引かれます。新規アカウントには無料クレジットが付与されます。組織がエンタープライズ契約を結んでいない限り、有料利用は従量課金制です。[料金](/ja/docs/admin/pricing)と[請求](/ja/docs/admin/billing)を参照してください。
+  </Accordion>
+</AccordionGroup>

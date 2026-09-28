@@ -1,0 +1,140 @@
+---
+title: "Быстрый старт для разработчиков"
+sidebarTitle: "Quickstart"
+description: "Получите API key и используйте Exa из своего кода или своего agent."
+boost: 3
+---
+
+<div className="docs-quickstart-section docs-quickstart-auth">
+  ## 1. Получите API key
+
+  <Steps>
+    <Step title="Откройте Exa Dashboard">
+      <Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+        Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+      </Card>
+    </Step>
+
+    <Step title="Задайте ключ в переменной окружения">
+      <Tabs>
+        <Tab title="macOS/Linux">
+          ```bash theme={null}
+          export EXA_API_KEY="your-api-key"
+          ```
+        </Tab>
+
+        <Tab title="Windows">
+          ```powershell theme={null}
+          setx EXA_API_KEY "your-api-key"
+          ```
+        </Tab>
+      </Tabs>
+    </Step>
+  </Steps>
+</div>
+
+<div className="docs-quickstart-section">
+  ## 2. Выберите, как вы будете использовать Exa
+
+  Exa встраивается в ваше приложение двумя способами: вызывайте API из собственного кода или подключите agent, которым уже пользуетесь.
+
+  <Columns cols={2}>
+    <Card title="Вызов API" icon="code" href="#3-install-an-sdk" cta="Установить SDK">
+      Используйте Search, Contents и Exa Agent из собственного кода. Установите SDK
+      ниже и выполните первый запрос.
+    </Card>
+
+    <Card title="Подключите свой agent" icon="plug" href="/ru/docs/get-started/exa-mcp" cta="Настроить Exa MCP">
+      Подключите ChatGPT, Claude, Codex или Cursor к инструментам поиска и исследований
+      Exa. API key не требуется.
+    </Card>
+  </Columns>
+
+  Разрабатываете на основе API? Выберите, с чего начать:
+
+  | Начните с                               | Для чего использовать                                                                   |
+  | --------------------------------------- | --------------------------------------------------------------------------------------- |
+  | [Search](/ru/docs/search/quickstart)       | Поиск релевантных веб-страниц и получение синтезированного содержимого менее чем за 2 с |
+  | [Deep Search](/ru/docs/search/deep-search) | Более качественный поиск, при котором LLM итеративно находит лучшие результаты          |
+  | [Agent](/ru/docs/agent/quickstart)         | Длительные асинхронные исследования, построение списков, enrichment или отчёты          |
+  | [Contents](/ru/docs/contents/quickstart)   | Извлечение содержимого страниц, когда URL уже известны                                  |
+</div>
+
+<div className="docs-quickstart-section">
+  ## 3. Установите SDK
+
+  <CodeGroup>
+    ```bash Python theme={null}
+    pip install exa-py
+    ```
+
+    ```bash JavaScript theme={null}
+    npm install exa-js
+    ```
+  </CodeGroup>
+</div>
+
+<div className="docs-quickstart-section">
+  ## 4. Отправьте первый запрос
+
+  <CodeGroup>
+    ```python Python theme={null}
+    from exa_py import Exa
+
+    exa = Exa()
+
+    results = exa.search(
+        "best blog posts about vector databases",
+        contents={"highlights": True},
+    )
+
+    for result in results.results:
+        print(result.title, result.url)
+    ```
+
+    ```javascript JavaScript theme={null}
+    import Exa from "exa-js";
+
+    const exa = new Exa();
+
+    const { results } = await exa.search(
+      "best blog posts about vector databases",
+      { contents: { highlights: true } },
+    );
+
+    for (const result of results) {
+      console.log(result.title, result.url);
+    }
+    ```
+
+    ```bash cURL theme={null}
+    curl -s -X POST "https://api.exa.ai/search" \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer $EXA_API_KEY" \
+      -d '{
+        "query": "best blog posts about vector databases",
+        "contents": { "highlights": true }
+      }'
+    ```
+  </CodeGroup>
+
+  ## Дальнейшие шаги
+
+  <Columns cols={2}>
+    <Card title="Search API" icon="search" href="/ru/docs/search/quickstart" cta="Читать руководство" arrow="true">
+      Находите релевантные страницы и получайте чистое содержимое или структурированный вывод.
+    </Card>
+
+    <Card title="Agent API" icon="bot" href="/ru/docs/agent/quickstart" cta="Читать руководство" arrow="true">
+      Создавайте длительные рабочие процессы для исследований, построения списков и enrichment.
+    </Card>
+
+    <Card title="Contents API" icon="file-text" href="/ru/docs/contents/quickstart" cta="Читать руководство" arrow="true">
+      Извлекайте чистое содержимое со страниц, которые вам уже известны.
+    </Card>
+
+    <Card title="Exa MCP" icon="plug" href="/ru/docs/get-started/exa-mcp" cta="Читать руководство" arrow="true">
+      Подключайте любой MCP-клиент к веб-поиску Exa, загрузке страниц и инструментам Exa Agent.
+    </Card>
+  </Columns>
+</div>

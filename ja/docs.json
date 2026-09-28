@@ -1,0 +1,423 @@
+{
+  "global": {
+    "anchors": []
+  },
+  "tabs": [
+    {
+      "pages": [
+        "ja/docs",
+        {
+          "boost": 3,
+          "group": "はじめに",
+          "pages": [
+            "ja/docs/get-started/quickstart",
+            "ja/docs/get-started/exa-mcp",
+            {
+              "boost": 0.5,
+              "group": "Agent Skills",
+              "pages": [
+                "ja/docs/get-started/agent-skills/overview",
+                "ja/docs/get-started/agent-skills/build-with-exa",
+                "ja/docs/get-started/agent-skills/exa-search",
+                "ja/docs/get-started/agent-skills/exa-contents"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Search",
+          "pages": [
+            "ja/docs/search/quickstart",
+            "ja/docs/search/deep-search",
+            "ja/docs/search/highlights",
+            "ja/docs/search/snapshot",
+            "ja/docs/search/best-practices",
+            {
+              "group": "データ",
+              "pages": [
+                "ja/docs/search/data/overview",
+                "ja/docs/search/data/news",
+                "ja/docs/search/data/code",
+                "ja/docs/search/data/companies-people",
+                "ja/docs/search/data/financial",
+                "ja/docs/search/data/research",
+                "ja/docs/search/data/legal",
+                "ja/docs/search/data/sports-weather-places",
+                "ja/docs/search/data/security"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 5,
+          "group": "Agent",
+          "pages": [
+            "ja/docs/agent/quickstart",
+            "ja/docs/agent/best-practices",
+            "ja/docs/agent/examples",
+            {
+              "boost": 4,
+              "group": "Exa Connect",
+              "pages": [
+                "ja/docs/agent/connect/overview",
+                {
+                  "boost": 2,
+                  "group": "セルフサービス型プロバイダー",
+                  "pages": [
+                    "ja/docs/agent/connect/fiber",
+                    "ja/docs/agent/connect/similarweb",
+                    "ja/docs/agent/connect/baselayer",
+                    "ja/docs/agent/connect/polymarket",
+                    "ja/docs/agent/connect/affiliatecom",
+                    "ja/docs/agent/connect/particle",
+                    "ja/docs/agent/connect/financialdatasets",
+                    "ja/docs/agent/connect/jinko"
+                  ]
+                },
+                "ja/docs/agent/connect/combining-providers",
+                "ja/docs/agent/connect/additional-partners"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 3,
+          "group": "その他のAPI",
+          "pages": [
+            "ja/docs/contents/quickstart",
+            "ja/docs/monitors/quickstart",
+            "ja/docs/batch/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "SDK",
+          "pages": [
+            "ja/docs/sdks/quickstart"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "連携",
+          "pages": [
+            "ja/docs/integrations/chatgpt-codex",
+            "ja/docs/integrations/claude-web-desktop",
+            "ja/docs/integrations/openai-sdk",
+            {
+              "group": "ツール呼び出し",
+              "pages": [
+                "ja/docs/integrations/tool-calling/openai",
+                "ja/docs/integrations/tool-calling/anthropic"
+              ]
+            },
+            {
+              "group": "Vercel",
+              "pages": [
+                "ja/docs/integrations/vercel/ai-sdk",
+                "ja/docs/integrations/vercel/ai-gateway",
+                "ja/docs/integrations/vercel/fx"
+              ]
+            },
+            {
+              "group": "マーケットプレイス",
+              "pages": [
+                "ja/docs/integrations/marketplaces/stripe-projects"
+              ]
+            },
+            {
+              "group": "エージェントによる決済",
+              "pages": [
+                {
+                  "group": "x402",
+                  "pages": [
+                    "ja/docs/integrations/payments/x402/quickstart",
+                    "ja/docs/integrations/payments/x402/agentkit"
+                  ]
+                },
+                {
+                  "group": "MPP",
+                  "pages": [
+                    "ja/docs/integrations/payments/mpp/quickstart",
+                    "ja/docs/integrations/payments/mpp/gtm-enrichment"
+                  ]
+                },
+                "ja/docs/integrations/payments/nevermined"
+              ]
+            },
+            {
+              "boost": 0.6,
+              "group": "その他の連携",
+              "pages": [
+                "ja/docs/integrations/exa-slack",
+                "ja/docs/integrations/hermes-agent",
+                "ja/docs/integrations/n8n",
+                "ja/docs/integrations/openclaw",
+                "ja/docs/integrations/openrouter",
+                "ja/docs/integrations/baseten",
+                "ja/docs/integrations/gumloop",
+                "ja/docs/integrations/exa-for-sheets",
+                "ja/docs/integrations/crewai",
+                "ja/docs/integrations/elevenlabs",
+                "ja/docs/integrations/openhuman",
+                "ja/docs/integrations/truefoundry",
+                "ja/docs/integrations/snowflake",
+                "ja/docs/integrations/grok-build",
+                "ja/docs/integrations/llamaindex",
+                "ja/docs/integrations/pydantic-ai",
+                "ja/docs/integrations/langchain",
+                "ja/docs/integrations/browserbase"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 0.8,
+          "group": "管理",
+          "pages": [
+            "ja/docs/admin/pricing",
+            "ja/docs/admin/billing",
+            "ja/docs/admin/team-management",
+            {
+              "group": "セキュリティとコンプライアンス",
+              "pages": [
+                "ja/docs/admin/security/overview",
+                "ja/docs/admin/security/zero-data-retention",
+                "ja/docs/admin/security/hipaa"
+              ]
+            },
+            "ja/docs/admin/mcp-enterprise-managed-auth",
+            {
+              "group": "リファレンス",
+              "pages": [
+                "ja/docs/admin/status",
+                "ja/docs/admin/error-codes",
+                "ja/docs/admin/openapi-spec"
+              ]
+            },
+            "ja/docs/admin/faqs"
+          ]
+        },
+        {
+          "boost": 0.4,
+          "group": "Websets",
+          "pages": [
+            "ja/docs/websets/quickstart",
+            "ja/docs/websets/imports-and-search",
+            {
+              "group": "ダッシュボード",
+              "pages": [
+                "ja/docs/websets/dashboard/get-started",
+                "ja/docs/websets/dashboard/import-from-csv",
+                "ja/docs/websets/dashboard/exclude-results"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "ドキュメント"
+    },
+    {
+      "groups": [
+        {
+          "boost": 4,
+          "group": "Search",
+          "pages": [
+            "ja/docs/reference/search"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Contents",
+          "pages": [
+            "ja/docs/reference/get-contents"
+          ]
+        },
+        {
+          "boost": 4,
+          "group": "Agent",
+          "pages": [
+            "ja/docs/reference/agent-api/create-a-run",
+            "ja/docs/reference/agent-api/get-a-run",
+            "ja/docs/reference/agent-api/list-runs",
+            "ja/docs/reference/agent-api/cancel-a-run",
+            "ja/docs/reference/agent-api/stop-a-run",
+            "ja/docs/reference/agent-api/delete-a-run",
+            "ja/docs/reference/agent-api/list-run-events"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "モニター",
+          "pages": [
+            "ja/docs/reference/monitors/create-a-monitor",
+            "ja/docs/reference/monitors/list-monitors",
+            "ja/docs/reference/monitors/get-a-monitor",
+            "ja/docs/reference/monitors/update-a-monitor",
+            "ja/docs/reference/monitors/delete-a-monitor",
+            "ja/docs/reference/monitors/trigger-a-monitor",
+            "ja/docs/reference/monitors/batch-monitors",
+            {
+              "group": "実行",
+              "pages": [
+                "ja/docs/reference/monitors/runs/list-runs",
+                "ja/docs/reference/monitors/runs/get-a-run"
+              ]
+            }
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "Answer",
+          "pages": [
+            "ja/docs/reference/answer"
+          ]
+        },
+        {
+          "boost": 2,
+          "group": "バッチ",
+          "pages": [
+            "ja/docs/reference/batches/create-a-batch",
+            "ja/docs/reference/batches/list-batches",
+            "ja/docs/reference/batches/get-a-batch",
+            "ja/docs/reference/batches/cancel-a-batch",
+            "ja/docs/reference/batches/delete-a-batch"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "チーム管理",
+          "pages": [
+            "ja/docs/reference/team-management/create-api-key",
+            "ja/docs/reference/team-management/list-api-keys",
+            "ja/docs/reference/team-management/get-api-key",
+            "ja/docs/reference/team-management/get-api-key-usage",
+            "ja/docs/reference/team-management/update-api-key",
+            "ja/docs/reference/team-management/delete-api-key"
+          ]
+        },
+        {
+          "boost": 0.25,
+          "group": "Websets",
+          "pages": [
+            {
+              "group": "Websets",
+              "icon": "folder",
+              "pages": [
+                "ja/docs/websets/api/websets/create-a-webset",
+                "ja/docs/websets/api/websets/get-a-webset",
+                "ja/docs/websets/api/websets/update-a-webset",
+                "ja/docs/websets/api/websets/delete-a-webset",
+                "ja/docs/websets/api/websets/preview-a-webset",
+                "ja/docs/websets/api/websets/cancel-a-running-webset",
+                "ja/docs/websets/api/websets/list-all-websets"
+              ]
+            },
+            {
+              "group": "アイテム",
+              "icon": "list",
+              "pages": [
+                "ja/docs/websets/api/websets/items/get-an-item",
+                "ja/docs/websets/api/websets/items/delete-an-item",
+                "ja/docs/websets/api/websets/items/list-all-items-for-a-webset"
+              ]
+            },
+            {
+              "group": "検索",
+              "icon": "search",
+              "pages": [
+                "ja/docs/websets/api/websets/searches/create-a-search",
+                "ja/docs/websets/api/websets/searches/get-a-search",
+                "ja/docs/websets/api/websets/searches/cancel-a-running-search"
+              ]
+            },
+            {
+              "group": "エンリッチメント",
+              "icon": "sparkles",
+              "pages": [
+                "ja/docs/websets/api/websets/enrichments/create-an-enrichment",
+                "ja/docs/websets/api/websets/enrichments/get-an-enrichment",
+                "ja/docs/websets/api/websets/enrichments/update-an-enrichment",
+                "ja/docs/websets/api/websets/enrichments/delete-an-enrichment",
+                "ja/docs/websets/api/websets/enrichments/cancel-a-running-enrichment"
+              ]
+            },
+            {
+              "group": "インポート",
+              "icon": "cloud-download",
+              "pages": [
+                "ja/docs/websets/api/imports/create-an-import",
+                "ja/docs/websets/api/imports/get-import",
+                "ja/docs/websets/api/imports/update-import",
+                "ja/docs/websets/api/imports/delete-import",
+                "ja/docs/websets/api/imports/list-imports"
+              ]
+            },
+            {
+              "group": "モニター",
+              "icon": "satellite",
+              "pages": [
+                "ja/docs/websets/api/monitors/create-a-monitor",
+                "ja/docs/websets/api/monitors/get-monitor",
+                "ja/docs/websets/api/monitors/update-monitor",
+                "ja/docs/websets/api/monitors/delete-monitor",
+                "ja/docs/websets/api/monitors/list-monitors",
+                {
+                  "group": "モニターの実行",
+                  "icon": "play",
+                  "pages": [
+                    "ja/docs/websets/api/monitors/runs/list-monitor-runs",
+                    "ja/docs/websets/api/monitors/runs/get-monitor-run"
+                  ]
+                }
+              ]
+            },
+            {
+              "group": "Webhook",
+              "icon": "webhook",
+              "pages": [
+                "ja/docs/websets/api/webhooks/create-a-webhook",
+                "ja/docs/websets/api/webhooks/get-a-webhook",
+                "ja/docs/websets/api/webhooks/update-a-webhook",
+                "ja/docs/websets/api/webhooks/delete-a-webhook",
+                "ja/docs/websets/api/webhooks/list-webhooks",
+                "ja/docs/websets/api/webhooks/attempts/list-webhook-attempts",
+                "ja/docs/websets/api/webhooks/verifying-signatures"
+              ]
+            },
+            {
+              "group": "イベント",
+              "icon": "bell",
+              "pages": [
+                "ja/docs/websets/api/events/types",
+                "ja/docs/websets/api/events/list-all-events",
+                "ja/docs/websets/api/events/get-an-event"
+              ]
+            },
+            {
+              "group": "チーム",
+              "icon": "users",
+              "pages": [
+                "ja/docs/websets/api/teams/get-team-info"
+              ]
+            }
+          ]
+        }
+      ],
+      "tab": "APIリファレンス"
+    },
+    {
+      "groups": [
+        {
+          "boost": 0.5,
+          "group": "更新情報",
+          "pages": [
+            "ja/docs/changelog"
+          ],
+          "root": "ja/docs/changelog"
+        }
+      ],
+      "tab": "変更履歴"
+    }
+  ]
+}

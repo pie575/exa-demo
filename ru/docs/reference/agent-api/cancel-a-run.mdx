@@ -1,0 +1,12 @@
+---
+title: "Отмена выполнения"
+description: "Отмена выполнения Agent, находящегося в очереди или уже запущенного."
+openapi: "/ru/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
+timestamp: false
+---
+
+Если выполнение ещё активно, оно сразу переходит в состояние `cancelled` и завершается, не возвращая результатов. Выполнение завершается со статусом `cancelled` и `stopReason: cancelled`. Использование, накопленное до отмены, тарифицируется. Если выполнение уже достигло терминального статуса (completed, failed или cancelled), эндпоинт вернёт существующее выполнение без изменений.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новые аккаунты получают бесплатные credits.
+</Card>

@@ -1,0 +1,89 @@
+---
+title: "Nevermined"
+sidebarTitle: "Nevermined"
+description: "Nevermined の x402 カードデリゲーションを利用した、Exa 向けの自律型エージェント決済。7 USD の購入ごとに、7 USD 分のクレジット付きの Exa API キーが発行されるか、既存のキーにチャージされます。"
+icon: "/docs/images/sidebar-icons/nevermined.svg"
+---
+
+エージェントは、[Nevermined](https://nevermined.ai) の [x402 カードデリゲーション](https://nevermined.ai/docs/specs/x402-card-delegation)方式を利用し、クレジットカードで Exa に支払います。**$7 の購入**ごとに、**$7 分の Exa クレジット**付きの Exa API キーが返されます。
+
+<Info>
+  次の Nevermined プラン ID を使用してください:<br />`27800462147494506865542649899724877617306579171265399959488097895839186996870`<br />このプランは Nevermined の本番環境 (live プレフィックス付きの API キー) で動作します。購入するのは API クレジットであり、個々の検索リクエストではありません。
+</Info>
+
+Nevermined で初めて支払う場合は、`POST /team-management/nevermined/purchase-key` を呼び出すと新しい Exa API キーが発行され、$7 分のクレジットが追加されます。キーのクレジットを使い切ったら、同じデリゲーションで新しい x402 トークンを発行し、同じエンドポイントをもう一度呼び出してください。Exa は同じ API キーに $7 分のクレジットを追加して返します。
+
+<div id="buy-a-key">
+  ## キーを購入する
+</div>
+
+```bash theme={null}
+POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
+payment-signature: <x402-token>
+```
+
+* **コスト:** 購入1回につき$7。x402トークンが参照するデリゲーションに紐づくカードに請求されます。
+* **レスポンス(新規の支払者):** `{ status: "ok", apiKey: "…", expiresAt: null }` — $7分のクレジットが付与された新しいExa APIキーが返されます。
+* **レスポンス(既存の支払者):** `{ status: "ok", apiKey: "…", expiresAt: null }` — 同じExa APIキーに$7分のクレジットが追加されます。
+* **レスポンス(リプレイされたトークン):** キャッシュされた結果が返され、新たな請求は発生しません。
+* **署名がない、または無効な場合:** `402 Payment Required` が返され、ボディに支払い要件が含まれます。
+
+<div id="how-it-works">
+  ## 仕組み
+</div>
+
+支払い処理は Nevermined が担当し、Exa が受け取るのは署名済みの x402 トークンのみです。
+
+1. **初回セットアップ(カード所有者が実施):** [nevermined.app](https://nevermined.app) でカードを登録し、そのカードに **デリゲーション**(支出権限。所有者が上限額と有効期間を設定し、特定の API キーに対象を限定することもできます)を作成したうえで、エージェント用の Nevermined API キーを発行します。
+2. **エージェントがデリゲーションを見つけます。** Nevermined SDK を使うと、エージェントは自身のキーで支出できるデリゲーションを検出し、残り予算が十分な($7 以上の)ものを選択できます。該当するものがない場合は、所有者がダッシュボードで作成します。完全自律型のエージェントであれば、カードの上限の範囲内で SDK から作成することもできます。
+3. **エージェントが x402 アクセストークンを発行します。** 上記のプラン ID を指定し、カード委任スキームで、デリゲーションを ID で参照して発行します。デリゲーションは発行前に作成しておく必要があります。トークンの発行時にデリゲーションをその場で作成することはできません。
+4. **エージェントがトークンを上記のエンドポイントに POST します。** トークンを `payment-signature` ヘッダーに含めて送信すると、レスポンスで Exa API キーが返されます。
+5. **キーはすぐに使用できます。** 標準の [Exa Search API](/ja/docs/search/quickstart) でそのまま利用できます。
+
+エージェント向けの詳しい手順(SDK メソッド、パラメーター、デリゲーションの検出と作成、トラブルシューティング)については、Nevermined の Exa 連携ガイド [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) を参照してください(エージェントは [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md) を取得してください)。
+
+<div id="what-7-buys">
+  ## $7で利用できる範囲
+</div>
+
+クレジットは Exa API の標準料金に基づいて消費されます。現在の料金では、$7 分のクレジットでおおよそ次の量を利用できます。
+
+| エンドポイントまたは機能                                  |                          料金 |     おおよその利用量 |
+| --------------------------------------------- | --------------------------: | -----------: |
+| Search (`instant`、`fast`、`auto`、結果は最大 10 件)   |           1,000 リクエストあたり $7 |  1,000 リクエスト |
+| Deep-Lite Search                              |          1,000 リクエストあたり $10 |    700 リクエスト |
+| Deep Search                                   |          1,000 リクエストあたり $12 |  約 583 リクエスト |
+| Deep-Reasoning Search                         |          1,000 リクエストあたり $15 |  約 466 リクエスト |
+| Contents (`text`、`highlights`、または `summary`)  | コンテンツタイプごとに 1,000 ページあたり $1 |    7,000 ページ |
+| Search または Contents での AI ページ要約               |             1,000 ページあたり $1 |   7,000 件の要約 |
+| 最初の 10 件を超える追加の結果                             |               1,000 件あたり $1 | 追加結果 7,000 件 |
+| Answer                                        |           1,000 リクエストあたり $5 |  1,400 リクエスト |
+| Monitors                                      |          1,000 リクエストあたり $15 |  約 466 リクエスト |
+
+Search リクエストには、最大 10 件の結果のテキストとハイライトが含まれます。10 件を超える追加の結果と AI 要約は別途課金されます。<br />
+料金の詳細は、[Exa の料金ページ](https://exa.ai/pricing)をご覧ください。
+
+<div id="when-the-key-runs-out">
+  ## キーのクレジットが尽きた場合
+</div>
+
+API キーのクレジットを使い切ると、Exa は通常の API エンドポイントで **`HTTP 402`** を返します：
+
+```json theme={null}
+{
+  "requestId": "...",
+  "error": "You have exceeded your credits limit. Please top up to keep using Exa at dashboard.exa.ai",
+  "tag": "NO_MORE_CREDITS"
+}
+```
+
+同じプラン ID とデリゲーションを使って新しい x402 トークンをミントし、同じ `/purchase-key` エンドポイントにもう一度 POST します。Exa が同じ API キーに $7 分のクレジットを追加でチャージします。
+
+<div id="references">
+  ## 参考資料
+</div>
+
+* [Nevermined の Exa 連携ガイド](https://nevermined.ai/docs/integrations/exa)
+* [x402 カード委任の仕様](https://nevermined.ai/docs/specs/x402-card-delegation)
+* [Exa の料金](https://exa.ai/pricing)
+* [Exa Search API](/ja/docs/search/quickstart)

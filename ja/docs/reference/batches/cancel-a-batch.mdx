@@ -1,0 +1,12 @@
+---
+title: "バッチをキャンセルする"
+description: "処理中のバッチをキャンセルします。"
+openapi: "/ja/docs/exa-spec.yaml POST /batches/{id}/cancel"
+timestamp: false
+---
+
+キャンセルされたバッチは新しいリクエストのスケジューリングを停止し、実行中の処理が完了した後に `cancelled` に移行します。すでに `cancelling` または `cancelled` 状態のバッチをキャンセルしても、バッチは変更されずにそのまま返されます。`completed` または `expired` 状態のバッチはキャンセルできません。
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

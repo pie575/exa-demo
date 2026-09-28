@@ -1,0 +1,31 @@
+---
+title: "API キーの一覧取得"
+description: "チームに属するすべての API キーをメタデータとともに取得します。"
+openapi: "/ja/docs/team-management-spec.yaml GET /api-keys"
+timestamp: false
+---
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>
+
+<Info>
+  Team Management API はチームごとに有効化されます。認証にはサービスアカウントの API キーを使用します。このキーは、チームでこの機能が有効化された後、[API キーページ](https://dashboard.exa.ai/api-keys)の **Service keys** タブから作成できます。利用を希望する場合は [support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
+</Info>
+
+<div id="overview">
+  ## 概要
+</div>
+
+List API Keys エンドポイントは、チームに関連付けられたすべての API キーを返します。レスポンスには、各キーのキー ID、名前、レート制限、作成タイムスタンプが含まれます。
+
+<div id="response-format">
+  ## レスポンス形式
+</div>
+
+レスポンスには、以下の情報を持つ API キーオブジェクトの配列が含まれます。
+
+* **id**: API キーの一意の識別子
+* **name**: 人が読める形式の名前 (作成時に指定した場合)
+* **rateLimit**: 1 分あたりのリクエスト数で表したレート制限 (設定されている場合)
+* **createdAt**: キーの作成日時を示す ISO 8601 形式のタイムスタンプ

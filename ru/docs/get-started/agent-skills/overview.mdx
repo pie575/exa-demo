@@ -1,0 +1,64 @@
+---
+title: "Навыки агентов"
+sidebarTitle: "Обзор"
+description: "Установите навыки Exa в Claude Code, Codex и других кодинг-агентах."
+keywords: ["agent skills", "claude code", "cursor", "codex", "exa api"]
+---
+
+Навыки Exa учат кодинг-агентов выполнять search, получать content и создавать решения на базе API Exa. Найти их можно в репозитории с открытым исходным кодом [exa-labs/agent-skills](https://github.com/exa-labs/agent-skills).
+
+Каждый навык содержит markdown-файлы, соответствующие открытому стандарту [Agent Skills](https://agentskills.io), поэтому одни и те же файлы устанавливаются в любой совместимый agent.
+
+<div id="install">
+  ## Установка
+</div>
+
+Установите все навыки Exa сразу:
+
+```bash theme={null}
+npx skills add exa-labs/agent-skills
+```
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новые аккаунты получают бесплатные credits.
+</Card>
+
+<Note>
+  Укажите свой ключ в переменной `EXA_API_KEY` в окружении вашего agent.
+</Note>
+
+Либо откройте страницу навыка ниже и скопируйте её установочный промпт в свой agent. Промпт установит этот навык и проверит ваш API key, не выводя его на экран.
+
+<div id="skills">
+  ## Навыки
+</div>
+
+На странице каждого навыка есть краткое описание в одну строку, готовый к копированию установочный промпт и ссылка на исходный файл `SKILL.md`.
+
+<Columns cols={3}>
+  <Card title="Разработка с Exa" icon="rocket" href="/ru/docs/get-started/agent-skills/build-with-exa" cta="Открыть навык" arrow="true">
+    Создавайте приложения и agent&#39;ов на полноценной API-платформе Exa.
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/ru/docs/get-started/agent-skills/exa-search" cta="Открыть навык" arrow="true">
+    Вызывайте Exa Search напрямую через cURL или необработанный HTTP.
+  </Card>
+
+  <Card title="Exa Contents" icon="file-text" href="/ru/docs/get-started/agent-skills/exa-contents" cta="Открыть навык" arrow="true">
+    Вызывайте Exa Contents напрямую через cURL или необработанный HTTP.
+  </Card>
+</Columns>
+
+<div id="related">
+  ## См. также
+</div>
+
+<Columns cols={2}>
+  <Card title="Репозиторий навыков" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Посмотреть исходный код" arrow="true">
+    Исходный код всех навыков, включая исходные файлы `SKILL.md`.
+  </Card>
+
+  <Card title="Exa MCP" icon="plug" href="/ru/docs/get-started/exa-mcp" cta="Открыть руководство" arrow="true">
+    Подключайте Claude, Cursor, VS Code и другие клиенты к Exa через MCP.
+  </Card>
+</Columns>

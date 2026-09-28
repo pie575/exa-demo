@@ -1,0 +1,157 @@
+---
+title: "Exa in Slack"
+description: "Exa を Slack にインストールし、任意のチャンネルやスレッドで @Exa をメンションするだけで、出典付きのリサーチ、リスト作成、エンリッチメントの回答を得られます。"
+icon: "/docs/images/sidebar-icons/exa-slack.svg"
+---
+
+チームの Slack に Exa を導入しましょう。任意のチャンネルやスレッドで **@Exa** をメンションし、リサーチの質問、リスト作成タスク、エンリッチメントのリクエストを送信します。Exa がウェブを検索してソースを読み込み、出典付きの回答をスレッド内で返信します。
+
+<div id="get-started">
+  ## はじめに
+</div>
+
+<div id="installation">
+  ### インストール
+</div>
+
+1. [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack) に移動し、**Install** をクリックします。
+
+<img src="/docs/images/integrations/exa-slack/dashboard-install.png" alt="Exa ダッシュボードの Exa in Slack ページと Install ボタン" width="3414" height="900" data-path="images/integrations/exa-slack/dashboard-install.png" />
+
+2. Slack の OAuth フローが開きます。Exa を追加するワークスペースを選択し、**Allow** をクリックします。
+
+<img src="/docs/images/integrations/exa-slack/oauth-approval.png" alt="Exa アプリの Slack OAuth 承認画面。「App is not approved by Slack」の通知、ワークスペースの選択欄、要求される権限、Allow ボタンが表示されている" width="1820" height="1180" data-path="images/integrations/exa-slack/oauth-approval.png" />
+
+<Note>
+  赤字の **「App is not approved by Slack」** という通知は想定どおりのもので、無視しても問題ありません。これは
+  Exa が公開の Slack Marketplace に掲載されていないことを示すだけで、不具合を意味するものではありません。
+</Note>
+
+3. インストールが完了したら、@Exa をチャンネルに招待する (または直接 DM を送る) だけで、すぐに質問できます。
+
+<div id="how-to-use-exa-from-slack">
+  ## SlackでExaを使う方法
+</div>
+
+Exaを追加済みのチャンネルで、@Exaをメンションして質問を送信します。
+
+```text theme={null}
+@Exa サンフランシスコにあるシリーズAのフィンテック系スタートアップをすべて探して
+```
+
+Exa が質問にスレッドで返信します。
+
+<div id="follow-ups">
+  ### フォローアップ
+</div>
+
+Exa がスレッドで回答した後は、そのスレッドに返信するだけで会話を続けられます。@Exa を改めてメンションする必要はありません。Exa は会話の内容を記憶しているため、フォローアップでは前の回答を踏まえて応答します。スレッド内の誰でもフォローアップできます。
+
+<div id="direct-messages">
+  ### ダイレクトメッセージ
+</div>
+
+DMでExaに直接メッセージを送ることもできます。DMではメンションは一切不要です。送信したメッセージはそれぞれ新しいリクエストとして扱われ、そのメッセージのスレッドに回答が返されます。会話を続けるには、そのスレッドに返信してください。
+
+<div id="cancelling-a-run">
+  ### 実行のキャンセル
+</div>
+
+実行中にキャンセルするには、スレッドに返信して Exa に実行の停止を依頼します。メンションは不要です。
+
+```text theme={null}
+現在の実行を停止してください
+```
+
+<div id="exa-connect-providers">
+  ### Exa Connect のプロバイダー
+</div>
+
+Exa は、質問に関連する [Exa Connect](/ja/docs/agent/connect/overview) のデータプロバイダーを自動的に利用します。特定のプロバイダーを使用したい場合は、メッセージ内でそのプロバイダー名を指定してください。
+
+```text theme={null}
+@Exa Fiber.ai を使って、今四半期に資金調達した AI インフラ系スタートアップをすべて探して
+```
+
+利用可能なデータプロバイダーの一覧は、Exa に尋ねるだけで確認できます。
+
+<div id="examples">
+  ## 例
+</div>
+
+<div id="news-and-current-events">
+  ### ニュースと時事
+</div>
+
+あらゆるトピックの最新情報を入手できます。
+
+<img src="/docs/images/integrations/exa-slack/thread-answer.png" alt="Slack のスレッドで、あるトピックの最新ニュースに関する質問に Exa が回答し、日付付きの結果を表にまとめている様子" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
+
+<div id="large-list-building">
+  ### 大規模なリスト作成
+</div>
+
+網羅的にリストを作成するには、リクエストの先頭に `!max` を付けます。
+
+<img src="/docs/images/integrations/exa-slack/max-list-building.png" alt="Slack のスレッドで Exa が !max のリスト作成リクエストを実行し、結果を表形式で返している様子" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
+
+<div id="keywords">
+  ## キーワード
+</div>
+
+Exa が参加しているスレッドで使用します。コマンドは `@Exa` のメンションに続けて入力することも、メッセージの先頭に直接入力することも
+できます。
+
+| キーワード             | 機能                                                                |
+| ----------------- | ----------------------------------------------------------------- |
+| `!max <message>`  | このリクエストを最大の effort で実行します。非常に大規模なリストの作成向けです。                      |
+| `mute`            | スレッド内のメンションなしの返信に Exa が応答しないようにします。@Exa を明示的にメンションした場合は引き続き応答します。 |
+| `unmute`          | `mute` の後、スレッド内のフォローアップへの応答を再開します。                                |
+| `sleep`           | スレッド内での Exa の動作を完全に停止します。再開するには @Exa をメンションしてください。                |
+| `aside <message>` | Exa に無視される補足コメントを投稿します。Exa がフォローしているスレッドでチームメンバーと会話する際に便利です。      |
+| `help`            | 使い方を表示します。                                                        |
+
+<div id="permissions">
+  ## 権限
+</div>
+
+Slack 向け Exa アプリは、以下のスコープを要求します。
+
+| 権限                     | Slack でのアクセス                   | Exa が必要とする理由                                                    |
+| ---------------------- | ------------------------------ | --------------------------------------------------------------- |
+| `app_mentions:read`    | @Exa を直接メンションしたメッセージの閲覧        | チャンネルまたはスレッドで Exa がメンションされたときにリクエストを開始する                        |
+| `assistant:write`      | Slack で App Agent として動作        | Slack のエージェント機能を利用し、DM やチャンネルのスレッドに回答をストリーミングする                 |
+| `channels:history`     | Exa が追加されたパブリックチャンネルのメッセージの閲覧  | パブリックチャンネルのスレッド返信を受信し、再度メンションしなくてもフォローアップできるようにする               |
+| `channels:read`        | パブリックチャンネルの基本情報の閲覧             | Web セッションの同期先を選ぶ際に、Exa がすでに参加しているパブリックチャンネルを見つける                |
+| `chat:write`           | Exa アプリとしてのメッセージ送信             | スレッドの親メッセージ、回答、進捗状況、確認メッセージ、Web から同期されたメッセージを投稿する               |
+| `chat:write.customize` | アプリが投稿したメッセージの名前とアバターのカスタマイズ   | Web アプリから同期されたメッセージに、Web 参加者の名前とプロフィール画像を表示する                   |
+| `files:read`           | Exa が追加された会話で共有されたファイルの閲覧      | 質問に添付されたファイルを読み取る                                               |
+| `files:write`          | Exa アプリとしてのファイルのアップロード、編集、削除   | エクスポートした表などの結果ファイルを回答に添付する                                      |
+| `groups:history`       | Exa が追加されたプライベートチャンネルのメッセージの閲覧 | プライベートチャンネルのスレッド返信を受信し、再度メンションしなくてもフォローアップできるようにする              |
+| `groups:read`          | Exa が追加されたプライベートチャンネルの基本情報の閲覧  | Web セッションの同期先を選ぶ際に、対象となるプライベートチャンネルを見つけ、メンバーであるかを確認する           |
+| `im:history`           | Exa とのダイレクトメッセージの閲覧            | DM でのリクエストとフォローアップの返信を受信する                                      |
+| `im:write`             | ダイレクトメッセージの開始                  | 検証済みユーザーが Web セッションの同期先として Exa との DM を選んだ際に、その DM を開く           |
+| `users:read`           | ユーザーとその基本的な Slack プロフィールの閲覧    | メンションからユーザー名を特定し、同期されたメッセージに Web 参加者の Slack プロフィール画像を表示する       |
+| `users:read.email`     | ワークスペースメンバーのメールアドレスの閲覧         | チームへの紐付けと、Web メッセージのプロフィール画像のカスタマイズのために、Slack と Exa のアカウントを照合する |
+
+<Note>
+  `channels:read`、`groups:read`、`im:write` により、Web から Slack への同期で同期先を検出できるようになります。
+  既存のインストールでは、これらのスコープがなくても現在の Slack スレッドを引き続き使用できますが、
+  該当する同期先を使用するには再接続が必要です。`chat:write.customize` は実行時には必須ではありません。
+  このスコープがない場合、Web から同期されたメッセージは標準の Exa アプリとして表示され、
+  メッセージ本文に参加者の名前が記載されます。
+</Note>
+
+Exa がメッセージを受信するのは、明示的に招待されたチャンネルと Exa 自身の DM に限られます。
+
+<div id="pricing">
+  ## 料金
+</div>
+
+Slack から開始した実行の料金は、お使いの Exa チームに請求されます。詳細は[料金](https://exa.ai/pricing)をご覧ください。
+
+<div id="privacy">
+  ## プライバシー
+</div>
+
+Exa におけるデータの取り扱いについて詳しくは、[Exa のプライバシーポリシー](https://exa.ai/privacy-policy)をご覧ください。

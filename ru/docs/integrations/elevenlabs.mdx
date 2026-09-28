@@ -1,0 +1,351 @@
+---
+title: "ElevenLabs"
+description: "Добавьте веб-поиск Exa в голосовые agent ElevenLabs."
+icon: "/docs/images/sidebar-icons/elevenlabs.svg"
+---
+
+***
+
+Голосовые agent ElevenLabs могут искать в интернете прямо по ходу разговора, используя Exa в качестве **вебхук-инструмента**. Когда agent решает, что ему нужна актуальная информация, ElevenLabs отправляет HTTP POST напрямую на эндпоинт Exa `/search` — никакого сервера или промежуточного слоя с вашей стороны не требуется.
+
+Подключить Exa к ElevenLabs можно двумя способами:
+
+| Подход                                | Настройка                         | Гибкость                                                                  |
+| ------------------------------------- | --------------------------------- | ------------------------------------------------------------------------- |
+| **Вебхук-инструмент** (рекомендуется) | Настройка через API или дашборд   | Полный контроль над параметрами поиска, параметрами содержимого и headers |
+| **Built-in Exa integration** (альфа)  | В один клик в дашборде ElevenLabs | Проще, но с ограниченными настройками                                     |
+
+В этом руководстве описан подход с вебхук-инструментом, который даёт полный контроль над тем, как вызывается Exa. Настроить интеграцию можно и через [дашборд ElevenLabs](https://elevenlabs.io/app/conversational-ai).
+
+<div id="how-it-works">
+  ## Как это работает
+</div>
+
+1. Пользователь говорит с voice agent
+2. LLM решает вызвать `web_search`, опираясь на описание tool
+3. ElevenLabs отправляет POST-запрос на `https://api.exa.ai/search` с настроенными вами headers и body
+4. Параметры, определённые LLM (поисковый `query`), объединяются с вашими постоянными значениями (`type`, `numResults`, `contents`)
+5. Результаты Exa возвращаются в LLM, и он отвечает в разговорной форме
+
+Никакого server, никакого callback URL, никаких слушателей. ElevenLabs сам выступает HTTP-client и обращается к Exa напрямую. Тайм-аут tool calls — 20 секунд.
+
+<div id="prerequisites">
+  ## Предварительные требования
+</div>
+
+* [Exa API key](https://dashboard.exa.ai/api-keys)
+* [ElevenLabs API key](https://elevenlabs.io/app/settings/api-keys)
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новые аккаунты получают бесплатные credits.
+</Card>
+
+<div id="get-started">
+  ## Get started
+</div>
+
+<Steps>
+  <Step title="Создание вебхук-инструмента">
+    Используйте [Create Tool API](https://elevenlabs.io/docs/api-reference/tools/create) от ElevenLabs, чтобы зарегистрировать вебхук-инструмент, указывающий на эндпоинт поиска Exa.
+
+    Ключевая идея: свойства с `constant_value` фиксированы (отправляются в каждом запросе), а свойства с `description` определяются LLM во время выполнения.
+
+    ```bash bash theme={null}
+    curl -s -X POST "https://api.elevenlabs.io/v1/convai/tools" \
+      -H "xi-api-key: $ELEVENLABS_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "tool_config": {
+          "type": "webhook",
+          "name": "web_search",
+          "description": "Search the web using Exa. Use this when the user asks anything that needs current or factual information.",
+          "api_schema": {
+            "url": "https://api.exa.ai/search",
+            "method": "POST",
+            "request_headers": {
+              "x-api-key": "YOUR_EXA_API_KEY",
+              "Content-Type": "application/json",
+              "x-exa-integration": "elevenlabs"
+            },
+            "request_body_schema": {
+              "type": "object",
+              "properties": {
+                "query": {
+                  "type": "string",
+                  "description": "Natural language search query. Be specific."
+                },
+                "type": {
+                  "type": "string",
+                  "constant_value": "instant"
+                },
+                "numResults": {
+                  "type": "integer",
+                  "constant_value": 5
+                },
+                "contents": {
+                  "type": "object",
+                  "properties": {
+                    "highlights": {
+                      "type": "boolean",
+                      "constant_value": true
+                    }
+                  }
+                }
+              },
+              "required": ["query"]
+            }
+          }
+        }
+      }'
+    ```
+
+    Так создаётся инструмент, в котором:
+
+    * `query` — LLM заполняет это поле исходя из контекста разговора
+    * `type: "instant"` — использует самый быстрый search mode Exa (~150 мс)
+    * `numResults: 5` — возвращает 5 результатов на один поиск
+    * `contents.highlights: true` — возвращает экономичные по токенам highlights (оптимально для задержки в голосовых сценариях)
+
+    Сохраните возвращённый `id` — он понадобится, чтобы подключить инструмент к agent.
+
+    <Note>
+      Если у вас уже есть agent, можно пропустить шаг 2 и добавить инструмент к существующему agent в дашборде ElevenLabs в разделе **Agent &gt; Tools** или через [Update Agent API](https://elevenlabs.io/docs/api-reference/agents/update). Инструмент не будет работать, пока не подключён к agent.
+    </Note>
+  </Step>
+
+  <Step title="Создание agent с инструментом">
+    Создайте разговорного agent и подключите вебхук-инструмент по его ID.
+
+    ```bash bash theme={null}
+    curl -s -X POST "https://api.elevenlabs.io/v1/convai/agents/create" \
+      -H "xi-api-key: $ELEVENLABS_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{
+        "name": "Exa Search Assistant",
+        "conversation_config": {
+          "agent": {
+            "prompt": {
+              "prompt": "You are a helpful voice assistant with real-time web search powered by Exa. When users ask questions that need current information, use the web_search tool.\n\nGuidelines:\n- Search proactively for time-sensitive or factual questions.\n- Summarize results conversationally — do not read URLs aloud.\n- Cite sources naturally.\n- Keep responses concise — this is voice.",
+              "tool_ids": ["YOUR_TOOL_ID"]
+            },
+            "first_message": "Hey! I can search the web for you in real-time. What would you like to know?"
+          }
+        }
+      }'
+    ```
+
+    Ответ содержит `agent_id`. Откройте agent в дашборде ElevenLabs, чтобы протестировать его:
+
+    ```text theme={null}
+    https://elevenlabs.io/app/conversational-ai/agents/YOUR_AGENT_ID
+    ```
+  </Step>
+
+  <Step title="Встраивание виджета">
+    Добавьте agent на любую веб-страницу двумя строками HTML:
+
+    ```html html theme={null}
+    <elevenlabs-convai agent-id="YOUR_AGENT_ID"></elevenlabs-convai>
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async></script>
+    ```
+  </Step>
+</Steps>
+
+<div id="full-python-example">
+  ## Полный пример на Python
+</div>
+
+Этот скрипт создаёт и вебхук-инструмент, и agent за одно выполнение:
+
+```python python theme={null}
+import os
+import requests
+
+ELEVENLABS_API_KEY = os.environ["ELEVENLABS_API_KEY"]
+EXA_API_KEY = os.environ["EXA_API_KEY"]
+BASE = "https://api.elevenlabs.io/v1/convai"
+HEADERS = {"xi-api-key": ELEVENLABS_API_KEY, "Content-Type": "application/json"}
+
+# 1. Создаём вебхук-инструмент
+tool_resp = requests.post(f"{BASE}/tools", headers=HEADERS, json={
+    "tool_config": {
+        "type": "webhook",
+        "name": "web_search",
+        "description": (
+            "Search the web using Exa. Use this when the user asks anything "
+            "that needs current or factual information."
+        ),
+        "api_schema": {
+            "url": "https://api.exa.ai/search",
+            "method": "POST",
+            "request_headers": {
+                "x-api-key": EXA_API_KEY,
+                "Content-Type": "application/json",
+                "x-exa-integration": "elevenlabs",
+            },
+            "request_body_schema": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "Natural language search query. Be specific.",
+                    },
+                    "type": {"type": "string", "constant_value": "instant"},
+                    "numResults": {"type": "integer", "constant_value": 5},
+                    "contents": {
+                        "type": "object",
+                        "properties": {
+                            "highlights": {
+                                "type": "boolean",
+                                "constant_value": True,
+                            }
+                        },
+                    },
+                },
+                "required": ["query"],
+            },
+        },
+    }
+})
+tool_resp.raise_for_status()
+tool_id = tool_resp.json()["id"]
+print(f"Tool created: {tool_id}")
+
+# 2. Создаём agent
+agent_resp = requests.post(f"{BASE}/agents/create", headers=HEADERS, json={
+    "name": "Exa Search Assistant",
+    "conversation_config": {
+        "agent": {
+            "prompt": {
+                "prompt": (
+                    "You are a helpful voice assistant with real-time web search "
+                    "powered by Exa. When users ask questions that need current "
+                    "information, use the web_search tool.\n\n"
+                    "Guidelines:\n"
+                    "- Search proactively for time-sensitive or factual questions.\n"
+                    "- Summarize results conversationally — do not read URLs aloud.\n"
+                    "- Cite sources naturally.\n"
+                    "- Keep responses concise — this is voice."
+                ),
+                "tool_ids": [tool_id],
+            },
+            "first_message": "Hey! I can search the web for you. What would you like to know?",
+        }
+    },
+})
+agent_resp.raise_for_status()
+agent_id = agent_resp.json()["agent_id"]
+print(f"Agent created: {agent_id}")
+print(f"Dashboard: https://elevenlabs.io/app/conversational-ai/agents/{agent_id}")
+```
+
+Запустите его:
+
+```bash bash theme={null}
+export ELEVENLABS_API_KEY="your-key"
+export EXA_API_KEY="your-key"
+python elevenlabs_exa_webhook.py
+```
+
+<div id="customizing-search-parameters">
+  ## Настройка параметров поиска
+</div>
+
+Схема body вебхук-инструмента напрямую соответствует [Search API Exa](/ru/docs/reference/search). Вот типичные варианты настройки:
+
+<div id="search-type">
+  ### Тип поиска
+</div>
+
+Управляйте балансом между скоростью и качеством с помощью константы `type`:
+
+| Тип       | Задержка | Лучше всего подходит для          |
+| --------- | -------- | --------------------------------- |
+| `instant` | ~150 мс  | Голосовые диалоги (рекомендуется) |
+| `auto`    | ~1 с     | Общие сценарии                    |
+
+Для голосовых agent&#39;ов начните с `instant`. Используйте `auto`, если хотите, чтобы Exa сама подбирала оптимальный на текущий момент режим поиска для каждого запроса.
+
+<div id="content-options">
+  ### Параметры содержимого
+</div>
+
+Выберите, в каком виде возвращать результаты, с помощью объекта `contents`:
+
+```json json theme={null}
+{
+  "contents": {
+    "type": "object",
+    "properties": {
+      "highlights": {
+        "type": "boolean",
+        "constant_value": true
+      }
+    }
+  }
+}
+```
+
+* **`highlights`** — экономные по токенам выдержки. Используйте, когда нужны релевантные фрагменты без перегрузки контекста LLM. Передайте `true`, чтобы получить вариант по умолчанию с наивысшим качеством.
+* **`text`** — полный markdown страницы. Используйте, когда agent-у требуется всё содержимое страницы. Задайте `maxCharacters`, чтобы ограничить длину.
+* **`summary`** — сгенерированный LLM summary каждой страницы. Задержка выше, но вы получаете синтезированный контент.
+
+Для голосовых agent-ов рекомендуемое значение по умолчанию — `highlights: true`: оно даёт баланс между релевантностью и скоростью ответа.
+
+<div id="filtering-results">
+  ### Фильтрация результатов
+</div>
+
+Добавьте фильтры по доменам или датам в виде констант:
+
+```json json theme={null}
+{
+  "includeDomains": {
+    "type": "array",
+    "constant_value": ["reuters.com", "apnews.com", "bbc.com"]
+  }
+}
+```
+
+```json json theme={null}
+{
+  "startPublishedDate": {
+    "type": "string",
+    "constant_value": "2025-01-01T00:00:00.000Z"
+  }
+}
+```
+
+<div id="number-of-results">
+  ### Количество результатов
+</div>
+
+Подбирайте `numResults` под свой сценарий. Для голосовых интерфейсов 3–5 результатов обеспечивают быструю выдачу ответов. Для исследовательских agent 10 и более результатов дают более широкий охват.
+
+<div id="schema-reference">
+  ## Справочник по schema
+</div>
+
+Вебхук-инструменты ElevenLabs используют JSON schema со следующими типами свойств:
+
+* **`constant_value`** — фиксированное значение, отправляемое в каждом запросе. LLM его не видит и не изменяет. Подходит для строк, чисел и булевых значений.
+* **`description`** — LLM определяет значение во время выполнения на основе этого описания. Используйте для динамических параметров, таких как `query`.
+* **Вложенные объекты** — используйте `type: "object"` со свойством `properties`, чтобы построить вложенные структуры вроде `contents.highlights`.
+
+У каждого параметра в дашборде есть переключатель режима — **Fixed** или **LLM**:
+
+<Frame>
+  <img src="/docs/images/integrations/elevenlabs/parameters.png" alt="Настройка параметров вебхук-инструмента ElevenLabs с переключателями режимов Fixed и LLM" width="1692" height="898" data-path="images/integrations/elevenlabs/parameters.png" />
+</Frame>
+
+Параметры в режиме **Fixed** (в API обозначаются как `constant_value`) отправляются без изменений в каждом запросе. Параметры в режиме **LLM** (обозначаются как `description`) позволяют модели выбрать значение во время выполнения. Оставляйте в режиме Fixed как можно больше параметров — каждый параметр, определяемый LLM, добавляет шаг вызова инструмента и увеличивает задержку ответа.
+
+Полную schema вебхук-инструмента ElevenLabs смотрите в [документации по server tools ElevenLabs](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
+
+<div id="built-in-exa-integration-alpha">
+  ## Built-in Exa integration (alpha)
+</div>
+
+ElevenLabs также предлагает встроенную интеграцию с Exa, доступную в дашборде agent в разделе **Tools &gt; Integrations**. Её проще настроить, но гибко задавать параметры поиска сложнее, чем в подходе с вебхук-инструментом.
+
+Если нужен полный контроль над типом поиска, параметрами содержимого и фильтрацией, рекомендуется описанный выше подход с вебхук-инструментом.

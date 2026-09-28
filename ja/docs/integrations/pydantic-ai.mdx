@@ -1,0 +1,220 @@
+---
+title: "Pydantic AI"
+description: "Exa Search API を活用した Web リサーチツールを Pydantic AI エージェントに組み込みます。"
+icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
+---
+
+<Card title="Coding Agent Quickstart" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Exa を初めてお使いですか？1分以内に始められます。
+</Card>
+
+***
+
+[Pydantic AI](https://pydantic.dev/docs/ai/) は、Pydantic の開発チームが提供する Python エージェントフレームワークです。その[ハーネス](https://pydantic.dev/docs/ai/harness/exa-search/)には、Exa の公式インテグレーションが、組み合わせて使える2つのケイパビリティとして含まれています。
+
+* **`ExaSearch`**: Exa Search API を活用した Web リサーチツールです。`web_search` (上位の結果と、それぞれの最も関連性の高い抜粋を返します。オプションで合成されたテキスト要約も取得できます) 、`get_page` (指定した URL のページ全体を取得します) 、およびオプトインの `deep_search` (1回の呼び出しで、引用付きの合成された回答を返します) を提供します。
+* **`ExaAgent`**: 長時間にわたるリサーチを、遅延ツール呼び出しとして [Exa Agent API](/ja/docs/agent/quickstart) に委任します。
+
+ケイパビリティは、ツール、ツールごとの出力予算、システムプロンプト内の簡潔なリサーチガイダンスをひとまとめにしたものです。そのため、検索 API とページ取得処理を自分でつなぎ込んだり、体系的にリサーチするようエージェントにプロンプトで指示したりする必要はありません。
+
+<Info> Pydantic による完全なリファレンスは[こちら](https://pydantic.dev/docs/ai/harness/exa-search/)をご覧ください。 </Info>
+
+<Card title="Exa を使ったリサーチエージェントの構築に関する Pydantic の記事を読む" icon="/docs/images/integrations/pydantic-ai/logo.svg" horizontal href="https://pydantic.dev/articles/harness-exa" width="120" height="120" data-path="images/integrations/pydantic-ai/logo.svg">
+  Pydantic AI と Exa で構築した、コピー＆ペーストですぐに使える3つのリサーチエージェントを紹介するウォークスルーです。
+</Card>
+
+***
+
+<div id="get-started">
+  ## はじめに
+</div>
+
+<Steps>
+  <Step title="前提条件とインストール">
+    Exa エクストラを指定してハーネスをインストールし、環境変数 `EXA_API_KEY` を設定します。
+
+    ```Bash Bash theme={null}
+    uv add "pydantic-ai-harness[exa]"
+    ```
+
+    <Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+    </Card>
+  </Step>
+
+  <Step title="エージェントに ExaSearch を追加する">
+    `capabilities` パラメーターで `ExaSearch` を `Agent` に渡します。認証にはデフォルトで `EXA_API_KEY` が使用されます。
+
+    ```Python Python theme={null}
+    from pydantic_ai import Agent
+    from pydantic_ai_harness.exa import ExaSearch
+
+    agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch()])
+
+    result = agent.run_sync('What changed in the latest stable Python release?')
+    print(result.output)
+    ```
+
+    `ExaSearch` はエージェントに 2 つのツールを追加します。
+
+    | ツール          | 用途                                                                      |
+    | ------------ | ----------------------------------------------------------------------- |
+    | `web_search` | ウェブを検索し、上位 `num_results` 件のページを返します。各ページにはタイトル、URL、最も関連性の高い抜粋が含まれます。    |
+    | `get_page`   | 特定の URL 1 件の全文を取得します。対象は `web_search` で見つかった有望なページ、またはユーザーが指定した URL です。 |
+
+    `web_search` はページ全文ではなく短い抜粋 (Exa のハイライト) を返すため、複数のソースを低コストで調査できます。エージェントはその中から選んだページを `get_page` で読み込みます。コンテンツが返されない URL や質問、レート制限、一時的な障害は `ModelRetry` としてモデルに通知されるため、実行を継続して回復できます。認証エラー (401/403) は設定エラーとして送出されます。
+  </Step>
+
+  <Step title="ディープサーチを有効にする（任意）">
+    `deep_search` は Exa の多段階の[ディープサーチ](/ja/docs/search/quickstart) (`type='deep'`) を実行します。Exa は質問を複数のクエリに展開して検索を行い、引用に裏付けられた回答を 1 回のツール呼び出しで返します。`web_search` より時間がかかり、より深く検索するため、デフォルトでは無効になっています。使用するには明示的に有効にしてください。
+
+    ```Python Python theme={null}
+    from pydantic_ai_harness.exa import ExaSearch
+
+    agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaSearch(include_deep_search=True)])
+    ```
+
+    有効にすると、ケイパビリティの指示に従い、モデルは `deep_search` を `web_search` の代わりではなく、`web_search` で不十分な場合の次の手段として扱います。
+  </Step>
+</Steps>
+
+***
+
+<div id="configuration">
+  ## 設定
+</div>
+
+`ExaSearch` の全フィールドとそのデフォルト値は次のとおりです。
+
+```Python Python theme={null}
+from pydantic_ai_harness.exa import ExaSearch
+
+ExaSearch(
+    num_results=5,             # web_search 1 回あたりの結果数（1〜100）
+    max_text_chars=10_000,     # get_page で取得するテキストの上限文字数（1〜10,000）
+    text_summary=False,        # web_search でテキスト要約もあわせて返す
+    include_deep_search=False, # deep_search ツールも公開する
+    include_domains=[],        # 指定したドメインのみを検索（許可リスト）
+    exclude_domains=[],        # 指定したドメインは検索しない（拒否リスト）
+    guidance=None,             # None = デフォルトの指示、'' = 指示なし、str = カスタム指示
+    client=None,               # ExaClient（None の場合は EXA_API_KEY から exa_py.AsyncExa を生成）
+)
+```
+
+`include_domains` と `exclude_domains` は `web_search` と `deep_search` に適用され、併用はできません。上限値が範囲外の場合や両方のドメインリストを設定した場合は、構築時にエラーが発生します。
+
+<div id="text-summary">
+  ### テキスト要約
+</div>
+
+`text_summary` を設定すると、各 `web_search` 呼び出しで、結果をまとめたプレーンテキストの要約もあわせてリクエストされます。形式を制約しない要約には `True` を、特定の形式で要約させたい場合は、目的の形式を記述した文字列を渡します。
+
+```Python Python theme={null}
+from pydantic_ai_harness.exa import ExaSearch
+
+ExaSearch(text_summary='One concise sentence with the requested facts.')
+```
+
+ツールの戻り値の形式に変更はありません。Exa が要約を返した場合は、`Summary:` 行として先頭に付加されます。
+
+<div id="structured-citations">
+  ### 構造化された引用
+</div>
+
+すべてのツールは `ToolReturn` を返します。`return_value` にはモデルが読む可読テキスト (`Sources:` ブロックを含む) が、`metadata` には `'sources'` キーの下に構造化された `ExaSource` レコード (`{'url': ..., 'title': ...}`) としてソースが格納されます。メタデータはモデルに送信されないため、テキストを解析しなくても引用を表示できます。
+
+```Python Python theme={null}
+from pydantic_ai.messages import ModelRequest, ToolReturnPart
+
+for message in result.all_messages():
+    if isinstance(message, ModelRequest):
+        for part in message.parts:
+            if isinstance(part, ToolReturnPart) and part.metadata is not None:
+                for source in part.metadata.get('sources', []):
+                    print(source['url'], source['title'])
+```
+
+<div id="custom-client">
+  ### カスタムクライアント
+</div>
+
+デフォルトのクライアントは `exa_py.AsyncExa` で、`EXA_API_KEY` を使って設定されます。認証やベース URL を明示的に設定する場合や、テストでフェイクに差し替える場合は、`ExaClient` プロトコルを満たす任意のオブジェクトを渡します。
+
+```Python Python theme={null}
+from exa_py import AsyncExa
+from pydantic_ai_harness.exa import ExaSearch
+
+ExaSearch(client=AsyncExa(api_key='...'))
+```
+
+***
+
+<div id="exa-agent-runs">
+  ## Exa Agent の実行
+</div>
+
+[Exa Agent API](/ja/docs/agent/quickstart) は、自由形式のリサーチタスクを非同期で実行します。`ExaAgent` ケイパビリティは、このライフサイクルを Pydantic AI の[遅延ツール呼び出し (deferred tool calls) ](https://pydantic.dev/docs/ai/deferred-tools/)にマッピングします。`exa_agent` ツールは実行を作成したうえで処理を遅延させ、Exa の実行 ID を遅延呼び出しのメタデータに保持します。
+
+```Python Python theme={null}
+from pydantic_ai import Agent
+from pydantic_ai_harness.exa import ExaAgent
+
+agent = Agent('anthropic:claude-sonnet-4-6', capabilities=[ExaAgent()])
+```
+
+デフォルト (`execution='inline'`) では、ケイパビリティは Exa の実行が完了するまでポーリングし、エージェントの実行内で自身の遅延呼び出しを解決します。そのため、このツールは (低速ではあるものの) 通常のツールと同じように動作します。`execution='external'` を指定すると、呼び出しは `DeferredToolRequests` 出力として上位に渡され、ホストアプリケーションが帯域外でそれを解決します。
+
+`ExaAgent` の全フィールドとそのデフォルト値:
+
+```Python Python theme={null}
+from pydantic_ai_harness.exa import ExaAgent
+
+ExaAgent(
+    effort=None,          # 'low' | 'medium' | 'high' | 'xhigh' | 'auto' -- None = API のデフォルト
+    execution='inline',   # 'inline' は完了までポーリング、'external' は DeferredToolRequests を呼び出し元に返す
+    output_schema=None,   # 構造化出力用の BaseModel クラスまたは dict 形式のスキーマ
+    system_prompt=None,   # Exa Agent の実行にそのまま渡される
+    poll_interval=1000,   # インラインで解決する際のポーリング間隔 (ミリ秒)
+    timeout_ms=3_600_000, # インラインで解決する際の実行完了までの最大待機時間 (ミリ秒)
+    guidance=None,        # None = デフォルトの指示、'' = 指示なし、str = カスタム指示
+    runs=None,            # ExaAgentRuns -- None の場合は EXA_API_KEY を使って AsyncExa().agent.runs を生成
+)
+```
+
+***
+
+<div id="agent-spec-yamljson">
+  ## Agent spec (YAML/JSON)
+</div>
+
+どちらのケイパビリティもPydantic AIの[agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec)に対応しているため、Pythonコードではなく設定ファイルで宣言できます。
+
+```yaml agent.yaml theme={null}
+model: anthropic:claude-sonnet-4-6
+capabilities:
+  - ExaSearch:
+      num_results: 3
+      include_deep_search: true
+  - ExaAgent:
+      effort: low
+```
+
+```Python Python theme={null}
+from pydantic_ai import Agent
+from pydantic_ai_harness.exa import ExaAgent, ExaSearch
+
+agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAgent])
+```
+
+スペックローダーがケイパビリティのインスタンス化方法を判断できるよう、`custom_capability_types` を渡してください。スペックから読み込まれたインスタンスは、常に `EXA_API_KEY` を使用してデフォルトのクライアントを構築します。
+
+***
+
+<div id="next">
+  ## 次のステップ
+</div>
+
+* [**Search API**](/ja/docs/search/quickstart) - ハイライト、要約、ディープサーチに対応したセマンティック検索
+* [**Agent API**](/ja/docs/agent/quickstart) - オープンエンドな非同期リサーチの実行
+* [**MCP のセットアップ**](/ja/docs/get-started/exa-mcp) - Exa がホストする MCP サーバー
+* [**SDK**](/ja/docs/sdks/quickstart) - Python および JavaScript SDK のドキュメント

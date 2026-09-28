@@ -1,0 +1,13 @@
+---
+title: "Список событий выполнения"
+description: "Получите список сохранённых событий выполнения Agent или
+  воспроизведите их в виде server-sent events."
+openapi: "/ru/docs/exa-spec.yaml GET /agent/runs/{id}/events"
+timestamp: false
+---
+
+По умолчанию этот эндпоинт возвращает постраничный JSON-список сохранённых событий. Укажите `Accept: text/event-stream`, чтобы воспроизвести сохранённые события через SSE. Для постраничного вывода в JSON используйте `cursor`, а для воспроизведения через SSE — `Last-Event-ID`.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>

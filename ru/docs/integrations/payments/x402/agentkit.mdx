@@ -1,0 +1,186 @@
+---
+title: "World AgentKit"
+sidebarTitle: "World AgentKit"
+description: "Дайте AI-agentам, за которыми стоят подтверждённые люди, бесплатный доступ к Exa через World AgentKit — без USDC."
+icon: "/docs/images/sidebar-icons/world.svg"
+---
+
+<div id="what-is-agentkit">
+  ## Что такое AgentKit?
+</div>
+
+[World AgentKit](https://docs.world.org/agents/agent-kit) — это набор инструментов, который позволяет AI-agentам подтвердить через [World ID](https://world.org), что за ними стоит реальный, верифицированный человек. В связке с [x402](/ru/docs/integrations/payments/x402/quickstart) он открывает доступ к **бесплатному пробному периоду**: agent, зарегистрированный в [AgentBook](https://docs.world.org/agents/agent-kit/integrate) от World, может обращаться к эндпоинтам Exa `/search` и `/contents` без оплаты в USDC.
+
+Это работает параллельно со стандартным платёжным потоком x402. Каждый верифицированный человек получает **100 бесплатных запросов в месяц** на всех agentов, которых он подтверждает. Когда лимит исчерпан, agent переходит на обычную оплату в USDC. Счётчики сбрасываются в начале каждого календарного месяца (UTC).
+
+<Info>
+  И бесплатный пробный период AgentKit, и платёж x402 не применяются, если запрос содержит header `x-api-key` или `Authorization: Bearer`. Приоритет имеет обычная схема тарификации по API key.
+</Info>
+
+<div id="how-it-works">
+  ## Как это работает
+</div>
+
+Когда клиент обращается к `/search` или `/contents` без API key, Exa отвечает `402 Payment Required`. Ответ содержит расширение `agentkit` в header `PAYMENT-REQUIRED` с запросом-вызовом [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum).
+
+Agent подписывает этот запрос-вызов своим зарегистрированным wallet, а Exa выполняет проверки:
+
+1. **Проверка подписи** — подпись SIWE сверяется с адресом wallet (поддерживаются как EOA через EIP-191, так и кошельки на смарт-контрактах через ERC-1271)
+2. **Поиск в AgentBook** — wallet сопоставляется с анонимным `humanId` через контракт AgentBook в World Chain (`eip155:480`), что подтверждает: уникальный verified human делегировал свою личность этому agent
+3. **Проверка использования** — если у человека остались бесплатные пробные запросы, доступ предоставляется; в противном случае потребуется оплата в USDC
+
+<div id="quickstart">
+  ## Quickstart
+</div>
+
+<div id="1-register-your-agent-in-agentbook">
+  ### 1. Зарегистрируйте своего agent в AgentBook
+</div>
+
+Это разовая настройка. Вам понадобится [World App](https://world.org/download) с подтверждённой личностью.
+
+```bash theme={null}
+npx @worldcoin/agentkit-cli register <your-agent-wallet-address>
+```
+
+CLI запускает процесс верификации в World App, а затем отправляет регистрационную транзакцию в World Chain. После её завершения любой server, использующий AgentKit, сможет найти ваш wallet и убедиться, что за ним стоит реальный человек.
+
+<div id="2-send-a-request-get-the-challenge">
+  ### 2. Отправьте запрос (получите запрос-вызов)
+</div>
+
+```bash theme={null}
+curl -s -D - -X POST "https://api.exa.ai/search" \
+  -H "Content-Type: application/json" \
+  -d '{"query": "fusion energy breakthroughs", "numResults": 5}'
+```
+
+Ответ `402` содержит расширение `agentkit` внутри декодированного payload `PAYMENT-REQUIRED`:
+
+```json theme={null}
+{
+  "x402Version": 2,
+  "accepts": [ ... ],
+  "extensions": {
+    "agentkit": {
+      "info": {
+        "version": "1",
+        "statement": "Verify your agent is backed by a real human to access Exa",
+        "domain": "api.exa.ai",
+        "uri": "https://api.exa.ai/search",
+        "nonce": "abc123...",
+        "issuedAt": "2026-04-11T01:30:00.000Z",
+        "resources": ["https://api.exa.ai/search"]
+      },
+      "supportedChains": [
+        { "chainId": "eip155:480", "type": "eip191" },
+        { "chainId": "eip155:480", "type": "eip1271" }
+      ],
+      "schema": { ... },
+      "_options": {
+        "statement": "Verify your agent is backed by a real human to access Exa",
+        "mode": { "type": "free-trial", "uses": 100 },
+        "network": "eip155:480"
+      }
+    }
+  }
+}
+```
+
+<div id="3-sign-the-challenge-and-resubmit">
+  ### 3. Подпишите запрос-вызов и отправьте запрос повторно
+</div>
+
+Сформируйте [SIWE-сообщение](https://eips.ethereum.org/EIPS/eip-4361) из полей `info` (domain, uri, nonce, statement и т. д.), подпишите его зарегистрированным wallet вашего agent, используя один из типов `supportedChains`, и передайте его в header `agentkit` (JSON в кодировке base64):
+
+```bash theme={null}
+curl -X POST "https://api.exa.ai/search" \
+  -H "Content-Type: application/json" \
+  -H "agentkit: <base64-encoded-signed-challenge>" \
+  -d '{"query": "fusion energy breakthroughs", "numResults": 5}'
+```
+
+Если agent верифицирован и у него остались бесплатные пробные запросы, Exa возвращает `200` с результатами поиска — оплата не требуется.
+
+<div id="using-the-agentkit-x402-skill">
+  ### Использование навыка AgentKit x402
+</div>
+
+Вместо того чтобы реализовывать поток «запрос-вызов — ответ» вручную, добавьте [навык agentkit-x402](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md) в своего ИИ-agentа:
+
+```bash theme={null}
+npx skills add worldcoin/agentkit agentkit-x402
+```
+
+Этот навык автоматически выполняет весь процесс, когда agent получает ответ `402` с расширением AgentKit.
+
+<div id="free-trial-details">
+  ## Подробности бесплатного пробного периода
+</div>
+
+* Каждый verified human получает **100 бесплатных запросов в месяц** на все agent&#39;ы, которые он поддерживает
+* Счётчики использования обнуляются в начале каждого календарного месяца (UTC)
+* Использование учитывается отдельно по каждому человеку и каждому эндпоинту (`/search` и `/contents` считаются раздельно)
+* Два agent&#39;а, поддерживаемые одним и тем же человеком, используют общий счётчик
+* Когда бесплатные пробные запросы на месяц исчерпаны, agent переходит на стандартный [платёжный поток x402](/ru/docs/integrations/payments/x402/quickstart)
+* То же [ограничение в 10 результатов](/ru/docs/integrations/payments/x402/quickstart#pricing) действует и для бесплатных пробных запросов к `/search`
+* Счётчик бесплатного пробного периода пока не возвращается в ответе API — когда запросы исчерпаны, сервер отвечает стандартным `402`, не предоставляя бесплатный доступ
+
+<div id="supported-endpoints">
+  ## Поддерживаемые эндпоинты
+</div>
+
+| Эндпоинт    | Оплата x402 | Бесплатный пробный период AgentKit |
+| ----------- | :---------: | :--------------------------------: |
+| `/search`   |      Да     |                 Да                 |
+| `/contents` |      Да     |                 Да                 |
+
+Остальные эндпоинты Exa не поддерживают ни оплату через x402, ни бесплатный пробный период AgentKit.
+
+<div id="network-details">
+  ## Параметры сети
+</div>
+
+| Свойство                      | Значение                                                |
+| ----------------------------- | ------------------------------------------------------- |
+| Сеть AgentBook                | World Chain                                             |
+| Chain ID (CAIP-2)             | `eip155:480`                                            |
+| Верификация                   | Контракт AgentBook в World Chain                        |
+| Поддерживаемые типы кошельков | EOA (EIP-191) и кошельки на смарт-контрактах (ERC-1271) |
+
+<div id="faq">
+  ## FAQ
+</div>
+
+<AccordionGroup>
+  <Accordion title="Можно ли использовать одновременно оплату через x402 и AgentKit?">
+    Да. Ответ `PAYMENT-REQUIRED` содержит и стоимость оплаты, и запрос-вызов AgentKit. Ваш клиент может выбрать любой из вариантов. Если бесплатные пробные запросы исчерпаны, agent может перейти на оплату в USDC.
+  </Accordion>
+
+  <Accordion title="Что произойдет, если мой agent не зарегистрирован в AgentBook?">
+    Верификация AgentKit завершится неудачей без сообщения об ошибке, а запрос будет обработан как обычный `402` — ваш agent по-прежнему сможет заплатить в USDC по стандартному сценарию x402.
+  </Accordion>
+
+  <Accordion title="Получают ли два agentа, действующие от имени одного человека, отдельные квоты бесплатного пробного периода?">
+    Нет. Использование отслеживается по человеку (через анонимный `humanId` из AgentBook), а не по walletу. Два agentа с одним и тем же World ID используют общий счетчик.
+  </Accordion>
+
+  <Accordion title="Какие блокчейн-сети задействованы?">
+    Стандартные платежи x402 в USDC могут проводиться в **Base** (`eip155:8453`) или **Solana mainnet** (`solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp`). Верификация AgentKit использует **World Chain** (`eip155:480`) для поиска в AgentBook. Эти механизмы независимы — AgentKit не требует никаких ончейн-платежей.
+  </Accordion>
+
+  <Accordion title="Какие типы walletов поддерживаются?">
+    Как EOA (внешние аккаунты) с подписями EIP-191, так и walletы на смарт-контрактах (например, Coinbase Smart Wallet, Safe) с ERC-1271. Подробности см. в [SDK reference World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference).
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+* [Руководство по оплате через x402](/ru/docs/integrations/payments/x402/quickstart): стандартный процесс оплаты в USDC
+* [Документация World AgentKit](https://docs.world.org/agents/agent-kit): полная документация AgentKit
+* [Руководство по интеграции World AgentKit](https://docs.world.org/agents/agent-kit/integrate): регистрация в AgentBook
+* [Справочник по SDK World AgentKit](https://docs.world.org/agents/agent-kit/sdk-reference): справочник по API SDK
+* [Навык AgentKit x402](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md): готовый навык для AI-agentов
+* [Документация протокола x402](https://docs.x402.org): полная спецификация x402

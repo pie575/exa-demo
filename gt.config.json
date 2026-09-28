@@ -100,11 +100,9 @@
     }
   },
   "locales": [
-    "es",
     "zh",
-    "ko",
-    "id",
-    "fr"
+    "ja",
+    "ru"
   ],
   "defaultLocale": "en",
   "$schema": "https://assets.gtx.dev/config-schema.json"
