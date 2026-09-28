@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="cancel-a-run">
-  # 実行をキャンセルする
-</div>
+# 実行をキャンセルする {#cancel-a-run}
 
 > キュー待ちまたは実行中の Agent 実行をキャンセルします。
 
@@ -15,9 +13,7 @@
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs/{id}/cancel
 openapi: 3.1.0

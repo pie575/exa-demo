@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="delete-a-websets-monitor">
-  # Websets のモニターを削除する
-</div>
+# Websets のモニターを削除する {#delete-a-websets-monitor}
 
 > モニターを削除します。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/monitors/{id}
 openapi: 3.1.0

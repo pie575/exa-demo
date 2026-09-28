@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="particle">
-  # Particle
-</div>
+# Particle {#particle}
 
 > 話者情報とタイムスタンプ付きで、ポッドキャストのトランスクリプトを検索できます。
 
@@ -18,18 +16,14 @@
 エージェントは Exa のウェブ検索と並行して
 Particle にもクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 専門家のコメントや引用に適した発言を見つける。
 * メディアおよびブランドのモニタリング。
 * ナラティブやセンチメントの調査。
 * ポッドキャストの発見と最新情報の把握。
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` にはこの値を使用してください：
 
@@ -37,9 +31,7 @@ Particle にもクエリを実行します。
 particle
 ```
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 AI規制についてポッドキャストのホストがどのように語っているかを調べます。
 
@@ -139,16 +131,12 @@ AI規制についてポッドキャストのホストがどのように語って
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 相性の良い組み合わせ
-</div>
+## 相性の良い組み合わせ {#pairs-well-with}
 
 * [Financial Datasets](/ja/docs/agent/connect/financialdatasets): ポッドキャストでの話題を、公開済みのニュースと照らし合わせて検証します。
 * [Fiber.ai](/ja/docs/agent/connect/fiber): 話題に上がっている人物に、企業や連絡先のコンテキストを付加します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

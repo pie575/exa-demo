@@ -2966,9 +2966,7 @@ Agent に行を探させる場合は、ディスカバリー用のプロンプ�
   ```
 </CodeGroup>
 
-<div id="broad-list-building-with-agent-max">
-  ## Agent Max による大規模なリスト作成
-</div>
+## Agent Max による大規模なリスト作成 {#broad-list-building-with-agent-max}
 
 レイテンシやコストよりも網羅性と徹底性を重視する作業には、`effort: "max"` を使用してください。大規模なリスト作成、複数のソースにまたがる詳細なリサーチ、検証が難しい条件の判定などが該当します。Agent Max はパブリックベータ版です。リクエストには `Exa-Beta: agent-max-effort-2026-07-27` ヘッダーを付けて送信してください。このヘッダーには、複数のベータトークンをカンマ区切りで指定できます。
 
@@ -3012,9 +3010,7 @@ Agent に行を探させる場合は、ディスカバリー用のプロンプ�
   ```
 </CodeGroup>
 
-<div id="attach-a-data-partner-with-exa-connect">
-  ## Exa Connect でデータパートナーを接続する
-</div>
+## Exa Connect でデータパートナーを接続する {#attach-a-data-partner-with-exa-connect}
 
 `dataSources` を使用すると、Exa Agent が実行中にプレミアムデータパートナーからデータを取得できるようになります。この例では、Similarweb のトラフィックデータと Harmonic の資金調達データを Web リサーチの結果と組み合わせて、各企業の情報を補完します。パートナーの一覧は [Exa Connect](/ja/docs/agent/connect/overview) を参照してください。
 
@@ -3139,9 +3135,7 @@ Agent に行を探させる場合は、ディスカバリー用のプロンプ�
   ```
 </CodeGroup>
 
-<div id="production-checklist">
-  ## 本番環境向けチェックリスト
-</div>
+## 本番環境向けチェックリスト {#production-checklist}
 
 * Agent には、作業単位と求めるソースの品質を明示した具体的な `query` を指定してください。
 * 既知のレコードは、プロンプトに行を埋め込まず、`input.data` で渡してください。

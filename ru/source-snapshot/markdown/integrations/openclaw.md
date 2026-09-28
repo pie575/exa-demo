@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжать изучение.
 
-<div id="openclaw">
-  # OpenClaw
-</div>
+# OpenClaw {#openclaw}
 
 > Дайте OpenClaw доступ к актуальному веб-поиску и содержимому страниц с помощью Exa.
 
 [OpenClaw](https://openclaw.ai/) поддерживает Exa как встроенный провайдер `web_search`. После его выбора любой агент OpenClaw сможет использовать режимы поиска Exa, фильтры по датам и извлечение содержимого через встроенный веб-инструмент.
 
-<div id="set-up-exa">
-  ## Настройка Exa
-</div>
+## Настройка Exa {#set-up-exa}
 
 <Steps>
   <Step title="Установите плагин Exa">
@@ -50,9 +46,7 @@
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Настройка вручную
-</div>
+## Настройка вручную {#configure-manually}
 
 Вы можете выбрать Exa напрямую в настройках OpenClaw в формате JSON5:
 
@@ -90,9 +84,7 @@
   Лучше используйте `EXA_API_KEY` или SecretRef из OpenClaw, чем записывать API key в файл настроек.
 </Note>
 
-<div id="what-agents-can-request">
-  ## Что могут запрашивать агенты
-</div>
+## Что могут запрашивать агенты {#what-agents-can-request}
 
 OpenClaw предоставляет доступ к Exa через `web_search`.
 
@@ -121,9 +113,7 @@ await web_search({
 
 По умолчанию OpenClaw кэширует результаты веб-поиска на 15 минут. Измените значение `tools.web.search.cacheTtlMinutes` или установите его в `0`, если каждый запрос должен возвращать свежие данные.
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="OpenClaw не показывает Exa в списке провайдеров">
@@ -139,9 +129,7 @@ await web_search({
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={3}>
   <Card title="Провайдер Exa в OpenClaw" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="Читать руководство" arrow="true">

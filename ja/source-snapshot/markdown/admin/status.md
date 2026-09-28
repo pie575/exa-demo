@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="status-page">
-  # ステータスページ
-</div>
+# ステータスページ {#status-page}
 
 > Exa サービスのリアルタイムの稼働状況、発生中のインシデント、稼働履歴を確認できます。
 
@@ -171,15 +169,11 @@ Exa は [status.exa.ai](https://status.exa.ai) でサービスの稼働状況を
 
 <ExaStatus />
 
-<div id="subscribe-to-updates">
-  ## 更新情報を購読する
-</div>
+## 更新情報を購読する {#subscribe-to-updates}
 
 ステータスページで購読すると、インシデントの発生、更新、解決時に通知を受け取れます。通知はメール、Slack、Google Chat、または Webhook で届きます。
 
-<div id="get-help">
-  ## サポートを受ける
-</div>
+## サポートを受ける {#get-help}
 
 すべてのシステムが正常稼働と表示されているのにリクエストが失敗し続ける場合、原因は個々のリクエストにある可能性が高いため、まず[エラーコード](/ja/docs/admin/error-codes)を確認してください。
 

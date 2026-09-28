@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="list-agent-runs">
-  # Agent run の一覧取得
-</div>
+# Agent run の一覧取得 {#list-agent-runs}
 
 > チームの Agent run の一覧をページネーション形式で取得します。
 
@@ -15,9 +13,7 @@ run は新しい順に返されます。ページサイズは `limit` で指定�
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs
 openapi: 3.1.0

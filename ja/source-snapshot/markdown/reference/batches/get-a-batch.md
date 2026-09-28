@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="get-a-batch">
-  # バッチを取得する
-</div>
+# バッチを取得する {#get-a-batch}
 
 > IDを指定してバッチを取得します。
 
@@ -15,9 +13,7 @@
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /batches/{id}
 openapi: 3.1.0

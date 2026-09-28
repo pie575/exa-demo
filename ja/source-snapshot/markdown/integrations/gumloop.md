@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="gumloop">
-  # Gumloop
-</div>
+# Gumloop {#gumloop}
 
 > Gumloop のフロー内で Exa の検索とコンテンツ取得を利用します。
 
 [Gumloop](https://www.gumloop.com/) には、Exa が MCP インテグレーションとして標準で組み込まれています。エージェントまたは Agent Node に追加すると、ワークフロー内でウェブ検索、ページの抽出、関連ソースの検索、引用付きの回答生成を行えます。
 
-<div id="add-exa-to-a-gumloop-agent">
-  ## Gumloop のエージェントに Exa を追加する
-</div>
+## Gumloop のエージェントに Exa を追加する {#add-exa-to-a-gumloop-agent}
 
 <Steps>
   <Step title="エージェントを開く">
@@ -39,9 +35,7 @@
   </Step>
 </Steps>
 
-<div id="available-tools">
-  ## 利用可能なツール
-</div>
+## 利用可能なツール {#available-tools}
 
 | ツール                      | 用途                            |
 | ------------------------ | ----------------------------- |
@@ -54,13 +48,9 @@
 
 対話型エージェントでは、まず Search、Get Contents、Answer を有効にしてください。残りのツールは、ワークフローで必要になった場合にのみ追加します。
 
-<div id="use-exa-in-a-workflow">
-  ## ワークフローでExaを使用する
-</div>
+## ワークフローでExaを使用する {#use-exa-in-a-workflow}
 
-<div id="agent-node">
-  ### Agent Node
-</div>
+### Agent Node {#agent-node}
 
 決定論的な Gumloop のフローに **Agent Node** を追加し、ツールの 1 つとして Exa を接続します。このノードは、検索するか、ページ全体を取得するか、複数の Exa 呼び出しを連鎖させるかを自ら判断し、その出力をワークフローの次のステップに渡します。
 
@@ -71,9 +61,7 @@
 * レコードを営業ワークフローに振り分ける前に、企業をリサーチする
 * 製品を比較し、その結果をドキュメントに書き出す
 
-<div id="reusable-custom-mcp-node">
-  ### 再利用可能なカスタム MCP ノード
-</div>
+### 再利用可能なカスタム MCP ノード {#reusable-custom-mcp-node}
 
 1 つのアクションを繰り返し実行する場合は、専用のノードを作成します。
 
@@ -84,9 +72,7 @@
 
 タスクに動的な計画立案や複数のツールが必要な場合は、Agent Node を使用します。同じ Exa の操作をすべてのアイテムに対して一貫した動作で実行したい場合は、カスタム MCP ノードを使用します。
 
-<div id="prompt-patterns">
-  ## プロンプトのパターン
-</div>
+## プロンプトのパターン {#prompt-patterns}
 
 <AccordionGroup>
   <Accordion title="検索して要約する">
@@ -110,9 +96,7 @@
   </Accordion>
 </AccordionGroup>
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="エージェントが Exa を利用できない">
@@ -128,9 +112,7 @@
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="Gumloop の Exa インテグレーション" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="ガイドを読む" arrow="true">

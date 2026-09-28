@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="hipaa">
-  # HIPAA
-</div>
+# HIPAA {#hipaa}
 
 > 対象となるキャッシュからの取得のリクエストには、HIPAA準拠モードを使用します。
 
@@ -25,9 +23,7 @@ HIPAAモードは、トップレベルの`compliance`フィールドを使って
 
 HIPAA モードでは、該当するリクエストに [Zero Data Retention](/ja/docs/admin/security/zero-data-retention) が適用されるため、Exa が PHI を保存することはありません。
 
-<div id="supported-endpoints">
-  ## 対応エンドポイント
-</div>
+## 対応エンドポイント {#supported-endpoints}
 
 `compliance` フィールドは、次のエンドポイントで使用できます。
 
@@ -36,9 +32,7 @@ HIPAA モードでは、該当するリクエストに [Zero Data Retention](/ja
 
 その他のエンドポイントでは、このフィールドを指定するとリクエストが拒否されます。
 
-<div id="requirements">
-  ## 要件
-</div>
+## 要件 {#requirements}
 
 HIPAA モードでは、キャッシュからの取得のみがサポートされます。対応しているリクエストは次のとおりです。
 
@@ -52,9 +46,7 @@ HIPAA モードでは、キャッシュからの取得のみがサポートさ�
 * ライブフェッチが必要になる鮮度設定 (`maxAgeHours: 0` や正の値の `maxAgeHours` など)
 * `type` を省略した検索リクエスト、または `instant`、`fast` 以外のタイプを指定した検索リクエスト
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -70,8 +62,6 @@ HIPAA モードでは、キャッシュからの取得のみがサポートさ�
   ```
 </CodeGroup>
 
-<div id="access">
-  ## アクセス
-</div>
+## アクセス {#access}
 
 チームでHIPAAモードを有効にするには、[sales@exa.ai](mailto:sales@exa.ai)までお問い合わせください。Exaのセキュリティ関連ドキュメントは、[Trust Center](https://trust.exa.ai)でご確認いただけます。

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-contents-skill">
-  # Exa Contents スキル
-</div>
+# Exa Contents スキル {#exa-contents-skill}
 
 > URL がすでに手元にある場合は、Exa Contents でページコンテンツを抽出できます。
 
@@ -19,9 +17,7 @@
   エージェントの環境で、キーを `EXA_API_KEY` として設定してください。
 </Note>
 
-<div id="setup">
-  ## セットアップ
-</div>
+## セットアップ {#setup}
 
 **オプション A：このスキルを直接インストールする：**
 
@@ -67,17 +63,13 @@ npx skills add exa-labs/agent-skills --skill "exa-contents"
 全体を通じた厳守事項: キーはシークレットです。キーの確認は、存在/長さのチェック (`${EXA_API_KEY:+set}`、`[ -s ~/.config/exa/key ]`) または HTTP ステータスコードでのみ行ってください。キーを含む可能性のあるファイルや変数を、出力、`echo`、`cat`、または出力を伴う `grep` で表示することは絶対にせず、正規表現でキーファイルを「秘匿化」しようとすることも絶対にしないでください。万一キーが漏えいした場合は、https://dashboard.exa.ai/api-keys でローテーションするよう私に伝えてください。
 ```
 
-<div id="view-source">
-  ## ソースを表示
-</div>
+## ソースを表示 {#view-source}
 
 <Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="ソースを表示" arrow="true">
   インストール前に exa-contents スキルの定義を確認してください。
 </Card>
 
-<div id="related">
-  ## 関連情報
-</div>
+## 関連情報 {#related}
 
 <Columns cols={2}>
   <Card title="すべてのエージェントスキル" icon="layers" href="/ja/docs/get-started/agent-skills/overview" cta="スキルを見る" arrow="true">

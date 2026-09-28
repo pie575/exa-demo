@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="sdk-quickstart">
-  # SDK クイックスタート
-</div>
+# SDK クイックスタート {#sdk-quickstart}
 
 > Exa の Python SDK と JavaScript SDK をインストールして使用する
 
@@ -15,9 +13,7 @@ Exa の公式 SDK です。ウェブ検索、ページコンテンツの取得�
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="install">
-  ## インストール
-</div>
+## インストール {#install}
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -39,9 +35,7 @@ Exa の公式 SDK です。ウェブ検索、ページコンテンツの取得�
 
 Python SDK を使用するには Python 3.9 以降が必要です。
 
-<div id="authentication">
-  ## 認証
-</div>
+## 認証 {#authentication}
 
 API キーを環境変数に設定します。
 
@@ -59,9 +53,7 @@ API キーを環境変数に設定します。
   </Tab>
 </Tabs>
 
-<div id="getting-started">
-  ## はじめに
-</div>
+## はじめに {#getting-started}
 
 クライアントを初期化して、最初の検索を実行してみましょう。
 
@@ -104,9 +96,7 @@ API キーを環境変数に設定します。
   `Exa(api_key="your-api-key")` または `new Exa("your-api-key")` のように直接渡してください。
 </Note>
 
-<div id="recommended-defaults">
-  ## 推奨されるデフォルト設定
-</div>
+## 推奨されるデフォルト設定 {#recommended-defaults}
 
 | 項目       | 推奨されるデフォルト                                                 |
 | -------- | ---------------------------------------------------------- |
@@ -125,9 +115,7 @@ API キーを環境変数に設定します。
   | `get_contents` / `getContents` | リクエストに直接指定します (例: `exa.get_contents(urls, highlights=True)`)                |
 </Warning>
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
 Search は関連性の高いページを見つけ、そのコンテンツを 1 回の呼び出しで返します。
 
@@ -162,9 +150,7 @@ Search は関連性の高いページを見つけ、そのコンテンツを 1 �
   ```
 </CodeGroup>
 
-<div id="output-schema">
-  ### 出力スキーマ
-</div>
+### 出力スキーマ {#output-schema}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -218,9 +204,7 @@ Search は関連性の高いページを見つけ、そのコンテンツを 1 �
 
 複数の検索にまたがるリサーチが必要な出力には、Deep モードをおすすめします。軽量なリサーチには `deep-lite` を、多段階の検索とより高度な合成が必要な場合は `deep` を使用してください。リクエストオプションの詳細は [Search ガイド](/ja/docs/search/quickstart)を参照してください。
 
-<div id="contents">
-  ## Contents
-</div>
+## Contents {#contents}
 
 URLがすでにわかっている場合は、そこからハイライト、全文、または要約を抽出できます。まずはハイライトを使い、
 queryを追加して必要な情報に絞り込みましょう。
@@ -244,9 +228,7 @@ queryを追加して必要な情報に絞り込みましょう。
 
 より広いコンテキストやドキュメント構造が必要な場合は、全文を使用してください。出力形式、鮮度の制御、サブページのクロールについては、[Contents ガイド](/ja/docs/contents/quickstart)を参照してください。
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 質問に対する回答を引用付きで取得します。
 
@@ -271,9 +253,7 @@ queryを追加して必要な情報に絞り込みましょう。
   ```
 </CodeGroup>
 
-<div id="async-and-types">
-  ## 非同期処理と型
-</div>
+## 非同期処理と型 {#async-and-types}
 
 Python には非同期処理用の `AsyncExa` が用意されており、JavaScript SDK にはすべてのメソッドの TypeScript 型定義が
 付属しています。
@@ -296,15 +276,11 @@ Python には非同期処理用の `AsyncExa` が用意されており、JavaScr
   ```
 </CodeGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 Python: [exa-py のソースコード](https://github.com/exa-labs/exa-py)、[PyPI パッケージ](https://pypi.org/project/exa-py/)。JavaScript: [exa-js のソースコード](https://github.com/exa-labs/exa-js)、[npm パッケージ](https://www.npmjs.com/package/exa-js)。
 
-<div id="continue">
-  ## 次のステップ
-</div>
+## 次のステップ {#continue}
 
 <Columns cols={3}>
   <Card title="Search ガイド" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを開く" arrow="true">

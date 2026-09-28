@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы увидеть все доступные страницы, прежде чем продолжить изучение.
 
-<div id="vercel-ai-gateway">
-  # Vercel AI Gateway
-</div>
+# Vercel AI Gateway {#vercel-ai-gateway}
 
 > Используйте веб-поиск Exa через Vercel AI Gateway с помощью AI SDK.
 
 Используйте веб-поиск Exa через [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) с помощью `gateway.tools.exaSearch()` из пакета `ai`. API key Exa при этом не нужен — Vercel тарифицирует такие запросы через AI Gateway. Полный справочник см. в [документации Vercel по веб-поиску](https://vercel.com/docs/ai-gateway/models-and-providers/web-search).
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 Установите AI SDK 5 или новее:
 
@@ -21,9 +17,7 @@
 npm install ai
 ```
 
-<div id="authentication">
-  ## Аутентификация
-</div>
+## Аутентификация {#authentication}
 
 <Info>
   Для работы с AI Gateway требуется API key или OIDC-токен. Создайте `AI_GATEWAY_API_KEY` в панели управления Vercel в разделе **AI Gateway &gt; API Keys**, а затем добавьте его в переменные окружения.
@@ -35,9 +29,7 @@ AI_GATEWAY_API_KEY=your-api-key-here
 
 При развёртывании приложения на Vercel вместо него можно использовать автоматически доступный `VERCEL_OIDC_TOKEN`. См. [документацию Vercel по аутентификации и BYOK](https://vercel.com/docs/ai-gateway/authentication-and-byok).
 
-<div id="quick-start">
-  ## Быстрый старт
-</div>
+## Быстрый старт {#quick-start}
 
 Exa search можно использовать с любой поддерживаемой моделью:
 
@@ -56,9 +48,7 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="streaming">
-  ## Потоковая передача
-</div>
+## Потоковая передача {#streaming}
 
 Используйте `streamText`, чтобы обрабатывать генерируемый текст и события инструмента search по мере их поступления:
 
@@ -86,9 +76,7 @@ for await (const part of result.fullStream) {
 
 В обработчике маршрута Next.js верните поток клиенту с помощью `return result.toUIMessageStreamResponse()`.
 
-<div id="configuration">
-  ## Настройка
-</div>
+## Настройка {#configuration}
 
 Передайте параметры в `gateway.tools.exaSearch()`, чтобы настроить поиск:
 
@@ -126,9 +114,7 @@ tools: {
 
 Полный список параметров и описание их поведения см. в [справочнике Vercel по веб-поиску Exa](https://vercel.com/docs/ai-gateway/models-and-providers/web-search).
 
-<div id="vercel-eve-agents">
-  ## Vercel eve agents
-</div>
+## Vercel eve agents {#vercel-eve-agents}
 
 Агенты, созданные с помощью [eve](https://eve.dev), получают встроенный инструмент `web_search`, и модели AI Gateway по умолчанию выполняют его через Exa — без дополнительной настройки и без Exa API key. Чтобы явно зафиксировать провайдера, экспортируйте его из `agent/tools/web_search.ts`:
 
@@ -140,9 +126,7 @@ export default webSearch({ provider: 'exa' });
 
 Модели, вызываемые напрямую через провайдера, а не через AI Gateway, сохраняют свой встроенный веб-поиск. Полный набор инструментов см. в [документации по harness](https://eve.dev/docs/concepts/default-harness#built-in-tools) от eve.
 
-<div id="pricing">
-  ## Цены
-</div>
+## Цены {#pricing}
 
 <Tip>
   Веб-поиск Exa **бесплатен до 31 августа** в AI Gateway и eve — вы можете начать разрабатывать с ним уже сегодня без каких-либо затрат.

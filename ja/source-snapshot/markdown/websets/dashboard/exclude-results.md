@@ -1,27 +1,21 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exclude-results">
-  # Exclude Results
-</div>
+# Exclude Results {#exclude-results}
 
 > 以前の Webset や CSV ファイルに含まれる URL を除外して、新しい検索での結果の重複を防ぎます。
 
 <br />
 
-<div id="overview">
-  ## 概要
-</div>
+## 概要 {#overview}
 
 Exclude Results 機能を使うと、新しい検索を作成する際に重複した結果が返されるのを防げます。過去の Websets やアップロードした CSV ファイルをもとに除外する URL を指定することで、既存のデータを補完する、新しく重複のない結果の発見に集中できます。
 
 <br />
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/exclude-flow.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=b28ac0441991bc4543571ffc2a900963" alt="Webset作成時の結果除外オプション" width="1466" height="857" data-path="images/websets/exclude-flow.png" />
 
@@ -34,9 +28,7 @@ Exclude Results 機能を使うと、新しい検索を作成する際に重複�
 
 <br />
 
-<div id="when-to-use-exclusions">
-  ## 除外を使用するケース
-</div>
+## 除外を使用するケース {#when-to-use-exclusions}
 
 * CRM に未登録の見込み顧客を見つけたい場合
 * 以前の検索結果を踏まえ、条件を絞り込んで再検索したい場合

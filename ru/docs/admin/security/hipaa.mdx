@@ -19,9 +19,7 @@ description: "Используйте режим соответствия HIPAA �
 
 Режим HIPAA подразумевает [нулевое хранение данных](/ru/docs/admin/security/zero-data-retention) для таких запросов: Exa не сохраняет PHI.
 
-<div id="supported-endpoints">
-  ## Поддерживаемые эндпоинты
-</div>
+## Поддерживаемые эндпоинты {#supported-endpoints}
 
 Поле `compliance` распознаётся в:
 
@@ -30,9 +28,7 @@ description: "Используйте режим соответствия HIPAA �
 
 Остальные эндпоинты отклоняют это поле.
 
-<div id="requirements">
-  ## Требования
-</div>
+## Требования {#requirements}
 
 Режим HIPAA поддерживает только получение данных из кэша. Совместимые запросы:
 
@@ -46,9 +42,7 @@ description: "Используйте режим соответствия HIPAA �
 * Настройки свежести, требующие загрузки данных в реальном времени, например `maxAgeHours: 0` или положительное значение `maxAgeHours`
 * Поисковые запросы без указания `type` либо с типом, отличным от `instant` или `fast`
 
-<div id="example">
-  ## Пример
-</div>
+## Пример {#example}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -64,8 +58,6 @@ description: "Используйте режим соответствия HIPAA �
   ```
 </CodeGroup>
 
-<div id="access">
-  ## Доступ
-</div>
+## Доступ {#access}
 
 Чтобы включить режим HIPAA для вашей команды, напишите на [sales@exa.ai](mailto:sales@exa.ai). Документация по безопасности Exa доступна в [Trust Center](https://trust.exa.ai).

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="llamaindex">
-  # LlamaIndex
-</div>
+# LlamaIndex {#llamaindex}
 
 > LlamaIndex の Agent アプリケーションに Exa の検索取得 (retrieval) 機能を追加する方法を解説するクイックスタートガイドです。
 
@@ -22,9 +20,7 @@ LlamaIndex は、構造化データを活用した LLM アプリケーション�
 
 ***
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="前提条件とインストール">

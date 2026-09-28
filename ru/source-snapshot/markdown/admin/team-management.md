@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем изучать документацию дальше.
 
-<div id="managing-your-team">
-  # Управление командой
-</div>
+# Управление командой {#managing-your-team}
 
 > Подробности о структуре команды и управлении аккаунтом на платформе Exa
 
@@ -19,25 +17,19 @@
 
 Сразу после создания аккаунта вы попадаете в команду «Personal». Через выпадающий список в левом верхнем углу дашборда Exa (см. ниже) можно создать новую команду или переключиться на другие ваши команды. Количество команд не ограничено.
 
-<div id="seeing-your-teams">
-  ## Просмотр ваших команд
-</div>
+## Просмотр ваших команд {#seeing-your-teams}
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_team_switcher.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=094d2830e671762132604cace63b423a" alt="Выпадающий список команд (вверху слева) в дашборде Exa в разделе настроек команды" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
 
 Выпадающий список команд (вверху слева) в дашборде Exa в разделе настроек команды
 
-<div id="topping-up-a-teams-balance">
-  ## Пополнение баланса команды
-</div>
+## Пополнение баланса команды {#topping-up-a-teams-balance}
 
 Выбрав нужную команду, вы можете пополнить баланс кредитов на странице биллинга.
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_topup.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=36f4bbbd52a71bae490be4df3ba1b500" alt="Пополнение баланса кредитов на странице биллинга" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
 
-<div id="inviting-people-to-your-team">
-  ## Приглашение людей в команду
-</div>
+## Приглашение людей в команду {#inviting-people-to-your-team}
 
 Администраторы команды могут добавлять участников с помощью функции Invite в разделе настроек команды.
 
@@ -55,9 +47,7 @@
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_accepted.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=15396c783df64ffee162ab2de434a045" alt="Список участников команды со статусом Accepted" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
 
-<div id="team-management-api">
-  ## API управления командами
-</div>
+## API управления командами {#team-management-api}
 
 Создавайте API key и управляйте ими программно через [API управления командами](/ru/docs/reference/team-management/create-api-key).
 

@@ -25,9 +25,7 @@ icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
 
 ***
 
-<div id="get-started">
-  ## Get Started
-</div>
+## Get Started {#get-started}
 
 <Steps>
   <Step title="Требования и установка">
@@ -80,9 +78,7 @@ icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
 
 ***
 
-<div id="configuration">
-  ## Настройка
-</div>
+## Настройка {#configuration}
 
 Все поля `ExaSearch` со значениями по умолчанию:
 
@@ -103,9 +99,7 @@ ExaSearch(
 
 `include_domains` и `exclude_domains` применяются к `web_search` и `deep_search` и являются взаимоисключающими. Лимиты вне допустимого диапазона, а также одновременное задание обоих списков доменов приводят к ошибке при создании объекта.
 
-<div id="text-summary">
-  ### Текстовая сводка
-</div>
+### Текстовая сводка {#text-summary}
 
 Задайте `text_summary`, чтобы каждый вызов `web_search` дополнительно запрашивал синтезированную текстовую сводку результатов. Передайте `True`, чтобы получить сводку без ограничений, или строку с описанием нужного формата:
 
@@ -117,9 +111,7 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 Формат возвращаемого значения tool не изменился: если Exa возвращает summary, он добавляется в начало в виде строки `Summary:`.
 
-<div id="structured-citations">
-  ### Структурированные citations
-</div>
+### Структурированные citations {#structured-citations}
 
 Каждый tool возвращает `ToolReturn`: в `return_value` содержится читаемый текст, который видит модель (включая блоки `Sources:`), а в `metadata` — sources в виде структурированных записей `ExaSource` (`{'url': ..., 'title': ...}`) под ключом `'sources'`. Metadata никогда не передаются модели, поэтому для отображения citations разбор текста не нужен:
 
@@ -134,9 +126,7 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-<div id="custom-client">
-  ### Пользовательский клиент
-</div>
+### Пользовательский клиент {#custom-client}
 
 По умолчанию используется клиент `exa_py.AsyncExa`, настраиваемый через `EXA_API_KEY`. Передайте любой объект, удовлетворяющий протоколу `ExaClient`, чтобы явно задать аутентификацию или базовый URL либо подставить заглушку в тестах:
 
@@ -149,9 +139,7 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-<div id="exa-agent-runs">
-  ## Запуски Exa agent
-</div>
+## Запуски Exa agent {#exa-agent-runs}
 
 [Exa Agent API](/ru/docs/agent/quickstart) асинхронно выполняет исследовательские задачи с открытым результатом. Возможность `ExaAgent` проецирует этот жизненный цикл на [deferred tool calls](https://pydantic.dev/docs/ai/deferred-tools/) в Pydantic AI: его tool `exa_agent` создаёт выполнение и откладывает вызов, передавая ID выполнения Exa в metadata отложенного вызова.
 
@@ -183,9 +171,7 @@ ExaAgent(
 
 ***
 
-<div id="agent-spec-yamljson">
-  ## Agent spec (YAML/JSON)
-</div>
+## Agent spec (YAML/JSON) {#agent-spec-yamljson}
 
 Обе возможности работают с [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec) от Pydantic AI, так что их можно объявить в конфигурационном файле, а не в коде на Python:
 
@@ -210,9 +196,7 @@ agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAge
 
 ***
 
-<div id="next">
-  ## Далее
-</div>
+## Далее {#next}
 
 * [**Search API**](/ru/docs/search/quickstart) — семантический поиск с highlights, краткими сводками и глубоким поиском
 * [**Agent API**](/ru/docs/agent/quickstart) — асинхронные исследовательские запуски с открытой постановкой задачи

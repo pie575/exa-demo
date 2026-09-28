@@ -12,9 +12,7 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="fx をインストールし、/mcp add で Exa MCP サーバーを追加して、リアルタイムの Exa ウェブ検索を実行する様子" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-<div id="installation">
-  ## インストール
-</div>
+## インストール {#installation}
 
 <Steps>
   <Step title="fx をインストールする">
@@ -42,9 +40,7 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "web search"]
   </Step>
 </Steps>
 
-<div id="configure-by-hand">
-  ## 手動で設定する
-</div>
+## 手動で設定する {#configure-by-hand}
 
 fx は MCP サーバーを `~/.fx/mcp.json` からのみ読み込むため、このファイルに Exa を直接追加することもできます。
 
@@ -83,9 +79,7 @@ fx は MCP サーバーを `~/.fx/mcp.json` からのみ読み込むため、こ
 
 `header_env` はヘッダー名を環境変数にマッピングするため、キーを設定ファイルに直接記述せずに済みます。
 
-<div id="tool-discovery">
-  ## ツールの検出
-</div>
+## ツールの検出 {#tool-discovery}
 
 fx は MCP ツールを遅延読み込みで検出します。サーバーのツールは、ターンで必要になるまでモデルのコンテキストに読み込まれません。そのため、Exa を追加しても、Web 検索を行わないターンではコストは一切かかりません。
 

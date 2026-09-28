@@ -11,9 +11,7 @@ icon: "/docs/images/sidebar-icons/openhuman.svg"
 | **OpenHuman Managed** | Не требуется              | Бэкенд OpenHuman на базе Exa. Без API key.                                            |
 | **Exa провайдер**      | Вставьте свой Exa API key | На вашей машине, напрямую к `https://api.exa.ai` под вашим собственным аккаунтом Exa. |
 
-<div id="openhuman-managed">
-  ## OpenHuman Managed
-</div>
+## OpenHuman Managed {#openhuman-managed}
 
 Управляемый search используется по умолчанию. Выберите **Simple** при первичной настройке, и agent сразу сможет искать в интернете.
 
@@ -25,23 +23,17 @@ icon: "/docs/images/sidebar-icons/openhuman.svg"
   **Управляемый вариант — самый быстрый способ получить результаты Exa.** Не нужно создавать, хранить и ротировать ключ, на вашей машине не хранятся учётные данные, а search оплачивается в рамках вашей подписки OpenHuman.
 </Tip>
 
-<div id="exa-provider">
-  ## Exa провайдер
-</div>
+## Exa провайдер {#exa-provider}
 
 Настройте Exa напрямую, чтобы выполнять search в вашем собственном аккаунте Exa и предоставить agent инструменты Exa для search и получения содержимого страниц.
 
-<div id="get-your-exa-api-key">
-  ### Получите Exa API key
-</div>
+### Получите Exa API key {#get-your-exa-api-key}
 
 <Card title="Получите Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
 </Card>
 
-<div id="add-exa-in-openhuman">
-  ### Добавление Exa в OpenHuman
-</div>
+### Добавление Exa в OpenHuman {#add-exa-in-openhuman}
 
 1. Откройте **Connections**, затем выберите **Search engine** в разделе **API keys**.
 
@@ -65,9 +57,7 @@ icon: "/docs/images/sidebar-icons/openhuman.svg"
   <img src="/docs/images/integrations/openhuman/configured.png" alt="Панель Search engine в OpenHuman с выбранной Exa и отметкой Configured" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-<div id="configuration">
-  ### Настройка
-</div>
+### Настройка {#configuration}
 
 Панель записывает данные в файл `config.toml` OpenHuman. Те же значения можно задать напрямую в файле или через переменные окружения:
 
@@ -96,9 +86,7 @@ icon: "/docs/images/sidebar-icons/openhuman.svg"
   </Tab>
 </Tabs>
 
-<div id="tools-the-agent-gets">
-  ### Инструменты, доступные agent
-</div>
+### Инструменты, доступные agent {#tools-the-agent-gets}
 
 | Инструмент         | Что возвращает                                                                        |
 | ------------------ | ------------------------------------------------------------------------------------- |
@@ -108,9 +96,7 @@ icon: "/docs/images/sidebar-icons/openhuman.svg"
 
 Agent задаёт [параметры поиска](/ru/docs/search/quickstart) Exa при каждом вызове, поэтому для управления search mode, доменами, датами и категориями достаточно обычных инструкций.
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Exa search недоступен: API key не настроен">
@@ -130,9 +116,7 @@ Agent задаёт [параметры поиска](/ru/docs/search/quickstart)
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={3}>
   <Card title="Документация OpenHuman по веб-поиску" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="Открыть руководство" arrow="true">

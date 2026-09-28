@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="delete-an-import">
-  # インポートを削除する
-</div>
+# インポートを削除する {#delete-an-import}
 
 > インポートを削除します。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/imports/{id}
 openapi: 3.1.0

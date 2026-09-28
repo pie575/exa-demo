@@ -1,17 +1,13 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем изучать документацию дальше.
 
-<div id="get-a-monitor-run">
-  # Получение выполнения monitor
-</div>
+# Получение выполнения monitor {#get-a-monitor-run}
 
 > Возвращает конкретное выполнение monitor.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/monitors/{monitor}/runs/{id}
 openapi: 3.1.0

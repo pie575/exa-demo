@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем изучать документацию дальше.
 
-<div id="how-to-use-imports">
-  # Как использовать imports
-</div>
+# Как использовать imports {#how-to-use-imports}
 
 > Пошаговое руководство по импорту URL в Websets — обогащение списка, его оценка по criteria, поиск новых совпадений и сочетание всех трёх подходов.
 
@@ -13,9 +11,7 @@
 
 В этом руководстве разобрана каждая настройка с готовыми вызовами API, которые можно скопировать и вставить. Просто замените `$EXA_API_KEY` на свой API key.
 
-<div id="our-example-5-it-consulting-suppliers">
-  ## Наш пример: 5 поставщиков ИТ-консалтинга
-</div>
+## Наш пример: 5 поставщиков ИТ-консалтинга {#our-example-5-it-consulting-suppliers}
 
 В этом руководстве в качестве import мы будем использовать один и тот же список из 5 компаний:
 
@@ -36,9 +32,7 @@
 
 ***
 
-<div id="config-1-import-only-enrich-without-filtering">
-  ## Конфигурация 1: только импорт — обогащение без фильтрации
-</div>
+## Конфигурация 1: только импорт — обогащение без фильтрации {#config-1-import-only-enrich-without-filtering}
 
 <Note>
   **Рабочий пример:** [Открыть этот webset в панели управления](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -46,9 +40,7 @@
 
 **Когда использовать:** у вас есть список URL и вы просто хотите их обогатить. Без оценки и фильтрации — сохраняется каждый item.
 
-<div id="api-calls">
-  ### Вызовы API
-</div>
+### Вызовы API {#api-calls}
 
 ```bash theme={null}
 # Шаг 1: Создайте CSV import с URL ваших поставщиков
@@ -86,7 +78,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### Что мы видим в готовом Webset
+### Что мы видим в готовом Webset {#what-we-see-in-the-live-webset}
 
 В Webset попадают все **5 items**. Фильтрации нет, поскольку criteria не заданы.
 
@@ -106,9 +98,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-2-search-only-web-discovery">
-  ## Конфигурация 2: только Search — поиск по вебу
-</div>
+## Конфигурация 2: только Search — поиск по вебу {#config-2-search-only-web-discovery}
 
 <Note>
   **Живой пример:** [Открыть этот webset в дашборде](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -116,9 +106,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **Когда использовать:** у вас нет готового списка — вы хотите найти в вебе новые компании, отвечающие вашим criteria.
 
-<div id="api-call">
-  ### Вызов API
-</div>
+### Вызов API {#api-call}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -210,9 +198,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-<div id="what-we-see-in-the-live-webset">
-  ### Что мы видим в реальном Webset
-</div>
+### Что мы видим в реальном Webset {#what-we-see-in-the-live-webset-2}
 
 Система выполнила поиск по вебу и нашла **35 компаний**, удовлетворяющих обоим criteria. У каждого item указано `source: "search"` вместе с полными оценками, поясняющими, почему он подошёл.
 
@@ -229,9 +215,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-3-scoped-search-score-your-list-against-criteria">
-  ## Конфигурация 3: Scoped Search — оценка вашего списка по criteria
-</div>
+## Конфигурация 3: Scoped Search — оценка вашего списка по criteria {#config-3-scoped-search-score-your-list-against-criteria}
 
 <Note>
   **Живой пример:** [Открыть этот webset в панели управления](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -239,9 +223,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **Когда использовать:** у вас есть список поставщиков и вы хотите **оценить каждого из них по criteria**. Возвращаются только те, кто прошёл проверку. Это сценарий «оцени мой список».
 
-<div id="api-calls">
-  ### Вызовы API
-</div>
+### Вызовы API {#api-calls-2}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -350,7 +332,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### Что мы видим в готовом Webset
+### Что мы видим в готовом Webset {#what-we-see-in-the-live-webset-3}
 
 Webset содержит **4 items**. Каждый из наших 5 поставщиков был оценён по criteria — в результатах остаются только те, кто прошёл оба criteria.
 
@@ -370,9 +352,7 @@ Webset содержит **4 items**. Каждый из наших 5 постав
 
 ***
 
-<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
-  ## Конфигурация 4: Scoped Search + поиск по вебу — оцените свой список И найдите новые совпадения
-</div>
+## Конфигурация 4: Scoped Search + поиск по вебу — оцените свой список И найдите новые совпадения {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
 
 <Note>
   **Живой пример:** [Открыть этот webset в дашборде](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -380,9 +360,7 @@ Webset содержит **4 items**. Каждый из наших 5 постав
 
 **Когда использовать:** у вас есть список поставщиков, который нужно оценить по criteria, но при этом вы хотите найти в вебе дополнительные компании, отвечающие тем же criteria. Это двухэтапный процесс: сначала создайте webset со scoped search, а затем добавьте в этот же webset обычный веб-поиск.
 
-<div id="api-calls">
-  ### Вызовы API
-</div>
+### Вызовы API {#api-calls-3}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -554,7 +532,7 @@ Webset содержит **4 items**. Каждый из наших 5 постав
   ```
 </CodeGroup>
 
-### Что мы видим в готовом Webset
+### Что мы видим в готовом Webset {#what-we-see-in-the-live-webset-4}
 
 Webset содержит **29 items** — 4 из импортированных поставщиков (оценены и прошли проверку) плюс 25 компаний, найденных в вебе. Оба набора оцениваются по criteria.
 
@@ -575,9 +553,7 @@ Scoped search оценивает ваш импортированный спис�
 
 ***
 
-<div id="quick-reference">
-  ## Краткая справка
-</div>
+## Краткая справка {#quick-reference}
 
 | Настройка                                         | Что делает                                      | Все элементы сохраняются?                   | Элементы оцениваются?                            |
 | ------------------------------------------------- | ----------------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
@@ -586,9 +562,7 @@ Scoped search оценивает ваш импортированный спис�
 | **3. scoped search**                              | Оценивает ваш список по criteria                | Нет — не прошедшие отбрасываются            | Да                                               |
 | **4. scoped search + поиск в вебе**               | Оценивает ваш список и находит новые совпадения | Нет — не прошедшие из imports отбрасываются | Да — оцениваются и imports, и найденные элементы |
 
-<div id="which-config-should-i-use">
-  ## Какую конфигурацию выбрать?
-</div>
+## Какую конфигурацию выбрать? {#which-config-should-i-use}
 
 * **«Мне нужно просто обогатить список, без фильтрации»** — конфигурация 1
 * **«У меня нет списка, найдите мне компании»** — конфигурация 2

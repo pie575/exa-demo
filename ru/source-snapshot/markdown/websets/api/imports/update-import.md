@@ -1,17 +1,13 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем изучать документацию дальше.
 
-<div id="update-an-import">
-  # Обновление import
-</div>
+# Обновление import {#update-an-import}
 
 > Обновляет настройки import.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/imports/{id}
 openapi: 3.1.0

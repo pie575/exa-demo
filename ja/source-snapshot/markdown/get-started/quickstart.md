@@ -1,16 +1,14 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの完全版は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="developer-quickstart">
-  # 開発者向けクイックスタート
-</div>
+# 開発者向けクイックスタート {#developer-quickstart}
 
 > API キーを取得して、コードやエージェントから Exa を利用しましょう。
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  ## 1. API キーを取得する
+  ## 1. API キーを取得する {#1-get-an-api-key}
 
   <Steps>
     <Step title="Exa Dashboard にアクセスする">
@@ -38,7 +36,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 2. Exa の利用方法を選ぶ
+  ## 2. Exa の利用方法を選ぶ {#2-choose-how-youll-use-exa}
 
   Exa をアプリケーションに組み込む方法は 2 つあります。自分のコードから API を呼び出す方法と、普段使っているエージェントを接続する方法です。
 
@@ -65,7 +63,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 3. SDK をインストールする
+  ## 3. SDK をインストールする {#3-install-an-sdk}
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -79,7 +77,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 4. 最初のリクエストを送信する
+  ## 4. 最初のリクエストを送信する {#4-make-your-first-request}
 
   <CodeGroup>
     ```python Python theme={null}
@@ -122,7 +120,7 @@
     ```
   </CodeGroup>
 
-  ## 次のステップ
+  ## 次のステップ {#next-steps}
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを読む" arrow="true">

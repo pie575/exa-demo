@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжать изучение.
 
-<div id="create-a-search">
-  # Создание Search
-</div>
+# Создание Search {#create-a-search}
 
 > Создаёт новый Search для Webset.
 
 По умолчанию результаты предыдущего Search переиспользуются и оцениваются по новым criteria.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches
 openapi: 3.1.0

@@ -33,9 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для поиска первичных правовых источников и государственных записей, а также комментариев к ним.
 
-<div id="included">
-  ## Что включено
-</div>
+## Что включено {#included}
 
 * Судебные решения судов США с полным текстом, а также метаданными о суде, номере дела и цитировании
 * Выданные патенты США с рефератом, формулой изобретения, описанием, сведениями об изобретателях и правообладателях
@@ -44,9 +42,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Государственные контракты и документы о закупках
 * Данные переписи населения и другая публичная статистика
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Исследование судебной практики и юридический RAG
 * Мониторинг нормативных актов и политик
@@ -54,53 +50,39 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Комплаенс-скрининг и due diligence
 * Исследование рынка государственного сектора
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="find-case-law">
-  ### Поиск судебной практики
-</div>
+### Поиск судебной практики {#find-case-law}
 
 Опишите правовой вопрос и юрисдикцию простым языком, а не в виде ссылки на источник.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Поиск патентов
-</div>
+### Поиск патентов {#search-patents}
 
 Опишите, что делает изобретение, так, как это формулируют в формуле изобретения.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Проверка по санкционным спискам
-</div>
+### Проверка по санкционным спискам {#screen-against-sanctions}
 
 Укажите название списка и класс проверяемых объектов.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Исследование государственных расходов
-</div>
+### Исследование государственных расходов {#research-government-spending}
 
 Укажите ведомство-заказчика или категорию услуг и временной период.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Получение публичной статистики
-</div>
+### Получение публичной статистики {#pull-public-statistics}
 
 Укажите набор данных и географический охват.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Выполните запрос
-</div>
+## Выполните запрос {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -141,9 +123,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если структурированные данные требуют исследования по нескольким источникам, используйте [выполнение задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные вам юрисдикции, типы записей, criteria и поля вывода, и Agent вернёт результаты, проверенные по схеме, со ссылками на источники.
 

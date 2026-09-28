@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="search">
-  # Search
-</div>
+# Search {#search}
 
 > Эндпоинт search позволяет искать в интернете и извлекать contents из результатов.
 
@@ -13,9 +11,7 @@
   Создайте key в дашборде. Новым аккаунтам начисляются бесплатные credits.
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /search
 openapi: 3.1.0

@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем продолжать изучение.
 
-<div id="affiliatecom">
-  # Affiliate.com
-</div>
+# Affiliate.com {#affiliatecom}
 
 > Поиск по товарным каталогам продавцов и партнёрских сетей.
 
@@ -17,17 +15,13 @@
 [Exa Connect](/ru/docs/agent/connect/overview) — и агент будет обращаться к
 Affiliate.com наряду с веб-поиском Exa.
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Поиск товаров и сравнение цен у разных продавцов.
 * Работа шопинг-ассистентов и подготовка гайдов по покупкам.
 * Показ партнёрских ссылок рядом с результатами исследования.
 
-<div id="provider-id">
-  ## Provider ID
-</div>
+## Provider ID {#provider-id}
 
 Используйте это значение в `dataSources`:
 
@@ -35,9 +29,7 @@ Affiliate.com наряду с веб-поиском Exa.
 affiliate
 ```
 
-<div id="example">
-  ## Пример
-</div>
+## Пример {#example}
 
 Найдите беспроводные наушники с шумоподавлением дешевле $300 и сравните цены.
 
@@ -134,16 +126,12 @@ affiliate
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Хорошо сочетается с
-</div>
+## Хорошо сочетается с {#pairs-well-with}
 
 * [Similarweb](/ru/docs/agent/connect/similarweb): оцените охват продавца, прежде чем рекомендовать его.
 * [Fiber.ai](/ru/docs/agent/connect/fiber): изучите компанию, стоящую за продавцом или брендом.
 
-<div id="next-steps">
-  ## Дальнейшие шаги
-</div>
+## Дальнейшие шаги {#next-steps}
 
 <Columns cols={2}>
   <Card title="Подключите к запуску" icon="rocket" href="/ru/docs/agent/connect/overview" cta="Открыть быстрый старт" arrow="true">

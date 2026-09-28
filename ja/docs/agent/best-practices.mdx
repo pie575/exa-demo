@@ -7,9 +7,7 @@ keywords: ["agent api", "list building", "enrichment", "structured output", "eff
 
 [Exa Agent クイックスタート](/ja/docs/agent/quickstart)を終えたら、このガイドを活用してクエリの品質向上、出力の構造化、実行時間とコストの管理を行ってください。完全なリクエストの例は、まず [Agent の例](/ja/docs/agent/examples)から始めてください。
 
-<div id="core-principles">
-  ## 基本原則
-</div>
+## 基本原則 {#core-principles}
 
 `query` はタスク仕様として扱います。Agent に何を見つけさせたいか、作業の範囲、必要なエビデンス、そして完全な結果の条件を明記してください。
 
@@ -51,9 +49,7 @@ keywords: ["agent api", "list building", "enrichment", "structured output", "eff
 
 行、除外対象、レスポンスの形式は `query` に含めず、それぞれ専用のフィールドで指定してください。
 
-<div id="writing-list-building-and-enrichment-queries">
-  ## リスト作成とエンリッチメントのクエリの書き方
-</div>
+## リスト作成とエンリッチメントのクエリの書き方 {#writing-list-building-and-enrichment-queries}
 
 リスト作成では、対象エンティティ、目標件数、適格基準、除外条件、必要な証拠の水準を定義します。エンリッチメントでは、既存のレコードを `input.data` に渡し、Agent に追加でリサーチさせたい内容だけを記述します。
 
@@ -75,9 +71,7 @@ keywords: ["agent api", "list building", "enrichment", "structured output", "eff
 
 探索リクエストの例は [GTM メンバーをすべて見つける](/ja/docs/agent/examples#find-all-code) を、対応する行エンリッチメントのパターンは [入力行を補完する](/ja/docs/agent/examples#enrich-input-rows-code) を参照してください。
 
-<div id="handle-asynchronous-runs">
-  ## 非同期実行を処理する
-</div>
+## 非同期実行を処理する {#handle-asynchronous-runs}
 
 Agent の実行では検索、読み取り、推論が行われるため、完了まで数秒から数分かかることがあります。アプリケーションのリクエストを開いたまま待機させるのではなく、実行のライフサイクルに沿って設計してください。
 
@@ -101,9 +95,7 @@ Agent の実行では検索、読み取り、推論が行われるため、完�
 
 Zero Data Retention を利用するチームでは、保持期間内にライブストリームを受信するかポーリングしてください。`previousRunId` と Connect の `dataSources` は利用できません。詳しくは [Zero Data Retention](/ja/docs/admin/security/zero-data-retention) を参照してください。
 
-<div id="write-custom-json-schemas-for-structured-output">
-  ## 構造化出力用のカスタム JSON スキーマを作成する
-</div>
+## 構造化出力用のカスタム JSON スキーマを作成する {#write-custom-json-schemas-for-structured-output}
 
 下流のコードで機械可読なフィールド、正規化された値、テーブルの行、またはエンリッチメントレコードが必要な場合は、`outputSchema` を使用します。文章形式の回答で十分な場合は `outputSchema` を省略し、`output.text` を読み取ってください。構造化出力では整形処理が加わるため、レイテンシが増加する可能性があります。
 
@@ -153,9 +145,7 @@ Exa に組み込まれている引用や信頼度をスキーマで重複して�
 
 リスト作成、KYB、求人情報、除外、継続実行のスキーマを比較するには、[構造化された Agent の例](/ja/docs/agent/examples)を参照してください。
 
-<div id="agent-vs-search">
-  ## Agent と Search の比較
-</div>
+## Agent と Search の比較 {#agent-vs-search}
 
 | 用途                             | 推奨                                      |
 | ------------------------------ | --------------------------------------- |
@@ -165,9 +155,7 @@ Exa に組み込まれている引用や信頼度をスキーマで重複して�
 
 複数の検索ステップ、エンティティごとの検証、既存レコードへのエンリッチメントが必要な作業には Agent を使用してください。ページをすばやく取得し、残りの推論はアプリケーション側で行う場合は Search を使用してください。
 
-<div id="tips-for-common-use-cases">
-  ## 一般的なユースケース別のヒント
-</div>
+## 一般的なユースケース別のヒント {#tips-for-common-use-cases}
 
 | 目的                     | 推奨                                                              | 避けるべきこと                                   |
 | ---------------------- | --------------------------------------------------------------- | ----------------------------------------- |
@@ -179,9 +167,7 @@ Exa に組み込まれている引用や信頼度をスキーマで重複して�
 | リクエストあたりのコストを予測しやすくしたい | 固定の `effort`                                                    | 予算を設定せずに `auto` や `max` を使うこと             |
 | レイテンシやコストより網羅性を優先したい   | `xhigh` または `max`                                               | クエリを絞り込む前に effort を引き上げること                |
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="Agent クイックスタート" icon="bot" href="/ja/docs/agent/quickstart" cta="ガイドを開く" arrow="true">

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="create-api-key">
-  # API キーを作成する
-</div>
+# API キーを作成する {#create-api-key}
 
 > 名前とレート制限の設定を任意で指定して、チーム用の新しい API キーを作成します。
 
@@ -19,16 +17,12 @@
 
 Create API Key エンドポイントでは、サービス API キーを使用して、チーム用の新しい API キーをプログラムで生成できます。
 
-<div id="optional-parameters">
-  ## オプションのパラメーター
-</div>
+## オプションのパラメーター {#optional-parameters}
 
 * **name**: API キーの用途を識別しやすくするためのわかりやすい名前
 * **rateLimit**: この API キーで 1 分あたりに許可されるリクエストの最大数
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

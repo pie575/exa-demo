@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 個別のページを閲覧する前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="update-api-key">
-  # API キーの更新
-</div>
+# API キーの更新 {#update-api-key}
 
 > 既存の API キーの名前とレート制限を更新します。
 
@@ -17,28 +15,20 @@
   Team Management API はチーム単位で有効化されます。認証にはサービスアカウントの API キーを使用します。このキーは、チームでこの機能が有効化された後に、[API キーページ](https://dashboard.exa.ai/api-keys)の **Service keys** タブから作成できます。アクセスをご希望の場合は、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
 </Info>
 
-<div id="overview">
-  ## 概要
-</div>
+## 概要 {#overview}
 
 Update API Key エンドポイントを使用すると、既存の API キーを変更できます
 
-<div id="path-parameters">
-  ## パスパラメーター
-</div>
+## パスパラメーター {#path-parameters}
 
 * **id**: 更新対象の API キーの一意の識別子。
 
-<div id="optional-parameters">
-  ## オプションのパラメーター
-</div>
+## オプションのパラメーター {#optional-parameters}
 
 * **name**: API キーの内容がわかる新しい名前
 * **rateLimit**: 新しいレート制限 (1 分あたりのリクエスト数)
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

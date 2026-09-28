@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="build-with-exa-skill">
-  # Build with Exa スキル
-</div>
+# Build with Exa スキル {#build-with-exa-skill}
 
 > 開発者が Exa API プラットフォームのあらゆる機能を実装できるよう支援するエージェントスキルです。
 
@@ -19,9 +17,7 @@
   エージェントの環境で、キーを `EXA_API_KEY` として設定してください。
 </Note>
 
-<div id="setup">
-  ## セットアップ
-</div>
+## セットアップ {#setup}
 
 **オプションA: このスキルを直接インストールする：**
 
@@ -67,17 +63,13 @@ What to do:
 Hard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## ソースを表示
-</div>
+## ソースを表示 {#view-source}
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="ソースを表示" arrow="true">
   インストール前に、build-with-exa スキルの定義を確認してください。
 </Card>
 
-<div id="related">
-  ## 関連情報
-</div>
+## 関連情報 {#related}
 
 <Columns cols={2}>
   <Card title="すべてのエージェントスキル" icon="layers" href="/ja/docs/get-started/agent-skills/overview" cta="スキルを見る" arrow="true">

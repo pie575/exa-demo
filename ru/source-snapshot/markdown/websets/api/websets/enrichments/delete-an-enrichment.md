@@ -1,17 +1,13 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем продолжить изучение.
 
-<div id="delete-an-enrichment">
-  # Удаление enrichment
-</div>
+# Удаление enrichment {#delete-an-enrichment}
 
 > При удалении Enrichment все выполняющиеся enrichment будут отменены, а все существующие `enrichment_result`, созданные этим Enrichment, станут недоступны.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

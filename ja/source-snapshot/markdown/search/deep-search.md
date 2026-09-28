@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="deep-search">
-  # Deep Search
-</div>
+# Deep Search {#deep-search}
 
 > 複雑なリサーチタスクでは、反復的な検索、推論、根拠に基づく統合を活用できます。
 
@@ -13,9 +11,7 @@ Deep Search は Search API のリサーチモードです。同じ `/search` エ
 
 適切に構成されたクエリに対してランク付けされたページが必要な場合は、標準の Search を使用してください。答えを見つけるのにリサーチが必要な場合は、Deep を使用してください。
 
-<div id="how-deep-search-works">
-  ## Deep Search の仕組み
-</div>
+## Deep Search の仕組み {#how-deep-search-works}
 
 Deep Search は、最終的なレスポンスを返す前にリサーチのループを実行します。
 
@@ -42,9 +38,7 @@ Deep Search は、最終的なレスポンスを返す前にリサーチのル�
 
 このプロセスは、リストや構造化出力で特に効果を発揮します。要求されたアイテムごとに異なる検索が必要になることもありますが、Deep は最終的な構造を生成する前にそれらの結果を収集し、検証できます。
 
-<div id="choose-a-deep-mode">
-  ## Deep モードを選択する
-</div>
+## Deep モードを選択する {#choose-a-deep-mode}
 
 | タイプ              | 適した場面                                        |
 | ---------------- | -------------------------------------------- |
@@ -60,9 +54,7 @@ Deep Search は、最終的なレスポンスを返す前にリサーチのル�
 
 最新のコストとレイテンシの目安については、[料金](/ja/docs/admin/pricing#deep-search)を参照してください。
 
-<div id="make-a-deep-request">
-  ## Deep リクエストを送信する
-</div>
+## Deep リクエストを送信する {#make-a-deep-request}
 
 通常の Search API リクエストで `type` を指定します。
 
@@ -107,9 +99,7 @@ Deep Search は、最終的なレスポンスを返す前にリサーチのル�
 
 Deep は、選定した検索結果を `results` に格納して返します。統合された回答や構造化データセットも取得したい場合は、`outputSchema` を追加してください。
 
-<div id="provide-starting-queries">
-  ## 初期クエリを指定する
-</div>
+## 初期クエリを指定する {#provide-starting-queries}
 
 通常、実行する検索は Deep が自動で決定します。調査で扱うべき用語、観点、サブ問題があらかじめわかっている場合は、`additionalQueries` を使用します。
 
@@ -163,9 +153,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 検索量を増やす目的で、少し言い換えただけのクエリを追加するのは避けてください。クエリを追加するのは、それぞれが明確に異なる方向性の検索につながる場合に限ります。
 
-<div id="guide-behavior-and-output-separately">
-  ## 動作と出力を分けて指定する
-</div>
+## 動作と出力を分けて指定する {#guide-behavior-and-output-separately}
 
 `systemPrompt` と `outputSchema` は、リクエストのそれぞれ異なる部分に作用します。
 
@@ -265,9 +253,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 構造化されたアイテムが 3 件以上必要な場合や、各アイテムが複数の要件を満たす必要がある場合は、Deep の使用をおすすめします。標準の検索タイプも同じ統合パスを使用しますが、統合前に Deep のような反復的なリサーチは行いません。
 
-<div id="read-the-grounded-response">
-  ## 根拠に基づくレスポンスを確認する
-</div>
+## 根拠に基づくレスポンスを確認する {#read-the-grounded-response}
 
 構造化レスポンスでは、次のように生成された値とその根拠が分けて返されます：
 
@@ -309,9 +295,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 `numResults` は、`results` で返される選択済みページの数を指定します。Deep が実行する検索の回数を指定するものではありません。
 
-<div id="stream-the-synthesis">
-  ## 統合結果をストリーミングする
-</div>
+## 統合結果をストリーミングする {#stream-the-synthesis}
 
 `outputSchema` とあわせて `stream: true` を設定すると、統合された出力を Server-Sent Events (SSE) で受け取れます。
 
@@ -387,9 +371,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 `done` を受信するまで、型付きイベントを順に処理します。最終イベントには完成した出力と検索時間が含まれ、利用可能な場合はコスト情報も含まれます。
 
-<div id="when-to-stay-with-standard-search">
-  ## 標準の Search で十分な場合
-</div>
+## 標準の Search で十分な場合 {#when-to-stay-with-standard-search}
 
 1 回の取得で要件を満たせる場合、Deep は不要です。
 

@@ -12,9 +12,7 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
 
 Механизм [tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) в Claude позволяет моделям вызывать функции, которые вы определяете в своём коде. В SDK Exa уже есть готовые tool&#39;ы веб-поиска и чтения страниц для Anthropic, поэтому вам не придётся вручную писать tool schema, разбирать блоки `tool_use` или самостоятельно форматировать результаты Exa.
 
-<div id="get-started">
-  ## Get started
-</div>
+## Get started {#get-started}
 
 <Steps>
   <Step title="Установите SDK">
@@ -113,9 +111,7 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
   </Step>
 </Steps>
 
-<div id="configuring-the-tools">
-  ## Настройка tools
-</div>
+## Настройка tools {#configuring-the-tools}
 
 Именованные аргументы — это обычные параметры Exa, которые передаются при запуске tool: параметры поиска в `exa.search()`, параметры содержимого в `exa.get_contents()`:
 
@@ -165,15 +161,11 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
   ```
 </CodeGroup>
 
-<div id="mixing-in-your-own-tools">
-  ## Подключение собственных tools
-</div>
+## Подключение собственных tools {#mixing-in-your-own-tools}
 
 `handle_tool_use` отвечает на каждый блок `tool_use` в сообщении: если блок ссылается на tool, который не удаётся разрешить, он не отбрасывается, а возвращает результат `Error: unknown tool "<name>"` — так follow-up request никогда не остаётся без обязательного результата tool. Если вы запускаете собственные tools наряду с tools от Exa, замените эти результаты с ошибками на свои перед следующим request.
 
-<div id="writing-the-loop-by-hand">
-  ## Пишем цикл вручную
-</div>
+## Пишем цикл вручную {#writing-the-loop-by-hand}
 
 Если вы предпочитаете сами определять tool schema и управлять выполнением, опишите tool и обрабатывайте блоки `tool_use` вручную. `exa.tools.web_search()` и `exa.tools.get_contents()` возвращают те же независимые от провайдера спецификации tools (с методом `run`) для самописных циклов, либо вы можете написать всё с нуля:
 

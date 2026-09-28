@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем продолжить изучение.
 
-<div id="elevenlabs">
-  # ElevenLabs
-</div>
+# ElevenLabs {#elevenlabs}
 
 > Добавьте Exa web search в голосовые agent&#39;ы ElevenLabs.
 
@@ -22,9 +20,7 @@
 
 В этом руководстве описан подход с вебхук-инструментом, который даёт полный контроль над тем, как вызывается Exa. Настроить интеграцию можно и через [дашборд ElevenLabs](https://elevenlabs.io/app/conversational-ai).
 
-<div id="how-it-works">
-  ## Как это работает
-</div>
+## Как это работает {#how-it-works}
 
 1. Пользователь обращается к голосовому agent&#39;у
 2. LLM решает вызвать `web_search` на основе описания tool
@@ -34,9 +30,7 @@
 
 Никакого server, никакого callback URL, никаких слушателей. ElevenLabs сам выступает HTTP-client и обращается к Exa напрямую. Для tool calls действует таймаут 20 секунд.
 
-<div id="prerequisites">
-  ## Предварительные требования
-</div>
+## Предварительные требования {#prerequisites}
 
 * [Exa API key](https://dashboard.exa.ai/api-keys)
 * [API key ElevenLabs](https://elevenlabs.io/app/settings/api-keys)
@@ -45,9 +39,7 @@
   Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
 </Card>
 
-<div id="get-started">
-  ## Get started
-</div>
+## Get started {#get-started}
 
 <Steps>
   <Step title="Создание вебхук-инструмента">
@@ -156,9 +148,7 @@
   </Step>
 </Steps>
 
-<div id="full-python-example">
-  ## Полный пример на Python
-</div>
+## Полный пример на Python {#full-python-example}
 
 Этот скрипт создаёт и вебхук-инструмент, и agent за одно выполнение:
 
@@ -252,15 +242,11 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-<div id="customizing-search-parameters">
-  ## Настройка параметров поиска
-</div>
+## Настройка параметров поиска {#customizing-search-parameters}
 
 Схема body вебхук-инструмента напрямую соответствует [Search API от Exa](/ru/docs/reference/search). Ниже приведены типичные конфигурации:
 
-<div id="search-type">
-  ### Тип поиска
-</div>
+### Тип поиска {#search-type}
 
 Управляйте балансом между скоростью и качеством с помощью константы `type`:
 
@@ -271,9 +257,7 @@ python elevenlabs_exa_webhook.py
 
 Для голосовых agent начинайте с `instant`. Используйте `auto`, если хотите, чтобы Exa сама выбирала наиболее подходящий на текущий момент search mode для каждого запроса.
 
-<div id="content-options">
-  ### Параметры содержимого
-</div>
+### Параметры содержимого {#content-options}
 
 Выберите, в каком виде возвращать результаты, с помощью объекта `contents`:
 
@@ -297,9 +281,7 @@ python elevenlabs_exa_webhook.py
 
 Для голосовых agent&#39;ов рекомендуемое значение по умолчанию — `highlights: true`: оно сочетает релевантность и высокую скорость ответа.
 
-<div id="filtering-results">
-  ### Фильтрация результатов
-</div>
+### Фильтрация результатов {#filtering-results}
 
 Добавьте фильтры по доменам или датам в виде констант:
 
@@ -321,15 +303,11 @@ python elevenlabs_exa_webhook.py
 }
 ```
 
-<div id="number-of-results">
-  ### Количество результатов
-</div>
+### Количество результатов {#number-of-results}
 
 Задавайте `numResults` в зависимости от сценария использования. Для голосовых сценариев 3–5 результатов обеспечивают быстрые ответы. Для исследовательских agent&#39;ов 10 и более результатов дают более широкий охват.
 
-<div id="schema-reference">
-  ## Справочник по схеме
-</div>
+## Справочник по схеме {#schema-reference}
 
 Вебхук-инструменты ElevenLabs используют JSON-схему со следующими типами свойств:
 
@@ -347,9 +325,7 @@ python elevenlabs_exa_webhook.py
 
 Полную схему вебхук-инструмента ElevenLabs смотрите в [документации ElevenLabs по серверным инструментам](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools).
 
-<div id="built-in-exa-integration-alpha">
-  ## Built-in Exa integration (alpha)
-</div>
+## Built-in Exa integration (alpha) {#built-in-exa-integration-alpha}
 
 ElevenLabs также предлагает встроенную интеграцию с Exa, доступную в дашборде agent в разделе **Tools &gt; Integrations**. Настроить её проще, но гибко задать параметры поиска сложнее, чем в варианте с вебхук-инструментом.
 

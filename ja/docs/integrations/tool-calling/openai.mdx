@@ -10,9 +10,7 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 OpenAI の[ツール呼び出し](https://platform.openai.com/docs/guides/function-calling?lang=python)を使用すると、コード内で定義した関数をモデルから呼び出せます。Exa SDK には OpenAI 向けのウェブ検索ツールとページ読み取りツールが組み込まれているため、ツールスキーマの手書き、ツール呼び出しの解析、Exa の結果の整形を自前で行う必要はありません。
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="SDK をインストールする">
@@ -105,9 +103,7 @@ OpenAI の[ツール呼び出し](https://platform.openai.com/docs/guides/functi
   </Step>
 </Steps>
 
-<div id="responses-api">
-  ## Responses API
-</div>
+## Responses API {#responses-api}
 
 OpenAI Responses API では、同じ `handle_tool_calls` ヘルパーと `responses` ファクトリを組み合わせて使用します。ハンドラーは、フォローアップリクエストに渡す `function_call_output` アイテムを返します。
 
@@ -139,9 +135,7 @@ OpenAI Responses API では、同じ `handle_tool_calls` ヘルパーと `respon
   Chat Completions と Responses API ではツールの形式が異なり、互いの形式は受け付けられません。呼び出すエンドポイントに対応したファクトリを使用してください。
 </Note>
 
-<div id="configuring-the-tools">
-  ## ツールの設定
-</div>
+## ツールの設定 {#configuring-the-tools}
 
 キーワード引数は通常の Exa のオプションで、ツールの実行時にそのまま渡されます。search のオプションは `exa.search()` に、contents のオプションは `exa.get_contents()` に渡されます。
 
@@ -165,15 +159,11 @@ OpenAI Responses API では、同じ `handle_tool_calls` ヘルパーと `respon
 
 一方、`name`(デフォルトは `"web_search"` と `"get_contents"`)と `description` は、モデルに提示されるツール定義を上書きします。設定の異なる複数の Exa ツールを併用する場合や、これらの名前を予約している他のツールとの競合を避けたい場合は、カスタムの `name` を指定してください。
 
-<div id="mixing-in-your-own-tools">
-  ## 独自のツールを組み合わせる
-</div>
+## 独自のツールを組み合わせる {#mixing-in-your-own-tools}
 
 ハンドラーは、メッセージ内のすべてのツール呼び出しに応答します。解決できないツールを指定した呼び出しは破棄されず、代わりに `Error: unknown tool "<name>"` という出力が返されます。そのため、フォローアップリクエストで必要なツールレスポンスが欠けることはありません。Exa のツールと併せて独自のツールも実行する場合は、次のリクエストを送信する前に、これらのエラー出力を独自のツールの結果に置き換えてください。
 
-<div id="writing-the-loop-by-hand">
-  ## ループを手動で記述する
-</div>
+## ループを手動で記述する {#writing-the-loop-by-hand}
 
 ツールスキーマと実行処理を自分で管理したい場合は、ツールを定義し、呼び出しを手動で処理します。`exa.tools.web_search()` と `exa.tools.get_contents()` を使うと、自作のループでも同じプロバイダー非依存のツール仕様 (`run` メソッド付き) を利用できます。すべてを一から記述することも可能です。
 

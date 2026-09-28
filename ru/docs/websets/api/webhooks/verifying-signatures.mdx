@@ -6,9 +6,7 @@ timestamp: false
 
 Получив вебхук от Exa, следует убедиться, что он действительно отправлен нами: это подтверждает целостность и подлинность данных. Exa подписывает payload всех вебхуков секретным ключом, уникальным для вашего эндпоинта вебхука.
 
-<div id="how-webhook-signatures-work">
-  ## Как работают подписи вебхуков
-</div>
+## Как работают подписи вебхуков {#how-webhook-signatures-work}
 
 Exa использует HMAC SHA256 для подписи payload вебхуков. Подпись передаётся в header `Exa-Signature`, который содержит:
 
@@ -21,9 +19,7 @@ Exa использует HMAC SHA256 для подписи payload вебхук�
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## Процесс верификации
-</div>
+## Процесс верификации {#verification-process}
 
 Чтобы проверить подпись вебхука:
 
@@ -366,9 +362,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-<div id="security-best-practices">
-  ## Лучшие практики безопасности
-</div>
+## Лучшие практики безопасности {#security-best-practices}
 
 Соблюдение этих практик поможет сделать внедрение вебхуков безопасным и надёжным:
 
@@ -388,13 +382,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### Ошибки недействительной подписи
-</div>
+### Ошибки недействительной подписи {#invalid-signature-errors}
 
 Если верификация подписи завершается ошибкой:
 
@@ -403,9 +393,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 3. **Проверьте разбор header**: убедитесь, что корректно извлекаете временную метку и подписи из header
 4. **Проблемы с кодировкой**: используйте единую кодировку UTF-8 на всех этапах верификации
 
-<div id="testing-signatures-locally">
-  ### Локальное тестирование подписей
-</div>
+### Локальное тестирование подписей {#testing-signatures-locally}
 
 Вы можете протестировать свою логику верификации подписи, используя webhook secret и пример payload:
 
@@ -437,9 +425,7 @@ print(f"Test signature valid: {is_valid}")  # Должно вывести True
 
 <br />
 
-<div id="whats-next">
-  ## Что дальше?
-</div>
+## Что дальше? {#whats-next}
 
 * Узнайте о [событиях вебхуков](/ru/docs/websets/api/events/types) и их payload
 * Настройте [повторные попытки и мониторинг вебхуков](/ru/docs/websets/api/webhooks/attempts/list-webhook-attempts)

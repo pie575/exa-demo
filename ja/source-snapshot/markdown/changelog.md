@@ -1,16 +1,14 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="changelog">
-  # 変更履歴
-</div>
+# 変更履歴 {#changelog}
 
 > Exa の製品アップデートとお知らせ。
 
 <Update label="August 28, 2026" rss={{ title: "Dynamic Highlights（リサーチプレビュー）" }}>
-  ## Dynamic Highlights (リサーチプレビュー)
+  ## Dynamic Highlights (リサーチプレビュー) {#dynamic-highlights-research-preview}
 
   Dynamic Highlights は、各ページを個別に扱うのではなく、結果セット全体を見渡して抜粋を選択します。共有のコンテキスト予算を有用なソースに多く配分し、すでに返された情報を繰り返すだけのソースへの配分は抑えます。
 
@@ -23,7 +21,7 @@
 </Update>
 
 <Update label="July 23, 2026" rss={{ title: "学術出版物のリサーチ" }}>
-  ## 学術出版物のリサーチ
+  ## 学術出版物のリサーチ {#publication-research}
 
   学術出版物を対象としたリサーチ機能を大幅に拡張・改善しました。
 
@@ -39,7 +37,7 @@
 </Update>
 
 <Update label="July 1, 2026" rss={{ title: "MCP での Exa Agent と Exa Connect" }}>
-  ## MCP での Exa Agent と Exa Connect
+  ## MCP での Exa Agent と Exa Connect {#exa-agent-and-exa-connect-in-mcp}
 
   Exa Agent が Exa MCP で利用可能になりました。1 回の検索呼び出しでは対応しきれないタスクに、Claude、Cursor、その他の MCP クライアントから利用できます。
 
@@ -51,7 +49,7 @@
 </Update>
 
 <Update label="June 24, 2026" rss={{ title: "Exa Connect のご紹介" }}>
-  ## Exa Connect のご紹介
+  ## Exa Connect のご紹介 {#introducing-exa-connect}
 
   Exa Connect により、Exa Agent は世界中の公開データと非公開データにリアルタイムでアクセスできるようになります。ローンチ時の提供パートナーは、Similarweb、Fiber.ai、Baselayer、Financial Datasets、Affiliate.com、Particle、Jinko、および追加パートナーです。`POST /agent/runs` の `dataSources` で指定してアタッチします。
 
@@ -59,7 +57,7 @@
 </Update>
 
 <Update label="June 16, 2026" rss={{ title: "Exa Agent のご紹介" }}>
-  ## Exa Agent のご紹介
+  ## Exa Agent のご紹介 {#introducing-exa-agent}
 
   API から利用できる、新しいタイプの最先端ウェブリサーチエージェントをリリースしました。
 
@@ -69,7 +67,7 @@
 </Update>
 
 <Update label="April 1, 2026" rss={{ title: "API 非推奨のお知らせ" }}>
-  ## API 非推奨のお知らせ
+  ## API 非推奨のお知らせ {#api-deprecation-notice}
 
   Exa API のレガシー機能の一部を廃止しました。
 
@@ -81,7 +79,7 @@
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "Exa Monitors の提供開始" }}>
-  ## Exa Monitors の提供開始
+  ## Exa Monitors の提供開始 {#introducing-exa-monitors}
 
   Monitors は Exa の検索をスケジュールに従って実行し、結果を Webhook に配信します。過去の実行結果との重複は除外されるため、新しいコンテンツだけを受け取れます。
 
@@ -93,7 +91,7 @@
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Exa Deep の刷新" }}>
-  ## Exa Deep の刷新
+  ## Exa Deep の刷新 {#exa-deep-revamp}
 
   Exa Deep がより高速かつ低価格になり、フィールド単位のグラウンディングを備えた構造化出力に対応しました。
 
@@ -107,7 +105,7 @@
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Exa 料金改定" }}>
-  ## Exa 料金改定
+  ## Exa 料金改定 {#exa-pricing-update}
 
   料金体系を簡素化し、値下げしました。検索結果の上位 10 件のコンテンツが無料で含まれるようになりました。新料金は自動的に適用されるため、特に操作は必要ありません。
 
@@ -120,7 +118,7 @@
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "Exa Instant Search の提供開始" }}>
-  ## Exa Instant Search の提供開始
+  ## Exa Instant Search の提供開始 {#introducing-exa-instant-search}
 
   Exa Instant は最速の検索タイプで、向上したニューラル検索の品質と 150ms 未満のレイテンシーを両立しています。`type="instant"` で有効にできます。
 
@@ -131,7 +129,7 @@
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "ハイライト、コンテンツの鮮度、MCP のアップデート" }}>
-  ## ハイライト、コンテンツの鮮度、MCP のアップデート
+  ## ハイライト、コンテンツの鮮度、MCP のアップデート {#highlights-content-freshness-and-mcp-updates}
 
   コンテンツの抽出とアクセスに関する 3 つの改善を行いました。
 
@@ -143,7 +141,7 @@
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Exa Company Search の提供開始" }}>
-  ## Exa Company Search の提供開始
+  ## Exa Company Search の提供開始 {#introducing-exa-company-search}
 
   企業検索に、ファインチューニングした検索モデルとエンティティマッチングパイプラインを導入しました。`type="auto"`、`category="company"` を指定して利用できます。
 
@@ -155,7 +153,7 @@
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Exa People Search の提供開始" }}>
-  ## Exa People Search の提供開始
+  ## Exa People Search の提供開始 {#introducing-exa-people-search}
 
   人物検索がハイブリッド検索システムにより、10 億件以上の公開プロフィールを対象にできるようになりました。`linkedin` カテゴリは新しい `people` カテゴリに置き換わります。
 
@@ -167,7 +165,7 @@
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "JS SDK: ハイライトが復活" }}>
-  ## JS SDK: ハイライトが復活
+  ## JS SDK: ハイライトが復活 {#js-sdk-highlights-restored}
 
   `exa-js` v2.0.11 から JavaScript SDK でハイライトが再び利用可能になり、重要な文を関連度スコア付きで返します。search および contents の呼び出しで `highlights: true` または `highlights: { maxCharacters, query }` を渡してください。
 
@@ -175,7 +173,7 @@
 </Update>
 
 <Update label="November 20, 2025" rss={{ title: "新しい Deep 検索タイプ" }}>
-  ## 新しい Deep 検索タイプ
+  ## 新しい Deep 検索タイプ {#new-deep-search-type}
 
   Exa Deep は複数の検索を同時に実行し、各結果について質の高いコンテキストを返すことで、より精度の高い結果を見つけます。`type="deep"` で有効にできます。
 
@@ -187,7 +185,7 @@
 </Update>
 
 <Update label="November 5, 2025" rss={{ title: "言語フィルタリングを追加" }}>
-  ## 言語フィルタリングを追加
+  ## 言語フィルタリングを追加 {#added-language-filtering}
 
   Exa がクエリの言語を検出し、その言語の結果のみを返すようになりました。すべてのユーザーでデフォルトで有効になっており、設定は不要です。
 
@@ -195,7 +193,7 @@
 </Update>
 
 <Update label="October 28, 2025" rss={{ title: "SDK の変更: ハイライトの削除とコンテンツのデフォルト返却" }}>
-  ## SDK の変更: ハイライトの削除とコンテンツのデフォルト返却
+  ## SDK の変更: ハイライトの削除とコンテンツのデフォルト返却 {#sdk-changes-highlights-removed-and-contents-returned-by-default}
 
   破壊的変更を含む SDK のメジャーバージョンアップです。
 
@@ -207,7 +205,7 @@
 </Update>
 
 <Update label="August 4, 2025" rss={{ title: "ドメインパスフィルターに対応" }}>
-  ## ドメインパスフィルターに対応
+  ## ドメインパスフィルターに対応 {#domain-path-filter-support}
 
   `includeDomains` と `excludeDomains` で、より細かい指定ができるようになりました。
 
@@ -220,7 +218,7 @@
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "位置情報フィルターに対応" }}>
-  ## 位置情報フィルターに対応
+  ## 位置情報フィルターに対応 {#geolocation-filter-support}
 
   新しい `userLocation` パラメーターに [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) 国コード (例: `"us"`、`"fr"`) を渡すと、ユーザーの地域の結果が優先されます。複数地域向けのアプリ、地域言語のコンテンツ、ローカル情報の探索に役立ちます。
 
@@ -228,7 +226,7 @@
 </Update>
 
 <Update label="July 29, 2025" rss={{ title: "新しい Fast 検索タイプ" }}>
-  ## 新しい Fast 検索タイプ
+  ## 新しい Fast 検索タイプ {#new-fast-search-type}
 
   Exa Fast は、p50 レイテンシ 425ms 未満を実現する軽量化された検索モデルを使用します。`type="fast"` で有効にできます。
 
@@ -240,7 +238,7 @@
 </Update>
 
 <Update label="July 21, 2025" rss={{ title: "Auto 検索でのスコアの非推奨化" }}>
-  ## Auto 検索でのスコアの非推奨化
+  ## Auto 検索でのスコアの非推奨化 {#score-deprecation-in-auto-search}
 
   新しい Auto 検索アーキテクチャでは意味のある関連性スコアを算出できなくなったため、Auto 検索の結果から `score` フィールドを削除します。
 
@@ -251,7 +249,7 @@
 </Update>
 
 <Update label="June 23, 2025" rss={{ title: "Markdown コンテンツがデフォルトに" }}>
-  ## Markdown コンテンツがデフォルトに
+  ## Markdown コンテンツがデフォルトに {#markdown-contents-as-default}
 
   すべてのエンドポイントが、デフォルトでクリーンな Markdown を返すようになりました。LLM、RAG、一般的なテキスト処理に適した形式です。特に対応は必要ありません。
 
@@ -264,7 +262,7 @@
 </Update>
 
 <Update label="June 7, 2025" rss={{ title: "新しい Livecrawl オプション: Preferred" }}>
-  ## 新しい Livecrawl オプション: Preferred
+  ## 新しい Livecrawl オプション: Preferred {#new-livecrawl-option-preferred}
 
   <Warning>
     これは過去のエントリーです。`livecrawl` 文字列パラメーターは現在非推奨です。新規の統合では `maxAgeHours` と `livecrawlTimeout` を使用してください。詳しくは [Content Freshness](/ja/docs/contents/quickstart#content-freshness) を参照してください。
@@ -276,7 +274,7 @@
 </Update>
 
 <Update label="May 22, 2025" rss={{ title: "Contents エンドポイントのステータス変更" }}>
-  ## Contents エンドポイントのステータス変更
+  ## Contents エンドポイントのステータス変更 {#contents-endpoint-status-changes}
 
   `/contents` は単一の HTTP エラーを返す代わりに、URL ごとの `statuses` フィールドを返すようになりました。これにより、各 URL の結果を個別に処理できます。エンドポイント自体がエラーを返すのは、内部的な問題が発生した場合のみです。
 
@@ -287,7 +285,7 @@
 </Update>
 
 <Update label="December 11, 2024" rss={{ title: "Auto 検索がデフォルトに" }}>
-  ## Auto 検索がデフォルトに
+  ## Auto 検索がデフォルトに {#auto-search-as-default}
 
   Auto 検索がデフォルトになりました。各クエリを最適な検索方式に自動で振り分けます。特に対応は必要ありません。以前の動作を維持したい場合は `type="neural"` を指定してください。
 

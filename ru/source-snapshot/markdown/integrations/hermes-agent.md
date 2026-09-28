@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжать изучение.
 
-<div id="hermes-agent">
-  # Hermes Agent
-</div>
+# Hermes Agent {#hermes-agent}
 
 > Дайте Hermes Agent живой веб-поиск и содержимое страниц с помощью Exa.
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) поддерживает Exa как встроенный бэкенд для вызываемых моделью инструментов `web_search` и `web_extract`. Используйте Exa для обеих возможностей или сочетайте его с другим веб-провайдером Hermes.
 
-<div id="connect-your-exa-account">
-  ## Подключите свой аккаунт Exa
-</div>
+## Подключите свой аккаунт Exa {#connect-your-exa-account}
 
 <Steps>
   <Step title="Получите Exa API key">
@@ -43,9 +39,7 @@
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Настройка вручную
-</div>
+## Настройка вручную {#configure-manually}
 
 Добавьте свой ключ в файл окружения Hermes:
 
@@ -70,9 +64,7 @@ web:
 
 Настройки отдельных capability имеют приоритет над `web.backend`. Это позволяет использовать Exa только для search или только для извлечения при сочетании нескольких провайдеров.
 
-<div id="tools-hermes-gets">
-  ## Инструменты, доступные Hermes
-</div>
+## Инструменты, доступные Hermes {#tools-hermes-gets}
 
 | Инструмент    | Поведение Exa                                                                                          |
 | ------------- | ------------------------------------------------------------------------------------------------------ |
@@ -85,9 +77,7 @@ Hermes обрезает длинные извлечённые страницы �
   Hermes может работать с Exa через пул бесплатных провайдеров без API key. Этот пул ограничен по частоте запросов и может переключаться между провайдерами. Задайте `EXA_API_KEY` и выберите вариант Exa с аутентификацией по API key, если нужно, чтобы запросы стабильно выполнялись от имени вашего аккаунта Exa.
 </Note>
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Hermes не выбирает Exa">
@@ -103,9 +93,7 @@ Hermes обрезает длинные извлечённые страницы �
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={3}>
   <Card title="Веб-инструменты Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Читать руководство" arrow="true">

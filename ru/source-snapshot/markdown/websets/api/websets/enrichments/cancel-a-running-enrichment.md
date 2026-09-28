@@ -1,17 +1,13 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="cancel-a-running-enrichment">
-  # Отмена выполняющегося enrichment
-</div>
+# Отмена выполняющегося enrichment {#cancel-a-running-enrichment}
 
 > Все выполняющиеся enrichment будут отменены. Возобновить Enrichment после отмены невозможно.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/enrichments/{id}/cancel
 openapi: 3.1.0

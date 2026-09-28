@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем изучать документацию дальше.
 
-<div id="companies-people">
-  # Компании и люди
-</div>
+# Компании и люди {#companies-people}
 
 > Находите компании, профессиональные профили и связи между ними с помощью Exa Search.
 
@@ -47,36 +45,32 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Card>
 </Columns>
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Поиск компаний, кандидатов и экспертов
 * Исследование клиентов и составление карты стейкхолдеров
 * Карты рынка, инвестиционная аналитика и поиск сделок
 * Исследование руководства, найма и организационной структуры
 
-<div id="write-better-queries">
-  ## Пишите более качественные запросы
-</div>
+## Пишите более качественные запросы {#write-better-queries}
 
 Начните с сущности, которая вам нужна, затем добавьте характеристики и связи, которые её уточняют. Указывайте тип источника, когда это важно: например, сайты компаний, профессиональные профили, вакансии или личные сайты.
 
 <Tabs>
   <Tab title="Компании" icon="building">
-    ### Находите компании по тому, чем они занимаются
+### Находите компании по тому, чем они занимаются {#discover-companies-by-what-they-do}
 
     Опишите клиента, продукт, возможности, стадию развития и географию, которые определяют рынок. Так вы найдёте подходящие компании по тому, чем они занимаются, а не по заранее составленному списку.
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-    ### Находите операционные сигналы
+### Находите операционные сигналы {#find-operating-signals}
 
     Назовите сигнал и значимые характеристики компании. Search может находить вакансии, страницы с ценами, документацию продукта и отчётность наряду со страницами компаний.
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-    ### Исследуйте инвестиционную активность
+### Исследуйте инвестиционную активность {#research-funding-activity}
 
     Укажите раунд, отрасль, участника и временной интервал.
 
@@ -84,19 +78,19 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 
   <Tab title="Люди" icon="users">
-    ### Находите людей по роли и навыкам
+### Находите людей по роли и навыкам {#discover-people-by-role-and-skills}
 
     Сочетайте роль, уровень, местоположение, релевантные навыки и нужный тип источника.
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-    ### Отбирайте людей по характеристикам компании
+### Отбирайте людей по характеристикам компании {#qualify-people-by-company-traits}
 
     Опишите, как человек связан с компанией, и характеристики, по которым эта компания вам подходит. Это работает лучше, чем сначала составлять список компаний.
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-    ### Находите личные сайты и публичные работы
+### Находите личные сайты и публичные работы {#find-personal-websites-and-public-work}
 
     Назовите профессию или область исследований и явно запросите личные сайты, выступления, интервью или статьи.
 
@@ -104,17 +98,13 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 </Tabs>
 
-<div id="search-both-together">
-  ## Поиск по обоим сразу
-</div>
+## Поиск по обоим сразу {#search-both-together}
 
 Сформулируйте один запрос, отражающий нужную вам связь. Exa может вернуть страницы компаний, профили специалистов, страницы вакансий и публичные упоминания в одном наборе результатов.
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-<div id="make-a-request">
-  ## Отправка запроса
-</div>
+## Отправка запроса {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -155,9 +145,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследовать сразу несколько источников, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите компании, людей, критерии отбора и нужные поля результата — и Agent вернёт результаты, проверенные по схеме, со ссылками на источники.
 

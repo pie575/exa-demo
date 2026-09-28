@@ -12,9 +12,7 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "веб-поиск"]
   <img src="/docs/images/integrations/vercel/fx/install-exa.gif" alt="Установка fx, добавление MCP-сервера Exa через /mcp add и запуск веб-поиска Exa в реальном времени" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-<div id="installation">
-  ## Установка
-</div>
+## Установка {#installation}
 
 <Steps>
   <Step title="Установите fx">
@@ -42,9 +40,7 @@ keywords: ["fx", "Vercel Labs", "Exa MCP", "coding agent", "веб-поиск"]
   </Step>
 </Steps>
 
-<div id="configure-by-hand">
-  ## Настройка вручную
-</div>
+## Настройка вручную {#configure-by-hand}
 
 fx считывает MCP-серверы только из `~/.fx/mcp.json`, поэтому Exa можно добавить прямо туда:
 
@@ -83,9 +79,7 @@ fx считывает MCP-серверы только из `~/.fx/mcp.json`, п�
 
 `header_env` сопоставляет имя header с переменной окружения, благодаря чему ключ не попадает в файл конфигурации.
 
-<div id="tool-discovery">
-  ## Обнаружение tools
-</div>
+## Обнаружение tools {#tool-discovery}
 
 fx обнаруживает MCP tools лениво: tools сервера не попадают в context модели, пока они не понадобятся на очередном шаге, поэтому подключение Exa ничего не стоит на тех шагах, где поиск в вебе не выполняется.
 

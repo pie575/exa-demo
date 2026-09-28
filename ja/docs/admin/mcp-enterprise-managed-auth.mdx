@@ -8,17 +8,13 @@ sidebarTitle: "Enterprise Managed Auth"
 
 アクセス権はディレクトリの設定に連動します。Okta でユーザーのプロビジョニングを解除すると、そのユーザーの Claude 経由での Exa へのアクセスも同時に停止します。EMA は、MCP の [enterprise managed authorization 拡張機能](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)に基づいています。
 
-<div id="before-you-start">
-  ## 始める前に
-</div>
+## 始める前に {#before-you-start}
 
 * ID プロバイダーが接続済みの Claude Team または Enterprise の組織と、その組織の管理者権限
 * SSO とディレクトリ同期が設定済みの Exa の **組織** (個人用チームは不可) と、その組織の管理者権限
 * ID プロバイダーとして Okta を使用し、Okta Identity Engine で [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) を有効にしていること、およびテナントの Super Admin 権限。現在サポートされている ID プロバイダーは Okta のみです。
 
-<div id="exa-values-youll-need">
-  ## 必要な Exa の値
-</div>
+## 必要な Exa の値 {#exa-values-youll-need}
 
 | 項目                        | 値                        |
 | ------------------------- | ------------------------ |
@@ -26,9 +22,7 @@ sidebarTitle: "Enterprise Managed Auth"
 | Resource / MCP サーバー URL   | `https://mcp.exa.ai/mcp` |
 | Scope                     | `mcp:tools`              |
 
-<div id="set-up-ema">
-  ## EMA のセットアップ
-</div>
+## EMA のセットアップ {#set-up-ema}
 
 <Steps>
   <Step title="Exa でメンバーをプロビジョニングする">
@@ -60,16 +54,12 @@ sidebarTitle: "Enterprise Managed Auth"
   Claude 経由の使用量は、チームで実行する他の処理と同様に、メンバーの Exa チームに対して、そのチームのプランとレート制限に基づいて請求されます。
 </Note>
 
-<div id="revoking-access">
-  ## アクセスの取り消し
-</div>
+## アクセスの取り消し {#revoking-access}
 
 * **特定のメンバー:** Okta でそのメンバーを削除するか、Exa でそのメンバーをチームから外します。いずれの場合も、Claude 経由のアクセスは終了します。
 * **全員:** Organization ページで発行者を削除するか、Claude でマネージド認可をオフにします。新規接続はただちに停止し、すでに開いているセッションもまもなく終了します。発行者はいつでも再登録できます。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="一部のメンバーは利用できるが、他のメンバーは利用できない">

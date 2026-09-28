@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем изучать документацию дальше.
 
-<div id="update-api-key">
-  # Обновление API key
-</div>
+# Обновление API key {#update-api-key}
 
 > Обновление названия и лимита запросов существующего API key.
 
@@ -17,28 +15,20 @@
   Team Management API включается отдельно для каждой команды. Аутентификация выполняется с помощью API key сервисного аккаунта — его можно создать на вкладке **Service keys** на [странице API keys](https://dashboard.exa.ai/api-keys) после того, как функция будет включена для вашей команды. Чтобы запросить доступ, напишите на [support@exa.ai](mailto:support@exa.ai).
 </Info>
 
-<div id="overview">
-  ## Обзор
-</div>
+## Обзор {#overview}
 
 Эндпоинт Update API Key позволяет изменить существующий API key
 
-<div id="path-parameters">
-  ## Path Parameters
-</div>
+## Path Parameters {#path-parameters}
 
 * **id**: Уникальный идентификатор обновляемого API key.
 
-<div id="optional-parameters">
-  ## Необязательные параметры
-</div>
+## Необязательные параметры {#optional-parameters}
 
 * **name**: новое описательное имя API key
 * **rateLimit**: новый лимит запросов в минуту
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml PUT /api-keys/{id}
 openapi: 3.1.0

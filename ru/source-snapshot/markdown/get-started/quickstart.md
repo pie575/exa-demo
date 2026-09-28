@@ -1,16 +1,14 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="developer-quickstart">
-  # Быстрый старт для разработчиков
-</div>
+# Быстрый старт для разработчиков {#developer-quickstart}
 
 > Получите API key, а затем используйте Exa из своего кода или своего agent.
 
 <div className="docs-quickstart-section docs-quickstart-auth">
-  ## 1. Получите API key
+  ## 1. Получите API key {#1-get-an-api-key}
 
   <Steps>
     <Step title="Откройте Exa Dashboard">
@@ -38,7 +36,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 2. Выберите, как вы будете использовать Exa
+  ## 2. Выберите, как вы будете использовать Exa {#2-choose-how-youll-use-exa}
 
   Exa встраивается в ваше приложение двумя способами: вызывайте API из собственного кода или подключите agent, которым вы уже пользуетесь.
 
@@ -65,7 +63,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 3. Установите SDK
+  ## 3. Установите SDK {#3-install-an-sdk}
 
   <CodeGroup>
     ```bash Python theme={null}
@@ -79,7 +77,7 @@
 </div>
 
 <div className="docs-quickstart-section">
-  ## 4. Выполните первый запрос
+  ## 4. Выполните первый запрос {#4-make-your-first-request}
 
   <CodeGroup>
     ```python Python theme={null}
@@ -122,7 +120,7 @@
     ```
   </CodeGroup>
 
-  ## Дальнейшие шаги
+  ## Дальнейшие шаги {#next-steps}
 
   <Columns cols={2}>
     <Card title="Search API" icon="search" href="/ru/docs/search/quickstart" cta="Читать руководство" arrow="true">

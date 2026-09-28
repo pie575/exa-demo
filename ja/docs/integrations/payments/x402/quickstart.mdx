@@ -5,9 +5,7 @@ description: "APIキーなしでExaのSearch APIとContents APIを利用でき�
 icon: "/docs/images/sidebar-icons/x402.svg"
 ---
 
-<div id="what-is-x402">
-  ## x402 とは
-</div>
+## x402 とは {#what-is-x402}
 
 [x402](https://x402.org) は、HTTP の `402 Payment Required` ステータスコードを基盤とするオープンな決済標準です。クライアントは Base または Solana 上の USDC ステーブルコインを使って、API へのアクセス料金をリクエストごとに支払えます。アカウント、API キー、サブスクリプションは必要ありません。
 
@@ -19,9 +17,7 @@ Exa は **`/search`** と **`/contents`** の 2 つのエンドポイントで x
   x402 と API キーによるアクセスは互いに独立しています。リクエストに `x-api-key` または `Authorization: Bearer` ヘッダーが含まれている場合は、通常の API キー課金フローが適用され、x402 は一切使用されません。
 </Info>
 
-<div id="supported-endpoints">
-  ## 対応エンドポイント
-</div>
+## 対応エンドポイント {#supported-endpoints}
 
 | エンドポイント     | メソッド | 説明                                                                                 |
 | ----------- | ---- | ---------------------------------------------------------------------------------- |
@@ -30,17 +26,13 @@ Exa は **`/search`** と **`/contents`** の 2 つのエンドポイントで x
 
 上記以外のエンドポイントは、x402 経由では**利用できません**。
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 <Frame>
   <img src="/docs/images/integrations/payments/x402/payment-flow.png" alt="x402 支払いフローのシーケンス図: クライアントがサーバーにリクエストを送信すると、PAYMENT-REQUIRED ヘッダー付きの 402 が返されます。クライアントは支払いペイロードを作成し、PAYMENT-SIGNATURE を付けてリクエストを再試行します。サーバーはファシリテーター経由で検証して処理を実行し、オンチェーンで決済したうえで、結果と PAYMENT-RESPONSE を含む 200 を返します" width="4224" height="2720" data-path="images/integrations/payments/x402/payment-flow.png" />
 </Frame>
 
-<div id="step-1-discovery">
-  ### ステップ 1: ディスカバリー
-</div>
+### ステップ 1: ディスカバリー {#step-1-discovery}
 
 APIキーや支払いヘッダーを付けずに、対応しているエンドポイントへリクエストを送信します。
 
@@ -85,15 +77,11 @@ base64 でエンコードされた `PAYMENT-REQUIRED` ヘッダーを含む `402
 `amount` は USDC atomic 単位 (小数点以下 6 桁) で表されるため、`"7000"` は $0.007 を意味します。
 クライアントは、提示された `accepts` エントリのうち、自身がサポートしているものであればどれを使って支払ってもかまいません。Solana のエントリには、`extra.feePayer` など、ファシリテーターが提供するフィールドが含まれます。支払いを構築する際は、`PAYMENT-REQUIRED` ヘッダーに含まれるエントリを変更せずにそのまま使用してください。
 
-<div id="step-2-pay-and-retry">
-  ### ステップ 2: 支払いと再試行
-</div>
+### ステップ 2: 支払いと再試行 {#step-2-pay-and-retry}
 
 ウォレットで支払いに署名し、base64 エンコードした支払いペイロードを `PAYMENT-SIGNATURE` ヘッダーに含めてリクエストを再送信します。x402 クライアント SDK を使用すると、この処理は自動的に行われます。
 
-<div id="step-3-settlement">
-  ### ステップ 3: 決済
-</div>
+### ステップ 3: 決済 {#step-3-settlement}
 
 Exa はファシリテーターを通じて支払い署名を検証し、リクエストの処理と**並行して**オンチェーン決済を開始します。レスポンスは決済が確定するまで保留されます。成功すると、次のものが返されます。
 
@@ -102,15 +90,11 @@ Exa はファシリテーターを通じて支払い署名を検証し、リク�
 
 決済に失敗した場合は、`402` が返されます。このレスポンスには `PAYMENT-RESPONSE` (エラーの詳細) と `PAYMENT-REQUIRED` (再試行用) の両方が含まれます。
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 x402 には、API キー課金と同じバンドル料金が適用されます。料金は実際に返された結果ではなく、リクエストのパラメーターに基づいて事前に算出されます。
 
-<div id="search-search">
-  ### Search (`/search`)
-</div>
+### Search (`/search`) {#search-search}
 
 | 検索タイプ                     | 基本料金 (結果 10 件まで)  | 10 件を超える結果 1 件あたり |
 | ------------------------- | ----------------- | ----------------- |
@@ -125,9 +109,7 @@ x402 には、API キー課金と同じバンドル料金が適用されます�
   x402 リクエストで取得できる結果は**最大 10 件**です。10 件を超える結果をリクエストした場合、`numResults` は警告なしで 10 に切り詰められ、料金は 10 件分として計算されます。
 </Warning>
 
-<div id="contents-contents">
-  ### Contents (`/contents`)
-</div>
+### Contents (`/contents`) {#contents-contents}
 
 コンテンツタイプごとに、ページ/URL 単位で課金されます。
 
@@ -139,9 +121,7 @@ x402 には、API キー課金と同じバンドル料金が適用されます�
 
 コンテンツタイプを1つも指定しない場合 (`text`、`highlights`、`summary` のいずれも指定しない場合) は、デフォルトで `text` が有効になります。
 
-<div id="examples">
-  ### 例
-</div>
+### 例 {#examples}
 
 | リクエスト                                    | 料金     | USDC atomic |
 | ---------------------------------------- | ------ | ----------- |
@@ -153,13 +133,9 @@ x402 には、API キー課金と同じバンドル料金が適用されます�
 | `/contents` (URL 2件、`text: true`)        | $0.002 | 2000        |
 | `/contents` (URL 1件、`text` + `summary`)  | $0.002 | 2000        |
 
-<div id="quickstart">
-  ## クイックスタート
-</div>
+## クイックスタート {#quickstart}
 
-<div id="install-dependencies">
-  ### 依存関係のインストール
-</div>
+### 依存関係のインストール {#install-dependencies}
 
 <CodeGroup>
   ```bash JavaScript theme={null}
@@ -183,9 +159,7 @@ x402 には、API キー課金と同じバンドル料金が適用されます�
   秘密鍵を自分で管理したくない場合は、[Coinbase Agentic Wallets](https://docs.cdp.coinbase.com/agent-kit/core-concepts/wallet-management) を利用できます。AI エージェント向けに TEE で分離された鍵管理を提供しており、エージェントが秘密鍵に触れることはありません。このウォレットは viem 互換のため、`@x402/fetch` でそのまま使用できます。
 </Tip>
 
-<div id="make-a-paid-search-request">
-  ### 有料の検索リクエストを送信する
-</div>
+### 有料の検索リクエストを送信する {#make-a-paid-search-request}
 
 <CodeGroup>
   ```typescript JavaScript theme={null}
@@ -275,9 +249,7 @@ x402 には、API キー課金と同じバンドル料金が適用されます�
   cURL では、支払いの署名を手動で行う必要があります。本番環境では、402 &gt; 署名 &gt; 再試行の一連のフローを自動で処理する JavaScript または Python SDK を使用してください。
 </Info>
 
-<div id="discovery-mode-no-wallet-needed">
-  ### ディスカバリーモード (ウォレット不要)
-</div>
+### ディスカバリーモード (ウォレット不要) {#discovery-mode-no-wallet-needed}
 
 認証なしでリクエストを送信すれば、ウォレットがなくても料金を確認できます。
 
@@ -323,9 +295,7 @@ x402 には、API キー課金と同じバンドル料金が適用されます�
   ```
 </CodeGroup>
 
-<div id="payment-networks">
-  ## 決済ネットワーク
-</div>
+## 決済ネットワーク {#payment-networks}
 
 Exa は、現在サポートしているすべてのネットワークを `accepts` 配列で提示します。お使いのウォレットと、登録済みの x402 クライアントのスキームに一致するエントリを選択してください。
 
@@ -336,9 +306,7 @@ Exa は、現在サポートしているすべてのネットワークを `accep
 
 いずれも小数点以下 6 桁の USDC (`1000000` = $1.00) を使用し、x402 ファシリテーター経由でオンチェーン決済されます。
 
-<div id="rate-limits">
-  ## レート制限
-</div>
+## レート制限 {#rate-limits}
 
 x402 には、API キーの制限とは別に独自のレート制限があります。
 
@@ -351,13 +319,9 @@ x402 には、API キーの制限とは別に独自のレート制限があり�
 
 ウォレットごとの QPS 制限は、同一ウォレットアドレスから送信されるすべての有料リクエストに適用されます。
 
-<div id="headers-reference">
-  ## ヘッダーリファレンス
-</div>
+## ヘッダーリファレンス {#headers-reference}
 
-<div id="request-headers">
-  ### リクエストヘッダー
-</div>
+### リクエストヘッダー {#request-headers}
 
 | ヘッダー                | 説明                                  |
 | ------------------- | ----------------------------------- |
@@ -365,18 +329,14 @@ x402 には、API キーの制限とは別に独自のレート制限があり�
 | `payment-signature` | エイリアス (こちらも使用可)                     |
 | `x-payment`         | 旧エイリアス (v1 互換用)                     |
 
-<div id="response-headers">
-  ### レスポンスヘッダー
-</div>
+### レスポンスヘッダー {#response-headers}
 
 | ヘッダー               | 返却条件                      | 説明                                                     |
 | ------------------ | ------------------------- | ------------------------------------------------------ |
 | `PAYMENT-REQUIRED` | `402` レスポンス時              | 料金情報と支払い手順を含む、Base64 エンコードされた `PaymentRequired` オブジェクト |
 | `PAYMENT-RESPONSE` | `200` または `402` (支払い試行後)  | トランザクションハッシュまたはエラーを含む、Base64 エンコードされた決済結果              |
 
-<div id="error-codes">
-  ## エラーコード
-</div>
+## エラーコード {#error-codes}
 
 | ステータス | タグ                         | 説明                                              |
 | ----- | -------------------------- | ----------------------------------------------- |
@@ -387,9 +347,7 @@ x402 には、API キーの制限とは別に独自のレート制限があり�
 | `429` | `X402_WALLET_RATE_LIMITED` | ウォレットが上限 (毎秒10リクエスト) を超えました                     |
 | `500` | `X402_INTERNAL_ERROR`      | 支払い要件の生成中にサーバー側でエラーが発生しました                      |
 
-<div id="faq">
-  ## FAQ
-</div>
+## FAQ {#faq}
 
 <AccordionGroup>
   <Accordion title="x402 と API キーを併用できますか？">
@@ -409,9 +367,7 @@ x402 には、API キーの制限とは別に独自のレート制限があり�
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## 関連リソース
-</div>
+## 関連リソース {#resources}
 
 * [x402 プロトコルドキュメント](https://docs.x402.org): プロトコルの完全な仕様
 * [x402 GitHub](https://github.com/coinbase/x402): オープンソースの SDK とサンプル

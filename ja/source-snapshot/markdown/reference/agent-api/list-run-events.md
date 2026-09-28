@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="list-run-events">
-  # run イベントの一覧取得
-</div>
+# run イベントの一覧取得 {#list-run-events}
 
 > 保存済みの Agent run イベントを一覧で取得するか、server-sent events としてリプレイします。
 
@@ -15,9 +13,7 @@
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /agent/runs/{id}/events
 openapi: 3.1.0

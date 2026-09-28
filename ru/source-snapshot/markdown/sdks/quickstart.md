@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем изучать документацию дальше.
 
-<div id="sdk-quickstart">
-  # Быстрый старт с SDK
-</div>
+# Быстрый старт с SDK {#sdk-quickstart}
 
 > Установка и использование Exa SDK для Python и JavaScript
 
@@ -15,9 +13,7 @@
   Создайте ключ в панели управления. Новым аккаунтам начисляются бесплатные кредиты.
 </Card>
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -39,9 +35,7 @@
 
 Для Python SDK требуется Python 3.9+.
 
-<div id="authentication">
-  ## Аутентификация
-</div>
+## Аутентификация {#authentication}
 
 Задайте свой API-ключ в переменной окружения:
 
@@ -59,9 +53,7 @@
   </Tab>
 </Tabs>
 
-<div id="getting-started">
-  ## Начало работы
-</div>
+## Начало работы {#getting-started}
 
 Инициализируйте клиент и выполните первый поисковый запрос:
 
@@ -104,9 +96,7 @@
   передайте ключ напрямую: `Exa(api_key="your-api-key")` или `new Exa("your-api-key")`.
 </Note>
 
-<div id="recommended-defaults">
-  ## Рекомендуемые значения по умолчанию
-</div>
+## Рекомендуемые значения по умолчанию {#recommended-defaults}
 
 | Решение             | Рекомендуемое значение по умолчанию                                                                    |
 | ------------------- | ------------------------------------------------------------------------------------------------------ |
@@ -125,9 +115,7 @@
   | `get_contents` / `getContents` | Непосредственно в запросе, например `exa.get_contents(urls, highlights=True)`  |
 </Warning>
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
 Search находит релевантные страницы и возвращает их contents за один вызов.
 
@@ -162,9 +150,7 @@ Search находит релевантные страницы и возвращ�
   ```
 </CodeGroup>
 
-<div id="output-schema">
-  ### Схема вывода
-</div>
+### Схема вывода {#output-schema}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -218,9 +204,7 @@ Search находит релевантные страницы и возвращ�
 
 Режимы deep стоит использовать, когда для получения результата нужно исследование по нескольким поисковым запросам. Выбирайте `deep-lite` для лёгкого исследования или `deep` для многошагового search и более качественного синтеза. Полный список параметров запроса см. в [руководстве по Search](/ru/docs/search/quickstart).
 
-<div id="contents">
-  ## Contents
-</div>
+## Contents {#contents}
 
 Извлекайте highlights, полный текст или краткие изложения из URL, которые вам уже известны. Начните с highlights и добавьте запрос, чтобы нацелить их на нужную вам информацию.
 
@@ -243,9 +227,7 @@ Search находит релевантные страницы и возвращ�
 
 Используйте полный текст, когда нужен более широкий контекст или структура документа. Форматы вывода, управление актуальностью данных и обход подстраниц описаны в [руководстве по Contents](/ru/docs/contents/quickstart).
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 Получайте ответы на вопросы со ссылками на источники.
 
@@ -270,9 +252,7 @@ Search находит релевантные страницы и возвращ�
   ```
 </CodeGroup>
 
-<div id="async-and-types">
-  ## Асинхронность и типы
-</div>
+## Асинхронность и типы {#async-and-types}
 
 В Python для асинхронных операций доступен класс `AsyncExa`, а JavaScript SDK поставляется с TypeScript-типами для
 каждого метода.
@@ -295,15 +275,11 @@ Search находит релевантные страницы и возвращ�
   ```
 </CodeGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 Python: [исходный код exa-py](https://github.com/exa-labs/exa-py) и [пакет в PyPI](https://pypi.org/project/exa-py/). JavaScript: [исходный код exa-js](https://github.com/exa-labs/exa-js) и [пакет в npm](https://www.npmjs.com/package/exa-js).
 
-<div id="continue">
-  ## Что дальше
-</div>
+## Что дальше {#continue}
 
 <Columns cols={3}>
   <Card title="Руководство по Search" icon="search" href="/ru/docs/search/quickstart" cta="Открыть руководство" arrow="true">

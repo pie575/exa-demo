@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="verifying-signatures">
-  # 署名の検証
-</div>
+# 署名の検証 {#verifying-signatures}
 
 > webhook の署名を安全に検証し、リクエストが Exa から送信されたものであることを確認する方法を説明します
 
 Exa から webhook を受信した際は、データの完全性と真正性を確保するため、それが Exa から送信されたものであることを検証してください。Exa は、webhook エンドポイントごとに固有のシークレットキーを使用して、すべての webhook ペイロードに署名しています。
 
-<div id="how-webhook-signatures-work">
-  ## Webhook 署名の仕組み
-</div>
+## Webhook 署名の仕組み {#how-webhook-signatures-work}
 
 Exa は HMAC SHA256 を使用して webhook のペイロードに署名します。署名は `Exa-Signature` ヘッダーに含まれ、次の情報で構成されます。
 
@@ -26,9 +22,7 @@ Exa は HMAC SHA256 を使用して webhook のペイロードに署名します
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## 検証プロセス
-</div>
+## 検証プロセス {#verification-process}
 
 Webhook の署名を検証するには、次の手順に従います。
 
@@ -371,9 +365,7 @@ Webhook の署名を検証するには、次の手順に従います。
 
 <br />
 
-<div id="security-best-practices">
-  ## セキュリティのベストプラクティス
-</div>
+## セキュリティのベストプラクティス {#security-best-practices}
 
 以下のプラクティスに従うことで、webhook の実装を安全かつ堅牢にできます。
 
@@ -393,13 +385,9 @@ Webhook の署名を検証するには、次の手順に従います。
 
 <br />
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### 無効な署名エラー
-</div>
+### 無効な署名エラー {#invalid-signature-errors}
 
 署名検証に失敗する場合は、次の点を確認してください。
 
@@ -408,9 +396,7 @@ Webhook の署名を検証するには、次の手順に従います。
 3. **ヘッダーの解析を確認する**: ヘッダーからタイムスタンプと署名を正しく抽出できているか確認してください
 4. **エンコーディングの問題**: 検証プロセス全体で UTF-8 エンコーディングを一貫して使用しているか確認してください
 
-<div id="testing-signatures-locally">
-  ### ローカルでの署名のテスト
-</div>
+### ローカルでの署名のテスト {#testing-signatures-locally}
 
 webhookシークレットとサンプルのペイロードを使って、署名検証ロジックをテストできます。
 
@@ -442,9 +428,7 @@ print(f"Test signature valid: {is_valid}")  # True が出力されれば成功
 
 <br />
 
-<div id="whats-next">
-  ## 次のステップ
-</div>
+## 次のステップ {#whats-next}
 
 * [Webhook イベント](/ja/docs/websets/api/events/types)とそのペイロードについて確認する
 * [Webhook の再試行と監視](/ja/docs/websets/api/webhooks/attempts/list-webhook-attempts)を設定する

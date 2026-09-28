@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="truefoundry">
-  # TrueFoundry
-</div>
+# TrueFoundry {#truefoundry}
 
 > Exa を TrueFoundry MCP Gateway に接続すると、アクセス制御、ツール管理、使用状況の監視を一元的に行えます。
 
@@ -17,9 +15,7 @@ TrueFoundry は、[MCP Gateway](https://www.truefoundry.com/mcp-gateway) で Exa
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/catalog.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=add2e6b185410cfac99d0ed9fdf56a10" alt="TrueFoundry の公式リモート MCP カタログ内の Exa サーバー" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-<div id="add-exa-to-truefoundry">
-  ## TrueFoundry に Exa を追加する
-</div>
+## TrueFoundry に Exa を追加する {#add-exa-to-truefoundry}
 
 1. TrueFoundry のサイドバーで **MCP Servers** を開き、**Add new MCP Server** を選択します。
 2. **Connect Official Remote MCP Servers** を選択します。
@@ -48,15 +44,11 @@ TrueFoundry は、[MCP Gateway](https://www.truefoundry.com/mcp-gateway) で Exa
   **Tools** タブを開き、Exa の検索、コンテンツ取得、エージェント型リサーチの各ツールが利用できることを確認します。
 </Check>
 
-<div id="configure-the-exa-server">
-  ## Exa サーバーを設定する
-</div>
+## Exa サーバーを設定する {#configure-the-exa-server}
 
 あらかじめ入力されている URL では、Exa のデフォルトのツールセットが公開されます。この URL を変更する必要があるのは、利用可能なツールを制限する場合や、独自の API キーを使用する場合のみです。
 
-<div id="choose-which-tools-are-available">
-  ### 利用可能なツールを選択する
-</div>
+### 利用可能なツールを選択する {#choose-which-tools-are-available}
 
 `tools` クエリパラメーターに、ツール名をカンマ区切りで指定します。
 
@@ -81,9 +73,7 @@ collaborators:
   利用可能なツール名は、[Exa MCP ドキュメント](/ja/docs/get-started/exa-mcp)で確認できます。
 </Tip>
 
-<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
-  ### Exa API キーを使用して無料枠のレート制限を回避する
-</div>
+### Exa API キーを使用して無料枠のレート制限を回避する {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
 
 無料枠のレート制限に達した場合は、サーバー URL に Exa API キーを追加してください。
 
@@ -95,9 +85,7 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="connect-an-mcp-client">
-  ## MCP クライアントを接続する
-</div>
+## MCP クライアントを接続する {#connect-an-mcp-client}
 
 Exa サーバーの **How To Use** タブを開き、使用するクライアントを選択します。TrueFoundry が、テナント固有のエンドポイントと、Cursor、Claude Code、VS Code、Windsurf、Codex などの MCP クライアント向けにそのまま貼り付けて使える設定を生成します。
 
@@ -105,9 +93,7 @@ Exa サーバーの **How To Use** タブを開き、使用するクライアン
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/how-to-use.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=ec79070bbb5919f931ed52f8ae961183" alt="TrueFoundry に表示される、Exa MCP サーバーのクライアント別セットアップ手順" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-<div id="test-a-tool">
-  ## ツールをテストする
-</div>
+## ツールをテストする {#test-a-tool}
 
 Exa のツールの横にある **Try** を選択し、入力値を指定してから **Execute Tool** を選択します。プレイグラウンドに JSON レスポンスが表示されるので、エージェントで使用する前にツールの動作を確認できます。
 
@@ -115,9 +101,7 @@ Exa のツールの横にある **Try** を選択し、入力値を指定して�
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tool-playground.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=6cb86026c8ea245de4a9c701f4b51b8e" alt="TrueFoundry のツールプレイグラウンドで Exa のツールをテストしている様子" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-<div id="manage-and-monitor-tools">
-  ## ツールの管理と監視
-</div>
+## ツールの管理と監視 {#manage-and-monitor-tools}
 
 * ツールを個別にオン/オフして、MCP クライアントが呼び出せるツールを制御します
 * **Tool Metrics** でトラフィック、レイテンシ、エラーを確認します
@@ -127,9 +111,7 @@ Exa のツールの横にある **Try** を選択し、入力値を指定して�
   <img src="https://mintcdn.com/exa-52/FvOwo8C2yFgh2GuJ/images/integrations/truefoundry/tools-list.png?fit=max&auto=format&n=FvOwo8C2yFgh2GuJ&q=85&s=d0cef2a24127c7bfc0099876dee8f891" alt="TrueFoundry MCP サーバーで利用可能な Exa ツール" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="TrueFoundry セットアップガイド" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="ガイドを開く" arrow="true">

@@ -1,10 +1,10 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
 <div id="list-api-keys">
-  # API キーの一覧取得
+  # API キーの一覧取得 {#list-api-keys}
 </div>
 
 > チームに属するすべての API キーを、メタデータとあわせて取得します。
@@ -18,13 +18,13 @@
 </Info>
 
 <div id="overview">
-  ## 概要
+  ## 概要 {#overview}
 </div>
 
 List API Keys エンドポイントは、チームに関連付けられているすべての API キーを返します。各キーのキー ID、名前、レート制限、作成タイムスタンプが含まれます。
 
 <div id="response-format">
-  ## レスポンス形式
+  ## レスポンス形式 {#response-format}
 </div>
 
 レスポンスには、以下の情報を含む API キーオブジェクトの配列が含まれます。
@@ -35,7 +35,7 @@ List API Keys エンドポイントは、チームに関連付けられている
 * **createdAt**: キーの作成日時を示す ISO 8601 形式のタイムスタンプ
 
 <div id="openapi">
-  ## OpenAPI
+  ## OpenAPI {#openapi}
 </div>
 
 ```yaml team-management-spec.yaml GET /api-keys

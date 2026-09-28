@@ -33,9 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Exa Search を使えば、一次法令資料や政府の公文書を、それらに関する解説記事とあわせて検索できます。
 
-<div id="included">
-  ## 含まれるもの
-</div>
+## 含まれるもの {#included}
 
 * 米国の裁判所判決 (全文、裁判所、事件番号、判例引用のメタデータを含む)
 * 登録済みの米国特許 (要約、請求項、明細書、発明者、譲受人を含む)
@@ -44,9 +42,7 @@ Exa Search を使えば、一次法令資料や政府の公文書を、それら
 * 政府契約および調達記録
 * 国勢調査データおよびその他の公的統計記録
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 判例リサーチと法務 RAG
 * 規制・政策のモニタリング
@@ -54,53 +50,39 @@ Exa Search を使えば、一次法令資料や政府の公文書を、それら
 * コンプライアンススクリーニングとデューデリジェンス
 * 公共部門の市場リサーチ
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="find-case-law">
-  ### 判例を検索する
-</div>
+### 判例を検索する {#find-case-law}
 
 判例の引用表記ではなく、法的な論点と管轄区域を平易な言葉で記述してください。
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### 特許を検索する
-</div>
+### 特許を検索する {#search-patents}
 
 特許請求の範囲 (クレーム) を書くように、発明の機能を記述してください。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### 制裁リストとの照合
-</div>
+### 制裁リストとの照合 {#screen-against-sanctions}
 
 照合に使うリストと、対象とするエンティティの種類を指定してください。
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### 政府支出をリサーチする
-</div>
+### 政府支出をリサーチする {#research-government-spending}
 
 発注機関またはサービスカテゴリと、対象期間を指定します。
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### 公開統計データを取得する
-</div>
+### 公開統計データを取得する {#pull-public-statistics}
 
 データセットと地域を指定します。
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -141,9 +123,7 @@ Exa Search を使えば、一次法令資料や政府の公文書を、それら
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースにまたがるリサーチが必要な構造化データには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。必要な管轄区域、レコードの種類、条件、出力フィールドを指定すると、Agent がスキーマ検証済みの結果を引用付きで返します。
 

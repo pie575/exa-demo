@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="financial-markets">
-  # Финансовые рынки
-</div>
+# Финансовые рынки {#financial-markets}
 
 > Находите рыночные данные, отчётность, стенограммы отчётных звонков и публикации экономических данных с помощью Exa Search.
 
@@ -37,9 +35,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search, чтобы одним запросом получить котировки, отчётность, стенограммы и связанные с ними публикации. В ответ на запрос по тикеру можно сразу получить котировку, последнюю квартальную конференц-колл и аналитические обзоры.
 
-<div id="included">
-  ## Что включено
-</div>
+## Что включено {#included}
 
 * Котировки и недавняя история цен по акциям, криптовалютам, валютным парам, индексам, фьючерсам, опционам и сырьевым товарам
 * Профили ценных бумаг с ключевыми показателями и дневной историей OHLCV
@@ -47,62 +43,46 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Отчётность в SEC, публикуемая финансовая отчётность и отчётность на зарубежных рынках
 * Прогнозы аналитиков, сообщения о раундах финансирования и публикации экономических данных
 
-<div id="use-it-for">
-  ## Где применять
-</div>
+## Где применять {#use-it-for}
 
 * Анализ акций и кредитного рынка
 * KYC, KYB и проверка на негативные упоминания в СМИ
 * Мониторинг портфеля и регуляторных требований
 * Поиск сделок и исследование частных рынков
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="look-up-a-quote">
-  ### Поиск котировки
-</div>
+### Поиск котировки {#look-up-a-quote}
 
 Укажите тикер или название компании и нужный показатель. Кэштег вида `$NVDA` тоже подойдёт.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-<div id="read-an-earnings-call">
-  ### Чтение стенограммы отчётного звонка
-</div>
+### Чтение стенограммы отчётного звонка {#read-an-earnings-call}
 
 Укажите компанию и квартал, чтобы получить саму стенограмму, а не материалы о ней.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-<div id="search-filings">
-  ### Поиск по отчётности
-</div>
+### Поиск по отчётности {#search-filings}
 
 Опишите, какое именно раскрытие информации вы ищете, а не только тип формы. Категория `financial report` ограничивает выдачу отчётами и документами регуляторной отчётности.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-<div id="track-private-market-activity">
-  ### Отслеживание активности на частном рынке
-</div>
+### Отслеживание активности на частном рынке {#track-private-market-activity}
 
 Укажите раунд, сектор и временной интервал.
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-<div id="follow-economic-data">
-  ### Отслеживание экономических данных
-</div>
+### Отслеживание экономических данных {#follow-economic-data}
 
 Укажите публикацию и нужный показатель из неё.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-<div id="make-a-request">
-  ## Отправка запроса
-</div>
+## Отправка запроса {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -146,9 +126,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные ценные бумаги, периоды, критерии и поля вывода — и Agent вернёт результаты, проверенные по схеме, вместе со ссылками на источники.
 

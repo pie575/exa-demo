@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="cancel-a-running-search">
-  # 実行中の検索をキャンセルする
-</div>
+# 実行中の検索をキャンセルする {#cancel-a-running-search}
 
 > 現在実行中の Search をキャンセルします。
 
 `websets/:webset/cancel` エンドポイントを使用すると、すべての検索をまとめてキャンセルできます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0

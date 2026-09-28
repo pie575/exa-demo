@@ -7,9 +7,7 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) поддерживает Exa как встроенный бэкенд для вызываемых моделью инструментов `web_search` и `web_extract`. Используйте Exa для обеих возможностей или сочетайте его с другим веб-провайдером Hermes.
 
-<div id="connect-your-exa-account">
-  ## Подключите свой аккаунт Exa
-</div>
+## Подключите свой аккаунт Exa {#connect-your-exa-account}
 
 <Steps>
   <Step title="Получите API key Exa">
@@ -39,9 +37,7 @@ icon: "/docs/images/sidebar-icons/hermes-agent.svg"
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## Настройка вручную
-</div>
+## Настройка вручную {#configure-manually}
 
 Добавьте свой ключ в файл окружения Hermes:
 
@@ -66,9 +62,7 @@ web:
 
 Настройки отдельных capability имеют приоритет над `web.backend`. Это позволяет использовать Exa только для search или только для извлечения при совместном использовании нескольких провайдеров.
 
-<div id="tools-hermes-gets">
-  ## Какие инструменты получает Hermes
-</div>
+## Какие инструменты получает Hermes {#tools-hermes-gets}
 
 | Tool          | Поведение Exa                                                                                           |
 | ------------- | ------------------------------------------------------------------------------------------------------- |
@@ -81,9 +75,7 @@ Hermes обрезает длинные извлечённые страницы �
   Hermes может работать с Exa через пул бесплатных провайдеров без ключа, то есть без API key. Этот пул ограничен по частоте запросов и может чередовать провайдеров. Настройте `EXA_API_KEY` и выберите вариант Exa с аутентификацией по API key, если вам нужно, чтобы запросы стабильно выполнялись от имени вашей учётной записи Exa.
 </Note>
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Hermes не выбирает Exa">
@@ -99,9 +91,7 @@ Hermes обрезает длинные извлечённые страницы �
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={3}>
   <Card title="Веб-инструменты Hermes" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="Читать руководство" arrow="true">

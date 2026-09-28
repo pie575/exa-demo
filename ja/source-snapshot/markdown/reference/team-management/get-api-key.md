@@ -1,10 +1,10 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく見ていく前に、このファイルで利用可能なすべてのページを確認してください。
 
 <div id="get-api-key">
-  # APIキーの取得
+  # APIキーの取得 {#get-api-key}
 </div>
 
 > IDを指定して、特定のAPIキーの詳細を取得します。
@@ -18,19 +18,19 @@
 </Info>
 
 <div id="overview">
-  ## 概要
+  ## 概要 {#overview}
 </div>
 
 Get API Key エンドポイントを使用すると、一意の識別子を指定して、特定の API キーの詳細情報を取得できます。
 
 <div id="path-parameters">
-  ## パスパラメーター
+  ## パスパラメーター {#path-parameters}
 </div>
 
 * **id**: 取得する API キーの一意の識別子
 
 <div id="response">
-  ## レスポンス
+  ## レスポンス {#response}
 </div>
 
 API キーに関する次のような詳細情報を返します。
@@ -42,7 +42,7 @@ API キーに関する次のような詳細情報を返します。
 * **createdAt**: キーの作成日時
 
 <div id="openapi">
-  ## OpenAPI
+  ## OpenAPI {#openapi}
 </div>
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}

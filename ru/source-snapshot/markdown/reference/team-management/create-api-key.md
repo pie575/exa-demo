@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжить изучение.
 
-<div id="create-api-key">
-  # Создание API key
-</div>
+# Создание API key {#create-api-key}
 
 > Создайте новый API key для своей команды, при желании указав имя и настройки лимита запросов.
 
@@ -19,16 +17,12 @@
 
 Эндпоинт Create API Key позволяет программно создавать новые API keys для своей команды, используя сервисный API key.
 
-<div id="optional-parameters">
-  ## Необязательные параметры
-</div>
+## Необязательные параметры {#optional-parameters}
 
 * **name**: понятное имя для API key, помогающее определить его назначение
 * **rateLimit**: максимальное количество запросов в минуту, разрешённое для этого API key
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml POST /api-keys
 openapi: 3.1.0

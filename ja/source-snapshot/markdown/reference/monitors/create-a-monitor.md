@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="create-a-monitor">
-  # Monitor を作成する
-</div>
+# Monitor を作成する {#create-a-monitor}
 
 > スケジュールに従って Exa の検索を定期的に実行する Monitor を新規作成します。
 
@@ -17,9 +15,7 @@ Monitors は、指定した検索クエリを定期的なスケジュールで�
 
 レスポンスには `webhookSecret` が含まれます。この値は作成時に一度しか返されないため、webhook の署名検証に使えるよう安全に保管してください。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors
 openapi: 3.1.0

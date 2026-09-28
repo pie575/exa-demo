@@ -1,6 +1,4 @@
-<div id="final-blind-visual-review">
-  # 最終ブラインド目視レビュー
-</div>
+# 最終ブラインド目視レビュー {#final-blind-visual-review}
 
 ネイティブの下部コントロールと画像の余白を修正した後、最終的な A/B ペア 4 組を
 レビューしました。A/B の識別キーは参照していません。

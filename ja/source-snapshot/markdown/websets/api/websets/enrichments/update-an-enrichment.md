@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="update-an-enrichment">
-  # Enrichment を更新する
-</div>
+# Enrichment を更新する {#update-an-enrichment}
 
 > Webset の Enrichment 設定を更新します。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

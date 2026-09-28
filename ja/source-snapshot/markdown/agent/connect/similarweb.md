@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="similarweb">
-  # Similarweb
-</div>
+# Similarweb {#similarweb}
 
 > ウェブサイトのトラフィック推定値やグローバルランキングを取得し、競合を発見できます。
 
@@ -18,18 +16,14 @@
 `similarweb` をアタッチすると、エージェントは Exa のウェブ検索とあわせて
 Similarweb にもクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 企業のウェブトラフィックとエンゲージメントを同業他社と比較する。
 * ドメインの競合サイトや、オーディエンスが重複するサイトを洗い出す。
 * 市場規模を推定し、デジタルフットプリントに基づいて企業をスクリーニングする。
 * 実際の行動データで、企業やカテゴリのリサーチを補完する。
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` には次の値を指定します。
 
@@ -37,9 +31,7 @@ Similarweb にもクエリを実行します。
 similarweb
 ```
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 Similarweb はデータクレジット単位で課金され、料金は `$0.30 / credit` です。各呼び出しには、
 Similarweb が報告したクレジット数が課金されます。クレジットは返されるデータ量に応じて増え、
@@ -65,9 +57,7 @@ Similarweb が報告したクレジット数が課金されます。クレジッ
 キーワードなど) は無料です。`numResults` と `months` によって課金対象のデータポイント数が決まるため、
 タスクに必要な最小限の値に設定してください。
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 急成長中の B2B SaaS 企業を 10 社探し、各社の推定ウェブトラフィックを取得します。
 
@@ -161,16 +151,12 @@ Similarweb が報告したクレジット数が課金されます。クレジッ
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 相性の良い連携サービス
-</div>
+## 相性の良い連携サービス {#pairs-well-with}
 
 * [Fiber.ai](/ja/docs/agent/connect/fiber): 見つかった競合企業を、情報を補完した企業レコードに変換します。
 * [Affiliate.com](/ja/docs/agent/connect/affiliatecom): 販売事業者の商品をおすすめする前に、その事業者のリーチを把握します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

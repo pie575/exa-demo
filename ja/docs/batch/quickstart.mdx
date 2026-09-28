@@ -17,9 +17,7 @@ Batch API を使用すると、多数の Exa API リクエストをまとめて�
   Batch API はベータ版です。すべてのリクエストに `Exa-Beta: batches-2026-06-06` ヘッダーを含めてください。
 </Note>
 
-<div id="supported-requests">
-  ## サポートされるリクエスト
-</div>
+## サポートされるリクエスト {#supported-requests}
 
 各バッチアイテムは、次のいずれかのルートへの `POST` リクエストである必要があります。
 
@@ -30,9 +28,7 @@ Batch API を使用すると、多数の Exa API リクエストをまとめて�
 
 各アイテムには、バッチ内で一意の `customId` を指定する必要があります。結果ファイルにも同じ `customId` が返されるため、出力の各行を入力データと対応付けられます。
 
-<div id="create-a-batch">
-  ## バッチを作成する
-</div>
+## バッチを作成する {#create-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -90,9 +86,7 @@ Batch API を使用すると、多数の Exa API リクエストをまとめて�
   ```
 </Accordion>
 
-<div id="check-status">
-  ## ステータスの確認
-</div>
+## ステータスの確認 {#check-status}
 
 バッチが終了ステータスに達するまでポーリングします。
 
@@ -120,9 +114,7 @@ Batch API を使用すると、多数の Exa API リクエストをまとめて�
   `resultsUrl` は有効期間の短い署名付き URL です。結果を再度ダウンロードする場合は、その都度バッチを再取得して新しい URL を入手してください。
 </Warning>
 
-<div id="list-batches">
-  ## バッチの一覧を取得する
-</div>
+## バッチの一覧を取得する {#list-batches}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -153,9 +145,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-<div id="download-results">
-  ## 結果をダウンロードする
-</div>
+## 結果をダウンロードする {#download-results}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -170,9 +160,7 @@ JSONL の各行には、元の `customId` と、`response` または `error` の
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-<div id="cancel-a-batch">
-  ## バッチをキャンセルする
-</div>
+## バッチをキャンセルする {#cancel-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,9 +170,7 @@ JSONL の各行には、元の `customId` と、`response` または `error` の
   ```
 </CodeGroup>
 
-<div id="delete-a-batch">
-  ## バッチを削除する
-</div>
+## バッチを削除する {#delete-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -194,8 +180,6 @@ JSONL の各行には、元の `customId` と、`response` または `error` の
   ```
 </CodeGroup>
 
-<div id="access">
-  ## アクセス
-</div>
+## アクセス {#access}
 
 チームで Batch API を有効にするには、[sales@exa.ai](mailto:sales@exa.ai) までお問い合わせください。

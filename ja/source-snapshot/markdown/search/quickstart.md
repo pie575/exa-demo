@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-search-api">
-  # Exa Search API
-</div>
+# Exa Search API {#exa-search-api}
 
 > 自然言語でWebを検索し、関連性の高いページコンテンツを整形済みの状態で1回のリクエストで取得できます。
 
 Exa Search は自然言語のクエリを受け取り、整形済みのページコンテンツを含むWeb検索結果をランク順に返します。
 
-<div id="make-your-first-request">
-  ## 最初のリクエストを送信する
-</div>
+## 最初のリクエストを送信する {#make-your-first-request}
 
 まずは自然言語の `query` と `contents: { highlights: true }` を指定してみましょう。各結果の関連度に応じた長さの抜粋が返されます。その他のフィールドでは、Exa の検索方法や各結果に含める内容を制御できます。このページでは以降、実際によく使うフィールドを解説します。
 
@@ -109,9 +105,7 @@ Search はデフォルトで最大 10 件の結果を返します。`numResults`
 
 結果は関連度の高い順に並びます。各結果には、タイトル、URL、公開日などのメタデータに加えて、`contents` でリクエストした内容が含まれます。
 
-<div id="writing-queries">
-  ## クエリの書き方
-</div>
+## クエリの書き方 {#writing-queries}
 
 Search API を使用する際に必須のフィールドは `query` フィールドのみです。
 
@@ -146,9 +140,7 @@ Deep モードでは、1 回の取得処理ではなく、リサーチプロセ�
   長時間にわたるリサーチ、リスト作成、マルチホップのエンリッチメントには、`deep-reasoning` ではなく [Exa Agent](/ja/docs/agent/quickstart) を使用してください。Agent は run あたりに割り当てられる計算リソースが多く、根拠に基づいた構造化された結果を返します。
 </Tip>
 
-<div id="output-shapes">
-  ## 出力形式
-</div>
+## 出力形式 {#output-shapes}
 
 すべての結果には、タイトル、URL、公開日などのメタデータが含まれます。`contents` を使用すると、ページのハイライト、全文、または要約を追加できます。
 
@@ -243,9 +235,7 @@ Deep モードでは、1 回の取得処理ではなく、リサーチプロセ�
     同じフィールドを `urls` と同じトップレベルに配置します: `"urls": [...], "highlights": true`
 </Warning>
 
-<div id="output-schema">
-  ## 出力スキーマ
-</div>
+## 出力スキーマ {#output-schema}
 
 Exa に検索結果を統合・要約させたい場合は、`outputSchema` を追加します。すべての検索タイプに対応しており、レスポンスに `output` オブジェクトが追加されます。
 
@@ -411,15 +401,11 @@ Exa に検索結果を統合・要約させたい場合は、`outputSchema` を�
   引用や信頼度のフィールドを追加する必要はありません。これらは Exa が `output.grounding` で自動的に返します。
 </Note>
 
-<div id="filter-results">
-  ## 結果を絞り込む
-</div>
+## 結果を絞り込む {#filter-results}
 
 フィルターは厳格な制約です。条件から外れた結果では役に立たない場合にフィルターを追加し、ソースに関する緩やかな希望はクエリのテキストに含めてください。利用可能なフィルターの一覧は [API リファレンス](/ja/docs/reference/search)を参照してください。
 
-<div id="include-domains-or-paths">
-  ### ドメインまたはパスを指定して絞り込む
-</div>
+### ドメインまたはパスを指定して絞り込む {#include-domains-or-paths}
 
 `includeDomains` を使うと、結果を信頼できるソースに限定できます。完全なドメイン、`anthropic.com/news` のようなパスプレフィックス、`*.substack.com` のようなサブドメインのワイルドカードを指定できます。
 
@@ -453,9 +439,7 @@ Exa に検索結果を統合・要約させたい場合は、`outputSchema` を�
 
 パスはフィルターで指定し、クエリ内に `site:` 演算子として重複して記述しないでください。
 
-<div id="exclude-domains-or-paths">
-  ### ドメインまたはパスを除外する
-</div>
+### ドメインまたはパスを除外する {#exclude-domains-or-paths}
 
 `excludeDomains` は、特定のドメインまたはパスからの結果を除外します。`includeDomains` と同じく、パスプレフィックスとサブドメインのワイルドカードに対応しています。優先度を示すためではなく、該当するソースが含まれると結果が使えなくなる場合に使用してください。
 
@@ -490,9 +474,7 @@ Exa に検索結果を統合・要約させたい場合は、`outputSchema` を�
   ```
 </CodeGroup>
 
-<div id="content-freshness">
-  ## コンテンツの鮮度
-</div>
+## コンテンツの鮮度 {#content-freshness}
 
 `contents.maxAgeHours` は、各結果から抽出するコンテンツに求める鮮度を制御します。公開日で結果をフィルタリングするものではありません。
 
@@ -539,9 +521,7 @@ Exa に検索結果を統合・要約させたい場合は、`outputSchema` を�
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="ベストプラクティス" icon="sparkles" href="/ja/docs/search/best-practices" cta="ガイドを読む" arrow="true">

@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем изучать документацию дальше.
 
-<div id="pydantic-ai">
-  # Pydantic AI
-</div>
+# Pydantic AI {#pydantic-ai}
 
 > Дайте агенту Pydantic AI инструменты веб-исследования на базе Exa Search API.
 
@@ -30,9 +28,7 @@
 
 ***
 
-<div id="get-started">
-  ## Начало работы
-</div>
+## Начало работы {#get-started}
 
 <Steps>
   <Step title="Требования и установка">
@@ -85,9 +81,7 @@
 
 ***
 
-<div id="configuration">
-  ## Настройка
-</div>
+## Настройка {#configuration}
 
 Все поля `ExaSearch` со значениями по умолчанию:
 
@@ -108,9 +102,7 @@ ExaSearch(
 
 `include_domains` и `exclude_domains` применяются к `web_search` и `deep_search` и являются взаимоисключающими. Лимиты вне допустимого диапазона, а также одновременное указание обоих списков доменов приводят к ошибке при создании объекта.
 
-<div id="text-summary">
-  ### Текстовая сводка
-</div>
+### Текстовая сводка {#text-summary}
 
 Задайте `text_summary`, чтобы каждый вызов `web_search` дополнительно запрашивал сгенерированную текстовую сводку результатов. Передайте `True`, чтобы получить сводку без ограничений, либо строку с описанием нужного формата:
 
@@ -122,9 +114,7 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 Структура возвращаемого инструментом результата не меняется: если Exa возвращает summary, он добавляется в начало отдельной строкой `Summary:`.
 
-<div id="structured-citations">
-  ### Структурированные ссылки на источники
-</div>
+### Структурированные ссылки на источники {#structured-citations}
 
 Каждый инструмент возвращает `ToolReturn`: в `return_value` находится читаемый текст, который видит модель (включая блоки `Sources:`), а в `metadata` — источники в виде структурированных записей `ExaSource` (`{'url': ..., 'title': ...}`) по ключу `'sources'`. Метаданные никогда не передаются модели, поэтому для вывода ссылок на источники не нужно разбирать текст:
 
@@ -139,9 +129,7 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-<div id="custom-client">
-  ### Пользовательский клиент
-</div>
+### Пользовательский клиент {#custom-client}
 
 Клиент по умолчанию — `exa_py.AsyncExa`, который настраивается через переменную `EXA_API_KEY`. Передайте любой объект, соответствующий протоколу `ExaClient`, чтобы явно задать параметры аутентификации или базовый URL либо подставить заглушку в тестах:
 
@@ -154,9 +142,7 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-<div id="exa-agent-runs">
-  ## Запуски Exa Agent
-</div>
+## Запуски Exa Agent {#exa-agent-runs}
 
 [Exa Agent API](/ru/docs/agent/quickstart) асинхронно выполняет исследовательские задачи с открытой постановкой. Возможность `ExaAgent` проецирует этот жизненный цикл на [отложенные вызовы инструментов](https://pydantic.dev/docs/ai/deferred-tools/) в Pydantic AI: инструмент `exa_agent` создаёт запуск и откладывает выполнение, передавая ID запуска Exa в метаданных отложенного вызова.
 
@@ -188,9 +174,7 @@ ExaAgent(
 
 ***
 
-<div id="agent-spec-yamljson">
-  ## Agent spec (YAML/JSON)
-</div>
+## Agent spec (YAML/JSON) {#agent-spec-yamljson}
 
 Обе возможности работают с [agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec) из Pydantic AI, так что их можно описать в конфигурационном файле, а не в коде на Python:
 
@@ -215,9 +199,7 @@ agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAge
 
 ***
 
-<div id="next">
-  ## Далее
-</div>
+## Далее {#next}
 
 * [**Search API**](/ru/docs/search/quickstart) — семантический поиск с highlights, краткими сводками и deep search
 * [**Agent API**](/ru/docs/agent/quickstart) — асинхронные исследовательские задачи со свободной постановкой

@@ -9,9 +9,7 @@ Deep Search は Search API のリサーチモードです。同じ `/search` エ
 
 明確なクエリに対してランク付けされたページを取得したい場合は、標準の Search を使用してください。答えを得るためにリサーチが必要な場合は、Deep を使用してください。
 
-<div id="how-deep-search-works">
-  ## Deep Search の仕組み
-</div>
+## Deep Search の仕組み {#how-deep-search-works}
 
 Deep Search は、最終的なレスポンスを返す前にリサーチのループを実行します。
 
@@ -40,9 +38,7 @@ Deep Search は、最終的なレスポンスを返す前にリサーチのル�
 
 このプロセスは、リストや構造化出力を生成する場合に特に有効です。リクエストされたアイテムごとに個別の検索が必要になることもありますが、Deep はそれらの結果を収集・確認したうえで最終的な構造を生成できます。
 
-<div id="choose-a-deep-mode">
-  ## Deep モードを選ぶ
-</div>
+## Deep モードを選ぶ {#choose-a-deep-mode}
 
 | タイプ              | 適した場面                              |
 | ---------------- | ---------------------------------- |
@@ -58,9 +54,7 @@ Deep Search は、最終的なレスポンスを返す前にリサーチのル�
 
 最新のコストとレイテンシの目安については、[料金](/ja/docs/admin/pricing#deep-search)を参照してください。
 
-<div id="make-a-deep-request">
-  ## Deep リクエストを送信する
-</div>
+## Deep リクエストを送信する {#make-a-deep-request}
 
 通常の Search API リクエストで `type` を指定します。
 
@@ -105,9 +99,7 @@ Deep Search は、最終的なレスポンスを返す前にリサーチのル�
 
 Deep は、選定した検索結果を `results` に格納して返します。合成された回答や構造化データセットもあわせて取得したい場合は、`outputSchema` を追加してください。
 
-<div id="provide-starting-queries">
-  ## 初期クエリを指定する
-</div>
+## 初期クエリを指定する {#provide-starting-queries}
 
 通常、どの検索を実行するかは Deep が判断します。リサーチで扱うべき用語、観点、サブ課題があらかじめわかっている場合は、`additionalQueries` を使用します。
 
@@ -161,9 +153,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 検索量を増やすためだけに、少し言い換えただけのクエリを追加するのは避けてください。追加するクエリは、それぞれが明確に異なる検索の方向性を持つものにしてください。
 
-<div id="guide-behavior-and-output-separately">
-  ## 動作と出力を個別に制御する
-</div>
+## 動作と出力を個別に制御する {#guide-behavior-and-output-separately}
 
 `systemPrompt` と `outputSchema` は、それぞれリクエストの異なる部分に作用します。
 
@@ -263,9 +253,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 構造化された項目が 3 件以上必要な場合や、各項目が複数の要件を満たす必要がある場合は、Deep を使用することをおすすめします。標準の検索タイプも同じ統合パスを使用しますが、統合前に Deep のような反復的なリサーチは行いません。
 
-<div id="read-the-grounded-response">
-  ## 根拠付きレスポンスを読み取る
-</div>
+## 根拠付きレスポンスを読み取る {#read-the-grounded-response}
 
 構造化レスポンスでは、生成された値とその根拠が分けて返されます：
 
@@ -307,9 +295,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 `numResults` は、`results` で返される選択済みページの数を制御するものです。Deep が実行する検索の回数を指定するものではありません。
 
-<div id="stream-the-synthesis">
-  ## 統合結果をストリーミングする
-</div>
+## 統合結果をストリーミングする {#stream-the-synthesis}
 
 `outputSchema` とあわせて `stream: true` を設定すると、統合された出力を Server-Sent Events (SSE) で受信できます。
 
@@ -385,9 +371,7 @@ Deep は、選定した検索結果を `results` に格納して返します。�
 
 `done` を受信するまで、型付きイベントを順次処理してください。最終イベントには完成した出力と検索時間が含まれます。コスト情報が利用可能な場合は、それも含まれます。
 
-<div id="when-to-stay-with-standard-search">
-  ## 標準の Search を使い続けるべきケース
-</div>
+## 標準の Search を使い続けるべきケース {#when-to-stay-with-standard-search}
 
 1 回の検索でリクエストを満たせる場合、Deep は必要ありません。
 

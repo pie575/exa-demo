@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="delete-an-item">
-  # Удаление item
-</div>
+# Удаление item {#delete-an-item}
 
 > Удаляет Item из Webset.
 
 При этом будут отменены все процессы enrichment для него.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}
 openapi: 3.1.0

@@ -7,9 +7,7 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
 
 [OpenClaw](https://openclaw.ai/) は、Exa をネイティブの `web_search` プロバイダーとしてサポートしています。Exa を選択すると、すべての OpenClaw エージェントが組み込みのウェブツールから Exa の検索モード、日付フィルター、コンテンツ抽出を利用できます。
 
-<div id="set-up-exa">
-  ## Exa をセットアップする
-</div>
+## Exa をセットアップする {#set-up-exa}
 
 <Steps>
   <Step title="Exa プラグインをインストールする">
@@ -46,9 +44,7 @@ icon: "/docs/images/sidebar-icons/openclaw.svg"
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## 手動で設定する
-</div>
+## 手動で設定する {#configure-manually}
 
 OpenClaw の JSON5 設定で Exa を直接指定できます。
 
@@ -86,9 +82,7 @@ OpenClaw の JSON5 設定で Exa を直接指定できます。
   API キーを設定ファイルに記述してコミットするのではなく、`EXA_API_KEY` または OpenClaw の SecretRef を使用してください。
 </Note>
 
-<div id="what-agents-can-request">
-  ## エージェントがリクエストできる内容
-</div>
+## エージェントがリクエストできる内容 {#what-agents-can-request}
 
 OpenClaw は `web_search` を通じて Exa を利用できるようにしています。
 
@@ -117,9 +111,7 @@ await web_search({
 
 OpenClaw は、デフォルトでウェブ検索の結果を 15 分間キャッシュします。キャッシュ期間は `tools.web.search.cacheTtlMinutes` で変更できます。すべてのリクエストで常に最新の結果が必要な場合は、`0` に設定してください。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="OpenClaw のプロバイダーに Exa が表示されない">
@@ -135,9 +127,7 @@ OpenClaw は、デフォルトでウェブ検索の結果を 15 分間キャッ�
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="OpenClaw Exa provider" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="ガイドを読む" arrow="true">

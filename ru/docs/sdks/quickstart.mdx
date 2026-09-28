@@ -10,9 +10,7 @@ description: "Установка и использование Exa SDK для Py
   Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
 </Card>
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 <CodeGroup>
   ```bash pip theme={null}
@@ -34,9 +32,7 @@ description: "Установка и использование Exa SDK для Py
 
 Python SDK требует Python 3.9+.
 
-<div id="authentication">
-  ## Аутентификация
-</div>
+## Аутентификация {#authentication}
 
 Задайте свой API key в переменной окружения:
 
@@ -54,9 +50,7 @@ Python SDK требует Python 3.9+.
   </Tab>
 </Tabs>
 
-<div id="getting-started">
-  ## Начало работы
-</div>
+## Начало работы {#getting-started}
 
 Инициализируйте клиент и выполните первый поиск:
 
@@ -99,9 +93,7 @@ Python SDK требует Python 3.9+.
   передайте его в коде: `Exa(api_key="your-api-key")` или `new Exa("your-api-key")`.
 </Note>
 
-<div id="recommended-defaults">
-  ## Рекомендуемые значения по умолчанию
-</div>
+## Рекомендуемые значения по умолчанию {#recommended-defaults}
 
 | Решение             | Рекомендуемое значение по умолчанию                                                            |
 | ------------------- | ---------------------------------------------------------------------------------------------- |
@@ -120,9 +112,7 @@ Python SDK требует Python 3.9+.
   | `get_contents` / `getContents` | Непосредственно в запросе, например `exa.get_contents(urls, highlights=True)`  |
 </Warning>
 
-<div id="search">
-  ## Search
-</div>
+## Search {#search}
 
 Search находит релевантные страницы и возвращает их содержимое за один вызов.
 
@@ -157,9 +147,7 @@ Search находит релевантные страницы и возвращ�
   ```
 </CodeGroup>
 
-<div id="output-schema">
-  ### Схема вывода
-</div>
+### Схема вывода {#output-schema}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -213,9 +201,7 @@ Search находит релевантные страницы и возвращ�
 
 Режимы deep стоит использовать, когда для получения вывода нужно исследование по нескольким поисковым запросам. Выбирайте `deep-lite` для облегчённого исследования или `deep` для многошагового поиска и более глубокого синтеза. Полный набор параметров запроса см. в [руководстве по Search](/ru/docs/search/quickstart).
 
-<div id="contents">
-  ## Contents
-</div>
+## Contents {#contents}
 
 Извлекайте highlights, полный текст или краткие сводки из уже известных вам URL. Начните с highlights и
 добавьте запрос, чтобы нацелить их на нужную вам информацию.
@@ -239,9 +225,7 @@ Search находит релевантные страницы и возвращ�
 
 Используйте полный текст, когда нужен более широкий контекст или структура документа. Форматы вывода, управление свежестью и обход подстраниц описаны в [руководстве по Contents](/ru/docs/contents/quickstart).
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 Получайте ответы на вопросы с citations.
 
@@ -266,9 +250,7 @@ Search находит релевантные страницы и возвращ�
   ```
 </CodeGroup>
 
-<div id="async-and-types">
-  ## Асинхронность и типы
-</div>
+## Асинхронность и типы {#async-and-types}
 
 В Python для асинхронных операций доступен класс `AsyncExa`, а JavaScript SDK поставляется с типами TypeScript для
 каждого метода.
@@ -291,15 +273,11 @@ Search находит релевантные страницы и возвращ�
   ```
 </CodeGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 Python: [исходный код exa-py](https://github.com/exa-labs/exa-py) и [пакет на PyPI](https://pypi.org/project/exa-py/). JavaScript: [исходный код exa-js](https://github.com/exa-labs/exa-js) и [пакет на npm](https://www.npmjs.com/package/exa-js).
 
-<div id="continue">
-  ## Что дальше
-</div>
+## Что дальше {#continue}
 
 <Columns cols={3}>
   <Card title="Руководство по Search" icon="search" href="/ru/docs/search/quickstart" cta="Открыть руководство" arrow="true">

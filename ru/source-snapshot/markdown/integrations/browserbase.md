@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="browserbase">
-  # Browserbase
-</div>
+# Browserbase {#browserbase}
 
 > Объедините поиск компаний через Exa с автоматизацией браузера Browserbase для рабочих процессов подачи заявок на вакансии.
 
 Используйте Exa, чтобы находить компании и карьерные страницы, а затем применяйте Browserbase и Stagehand для анализа этих страниц и взаимодействия с ними.
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 Установите пакеты, используемые шаблоном Browserbase Exa:
 
@@ -21,9 +17,7 @@
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## Настройка переменных окружения
-</div>
+## Настройка переменных окружения {#configure-environment-variables}
 
 Задайте API key, которые используются Exa и Browserbase:
 
@@ -32,9 +26,7 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## Поиск и взаимодействие со страницей
-</div>
+## Поиск и взаимодействие со страницей {#search-and-interact-with-a-page}
 
 Следующий пример повторяет рабочий процесс из шаблона: найти компании, найти карьерную страницу, открыть её в сессии Browserbase, извлечь описание вакансии и дать agent Stagehand возможность взаимодействовать со страницей.
 

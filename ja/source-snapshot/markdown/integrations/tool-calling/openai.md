@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="openai-tool-calling">
-  # OpenAI のツール呼び出し
-</div>
+# OpenAI のツール呼び出し {#openai-tool-calling}
 
 > OpenAI のツール呼び出しを使用して、Exa のウェブ検索とページコンテンツをアプリケーションに組み込みます。
 
@@ -15,9 +13,7 @@
 
 OpenAI の[ツール呼び出し](https://platform.openai.com/docs/guides/function-calling?lang=python)を使用すると、コード内で定義した関数をモデルから呼び出せます。Exa SDK には OpenAI 向けのウェブ検索ツールとページ読み取りツールが組み込まれているため、ツールスキーマを手書きしたり、ツール呼び出しを解析したり、Exa の結果を自分で整形したりする必要はありません。
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="SDK をインストールする">
@@ -110,9 +106,7 @@ OpenAI の[ツール呼び出し](https://platform.openai.com/docs/guides/functi
   </Step>
 </Steps>
 
-<div id="responses-api">
-  ## Responses API
-</div>
+## Responses API {#responses-api}
 
 OpenAI の Responses API では、`responses` ファクトリを使用します。ヘルパーは同じ `handle_tool_calls` を使います。ハンドラーは、フォローアップリクエストで送信する `function_call_output` アイテムを返します。
 
@@ -144,9 +138,7 @@ OpenAI の Responses API では、`responses` ファクトリを使用します�
   Chat Completions と Responses API ではツールの形式が異なり、互いの形式を受け付けません。呼び出すエンドポイントに合ったファクトリを使用してください。
 </Note>
 
-<div id="configuring-the-tools">
-  ## ツールの設定
-</div>
+## ツールの設定 {#configuring-the-tools}
 
 キーワード引数は通常の Exa のオプションで、ツールの実行時にそのまま渡されます。search オプションは `exa.search()` に、contents オプションは `exa.get_contents()` に渡されます。
 
@@ -170,15 +162,11 @@ OpenAI の Responses API では、`responses` ファクトリを使用します�
 
 一方、`name`(デフォルトは `"web_search"` と `"get_contents"`)と `description` は、モデルに提示されるツール定義を上書きするためのものです。設定の異なる Exa ツールを並べて使いたい場合や、同じ名前を予約している他のツールとの衝突を避けたい場合は、カスタムの `name` を指定してください。
 
-<div id="mixing-in-your-own-tools">
-  ## 独自のツールを組み合わせる
-</div>
+## 独自のツールを組み合わせる {#mixing-in-your-own-tools}
 
 ハンドラーは、メッセージ内のすべてのツール呼び出しに応答します。解決できないツールを指定した呼び出しは破棄されず、`Error: unknown tool "<name>"` という出力が返されます。そのため、フォローアップリクエストで必要なツールレスポンスが欠落することはありません。Exa のツールと併せて独自のツールを実行する場合は、次のリクエストを送信する前に、これらのエラー出力を独自の結果に置き換えてください。
 
-<div id="writing-the-loop-by-hand">
-  ## ループを手動で記述する
-</div>
+## ループを手動で記述する {#writing-the-loop-by-hand}
 
 ツールスキーマと実行を自分で管理したい場合は、ツールを定義し、呼び出しを手動で処理します。`exa.tools.web_search()` と `exa.tools.get_contents()` を使うと、自作のループでも同じプロバイダー非依存のツール仕様 (`run` メソッド付き) を利用できます。もちろん、すべてを一から記述することもできます。
 

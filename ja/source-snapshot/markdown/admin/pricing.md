@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="pricing">
-  # 料金
-</div>
+# 料金 {#pricing}
 
 > Exa Search、Contents、Answer、Monitors、Agent API の従量課金料金
 
@@ -23,9 +21,7 @@ Exa は従量課金制です。サブスクリプション契約や最低利用�
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="products">
-  ## 製品
-</div>
+## 製品 {#products}
 
 <Columns cols={3}>
   <Card title="Search" icon="search" href="/ja/docs/search/quickstart">
@@ -65,9 +61,7 @@ Exa は従量課金制です。サブスクリプション契約や最低利用�
   </Card>
 </Columns>
 
-<div id="search-contents-answer-and-monitors">
-  ## Search、Contents、Answer、Monitors
-</div>
+## Search、Contents、Answer、Monitors {#search-contents-answer-and-monitors}
 
 各エンドポイントには、リクエストごとに基本料金が設定されており、結果 10 件までが含まれます。追加の結果と Exa が生成するページ要約には、別途料金がかかります。
 
@@ -78,9 +72,7 @@ Exa は従量課金制です。サブスクリプション契約や最低利用�
 | `/monitors` | $15 / 1k リクエスト          | $1 / 1k 件の結果     | $1 / 1k ページ |
 | `/contents` | $1 / 1k ページ(コンテンツタイプごと) | —                | $1 / 1k ページ |
 
-<div id="agent">
-  ## Agent
-</div>
+## Agent {#agent}
 
 [Agent](/ja/docs/agent/quickstart) で `effort` を固定値に設定すると、リクエストあたりの料金を予測しやすくなります。`auto` はデフォルトの従量課金モードです。ベータ版の `max` も従量課金で、同じ使用量単価が適用されます。
 
@@ -101,9 +93,7 @@ Exa は従量課金制です。サブスクリプション契約や最低利用�
 | メール連絡先エンリッチメント      | $0.02 / メールアドレス |
 | 電話連絡先エンリッチメント       | $0.07 / 電話番号    |
 
-<div id="connect-providers">
-  ### Connect プロバイダー
-</div>
+### Connect プロバイダー {#connect-providers}
 
 [Exa Connect](/ja/docs/agent/connect/overview) のデータソースを使用する実行では、
 プロバイダーの呼び出しごとに追加料金が発生します。たとえば、
@@ -113,9 +103,7 @@ $0.15～$4.00 です。各プロバイダーの料金一覧は、
 [Connect の料金](/ja/docs/agent/connect/overview#pricing)を
 参照してください。
 
-<div id="deep-search">
-  ## Deep Search
-</div>
+## Deep Search {#deep-search}
 
 [`/search`](/ja/docs/search/deep-search) の `type` で指定します。追加の結果と AI によるページ要約の料金は、通常の検索と同じです。
 
@@ -125,9 +113,7 @@ $0.15～$4.00 です。各プロバイダーの料金一覧は、
 | `deep`           | $12 / 1k リクエスト        | 4–15 秒  | 構造化出力を伴う多段階の推論 |
 | `deep-reasoning` | $15 / 1k リクエスト        | 12–40 秒 | 難易度の高いリサーチタスク  |
 
-<div id="enterprise">
-  ## Enterprise
-</div>
+## Enterprise {#enterprise}
 
 大量利用、カスタムデータセット、より厳格なセキュリティ要件が必要な場合に。
 
@@ -149,9 +135,7 @@ $0.15～$4.00 です。各プロバイダーの料金一覧は、
   Enterprise 向けの利用量と契約条件についてお見積もりを依頼
 </Card>
 
-<div id="cost-glossary">
-  ## コスト用語集
-</div>
+## コスト用語集 {#cost-glossary}
 
 <AccordionGroup>
   <Accordion title="リクエスト">

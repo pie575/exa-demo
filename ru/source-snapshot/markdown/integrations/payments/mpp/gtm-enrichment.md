@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжить изучение.
 
-<div id="tempo-mpp-gtm-enrichment-cookbook">
-  # Практическое руководство по GTM-enrichment с Tempo MPP
-</div>
+# Практическое руководство по GTM-enrichment с Tempo MPP {#tempo-mpp-gtm-enrichment-cookbook}
 
 > Постройте процесс GTM-enrichment с оплатой за каждый запрос search и contents к Exa через Tempo MPP — без API key.
 
@@ -22,9 +20,7 @@ enrichment лидов или компаний.
   по стандартной схеме с оплатой через API key.
 </Info>
 
-<div id="what-youll-build">
-  ## Что вы создадите
-</div>
+## Что вы создадите {#what-youll-build}
 
 Лёгкий конвейер enrichment, который по списку названий компаний или
 описаний целевых объектов:
@@ -39,9 +35,7 @@ enrichment лидов или компаний.
 персонализации исходящих коммуникаций. Поскольку он состоит из отдельных вызовов
 `/search` + `/contents`, каждый шаг можно оплатить через MPP.
 
-<div id="prerequisites">
-  ## Предварительные требования
-</div>
+## Предварительные требования {#prerequisites}
 
 * Совместимый с Tempo кошелёк, пополненный **USDC.e** в основной сети Tempo.
 * Безопасный способ загрузки приватного ключа кошелька во время выполнения (см. ниже; никогда
@@ -52,13 +46,9 @@ enrichment лидов или компаний.
   Если нужна настройка из командной строки без использования «сырого» приватного ключа, воспользуйтесь [Tempo Wallet CLI](/ru/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). Команда `tempo wallet login` создаёт или подключает кошелёк и для новых пользователей может включать бесплатные MPP Credits.
 </Info>
 
-<div id="mpp-setup">
-  ## Настройка MPP
-</div>
+## Настройка MPP {#mpp-setup}
 
-<div id="install-the-client">
-  ### Установите клиент
-</div>
+### Установите клиент {#install-the-client}
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -70,9 +60,7 @@ enrichment лидов или компаний.
   ```
 </CodeGroup>
 
-<div id="load-your-private-key-safely">
-  ### Безопасная загрузка приватного ключа
-</div>
+### Безопасная загрузка приватного ключа {#load-your-private-key-safely}
 
 Никогда не зашивайте приватный ключ в код. В примерах ниже значение `WALLET_PRIVATE_KEY` считывается из переменных окружения — только для локальной разработки. В продакшене загружайте его из менеджера секретов, например 1Password, AWS Secrets Manager или HashiCorp Vault.
 
@@ -88,9 +76,7 @@ enrichment лидов или компаний.
   ```
 </CodeGroup>
 
-<div id="make-a-paid-search-request">
-  ### Отправка платного поискового запроса
-</div>
+### Отправка платного поискового запроса {#make-a-paid-search-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -158,9 +144,7 @@ enrichment лидов или компаний.
 При успешном выполнении возвращаются результаты Exa и header `Payment-Receipt`
 с хешем транзакции в блокчейне.
 
-<div id="make-a-paid-contents-request">
-  ### Выполните платный запрос к contents
-</div>
+### Выполните платный запрос к contents {#make-a-paid-contents-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -193,13 +177,9 @@ enrichment лидов или компаний.
   ```
 </CodeGroup>
 
-<div id="gtm-enrichment-recipe">
-  ## Рецепт GTM Enrichment
-</div>
+## Рецепт GTM Enrichment {#gtm-enrichment-recipe}
 
-<div id="enrich-a-list-of-companies">
-  ### Обогащение списка компаний
-</div>
+### Обогащение списка компаний {#enrich-a-list-of-companies}
 
 Имея список названий компаний, найдите страницу каждой из них и извлеките
 структурированные сведения.
@@ -326,9 +306,7 @@ enrichment лидов или компаний.
   ```
 </CodeGroup>
 
-<div id="enrich-a-person-profile">
-  ### Обогащение профиля человека
-</div>
+### Обогащение профиля человека {#enrich-a-person-profile}
 
 В этом рецепте используются `type: "deep"`, `contents.highlights` и `outputSchema`, чтобы
 собрать информацию о человеке и вернуть структурированный профиль.
@@ -419,9 +397,7 @@ enrichment лидов или компаний.
   `contents.highlights` добавляет $0,001 за каждый результат.
 </Note>
 
-<div id="structured-output">
-  ### Структурированный вывод
-</div>
+### Структурированный вывод {#structured-output}
 
 Если вместо необработанного текста вам нужны поля JSON, используйте `outputSchema` в запросе
 к search. Exa вернёт объект `output`, структура которого соответствует вашей схеме.
@@ -494,9 +470,7 @@ enrichment лидов или компаний.
   вызов LLM на стороне Exa, поэтому тарифицируется как `deep-lite`/`deep`.
 </Note>
 
-<div id="pricing-and-limits">
-  ## Цены и лимиты
-</div>
+## Цены и лимиты {#pricing-and-limits}
 
 MPP использует ту же тарификацию за запрос, что и оплата по API key. Количество результатов
 в search-запросах через MPP ограничено 10.
@@ -512,9 +486,7 @@ MPP использует ту же тарификацию за запрос, ч�
 
 Полное описание, включая лимиты частоты запросов, параметры сети и платёжные header, см. в разделе [Оплата через MPP (Tempo)](/ru/docs/integrations/payments/mpp/quickstart).
 
-<div id="production-tips">
-  ## Советы для продакшена
-</div>
+## Советы для продакшена {#production-tips}
 
 * **Пополняйте кошелёк только в USDC.e.** Exa берёт на себя комиссию сети Tempo,
   поэтому отдельный газовый токен кошельку не нужен.
@@ -527,9 +499,7 @@ MPP использует ту же тарификацию за запрос, ч�
 * **Никогда не коммитьте приватные ключи.** Загружайте `WALLET_PRIVATE_KEY` из
   менеджера секретов, а не из системы контроля версий.
 
-<div id="faq">
-  ## Часто задаваемые вопросы
-</div>
+## Часто задаваемые вопросы {#faq}
 
 <AccordionGroup>
   <Accordion title="Можно ли использовать MPP с Exa Agent API?">
@@ -556,9 +526,7 @@ MPP использует ту же тарификацию за запрос, ч�
   </Accordion>
 </AccordionGroup>
 
-<div id="next-steps">
-  ## Дальнейшие шаги
-</div>
+## Дальнейшие шаги {#next-steps}
 
 * [Оплата через MPP (Tempo)](/ru/docs/integrations/payments/mpp/quickstart): полный справочник по MPP
 * [Руководство по Exa Search API](/ru/docs/search/quickstart): справочник параметров search

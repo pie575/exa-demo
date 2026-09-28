@@ -8,9 +8,7 @@ keywords: ["search highlights", "dynamic highlights", "rag", "token efficiency",
 
 各結果で選択されたパッセージは、`results[].highlights` に格納されます。
 
-<div id="why-highlights-instead-of-full-text">
-  ## 全文ではなくハイライトを使う理由
-</div>
+## 全文ではなくハイライトを使う理由 {#why-highlights-instead-of-full-text}
 
 ハイライトは、Exa が自社開発した抽出モデルによって生成されます。このモデルはリクエストのたびに各結果をクエリと照らし合わせて読み取り、クエリへの答えとなるパッセージだけを返します。ページ全文のごく一部のトークン数で、後続の回答品質は同等以上を維持できます。
 
@@ -28,9 +26,7 @@ keywords: ["search highlights", "dynamic highlights", "rag", "token efficiency",
   をご覧ください。
 </Tip>
 
-<div id="add-highlights-to-search">
-  ## Search にハイライトを追加する
-</div>
+## Search にハイライトを追加する {#add-highlights-to-search}
 
 推奨されるデフォルト設定として、`contents` 内で `highlights: true` を指定してください。Exa がクエリとの関連度に応じて各結果から返すテキスト量を自動で決めるため、文字数の上限を調整する必要はありません。`maxCharacters` は、アプリケーションでページごとに固定の上限が必要な場合にのみ設定してください。
 
@@ -62,9 +58,7 @@ keywords: ["search highlights", "dynamic highlights", "rag", "token efficiency",
   ```
 </CodeGroup>
 
-<div id="dynamic-highlights">
-  ## Dynamic Highlights
-</div>
+## Dynamic Highlights {#dynamic-highlights}
 
 Dynamic Highlights は、クエリに対して最も有用な情報に応じて、各結果から選択するテキストの量を調整します。有力なソースからは多く、重複した内容や無関係なソースからは少なく抽出するため、返されるトークンの総数を削減できます。
 
@@ -134,9 +128,7 @@ Exa の評価では、Dynamic Highlights はページ全文と比べてトーク
   `results[].highlights` の形式で返されます。
 </Info>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="Search API ガイド" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを開く" arrow="true">

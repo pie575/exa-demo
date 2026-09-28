@@ -8,7 +8,7 @@
         "ja/docs",
         {
           "boost": 3,
-          "group": "はじめに",
+          "group": "Get Started",
           "pages": [
             "ja/docs/get-started/quickstart",
             "ja/docs/get-started/exa-mcp",
@@ -34,7 +34,7 @@
             "ja/docs/search/snapshot",
             "ja/docs/search/best-practices",
             {
-              "group": "データ",
+              "group": "Data",
               "pages": [
                 "ja/docs/search/data/overview",
                 "ja/docs/search/data/news",
@@ -63,7 +63,7 @@
                 "ja/docs/agent/connect/overview",
                 {
                   "boost": 2,
-                  "group": "セルフサービス型プロバイダー",
+                  "group": "Self-Serve Providers",
                   "pages": [
                     "ja/docs/agent/connect/fiber",
                     "ja/docs/agent/connect/similarweb",
@@ -83,7 +83,7 @@
         },
         {
           "boost": 3,
-          "group": "その他のAPI",
+          "group": "Other APIs",
           "pages": [
             "ja/docs/contents/quickstart",
             "ja/docs/monitors/quickstart",
@@ -92,20 +92,20 @@
         },
         {
           "boost": 2,
-          "group": "SDK",
+          "group": "SDKs",
           "pages": [
             "ja/docs/sdks/quickstart"
           ]
         },
         {
           "boost": 2,
-          "group": "連携",
+          "group": "Integrations",
           "pages": [
             "ja/docs/integrations/chatgpt-codex",
             "ja/docs/integrations/claude-web-desktop",
             "ja/docs/integrations/openai-sdk",
             {
-              "group": "ツール呼び出し",
+              "group": "Tool Calling",
               "pages": [
                 "ja/docs/integrations/tool-calling/openai",
                 "ja/docs/integrations/tool-calling/anthropic"
@@ -120,13 +120,13 @@
               ]
             },
             {
-              "group": "マーケットプレイス",
+              "group": "Marketplaces",
               "pages": [
                 "ja/docs/integrations/marketplaces/stripe-projects"
               ]
             },
             {
-              "group": "エージェントによる決済",
+              "group": "Agentic Payments",
               "pages": [
                 {
                   "group": "x402",
@@ -147,7 +147,7 @@
             },
             {
               "boost": 0.6,
-              "group": "その他の連携",
+              "group": "More Integrations",
               "pages": [
                 "ja/docs/integrations/exa-slack",
                 "ja/docs/integrations/hermes-agent",
@@ -173,13 +173,13 @@
         },
         {
           "boost": 0.8,
-          "group": "管理",
+          "group": "Admin",
           "pages": [
             "ja/docs/admin/pricing",
             "ja/docs/admin/billing",
             "ja/docs/admin/team-management",
             {
-              "group": "セキュリティとコンプライアンス",
+              "group": "Security & Compliance",
               "pages": [
                 "ja/docs/admin/security/overview",
                 "ja/docs/admin/security/zero-data-retention",
@@ -188,7 +188,7 @@
             },
             "ja/docs/admin/mcp-enterprise-managed-auth",
             {
-              "group": "リファレンス",
+              "group": "Reference",
               "pages": [
                 "ja/docs/admin/status",
                 "ja/docs/admin/error-codes",
@@ -205,7 +205,7 @@
             "ja/docs/websets/quickstart",
             "ja/docs/websets/imports-and-search",
             {
-              "group": "ダッシュボード",
+              "group": "Dashboard",
               "pages": [
                 "ja/docs/websets/dashboard/get-started",
                 "ja/docs/websets/dashboard/import-from-csv",
@@ -215,7 +215,7 @@
           ]
         }
       ],
-      "tab": "ドキュメント"
+      "tab": "Documentation"
     },
     {
       "groups": [
@@ -248,7 +248,7 @@
         },
         {
           "boost": 2,
-          "group": "モニター",
+          "group": "Monitors",
           "pages": [
             "ja/docs/reference/monitors/create-a-monitor",
             "ja/docs/reference/monitors/list-monitors",
@@ -258,7 +258,7 @@
             "ja/docs/reference/monitors/trigger-a-monitor",
             "ja/docs/reference/monitors/batch-monitors",
             {
-              "group": "実行",
+              "group": "Runs",
               "pages": [
                 "ja/docs/reference/monitors/runs/list-runs",
                 "ja/docs/reference/monitors/runs/get-a-run"
@@ -275,7 +275,7 @@
         },
         {
           "boost": 2,
-          "group": "バッチ",
+          "group": "Batch",
           "pages": [
             "ja/docs/reference/batches/create-a-batch",
             "ja/docs/reference/batches/list-batches",
@@ -286,7 +286,7 @@
         },
         {
           "boost": 0.25,
-          "group": "チーム管理",
+          "group": "Team Management",
           "pages": [
             "ja/docs/reference/team-management/create-api-key",
             "ja/docs/reference/team-management/list-api-keys",
@@ -314,7 +314,7 @@
               ]
             },
             {
-              "group": "アイテム",
+              "group": "Items",
               "icon": "list",
               "pages": [
                 "ja/docs/websets/api/websets/items/get-an-item",
@@ -323,7 +323,7 @@
               ]
             },
             {
-              "group": "検索",
+              "group": "Searches",
               "icon": "search",
               "pages": [
                 "ja/docs/websets/api/websets/searches/create-a-search",
@@ -332,7 +332,7 @@
               ]
             },
             {
-              "group": "エンリッチメント",
+              "group": "Enrichments",
               "icon": "sparkles",
               "pages": [
                 "ja/docs/websets/api/websets/enrichments/create-an-enrichment",
@@ -343,7 +343,7 @@
               ]
             },
             {
-              "group": "インポート",
+              "group": "Imports",
               "icon": "cloud-download",
               "pages": [
                 "ja/docs/websets/api/imports/create-an-import",
@@ -354,7 +354,7 @@
               ]
             },
             {
-              "group": "モニター",
+              "group": "Monitors",
               "icon": "satellite",
               "pages": [
                 "ja/docs/websets/api/monitors/create-a-monitor",
@@ -363,7 +363,7 @@
                 "ja/docs/websets/api/monitors/delete-monitor",
                 "ja/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "モニターの実行",
+                  "group": "Monitor Runs",
                   "icon": "play",
                   "pages": [
                     "ja/docs/websets/api/monitors/runs/list-monitor-runs",
@@ -373,7 +373,7 @@
               ]
             },
             {
-              "group": "Webhook",
+              "group": "Webhooks",
               "icon": "webhook",
               "pages": [
                 "ja/docs/websets/api/webhooks/create-a-webhook",
@@ -386,7 +386,7 @@
               ]
             },
             {
-              "group": "イベント",
+              "group": "Events",
               "icon": "bell",
               "pages": [
                 "ja/docs/websets/api/events/types",
@@ -395,7 +395,7 @@
               ]
             },
             {
-              "group": "チーム",
+              "group": "Teams",
               "icon": "users",
               "pages": [
                 "ja/docs/websets/api/teams/get-team-info"
@@ -404,20 +404,20 @@
           ]
         }
       ],
-      "tab": "APIリファレンス"
+      "tab": "API Reference"
     },
     {
       "groups": [
         {
           "boost": 0.5,
-          "group": "更新情報",
+          "group": "Updates",
           "pages": [
             "ja/docs/changelog"
           ],
           "root": "ja/docs/changelog"
         }
       ],
-      "tab": "変更履歴"
+      "tab": "Changelog"
     }
   ]
 }

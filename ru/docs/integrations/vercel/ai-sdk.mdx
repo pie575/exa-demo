@@ -6,17 +6,13 @@ icon: "/docs/images/sidebar-icons/vercel.svg"
 
 Используйте пакет `@exalabs/ai-sdk`, чтобы добавить веб-поиск Exa в приложения, созданные на AI SDK от Vercel. Вы указываете Exa API key, а инструмент `webSearch()` берёт на себя поисковые запросы для вашей модели.
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-<div id="quick-start">
-  ## Быстрый старт
-</div>
+## Быстрый старт {#quick-start}
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -44,9 +40,7 @@ console.log(text);
   Перед запуском примера укажите свой ключ в переменной `EXA_API_KEY`. Пакет считывает эту переменную окружения автоматически.
 </Info>
 
-<div id="defaults">
-  ## Значения по умолчанию
-</div>
+## Значения по умолчанию {#defaults}
 
 `webSearch()` использует следующие значения по умолчанию:
 
@@ -55,9 +49,7 @@ console.log(text);
 * `contents.text`: `3000` символов на результат
 * `maxAgeHours`: значение по умолчанию для отката к кешу; задайте этот параметр, если нужны более строгие требования к свежести
 
-<div id="configure-search">
-  ## Настройка поиска
-</div>
+## Настройка поиска {#configure-search}
 
 Используйте приведённые ниже параметры, чтобы настроить поиск и извлечение контента:
 
@@ -83,9 +75,7 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="search-options">
-  ### Параметры поиска
-</div>
+### Параметры поиска {#search-options}
 
 | Параметр                                  | Описание                                                                                                |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -97,9 +87,7 @@ console.log(text);
 | `includeText` / `excludeText`             | Обязательное наличие или отсутствие текста в результатах.                                               |
 | `userLocation`                            | Двухбуквенный код страны для поиска с учётом местоположения.                                            |
 
-<div id="content-options">
-  ### Параметры содержимого
-</div>
+### Параметры содержимого {#content-options}
 
 | Параметр                                               | Описание                                                                                                                    |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -110,9 +98,7 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | Обход подстраниц и, при необходимости, выбор целевой подстраницы.                                                           |
 | `contents.extras.links` / `contents.extras.imageLinks` | Возвращает ссылки или ссылки на изображения из результатов.                                                                 |
 
-<div id="typescript-support">
-  ## Поддержка TypeScript
-</div>
+## Поддержка TypeScript {#typescript-support}
 
 Пакет включает типы TypeScript:
 
@@ -127,9 +113,7 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-<div id="related-pages">
-  ## Связанные страницы
-</div>
+## Связанные страницы {#related-pages}
 
 <Columns cols={2}>
   <Card title="Использование Vercel AI Gateway" icon="cloud" href="/ru/docs/integrations/vercel/ai-gateway" cta="Открыть руководство" arrow="true">

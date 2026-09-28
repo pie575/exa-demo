@@ -7,9 +7,7 @@ URLのリスト(企業、人物、製品など)をすでにお持ちの場合は
 
 このガイドでは、各構成について、そのままコピー&amp;ペーストできるAPIリクエストを使って順を追って説明します。`$EXA_API_KEY` をご自身のAPIキーに置き換えるだけで利用できます。
 
-<div id="our-example-5-it-consulting-suppliers">
-  ## 例: IT コンサルティングのサプライヤー 5 社
-</div>
+## 例: IT コンサルティングのサプライヤー 5 社 {#our-example-5-it-consulting-suppliers}
 
 このガイドでは、全体を通して同じ 5 社のリストをインポートとして使用します。
 
@@ -30,9 +28,7 @@ URLのリスト(企業、人物、製品など)をすでにお持ちの場合は
 
 ***
 
-<div id="config-1-import-only-enrich-without-filtering">
-  ## Config 1: Import Only -- フィルタリングなしで補完する
-</div>
+## Config 1: Import Only -- フィルタリングなしで補完する {#config-1-import-only-enrich-without-filtering}
 
 <Note>
   **実例:** [ダッシュボードでこの Webset を表示](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -40,9 +36,7 @@ URLのリスト(企業、人物、製品など)をすでにお持ちの場合は
 
 **適したケース:** URL のリストがあり、それを補完するだけでよい場合。スコアリングやフィルタリングは行わず、すべてのItemがそのまま保持されます。
 
-<div id="api-calls">
-  ### API 呼び出し
-</div>
+### API 呼び出し {#api-calls}
 
 ```bash theme={null}
 # ステップ1: サプライヤーのURLを含むCSVインポートを作成する
@@ -80,9 +74,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-<div id="what-we-see-in-the-live-webset">
-  ### 実際の Webset で確認できる内容
-</div>
+### 実際の Webset で確認できる内容 {#what-we-see-in-the-live-webset}
 
 **5 件の Item** がすべて Webset に表示されます。条件が設定されていないため、フィルタリングは行われません。
 
@@ -102,9 +94,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-2-search-only-web-discovery">
-  ## Config 2: Search Only -- Web Discovery
-</div>
+## Config 2: Search Only -- Web Discovery {#config-2-search-only-web-discovery}
 
 <Note>
   **実例:** [ダッシュボードでこの Webset を表示](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -112,9 +102,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **使用する場面:** 手元にリストがなく、条件に一致する新しい企業をウェブ上で見つけたい場合。
 
-<div id="api-calls">
-  ### API 呼び出し
-</div>
+### API 呼び出し {#api-call}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -206,7 +194,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### ライブ Webset で確認できる内容
+### ライブ Webset で確認できる内容 {#what-we-see-in-the-live-webset-2}
 
 システムがウェブを検索した結果、両方の条件を満たす **35 社** が見つかりました。すべての Item に `source: "search"` が設定されており、一致した理由を説明する詳細な評価が付いています。
 
@@ -223,9 +211,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-3-scoped-search-score-your-list-against-criteria">
-  ## Config 3: Scoped Search -- リストを条件でスコアリングする
-</div>
+## Config 3: Scoped Search -- リストを条件でスコアリングする {#config-3-scoped-search-score-your-list-against-criteria}
 
 <Note>
   **ライブ例:** [この Webset をダッシュボードで表示](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -233,9 +219,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **使用する場面:** 手元にサプライヤーのリストがあり、**各サプライヤーを条件に照らして評価**したい場合に使用します。条件を満たしたものだけが返されます。いわゆる「リストをスコアリングする」ユースケースです。
 
-<div id="api-calls">
-  ### API 呼び出し
-</div>
+### API 呼び出し {#api-calls-2}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -344,7 +328,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### ライブ Webset での結果
+### ライブ Webset での結果 {#what-we-see-in-the-live-webset-3}
 
 この webset には **4 件の item** が含まれています。5 社のサプライヤーはそれぞれ条件に照らして評価され、両方の条件を満たしたものだけが表示されています。
 
@@ -364,9 +348,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
-  ## Config 4: Scoped Search + Web Discovery -- リストをスコアリングしつつ新たな一致も見つける
-</div>
+## Config 4: Scoped Search + Web Discovery -- リストをスコアリングしつつ新たな一致も見つける {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
 
 <Note>
   **ライブ例:** [ダッシュボードでこの Webset を表示](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -374,9 +356,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **使用する場面:** サプライヤーリストを条件に照らしてスコアリングしつつ、同じ条件に一致する企業をウェブから新たに見つけたい場合に使用します。手順は 2 段階です。まず Scoped Search で Webset を作成し、次にその Webset に通常のウェブ検索を追加します。
 
-<div id="api-calls">
-  ### API 呼び出し
-</div>
+### API 呼び出し {#api-calls-3}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -548,9 +528,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-<div id="what-we-see-in-the-live-webset">
-  ### 実際の Webset で確認できる内容
-</div>
+### 実際の Webset で確認できる内容 {#what-we-see-in-the-live-webset-4}
 
 この webset には **29 件のItem**が含まれています。内訳は、インポートしたサプライヤーのうち評価を通過した 4 社と、ウェブ上で新たに見つかった 25 社です。どちらも条件に基づいて評価されています。
 
@@ -571,9 +549,7 @@ Scoped Search がインポートしたリストを条件に基づいて評価し
 
 ***
 
-<div id="quick-reference">
-  ## クイックリファレンス
-</div>
+## クイックリファレンス {#quick-reference}
 
 | 構成                                   | 機能                            | すべての Item が保持されるか               | Item はスコアリングされるか                         |
 | ------------------------------------ | ----------------------------- | ------------------------------- | ---------------------------------------- |
@@ -582,9 +558,7 @@ Scoped Search がインポートしたリストを条件に基づいて評価し
 | **3. Scoped Search**                 | リストを条件に照らしてスコアリングする           | いいえ -- 条件を満たさない Item は除外        | はい                                       |
 | **4. Scoped Search + Web Discovery** | リストをスコアリング + 一致する新しい Item を発見 | いいえ -- 条件を満たさないインポート済み Item は除外 | はい -- インポートした Item と発見した Item の両方をスコアリング |
 
-<div id="which-config-should-i-use">
-  ## どの Config を使えばよいか
-</div>
+## どの Config を使えばよいか {#which-config-should-i-use}
 
 * **「リストを補完したいだけで、フィルタリングは不要」** -- Config 1
 * **「リストはないので、企業を探してほしい」** -- Config 2

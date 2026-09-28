@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="managing-your-team">
-  # チームの管理
-</div>
+# チームの管理 {#managing-your-team}
 
 > Exa プラットフォームにおけるチーム構成とアカウント管理の詳細
 
@@ -19,25 +17,19 @@ Exa では、アカウントの使用量と有料機能へのアクセスを「�
 
 アカウントを作成すると、自動的に「Personal」チームに所属します。下図の Exa ダッシュボード左上にあるドロップダウンから、新しいチームを作成したり、所属している他のチームに切り替えたりできます。チームはいくつでも作成できます。
 
-<div id="seeing-your-teams">
-  ## チームを確認する
-</div>
+## チームを確認する {#seeing-your-teams}
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_team_switcher.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=094d2830e671762132604cace63b423a" alt="Exa ダッシュボードのチーム設定にあるチームのドロップダウン（左上）" width="2954" height="1916" data-path="images/admin/team-management/dashboard_team_switcher.png" />
 
 Exa ダッシュボードのチーム設定にあるチームのドロップダウン (左上)
 
-<div id="topping-up-a-teams-balance">
-  ## チームの残高をチャージする
-</div>
+## チームの残高をチャージする {#topping-up-a-teams-balance}
 
 対象のチームを選択した状態で、Billingページからクレジット残高をチャージできます。
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_topup.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=36f4bbbd52a71bae490be4df3ba1b500" alt="Billingページでのクレジット残高のチャージ" width="2954" height="1916" data-path="images/admin/team-management/dashboard_topup.png" />
 
-<div id="inviting-people-to-your-team">
-  ## チームへのメンバーの招待
-</div>
+## チームへのメンバーの招待 {#inviting-people-to-your-team}
 
 チーム管理者は、チーム設定 の Invite 機能を使ってメンバーを追加できます。
 
@@ -55,9 +47,7 @@ Exa ダッシュボードのチーム設定にあるチームのドロップダ�
 
 <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/admin/team-management/dashboard_invite_accepted.png?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=15396c783df64ffee162ab2de434a045" alt="Accepted ステータスが表示されたチームメンバー一覧" width="2954" height="1916" data-path="images/admin/team-management/dashboard_invite_accepted.png" />
 
-<div id="team-management-api">
-  ## Team Management API
-</div>
+## Team Management API {#team-management-api}
 
 [Team Management API](/ja/docs/reference/team-management/create-api-key) を使用すると、API キーをプログラムで作成・管理できます。
 

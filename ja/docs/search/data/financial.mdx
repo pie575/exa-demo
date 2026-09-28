@@ -33,9 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Exa Searchなら、株価、開示書類、トランスクリプト、およびそれらに関する報道を1つのクエリでまとめて検索できます。ティッカーについて質問するだけで、株価、直近の決算説明会、アナリストのレポートを一度に取得できます。
 
-<div id="included">
-  ## 含まれるデータ
-</div>
+## 含まれるデータ {#included}
 
 * 株式、暗号資産、外国為替、指数、先物、オプション、コモディティの相場と直近の価格履歴
 * 主要統計と日次 OHLCV 履歴を含む銘柄プロファイル
@@ -43,62 +41,46 @@ Exa Searchなら、株価、開示書類、トランスクリプト、および�
 * SEC 開示書類、公表済みの財務データ、海外の開示書類
 * アナリスト予想、資金調達の発表、経済指標の発表
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 株式・クレジットリサーチ
 * KYC、KYB、アドバースメディアのスクリーニング
 * ポートフォリオと政策のモニタリング
 * ディールソーシングとプライベートマーケットのリサーチ
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="look-up-a-quote">
-  ### 株価を調べる
-</div>
+### 株価を調べる {#look-up-a-quote}
 
 ティッカーシンボルまたは企業名と、知りたい数値を指定してください。`$NVDA` のようなキャッシュタグも使えます。
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-<div id="read-an-earnings-call">
-  ### 決算説明会の内容を読む
-</div>
+### 決算説明会の内容を読む {#read-an-earnings-call}
 
 決算説明会に関する報道ではなくトランスクリプトそのものを取得するには、企業名と四半期を指定します。
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-<div id="search-filings">
-  ### 開示書類を検索する
-</div>
+### 開示書類を検索する {#search-filings}
 
 書類の種類だけでなく、探している開示内容を具体的に記述してください。`financial report` カテゴリを指定すると、結果を開示書類とレポートに絞り込めます。
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-<div id="track-private-market-activity">
-  ### プライベートマーケットの動向を追跡する
-</div>
+### プライベートマーケットの動向を追跡する {#track-private-market-activity}
 
 ラウンド、セクター、期間を指定します。
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-<div id="follow-economic-data">
-  ### 経済データを追跡する
-</div>
+### 経済データを追跡する {#follow-economic-data}
 
 統計の名称と、そこから知りたい数値を指定します。
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -142,9 +124,7 @@ Exa Searchなら、株価、開示書類、トランスクリプト、および�
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agentで構造化データを取得する
-</div>
+## Exa Agentで構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースにまたがるリサーチが必要な構造化データを取得するには、[Exa Agentのタスク実行](/ja/docs/agent/quickstart)を使用します。必要な銘柄、期間、条件、出力フィールドを指定すると、Agentがスキーマ検証済みの結果を引用付きで返します。
 

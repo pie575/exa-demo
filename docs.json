@@ -1173,16 +1173,16 @@
       "source": "/docs/team-management-spec.yaml"
     },
     {
-      "source": "/zh/docs/llms.txt",
-      "destination": "/docs/llms.txt"
+      "destination": "/docs/llms.txt",
+      "source": "/zh/docs/llms.txt"
     },
     {
-      "source": "/ja/docs/llms.txt",
-      "destination": "/docs/llms.txt"
+      "destination": "/docs/llms.txt",
+      "source": "/ja/docs/llms.txt"
     },
     {
-      "source": "/ru/docs/llms.txt",
-      "destination": "/docs/llms.txt"
+      "destination": "/docs/llms.txt",
+      "source": "/ru/docs/llms.txt"
     }
   ],
   "seo": {

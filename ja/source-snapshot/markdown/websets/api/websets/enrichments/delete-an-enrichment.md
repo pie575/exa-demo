@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="delete-an-enrichment">
-  # エンリッチメントを削除する
-</div>
+# エンリッチメントを削除する {#delete-an-enrichment}
 
 > エンリッチメントを削除すると、実行中のエンリッチメントはすべてキャンセルされ、このエンリッチメントによって生成された既存の `enrichment_result` はすべて利用できなくなります。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/enrichments/{id}
 openapi: 3.1.0

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="elevenlabs">
-  # ElevenLabs
-</div>
+# ElevenLabs {#elevenlabs}
 
 > ElevenLabs の音声エージェントに Exa のウェブ検索を追加します。
 
@@ -22,9 +20,7 @@ Exa を ElevenLabs に接続する方法は 2 つあります。
 
 このガイドでは、Exa の呼び出し方を細かく制御できる webhook ツール方式について説明します。連携は [ElevenLabs ダッシュボード](https://elevenlabs.io/app/conversational-ai)から設定することもできます。
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 1. ユーザーが音声エージェントに話しかけます
 2. LLM がツールの説明をもとに `web_search` を呼び出すかどうかを判断します
@@ -34,9 +30,7 @@ Exa を ElevenLabs に接続する方法は 2 つあります。
 
 サーバー、コールバック URL、リスナーはいずれも不要です。ElevenLabs が HTTP クライアントとして Exa を直接呼び出します。ツール呼び出しのタイムアウトは 20 秒です。
 
-<div id="prerequisites">
-  ## 前提条件
-</div>
+## 前提条件 {#prerequisites}
 
 * [Exa APIキー](https://dashboard.exa.ai/api-keys)
 * [ElevenLabs APIキー](https://elevenlabs.io/app/settings/api-keys)
@@ -45,9 +39,7 @@ Exa を ElevenLabs に接続する方法は 2 つあります。
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="webhook ツールを作成する">
@@ -156,9 +148,7 @@ Exa を ElevenLabs に接続する方法は 2 つあります。
   </Step>
 </Steps>
 
-<div id="full-python-example">
-  ## Python の完全なサンプル
-</div>
+## Python の完全なサンプル {#full-python-example}
 
 このスクリプトは、webhook ツールとエージェントの両方を 1 回の実行でまとめて作成します。
 
@@ -252,15 +242,11 @@ export EXA_API_KEY="your-key"
 python elevenlabs_exa_webhook.py
 ```
 
-<div id="customizing-search-parameters">
-  ## 検索パラメータのカスタマイズ
-</div>
+## 検索パラメータのカスタマイズ {#customizing-search-parameters}
 
 Webhookツールのボディスキーマは、[ExaのSearch API](/ja/docs/reference/search)にそのまま対応しています。よく使われる設定例は次のとおりです。
 
-<div id="search-type">
-  ### 検索タイプ
-</div>
+### 検索タイプ {#search-type}
 
 `type` 定数で速度と品質のトレードオフを調整します。
 
@@ -271,9 +257,7 @@ Webhookツールのボディスキーマは、[ExaのSearch API](/ja/docs/refere
 
 音声エージェントでは、まず `instant` を使用してください。クエリごとに現時点で最適な検索モードを Exa に選択させたい場合は、`auto` を使用します。
 
-<div id="content-options">
-  ### コンテンツオプション
-</div>
+### コンテンツオプション {#content-options}
 
 `contents` オブジェクトで、結果の返却形式を選択します。
 
@@ -297,9 +281,7 @@ Webhookツールのボディスキーマは、[ExaのSearch API](/ja/docs/refere
 
 音声エージェントには `highlights: true` をデフォルトとして推奨します。関連性と応答速度のバランスに優れています。
 
-<div id="filtering-results">
-  ### 結果のフィルタリング
-</div>
+### 結果のフィルタリング {#filtering-results}
 
 ドメインや日付のフィルターを定数として追加します。
 
@@ -321,15 +303,11 @@ Webhookツールのボディスキーマは、[ExaのSearch API](/ja/docs/refere
 }
 ```
 
-<div id="number-of-results">
-  ### 結果の件数
-</div>
+### 結果の件数 {#number-of-results}
 
 ユースケースに応じて `numResults` を調整してください。音声用途では、結果を3〜5件に抑えるとレスポンスを高速に保てます。リサーチ重視のエージェントでは、10件以上に設定するとより幅広い情報をカバーできます。
 
-<div id="schema-reference">
-  ## スキーマリファレンス
-</div>
+## スキーマリファレンス {#schema-reference}
 
 ElevenLabs の webhook ツールは、次のプロパティタイプを持つ JSON スキーマを使用します。
 
@@ -347,9 +325,7 @@ ElevenLabs の webhook ツールは、次のプロパティタイプを持つ JS
 
 ElevenLabs の webhook ツールスキーマの詳細は、[ElevenLabs の server tools ドキュメント](https://elevenlabs.io/docs/conversational-ai/customization/tools/server-tools)を参照してください。
 
-<div id="built-in-exa-integration-alpha">
-  ## 組み込みの Exa 連携 (アルファ版)
-</div>
+## 組み込みの Exa 連携 (アルファ版) {#built-in-exa-integration-alpha}
 
 ElevenLabs には組み込みの Exa 連携もあり、エージェントのダッシュボードの **Tools &gt; Integrations** から利用できます。こちらはセットアップが簡単な反面、webhook ツールを使う方法に比べて検索パラメータのカスタマイズが難しくなります。
 

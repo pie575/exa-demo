@@ -11,9 +11,7 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 ***
 
-<div id="overview">
-  ## Обзор
-</div>
+## Обзор {#overview}
 
 Exa предоставляет совместимые с OpenAI эндпоинты, которые работают с OpenAI SDK:
 
@@ -26,9 +24,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
   `/chat/completions` направляет запросы в [`/answer`](/ru/docs/reference/answer), а `/responses` — в [Agent API](/ru/docs/agent/quickstart). См. раздел [Agent через Responses API](#agent-via-responses-api) ниже.
 </Info>
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 Чтобы использовать эндпоинт `/answer` от Exa через интерфейс chat completions:
 
@@ -121,9 +117,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
   ```
 </CodeGroup>
 
-<div id="agent-via-responses-api">
-  ## Agent через Responses API
-</div>
+## Agent через Responses API {#agent-via-responses-api}
 
 Эндпоинт [`/responses`](https://api.exa.ai/responses) в Exa предоставляет [Agent API](/ru/docs/agent/quickstart) через интерфейс OpenAI Responses, поэтому SDK от OpenAI работают с ним без изменений. Укажите `model: "exa-agent"` и выберите режим выполнения:
 
@@ -141,9 +135,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
 
 Используйте `previous_response_id`, чтобы продолжить завершённое выполнение Responses.
 
-<div id="synchronous">
-  ### Синхронный режим
-</div>
+### Синхронный режим {#synchronous}
 
 Запрос блокируется до завершения выполнения и возвращает финальный объект `response`.
 
@@ -199,9 +191,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
   ```
 </CodeGroup>
 
-<div id="streaming">
-  ### Потоковая передача
-</div>
+### Потоковая передача {#streaming}
 
 Укажите `stream: true`, чтобы получать события потока Responses через SSE. Каждое событие содержит монотонно возрастающий `sequence_number`, а завершается поток событием `response.completed`; маркера `[DONE]` нет. В потоке могут встречаться строки-комментарии `: keep-alive`, которые SSE-клиенты игнорируют.
 
@@ -265,9 +255,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
   ```
 </CodeGroup>
 
-<div id="background">
-  ### Background
-</div>
+### Background {#background}
 
 Укажите `background: true`, чтобы запустить выполнение, не удерживая соединение открытым, а затем опрашивайте `GET /responses/{id}`, пока оно не перейдёт в конечный статус. Чтобы использовать потоковую передачу вместо опроса, см. [Потоковая передача](#streaming).
 
@@ -340,9 +328,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
   ```
 </CodeGroup>
 
-<div id="chat-wrapper">
-  ## Chat wrapper
-</div>
+## Chat wrapper {#chat-wrapper}
 
 Exa предоставляет Python-обёртку, которая автоматически дополняет любой вызов OpenAI chat completion возможностями RAG. Одной строкой кода вы превращаете любой вызов OpenAI chat completion в RAG-систему на базе Exa, которая сама выполняет search, разбиение на фрагменты и формирование промптов.
 

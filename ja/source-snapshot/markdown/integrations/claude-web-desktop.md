@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-in-claude-code-web-and-desktop">
-  # Claude Code、Web、Desktop で Exa を使う
-</div>
+# Claude Code、Web、Desktop で Exa を使う {#exa-in-claude-code-web-and-desktop}
 
 > Claude から直接 Exa でウェブを検索し、あらゆるページを読み取れます
 
 Claude Code に Exa をインストールするか、Claude Web、Desktop、Cowork に接続すると、Claude がウェブ上の最新情報にアクセスできるようになります。Claude は自然言語で検索し、必要なページを読み取り、それらのソースを活用しながら作業を進めます。
 
-<div id="install-exa">
-  ## Exa をインストールする
-</div>
+## Exa をインストールする {#install-exa}
 
 <div className="docs-tabs">
   <Tabs>
@@ -63,9 +59,7 @@ Claude Code に Exa をインストールするか、Claude Web、Desktop、Cowo
 
 どちらの方法でも、MCP 設定ファイルを編集することなく Exa を利用できます。
 
-<div id="work-with-whats-on-the-web-right-now">
-  ## Web上の最新情報を活用する
-</div>
+## Web上の最新情報を活用する {#work-with-whats-on-the-web-right-now}
 
 Claude Codeでは、リポジトリでの作業中にExaで最新のドキュメント、issue、変更履歴、実際のコード例を検索できます。同じインテグレーションにより、Claude Web、Desktop、Coworkでも、最新ニュース、リサーチ、企業情報、製品の詳細など、まだコンテキストに含まれていない可能性のある情報源を利用できます。
 
@@ -83,9 +77,7 @@ Claude Code は、見つけた情報をもとにコードベースに変更を�
 * &quot;Stripe の webhook に関する最新のドキュメントを読んで、推奨されるリトライ動作を説明して。&quot;
 * &quot;これらの製品の公式料金ページを探して、エントリープランを比較して。&quot;
 
-<div id="search-read-and-research">
-  ## 検索、読み取り、リサーチ
-</div>
+## 検索、読み取り、リサーチ {#search-read-and-research}
 
 Exa インテグレーションを使うと、Claude はウェブの検索や読み取りを行うツールを利用できます。これらのツールを組み合わせることで、より長いリサーチタスクにも対応できます。
 
@@ -103,9 +95,7 @@ Exa インテグレーションを使うと、Claude はウェブの検索や読
   </Card>
 </Columns>
 
-<div id="research-without-leaving-claude">
-  ## Claude 上でそのままリサーチする
-</div>
+## Claude 上でそのままリサーチする {#research-without-leaving-claude}
 
 求める結果を依頼し、重視すべき情報源の種類を Claude に伝えます。
 
@@ -116,9 +106,7 @@ Exa インテグレーションを使うと、Claude はウェブの検索や読
 
 Claude は会話の中でいつでも Exa を使って、タスクに必要な情報源を検索し、読み込むことができます。技術リサーチ、競合分析、市場マッピング、企業リサーチをはじめ、答えがウェブ上に散らばっているあらゆる問いに活用してください。
 
-<div id="use-exa-in-cowork">
-  ## Cowork で Exa を使う
-</div>
+## Cowork で Exa を使う {#use-exa-in-cowork}
 
 同じコネクタは Cowork でも利用できます。外部の情報が必要なタスクを Claude に依頼すると、Claude はファイルや接続済みの他のツールを使って作業しながら、Web を検索したりページを読み取ったりできます。
 
@@ -127,9 +115,7 @@ Claude は会話の中でいつでも Exa を使って、タスクに必要な�
 最新のページと照合したうえで、引用を付けて資料を更新してください。
 ```
 
-<div id="prefer-mcp-directly">
-  ## MCP を直接使いたい場合
-</div>
+## MCP を直接使いたい場合 {#prefer-mcp-directly}
 
 Claude を手動で設定する場合や、他の MCP クライアントを使用する場合は、Exa がホストする MCP サーバーに直接接続できます。
 

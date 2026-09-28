@@ -17,9 +17,7 @@ Batch API позволяет отправить сразу множество з
   Batch API находится в стадии бета-версии. Добавляйте header `Exa-Beta: batches-2026-06-06` к каждому запросу.
 </Note>
 
-<div id="supported-requests">
-  ## Поддерживаемые запросы
-</div>
+## Поддерживаемые запросы {#supported-requests}
 
 Каждый item пакета должен быть `POST`-запросом к одному из этих маршрутов:
 
@@ -30,9 +28,7 @@ Batch API позволяет отправить сразу множество з
 
 Каждому item требуется уникальный в пределах пакета `customId`. Этот же `customId` возвращается в файле результатов, что позволяет сопоставить строки вывода с исходными данными.
 
-<div id="create-a-batch">
-  ## Создание пакета
-</div>
+## Создание пакета {#create-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -90,9 +86,7 @@ Batch API позволяет отправить сразу множество з
   ```
 </Accordion>
 
-<div id="check-status">
-  ## Проверка статуса
-</div>
+## Проверка статуса {#check-status}
 
 Опрашивайте пакет, пока он не достигнет конечного статуса:
 
@@ -120,9 +114,7 @@ Batch API позволяет отправить сразу множество з
   `resultsUrl` — это временный предподписанный URL с коротким сроком действия. Запрашивайте пакет повторно, чтобы получить新 новый URL каждый раз, когда вам снова нужно скачать результаты.
 </Warning>
 
-<div id="list-batches">
-  ## Список пакетов
-</div>
+## Список пакетов {#list-batches}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -153,9 +145,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 }
 ```
 
-<div id="download-results">
-  ## Скачивание результатов
-</div>
+## Скачивание результатов {#download-results}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -170,9 +160,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
 { "customId": "row-2", "error": { "code": "API_ERROR", "message": "request failed" } }
 ```
 
-<div id="cancel-a-batch">
-  ## Отмена пакета
-</div>
+## Отмена пакета {#cancel-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -182,9 +170,7 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   ```
 </CodeGroup>
 
-<div id="delete-a-batch">
-  ## Удаление пакета
-</div>
+## Удаление пакета {#delete-a-batch}
 
 <CodeGroup>
   ```bash cURL theme={null}
@@ -194,8 +180,6 @@ curl -s "https://api.exa.ai/batches?status=completed" \
   ```
 </CodeGroup>
 
-<div id="access">
-  ## Доступ
-</div>
+## Доступ {#access}
 
 Чтобы подключить Batch API для команды, напишите на [sales@exa.ai](mailto:sales@exa.ai).

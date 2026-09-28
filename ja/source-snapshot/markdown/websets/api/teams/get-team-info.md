@@ -1,22 +1,22 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
 <div id="get-team-info">
-  # チーム情報を取得
+  # チーム情報を取得 {#get-team-info}
 </div>
 
 > 同時実行数の使用状況や上限など、チームに関する情報を取得します。
 
 <div id="overview">
-  ## 概要
+  ## 概要 {#overview}
 </div>
 
 Get Team Info エンドポイントは、認証済みチームの情報を返します。返される情報には、チームの現在の同時実行数の使用状況や、設定されている上限が含まれます。Websets API の使用状況の監視や、レート制限の把握に役立ちます。
 
 <div id="response">
-  ## レスポンス
+  ## レスポンス {#response}
 </div>
 
 レスポンスには以下が含まれます。
@@ -28,7 +28,7 @@ Get Team Info エンドポイントは、認証済みチームの情報を返し
 * **limits**: チームの同時実行数の上限
 
 <div id="concurrency-fields">
-  ### 同時実行数のフィールド
+  ### 同時実行数のフィールド {#concurrency-fields}
 </div>
 
 `concurrency` オブジェクトは、現在のリクエストの状況を示します。
@@ -37,7 +37,7 @@ Get Team Info エンドポイントは、認証済みチームの情報を返し
 * **queued**: 処理待ちのリクエスト数
 
 <div id="limits-fields">
-  ### Limitsフィールド
+  ### Limitsフィールド {#limits-fields}
 </div>
 
 `limits` オブジェクトには、チームに設定されている上限値が表示されます。
@@ -46,7 +46,7 @@ Get Team Info エンドポイントは、認証済みチームの情報を返し
 * **maxQueued**: キューで待機できるリクエストの最大数 (null の場合は無制限)
 
 <div id="openapi">
-  ## OpenAPI
+  ## OpenAPI {#openapi}
 </div>
 
 ```yaml exa-spec.yaml GET /v0/teams/me

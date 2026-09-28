@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжить изучение.
 
-<div id="cybersecurity">
-  # Кибербезопасность
-</div>
+# Кибербезопасность {#cybersecurity}
 
 > Находите уязвимости, бюллетени безопасности, отчёты об угрозах и документы о соответствии требованиям с помощью Exa Search.
 
@@ -37,9 +35,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для поиска записей об уязвимостях, бюллетеней безопасности вендоров и исследований угроз в тех источниках, которые команды безопасности читают и так.
 
-<div id="included">
-  ## Что включено
-</div>
+## Что включено {#included}
 
 * Записи об уязвимостях CVE и GHSA
 * Бюллетени безопасности вендоров и описания патчей
@@ -47,54 +43,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Страницы доверия, списки субпроцессоров и документация по комплаенсу
 * Блоги по безопасности, доклады с конференций и исследования
 
-<div id="use-it-for">
-  ## Сценарии использования
-</div>
+## Сценарии использования {#use-it-for}
 
 * Приоритизация уязвимостей и оценка поверхности атаки
 * Аналитика угроз и отслеживание атакующих
 * Оценка рисков вендоров и проверка безопасности третьих сторон
 * Мониторинг безопасности и оповещения
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### Триаж класса уязвимостей
-</div>
+### Триаж класса уязвимостей {#triage-a-vulnerability-class}
 
 Укажите продукт, диапазон версий и уровень критичности.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### Поиск бюллетеней безопасности от вендоров
-</div>
+### Поиск бюллетеней безопасности от вендоров {#find-vendor-advisories}
 
 Описывайте статус эксплуатации и класс продукта, а не конкретный идентификатор CVE.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### Оценка состояния безопасности вендора
-</div>
+### Оценка состояния безопасности вендора {#review-a-vendors-security-posture}
 
 Укажите тип документа и категорию вендора.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### Исследование злоумышленника
-</div>
+### Исследование злоумышленника {#research-an-adversary}
 
 Укажите группировку или кампанию, а также интересующую вас технику или отрасль.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## Отправка запроса
-</div>
+## Отправка запроса {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -135,9 +117,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если структурированные данные требуют исследования по нескольким источникам, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите продукты, критерии угроз и нужные поля вывода — и Agent вернёт результаты, проверенные по схеме, со ссылками на источники.
 

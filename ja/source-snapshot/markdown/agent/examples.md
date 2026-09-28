@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="examples">
-  # 例
-</div>
+# 例 {#examples}
 
 > リスト作成、KYBインテリジェンス、求人情報、構造化出力を扱う、本番環境向けのExa Agentの例です。
 
@@ -1025,9 +1023,7 @@ Agentに行を見つけさせる場合は、探索用のプロンプトを使用
   ```
 </CodeGroup>
 
-<div id="broad-list-building-with-agent-max">
-  ## Agent Max による大規模なリスト作成
-</div>
+## Agent Max による大規模なリスト作成 {#broad-list-building-with-agent-max}
 
 レイテンシやコストよりも網羅性や徹底性を重視する作業には、`effort: "max"` を使用します。大規模なリスト作成、複数ソースにわたる深いリサーチ、検証が難しい条件などが該当します。Agent Max はパブリックベータ版です。リクエストに `Exa-Beta: agent-max-effort-2026-07-27` を付けて送信してください。このヘッダーには、複数のベータトークンをカンマ区切りで指定できます。
 
@@ -1071,9 +1067,7 @@ Agentに行を見つけさせる場合は、探索用のプロンプトを使用
   ```
 </CodeGroup>
 
-<div id="attach-a-data-partner-with-exa-connect">
-  ## Exa Connect でデータパートナーをアタッチする
-</div>
+## Exa Connect でデータパートナーをアタッチする {#attach-a-data-partner-with-exa-connect}
 
 `dataSources` を使用すると、Exa Agent が実行中にプレミアムデータパートナーからデータを取得できるようになります。この例では、Web リサーチの結果に Similarweb のトラフィックデータと Harmonic の資金調達データを組み合わせて、各企業の情報を補完します。パートナーの一覧については [Exa Connect](/ja/docs/agent/connect/overview) を参照してください。
 
@@ -1198,9 +1192,7 @@ Agentに行を見つけさせる場合は、探索用のプロンプトを使用
   ```
 </CodeGroup>
 
-<div id="production-checklist">
-  ## 本番環境向けチェックリスト
-</div>
+## 本番環境向けチェックリスト {#production-checklist}
 
 * Agent には、作業単位と求めるソースの品質を明示した具体的な `query` を指定してください。
 * 既知のレコードは、プロンプトに行を埋め込まず、`input.data` で渡してください。

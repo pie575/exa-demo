@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="financial-datasets">
-  # Financial Datasets
-</div>
+# Financial Datasets {#financial-datasets}
 
 > 27,000以上の米国ティッカーを対象とした構造化金融・市場データ：株価、ファンダメンタルズ、決算、SEC提出書類、保有状況、株式スクリーニング。
 
@@ -20,9 +18,7 @@
 [Exa Agent](/ja/docs/agent/quickstart) の実行に `financial_datasets` をアタッチすると、
 エージェントは Exa のウェブ検索と並行して Financial Datasets にクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 構造化された企業リサーチのスナップショットを作成する。
 * 財務実績、バリュエーション、過去の推移を分析する。
@@ -31,9 +27,7 @@
 * ファンダメンタルズの条件で米国市場をスクリーニングする。
 * 企業ニュースや関連する動向をモニタリングする。
 
-<div id="data-available">
-  ## 利用可能なデータ
-</div>
+## 利用可能なデータ {#data-available}
 
 以下の各データセットは `financial_datasets`
 プロバイダーで利用できます。エージェントがタスクに適したものを選択します。
@@ -58,9 +52,7 @@
 | 株価スナップショット      | 現在のリアルタイム株価、当日の変動、株価の更新時刻。                                       |
 | 株式スクリーナー        | ファンダメンタル指標のフィルター条件に合致する企業。                                       |
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` には次の値を指定します:
 
@@ -68,9 +60,7 @@
 financial_datasets
 ```
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 NVIDIA について、構造化された企業リサーチスナップショットを作成します。
 
@@ -290,17 +280,13 @@ NVIDIA について、構造化された企業リサーチスナップショッ�
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 組み合わせて使えるプロバイダー
-</div>
+## 組み合わせて使えるプロバイダー {#pairs-well-with}
 
 * [Particle](/ja/docs/agent/connect/particle): 公開済みの報道・アナリストレポートとポッドキャストでの論評を比較します。
 * [Baselayer](/ja/docs/agent/connect/baselayer): ティッカーに対応する実際の企業を検証します。
 * [Fiber.ai](/ja/docs/agent/connect/fiber): 上場企業の情報に、未公開市場の同業他社や経営陣の連絡先を付加します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="runにアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

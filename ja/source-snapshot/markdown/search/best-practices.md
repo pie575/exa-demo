@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="search-best-practices">
-  # Search のベストプラクティス
-</div>
+# Search のベストプラクティス {#search-best-practices}
 
 > 本番環境の Search API インテグレーションに向けて、検索精度、レイテンシ、コンテキスト、回答生成 (合成) を最適化します。
 
 このガイドは、動作する [Search API リクエスト](/ja/docs/search/quickstart)がすでにあることを前提としています。Exa が推奨するベストプラクティスに沿って、そのリクエストを改善する方法を説明します。
 
-<div id="start-with-the-smallest-useful-request">
-  ## 必要最小限のリクエストから始める
-</div>
+## 必要最小限のリクエストから始める {#start-with-the-smallest-useful-request}
 
 最適なベースラインは、`highlights: true` を指定した自然言語のクエリです。Exa は各結果の抜粋の長さを関連度に応じて自動調整するため、文字数上限を調整する必要はありません。
 
@@ -56,9 +52,7 @@
 | `highlights.maxCharacters` | アプリケーションでページごとに抜粋の上限を固定する必要がある場合                   |
 | ドメインまたは日付のフィルター            | 条件に合わない結果が使い物にならない場合                               |
 
-<div id="search-vs-deep-search">
-  ## Search と Deep Search の違い
-</div>
+## Search と Deep Search の違い {#search-vs-deep-search}
 
 標準の search は、クエリに対してページを取得し、ランク付けします。Deep Search はリサーチプロセスを実行し、反復的な検索、
 結果の精査、検索の絞り込みを行ったうえで、根拠に基づいた結果を合成します。
@@ -71,9 +65,7 @@
 
 `outputSchema` を使用する場合は、基本的に Deep モードをおすすめします。詳しい手順と例については、[Deep Search ガイド](/ja/docs/search/deep-search)をご覧ください。
 
-<div id="improve-retrieval-quality">
-  ## 検索精度を向上させる
-</div>
+## 検索精度を向上させる {#improve-retrieval-quality}
 
 結果を改善したい場合は、リクエストの要素を一度に1つずつ変更してください。
 
@@ -124,9 +116,7 @@
 
 チューニング中は、代表的なクエリを少数用意しておきましょう。1つの例に合わせて最適化するのではなく、そのセット全体で結果の関連性と後続タスクの成功率を比較します。リグレッションを再現できるよう、`requestId`、`searchTime`、`costDollars` を記録してください。
 
-<div id="budget-latency-and-context">
-  ## レイテンシとコンテキストの予算配分
-</div>
+## レイテンシとコンテキストの予算配分 {#budget-latency-and-context}
 
 各コントロールは、それぞれ異なるリソースを消費します。
 
@@ -182,9 +172,7 @@
 
 結果セット全体で 1 つのコンテキスト予算を Exa に配分させる (有力なソースには多く、冗長なソースには少なく割り当てる) には、[Dynamic Highlights リサーチプレビュー](/ja/docs/search/highlights#dynamic-highlights)を参照してください。
 
-<div id="tips-for-common-use-cases">
-  ## 一般的なユースケース別のヒント
-</div>
+## 一般的なユースケース別のヒント {#tips-for-common-use-cases}
 
 | 目的                       | 推奨                                                                            | 非推奨                         |
 | ------------------------ | ----------------------------------------------------------------------------- | --------------------------- |
@@ -197,9 +185,7 @@
 | 少数のページからより多くのコンテキストを得たい  | ハイライト 付きで検索してから Contents を呼び出す                                           | すべての結果の全文を取得する              |
 | レイテンシを下げたい               | コンパクトなコンテンツで `fast` または `instant` を計測する                                       | 鮮度や合成の制御をデフォルトで追加する         |
 
-<div id="when-to-use-another-endpoint">
-  ## 別のエンドポイントを使うべき場合
-</div>
+## 別のエンドポイントを使うべき場合 {#when-to-use-another-endpoint}
 
 タスクの性質が異なる場合は、別の Exa エンドポイントを使用してください。
 
@@ -209,9 +195,7 @@
 | URL がすでにわかっている          | [Contents](/ja/docs/contents/quickstart) |
 | スケジュールに沿って検索を実行する       | [Monitors](/ja/docs/monitors/quickstart) |
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="Search API リファレンス" icon="square-terminal" href="/ja/docs/reference/search" cta="リファレンスを開く" arrow="true">

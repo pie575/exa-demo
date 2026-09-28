@@ -12,9 +12,7 @@ TrueFoundry предоставляет Exa как официальный уда�
   <img src="/docs/images/integrations/truefoundry/catalog.png" alt="Сервер Exa в официальном каталоге удалённых MCP-серверов TrueFoundry" style={{width: "600px", height: "auto", margin: "0 auto"}} width="1582" height="1720" data-path="images/integrations/truefoundry/catalog.png" />
 </Frame>
 
-<div id="add-exa-to-truefoundry">
-  ## Добавление Exa в TrueFoundry
-</div>
+## Добавление Exa в TrueFoundry {#add-exa-to-truefoundry}
 
 1. Откройте раздел **MCP Servers** на боковой панели TrueFoundry и выберите **Add new MCP Server**.
 2. Выберите **Connect Official Remote MCP Servers**.
@@ -43,15 +41,11 @@ TrueFoundry предоставляет Exa как официальный уда�
   Откройте вкладку **Tools** и убедитесь, что доступны инструменты Exa для поиска, получения контента и agentic research.
 </Check>
 
-<div id="configure-the-exa-server">
-  ## Настройка сервера Exa
-</div>
+## Настройка сервера Exa {#configure-the-exa-server}
 
 Предзаполненный URL даёт доступ к стандартному набору инструментов Exa. Меняйте его, только если нужно ограничить набор доступных инструментов или использовать собственный API key.
 
-<div id="choose-which-tools-are-available">
-  ### Выбор доступных инструментов
-</div>
+### Выбор доступных инструментов {#choose-which-tools-are-available}
 
 Передайте список имён инструментов через запятую в query-параметре `tools`:
 
@@ -76,9 +70,7 @@ collaborators:
   Доступные имена инструментов (tool) можно найти в [документации Exa MCP](/ru/docs/get-started/exa-mcp).
 </Tip>
 
-<div id="use-your-exa-api-key-to-bypass-the-free-rate-limit">
-  ### Используйте свой Exa API key, чтобы обойти бесплатный лимит запросов
-</div>
+### Используйте свой Exa API key, чтобы обойти бесплатный лимит запросов {#use-your-exa-api-key-to-bypass-the-free-rate-limit}
 
 Если вы достигли бесплатного лимита запросов, добавьте свой Exa API key в URL сервера:
 
@@ -90,9 +82,7 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
 </Card>
 
-<div id="connect-an-mcp-client">
-  ## Подключение MCP-клиента
-</div>
+## Подключение MCP-клиента {#connect-an-mcp-client}
 
 Откройте вкладку **How To Use** сервера Exa и выберите свой клиент. TrueFoundry сгенерирует эндпоинт для вашего тенанта и готовую к вставке настройку для Cursor, Claude Code, VS Code, Windsurf, Codex и других MCP-клиентов.
 
@@ -100,9 +90,7 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   <img src="/docs/images/integrations/truefoundry/how-to-use.png" alt="Инструкции TrueFoundry по настройке MCP-сервера Exa для конкретного клиента" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2682" height="1716" data-path="images/integrations/truefoundry/how-to-use.png" />
 </Frame>
 
-<div id="test-a-tool">
-  ## Тестирование инструмента
-</div>
+## Тестирование инструмента {#test-a-tool}
 
 Нажмите **Try** рядом с нужным инструментом Exa, укажите входные данные и нажмите **Execute Tool**. Playground покажет JSON-ответ, чтобы вы могли проверить инструмент, прежде чем использовать его в agent.
 
@@ -110,9 +98,7 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   <img src="/docs/images/integrations/truefoundry/tool-playground.png" alt="Тестирование инструмента Exa в playground инструментов TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2118" height="1722" data-path="images/integrations/truefoundry/tool-playground.png" />
 </Frame>
 
-<div id="manage-and-monitor-tools">
-  ## Управление инструментами и мониторинг
-</div>
+## Управление инструментами и мониторинг {#manage-and-monitor-tools}
 
 * Включайте и отключайте отдельные инструменты, чтобы контролировать, что именно могут вызывать MCP-клиенты
 * Используйте **Tool Metrics**, чтобы отслеживать трафик, задержки и ошибки
@@ -122,9 +108,7 @@ https://mcp.exa.ai/mcp?exaApiKey=YOUR_API_KEY
   <img src="/docs/images/integrations/truefoundry/tools-list.png" alt="Инструменты Exa, доступные с MCP-сервера TrueFoundry" style={{width: "800px", height: "auto", margin: "0 auto"}} width="2686" height="1718" data-path="images/integrations/truefoundry/tools-list.png" />
 </Frame>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={3}>
   <Card title="Руководство по настройке TrueFoundry" icon="book-open" href="https://www.truefoundry.com/docs/ai-gateway/mcp/exa-mcp-server" cta="Открыть руководство" arrow="true">

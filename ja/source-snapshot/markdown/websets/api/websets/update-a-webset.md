@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="update-a-webset">
-  # Webset を更新する
-</div>
+# Webset を更新する {#update-a-webset}
 
 > Webset の `title` または `metadata` を更新します。検索、インポート、エンリッチメントは、それぞれ専用のエンドポイントで管理されます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{id}
 openapi: 3.1.0

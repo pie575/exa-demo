@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="hermes-agent">
-  # Hermes Agent
-</div>
+# Hermes Agent {#hermes-agent}
 
 > Exa を使って、Hermes Agent にリアルタイムのウェブ検索とページコンテンツ取得の機能を追加します。
 
 [Hermes Agent](https://github.com/NousResearch/hermes-agent) は、モデルから呼び出せる `web_search` ツールと `web_extract` ツールのネイティブバックエンドとして Exa を組み込んでいます。両方の機能に Exa を使うことも、別の Hermes ウェブプロバイダーと組み合わせて使うこともできます。
 
-<div id="connect-your-exa-account">
-  ## Exa アカウントを接続する
-</div>
+## Exa アカウントを接続する {#connect-your-exa-account}
 
 <Steps>
   <Step title="Exa API キーを取得する">
@@ -43,9 +39,7 @@
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## 手動で設定する
-</div>
+## 手動で設定する {#configure-manually}
 
 Hermes の環境ファイルにキーを追加します。
 
@@ -70,9 +64,7 @@ web:
 
 ケイパビリティごとの設定は `web.backend` よりも優先されます。そのため、複数のプロバイダーを組み合わせる場合に、Exa を検索専用または抽出専用として使用できます。
 
-<div id="tools-hermes-gets">
-  ## Hermes で使えるツール
-</div>
+## Hermes で使えるツール {#tools-hermes-gets}
 
 | ツール           | Exa での動作                                            |
 | ------------- | --------------------------------------------------- |
@@ -85,9 +77,7 @@ Hermes は、抽出したページが長い場合は設定された文字数上�
   Hermes は、キー不要の無料プロバイダープールを通じて、API キーなしで Exa を利用できます。このプールにはレート制限があり、使用されるプロバイダーが切り替わる場合があります。リクエストで常に自分の Exa アカウントを使用したい場合は、`EXA_API_KEY` を設定し、API キー認証の Exa オプションを選択してください。
 </Note>
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Hermes で Exa が選択されない">
@@ -103,9 +93,7 @@ Hermes は、抽出したページが長い場合は設定された文字数上�
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="Hermes のウェブツール" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="ガイドを読む" arrow="true">

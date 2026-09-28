@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="monitors-api">
-  # Monitors API
-</div>
+# Monitors API {#monitors-api}
 
 > 定期的に検索を実行し、新たに見つかった結果をWebhookで受け取ります。
 
@@ -14,17 +12,13 @@ Monitorsは、スケジュールに沿ってExaの検索を定期実行し、結
 Monitorsを使えば、ニュース、競合他社の発表、資金調達ラウンド、規制の変更、研究
 論文など、時間とともに変化するあらゆるトピックを追跡できます。
 
-<div id="how-monitors-work">
-  ## Monitors の仕組み
-</div>
+## Monitors の仕組み {#how-monitors-work}
 
 実行のたびに、Exa は設定済みの検索を実行して時間で絞り込み、モニターがすでに返した結果や検出事項を除外したうえで、新しい出力を Webhook に送信します。
 
 各モニターは独自の実行履歴を保持しています。そのため、変動する日付範囲を自分でクエリに追加するのではなく、継続的に追跡したいシグナルを軸にクエリを記述してください。
 
-<div id="create-your-first-monitor">
-  ## 最初のモニターを作成する
-</div>
+## 最初のモニターを作成する {#create-your-first-monitor}
 
 検索クエリ、実行間隔、更新を受信する HTTPS エンドポイントを指定して
 モニターを作成します。
@@ -129,9 +123,7 @@ Monitorsを使えば、ニュース、競合他社の発表、資金調達ラウ
 モニターを作成したら、`webhookSecret` を必ず保存してください。この値は一度しか返されず、
 Webhook の署名検証に必要です。
 
-<div id="configure-the-output">
-  ## 出力を設定する
-</div>
+## 出力を設定する {#configure-the-output}
 
 実行が完了するたびに、新たに見つかったページが `output.results` に返されます。
 
@@ -173,9 +165,7 @@ Webhook の署名検証に必要です。
 引用と信頼度はスキーマに含めないでください。これらは
 `output.grounding` で別途返されます。
 
-<div id="add-page-content">
-  ## ページコンテンツを追加する
-</div>
+## ページコンテンツを追加する {#add-page-content}
 
 `search` では [Exa Search](/ja/docs/search/quickstart) と同じオプションを使用できます。`contents` を指定すると各結果に
 ハイライト、全文、または要約を含めることができ、`includeDomains` または `excludeDomains` を指定すると
@@ -249,9 +239,7 @@ Webhook の署名検証に必要です。
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## モニターをテストする
-</div>
+## モニターをテストする {#test-your-monitor}
 
 次のスケジュール時刻を待たずに実行をすぐにトリガーし、その後、実行の一覧を取得します。
 
@@ -293,9 +281,7 @@ Webhook の署名検証に必要です。
 
 実行が完了するまで、`output` は null です。
 
-<div id="schedule-runs">
-  ## 実行のスケジュール設定
-</div>
+## 実行のスケジュール設定 {#schedule-runs}
 
 最小間隔は1時間です。`1h`、`6h`、`1d`、`7d` のように、単一の期間で指定してください。
 スケジュールはモニターの作成時刻を基準とします。たとえば午後2時30分に作成した日次モニターは、毎日午後2時30分頃に実行されます。
@@ -309,9 +295,7 @@ Webhook の署名検証に必要です。
   Exa は前回の実行をキャンセルします。
 </Note>
 
-<div id="receive-webhook-updates">
-  ## webhook で更新を受信する
-</div>
+## webhook で更新を受信する {#receive-webhook-updates}
 
 完了した実行だけを受け取りたい場合は、`monitor.run.completed` をサブスクライブしてください。`events` を省略すると、Exa
 はモニターのライフサイクルイベントと実行作成イベントも送信します。
@@ -408,9 +392,7 @@ webhook の配信にそのまま含まれるため、更新を該当する顧客
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="モニターを作成する" icon="bell" href="/ja/docs/reference/monitors/create-a-monitor" cta="リファレンスを開く" arrow="true">

@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳細を調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="list-webhooks">
-  # Webhook の一覧を取得
-</div>
+# Webhook の一覧を取得 {#list-webhooks}
 
 > チームで有効な Webhook の一覧を返します。
 
 `cursor` パラメーターを使用すると、結果をページ単位で取得できます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/webhooks
 openapi: 3.1.0

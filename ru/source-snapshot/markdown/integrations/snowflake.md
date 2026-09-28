@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем углубляться дальше.
 
-<div id="snowflake">
-  # Snowflake
-</div>
+# Snowflake {#snowflake}
 
 > Используйте Exa search и получение контента из хранимых процедур Snowflake и Cortex Agents.
 
@@ -16,9 +14,7 @@
 1. **Инструменты Cortex Agent** — дают Snowflake Cortex Agent возможность искать в вебе и получать содержимое страниц
 2. **Обогащение данных** — пакетное обогащение таблиц сведениями о руководителях и основателях, свежими новостями и другими данными из веба
 
-<div id="prerequisites">
-  ## Предварительные требования
-</div>
+## Предварительные требования {#prerequisites}
 
 1. API key Exa
 2. Роль `ACCOUNTADMIN` (необходима для создания External Access Integrations)
@@ -28,15 +24,11 @@
   Создайте key в панели управления. Новым аккаунтам начисляются бесплатные credits.
 </Card>
 
-<div id="setup">
-  ## Настройка
-</div>
+## Настройка {#setup}
 
 Выполните следующий SQL-запрос в рабочем листе Snowflake. Замените `<<YOUR_EXA_API_KEY>>` на свой настоящий ключ.
 
-<div id="roles-and-database">
-  ### Роли и база данных
-</div>
+### Роли и база данных {#roles-and-database}
 
 ```sql theme={null}
 USE ROLE ACCOUNTADMIN;
@@ -54,9 +46,7 @@ GRANT USAGE ON DATABASE exa_integration TO ROLE exa_agent_role;
 GRANT USAGE ON SCHEMA exa_integration.tools TO ROLE exa_agent_role;
 ```
 
-<div id="warehouse">
-  ### Warehouse
-</div>
+### Warehouse {#warehouse}
 
 ```sql theme={null}
 CREATE WAREHOUSE IF NOT EXISTS exa_agent_wh
@@ -69,9 +59,7 @@ WITH
 GRANT USAGE, OPERATE ON WAREHOUSE exa_agent_wh TO ROLE exa_agent_role;
 ```
 
-<div id="network-rule-secret-and-external-access">
-  ### Сетевое правило, секрет и внешний доступ
-</div>
+### Сетевое правило, секрет и внешний доступ {#network-rule-secret-and-external-access}
 
 ```sql theme={null}
 CREATE OR REPLACE NETWORK RULE exa_integration.tools.exa_api_rule
@@ -97,13 +85,9 @@ GRANT USAGE ON INTEGRATION exa_api_access TO ROLE exa_agent_role;
 * **Секрет**, в котором хранится ваш API key (в зашифрованном виде, не виден в SQL)
 * **Интеграция внешнего доступа**, связывающая правило и секрет
 
-<div id="stored-procedures">
-  ## Хранимые процедуры
-</div>
+## Хранимые процедуры {#stored-procedures}
 
-<div id="exa_search">
-  ### EXA_SEARCH
-</div>
+### EXA_SEARCH {#exa_search}
 
 Выполняет поиск в интернете с помощью Search API Exa. Возвращает результаты с заголовками, URL-адресами, оценками и, при необходимости, текстом, highlights или краткой сводкой.
 
@@ -208,9 +192,7 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="parameters">
-  #### Параметры
-</div>
+#### Параметры {#parameters}
 
 | Параметр               | Тип       | По умолчанию | Описание                                                                                    |
 | ---------------------- | --------- | ------------ | ------------------------------------------------------------------------------------------- |
@@ -225,9 +207,7 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 | `include_text`         | `STRING`  | `NULL`       | Фраза, которая должна присутствовать в результатах                                          |
 | `get_contents`         | `BOOLEAN` | `TRUE`       | Получать текст, highlights и краткие сводки                                               |
 
-<div id="exa_get_contents">
-  ### EXA_GET_CONTENTS
-</div>
+### EXA_GET_CONTENTS {#exa_get_contents}
 
 Возвращает содержимое страниц (текст, highlights, краткие сводки) для указанных URL.
 
@@ -309,13 +289,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="usage-examples">
-  ## Примеры использования
-</div>
+## Примеры использования {#usage-examples}
 
-<div id="basic-search">
-  ### Базовый поиск
-</div>
+### Базовый поиск {#basic-search}
 
 ```sql theme={null}
 USE WAREHOUSE exa_agent_wh;
@@ -331,9 +307,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="get-contents-for-specific-urls">
-  ### Получение содержимого для конкретных URL
-</div>
+### Получение содержимого для конкретных URL {#get-contents-for-specific-urls}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -344,9 +318,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 );
 ```
 
-<div id="company-research">
-  ### Исследование компаний
-</div>
+### Исследование компаний {#company-research}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -356,15 +328,11 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="data-enrichment">
-  ## обогащение данных
-</div>
+## обогащение данных {#data-enrichment}
 
 Exa может обогащать таблицы Snowflake актуальными веб-данными — информацией о генеральных директорах и основателях, свежими новостями и многим другим — не покидая платформу.
 
-<div id="create-a-prospect-table">
-  ### Создание таблицы потенциальных клиентов
-</div>
+### Создание таблицы потенциальных клиентов {#create-a-prospect-table}
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_enrichment;
@@ -396,9 +364,7 @@ VALUES
     ('Vercel', 'https://vercel.com', 'Developer Platform', 600);
 ```
 
-<div id="enrich-with-ceofounder-info">
-  ### Обогащение данными о CEO/основателе
-</div>
+### Обогащение данными о CEO/основателе {#enrich-with-ceofounder-info}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_leaders(
@@ -500,9 +466,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="enrich-with-latest-news">
-  ### Обогащение последними новостями
-</div>
+### Обогащение последними новостями {#enrich-with-latest-news}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_news(
@@ -584,9 +548,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="run-enrichment">
-  ### Запуск enrichment
-</div>
+### Запуск enrichment {#run-enrichment}
 
 ```sql theme={null}
 -- Обогащение данных по одной компании
@@ -599,15 +561,11 @@ SELECT company_name, ceo_name, ceo_title,
 FROM exa_enrichment.demo.prospect_companies;
 ```
 
-<div id="parallelizing-exa-requests">
-  ## Параллельное выполнение запросов к Exa
-</div>
+## Параллельное выполнение запросов к Exa {#parallelizing-exa-requests}
 
 При обогащении больших таблиц последовательные вызовы Exa для каждой строки выполняются слишком медленно. Запросы можно распараллелить с помощью модуля Python `concurrent.futures` внутри одной хранимой процедуры, отправляя сразу несколько вызовов к API Exa.
 
-<div id="concurrent-enrichment-procedure">
-  ### Процедура параллельного Enrichment
-</div>
+### Процедура параллельного Enrichment {#concurrent-enrichment-procedure}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_all_parallel(
@@ -679,9 +637,7 @@ def main(session, max_workers):
 $$;
 ```
 
-<div id="choosing-parallelism">
-  ### Выбор степени параллелизма
-</div>
+### Выбор степени параллелизма {#choosing-parallelism}
 
 | `max_workers` | Сценарий использования                                                                      |
 | ------------- | ------------------------------------------------------------------------------------------- |
@@ -689,9 +645,7 @@ $$;
 | `10`          | Хорошее значение по умолчанию для большинства задач Enrichment                              |
 | `20–50`       | Большие наборы данных при высоком уровне [лимита запросов](/ru/docs/admin/billing#rate-limits) |
 
-<div id="snowflake-task-scheduling">
-  ### Планирование задач в Snowflake
-</div>
+### Планирование задач в Snowflake {#snowflake-task-scheduling}
 
 Для регулярно выполняемых заданий enrichment оберните процедуру в [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro):
 
@@ -707,9 +661,7 @@ ALTER TASK exa_enrichment.demo.daily_enrichment RESUME;
 
 Так параллельный Enrichment будет запускаться ежедневно в 8:00 по тихоокеанскому времени. Подберите расписание cron и `max_workers` под свои объёмы и лимиты запросов.
 
-<div id="cortex-agent-integration">
-  ## Интеграция с Cortex Agent
-</div>
+## Интеграция с Cortex Agent {#cortex-agent-integration}
 
 Хранимые процедуры Exa также можно зарегистрировать как инструменты для [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents) — это даст ему возможность искать в интернете в диалоговом режиме.
 
@@ -839,9 +791,7 @@ CREATE OR REPLACE AGENT exa_web_search_agent
 * &quot;Найди научные статьи про retrieval augmented generation&quot;
 * &quot;За какими AI-компаниями стоит следить?&quot;
 
-<div id="security">
-  ## Безопасность
-</div>
+## Безопасность {#security}
 
 Интеграция использует встроенные средства безопасности Snowflake:
 
@@ -858,9 +808,7 @@ CREATE OR REPLACE AGENT exa_web_search_agent
 GRANT ROLE exa_agent_role TO USER analyst_user;
 ```
 
-<div id="more-resources">
-  ## Дополнительные материалы
-</div>
+## Дополнительные материалы {#more-resources}
 
 * [Документация Exa API](/ru/docs/search/quickstart)
 * [Панель управления Exa](https://dashboard.exa.ai) — получите свой API key

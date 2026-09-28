@@ -33,54 +33,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для поиска публикаций в крупных изданиях, отраслевой прессе и нишевых медиа. Новые статьи становятся доступны для поиска уже через несколько минут после выхода. Сочетайте запрос на естественном языке с фильтрами по датам, если период публикации критичен.
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Исследование рынков и инвестиций
 * Кибербезопасность и аналитика угроз
 * Мониторинг компаний, продуктов и конкурентов
 * Отраслевые обзоры и анализ текущих событий
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### Следите за развитием政 политической истории
-</div>
+### Следите за развитием政 политической истории {#follow-a-developing-policy-story}
 
 Укажите тему, тип источника и период публикации, чтобы результаты относились к текущей стадии развития событий.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### Поиск анализа от практиков
-</div>
+### Поиск анализа от практиков {#find-practitioner-analysis}
 
 Укажите тип источника, когда вам нужен разбор от практиков, а не общие новостные материалы.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### Поиск обсуждений в определённом формате
-</div>
+### Поиск обсуждений в определённом формате {#discover-discussions-in-a-specific-format}
 
 Укажите в запросе формат и тему. Так поиск охватит и страницы эпизодов, и транскрипты по всему вебу.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### Исследование негативных упоминаний в СМИ
-</div>
+### Исследование негативных упоминаний в СМИ {#research-adverse-media}
 
 Опишите и сам негативный сигнал, и класс организаций, который вы изучаете. Не сводите запрос к названию компании и слову «новости».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## Отправка запроса
-</div>
+## Отправка запроса {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,9 +107,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследовать сразу несколько источников, используйте [выполнение задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные сюжеты, поля и временной интервал, и Agent вернёт результаты, проверенные по schema, вместе с citations.
 

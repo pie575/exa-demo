@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの完全版は https://exa.ai/docs/llms.txt から取得できます。
 > 詳細を調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="highlights">
-  # ハイライト
-</div>
+# ハイライト {#highlights}
 
 > コンテキストサイズとレイテンシを抑えつつ、Exa Search の結果からクエリに関連する抜粋を返します。
 
@@ -13,9 +11,7 @@
 
 各結果で選択されたパッセージは `results[].highlights` に格納されて返されます。
 
-<div id="why-highlights-instead-of-full-text">
-  ## フルテキストではなくハイライトを使う理由
-</div>
+## フルテキストではなくハイライトを使う理由 {#why-highlights-instead-of-full-text}
 
 ハイライトは Exa が独自に開発した抽出モデルによって生成されます。このモデルはリクエストのたびに各結果をクエリと照らし合わせて読み取り、クエリへの回答となるパッセージのみを返します。ページ全文のごく一部のトークン数で済み、下流の回答品質は同等以上に保たれます。
 
@@ -33,9 +29,7 @@
   をご覧ください。
 </Tip>
 
-<div id="add-highlights-to-search">
-  ## Search にハイライトを追加する
-</div>
+## Search にハイライトを追加する {#add-highlights-to-search}
 
 推奨されるデフォルト設定として、`contents` 内で `highlights: true` を指定してください。Exa はクエリとの関連度に基づいて各結果から返すテキスト量を自動で決定するため、文字数上限を調整する必要はありません。`maxCharacters` は、アプリケーションでページごとに固定の上限が必要な場合にのみ設定してください。
 
@@ -67,9 +61,7 @@
   ```
 </CodeGroup>
 
-<div id="dynamic-highlights">
-  ## Dynamic Highlights
-</div>
+## Dynamic Highlights {#dynamic-highlights}
 
 Dynamic Highlights は、クエリにとって何が最も有用かに応じて、各結果から抽出するテキスト量を調整します。質の高いソースからは多く、重複する、または無関係なソースからは少なく抽出するため、返されるトークンの総数を抑えられます。
 
@@ -139,9 +131,7 @@ Exa の評価では、Dynamic Highlights はページ全文と比べてトーク
   `results[].highlights` 形式です。
 </Info>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="Search API ガイド" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを開く" arrow="true">

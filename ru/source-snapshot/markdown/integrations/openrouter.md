@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем изучать документацию дальше.
 
-<div id="openrouter">
-  # OpenRouter
-</div>
+# OpenRouter {#openrouter}
 
 > Обеспечьте любой модели OpenRouter опору на факты с помощью веб-поиска от Exa через серверный инструмент openrouter:web&#95;search.
 
 Exa — поисковая система, на которой построен веб-поиск в [OpenRouter](https://openrouter.ai). OpenRouter даёт единый API к сотням моделей, а Exa открывает этим моделям доступ к актуальным данным из интернета: любая модель без встроенного search по умолчанию опирается на Exa, и любую модель можно явно переключить на Exa. Exa API key при этом не нужен. OpenRouter выполняет поисковые запросы на своей стороне и списывает их с ваших кредитов OpenRouter.
 
-<div id="use-the-web-search-server-tool">
-  ## Использование серверного инструмента веб-поиска
-</div>
+## Использование серверного инструмента веб-поиска {#use-the-web-search-server-tool}
 
 Добавьте `openrouter:web_search` в массив `tools` — и модель сама решит, когда искать, что искать и нужно ли выполнить повторный поиск в рамках того же запроса. [Серверные инструменты](https://openrouter.ai/docs/guides/features/server-tools/web-search) в OpenRouter находятся в бета-версии; они заменяют устаревший плагин `web` и варианты моделей `:online`. Если вы используете что-то из этого, см. [руководство по миграции](https://openrouter.ai/docs/guides/features/server-tools/web-search#migrating-from-the-web-search-plugin) от OpenRouter.
 
@@ -99,23 +95,17 @@ Exa — поисковая система, на которой построен 
 | `search_context_size`                 | Использовать готовый лимит вместо точного: `low`, `medium` или `high`                                                                                                                            |
 | `allowed_domains`, `excluded_domains` | Фильтровать домены результатов. Exa поддерживает оба фильтра в одном запросе.                                                                                                                    |
 
-<div id="how-results-come-back">
-  ## Как возвращаются результаты
-</div>
+## Как возвращаются результаты {#how-results-come-back}
 
 Для каждого результата OpenRouter запрашивает [highlights Exa](/ru/docs/search/highlights), а не полный текст страницы: это извлечённые фрагменты с адаптивным размером, обычно от 2 000 до 4 000 символов на результат, если вы не задали `max_characters` или `search_context_size`. Модель читает эти фрагменты, а клиенты API получают их в виде стандартизированных аннотаций `url_citation` в ответном сообщении. В пределах одного результата маркеры `[...]` разделяют фрагменты, взятые из разных частей страницы.
 
-<div id="pricing">
-  ## Тарификация
-</div>
+## Тарификация {#pricing}
 
 Поиск через Exa оплачивается кредитами OpenRouter — дополнительно к стоимости токенов модели, затраченных на чтение результатов. Режимы `instant`, `fast` и `auto` стоят $0,007 за один поиск, `deep-lite` и `deep` — $0,012, а `deep-reasoning` — $0,015. В каждый поиск входит до 10 результатов, каждый дополнительный результат стоит $0,001. Актуальные тарифы см. в [документации OpenRouter по веб-поиску](https://openrouter.ai/docs/guides/features/server-tools/web-search).
 
 Объект `usage` в ответе показывает в поле `server_tool_use.web_search_requests`, сколько поисковых запросов выполнила модель.
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={2}>
   <Card title="Документация по серверным инструментам" icon="wrench" href="https://openrouter.ai/docs/guides/features/server-tools/web-search" cta="Открыть документацию" arrow="true">

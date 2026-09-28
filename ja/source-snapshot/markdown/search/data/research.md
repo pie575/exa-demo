@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 個別のページを詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="research-publications">
-  # 研究文献
-</div>
+# 研究文献 {#research-publications}
 
 > Exa Search を使って、学術論文、特許、研究助成金、臨床試験、規制当局の承認を検索できます。
 
@@ -42,9 +40,7 @@ Exa Search を使用すると、研究論文や関連レコードを検索でき
   をご覧ください。
 </Tip>
 
-<div id="included">
-  ## 対象
-</div>
+## 対象 {#included}
 
 * 論文およびプレプリント(解析済みの全文がある場合は全文チャンクを含む)
 * 特許(要約、請求項、発明者、譲受人を含む)
@@ -52,54 +48,40 @@ Exa Search を使用すると、研究論文や関連レコードを検索でき
 * 臨床試験、医薬品の添付文書、相互作用データ
 * 規制当局および保健当局による承認
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 文献レビューと引用文献の探索
 * 先行技術調査と特許ランドスケープ分析
 * 臨床・医薬分野のリサーチ
 * 助成金や資金調達機会の探索
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### 特定のトピックに関する論文を探す
-</div>
+### 特定のトピックに関する論文を探す {#find-papers-on-a-topic}
 
 タイトルに含まれそうなキーワードを推測するのではなく、手法や研究結果を説明してください。`publication` カテゴリを指定すると、結果を論文に絞り込めます。
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### 臨床エビデンスを検索する
-</div>
+### 臨床エビデンスを検索する {#search-clinical-evidence}
 
 フェーズ、介入、対象集団を指定すると、一般的な報道よりも治験登録情報や試験結果のページが上位に表示されます。
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### 規制当局の承認を追跡する
-</div>
+### 規制当局の承認を追跡する {#track-regulatory-approvals}
 
 追跡したい規制当局と、医療機器または医薬品の分類を指定してください。
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### 先行技術調査を行う
-</div>
+### 先行技術調査を行う {#run-a-prior-art-search}
 
 製品名ではなく、請求項を書くときのように、発明を機能面から記述してください。
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -143,9 +125,7 @@ Exa Search を使用すると、研究論文や関連レコードを検索でき
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースにまたがるリサーチが必要な構造化データを得るには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。対象とする文献、選定基準、必要な出力フィールドを記述すると、Agent がスキーマ検証済みの結果を引用付きで返します。
 

@@ -1,10 +1,10 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
 <div id="get-started">
-  # はじめに
+  # はじめに {#get-started}
 </div>
 
 > Websets ダッシュボードへようこそ！どれほど複雑な条件でも、ウェブ上で探しているものを何でも見つけられます。
@@ -12,7 +12,7 @@
 <br />
 
 <div id="1-sign-up">
-  ## 1. サインアップ
+  ## 1. サインアップ {#1-sign-up}
 </div>
 
 Websets は [https://websets.exa.ai/](https://websets.exa.ai/) で一般提供を開始しました！
@@ -22,7 +22,7 @@ Websets についてご質問がある場合は、[こちらからミーティ�
 <br />
 
 <div id="2-get-started">
-  ## 2. はじめに
+  ## 2. はじめに {#2-get-started}
 </div>
 
 Websets は誰でも簡単に使えます。
@@ -40,7 +40,7 @@ Websets は誰でも簡単に使えます。
 <br />
 
 <div id="3-inside-your-webset">
-  ## 3. Webset の中身
+  ## 3. Webset の中身 {#3-inside-your-webset}
 </div>
 
 簡単に言うと、Websets は次のことを行います。
@@ -61,7 +61,7 @@ Websets は誰でも簡単に使えます。
 <br />
 
 <div id="4-interacting-with-your-webset">
-  ## 4. Webset を操作する
+  ## 4. Webset を操作する {#4-interacting-with-your-webset}
 </div>
 
 Webset が完成したら、各要素を操作できます。
@@ -81,7 +81,7 @@ Webset が完成したら、各要素を操作できます。
 <br />
 
 <div id="5-add-more-result-criteria-and-custom-columns">
-  ## 5. 結果の条件とカスタム列をさらに追加する
+  ## 5. 結果の条件とカスタム列をさらに追加する {#5-add-more-result-criteria-and-custom-columns}
 </div>
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075" alt="エンリッチメント列の追加" width="2870" height="1734" data-path="images/websets/add-enrichment.png" />
@@ -99,7 +99,7 @@ Webset が完成したら、各要素を操作できます。
 <br />
 
 <div id="6-share-and-export-your-webset">
-  ## 6. Webset を共有・エクスポートする
+  ## 6. Webset を共有・エクスポートする {#6-share-and-export-your-webset}
 </div>
 
 1. [エクスポート] をクリックすると、Webset を CSV ファイルとしてダウンロードできます。
@@ -109,7 +109,7 @@ Webset が完成したら、各要素を操作できます。
 <br />
 
 <div id="7-search-history">
-  ## 7. 検索履歴
+  ## 7. 検索履歴 {#7-search-history}
 </div>
 
 左上のサイドバーアイコンをクリックすると、左側のパネルに過去のすべての Webset を含む履歴が表示されます。

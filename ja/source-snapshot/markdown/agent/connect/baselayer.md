@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="baselayer">
-  # Baselayer
-</div>
+# Baselayer {#baselayer}
 
 > 米国企業を検証し、KYB データ (役員、登記情報、リスクスコア) を取得します。
 
@@ -18,17 +16,13 @@
 [Exa Agent](/ja/docs/agent/quickstart) の実行にアタッチすると、エージェントは
 Exa のウェブ検索と並行して Baselayer にクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * KYB オンボーディング、およびベンダーや顧客の検証。
 * 役員、登記情報、事業体の構成に関するデューデリジェンス。
 * 企業のリスク評価とウォッチリスト該当有無のスクリーニング。
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` には次の値を指定します：
 
@@ -36,9 +30,7 @@ Exa のウェブ検索と並行して Baselayer にクエリを実行します�
 baselayer
 ```
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 Baselayer は注文ごとに課金し、料金は操作とそのパラメーターによって異なります。
 
@@ -59,9 +51,7 @@ $4.00、サポート対象の 6 つのリストすべてを対象とするウォ
 ウェブプレゼンスの呼び出し料金は、選択した分析の合計額です (何も選択しない場合は、Baselayer の
 デフォルトセットである NAICS 予測とウェブサイト分析の合計額) 。
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 企業の実在性を確認し、役員情報と登記情報を取得します。
 
@@ -176,17 +166,13 @@ $4.00、サポート対象の 6 つのリストすべてを対象とするウォ
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 組み合わせて使えるサービス
-</div>
+## 組み合わせて使えるサービス {#pairs-well-with}
 
 * [Fiber.ai](/ja/docs/agent/connect/fiber): 検証済みの企業に、ファーモグラフィック情報、従業員数、連絡先を付加します。
 * [Financial Datasets](/ja/docs/agent/connect/financialdatasets): 上場企業に関する最新のニュース報道を追加します。
 * [Similarweb](/ja/docs/agent/connect/similarweb): 検証済みの企業のウェブトラフィックを競合他社とベンチマーク比較します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="run にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

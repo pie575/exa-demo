@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="list-all-websets">
-  # Список всех websets
-</div>
+# Список всех websets {#list-all-websets}
 
 > Возвращает список Websets.
 
@@ -13,9 +11,7 @@
 
 Для фильтрации результатов используйте параметр `search` — он позволяет находить Websets по ID, внешнему ID или названию.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets
 openapi: 3.1.0

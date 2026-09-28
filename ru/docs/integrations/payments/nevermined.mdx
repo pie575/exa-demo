@@ -13,9 +13,7 @@ Agentы оплачивают Exa банковской картой по схем
 
 Если плательщик Nevermined обращается впервые, `POST /team-management/nevermined/purchase-key` создаёт новый Exa API key и начисляет $7 в credits. Когда credits на ключе заканчиваются, выпустите новый token x402 с той же delegation и снова вызовите тот же эндпоинт. Exa вернёт тот же API key, начислив на него ещё $7 в credits.
 
-<div id="buy-a-key">
-  ## Купить ключ
-</div>
+## Купить ключ {#buy-a-key}
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -28,9 +26,7 @@ payment-signature: <x402-token>
 * **Ответ (повторно отправленный token):** кэшированный результат, повторное списание не выполняется.
 * **Отсутствующая или недействительная подпись:** `402 Payment Required` с требованиями к оплате в body.
 
-<div id="how-it-works">
-  ## Как это работает
-</div>
+## Как это работает {#how-it-works}
 
 Платёжную часть берёт на себя Nevermined; Exa видит только подписанный x402 token.
 
@@ -42,9 +38,7 @@ payment-signature: <x402-token>
 
 Полное руководство, готовое для agent (методы SDK, параметры, поиск и создание delegation, устранение неполадок), смотрите в Exa integration guide от Nevermined: [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) (для agents: загрузите [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md)).
 
-<div id="what-7-buys">
-  ## Что можно получить за $7
-</div>
+## Что можно получить за $7 {#what-7-buys}
 
 Credits списываются по стандартным тарифам Exa API. По текущим ценам $7 в credits хватит примерно на:
 
@@ -63,9 +57,7 @@ Credits списываются по стандартным тарифам Exa AP
 Поисковые запросы включают text и highlights не более чем для 10 результатов. Результаты сверх этих 10 и ИИ-сводки тарифицируются отдельно.<br />
 Подробнее о ценах см. на странице [цен Exa](https://exa.ai/pricing).
 
-<div id="when-the-key-runs-out">
-  ## Когда ключ исчерпан
-</div>
+## Когда ключ исчерпан {#when-the-key-runs-out}
 
 Как только credits у API key заканчиваются, Exa возвращает **`HTTP 402`** на обычных эндпоинтах API:
 
@@ -79,9 +71,7 @@ Credits списываются по стандартным тарифам Exa AP
 
 Сминтите новый x402 token с тем же идентификатором плана и delegation, затем снова отправьте его POST-запросом на тот же эндпоинт `/purchase-key`. Exa добавит к тому же API key ещё $7 credits.
 
-<div id="references">
-  ## Ссылки
-</div>
+## Ссылки {#references}
 
 * [Руководство по интеграции Nevermined с Exa](https://nevermined.ai/docs/integrations/exa)
 * [Спецификация делегирования карты x402](https://nevermined.ai/docs/specs/x402-card-delegation)

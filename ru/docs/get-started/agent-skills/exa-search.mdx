@@ -16,9 +16,7 @@ searchable: false
   Укажите свой ключ в переменной `EXA_API_KEY` в окружении agent.
 </Note>
 
-<div id="setup">
-  ## Настройка
-</div>
+## Настройка {#setup}
 
 **Вариант A: установите этот навык напрямую:**
 
@@ -64,17 +62,13 @@ What to do:
 Hard rule throughout: the ключ is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a ключ file with a regex. If a ключ is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## Посмотреть исходный код
-</div>
+## Посмотреть исходный код {#view-source}
 
 <Card title="exa-search/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-search/SKILL.md" cta="Посмотреть исходный код" arrow="true">
   Перед установкой ознакомьтесь с определением навыка exa-search.
 </Card>
 
-<div id="related">
-  ## Смотрите также
-</div>
+## Смотрите также {#related}
 
 <Columns cols={2}>
   <Card title="Все навыки agent" icon="layers" href="/ru/docs/get-started/agent-skills/overview" cta="Смотреть навыки" arrow="true">

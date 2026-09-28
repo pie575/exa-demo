@@ -7,9 +7,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 
 このガイドは、正常に動作する [Search API リクエスト](/ja/docs/search/quickstart)がすでにあることを前提としています。Exa が推奨するベストプラクティスに沿って、そのリクエストを改善する方法を説明します。
 
-<div id="start-with-the-smallest-useful-request">
-  ## 必要最小限のリクエストから始める
-</div>
+## 必要最小限のリクエストから始める {#start-with-the-smallest-useful-request}
 
 最適なベースラインは、`highlights: true` を指定した自然言語のクエリです。Exa は各結果の抜粋の長さを関連度に応じて自動で調整するため、文字数上限を調整する必要はありません。
 
@@ -52,9 +50,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 | `highlights.maxCharacters` | アプリケーションでページごとに抜粋の上限を固定する必要がある場合                |
 | ドメインまたは日付のフィルター             | 条件を満たさない結果が使えない場合                               |
 
-<div id="search-vs-deep-search">
-  ## Search と Deep Search の比較
-</div>
+## Search と Deep Search の比較 {#search-vs-deep-search}
 
 標準の検索は、クエリに対してページを取得し、ランク付けします。Deep Search はリサーチプロセスを実行します。反復的に検索し、見つかった内容を精査して検索を絞り込み、根拠に基づいた結果を統合して生成します。
 
@@ -66,9 +62,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 
 `outputSchema` を使用する場合は、基本的に Deep モードをおすすめします。詳しい手順と例については、[Deep Search ガイド](/ja/docs/search/deep-search)をご覧ください。
 
-<div id="improve-retrieval-quality">
-  ## 検索品質を改善する
-</div>
+## 検索品質を改善する {#improve-retrieval-quality}
 
 結果を改善したい場合は、リクエストの要素を1つずつ変更してください。
 
@@ -120,9 +114,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 
 調整中は、代表的なクエリを少数用意しておいてください。1つの例に合わせて最適化するのではなく、セット全体で結果の関連性と後続タスクの成功率を比較します。リグレッションを再現できるよう、`requestId`、`searchTime`、`costDollars` を記録してください。
 
-<div id="budget-latency-and-context">
-  ## レイテンシとコンテキストの予算配分
-</div>
+## レイテンシとコンテキストの予算配分 {#budget-latency-and-context}
 
 各コントロールは、それぞれ異なるリソースを消費します。
 
@@ -178,9 +170,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 
 結果セット全体に対して 1 つのコンテキスト予算を Exa に配分させる方法 (有力なソースには多く、重複するソースには少なく割り当てる) については、[Dynamic Highlights リサーチプレビュー](/ja/docs/search/highlights#dynamic-highlights)を参照してください。
 
-<div id="tips-for-common-use-cases">
-  ## よくあるユースケースのヒント
-</div>
+## よくあるユースケースのヒント {#tips-for-common-use-cases}
 
 | 目的                       | 推奨                                                                          | 避けるべきこと                       |
 | ------------------------ | --------------------------------------------------------------------------- | ----------------------------- |
@@ -193,9 +183,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 | 少数のページからより多くのコンテキストを得たい  | ハイライト付きで Search を実行してから Contents を呼び出す                                      | すべての結果で全文を取得する                |
 | レイテンシを抑えたい               | コンパクトなコンテンツで `fast` または `instant` を試して計測する                                  | 鮮度や合成の制御をデフォルトで追加する           |
 
-<div id="when-to-use-another-endpoint">
-  ## 別のエンドポイントを使うべきケース
-</div>
+## 別のエンドポイントを使うべきケース {#when-to-use-another-endpoint}
 
 タスクの性質が異なる場合は、別の Exa エンドポイントを使用してください。
 
@@ -205,9 +193,7 @@ keywords: ["search api", "search quality", "rag", "retrieval", "latency", "struc
 | URL がすでにわかっている          | [Contents](/ja/docs/contents/quickstart) |
 | スケジュールに沿って検索を定期実行する     | [Monitors](/ja/docs/monitors/quickstart) |
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="Search API リファレンス" icon="square-terminal" href="/ja/docs/reference/search" cta="リファレンスを開く" arrow="true">

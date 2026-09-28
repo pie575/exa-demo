@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжить изучение.
 
-<div id="verifying-signatures">
-  # Проверка подписей
-</div>
+# Проверка подписей {#verifying-signatures}
 
 > Узнайте, как безопасно проверять подписи вебхуков, чтобы убедиться, что запросы приходят от Exa
 
 Получив вебхук от Exa, следует убедиться, что он действительно отправлен нами: это гарантирует целостность и подлинность данных. Exa подписывает payload всех вебхуков секретным ключом, уникальным для вашего эндпоинта вебхука.
 
-<div id="how-webhook-signatures-work">
-  ## Как работают подписи вебхуков
-</div>
+## Как работают подписи вебхуков {#how-webhook-signatures-work}
 
 Exa использует HMAC SHA256 для подписи payload вебхуков. Подпись передаётся в header `Exa-Signature`, который содержит:
 
@@ -26,9 +22,7 @@ Exa использует HMAC SHA256 для подписи payload вебхук�
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## Процесс верификации
-</div>
+## Процесс верификации {#verification-process}
 
 Чтобы проверить подпись вебхука:
 
@@ -371,9 +365,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-<div id="security-best-practices">
-  ## Лучшие практики безопасности
-</div>
+## Лучшие практики безопасности {#security-best-practices}
 
 Соблюдение этих практик поможет сделать внедрение вебхуков безопасным и надёжным:
 
@@ -393,13 +385,9 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 
 <br />
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### Ошибки недействительной подписи
-</div>
+### Ошибки недействительной подписи {#invalid-signature-errors}
 
 Если верификация подписи не проходит:
 
@@ -408,9 +396,7 @@ Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff5
 3. **Проверьте разбор header**: убедитесь, что корректно извлекаете временную метку и подписи из header
 4. **Проблемы с кодировкой**: убедитесь, что на всех этапах верификации используется единая кодировка UTF-8
 
-<div id="testing-signatures-locally">
-  ### Локальное тестирование подписей
-</div>
+### Локальное тестирование подписей {#testing-signatures-locally}
 
 Проверить свою логику верификации подписи можно с помощью секрета вебхука и тестового payload:
 
@@ -442,9 +428,7 @@ print(f"Test signature valid: {is_valid}")  # Должно вывести True
 
 <br />
 
-<div id="whats-next">
-  ## Что дальше?
-</div>
+## Что дальше? {#whats-next}
 
 * Узнайте о [событиях вебхуков](/ru/docs/websets/api/events/types) и их payload
 * Настройте [повторные отправки и мониторинг вебхуков](/ru/docs/websets/api/webhooks/attempts/list-webhook-attempts)

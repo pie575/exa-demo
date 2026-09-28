@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="polymarket">
-  # Polymarket
-</div>
+# Polymarket {#polymarket}
 
 > 予測市場のオッズ、価格履歴、オーダーブック、トレーダーのポジションを取得します。
 
@@ -17,18 +15,14 @@
 [Exa Agent](/ja/docs/agent/quickstart) の実行に `polymarket` をアタッチすると、
 エージェントは Exa のウェブ検索と並行して Polymarket にクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 特定のトピックに関する予測市場と、現在の市場価格が示すオッズを検索する。
 * あるアウトカムのインプライド確率が時間の経過とともにどう変化したかを比較する。
 * 市場の流動性、買い/売りの板の厚み、上位ポジション保有者を確認する。
 * トレーダーの現在のポジションと直近のオンチェーンアクティビティを確認する。
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` には次の値を指定します。
 
@@ -36,17 +30,13 @@
 polymarket
 ```
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 Polymarket の読み取り API は認証不要かつ無料のため、Polymarket のツール呼び出しに
 費用はかかりません。発生するのは標準の
 [Agent 実行の料金](/ja/docs/agent/quickstart#pricing)のみです。
 
-<div id="data-available">
-  ## 利用可能なデータ
-</div>
+## 利用可能なデータ {#data-available}
 
 | データ        | 説明                                                   |
 | ---------- | ---------------------------------------------------- |
@@ -55,9 +45,7 @@ Polymarket の読み取り API は認証不要かつ無料のため、Polymarket
 | オーダーブック    | マーケットの各アウトカムにおけるリアルタイムの買い/売りの板の厚みとスプレッド。             |
 | 保有者とトレーダー  | マーケットの上位ポジション保有者、およびトレーダーの現在のポジションと直近のオンチェーンアクティビティ。 |
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 FRBの利下げについて市場価格が示すオッズと、過去1か月間の推移を取得します。
 
@@ -125,17 +113,13 @@ FRBの利下げについて市場価格が示すオッズと、過去1か月間�
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 相性の良い連携先
-</div>
+## 相性の良い連携先 {#pairs-well-with}
 
 * [Exa ウェブ検索](/ja/docs/search/quickstart): マーケットのオッズに、報道や背景情報を補足します。
 * [Particle](/ja/docs/agent/connect/particle): オッズ変動の背景にあるニュース報道を取得します。
 * [Financial Datasets](/ja/docs/agent/connect/financialdatasets): 市場価格が示すオッズを、株価、ファンダメンタルズ、マクロ経済データと関連付けます。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

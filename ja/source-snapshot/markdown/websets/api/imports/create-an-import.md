@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="create-an-import">
-  # インポートを作成する
-</div>
+# インポートを作成する {#create-an-import}
 
 > Websets にデータをアップロードするための新しいインポートを作成します。インポートは次の用途に使用できます。
 
@@ -15,9 +13,7 @@
 
 インポートの作成後は、`uploadValidUntil`(デフォルトは 1 時間)まで、返された `uploadUrl` にデータをアップロードできます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

@@ -1,27 +1,21 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="ai-sdk-by-vercel">
-  # AI SDK by Vercel
-</div>
+# AI SDK by Vercel {#ai-sdk-by-vercel}
 
 > Добавьте веб-поиск Exa в приложения на AI SDK с помощью пакета @exalabs/ai-sdk.
 
 Используйте пакет `@exalabs/ai-sdk`, чтобы добавить веб-поиск Exa в приложения, созданные на AI SDK by Vercel. Вы указываете Exa API key, а инструмент `webSearch()` берёт на себя поисковые запросы вашей модели.
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 ```bash install.sh theme={null}
 npm install @exalabs/ai-sdk
 ```
 
-<div id="quick-start">
-  ## Быстрый старт
-</div>
+## Быстрый старт {#quick-start}
 
 ```typescript quickstart.ts theme={null}
 import { generateText, stepCountIs } from 'ai';
@@ -49,9 +43,7 @@ console.log(text);
   Перед запуском примера укажите свой key в переменной окружения `EXA_API_KEY`. Пакет считывает её автоматически.
 </Info>
 
-<div id="defaults">
-  ## Значения по умолчанию
-</div>
+## Значения по умолчанию {#defaults}
 
 `webSearch()` использует следующие значения по умолчанию:
 
@@ -60,9 +52,7 @@ console.log(text);
 * `contents.text`: `3000` символов на результат
 * `maxAgeHours`: значение по умолчанию для отката к кешу; задайте этот параметр, если нужны более строгие требования к свежести данных
 
-<div id="configure-search">
-  ## Настройка поиска
-</div>
+## Настройка поиска {#configure-search}
 
 С помощью приведённых ниже параметров можно настроить поиск и извлечение контента:
 
@@ -88,9 +78,7 @@ const { text } = await generateText({
 console.log(text);
 ```
 
-<div id="search-options">
-  ### Параметры поиска
-</div>
+### Параметры поиска {#search-options}
 
 | Параметр                                  | Описание                                                                                                |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -102,9 +90,7 @@ console.log(text);
 | `includeText` / `excludeText`             | Обязательное наличие или исключение текста в результатах.                                               |
 | `userLocation`                            | Двухбуквенный код страны для поиска с учётом местоположения.                                            |
 
-<div id="content-options">
-  ### Параметры контента
-</div>
+### Параметры контента {#content-options}
 
 | Параметр                                               | Описание                                                                                            |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------- |
@@ -115,9 +101,7 @@ console.log(text);
 | `contents.subpages` / `contents.subpageTarget`         | Обходит подстраницы и при необходимости выбирает конкретную подстраницу.                            |
 | `contents.extras.links` / `contents.extras.imageLinks` | Возвращает ссылки или ссылки на изображения из результатов.                                         |
 
-<div id="typescript-support">
-  ## Поддержка TypeScript
-</div>
+## Поддержка TypeScript {#typescript-support}
 
 Пакет содержит типы TypeScript:
 
@@ -132,9 +116,7 @@ const config: ExaSearchConfig = {
 const search = webSearch(config);
 ```
 
-<div id="related-pages">
-  ## Связанные страницы
-</div>
+## Связанные страницы {#related-pages}
 
 <Columns cols={2}>
   <Card title="Использование Vercel AI Gateway" icon="cloud" href="/ru/docs/integrations/vercel/ai-gateway" cta="Открыть руководство" arrow="true">

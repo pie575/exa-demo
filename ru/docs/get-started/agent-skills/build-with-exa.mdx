@@ -15,9 +15,7 @@ keywords: ["build with exa", "agent skills", "exa api", "sdk"]
   Задайте ключ в переменной `EXA_API_KEY` в окружении вашего agent.
 </Note>
 
-<div id="setup">
-  ## Настройка
-</div>
+## Настройка {#setup}
 
 **Вариант A: установите этот навык напрямую:**
 
@@ -63,17 +61,13 @@ npx skills add exa-labs/agent-skills --skill "build-with-exa"
 Строгое правило на всех шагах: ключ — это secret. Проверять его можно только через проверку наличия/длины (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) или по коду HTTP-статуса — никогда не выводи и не применяй `echo`, `cat` или `grep` с выводом к файлам и переменным, которые могут его содержать, и не пытайся «замаскировать» файл ключа регулярным выражением. Если ключ всё же оказался раскрыт, скажи мне ротировать его на https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## Посмотреть исходный код
-</div>
+## Посмотреть исходный код {#view-source}
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="Посмотреть исходный код" arrow="true">
   Перед установкой ознакомьтесь с определением навыка build-with-exa.
 </Card>
 
-<div id="related">
-  ## Связанные материалы
-</div>
+## Связанные материалы {#related}
 
 <Columns cols={2}>
   <Card title="Все навыки agent" icon="layers" href="/ru/docs/get-started/agent-skills/overview" cta="Просмотреть навыки" arrow="true">

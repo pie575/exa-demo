@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-connect">
-  # Exa Connect
-</div>
+# Exa Connect {#exa-connect}
 
 > Exa Agent から、Exa ウェブ検索とあわせてプレミアムなデータパートナーにもライブでアクセスできます。すべて1回の実行で完結します。
 
@@ -26,9 +24,7 @@ Exa Connect は、プレミアムなデータパートナーを Exa Agent のル
   MCP を使いたい場合は、[Exa MCP](/ja/docs/get-started/exa-mcp#exa-agent) で Exa Agent と [Exa Connect](/ja/docs/agent/connect/overview) を利用できます。`tools=agent_run` を有効にすると、Claude、Cursor、その他の MCP クライアントから、多段階のリサーチ、リスト作成、エンリッチメント、構造化出力を実行できます。
 </Tip>
 
-<div id="why-exa-connect">
-  ## Exa Connect を選ぶ理由
-</div>
+## Exa Connect を選ぶ理由 {#why-exa-connect}
 
 * **個別の連携なしでプレミアムデータを利用可能。** 契約の締結や SDK の組み込みを行わずに、
   パートナーのデータにアクセスできます。呼び出すのは Exa API 1 つだけです。
@@ -40,9 +36,7 @@ Exa Connect は、プレミアムなデータパートナーを Exa Agent のル
 * **インデックスとパートナーのデータを 1 回の実行で。** Connect は Exa インデックスを基盤としています。
   Exa Agent は各ソースを強みが最も活きる場面で使い分け、結果の出典を示します。
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 1. [`POST /agent/runs`](/ja/docs/reference/agent-api/create-a-run) の `dataSources` 配列で、1 つ以上のプロバイダーを**アタッチ**します。
 2. Exa Agent は、クエリと
@@ -50,9 +44,7 @@ Exa Connect は、プレミアムなデータパートナーを Exa Agent のル
 3. パートナーの結果は**ウェブリサーチと統合**され、
    ソース付きの構造化出力として返されます。
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 <Note>
   Exa Connect の料金は、標準の [Agent run の料金](/ja/docs/agent/quickstart#pricing)に加算されます。
@@ -170,9 +162,7 @@ Baselayer はオーダー単位で課金され、料金は操作によって異�
   ```
 </CodeGroup>
 
-<div id="data-partners">
-  ## データパートナー
-</div>
+## データパートナー {#data-partners}
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -217,13 +207,9 @@ Baselayer はオーダー単位で課金され、料金は操作によって異�
 
 上記以外のソースが必要な場合は、[追加プロバイダー](/ja/docs/agent/connect/additional-partners)をご覧ください。追加プロバイダーは、当社チームにお問い合わせいただければご利用いただけます。
 
-<div id="usage">
-  ## 使用方法
-</div>
+## 使用方法 {#usage}
 
-<div id="combining-providers">
-  ### 複数のプロバイダーを組み合わせる
-</div>
+### 複数のプロバイダーを組み合わせる {#combining-providers}
 
 タスクに必要な数だけパートナーをアタッチできます。Exa Agent は各パートナーをその強みが最も活きる場面で呼び出し、得られた結果をウェブ検索の結果と組み合わせて、1 つの構造化された回答にまとめます。
 

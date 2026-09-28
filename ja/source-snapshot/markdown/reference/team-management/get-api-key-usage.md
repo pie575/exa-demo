@@ -1,10 +1,10 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの完全版は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
 <div id="get-api-key-usage">
-  # API キーの使用量を取得
+  # API キーの使用量を取得 {#get-api-key-usage}
 </div>
 
 > 特定の API キーの使用状況分析と請求データを取得します。
@@ -18,19 +18,19 @@
 </Info>
 
 <div id="overview">
-  ## 概要
+  ## 概要 {#overview}
 </div>
 
 Get API Key Usage エンドポイントを使用すると、特定の API キーについて、指定した期間における詳細な請求データと使用量の分析データを取得できます。このエンドポイントは Exa の請求システムから取得したコストデータを返すため、その API キーに対して実際に請求されている内容を正確に確認できます。
 
 <div id="path-parameters">
-  ## パスパラメーター
+  ## パスパラメーター {#path-parameters}
 </div>
 
 * **id**: 使用量を取得する対象の API キーの一意の識別子
 
 <div id="query-parameters">
-  ## クエリパラメーター
+  ## クエリパラメーター {#query-parameters}
 </div>
 
 * **start&#95;date** (任意) : 使用期間の開始日 (ISO 8601 形式、例: `2025-01-01T00:00:00Z` または `2025-01-01`) 。デフォルトは 30 日前です。過去 6 か月 (180 日) 以内の日付を指定してください。
@@ -38,7 +38,7 @@ Get API Key Usage エンドポイントを使用すると、特定の API キー
 * **group&#95;by** (任意) : 結果をグループ化する時間単位 (`hour`、`day`、または `month`) 。現在は将来の機能拡張用に予約されており、指定してもレスポンスの構造は変わりません。デフォルトは `day` です。
 
 <div id="response">
-  ## レスポンス
+  ## レスポンス {#response}
 </div>
 
 以下を含む、使用量と請求に関する詳細情報を返します。
@@ -57,7 +57,7 @@ Get API Key Usage エンドポイントを使用すると、特定の API キー
 * **metadata**: レポート生成日時のタイムスタンプを含むオブジェクト
 
 <div id="important-notes">
-  ## 重要な注意事項
+  ## 重要な注意事項 {#important-notes}
 </div>
 
 * **遡及期間の上限は6か月**: 請求システムで遡って取得できる期間は最大6か月 (180日) です。`start_date` に180日より前の日付を指定したリクエストは、400 エラーを返します。
@@ -66,7 +66,7 @@ Get API Key Usage エンドポイントを使用すると、特定の API キー
 * **日付の形式**: 日付は ISO 8601 形式で指定します。時刻部分は省略可能です (例: `2025-01-01` または `2025-01-01T00:00:00Z`) 。
 
 <div id="use-cases">
-  ## ユースケース
+  ## ユースケース {#use-cases}
 </div>
 
 このエンドポイントは、次のような用途に役立ちます。
@@ -78,7 +78,7 @@ Get API Key Usage エンドポイントを使用すると、特定の API キー
 * 特定のAPIキーに関する請求上の疑問点の調査
 
 <div id="openapi">
-  ## OpenAPI
+  ## OpenAPI {#openapi}
 </div>
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}/usage

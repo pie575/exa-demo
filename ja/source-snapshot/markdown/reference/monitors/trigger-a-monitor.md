@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="trigger-a-monitor">
-  # モニターをトリガーする
-</div>
+# モニターをトリガーする {#trigger-a-monitor}
 
 > スケジュールに関係なく、実行をただちに開始します。ステータスが `active` または `paused` のモニターで利用できます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/{id}/trigger
 openapi: 3.1.0

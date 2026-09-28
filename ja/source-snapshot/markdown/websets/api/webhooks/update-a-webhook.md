@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="update-a-webhook">
-  # Webhook を更新する
-</div>
+# Webhook を更新する {#update-a-webhook}
 
 > Webhook の送信先 URL、サブスクライブ対象のイベント、またはメタデータを更新します。指定しなかったフィールドは変更されません。
 
@@ -15,9 +13,7 @@
   失敗として扱われます。
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /v0/webhooks/{id}
 openapi: 3.1.0

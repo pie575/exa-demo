@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="code-docs">
-  # Код и документация
-</div>
+# Код и документация {#code-docs}
 
 > Находите код, техническую документацию и рекомендации по реализации с помощью Exa Search.
 
@@ -42,54 +40,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   оценивает качество поиска для задач программирования.
 </Tip>
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Агенты для написания кода и инструменты генерации кода
 * Продукты для поиска по коду и документации для разработчиков
 * Сценарии отладки, миграции и настройки
 * Технические исследования по репозиториям, документации и реестрам пакетов
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### Поиск библиотек по возможностям
-</div>
+### Поиск библиотек по возможностям {#discover-libraries-by-capability}
 
 Опишите интересующие вас возможности, экосистему и ограничения. Так подходящие варианты подбираются по тому, что они умеют, а не по точному названию проекта.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### Поиск документации по реализации
-</div>
+### Поиск документации по реализации {#retrieve-implementation-documentation}
 
 Укажите продукт и конкретную операцию. Тогда search сможет поставить документацию API и руководства по внедрению выше общих обсуждений.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### Проверка изменений в конкретной версии
-</div>
+### Проверка изменений в конкретной версии {#check-version-specific-changes}
 
 Указывайте канал выпуска или версию, когда важна совместимость. Так в результатах будет меньше информации о старых релизах.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### Поиск переиспользуемых инструментов для агентов
-</div>
+### Поиск переиспользуемых инструментов для агентов {#find-reusable-agent-tooling}
 
 Указывайте тип артефакта и задачу, а не общую фразу вроде «инструменты ИИ».
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## Отправка запроса
-</div>
+## Отправка запроса {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -137,9 +121,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные библиотеки, технические критерии и поля вывода — и Agent вернёт результаты, проверенные по схеме, со ссылками на источники.
 

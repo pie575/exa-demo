@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="jinko">
-  # Jinko
-</div>
+# Jinko {#jinko}
 
 > リアルタイム料金を確認できるフライト・ホテル検索。
 
@@ -16,17 +14,13 @@
 エージェントは Exa のウェブ検索と併せて
 Jinko にもクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 路線と日付を指定して、運賃、手荷物、変更規定を含む最新のフライトオファーを検索する。
 * 目的地のホテルを最新の客室料金とあわせて検索する、または特定のホテルの料金を再検索する。
 * 日付の範囲、座席クラス、予算を横断的に比較して、目的地や柔軟な日程を探す。
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` には次の値を指定します：
 
@@ -34,9 +28,7 @@ Jinko にもクエリを実行します。
 jinko
 ```
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 ニューヨークから3月に往復$400未満で行けるビーチリゾートを探します。
 
@@ -130,16 +122,12 @@ jinko
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 組み合わせて使うと効果的なツール
-</div>
+## 組み合わせて使うと効果的なツール {#pairs-well-with}
 
 * [Similarweb](/ja/docs/agent/connect/similarweb): 旅行先に関連する旅行サイトや予約プラットフォームを調査します。
 * [Particle](/ja/docs/agent/connect/particle): 特定の場所に関する最新の報道や旅行関連のコメントを取得します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="get-started">
-  # Начало работы
-</div>
+# Начало работы {#get-started}
 
 > Добро пожаловать в панель Websets! Находите в интернете всё, что угодно, каким бы сложным ни был запрос.
 
 <br />
 
-<div id="1-sign-up">
-  ## 1. Регистрация
-</div>
+## 1. Регистрация {#1-sign-up}
 
 Websets теперь общедоступен по адресу [https://websets.exa.ai/](https://websets.exa.ai/)!
 
@@ -21,9 +17,7 @@ Websets теперь общедоступен по адресу [https://websets
 
 <br />
 
-<div id="2-get-started">
-  ## 2. Начало работы
-</div>
+## 2. Начало работы {#2-get-started}
 
 Websets очень прост в использовании.
 
@@ -39,9 +33,7 @@ Websets очень прост в использовании.
 
 <br />
 
-<div id="3-inside-your-webset">
-  ## 3. Внутри вашего Webset
-</div>
+## 3. Внутри вашего Webset {#3-inside-your-webset}
 
 Если коротко, Websets делает следующее:
 
@@ -60,9 +52,7 @@ Websets очень прост в использовании.
 
 <br />
 
-<div id="4-interacting-with-your-webset">
-  ## 4. Работа с вашим Webset
-</div>
+## 4. Работа с вашим Webset {#4-interacting-with-your-webset}
 
 Когда Webset готов, можно приступать к работе с его компонентами!
 
@@ -80,9 +70,7 @@ Websets очень прост в использовании.
 
 <br />
 
-<div id="5-add-more-result-criteria-and-custom-columns">
-  ## 5. Добавьте дополнительные criteria для результатов и пользовательские столбцы
-</div>
+## 5. Добавьте дополнительные criteria для результатов и пользовательские столбцы {#5-add-more-result-criteria-and-custom-columns}
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/add-enrichment.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=5d94338cdb1931e9afced3c196acf075" alt="Добавление столбца enrichment" width="2870" height="1734" data-path="images/websets/add-enrichment.png" />
 
@@ -98,9 +86,7 @@ Websets очень прост в использовании.
 
 <br />
 
-<div id="6-share-and-export-your-webset">
-  ## 6. Поделитесь Webset и экспортируйте его
-</div>
+## 6. Поделитесь Webset и экспортируйте его {#6-share-and-export-your-webset}
 
 1. Нажмите «Экспорт», чтобы скачать Webset в виде CSV-файла.
 
@@ -108,8 +94,6 @@ Websets очень прост в использовании.
 
 <br />
 
-<div id="7-search-history">
-  ## 7. История поиска
-</div>
+## 7. История поиска {#7-search-history}
 
 Нажмите на значок боковой панели в левом верхнем углу — в левой панели откроется вся история с ранее созданными Websets.

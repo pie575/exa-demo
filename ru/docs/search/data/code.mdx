@@ -38,54 +38,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   оценивает качество поиска для задач написания кода.
 </Tip>
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Coding agents и инструменты генерации кода
 * Продукты для поиска по коду и документации для разработчиков
 * Рабочие процессы отладки, миграции и настройки
 * Технические исследования по репозиториям, документации и реестрам пакетов
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### Поиск библиотек по возможностям
-</div>
+### Поиск библиотек по возможностям {#discover-libraries-by-capability}
 
 Опишите нужную возможность, экосистему и важные для вас ограничения. Тогда кандидаты подбираются по тому, что они умеют, а не по точному названию проекта.
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### Получение документации по внедрению
-</div>
+### Получение документации по внедрению {#retrieve-implementation-documentation}
 
 Укажите продукт и точную операцию. Тогда search сможет отдать приоритет документации по API и руководствам по внедрению, а не общим обсуждениям.
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### Проверка изменений в конкретной версии
-</div>
+### Проверка изменений в конкретной версии {#check-version-specific-changes}
 
 Указывайте канал выпуска или версию, когда важна совместимость. Это уменьшит количество результатов, относящихся к старым выпускам.
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### Поиск переиспользуемого инструментария для agent
-</div>
+### Поиск переиспользуемого инструментария для agent {#find-reusable-agent-tooling}
 
 Указывайте тип артефакта и задачу, а не общую формулировку вроде «AI tools».
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## Выполните запрос
-</div>
+## Выполните запрос {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -133,9 +119,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [выполнение задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные библиотеки, технические criteria и поля вывода, и Agent вернёт результаты, проверенные по schema, вместе с citations.
 

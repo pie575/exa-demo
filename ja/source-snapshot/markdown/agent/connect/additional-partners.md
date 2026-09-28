@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="additional-providers">
-  # その他のプロバイダー
-</div>
+# その他のプロバイダー {#additional-providers}
 
 > セルフサービスで利用できるプロバイダー以外の Exa Connect パートナー。
 

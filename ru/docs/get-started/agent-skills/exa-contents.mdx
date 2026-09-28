@@ -16,9 +16,7 @@ searchable: false
   Задайте свой ключ в переменной `EXA_API_KEY` в окружении agent.
 </Note>
 
-<div id="setup">
-  ## Настройка
-</div>
+## Настройка {#setup}
 
 **Вариант A: установите этот навык напрямую:**
 
@@ -64,17 +62,13 @@ npx skills add exa-labs/agent-skills --skill "exa-contents"
 Жёсткое правило на всех шагах: ключ — это секрет. Проверяй его только по наличию/длине (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) или по коду статуса HTTP — никогда не печатай, не выполняй `echo`, `cat` или `grep` с выводом для файлов и переменных, которые могут его содержать, и никогда не пытайся «замаскировать» файл с ключом регулярным выражением. Если ключ всё же был раскрыт, скажи мне обновить его на https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## Посмотреть исходный код
-</div>
+## Посмотреть исходный код {#view-source}
 
 <Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="Посмотреть исходный код" arrow="true">
   Перед установкой ознакомьтесь с определением навыка exa-contents.
 </Card>
 
-<div id="related">
-  ## Похожее
-</div>
+## Похожее {#related}
 
 <Columns cols={2}>
   <Card title="Все навыки для agent" icon="layers" href="/ru/docs/get-started/agent-skills/overview" cta="Смотреть навыки" arrow="true">

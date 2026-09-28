@@ -25,9 +25,7 @@ icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
 
 ***
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="前提条件とインストール">
@@ -80,9 +78,7 @@ icon: "/docs/images/sidebar-icons/pydantic-ai.svg"
 
 ***
 
-<div id="configuration">
-  ## 設定
-</div>
+## 設定 {#configuration}
 
 `ExaSearch` の全フィールドとそのデフォルト値は次のとおりです。
 
@@ -103,9 +99,7 @@ ExaSearch(
 
 `include_domains` と `exclude_domains` は `web_search` と `deep_search` に適用され、併用はできません。上限値が範囲外の場合や両方のドメインリストを設定した場合は、構築時にエラーが発生します。
 
-<div id="text-summary">
-  ### テキスト要約
-</div>
+### テキスト要約 {#text-summary}
 
 `text_summary` を設定すると、各 `web_search` 呼び出しで、結果をまとめたプレーンテキストの要約もあわせてリクエストされます。形式を制約しない要約には `True` を、特定の形式で要約させたい場合は、目的の形式を記述した文字列を渡します。
 
@@ -117,9 +111,7 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 ツールの戻り値の形式に変更はありません。Exa が要約を返した場合は、`Summary:` 行として先頭に付加されます。
 
-<div id="structured-citations">
-  ### 構造化された引用
-</div>
+### 構造化された引用 {#structured-citations}
 
 すべてのツールは `ToolReturn` を返します。`return_value` にはモデルが読む可読テキスト (`Sources:` ブロックを含む) が、`metadata` には `'sources'` キーの下に構造化された `ExaSource` レコード (`{'url': ..., 'title': ...}`) としてソースが格納されます。メタデータはモデルに送信されないため、テキストを解析しなくても引用を表示できます。
 
@@ -134,9 +126,7 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-<div id="custom-client">
-  ### カスタムクライアント
-</div>
+### カスタムクライアント {#custom-client}
 
 デフォルトのクライアントは `exa_py.AsyncExa` で、`EXA_API_KEY` を使って設定されます。認証やベース URL を明示的に設定する場合や、テストでフェイクに差し替える場合は、`ExaClient` プロトコルを満たす任意のオブジェクトを渡します。
 
@@ -149,9 +139,7 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-<div id="exa-agent-runs">
-  ## Exa Agent の実行
-</div>
+## Exa Agent の実行 {#exa-agent-runs}
 
 [Exa Agent API](/ja/docs/agent/quickstart) は、自由形式のリサーチタスクを非同期で実行します。`ExaAgent` ケイパビリティは、このライフサイクルを Pydantic AI の[遅延ツール呼び出し (deferred tool calls) ](https://pydantic.dev/docs/ai/deferred-tools/)にマッピングします。`exa_agent` ツールは実行を作成したうえで処理を遅延させ、Exa の実行 ID を遅延呼び出しのメタデータに保持します。
 
@@ -183,9 +171,7 @@ ExaAgent(
 
 ***
 
-<div id="agent-spec-yamljson">
-  ## Agent spec (YAML/JSON)
-</div>
+## Agent spec (YAML/JSON) {#agent-spec-yamljson}
 
 どちらのケイパビリティもPydantic AIの[agent spec](https://pydantic.dev/docs/ai/agents/#agent-spec)に対応しているため、Pythonコードではなく設定ファイルで宣言できます。
 
@@ -210,9 +196,7 @@ agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAge
 
 ***
 
-<div id="next">
-  ## 次のステップ
-</div>
+## 次のステップ {#next}
 
 * [**Search API**](/ja/docs/search/quickstart) - ハイライト、要約、ディープサーチに対応したセマンティック検索
 * [**Agent API**](/ja/docs/agent/quickstart) - オープンエンドな非同期リサーチの実行

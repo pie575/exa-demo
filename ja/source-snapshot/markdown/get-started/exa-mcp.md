@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-mcp">
-  # Exa MCP
-</div>
+# Exa MCP {#exa-mcp}
 
 > ChatGPT、Codex、Claude、Grok、Cursor をはじめ、あらゆる MCP クライアントを Exa のウェブ検索、ページ取得、Exa Agent、Exa Connect の各ツールに接続できます。
 
@@ -19,9 +17,7 @@ https://mcp.exa.ai/mcp
 
 API キーがなくてもすぐに使い始められます。Exa MCP はオープンソースで、[GitHub](https://github.com/exa-labs/exa-mcp-server) で公開されています。
 
-<div id="install">
-  ## インストール
-</div>
+## インストール {#install}
 
 <div className="docs-tabs">
   <Tabs>
@@ -52,7 +48,7 @@ API キーがなくてもすぐに使い始められます。Exa MCP はオー�
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-      ### Claude Code CLI
+### Claude Code CLI {#claude-code-cli}
 
       <Steps>
         <Step title="プラグインをインストールする">
@@ -70,7 +66,7 @@ API キーがなくてもすぐに使い始められます。Exa MCP はオー�
         </Step>
       </Steps>
 
-      ### Desktop、Web &amp; Cowork
+### Desktop、Web &amp; Cowork {#desktop-web-cowork}
 
       Claude Desktop、Web、Cowork はいずれも Exa の公式コネクタを使用します。
 
@@ -205,9 +201,7 @@ API キーがなくてもすぐに使い始められます。Exa MCP はオー�
   </Tabs>
 </div>
 
-<div id="authentication">
-  ## 認証
-</div>
+## 認証 {#authentication}
 
 Exa MCP は 3 つの認証モードをサポートしています。
 
@@ -217,9 +211,7 @@ Exa MCP は 3 つの認証モードをサポートしています。
 | OAuth  | 対話型クライアント、マーケットプレイスからのインストール、本番環境での利用 | `https://mcp.exa.ai/mcp?login` に接続し、ブラウザで Exa にサインインします。利用量はお使いの Exa チームに計上されます。 |
 | API キー | MCP OAuth に対応していないクライアント              | `x-api-key` ヘッダーに API キーを設定し、`https://mcp.exa.ai/mcp` に接続します                     |
 
-<div id="sign-in-with-oauth">
-  ### OAuthでサインイン
-</div>
+### OAuthでサインイン {#sign-in-with-oauth}
 
 ChatGPT、Claude、その他のマーケットプレイスからインストールした場合は、必要に応じてサインインを求められます。MCP OAuthに対応している任意のクライアントでは、次のURLに接続すると同じフローを利用できます。
 
@@ -229,9 +221,7 @@ https://mcp.exa.ai/mcp?login
 
 クライアントが Exa の認可サーバーを検出し、ブラウザでサインイン画面を開いて、アクセスを管理します。
 
-<div id="use-an-api-key">
-  ### API キーを使用する
-</div>
+### API キーを使用する {#use-an-api-key}
 
 <Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
@@ -243,9 +233,7 @@ MCP サーバーの設定に `x-api-key` ヘッダーを追加します。
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-<div id="available-tools">
-  ## 利用可能なツール
-</div>
+## 利用可能なツール {#available-tools}
 
 | ツール                       | 利用条件               | 用途                                    |
 | ------------------------- | ------------------ | ------------------------------------- |
@@ -264,9 +252,7 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   `tools` リストを明示的に指定するとデフォルトの設定は上書きされます。ウェブ検索やフェッチも含め、有効にしたいツールをすべて指定してください。
 </Tip>
 
-<div id="exa-agent">
-  ## Exa Agent
-</div>
+## Exa Agent {#exa-agent}
 
 複数回の検索が必要なリサーチには [Exa Agent](/ja/docs/agent/quickstart) を使用してください。たとえば、リストを作成する、各アイテムが条件を満たすか確認する、構造化された結果を返すといった用途に適しています。
 
@@ -319,9 +305,7 @@ API キーを使用する場合は、`login` を省略し、[認証](#authentica
 
 出力スキーマのパターン、effort モード、データソース、料金については、[Exa Agent ガイド](/ja/docs/agent/quickstart)を参照してください。
 
-<div id="advanced-search">
-  ## Advanced search
-</div>
+## Advanced search {#advanced-search}
 
 カテゴリやドメインの明示的なフィルター、日付範囲、テキスト制約、地域ターゲティング、クエリ拡張、要約、ハイライト、鮮度の制御、サブページのクロールが必要なリクエストには、`web_search_advanced_exa` を使用してください。通常の検索では引き続き `web_search_exa` を使用します。モデルに公開するツールが少なく、必要な設定も少なくて済みます。
 
@@ -333,9 +317,7 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
 
 MCP ツールは、[Search API](/ja/docs/reference/search) の主要なオプションを、`includeDomains`、`startPublishedDate`、`enableHighlights`、`maxAgeHours` など、ツールから扱いやすいフィールドとして公開しています。正確なフィールド名は、お使いのクライアントでツールスキーマを参照してください。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="レート制限エラー (429)">
@@ -373,9 +355,7 @@ MCP ツールは、[Search API](/ja/docs/reference/search) の主要なオプシ
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={2}>
   <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="ソースを表示" arrow="true">

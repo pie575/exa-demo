@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="websets">
-  # Websets
-</div>
+# Websets {#websets}
 
 > Webから、検証済みでエンリッチされたデータセットを構築できます。
 
-<div id="what-are-websets">
-  ## Websets とは
-</div>
+## Websets とは {#what-are-websets}
 
 Webset は、自然言語のクエリと目標アイテム数を指定して作成します。すべての結果が満たすべき条件 (criteria) と、承認された各アイテムに値を設定するエンリッチメントフィールドを追加してください。結果は ダッシュボード、API、または webhook を通じて非同期で配信されます。
 
@@ -23,18 +19,14 @@ Webset は、自然言語のクエリと目標アイテム数を指定して作�
   Websets API の利用には有料の Websets プランが必要です。Search API のクレジットと Websets のクレジットは別管理です。
 </Info>
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 1. **検索を定義する:** 自然言語のクエリ、取得する結果の件数、および必要に応じて検証条件とエンリッチメントを指定します。
 2. **検索と検証:** Websets が候補を探し、それぞれを指定した条件と照合します。条件に一致した結果だけがアイテムになります。
 3. **エンリッチメントを実行する:** 検証済みの各アイテムについて、Websets が CEO の名前、資金調達額、連絡先情報など、リクエストした追加データを検索します。
 4. **結果を受け取る:** ステータスをポーリングするか、Webhook で更新を受け取るか、アイテムが追加されるたびにダッシュボードで確認します。
 
-<div id="key-capabilities">
-  ## 主な機能
-</div>
+## 主な機能 {#key-capabilities}
 
 | 機能                 | 内容                                                     |
 | ------------------ | ------------------------------------------------------ |
@@ -44,9 +36,7 @@ Webset は、自然言語のクエリと目標アイテム数を指定して作�
 | **Webhooks**       | アイテムが追加またはエンリッチされるたびに、HTTP コールバックをリアルタイムで受け取れます       |
 | **インポート**          | 手持ちの URL を取り込み、エンリッチメントを実行できます                         |
 
-<div id="human-quickstart">
-  ## Human Quickstart
-</div>
+## Human Quickstart {#human-quickstart}
 
 <Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
@@ -152,9 +142,7 @@ SDK をインストールします。
   各製品での提供状況については、[Zero Data Retention](/ja/docs/admin/security/zero-data-retention) を参照してください。
 </Note>
 
-<div id="next">
-  ## 次のステップ
-</div>
+## 次のステップ {#next}
 
 * [**ダッシュボードガイド**](./dashboard/get-started) - ダッシュボードで Websets を使う手順をステップごとに解説
 * [**仕組み**](./api/how-it-works) - イベント駆動型アーキテクチャの詳細解説

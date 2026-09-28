@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="anthropic-tool-calling">
-  # Anthropic のツール呼び出し
-</div>
+# Anthropic のツール呼び出し {#anthropic-tool-calling}
 
 > Claude のツール使用機能を使って、Exa のウェブ検索とページコンテンツ取得をアプリケーションに組み込みます。
 
@@ -17,9 +15,7 @@
 
 Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)機能を使うと、コード内で定義した関数をモデルから呼び出せます。Exa SDK には Anthropic 向けのウェブ検索ツールとページ読み取りツールが組み込まれているため、ツールスキーマを手書きしたり、`tool_use` ブロックを解析したり、Exa の結果を自分で整形したりする必要はありません。
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="SDK をインストールする">
@@ -118,9 +114,7 @@ Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude
   </Step>
 </Steps>
 
-<div id="configuring-the-tools">
-  ## ツールの設定
-</div>
+## ツールの設定 {#configuring-the-tools}
 
 キーワード引数は通常の Exa オプションで、ツールの実行時にそのまま渡されます。検索オプションは `exa.search()` に、contents オプションは `exa.get_contents()` に渡されます。
 
@@ -170,15 +164,11 @@ Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude
   ```
 </CodeGroup>
 
-<div id="mixing-in-your-own-tools">
-  ## 独自のツールを組み合わせる
-</div>
+## 独自のツールを組み合わせる {#mixing-in-your-own-tools}
 
 `handle_tool_use` は、メッセージ内のすべての `tool_use` ブロックに応答します。解決できないツールを指定したブロックも破棄されず、`Error: unknown tool "<name>"` という結果が返されます。そのため、フォローアップリクエストで必須のツール結果が欠けることはありません。Exa のツールと独自のツールを併用する場合は、次のリクエストを送信する前に、これらのエラー結果を独自のツールの結果に置き換えてください。
 
-<div id="writing-the-loop-by-hand">
-  ## ループを手動で記述する
-</div>
+## ループを手動で記述する {#writing-the-loop-by-hand}
 
 ツールスキーマと実行処理を自分で管理したい場合は、ツールを定義し、`tool_use` ブロックを手動で処理します。`exa.tools.web_search()` と `exa.tools.get_contents()` を使うと、自前で実装するループ向けに、同じプロバイダー非依存のツール仕様 (`run` メソッド付き) を利用できます。すべてを一から記述することも可能です。
 

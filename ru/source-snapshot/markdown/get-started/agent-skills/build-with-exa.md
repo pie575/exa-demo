@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем продолжить изучение.
 
-<div id="build-with-exa-skill">
-  # Build with Exa Skill
-</div>
+# Build with Exa Skill {#build-with-exa-skill}
 
 > Навык для агента, помогающий разработчикам реализовать любую часть платформы Exa API.
 
@@ -19,9 +17,7 @@
   Укажите свой key в переменной `EXA_API_KEY` в окружении агента.
 </Note>
 
-<div id="setup">
-  ## Настройка
-</div>
+## Настройка {#setup}
 
 **Вариант A: установите этот навык напрямую:**
 
@@ -67,17 +63,13 @@ What to do:
 Hard rule throughout: the key is a secret. Only ever inspect it via a presence/length check (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) or an HTTP status code — never print, `echo`, `cat`, or `grep`-with-output any file or variable that may contain it, and never try to "redact" a key file with a regex. If a key is ever exposed, tell me to rotate it at https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## Просмотр исходного кода
-</div>
+## Просмотр исходного кода {#view-source}
 
 <Card title="build-with-exa/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/build-with-exa/SKILL.md" cta="Просмотреть исходный код" arrow="true">
   Перед установкой ознакомьтесь с определением навыка build-with-exa.
 </Card>
 
-<div id="related">
-  ## Связанные материалы
-</div>
+## Связанные материалы {#related}
 
 <Columns cols={2}>
   <Card title="Все навыки Agent" icon="layers" href="/ru/docs/get-started/agent-skills/overview" cta="Смотреть навыки" arrow="true">

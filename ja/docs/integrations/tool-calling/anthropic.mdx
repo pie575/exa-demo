@@ -12,9 +12,7 @@ icon: "/docs/images/sidebar-icons/anthropic.svg"
 
 Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)機能を使うと、コード内で定義した関数をモデルから呼び出せます。Exa SDK には Anthropic 向けのウェブ検索ツールとページ読み取りツールが標準で用意されているため、ツールスキーマの手書き、`tool_use` ブロックの解析、Exa の結果の整形を自分で行う必要はありません。
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="SDKをインストールする">
@@ -113,9 +111,7 @@ Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude
   </Step>
 </Steps>
 
-<div id="configuring-the-tools">
-  ## ツールの設定
-</div>
+## ツールの設定 {#configuring-the-tools}
 
 キーワード引数は通常の Exa オプションで、ツールの実行時にそのまま渡されます。検索オプションは `exa.search()` に、コンテンツオプションは `exa.get_contents()` に渡されます。
 
@@ -165,15 +161,11 @@ Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude
   ```
 </CodeGroup>
 
-<div id="mixing-in-your-own-tools">
-  ## 独自のツールを組み合わせる
-</div>
+## 独自のツールを組み合わせる {#mixing-in-your-own-tools}
 
 `handle_tool_use` は、メッセージ内のすべての `tool_use` ブロックに応答します。解決できないツールを指定したブロックも破棄されず、`Error: unknown tool "<name>"` という結果が返されます。これにより、後続のリクエストで必要なツール結果が欠落することはありません。Exa のツールと独自のツールを併用する場合は、次のリクエストを送信する前に、これらのエラー結果を独自のツールの結果に置き換えてください。
 
-<div id="writing-the-loop-by-hand">
-  ## ループを自前で実装する
-</div>
+## ループを自前で実装する {#writing-the-loop-by-hand}
 
 ツールスキーマと実行処理を自分で管理したい場合は、ツールを定義し、`tool_use` ブロックを手動で処理してください。`exa.tools.web_search()` と `exa.tools.get_contents()` を使えば、同じプロバイダー非依存のツール仕様 (`run` メソッド付き) を自前のループで利用できます。もちろん、すべてを一から記述することも可能です。
 

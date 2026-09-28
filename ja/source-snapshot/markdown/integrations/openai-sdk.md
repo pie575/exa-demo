@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="openai-sdk-compatibility">
-  # OpenAI SDK 互換性
-</div>
+# OpenAI SDK 互換性 {#openai-sdk-compatibility}
 
 > Exa のエンドポイントは OpenAI のドロップイン代替として利用できます。Chat Completions API と Responses API の両方に対応しています。
 
@@ -15,9 +13,7 @@
 
 ***
 
-<div id="overview">
-  ## 概要
-</div>
+## 概要 {#overview}
 
 Exa は、OpenAI SDK で利用できる OpenAI 互換のエンドポイントを提供しています。
 
@@ -30,9 +26,7 @@ Exa は、OpenAI SDK で利用できる OpenAI 互換のエンドポイントを
   `/chat/completions` は [`/answer`](/ja/docs/reference/answer) に、`/responses` は [Agent API](/ja/docs/agent/quickstart) にルーティングされます。詳しくは、後述の「[Responses API 経由の Agent](#agent-via-responses-api)」を参照してください。
 </Info>
 
-<div id="answer">
-  ## Answer
-</div>
+## Answer {#answer}
 
 chat completions インターフェースから Exa の `/answer` エンドポイントを使用するには、次のように設定します。
 
@@ -125,9 +119,7 @@ chat completions インターフェースから Exa の `/answer` エンドポ�
   ```
 </CodeGroup>
 
-<div id="agent-via-responses-api">
-  ## Responses API 経由の Agent
-</div>
+## Responses API 経由の Agent {#agent-via-responses-api}
 
 Exa の [`/responses`](https://api.exa.ai/responses) エンドポイントは、OpenAI Responses インターフェースを通じて [Agent API](/ja/docs/agent/quickstart) を提供しているため、OpenAI SDK を変更なしでそのまま使用できます。`model: "exa-agent"` を設定し、実行モードを選択してください。
 
@@ -145,9 +137,7 @@ Exa の [`/responses`](https://api.exa.ai/responses) エンドポイントは、
 
 完了した Responses の実行を継続するには、`previous_response_id` を使用します。
 
-<div id="synchronous">
-  ### 同期
-</div>
+### 同期 {#synchronous}
 
 リクエストは実行が完了するまでブロックされ、完了後に最終状態の `response` オブジェクトが返されます。
 
@@ -203,9 +193,7 @@ Exa の [`/responses`](https://api.exa.ai/responses) エンドポイントは、
   ```
 </CodeGroup>
 
-<div id="streaming">
-  ### ストリーミング
-</div>
+### ストリーミング {#streaming}
 
 `stream: true` を設定すると、Responses のストリームイベントを SSE で受信できます。各イベントには単調増加する `sequence_number` が付与され、ストリームは `response.completed` で終了します。`[DONE]` センチネルは送信されません。ストリームには `: keep-alive` コメント行が含まれることがありますが、SSE クライアントはこれを無視します。
 
@@ -269,9 +257,7 @@ Exa の [`/responses`](https://api.exa.ai/responses) エンドポイントは、
   ```
 </CodeGroup>
 
-<div id="background">
-  ### バックグラウンド
-</div>
+### バックグラウンド {#background}
 
 `background: true` を設定すると、接続を維持せずに実行を開始できます。その後、終了ステータスになるまで `GET /responses/{id}` をポーリングしてください。ポーリングではなくストリーミングで受け取るには、[ストリーミング](#streaming) を参照してください。
 
@@ -344,9 +330,7 @@ Exa の [`/responses`](https://api.exa.ai/responses) エンドポイントは、
   ```
 </CodeGroup>
 
-<div id="chat-wrapper">
-  ## チャットラッパー
-</div>
+## チャットラッパー {#chat-wrapper}
 
 Exa は、あらゆる OpenAI のチャット補完に RAG 機能を自動で追加する Python ラッパーを提供しています。コードを 1 行追加するだけで、OpenAI のチャット補完を Exa を活用した RAG システムに変えられます。検索、チャンク分割、プロンプト作成はすべて自動で処理されます。
 

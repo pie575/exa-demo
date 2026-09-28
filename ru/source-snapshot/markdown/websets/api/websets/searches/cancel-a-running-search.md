@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="cancel-a-running-search">
-  # Отмена выполняющегося поиска
-</div>
+# Отмена выполняющегося поиска {#cancel-a-running-search}
 
 > Отменяет выполняющийся в данный момент Search.
 
 Отменить все searches сразу можно с помощью эндпоинта `websets/:webset/cancel`.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/{webset}/searches/{id}/cancel
 openapi: 3.1.0

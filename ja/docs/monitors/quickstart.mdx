@@ -10,9 +10,7 @@ Monitors は、設定したスケジュールに従って Exa の検索を定期
 Monitors を使えば、ニュース、競合企業の発表、資金調達ラウンド、規制の変更、研究
 論文など、時間の経過とともに変化するさまざまなトピックを追跡できます。
 
-<div id="how-monitors-work">
-  ## Monitors の仕組み
-</div>
+## Monitors の仕組み {#how-monitors-work}
 
 実行のたびに、Exa は設定済みの検索を実行し、時間で絞り込み、モニターがすでに返した結果や調査結果を除外したうえで、
 新しい出力を webhook に送信します。
@@ -20,9 +18,7 @@ Monitors を使えば、ニュース、競合企業の発表、資金調達ラ�
 各モニターは独自の実行履歴を保持しています。そのため、変動する日付範囲をクエリに自分で追加するのではなく、追跡したい継続的なシグナルを
 軸にクエリを作成してください。
 
-<div id="create-your-first-monitor">
-  ## 最初のモニターを作成する
-</div>
+## 最初のモニターを作成する {#create-your-first-monitor}
 
 検索クエリ、実行間隔、更新を受信する HTTPS エンドポイントを指定して
 モニターを作成します。
@@ -127,9 +123,7 @@ Monitors を使えば、ニュース、競合企業の発表、資金調達ラ�
 モニターを作成したら、`webhookSecret` を必ず保存してください。この値は一度しか返されず、
 Webhook の署名検証に必要です。
 
-<div id="configure-the-output">
-  ## 出力を設定する
-</div>
+## 出力を設定する {#configure-the-output}
 
 完了した実行ではそれぞれ、新たに発見されたページが `output.results` に返されます。
 
@@ -171,9 +165,7 @@ Webhook の署名検証に必要です。
 引用と信頼度はスキーマに含めないでください。これらは
 `output.grounding` で別途返されます。
 
-<div id="add-page-content">
-  ## ページコンテンツを追加する
-</div>
+## ページコンテンツを追加する {#add-page-content}
 
 `search` には [Exa Search](/ja/docs/search/quickstart) と同じオプションを指定できます。`contents` を使うと各結果にハイライト、全文、要約を含めることができ、`includeDomains` または `excludeDomains` を使うとソースを絞り込めます。
 
@@ -245,9 +237,7 @@ Webhook の署名検証に必要です。
   ```
 </CodeGroup>
 
-<div id="test-your-monitor">
-  ## モニターをテストする
-</div>
+## モニターをテストする {#test-your-monitor}
 
 次のスケジュール時刻を待たずにすぐに実行をトリガーし、その後モニターの実行一覧を取得します。
 
@@ -289,9 +279,7 @@ Webhook の署名検証に必要です。
 
 実行が完了するまで、`output` は null です。
 
-<div id="schedule-runs">
-  ## 実行のスケジュール設定
-</div>
+## 実行のスケジュール設定 {#schedule-runs}
 
 最小間隔は1時間です。`1h`、`6h`、`1d`、`7d` のように単一の期間で指定してください。
 スケジュールはモニターの作成時刻を基準とします。たとえば午後2時30分に作成した日次モニターは、
@@ -306,9 +294,7 @@ Webhook の署名検証に必要です。
   開始されると、Exa は前回の実行をキャンセルします。
 </Note>
 
-<div id="receive-webhook-updates">
-  ## Webhook で更新を受け取る
-</div>
+## Webhook で更新を受け取る {#receive-webhook-updates}
 
 完了した実行だけが必要な場合は、`monitor.run.completed` をサブスクライブしてください。`events` を省略すると、Exa はモニターのライフサイクルイベントと実行作成イベントも送信します。
 
@@ -401,9 +387,7 @@ Webhook の署名検証に必要です。
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="モニターを作成する" icon="bell" href="/ja/docs/reference/monitors/create-a-monitor" cta="リファレンスを開く" arrow="true">

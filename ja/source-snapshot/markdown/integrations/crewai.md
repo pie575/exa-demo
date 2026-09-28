@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="crewai">
-  # CrewAI
-</div>
+# CrewAI {#crewai}
 
 > CrewAI のエージェントに Exa の検索機能を追加する方法を説明します。
 
@@ -28,9 +26,7 @@
 
 ***
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="前提条件とインストール">

@@ -5,9 +5,7 @@ description: "Tempo 上の USDC.e でリクエストごとに支払えば、API 
 icon: "/docs/images/sidebar-icons/tempo.svg"
 ---
 
-<div id="what-is-mpp">
-  ## MPPとは
-</div>
+## MPPとは {#what-is-mpp}
 
 MPP (Machine Payments Protocol) は、`402 Payment Required` ステータスコードを基盤とした、オープンでHTTPネイティブな決済標準です。クライアントは、[Tempo](https://tempo.xyz) 上のステーブルコインをはじめとする複数の決済手段を使い、APIアクセスの料金をリクエスト単位で支払えます。アカウント、APIキー、サブスクリプションは不要です。このページの例ではTempoを使用しています。現在、ExaはMPP決済をTempo mainnet上のUSDC.eで精算しています。
 
@@ -19,9 +17,7 @@ ExaがMPPに対応しているエンドポイントは、**`/search`** と **`/c
   MPPとAPIキーによるアクセスはそれぞれ独立しています。リクエストに `x-api-key` ヘッダーが含まれている場合は、通常のAPIキー課金フローが適用され、MPPは一切使用されません。
 </Info>
 
-<div id="supported-endpoints">
-  ## 対応エンドポイント
-</div>
+## 対応エンドポイント {#supported-endpoints}
 
 | エンドポイント     | メソッド | 説明                                                                                 |
 | ----------- | ---- | ---------------------------------------------------------------------------------- |
@@ -30,9 +26,7 @@ ExaがMPPに対応しているエンドポイントは、**`/search`** と **`/c
 
 その他の Exa エンドポイントは、*現時点では* MPP による支払いに対応していません。
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 USDC.e を入金済みの Tempo 互換ウォレットが必要です。サンプルを実行する前に、ウォレットの秘密鍵を環境変数としてエクスポートしてください。
 
@@ -40,9 +34,7 @@ USDC.e を入金済みの Tempo 互換ウォレットが必要です。サンプ
 export WALLET_PRIVATE_KEY="0x..."
 ```
 
-<div id="install-the-client">
-  ### クライアントをインストールする
-</div>
+### クライアントをインストールする {#install-the-client}
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -54,9 +46,7 @@ export WALLET_PRIVATE_KEY="0x..."
   ```
 </CodeGroup>
 
-<div id="make-a-paid-search-request">
-  ### 有料の検索リクエストを送信する
-</div>
+### 有料の検索リクエストを送信する {#make-a-paid-search-request}
 
 MPP クライアントを使用して、検索リクエストの支払いに署名して送信します。
 
@@ -118,15 +108,11 @@ MPP クライアントを使用して、検索リクエストの支払いに署�
 
 実行に成功すると、検索結果と、オンチェーンのトランザクションハッシュを含む `Payment-Receipt` ヘッダーが出力されます。
 
-<div id="pay-from-the-command-line">
-  ## コマンドラインから支払う
-</div>
+## コマンドラインから支払う {#pay-from-the-command-line}
 
 秘密鍵を直接管理したくない場合は、代わりに Tempo Wallet CLI を使用してください。`tempo wallet login` を実行すると、Tempo ウォレットの作成または接続と、ローカルのアクセスキーの承認が行われます。新規登録の場合は、無料の MPP クレジットが付与されることもあります。
 
-<div id="install-and-authenticate">
-  ### インストールと認証
-</div>
+### インストールと認証 {#install-and-authenticate}
 
 ```bash theme={null}
 curl -fsSL https://tempo.xyz/install | bash
@@ -137,18 +123,14 @@ tempo wallet login
 
 ローカルにブラウザがないリモートホストでは、`tempo wallet login --no-browser` を実行し、表示された URL を手元のデバイスで開いて CLI を認可してください。
 
-<div id="check-balances-and-credits">
-  ### 残高とクレジットを確認する
-</div>
+### 残高とクレジットを確認する {#check-balances-and-credits}
 
 ```bash theme={null}
 tempo wallet whoami
 tempo wallet whoami --credits
 ```
 
-<div id="make-a-paid-request">
-  ### 有料リクエストを送信する
-</div>
+### 有料リクエストを送信する {#make-a-paid-request}
 
 ```bash theme={null}
 tempo request --max-spend 1.00 https://api.exa.ai/search \
@@ -159,21 +141,15 @@ tempo request --max-spend 1.00 https://api.exa.ai/search \
 
 CLI の詳細なリファレンスについては、[Tempo Wallet CLI ドキュメント](https://tempo.xyz/developers/docs/cli/wallet)および [`tempo request` ドキュメント](https://tempo.xyz/developers/docs/cli/request)を参照してください。
 
-<div id="gas-fees">
-  ## ガス代
-</div>
+## ガス代 {#gas-fees}
 
 Exa が Tempo ネットワークの手数料を負担し、USDC.e で支払います。ウォレットには API 料金分の USDC.e があれば十分で、pathUSD などのガス用トークンの残高は不要です。手数料の支払者を設定する必要もありません。スポンサーシップは、Exa の支払いチャレンジと MPP SDK によって自動的に処理されます。
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 MPP には、API キー課金と同じバンドル料金が適用されます。Exa はリクエストを処理する前に、リクエストパラメータに基づいて料金を算出します。
 
-<div id="search">
-  ### Search
-</div>
+### Search {#search}
 
 | 検索タイプ                     | 結果10件までの料金      |
 | ------------------------- | --------------- |
@@ -187,9 +163,7 @@ MPP には、API キー課金と同じバンドル料金が適用されます。
   MPP の検索リクエストで取得できる結果は最大10件です。`numResults` に10を超える値を指定した場合、Exa は10件として処理し、10件分の料金を請求します。11件以上の結果が必要な場合は、[API キーによる課金](/ja/docs/search/quickstart)を使用してください。
 </Warning>
 
-<div id="contents">
-  ### Contents
-</div>
+### Contents {#contents}
 
 リクエストするコンテンツタイプごとに、1 URL あたり $0.001 かかります。
 
@@ -201,9 +175,7 @@ MPP には、API キー課金と同じバンドル料金が適用されます。
 
 `text`、`highlights`、`summary` のいずれもリクエストしない場合、Exa はデフォルトで `text` を有効にします。
 
-<div id="pricing-examples">
-  ### 料金の例
-</div>
+### 料金の例 {#pricing-examples}
 
 | リクエスト                                           | 料金     |
 | ----------------------------------------------- | ------ |
@@ -213,9 +185,7 @@ MPP には、API キー課金と同じバンドル料金が適用されます。
 | 2 件の URL に `text: true` を指定した `/contents`       | $0.002 |
 | 1 件の URL に `text` と `summary` を指定した `/contents` | $0.002 |
 
-<div id="how-the-payment-flow-works">
-  ## 支払いフローの仕組み
-</div>
+## 支払いフローの仕組み {#how-the-payment-flow-works}
 
 このフローは SDK によって自動化されていますが、HTTP で直接やり取りして確認することもできます。
 
@@ -223,9 +193,7 @@ MPP には、API キー課金と同じバンドル料金が適用されます。
 2. チャレンジに署名し、`Authorization: Payment <credential>` を付けてリクエストを再送信します。
 3. Exa はリクエストの処理と並行して支払いの決済を行います。決済が確定すると、Exa は結果を `Payment-Receipt` ヘッダー付きで返します。決済に失敗した場合、Exa は結果を返さず、新しいチャレンジとともに `402` を返します。
 
-<div id="inspect-a-payment-challenge">
-  ### 支払いチャレンジを確認する
-</div>
+### 支払いチャレンジを確認する {#inspect-a-payment-challenge}
 
 ウォレットがなくても、料金と支払いの詳細を確認できます。
 
@@ -237,9 +205,7 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
 
 `402` レスポンスに含まれる `WWW-Authenticate: Payment` ヘッダーを確認してください。支払いを伴わないディスカバリーリクエストにはレート制限があるため、ポーリングには使用せず、デバッグ用途にとどめてください。
 
-<div id="payment-reference">
-  ## 支払いリファレンス
-</div>
+## 支払いリファレンス {#payment-reference}
 
 Exa は、Tempo mainnet 上の USDC.e による MPP 支払いに対応しています。
 
@@ -253,9 +219,7 @@ USDC.e の小数点以下の桁数は 6 桁です。チャレンジでは価格�
   Exa は同じエンドポイントで MPP と [x402](/ja/docs/integrations/payments/x402/quickstart) の両方をサポートしています。認証されていない `402` レスポンスには、MPP の `WWW-Authenticate: Payment` チャレンジと x402 の `PAYMENT-REQUIRED` ヘッダーの両方が含まれる場合があります。クライアントが対応している支払いプロトコルのヘッダーを使用してください。
 </Note>
 
-<div id="headers">
-  ### ヘッダー
-</div>
+### ヘッダー {#headers}
 
 | ヘッダー                                  | 方向          | 説明                              |
 | ------------------------------------- | ----------- | ------------------------------- |
@@ -263,9 +227,7 @@ USDC.e の小数点以下の桁数は 6 桁です。チャレンジでは価格�
 | `WWW-Authenticate: Payment`           | `402` レスポンス | リクエストの料金と支払い方法の案内               |
 | `Payment-Receipt`                     | 成功時のレスポンス   | 決済レシート (オンチェーンのトランザクションハッシュを含む) |
 
-<div id="errors">
-  ### エラー
-</div>
+### エラー {#errors}
 
 | ステータス | 説明                                     |
 | ----- | -------------------------------------- |
@@ -274,9 +236,7 @@ USDC.e の小数点以下の桁数は 6 桁です。チャレンジでは価格�
 | `429` | このIPからの未払いのディスカバリーリクエストが多すぎます          |
 | `429` | このウォレットが有料リクエストのレート制限を超えました            |
 
-<div id="rate-limits">
-  ### レート制限
-</div>
+### レート制限 {#rate-limits}
 
 MPP のレート制限は x402 と共通で、API キーの制限とは別に適用されます。
 
@@ -285,9 +245,7 @@ MPP のレート制限は x402 と共通で、API キーの制限とは別に適
 | IP あたりの未払いディスカバリーリクエスト | 5 リクエスト  | 60 秒 |
 | ウォレットあたりの有料リクエスト       | 10 リクエスト | 1 秒  |
 
-<div id="faq">
-  ## よくある質問
-</div>
+## よくある質問 {#faq}
 
 <AccordionGroup>
   <Accordion title="MPPとAPIキーは併用できますか？">
@@ -303,9 +261,7 @@ MPP のレート制限は x402 と共通で、API キーの制限とは別に適
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## 関連リソース
-</div>
+## 関連リソース {#resources}
 
 * [MPP プロトコルドキュメント](https://mpp.dev/protocol): プロトコルの詳細と認証フォーマット
 * [mppx ドキュメント](https://mpp.dev/sdk/typescript): MPP TypeScript SDK リファレンス

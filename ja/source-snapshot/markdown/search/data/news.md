@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="news">
-  # ニュース
-</div>
+# ニュース {#news}
 
 > Exa Search で、最新の報道、業界に関する報道や論評、注目され始めたニュースを見つけましょう。
 
@@ -37,54 +35,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 主要な報道機関、業界専門誌、ニッチなメディアの記事を探すには Exa Search を使用します。新しい記事は公開から数分以内に検索できるようになります。公開期間を厳密に指定する必要がある場合は、自然言語のクエリと日付フィルターを組み合わせてください。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 市場調査・投資リサーチ
 * サイバーセキュリティ・脅威インテリジェンス
 * 企業、製品、競合他社のモニタリング
 * 業界ブリーフィング・時事問題のリサーチ
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### 進展中の政策ニュースを追う
-</div>
+### 進展中の政策ニュースを追う {#follow-a-developing-policy-story}
 
 トピック、ソースタイプ、公開期間を指定すると、ニュースの最新の展開に絞った結果が得られます。
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### 実務者による分析を探す
-</div>
+### 実務者による分析を探す {#find-practitioner-analysis}
 
 一般的なニュース報道ではなく、実務者による分析を求める場合は、ソースタイプを明示しましょう。
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### 特定の形式で行われた議論を探す
-</div>
+### 特定の形式で行われた議論を探す {#discover-discussions-in-a-specific-format}
 
 クエリには形式とテーマの両方を含めてください。そうすれば、Web 上のエピソードページやトランスクリプトまで幅広く検索対象にできます。
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### アドバースメディアを調査する
-</div>
+### アドバースメディアを調査する {#research-adverse-media}
 
 ネガティブなシグナルと、調査対象のエンティティの種類の両方を記述してください。クエリを企業名に「news」という単語を加えただけのものにするのは避けてください。
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,9 +109,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースにまたがるリサーチが必要な構造化データを取得するには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。必要な記事、フィールド、対象期間を指定すると、Agent がスキーマ検証済みの結果を引用付きで返します。
 

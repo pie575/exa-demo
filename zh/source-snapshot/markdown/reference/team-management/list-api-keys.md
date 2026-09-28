@@ -19,7 +19,7 @@
 
 List API Keys 端点会返回与你的团队关联的所有 API 密钥，包括每个密钥的 ID、名称、速率限制和创建时间戳。
 
-## 响应格式 {#response-format}
+## 响应格式 {#overview}
 
 响应中包含一个 API 密钥对象数组，每个对象包含以下信息：
 
@@ -28,7 +28,7 @@ List API Keys 端点会返回与你的团队关联的所有 API 密钥，包括�
 * **rateLimit**：速率限制，单位为每分钟请求数 (如果已设置)
 * **createdAt**：密钥创建时间的 ISO 8601 时间戳
 
-## OpenAPI {#openapi}
+## OpenAPI {#response-format}
 
 ```yaml team-management-spec.yaml GET /api-keys
 openapi: 3.1.0

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="fx-by-vercel-labs">
-  # fx by Vercel Labs
-</div>
+# fx by Vercel Labs {#fx-by-vercel-labs}
 
 > ホスト型の Exa MCP サーバーを使って、Vercel Labs のネイティブなコーディングエージェントである fx に Exa ウェブ検索を追加します。
 
@@ -15,9 +13,7 @@
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/vercel/fx/install-exa.gif?s=2e331148abdf5bdf083e6f651e3b8b75" alt="fx をインストールし、/mcp add で Exa MCP サーバーを追加して、リアルタイムの Exa ウェブ検索を実行する様子" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-<div id="installation">
-  ## インストール
-</div>
+## インストール {#installation}
 
 <Steps>
   <Step title="fx をインストールする">
@@ -45,9 +41,7 @@
   </Step>
 </Steps>
 
-<div id="configure-by-hand">
-  ## 手動で設定する
-</div>
+## 手動で設定する {#configure-by-hand}
 
 fx は `~/.fx/mcp.json` からのみ MCP サーバーを読み込むため、このファイルに Exa を直接追加することもできます。
 
@@ -86,9 +80,7 @@ fx を再起動せずに変更を反映するには、`/mcp reload` を実行し
 
 `header_env` はヘッダー名を環境変数に対応付けます。これにより、キーを設定ファイルに直接記述せずに済みます。
 
-<div id="tool-discovery">
-  ## ツールの検出
-</div>
+## ツールの検出 {#tool-discovery}
 
 fx は MCP ツールを遅延検出します。サーバーのツールは、ターンで必要になるまでモデルのコンテキストに読み込まれません。そのため、Exa を追加しても、ウェブ検索を行わないターンでは追加のコストは発生しません。
 

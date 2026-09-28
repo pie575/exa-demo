@@ -14,9 +14,7 @@ Contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
   Exaが各結果の抜粋の長さを関連度に応じて調整します。詳しくは[ハイライト](/ja/docs/search/highlights)を参照してください。
 </Tip>
 
-<div id="make-your-first-request">
-  ## 最初のリクエストを送信する
-</div>
+## 最初のリクエストを送信する {#make-your-first-request}
 
 1 つ以上の URL またはドキュメント ID を渡し、タスクに関連する部分のハイライトをリクエストします。HTTP リクエストでは、これらを `ids` で指定します。
 
@@ -237,9 +235,7 @@ Contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
 
 コンテンツビューはリクエストごとに1つ選択してください。ハイライト、テキスト、要約を同時にリクエストすると、各ビューが個別に返され、それぞれに課金されます。
 
-<div id="content-freshness">
-  ## コンテンツの鮮度
-</div>
+## コンテンツの鮮度 {#content-freshness}
 
 `maxAgeHours` は、抽出されるページコンテンツに求める鮮度を制御します。
 
@@ -264,9 +260,7 @@ Contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
   | `"preferred"`    | 直接対応する設定はありません。`maxAgeHours: 1` などの小さい値を使用してください |
 </Accordion>
 
-<div id="crawl-subpages">
-  ## サブページのクロール
-</div>
+## サブページのクロール {#crawl-subpages}
 
 各開始URLからリンクをたどるには、`subpages` を設定します。Exa に特定のサイトセクションを優先してクロールさせたい場合は、`subpageTarget` を追加します。
 
@@ -304,17 +298,13 @@ Contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
   ```
 </CodeGroup>
 
-<div id="images-and-favicons">
-  ## 画像とファビコン
-</div>
+## 画像とファビコン {#images-and-favicons}
 
 各ページから取得する画像 URL の数を `extras.imageLinks` で指定します。利用可能な場合は、サイトの
 `favicon` と代表画像の `image` URL も結果に含まれます。`/search` では、このオプションは
 `contents.extras.imageLinks` で指定します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="API リファレンス" icon="square-terminal" href="/ja/docs/reference/get-contents" cta="リファレンスを開く" arrow="true">

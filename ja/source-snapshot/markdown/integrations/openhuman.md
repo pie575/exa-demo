@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="openhuman">
-  # OpenHuman
-</div>
+# OpenHuman {#openhuman}
 
 > Exa を使って、OpenHuman のエージェントでリアルタイムのウェブ検索を利用できるようにします。マネージド版を使うか、独自の Exa API キーを使うかを選べます。
 
@@ -16,9 +14,7 @@ TinyHumans が提供する [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 
 | **OpenHuman Managed** | 不要               | OpenHuman のバックエンド (Exa を利用)。API キーは不要です。               |
 | **Exa provider**      | Exa API キーを貼り付ける | お使いのマシン。ご自身の Exa アカウントで `https://api.exa.ai` に直接接続します。 |
 
-<div id="openhuman-managed">
-  ## OpenHuman Managed
-</div>
+## OpenHuman Managed {#openhuman-managed}
 
 デフォルトではマネージド検索が使われます。オンボーディング時に **Simple** を選択すれば、エージェントはすぐにウェブを検索できます。
 
@@ -30,23 +26,17 @@ TinyHumans が提供する [OpenHuman](https://tinyhumans.gitbook.io/openhuman) 
   **Exa の検索結果を最も手早く得られるのがマネージドです。** キーの作成、保管、ローテーションは不要で、マシン上に認証情報を置く必要もありません。検索料金は OpenHuman のサブスクリプションで請求されます。
 </Tip>
 
-<div id="exa-provider">
-  ## Exa provider
-</div>
+## Exa provider {#exa-provider}
 
 Exa を直接設定すると、ご自身の Exa アカウントで検索を実行でき、エージェントに Exa の検索ツールとページコンテンツ取得ツールを提供できます。
 
-<div id="get-your-exa-api-key">
-  ### Exa API キーを取得する
-</div>
+### Exa API キーを取得する {#get-your-exa-api-key}
 
 <Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   ダッシュボードでキーを作成します。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="add-exa-in-openhuman">
-  ### OpenHuman に Exa を追加する
-</div>
+### OpenHuman に Exa を追加する {#add-exa-in-openhuman}
 
 1. **Connections** を開き、**API keys** の下にある **Search engine** を選択します。
 
@@ -70,9 +60,7 @@ Exa を直接設定すると、ご自身の Exa アカウントで検索を実�
   <img src="https://mintcdn.com/exa-52/lBRUht3CpNlQPh4p/images/integrations/openhuman/configured.png?fit=max&auto=format&n=lBRUht3CpNlQPh4p&q=85&s=b3c8df585a06a31daa8bba6c2a516722" alt="OpenHuman の Search engine パネルで Exa が選択され、Configured と表示されている" style={{width: "800px", height: "auto", margin: "0 auto"}} width="1180" height="820" data-path="images/integrations/openhuman/configured.png" />
 </Frame>
 
-<div id="configuration">
-  ### 設定
-</div>
+### 設定 {#configuration}
 
 このパネルでの設定は OpenHuman の `config.toml` に書き込まれます。同じ値をファイルや環境変数で直接設定することもできます。
 
@@ -101,9 +89,7 @@ Exa を直接設定すると、ご自身の Exa アカウントで検索を実�
   </Tab>
 </Tabs>
 
-<div id="tools-the-agent-gets">
-  ### エージェントが利用できるツール
-</div>
+### エージェントが利用できるツール {#tools-the-agent-gets}
 
 | ツール                | 返される内容                                     |
 | ------------------ | ------------------------------------------ |
@@ -113,9 +99,7 @@ Exa を直接設定すると、ご自身の Exa アカウントで検索を実�
 
 エージェントは呼び出しごとに Exa の[検索パラメータ](/ja/docs/search/quickstart)を設定します。そのため、検索モード、ドメイン、日付、カテゴリは、普通の言葉で指示するだけで制御できます。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Exa search unavailable: no API key configured">
@@ -135,9 +119,7 @@ Exa を直接設定すると、ご自身の Exa アカウントで検索を実�
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="OpenHuman のウェブ検索ドキュメント" icon="book-open" href="https://tinyhumans.gitbook.io/openhuman/features/native-tools/web-search" cta="ガイドを開く" arrow="true">

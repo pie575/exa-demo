@@ -33,15 +33,13 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для получения актуальных спортивных данных, прогнозов погоды и местной информации, не подключая отдельный API под каждую задачу. Задайте вопрос на естественном языке, указав интересующую вас команду, место и временной интервал.
 
-<div id="write-better-queries">
-  ## Как писать более удачные запросы
-</div>
+## Как писать более удачные запросы {#write-better-queries}
 
 Точно указывайте место или команду и добавляйте дату, если ответ зависит от времени. Вместо общих формулировок добавляйте условие или признак, важный для вашей задачи.
 
 <Tabs>
   <Tab title="Спорт" icon="trophy">
-    ### Что включено
+### Что включено {#included}
 
     Доступные спортивные данные:
 
@@ -51,13 +49,13 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
     Охват включает NBA, WNBA, NFL, MLB, NHL, MLS, студенческий баскетбол и футбол, крупнейшие европейские футбольные лиги и турниры UEFA, крикет, F1, UFC, теннис и гольф.
 
-    ### Указывайте лигу, команду и время
+### Указывайте лигу, команду и время {#ask-for-the-league-team-and-time}
 
     <PlaygroundQuery query="NBA scores last night" />
 
     <PlaygroundQuery query="Lakers schedule this week" />
 
-    ### Добавляйте контекст вокруг события
+### Добавляйте контекст вокруг события {#add-the-surrounding-story}
 
     Запрашивайте нужные вам новости вместе с оперативными данными.
 
@@ -65,52 +63,50 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   </Tab>
 
   <Tab title="Погода" icon="cloud-sun">
-    ### Что включено
+### Что включено {#included-2}
 
     Прогнозы содержат погодные условия, максимальную и минимальную температуру, осадки, ветер, влажность, УФ-индекс, а также время восхода и заката по местному времени.
 
     Запрос без даты возвращает прогноз на сегодня. Укажите конкретный день или период, чтобы получить по одной странице на день: до 16 дней вперёд или до 92 дней назад.
 
-    ### Называйте место и день
+### Называйте место и день {#name-the-place-and-day}
 
     <PlaygroundQuery query="weather in San Francisco tomorrow" />
 
-    ### Спрашивайте об условиях, влияющих на ваши планы
+### Спрашивайте об условиях, влияющих на ваши планы {#ask-about-the-condition-that-affects-your-plan}
 
     <PlaygroundQuery query="will it rain in Austin this weekend" />
 
-    ### Сочетайте прогнозы с новостями
+### Сочетайте прогнозы с новостями {#combine-forecasts-with-reporting}
 
     <PlaygroundQuery query="hurricane forecast tracks for the Gulf Coast this week" />
   </Tab>
 
   <Tab title="Места" icon="map-pin">
-    ### Что включено
+### Что включено {#included-3}
 
     * Профили местных компаний с адресами, часами работы, удобствами и отзывами
     * Площадки, достопримечательности и интересные места
     * Объявления о недвижимости и сведения об объектах
     * Решения по зонированию, разрешения и градостроительная документация
 
-    ### Описывайте место так, как спросили бы у местного жителя
+### Описывайте место так, как спросили бы у местного жителя {#describe-the-place-like-you-would-ask-a-local}
 
     Сочетайте категорию, район и важные для вас характеристики.
 
     <PlaygroundQuery query="late-night ramen in the Sunset District with outdoor seating" />
 
-    ### Называйте тип документа и географию
+### Называйте тип документа и географию {#name-the-record-type-and-geography}
 
     <PlaygroundQuery query="multifamily zoning variances approved in Denver" />
 
-    ### Сравнивайте места по практическим критериям
+### Сравнивайте места по практическим критериям {#compare-places-against-practical-constraints}
 
     <PlaygroundQuery query="walkable neighborhoods in Austin with good public schools and under 30 minutes to downtown" />
   </Tab>
 </Tabs>
 
-<div id="make-a-request">
-  ## Выполнение запроса
-</div>
+## Выполнение запроса {#make-a-request}
 
 Все три типа данных используют один и тот же эндпоинт Search.
 
@@ -150,9 +146,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [выполнение задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные места, команды, даты, criteria и поля вывода, и Agent вернёт результаты, проверенные по schema, вместе с citations.
 

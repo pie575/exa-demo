@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="langchain">
-  # LangChain
-</div>
+# LangChain {#langchain}
 
 > Exa の LangChain インテグレーションを使用して RAG を実行する方法。
 
@@ -26,9 +24,7 @@ LangChain は、LLM とデータ、API、その他のツールを組み合わせ
 
 ***
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="前提条件とインストール">

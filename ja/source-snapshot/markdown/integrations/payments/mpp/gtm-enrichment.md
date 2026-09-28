@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="tempo-mpp-gtm-enrichment-cookbook">
-  # Tempo MPP GTM エンリッチメントクックブック
-</div>
+# Tempo MPP GTM エンリッチメントクックブック {#tempo-mpp-gtm-enrichment-cookbook}
 
 > Tempo MPP を使って、Exa の search リクエストと contents リクエストごとに支払う GTM エンリッチメントワークフローを構築します。API キーは不要です。
 
@@ -22,9 +20,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   通常の API キー課金フローが適用されます。
 </Info>
 
-<div id="what-youll-build">
-  ## 作成するもの
-</div>
+## 作成するもの {#what-youll-build}
 
 企業名またはターゲットの説明のリストを入力として受け取り、次の処理を行う軽量なエンリッチメントパイプラインです。
 
@@ -38,9 +34,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
 パーソナライズに活用できます。個別の `/search` と `/contents` の
 呼び出しで構成されているため、すべてのステップを MPP で支払えます。
 
-<div id="prerequisites">
-  ## 前提条件
-</div>
+## 前提条件 {#prerequisites}
 
 * Tempo mainnet 上の **USDC.e** で資金を入金済みの、Tempo 対応ウォレット。
 * 実行時にウォレットの秘密鍵を安全に読み込む手段 (下記参照。キーをコミットしたり、
@@ -51,13 +45,9 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   秘密鍵を直接扱わずにコマンドラインでセットアップする場合は、[Tempo Wallet CLI](/ja/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line) を使用してください。`tempo wallet login` を実行すると、ウォレットを作成または接続できます。新規登録時には無料の MPP Credits が付与される場合があります。
 </Info>
 
-<div id="mpp-setup">
-  ## MPP のセットアップ
-</div>
+## MPP のセットアップ {#mpp-setup}
 
-<div id="install-the-client">
-  ### クライアントのインストール
-</div>
+### クライアントのインストール {#install-the-client}
 
 <CodeGroup>
   ```bash TypeScript theme={null}
@@ -69,9 +59,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   ```
 </CodeGroup>
 
-<div id="load-your-private-key-safely">
-  ### 秘密鍵を安全に読み込む
-</div>
+### 秘密鍵を安全に読み込む {#load-your-private-key-safely}
 
 秘密鍵は決してハードコードしないでください。以下の例では、ローカル開発に限って実行環境の
 `WALLET_PRIVATE_KEY` を読み込んでいます。本番環境では、1Password、AWS Secrets Manager、HashiCorp Vault などの
@@ -89,9 +77,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   ```
 </CodeGroup>
 
-<div id="make-a-paid-search-request">
-  ### 有料の検索リクエストを送信する
-</div>
+### 有料の検索リクエストを送信する {#make-a-paid-search-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -159,9 +145,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
 リクエストが成功すると、Exa の検索結果とともに、オンチェーンのトランザクションハッシュを含む
 `Payment-Receipt` ヘッダーが返されます。
 
-<div id="make-a-paid-contents-request">
-  ### 有料の contents リクエストを送信する
-</div>
+### 有料の contents リクエストを送信する {#make-a-paid-contents-request}
 
 <CodeGroup>
   ```typescript TypeScript theme={null}
@@ -194,13 +178,9 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   ```
 </CodeGroup>
 
-<div id="gtm-enrichment-recipe">
-  ## GTM エンリッチメントのレシピ
-</div>
+## GTM エンリッチメントのレシピ {#gtm-enrichment-recipe}
 
-<div id="enrich-a-list-of-companies">
-  ### 企業リストをエンリッチする
-</div>
+### 企業リストをエンリッチする {#enrich-a-list-of-companies}
 
 企業名のリストをもとに各企業のページを検索し、
 構造化された詳細情報を抽出します。
@@ -327,9 +307,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   ```
 </CodeGroup>
 
-<div id="enrich-a-person-profile">
-  ### 人物プロフィールをエンリッチする
-</div>
+### 人物プロフィールをエンリッチする {#enrich-a-person-profile}
 
 このレシピでは、`type: "deep"`、`contents.highlights`、`outputSchema` を使って
 人物を調査し、構造化されたプロフィールを返します。
@@ -420,9 +398,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   `contents.highlights` を使用すると結果 1 件につき $0.001 が追加されます。
 </Note>
 
-<div id="structured-output">
-  ### 構造化出力
-</div>
+### 構造化出力 {#structured-output}
 
 生のテキストではなく JSON のフィールドで結果を受け取りたい場合は、検索リクエストで `outputSchema` を指定します。Exa は、スキーマに沿った形式の `output` オブジェクトを返します。
 
@@ -493,9 +469,7 @@ API キー、シート単位の料金はいずれも不要です。ウォレッ�
   `outputSchema` は、検索タイプ `deep-lite` または `deep` と組み合わせると最も効果的です。Exa 側で LLM の呼び出しが追加で発生するため、料金は `deep-lite`/`deep` と同じ扱いになります。
 </Note>
 
-<div id="pricing-and-limits">
-  ## 料金と制限
-</div>
+## 料金と制限 {#pricing-and-limits}
 
 MPP には、API キーによる課金と同じリクエスト単位の料金が適用されます。MPP の検索リクエストで返される結果は
 最大 10 件です。
@@ -512,9 +486,7 @@ MPP には、API キーによる課金と同じリクエスト単位の料金が
 レート制限、ネットワークの詳細、支払いヘッダーなどの詳しいリファレンスについては、[Pay with MPP (Tempo)](/ja/docs/integrations/payments/mpp/quickstart) を
 参照してください。
 
-<div id="production-tips">
-  ## 本番運用のヒント
-</div>
+## 本番運用のヒント {#production-tips}
 
 * **ウォレットには USDC.e のみを入金してください。** Tempo のネットワーク手数料は Exa が負担するため、
   ガス代用のトークンを別途ウォレットに用意する必要はありません。
@@ -526,9 +498,7 @@ MPP には、API キーによる課金と同じリクエスト単位の料金が
 * **秘密鍵は絶対にコミットしないでください。** `WALLET_PRIVATE_KEY` はソース管理からではなく、シークレット
   マネージャーから読み込んでください。
 
-<div id="faq">
-  ## よくある質問
-</div>
+## よくある質問 {#faq}
 
 <AccordionGroup>
   <Accordion title="Exa Agent API で MPP を使用できますか？">
@@ -552,9 +522,7 @@ MPP には、API キーによる課金と同じリクエスト単位の料金が
   </Accordion>
 </AccordionGroup>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 * [MPP (Tempo) で支払う](/ja/docs/integrations/payments/mpp/quickstart): MPP の詳細なリファレンス
 * [Exa Search API ガイド](/ja/docs/search/quickstart): search のパラメーターリファレンス

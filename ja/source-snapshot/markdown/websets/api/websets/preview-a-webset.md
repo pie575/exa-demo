@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="preview-a-webset">
-  # Webset をプレビューする
-</div>
+# Webset をプレビューする {#preview-a-webset}
 
 > Webset を作成する前に、検索クエリがどのように分解されるかをプレビューします。このエンドポイントは Webset の作成時と同じクエリ分析を実行するため、検出されたエンティティタイプ、生成される検索条件、利用可能な Enrichment 列を事前に確認できます。
 
 Webset を本格的に作成する前に、検索がどのように解釈されるかをユーザーに把握してもらうために使用します。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/websets/preview
 openapi: 3.1.0

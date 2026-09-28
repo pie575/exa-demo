@@ -20,9 +20,7 @@ Exa Connect は、プレミアムなデータパートナーを Exa Agent のル
   MCP を使う場合は、[Exa MCP](/ja/docs/get-started/exa-mcp#exa-agent) から Exa Agent と [Exa Connect](/ja/docs/agent/connect/overview) を利用できます。`tools=agent_run` を有効にすると、Claude、Cursor、その他の MCP クライアントから、複数ステップのリサーチ、リスト作成、エンリッチメント、構造化出力を実行できます。
 </Tip>
 
-<div id="why-exa-connect">
-  ## Exa Connect を選ぶ理由
-</div>
+## Exa Connect を選ぶ理由 {#why-exa-connect}
 
 * **個別の統合なしでプレミアムデータを利用。** 契約の締結や SDK の組み込みは不要で、
   パートナーのデータにアクセスできます。呼び出すのは Exa API ひとつだけです。
@@ -34,9 +32,7 @@ Exa Connect は、プレミアムなデータパートナーを Exa Agent のル
 * **インデックスとパートナーデータを 1 回の実行で活用。** Connect は Exa インデックスの上に構築されています。
   Exa Agent は各ソースを最も強みを発揮できる場面で使い分け、結果には出典を示します。
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 1. [`POST /agent/runs`](/ja/docs/reference/agent-api/create-a-run) の `dataSources` 配列で、
    1 つ以上のプロバイダーを**アタッチ**します。
@@ -45,9 +41,7 @@ Exa Connect は、プレミアムなデータパートナーを Exa Agent のル
 3. パートナーの結果は**ウェブリサーチと統合**され、ソースを添えた
    構造化出力として返されます。
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 <Note>
   Exa Connect の料金は、標準の [Agent 実行の料金](/ja/docs/agent/quickstart#pricing)に加算されます。
@@ -163,9 +157,7 @@ Baselayer はオーダー単位で課金され、料金は操作によって異�
   ```
 </CodeGroup>
 
-<div id="data-partners">
-  ## データパートナー
-</div>
+## データパートナー {#data-partners}
 
 <div className="connect-provider-cards">
   <Columns cols={2}>
@@ -211,13 +203,9 @@ Baselayer はオーダー単位で課金され、料金は操作によって異�
 
 上記以外のソースが必要な場合は、[その他のプロバイダー](/ja/docs/agent/connect/additional-partners)をご覧ください。弊社チームにお問い合わせいただければご利用いただけます。
 
-<div id="usage">
-  ## 使用量
-</div>
+## 使用量 {#usage}
 
-<div id="combining-providers">
-  ### プロバイダーの組み合わせ
-</div>
+### プロバイダーの組み合わせ {#combining-providers}
 
 タスクに必要な数だけパートナーをアタッチできます。Exa Agent は各パートナーをそれぞれの強みが活きる場面で呼び出し、その結果をウェブ検索の結果と組み合わせて、1 つの構造化された回答にまとめます。
 

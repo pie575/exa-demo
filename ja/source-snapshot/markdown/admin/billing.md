@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="billing-and-rate-limits">
-  # 課金とレート制限
-</div>
+# 課金とレート制限 {#billing-and-rate-limits}
 
 > Exa のクレジット、請求書、API のレート制限を管理します。
 
@@ -25,9 +23,7 @@ Exa では、Free ティア、従量課金制、カスタムの Enterprise プ�
   </Card>
 </Columns>
 
-<div id="plans-at-a-glance">
-  ## プラン概要
-</div>
+## プラン概要 {#plans-at-a-glance}
 
 | プラン               | 課金                                      | レート制限                                        | Agent の同時実行数  |
 | ----------------- | --------------------------------------- | -------------------------------------------- | ------------- |
@@ -39,9 +35,7 @@ Exa では、Free ティア、従量課金制、カスタムの Enterprise プ�
   レイテンシ、スケール、ZDR などの要件に合わせて、最適な構成をご提案します。
 </Card>
 
-<div id="billing-basics">
-  ## 課金の基本
-</div>
+## 課金の基本 {#billing-basics}
 
 リクエストの料金は、[料金](/ja/docs/admin/pricing)に記載の単価、または Enterprise 契約で定められた単価に基づき、前払いのクレジットから差し引かれます。チームのオーナーは[課金ダッシュボード](https://dashboard.exa.ai/billing)からクレジットを追加できます。支払いは Stripe で処理されます。
 
@@ -49,9 +43,7 @@ Exa では、Free ティア、従量課金制、カスタムの Enterprise プ�
 
 API キーごとの過去の使用量を確認するには、[Get API key usage](/ja/docs/reference/team-management/get-api-key-usage) を使用してください。
 
-<div id="rate-limits">
-  ## レート制限
-</div>
+## レート制限 {#rate-limits}
 
 レート制限は1秒あたりのクエリ数 (QPS) で計測され、チーム内のすべての API キーを合算してチーム全体に適用されます。[API Keys](https://dashboard.exa.ai/api-keys) ページで個々のキーに低めの制限を設定することもできますが、そのキーのトラフィックもチームの制限に含まれます。
 
@@ -67,9 +59,7 @@ API キーごとの過去の使用量を確認するには、[Get API key usage]
 
 制限を超えると、リクエストに対して `429 Too Many Requests` が返されます。`Retry-After` ヘッダーがある場合は指定された時間だけ待機し、ない場合はエクスポネンシャルバックオフで再試行してください。詳しくは[エラーコード](/ja/docs/admin/error-codes)を参照してください。
 
-<div id="agent-limits">
-  ### Agent の制限
-</div>
+### Agent の制限 {#agent-limits}
 
 Agent の制限は、同時に進行できる実行の数と、新しい実行を開始できる速度という 2 つの独立した制御で構成されています。
 
@@ -77,17 +67,13 @@ Agent の制限は、同時に進行できる実行の数と、新しい実行�
 * **実行の開始**: `POST /agent/runs` はアカウントの QPS を消費し、実行の開始 1 回につき 2 リクエストとしてカウントされます。そのため実行は QPS の半分の速度で開始でき、デフォルトの 10 QPS のアカウントでは 1 秒あたり 5 件、25 QPS では 1 秒あたり 12 件の実行を開始できます。
 * **ポーリング**: 実行のステータス、イベント、実行一覧を取得する `GET` リクエストは QPS にカウントされず、実行のディスパッチを妨げることもありません。新しい実行の開始ペースとは関係なく、進行中の Agent をポーリングできます。
 
-<div id="25-qps-on-pay-as-you-go">
-  ### 従量課金プランで 25 QPS
-</div>
+### 従量課金プランで 25 QPS {#25-qps-on-pay-as-you-go}
 
 任意の 30 日間で $1,000 分のクレジットを追加すると、チームのレート制限が自動的に **25 QPS に引き上げられ、90 日間適用**されます。この基準額は、消費したクレジットではなく購入したクレジットで計算されます。再度条件を満たすと、90 日間の適用期間はリセットされます。進捗状況は [課金ダッシュボード](https://dashboard.exa.ai/billing) で確認できます。
 
 25 QPS を超えるレートが必要な場合は、[営業チームにお問い合わせください](https://exa.ai/contact/sales)。
 
-<div id="auto-recharge">
-  ## 自動チャージ
-</div>
+## 自動チャージ {#auto-recharge}
 
 自動チャージは、残高が指定したしきい値に達したときにクレジットを自動で購入する機能です。[課金ダッシュボード](https://dashboard.exa.ai/billing) から設定できます。
 
@@ -101,17 +87,13 @@ Agent の制限は、同時に進行できる実行の数と、新しい実行�
 
 リリースを控えている場合など、大量のワークロードが見込まれるときは、事前に十分なクレジットを追加しておき、少額の支払いが何度も発生しないよう自動チャージ額を設定してください。
 
-<div id="receipts-and-invoices">
-  ## 領収書と請求書
-</div>
+## 領収書と請求書 {#receipts-and-invoices}
 
 Exa は、クレジット購入および自動チャージの領収書を [billing@exa.ai](mailto:billing@exa.ai) からメールでお送りします。必要に応じて、このアドレスを許可リストに追加してください。過去のすべての請求書は [課金ダッシュボード](https://dashboard.exa.ai/billing) で確認できます。
 
 請求書払い (後払い) による課金は、Enterprise プランでご利用いただけます。
 
-<div id="get-help">
-  ## サポート
-</div>
+## サポート {#get-help}
 
 <Columns cols={2}>
   <Card title="上限の引き上げ" icon="gauge" href="https://exa.ai/contact/sales" cta="営業担当に問い合わせる" arrow="true">

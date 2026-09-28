@@ -1,16 +1,14 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="changelog">
-  # Чейнджлог
-</div>
+# Чейнджлог {#changelog}
 
 > Обновления продукта и анонсы от Exa.
 
 <Update label="August 28, 2026" rss={{ title: "Dynamic Highlights (research preview)" }}>
-  ## Dynamic Highlights (исследовательская превью-версия)
+  ## Dynamic Highlights (исследовательская превью-версия) {#dynamic-highlights-research-preview}
 
   Dynamic Highlights выбирает фрагменты по всему набору результатов, а не обрабатывает каждую страницу по отдельности. Большая часть общего бюджета контекста отдаётся полезным источникам и меньшая — тем, которые лишь повторяют уже возвращённую информацию.
 
@@ -23,7 +21,7 @@
 </Update>
 
 <Update label="July 23, 2026" rss={{ title: "Publication research" }}>
-  ## Исследование публикаций
+  ## Исследование публикаций {#publication-research}
 
   Мы существенно расширили и улучшили исследование научных публикаций.
 
@@ -39,7 +37,7 @@
 </Update>
 
 <Update label="July 1, 2026" rss={{ title: "Exa Agent and Exa Connect in MCP" }}>
-  ## Exa Agent и Exa Connect в MCP
+  ## Exa Agent и Exa Connect в MCP {#exa-agent-and-exa-connect-in-mcp}
 
   Exa Agent теперь доступен в Exa MCP. Используйте его из Claude, Cursor или любого другого MCP-клиента, когда задача требует большего, чем один вызов поиска.
 
@@ -51,7 +49,7 @@
 </Update>
 
 <Update label="June 24, 2026" rss={{ title: "Introducing Exa Connect" }}>
-  ## Представляем Exa Connect
+  ## Представляем Exa Connect {#introducing-exa-connect}
 
   Exa Connect даёт Exa Agent живой доступ к публичным и приватным данным со всего мира. На запуске доступны Similarweb, Fiber.ai, Baselayer, Financial Datasets, Affiliate.com, Particle, Jinko и дополнительные партнёры. Подключать их можно через `dataSources` в `POST /agent/runs`.
 
@@ -59,7 +57,7 @@
 </Update>
 
 <Update label="June 16, 2026" rss={{ title: "Introducing Exa Agent" }}>
-  ## Представляем Exa Agent
+  ## Представляем Exa Agent {#introducing-exa-agent}
 
   Мы выпустили новый класс передовых агентов для веб-исследований, доступных через API.
 
@@ -69,7 +67,7 @@
 </Update>
 
 <Update label="April 1, 2026" rss={{ title: "Уведомление об устаревании API" }}>
-  ## Уведомление об устаревании API
+  ## Уведомление об устаревании API {#api-deprecation-notice}
 
   Мы убрали из Exa API несколько устаревших элементов:
 
@@ -81,7 +79,7 @@
 </Update>
 
 <Update label="March 30, 2026" rss={{ title: "Представляем Exa Monitors" }}>
-  ## Представляем Exa Monitors
+  ## Представляем Exa Monitors {#introducing-exa-monitors}
 
   Monitors запускают поиск Exa по расписанию и доставляют результаты в ваш вебхук, отсеивая дубликаты предыдущих запусков, так что вы получаете только новый контент.
 
@@ -93,7 +91,7 @@
 </Update>
 
 <Update label="March 4, 2026" rss={{ title: "Обновление Exa Deep" }}>
-  ## Обновление Exa Deep
+  ## Обновление Exa Deep {#exa-deep-revamp}
 
   Exa Deep стал быстрее и дешевле, а также научился возвращать структурированный вывод с grounding на уровне полей.
 
@@ -107,7 +105,7 @@
 </Update>
 
 <Update label="March 3, 2026" rss={{ title: "Обновление цен Exa" }}>
-  ## Обновление цен Exa
+  ## Обновление цен Exa {#exa-pricing-update}
 
   Мы упростили и снизили цены. Содержимое первых 10 результатов поиска теперь предоставляется бесплатно, а новые цены применяются автоматически, без каких-либо действий с вашей стороны.
 
@@ -120,7 +118,7 @@
 </Update>
 
 <Update label="February 5, 2026" rss={{ title: "Представляем Exa Instant Search" }}>
-  ## Представляем Exa Instant Search
+  ## Представляем Exa Instant Search {#introducing-exa-instant-search}
 
   Exa Instant — наш самый быстрый тип поиска, сочетающий улучшенное качество neural search с задержкой менее 150 мс. Включите его с помощью `type="instant"`.
 
@@ -131,7 +129,7 @@
 </Update>
 
 <Update label="February 2, 2026" rss={{ title: "Highlights, свежесть контента и обновления MCP" }}>
-  ## Highlights, свежесть контента и обновления MCP
+  ## Highlights, свежесть контента и обновления MCP {#highlights-content-freshness-and-mcp-updates}
 
   Три улучшения в извлечении контента и доступе к нему:
 
@@ -143,7 +141,7 @@
 </Update>
 
 <Update label="January 21, 2026" rss={{ title: "Представляем Exa Company Search" }}>
-  ## Представляем Exa Company Search
+  ## Представляем Exa Company Search {#introducing-exa-company-search}
 
   Поиск компаний теперь использует дообученную модель поиска и конвейер сопоставления сущностей. Используйте `type="auto"`, `category="company"`.
 
@@ -155,7 +153,7 @@
 </Update>
 
 <Update label="December 19, 2025" rss={{ title: "Представляем Exa People Search" }}>
-  ## Представляем Exa People Search
+  ## Представляем Exa People Search {#introducing-exa-people-search}
 
   Поиск людей теперь охватывает более 1 млрд публичных профилей благодаря гибридной системе поиска. Категория `linkedin` заменена новой категорией `people`.
 
@@ -167,7 +165,7 @@
 </Update>
 
 <Update label="November 26, 2025" rss={{ title: "JS SDK: highlights возвращены" }}>
-  ## JS SDK: highlights возвращены
+  ## JS SDK: highlights возвращены {#js-sdk-highlights-restored}
 
   Highlights снова доступны в JavaScript SDK начиная с `exa-js` v2.0.11 и возвращают ключевые предложения с оценками релевантности. Передайте `highlights: true` или `highlights: { maxCharacters, query }` в вызовы search и contents.
 
@@ -175,7 +173,7 @@
 </Update>
 
 <Update label="November 20, 2025" rss={{ title: "Новый тип поиска Deep" }}>
-  ## Новый тип поиска Deep
+  ## Новый тип поиска Deep {#new-deep-search-type}
 
   Exa Deep находит более качественные результаты: он выполняет несколько поисков одновременно и возвращает качественный контекст для каждого результата. Включите его с помощью `type="deep"`.
 
@@ -187,7 +185,7 @@
 </Update>
 
 <Update label="November 5, 2025" rss={{ title: "Добавлена фильтрация по языку" }}>
-  ## Добавлена фильтрация по языку
+  ## Добавлена фильтрация по языку {#added-language-filtering}
 
   Exa теперь определяет язык вашего запроса и возвращает результаты только на этом языке. Включено по умолчанию для всех пользователей, настройка не требуется.
 
@@ -195,7 +193,7 @@
 </Update>
 
 <Update label="October 28, 2025" rss={{ title: "Изменения в SDK: highlights удалены, содержимое возвращается по умолчанию" }}>
-  ## Изменения в SDK: highlights удалены, содержимое возвращается по умолчанию
+  ## Изменения в SDK: highlights удалены, содержимое возвращается по умолчанию {#sdk-changes-highlights-removed-and-contents-returned-by-default}
 
   Мажорная версия SDK с обратно несовместимыми изменениями:
 
@@ -207,7 +205,7 @@
 </Update>
 
 <Update label="August 4, 2025" rss={{ title: "Поддержка фильтров по пути домена" }}>
-  ## Поддержка фильтров по пути домена
+  ## Поддержка фильтров по пути домена {#domain-path-filter-support}
 
   `includeDomains` и `excludeDomains` теперь поддерживают более точное таргетирование:
 
@@ -220,7 +218,7 @@
 </Update>
 
 <Update label="July 30, 2025" rss={{ title: "Поддержка фильтра по геолокации" }}>
-  ## Поддержка фильтра по геолокации
+  ## Поддержка фильтра по геолокации {#geolocation-filter-support}
 
   Новый параметр `userLocation` смещает результаты в сторону региона пользователя и передаётся как код страны [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) (например, `"us"`, `"fr"`). Полезно для мультирегиональных приложений, контента на региональных языках и локального поиска.
 
@@ -228,7 +226,7 @@
 </Update>
 
 <Update label="July 29, 2025" rss={{ title: "Новый тип поиска Fast" }}>
-  ## Новый тип поиска Fast
+  ## Новый тип поиска Fast {#new-fast-search-type}
 
   Exa Fast использует облегчённые поисковые модели с задержкой p50 менее 425 мс. Включается параметром `type="fast"`.
 
@@ -240,7 +238,7 @@
 </Update>
 
 <Update label="July 21, 2025" rss={{ title: "Отказ от score в Auto search" }}>
-  ## Отказ от score в Auto search
+  ## Отказ от score в Auto search {#score-deprecation-in-auto-search}
 
   Новая архитектура Auto search больше не может выдавать осмысленные оценки релевантности, поэтому поле `score` удаляется из результатов Auto search.
 
@@ -251,7 +249,7 @@
 </Update>
 
 <Update label="June 23, 2025" rss={{ title: "Markdown-содержимое по умолчанию" }}>
-  ## Markdown-содержимое по умолчанию
+  ## Markdown-содержимое по умолчанию {#markdown-contents-as-default}
 
   Все эндпоинты теперь по умолчанию возвращают чистый markdown, который лучше подходит для LLM, RAG и обработки текста в целом. Никаких действий не требуется.
 
@@ -264,7 +262,7 @@
 </Update>
 
 <Update label="June 7, 2025" rss={{ title: "Новая опция livecrawl: preferred" }}>
-  ## Новая опция livecrawl: preferred
+  ## Новая опция livecrawl: preferred {#new-livecrawl-option-preferred}
 
   <Warning>
     Историческая запись: строковый параметр `livecrawl` теперь устарел. Для новых интеграций используйте `maxAgeHours` вместе с `livecrawlTimeout`. См. [Свежесть контента](/ru/docs/contents/quickstart#content-freshness).
@@ -276,7 +274,7 @@
 </Update>
 
 <Update label="May 22, 2025" rss={{ title: "Изменения статусов в эндпоинте содержимого" }}>
-  ## Изменения статусов в эндпоинте содержимого
+  ## Изменения статусов в эндпоинте содержимого {#contents-endpoint-status-changes}
 
   `/contents` теперь возвращает поле `statuses` по каждому URL вместо единой HTTP-ошибки, поэтому результат для каждого URL можно обрабатывать отдельно. Эндпоинт выдаёт ошибку только при внутренних проблемах.
 
@@ -287,7 +285,7 @@
 </Update>
 
 <Update label="December 11, 2024" rss={{ title: "Auto search по умолчанию" }}>
-  ## Auto search по умолчанию
+  ## Auto search по умолчанию {#auto-search-as-default}
 
   Auto search теперь используется по умолчанию и автоматически направляет каждый запрос к наиболее подходящему методу поиска. Никаких действий не требуется; укажите `type="neural"`, чтобы сохранить прежнее поведение.
 

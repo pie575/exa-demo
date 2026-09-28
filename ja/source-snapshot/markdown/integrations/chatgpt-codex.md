@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-in-codex-and-chatgpt">
-  # Codex と ChatGPT で Exa を使う
-</div>
+# Codex と ChatGPT で Exa を使う {#exa-in-codex-and-chatgpt}
 
 > Codex や ChatGPT から直接 Exa を使って、ウェブ検索、任意のページの読み込み、リサーチを行えます。
 
 Exa プラグインを一度インストールするだけで、Codex と ChatGPT が Exa 経由でリアルタイムのウェブにアクセスできるようになります。会話やコーディングセッションを中断することなく、最新情報の検索、重要なソースの読み込み、より詳細なリサーチの実行が可能です。
 
-<div id="install-exa">
-  ## Exa をインストールする
-</div>
+## Exa をインストールする {#install-exa}
 
 <Steps>
   <Step title="プラグインを開く">
@@ -35,9 +31,7 @@ Exa プラグインを一度インストールするだけで、Codex と ChatGP
 
 これで完了です。プラグインには Exa の MCP インテグレーションとスキルの両方が含まれているため、MCP やスキルを別途設定する必要はありません。
 
-<div id="build-with-whats-on-the-web-right-now">
-  ## 最新のウェブ情報を活用して開発する
-</div>
+## 最新のウェブ情報を活用して開発する {#build-with-whats-on-the-web-right-now}
 
 開発に使うライブラリ、API、ツールは日々変化しています。Exa をインストールすると、Codex は作業しながら最新のドキュメント、issue、変更履歴、実際のコード例を検索できるようになります。
 
@@ -57,9 +51,7 @@ Codex は Exa で検索し、関連するソースを読み込み、得られた
 * 「Stripe の最新の webhook ドキュメントを読んで、こちらの実装がそれに沿っているか確認して」
 * 「この依存関係の最新の移行ガイドを検索してから、アップグレードして」
 
-<div id="search-read-and-research">
-  ## 検索、閲覧、リサーチ
-</div>
+## 検索、閲覧、リサーチ {#search-read-and-research}
 
 Exa プラグインを使うと、Codex と ChatGPT は 3 つの方法でウェブを活用できます。
 
@@ -77,9 +69,7 @@ Exa プラグインを使うと、Codex と ChatGPT は 3 つの方法でウェ�
   </Card>
 </Columns>
 
-<div id="research-without-leaving-chatgpt">
-  ## ChatGPT を離れずにリサーチ
-</div>
+## ChatGPT を離れずにリサーチ {#research-without-leaving-chatgpt}
 
 Exa は ChatGPT でも使えます。最新の情報が必要な質問をすれば、会話から直接 Exa を使ってウェブを検索し、リサーチできます。
 
@@ -92,9 +82,7 @@ ChatGPT は、すでにコンテキストにある情報だけに頼るのでは
 
 競合リサーチ、技術リサーチ、市場マッピング、企業リサーチなど、答えがウェブ上に散在しているあらゆる用途に活用できます。
 
-<div id="mcp-skills-together">
-  ## MCP とスキルの組み合わせ
-</div>
+## MCP とスキルの組み合わせ {#mcp-skills-together}
 
 このプラグインは、Exa のエージェントスタックを構成する 2 つの要素を内部で組み合わせています。
 
@@ -104,9 +92,7 @@ ChatGPT は、すでにコンテキストにある情報だけに頼るのでは
 
 プラグインをインストールするだけで使えるため、どちらも個別に設定する必要はありません。
 
-<div id="prefer-mcp-directly">
-  ## MCP を直接使いたい場合
-</div>
+## MCP を直接使いたい場合 {#prefer-mcp-directly}
 
 Codex と ChatGPT で Exa を使う場合は、プラグインの利用をおすすめします。Codex を手動で設定する場合や、他の MCP クライアントを使用する場合は、Exa がホストする MCP サーバーに直接接続できます：
 

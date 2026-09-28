@@ -1,6 +1,4 @@
-<div id="independent-blinded-visual-review-final-captures">
-  # 独立したブラインド形式のビジュアルレビュー — 最終キャプチャ
-</div>
+# 独立したブラインド形式のビジュアルレビュー — 最終キャプチャ {#independent-blinded-visual-review-final-captures}
 
 更新後の 4 組の A/B 比較画像を、どちらがどのソースかを示す対応表なしでレビューしました。
 

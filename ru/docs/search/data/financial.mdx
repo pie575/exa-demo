@@ -33,9 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search, чтобы одним запросом получить цены, отчётность, транскрипты и публикации по ним. Запрос о тикере может сразу вернуть котировку, последний отчётный звонок и аналитические обзоры.
 
-<div id="included">
-  ## Что включено
-</div>
+## Что включено {#included}
 
 * Котировки и недавняя история цен по акциям, криптовалютам, валютным парам, индексам, фьючерсам, опционам и сырьевым товарам
 * Профили ценных бумаг с ключевыми показателями и дневной историей OHLCV
@@ -43,62 +41,46 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Документы SEC, публикуемая финансовая отчётность и отчётность зарубежных компаний
 * Оценки аналитиков, объявления о привлечении финансирования и публикации экономических данных
 
-<div id="use-it-for">
-  ## Где применять
-</div>
+## Где применять {#use-it-for}
 
 * Анализ акций и кредитных рисков
 * KYC, KYB и проверка по негативным упоминаниям в СМИ
 * Мониторинг портфелей и соблюдения политик
 * Поиск сделок и исследование частных рынков
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="look-up-a-quote">
-  ### Получение котировки
-</div>
+### Получение котировки {#look-up-a-quote}
 
 Укажите тикер или название компании и нужный показатель. Кэштег вида `$NVDA` тоже подойдёт.
 
 <PlaygroundQuery query="NVIDIA stock price and change today" />
 
-<div id="read-an-earnings-call">
-  ### Чтение отчётного звонка
-</div>
+### Чтение отчётного звонка {#read-an-earnings-call}
 
 Укажите компанию и квартал, чтобы получить транскрипт самого звонка, а не публикации о нём.
 
 <PlaygroundQuery query="Tyson Foods Q4 FY2025 earnings call transcript" />
 
-<div id="search-filings">
-  ### Поиск по отчётности
-</div>
+### Поиск по отчётности {#search-filings}
 
 Опишите, какое именно раскрытие информации вы ищете, а не просто тип формы. Категория `financial report` ограничивает выдачу отчётностью и отчётами.
 
 <PlaygroundQuery query="10-K risk factors that mention dependency on third-party AI models" category="financial report" />
 
-<div id="track-private-market-activity">
-  ### Отслеживание активности на частном рынке
-</div>
+### Отслеживание активности на частном рынке {#track-private-market-activity}
 
 Укажите раунд, отрасль и временной интервал.
 
 <PlaygroundQuery query="Series B rounds in climate tech announced this quarter" />
 
-<div id="follow-economic-data">
-  ### Отслеживание экономических данных
-</div>
+### Отслеживание экономических данных {#follow-economic-data}
 
 Укажите публикацию и нужный показатель из неё.
 
 <PlaygroundQuery query="most recent US CPI release and month-over-month change" />
 
-<div id="make-a-request">
-  ## Выполните запрос
-</div>
+## Выполните запрос {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -142,9 +124,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [выполнение задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные ценные бумаги, периоды, criteria и поля вывода, и Agent вернёт результаты, проверенные по schema, с citations.
 

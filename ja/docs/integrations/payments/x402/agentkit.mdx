@@ -5,9 +5,7 @@ description: "World AgentKit を使うと、認証済みの人間が裏付ける
 icon: "/docs/images/sidebar-icons/world.svg"
 ---
 
-<div id="what-is-agentkit">
-  ## AgentKit とは
-</div>
+## AgentKit とは {#what-is-agentkit}
 
 [World AgentKit](https://docs.world.org/agents/agent-kit) は、AI エージェントが [World ID](https://world.org) を通じて、実在する認証済みの人間に裏付けられていることを証明できるツールキットです。[x402](/ja/docs/integrations/payments/x402/quickstart) と統合すると、**無料トライアル**を利用できるようになります。World の [AgentBook](https://docs.world.org/agents/agent-kit/integrate) に登録されたエージェントは、USDC を支払わずに Exa の `/search` および `/contents` エンドポイントにアクセスできます。
 
@@ -17,9 +15,7 @@ icon: "/docs/images/sidebar-icons/world.svg"
   リクエストに `x-api-key` または `Authorization: Bearer` ヘッダーが含まれている場合、AgentKit の無料トライアルと x402 決済はいずれも適用されず、通常の API キー課金フローが優先されます。
 </Info>
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 クライアントが API キーなしで `/search` または `/contents` にリクエストを送信すると、Exa は `402 Payment Required` を返します。このレスポンスの `PAYMENT-REQUIRED` ヘッダーには `agentkit` 拡張が含まれており、その中に [CAIP-122](https://github.com/ChainAgnostic/CAIPs/blob/main/CAIPs/caip-122.md) (Sign-In with Ethereum) のチャレンジが格納されています。
 
@@ -29,13 +25,9 @@ icon: "/docs/images/sidebar-icons/world.svg"
 2. **AgentBook の照会** — World Chain (`eip155:480`) 上の AgentBook コントラクトを使ってウォレットを匿名の `humanId` に解決し、認証済みの一意の人間がこのエージェントに自身の ID を委任していることを確認します
 3. **使用量チェック** — その人間に無料トライアルの利用回数が残っていればアクセスが許可されます。残っていない場合は、USDC による支払いが必要になります
 
-<div id="quickstart">
-  ## クイックスタート
-</div>
+## クイックスタート {#quickstart}
 
-<div id="1-register-your-agent-in-agentbook">
-  ### 1. AgentBook にエージェントを登録する
-</div>
+### 1. AgentBook にエージェントを登録する {#1-register-your-agent-in-agentbook}
 
 この設定は初回に一度だけ必要です。本人確認済みの ID を持つ [World App](https://world.org/download) を用意してください。
 
@@ -45,9 +37,7 @@ npx @worldcoin/agentkit-cli register <your-agent-wallet-address>
 
 CLI は World App による本人確認フローを開始し、続いて World Chain 上で登録トランザクションを送信します。完了すると、AgentKit を利用するサーバーであればどこでもウォレットを照会し、そのウォレットが実在の人物に裏付けられていることを確認できます。
 
-<div id="2-send-a-request-get-the-challenge">
-  ### 2. リクエストを送信する (チャレンジを取得する)
-</div>
+### 2. リクエストを送信する (チャレンジを取得する) {#2-send-a-request-get-the-challenge}
 
 ```bash theme={null}
 curl -s -D - -X POST "https://api.exa.ai/search" \
@@ -87,9 +77,7 @@ curl -s -D - -X POST "https://api.exa.ai/search" \
 }
 ```
 
-<div id="3-sign-the-challenge-and-resubmit">
-  ### 3. チャレンジに署名して再送信する
-</div>
+### 3. チャレンジに署名して再送信する {#3-sign-the-challenge-and-resubmit}
 
 `info` のフィールド (domain、uri、nonce、statement など) から [SIWE メッセージ](https://eips.ethereum.org/EIPS/eip-4361)を作成し、`supportedChains` のいずれかのタイプを使って、登録済みのエージェントウォレットで署名します。署名したメッセージは、`agentkit` ヘッダー (base64 エンコードした JSON) に含めて送信します。
 
@@ -102,9 +90,7 @@ curl -X POST "https://api.exa.ai/search" \
 
 エージェントが検証済みで、無料トライアルの利用回数が残っている場合、Exa は `200` とともに検索結果を返します。この場合、支払いは不要です。
 
-<div id="using-the-agentkit-x402-skill">
-  ### AgentKit x402 スキルを使用する
-</div>
+### AgentKit x402 スキルを使用する {#using-the-agentkit-x402-skill}
 
 チャレンジ・レスポンスのフローを手動で実装する代わりに、AI エージェントに [agentkit-x402 スキル](https://github.com/worldcoin/agentkit/blob/main/skills/agentkit-x402/SKILL.md)を追加することもできます。
 
@@ -114,9 +100,7 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 このスキルは、エージェントが AgentKit 拡張を含む `402` レスポンスを受け取ると、一連の処理を自動で実行します。
 
-<div id="free-trial-details">
-  ## 無料トライアルの詳細
-</div>
+## 無料トライアルの詳細 {#free-trial-details}
 
 * 認証済みの人間 1 人につき、その人が紐づくすべてのエージェント全体で**月 100 回の無料リクエスト**を利用できます
 * 利用回数のカウンターは、毎月 1 日の開始時点 (UTC) にリセットされます
@@ -126,9 +110,7 @@ npx skills add worldcoin/agentkit agentkit-x402
 * `/search` への無料トライアルリクエストにも、同じ [10 件の結果上限](/ja/docs/integrations/payments/x402/quickstart#pricing)が適用されます
 * 無料トライアルのカウンターは、現時点では API レスポンスに含まれていません。利用回数を使い切ると、サーバーは無料アクセスを付与せず、標準の `402` を返します
 
-<div id="supported-endpoints">
-  ## 対応エンドポイント
-</div>
+## 対応エンドポイント {#supported-endpoints}
 
 | エンドポイント     | x402 決済 | AgentKit 無料トライアル |
 | ----------- | :-----: | :--------------: |
@@ -137,9 +119,7 @@ npx skills add worldcoin/agentkit agentkit-x402
 
 その他の Exa エンドポイントは、x402 決済および AgentKit 無料トライアルには対応していません。
 
-<div id="network-details">
-  ## ネットワークの詳細
-</div>
+## ネットワークの詳細 {#network-details}
 
 | プロパティ            | 値                                           |
 | ---------------- | ------------------------------------------- |
@@ -148,9 +128,7 @@ npx skills add worldcoin/agentkit agentkit-x402
 | 検証               | World Chain 上の AgentBook コントラクト             |
 | 対応ウォレットの種類       | EOA (EIP-191) およびスマートコントラクトウォレット (ERC-1271) |
 
-<div id="faq">
-  ## FAQ
-</div>
+## FAQ {#faq}
 
 <AccordionGroup>
   <Accordion title="x402 決済と AgentKit は併用できますか？">
@@ -174,9 +152,7 @@ npx skills add worldcoin/agentkit agentkit-x402
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 * [x402 決済ガイド](/ja/docs/integrations/payments/x402/quickstart): 標準的な USDC 支払いフロー
 * [World AgentKit ドキュメント](https://docs.world.org/agents/agent-kit): AgentKit の全ドキュメント

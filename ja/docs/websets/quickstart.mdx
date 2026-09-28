@@ -5,9 +5,7 @@ description: "Web 上の情報から、検証・補完済みのデータセッ�
 boost: 4
 ---
 
-<div id="what-are-websets">
-  ## Websets とは
-</div>
+## Websets とは {#what-are-websets}
 
 Webset は、自然言語のクエリと目標アイテム数を指定して作成します。すべての結果が満たすべき条件 (criteria) と、採用された各アイテムに値を設定するエンリッチメントフィールドを追加できます。結果は ダッシュボード、API、または webhook を通じて非同期で配信されます。
 
@@ -19,18 +17,14 @@ Webset は、自然言語のクエリと目標アイテム数を指定して作�
   Websets API の利用には有料の Websets プランが必要です。Search API のクレジットと Websets のクレジットは別管理です。
 </Info>
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 1. **検索を定義する:** 自然言語のクエリと取得する結果の件数を指定します。必要に応じて、検証条件とエンリッチメントも指定できます。
 2. **検索と検証:** Websets が候補を探し、各候補が指定した条件を満たしているかを確認します。条件に一致した結果のみがアイテムとして追加されます。
 3. **エンリッチメントを実行する:** 検証済みの各アイテムについて、CEO の名前、資金調達額、連絡先情報など、リクエストした追加データを Websets が検索します。
 4. **結果を受け取る:** ステータスをポーリングする、webhook で更新を受け取る、またはアイテムが追加されるたびにダッシュボードで確認する、のいずれかの方法で結果を取得できます。
 
-<div id="key-capabilities">
-  ## 主な機能
-</div>
+## 主な機能 {#key-capabilities}
 
 | 機能                 | 内容                                            |
 | ------------------ | --------------------------------------------- |
@@ -40,9 +34,7 @@ Webset は、自然言語のクエリと目標アイテム数を指定して作�
 | **Webhooks**       | アイテムが追加または補完されるたびに、リアルタイムで HTTP コールバックを受け取れます |
 | **インポート**          | 手持ちの URL を取り込み、エンリッチメントを実行できます                |
 
-<div id="human-quickstart">
-  ## 人間向けクイックスタート
-</div>
+## 人間向けクイックスタート {#human-quickstart}
 
 <Card title="Exa API keyを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
@@ -148,9 +140,7 @@ SDKをインストールします。
   各製品での提供状況については、[Zero Data Retention](/ja/docs/admin/security/zero-data-retention)を参照してください。
 </Note>
 
-<div id="next">
-  ## 次のステップ
-</div>
+## 次のステップ {#next}
 
 * [**ダッシュボードガイド**](./dashboard/get-started) - ダッシュボードで Websets を使う手順をステップごとに解説
 * [**仕組み**](/ja/docs/websets/quickstart) - イベント駆動型アーキテクチャの詳細解説

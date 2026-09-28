@@ -19,11 +19,11 @@
 
 Get API Key 端点用于通过唯一标识符获取特定 API 密钥的详细信息。
 
-## 路径参数 {#path-parameters}
+## 路径参数 {#overview}
 
 * **id**：要获取的 API 密钥的唯一标识符
 
-## 响应 {#response}
+## 响应 {#path-parameters}
 
 返回该 API 密钥的详细信息，包括：
 
@@ -33,7 +33,7 @@ Get API Key 端点用于通过唯一标识符获取特定 API 密钥的详细信
 * **teamId**：该密钥所属的团队 ID
 * **createdAt**：密钥的创建时间
 
-## OpenAPI {#openapi}
+## OpenAPI {#response}
 
 ```yaml team-management-spec.yaml GET /api-keys/{id}
 openapi: 3.1.0

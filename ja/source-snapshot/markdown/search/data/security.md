@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="cybersecurity">
-  # サイバーセキュリティ
-</div>
+# サイバーセキュリティ {#cybersecurity}
 
 > Exa Search を使って、脆弱性情報、セキュリティアドバイザリ、脅威レポート、トラスト関連のドキュメントを検索できます。
 
@@ -37,9 +35,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Exa Search を使えば、セキュリティチームが普段から参照している情報源から、脆弱性レコード、ベンダーのアドバイザリ、脅威リサーチを検索できます。
 
-<div id="included">
-  ## 対象範囲
-</div>
+## 対象範囲 {#included}
 
 * CVE および GHSA の脆弱性レコード
 * ベンダーのセキュリティアドバイザリとパッチノート
@@ -47,54 +43,40 @@ Exa Search を使えば、セキュリティチームが普段から参照して
 * トラストページ、サブプロセッサー一覧、コンプライアンス関連ドキュメント
 * セキュリティブログ、カンファレンス講演、リサーチ
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 脆弱性のトリアージとリスク露出の評価
 * 脅威インテリジェンスと攻撃者の追跡
 * ベンダーリスクおよびサードパーティのセキュリティ評価
 * セキュリティ監視とアラート
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### 脆弱性クラスのトリアージ
-</div>
+### 脆弱性クラスのトリアージ {#triage-a-vulnerability-class}
 
 製品名、バージョン範囲、深刻度を指定します。
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### ベンダーのセキュリティアドバイザリを検索する
-</div>
+### ベンダーのセキュリティアドバイザリを検索する {#find-vendor-advisories}
 
 特定の CVE ID を 1 つ指定するのではなく、悪用状況と製品カテゴリを記述してください。
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### ベンダーのセキュリティ体制を評価する
-</div>
+### ベンダーのセキュリティ体制を評価する {#review-a-vendors-security-posture}
 
 ドキュメントの種類とベンダーのカテゴリを指定します。
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### 攻撃者を調査する
-</div>
+### 攻撃者を調査する {#research-an-adversary}
 
 対象のグループ名またはキャンペーン名と、関心のある手法や業種を指定します。
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -135,9 +117,7 @@ Exa Search を使えば、セキュリティチームが普段から参照して
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数の情報源を横断したリサーチが必要な構造化データには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。対象の製品、脅威の条件、必要な出力フィールドを記述すると、Agent がスキーマ検証済みの結果を引用付きで返します。
 

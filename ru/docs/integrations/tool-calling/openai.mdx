@@ -10,9 +10,7 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 [Вызов tool](https://platform.openai.com/docs/guides/function-calling?lang=python) в OpenAI позволяет моделям вызывать функции, которые вы определяете в своём коде. SDK Exa поставляются с готовыми tool веб-поиска и чтения страниц для OpenAI, поэтому вам не придётся вручную описывать схему tool, разбирать вызовы tool и самостоятельно форматировать результаты Exa.
 
-<div id="get-started">
-  ## Get started
-</div>
+## Get started {#get-started}
 
 <Steps>
   <Step title="Установите SDK">
@@ -105,9 +103,7 @@ icon: "/docs/images/sidebar-icons/openai.svg"
   </Step>
 </Steps>
 
-<div id="responses-api">
-  ## Responses API
-</div>
+## Responses API {#responses-api}
 
 Для OpenAI Responses API используйте фабрику `responses` с тем же вспомогательным методом `handle_tool_calls`. handler возвращает элементы `function_call_output` для follow-up запроса.
 
@@ -139,9 +135,7 @@ icon: "/docs/images/sidebar-icons/openai.svg"
   Chat Completions и Responses API используют разные форматы tool и не принимают форматы друг друга, поэтому используйте фабрику, соответствующую вызываемому эндпоинту.
 </Note>
 
-<div id="configuring-the-tools">
-  ## Настройка tools
-</div>
+## Настройка tools {#configuring-the-tools}
 
 Именованные аргументы — это обычные опции Exa, которые передаются дальше при запуске tool: опции search в `exa.search()`, опции содержимого в `exa.get_contents()`:
 
@@ -165,15 +159,11 @@ icon: "/docs/images/sidebar-icons/openai.svg"
 
 А `name` (по умолчанию `"web_search"` и `"get_contents"`) и `description` переопределяют определение tool, которое видит модель. Задайте собственное значение `name`, чтобы использовать одновременно несколько по-разному настроенных tools Exa или чтобы избежать конфликтов с другими tools, которые занимают эти имена.
 
-<div id="mixing-in-your-own-tools">
-  ## Подключение собственных tools
-</div>
+## Подключение собственных tools {#mixing-in-your-own-tools}
 
 Handler&#39;ы отвечают на каждый tool call в сообщении: если в вызове указан tool, который они не могут распознать, вызов не отбрасывается, а возвращается вывод `Error: unknown tool "<name>"` — так в follow-up request не потеряется ни один обязательный response от tool. Если вы используете собственные tools наряду с tools от Exa, замените такие сообщения об ошибках своими результатами перед отправкой следующего request.
 
-<div id="writing-the-loop-by-hand">
-  ## Пишем цикл вручную
-</div>
+## Пишем цикл вручную {#writing-the-loop-by-hand}
 
 Если вы предпочитаете сами контролировать tool schema и выполнение, определите tool и обрабатывайте вызовы вручную. `exa.tools.web_search()` и `exa.tools.get_contents()` возвращают те же спецификации tool, не зависящие от провайдера (с методом `run`), для самописных циклов, либо вы можете написать всё с нуля:
 

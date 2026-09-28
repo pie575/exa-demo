@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="list-all-events">
-  # すべてのイベントを一覧表示
-</div>
+# すべてのイベントを一覧表示 {#list-all-events}
 
 > システム内で発生したすべてのイベントを一覧表示します。
 
 `cursor` パラメータを使用すると、結果をページ単位で取得できます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/events
 openapi: 3.1.0

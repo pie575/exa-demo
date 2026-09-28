@@ -14,9 +14,7 @@ Exa Snapshot は、Exa がクロールしたページの保存済みバージョ
   100 リクエストを超えて引き続き利用する場合は、[営業担当にお問い合わせください](https://exa.ai/contact/sales)。
 </Info>
 
-<div id="search-at-a-datetime">
-  ## 特定の日時時点で検索する
-</div>
+## 特定の日時時点で検索する {#search-at-a-datetime}
 
 `/search` では、`snapshotAsOf` を `contents` 内に指定します。
 
@@ -105,9 +103,7 @@ Exa は候補 URL を抽出した後、`snapshotAsOf` 以前の保存バージ�
   ```
 </Accordion>
 
-<div id="pin-contents-to-a-datetime">
-  ## コンテンツを特定の日時に固定する
-</div>
+## コンテンツを特定の日時に固定する {#pin-contents-to-a-datetime}
 
 `/contents` リクエストのトップレベルに `snapshotAsOf` を追加します。
 
@@ -186,9 +182,7 @@ Exa は、指定した日時以前に保存されたバージョンのうち、�
   `"status": "error"` と `"tag": "CONTENT_NOT_CACHED"` 付きで返されます。
 </Tip>
 
-<div id="how-snapshots-work">
-  ## スナップショットの仕組み
-</div>
+## スナップショットの仕組み {#how-snapshots-work}
 
 | フィールド          | 場所    | 意味                                                 |
 | -------------- | ----- | -------------------------------------------------- |
@@ -204,9 +198,7 @@ Exa は、指定した日時以前に保存されたバージョンのうち、�
   Search では、この日時による制限はコンテンツに適用され、ランキングには適用されません。Exa は候補 URL の発見に、引き続き現在の検索シグナルを使用します。結果は `snapshotAsOf` の時点までに限定されたエビデンスとして扱ってください。当時の検索でどのようにランク付けされていたかを正確に再現したものではありません。
 </Note>
 
-<div id="limits-and-compatibility">
-  ## 制限と互換性
-</div>
+## 制限と互換性 {#limits-and-compatibility}
 
 <AccordionGroup>
   <Accordion title="アクセス、レート制限、遡及期間">
@@ -228,9 +220,7 @@ Exa は、指定した日時以前に保存されたバージョンのうち、�
   </Accordion>
 </AccordionGroup>
 
-<div id="common-uses">
-  ## 主な用途
-</div>
+## 主な用途 {#common-uses}
 
 特定の日時までに Exa が保存していた内容に基づいてタスクを行う場合は、Exa Snapshot を使用します。
 

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの完全版は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-for-google-sheets">
-  # Exa for Google Sheets
-</div>
+# Exa for Google Sheets {#exa-for-google-sheets}
 
 > Google Sheets 内で Exa Agent と Exa の数式を利用できます。
 
@@ -20,9 +18,7 @@ Google Sheets 内で Exa を使えば、ウェブでのリサーチ、表の生�
 * **Exa Agent**: 表全体の作成や複数セルにまたがるタスク向け
 * **`=EXA(...)`**: 1 つのセルで 1 つの回答を得たい場合向け
 
-<div id="install">
-  ## インストール
-</div>
+## インストール {#install}
 
 <Steps>
   <Step title="アドオンをインストールする">
@@ -50,9 +46,7 @@ Google Sheets 内で Exa を使えば、ウェブでのリサーチ、表の生�
   </Step>
 </Steps>
 
-<div id="exa-agent">
-  ## Exa Agent
-</div>
+## Exa Agent {#exa-agent}
 
 Exa Agent を使うと、Google Sheets の複数のセルにまたがって Exa を利用できます。
 
@@ -63,9 +57,7 @@ Exa Agent を使うと、Google Sheets の複数のセルにまたがって Exa 
 * 新しい行を追加して表の続きを作成する
 * Web データでリストを補完する
 
-<div id="generate-a-table">
-  ### 表を生成する
-</div>
+### 表を生成する {#generate-a-table}
 
 Exa に新しい表を作成させたい場合は、**Generate table** を使用します。
 
@@ -85,9 +77,7 @@ Exa がウェブをリサーチし、結果を表としてシートに書き込�
 
 デフォルトでは、表は選択中のセルを起点に作成されます。開始セルは **More options** で変更できます。
 
-<div id="fill-cells">
-  ### Fill cells
-</div>
+### Fill cells {#fill-cells}
 
 既存の表で不足しているデータを Exa に埋めてもらいたい場合は、**Fill cells** を使用します。
 
@@ -109,9 +99,7 @@ Exa は選択範囲の周囲にある表の内容を参照して、空白セル�
 
 Apple の行の空白セルを選択し、**Fill selected cells** をクリックします。Exa は会社名と周辺の行をコンテキストとして使用します。
 
-<div id="continue-rows">
-  ### 行の続きを生成する
-</div>
+### 行の続きを生成する {#continue-rows}
 
 表の下にある空白行を選択することもできます。
 
@@ -119,9 +107,7 @@ Apple の行の空白セルを選択し、**Fill selected cells** をクリッ�
 
 Exa は既存の行を例として参照し、同じ列構成を保ちながら、表にすでにある項目と重複しないように生成します。
 
-<div id="exa">
-  ## `=EXA(...)`
-</div>
+## `=EXA(...)` {#exa}
 
 1つのセルに1つの回答を返したい場合は、`=EXA(...)` を使用します。Web を検索して上位の結果を読み込み、簡潔な回答を返します。
 
@@ -147,9 +133,7 @@ Exa は既存の行を例として参照し、同じ列構成を保ちながら�
 
 1つのセルで完結するシンプルな回答には `=EXA(...)` を使用します。表全体を作成したりデータを入力したりしたい場合は、**Exa Agent** を使用してください。
 
-<div id="exa_answer">
-  ## `=EXA_ANSWER(...)`
-</div>
+## `=EXA_ANSWER(...)` {#exa_answer}
 
 出力形式を細かく制御できる高度な AI 回答関数です。システムプロンプト、構造化された JSON 出力、引用、特定の検索タイプなどが必要な場合に使用します。
 
@@ -176,9 +160,7 @@ Exa は既存の行を例として参照し、同じ列構成を保ちながら�
 =EXA_ANSWER("ceo of exa.ai", "", "", FALSE, "", "{""type"":""object"",""properties"":{""name"":{""type"":""string""}}}")
 ```
 
-<div id="exa_search">
-  ## `=EXA_SEARCH(...)`
-</div>
+## `=EXA_SEARCH(...)` {#exa_search}
 
 Web を検索し、URL のリストを縦方向に返します。ドメインやカテゴリによるフィルタリング、コンテンツのハイライト、`outputSchema` による合成出力に対応しています。
 
@@ -206,9 +188,7 @@ Web を検索し、URL のリストを縦方向に返します。ドメインや
 =EXA_SEARCH("transformer architecture", 5, "auto", "", "", "", "", "publication")
 ```
 
-<div id="exa_contents">
-  ## `=EXA_CONTENTS(...)`
-</div>
+## `=EXA_CONTENTS(...)` {#exa_contents}
 
 URLからテキストコンテンツを抽出します。
 
@@ -220,9 +200,7 @@ URLからテキストコンテンツを抽出します。
 | ------ | -- | -------------------------------------------- |
 | `url`  | はい | 完全なURL (`http` または `https` で始まっている必要があります) 。 |
 
-<div id="exa_findsimilar">
-  ## `=EXA_FINDSIMILAR(...)`
-</div>
+## `=EXA_FINDSIMILAR(...)` {#exa_findsimilar}
 
 基準となる URL に類似した URL を検索します。必要に応じて、ドメインやテキストによるフィルターも指定できます。
 
@@ -239,9 +217,7 @@ URLからテキストコンテンツを抽出します。
 | `includeTextStr`    | いいえ | `""`  | 結果に必ず含まれるべきフレーズ。       |
 | `excludeTextStr`    | いいえ | `""`  | 結果に含まれてはならないフレーズ。      |
 
-<div id="batch">
-  ## Batch
-</div>
+## Batch {#batch}
 
 多数の Exa 数式セルをまとめて操作したい場合は、**Batch** を使用します。
 
@@ -252,9 +228,7 @@ Batch では次の操作ができます。
 
 現在の結果をそのまま残し、数式が再実行されないようにしたい場合は、数式を値に変換してください。
 
-<div id="when-to-use-what">
-  ## 用途別の使い分け
-</div>
+## 用途別の使い分け {#when-to-use-what}
 
 | タスク                        | 使用するもの                     |
 | -------------------------- | -------------------------- |
@@ -269,17 +243,13 @@ Batch では次の操作ができます。
 | 多数の Exa 数式をまとめて更新する        | Batch                      |
 | 数式の結果をプレーンテキストとして保存する      | Batch → Convert to values  |
 
-<div id="notes">
-  ## 注意事項
-</div>
+## 注意事項 {#notes}
 
 * Exa API のリクエストは使用量のクォータとしてカウントされます。**Batch → Convert to values** を使うと、結果を固定して数式が再計算されないようにできます。
 * レート制限 (HTTP 429) に達した場合、アドオンは指数バックオフを用いて最大 3 回まで自動で再試行します。
 * 数百行規模に拡大する前に、まずは小さなバッチ (10〜20 行) から始めてください。
 
-<div id="links">
-  ## リンク
-</div>
+## リンク {#links}
 
 * [Exa AI for Google Sheets をインストール](https://workspace.google.com/marketplace/app/exa_ai/465545439521)
 * [Exa API キーを取得](https://dashboard.exa.ai/api-keys)

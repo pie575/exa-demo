@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="get-a-run">
-  # 実行を取得する
-</div>
+# 実行を取得する {#get-a-run}
 
 > 指定したIDの実行を1件取得します。実行が完了している場合は、出力全体も含まれます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /monitors/{id}/runs/{runId}
 openapi: 3.1.0

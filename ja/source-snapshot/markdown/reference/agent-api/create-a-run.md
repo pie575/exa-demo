@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの完全版は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、まずこのファイルで利用可能なすべてのページを確認してください。
 
-<div id="create-a-run">
-  # 実行を作成する
-</div>
+# 実行を作成する {#create-a-run}
 
 > 非同期の Agent 実行を作成します。server-sent events をリクエストしない限り、レスポンスとして実行オブジェクトが即座に返されます。
 
@@ -21,9 +19,7 @@
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /agent/runs
 openapi: 3.1.0

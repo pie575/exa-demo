@@ -8,9 +8,7 @@ Highlights возвращают фрагменты текста из каждо�
 
 Для каждого результата выбранные фрагменты возвращаются в `results[].highlights`.
 
-<div id="why-highlights-instead-of-full-text">
-  ## Почему highlights, а не полный текст
-</div>
+## Почему highlights, а не полный текст {#why-highlights-instead-of-full-text}
 
 Highlights формируются собственной моделью extraction от Exa. Модель сопоставляет каждый результат с вашим запросом при каждом request и возвращает только те фрагменты, которые дают на него ответ. Вы тратите в разы меньше токенов, чем на полный текст страницы, при такой же или более высокой итоговой точности ответов.
 
@@ -28,9 +26,7 @@ Highlights формируются собственной моделью extracti
   — там описаны методология и полные результаты.
 </Tip>
 
-<div id="add-highlights-to-search">
-  ## Добавление highlights в Search
-</div>
+## Добавление highlights в Search {#add-highlights-to-search}
 
 Используйте `highlights: true` внутри `contents` — это рекомендуемый вариант по умолчанию. Exa сама определяет, сколько текста вернуть из каждого результата, исходя из его релевантности вашему запросу, поэтому подбирать character budget не нужно. Указывайте `maxCharacters` только в том случае, если вашему приложению требуется фиксированный лимит на страницу.
 
@@ -62,9 +58,7 @@ Highlights формируются собственной моделью extracti
   ```
 </CodeGroup>
 
-<div id="dynamic-highlights">
-  ## Dynamic Highlights
-</div>
+## Dynamic Highlights {#dynamic-highlights}
 
 Dynamic Highlights подстраивает объём текста, выбираемого из каждого результата, под то, что наиболее полезно для вашего запроса. Из сильных источников берётся больше, из повторяющихся или нерелевантных — меньше, за счёт чего сокращается общее количество возвращаемых токенов.
 
@@ -135,9 +129,7 @@ Dynamic Highlights подстраивает объём текста, выбир�
   структура `results[].highlights`, что и для обычных highlights.
 </Info>
 
-<div id="next-steps">
-  ## Дальнейшие шаги
-</div>
+## Дальнейшие шаги {#next-steps}
 
 <Columns cols={2}>
   <Card title="Руководство по Search API" icon="search" href="/ru/docs/search/quickstart" cta="Открыть руководство" arrow="true">

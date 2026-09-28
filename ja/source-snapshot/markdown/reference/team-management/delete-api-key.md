@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="delete-api-key">
-  # APIキーを削除
-</div>
+# APIキーを削除 {#delete-api-key}
 
 > チームからAPIキーを完全に削除します。
 
@@ -17,21 +15,15 @@
   Team Management APIは、チームごとに有効化される機能です。認証にはサービスアカウントのAPIキーを使用します。このキーは、チームで本機能が有効化された後に、[APIキーページ](https://dashboard.exa.ai/api-keys)の **Service keys** タブから作成できます。アクセスをご希望の場合は、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
 </Info>
 
-<div id="overview">
-  ## 概要
-</div>
+## 概要 {#overview}
 
 Delete API Key エンドポイントは、チームから API キーを完全に削除します。
 
-<div id="path-parameters">
-  ## パスパラメータ
-</div>
+## パスパラメータ {#path-parameters}
 
 * **id**: 削除する API キーの一意の識別子。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

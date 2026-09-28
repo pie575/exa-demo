@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="snowflake">
-  # Snowflake
-</div>
+# Snowflake {#snowflake}
 
 > Snowflake のストアドプロシージャや Cortex Agents から、Exa の検索およびコンテンツ取得機能を利用します。
 
@@ -16,9 +14,7 @@ Exa の Search API を Snowflake から直接呼び出し、SQL の中だけで�
 1. **Cortex Agent のツール**: Snowflake Cortex Agent が Web を検索し、ページコンテンツを取得できるようにします
 2. **データエンリッチメント**: CEO や創業者の情報、最新ニュースなどの Web データを使って、テーブルをバッチ処理で拡充します
 
-<div id="prerequisites">
-  ## 前提条件
-</div>
+## 前提条件 {#prerequisites}
 
 1. Exa API キー
 2. `ACCOUNTADMIN` ロール (External Access Integration の作成に必要)
@@ -28,15 +24,11 @@ Exa の Search API を Snowflake から直接呼び出し、SQL の中だけで�
   ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
 </Card>
 
-<div id="setup">
-  ## セットアップ
-</div>
+## セットアップ {#setup}
 
 Snowflake のワークシートで次の SQL を実行します。`<<YOUR_EXA_API_KEY>>` は実際の API キーに置き換えてください。
 
-<div id="roles-and-database">
-  ### ロールとデータベース
-</div>
+### ロールとデータベース {#roles-and-database}
 
 ```sql theme={null}
 USE ROLE ACCOUNTADMIN;
@@ -54,9 +46,7 @@ GRANT USAGE ON DATABASE exa_integration TO ROLE exa_agent_role;
 GRANT USAGE ON SCHEMA exa_integration.tools TO ROLE exa_agent_role;
 ```
 
-<div id="warehouse">
-  ### ウェアハウス
-</div>
+### ウェアハウス {#warehouse}
 
 ```sql theme={null}
 CREATE WAREHOUSE IF NOT EXISTS exa_agent_wh
@@ -69,9 +59,7 @@ WITH
 GRANT USAGE, OPERATE ON WAREHOUSE exa_agent_wh TO ROLE exa_agent_role;
 ```
 
-<div id="network-rule-secret-and-external-access">
-  ### ネットワークルール、シークレット、外部アクセス
-</div>
+### ネットワークルール、シークレット、外部アクセス {#network-rule-secret-and-external-access}
 
 ```sql theme={null}
 CREATE OR REPLACE NETWORK RULE exa_integration.tools.exa_api_rule
@@ -97,13 +85,9 @@ GRANT USAGE ON INTEGRATION exa_api_access TO ROLE exa_agent_role;
 * API キーを保存する **シークレット** (暗号化されており、SQL からは参照できません)
 * ルールとシークレットを紐付ける **外部アクセス統合**
 
-<div id="stored-procedures">
-  ## ストアドプロシージャ
-</div>
+## ストアドプロシージャ {#stored-procedures}
 
-<div id="exa_search">
-  ### EXA_SEARCH
-</div>
+### EXA_SEARCH {#exa_search}
 
 Exa の Search API を使用してウェブを検索します。タイトル、URL、スコアを含む結果を返します。オプションで、テキスト、ハイライト、要約も返せます。
 
@@ -208,9 +192,7 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="parameters">
-  #### パラメーター
-</div>
+#### パラメーター {#parameters}
 
 | パラメーター                 | 型         | デフォルト    | 説明                                                                         |
 | ---------------------- | --------- | -------- | -------------------------------------------------------------------------- |
@@ -225,9 +207,7 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 | `include_text`         | `STRING`  | `NULL`   | 結果に必ず含まれるべきフレーズ                                                            |
 | `get_contents`         | `BOOLEAN` | `TRUE`   | テキスト、ハイライト、要約を取得するかどうか                                                     |
 
-<div id="exa_get_contents">
-  ### EXA_GET_CONTENTS
-</div>
+### EXA_GET_CONTENTS {#exa_get_contents}
 
 指定したURLのページコンテンツ (テキスト、ハイライト、要約) を取得します。
 
@@ -309,13 +289,9 @@ GRANT USAGE ON PROCEDURE EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 ) TO ROLE exa_agent_role;
 ```
 
-<div id="usage-examples">
-  ## 使用例
-</div>
+## 使用例 {#usage-examples}
 
-<div id="basic-search">
-  ### 基本的な検索
-</div>
+### 基本的な検索 {#basic-search}
 
 ```sql theme={null}
 USE WAREHOUSE exa_agent_wh;
@@ -331,9 +307,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="get-contents-for-specific-urls">
-  ### 特定の URL のコンテンツを取得する
-</div>
+### 特定の URL のコンテンツを取得する {#get-contents-for-specific-urls}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
@@ -344,9 +318,7 @@ CALL EXA_INTEGRATION.TOOLS.EXA_GET_CONTENTS(
 );
 ```
 
-<div id="company-research">
-  ### 企業リサーチ
-</div>
+### 企業リサーチ {#company-research}
 
 ```sql theme={null}
 CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
@@ -356,15 +328,11 @@ CALL EXA_INTEGRATION.TOOLS.EXA_SEARCH(
 );
 ```
 
-<div id="data-enrichment">
-  ## データエンリッチメント
-</div>
+## データエンリッチメント {#data-enrichment}
 
 Exa を使えば、プラットフォームを離れることなく、Snowflake のテーブルをリアルタイムのウェブデータ (CEO や創業者の情報、最新ニュースなど) でエンリッチできます。
 
-<div id="create-a-prospect-table">
-  ### 見込み顧客テーブルを作成する
-</div>
+### 見込み顧客テーブルを作成する {#create-a-prospect-table}
 
 ```sql theme={null}
 CREATE DATABASE IF NOT EXISTS exa_enrichment;
@@ -396,9 +364,7 @@ VALUES
     ('Vercel', 'https://vercel.com', 'Developer Platform', 600);
 ```
 
-<div id="enrich-with-ceofounder-info">
-  ### CEO/創業者情報でエンリッチする
-</div>
+### CEO/創業者情報でエンリッチする {#enrich-with-ceofounder-info}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_leaders(
@@ -500,9 +466,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="enrich-with-latest-news">
-  ### 最新ニュースでデータを拡充する
-</div>
+### 最新ニュースでデータを拡充する {#enrich-with-latest-news}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_company_news(
@@ -584,9 +548,7 @@ def main(session, target_company):
 $$;
 ```
 
-<div id="run-enrichment">
-  ### エンリッチメントを実行する
-</div>
+### エンリッチメントを実行する {#run-enrichment}
 
 ```sql theme={null}
 -- 1社分のデータをエンリッチする
@@ -599,15 +561,11 @@ SELECT company_name, ceo_name, ceo_title,
 FROM exa_enrichment.demo.prospect_companies;
 ```
 
-<div id="parallelizing-exa-requests">
-  ## Exa リクエストの並列化
-</div>
+## Exa リクエストの並列化 {#parallelizing-exa-requests}
 
 大規模なテーブルをエンリッチする際、行ごとに Exa を順番に呼び出していると処理に時間がかかります。1 つのストアドプロシージャ内で Python の `concurrent.futures` を使えば、リクエストを並列化して複数の Exa API 呼び出しを同時に送信できます。
 
-<div id="concurrent-enrichment-procedure">
-  ### エンリッチメントの並行処理プロシージャ
-</div>
+### エンリッチメントの並行処理プロシージャ {#concurrent-enrichment-procedure}
 
 ```sql theme={null}
 CREATE OR REPLACE PROCEDURE exa_enrichment.demo.enrich_all_parallel(
@@ -679,9 +637,7 @@ def main(session, max_workers):
 $$;
 ```
 
-<div id="choosing-parallelism">
-  ### 並列度の選び方
-</div>
+### 並列度の選び方 {#choosing-parallelism}
 
 | `max_workers` | ユースケース                                                          |
 | ------------- | --------------------------------------------------------------- |
@@ -689,9 +645,7 @@ $$;
 | `10`          | ほとんどのエンリッチメントジョブに適したデフォルト値                                      |
 | `20–50`       | 上位の[レート制限](/ja/docs/admin/billing#rate-limits)ティアで大規模データセットを処理する場合 |
 
-<div id="snowflake-task-scheduling">
-  ### Snowflake タスクによるスケジュール実行
-</div>
+### Snowflake タスクによるスケジュール実行 {#snowflake-task-scheduling}
 
 エンリッチメントジョブを定期的に実行するには、プロシージャを [Snowflake Task](https://docs.snowflake.com/en/user-guide/tasks-intro) でラップします。
 
@@ -707,9 +661,7 @@ ALTER TASK exa_enrichment.demo.daily_enrichment RESUME;
 
 この設定では、並列エンリッチメントが毎日午前8時(PT)に実行されます。処理量とレート制限に合わせて、cron スケジュールと `max_workers` を調整してください。
 
-<div id="cortex-agent-integration">
-  ## Cortex Agent との連携
-</div>
+## Cortex Agent との連携 {#cortex-agent-integration}
 
 Exa のストアドプロシージャを [Snowflake Cortex Agent](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents) のツールとして登録することもできます。これにより、Cortex Agent が対話形式でウェブを検索できるようになります。
 
@@ -839,9 +791,7 @@ CREATE OR REPLACE AGENT exa_web_search_agent
 * 「検索拡張生成 (RAG) に関する研究論文を探して」
 * 「注目すべき主要な AI 企業はどこ？」
 
-<div id="security">
-  ## セキュリティ
-</div>
+## セキュリティ {#security}
 
 このインテグレーションは、Snowflake に組み込まれたセキュリティ機能を活用しています。
 
@@ -858,9 +808,7 @@ CREATE OR REPLACE AGENT exa_web_search_agent
 GRANT ROLE exa_agent_role TO USER analyst_user;
 ```
 
-<div id="more-resources">
-  ## その他のリソース
-</div>
+## その他のリソース {#more-resources}
 
 * [Exa API ドキュメント](/ja/docs/search/quickstart)
 * [Exa Dashboard](https://dashboard.exa.ai) — API キーの取得はこちら

@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="update-a-monitor">
-  # モニターを更新する
-</div>
+# モニターを更新する {#update-a-monitor}
 
 > 既存のモニターを更新します。すべてのフィールドは任意です。`search` では、変更したいフィールドだけを含む部分オブジェクトを送信できます。スケジュールを削除するには、`trigger` を `null` に設定します。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml PATCH /monitors/{id}
 openapi: 3.1.0

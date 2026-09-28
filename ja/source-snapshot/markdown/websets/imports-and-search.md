@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳細を調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="how-to-use-imports">
-  # インポートの使い方
-</div>
+# インポートの使い方 {#how-to-use-imports}
 
 > URL を Websets にインポートする手順を順を追って解説するガイドです。リストのエンリッチ、条件に基づくスコアリング、新たな一致結果の発見、そしてこれら 3 つを組み合わせる方法を紹介します。
 
@@ -13,9 +11,7 @@ URL のリスト (企業、人物、製品など) がすでにある場合は、
 
 このガイドでは、すべての構成について、そのままコピー&amp;ペーストできる API 呼び出しを示しながら解説します。`$EXA_API_KEY` をご自身の API キーに置き換えるだけで使えます。
 
-<div id="our-example-5-it-consulting-suppliers">
-  ## 例: IT コンサルティングのサプライヤー 5 社
-</div>
+## 例: IT コンサルティングのサプライヤー 5 社 {#our-example-5-it-consulting-suppliers}
 
 このガイドでは全体を通して、以下の 5 社のリストを import として使用します。
 
@@ -36,9 +32,7 @@ URL のリスト (企業、人物、製品など) がすでにある場合は、
 
 ***
 
-<div id="config-1-import-only-enrich-without-filtering">
-  ## Config 1: Import Only -- フィルタリングせずにエンリッチする
-</div>
+## Config 1: Import Only -- フィルタリングせずにエンリッチする {#config-1-import-only-enrich-without-filtering}
 
 <Note>
   **ライブ例:** [ダッシュボードでこの Webset を表示](https://websets.exa.ai/websets/webset_01kmnrshyh3bdart13q1ehdtdj)
@@ -46,9 +40,7 @@ URL のリスト (企業、人物、製品など) がすでにある場合は、
 
 **適した場面:** URL のリストがあり、単にエンリッチだけを行いたい場合。スコアリングやフィルタリングは行わず、すべての item がそのまま保持されます。
 
-<div id="api-call">
-  ### API呼び出し
-</div>
+### API呼び出し {#api-calls}
 
 ```bash theme={null}
 # ステップ1: サプライヤーのURLを含むCSVインポートを作成する
@@ -86,7 +78,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   }'
 ```
 
-### ライブ Webset での表示結果
+### ライブ Webset での表示結果 {#what-we-see-in-the-live-webset}
 
 **5 件の item** すべてが Webset に表示されます。条件が設定されていないため、filtering は行われません。
 
@@ -106,9 +98,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-2-search-only-web-discovery">
-  ## Config 2: Search Only -- Web Discovery
-</div>
+## Config 2: Search Only -- Web Discovery {#config-2-search-only-web-discovery}
 
 <Note>
   **ライブ例:** [ダッシュボードでこの Webset を表示](https://websets.exa.ai/websets/webset_01kmnrn5e1jr7gp22x8vk53wbz)
@@ -116,9 +106,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **適した場面:** 手元にリストがなく、条件 (criteria) に一致する新しい企業を Web から見つけたい場合。
 
-<div id="api-call">
-  ### API呼び出し
-</div>
+### API呼び出し {#api-call}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -210,7 +198,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### ライブ Webset で確認できる内容
+### ライブ Webset で確認できる内容 {#what-we-see-in-the-live-webset-2}
 
 システムがウェブを検索した結果、両方の条件を満たす **35 社** が見つかりました。すべての item に `source: "search"` が設定されており、一致した理由を説明する詳細な評価が付いています。
 
@@ -227,9 +215,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-3-scoped-search-score-your-list-against-criteria">
-  ## Config 3: Scoped Search -- リストを条件に照らしてスコアリングする
-</div>
+## Config 3: Scoped Search -- リストを条件に照らしてスコアリングする {#config-3-scoped-search-score-your-list-against-criteria}
 
 <Note>
   **ライブ例:** [ダッシュボードでこの webset を表示](https://websets.exa.ai/websets/webset_01kmnrsnkmksyb5e5d31e6bw5w)
@@ -237,9 +223,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **使用する場面:** サプライヤーのリストがあり、**各サプライヤーを条件に照らして評価したい**場合に使用します。条件を満たしたものだけが返されます。いわゆる「リストをスコアリングしたい」というユースケースです。
 
-<div id="api-calls">
-  ### API 呼び出し
-</div>
+### API 呼び出し {#api-calls-2}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -348,7 +332,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-### 実際の Webset で確認できる内容
+### 実際の Webset で確認できる内容 {#what-we-see-in-the-live-webset-3}
 
 この Webset には **4 件の Item** が含まれています。5 社のサプライヤーはそれぞれ条件に基づいて評価され、両方の条件を満たしたものだけが表示されています。
 
@@ -368,9 +352,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 ***
 
-<div id="config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches">
-  ## Config 4: Scoped Search + Web Discovery -- リストをスコアリングしつつ、新たな一致も見つける
-</div>
+## Config 4: Scoped Search + Web Discovery -- リストをスコアリングしつつ、新たな一致も見つける {#config-4-scoped-search-web-discovery-score-your-list-and-find-new-matches}
 
 <Note>
   **ライブ例:** [ダッシュボードでこの Webset を表示](https://websets.exa.ai/websets/webset_01kmpbj5wjcsh1yqn2cfhx2v7h)
@@ -378,9 +360,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
 
 **使用する場面:** 手元のサプライヤーリストを条件に照らしてスコアリングしつつ、同じ条件に一致する企業をウェブからも新たに見つけたい場合に使用します。手順は 2 段階です。まず Scoped Search で Webset を作成し、次に同じ Webset に通常のウェブ検索を追加します。
 
-<div id="api-calls">
-  ### API 呼び出し
-</div>
+### API 呼び出し {#api-calls-3}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -552,9 +532,7 @@ curl -s -X POST "https://api.exa.ai/websets/v0/websets" \
   ```
 </CodeGroup>
 
-<div id="what-we-see-in-the-live-webset">
-  ### 稼働中の Webset で確認できる内容
-</div>
+### 稼働中の Webset で確認できる内容 {#what-we-see-in-the-live-webset-4}
 
 この webset には **29 件の item** が含まれています。内訳は、インポートしたサプライヤーのうちスコアリングを通過した 4 件と、Web 上で新たに見つかった 25 社です。どちらも条件に基づいて評価されています。
 
@@ -575,9 +553,7 @@ Scoped Search ではインポートしたリストを条件に照らして評価
 
 ***
 
-<div id="quick-reference">
-  ## クイックリファレンス
-</div>
+## クイックリファレンス {#quick-reference}
 
 | 構成                                   | 機能                         | すべての item を保持するか                  | item はスコアリングされるか                              |
 | ------------------------------------ | -------------------------- | --------------------------------- | --------------------------------------------- |
@@ -586,9 +562,7 @@ Scoped Search ではインポートしたリストを条件に照らして評価
 | **3. Scoped Search**                 | 条件に基づいてリストをスコアリングする | いいえ。不合格の item は除外されます             | はい                                            |
 | **4. Scoped Search + Web Discovery** | リストをスコアリングし、一致する新しい項目も見つける | いいえ。インポートした item のうち不合格のものは除外されます | はい。インポートした item と新たに見つかった item の両方がスコアリングされます |
 
-<div id="which-config-should-i-use">
-  ## どの Config を使うべきか
-</div>
+## どの Config を使うべきか {#which-config-should-i-use}
 
 * **「リストをエンリッチしたいだけで、フィルタリングは不要」** -- Config 1
 * **「リストがないので、企業を探してほしい」** -- Config 2

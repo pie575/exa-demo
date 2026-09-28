@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="pydantic-ai">
-  # Pydantic AI
-</div>
+# Pydantic AI {#pydantic-ai}
 
 > Exa Search API を基盤とした Web リサーチツールを Pydantic AI エージェントに組み込みます。
 
@@ -30,9 +28,7 @@
 
 ***
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
 <Steps>
   <Step title="前提条件とインストール">
@@ -85,9 +81,7 @@
 
 ***
 
-<div id="configuration">
-  ## 設定
-</div>
+## 設定 {#configuration}
 
 `ExaSearch` の全フィールドとデフォルト値は以下のとおりです:
 
@@ -108,9 +102,7 @@ ExaSearch(
 
 `include_domains` と `exclude_domains` は `web_search` と `deep_search` に適用され、同時に指定することはできません。範囲外の上限値を指定した場合や、両方のドメインリストを設定した場合は、インスタンス生成時に例外が発生します。
 
-<div id="text-summary">
-  ### テキスト要約
-</div>
+### テキスト要約 {#text-summary}
 
 `text_summary` を設定すると、各 `web_search` 呼び出しで、検索結果をまとめたプレーンテキストの要約もあわせてリクエストされます。形式を指定しない要約が必要な場合は `True` を、特定の形式で出力したい場合はその形式を説明する文字列を渡します。
 
@@ -122,9 +114,7 @@ ExaSearch(text_summary='One concise sentence with the requested facts.')
 
 ツールの戻り値の形式に変更はありません。Exa がサマリーを返した場合は、`Summary:` 行として先頭に付加されます。
 
-<div id="structured-citations">
-  ### 構造化された引用
-</div>
+### 構造化された引用 {#structured-citations}
 
 すべてのツールは `ToolReturn` を返します。`return_value` にはモデルが参照する可読テキスト (`Sources:` ブロックを含む) が格納され、`metadata` には `'sources'` キーの下に、ソースが構造化された `ExaSource` レコード (`{'url': ..., 'title': ...}`) として格納されます。メタデータはモデルに送信されないため、テキストを解析しなくても引用をレンダリングできます。
 
@@ -139,9 +129,7 @@ for message in result.all_messages():
                     print(source['url'], source['title'])
 ```
 
-<div id="custom-client">
-  ### カスタムクライアント
-</div>
+### カスタムクライアント {#custom-client}
 
 デフォルトのクライアントは `exa_py.AsyncExa` で、`EXA_API_KEY` を使って設定されます。認証やベース URL を明示的に設定したい場合や、テスト時にフェイクへ差し替えたい場合は、`ExaClient` プロトコルを満たす任意のオブジェクトを渡します：
 
@@ -154,9 +142,7 @@ ExaSearch(client=AsyncExa(api_key='...'))
 
 ***
 
-<div id="exa-agent-runs">
-  ## Exa Agent の実行
-</div>
+## Exa Agent の実行 {#exa-agent-runs}
 
 [Exa Agent API](/ja/docs/agent/quickstart) は、オープンエンドなリサーチタスクを非同期で実行します。`ExaAgent` ケイパビリティは、このライフサイクルを Pydantic AI の[遅延ツール呼び出し (deferred tool calls) ](https://pydantic.dev/docs/ai/deferred-tools/)に対応付けます。`exa_agent` ツールは run を作成したうえで処理を遅延させ、Exa の run ID を遅延呼び出しのメタデータに格納して引き渡します。
 
@@ -188,9 +174,7 @@ ExaAgent(
 
 ***
 
-<div id="agent-spec-yamljson">
-  ## エージェントスペック (YAML/JSON)
-</div>
+## エージェントスペック (YAML/JSON) {#agent-spec-yamljson}
 
 どちらのケイパビリティも Pydantic AI の [エージェントスペック](https://pydantic.dev/docs/ai/agents/#agent-spec) に対応しているため、Python コードではなく設定ファイルで宣言できます。
 
@@ -215,9 +199,7 @@ agent = Agent.from_file('agent.yaml', custom_capability_types=[ExaSearch, ExaAge
 
 ***
 
-<div id="next">
-  ## 次のステップ
-</div>
+## 次のステップ {#next}
 
 * [**Search API**](/ja/docs/search/quickstart) - ハイライト、要約、ディープサーチに対応したセマンティック検索
 * [**Agent API**](/ja/docs/agent/quickstart) - 自由度の高い非同期リサーチの実行

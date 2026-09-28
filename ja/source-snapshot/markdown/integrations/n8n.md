@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 個別のページを参照する前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="n8n">
-  # n8n
-</div>
+# n8n {#n8n}
 
 > n8n のワークフロー内で Exa の search と contents を使用します。
 
 公式の [n8n 向け Exa ノード](https://github.com/exa-labs/n8n-integration)を使うと、ウェブ検索、コンテンツ抽出、根拠に基づく回答、Exa Agent の実行をビジュアルワークフローに組み込めます。通常のワークフローステップとして使うことも、ツールとして n8n の AI Agent に接続することもできます。
 
-<div id="install-the-exa-node">
-  ## Exa ノードをインストールする
-</div>
+## Exa ノードをインストールする {#install-the-exa-node}
 
 パッケージ名は `n8n-nodes-exa-official` です。
 
@@ -35,9 +31,7 @@
   </Step>
 </Steps>
 
-<div id="run-a-search">
-  ## 検索を実行する
-</div>
+## 検索を実行する {#run-a-search}
 
 1. ワークフローにトリガーを追加します。
 2. **Exa** ノードを追加します。
@@ -51,9 +45,7 @@
 
 Search では、各結果のテキスト、ハイライト、要約、リンク、画像も取得できます。ドメインフィルター、公開日、カテゴリー、`maxAgeHours`、サブページのクロールは、ノードのオプションフィールドで設定できます。
 
-<div id="available-resources">
-  ## 利用可能なリソース
-</div>
+## 利用可能なリソース {#available-resources}
 
 | リソース         | 操作                                                                                                        |
 | ------------ | --------------------------------------------------------------------------------------------------------- |
@@ -62,9 +54,7 @@ Search では、各結果のテキスト、ハイライト、要約、リンク�
 | **Answer**   | 引用付きで根拠に基づいた回答を生成します。オプションで構造化出力も利用できます。                                                                  |
 | **Agent**    | 複数ステップからなる Agent の実行を作成、確認、一覧表示、ストリーミング、ポーリング、キャンセルします。                                                   |
 
-<div id="use-exa-with-an-n8n-ai-agent">
-  ## n8n の AI Agent で Exa を使用する
-</div>
+## n8n の AI Agent で Exa を使用する {#use-exa-with-an-n8n-ai-agent}
 
 Exa ノードを **AI Agent** ノードのツール入力に接続します。モデルに値を指定させるパラメーターには、n8n の `$fromAI()` 式を使用できます。
 
@@ -74,9 +64,7 @@ Exa ノードを **AI Agent** ノードのツール入力に接続します。�
 
 Search と Answer は、グラウンディング用のツールとして適しています。複数ステップのリサーチ、リスト作成、構造化されたエンリッチメント、またはプレミアムな [Exa Connect](/ja/docs/agent/connect/overview) データを必要とするタスクには、Agent リソースを使用してください。
 
-<div id="wait-for-an-agent-run">
-  ## Agent の実行を待機する
-</div>
+## Agent の実行を待機する {#wait-for-an-agent-run}
 
 Agent の実行を作成する際、**Wait for Completion** では次のモードを選択できます。
 
@@ -85,9 +73,7 @@ Agent の実行を作成する際、**Wait for Completion** では次のモー�
 
 長時間かかるワークフローや非同期のワークフローでは、**Wait for Completion** をオフにして、返された実行の `id` を保存し、後で **Get Run** を使用してください。n8n のステップが終了しても、実行は Exa 上で継続します。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="ノードピッカーに Exa ノードが表示されない">
@@ -103,9 +89,7 @@ Agent の実行を作成する際、**Wait for Completion** では次のモー�
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="公式 Exa ノード" icon="github" href="https://github.com/exa-labs/n8n-integration" cta="リポジトリを見る" arrow="true">

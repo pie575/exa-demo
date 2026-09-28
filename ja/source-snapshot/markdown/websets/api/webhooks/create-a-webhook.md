@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="create-a-webhook">
-  # Webhook を作成する
-</div>
+# Webhook を作成する {#create-a-webhook}
 
 > 選択したイベントが発生するたびに、指定した URL へ配信する Webhook を作成します。
 
@@ -17,9 +15,7 @@
   失敗として扱われます。必ず最終的な宛先 URL を登録してください。
 </Warning>
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/webhooks
 openapi: 3.1.0

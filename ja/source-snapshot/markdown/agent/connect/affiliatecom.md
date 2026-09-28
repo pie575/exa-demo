@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 各ページを詳しく見る前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="affiliatecom">
-  # Affiliate.com
-</div>
+# Affiliate.com {#affiliatecom}
 
 > 複数のマーチャントやアフィリエイトネットワークにまたがる商品カタログを検索します。
 
@@ -17,17 +15,13 @@
 エージェントは Exa のウェブ検索とあわせて
 Affiliate.com にもクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 複数のマーチャントを横断した商品の発見と価格比較。
 * ショッピングアシスタントや購入ガイドコンテンツの基盤として活用。
 * リサーチ結果とあわせたアフィリエイトリンクの提示。
 
-<div id="provider-id">
-  ## プロバイダーID
-</div>
+## プロバイダーID {#provider-id}
 
 `dataSources` には次の値を指定してください。
 
@@ -35,9 +29,7 @@ Affiliate.com にもクエリを実行します。
 affiliate
 ```
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 $300 未満のワイヤレスノイズキャンセリングヘッドホンを検索し、価格を比較します。
 
@@ -134,16 +126,12 @@ $300 未満のワイヤレスノイズキャンセリングヘッドホンを検
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 組み合わせて使えるサービス
-</div>
+## 組み合わせて使えるサービス {#pairs-well-with}
 
 * [Similarweb](/ja/docs/agent/connect/similarweb): マーチャントを推奨する前に、そのリーチを把握します。
 * [Fiber.ai](/ja/docs/agent/connect/fiber): マーチャントやブランドを運営する企業を調査します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

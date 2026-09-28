@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="enterprise-managed-auth-for-claude">
-  # Claude向けEnterprise Managed Auth
-</div>
+# Claude向けEnterprise Managed Auth {#enterprise-managed-auth-for-claude}
 
 > Enterprise Managed Auth(EMA)を設定して、Okta Cross App Access(XAA)などのID プロバイダー経由でClaudeがExa MCPに接続できるようにします。
 
@@ -13,17 +11,13 @@
 
 アクセス権はディレクトリの設定に連動します。Oktaでユーザーのプロビジョニングを解除すると、そのユーザーがClaude経由でExaにアクセスすることもできなくなります。EMAは、MCPの[enterprise managed authorization拡張機能](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)に基づいています。
 
-<div id="before-you-start">
-  ## 始める前に
-</div>
+## 始める前に {#before-you-start}
 
 * ID プロバイダー (IdP) が接続された Claude の Team または Enterprise の組織と、その組織の管理者アクセス権。
 * SSO とディレクトリ同期が設定された Exa の**組織** (個人用のチームは不可) と、その組織の管理者アクセス権。
 * ID プロバイダーとして Okta を使用し、Okta Identity Engine 上で [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) が有効になっていること、およびテナントの Super Admin アクセス権。現在サポートされている ID プロバイダーは Okta のみです。
 
-<div id="exa-values-youll-need">
-  ## 必要なExaの設定値
-</div>
+## 必要なExaの設定値 {#exa-values-youll-need}
 
 | 項目                     | 値                        |
 | ---------------------- | ------------------------ |
@@ -31,9 +25,7 @@
 | Resource / MCPサーバーのURL | `https://mcp.exa.ai/mcp` |
 | スコープ                   | `mcp:tools`              |
 
-<div id="set-up-ema">
-  ## EMA をセットアップする
-</div>
+## EMA をセットアップする {#set-up-ema}
 
 <Steps>
   <Step title="Exa でメンバーをプロビジョニングする">
@@ -65,16 +57,12 @@
   Claude 経由の使用量は、チームで実行する他の処理と同様に、メンバーの Exa チームに対し、そのチームのプランとレート制限に基づいて請求されます。
 </Note>
 
-<div id="revoking-access">
-  ## アクセスの取り消し
-</div>
+## アクセスの取り消し {#revoking-access}
 
 * **特定のメンバー:** Okta でそのメンバーを削除するか、Exa でそのメンバーをチームから外します。いずれの方法でも、Claude 経由のアクセスは無効になります。
 * **全員:** Organization ページで issuer を削除するか、Claude で管理型認可をオフにします。新規接続は直ちにブロックされ、すでに開いているセッションもその後まもなく終了します。issuer はいつでも再登録できます。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="一部のメンバーでは動作するが、他のメンバーでは動作しない">

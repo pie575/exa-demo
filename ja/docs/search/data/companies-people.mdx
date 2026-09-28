@@ -43,36 +43,32 @@ Exa Search を使うと、組織やその組織に関わる人物を検索でき
   </Card>
 </Columns>
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 企業、候補者、専門家の探索
 * アカウントリサーチとステークホルダーマッピング
 * マーケットマップの作成、投資リサーチ、案件ソーシング
 * 経営陣、採用、組織に関するリサーチ
 
-<div id="write-better-queries">
-  ## より良いクエリを書く
-</div>
+## より良いクエリを書く {#write-better-queries}
 
 まず目的のエンティティを指定し、次にそれを絞り込む特性や関係性を加えます。企業のホームページ、職務経歴プロフィール、求人情報、個人のウェブサイトなど、情報源の種類が重要な場合はそれも指定してください。
 
 <Tabs>
   <Tab title="企業" icon="building">
-    ### 事業内容から企業を見つける
+### 事業内容から企業を見つける {#discover-companies-by-what-they-do}
 
     市場を定義する顧客、製品、ケイパビリティ、成長段階、地域を記述します。あらかじめ用意した企業リストに頼らず、事業内容に基づいて候補を見つけられます。
 
     <PlaygroundQuery query="companies selling AI voice agents to dental practices" category="company" />
 
-    ### 事業シグナルを見つける
+### 事業シグナルを見つける {#find-operating-signals}
 
     シグナルと、重視する企業の特性を指定します。Search は企業ページに加えて、求人情報、料金ページ、製品ドキュメント、報道記事も取得できます。
 
     <PlaygroundQuery query="remote staff engineer roles at Series B fintech companies" />
 
-    ### 資金調達の動向をリサーチする
+### 資金調達の動向をリサーチする {#research-funding-activity}
 
     ラウンド、業界、参加者、期間を指定します。
 
@@ -80,19 +76,19 @@ Exa Search を使うと、組織やその組織に関わる人物を検索でき
   </Tab>
 
   <Tab title="人物" icon="users">
-    ### 役職とスキルから人物を見つける
+### 役職とスキルから人物を見つける {#discover-people-by-role-and-skills}
 
     役職、職位、所在地、関連スキル、求める情報源の種類を組み合わせます。
 
     <PlaygroundQuery query="professional profiles of senior ML engineers in Seattle with PyTorch experience" />
 
-    ### 企業の特性で人物を絞り込む
+### 企業の特性で人物を絞り込む {#qualify-people-by-company-traits}
 
     人物と企業の関係、および企業を絞り込む特性を記述します。先に企業リストを作成するよりも効果的です。
 
     <PlaygroundQuery query="professional profiles of founders of YC-backed developer tools companies" />
 
-    ### 個人のウェブサイトや公開された成果物を見つける
+### 個人のウェブサイトや公開された成果物を見つける {#find-personal-websites-and-public-work}
 
     職業や研究分野を指定し、個人のウェブサイト、講演、インタビュー、記事を明示的にリクエストします。
 
@@ -100,17 +96,13 @@ Exa Search を使うと、組織やその組織に関わる人物を検索でき
   </Tab>
 </Tabs>
 
-<div id="search-both-together">
-  ## 両方をまとめて検索する
-</div>
+## 両方をまとめて検索する {#search-both-together}
 
 求める関係性を表現したクエリを1つ作成します。Exa は、企業ページ、職務経歴プロフィール、採用ページ、公開情報を1つの結果セットにまとめて返すことができます。
 
 <PlaygroundQuery query="heads of security at Series B healthcare software companies that sell to hospitals" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -151,9 +143,7 @@ Exa Search を使うと、組織やその組織に関わる人物を検索でき
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースを横断したリサーチが必要な構造化データには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。必要な企業や人物、選定条件、出力フィールドを記述すると、Agent がスキーマ検証済みの結果を引用付きで返します。
 

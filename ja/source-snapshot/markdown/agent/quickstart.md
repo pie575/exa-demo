@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-agent">
-  # Exa Agent
-</div>
+# Exa Agent {#exa-agent}
 
 > ディープリサーチ、リスト作成、エンリッチメントのワークフローを実行し、構造化された出力を返します。
 
@@ -19,9 +17,7 @@ Exa Agent は「コンテキストエージェント」と考えるとわかり�
   MCP を使いたい場合は、[Exa MCP](/ja/docs/get-started/exa-mcp#exa-agent) で Exa Agent と [Exa Connect](/ja/docs/agent/connect/overview) を利用できます。`tools=agent_run` を有効にすると、Claude、Cursor、その他の MCP クライアントから、マルチステップのリサーチ、リスト作成、エンリッチメント、構造化出力を実行できます。
 </Tip>
 
-<div id="when-to-use-exa-agent">
-  ## Exa Agent を使用するタイミング
-</div>
+## Exa Agent を使用するタイミング {#when-to-use-exa-agent}
 
 ワークフローで単発の検索や抽出の呼び出しだけでは足りない場合や、データを集めるために検索、ページの読み取り、検証を繰り返すループを自前で実装する必要がある場合は、Exa Agent を使用してください。
 
@@ -34,15 +30,11 @@ Exa Agent は「コンテキストエージェント」と考えるとわかり�
 
 Exa Agent は設計上、レイテンシが高く、非同期で動作します。呼び出しを自分でオーケストレーションする低レイテンシの単発検索には、まず [Search API](/ja/docs/search/quickstart) をお試しください。
 
-<div id="quickstart">
-  ## クイックスタート
-</div>
+## クイックスタート {#quickstart}
 
 この例では、指定した条件に一致する人物を構造化リストにまとめる実行を開始します。結果は `output.structured` に JSON 形式で返されます。
 
-<div id="1-install-the-exa-sdk">
-  ### 1. Exa SDK をインストールする
-</div>
+### 1. Exa SDK をインストールする {#1-install-the-exa-sdk}
 
 <CodeGroup>
   ```bash Python theme={null}
@@ -54,9 +46,7 @@ Exa Agent は設計上、レイテンシが高く、非同期で動作します�
   ```
 </CodeGroup>
 
-<div id="2-set-your-api-key">
-  ### 2. API キーを設定する
-</div>
+### 2. API キーを設定する {#2-set-your-api-key}
 
 <Tabs>
   <Tab title="macOS/Linux">
@@ -72,9 +62,7 @@ Exa Agent は設計上、レイテンシが高く、非同期で動作します�
   </Tab>
 </Tabs>
 
-<div id="3-create-a-run">
-  ### 3. 実行を作成する
-</div>
+### 3. 実行を作成する {#3-create-a-run}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -173,9 +161,7 @@ Exa Agent は設計上、レイテンシが高く、非同期で動作します�
 
 実行の作成時に `Accept: text/event-stream` ヘッダーを追加すると、実行のキュー登録、開始、完了の各段階で server-sent events を受信できます。詳細は[イベントのストリーミング](#stream-events)を参照してください。
 
-<div id="4-poll-for-completion">
-  ### 4. 完了までポーリングする
-</div>
+### 4. 完了までポーリングする {#4-poll-for-completion}
 
 イベントをストリーミングしない場合は、返された `id` を保存し、実行が終了ステータスになるまでポーリングします。
 
@@ -240,9 +226,7 @@ Exa Agent は設計上、レイテンシが高く、非同期で動作します�
   との互換性](/ja/docs/integrations/openai-sdk#agent-via-responses-api)を参照してください。
 </Note>
 
-<div id="verify-and-enrich-a-specific-entity">
-  ## 特定のエンティティを検証して補完する
-</div>
+## 特定のエンティティを検証して補完する {#verify-and-enrich-a-specific-entity}
 
 Exa Agent はリスト作成だけでなく、既知の単一エンティティの調査にも使えます。信頼できるソースと照合して主張を検証し、構造化されたエンリッチメントを返します。この例では、企業の公式ウェブサイトに一般公開された料金ページがあるかどうかを確認し、料金の詳細が取得できた場合はその情報で結果を補完します。スキーマで必須なのは `domain` と `verdict` のみで、それ以外はすべて任意のエンリッチメントです。
 
@@ -421,9 +405,7 @@ Exa Agent はリスト作成だけでなく、既知の単一エンティティ�
   そのページが存在しない証拠にはなりません。
 </Note>
 
-<div id="stream-events">
-  ## イベントのストリーミング
-</div>
+## イベントのストリーミング {#stream-events}
 
 ストリーミングを使用すると、作成リクエストの接続が維持され、実行が完了するまで Server-Sent Events (SSE) が送信されます。イベントタイプとペイロードについては、[イベント形式](#event-format)を参照してください。
 
@@ -468,9 +450,7 @@ Python では `stream=True`、JavaScript では `stream: true` を設定する�
   ```
 </CodeGroup>
 
-<div id="event-format">
-  ### イベント形式
-</div>
+### イベント形式 {#event-format}
 
 各 SSE フレームには、イベント ID、イベント名、JSON ペイロードが含まれます。
 
@@ -482,9 +462,7 @@ data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:5
 
 ストリームには、`: keep-alive` のようなコメント行が含まれる場合もあります。SSE クライアントはコメントを自動的に無視します。独自のパーサーを実装する場合も、同様にコメントを無視するようにしてください。
 
-<div id="event-types">
-  ### イベントタイプ
-</div>
+### イベントタイプ {#event-types}
 
 | イベント                  | `data` ペイロード                          | 使い方                                                                                              |
 | --------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -498,9 +476,7 @@ data: {"id":"agent_run_01j...","status":"queued","createdAt":"2026-05-07T21:21:5
 
 `agent_run.source.added` は完全な引用リストではなく、ライブプレビューとして扱ってください。正式なグラウンディング出力は、終了状態に達した実行の `output.grounding` です。
 
-<div id="replay-stored-events">
-  ### 保存済みイベントのリプレイ
-</div>
+### 保存済みイベントのリプレイ {#replay-stored-events}
 
 ZDR 以外の実行では、[`GET /agent/runs/{id}/events`](/ja/docs/reference/agent-api/list-run-events) は保存済みのイベントをページネーション形式の JSON で返します。`Accept: text/event-stream` を送信すると保存済みのイベントを SSE としてリプレイでき、`Last-Event-ID` を送信するとクライアントで処理済みのイベントをスキップできます。
 
@@ -515,9 +491,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 前方互換性を確保するため、アプリケーションが認識できないイベント名は無視し、終了イベントを受信するまで処理を続けてください。
 
-<div id="return-structured-json">
-  ## 構造化JSONを返す
-</div>
+## 構造化JSONを返す {#return-structured-json}
 
 `outputSchema` を使用すると、スキーマで検証済みのJSONを `output.structured` で受け取れます。
 
@@ -621,17 +595,13 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="process-input-rows">
-  ## 入力行を処理する
-</div>
+## 入力行を処理する {#process-input-rows}
 
 補完したい既存のデータセットがある場合は、`input.data` を使用します。各データエンティティにフィールドを追加することも、取り込んだデータをもとに関連するエンティティをさらに見つけることも、その両方を行うこともできます。
 
 行のエンリッチメントの完全な例については、[Agent の例](/ja/docs/agent/examples#enrich-input-rows-code)を参照してください。
 
-<div id="process-exclusions">
-  ## 除外の処理
-</div>
+## 除外の処理 {#process-exclusions}
 
 `input.exclusion` を使用すると、特定のエントリを実行結果から除外できます。以下の例では、かわいい動物トップ10を探していますが、ヤギとパンダのかわいさはすでにわかっているため、実行の対象から外しています。
 
@@ -687,9 +657,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="connect-data-sources">
-  ## データソースを接続する
-</div>
+## データソースを接続する {#connect-data-sources}
 
 インデックスはすべての実行でデフォルトで利用できます。`dataSources` は、[Exa Connect](/ja/docs/agent/connect/overview) のパートナーを追加する場合にのみ使用してください。各エントリでは `provider` を1つ指定します。`outputSchema` 内のプロパティが特定のソース (例: &quot;Similarweb から&quot;) を参照している場合、Exa Agent はウェブページから推測せず、該当するプロバイダーのツールを呼び出します。
 
@@ -704,9 +672,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 データパートナーの全一覧と各パートナーの使用例については、[Exa Connect](/ja/docs/agent/connect/overview) を参照してください。
 
-<div id="continue-from-a-previous-run">
-  ## 以前の実行から続ける
-</div>
+## 以前の実行から続ける {#continue-from-a-previous-run}
 
 `previousRunId` を使用すると、以前のレスポンスに対してフォローアップの質問を送信できます。フォローアップごとに、独自の ID を持つ新しい実行が開始されます。`previousRunId` はコンテキストを新しい実行に引き継ぐためのもので、新しい実行の ID として再利用されることはありません。
 
@@ -747,9 +713,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="find-a-run-id">
-  ## 実行 ID を確認する
-</div>
+## 実行 ID を確認する {#find-a-run-id}
 
 最近の実行を一覧表示し、各実行のステータスを確認します。
 
@@ -787,9 +751,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
   ```
 </CodeGroup>
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 料金は従量課金制で、コンポーネントごとに設定されています。
 
@@ -806,9 +768,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 同時実行数とレート制限については、[Agent の制限](/ja/docs/admin/billing#agent-limits)を参照してください。
 
-<div id="effort">
-  ### Effort
-</div>
+### Effort {#effort}
 
 `effort` を使用して、実行ごとのコストと推論レベルを選択します。サポートされる値は `minimal`、`low`、`medium`、`high`、`xhigh`、`auto`、`max` で、デフォルトは `auto` です。固定の effort はリクエストごとの料金が一定で予測しやすく、`auto` とベータ版の `max` は使用量に応じた従量課金です。
 
@@ -832,9 +792,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 `budget.maxCostDollars` は、`auto` および `max` で実行ごとの上限を設定する任意のパラメーターです。指定できる範囲は `$1`〜`$100` です。標準の最大値は `$100` ですが、サーバー側でより低い最大値が設定されている場合があります。デフォルトの上限は、`auto` が `$5`、`max` が `$20` です。これは固定料金ではなく上限のため、早く完了した実行はコストが低くなります。固定の effort では budget を指定できません。
 
-<div id="choosing-an-effort-mode">
-  ### effortモードの選び方
-</div>
+### effortモードの選び方 {#choosing-an-effort-mode}
 
 固定のeffortモードは、標準的なリサーチでリクエストごとの料金を予測しやすくしたい場合に適しています。リスト作成のように、エンティティ数がリクエストごとに変わり、作業範囲が一定でない場合は `auto` を使用してください。
 
@@ -852,9 +810,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 実行時間は、クエリの難易度、スキーマの複雑さ、外部ソースの可用性によって変動します。effortモードは厳密なレイテンシを保証するものではなく、品質・コスト・実行時間のトレードオフを調整するものと考えてください。
 
-<div id="run-with-max-effort">
-  ### max effort で実行する
-</div>
+### max effort で実行する {#run-with-max-effort}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -898,9 +854,7 @@ curl -N "https://api.exa.ai/agent/runs/agent_run_01j.../events" \
 
 SDK のサンプルを実行するには、Agent Max に対応したバージョンの `exa-py` または `exa-js` が必要です。
 
-<div id="zero-data-retention">
-  ## Zero Data Retention
-</div>
+## Zero Data Retention {#zero-data-retention}
 
 Exa Agent は [Zero Data Retention](/ja/docs/admin/security/zero-data-retention)(ZDR)に対応しています。ZDR はチーム単位で有効化されます。アカウントで有効にするには、[お問い合わせ](mailto:sales@exa.ai)ください。
 
@@ -911,9 +865,7 @@ Exa Agent は [Zero Data Retention](/ja/docs/admin/security/zero-data-retention)
 * `previousRunId` は使用できません。
 * Exa Connect の `dataSources` は使用できません。これを含むリクエストには `400` エラーが返されます。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="インデックスの内容" icon="search" href="/ja/docs/search/data/overview" cta="ガイドを開く" arrow="true">

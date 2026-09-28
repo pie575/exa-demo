@@ -33,54 +33,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 大手メディア、業界紙、ニッチな媒体の記事を調べるには、Exa Search を使用してください。新しい記事は公開から数分以内に検索できるようになります。公開期間の指定が必須の場合は、自然言語のクエリと日付フィルターを組み合わせてください。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 市場・投資リサーチ
 * サイバーセキュリティ・脅威インテリジェンス
 * 企業、製品、競合他社のモニタリング
 * 業界動向のブリーフィングや時事リサーチ
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### 進行中の政策ニュースを追う
-</div>
+### 進行中の政策ニュースを追う {#follow-a-developing-policy-story}
 
 トピック、ソースの種類、公開期間を指定すると、結果をそのニュースの現在の局面に絞り込めます。
 
 <PlaygroundQuery query="今月公開された、EU AI Act の施行スケジュールに関するニュース報道" />
 
-<div id="find-practitioner-analysis">
-  ### 実務者による分析を探す
-</div>
+### 実務者による分析を探す {#find-practitioner-analysis}
 
 一般的なニュース報道ではなく、実務者による分析を探したい場合は、ソースの種類を明示してください。
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### 特定の形式のディスカッションを見つける
-</div>
+### 特定の形式のディスカッションを見つける {#discover-discussions-in-a-specific-format}
 
 クエリには形式とテーマの両方を含めます。こうすることで、Web上のエピソードページやトランスクリプトを幅広く検索対象にできます。
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### アドバースメディアをリサーチする
-</div>
+### アドバースメディアをリサーチする {#research-adverse-media}
 
 調査対象となるネガティブなシグナルと、エンティティの種類の両方を記述してください。企業名に「news」という単語を付け足しただけのクエリは避けましょう。
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -121,9 +107,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースにまたがるリサーチが必要な構造化データを取得するには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。必要な記事、フィールド、対象期間を指定すると、Agent がスキーマ検証済みの結果を引用付きで返します。
 

@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 個別のページを調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="delete-an-item">
-  # Item を削除する
-</div>
+# Item を削除する {#delete-an-item}
 
 > Webset から Item を削除します。
 
 この操作を行うと、その Item に対して実行中の Enrichment 処理はすべてキャンセルされます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /v0/websets/{webset}/items/{id}
 openapi: 3.1.0

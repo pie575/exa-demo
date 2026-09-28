@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="exa-snapshot">
-  # Exa Snapshot
-</div>
+# Exa Snapshot {#exa-snapshot}
 
 > Search と Contents を、指定した日時時点のページの保存バージョンに固定します。
 
@@ -18,9 +16,7 @@ Exa Snapshot は、Exa がクロールしたページの保存バージョンを
   100 リクエストを超えて引き続き利用する場合は、[営業チームにお問い合わせください](https://exa.ai/contact/sales)。
 </Info>
 
-<div id="search-at-a-datetime">
-  ## 特定の日時時点で検索する
-</div>
+## 特定の日時時点で検索する {#search-at-a-datetime}
 
 `/search` では、`snapshotAsOf` を `contents` 内に指定します。
 
@@ -109,9 +105,7 @@ Exa は候補 URL を見つけた後、`snapshotAsOf` 時点またはそれ以�
   ```
 </Accordion>
 
-<div id="pin-contents-to-a-datetime">
-  ## コンテンツを特定の日時に固定する
-</div>
+## コンテンツを特定の日時に固定する {#pin-contents-to-a-datetime}
 
 `/contents` リクエストのトップレベルに `snapshotAsOf` を追加します。
 
@@ -190,9 +184,7 @@ Exa は、指定した日時以前に保存されたバージョンのうち、�
   `"status": "error"` と `"tag": "CONTENT_NOT_CACHED"` 付きで報告されます。
 </Tip>
 
-<div id="how-snapshots-work">
-  ## スナップショットの仕組み
-</div>
+## スナップショットの仕組み {#how-snapshots-work}
 
 | フィールド          | 指定箇所  | 意味                                        |
 | -------------- | ----- | ----------------------------------------- |
@@ -208,9 +200,7 @@ Exa は、指定した日時以前に保存されたバージョンのうち、�
   Search では、基準日時が制限するのはコンテンツであり、ランキングではありません。Exa は候補 URL の検出に、引き続き現在の取得シグナルを使用します。結果は `snapshotAsOf` 時点までの情報に限定されたエビデンスとして扱ってください。当時の検索でどのようにランク付けされていたかを正確に再現したものではありません。
 </Note>
 
-<div id="limits-and-compatibility">
-  ## 制限と互換性
-</div>
+## 制限と互換性 {#limits-and-compatibility}
 
 <AccordionGroup>
   <Accordion title="アクセス、レート制限、遡及期間">
@@ -232,9 +222,7 @@ Exa は、指定した日時以前に保存されたバージョンのうち、�
   </Accordion>
 </AccordionGroup>
 
-<div id="common-uses">
-  ## 主な用途
-</div>
+## 主な用途 {#common-uses}
 
 特定の日時の時点で Exa に保存されていた内容を前提とするタスクには、Exa Snapshot を使用します。
 

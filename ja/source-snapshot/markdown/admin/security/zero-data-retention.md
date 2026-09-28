@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、まずこのファイルで利用可能なすべてのページを確認してください。
 
-<div id="zero-data-retention">
-  # Zero Data Retention
-</div>
+# Zero Data Retention {#zero-data-retention}
 
 > Exa の各製品における Zero Data Retention の対応状況です。
 

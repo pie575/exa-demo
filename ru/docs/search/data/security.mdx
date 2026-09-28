@@ -33,9 +33,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для поиска записей об уязвимостях, advisory вендоров и исследований угроз в источниках, которые команды безопасности уже читают.
 
-<div id="included">
-  ## Включено
-</div>
+## Включено {#included}
 
 * Записи об уязвимостях CVE и GHSA
 * advisory безопасности вендоров и описания патчей
@@ -43,54 +41,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Страницы доверия, списки субобработчиков и документация по соответствию требованиям
 * Блоги по безопасности, доклады с конференций и исследования
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Приоритизация уязвимостей и оценка поверхности атаки
 * Аналитика угроз и отслеживание злоумышленников
 * Оценка рисков вендоров и аудит безопасности третьих сторон
 * Мониторинг безопасности и оповещения
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="triage-a-vulnerability-class">
-  ### Триаж класса уязвимостей
-</div>
+### Триаж класса уязвимостей {#triage-a-vulnerability-class}
 
 Укажите продукт, диапазон версий и уровень критичности.
 
 <PlaygroundQuery query="critical CVEs affecting Apache Struts 6.x" />
 
-<div id="find-vendor-advisories">
-  ### Поиск advisories от вендоров
-</div>
+### Поиск advisories от вендоров {#find-vendor-advisories}
 
 Описывайте статус эксплуатации и класс продукта, а не конкретный идентификатор CVE.
 
 <PlaygroundQuery query="vendor advisories for actively exploited VPN vulnerabilities" />
 
-<div id="review-a-vendors-security-posture">
-  ### Оценка уровня безопасности вендора
-</div>
+### Оценка уровня безопасности вендора {#review-a-vendors-security-posture}
 
 Укажите тип документа и класс вендора.
 
 <PlaygroundQuery query="subprocessor lists for SOC 2 compliant CRM vendors" />
 
-<div id="research-an-adversary">
-  ### Исследование злоумышленника
-</div>
+### Исследование злоумышленника {#research-an-adversary}
 
 Укажите группировку или кампанию, а также интересующую вас технику или отрасль.
 
 <PlaygroundQuery query="reports on ransomware groups targeting healthcare providers this year" />
 
-<div id="make-a-request">
-  ## Выполните запрос
-</div>
+## Выполните запрос {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -131,9 +115,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для структурированных данных нужно исследование по нескольким источникам, используйте [выполнение задачи Exa Agent](/ru/docs/agent/quickstart). Опишите продукты, criteria угроз и нужные поля вывода, и Agent вернёт результаты, проверенные по schema, вместе с citations.
 

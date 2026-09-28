@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="openclaw">
-  # OpenClaw
-</div>
+# OpenClaw {#openclaw}
 
 > Exa を使って、OpenClaw でリアルタイムのウェブ検索とページコンテンツの取得を利用できるようにします。
 
 [OpenClaw](https://openclaw.ai/) は、Exa をネイティブの `web_search` プロバイダーとしてサポートしています。Exa を選択すると、すべての OpenClaw エージェントが組み込みのウェブツールから Exa の検索モード、日付フィルター、コンテンツ抽出を利用できます。
 
-<div id="set-up-exa">
-  ## Exa をセットアップする
-</div>
+## Exa をセットアップする {#set-up-exa}
 
 <Steps>
   <Step title="Exa プラグインをインストールする">
@@ -50,9 +46,7 @@
   </Step>
 </Steps>
 
-<div id="configure-manually">
-  ## 手動で設定する
-</div>
+## 手動で設定する {#configure-manually}
 
 OpenClaw の JSON5 設定で、Exa を直接選択できます：
 
@@ -90,9 +84,7 @@ OpenClaw の JSON5 設定で、Exa を直接選択できます：
   API キーを設定ファイルに直接記述してコミットするのではなく、`EXA_API_KEY` または OpenClaw の SecretRef を使用してください。
 </Note>
 
-<div id="what-agents-can-request">
-  ## エージェントがリクエストできる内容
-</div>
+## エージェントがリクエストできる内容 {#what-agents-can-request}
 
 OpenClaw は `web_search` を通じて Exa を利用できるようにしています。
 
@@ -121,9 +113,7 @@ await web_search({
 
 OpenClaw は、デフォルトでウェブ検索の結果を 15 分間キャッシュします。すべてのリクエストで常に最新の結果が必要な場合は、`tools.web.search.cacheTtlMinutes` の値を変更するか、`0` に設定してください。
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="OpenClaw に Exa がプロバイダーとして表示されない">
@@ -139,9 +129,7 @@ OpenClaw は、デフォルトでウェブ検索の結果を 15 分間キャッ�
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="OpenClaw Exa provider" icon="book-open" href="https://docs.openclaw.ai/tools/exa-search" cta="ガイドを読む" arrow="true">

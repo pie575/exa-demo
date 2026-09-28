@@ -6,9 +6,7 @@ timestamp: false
 
 Exa から Webhook を受信した際は、データの完全性と真正性を確保するため、Exa から送信されたものであることを検証してください。Exa は、Webhook エンドポイントごとに固有のシークレットキーを使用して、すべての Webhook ペイロードに署名しています。
 
-<div id="how-webhook-signatures-work">
-  ## Webhook 署名の仕組み
-</div>
+## Webhook 署名の仕組み {#how-webhook-signatures-work}
 
 Exa は HMAC SHA256 を使用して webhook のペイロードに署名します。署名は `Exa-Signature` ヘッダーに含まれており、その内容は次のとおりです。
 
@@ -21,9 +19,7 @@ Exa は HMAC SHA256 を使用して webhook のペイロードに署名します
 Exa-Signature: t=1234567890,v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
 ```
 
-<div id="verification-process">
-  ## 検証プロセス
-</div>
+## 検証プロセス {#verification-process}
 
 webhook の署名を検証するには、次の手順に従います。
 
@@ -366,9 +362,7 @@ webhook の署名を検証するには、次の手順に従います。
 
 <br />
 
-<div id="security-best-practices">
-  ## セキュリティのベストプラクティス
-</div>
+## セキュリティのベストプラクティス {#security-best-practices}
 
 以下のプラクティスに従うことで、webhook の実装を安全かつ堅牢なものにできます。
 
@@ -388,13 +382,9 @@ webhook の署名を検証するには、次の手順に従います。
 
 <br />
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
-<div id="invalid-signature-errors">
-  ### 無効な署名エラー
-</div>
+### 無効な署名エラー {#invalid-signature-errors}
 
 署名検証に失敗する場合は、以下を確認してください。
 
@@ -403,9 +393,7 @@ webhook の署名を検証するには、次の手順に従います。
 3. **ヘッダーの解析を確認する**: ヘッダーからタイムスタンプと署名を正しく抽出しているか確認してください
 4. **エンコーディングの問題**: 検証処理全体を通して UTF-8 エンコーディングで統一されているか確認してください
 
-<div id="testing-signatures-locally">
-  ### 署名をローカルでテストする
-</div>
+### 署名をローカルでテストする {#testing-signatures-locally}
 
 webhook シークレットとサンプルのペイロードを使って、署名検証ロジックをテストできます。
 
@@ -437,9 +425,7 @@ print(f"Test signature valid: {is_valid}")  # True が出力されます
 
 <br />
 
-<div id="whats-next">
-  ## 次のステップ
-</div>
+## 次のステップ {#whats-next}
 
 * [Webhook イベント](/ja/docs/websets/api/events/types)とそのペイロードについて確認する
 * [Webhook の再試行と監視](/ja/docs/websets/api/webhooks/attempts/list-webhook-attempts)を設定する

@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем изучать документацию дальше.
 
-<div id="exa-mcp">
-  # Exa MCP
-</div>
+# Exa MCP {#exa-mcp}
 
 > Подключайте ChatGPT, Codex, Claude, Grok, Cursor и любой другой MCP-клиент к инструментам Exa: веб-поиску, загрузке страниц, Exa Agent и Exa Connect.
 
@@ -19,9 +17,7 @@ https://mcp.exa.ai/mcp
 
 Чтобы начать, API key не требуется. Exa MCP имеет открытый исходный код и доступен на [GitHub](https://github.com/exa-labs/exa-mcp-server).
 
-<div id="install">
-  ## Установка
-</div>
+## Установка {#install}
 
 <div className="docs-tabs">
   <Tabs>
@@ -52,7 +48,7 @@ https://mcp.exa.ai/mcp
     </Tab>
 
     <Tab title="Claude" icon="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/mcp-clients/claude.svg?fit=max&auto=format&n=Una64IRjof2yadw_&q=85&s=443a9b17d5b63c875f924a4aecc01e56" width="24" height="24" data-path="images/mcp-clients/claude.svg">
-      ### Claude Code CLI
+### Claude Code CLI {#claude-code-cli}
 
       <Steps>
         <Step title="Установите плагин">
@@ -70,7 +66,7 @@ https://mcp.exa.ai/mcp
         </Step>
       </Steps>
 
-      ### Desktop, Web и Cowork
+### Desktop, Web и Cowork {#desktop-web-cowork}
 
       Claude Desktop, Web и Cowork используют официальный коннектор Exa.
 
@@ -205,9 +201,7 @@ https://mcp.exa.ai/mcp
   </Tabs>
 </div>
 
-<div id="authentication">
-  ## Аутентификация
-</div>
+## Аутентификация {#authentication}
 
 Exa MCP поддерживает три режима аутентификации:
 
@@ -217,9 +211,7 @@ Exa MCP поддерживает три режима аутентификаци�
 | OAuth     | Интерактивные клиенты, установка из marketplace, использование в production   | Подключитесь к `https://mcp.exa.ai/mcp?login` и войдите в Exa в браузере. Использование засчитывается вашей команде Exa. |
 | API key   | Клиенты без MCP OAuth                                                         | Подключитесь к `https://mcp.exa.ai/mcp`, передав в header `x-api-key` ваш API key                                        |
 
-<div id="sign-in-with-oauth">
-  ### Вход через OAuth
-</div>
+### Вход через OAuth {#sign-in-with-oauth}
 
 ChatGPT, Claude и другие установки из marketplace предлагают выполнить вход, когда это требуется. В любом client с поддержкой MCP OAuth вы можете запустить тот же процесс, подключившись к:
 
@@ -229,9 +221,7 @@ https://mcp.exa.ai/mcp?login
 
 Ваш client находит сервер авторизации Exa, открывает страницу входа в браузере и управляет доступом.
 
-<div id="use-an-api-key">
-  ### Использование API key
-</div>
+### Использование API key {#use-an-api-key}
 
 <Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
@@ -243,9 +233,7 @@ https://mcp.exa.ai/mcp?login
 x-api-key: YOUR_EXA_API_KEY
 ```
 
-<div id="available-tools">
-  ## Доступные инструменты
-</div>
+## Доступные инструменты {#available-tools}
 
 | Инструмент                | Доступность                    | Для чего использовать                                                    |
 | ------------------------- | ------------------------------ | ------------------------------------------------------------------------ |
@@ -264,9 +252,7 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
   Явно заданный список `tools` заменяет набор по умолчанию, поэтому перечислите в нём все инструменты, которые хотите включить, в том числе веб-поиск и fetch.
 </Tip>
 
-<div id="exa-agent">
-  ## Exa Agent
-</div>
+## Exa Agent {#exa-agent}
 
 Используйте [Exa Agent](/ru/docs/agent/quickstart) для исследований, которым требуется больше одного search: например, чтобы построить список, проверить каждый item по criteria или получить структурированные результаты.
 
@@ -319,9 +305,7 @@ https://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run
 
 Схемы вывода, режимы effort, источники данных и стоимость описаны в [руководстве по Exa Agent](/ru/docs/agent/quickstart).
 
-<div id="advanced-search">
-  ## Расширенный поиск
-</div>
+## Расширенный поиск {#advanced-search}
 
 Используйте `web_search_advanced_exa`, когда в запросе нужны явные фильтры по категории или домену, диапазоны дат, текстовые ограничения, геотаргетинг, расширение запроса, краткие сводки, highlights, контроль свежести или обход подстраниц. Для обычного поиска оставляйте `web_search_exa`: он даёт модели меньшую поверхность инструментов и требует меньше настроек.
 
@@ -333,9 +317,7 @@ https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_ex
 
 MCP tool предоставляет основные настройки [Search API](/ru/docs/reference/search) в виде удобных для инструментов полей, таких как `includeDomains`, `startPublishedDate`, `enableHighlights` и `maxAgeHours`. Точные имена полей смотрите в tool schema в вашем клиенте.
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Ошибка превышения лимита запросов (429)">
@@ -373,9 +355,7 @@ MCP tool предоставляет основные настройки [Search 
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={2}>
   <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Посмотреть исходный код" arrow="true">

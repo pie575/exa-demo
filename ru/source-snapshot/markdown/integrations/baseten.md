@@ -1,19 +1,15 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="baseten">
-  # Baseten
-</div>
+# Baseten {#baseten}
 
 > Обеспечьте опору на источники для моделей с открытым исходным кодом в Baseten Model APIs с помощью веб-поиска Exa через Baseten Hosted Tools.
 
 Exa — провайдер веб-поиска в [Baseten Hosted Tools](https://www.baseten.co/blog/introducing-baseten-hosted-tools/). Baseten Model APIs обслуживают модели с открытым исходным кодом, а Hosted Tools позволяют этим моделям искать в вебе без самостоятельной настройки цикла вызова инструментов: вы добавляете селектор инструмента Exa в обычный запрос, Baseten выполняет модель и поисковые запросы Exa вместе в серверном цикле, и вы получаете ответ с опорой на источники в том же ответе. Exa API key при этом не нужен. Baseten перевыставляет стоимость Exa в вашем счёте Baseten без наценки.
 
-<div id="use-the-exa-web-search-tools">
-  ## Использование инструментов веб-поиска Exa
-</div>
+## Использование инструментов веб-поиска Exa {#use-the-exa-web-search-tools}
 
 Задайте header `x-baseten-server-tools: true` и добавьте один или несколько селекторов Exa в массив `tools`. Достаточно указать только `type`; Baseten автоматически разворачивает tool schema, а модель сама решает, когда искать, что именно искать и какие страницы читать. Серверные инструменты работают с эндпоинтами Baseten [Chat Completions](https://docs.baseten.co/reference/inference-api/chat-completions), [Messages](https://docs.baseten.co/reference/inference-api/messages) и Responses, как в буферизованном режиме, так и в режиме потоковой передачи.
 
@@ -100,23 +96,17 @@ Exa — провайдер веб-поиска в [Baseten Hosted Tools](https:/
 | `max_react_iterations`         | Ограничить число итераций модели на один запрос (по умолчанию 12, диапазон от 2 до 20). Последняя итерация зарезервирована под ответ, поэтому `N` допускает `N - 1` раундов tool calls. |
 | `max_tool_calls_per_iteration` | Ограничить число вызовов серверных инструментов в одной итерации (по умолчанию 10, диапазон от 1 до 10)                                                                                 |
 
-<div id="how-results-come-back">
-  ## Как возвращаются результаты
-</div>
+## Как возвращаются результаты {#how-results-come-back}
 
 Итоговый ответ приходит в обычном поле эндпоинта. Завершённые вызовы Exa фиксируются по-разному в зависимости от протокола: блоки `tool_use` и `tool_result` в Messages, элементы `mcp_call` в Responses и `baseten.iterations[].continuation_messages` в Chat Completions. В потоковых запросах каждый вызов поиска и его результат приходят в виде server-sent events по ходу работы цикла, так что вы можете показывать прогресс ещё до появления ответа. Массив `baseten.request.server_tool_calls[]` сообщает об итоге каждого вызова Exa в рамках запроса.
 
-<div id="pricing">
-  ## Pricing
-</div>
+## Pricing {#pricing}
 
 Вызовы Exa тарифицируются на вашем аккаунте Baseten по ставкам Exa без наценки — дополнительно к стоимости токенов модели: примерно $0,007 за search и $0,001 за каждый загруженный URL. Exa сообщает стоимость каждого вызова во время выполнения, поэтому отдельные вызовы могут отличаться от этих значений. Тарифицированные tool calls отображаются в настройках рабочего пространства Baseten в разделе Billing → Usage с группировкой по провайдерам. Актуальные ставки смотрите в [таблице цен Baseten](https://docs.baseten.co/inference/model-apis/web-search#pricing).
 
 Hosted Tools доступны на Baseten в режиме раннего доступа с лимитом 25 запросов в минуту на организацию. Попробуйте Exa search в [песочнице Baseten](https://app.baseten.co/model-apis/zai-org/GLM-5.3-Fast/playground) или свяжитесь с Baseten, чтобы повысить лимит для production-нагрузок.
 
-<div id="resources">
-  ## Ресурсы
-</div>
+## Ресурсы {#resources}
 
 <Columns cols={2}>
   <Card title="Документация Baseten по веб-поиску" icon="wrench" href="https://docs.baseten.co/inference/model-apis/web-search" cta="Открыть документацию" arrow="true">

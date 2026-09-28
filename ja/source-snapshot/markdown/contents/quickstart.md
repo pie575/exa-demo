@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="contents-api">
-  # Contents API
-</div>
+# Contents API {#contents-api}
 
 > 任意のURLからテキスト、ハイライト、要約を抽出します。
 
@@ -18,9 +16,7 @@ contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
   Exaが各結果の関連度に応じて抜粋の長さを調整します。詳しくは[ハイライト](/ja/docs/search/highlights)を参照してください。
 </Tip>
 
-<div id="make-your-first-request">
-  ## 最初のリクエストを送信する
-</div>
+## 最初のリクエストを送信する {#make-your-first-request}
 
 1 つ以上の URL またはドキュメント ID を渡し、タスクに関連する部分のハイライトをリクエストします。HTTP リクエストでは、これらを `ids` で指定します。
 
@@ -241,9 +237,7 @@ contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
 
 コンテンツビューは1回のリクエストにつき1つだけ選択してください。ハイライト、テキスト、要約を同時にリクエストすると、ビューごとに個別に返され、それぞれ課金されます。
 
-<div id="content-freshness">
-  ## コンテンツの鮮度
-</div>
+## コンテンツの鮮度 {#content-freshness}
 
 `maxAgeHours` は、抽出されるページコンテンツにどの程度の鮮度を求めるかを制御します。
 
@@ -268,9 +262,7 @@ contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
   | `"preferred"`    | 直接対応する設定はありません。`maxAgeHours: 1` などの小さい値を使用してください |
 </Accordion>
 
-<div id="crawl-subpages">
-  ## サブページをクロールする
-</div>
+## サブページをクロールする {#crawl-subpages}
 
 各開始 URL からリンクをたどるには、`subpages` を設定します。特定のサイトセクションを Exa に優先してクロールさせたい場合は、`subpageTarget` を追加します。
 
@@ -308,17 +300,13 @@ contentsのすべての機能は、[Exa Search](/ja/docs/search/quickstart)で�
   ```
 </CodeGroup>
 
-<div id="images-and-favicons">
-  ## 画像とファビコン
-</div>
+## 画像とファビコン {#images-and-favicons}
 
 各ページから取得する画像 URL の数を `extras.imageLinks` に設定します。利用可能な場合は、サイトの
 `favicon` と代表画像の `image` URL も結果に含まれます。`/search` では、このオプションを
 `contents.extras.imageLinks` で指定します。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="API リファレンス" icon="square-terminal" href="/ja/docs/reference/get-contents" cta="リファレンスを開く" arrow="true">

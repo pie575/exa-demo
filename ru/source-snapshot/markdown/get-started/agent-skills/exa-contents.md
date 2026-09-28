@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="exa-contents-skill">
-  # Навык Exa Contents
-</div>
+# Навык Exa Contents {#exa-contents-skill}
 
 > Извлекайте содержимое страниц с помощью Exa Contents, когда URL уже известны.
 
@@ -19,9 +17,7 @@
   Укажите свой key в переменной `EXA_API_KEY` в окружении агента.
 </Note>
 
-<div id="setup">
-  ## Настройка
-</div>
+## Настройка {#setup}
 
 **Вариант A: установить этот навык напрямую:**
 
@@ -67,17 +63,13 @@ npx skills add exa-labs/agent-skills --skill "exa-contents"
 Жёсткое правило на всех шагах: ключ — это секрет. Проверять его можно только через проверку наличия/длины (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) или по HTTP-коду ответа — никогда не выводи на экран, не применяй `echo`, `cat` или `grep` с выводом к файлам и переменным, которые могут его содержать, и никогда не пытайся «замаскировать» файл с ключом регулярным выражением. Если ключ всё же оказался раскрыт, скажи мне сменить его на https://dashboard.exa.ai/api-keys.
 ```
 
-<div id="view-source">
-  ## Посмотреть исходный код
-</div>
+## Посмотреть исходный код {#view-source}
 
 <Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="Посмотреть исходный код" arrow="true">
   Перед установкой ознакомьтесь с определением навыка exa-contents.
 </Card>
 
-<div id="related">
-  ## Смотрите также
-</div>
+## Смотрите также {#related}
 
 <Columns cols={2}>
   <Card title="Все навыки Agent" icon="layers" href="/ru/docs/get-started/agent-skills/overview" cta="Смотреть навыки" arrow="true">

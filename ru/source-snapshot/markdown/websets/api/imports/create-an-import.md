@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="create-an-import">
-  # Создание import
-</div>
+# Создание import {#create-an-import}
 
 > Создаёт новый import для загрузки ваших данных в Websets. Imports можно использовать, чтобы:
 
@@ -15,9 +13,7 @@
 
 После создания import вы можете загрузить свои данные по возвращённому `uploadUrl` до момента `uploadValidUntil` (по умолчанию 1 час).
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/imports
 openapi: 3.1.0

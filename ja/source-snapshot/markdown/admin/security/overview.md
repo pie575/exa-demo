@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次のURLから取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="security-overview">
-  # セキュリティの概要
-</div>
+# セキュリティの概要 {#security-overview}
 
 > Exa のセキュリティ、コンプライアンス、および地域ごとのアクセスに関する情報です。
 
@@ -17,9 +15,7 @@ Exa はデータのセキュリティとプライバシーを重視していま�
 
 SOC 2 レポート、データ処理契約 (Data Processing Agreement)、その他のセキュリティ関連ドキュメントは、[Trust Center](https://trust.exa.ai) でご確認いただけます。
 
-<div id="regional-access-restrictions">
-  ## 地域によるアクセス制限
-</div>
+## 地域によるアクセス制限 {#regional-access-restrictions}
 
 Exa は制裁および貿易制限を遵守するため、制裁対象国・地域およびその他の制限対象国・地域からの API アクセスをブロックしています。対象にはクリミア、キューバ、イラン、北朝鮮、ロシア、シリア、ウクライナ、ベネズエラが含まれます。
 

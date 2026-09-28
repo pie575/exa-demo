@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="news">
-  # Новости
-</div>
+# Новости {#news}
 
 > Находите свежие репортажи, отраслевые обзоры и только появляющиеся сюжеты с помощью Exa Search.
 
@@ -37,54 +35,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для поиска публикаций крупных изданий, отраслевой прессы и нишевых СМИ. Новые статьи становятся доступны для поиска уже через несколько минут после выхода. Сочетайте запрос на естественном языке с фильтрами по дате, если период публикации — обязательное условие.
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Исследование рынка и инвестиционный анализ
 * Кибербезопасность и разведка угроз
 * Мониторинг компаний, продуктов и конкурентов
 * Отраслевые обзоры и анализ текущих событий
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="follow-a-developing-policy-story">
-  ### Следите за развитием политической темы
-</div>
+### Следите за развитием политической темы {#follow-a-developing-policy-story}
 
 Укажите тему, тип источника и период публикации, чтобы результаты отражали текущий этап развития сюжета.
 
 <PlaygroundQuery query="news coverage of the EU AI Act enforcement timeline published this month" />
 
-<div id="find-practitioner-analysis">
-  ### Поиск анализа от практиков
-</div>
+### Поиск анализа от практиков {#find-practitioner-analysis}
 
 Указывайте тип источника, когда вам нужен разбор от практиков, а не общие новостные материалы.
 
 <PlaygroundQuery query="engineering blog posts about migrating from Postgres to ClickHouse" />
 
-<div id="discover-discussions-in-a-specific-format">
-  ### Поиск обсуждений в определённом формате
-</div>
+### Поиск обсуждений в определённом формате {#discover-discussions-in-a-specific-format}
 
 Укажите в запросе формат и тему. Так поиск охватит и страницы эпизодов, и расшифровки по всему вебу.
 
 <PlaygroundQuery query="podcast episodes where founders discuss pricing strategy mistakes" />
 
-<div id="research-adverse-media">
-  ### Поиск негативных публикаций
-</div>
+### Поиск негативных публикаций {#research-adverse-media}
 
 Опишите одновременно и негативный сигнал, и класс организаций, который вы изучаете. Не сводите запрос к названию компании и слову «новости».
 
 <PlaygroundQuery query="negative press and regulatory complaints about payday lending companies" />
 
-<div id="make-a-request">
-  ## Выполните запрос
-</div>
+## Выполните запрос {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -125,9 +109,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для структурированных данных нужно исследование по нескольким источникам, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные сюжеты, поля и временной интервал — и Agent вернёт результаты, проверенные по схеме, со ссылками на источники.
 

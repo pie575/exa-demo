@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем продолжать изучение.
 
-<div id="particle">
-  # Particle
-</div>
+# Particle {#particle}
 
 > Поиск по транскриптам подкастов с указанием говорящих и временных меток.
 
@@ -18,18 +16,14 @@ Podcast Intelligence от [Particle](https://particle.news) индексируе
 [Exa Connect](/ru/docs/agent/connect/overview) — и агент будет обращаться к
 Particle наряду с веб-поиском Exa.
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Поиск экспертных комментариев и ярких цитат.
 * Мониторинг СМИ и упоминаний бренда.
 * Исследование нарративов и тональности.
 * Поиск подкастов и отслеживание их новых выпусков.
 
-<div id="provider-id">
-  ## Идентификатор провайдера
-</div>
+## Идентификатор провайдера {#provider-id}
 
 Используйте это значение в `dataSources`:
 
@@ -37,9 +31,7 @@ Particle наряду с веб-поиском Exa.
 particle
 ```
 
-<div id="example">
-  ## Пример
-</div>
+## Пример {#example}
 
 Выясните, что ведущие подкастов говорят о регулировании ИИ.
 
@@ -139,16 +131,12 @@ particle
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## Хорошо сочетается с
-</div>
+## Хорошо сочетается с {#pairs-well-with}
 
 * [Financial Datasets](/ru/docs/agent/connect/financialdatasets): сверяйте обсуждения в подкастах с опубликованными новостями.
 * [Fiber.ai](/ru/docs/agent/connect/fiber): дополняйте упоминаемых людей контекстом о компаниях и контактах.
 
-<div id="next-steps">
-  ## Дальнейшие шаги
-</div>
+## Дальнейшие шаги {#next-steps}
 
 <Columns cols={2}>
   <Card title="Подключите к запуску" icon="rocket" href="/ru/docs/agent/connect/overview" cta="Открыть быстрый старт" arrow="true">

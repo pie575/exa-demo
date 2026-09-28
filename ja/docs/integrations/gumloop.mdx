@@ -7,9 +7,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
 
 [Gumloop](https://www.gumloop.com/) には、Exa が MCP インテグレーションとして標準で組み込まれています。エージェントまたは Agent Node に追加すると、ワークフロー内でウェブ検索、ページの抽出、関連ソースの検索、引用付きの回答生成を実行できます。
 
-<div id="add-exa-to-a-gumloop-agent">
-  ## Gumloop エージェントに Exa を追加する
-</div>
+## Gumloop エージェントに Exa を追加する {#add-exa-to-a-gumloop-agent}
 
 <Steps>
   <Step title="エージェントを開く">
@@ -35,9 +33,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
   </Step>
 </Steps>
 
-<div id="available-tools">
-  ## 利用可能なツール
-</div>
+## 利用可能なツール {#available-tools}
 
 | ツール                      | 用途                             |
 | ------------------------ | ------------------------------ |
@@ -50,13 +46,9 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
 
 会話型エージェントでは、まず Search、Get Contents、Answer を有効にしてください。その他のツールは、ワークフローで必要な場合にのみ追加します。
 
-<div id="use-exa-in-a-workflow">
-  ## ワークフローでExaを使用する
-</div>
+## ワークフローでExaを使用する {#use-exa-in-a-workflow}
 
-<div id="agent-node">
-  ### Agent Node
-</div>
+### Agent Node {#agent-node}
 
 決定論的な Gumloop フローに **Agent Node** を追加し、ツールの 1 つとして Exa をアタッチします。ノードは、検索するか、ページ全体を取得するか、複数の Exa 呼び出しを連鎖させるかを自ら判断し、その出力をワークフローの次のステップに渡します。
 
@@ -67,9 +59,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
 * 企業をリサーチしたうえで、レコードを営業ワークフローに振り分ける
 * 製品を比較し、その結果をドキュメントに書き出す
 
-<div id="reusable-custom-mcp-node">
-  ### 再利用可能なカスタム MCP ノード
-</div>
+### 再利用可能なカスタム MCP ノード {#reusable-custom-mcp-node}
 
 繰り返し実行する単一のアクションには、専用のノードを作成します。
 
@@ -80,9 +70,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
 
 タスクに動的な計画や複数のツールが必要な場合は、Agent Node を使用します。すべてのアイテムに対して同じ Exa の操作を毎回確実に実行したい場合は、カスタム MCP ノードを使用します。
 
-<div id="prompt-patterns">
-  ## プロンプトのパターン
-</div>
+## プロンプトのパターン {#prompt-patterns}
 
 <AccordionGroup>
   <Accordion title="検索して要約する">
@@ -106,9 +94,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
   </Accordion>
 </AccordionGroup>
 
-<div id="troubleshooting">
-  ## トラブルシューティング
-</div>
+## トラブルシューティング {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="エージェントが Exa を利用できない">
@@ -124,9 +110,7 @@ icon: "/docs/images/sidebar-icons/gumloop.svg"
   </Accordion>
 </AccordionGroup>
 
-<div id="resources">
-  ## リソース
-</div>
+## リソース {#resources}
 
 <Columns cols={3}>
   <Card title="Gumloop の Exa インテグレーション" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="ガイドを読む" arrow="true">

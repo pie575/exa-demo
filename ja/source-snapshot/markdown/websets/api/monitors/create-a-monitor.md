@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="create-a-websets-monitor">
-  # Websets モニターを作成する
-</div>
+# Websets モニターを作成する {#create-a-websets-monitor}
 
 > 新しい `Monitor` を作成し、Websets を常に最新のデータに保ちます。
 
@@ -15,9 +13,7 @@
 * **既存コンテンツの更新**: `refresh` 操作を実行し、アイテムのコンテンツとエンリッチメントを更新します
 * **スケジュールの自動化**: `cron` 式と `timezone` を設定し、スケジュールを細かく制御します
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /v0/monitors
 openapi: 3.1.0

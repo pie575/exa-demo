@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="batch-action-on-monitors">
-  # モニターに対する一括アクション
-</div>
+# モニターに対する一括アクション {#batch-action-on-monitors}
 
 > 指定したフィルターに一致するモニターに対して、一括でアクションを実行します。
 
@@ -17,9 +15,7 @@
 
 `dry_run: true`(デフォルト)を指定すると、アクションを実行する前に、影響を受けるモニターをプレビューできます。結果は `limit` パラメーターでページ分割されます。一致するすべてのモニターを処理するには、`has_more` が `false` になるまでループしてください。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml POST /monitors/batch
 openapi: 3.1.0

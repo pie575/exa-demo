@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく読み進める前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="browserbase">
-  # Browserbase
-</div>
+# Browserbase {#browserbase}
 
 > Exa の企業検索と Browserbase のブラウザ自動化を組み合わせて、求人応募のワークフローを構築します。
 
 Exa で企業や採用ページを検索し、Browserbase と Stagehand でそれらのページを確認・操作します。
 
-<div id="install">
-  ## インストール
-</div>
+## インストール {#install}
 
 Browserbase Exa テンプレートで使用するパッケージをインストールします。
 
@@ -21,9 +17,7 @@ Browserbase Exa テンプレートで使用するパッケージをインスト�
 npm install @browserbasehq/stagehand dotenv exa-js zod
 ```
 
-<div id="configure-environment-variables">
-  ## 環境変数を設定する
-</div>
+## 環境変数を設定する {#configure-environment-variables}
 
 Exa と Browserbase で使用する API キーを設定します。
 
@@ -32,9 +26,7 @@ BROWSERBASE_API_KEY=your-browserbase-api-key
 EXA_API_KEY=your-exa-api-key
 ```
 
-<div id="search-and-interact-with-a-page">
-  ## ページを検索して操作する
-</div>
+## ページを検索して操作する {#search-and-interact-with-a-page}
 
 次の例では、テンプレートのワークフローに沿って、企業を検索し、採用ページを見つけて Browserbase セッションで開き、職務内容を抽出したうえで、Stagehand エージェントにページを操作させます。
 

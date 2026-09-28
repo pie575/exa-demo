@@ -38,54 +38,40 @@ Exa Search を使うと、自然言語のクエリでリポジトリ、技術ド
   ご覧ください。
 </Tip>
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * コーディングエージェントやコード生成ツール
 * 開発者向けの検索・ドキュメント製品
 * デバッグ、移行、設定のワークフロー
 * リポジトリ、ドキュメント、パッケージレジストリを横断した技術リサーチ
 
-<div id="example-queries">
-  ## クエリの例
-</div>
+## クエリの例 {#example-queries}
 
-<div id="discover-libraries-by-capability">
-  ### 機能からライブラリを探す
-</div>
+### 機能からライブラリを探す {#discover-libraries-by-capability}
 
 必要な機能、エコシステム、制約条件を記述してください。正確なプロジェクト名に頼らず、ライブラリの機能をもとに候補を取得できます。
 
 <PlaygroundQuery query="open source Rust libraries for vector similarity search" />
 
-<div id="retrieve-implementation-documentation">
-  ### 実装ドキュメントを取得する
-</div>
+### 実装ドキュメントを取得する {#retrieve-implementation-documentation}
 
 製品名と具体的な操作を明記してください。そうすることで、検索時に一般的な議論よりも API ドキュメントや実装ガイドが優先されるようになります。
 
 <PlaygroundQuery query="Stripe webhook signature verification documentation" />
 
-<div id="check-version-specific-changes">
-  ### バージョン固有の変更を確認する
-</div>
+### バージョン固有の変更を確認する {#check-version-specific-changes}
 
 互換性が重要な場合は、クエリにリリースチャネルやバージョンを含めてください。古いリリースに関する結果を減らせます。
 
 <PlaygroundQuery query="breaking changes in the latest stable release of Pydantic v2" />
 
-<div id="find-reusable-agent-tooling">
-  ### 再利用可能なエージェント向けツールを探す
-</div>
+### 再利用可能なエージェント向けツールを探す {#find-reusable-agent-tooling}
 
 「AI tools」のような漠然としたフレーズで検索するのではなく、成果物の種類とタスクを具体的に指定しましょう。
 
 <PlaygroundQuery query="agent skills for extracting tables from PDFs" />
 
-<div id="make-a-request">
-  ## リクエストを送信する
-</div>
+## リクエストを送信する {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -133,9 +119,7 @@ Exa Search を使うと、自然言語のクエリでリポジトリ、技術ド
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Exa Agent で構造化データを取得する
-</div>
+## Exa Agent で構造化データを取得する {#get-structured-data-with-exa-agent}
 
 複数のソースにまたがるリサーチが必要な構造化データを取得するには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。必要なライブラリ、技術的な条件、出力フィールドを記述すると、Agent がスキーマで検証された結果を引用付きで返します。
 

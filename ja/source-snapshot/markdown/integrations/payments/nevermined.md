@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは、次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="nevermined">
-  # Nevermined
-</div>
+# Nevermined {#nevermined}
 
 > Nevermined の x402 カードデリゲーションを使った、Exa 向けの自律型エージェント決済。7 USD を購入するたびに、7 USD 分のクレジットを含む Exa API キーが発行されるか、既存のキーにチャージされます。
 
@@ -17,9 +15,7 @@
 
 Nevermined で初めて支払う場合、`POST /team-management/nevermined/purchase-key` を呼び出すと新しい Exa API キーが発行され、$7 分のクレジットが追加されます。キーのクレジットを使い切ったら、同じデリゲーションで新しい x402 トークンを発行し、同じエンドポイントを再度呼び出してください。Exa から同じ API キーが返され、さらに $7 分のクレジットが追加されます。
 
-<div id="buy-a-key">
-  ## APIキーを購入する
-</div>
+## APIキーを購入する {#buy-a-key}
 
 ```bash theme={null}
 POST https://admin-api.exa.ai/team-management/nevermined/purchase-key
@@ -32,9 +28,7 @@ payment-signature: <x402-token>
 * **レスポンス (リプレイされたトークン) :** キャッシュされた結果が返され、新たな請求は発生しません。
 * **署名がない、または無効な場合:** `402 Payment Required` が返され、ボディに支払い要件が含まれます。
 
-<div id="how-it-works">
-  ## 仕組み
-</div>
+## 仕組み {#how-it-works}
 
 支払い処理は Nevermined が担当し、Exa が受け取るのは署名済みの x402 トークンのみです。
 
@@ -46,9 +40,7 @@ payment-signature: <x402-token>
 
 エージェント向けの詳しい手順 (SDK メソッド、パラメーター、デリゲーションの検出と作成、トラブルシューティング) については、Nevermined の Exa 統合ガイド [nevermined.ai/docs/integrations/exa](https://nevermined.ai/docs/integrations/exa) を参照してください (エージェントの場合は [nevermined.ai/docs/integrations/exa.md](https://nevermined.ai/docs/integrations/exa.md) を取得してください) 。
 
-<div id="what-7-buys">
-  ## $7 で利用できる量
-</div>
+## $7 で利用できる量 {#what-7-buys}
 
 クレジットは Exa API の標準料金に基づいて消費されます。現在の料金では、$7 分のクレジットでおおよそ次の量を利用できます。
 
@@ -67,9 +59,7 @@ payment-signature: <x402-token>
 Search リクエストには、最大 10 件分の結果のテキストとハイライトが含まれます。10 件を超える追加結果と AI 要約は別途課金されます。<br />
 料金の詳細は、[Exa の料金ページ](https://exa.ai/pricing)をご覧ください。
 
-<div id="when-the-key-runs-out">
-  ## キーのクレジットが尽きた場合
-</div>
+## キーのクレジットが尽きた場合 {#when-the-key-runs-out}
 
 API キーのクレジットを使い切ると、Exa は通常の API エンドポイントに対して **`HTTP 402`** を返します。
 
@@ -83,9 +73,7 @@ API キーのクレジットを使い切ると、Exa は通常の API エンド�
 
 同じプラン ID とデリゲーションで新しい x402 トークンを発行し、同じ `/purchase-key` エンドポイントに再度 POST してください。同じ API キーに $7 分のクレジットが追加されます。
 
-<div id="references">
-  ## 参考資料
-</div>
+## 参考資料 {#references}
 
 * [Nevermined の Exa 統合ガイド](https://nevermined.ai/docs/integrations/exa)
 * [x402 カードデリゲーションの仕様](https://nevermined.ai/docs/specs/x402-card-delegation)

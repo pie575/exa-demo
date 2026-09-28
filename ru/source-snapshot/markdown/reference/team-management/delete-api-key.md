@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц перед дальнейшим изучением.
 
-<div id="delete-api-key">
-  # Удаление API key
-</div>
+# Удаление API key {#delete-api-key}
 
 > Безвозвратное удаление API key из вашей команды.
 
@@ -17,21 +15,15 @@
   Team Management API включается отдельно для каждой команды. Аутентификация выполняется с помощью API key сервисного аккаунта, который создаётся на вкладке **Service keys** на [странице API key](https://dashboard.exa.ai/api-keys) после того, как эта функция включена для вашей команды. Чтобы запросить доступ, напишите на [support@exa.ai](mailto:support@exa.ai).
 </Info>
 
-<div id="overview">
-  ## Обзор
-</div>
+## Обзор {#overview}
 
 Эндпоинт Delete API Key безвозвратно удаляет API key из вашей команды.
 
-<div id="path-parameters">
-  ## Параметры пути
-</div>
+## Параметры пути {#path-parameters}
 
 * **id**: Уникальный идентификатор API key, который требуется удалить.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml team-management-spec.yaml DELETE /api-keys/{id}
 openapi: 3.1.0

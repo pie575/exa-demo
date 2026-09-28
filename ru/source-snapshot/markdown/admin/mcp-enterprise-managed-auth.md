@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="enterprise-managed-auth-for-claude">
-  # Enterprise Managed Auth для Claude
-</div>
+# Enterprise Managed Auth для Claude {#enterprise-managed-auth-for-claude}
 
 > Настройте Enterprise Managed Auth (EMA), чтобы Claude подключался к Exa MCP через вашего поставщика удостоверений, в том числе через Okta Cross App Access (XAA).
 
@@ -13,17 +11,13 @@
 
 Доступ определяется вашим каталогом: отзовите учётную запись в Okta, и доступ этого пользователя к Exa через Claude прекратится вместе с ней. EMA — это [расширение управляемой организацией авторизации](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) MCP.
 
-<div id="before-you-start">
-  ## Прежде чем начать
-</div>
+## Прежде чем начать {#before-you-start}
 
 * Организация Claude Team или Enterprise с подключённым поставщиком удостоверений и правами администратора в ней.
 * **Организация** Exa (не личная команда) с SSO и синхронизацией каталога, а также права администратора в ней.
 * Okta в качестве поставщика удостоверений, на Okta Identity Engine с включённым [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) и доступом Super Admin к тенанту. На сегодняшний день Okta — единственный поддерживаемый поставщик удостоверений.
 
-<div id="exa-values-youll-need">
-  ## Значения Exa, которые вам понадобятся
-</div>
+## Значения Exa, которые вам понадобятся {#exa-values-youll-need}
 
 | Поле                                | Значение                 |
 | ----------------------------------- | ------------------------ |
@@ -31,9 +25,7 @@
 | URL ресурса / MCP-сервера           | `https://mcp.exa.ai/mcp` |
 | Scope                               | `mcp:tools`              |
 
-<div id="set-up-ema">
-  ## Настройка EMA
-</div>
+## Настройка EMA {#set-up-ema}
 
 <Steps>
   <Step title="Создайте учётные записи участников в Exa">
@@ -65,16 +57,12 @@
   Использование через Claude тарифицируется на команду участника в Exa, по плану и лимитам частоты запросов этой команды, как и всё остальное, что участники выполняют в рамках команды.
 </Note>
 
-<div id="revoking-access">
-  ## Отзыв доступа
-</div>
+## Отзыв доступа {#revoking-access}
 
 * **Один участник:** удалите его в Okta или из его команды в Exa. Любое из этих действий закроет ему доступ через Claude.
 * **Все:** удалите издателя на странице Organization или отключите managed authorization в Claude. Новые подключения перестанут создаваться сразу, а уже открытые сессии завершатся вскоре после этого. Зарегистрировать издателя заново можно в любой момент.
 
-<div id="troubleshooting">
-  ## Устранение неполадок
-</div>
+## Устранение неполадок {#troubleshooting}
 
 <AccordionGroup>
   <Accordion title="Работает у одних участников, но не у других">

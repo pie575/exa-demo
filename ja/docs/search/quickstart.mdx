@@ -8,9 +8,7 @@ boost: 6
 
 Exa Search は自然言語のクエリを受け取り、ランク付けされたウェブ検索結果をクリーンなページコンテンツとともに返します。
 
-<div id="make-your-first-request">
-  ## 最初のリクエストを送信する
-</div>
+## 最初のリクエストを送信する {#make-your-first-request}
 
 まずは自然言語の `query` と `contents: { highlights: true }` を指定します。これにより、各結果の関連度に応じた長さの抜粋が返されます。その他のフィールドでは、Exa の検索方法や各結果に含める内容を制御できます。このページでは以降、実際によく使うフィールドについて説明します。
 
@@ -106,9 +104,7 @@ Search はデフォルトで最大 10 件の結果を返します。`numResults`
 
 結果は関連度順に並びます。各結果には、タイトル、URL、公開日などのメタデータに加えて、`contents` で指定した内容が含まれます。
 
-<div id="writing-queries">
-  ## クエリの書き方
-</div>
+## クエリの書き方 {#writing-queries}
 
 Search API を使用する際、必須のフィールドは `query` フィールドのみです。
 
@@ -144,9 +140,7 @@ Deep モードでは、1 回の検索パスではなく、リサーチプロセ�
   根拠に基づく構造化された結果を返します。
 </Tip>
 
-<div id="output-shapes">
-  ## 出力形式
-</div>
+## 出力形式 {#output-shapes}
 
 すべての結果には、タイトル、URL、公開日などのメタデータが含まれます。`contents` を使用すると、ページのハイライト、全文、または要約を追加できます。
 
@@ -240,9 +234,7 @@ Deep モードでは、1 回の検索パスではなく、リサーチプロセ�
     同じフィールドを `urls` と同じトップレベルに配置します。`"urls": [...], "highlights": true`
 </Warning>
 
-<div id="output-schema">
-  ## 出力スキーマ
-</div>
+## 出力スキーマ {#output-schema}
 
 Exa に検索結果を要約・統合させたい場合は、`outputSchema` を追加します。すべての検索タイプで使用でき、レスポンスに `output` オブジェクトが追加されます。
 
@@ -408,15 +400,11 @@ Exa に検索結果を要約・統合させたい場合は、`outputSchema` を�
   引用や信頼度のフィールドを追加する必要はありません。これらは Exa が `output.grounding` で自動的に返します。
 </Note>
 
-<div id="filter-results">
-  ## 結果をフィルタリングする
-</div>
+## 結果をフィルタリングする {#filter-results}
 
 フィルターは厳格な制約です。条件に合わない結果が使いものにならない場合にのみフィルターを追加し、ソースに関する緩やかな希望はクエリのテキストに含めてください。フィルターの一覧は [API リファレンス](/ja/docs/reference/search)を参照してください。
 
-<div id="include-domains-or-paths">
-  ### ドメインまたはパスを指定して絞り込む
-</div>
+### ドメインまたはパスを指定して絞り込む {#include-domains-or-paths}
 
 `includeDomains` を使うと、結果を信頼できるソースに限定できます。完全なドメインのほか、`anthropic.com/news` のようなパスプレフィックスや、`*.substack.com` のようなサブドメインのワイルドカードも指定できます。
 
@@ -450,9 +438,7 @@ Exa に検索結果を要約・統合させたい場合は、`outputSchema` を�
 
 パスはフィルターで指定し、クエリ内で `site:` 演算子を使って重複して記述しないでください。
 
-<div id="exclude-domains-or-paths">
-  ### ドメインまたはパスを除外する
-</div>
+### ドメインまたはパスを除外する {#exclude-domains-or-paths}
 
 `excludeDomains` を使うと、特定のドメインまたはパスの結果を除外できます。`includeDomains` と同様に、パスプレフィックスとサブドメインのワイルドカードを指定できます。除外は、そのソースが含まれると結果が役に立たなくなる場合に限って使用してください。単なる優先度の調整には使用しないでください。
 
@@ -487,9 +473,7 @@ Exa に検索結果を要約・統合させたい場合は、`outputSchema` を�
   ```
 </CodeGroup>
 
-<div id="content-freshness">
-  ## コンテンツの鮮度
-</div>
+## コンテンツの鮮度 {#content-freshness}
 
 `contents.maxAgeHours` は、各結果から抽出するコンテンツにどの程度の鮮度を求めるかを制御します。公開日で結果を絞り込むものではありません。
 
@@ -536,9 +520,7 @@ Exa に検索結果を要約・統合させたい場合は、`outputSchema` を�
   ```
 </CodeGroup>
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="ベストプラクティス" icon="sparkles" href="/ja/docs/search/best-practices" cta="ガイドを読む" arrow="true">

@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы узнать обо всех доступных страницах, прежде чем продолжить изучение.
 
-<div id="fx-by-vercel-labs">
-  # fx от Vercel Labs
-</div>
+# fx от Vercel Labs {#fx-by-vercel-labs}
 
 > Добавьте веб-поиск Exa в fx, нативный кодинг-агент от Vercel Labs, с помощью хостируемого MCP-сервера Exa.
 
@@ -15,9 +13,7 @@
   <img src="https://mintcdn.com/exa-52/Una64IRjof2yadw_/images/integrations/vercel/fx/install-exa.gif?s=2e331148abdf5bdf083e6f651e3b8b75" alt="Установка fx, добавление MCP-сервера Exa командой /mcp add и выполнение веб-поиска Exa в реальном времени" style={{width: "100%", height: "auto"}} width="800" height="393" data-path="images/integrations/vercel/fx/install-exa.gif" />
 </Frame>
 
-<div id="installation">
-  ## Установка
-</div>
+## Установка {#installation}
 
 <Steps>
   <Step title="Установите fx">
@@ -45,9 +41,7 @@
   </Step>
 </Steps>
 
-<div id="configure-by-hand">
-  ## Настройка вручную
-</div>
+## Настройка вручную {#configure-by-hand}
 
 fx читает MCP-серверы только из `~/.fx/mcp.json`, поэтому вы можете добавить Exa прямо туда:
 
@@ -86,9 +80,7 @@ fx читает MCP-серверы только из `~/.fx/mcp.json`, поэт�
 
 `header_env` сопоставляет имя header с переменной окружения, благодаря чему key не попадает в файл конфигурации.
 
-<div id="tool-discovery">
-  ## Обнаружение инструментов
-</div>
+## Обнаружение инструментов {#tool-discovery}
 
 fx обнаруживает инструменты MCP лениво: инструменты сервера не попадают в контекст модели до того шага, на котором они действительно нужны, поэтому подключение Exa ничего не стоит на тех шагах, где поиск в интернете не требуется.
 

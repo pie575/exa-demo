@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжать изучение.
 
-<div id="legal-public-records">
-  # Юридические документы и публичные реестры
-</div>
+# Юридические документы и публичные реестры {#legal-public-records}
 
 > Находите судебные решения, патенты, санкционные списки, государственные контракты и другие публичные данные с помощью Exa Search.
 
@@ -37,9 +35,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 
 Используйте Exa Search для поиска первоисточников правовых документов и государственных records — вместе с комментариями к ним.
 
-<div id="included">
-  ## Что включено
-</div>
+## Что включено {#included}
 
 * Судебные решения США с полным текстом и метаданными о суде, номере дела и цитировании
 * Выданные патенты США с рефератом, формулой изобретения, описанием, изобретателями и правообладателями
@@ -48,9 +44,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Государственные контракты и данные о закупках
 * Данные переписи населения и другая публичная статистика
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Исследование судебной практики и юридический RAG
 * Мониторинг нормативных актов и политик
@@ -58,53 +52,39 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Комплаенс-проверки и due diligence
 * Исследование рынка государственного сектора
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="find-case-law">
-  ### Поиск судебной практики
-</div>
+### Поиск судебной практики {#find-case-law}
 
 Опишите правовой вопрос и юрисдикцию простым языком, а не в виде ссылки на конкретное дело.
 
 <PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
 
-<div id="search-patents">
-  ### Поиск патентов
-</div>
+### Поиск патентов {#search-patents}
 
 Опишите, что делает изобретение, — так, как это сделали бы в патентной формуле.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="screen-against-sanctions">
-  ### Проверка по санкционным спискам
-</div>
+### Проверка по санкционным спискам {#screen-against-sanctions}
 
 Укажите название списка и класс проверяемых субъектов.
 
 <PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
 
-<div id="research-government-spending">
-  ### Исследование государственных расходов
-</div>
+### Исследование государственных расходов {#research-government-spending}
 
 Укажите ведомство-заказчика или категорию услуг и временной интервал.
 
 <PlaygroundQuery query="federal contracts awarded for cloud migration services" />
 
-<div id="pull-public-statistics">
-  ### Получение публичной статистики
-</div>
+### Получение публичной статистики {#pull-public-statistics}
 
 Укажите набор данных и территорию.
 
 <PlaygroundQuery query="census tract population change in the Austin metro area" />
 
-<div id="make-a-request">
-  ## Выполнение запроса
-</div>
+## Выполнение запроса {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -145,9 +125,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по множеству источников, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные юрисдикции, типы записей, критерии и поля вывода — и Agent вернёт результаты, проверенные по схеме, со ссылками на источники.
 

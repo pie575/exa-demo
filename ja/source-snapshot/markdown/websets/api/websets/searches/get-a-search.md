@@ -1,17 +1,13 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの全体は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、まずこのファイルで利用可能なすべてのページを確認してください。
 
-<div id="get-a-search">
-  # Search を取得する
-</div>
+# Search を取得する {#get-a-search}
 
 > ID を指定して Search を取得します
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{webset}/searches/{id}
 openapi: 3.1.0

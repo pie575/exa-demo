@@ -1,19 +1,15 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは次の URL から取得できます: https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="get-a-webset">
-  # Webset を取得する
-</div>
+# Webset を取得する {#get-a-webset}
 
 > `id` または `externalId` を指定して Webset を取得します。レスポンスには、ステータス、search、import、enrichment、monitor が含まれます。
 
 `expand=items` を指定すると、先頭から最大 100 件の item がレスポンスに含まれます。
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml GET /v0/websets/{id}
 openapi: 3.1.0

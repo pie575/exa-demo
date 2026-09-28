@@ -1,11 +1,9 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
 
-<div id="research-publications">
-  # Научные публикации
-</div>
+# Научные публикации {#research-publications}
 
 > Находите научные статьи, патенты, гранты, клинические исследования и разрешения регуляторов с помощью Exa Search.
 
@@ -42,9 +40,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   чтобы узнать больше о качестве поиска по публикациям.
 </Tip>
 
-<div id="included">
-  ## Что включено
-</div>
+## Что включено {#included}
 
 * Научные статьи и препринты, включая фрагменты полного текста, если распознанный полный текст доступен
 * Патенты с аннотациями, формулой изобретения, сведениями об изобретателях и правообладателях
@@ -52,54 +48,40 @@ export const PlaygroundQuery = ({query, category, filters}) => {
 * Клинические исследования, инструкции к лекарственным препаратам и данные о лекарственных взаимодействиях
 * Регуляторные разрешения и одобрения в сфере здравоохранения
 
-<div id="use-it-for">
-  ## Для чего использовать
-</div>
+## Для чего использовать {#use-it-for}
 
 * Обзор литературы и поиск цитирований
 * Анализ предшествующего уровня техники и патентного ландшафта
 * Клинические и фармацевтические исследования
 * Поиск грантов и возможностей для финансирования
 
-<div id="example-queries">
-  ## Примеры запросов
-</div>
+## Примеры запросов {#example-queries}
 
-<div id="find-papers-on-a-topic">
-  ### Поиск статей по теме
-</div>
+### Поиск статей по теме {#find-papers-on-a-topic}
 
 Описывайте метод или результат, а не пытайтесь угадать ключевые слова в заголовке. Категория `publication` ограничивает выдачу научными статьями.
 
 <PlaygroundQuery query="papers on evaluation benchmarks for retrieval-augmented generation" category="publication" />
 
-<div id="search-clinical-evidence">
-  ### Поиск клинических данных
-</div>
+### Поиск клинических данных {#search-clinical-evidence}
 
 Укажите фазу, вмешательство и популяцию пациентов, чтобы записи в реестрах исследований и страницы с результатами оказались выше общих публикаций.
 
 <PlaygroundQuery query="phase 3 trials of GLP-1 agonists in adolescent patients" />
 
-<div id="track-regulatory-approvals">
-  ### Отслеживание разрешений регуляторов
-</div>
+### Отслеживание разрешений регуляторов {#track-regulatory-approvals}
 
 Укажите регулятора и класс устройств или препаратов, за которым вы следите.
 
 <PlaygroundQuery query="FDA approvals for AI-based diagnostic devices" />
 
-<div id="run-a-prior-art-search">
-  ### Проведите поиск по предшествующему уровню техники
-</div>
+### Проведите поиск по предшествующему уровню техники {#run-a-prior-art-search}
 
 Опишите изобретение функционально, как в формуле изобретения, а не через название продукта.
 
 <PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
 
-<div id="make-a-request">
-  ## Выполните запрос
-</div>
+## Выполните запрос {#make-a-request}
 
 <CodeGroup>
   ```python Python theme={null}
@@ -143,9 +125,7 @@ export const PlaygroundQuery = ({query, category, filters}) => {
   ```
 </CodeGroup>
 
-<div id="get-structured-data-with-exa-agent">
-  ## Получение структурированных данных с помощью Exa Agent
-</div>
+## Получение структурированных данных с помощью Exa Agent {#get-structured-data-with-exa-agent}
 
 Если для получения структурированных данных нужно исследование по нескольким источникам, используйте [запуск задачи Exa Agent](/ru/docs/agent/quickstart). Опишите нужные публикации, критерии включения и поля результата — и Agent вернёт результаты, проверенные по схеме, вместе со ссылками на источники.
 

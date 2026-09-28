@@ -6,13 +6,9 @@ icon: "/docs/images/sidebar-icons/exa-slack.svg"
 
 チームの Slack に Exa を導入しましょう。任意のチャンネルやスレッドで **@Exa** をメンションし、リサーチの質問、リスト作成タスク、エンリッチメントのリクエストを送信します。Exa がウェブを検索してソースを読み込み、出典付きの回答をスレッド内で返信します。
 
-<div id="get-started">
-  ## はじめに
-</div>
+## はじめに {#get-started}
 
-<div id="installation">
-  ### インストール
-</div>
+### インストール {#installation}
 
 1. [Dashboard &gt; Management &gt; Exa in Slack](https://dashboard.exa.ai/integrations/slack) に移動し、**Install** をクリックします。
 
@@ -29,9 +25,7 @@ icon: "/docs/images/sidebar-icons/exa-slack.svg"
 
 3. インストールが完了したら、@Exa をチャンネルに招待する (または直接 DM を送る) だけで、すぐに質問できます。
 
-<div id="how-to-use-exa-from-slack">
-  ## SlackでExaを使う方法
-</div>
+## SlackでExaを使う方法 {#how-to-use-exa-from-slack}
 
 Exaを追加済みのチャンネルで、@Exaをメンションして質問を送信します。
 
@@ -41,21 +35,15 @@ Exaを追加済みのチャンネルで、@Exaをメンションして質問を�
 
 Exa が質問にスレッドで返信します。
 
-<div id="follow-ups">
-  ### フォローアップ
-</div>
+### フォローアップ {#follow-ups}
 
 Exa がスレッドで回答した後は、そのスレッドに返信するだけで会話を続けられます。@Exa を改めてメンションする必要はありません。Exa は会話の内容を記憶しているため、フォローアップでは前の回答を踏まえて応答します。スレッド内の誰でもフォローアップできます。
 
-<div id="direct-messages">
-  ### ダイレクトメッセージ
-</div>
+### ダイレクトメッセージ {#direct-messages}
 
 DMでExaに直接メッセージを送ることもできます。DMではメンションは一切不要です。送信したメッセージはそれぞれ新しいリクエストとして扱われ、そのメッセージのスレッドに回答が返されます。会話を続けるには、そのスレッドに返信してください。
 
-<div id="cancelling-a-run">
-  ### 実行のキャンセル
-</div>
+### 実行のキャンセル {#cancelling-a-run}
 
 実行中にキャンセルするには、スレッドに返信して Exa に実行の停止を依頼します。メンションは不要です。
 
@@ -63,9 +51,7 @@ DMでExaに直接メッセージを送ることもできます。DMではメン�
 現在の実行を停止してください
 ```
 
-<div id="exa-connect-providers">
-  ### Exa Connect のプロバイダー
-</div>
+### Exa Connect のプロバイダー {#exa-connect-providers}
 
 Exa は、質問に関連する [Exa Connect](/ja/docs/agent/connect/overview) のデータプロバイダーを自動的に利用します。特定のプロバイダーを使用したい場合は、メッセージ内でそのプロバイダー名を指定してください。
 
@@ -75,29 +61,21 @@ Exa は、質問に関連する [Exa Connect](/ja/docs/agent/connect/overview) �
 
 利用可能なデータプロバイダーの一覧は、Exa に尋ねるだけで確認できます。
 
-<div id="examples">
-  ## 例
-</div>
+## 例 {#examples}
 
-<div id="news-and-current-events">
-  ### ニュースと時事
-</div>
+### ニュースと時事 {#news-and-current-events}
 
 あらゆるトピックの最新情報を入手できます。
 
 <img src="/docs/images/integrations/exa-slack/thread-answer.png" alt="Slack のスレッドで、あるトピックの最新ニュースに関する質問に Exa が回答し、日付付きの結果を表にまとめている様子" width="2594" height="944" data-path="images/integrations/exa-slack/thread-answer.png" />
 
-<div id="large-list-building">
-  ### 大規模なリスト作成
-</div>
+### 大規模なリスト作成 {#large-list-building}
 
 網羅的にリストを作成するには、リクエストの先頭に `!max` を付けます。
 
 <img src="/docs/images/integrations/exa-slack/max-list-building.png" alt="Slack のスレッドで Exa が !max のリスト作成リクエストを実行し、結果を表形式で返している様子" width="1998" height="971" data-path="images/integrations/exa-slack/max-list-building.png" />
 
-<div id="keywords">
-  ## キーワード
-</div>
+## キーワード {#keywords}
 
 Exa が参加しているスレッドで使用します。コマンドは `@Exa` のメンションに続けて入力することも、メッセージの先頭に直接入力することも
 できます。
@@ -111,9 +89,7 @@ Exa が参加しているスレッドで使用します。コマンドは `@Exa`
 | `aside <message>` | Exa に無視される補足コメントを投稿します。Exa がフォローしているスレッドでチームメンバーと会話する際に便利です。      |
 | `help`            | 使い方を表示します。                                                        |
 
-<div id="permissions">
-  ## 権限
-</div>
+## 権限 {#permissions}
 
 Slack 向け Exa アプリは、以下のスコープを要求します。
 
@@ -144,14 +120,10 @@ Slack 向け Exa アプリは、以下のスコープを要求します。
 
 Exa がメッセージを受信するのは、明示的に招待されたチャンネルと Exa 自身の DM に限られます。
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 Slack から開始した実行の料金は、お使いの Exa チームに請求されます。詳細は[料金](https://exa.ai/pricing)をご覧ください。
 
-<div id="privacy">
-  ## プライバシー
-</div>
+## プライバシー {#privacy}
 
 Exa におけるデータの取り扱いについて詳しくは、[Exa のプライバシーポリシー](https://exa.ai/privacy-policy)をご覧ください。

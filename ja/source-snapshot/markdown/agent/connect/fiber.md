@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
 > 詳細を確認する前に、このファイルで利用可能なすべてのページを把握してください。
 
-<div id="fiberai">
-  # Fiber.ai
-</div>
+# Fiber.ai {#fiberai}
 
 > Fiber.ai の B2B データベースで企業、人物、LinkedIn プロフィールを検索します。
 
@@ -13,9 +11,7 @@
 
 [Exa Connect](/ja/docs/agent/connect/overview) を通じて `fiber` を [Exa Agent](/ja/docs/agent/quickstart) のランにアタッチすると、エージェントは Exa のウェブ検索と併せて Fiber.ai にもクエリを実行します。
 
-<div id="use-it-for">
-  ## 主な用途
-</div>
+## 主な用途 {#use-it-for}
 
 * 勤務先メールアドレスまたは個人用のメールアドレスから人物を逆引きしたり、
   不完全な企業・人物レコードを補完したりして、CRMのデータを整理する。
@@ -27,9 +23,7 @@
 * 4,000万社以上の企業と8億5,000万人以上の人物を横断検索し、見込み顧客の情報を
   勤務先メールアドレス、個人用メールアドレス、電話番号で補完する。
 
-<div id="provider-id">
-  ## プロバイダー ID
-</div>
+## プロバイダー ID {#provider-id}
 
 `dataSources` には次の値を指定します。
 
@@ -37,9 +31,7 @@
 fiber
 ```
 
-<div id="pricing">
-  ## 料金
-</div>
+## 料金 {#pricing}
 
 Fiber.ai は `$0.02 / credit` のクレジット制で課金され、各呼び出しには Fiber が報告した
 クレジット数が請求されます。
@@ -54,9 +46,7 @@ Fiber.ai は `$0.02 / credit` のクレジット制で課金され、各呼び�
 一致する結果がなかった呼び出し(または Fiber が料金を払い戻した呼び出し)は無料です。パラメーターの
 設定によって料金は変わります。企業検索では `numResults` によって課金対象の候補数が決まり、検索では結果の件数がコストの大部分を左右します。
 
-<div id="example">
-  ## 例
-</div>
+## 例 {#example}
 
 ニューヨークに拠点を置く従業員数50～200名のシリーズAフィンテック企業を対象に、B2B営業の見込み客リストを作成します。
 
@@ -153,17 +143,13 @@ Fiber.ai は `$0.02 / credit` のクレジット制で課金され、各呼び�
   ```
 </CodeGroup>
 
-<div id="pairs-well-with">
-  ## 相性の良い連携先
-</div>
+## 相性の良い連携先 {#pairs-well-with}
 
 * [Similarweb](/ja/docs/agent/connect/similarweb): 見込み顧客のウェブ上でのプレゼンスや競合を把握できます。
 * [Baselayer](/ja/docs/agent/connect/baselayer): 候補として絞り込んだ米国企業の役員や登記情報を確認できます。
 * [Particle](/ja/docs/agent/connect/particle): 企業や経営幹部についてポッドキャストで何が語られているかを調べられます。
 
-<div id="next-steps">
-  ## 次のステップ
-</div>
+## 次のステップ {#next-steps}
 
 <Columns cols={2}>
   <Card title="ランにアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">

@@ -1,11 +1,9 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > ドキュメントインデックスの完全版は https://exa.ai/docs/llms.txt から取得できます。
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
-<div id="openapi-specification">
-  # OpenAPI 仕様
-</div>
+# OpenAPI 仕様 {#openapi-specification}
 
 > Exa の公開 API と Team Management API の OpenAPI 仕様を YAML または JSON 形式でダウンロードできます。
 

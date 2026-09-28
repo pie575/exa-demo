@@ -1,10 +1,10 @@
-> ## ドキュメントインデックス
+> ## ドキュメントインデックス {#documentation-index}
 >
 > 完全なドキュメントインデックスは次の URL から取得できます：https://exa.ai/docs/llms.txt
 > 詳しく調べる前に、このファイルで利用可能なすべてのページを確認してください。
 
 <div id="answer">
-  # Answer
+  # Answer {#answer}
 </div>
 
 > Exa の検索結果をもとに、質問に対する LLM の回答を取得します。`/answer` は Exa 検索を実行し、LLM を使って次のいずれかを生成します。
@@ -25,7 +25,7 @@ OpenAI 互換の [chat completions インターフェース](https://exa.ai/docs
 </Info>
 
 <div id="openapi">
-  ## OpenAPI
+  ## OpenAPI {#openapi}
 </div>
 
 ```yaml exa-spec.yaml POST /answer

@@ -1,17 +1,13 @@
-> ## Индекс документации
+> ## Индекс документации {#documentation-index}
 >
 > Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
 > Используйте этот файл, чтобы найти все доступные страницы, прежде чем продолжать изучение.
 
-<div id="delete-a-monitor">
-  # Удаление монитора
-</div>
+# Удаление монитора {#delete-a-monitor}
 
 > Удаляет монитор. Это действие необратимо.
 
-<div id="openapi">
-  ## OpenAPI
-</div>
+## OpenAPI {#openapi}
 
 ```yaml exa-spec.yaml DELETE /monitors/{id}
 openapi: 3.1.0
