@@ -517,10 +517,6 @@
       "source": "/"
     },
     {
-      "destination": "/docs",
-      "source": "/docs/index"
-    },
-    {
       "destination": "/docs/markdown/admin/billing.txt",
       "source": "/docs/admin/billing.md"
     },
