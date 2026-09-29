@@ -14,7 +14,7 @@
             "ru/docs/get-started/exa-mcp",
             {
               "boost": 0.5,
-              "group": "Навыки Agent",
+              "group": "Навыки агентов",
               "pages": [
                 "ru/docs/get-started/agent-skills/overview",
                 "ru/docs/get-started/agent-skills/build-with-exa",
@@ -314,7 +314,7 @@
               ]
             },
             {
-              "group": "Items",
+              "group": "Элементы",
               "icon": "list",
               "pages": [
                 "ru/docs/websets/api/websets/items/get-an-item",
@@ -323,7 +323,7 @@
               ]
             },
             {
-              "group": "Searches",
+              "group": "Поиски",
               "icon": "search",
               "pages": [
                 "ru/docs/websets/api/websets/searches/create-a-search",
@@ -332,7 +332,7 @@
               ]
             },
             {
-              "group": "Enrichments",
+              "group": "Обогащения",
               "icon": "sparkles",
               "pages": [
                 "ru/docs/websets/api/websets/enrichments/create-an-enrichment",
@@ -363,7 +363,7 @@
                 "ru/docs/websets/api/monitors/delete-monitor",
                 "ru/docs/websets/api/monitors/list-monitors",
                 {
-                  "group": "Выполнения monitor",
+                  "group": "Запуски монитора",
                   "icon": "play",
                   "pages": [
                     "ru/docs/websets/api/monitors/runs/list-monitor-runs",

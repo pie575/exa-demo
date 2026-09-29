@@ -5,7 +5,7 @@ description: "Используйте эндпоинты Exa как прямую 
 icon: "/docs/images/sidebar-icons/openai.svg"
 ---
 
-<Card title="Быстрый старт с coding agent" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+<Card title="Быстрый старт с агентом программирования" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
   Впервые работаете с Exa? Начните меньше чем за минуту.
 </Card>
 
@@ -266,7 +266,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
 </CodeGroup>
 
 <div id="background">
-  ### Background
+  ### Фоновое выполнение
 </div>
 
 Укажите `background: true`, чтобы запустить выполнение, не удерживая соединение открытым, а затем опрашивайте `GET /responses/{id}`, пока оно не перейдёт в конечный статус. Чтобы использовать потоковую передачу вместо опроса, см. [Потоковая передача](#streaming).
@@ -341,7 +341,7 @@ Exa предоставляет совместимые с OpenAI эндпоинт
 </CodeGroup>
 
 <div id="chat-wrapper">
-  ## Chat wrapper
+  ## Обёртка для чата
 </div>
 
 Exa предоставляет Python-обёртку, которая автоматически дополняет любой вызов OpenAI chat completion возможностями RAG. Одной строкой кода вы превращаете любой вызов OpenAI chat completion в RAG-систему на базе Exa, которая сама выполняет search, разбиение на фрагменты и формирование промптов.

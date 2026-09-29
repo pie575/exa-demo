@@ -1,6 +1,6 @@
 ---
 title: "Оплата через MPP (Tempo)"
-sidebarTitle: "MPP Payments"
+sidebarTitle: "Платежи MPP"
 description: "Обращайтесь к API Search и Contents от Exa без API key, оплачивая каждый запрос в USDC.e на Tempo."
 icon: "/docs/images/sidebar-icons/tempo.svg"
 ---
@@ -31,7 +31,7 @@ Exa поддерживает MPP на двух эндпоинтах: **`/search`
 Остальные эндпоинты Exa *пока* не принимают платежи MPP.
 
 <div id="get-started">
-  ## Get started
+  ## Начало работы
 </div>
 
 Вам потребуется совместимый с Tempo wallet, пополненный USDC.e. Перед запуском примера экспортируйте приватный ключ своего wallet:
@@ -166,7 +166,7 @@ tempo request --max-spend 1.00 https://api.exa.ai/search \
 Exa берёт на себя сетевую комиссию Tempo и оплачивает её в USDC.e. На вашем wallet достаточно иметь USDC.e для оплаты запроса к API; баланс pathUSD или другого газового токена не нужен. Плательщика комиссии настраивать не требуется. Платёжный запрос Exa и MPP SDK обрабатывают спонсирование автоматически.
 
 <div id="pricing">
-  ## Pricing
+  ## Цены
 </div>
 
 MPP использует ту же пакетную схему тарификации, что и схема тарификации по API key. Exa рассчитывает стоимость по параметрам запроса до его обработки.
@@ -254,7 +254,7 @@ Exa принимает MPP-платежи в USDC.e в сети Tempo mainnet.
 </Note>
 
 <div id="headers">
-  ### Headers
+  ### Заголовки
 </div>
 
 | Header                                | Направление    | Описание                                           |
@@ -286,7 +286,7 @@ Exa принимает MPP-платежи в USDC.e в сети Tempo mainnet.
 | Оплаченные запросы на один wallet         | 10 запросов | 1 секунда |
 
 <div id="faq">
-  ## FAQ
+  ## Частые вопросы
 </div>
 
 <AccordionGroup>
