@@ -1,10 +1,10 @@
 ---
-title: "Enterprise Managed Auth для Claude"
-description: "Настройте Enterprise Managed Auth (EMA), чтобы Claude подключался к Exa MCP через вашего поставщика удостоверений, в том числе через Okta Cross App Access (XAA)."
-sidebarTitle: "Enterprise Managed Auth"
+title: "Управляемая корпоративная авторизация для Claude"
+description: "Настройте управляемую корпоративную авторизацию (EMA), чтобы Claude подключался к Exa MCP через вашего поставщика удостоверений, в том числе через Okta Cross App Access (XAA)."
+sidebarTitle: "Управляемая корпоративная авторизация"
 ---
 
-По умолчанию каждый участник подключает [коннектор Exa](/ru/docs/get-started/exa-mcp) в Claude, один раз войдя в Exa через OAuth. С **Enterprise Managed Auth (EMA)** доступ выдаётся незаметно, через Okta: без экрана входа в Exa, без запроса согласия и без раздачи API key.
+По умолчанию каждый участник подключает [коннектор Exa](/ru/docs/get-started/exa-mcp) в Claude, один раз войдя в Exa через OAuth. При использовании **управляемой корпоративной авторизации (EMA)** доступ выдаётся незаметно, через Okta: без экрана входа в Exa, без запроса согласия и без раздачи API key.
 
 Доступ определяется вашим каталогом: удалите учётную запись в Okta, и вместе с ней прекратится доступ этого пользователя к Exa через Claude. EMA — это [расширение управляемой авторизации для организаций](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) в MCP.
 

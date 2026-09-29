@@ -1,12 +1,12 @@
 ---
-title: "Claude 向け Enterprise Managed Auth"
-description: "Enterprise Managed Auth (EMA) を設定し、Okta Cross App Access (XAA) などの ID プロバイダーを介して Claude が Exa MCP に接続できるようにします。"
-sidebarTitle: "Enterprise Managed Auth"
+title: "Claude 向けの企業管理型認可"
+description: "企業管理型認可 (EMA) を設定し、Okta Cross App Access (XAA) などの ID プロバイダーを介して Claude が Exa MCP に接続できるようにします。"
+sidebarTitle: "企業管理型認可"
 ---
 
-デフォルトでは、各メンバーが OAuth で Exa に一度サインインし、Claude の [Exa コネクタ](/ja/docs/get-started/exa-mcp)を接続します。**Enterprise Managed Auth (EMA)** を使うと、代わりに Okta を通じてバックグラウンドで接続されます。Exa のログイン画面も同意プロンプトも表示されず、API キーを配布する必要もありません。
+デフォルトでは、各メンバーが OAuth で Exa に一度サインインし、Claude の [Exa コネクタ](/ja/docs/get-started/exa-mcp)を接続します。**企業管理型認可 (EMA)** を使うと、代わりに Okta を通じてバックグラウンドで接続されます。Exa のログイン画面も同意プロンプトも表示されず、API キーを配布する必要もありません。
 
-アクセス権はディレクトリの設定に連動します。Okta でユーザーのプロビジョニングを解除すると、そのユーザーの Claude 経由での Exa へのアクセスも同時に停止します。EMA は、MCP の [enterprise managed authorization 拡張機能](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)に基づいています。
+アクセス権はディレクトリの設定に連動します。Okta でユーザーのプロビジョニングを解除すると、そのユーザーの Claude 経由での Exa へのアクセスも同時に停止します。EMA は、MCP の [企業管理型認可の拡張機能](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)に基づいています。
 
 <div id="before-you-start">
   ## 始める前に
