@@ -1,0 +1,235 @@
+---
+title: "Exa Connect"
+sidebarTitle: "概要"
+description: "1回の実行で、Exa のウェブ検索に加えて、プレミアムなデータパートナーへのライブアクセスを Exa Agent に提供します。"
+boost: 5
+---
+
+Exa Connect は、プレミアムなデータパートナーを Exa Agent のループに統合します。実行にプロバイダーをアタッチすると、Exa Agent はウェブ
+検索と並行してそのパートナーのデータベースにクエリを発行し、それらの結果を組み合わせて、根拠に基づく構造化された1つの回答を返します。
+
+エージェントの実行を初めて使う場合は、まず [Exa Agent ガイド](/ja/docs/agent/quickstart)をご覧ください。
+その後、このページに戻ってデータパートナーをアタッチしてください。
+
+<Tip>
+  Exa Agent は、Search API と同じニュース、コード、企業、人物のソースを含む[データインデックス](/ja/docs/search/data/overview)全体をすでに検索対象としています。Exa Connect は、
+  これにプレミアムなパートナーデータベースを追加します。
+</Tip>
+
+<Tip>
+  MCP を使う場合は、[Exa MCP](/ja/docs/get-started/exa-mcp#exa-agent) から Exa Agent と [Exa Connect](/ja/docs/agent/connect/overview) を利用できます。`tools=agent_run` を有効にすると、Claude、Cursor、その他の MCP クライアントから、複数ステップのリサーチ、リスト作成、エンリッチメント、構造化出力を実行できます。
+</Tip>
+
+<div id="why-exa-connect">
+  ## Exa Connect を選ぶ理由
+</div>
+
+* **個別の統合なしでプレミアムデータを利用。** 契約の締結や SDK の組み込みは不要で、
+  パートナーのデータにアクセスできます。呼び出すのは Exa API ひとつだけです。
+* **面倒な基盤部分は Exa が担当。** プロバイダーの認証、ツールの選択、
+  リトライ、結果のランク付けは Exa が管理します。
+* **Exa Agent がソースを選択。** `outputSchema` で
+  「Similarweb の月間訪問数」や「検証済みの役員」を求めると、Exa Agent は Web ページから推測するのではなく、
+  該当するパートナーツールを呼び出します。
+* **インデックスとパートナーデータを 1 回の実行で活用。** Connect は Exa インデックスの上に構築されています。
+  Exa Agent は各ソースを最も強みを発揮できる場面で使い分け、結果には出典を示します。
+
+<div id="how-it-works">
+  ## 仕組み
+</div>
+
+1. [`POST /agent/runs`](/ja/docs/reference/agent-api/create-a-run) の `dataSources` 配列で、
+   1 つ以上のプロバイダーを**アタッチ**します。
+2. Exa Agent は、クエリと `outputSchema` に基づき、ステップごとに
+   パートナーデータと Exa のウェブ検索から**適切なツールを選択**します。
+3. パートナーの結果は**ウェブリサーチと統合**され、ソースを添えた
+   構造化出力として返されます。
+
+<div id="pricing">
+  ## 料金
+</div>
+
+<Note>
+  Exa Connect の料金は、標準の [Agent 実行の料金](/ja/docs/agent/quickstart#pricing)に加算されます。
+  通常の Agent のコンピューティング費用と検索費用に加えて、Exa Connect のツール呼び出しごとにプロバイダーの呼び出し料金が発生します。
+</Note>
+
+| プロバイダー                                               | 料金                                            |
+| ---------------------------------------------------- | --------------------------------------------- |
+| [Fiber.ai](/ja/docs/agent/connect/fiber#pricing)        | `$0.02 / credit`                              |
+| [Similarweb](/ja/docs/agent/connect/similarweb#pricing) | `$0.30 / credit`                              |
+| [Baselayer](/ja/docs/agent/connect/baselayer#pricing)   | `$0.10 – $4.00 / order (varies by operation)` |
+| [Polymarket](/ja/docs/agent/connect/polymarket#pricing) | `Free`                                        |
+| Affiliate.com                                        | `$0.015 / call`                               |
+| Particle                                             | `$0.015 / call`                               |
+| Financial Datasets                                   | `$0.01 / call`                                |
+| Jinko                                                | `$0.005 / call`                               |
+
+Fiber.ai は呼び出し単位ではなくクレジット単位で課金されます。Fiber.ai 側の料金が
+呼び出しの内容によって異なるためです。検索は 2 クレジットに、返された結果 1 件につき 1 クレジットが加算されます。企業や人物の
+検索は返された候補の件数に応じて課金されます (そのため、曖昧な名前を絞り込むために企業検索の
+`numResults` を増やすと費用も増えます)。連絡先の
+開示は、勤務先メールアドレス、個人用メールアドレス、電話番号のいずれを求めるかによって 2～5 クレジットです。
+各呼び出しに対して Fiber が報告したクレジット分が請求されます。一致する結果がなかった呼び出しは無料です。詳しくは [Fiber.ai の料金](/ja/docs/agent/connect/fiber#pricing)を参照してください。
+
+Similarweb はデータクレジット (おおむね指標 × 行 × 月ごとに 1 クレジット) で課金されるため、
+呼び出しの料金は `numResults`/`months` によって決まり、1 回あたり 1～15 クレジットです。
+各呼び出しに対して Similarweb が報告したクレジット分が請求されます。データが返されなかった呼び出しは無料です。詳しくは [Similarweb の料金](/ja/docs/agent/connect/similarweb#pricing)を参照してください。
+
+Baselayer はオーダー単位で課金され、料金は操作によって異なります。KYB
+企業検索は $1.00、UCC 担保権検索は検索対象の州ごとに $2.00、
+訴訟/破産記録の検索はカテゴリごとに $1.00、ウォッチリストのスクリーニングは
+リクエストしたリストごとに $0.10～$0.25、業種分類とウェブサイト
+分析はそれぞれ $0.35、ウェブプレゼンスは選択した分析の合計額
+(各 $0.15～$0.35)、海外企業検索は $4.00 です。実施済みの企業検索に対する
+後続の読み取り (企業照会、役員、登記情報、
+役員の逆引き検索) は無料です。詳しくは [Baselayer の料金](/ja/docs/agent/connect/baselayer#pricing)を参照してください。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Profile Anthropic: total funding and estimated monthly web traffic.",
+      data_sources=[{"provider": "fiber"}, {"provider": "similarweb"}],
+      output_schema={
+          "type": "object",
+          "required": ["company"],
+          "properties": {
+              "company": {
+                  "type": "object",
+                  "required": ["name", "totalFunding", "monthlyVisits"],
+                  "properties": {
+                      "name": {"type": "string"},
+                      "totalFunding": {"type": "string", "description": "from Fiber.ai"},
+                      "monthlyVisits": {"type": "number", "description": "from Similarweb"},
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Profile Anthropic: total funding and estimated monthly web traffic.",
+    dataSources: [{ provider: "fiber" }, { provider: "similarweb" }],
+    outputSchema: {
+      type: "object",
+      required: ["company"],
+      properties: {
+        company: {
+          type: "object",
+          required: ["name", "totalFunding", "monthlyVisits"],
+          properties: {
+            name: { type: "string" },
+            totalFunding: { type: "string", description: "from Fiber.ai" },
+            monthlyVisits: { type: "number", description: "from Similarweb" },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Profile Anthropic: total funding and estimated monthly web traffic.",
+      "dataSources": [{ "provider": "fiber" }, { "provider": "similarweb" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["company"],
+        "properties": {
+          "company": {
+            "type": "object",
+            "required": ["name", "totalFunding", "monthlyVisits"],
+            "properties": {
+              "name": { "type": "string" },
+              "totalFunding": { "type": "string", "description": "from Fiber.ai" },
+              "monthlyVisits": { "type": "number", "description": "from Similarweb" }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="data-partners">
+  ## データパートナー
+</div>
+
+<div className="connect-provider-cards">
+  <Columns cols={2}>
+    <Card title="Fiber.ai" icon="/docs/images/agent/connect/fiber.svg" href="/ja/docs/agent/connect/fiber" width="400" height="400" data-path="images/agent/connect/fiber.svg">
+      **GTM・採用。** 見込み客の発掘や連絡先のリサーチに使える、企業と人物の B2B
+      データベース。
+    </Card>
+
+    <Card title="Similarweb" icon="/docs/images/agent/connect/similarweb.svg" href="/ja/docs/agent/connect/similarweb" width="400" height="371" data-path="images/agent/connect/similarweb.svg">
+      **ウェブ解析。** あらゆるドメインのトラフィック推定値、グローバルランキング、
+      競合サイトの発見。
+    </Card>
+
+    <Card title="Baselayer" icon="/docs/images/agent/connect/baselayer.svg" href="/ja/docs/agent/connect/baselayer" width="400" height="247" data-path="images/agent/connect/baselayer.svg">
+      **コンプライアンス・KYB。** 米国企業の役員、登記情報、リスクシグナルを
+      検証します。
+    </Card>
+
+    <Card title="Polymarket" icon="/docs/images/agent/connect/polymarket.svg" href="/ja/docs/agent/connect/polymarket" width="168" height="168" data-path="images/agent/connect/polymarket.svg">
+      **予測市場。** Polymarket の予測市場のオッズ、価格履歴、トレーダーの
+      ポジション。
+    </Card>
+
+    <Card title="Affiliate.com" icon="/docs/images/agent/connect/affiliatecom.svg" href="/ja/docs/agent/connect/affiliatecom" width="400" height="400" data-path="images/agent/connect/affiliatecom.svg">
+      **コマース。** 価格、ブランド、販売者リンクを含む商品カタログ検索。
+    </Card>
+
+    <Card title="Particle" icon="/docs/images/agent/connect/particle.svg" href="/ja/docs/agent/connect/particle" width="400" height="400" data-path="images/agent/connect/particle.svg">
+      **メディアインテリジェンス。** 話者情報とタイムスタンプ付きでポッドキャストの
+      文字起こしを検索します。
+    </Card>
+
+    <Card title="Financial Datasets" icon="/docs/images/agent/connect/financialdatasets.svg" href="/ja/docs/agent/connect/financialdatasets" width="401" height="400" data-path="images/agent/connect/financialdatasets.svg">
+      **金融。** 27,000 以上の米国ティッカーを対象とした株価、ファンダメンタルズ、決算、SEC 提出書類、株主構成、
+      銘柄スクリーニング。
+    </Card>
+
+    <Card title="Jinko" icon="/docs/images/agent/connect/jinko.svg" href="/ja/docs/agent/connect/jinko" width="400" height="395" data-path="images/agent/connect/jinko.svg">
+      **旅行。** リアルタイム料金に対応したフライト・ホテル検索。
+    </Card>
+  </Columns>
+</div>
+
+上記以外のソースが必要な場合は、[その他のプロバイダー](/ja/docs/agent/connect/additional-partners)をご覧ください。弊社チームにお問い合わせいただければご利用いただけます。
+
+<div id="usage">
+  ## 使用量
+</div>
+
+<div id="combining-providers">
+  ### プロバイダーの組み合わせ
+</div>
+
+タスクに必要な数だけパートナーをアタッチできます。Exa Agent は各パートナーをそれぞれの強みが活きる場面で呼び出し、その結果をウェブ検索の結果と組み合わせて、1 つの構造化された回答にまとめます。
+
+```json theme={null}
+{
+  "dataSources": [
+    { "provider": "similarweb" },
+    { "provider": "fiber" },
+    { "provider": "harmonic" }
+  ]
+}
+```
+
+すべてのパートナーが確実に呼び出されるようにクエリと `outputSchema` を設計する方法など、詳しい手順については
+[プロバイダーの組み合わせ](/ja/docs/agent/connect/combining-providers)を参照してください。

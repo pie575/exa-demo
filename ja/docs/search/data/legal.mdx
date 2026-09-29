@@ -1,0 +1,152 @@
+---
+title: "法務・公的記録"
+sidebarTitle: "法務・公的記録"
+icon: "scale"
+description: "Exa Search で裁判所判決、特許、制裁リスト、政府契約、その他の公的記録を検索できます。"
+---
+
+export const PlaygroundQuery = ({query, category, filters}) => {
+  const PLAYGROUND = "https://dashboard.exa.ai/playground/search";
+  const DEFAULT_FILTERS = {
+    type: "auto",
+    highlights: true
+  };
+  const params = [`q=${encodeURIComponent(query)}`];
+  if (category) params.push(`c=${encodeURIComponent(category)}`);
+  params.push(`filters=${encodeURIComponent(JSON.stringify({
+    ...DEFAULT_FILTERS,
+    ...filters
+  }))}`);
+  const href = `${PLAYGROUND}?${params.join("&")}`;
+  return <div className="playground-query not-prose">
+      <code className="playground-query-text">{query}</code>
+      <a className="playground-query-run" href={href} target="_blank" rel="noreferrer" title="APIプレイグラウンドで開く" aria-label={`「${query}」をAPIプレイグラウンドで開く`}>
+        {}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" />
+          <path d="m21 3-9 9" />
+          <path d="M15 3h6v6" />
+        </svg>
+      </a>
+    </div>;
+};
+
+Exa Search を使えば、一次法令資料や政府の公文書を、それらに関する解説記事とあわせて検索できます。
+
+<div id="included">
+  ## 含まれるもの
+</div>
+
+* 米国の裁判所判決 (全文、裁判所、事件番号、判例引用のメタデータを含む)
+* 登録済みの米国特許 (要約、請求項、明細書、発明者、譲受人を含む)
+* 法令、規則、行政機関のガイダンス
+* 制裁リストおよびウォッチリスト
+* 政府契約および調達記録
+* 国勢調査データおよびその他の公的統計記録
+
+<div id="use-it-for">
+  ## 主な用途
+</div>
+
+* 判例リサーチと法務 RAG
+* 規制・政策のモニタリング
+* 先行技術調査および FTO (侵害予防) 調査
+* コンプライアンススクリーニングとデューデリジェンス
+* 公共部門の市場リサーチ
+
+<div id="example-queries">
+  ## クエリの例
+</div>
+
+<div id="find-case-law">
+  ### 判例を検索する
+</div>
+
+判例の引用表記ではなく、法的な論点と管轄区域を平易な言葉で記述してください。
+
+<PlaygroundQuery query="California appellate decisions on non-compete enforceability" />
+
+<div id="search-patents">
+  ### 特許を検索する
+</div>
+
+特許請求の範囲 (クレーム) を書くように、発明の機能を記述してください。
+
+<PlaygroundQuery query="patents on cooling battery packs with immersion dielectric fluid" />
+
+<div id="screen-against-sanctions">
+  ### 制裁リストとの照合
+</div>
+
+照合に使うリストと、対象とするエンティティの種類を指定してください。
+
+<PlaygroundQuery query="OFAC sanctions listings added for shipping companies" />
+
+<div id="research-government-spending">
+  ### 政府支出をリサーチする
+</div>
+
+発注機関またはサービスカテゴリと、対象期間を指定します。
+
+<PlaygroundQuery query="federal contracts awarded for cloud migration services" />
+
+<div id="pull-public-statistics">
+  ### 公開統計データを取得する
+</div>
+
+データセットと地域を指定します。
+
+<PlaygroundQuery query="census tract population change in the Austin metro area" />
+
+<div id="make-a-request">
+  ## リクエストを送信する
+</div>
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+
+  results = exa.search(
+      "California appellate decisions on non-compete enforceability",
+      type="auto",
+      num_results=10,
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+
+  const results = await exa.search(
+    "California appellate decisions on non-compete enforceability",
+    {
+      type: "auto",
+      numResults: 10,
+    }
+  );
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST https://api.exa.ai/search \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "query": "California appellate decisions on non-compete enforceability",
+      "type": "auto",
+      "numResults": 10
+    }'
+  ```
+</CodeGroup>
+
+<div id="get-structured-data-with-exa-agent">
+  ## Exa Agent で構造化データを取得する
+</div>
+
+複数のソースにまたがるリサーチが必要な構造化データには、[Exa Agent のタスク実行](/ja/docs/agent/quickstart)を使用します。必要な管轄区域、レコードの種類、条件、出力フィールドを指定すると、Agent がスキーマ検証済みの結果を引用付きで返します。
+
+<Card title="Agent タスクを開始する" icon="bot" href="/ja/docs/agent/quickstart" cta="Agent ガイドを開く" arrow="true">
+  複数のレコードの種類にわたってエンティティをスクリーニングしたり、一次資料や報道をもとに規制変更の経緯をたどったりできます。
+</Card>

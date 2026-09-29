@@ -1,0 +1,95 @@
+> ## Индекс документации
+>
+> Полный индекс документации доступен по адресу: https://exa.ai/docs/llms.txt
+> Используйте этот файл, чтобы получить список всех доступных страниц, прежде чем продолжить изучение.
+
+<div id="enterprise-managed-auth-for-claude">
+  # Enterprise Managed Auth для Claude
+</div>
+
+> Настройте Enterprise Managed Auth (EMA), чтобы Claude подключался к Exa MCP через вашего поставщика удостоверений, в том числе через Okta Cross App Access (XAA).
+
+По умолчанию каждый участник подключает [коннектор Exa](/ru/docs/get-started/exa-mcp) в Claude, один раз войдя в Exa через OAuth. С **Enterprise Managed Auth (EMA)** доступ выдаётся автоматически через Okta: без экрана входа в Exa, без запроса согласия, без раздачи API key.
+
+Доступ определяется вашим каталогом: отзовите учётную запись в Okta, и доступ этого пользователя к Exa через Claude прекратится вместе с ней. EMA — это [расширение управляемой организацией авторизации](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization) MCP.
+
+<div id="before-you-start">
+  ## Прежде чем начать
+</div>
+
+* Организация Claude Team или Enterprise с подключённым поставщиком удостоверений и правами администратора в ней.
+* **Организация** Exa (не личная команда) с SSO и синхронизацией каталога, а также права администратора в ней.
+* Okta в качестве поставщика удостоверений, на Okta Identity Engine с включённым [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) и доступом Super Admin к тенанту. На сегодняшний день Okta — единственный поддерживаемый поставщик удостоверений.
+
+<div id="exa-values-youll-need">
+  ## Значения Exa, которые вам понадобятся
+</div>
+
+| Поле                                | Значение                 |
+| ----------------------------------- | ------------------------ |
+| Issuer URL (сервер авторизации Exa) | `https://auth.exa.ai`    |
+| URL ресурса / MCP-сервера           | `https://mcp.exa.ai/mcp` |
+| Scope                               | `mcp:tools`              |
+
+<div id="set-up-ema">
+  ## Настройка EMA
+</div>
+
+<Steps>
+  <Step title="Создайте учётные записи участников в Exa">
+    Каждый участник, который будет пользоваться коннектором, должен уже быть зарегистрирован в Exa и входить в команду вашей Exa организации с тем же адресом электронной почты, который передаёт Okta, на домене, верифицированном в вашей организации. EMA никогда не создаёт учётные записи сама. Используйте directory sync или [пригласите участников в команду](/ru/docs/admin/team-management).
+  </Step>
+
+  <Step title="Зарегистрируйте поставщика удостоверений в Exa">
+    В дашборде Exa откройте [Organization](https://dashboard.exa.ai/organization), найдите **Enterprise-managed auth (Claude MCP)** и нажмите **Register identity provider**. Вставьте свой Okta SSO / app embed URL (`https://your-org.okta.com/app/.../sso/saml`). Exa проверяет URL при регистрации.
+
+    Регистрация остаётся в статусе **Pending verification**, пока первый подготовленный участник не подключит Claude через Okta, после чего статус автоматически сменится на **Active**. Больше ничего нажимать не нужно. Издатели, настроенные для вас силами Exa, отображаются как **Managed by Exa**; чтобы изменить их, обратитесь в поддержку. Если Exa не распознаёт ваш URL, напишите на [support@exa.ai](mailto:support@exa.ai).
+  </Step>
+
+  <Step title="Настройте Cross App Access в Okta">
+    Следуйте [руководству Okta по Cross App Access для Claude EMA](https://support.okta.com/help/s/article/claude-enterprise-managed-auth-with-okta-cross-app-access-xaa-beta-participation-guide). Для Exa:
+
+    1. Откройте приложение Exa в Okta Admin Console, перейдите в **Resource Server**, включите XAA и укажите в Resource URL и Issuer URL значение `https://auth.exa.ai`. Поле Audience/tenant ID оставьте пустым.
+    2. Если приложение Exa — пользовательское SAML-приложение, убедитесь, что его **Name ID Format** — `EmailAddress`, поскольку Exa сопоставляет переданный адрес электронной почты с учётной записью участника в Exa.
+    3. Зарегистрируйте Claude AI Agent в разделе **Directory → AI Agents**, добавьте его публичный ключ от Anthropic, добавьте приложение Claude как делегированного вызывающего и добавьте Exa как **Resource Connection**, используя Client ID, который выдаёт Anthropic.
+  </Step>
+
+  <Step title="Включите managed authorization в Claude">
+    В Claude перейдите в **Organization settings → Connectors**, выберите коннектор Exa и на вкладке **Configuration** нажмите **Set up** рядом с Managed authorization. Подтвердите подключение IdP, выполните тест, выберите роли, которые наследуют коннектор, и сохраните. Варианты ролей и scope описаны в [руководстве администратора Anthropic](https://support.claude.com/en/articles/15537633-authorize-mcp-connectors-for-your-entire-organization).
+  </Step>
+</Steps>
+
+Участники получат коннектор при следующем входе. Вход через браузер можно оставить включённым вместе с managed authorization: Claude сначала пробует managed authorization и при неудаче возвращается к обычному входу через OAuth.
+
+<Note>
+  Использование через Claude тарифицируется на команду участника в Exa, по плану и лимитам частоты запросов этой команды, как и всё остальное, что участники выполняют в рамках команды.
+</Note>
+
+<div id="revoking-access">
+  ## Отзыв доступа
+</div>
+
+* **Один участник:** удалите его в Okta или из его команды в Exa. Любое из этих действий закроет ему доступ через Claude.
+* **Все:** удалите издателя на странице Organization или отключите managed authorization в Claude. Новые подключения перестанут создаваться сразу, а уже открытые сессии завершатся вскоре после этого. Зарегистрировать издателя заново можно в любой момент.
+
+<div id="troubleshooting">
+  ## Устранение неполадок
+</div>
+
+<AccordionGroup>
+  <Accordion title="Работает у одних участников, но не у других">
+    Проблемный участник не определяется в Exa. Убедитесь, что он есть в Exa с тем же адресом электронной почты, который передаёт Okta, на домене, подтверждённом для вашей организации, и что он входит в команду этой организации. Чаще всего причина в сопоставлении групп при directory sync.
+  </Accordion>
+
+  <Accordion title="Не работает ни у кого">
+    Проверьте статус издателя на странице Organization. Статус **Pending verification** означает, что ни одно подключение ещё не прошло успешно. Обычно это значит, что настройка Okta не завершена, Issuer URL в приложении Exa не совпадает с `https://auth.exa.ai` либо участник, который пытался подключиться, не заведён в Exa. Устраните причину и подключитесь снова под учётной записью заведённого участника.
+  </Accordion>
+
+  <Accordion title="При регистрации сообщается, что поставщик удостоверений уже зарегистрирован">
+    Издатель может принадлежать только одной организации Exa. Если он не указан на вашей странице Organization, обратитесь на [support@exa.ai](mailto:support@exa.ai).
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  По всем остальным вопросам пишите на [support@exa.ai](mailto:support@exa.ai), указав название вашей организации Exa, адрес электронной почты участника, которого касается проблема, и примерное время попытки подключения.
+</Note>

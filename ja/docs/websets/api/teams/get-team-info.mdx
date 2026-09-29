@@ -1,0 +1,42 @@
+---
+title: "チーム情報の取得"
+description: "同時実行数の使用状況や上限など、チームに関する情報を取得します。"
+openapi: "/ja/docs/exa-spec.yaml GET /v0/teams/me"
+timestamp: false
+---
+
+<div id="overview">
+  ## 概要
+</div>
+
+Get Team Info エンドポイントは、認証済みチームの情報を返します。返される情報には、チームの現在の同時実行数の使用状況や設定済みの上限が含まれます。Websets API の使用状況を監視したり、レート制限を把握したりする際に役立ちます。
+
+<div id="response">
+  ## レスポンス
+</div>
+
+レスポンスには以下が含まれます。
+
+* **object**: 常に &quot;team&quot;
+* **id**: チームの一意の識別子
+* **name**: チーム名
+* **concurrency**: 現在の使用状況(アクティブなリクエスト数とキュー内のリクエスト数)
+* **limits**: チームの同時実行数の上限
+
+<div id="concurrency-fields">
+  ### 同時実行数のフィールド
+</div>
+
+`concurrency` オブジェクトには、現在のリクエストの状態が表示されます。
+
+* **active**: 現在処理中のリクエスト数
+* **queued**: 処理待ちのリクエスト数
+
+<div id="limits-fields">
+  ### Limits フィールド
+</div>
+
+`limits` オブジェクトには、チームに設定された上限値が表示されます。
+
+* **maxConcurrent**: 同時に処理できるリクエストの最大数 (null の場合は無制限)
+* **maxQueued**: キューで待機できるリクエストの最大数 (null の場合は無制限)

@@ -1,0 +1,24 @@
+---
+title: "Создание API key"
+description: "Создайте новый API key для своей команды, при необходимости задав
+  имя и лимит запросов."
+openapi: "/ru/docs/team-management-spec.yaml POST /api-keys"
+timestamp: false
+---
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>
+
+<Info>
+  Team Management API включается отдельно для каждой команды. Аутентификация выполняется с помощью API key сервисного аккаунта, который создаётся на вкладке **Service keys** на [странице API keys](https://dashboard.exa.ai/api-keys) после того, как эта возможность включена для вашей команды. Чтобы запросить доступ, напишите на [support@exa.ai](mailto:support@exa.ai).
+</Info>
+
+Эндпоинт Create API Key позволяет программно создавать новые API key для вашей команды с помощью сервисного API key.
+
+<div id="optional-parameters">
+  ## Необязательные параметры
+</div>
+
+* **name**: Понятное название API key, помогающее определить его назначение
+* **rateLimit**: Максимальное количество запросов в минуту, допустимое для этого API key

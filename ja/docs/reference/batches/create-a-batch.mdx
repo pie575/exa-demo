@@ -1,0 +1,12 @@
+---
+title: "バッチを作成する"
+description: "Exa API リクエストをバッチとして送信し、非同期で実行します。"
+openapi: "/ja/docs/exa-spec.yaml POST /batches"
+timestamp: false
+---
+
+`requests` の各要素は `/search` または `/agent/runs` への `POST` で、それぞれにバッチ内で一意の `customId` を指定します。結果ファイルにも同じ `customId` が返されるため、出力の各行を入力データと突き合わせることができます。一連のワークフローについては、[Batch API ガイド](/ja/docs/batch/quickstart)を参照してください。
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

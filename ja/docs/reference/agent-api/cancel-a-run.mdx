@@ -1,0 +1,12 @@
+---
+title: "実行をキャンセルする"
+description: "キュー待ちまたは実行中の Agent の実行をキャンセルします。"
+openapi: "/ja/docs/exa-spec.yaml POST /agent/runs/{id}/cancel"
+timestamp: false
+---
+
+実行がまだアクティブな場合は、直ちに `cancelled` に遷移し、結果を返さずに終了します。実行はステータス `cancelled`、`stopReason: cancelled` の状態で終了します。キャンセルまでに発生した使用量は課金されます。実行がすでに終了ステータス (completed、failed、cancelled のいずれか) に達している場合、このエンドポイントは既存の実行をそのまま返します。
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

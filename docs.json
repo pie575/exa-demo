@@ -498,20 +498,12 @@
         ]
       },
       {
-        "language": "es",
-        "$ref": "./es/docs.json"
+        "language": "ja",
+        "$ref": "./ja/docs.json"
       },
       {
-        "language": "fr",
-        "$ref": "./fr/docs.json"
-      },
-      {
-        "language": "id",
-        "$ref": "./id/docs.json"
-      },
-      {
-        "language": "ko",
-        "$ref": "./ko/docs.json"
+        "language": "ru",
+        "$ref": "./ru/docs.json"
       },
       {
         "language": "zh",
@@ -1179,6 +1171,18 @@
     {
       "destination": "/docs/downloads/team-management-spec.yaml.txt",
       "source": "/docs/team-management-spec.yaml"
+    },
+    {
+      "source": "/zh/docs/llms.txt",
+      "destination": "/docs/llms.txt"
+    },
+    {
+      "source": "/ja/docs/llms.txt",
+      "destination": "/docs/llms.txt"
+    },
+    {
+      "source": "/ru/docs/llms.txt",
+      "destination": "/docs/llms.txt"
     }
   ],
   "seo": {

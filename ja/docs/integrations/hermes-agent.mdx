@@ -1,0 +1,118 @@
+---
+title: "Hermes Agent"
+sidebarTitle: "Hermes Agent"
+description: "Exa を使って、Hermes Agent にリアルタイムのウェブ検索とページコンテンツ取得機能を追加します。"
+icon: "/docs/images/sidebar-icons/hermes-agent.svg"
+---
+
+[Hermes Agent](https://github.com/NousResearch/hermes-agent) には、モデルから呼び出せる `web_search` ツールと `web_extract` ツールのネイティブバックエンドとして Exa が組み込まれています。両方の機能を Exa でまかなうことも、Hermes の他のウェブプロバイダーと組み合わせて使うこともできます。
+
+<div id="connect-your-exa-account">
+  ## Exa アカウントを接続する
+</div>
+
+<Steps>
+  <Step title="Exa API キーを取得する">
+    <Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      ダッシュボードでキーを作成します。新規アカウントには無料クレジットが付与されます。
+    </Card>
+  </Step>
+
+  <Step title="Hermes で Exa を選択する">
+    ツールのセットアップウィザードを実行します。
+
+    ```bash theme={null}
+    hermes tools
+    ```
+
+    **Web Search &amp; Extract** を開いて Exa を選び、API キーを使用するオプションを選択します。入力を求められたら、Exa API キーを入力します。Hermes はシークレットを `~/.hermes/.env` に、プロバイダーの選択内容を `~/.hermes/config.yaml` に保存します。
+  </Step>
+
+  <Step title="ウェブアクセスをテストする">
+    Hermes を起動し、検索を実行してから結果の 1 つを読み込むよう指示します。
+
+    ```text theme={null}
+    Search the web for the latest Exa product updates, then read the most relevant result.
+    ```
+
+    Hermes は `web_search` を呼び出し、ページ本体が必要な場合は続けて `web_extract` を呼び出すはずです。
+  </Step>
+</Steps>
+
+<div id="configure-manually">
+  ## 手動で設定する
+</div>
+
+Hermes の環境ファイルにキーを追加します。
+
+```bash ~/.hermes/.env theme={null}
+EXA_API_KEY=your-exa-api-key
+```
+
+次に、2つのウェブ機能の両方で Exa を選択します：
+
+```yaml ~/.hermes/config.yaml theme={null}
+web:
+  search_backend: "exa"
+  extract_backend: "exa"
+```
+
+代わりに、共通のフォールバックを使用することもできます：
+
+```yaml ~/.hermes/config.yaml theme={null}
+web:
+  backend: "exa"
+```
+
+ケイパビリティごとの設定は `web.backend` よりも優先されます。そのため、複数のプロバイダーを組み合わせる場合に、Exa を検索専用または抽出専用として使用できます。
+
+<div id="tools-hermes-gets">
+  ## Hermes が利用できるツール
+</div>
+
+| ツール           | Exa での動作                                            |
+| ------------- | --------------------------------------------------- |
+| `web_search`  | Exa で検索し、タイトル、URL、テキストスニペットを含むページをランク順に返します。        |
+| `web_extract` | Exa Contents を通じて、1 つ以上の URL から読みやすい形式のコンテンツを取得します。 |
+
+Hermes は、抽出したページが長い場合は設定された文字数上限まで切り詰め、全文をディスクに保存します。デフォルト値は `web.extract_char_limit` で変更できます。また、エージェントが呼び出しごとにより大きな `char_limit` をリクエストすることも可能です。
+
+<Note>
+  Hermes は、キー不要の無料プロバイダープールを介して、API キーなしで Exa を利用できます。このプールにはレート制限があり、使用されるプロバイダーが切り替わる場合があります。リクエストで常に自分の Exa アカウントを使用したい場合は、`EXA_API_KEY` を設定し、API キー認証の Exa オプションを選択してください。
+</Note>
+
+<div id="troubleshooting">
+  ## トラブルシューティング
+</div>
+
+<AccordionGroup>
+  <Accordion title="Hermes で Exa が選択されない">
+    `hermes tools` を実行し、Exa を明示的に選択してください。ファイルを手動で設定している場合は、`web.search_backend`、`web.extract_backend`、または `web.backend` が `exa` に設定されているかを確認してください。
+  </Accordion>
+
+  <Accordion title="Hermes で EXA_API_KEY が見つからないというエラーが出る">
+    `~/.hermes/.env` にキーを追加し、Hermes を再起動して環境変数を再読み込みしてください。
+  </Accordion>
+
+  <Accordion title="検索は動作するが、抽出に別のプロバイダーが使われる">
+    Hermes では検索と抽出を個別に設定できます。`web.search_backend` と `web.extract_backend` の両方を `exa` に設定してください。
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## リソース
+</div>
+
+<Columns cols={3}>
+  <Card title="Hermes の Web ツール" icon="book-open" href="https://hermes-agent.nousresearch.com/docs/user-guide/features/web-search" cta="ガイドを読む" arrow="true">
+    Hermes のプロバイダー選択、キャッシュ、抽出の動作を確認できます。
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/ja/docs/search/quickstart" cta="ガイドを読む" arrow="true">
+    Exa による検索、フィルタリング、ページコンテンツの返却の仕組みを説明します。
+  </Card>
+
+  <Card title="Exa Contents" icon="file-text" href="/ja/docs/contents/quickstart" cta="ガイドを読む" arrow="true">
+    `web_extract` を支える抽出 API について解説します。
+  </Card>
+</Columns>

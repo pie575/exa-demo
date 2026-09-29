@@ -1,0 +1,199 @@
+---
+title: "Baselayer"
+description: "米国企業を検証し、KYBデータ（役員、登記、リスクスコア）を取得します。"
+icon: "/docs/images/sidebar-icons/baselayer.svg"
+---
+
+[Baselayer](https://baselayer.com) は、信頼性の高い登記データとリスクデータをもとに米国の事業体を検証する
+Know Your Business (KYB) プラットフォームです。
+企業名と住所から事業体を特定し、役員、
+州の登記情報、事業体の構成、検証ステータスを含む完全なプロファイルを返します。
+
+[Exa Connect](/ja/docs/agent/connect/overview) を通じて `baselayer` を [Exa Agent](/ja/docs/agent/quickstart) の実行にアタッチすると、
+エージェントは Exa のウェブ検索と並行して
+Baselayer にもクエリを実行します。
+
+<div id="use-it-for">
+  ## 主な用途
+</div>
+
+* KYB オンボーディング、およびベンダーや顧客の本人確認。
+* 役員、登記情報、事業体の構成に関するデューデリジェンス。
+* 企業のリスク評価やウォッチリスト該当の有無を確認するスクリーニング。
+
+<div id="provider-id">
+  ## プロバイダー ID
+</div>
+
+`dataSources` には次の値を指定します。
+
+```text theme={null}
+baselayer
+```
+
+<div id="pricing">
+  ## 料金
+</div>
+
+Baselayer は注文単位で課金され、金額は操作とそのパラメーターによって異なります。
+
+| 操作                           | 料金                                          |
+| ---------------------------- | ------------------------------------------- |
+| 企業検索                         | `$1.00 / search`                            |
+| 企業ルックアップ / 役員 / 登記情報 / 役員逆引き | 無料 (過去の検索結果の読み取り)                           |
+| 先取特権検索                       | `$2.00 / state searched`                    |
+| 訴訟検索                         | `$1.00 / category (litigation, bankruptcy)` |
+| ウォッチリストスクリーニング               | `$0.10 – $0.25 / list requested`            |
+| 業種分類                         | `$0.35 / call`                              |
+| Web サイト分析                    | `$0.35 / call`                              |
+| Web プレゼンス                    | `$0.15 – $0.35 / selected analysis`         |
+| 海外企業検索                       | `$4.00 / search`                            |
+
+料金はパラメーターの選択によって変わります。たとえば、2 つの州を対象とする先取特権検索は $4.00、サポート対象の 6 つのリストすべてを対象とするウォッチリストスクリーニングは $1.35 です。Web プレゼンスの呼び出しは、選択した分析の合計額になります (何も選択しない場合は、Baselayer のデフォルトセット — NAICS 予測と Web サイト分析 — の合計額) 。
+
+<div id="example">
+  ## 例
+</div>
+
+企業の実在性を確認し、役員情報と登記情報を取得します。
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.",
+      data_sources=[{"provider": "baselayer"}],
+      output_schema={
+          "type": "object",
+          "required": ["business"],
+          "properties": {
+              "business": {
+                  "type": "object",
+                  "required": ["name", "verified", "incorporationState", "officers"],
+                  "properties": {
+                      "name": {"type": "string"},
+                      "verified": {"type": "boolean"},
+                      "incorporationState": {"type": "string"},
+                      "officers": {
+                          "type": "array",
+                          "items": {
+                              "type": "object",
+                              "required": ["name", "title"],
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "title": {"type": "string"},
+                              },
+                          },
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.",
+    dataSources: [{ provider: "baselayer" }],
+    outputSchema: {
+      type: "object",
+      required: ["business"],
+      properties: {
+        business: {
+          type: "object",
+          required: ["name", "verified", "incorporationState", "officers"],
+          properties: {
+            name: { type: "string" },
+            verified: { type: "boolean" },
+            incorporationState: { type: "string" },
+            officers: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["name", "title"],
+                properties: {
+                  name: { type: "string" },
+                  title: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Verify the business Stripe, Inc. in San Francisco, CA and return its officers and registration status.",
+      "dataSources": [{ "provider": "baselayer" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["business"],
+        "properties": {
+          "business": {
+            "type": "object",
+            "required": ["name", "verified", "incorporationState", "officers"],
+            "properties": {
+              "name": { "type": "string" },
+              "verified": { "type": "boolean" },
+              "incorporationState": { "type": "string" },
+              "officers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "title"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "title": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## 相性の良いサービス
+</div>
+
+* [Fiber.ai](/ja/docs/agent/connect/fiber): 検証済みの企業情報を、企業属性データ、従業員数、連絡先情報で補完します。
+* [Financial Datasets](/ja/docs/agent/connect/financialdatasets): 上場企業に関する最新のニュース報道を追加します。
+* [Similarweb](/ja/docs/agent/connect/similarweb): 検証済み企業のウェブトラフィックや競合企業をベンチマーク分析します。
+
+<div id="next-steps">
+  ## 次のステップ
+</div>
+
+<Columns cols={2}>
+  <Card title="実行にアタッチする" icon="rocket" href="/ja/docs/agent/connect/overview" cta="クイックスタートを開く" arrow="true">
+    Exa Connect のクイックスタートでは、`dataSources`、料金体系、パートナーの全一覧を紹介しています。
+  </Card>
+
+  <Card title="プロバイダーを組み合わせる" icon="blend" href="/ja/docs/agent/connect/combining-providers" cta="ガイドを読む" arrow="true">
+    1 つの実行に最大 5 つのパートナーをアタッチし、各パートナーが確実に呼び出されるようクエリを工夫します。
+  </Card>
+
+  <Card title="Exa Agent について学ぶ" icon="book-open" href="/ja/docs/agent/quickstart" cta="ガイドを開く" arrow="true">
+    実行の作成、進捗のストリーミング、出力スキーマの設計、effort とコストの制御方法を解説します。
+  </Card>
+
+  <Card title="API キーを取得する" icon="key" href="https://dashboard.exa.ai/api-keys" cta="キーを作成する" arrow="true">
+    ダッシュボードでキーを作成すると、このページのサンプルをそのまま実行できます。新規アカウントには無料クレジットが付与されます。
+  </Card>
+</Columns>

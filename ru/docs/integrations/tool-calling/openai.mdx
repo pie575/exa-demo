@@ -1,0 +1,220 @@
+---
+title: "Вызов tool OpenAI"
+description: "Используйте вызов tool OpenAI, чтобы добавить в своё приложение веб-поиск Exa и получение содержимого страниц."
+icon: "/docs/images/sidebar-icons/openai.svg"
+---
+
+<Info>
+  OpenAI рекомендует использовать Responses API для всех новых проектов. См. раздел [Responses API](#responses-api) ниже.
+</Info>
+
+[Вызов tool](https://platform.openai.com/docs/guides/function-calling?lang=python) в OpenAI позволяет моделям вызывать функции, которые вы определяете в своём коде. SDK Exa поставляются с готовыми tool веб-поиска и чтения страниц для OpenAI, поэтому вам не придётся вручную описывать схему tool, разбирать вызовы tool и самостоятельно форматировать результаты Exa.
+
+<div id="get-started">
+  ## Get started
+</div>
+
+<Steps>
+  <Step title="Установите SDK">
+    <CodeGroup>
+      ```bash Python theme={null}
+      pip install openai exa_py
+      ```
+
+      ```bash JavaScript theme={null}
+      npm install openai exa-js
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Настройте свои API key">
+    Задайте переменные окружения `EXA_API_KEY` и `OPENAI_API_KEY`. Перейдите в [дашборд OpenAI](https://platform.openai.com/api-keys) и [дашборд Exa](https://dashboard.exa.ai/api-keys), чтобы сгенерировать API key.
+
+    <Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+    </Card>
+  </Step>
+
+  <Step title="Добавьте tool Exa в свой цикл вызова tool">
+    Передайте tools в списке `tools` запроса, а затем передайте сообщение ассистента в `handle_tool_calls`. Функция выполнит все вызовы tool Exa из этого сообщения и вернёт соответствующие сообщения с `role: "tool"`, готовые к добавлению в диалог.
+
+    `web_search` ищет в вебе страницы, которых модель ещё не видела; `get_contents` читает страницы, URL которых уже известны — из предыдущего поиска или от пользователя. Зарегистрируйте любой из них или оба сразу.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      from exa_py import Exa
+      from openai import OpenAI
+
+      exa = Exa()  # читает EXA_API_KEY из окружения
+      openai_client = OpenAI()
+
+      messages = [{"role": "user", "content": "What's the latest on AI chips?"}]
+
+      completion = openai_client.chat.completions.create(
+          model="gpt-5.6",
+          reasoning_effort="none",
+          messages=messages,
+          tools=[exa.openai.web_search(), exa.openai.get_contents()],
+      )
+
+      message = completion.choices[0].message
+      messages.append(message)
+      messages += exa.openai.handle_tool_calls(message)
+
+      completion = openai_client.chat.completions.create(
+          model="gpt-5.6",
+          reasoning_effort="none",
+          messages=messages,
+      )
+      print(completion.choices[0].message.content)
+      ```
+
+      ```javascript JavaScript theme={null}
+      import Exa from "exa-js";
+      import { OpenAI } from "openai";
+
+      const exa = new Exa(); // читает EXA_API_KEY из окружения
+      const openai = new OpenAI();
+
+      const messages = [
+        { role: "user", content: "What's the latest on AI chips?" },
+      ];
+
+      let completion = await openai.chat.completions.create({
+        model: "gpt-5.6",
+        reasoning_effort: "none",
+        messages,
+        tools: [exa.openai.webSearch(), exa.openai.getContents()],
+      });
+
+      const message = completion.choices[0].message;
+      messages.push(message, ...(await exa.openai.handleToolCalls(message)));
+
+      completion = await openai.chat.completions.create({
+        model: "gpt-5.6",
+        reasoning_effort: "none",
+        messages,
+      });
+      console.log(completion.choices[0].message.content);
+      ```
+    </CodeGroup>
+
+    Для краткости здесь показан один раунд. Реальный agent передаёт `tools` в каждом запросе и повторяет шаг с handler до тех пор, пока модель не ответит без tool calls — именно так результат поиска превращается в последующее чтение страницы.
+
+    Вызов factory без аргументов даёт рекомендованные Exa значения по умолчанию: `type="auto"` с `contents={"highlights": True}` для поиска. Highlights возвращают релевантные запросу фрагменты — они не обрезают текст страницы до 10 000 символов. Factory для содержимого возвращает текст страницы; лимит SDK в 10 000 символов действует только для `text` и только если вы не указали `max_characters`.
+  </Step>
+</Steps>
+
+<div id="responses-api">
+  ## Responses API
+</div>
+
+Для OpenAI Responses API используйте фабрику `responses` с тем же вспомогательным методом `handle_tool_calls`. handler возвращает элементы `function_call_output` для follow-up запроса.
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = openai_client.responses.create(
+      model="gpt-5.6",
+      input=messages,
+      tools=[exa.openai.responses.web_search(), exa.openai.responses.get_contents()],
+  )
+
+  messages += response.output
+  messages += exa.openai.responses.handle_tool_calls(response)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await openai.responses.create({
+    model: "gpt-5.6",
+    input: messages,
+    tools: [exa.openai.responses.webSearch(), exa.openai.responses.getContents()],
+  });
+
+  messages.push(...response.output);
+  messages.push(...(await exa.openai.responses.handleToolCalls(response)));
+  ```
+</CodeGroup>
+
+<Note>
+  Chat Completions и Responses API используют разные форматы tool и не принимают форматы друг друга, поэтому используйте фабрику, соответствующую вызываемому эндпоинту.
+</Note>
+
+<div id="configuring-the-tools">
+  ## Настройка tools
+</div>
+
+Именованные аргументы — это обычные опции Exa, которые передаются дальше при запуске tool: опции search в `exa.search()`, опции содержимого в `exa.get_contents()`:
+
+<CodeGroup>
+  ```python Python theme={null}
+  tools = [
+      exa.openai.web_search(category="news", contents={"text": True}),
+      exa.openai.get_contents(summary=True, livecrawl="preferred"),
+  ]
+  ```
+
+  ```javascript JavaScript theme={null}
+  const tools = [
+    exa.openai.webSearch({ category: "news", contents: { text: true } }),
+    exa.openai.getContents({ summary: true, livecrawl: "preferred" }),
+  ];
+  ```
+</CodeGroup>
+
+Модель выбирает поисковый `query` и `urls` для чтения; всё остальное задаётся при создании tool, поэтому модель не может повлиять на то, что именно будет обойдено или извлечено.
+
+А `name` (по умолчанию `"web_search"` и `"get_contents"`) и `description` переопределяют определение tool, которое видит модель. Задайте собственное значение `name`, чтобы использовать одновременно несколько по-разному настроенных tools Exa или чтобы избежать конфликтов с другими tools, которые занимают эти имена.
+
+<div id="mixing-in-your-own-tools">
+  ## Подключение собственных tools
+</div>
+
+Handler&#39;ы отвечают на каждый tool call в сообщении: если в вызове указан tool, который они не могут распознать, вызов не отбрасывается, а возвращается вывод `Error: unknown tool "<name>"` — так в follow-up request не потеряется ни один обязательный response от tool. Если вы используете собственные tools наряду с tools от Exa, замените такие сообщения об ошибках своими результатами перед отправкой следующего request.
+
+<div id="writing-the-loop-by-hand">
+  ## Пишем цикл вручную
+</div>
+
+Если вы предпочитаете сами контролировать tool schema и выполнение, определите tool и обрабатывайте вызовы вручную. `exa.tools.web_search()` и `exa.tools.get_contents()` возвращают те же спецификации tool, не зависящие от провайдера (с методом `run`), для самописных циклов, либо вы можете написать всё с нуля:
+
+```python Python theme={null}
+import json
+
+TOOLS = [
+    {
+        "type": "function",
+        "function": {
+            "name": "exa_search",
+            "description": "Perform a search query on the web, and retrieve the most relevant URLs/web data.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The search query to perform.",
+                    },
+                },
+                "required": ["query"],
+            },
+        },
+    }
+]
+
+def exa_search(query: str):
+    return exa.search(query=query, type="auto", contents={"highlights": True})
+
+def process_tool_calls(tool_calls, messages):
+    for tool_call in tool_calls:
+        if tool_call.function.name == "exa_search":
+            args = json.loads(tool_call.function.arguments)
+            messages.append(
+                {
+                    "role": "tool",
+                    "content": str(exa_search(**args)),
+                    "tool_call_id": tool_call.id,
+                }
+            )
+    return messages
+```
+
+Параметры search и contents в Python и TypeScript описаны в [SDK quickstart](/ru/docs/sdks/quickstart).

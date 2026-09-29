@@ -1,0 +1,29 @@
+---
+title: "Answer"
+description: "Exa の検索結果をもとに、質問に対する LLM の回答を取得します。 `/answer` は Exa 検索を実行し、LLM
+  を使って次のいずれかを生成します。
+
+  1. 具体的なクエリに対する直接的な回答（例: \"What is the capital of France?\" に対しては \"Paris\"
+  が返されます）
+
+  2. 自由形式のクエリに対する、引用付きの詳細な要約（例: \"What is the state of ai in healthcare?\"
+  に対しては、関連するソースへの引用付きの要約が返されます）
+
+
+  レスポンスには、生成された回答と、その生成に使用されたソースの両方が含まれます。このエンドポイントはストリーミング（`stream=True`）にも対応し\
+  ており、トークンを生成と同時に順次返します。
+
+
+  OpenAI 互換の [chat completions
+  インターフェース](/docs/integrations/openai-sdk#answer)を利用することもできます。\n"
+openapi: "/ja/docs/exa-spec.yaml POST /answer"
+timestamp: false
+---
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>
+
+<Info>
+  `/answer` は `outputSchema` パラメーターによる構造化出力に対応しています。[JSON Schema](https://json-schema.org/draft-07) オブジェクトを渡すと、回答はプレーンな文字列ではなく、指定したスキーマに沿った構造化 JSON として返されます。
+</Info>

@@ -1,0 +1,257 @@
+> ## ドキュメントインデックス
+>
+> ドキュメントの完全なインデックスは https://exa.ai/docs/llms.txt から取得できます。
+> 個別のページを閲覧する前に、このファイルで利用可能なすべてのページを確認してください。
+
+<div id="update-api-key">
+  # API キーの更新
+</div>
+
+> 既存の API キーの名前とレート制限を更新します。
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>
+
+<Info>
+  Team Management API はチーム単位で有効化されます。認証にはサービスアカウントの API キーを使用します。このキーは、チームでこの機能が有効化された後に、[API キーページ](https://dashboard.exa.ai/api-keys)の **Service keys** タブから作成できます。アクセスをご希望の場合は、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
+</Info>
+
+<div id="overview">
+  ## 概要
+</div>
+
+Update API Key エンドポイントを使用すると、既存の API キーを変更できます
+
+<div id="path-parameters">
+  ## パスパラメーター
+</div>
+
+* **id**: 更新対象の API キーの一意の識別子。
+
+<div id="optional-parameters">
+  ## オプションのパラメーター
+</div>
+
+* **name**: API キーの内容がわかる新しい名前
+* **rateLimit**: 新しいレート制限 (1 分あたりのリクエスト数)
+
+<div id="openapi">
+  ## OpenAPI
+</div>
+
+```yaml team-management-spec.yaml PUT /api-keys/{id}
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Team Management API
+  description: >-
+    API for managing API keys within teams. Provides CRUD operations for
+    creating, listing, updating, and deleting API keys with team-based access
+    controls. The API is enabled per team. Contact support@exa.ai to request
+    access.
+servers:
+  - url: https://admin-api.exa.ai/team-management
+security:
+  - apikey: []
+paths:
+  /api-keys/{id}:
+    put:
+      tags:
+        - Team Management
+      summary: Update API key
+      description: >-
+        Updates an existing API key's name and/or rate limit. Only API keys
+        belonging to the authenticated team can be updated.
+      operationId: update-api-key
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique identifier of the API key to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Optional new name for the API key
+                  example: Updated Production Key
+                rateLimit:
+                  type: integer
+                  description: >-
+                    Optional new rate limit for the API key (requests per
+                    second)
+                  example: 2000
+                budgetCents:
+                  type:
+                    - integer
+                    - 'null'
+                  minimum: 0
+                  description: >-
+                    Optional new spending budget for the API key, in cents. Set
+                    to null to remove the budget.
+                  example: 5000
+              additionalProperties: false
+      responses:
+        '200':
+          description: API key updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiKey:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                      name:
+                        type: string
+                      rateLimit:
+                        type:
+                          - integer
+                          - 'null'
+                        description: Rate limit in requests per second
+                      budgetCents:
+                        type:
+                          - integer
+                          - 'null'
+                        description: Spending budget for the API key, in cents
+                      isOverBudget:
+                        type: boolean
+                        description: Whether the API key is currently over its budget
+                      teamId:
+                        type: string
+                        format: uuid
+                      userId:
+                        type: string
+                        format: uuid
+                      createdAt:
+                        type: string
+                        format: date-time
+                      updatedAt:
+                        type: string
+                        format: date-time
+        '400':
+          description: Bad Request - Invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    examples:
+                      - api_key_id is required
+                      - Invalid API key ID format.
+        '401':
+          description: Unauthorized - Invalid or missing service key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+        '403':
+          description: Forbidden - API key belongs to a different team
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: You do not have permission to access this API key
+        '404':
+          description: Not Found - API key does not exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: API key not found
+      security:
+        - apikey: []
+      x-codeSamples:
+        - lang: bash
+          label: Update API key name and rate limit
+          source: >
+            curl -X PUT 'https://admin-api.exa.ai/team-management/api-keys/{id}'
+            \
+              -H 'x-api-key: YOUR-SERVICE-KEY' \
+              -H 'Content-Type: application/json' \
+              -d '{
+                "name": "Updated Production Key",
+                "rateLimit": 2000
+              }'
+        - lang: python
+          label: Update API key name and rate limit
+          source: |
+            import requests
+
+            headers = {
+                'x-api-key': 'YOUR-SERVICE-KEY',
+                'Content-Type': 'application/json'
+            }
+
+            data = {
+                'name': 'Updated Production Key',
+                'rateLimit': 2000
+            }
+
+            response = requests.put(
+                'https://admin-api.exa.ai/team-management/api-keys/{id}',
+                headers=headers,
+                json=data
+            )
+
+            print(response.json())
+        - lang: javascript
+          label: Update API key name and rate limit
+          source: >
+            const response = await
+            fetch('https://admin-api.exa.ai/team-management/api-keys/{id}', {
+              method: 'PUT',
+              headers: {
+                'x-api-key': 'YOUR-SERVICE-KEY',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                name: 'Updated Production Key',
+                rateLimit: 2000
+              })
+            });
+
+
+            const result = await response.json();
+
+            console.log(result);
+        - lang: bash
+          label: Update only the name
+          source: >
+            curl -X PUT 'https://admin-api.exa.ai/team-management/api-keys/{id}'
+            \
+              -H 'x-api-key: YOUR-SERVICE-KEY' \
+              -H 'Content-Type: application/json' \
+              -d '{
+                "name": "New Name Only"
+              }'
+components:
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Service API key for team authentication
+```

@@ -1,0 +1,220 @@
+---
+title: "OpenAI ツール呼び出し"
+description: "OpenAI のツール呼び出しを使用して、Exa のウェブ検索とページコンテンツをアプリケーションに追加します。"
+icon: "/docs/images/sidebar-icons/openai.svg"
+---
+
+<Info>
+  OpenAI は、すべての新規プロジェクトで Responses API を使用することを推奨しています。後述の [Responses API](#responses-api) セクションを参照してください。
+</Info>
+
+OpenAI の[ツール呼び出し](https://platform.openai.com/docs/guides/function-calling?lang=python)を使用すると、コード内で定義した関数をモデルから呼び出せます。Exa SDK には OpenAI 向けのウェブ検索ツールとページ読み取りツールが組み込まれているため、ツールスキーマの手書き、ツール呼び出しの解析、Exa の結果の整形を自前で行う必要はありません。
+
+<div id="get-started">
+  ## はじめに
+</div>
+
+<Steps>
+  <Step title="SDK をインストールする">
+    <CodeGroup>
+      ```bash Python theme={null}
+      pip install openai exa_py
+      ```
+
+      ```bash JavaScript theme={null}
+      npm install openai exa-js
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="API キーを設定する">
+    環境変数 `EXA_API_KEY` と `OPENAI_API_KEY` を設定します。API キーは [OpenAI ダッシュボード](https://platform.openai.com/api-keys)と [Exa ダッシュボード](https://dashboard.exa.ai/api-keys)で生成できます。
+
+    <Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+    </Card>
+  </Step>
+
+  <Step title="ツールループに Exa ツールを追加する">
+    リクエストの `tools` リストにツールを指定し、アシスタントメッセージを `handle_tool_calls` に渡します。このメソッドはメッセージ内のすべての Exa ツール呼び出しを実行し、対応する `role: "tool"` メッセージを返します。返されたメッセージはそのまま会話に追加できます。
+
+    `web_search` はモデルがまだ見ていないページを Web から検索し、`get_contents` はすでに URL がわかっているページ (以前の検索結果やユーザーから提供されたもの) の内容を読み込みます。どちらか一方だけでも、両方でも登録できます。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      from exa_py import Exa
+      from openai import OpenAI
+
+      exa = Exa()  # 環境から EXA_API_KEY を読み込む
+      openai_client = OpenAI()
+
+      messages = [{"role": "user", "content": "What's the latest on AI chips?"}]
+
+      completion = openai_client.chat.completions.create(
+          model="gpt-5.6",
+          reasoning_effort="none",
+          messages=messages,
+          tools=[exa.openai.web_search(), exa.openai.get_contents()],
+      )
+
+      message = completion.choices[0].message
+      messages.append(message)
+      messages += exa.openai.handle_tool_calls(message)
+
+      completion = openai_client.chat.completions.create(
+          model="gpt-5.6",
+          reasoning_effort="none",
+          messages=messages,
+      )
+      print(completion.choices[0].message.content)
+      ```
+
+      ```javascript JavaScript theme={null}
+      import Exa from "exa-js";
+      import { OpenAI } from "openai";
+
+      const exa = new Exa(); // 環境から EXA_API_KEY を読み込む
+      const openai = new OpenAI();
+
+      const messages = [
+        { role: "user", content: "What's the latest on AI chips?" },
+      ];
+
+      let completion = await openai.chat.completions.create({
+        model: "gpt-5.6",
+        reasoning_effort: "none",
+        messages,
+        tools: [exa.openai.webSearch(), exa.openai.getContents()],
+      });
+
+      const message = completion.choices[0].message;
+      messages.push(message, ...(await exa.openai.handleToolCalls(message)));
+
+      completion = await openai.chat.completions.create({
+        model: "gpt-5.6",
+        reasoning_effort: "none",
+        messages,
+      });
+      console.log(completion.choices[0].message.content);
+      ```
+    </CodeGroup>
+
+    ここでは簡潔にするため 1 往復のみを示しています。実際のエージェントでは、すべてのリクエストに `tools` を指定し、モデルがツールを呼び出さずに応答するまでハンドラーのステップを繰り返します。この仕組みにより、検索結果をもとに続けてページを読み込めるようになります。
+
+    ファクトリを引数なしで呼び出すと、Exa 推奨のデフォルト値が使われます。検索では `type="auto"` と `contents={"highlights": True}` です。ハイライトはクエリに関連する抜粋を返すもので、ページテキストを 10,000 文字に制限するわけではありません。contents ファクトリはページテキストを返します。SDK の 10,000 文字制限が適用されるのは `text` のみで、かつ `max_characters` を省略した場合に限られます。
+  </Step>
+</Steps>
+
+<div id="responses-api">
+  ## Responses API
+</div>
+
+OpenAI Responses API では、同じ `handle_tool_calls` ヘルパーと `responses` ファクトリを組み合わせて使用します。ハンドラーは、フォローアップリクエストに渡す `function_call_output` アイテムを返します。
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = openai_client.responses.create(
+      model="gpt-5.6",
+      input=messages,
+      tools=[exa.openai.responses.web_search(), exa.openai.responses.get_contents()],
+  )
+
+  messages += response.output
+  messages += exa.openai.responses.handle_tool_calls(response)
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await openai.responses.create({
+    model: "gpt-5.6",
+    input: messages,
+    tools: [exa.openai.responses.webSearch(), exa.openai.responses.getContents()],
+  });
+
+  messages.push(...response.output);
+  messages.push(...(await exa.openai.responses.handleToolCalls(response)));
+  ```
+</CodeGroup>
+
+<Note>
+  Chat Completions と Responses API ではツールの形式が異なり、互いの形式は受け付けられません。呼び出すエンドポイントに対応したファクトリを使用してください。
+</Note>
+
+<div id="configuring-the-tools">
+  ## ツールの設定
+</div>
+
+キーワード引数は通常の Exa のオプションで、ツールの実行時にそのまま渡されます。search のオプションは `exa.search()` に、contents のオプションは `exa.get_contents()` に渡されます。
+
+<CodeGroup>
+  ```python Python theme={null}
+  tools = [
+      exa.openai.web_search(category="news", contents={"text": True}),
+      exa.openai.get_contents(summary=True, livecrawl="preferred"),
+  ]
+  ```
+
+  ```javascript JavaScript theme={null}
+  const tools = [
+    exa.openai.webSearch({ category: "news", contents: { text: true } }),
+    exa.openai.getContents({ summary: true, livecrawl: "preferred" }),
+  ];
+  ```
+</CodeGroup>
+
+モデルが決めるのは、検索の `query` と読み取る `urls` だけです。それ以外はすべてツールの作成時に固定されるため、モデルがクロールや抽出の対象を変えることはできません。
+
+一方、`name`(デフォルトは `"web_search"` と `"get_contents"`)と `description` は、モデルに提示されるツール定義を上書きします。設定の異なる複数の Exa ツールを併用する場合や、これらの名前を予約している他のツールとの競合を避けたい場合は、カスタムの `name` を指定してください。
+
+<div id="mixing-in-your-own-tools">
+  ## 独自のツールを組み合わせる
+</div>
+
+ハンドラーは、メッセージ内のすべてのツール呼び出しに応答します。解決できないツールを指定した呼び出しは破棄されず、代わりに `Error: unknown tool "<name>"` という出力が返されます。そのため、フォローアップリクエストで必要なツールレスポンスが欠けることはありません。Exa のツールと併せて独自のツールも実行する場合は、次のリクエストを送信する前に、これらのエラー出力を独自のツールの結果に置き換えてください。
+
+<div id="writing-the-loop-by-hand">
+  ## ループを手動で記述する
+</div>
+
+ツールスキーマと実行処理を自分で管理したい場合は、ツールを定義し、呼び出しを手動で処理します。`exa.tools.web_search()` と `exa.tools.get_contents()` を使うと、自作のループでも同じプロバイダー非依存のツール仕様 (`run` メソッド付き) を利用できます。すべてを一から記述することも可能です。
+
+```python Python theme={null}
+import json
+
+TOOLS = [
+    {
+        "type": "function",
+        "function": {
+            "name": "exa_search",
+            "description": "Perform a search query on the web, and retrieve the most relevant URLs/web data.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The search query to perform.",
+                    },
+                },
+                "required": ["query"],
+            },
+        },
+    }
+]
+
+def exa_search(query: str):
+    return exa.search(query=query, type="auto", contents={"highlights": True})
+
+def process_tool_calls(tool_calls, messages):
+    for tool_call in tool_calls:
+        if tool_call.function.name == "exa_search":
+            args = json.loads(tool_call.function.arguments)
+            messages.append(
+                {
+                    "role": "tool",
+                    "content": str(exa_search(**args)),
+                    "tool_call_id": tool_call.id,
+                }
+            )
+    return messages
+```
+
+Python と TypeScript での search と contents のオプションについては、[SDK クイックスタート](/ja/docs/sdks/quickstart)を参照してください。

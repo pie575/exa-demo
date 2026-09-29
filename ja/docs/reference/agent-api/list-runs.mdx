@@ -1,0 +1,13 @@
+---
+title: "Agent 実行の一覧を取得"
+sidebarTitle: "実行の一覧"
+description: "チームの Agent 実行の一覧をページ単位で取得します。"
+openapi: "/ja/docs/exa-spec.yaml GET /agent/runs"
+timestamp: false
+---
+
+実行は新しい順に返されます。ページサイズは `limit` で指定します。次のページを取得するには、前回のレスポンスに含まれる `nextCursor` の値を `cursor` に指定してください。
+
+<Card title="Exa API キーを取得" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

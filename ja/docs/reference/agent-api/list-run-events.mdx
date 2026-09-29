@@ -1,0 +1,12 @@
+---
+title: "実行イベントの一覧取得"
+description: "保存された Agent の実行イベントを一覧取得するか、Server-Sent Events としてリプレイします。"
+openapi: "/ja/docs/exa-spec.yaml GET /agent/runs/{id}/events"
+timestamp: false
+---
+
+デフォルトでは、このエンドポイントは保存されたイベントをページ分割された JSON リストとして返します。`Accept: text/event-stream` を設定すると、保存されたイベントを SSE としてリプレイできます。JSON のページ分割には `cursor` を、SSE のリプレイには `Last-Event-ID` を使用します。
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

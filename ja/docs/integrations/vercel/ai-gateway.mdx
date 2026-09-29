@@ -1,0 +1,160 @@
+---
+title: "Vercel AI Gateway"
+description: "AI SDK と Vercel AI Gateway を通じて Exa のウェブ検索を利用します。"
+icon: "/docs/images/sidebar-icons/vercel.svg"
+---
+
+`ai` パッケージの `gateway.tools.exaSearch()` を使用すると、[Vercel AI Gateway](https://vercel.com/docs/ai-gateway) 経由で Exa のウェブ検索を利用できます。Exa API キーは不要です。これらのリクエストの料金は、Vercel から AI Gateway を通じて請求されます。完全なリファレンスについては、Vercel の[ウェブ検索ドキュメント](https://vercel.com/docs/ai-gateway/models-and-providers/web-search)を参照してください。
+
+<div id="install">
+  ## インストール
+</div>
+
+AI SDK 5 以降をインストールしてください：
+
+```bash install.sh theme={null}
+npm install ai
+```
+
+<div id="authentication">
+  ## 認証
+</div>
+
+<Info>
+  AI Gateway を使用するには、API キーまたは OIDC トークンが必要です。Vercel ダッシュボードの **AI Gateway &gt; API Keys** で `AI_GATEWAY_API_KEY` を作成し、環境変数に追加してください。
+</Info>
+
+```bash .env theme={null}
+AI_GATEWAY_API_KEY=your-api-key-here
+```
+
+Vercel にアプリケーションをデプロイする場合は、代わりに自動で提供される `VERCEL_OIDC_TOKEN` を使用できます。詳しくは Vercel の[認証と BYOK に関するドキュメント](https://vercel.com/docs/ai-gateway/authentication-and-byok)を参照してください。
+
+<div id="quick-start">
+  ## クイックスタート
+</div>
+
+Exa search は、サポートされている任意のモデルで利用できます。
+
+```typescript quickstart.ts theme={null}
+import { gateway, generateText, stepCountIs } from 'ai';
+
+const { text } = await generateText({
+  model: 'openai/gpt-5.6-sol',
+  prompt: 'What are the latest developments in AI this week?',
+  tools: {
+    exa_search: gateway.tools.exaSearch(),
+  },
+  stopWhen: stepCountIs(3),
+});
+
+console.log(text);
+```
+
+<div id="streaming">
+  ## ストリーミング
+</div>
+
+`streamText` を使用すると、生成されたテキストと検索ツールのイベントを受信と同時に処理できます。
+
+```typescript stream.ts theme={null}
+import { gateway, streamText } from 'ai';
+
+const result = streamText({
+  model: 'openai/gpt-5.6-sol',
+  prompt: 'What are the latest developments in AI this week?',
+  tools: {
+    exa_search: gateway.tools.exaSearch(),
+  },
+});
+
+for await (const part of result.fullStream) {
+  if (part.type === 'text-delta') {
+    process.stdout.write(part.text);
+  } else if (part.type === 'tool-call') {
+    console.log('Tool call:', part.toolName);
+  } else if (part.type === 'tool-result') {
+    console.log('Search results received');
+  }
+}
+```
+
+Next.js のルートハンドラーでは、`return result.toUIMessageStreamResponse()` でストリームをクライアントに返します。
+
+<div id="configuration">
+  ## 設定
+</div>
+
+検索を調整するには、`gateway.tools.exaSearch()` にオプションを渡します。
+
+```typescript configuration.ts theme={null}
+tools: {
+  exa_search: gateway.tools.exaSearch({
+    type: 'fast',
+    numResults: 5,
+    category: 'news',
+    includeDomains: ['reuters.com', 'bbc.com', 'nytimes.com'],
+    contents: {
+      highlights: true,
+      maxAgeHours: 24,
+    },
+  }),
+},
+```
+
+使用できるオプションは次のとおりです。
+
+| オプション                                                  | 説明                                            |
+| ------------------------------------------------------ | --------------------------------------------- |
+| `type`                                                 | 検索モード。`auto` (デフォルト) 、`fast`、`instant` のいずれか。 |
+| `numResults`                                           | 返す結果の件数 (1〜100) 。デフォルトは 10 です。                |
+| `category`                                             | コンテンツのカテゴリ。                                   |
+| `includeDomains` / `excludeDomains`                    | 特定のドメインを含めるか除外します。                            |
+| `startPublishedDate` / `endPublishedDate`              | 公開日で結果を絞り込みます。                                |
+| `userLocation`                                         | 位置情報に応じた検索に使用する 2 文字の ISO 国コード。               |
+| `contents.text`                                        | 抽出したページテキストを返します。                             |
+| `contents.highlights`                                  | ページ内の関連するハイライトを返します。                          |
+| `contents.maxAgeHours`                                 | キャッシュされたコンテンツの最大経過時間を設定します。                   |
+| `contents.livecrawlTimeout`                            | livecrawl のタイムアウトを設定します。                      |
+| `contents.subpages` / `contents.subpageTarget`         | サブページをクロールします。必要に応じて対象のサブページを指定できます。          |
+| `contents.extras.links` / `contents.extras.imageLinks` | 結果に含まれるリンクまたは画像リンクを返します。                      |
+
+パラメータの全一覧と各パラメータの動作については、Vercel の [Exa ウェブ検索リファレンス](https://vercel.com/docs/ai-gateway/models-and-providers/web-search)を参照してください。
+
+<div id="vercel-eve-agents">
+  ## Vercel eve エージェント
+</div>
+
+[eve](https://eve.dev) で構築したエージェントでは組み込みの `web_search` ツールを利用でき、AI Gateway のモデルはデフォルトでこのツールを Exa 経由で実行します。設定や Exa API キーは不要です。プロバイダーを明示的に固定するには、`agent/tools/web_search.ts` からエクスポートします。
+
+```typescript agent/tools/web_search.ts theme={null}
+import { webSearch } from 'eve/tools';
+
+export default webSearch({ provider: 'exa' });
+```
+
+AI Gateway を介さずプロバイダーから直接呼び出すモデルでは、ネイティブのウェブ検索が引き続き使用されます。利用可能なツールの一覧については、eve の[ハーネスのドキュメント](https://eve.dev/docs/concepts/default-harness#built-in-tools)を参照してください。
+
+<div id="pricing">
+  ## 料金
+</div>
+
+<Tip>
+  Exa のウェブ検索は AI Gateway と eve で **8 月 31 日まで無料**で利用できます。今すぐ費用をかけずに開発を始めましょう。
+</Tip>
+
+無料期間の終了後は、AI Gateway 経由のリクエストに対して、Vercel の[ウェブ検索ドキュメント](https://vercel.com/docs/ai-gateway/models-and-providers/web-search)に記載された料金が Vercel から請求されます。
+
+<Note>
+  この統合は現在、Exa の標準検索モードとコンテンツ抽出の設定に対応しています。Deep 合成モードと要約生成にはまだ対応していません。
+</Note>
+
+<Columns cols={2}>
+  <Card title="Exa AI SDK を使用する" icon="code" href="/ja/docs/integrations/vercel/ai-sdk" cta="ガイドを開く" arrow="true">
+    `@exalabs/ai-sdk` を使い、Exa API キーで Exa を直接呼び出します。
+  </Card>
+
+  <Card title="Vercel のウェブ検索リファレンスを読む" icon="book" href="https://vercel.com/docs/ai-gateway/models-and-providers/web-search" cta="リファレンスを開く" arrow="true">
+    AI Gateway の設定と料金に関する詳細なリファレンスを確認できます。
+  </Card>
+</Columns>

@@ -22,6 +22,15 @@ Open **http://localhost:3000/docs**. Production `/docs/...` paths are preserved.
 - `source-snapshot/`: original published Markdown, navigation metadata, and source/asset checksum manifests.
 - `verification/`: reproducible content, browser, and visual comparison checks.
 
+## Translations
+
+English is the source language. General Translation generates Simplified Chinese
+(`zh/`), Japanese (`ja/`), and Russian (`ru/`), configured in `gt.config.json` and
+listed in the language selector through `docs.json`.
+
+To update translations, set `GT_PROJECT_ID` and `GT_API_KEY` in your local environment
+or `.env`, then run `npx gtx-cli translate`.
+
 ## Verify
 
 ```sh

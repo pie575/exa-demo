@@ -1,0 +1,12 @@
+---
+title: "バッチを取得"
+description: "IDを指定してバッチを取得します。"
+openapi: "/ja/docs/exa-spec.yaml GET /batches/{id}"
+timestamp: false
+---
+
+このエンドポイントを使用して、バッチのステータスが `completed`、`cancelled`、`expired` のいずれかになるまでポーリングします。バッチが完了すると、`resultsUrl` にJSONL形式の結果ファイルの署名付きURLが格納されます。このURLは短時間で失効するため、新しいURLが必要な場合はバッチを再取得してください。
+
+<Card title="Exa APIキーを取得" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

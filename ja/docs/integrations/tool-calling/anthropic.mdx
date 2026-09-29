@@ -1,0 +1,215 @@
+---
+title: "Anthropic のツール呼び出し"
+description: "Claude のツール使用機能を利用して、Exa のウェブ検索とページコンテンツ取得をアプリケーションに組み込みます。"
+icon: "/docs/images/sidebar-icons/anthropic.svg"
+---
+
+<Card title="コーディングエージェント向けクイックスタート" icon="rocket" horizontal href="https://dashboard.exa.ai/onboarding">
+  Exa を初めてお使いですか？1 分以内に使い始められます。
+</Card>
+
+***
+
+Claude の[ツール使用](https://docs.anthropic.com/en/docs/build-with-claude/tool-use)機能を使うと、コード内で定義した関数をモデルから呼び出せます。Exa SDK には Anthropic 向けのウェブ検索ツールとページ読み取りツールが標準で用意されているため、ツールスキーマの手書き、`tool_use` ブロックの解析、Exa の結果の整形を自分で行う必要はありません。
+
+<div id="get-started">
+  ## はじめに
+</div>
+
+<Steps>
+  <Step title="SDKをインストールする">
+    <CodeGroup>
+      ```bash Python theme={null}
+      pip install anthropic exa_py
+      ```
+
+      ```bash JavaScript theme={null}
+      npm install @anthropic-ai/sdk exa-js
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="APIキーを設定する">
+    環境変数 `EXA_API_KEY` と `ANTHROPIC_API_KEY` を設定します。APIキーは [Anthropic console](https://console.anthropic.com/settings/keys) と [Exa ダッシュボード](https://dashboard.exa.ai/api-keys) で生成できます。
+
+    <Card title="Exa APIキーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      ダッシュボードでキーを作成します。新規アカウントには無料クレジットが付与されます。
+    </Card>
+  </Step>
+
+  <Step title="Exaツールをツールループに追加する">
+    リクエストの `tools` リストにツールを渡し、アシスタントメッセージを `handle_tool_use` に渡します。このメソッドはメッセージ内のすべての `tool_use` ブロックを実行し、対応する `tool_result` ブロックを返します。返されたブロックは、そのまま次のユーザーメッセージとして送り返せます。
+
+    `web_search` はモデルがまだ把握していないページをウェブから検索し、`get_contents` は以前の検索結果やユーザーから得たURLのページを読み取ります。どちらか一方、または両方を登録してください。
+
+    <CodeGroup>
+      ```python Python theme={null}
+      import anthropic
+      from exa_py import Exa
+
+      exa = Exa()  # 環境変数からEXA_API_KEYを読み込む
+      claude = anthropic.Anthropic()
+
+      messages = [{"role": "user", "content": "What's the latest on AI chips?"}]
+
+      response = claude.messages.create(
+          model="claude-sonnet-4-6",
+          max_tokens=1024,
+          messages=messages,
+          tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],
+      )
+
+      messages.append({"role": "assistant", "content": response.content})
+      messages.append(
+          {"role": "user", "content": exa.anthropic.handle_tool_use(response)}
+      )
+
+      response = claude.messages.create(
+          model="claude-sonnet-4-6",
+          max_tokens=1024,
+          messages=messages,
+          tools=[exa.anthropic.web_search(), exa.anthropic.get_contents()],
+      )
+      print(response.content[0].text)
+      ```
+
+      ```javascript JavaScript theme={null}
+      import Anthropic from "@anthropic-ai/sdk";
+      import Exa from "exa-js";
+
+      const exa = new Exa(); // 環境変数からEXA_API_KEYを読み込む
+      const anthropic = new Anthropic();
+
+      const messages = [
+        { role: "user", content: "What's the latest on AI chips?" },
+      ];
+
+      let response = await anthropic.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        messages,
+        tools: [exa.anthropic.webSearch(), exa.anthropic.getContents()],
+      });
+
+      messages.push({ role: "assistant", content: response.content });
+      messages.push({
+        role: "user",
+        content: await exa.anthropic.handleToolUse(response),
+      });
+
+      response = await anthropic.messages.create({
+        model: "claude-sonnet-4-6",
+        max_tokens: 1024,
+        messages,
+        tools: [exa.anthropic.webSearch(), exa.anthropic.getContents()],
+      });
+      console.log(response.content[0].text);
+      ```
+    </CodeGroup>
+
+    ここでは簡潔にするため1往復のみ示しています。実際のエージェントでは、すべてのリクエストに `tools` を含め、モデルが `tool_use` ブロックを含まない応答を返すまでハンドラーの処理を繰り返します。こうすることで、検索結果をもとに続けてページを読み取れるようになります。
+
+    ファクトリーを引数なしで呼び出すと、Exaの推奨デフォルトが適用されます。検索の場合は `type="auto"` と `contents={"highlights": True}` です。ハイライトはクエリに関連する抜粋を返す機能であり、ページテキストを10,000文字に制限するものではありません。contentsファクトリーはページテキストを返します。SDKの10,000文字の上限が適用されるのは `text` のみで、かつ `max_characters` を省略した場合に限られます。
+  </Step>
+</Steps>
+
+<div id="configuring-the-tools">
+  ## ツールの設定
+</div>
+
+キーワード引数は通常の Exa オプションで、ツールの実行時にそのまま渡されます。検索オプションは `exa.search()` に、コンテンツオプションは `exa.get_contents()` に渡されます。
+
+<CodeGroup>
+  ```python Python theme={null}
+  tools = [
+      exa.anthropic.web_search(category="news", contents={"text": True}),
+      exa.anthropic.get_contents(summary=True, livecrawl="preferred"),
+  ]
+  ```
+
+  ```javascript JavaScript theme={null}
+  const tools = [
+    exa.anthropic.webSearch({ category: "news", contents: { text: true } }),
+    exa.anthropic.getContents({ summary: true, livecrawl: "preferred" }),
+  ];
+  ```
+</CodeGroup>
+
+モデルが選ぶのは検索の `query` と読み込む `urls` だけです。それ以外はすべてツールの作成時に固定されるため、モデルがクロールや抽出の対象を変えることはできません。
+
+一方、`name`(デフォルトは `"web_search"` と `"get_contents"`)と `description` は、モデルに提示されるツール定義を上書きします。Anthropic ではツール名を一意にする必要があります。Anthropic 組み込みの `web_search_20250305` サーバーツールは `web_search` という名前を予約しているため、カスタム名を指定すれば Exa のツールと併用できます。
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = claude.messages.create(
+      model="claude-sonnet-4-6",
+      max_tokens=1024,
+      messages=messages,
+      tools=[
+          exa.anthropic.web_search(name="exa_web_search"),
+          {"type": "web_search_20250305", "name": "web_search", "max_uses": 5},
+      ],
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await anthropic.messages.create({
+    model: "claude-sonnet-4-6",
+    max_tokens: 1024,
+    messages,
+    tools: [
+      exa.anthropic.webSearch({ name: "exa_web_search" }),
+      { type: "web_search_20250305", name: "web_search", max_uses: 5 },
+    ],
+  });
+  ```
+</CodeGroup>
+
+<div id="mixing-in-your-own-tools">
+  ## 独自のツールを組み合わせる
+</div>
+
+`handle_tool_use` は、メッセージ内のすべての `tool_use` ブロックに応答します。解決できないツールを指定したブロックも破棄されず、`Error: unknown tool "<name>"` という結果が返されます。これにより、後続のリクエストで必要なツール結果が欠落することはありません。Exa のツールと独自のツールを併用する場合は、次のリクエストを送信する前に、これらのエラー結果を独自のツールの結果に置き換えてください。
+
+<div id="writing-the-loop-by-hand">
+  ## ループを自前で実装する
+</div>
+
+ツールスキーマと実行処理を自分で管理したい場合は、ツールを定義し、`tool_use` ブロックを手動で処理してください。`exa.tools.web_search()` と `exa.tools.get_contents()` を使えば、同じプロバイダー非依存のツール仕様 (`run` メソッド付き) を自前のループで利用できます。もちろん、すべてを一から記述することも可能です。
+
+```python Python theme={null}
+TOOLS = [
+    {
+        "name": "exa_search",
+        "description": "Perform a search query on the web, and retrieve the most relevant URLs/web data.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "query": {
+                    "type": "string",
+                    "description": "The search query to perform.",
+                },
+            },
+            "required": ["query"],
+        },
+    }
+]
+
+def exa_search(query: str):
+    return exa.search(query=query, type="auto", contents={"highlights": True})
+
+def process_tool_use(response):
+    results = []
+    for block in response.content:
+        if block.type == "tool_use" and block.name == "exa_search":
+            results.append(
+                {
+                    "type": "tool_result",
+                    "tool_use_id": block.id,
+                    "content": str(exa_search(**block.input)),
+                }
+            )
+    return results
+```
+
+Python と TypeScript における search と contents のオプションについては、[SDK クイックスタート](/ja/docs/sdks/quickstart)をご覧ください。

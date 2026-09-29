@@ -1,0 +1,87 @@
+---
+title: "Навык Exa Contents"
+sidebarTitle: "Exa Contents"
+description: "Извлекайте содержимое страниц с помощью Exa Contents, когда URL уже известны."
+keywords: ["exa contents", "agent skills", "curl", "http"]
+searchable: false
+---
+
+Используйте этот навык, чтобы научить свой agent вызывать Exa Contents через cURL или необработанный HTTP с соблюдением лучших практик.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>
+
+<Note>
+  Задайте свой ключ в переменной `EXA_API_KEY` в окружении agent.
+</Note>
+
+<div id="setup">
+  ## Настройка
+</div>
+
+**Вариант A: установите этот навык напрямую:**
+
+```bash theme={null}
+npx skills add exa-labs/agent-skills --skill "exa-contents"
+```
+
+**Вариант Б: скопируйте этот промпт в свой coding agent.**
+
+Промпт ниже устанавливает навык и проверяет ваш API key, не выводя его на экран:
+
+```text Copy this setup prompt into your agent theme={null}
+Настрой на этой машине agent навык Exa exa-contents.
+
+Цель:
+- Установить навык exa-contents, чтобы мой coding agent мог вызывать Exa Contents напрямую через cURL или необработанный HTTP.
+- Обеспечить работу Exa API key, НИ РАЗУ не раскрывая, не печатая и не вставляя ключ в этот чат.
+
+Выбранный agent:
+- Claude Code, Codex, Cursor или любой agent, совместимый с Agent Skills
+- Глобальные каталоги установки: ~/.claude/skills (Claude Code), ~/.codex/skills (Codex), ~/.agents/skills (Cursor / другие)
+- Локальные каталоги установки в проекте: .claude/skills (Claude Code), .agents/skills (Codex / Cursor / другие)
+
+Источник навыка:
+- URL SKILL.md: https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md
+
+Что нужно сделать:
+1. СНАЧАЛА установи навык, до любой настройки ключа. Если работаешь внутри репозитория, предпочитай локальную установку в проекте; иначе используй соответствующий глобальный каталог из списка выше. Создай выбранный каталог навыков и скачай навык:
+   mkdir -p <skills-dir>/exa-contents && curl -fsSL "https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" -o <skills-dir>/exa-contents/SKILL.md
+   Затем убедись, что файл <skills-dir>/exa-contents/SKILL.md существует.
+2. Проверь, доступен ли уже Exa API key ИЗ ТВОЕЙ СОБСТВЕННОЙ СРЕДЫ ВЫПОЛНЕНИЯ КОМАНД — используй тот же инструмент/шелл, в котором будешь запускать навык, а не проси меня вывести ключ. Навык сначала берёт ключ из EXA_API_KEY, затем из файла ~/.config/exa/key, поэтому проверь оба варианта, не печатая значение:
+   printf '%s\n' "${EXA_API_KEY:+env-set}"; [ -s ~/.config/exa/key ] && printf 'file-set\n'
+   Твой шелл, скорее всего, неинтерактивный и НЕ подгружает автоматически интерактивные профили вроде ~/.zshrc или ~/.bashrc, поэтому заданный мной там ключ может выглядеть установленным для меня, но пустым для тебя. Если ни один вариант не сработал, ключ всё же может лежать в интерактивном профиле, который твой шелл пропускает: найди нужный файл, НЕ печатая его значение, командой `grep -l EXA_API_KEY ~/.zshrc ~/.zshenv ~/.bashrc ~/.profile ~/.config/fish/config.fish 2>/dev/null` (выводит только имена — НИКОГДА не запускай обычные `grep`/`cat`/`echo` по профилю, так как строка `export EXA_API_KEY=...` раскроет секрет в нашем чате). Затем выполни `source` этого файла внутри своей команды и повтори проверку наличия выше; если ключ обнаружен, добавляй этот же префикс `source ...;` ко всем последующим командам, которым нужен ключ.
+3. Только если ключ нигде не обнаружен, настрой его БЕЗ ручного редактирования шелл-профилей и БЕЗ вставки ключа в этот чат. Скажи мне создать/скопировать ключ на https://dashboard.exa.ai/api-keys, а затем я сам в своём терминале либо выполню export EXA_API_KEY, либо запишу его в ~/.config/exa/key с правами 600 — никогда не проси меня вставлять ключ в чат. После этого дождись моего подтверждения, прежде чем продолжать.
+4. Проверь ключ базовым тестом из своего шелла — получи его из переменной окружения или файла и выведи только код статуса:
+   KEY="${EXA_API_KEY:-$(cat ~/.config/exa/key 2>/dev/null)}"
+   curl -s -o /dev/null -w "%{http_code}\n" -X POST https://api.exa.ai/contents \
+     -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" \
+     -d '{"urls":["https://exa.ai"],"text":true}'
+   Оставь эндпоинт, headers и body ровно такими, как написано (не угадывай schema). Ответ должен быть 200, а не 401/429. Если на шаге 2 тебе понадобился префикс `source ...;`, чтобы увидеть ключ в окружении, добавь его и здесь.
+5. Расскажи мне, как перезапустить agent или пересканировать навыки, чтобы он обнаружил новый навык.
+
+Жёсткое правило на всех шагах: ключ — это секрет. Проверяй его только по наличию/длине (`${EXA_API_KEY:+set}`, `[ -s ~/.config/exa/key ]`) или по коду статуса HTTP — никогда не печатай, не выполняй `echo`, `cat` или `grep` с выводом для файлов и переменных, которые могут его содержать, и никогда не пытайся «замаскировать» файл с ключом регулярным выражением. Если ключ всё же был раскрыт, скажи мне обновить его на https://dashboard.exa.ai/api-keys.
+```
+
+<div id="view-source">
+  ## Посмотреть исходный код
+</div>
+
+<Card title="exa-contents/SKILL.md" icon="file-code" href="https://raw.githubusercontent.com/exa-labs/agent-skills/main/skills/exa-contents/SKILL.md" cta="Посмотреть исходный код" arrow="true">
+  Перед установкой ознакомьтесь с определением навыка exa-contents.
+</Card>
+
+<div id="related">
+  ## Похожее
+</div>
+
+<Columns cols={2}>
+  <Card title="Все навыки для agent" icon="layers" href="/ru/docs/get-started/agent-skills/overview" cta="Смотреть навыки" arrow="true">
+    Просмотрите все навыки Exa и установите их за один раз.
+  </Card>
+
+  <Card title="Репозиторий навыков" icon="git-branch" href="https://github.com/exa-labs/agent-skills" cta="Посмотреть исходный код" arrow="true">
+    Исходный код всех навыков, включая исходные файлы `SKILL.md`.
+  </Card>
+</Columns>

@@ -1,0 +1,392 @@
+---
+title: "Exa MCP"
+description: "Подключите ChatGPT, Codex, Claude, Grok, Cursor и любой другой MCP-клиент к инструментам Exa: веб-поиску, загрузке страниц, Exa Agent и Exa Connect."
+sidebarTitle: "MCP"
+keywords: ["Exa MCP", "MCP server", "web search", "ChatGPT", "Codex", "Claude Code", "Cursor"]
+---
+
+Используйте Exa MCP, чтобы расширить встроенный веб-поиск в ChatGPT, Claude и MCP-совместимых инструментах поисковыми возможностями Exa, включая веб-поиск, поиск по коду, [Exa Agent](/ru/docs/agent/quickstart) и [Exa Connect](/ru/docs/agent/connect/overview).
+
+Exa предоставляет размещённый сервер, который работает в любом MCP-клиенте:
+
+```text theme={null}
+https://mcp.exa.ai/mcp
+```
+
+Чтобы начать, API key не требуется. Exa MCP имеет открытый исходный код и доступен на [GitHub](https://github.com/exa-labs/exa-mcp-server).
+
+<div id="install">
+  ## Установка
+</div>
+
+<div className="docs-tabs">
+  <Tabs>
+    <Tab title="ChatGPT и Codex" icon="/docs/images/mcp-clients/chatgpt.svg" width="24" height="24" data-path="images/mcp-clients/chatgpt.svg">
+      Exa — официальный плагин в каталоге плагинов OpenAI; он включает размещённый MCP-сервер Exa, а также навыки Exa `search` и `exa-agent`.
+
+      <Steps>
+        <Step title="Откройте плагин">
+          Перейдите на [chatgpt.com/plugins/exa](https://chatgpt.com/plugins/exa?open_in_app). Откроется страница **Exa** в каталоге плагинов OpenAI — это единый каталог для ChatGPT и Codex.
+        </Step>
+
+        <Step title="Установите его">
+          Нажмите кнопку с плюсом, чтобы установить. Войдите в Exa по запросу — либо во время установки, либо при первом обращении к плагину из Codex или ChatGPT.
+
+          <Frame caption="Открытие раздела Plugins в Codex, добавление Exa и предоставление доступа">
+            <img src="/docs/images/integrations/chatgpt-codex/install-codex.gif" alt="Открытие раздела Plugins в Codex, просмотр плагина Exa и предоставление доступа" style={{width: "100%", height: "auto"}} width="1100" height="825" data-path="images/integrations/chatgpt-codex/install-codex.gif" />
+          </Frame>
+        </Step>
+
+        <Step title="Начните новую сессию">
+          Навыки подгружаются в чатах и CLI-сессиях, запущенных после установки, поэтому откройте новую сессию и задайте вопрос, для ответа на который нужен веб.
+        </Step>
+      </Steps>
+
+      Готово. Плагин включает и MCP-интеграцию Exa, и навыки, поэтому отдельно настраивать MCP или навыки не нужно.
+
+      Полное руководство по настройке и рабочему процессу смотрите в разделе [Exa в Codex и ChatGPT](/ru/docs/integrations/chatgpt-codex).
+    </Tab>
+
+    <Tab title="Claude" icon="/docs/images/mcp-clients/claude.svg" width="24" height="24" data-path="images/mcp-clients/claude.svg">
+      ### Claude Code CLI
+
+      <Steps>
+        <Step title="Установите плагин">
+          Установите Exa из терминала:
+
+          ```bash theme={null}
+          claude plugin install exa@claude-plugins-official
+          ```
+
+          Также можно ввести `/plugin` в Claude Code, найти **Exa** и установить его.
+        </Step>
+
+        <Step title="Используйте Exa">
+          Начните новую сессию Claude Code и задайте вопрос, для ответа на который нужен доступ к вебу.
+        </Step>
+      </Steps>
+
+      ### Desktop, Web и Cowork
+
+      Claude Desktop, Web и Cowork используют официальный коннектор Exa.
+
+      <Steps>
+        <Step title="Откройте каталог коннекторов">
+          Нажмите кнопку «плюс» в новом чате, выберите **Add connector** и найдите **Exa**.
+        </Step>
+
+        <Step title="Подключите Exa">
+          Откройте Exa, нажмите **Connect to Claude** и подтвердите доступ по запросу.
+
+          <Frame caption="Открытие каталога коннекторов в Claude, поиск Exa, подключение и предоставление доступа">
+            <img src="/docs/images/integrations/claude-web-desktop/install-claude.gif" alt="Открытие каталога коннекторов в Claude, поиск Exa, подключение и предоставление доступа" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
+          </Frame>
+        </Step>
+
+        <Step title="Используйте Exa">
+          Начните новый чат и задайте вопрос, для которого нужна актуальная информация из веба.
+        </Step>
+      </Steps>
+
+      Полное руководство по настройке и рабочему процессу смотрите в разделе [Exa в Claude Code, Web и Desktop](/ru/docs/integrations/claude-web-desktop).
+
+      Администраторы Claude Team и Enterprise могут вместо этого подключить коннектор сразу всем через своего поставщика удостоверений: см. [Enterprise Managed Auth](/ru/docs/admin/mcp-enterprise-managed-auth).
+    </Tab>
+
+    <Tab title="Grok Build" icon="/docs/images/mcp-clients/grok.svg" width="400" height="400" data-path="images/mcp-clients/grok.svg">
+      Exa доступна в marketplace [Grok Build](https://docs.x.ai/build/overview).
+
+      <Steps>
+        <Step title="Откройте marketplace">
+          В Grok Build выполните `/marketplace`.
+        </Step>
+
+        <Step title="Установите Exa">
+          Найдите в списке **exa** и нажмите `i`.
+        </Step>
+
+        <Step title="Войдите в аккаунт">
+          Выполните `/mcp`, выберите **exa** и нажмите `i`, чтобы войти в свой аккаунт Exa в браузере.
+        </Step>
+      </Steps>
+
+      Новым аккаунтам при регистрации начисляются бесплатные credits.
+    </Tab>
+
+    <Tab title="Курсор" icon="/docs/images/mcp-clients/cursor.svg" width="24" height="24" data-path="images/mcp-clients/cursor.svg">
+      Установите Exa MCP из [marketplace Cursor](https://cursor.com/marketplace/exa) или добавьте его в `~/.cursor/mcp.json`:
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="VS Code" icon="/docs/images/mcp-clients/vscode.svg" width="24" height="24" data-path="images/mcp-clients/vscode.svg">
+      Воспользуйтесь [установкой в один клик](https://vscode.dev/redirect/mcp/install?name=exa\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fmcp.exa.ai%2Fmcp%22%7D) или добавьте конфигурацию в файл `.vscode/mcp.json` вашего проекта:
+
+      ```json theme={null}
+      {
+        "servers": {
+          "exa": {
+            "type": "http",
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="Другие клиенты" icon="/docs/images/mcp-clients/other-clients.svg" width="24" height="24" data-path="images/mcp-clients/other-clients.svg">
+      Большинство клиентов используют стандартную структуру `mcpServers`:
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "url": "https://mcp.exa.ai/mcp"
+          }
+        }
+      }
+      ```
+
+      Расположение конфигурации и название ключа с URL различаются в зависимости от клиента:
+
+      | Клиент                                       | Куда добавить                                                                                         | Ключ URL              |
+      | -------------------------------------------- | ----------------------------------------------------------------------------------------------------- | --------------------- |
+      | [fx by Vercel](/ru/docs/integrations/vercel/fx) | `/mcp add --transport http exa https://mcp.exa.ai/mcp` в оболочке fx (сохраняется в `~/.fx/mcp.json`) | `url`                 |
+      | OpenCode                                     | `opencode.json` (в разделе `mcp`, с `"type": "remote"`)                                               | `url`                 |
+      | Kiro                                         | `~/.kiro/settings/mcp.json` (в разделе `mcpServers`)                                                  | `url`                 |
+      | Windsurf                                     | `~/.codeium/windsurf/mcp_config.json` (в разделе `mcpServers`)                                        | `serverUrl`           |
+      | Google Antigravity                           | Панель Agent → Manage MCP Servers → View Raw config (в разделе `mcpServers`)                          | `serverUrl`           |
+      | Zed                                          | `settings.json` в Zed (в разделе `context_servers`)                                                   | `url`                 |
+      | Gemini CLI                                   | `~/.gemini/settings.json` (в разделе `mcpServers`)                                                    | `httpUrl`             |
+      | Warp                                         | Settings → MCP Servers → Add MCP Server (`exa` на верхнем уровне)                                     | `url`                 |
+      | v0 by Vercel                                 | Prompt Tools → Add MCP                                                                                | вставьте URL напрямую |
+
+      Если ваш клиент не поддерживает удалённые MCP-серверы, используйте мост `mcp-remote`:
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "command": "npx",
+            "args": ["-y", "mcp-remote", "https://mcp.exa.ai/mcp"]
+          }
+        }
+      }
+      ```
+
+      Или запустите локальный [npm-пакет](https://www.npmjs.com/package/exa-mcp-server) со своим [Exa API key](https://dashboard.exa.ai/api-keys):
+
+      ```json theme={null}
+      {
+        "mcpServers": {
+          "exa": {
+            "command": "npx",
+            "args": ["-y", "exa-mcp-server"],
+            "env": {
+              "EXA_API_KEY": "your_api_key"
+            }
+          }
+        }
+      }
+      ```
+    </Tab>
+  </Tabs>
+</div>
+
+<div id="authentication">
+  ## Аутентификация
+</div>
+
+Exa MCP поддерживает три режима аутентификации:
+
+| Режим     | Когда использовать                                                            | Настройка                                                                                                                  |
+| --------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Без ключа | Бесплатное использование с ограничением частоты запросов, без входа и API key | Подключитесь к `https://mcp.exa.ai/mcp`                                                                                    |
+| OAuth     | Интерактивные клиенты, установка из marketplace, использование в production   | Подключитесь к `https://mcp.exa.ai/mcp?login` и войдите в Exa в браузере. Использование учитывается за вашей командой Exa. |
+| API key   | Клиенты без поддержки MCP OAuth                                               | Подключитесь к `https://mcp.exa.ai/mcp`, передав ваш API key в header `x-api-key`                                          |
+
+<div id="sign-in-with-oauth">
+  ### Вход через OAuth
+</div>
+
+ChatGPT, Claude и другие установки из marketplace при необходимости предложат вам выполнить вход. В любом клиент с поддержкой MCP OAuth вы можете запустить тот же процесс, подключившись к:
+
+```text theme={null}
+https://mcp.exa.ai/mcp?login
+```
+
+Ваш клиент находит сервер авторизации Exa, открывает окно входа в браузере и управляет доступом.
+
+<div id="use-an-api-key">
+  ### Использование API key
+</div>
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новые аккаунты получают бесплатные credits.
+</Card>
+
+Добавьте header `x-api-key` в настройки MCP-сервера Exa:
+
+```text theme={null}
+x-api-key: YOUR_EXA_API_KEY
+```
+
+<div id="available-tools">
+  ## Доступные инструменты
+</div>
+
+| Инструмент                | Доступность                  | Для чего использовать                                                 |
+| ------------------------- | ---------------------------- | --------------------------------------------------------------------- |
+| `web_search_exa`          | Включён по умолчанию         | Веб-поиск и получение релевантного, готового к использованию контента |
+| `web_fetch_exa`           | Включён по умолчанию         | Чтение очищенного контента с одного или нескольких известных URL      |
+| `web_search_advanced_exa` | Доступен при подключении     | Настройка веб-поиска с расширенными фильтрами и параметрами           |
+| `agent_run`               | Доступен с OAuth или API key | Многошаговый Research, list-building, enrichment и структурированный вывод  |
+
+Используйте параметр URL `tools`, чтобы выбрать, какие инструменты видит ваш клиент. Например, чтобы включить все инструменты:
+
+```text theme={null}
+https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa,agent_run
+```
+
+<Tip>
+  Явно заданный список `tools` заменяет набор по умолчанию, поэтому перечислите в нём все инструменты, которые хотите включить, в том числе веб-поиск и загрузку контента.
+</Tip>
+
+<div id="exa-agent">
+  ## Exa Agent
+</div>
+
+Используйте [Exa Agent](/ru/docs/agent/quickstart) для исследований, в которых недостаточно одного search — например, чтобы собрать список, проверить каждый item по criteria или получить структурированные результаты.
+
+Выполнения Agent тарифицируются по использованию, поэтому для `agent_run` нужен OAuth или API key. Этот URL запускает OAuth и добавляет Agent к инструментам по умолчанию:
+
+```text theme={null}
+https://mcp.exa.ai/mcp?login&tools=web_search_exa,web_fetch_exa,agent_run
+```
+
+Если вы используете API key, опустите `login` и добавьте ключ, как описано в разделе [Аутентификация](#authentication).
+
+<Steps>
+  <Step title="Опишите, что вам нужно">
+    Сформулируйте исследовательскую задачу обычным языком. Ваш ассистент передаёт запрос в `agent_run` вместе с `query`, а Exa Agent сам определяет, что искать, читает источники и сверяет найденное с запросом.
+
+    Просите Agent вернуть `outputSchema` только тогда, когда вашему приложению нужны результаты в едином формате JSON. Вы можете передать схему ассистенту в system prompt или попросить сгенерировать её за вас.
+  </Step>
+
+  <Step title="Получите результат">
+    По завершении исследования tool call передаёт вашему ассистенту полный пакет результатов:
+
+    * Текстовые выводы
+    * Источники, на которых они основаны
+    * Проверенный JSON, если вы указали `outputSchema`
+    * Использование и стоимость
+
+    Ответ ассистента строится на основе этого пакета, поэтому сразу скажите, что делать с выводом. Можно попросить кратко изложить результаты, сравнить их, сохранить в файл или что-то ещё.
+  </Step>
+
+  <Step title="Продолжите, если нужно больше времени">
+    Исследование, которое не укладывается в один вызов MCP, не завершается ошибкой: инструмент возвращает `status: "running"` вместе с `id`, пока выполнение продолжается на стороне Exa. Ваш ассистент снова вызывает `agent_run`, передавая этот `id` как `runId`, и подхватывает то же выполнение.
+  </Step>
+</Steps>
+
+<Accordion title="Дополнительные параметры управления" icon="sliders-horizontal">
+  | Поле              | Для чего использовать                                                     |
+  | ----------------- | ------------------------------------------------------------------------- |
+  | `systemPrompt`    | Дать Agent дополнительные указания по исследованию или оценке результатов |
+  | `outputSchema`    | Вернуть ответ в конкретном формате JSON                                   |
+  | `input.data`      | Обогатить строки или сущности, которые у вас уже есть                     |
+  | `input.exclusion` | Пропустить результаты, о которых вы уже знаете                            |
+  | `dataSources`     | Добавить до пяти провайдеров [Exa Connect](/ru/docs/agent/connect/overview)  |
+  | `previousRunId`   | Построить новый запрос на основе завершённого исследования                |
+  | `effort`          | Выбрать глубину исследования, которое выполнит Agent                      |
+</Accordion>
+
+<Tip>
+  Используйте `runId`, чтобы продолжать ждать результатов текущей работы. Используйте `previousRunId`, чтобы задать новый follow-up на основе уже завершённой работы.
+</Tip>
+
+Шаблоны схем вывода, режимы effort, источники данных и цены смотрите в [руководстве по Exa Agent](/ru/docs/agent/quickstart).
+
+<div id="advanced-search">
+  ## Расширенный поиск
+</div>
+
+Используйте `web_search_advanced_exa`, когда в запросе нужны явные фильтры по категориям или доменам, диапазоны дат, текстовые ограничения, геотаргетинг, расширение запроса, краткие сводки, highlights, контроль свежести или обход подстраниц. Для обычных поисковых запросов оставляйте `web_search_exa`: он даёт модели меньший набор инструментов и требует меньше настройки.
+
+Расширенный поиск не требует аутентификации, однако для аутентифицированных подключений применяются ваш тарифный план и ваши лимиты частоты запросов. Включите его вместе с инструментами по умолчанию так:
+
+```text theme={null}
+https://mcp.exa.ai/mcp?tools=web_search_exa,web_fetch_exa,web_search_advanced_exa
+```
+
+Инструмент MCP предоставляет основные параметры [Search API](/ru/docs/reference/search) в виде удобных для инструмента полей, таких как `includeDomains`, `startPublishedDate`, `enableHighlights` и `maxAgeHours`. Точные имена полей смотрите в схеме инструмента в вашем клиенте.
+
+<div id="troubleshooting">
+  ## Устранение неполадок
+</div>
+
+<AccordionGroup>
+  <Accordion title="Ошибка превышения лимита частоты запросов (429)">
+    Подключение использует бесплатные лимиты частоты запросов Exa. Войдите через OAuth или добавьте собственный API key, затем переподключитесь, чтобы запросы шли по тарифному плану и лимитам вашей команды.
+
+    <Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+      Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+    </Card>
+  </Accordion>
+
+  <Accordion title="Agent отсутствует или запрашивает аутентификацию">
+    `agent_run` не включён по умолчанию и не может использовать бесплатные лимиты частоты запросов. Добавьте его в URL-параметр `tools`, затем подключитесь с `?login` или настройте API key. Полный URL смотрите в разделе [Exa Agent](#exa-agent).
+  </Accordion>
+
+  <Accordion title="Вход через OAuth не открывается">
+    Убедитесь, что ваш клиент поддерживает MCP OAuth, и подключитесь к `https://mcp.exa.ai/mcp?login`. После изменения URL перезапустите клиент. Если клиент не может завершить MCP OAuth, используйте вместо этого API key.
+  </Accordion>
+
+  <Accordion title="Инструменты не отображаются">
+    Явно заданный параметр `tools` заменяет список инструментов по умолчанию. Проверьте, что все нужные инструменты присутствуют в URL, затем перезапустите MCP-клиент, чтобы он заново получил список инструментов.
+  </Accordion>
+
+  <Accordion title="Claude desktop не подключается">
+    Используйте встроенный коннектор: выберите **+** (или **Add connectors**) → вкладка **Connectors** → найдите **Exa** → нажмите **+**.
+  </Accordion>
+
+  <Accordion title="Файл конфигурации не найден">
+    Типичные расположения файла конфигурации:
+
+    * Cursor: `~/.cursor/mcp.json`
+    * fx: `~/.fx/mcp.json`
+    * VS Code: `.vscode/mcp.json` (в корне проекта)
+    * Claude desktop (macOS): `~/Library/Application Support/Claude/claude_desktop_config.json`
+    * Claude desktop (Windows): `%APPDATA%\Claude\claude_desktop_config.json`
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+<Columns cols={2}>
+  <Card title="GitHub" icon="git-branch" href="https://github.com/exa-labs/exa-mcp-server" cta="Посмотреть исходный код" arrow="true">
+    Исходный код Exa MCP.
+  </Card>
+
+  <Card title="npm" icon="package" href="https://www.npmjs.com/package/exa-mcp-server" cta="Открыть пакет" arrow="true">
+    Запустите Exa MCP локально с помощью npm-пакета.
+  </Card>
+
+  <Card title="Навыки агентов" icon="wrench" href="/ru/docs/get-started/agent-skills/overview" cta="Смотреть навыки" arrow="true">
+    Переносимые навыки, работающие в связке с Exa MCP.
+  </Card>
+
+  <Card title="Exa в Codex и ChatGPT" icon="messages-square" href="/ru/docs/integrations/chatgpt-codex" cta="Открыть руководство" arrow="true">
+    Полное руководство по настройке и рабочему процессу для плагина Exa.
+  </Card>
+</Columns>

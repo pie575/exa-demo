@@ -1,0 +1,202 @@
+---
+title: "Agent のベストプラクティス"
+sidebarTitle: "ベストプラクティス"
+description: "本番環境で Exa Agent を連携する際に、クエリの品質、構造化出力、effort、コストを調整する方法を紹介します。"
+keywords: ["agent api", "list building", "enrichment", "structured output", "effort", "grounding"]
+---
+
+[Exa Agent クイックスタート](/ja/docs/agent/quickstart)を終えたら、このガイドを活用してクエリの品質向上、出力の構造化、実行時間とコストの管理を行ってください。完全なリクエストの例は、まず [Agent の例](/ja/docs/agent/examples)から始めてください。
+
+<div id="core-principles">
+  ## 基本原則
+</div>
+
+`query` はタスク仕様として扱います。Agent に何を見つけさせたいか、作業の範囲、必要なエビデンス、そして完全な結果の条件を明記してください。
+
+<CodeGroup>
+  ```python Python theme={null}
+  run = exa.agent.runs.create(
+      query="Find up to 10 current engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months. Include only people whose current role and company funding can be verified from public sources.",
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const run = await exa.agent.runs.create({
+    query:
+      "Find up to 10 current engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months. Include only people whose current role and company funding can be verified from public sources."
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Find up to 10 current engineering leaders at AI infrastructure companies that raised a Series A or B in the last 6 months. Include only people whose current role and company funding can be verified from public sources."
+    }'
+  ```
+</CodeGroup>
+
+`outputSchema` を指定しない場合、Agent は `output.text` に文章を、`output.grounding` に引用を返します。その他のフィールドは、明確な目的がある場合にのみ追加してください。
+
+| フィールド                   | 使用する場面                                                               |
+| ----------------------- | -------------------------------------------------------------------- |
+| `outputSchema`          | 後続のコードで構造化されたフィールドが必要な場合                                             |
+| `input.data`            | 補完対象の行がすでにある場合                                                       |
+| `input.exclusion`       | 既知のレコードを結果から除外したい場合                                                  |
+| `dataSources`           | 特定のフィールドを [Exa Connect](/ja/docs/agent/connect/overview) パートナーから取得したい場合 |
+| `previousRunId`         | 完了済みの実行の続きとしてリクエストする場合                                               |
+| `effort`                | コストやリサーチの深さを明示的に設定したい場合                                              |
+| `budget.maxCostDollars` | `auto` または `max` の実行に厳格なコスト上限を設けたい場合                                 |
+
+行、除外対象、レスポンスの形式は `query` に含めず、それぞれ専用のフィールドで指定してください。
+
+<div id="writing-list-building-and-enrichment-queries">
+  ## リスト作成とエンリッチメントのクエリの書き方
+</div>
+
+リスト作成では、対象エンティティ、目標件数、適格基準、除外条件、必要な証拠の水準を定義します。エンリッチメントでは、既存のレコードを `input.data` に渡し、Agent に追加でリサーチさせたい内容だけを記述します。
+
+適格かどうかの判断が必要な場合は、その根拠の説明を求めてください。例を示すのは、基準に複数の妥当な解釈が考えられる場合に限ります。
+
+<CodeGroup>
+  ```text Query theme={null}
+  Find up to 20 current engineering leaders at US-based AI infrastructure companies
+  that announced a Series A or B between March 1 and August 31, 2026.
+
+  Include CTOs, VPs of Engineering, and Heads of Engineering. Exclude founders without
+  an operating engineering role and anyone whose current employment cannot be verified.
+  For each person, return their name, current title, company, company website, funding
+  announcement date, and a short explanation of why they qualify. Verify employment on
+  the company website or another current source, and verify funding from the company
+  announcement or a reputable business publication.
+  ```
+</CodeGroup>
+
+探索リクエストの例は [GTM メンバーをすべて見つける](/ja/docs/agent/examples#find-all-code) を、対応する行エンリッチメントのパターンは [入力行を補完する](/ja/docs/agent/examples#enrich-input-rows-code) を参照してください。
+
+<div id="handle-asynchronous-runs">
+  ## 非同期実行を処理する
+</div>
+
+Agent の実行では検索、読み取り、推論が行われるため、完了まで数秒から数分かかることがあります。アプリケーションのリクエストを開いたまま待機させるのではなく、実行のライフサイクルに沿って設計してください。
+
+<Steps>
+  <Step title="作成して保存する">
+    実行を作成し、返された `id` をリクエストのメタデータとともに保存します。作成時のレスポンスは最終結果ではありません。
+  </Step>
+
+  <Step title="終了状態まで待機する">
+    SDK のポーリングヘルパーを使用するか、`GET /agent/runs/{id}` をポーリングするか、SSE ストリームを受信します。実行が `queued` または `running` の間は待機を続けます。
+  </Step>
+
+  <Step title="結果を保存する">
+    `completed`、`failed`、`cancelled` のいずれかになったら待機を終了し、終了時のレスポンスとグラウンディングを保存します。
+  </Step>
+</Steps>
+
+実行 ID を保存しておけば、アプリケーションの再起動後の復旧、ストリームへの再接続、失敗原因の調査が可能になります。レイテンシを抑えるには、スコープを絞り込む、結果の件数を制限する、スキーマを必要最小限に保つといった工夫が有効です。網羅性より速度を優先する場合は、`minimal` または `low` を選択してください。
+
+バッチ処理では、同時実行数を見積もる前や、Agent を同期的な UI パスに組み込む前に、代表的なタスクでベンチマークを行ってください。実行時間は、アイテム数、スキーマの複雑さ、ソースの可用性、effort によって変わります。
+
+Zero Data Retention を利用するチームでは、保持期間内にライブストリームを受信するかポーリングしてください。`previousRunId` と Connect の `dataSources` は利用できません。詳しくは [Zero Data Retention](/ja/docs/admin/security/zero-data-retention) を参照してください。
+
+<div id="write-custom-json-schemas-for-structured-output">
+  ## 構造化出力用のカスタム JSON スキーマを作成する
+</div>
+
+下流のコードで機械可読なフィールド、正規化された値、テーブルの行、またはエンリッチメントレコードが必要な場合は、`outputSchema` を使用します。文章形式の回答で十分な場合は `outputSchema` を省略し、`output.text` を読み取ってください。構造化出力では整形処理が加わるため、レイテンシが増加する可能性があります。
+
+リサーチの指示は `query` に、レスポンスの構造は `outputSchema` に記述してください。プロパティ名と説明はわかりやすく記述し、用途を満たす範囲で最も厳密な型を選び、配列には `maxItems` で上限を設定します。
+
+<CodeGroup>
+  ```json Output schema expandable theme={null}
+  {
+    "type": "object",
+    "properties": {
+      "people": {
+        "type": "array",
+        "maxItems": 10,
+        "description": "Current engineering leaders who satisfy every criterion in the query.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The person's full name."
+            },
+            "job_title": {
+              "type": "string",
+              "description": "Their current title at the qualifying company."
+            },
+            "company": {
+              "type": "string",
+              "description": "The qualifying company's canonical name."
+            },
+            "qualification_rationale": {
+              "type": "string",
+              "description": "A concise explanation of how the person satisfies the query criteria."
+            }
+          },
+          "required": ["name", "job_title", "company", "qualification_rationale"]
+        }
+      }
+    },
+    "required": ["people"]
+  }
+  ```
+</CodeGroup>
+
+スキーマ準拠によって検証されるのは構造であり、内容の事実性ではありません。フィールドを裏付けるエビデンスがない場合、送信したスキーマで必須または非 null に指定されていても、Agent は `null` を返すことがあります。`stopReason: schema_satisfied` は、それらの null を許容したうえで期待される構造が揃ったと Agent が判断したことを示すものであり、送信したスキーマに対する厳密な検証を保証するものではありません。
+
+Exa に組み込まれている引用や信頼度をスキーマで重複して定義しないでください。根拠フィールドは、各アイテムが条件を満たす理由の説明が必要な場合にのみ追加し、`output.grounding` は構造化された結果とあわせて保存してください。重要な主張はソースと照合して検証し、スキーマを変更した場合はリリース前に代表的な入力でテストしてください。
+
+リスト作成、KYB、求人情報、除外、継続実行のスキーマを比較するには、[構造化された Agent の例](/ja/docs/agent/examples)を参照してください。
+
+<div id="agent-vs-search">
+  ## Agent と Search の比較
+</div>
+
+| 用途                             | 推奨                                      |
+| ------------------------------ | --------------------------------------- |
+| LLM に渡すウェブ検索結果                 | [Search](/ja/docs/search/quickstart)       |
+| 高速なリサーチと統合                     | [Deep Search](/ja/docs/search/deep-search) |
+| 非同期のリスト作成、マルチホップのリサーチ、エンリッチメント | [Agent](/ja/docs/agent/quickstart)         |
+
+複数の検索ステップ、エンティティごとの検証、既存レコードへのエンリッチメントが必要な作業には Agent を使用してください。ページをすばやく取得し、残りの推論はアプリケーション側で行う場合は Search を使用してください。
+
+<div id="tips-for-common-use-cases">
+  ## 一般的なユースケース別のヒント
+</div>
+
+| 目的                     | 推奨                                                              | 避けるべきこと                                   |
+| ---------------------- | --------------------------------------------------------------- | ----------------------------------------- |
+| 件数が不明なリストをリサーチで作成したい   | `auto` と上限を設けた `outputSchema`                                   | 低コストの effort に固定し、上限のない配列を使うこと            |
+| 手元の既存レコードをエンリッチメントしたい  | `input.data` と追加するフィールド                                         | テーブルを `query` に貼り付けること                    |
+| 直前の結果セットに対してフォローアップしたい | `previousRunId`                                                 | 前回の出力全体を再送信すること                           |
+| 同じレコードを再び返さないようにしたい    | `input.exclusion` と下流での重複排除                                     | 除外で同一性が厳密に保証されると想定すること                    |
+| プレミアムプロバイダーのデータを使いたい   | `dataSources` を指定した [Exa Connect](/ja/docs/agent/connect/overview) | プロバイダーのみが持つフィールドを Agent にオープンウェブから推測させること |
+| リクエストあたりのコストを予測しやすくしたい | 固定の `effort`                                                    | 予算を設定せずに `auto` や `max` を使うこと             |
+| レイテンシやコストより網羅性を優先したい   | `xhigh` または `max`                                               | クエリを絞り込む前に effort を引き上げること                |
+
+<div id="next-steps">
+  ## 次のステップ
+</div>
+
+<Columns cols={2}>
+  <Card title="Agent クイックスタート" icon="bot" href="/ja/docs/agent/quickstart" cta="ガイドを開く" arrow="true">
+    実行の作成、イベントのストリーミング、effort の設定、構造化出力の読み取り方法を説明します。
+  </Card>
+
+  <Card title="Agent の例" icon="layers" href="/ja/docs/agent/examples" cta="例を見る" arrow="true">
+    リスト作成、エンリッチメント、KYB、除外、フォローアップの完全なリクエスト例をそのままコピーして使えます。
+  </Card>
+
+  <Card title="Exa Connect" icon="database" href="/ja/docs/agent/connect/overview" cta="データパートナーを見る" arrow="true">
+    企業、人物、トラフィック、コンプライアンス、金融など、プロバイダーのプレミアムデータを追加できます。
+  </Card>
+
+  <Card title="Search のベストプラクティス" icon="sparkles" href="/ja/docs/search/best-practices" cta="ガイドを読む" arrow="true">
+    Search で十分な場合に押さえておきたい、検索品質、レイテンシ、回答生成のポイントを解説します。
+  </Card>
+</Columns>

@@ -1,0 +1,141 @@
+---
+title: "Claude Code、Web、Desktop で Exa を使う"
+sidebarTitle: "Claude Code、Web、Desktop"
+description: "Claude から直接 Exa を使ってウェブを検索し、あらゆるページを読み取れます"
+icon: "/docs/images/sidebar-icons/anthropic.svg"
+keywords: ["Claude", "Claude Code", "Claude Web", "Claude Desktop", "Exa MCP", "web search"]
+---
+
+Claude Code に Exa をインストールするか、Claude Web、Desktop、Cowork に接続すると、Claude がウェブ上の最新情報にアクセスできるようになります。Claude は自然言語で検索し、必要なページを読み取り、作業の中でそれらのソースを活用できます。
+
+<div id="install-exa">
+  ## Exa をインストールする
+</div>
+
+<div className="docs-tabs">
+  <Tabs>
+    <Tab title="Claude Web、Desktop & Cowork" icon="/docs/images/mcp-clients/claude.svg" width="24" height="24" data-path="images/mcp-clients/claude.svg">
+      <Steps>
+        <Step title="コネクタディレクトリを開く">
+          Claude で新しいチャットを開き、プラスボタンを選択して **Add connector** を選び、**Exa** を検索します。
+        </Step>
+
+        <Step title="Exa を接続する">
+          Exa を開いて **Connect to Claude** を選択し、確認が表示されたらアクセスを承認します。
+
+          <Frame caption="Claude でコネクタディレクトリを開き、Exa を見つけて接続し、アクセスを承認する様子">
+            <img src="/docs/images/integrations/claude-web-desktop/install-claude.gif" alt="Claude でコネクタディレクトリを開き、Exa を見つけて接続し、アクセスを承認する様子" style={{width: "100%", height: "auto"}} width="800" height="596" data-path="images/integrations/claude-web-desktop/install-claude.gif" />
+          </Frame>
+        </Step>
+
+        <Step title="Exa を使う">
+          新しいチャットを開始し、Web 上の最新情報が必要な質問をしてみましょう。
+        </Step>
+      </Steps>
+    </Tab>
+
+    <Tab title="Claude Code CLI" icon="/docs/images/mcp-clients/claude-code.svg" width="16" height="16" data-path="images/mcp-clients/claude-code.svg">
+      <Steps>
+        <Step title="プラグインをインストールする">
+          ターミナルから Exa をインストールします。
+
+          ```bash theme={null}
+          claude plugin install exa@claude-plugins-official
+          ```
+
+          Claude Code で `/plugin` と入力し、**Exa** を検索してインストールすることもできます。
+        </Step>
+
+        <Step title="新しいセッションを開始する">
+          新しい Claude Code セッションを開いてプラグインを読み込み、Web 検索が必要な質問をしてみましょう。
+
+          <Frame caption="新しい Claude Code セッションを開き、Web 検索が必要な質問をする様子">
+            <img src="/docs/images/integrations/claude-web-desktop/claude-code.gif" alt="新しい Claude Code セッションを開き、Web 検索が必要な質問をする様子" style={{width: "100%", height: "auto"}} width="800" height="502" data-path="images/integrations/claude-web-desktop/claude-code.gif" />
+          </Frame>
+        </Step>
+      </Steps>
+    </Tab>
+  </Tabs>
+</div>
+
+どちらの方法でも、MCP 設定ファイルを編集することなく Exa を利用できます。
+
+<div id="work-with-whats-on-the-web-right-now">
+  ## ウェブ上の最新情報を活用する
+</div>
+
+Claude Code では、リポジトリでの作業中に、Exa を使って最新のドキュメント、issue、変更履歴、実際のコード例を検索できます。同じインテグレーションにより、Claude Web、Desktop、Cowork でも、最新のニュース、リサーチ、企業情報、製品の詳細など、コンテキストにまだ含まれていない可能性のある情報源を利用できます。
+
+```text theme={null}
+現在 Tailwind v3 を使っています。Exa で Tailwind v4 の公式
+アップグレードガイドを探して読み込み、このプロジェクトを v4 に移行してください。
+```
+
+Claude Code は、見つけた情報をもとにコードベースに変更を加えられます。その他の Claude クライアントでも、同じ情報源を回答、アーティファクト、Cowork タスクに活用できます。
+
+最新の Web 情報や特定の Web 情報源が必要な場面なら、いつでも同じ方法が使えます。
+
+* 「この依存関係の最新リリースノートを探して、破壊的変更を要約してください。」
+* 「推論時スケーリングに関する最近の一次研究を検索し、手法を比較してください。」
+* 「Stripe の最新の webhook ドキュメントを読んで、推奨されるリトライ動作を説明してください。」
+* 「これらの製品の公式料金ページを探して、エントリーレベルのプランを比較してください。」
+
+<div id="search-read-and-research">
+  ## 検索、閲覧、リサーチ
+</div>
+
+Exa のインテグレーションを使うと、Claude はウェブを検索・閲覧するためのツールを利用でき、これらを組み合わせて長時間にわたるリサーチタスクにも対応できます。
+
+<Columns cols={3}>
+  <Card title="検索" icon="search">
+    自然言語で検索でき、リンクの一覧だけでなく関連するページコンテンツも取得できます。
+  </Card>
+
+  <Card title="閲覧" icon="file-text">
+    ドキュメント、研究資料、変更履歴、issue、記事など、指定したページを読み込みます。
+  </Card>
+
+  <Card title="リサーチ" icon="compass">
+    複数の検索を実行して有用なページを精査し、得られた根拠をまとめて出典付きの回答を作成します。
+  </Card>
+</Columns>
+
+<div id="research-without-leaving-claude">
+  ## Claude 上でそのままリサーチする
+</div>
+
+欲しい結果を依頼し、どのような情報源を重視するかを Claude に伝えます。
+
+```text theme={null}
+主要なオープンソースのベクトルデータベースについて、マネージドサービス、ライセンス、
+料金体系を比較してください。最新の一次資料をもとに、出典を明記してください。
+```
+
+Claudeは会話の中で随時Exaを使い、タスクに必要な情報源を探して読み込むことができます。技術リサーチ、競合分析、市場マッピング、企業リサーチをはじめ、答えがWeb上に散らばっているあらゆる質問に活用できます。
+
+<div id="use-exa-in-cowork">
+  ## Cowork で Exa を使う
+</div>
+
+同じコネクタは Cowork でも利用できます。外部の情報が必要なタスクを Claude に任せると、Claude はファイルや接続済みの他のツールを使いながら、検索やページの読み取りを行えます。
+
+```text theme={null}
+この競合分析資料を確認し、価格に関するすべての記載をExaを使って
+各ベンダーの最新ページと照合したうえで、引用を付けてドキュメントを更新してください。
+```
+
+<div id="prefer-mcp-directly">
+  ## MCP を直接使いたい場合
+</div>
+
+Claude を手動で設定する場合や、他の MCP クライアントを使用する場合は、Exa がホストする MCP サーバーに直接接続できます。
+
+```bash theme={null}
+claude mcp add --transport http exa https://mcp.exa.ai/mcp
+```
+
+その他のクライアント、設定オプション、利用可能なツールについては、[Exa MCP](/ja/docs/get-started/exa-mcp) をご覧ください。
+
+<Card title="Exa コネクタを開く" icon="external-link" horizontal href="https://claude.ai/connectors/exa">
+  Claude のコネクタディレクトリから Exa を追加します。
+</Card>

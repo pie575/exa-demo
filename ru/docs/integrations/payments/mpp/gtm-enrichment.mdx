@@ -1,0 +1,559 @@
+---
+title: "Руководство по GTM-enrichment с Tempo MPP"
+sidebarTitle: "GTM enrichment с MPP"
+description: "Создайте рабочий процесс GTM-enrichment с оплатой за каждый запрос к Exa search и contents через Tempo MPP — без API key."
+icon: "/docs/images/sidebar-icons/tempo.svg"
+---
+
+Используйте это руководство, чтобы построить agent или конвейер GTM-enrichment поверх
+эндпоинтов Exa `/search` и `/contents` с оплатой за каждый запрос через Machine
+Payments Protocol (MPP). MPP поддерживает несколько способов оплаты; в примерах
+ниже используются стейблкоины на [Tempo](https://tempo.xyz). Ни ежемесячной подписки, ни
+API key, ни оплаты за место: пополните wallet в USDC.e и платите по мере
+enrichment лидов или компаний.
+
+<Info>
+  MPP на данный момент поддерживается только для эндпоинтов Exa `/search` и `/contents`.
+  Agent API (`/agent/runs`) и `/answer` требуют Exa API key и работают
+  по стандартной схеме тарификации по API key.
+</Info>
+
+<div id="what-youll-build">
+  ## Что вы создадите
+</div>
+
+Лёгкий enrichment-конвейер, который по списку названий компаний или описаний целевых объектов:
+
+1. Использует Exa `/search` с `type: "deep"` и `outputSchema`, чтобы найти
+   официальную страницу компании и извлечь ключевые метаданные.
+2. Использует `contents.highlights` для полученного результата, чтобы получить фрагменты источника
+   о финансировании, штаб-квартире, сотрудниках и продукте.
+3. Формирует запись enrichment в формате CSV или JSON для каждого входного элемента.
+
+Этот подход применим для enrichment списков лидов, исследования аккаунтов и
+персонализации исходящих коммуникаций. Поскольку он состоит из отдельных вызовов `/search` + `/contents`,
+каждый шаг можно оплатить через MPP.
+
+<div id="prerequisites">
+  ## Предварительные требования
+</div>
+
+* Совместимый с Tempo wallet, пополненный **USDC.e** в сети Tempo mainnet.
+* Безопасный способ загрузки private key кошелька во время выполнения (см. ниже; никогда не коммитьте
+  ключ и не оставляйте его в исходном коде).
+* Установленный `mppx` (TypeScript) или `pympp` (Python).
+
+<Info>
+  Если вам нужна настройка из командной строки без использования «сырого» private key, воспользуйтесь [Tempo Wallet CLI](/ru/docs/integrations/payments/mpp/quickstart#pay-from-the-command-line). Команда `tempo wallet login` создаёт или подключает wallet и может давать бесплатные MPP Credits новым пользователям.
+</Info>
+
+<div id="mpp-setup">
+  ## Настройка MPP
+</div>
+
+<div id="install-the-client">
+  ### Установка клиента
+</div>
+
+<CodeGroup>
+  ```bash TypeScript theme={null}
+  npm install mppx viem
+  ```
+
+  ```bash Python theme={null}
+  pip install "pympp[tempo]"
+  ```
+</CodeGroup>
+
+<div id="load-your-private-key-safely">
+  ### Безопасная загрузка приватного ключа
+</div>
+
+Никогда не прописывайте приватный ключ прямо в коде. В примерах ниже значение `WALLET_PRIVATE_KEY` считывается из переменных окружения, и только для локальной разработки. В production загружайте его из менеджера секретов, например 1Password, AWS Secrets Manager или HashiCorp Vault.
+
+<CodeGroup>
+  ```bash TypeScript theme={null}
+  # Задайте в своей оболочке или хранилище секретов CI; никогда не коммитьте это значение
+  export WALLET_PRIVATE_KEY="0x..."
+  ```
+
+  ```bash Python theme={null}
+  # Задайте в своей оболочке или хранилище секретов CI; никогда не коммитьте это значение
+  export WALLET_PRIVATE_KEY="0x..."
+  ```
+</CodeGroup>
+
+<div id="make-a-paid-search-request">
+  ### Выполнение платного поискового запроса
+</div>
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  import { Mppx, tempo } from "mppx/client";
+  import { privateKeyToAccount } from "viem/accounts";
+
+  // В production загружайте это значение из secrets manager — никогда не коммитьте его в открытом виде.
+  const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY as `0x${string}`);
+  const mppx = Mppx.create({
+    methods: [tempo.charge({ account })],
+  });
+
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "Series A fintech companies with 50-200 employees",
+      numResults: 5,
+      contents: { highlights: true },
+    }),
+  });
+
+  const data = (await response.json()) as { results: { title: string; url: string }[] };
+  console.log(data.results);
+  console.log("Payment receipt:", response.headers.get("Payment-Receipt"));
+  ```
+
+  ```python Python theme={null}
+  import asyncio
+  import os
+
+  from mpp.client import Client
+  from mpp.methods.tempo import ChargeIntent, TempoAccount, tempo
+
+
+  async def main() -> None:
+      # В production загружайте это значение из secrets manager — никогда не коммитьте его в открытом виде.
+      account = TempoAccount.from_key(os.environ["WALLET_PRIVATE_KEY"])
+      method = tempo(
+          account=account,
+          chain_id=4217,
+          intents={"charge": ChargeIntent()},
+      )
+
+      async with Client(methods=[method]) as client:
+          response = await client.post(
+              "https://api.exa.ai/search",
+              json={
+                  "query": "Series A fintech companies with 50-200 employees",
+                  "numResults": 5,
+                  "contents": {"highlights": True},
+              },
+          )
+
+      data = response.json()
+      for result in data["results"]:
+          print(result["url"], result["title"])
+      print("Payment receipt:", response.headers.get("Payment-Receipt"))
+
+
+  asyncio.run(main())
+  ```
+</CodeGroup>
+
+При успешном выполнении возвращаются результаты Exa и header `Payment-Receipt` с
+хешем транзакции в блокчейне.
+
+<div id="make-a-paid-contents-request">
+  ### Выполните платный запрос к contents
+</div>
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  const contentsResponse = await mppx.fetch("https://api.exa.ai/contents", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      urls: ["https://www.example.com"],
+      text: true,
+      summary: true,
+    }),
+  });
+
+  const contentsData = (await contentsResponse.json()) as {
+    results: { url: string; text?: string; summary?: string }[];
+  };
+  console.log(contentsData.results[0]);
+  ```
+
+  ```python Python theme={null}
+  response = await client.post(
+      "https://api.exa.ai/contents",
+      json={
+          "urls": ["https://www.example.com"],
+          "text": True,
+          "summary": True,
+      },
+  )
+  print(response.json()["results"][0])
+  ```
+</CodeGroup>
+
+<div id="gtm-enrichment-recipe">
+  ## Рецепт GTM enrichment
+</div>
+
+<div id="enrich-a-list-of-companies">
+  ### Enrichment списка компаний
+</div>
+
+По списку названий компаний найдите страницу каждой компании и извлеките
+структурированные сведения.
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  interface CompanyEnrichment {
+    name: string;
+    url: string;
+    title: string;
+    industry?: string;
+    headquarters?: string;
+    funding?: string;
+    summary?: string;
+    highlights: string[];
+  }
+
+  async function enrichCompanies(names: string[]): Promise<CompanyEnrichment[]> {
+    const enriched: CompanyEnrichment[] = [];
+
+    for (const name of names) {
+      const response = await mppx.fetch("https://api.exa.ai/search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `${name} official company`,
+          type: "deep",
+          numResults: 1,
+          contents: {
+            highlights: { query: "funding, headquarters, employees, product" },
+          },
+          outputSchema: {
+            type: "object",
+            properties: {
+              company: {
+                type: "object",
+                properties: {
+                  name: { type: "string" },
+                  url: { type: "string" },
+                  industry: { type: "string" },
+                  headquarters: { type: "string" },
+                  funding: { type: "string" },
+                  summary: { type: "string" },
+                },
+                required: ["name", "url"],
+              },
+            },
+            required: ["company"],
+          },
+        }),
+      });
+
+      const data = (await response.json()) as {
+        output?: { company?: CompanyEnrichment & { summary?: string } };
+        results?: { highlights?: string[] }[];
+      };
+      const company = data.output?.company;
+      const highlights = data.results?.[0]?.highlights?.slice(0, 3) ?? [];
+      if (!company) continue;
+
+      enriched.push({
+        ...company,
+        title: company.name,
+        highlights,
+      });
+    }
+
+    return enriched;
+  }
+  ```
+
+  ```python Python theme={null}
+  async def enrich_companies(names):
+      enriched = []
+      for name in names:
+          response = await client.post(
+              "https://api.exa.ai/search",
+              json={
+                  "query": f"{name} official company",
+                  "type": "deep",
+                  "numResults": 1,
+                  "contents": {
+                      "highlights": {"query": "funding, headquarters, employees, product"}
+                  },
+                  "outputSchema": {
+                      "type": "object",
+                      "properties": {
+                          "company": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "url": {"type": "string"},
+                                  "industry": {"type": "string"},
+                                  "headquarters": {"type": "string"},
+                                  "funding": {"type": "string"},
+                                  "summary": {"type": "string"},
+                              },
+                              "required": ["name", "url"],
+                          }
+                      },
+                      "required": ["company"],
+                  },
+              },
+          )
+          data = response.json()
+          company = data.get("output", {}).get("company")
+          highlights = []
+          if data.get("results"):
+              highlights = data["results"][0].get("highlights", [])[:3]
+          if not company:
+              continue
+
+          enriched.append({
+              "name": company["name"],
+              "url": company["url"],
+              "title": company["name"],
+              "industry": company.get("industry"),
+              "headquarters": company.get("headquarters"),
+              "funding": company.get("funding"),
+              "summary": company.get("summary"),
+              "highlights": highlights,
+          })
+      return enriched
+  ```
+</CodeGroup>
+
+<div id="enrich-a-person-profile">
+  ### Обогащение профиля человека
+</div>
+
+В этом рецепте используются `type: "deep"`, `contents.highlights` и `outputSchema`,
+чтобы собрать информацию о человеке и вернуть структурированный профиль.
+
+<CodeGroup>
+  ```typescript TypeScript theme={null}
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "Exa Labs founders contact and background",
+      type: "deep",
+      numResults: 5,
+      contents: {
+        highlights: { query: "email, title, education, work history, LinkedIn" },
+      },
+      outputSchema: {
+        type: "object",
+        properties: {
+          people: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                title: { type: "string" },
+                company: { type: "string" },
+                email: { type: "string" },
+                linkedInUrl: { type: "string" },
+                summary: { type: "string" },
+              },
+              required: ["name"],
+            },
+          },
+        },
+        required: ["people"],
+      },
+    }),
+  });
+
+  const data = (await response.json()) as {
+    output?: { people: { name: string; title?: string; company?: string }[] };
+  };
+  console.log(data.output?.people);
+  ```
+
+  ```python Python theme={null}
+  response = await client.post(
+      "https://api.exa.ai/search",
+      json={
+          "query": "Exa Labs founders contact and background",
+          "type": "deep",
+          "numResults": 5,
+          "contents": {
+              "highlights": {"query": "email, title, education, work history, LinkedIn"}
+          },
+          "outputSchema": {
+              "type": "object",
+              "properties": {
+                  "people": {
+                      "type": "array",
+                      "items": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "title": {"type": "string"},
+                              "company": {"type": "string"},
+                              "email": {"type": "string"},
+                              "linkedInUrl": {"type": "string"},
+                              "summary": {"type": "string"},
+                          },
+                          "required": ["name"],
+                      },
+                  }
+              },
+              "required": ["people"],
+          },
+      },
+  )
+
+  print(response.json().get("output", {}).get("people"))
+  ```
+</CodeGroup>
+
+<Note>
+  Здесь `type: "deep"` даёт более глубокий анализ, а `outputSchema` задаёт
+  структуру ответа. Глубокий поиск стоит $0.012 за запрос, а
+  `contents.highlights` добавляет $0.001 за каждый результат.
+</Note>
+
+<div id="structured-output">
+  ### Структурированный вывод
+</div>
+
+Если вам нужны поля JSON вместо обычного текста, используйте `outputSchema` в поисковом запросе. Exa вернёт объект `output`, соответствующий вашей схеме.
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = await client.post(
+      "https://api.exa.ai/search",
+      json={
+          "query": "Series A fintech companies with 50-200 employees",
+          "type": "deep-lite",
+          "numResults": 5,
+          "outputSchema": {
+              "type": "object",
+              "properties": {
+                  "companies": {
+                      "type": "array",
+                      "items": {
+                          "type": "object",
+                          "properties": {
+                              "name": {"type": "string"},
+                              "headcount": {"type": "string"},
+                              "headquarters": {"type": "string"},
+                              "fundingStage": {"type": "string"},
+                          },
+                          "required": ["name"],
+                      },
+                  }
+              },
+              "required": ["companies"],
+          },
+      },
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const response = await mppx.fetch("https://api.exa.ai/search", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      query: "Series A fintech companies with 50-200 employees",
+      type: "deep-lite",
+      numResults: 5,
+      outputSchema: {
+        type: "object",
+        properties: {
+          companies: {
+            type: "array",
+            items: {
+              type: "object",
+              properties: {
+                name: { type: "string" },
+                headcount: { type: "string" },
+                headquarters: { type: "string" },
+                fundingStage: { type: "string" }
+              },
+              required: ["name"]
+            }
+          }
+        },
+        required: ["companies"]
+      }
+    })
+  });
+  ```
+</CodeGroup>
+
+<Note>
+  `outputSchema` лучше всего работает с типами поиска `deep-lite` и `deep`. Он добавляет
+  вызов LLM на стороне Exa, поэтому тарифицируется как `deep-lite`/`deep`.
+</Note>
+
+<div id="pricing-and-limits">
+  ## Тарификация и лимиты
+</div>
+
+MPP использует ту же тарификацию за запрос, что и схема тарификации по API key. Поисковые запросы через MPP
+ограничены 10 результатами.
+
+| Операция                                        | Цена                |
+| ----------------------------------------------- | ------------------- |
+| `/search` с `type` `instant`, `auto` или `fast` | $0,007 за запрос    |
+| `/search` с `type` `deep-lite` или `deep`       | $0,012 за запрос    |
+| `/search` с `type` `deep-reasoning`             | $0,015 за запрос    |
+| `contents.text`                                 | $0,001 за URL       |
+| `contents.highlights`                           | $0,001 за URL       |
+| `contents.summary`                              | $0,001 за результат |
+
+Полную справочную информацию, включая лимиты частоты запросов, сведения о сети и платёжные headers, см. в разделе [Оплата через MPP (Tempo)](/ru/docs/integrations/payments/mpp/quickstart).
+
+<div id="production-tips">
+  ## Советы для production
+</div>
+
+* **Пополняйте wallet только в USDC.e.** Exa покрывает комиссию сети Tempo, поэтому
+  отдельный газовый token для wallet не нужен.
+* **Обрабатывайте ответы `402`.** MPP SDK повторяет запросы автоматически, но собственный
+  client должен повторять запрос при `402`, используя запрос-вызов `WWW-Authenticate: Payment`.
+* **Кэшируйте результаты `/contents`.** Содержимое тарифицируется за каждый URL. Кэшируйте по URL, чтобы
+  не платить дважды за одну и ту же страницу компании.
+* **Учитывайте ограничение в 10 результатов.** MPP search ограничивает `numResults` значением 10.
+* **Никогда не коммитьте private keys.** Загружайте `WALLET_PRIVATE_KEY` из менеджера
+  secrets, а не из системы контроля версий.
+
+<div id="faq">
+  ## Частые вопросы
+</div>
+
+<AccordionGroup>
+  <Accordion title="Можно ли использовать MPP с Exa Agent API?">
+    Нет. В кодовой базе Exa MPP подключён только к `/search` и `/contents`.
+    Для `/agent/runs` и `/answer` требуется Exa API key, и биллинг там
+    стандартный, по API key.
+  </Accordion>
+
+  <Accordion title="Можно ли совмещать MPP и Exa API key в одном запросе?">
+    Нет. Если запрос содержит `x-api-key` или `Authorization: Bearer`,
+    приоритет получает схема с API key, а MPP не используется.
+  </Accordion>
+
+  <Accordion title="Что произойдёт, если расчёт по MPP не пройдёт?">
+    Exa вернёт `402` с новым запросом-вызовом `WWW-Authenticate: Payment` и без
+    результатов. Ваш client может повторить попытку с новым платежом. Результаты
+    не возвращаются, пока расчёт не пройдёт успешно.
+  </Accordion>
+
+  <Accordion title="Нужен ли отдельный кошелёк Tempo для каждой среды?">
+    Можно использовать один и тот же кошелёк, но мы рекомендуем заводить
+    отдельные кошельки для разработки и production. Лимит на кошелёк — 10
+    запросов в секунду суммарно по всем запросам с этого кошелька.
+  </Accordion>
+</AccordionGroup>
+
+<div id="next-steps">
+  ## Дальнейшие шаги
+</div>
+
+* [Оплата через MPP (Tempo)](/ru/docs/integrations/payments/mpp/quickstart): полный справочник по MPP
+* [Руководство по Exa Search API](/ru/docs/search/quickstart): справочник параметров search
+* [Руководство по Exa Contents API](/ru/docs/contents/quickstart): справочник параметров contents
+* [Документация Tempo MPP](https://mpp.dev/protocol): подробности о протоколе и SDK

@@ -1,0 +1,204 @@
+---
+title: "Baselayer"
+description: "Проверяйте компании США и получайте данные KYB: руководителей, регистрации, оценки рисков."
+icon: "/docs/images/sidebar-icons/baselayer.svg"
+---
+
+[Baselayer](https://baselayer.com) — это платформа Know Your Business (KYB),
+которая проверяет юридические лица США по авторитетным регистрационным данным и
+данным о рисках. Она находит компанию по названию и адресу и возвращает
+полный профиль: руководителей, регистрации в штатах, структуру юридического лица
+и статус верификации.
+
+Подключите `baselayer` к выполнению [Exa Agent](/ru/docs/agent/quickstart) через
+[Exa Connect](/ru/docs/agent/connect/overview), и agent будет обращаться к
+Baselayer наряду с Exa web search.
+
+<div id="use-it-for">
+  ## Для чего использовать
+</div>
+
+* KYB-онбординг и верификация вендоров и клиентов.
+* Due diligence по руководителям, регистрациям и структуре юридического лица.
+* Скрининг компаний на риски и совпадения с контрольными списками.
+
+<div id="provider-id">
+  ## Идентификатор провайдера
+</div>
+
+Используйте это значение в `dataSources`:
+
+```text theme={null}
+baselayer
+```
+
+<div id="pricing">
+  ## Pricing
+</div>
+
+Baselayer тарифицируется за заказ, при этом ставка зависит от операции и её
+parameters:
+
+| Операция                                                                  | Цена                                                     |
+| ------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Поиск компаний                                                            | `$1.00 / search`                                         |
+| Карточка компании / руководители / регистрация / обратный поиск по руководителям | Бесплатно (чтение результатов ранее выполненного search) |
+| Поиск залогов                                                             | `$2.00 / state searched`                                 |
+| Поиск судебных дел                                                        | `$1.00 / category (litigation, bankruptcy)`              |
+| Проверка по контрольным спискам                                           | `$0.10 – $0.25 / list requested`                         |
+| Отраслевая классификация                                                  | `$0.35 / call`                                           |
+| Анализ сайта                                                              | `$0.35 / call`                                           |
+| Присутствие в вебе                                                        | `$0.15 – $0.35 / selected analysis`                      |
+| Международный поиск компаний                                              | `$4.00 / search`                                         |
+
+Выбранные parameters влияют на цену: поиск залогов по двум state обойдётся в
+$4.00, проверка по всем шести поддерживаемым спискам — в $1.35, а вызов
+анализа присутствия в вебе оплачивается как сумма выбранных вами видов анализа
+(или default-набора Baselayer — прогноз NAICS и анализ сайта — если ничего не выбрано).
+
+<div id="example">
+  ## Пример
+</div>
+
+Проверьте компанию и получите сведения о её руководителях и регистрации.
+
+<CodeGroup>
+  ```python Python theme={null}
+  from exa_py import Exa
+
+  exa = Exa()
+  run = exa.agent.runs.create(
+      query="Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.",
+      data_sources=[{"provider": "baselayer"}],
+      output_schema={
+          "type": "object",
+          "required": ["business"],
+          "properties": {
+              "business": {
+                  "type": "object",
+                  "required": ["name", "verified", "incorporationState", "officers"],
+                  "properties": {
+                      "name": {"type": "string"},
+                      "verified": {"type": "boolean"},
+                      "incorporationState": {"type": "string"},
+                      "officers": {
+                          "type": "array",
+                          "items": {
+                              "type": "object",
+                              "required": ["name", "title"],
+                              "properties": {
+                                  "name": {"type": "string"},
+                                  "title": {"type": "string"},
+                              },
+                          },
+                      },
+                  },
+              }
+          },
+      },
+  )
+  run = exa.agent.runs.poll_until_finished(run.id)
+  ```
+
+  ```javascript JavaScript theme={null}
+  import Exa from "exa-js";
+
+  const exa = new Exa();
+  const run = await exa.agent.runs.create({
+    query: "Verify the business 'Stripe, Inc.' in San Francisco, CA and return its officers and registration status.",
+    dataSources: [{ provider: "baselayer" }],
+    outputSchema: {
+      type: "object",
+      required: ["business"],
+      properties: {
+        business: {
+          type: "object",
+          required: ["name", "verified", "incorporationState", "officers"],
+          properties: {
+            name: { type: "string" },
+            verified: { type: "boolean" },
+            incorporationState: { type: "string" },
+            officers: {
+              type: "array",
+              items: {
+                type: "object",
+                required: ["name", "title"],
+                properties: {
+                  name: { type: "string" },
+                  title: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl -s -X POST "https://api.exa.ai/agent/runs" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $EXA_API_KEY" \
+    -d '{
+      "query": "Verify the business Stripe, Inc. in San Francisco, CA and return its officers and registration status.",
+      "dataSources": [{ "provider": "baselayer" }],
+      "outputSchema": {
+        "type": "object",
+        "required": ["business"],
+        "properties": {
+          "business": {
+            "type": "object",
+            "required": ["name", "verified", "incorporationState", "officers"],
+            "properties": {
+              "name": { "type": "string" },
+              "verified": { "type": "boolean" },
+              "incorporationState": { "type": "string" },
+              "officers": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "title"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "title": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }'
+  ```
+</CodeGroup>
+
+<div id="pairs-well-with">
+  ## Хорошо сочетается с
+</div>
+
+* [Fiber.ai](/ru/docs/agent/connect/fiber): обогащайте данные проверенной компании фирмографикой, численностью персонала и контактами.
+* [Financial Datasets](/ru/docs/agent/connect/financialdatasets): добавляйте свежие новостные упоминания о публичных компаниях.
+* [Similarweb](/ru/docs/agent/connect/similarweb): сравнивайте веб-трафик проверенной компании с показателями конкурентов.
+
+<div id="next-steps">
+  ## Дальнейшие шаги
+</div>
+
+<Columns cols={2}>
+  <Card title="Подключите к выполнению" icon="rocket" href="/ru/docs/agent/connect/overview" cta="Открыть quickstart" arrow="true">
+    Quickstart по Exa Connect описывает `dataSources`, стоимость и полный каталог партнёров.
+  </Card>
+
+  <Card title="Комбинируйте провайдеров" icon="blend" href="/ru/docs/agent/connect/combining-providers" cta="Читать руководство" arrow="true">
+    Подключите до пяти партнёров к одному выполнению и составьте запрос так, чтобы сработал каждый из них.
+  </Card>
+
+  <Card title="Изучите Exa Agent" icon="book-open" href="/ru/docs/agent/quickstart" cta="Открыть руководство" arrow="true">
+    Создавайте запуски, отслеживайте прогресс в потоковом режиме, проектируйте schema для вывода, управляйте effort и стоимостью.
+  </Card>
+
+  <Card title="Получите API key" icon="key" href="https://dashboard.exa.ai/api-keys" cta="Создать ключ" arrow="true">
+    Создайте ключ в дашборде и запустите пример с этой страницы как есть. Новым аккаунтам начисляются бесплатные credits.
+  </Card>
+</Columns>

@@ -1,0 +1,12 @@
+---
+title: "Получить пакет"
+description: "Получение пакета по ID."
+openapi: "/ru/docs/exa-spec.yaml GET /batches/{id}"
+timestamp: false
+---
+
+Используйте этот эндпоинт, чтобы опрашивать пакет, пока он не перейдёт в статус `completed`, `cancelled` или `expired`. После завершения пакета в `resultsUrl` возвращается предподписанный URL с коротким сроком действия для файла результатов в формате JSONL; запросите пакет повторно, чтобы получить новый URL.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>

@@ -1,0 +1,13 @@
+---
+title: "Список выполнений Agent"
+sidebarTitle: "Список выполнений"
+description: "Получение постраничного списка выполнений Agent для вашей команды."
+openapi: "/ru/docs/exa-spec.yaml GET /agent/runs"
+timestamp: false
+---
+
+Выполнения возвращаются от новых к старым. Используйте `limit`, чтобы задать размер страницы, и `cursor` со значением `nextCursor` из предыдущего ответа, чтобы получить следующую страницу.
+
+<Card title="Получите свой Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  Создайте ключ в дашборде. Новым аккаунтам начисляются бесплатные credits.
+</Card>

@@ -1,0 +1,12 @@
+---
+title: "バッチの一覧取得"
+description: "チームのバッチ一覧をページネーション付きで取得します。"
+openapi: "/ja/docs/exa-spec.yaml GET /batches"
+timestamp: false
+---
+
+バッチは新しい順に返されます。ページサイズは `limit` で指定します。次のページを取得するには、前回のレスポンスに含まれる `nextCursor` を `cursor` に指定してください。完了済みのバッチのみを一覧表示するには `status=completed` を指定します。完了済みバッチの一覧では専用のカーソルが使われるため、すべてのページのリクエストで `status=completed` を指定してください。
+
+<Card title="Exa APIキーを取得" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>

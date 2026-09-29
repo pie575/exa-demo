@@ -1,0 +1,143 @@
+---
+title: "Gumloop"
+sidebarTitle: "Gumloop"
+description: "Используйте Exa search и содержимое в потоках Gumloop."
+icon: "/docs/images/sidebar-icons/gumloop.svg"
+---
+
+[Gumloop](https://www.gumloop.com/) включает Exa в качестве встроенной MCP-integration. Добавьте её к agent или Agent Node, чтобы искать в вебе, извлекать страницы, находить связанные источники и получать ответы со ссылками на источники прямо в рабочем процессе.
+
+<div id="add-exa-to-a-gumloop-agent">
+  ## Добавление Exa в agent Gumloop
+</div>
+
+<Steps>
+  <Step title="Откройте agent">
+    Откройте настройки своего agent и выберите **Add tools** → **Connect an app with MCP**.
+  </Step>
+
+  <Step title="Подключите Exa">
+    Найдите **Exa**, выберите integration и пройдите аутентификацию.
+  </Step>
+
+  <Step title="Выберите tools">
+    Откройте подключённую integration Exa и включите только те tools, которые действительно нужны agent. Так выбор tool будет очевиднее, а agent не станет вызывать лишние действия.
+  </Step>
+
+  <Step title="Проверьте подключение">
+    Попросите agent:
+
+    ```text theme={null}
+    Find five recent articles about AI regulation and summarize the key changes with source links.
+    ```
+
+    Просмотрите выполнение и убедитесь, что agent вызвал Exa и вернул sources со ссылками.
+  </Step>
+</Steps>
+
+<div id="available-tools">
+  ## Доступные tool
+</div>
+
+| Tool                     | Для чего использовать                                                    |
+| ------------------------ | ------------------------------------------------------------------------ |
+| **Search**               | Поиск релевантных страниц нейронным или ключевым поиском.                |
+| **Get Contents**         | Извлечение полного текста, кратких сводок и метаданных из известных URL. |
+| **Find Similar**         | Поиск страниц, связанных с исходным URL.                                 |
+| **Answer**               | Генерация ответа с опорой на источники и со ссылками на них.             |
+| **Create Research Task** | Запуск длительного исследования.                                         |
+| **Get Research Task**    | Получение статуса и результата исследовательской задачи.                 |
+
+Для разговорного agent сначала включите Search, Get Contents и Answer. Остальные tool добавляйте только тогда, когда этого требует рабочий процесс.
+
+<div id="use-exa-in-a-workflow">
+  ## Использование Exa в рабочем процессе
+</div>
+
+<div id="agent-node">
+  ### Agent Node
+</div>
+
+Добавьте **Agent Node** в детерминированный рабочий процесс Gumloop и подключите Exa как один из его tools. Узел может сам решить, выполнить ли search, получить полные страницы или выстроить цепочку из нескольких Exa calls, прежде чем передать вывод следующему шагу рабочего процесса.
+
+Это хорошо подходит для:
+
+* обогащения строк CRM или таблиц актуальными данными из веба
+* отслеживания новостей и отправки summary со ссылками на источники в Slack или на почту
+* исследования компаний перед передачей records в рабочий процесс продаж
+* сравнения продуктов и записи результата в документ
+
+<div id="reusable-custom-mcp-node">
+  ### Переиспользуемый пользовательский MCP-узел
+</div>
+
+Для одного повторяющегося действия создайте отдельный узел:
+
+1. Откройте библиотеку узлов и найдите Exa.
+2. Выберите **Create a node with AI**.
+3. Опишите одно действие, например `Search for funding announcements from the past seven days`.
+4. Протестируйте созданный узел, проверьте его входные данные и вывод, затем сохраните его.
+
+Используйте Agent Node, если задача требует динамического планирования или нескольких tools. Используйте пользовательский MCP-узел, если одна и та же операция Exa должна предсказуемо выполняться для каждого item.
+
+<div id="prompt-patterns">
+  ## Шаблоны промптов
+</div>
+
+<AccordionGroup>
+  <Accordion title="Поиск и краткое изложение">
+    ```text theme={null}
+    Найди официальные анонсы по теме [topic], опубликованные на этой неделе.
+    Для каждого результата верни дату, издателя, summary и исходный URL.
+    ```
+  </Accordion>
+
+  <Accordion title="Обогащение данных о компании">
+    ```text theme={null}
+    По названию компании и её домену найди описание продукта,
+    последний анонс о привлечении финансирования и два свежих новостных источника.
+    ```
+  </Accordion>
+
+  <Accordion title="Чтение известной страницы">
+    ```text theme={null}
+    Получи полное содержимое этого URL и извлеки тарифные планы в формате JSON.
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<div id="troubleshooting">
+  ## Устранение неполадок
+</div>
+
+<AccordionGroup>
+  <Accordion title="Exa недоступен для agent">
+    Снова откройте MCP-инструменты agent, убедитесь, что Exa подключён, и включите нужный tool. Даже у подключённой integration отдельные tools могут быть отключены.
+  </Accordion>
+
+  <Accordion title="Agent выбирает неверное действие">
+    В запросе явно укажите, что именно нужно сделать: выполнить search, прочитать известные URL, найти похожие страницы или ответить на основе sources. Отключите те Exa tools, которые agent не использует в этом рабочем процессе.
+  </Accordion>
+
+  <Accordion title="Рабочему процессу нужен предсказуемый одиночный вызов">
+    Замените универсальный шаг с agent на пользовательский MCP-узел Exa с фиксированными входными данными и задачей.
+  </Accordion>
+</AccordionGroup>
+
+<div id="resources">
+  ## Ресурсы
+</div>
+
+<Columns cols={3}>
+  <Card title="integration Gumloop с Exa" icon="book-open" href="https://docs.gumloop.com/nodes/mcp/exa" cta="Читать руководство" arrow="true">
+    Ознакомьтесь с доступными tools Gumloop и рабочим процессом с узлом Agent Node.
+  </Card>
+
+  <Card title="MCP-сервер Exa" icon="plug" href="/ru/docs/get-started/exa-mcp" cta="Читать руководство" arrow="true">
+    Разберитесь, какие tools Exa доступны через MCP.
+  </Card>
+
+  <Card title="Exa Search" icon="search" href="/ru/docs/search/quickstart" cta="Читать руководство" arrow="true">
+    Узнайте, как формировать поисковые запросы и возвращаемое содержимое.
+  </Card>
+</Columns>

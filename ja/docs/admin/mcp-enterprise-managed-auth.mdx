@@ -1,0 +1,90 @@
+---
+title: "Claude 向け Enterprise Managed Auth"
+description: "Enterprise Managed Auth (EMA) を設定し、Okta Cross App Access (XAA) などの ID プロバイダーを介して Claude が Exa MCP に接続できるようにします。"
+sidebarTitle: "Enterprise Managed Auth"
+---
+
+デフォルトでは、各メンバーが OAuth で Exa に一度サインインし、Claude の [Exa コネクタ](/ja/docs/get-started/exa-mcp)を接続します。**Enterprise Managed Auth (EMA)** を使うと、代わりに Okta を通じてバックグラウンドで接続されます。Exa のログイン画面も同意プロンプトも表示されず、API キーを配布する必要もありません。
+
+アクセス権はディレクトリの設定に連動します。Okta でユーザーのプロビジョニングを解除すると、そのユーザーの Claude 経由での Exa へのアクセスも同時に停止します。EMA は、MCP の [enterprise managed authorization 拡張機能](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)に基づいています。
+
+<div id="before-you-start">
+  ## 始める前に
+</div>
+
+* ID プロバイダーが接続済みの Claude Team または Enterprise の組織と、その組織の管理者権限
+* SSO とディレクトリ同期が設定済みの Exa の **組織** (個人用チームは不可) と、その組織の管理者権限
+* ID プロバイダーとして Okta を使用し、Okta Identity Engine で [Cross App Access (XAA)](https://help.okta.com/en-us/content/topics/apps/apps-cross-app-access.htm) を有効にしていること、およびテナントの Super Admin 権限。現在サポートされている ID プロバイダーは Okta のみです。
+
+<div id="exa-values-youll-need">
+  ## 必要な Exa の値
+</div>
+
+| 項目                        | 値                        |
+| ------------------------- | ------------------------ |
+| Issuer URL (Exa の認可サーバー)  | `https://auth.exa.ai`    |
+| Resource / MCP サーバー URL   | `https://mcp.exa.ai/mcp` |
+| Scope                     | `mcp:tools`              |
+
+<div id="set-up-ema">
+  ## EMA のセットアップ
+</div>
+
+<Steps>
+  <Step title="Exa でメンバーをプロビジョニングする">
+    コネクタを使用するすべてのメンバーは、あらかじめ Exa に存在し、Exa 組織内のいずれかのチームに所属している必要があります。メールアドレスは Okta がアサートするものと同一で、かつ組織で検証済みのドメインのものである必要があります。EMA がアカウントを作成することはありません。ディレクトリ同期を使用するか、[チームに招待](/ja/docs/admin/team-management)してください。
+  </Step>
+
+  <Step title="Exa で ID プロバイダーを登録する">
+    Exa ダッシュボードで [Organization](https://dashboard.exa.ai/organization) を開き、**Enterprise-managed auth (Claude MCP)** にある **Register identity provider** をクリックします。Okta の SSO / アプリ埋め込み URL (`https://your-org.okta.com/app/.../sso/saml`) を貼り付けます。URL は登録時に Exa によって検証されます。
+
+    登録は、プロビジョニング済みのメンバーが初めて Okta 経由で Claude の接続に成功するまで **Pending verification** のままとなり、その後自動的に **Active** に切り替わります。追加の操作は必要ありません。Exa が代行して設定した発行者は **Managed by Exa** と表示されます。これらを変更する場合はサポートにお問い合わせください。Exa が URL を認識できない場合は、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
+  </Step>
+
+  <Step title="Okta で Cross App Access を設定する">
+    [Claude EMA 向けの Okta の Cross App Access ガイド](https://support.okta.com/help/s/article/claude-enterprise-managed-auth-with-okta-cross-app-access-xaa-beta-participation-guide)に従って設定します。Exa 固有の手順は次のとおりです。
+
+    1. Okta 管理コンソールで Exa アプリケーションを開き、**Resource Server** に移動して XAA を有効にし、Resource URL と Issuer URL を `https://auth.exa.ai` に設定します。Audience/tenant ID は空欄のままにします。
+    2. Exa アプリがカスタム SAML アプリの場合は、**Name ID Format** が `EmailAddress` になっていることを確認してください。Exa はアサートされたメールアドレスをもとにメンバーの Exa アカウントを照合します。
+    3. **Directory → AI Agents** で Claude AI エージェントを登録し、Anthropic から提供された公開鍵を追加して、Claude アプリを委任呼び出し元として追加します。さらに、Anthropic から提供された Client ID を使用して、Exa を **Resource Connection** として追加します。
+  </Step>
+
+  <Step title="Claude でマネージド認可を有効にする">
+    Claude で **Organization settings → Connectors** に移動し、Exa コネクタを選択して、**Configuration** タブで Managed authorization の横にある **Set up** をクリックします。IdP 接続を確認してテストを実行し、コネクタを継承するロールを選択して保存します。ロールとスコープのオプションについては、[Anthropic の管理者ガイド](https://support.claude.com/en/articles/15537633-authorize-mcp-connectors-for-your-entire-organization)を参照してください。
+  </Step>
+</Steps>
+
+メンバーは次回のサインイン時からコネクタを利用できます。マネージド認可と併用して、ブラウザでのサインインを有効のままにしておくこともできます。その場合、Claude はまずマネージド認可を試し、失敗したときは通常の OAuth ログインにフォールバックします。
+
+<Note>
+  Claude 経由の使用量は、チームで実行する他の処理と同様に、メンバーの Exa チームに対して、そのチームのプランとレート制限に基づいて請求されます。
+</Note>
+
+<div id="revoking-access">
+  ## アクセスの取り消し
+</div>
+
+* **特定のメンバー:** Okta でそのメンバーを削除するか、Exa でそのメンバーをチームから外します。いずれの場合も、Claude 経由のアクセスは終了します。
+* **全員:** Organization ページで発行者を削除するか、Claude でマネージド認可をオフにします。新規接続はただちに停止し、すでに開いているセッションもまもなく終了します。発行者はいつでも再登録できます。
+
+<div id="troubleshooting">
+  ## トラブルシューティング
+</div>
+
+<AccordionGroup>
+  <Accordion title="一部のメンバーは利用できるが、他のメンバーは利用できない">
+    失敗しているメンバーを Exa 側で特定できていません。そのメンバーが Okta のアサートするメールアドレスと完全に一致するメールアドレスで Exa に登録されていること、そのメールアドレスのドメインが組織で検証済みであること、そしてその組織内のチームに所属していることを確認してください。多くの場合、原因はディレクトリ同期のグループマッピングにあります。
+  </Accordion>
+
+  <Accordion title="誰も利用できない">
+    Organization ページで発行者のステータスを確認してください。**Pending verification** のままであれば、まだ一度も接続に成功していません。主な原因は、Okta の設定が完了していない、Exa アプリの Issuer URL が `https://auth.exa.ai` と一致していない、接続を試みたメンバーが Exa でプロビジョニングされていない、のいずれかです。問題を解消したうえで、プロビジョニング済みのメンバーとして再度接続してください。
+  </Accordion>
+
+  <Accordion title="登録時に ID プロバイダーが登録済みと表示される">
+    1 つの発行者が属することができる Exa 組織は 1 つだけです。Organization ページに表示されていない場合は、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  その他の問題については、Exa 組織名、影響を受けたメンバーのメールアドレス、試行したおおよその日時を添えて、[support@exa.ai](mailto:support@exa.ai) までお問い合わせください。
+</Note>

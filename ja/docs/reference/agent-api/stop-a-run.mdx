@@ -1,0 +1,19 @@
+---
+title: "実行を停止する"
+description: "進行中の Agent の実行を正常に停止し、それまでに収集した結果を保持します。"
+openapi: "/ja/docs/exa-spec.yaml POST /agent/runs/{id}/stop"
+timestamp: false
+---
+
+実行がまだアクティブな場合、エージェントは処理を切り上げ、それまでに収集した結果で実行を早期に完了します。実行はステータス `completed`、`stopReason: stopped` で終了します。課金対象は停止前に発生した使用量です。実行がすでに終了ステータス (completed、failed、cancelled のいずれか) に達している場合、このエンドポイントは既存の実行をそのまま返します。
+
+結果を返さずに実行を即座に終了するには、代わりに [cancel](/ja/docs/reference/agent-api/cancel-a-run) を使用してください。
+
+<Note>
+  `max` effort の実行でのみサポートされています。リクエストヘッダーとして `Exa-Beta: agent-max-effort-2026-07-27` を
+  渡す必要があります。このヘッダーには、ベータトークンをカンマ区切りで複数指定できます。
+</Note>
+
+<Card title="Exa API キーを取得する" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
+  ダッシュボードでキーを作成してください。新規アカウントには無料クレジットが付与されます。
+</Card>
