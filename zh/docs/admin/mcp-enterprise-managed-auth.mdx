@@ -1,12 +1,12 @@
 ---
-title: "面向 Claude 的 Enterprise Managed Auth"
-description: "配置 Enterprise Managed Auth (EMA)，让 Claude 通过你的身份提供商连接 Exa MCP，包括 Okta Cross App Access (XAA)。"
-sidebarTitle: "Enterprise Managed Auth"
+title: "面向 Claude 的企业托管授权"
+description: "配置企业托管授权 (EMA)，让 Claude 通过你的身份提供商连接 Exa MCP，包括 Okta Cross App Access (XAA)。"
+sidebarTitle: "企业托管授权"
 ---
 
-默认情况下，每位成员都需要通过 OAuth 登录一次 Exa，才能在 Claude 中连接 [Exa 连接器](/zh/docs/get-started/exa-mcp)。启用 **Enterprise Managed Auth (EMA)** 后，他们改为通过 Okta 静默获得访问权限：没有 Exa 登录页面，没有授权确认提示，也无需到处分发 API 密钥。
+默认情况下，每位成员都需要通过 OAuth 登录一次 Exa，才能在 Claude 中连接 [Exa 连接器](/zh/docs/get-started/exa-mcp)。启用 **企业托管授权 (EMA)** 后，他们改为通过 Okta 静默获得访问权限：没有 Exa 登录页面，没有授权确认提示，也无需到处分发 API 密钥。
 
-访问权限与你的目录保持一致：在 Okta 中取消某人的账号配置后，其通过 Claude 访问 Exa 的权限也随之终止。EMA 即 MCP 的 [enterprise managed authorization 扩展](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)。
+访问权限与你的目录保持一致：在 Okta 中取消某人的账号配置后，其通过 Claude 访问 Exa 的权限也随之终止。EMA 即 MCP 的 [企业托管授权扩展](https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization)。
 
 ## 开始之前 {#before-you-start}
 
